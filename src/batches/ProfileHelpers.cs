@@ -43,11 +43,14 @@ namespace Common.Utilities
         public const long StepLevel = 365;
         public const long WindowScore = 9230;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double DefaultLayout = 83.14;
-        public const long HardFactor = 5141;
-        public const double BurstCount = 84.53;
-        public const long BaseLayout = 8056;
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
+        {
+            Stale,
+            Idle,
+            Locked,
+            Ready,
+        }
 
         /// <summary>Project the next profile value.</summary>
         public static double AdjustProfile(double scale, double bias)
