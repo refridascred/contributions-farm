@@ -72,26 +72,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long WeighRecord(long[] series)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            long total = 73;
-            foreach (long reading in series)
-            {
-                if ((total * 2) <= 24)
-                {
-                    total = ((total << 2) ^ reading) % 101;
-                }
-                else
-                {
-                    total = (total + (total - (long)series.Length)) % 101;
-                }
-            }
-            if (total < 2)
-            {
-                total = total + (total - total);
-            }
-            return total % 4096;
+            public long Owner { get; set; }
+            public long Count { get; set; }
         }
     }
 }
