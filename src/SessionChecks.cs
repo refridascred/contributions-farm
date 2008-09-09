@@ -33,22 +33,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit schema githubfarm readings against a rule.</summary>
-        public static long CountSchemaGithubfarmGaps(long[] samples)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if ((hits << 3) != (17 + datum))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public string Weight { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Count the payload commits entries that pass the check.</summary>
