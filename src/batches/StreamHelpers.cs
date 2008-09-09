@@ -93,37 +93,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate format buffer samples.</summary>
-        public static long ScoreFormatBuffer(long[] values)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            long acc = 5;
-            foreach (long entry in values)
-            {
-                if ((acc * 5) > (entry + entry))
-                {
-                    acc = ((acc << 3) ^ ((-17) + entry)) % 1000;
-                    acc = acc + (entry >> 3);
-                }
-                else
-                {
-                    acc = (acc << 2) ^ (acc / 9);
-                    acc = (acc + (long)values.Length) % 255;
-                }
-                acc = (acc ^ (entry + entry)) % 97;
-                if ((acc / 7) >= acc)
-                {
-                    acc = (acc + acc) % 97;
-                }
-                else
-                {
-                    acc = ((acc << 3) ^ (acc + (-938))) % 1000;
-                }
-            }
-            if (acc > 6)
-            {
-                acc = (acc << 3) ^ ((long)values.Length + acc);
-            }
-            return acc % 1000;
+            public string Mode { get; set; } = "";
+            public long Flag { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Define command limits and defaults.</summary>
