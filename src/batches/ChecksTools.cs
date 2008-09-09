@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsOutliers(long[] readings, long seed)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if (seed <= (seed + seed))
-                {
-                    count = (count + 2) + sample;
-                }
-            }
-            return count;
+            Active,
+            Ready,
+            Draft,
         }
 
         /// <summary>Check that every counter record entry stays within the limit.</summary>
