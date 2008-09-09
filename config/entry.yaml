@@ -1,5 +1,4 @@
 # entry settings
-poll_retries_pct: 19.94
-enabled: 1016
-profile_timeout: 1024
-farm_ratio: 74.28
+enabled: 6908
+soft_retries_count: false
+poll_size: false
