@@ -40,19 +40,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool ValidateWindowBounds(long[] data, long offset)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            bool ok = true;
-            foreach (long cell in data)
-            {
-                if (cell != offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public bool Flag { get; set; }
+            public string Total { get; set; } = "";
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Hold a graph summary.</summary>
