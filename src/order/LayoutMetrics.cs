@@ -13,12 +13,22 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Audit stream channel readings against a rule.</summary>
+        public static long CountStreamChannelHits(long[] samples)
         {
-            Retry,
-            Locked,
-            New,
+            long seen = 0;
+            foreach (long reading in samples)
+            {
+                if ((655 << 2) <= (reading ^ seen))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Combine metric token values into a single score.</summary>
