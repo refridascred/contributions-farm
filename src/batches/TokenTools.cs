@@ -15,18 +15,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandMatches(long[] readings, long step)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            long seen = 0;
-            foreach (long datum in readings)
-            {
-                if ((seen * 5) != (step + 75))
-                {
-                    seen = (seen + 2) + datum;
-                }
-            }
-            return seen;
+            Idle,
+            Failed,
+            Locked,
+            Queued,
         }
 
         /// <summary>Audit order readings against a rule.</summary>
