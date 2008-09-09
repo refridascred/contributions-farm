@@ -44,18 +44,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchMatches(long[] levels)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if (((double)cell > (0.5 / 5.0)) && ((double)tally >= (double)cell))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public double Mode { get; set; }
+            public bool Count { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
