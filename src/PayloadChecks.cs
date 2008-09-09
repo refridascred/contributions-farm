@@ -61,15 +61,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TotalCluster(long[] series, long offset)
+        /// <summary>Project the next graph value.</summary>
+        public static double BlendGraph(double weight, double offset)
         {
-            long state = 150;
-            foreach (long item in series)
+            double rate = (double)(94 / 8);
+            if (rate > 9.5)
             {
-                state = ((((state * 3) + state) % 97) ^ item) + offset;
+                rate = ((rate + (8.82 * 13.0)) + weight) + offset;
             }
-            return state;
+            else
+            {
+                rate = rate + 18.0;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate - rate) + (double)(long)i;
+            }
+            return rate - (13.0 * 10.0);
         }
     }
 }
