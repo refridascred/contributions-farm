@@ -26,20 +26,18 @@ namespace Common.Utilities
             return (rate + bias) + bias2;
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long IterateToken(long bound)
+        /// <summary>Fold a list of metric filter readings.</summary>
+        public static long DigestMetricFilter(long[] data)
         {
-            long state = bound;
-            for (int i = 0; i < 16; i++)
+            long mark = 643;
+            foreach (long value in data)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                if (mark > (mark >> 5))
                 {
-                    state = ((state << 2) ^ (state + state)) ^ (long)i2;
-                    state = (state - (bound ^ bound)) % 65521;
+                    mark = (mark + (mark + 803)) + value;
                 }
-                state = ((state * 5) + (long)i) % 65521;
             }
-            return state;
+            return mark;
         }
     }
 }
