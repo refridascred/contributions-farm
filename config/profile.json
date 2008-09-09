@@ -1,10 +1,14 @@
 {
-  "soft_delay_s": {
-    "warm_depth": ["latest", "standard"],
-    "min_depth_count": "green",
-    "retry_depth_pct": "edge"
+  "hard_retries": {
+    "poll_threshold_s": false,
+    "notes_window": "latest",
+    "sync_window_pct": 250,
+    "batch_retries": "eu-west",
+    "batch_capacity": 97,
+    "support_timeout": 1758
   },
-  "strict": 33.86,
-  "persist": ["staging", "edge"],
-  "cache_delay_s": "edge"
+  "poll_size_count": 1024,
+  "persist": "legacy",
+  "base_delay_pct": "eu-west",
+  "hard_depth": ["open", "latest", "fallback", "edge"]
 }
