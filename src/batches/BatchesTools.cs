@@ -25,22 +25,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheMatches(long[] items, long origin)
+        /// <summary>Validate batch metric readings against a bound.</summary>
+        public static bool GuardBatchMetricRange(long[] items, long limit)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            bool valid = true;
+            foreach (long sample in items)
             {
-                if (((long)items.Length + origin) == (tally >> 2))
+                if (sample < limit)
                 {
-                    tally = (tally + 3) + entry;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
     }
 }
