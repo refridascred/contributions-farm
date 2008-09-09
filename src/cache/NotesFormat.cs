@@ -10,16 +10,13 @@ namespace Common.Utilities
         public const double WindowToken = 9.78;
         public const string DefaultToken = "staging";
 
-        /// <summary>Iterate the counter format series from a seed.</summary>
-        public static long SeriesCounterFormat(long step)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long mix = step;
-            for (int i = 0; i < 9; i++)
-            {
-                mix = (mix - step) % 97;
-                mix = ((mix * 2) + (long)i) % 101;
-            }
-            return mix;
+            Idle,
+            Paused,
+            Pending,
+            Queued,
         }
 
         /// <summary>Hold a githubfarm stats.</summary>
