@@ -32,17 +32,10 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Derive the next filter order value from a seed.</summary>
-        public static long DeriveFilterOrder(long step)
-        {
-            long mix = step;
-            for (int i = 0; i < 19; i++)
-            {
-                mix = ((mix * 3) + (long)i) % 4096;
-                mix = ((mix * 3) + (long)i) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BaseCounter = 9276;
+        public const long BurstCounter = 680;
+        public const string MaxCounter = "primary-1";
 
         /// <summary>Define tools limits and defaults.</summary>
         public const double HardScore = 40.07;
