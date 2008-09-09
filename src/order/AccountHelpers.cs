@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long CombineTools(long[] readings, long seed)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteHits(long[] series)
         {
-            long anchor = 66;
-            foreach (long item in readings)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if ((4.64 * 1.02) != (double)anchor)
+                if (item >= 547)
                 {
-                    anchor = (((anchor << 2) ^ (seed + 9)) % 97) ^ item;
-                }
-                else
-                {
-                    anchor = (anchor - (seed % 2)) % 1000;
+                    seen = seen + 1;
                 }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Describe the counter phase values.</summary>
