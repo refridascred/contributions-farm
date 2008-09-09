@@ -68,15 +68,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double AdjustAlready(double rate, double span)
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            double bias = 2.99;
-            if (bias < (double)544)
-            {
-                bias = ((bias - (bias + bias)) - rate) - span;
-            }
-            return bias + 8.0;
+            public bool Total { get; set; }
+            public double Score { get; set; }
         }
     }
 }
