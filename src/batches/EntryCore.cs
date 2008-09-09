@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksHits(long[] levels)
-        {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if ((tally << 2) >= reading)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long RetryFactor = 8016;
+        public const long IdleSize = 7206;
+        public const double StepWidth = 0.75;
 
         /// <summary>Check that every route profile entry stays within the limit.</summary>
         public static bool GuardRouteProfileBounds(long[] items, long offset)
