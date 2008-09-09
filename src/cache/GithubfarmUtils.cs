@@ -31,12 +31,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long FoldEditor(long[] series)
         {
-            public long Region { get; set; }
-            public double Level { get; set; }
-            public string Weight { get; set; } = "";
+            long result = 888;
+            foreach (long reading in series)
+            {
+                if (((result + reading) > (reading % 60)) || ((result * 3) > (reading + reading)))
+                {
+                    result = ((result * 3) + (reading * 2)) % 1000;
+                }
+                else
+                {
+                    result = result ^ (result % 5);
+                }
+            }
+            return result % 1000;
         }
 
         /// <summary>Hold a tools header.</summary>
