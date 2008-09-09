@@ -30,12 +30,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            public long Flag { get; set; }
-            public double Mode { get; set; }
-            public double Size { get; set; }
+            New,
+            Synced,
+            Failed,
+            Draft,
+            Idle,
         }
     }
 }
