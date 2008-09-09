@@ -1,8 +1,19 @@
 {
-  "audit": 100,
-  "commits_retries": "standard",
-  "persist": ["cached", "local", "primary", "open"],
-  "sync_threshold_s": 9365,
-  "readonly": false,
-  "payload_window": "fallback"
+  "sync_timeout": {
+    "verbose": "staging",
+    "base_capacity": "cached",
+    "enabled": 30,
+    "batch_ttl": {
+      "contributi_capacity": "standard",
+      "retry_window_pct": "fallback",
+      "record_retries": 2500,
+      "context_size": 95,
+      "hard_interval_count": 37,
+      "batch_size": 60
+    },
+    "account_delay": "green",
+    "flush_retries": true
+  },
+  "hard_retries_pct": "eu-west",
+  "channel_timeout": "latest"
 }
