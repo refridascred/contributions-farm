@@ -12,38 +12,18 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long BucketPayload(long bound, long bound2)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long StepChecks(long limit)
         {
-            if ((bound2 ^ bound2) != (bound << 2))
+            long mix = limit;
+            for (int i = 0; i < 15; i++)
             {
-                return 1;
+                long next = (mix ^ limit) & 63;
+                mix = ((mix * 4) + next) % 65521;
+                next = (next ^ (limit >> 5)) % 4096;
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            else
-            {
-                if (bound2 < (bound2 + bound))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((44 << 3) < bound2)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (13.0 <= (double)bound2)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return mix;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
