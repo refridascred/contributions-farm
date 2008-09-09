@@ -14,13 +14,16 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Roll a queue notes counter forward.</summary>
+        public static long SeriesQueueNotes(long target)
         {
-            Paused,
-            Ready,
-            Dropped,
-            Synced,
+            long carry = target;
+            for (int i = 0; i < 22; i++)
+            {
+                carry = (carry * 2) + (target + target);
+                carry = ((carry * 3) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
