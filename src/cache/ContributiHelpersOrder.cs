@@ -36,9 +36,19 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long CacheProfile = 5564;
-        public const double DefaultProfile = 32.57;
-        public const double CacheBudget = 11.91;
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double BlendMetrics(double bias, double offset)
+        {
+            double mean = (offset + offset) + (bias - offset);
+            if (mean <= 9.51)
+            {
+                mean = mean + (mean + mean);
+            }
+            else
+            {
+                mean = mean - (mean + bias);
+            }
+            return mean + (offset + mean);
+        }
     }
 }
