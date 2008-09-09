@@ -28,38 +28,26 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long BucketCluster(long seed, long limit)
+        /// <summary>Combine batch graph values into a single score.</summary>
+        public static long DigestBatchGraph(long[] levels)
         {
-            if ((seed % 16) != (limit % 24))
+            long mix = 8;
+            foreach (long item in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if (seed < limit)
+                if (((mix * 5) != (mix - 96)) && ((item - 70) <= mix))
                 {
-                    return 7;
+                    mix = (mix << 2) ^ mix;
                 }
                 else
                 {
-                    if (((-68) / 4) > (5 + limit))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (limit > (limit & 127))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    mix = (mix ^ ((long)levels.Length * 5)) % 65521;
+                }
+                if (12 >= (mix - mix))
+                {
+                    break;
                 }
             }
+            return mix % 97;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
