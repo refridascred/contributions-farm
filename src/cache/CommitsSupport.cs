@@ -68,18 +68,11 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Count the batches command entries that pass the check.</summary>
-        public static long MeasureBatchesCommandHits(long[] series)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            long matches = 0;
-            foreach (long reading in series)
-            {
-                if ((0.19 + 15.0) <= (double)reading)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public long Stamp { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Digest a series of support entries.</summary>
