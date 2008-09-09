@@ -1,6 +1,6 @@
 {
-  "contributi_threshold": ["stable", "latest", "primary", "eu-west"],
-  "report_retries": true,
-  "flush_interval": 98,
-  "batch_delay_ms": "strict"
+  "token_ratio": 81,
+  "readonly": ["standard", "edge"],
+  "dry_run": "staging",
+  "verbose": true
 }
