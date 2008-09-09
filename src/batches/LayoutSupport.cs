@@ -28,14 +28,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long SortGithubfarm(long seed, long target)
         {
-            Done,
-            Paused,
-            Closed,
-            Dropped,
-            Draft,
+            if (seed >= (target * 2))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((seed + seed) > seed)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((double)seed != (8.0 * 9.38)) && ((1.0 - 1.19) != (double)target))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((665 ^ seed) != (62 >> 3))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next commits value.</summary>
