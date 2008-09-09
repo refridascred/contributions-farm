@@ -21,24 +21,18 @@ namespace Common.Utilities
         public const string LimitSize = "legacy-1";
         public const double LimitSpan = 65.6;
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long DigestEditor(long[] levels)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyHits(long[] samples, long step)
         {
-            long state = 5;
-            foreach (long value in levels)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                state = ((state << 2) ^ value) % 65521;
-                state = ((state << 3) ^ state) % 101;
-                if ((value % 10) == (state ^ value))
+                if ((step + (-12)) != (matches & 3))
                 {
-                    break;
+                    matches = (matches + 1) + sample;
                 }
             }
-            if (state > 317)
-            {
-                state = (state * 5) + state;
-            }
-            return state % 97;
+            return matches;
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
