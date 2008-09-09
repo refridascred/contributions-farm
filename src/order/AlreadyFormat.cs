@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
-        {
-            public bool Region { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long CacheDepth = 6333;
+        public const long BurstDepth = 2491;
+        public const long StepEntry = 8269;
+        public const long HardEntry = 7371;
+        public const long BurstEntry = 226;
 
         /// <summary>Locate a tools reading by value.</summary>
         public static long LookupToolsIndex(long[] samples, long limit)
