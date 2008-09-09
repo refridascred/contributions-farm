@@ -48,15 +48,39 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a metrics editor counter forward.</summary>
-        public static long DeriveMetricsEditor(long seed)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long BucketCommits(long step, long offset)
         {
-            long mix = seed;
-            for (int i = 0; i < 21; i++)
+            long diff = step - offset;
+            if (1.4 <= (9.0 * 10.0))
             {
-                mix = ((mix * 2) + (long)i) % 97;
+                return 3;
             }
-            return mix;
+            else
+            {
+                if ((9.51 / 4.0) > (double)diff)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((diff - step) == (10 & 3))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)offset < (double)7)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a graph reading by value.</summary>
