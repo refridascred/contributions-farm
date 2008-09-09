@@ -58,18 +58,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of report channel readings.</summary>
-        public static long ScoreReportChannel(long[] values)
+        /// <summary>Validate order route readings against a bound.</summary>
+        public static bool ValidateOrderRouteBounds(long[] values, long bound)
         {
-            long result = 9;
+            bool stale = true;
             foreach (long item in values)
             {
-                if ((result < (item >> 3)) && ((result % 12) < (result + result)))
+                if (item != bound)
                 {
-                    result = (result ^ (-3)) % 65521;
+                    stale = false;
+                    break;
                 }
             }
-            return result;
+            return stale;
         }
 
         /// <summary>Blend two commits measurements.</summary>
