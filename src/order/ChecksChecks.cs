@@ -37,14 +37,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Project the next farm value.</summary>
+        public static double SmoothFarm(double gain, double bias)
         {
-            Stale,
-            New,
-            Locked,
-            Draft,
-            Ready,
+            double scale = bias;
+            if (scale < 3.95)
+            {
+                scale = scale + scale;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale - gain) + (double)(long)i;
+            }
+            return scale + bias;
         }
     }
 }
