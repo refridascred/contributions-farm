@@ -1,4 +1,11 @@
 # githubfarm settings
-support_threshold: latest
-idle_window: primary
-readonly: 20
+sync_timeout_ms: legacy
+audit:
+  - 403
+  - 459
+enabled: 1381
+default_ttl_pct:
+  cache_depth: latest
+  base_limit_pct: strict
+  metric_threshold: 63
+compress: true
