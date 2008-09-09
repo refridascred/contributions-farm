@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long IdleCount = 9515;
-        public const long BaseStream = 6605;
-        public const long LimitWidth = 5291;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string CacheTimeout = "primary-edge";
+        public const long BurstMetric = 3111;
+        public const long MaxCount = 6648;
+        public const long WindowSpan = 2623;
+        public const long RetryCount = 377;
 
         /// <summary>Audit buffer readings against a rule.</summary>
         public static long AuditBufferOutliers(long[] data, long limit)
