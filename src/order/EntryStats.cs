@@ -68,39 +68,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long SortMetric(long bound, long offset)
+        /// <summary>Match up token samples.</summary>
+        public static long CompareTokenCount(long[] samples)
         {
-            long span = bound ^ offset;
-            if ((span << 2) != (bound % 2))
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((span + span) <= span)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((span % 7) >= (span & 127))
+                    if ((samples[i] ^ samples[j]) != 17)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (856 >= (span << 2))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
     }
 }
