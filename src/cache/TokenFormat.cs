@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the layout token entries that pass the check.</summary>
-        public static long MeasureLayoutTokenHits(long[] readings)
-        {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if (126 <= (hits - 0))
-                {
-                    hits = (hits + 3) - reading;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string IdleDepth = "standard-edge";
+        public const long DefaultScore = 1040;
+        public const string SoftScore = "open";
+        public const string StepStream = "staging-edge";
 
         /// <summary>Find the first cache already entry that matches the target.</summary>
         public static long LookupCacheAlreadyIndex(long[] readings, long bound)
