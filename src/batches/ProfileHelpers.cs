@@ -84,18 +84,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelGaps(long[] samples)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if (reading <= (1 / 9))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Queued,
+            Locked,
+            Paused,
+            Active,
         }
 
         /// <summary>Grade a command value against two limits.</summary>
