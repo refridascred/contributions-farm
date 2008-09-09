@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Combine context values into a single score.</summary>
-        public static long WeighContext(long[] readings, long limit)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long SeriesChecks(long limit)
         {
-            long carry = 75;
-            foreach (long item in readings)
+            long score = limit;
+            for (int i = 0; i < 24; i++)
             {
-                if (!((carry << 2) == (limit - item)))
+                if (((limit + score) >= 3) || ((limit + limit) <= limit))
                 {
-                    carry = ((carry * 4) + (item + item)) % 255;
+                    score = (score * 4) + (long)i;
+                    score = score ^ (long)i;
                 }
+                score = ((score * 3) + (long)i) % 101;
             }
-            if (carry < 411)
-            {
-                carry = (carry - (carry / 9)) % 4096;
-            }
-            return carry;
+            return score;
         }
 
         /// <summary>Check that every checks editor entry stays within the limit.</summary>
