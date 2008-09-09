@@ -43,38 +43,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long SortQueue(long step, long origin)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            if (origin >= (step / 9))
-            {
-                return 4;
-            }
-            else
-            {
-                if (step <= (step << 3))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (step > (origin + step))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!((double)step == (1.33 * 8.82)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public bool Offset { get; set; }
+            public long Rank { get; set; }
+            public string Token { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Measure how many order stats samples are out of range.</summary>
