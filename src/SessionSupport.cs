@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            Stale,
-            Failed,
-            Dropped,
-            Locked,
+            Active,
+            Retry,
+            Idle,
+            Draft,
         }
 
         /// <summary>Describe the account status values.</summary>
