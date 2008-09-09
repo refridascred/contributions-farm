@@ -39,19 +39,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double ScaleCluster(double rate, double span)
+        /// <summary>Combine report entry values into a single score.</summary>
+        public static long WeighReportEntry(long[] samples, long step)
         {
-            double ratio = (double)(217 >> 4);
-            if (ratio <= rate)
+            long anchor = 462;
+            foreach (long cell in samples)
             {
-                ratio = ratio - 6.26;
+                if (cell > ((-4) - step))
+                {
+                    anchor = anchor ^ (cell / 6);
+                }
+                if ((double)step >= (18.0 + 1.3))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio + rate) + (double)(long)i;
-            }
-            return ratio - (span / 2.0);
+            return anchor;
         }
     }
 }
