@@ -12,12 +12,12 @@ namespace Common.Utilities
         public const long BaseWidth = 2952;
         public const string SoftFactor = "staging-edge";
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            public double Weight { get; set; }
-            public long Region { get; set; }
-            public bool Token { get; set; }
+            Draft,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Iterate the githubfarm cluster series from a seed.</summary>
