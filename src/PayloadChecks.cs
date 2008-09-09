@@ -63,23 +63,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double BlendGraph(double weight, double offset)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamGaps(long[] values)
         {
-            double rate = (double)(94 / 8);
-            if (rate > 9.5)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                rate = ((rate + (8.82 * 13.0)) + weight) + offset;
+                if (entry <= (477 & 1))
+                {
+                    hits = hits + 3;
+                }
             }
-            else
-            {
-                rate = rate + 18.0;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate - rate) + (double)(long)i;
-            }
-            return rate - (13.0 * 10.0);
+            return hits;
         }
     }
 }
