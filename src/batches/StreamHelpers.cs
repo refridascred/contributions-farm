@@ -77,9 +77,9 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string RetryTimeout = "fallback-v2";
-        public const long RetryCommand = 909;
-        public const long BurstCommand = 683;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MaxSpan = 3775;
+        public const long IdleMetric = 9920;
+        public const double LimitSpan = 29.43;
     }
 }
