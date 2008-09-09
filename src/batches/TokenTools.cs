@@ -32,15 +32,21 @@ namespace Common.Utilities
             return bias2 - (double)29;
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double ScaleWindow(double rate, double span)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long DeriveSchema(long step)
         {
-            double mean = rate + rate;
-            for (int i = 0; i < 3; i++)
+            long score = step;
+            for (int i = 0; i < 10; i++)
             {
-                mean = (mean - span) + (double)(long)i;
+                score = score + (step ^ (long)i);
+                for (int i3 = 0; i3 < 5; i3++)
+                {
+                    score = (score ^ (score - score)) - (long)i3;
+                    score = (score ^ score) % 4096;
+                }
+                score = ((score * 3) + (long)i) % 4093;
             }
-            return mean - (span / 3.0);
+            return score;
         }
     }
 }
