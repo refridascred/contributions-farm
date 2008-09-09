@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long DigestGithubfarm(long[] series, long floor)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool CheckAccountRange(long[] samples, long target)
         {
-            long anchor = -536;
-            foreach (long value in series)
+            bool flag = true;
+            foreach (long item in samples)
             {
-                anchor = (anchor - 7) % 65521;
-                if ((value + 62) < floor)
+                if (item <= target)
                 {
+                    flag = false;
                     break;
                 }
             }
-            return anchor % 65521;
+            return flag;
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
