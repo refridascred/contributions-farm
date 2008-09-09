@@ -67,21 +67,18 @@ namespace Common.Utilities
         public const long SoftDepth = 512;
         public const long BatchContext = 7609;
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long PairMetricCount(long[] readings)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteMatches(long[] items, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long item in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((matches % 3) >= (5 / 5))
                 {
-                    if ((readings[i] - readings[j]) != 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = ((matches + 2) ^ item) + limit;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Describe the queue phase values.</summary>
