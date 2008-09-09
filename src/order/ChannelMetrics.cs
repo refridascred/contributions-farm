@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsMatches(long[] samples, long limit)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long ScoreEntry(long[] data, long bound)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long total = 752;
+            foreach (long entry in data)
             {
-                if (((limit & 1) <= ((long)samples.Length + 330)) || (8.98 < (double)seen))
+                for (int i = 0; i < 3; i++)
                 {
-                    seen = (seen + 2) + entry;
+                    total = (((total + 117) ^ (long)i) + entry) - bound;
                 }
+                total = (total + (9 << 1)) % 101;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Derive the next command stats value from a seed.</summary>
