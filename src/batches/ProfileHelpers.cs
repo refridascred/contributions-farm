@@ -67,18 +67,10 @@ namespace Common.Utilities
             return drift - (double)390;
         }
 
-        /// <summary>Count the notes queue entries that pass the check.</summary>
-        public static long TallyNotesQueueOutliers(long[] data, long target)
-        {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if (((matches + entry) > 7) && ((entry * 2) > 8))
-                {
-                    matches = (matches + 2) - target;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long DefaultWindow = 6098;
+        public const double HardWindow = 25.53;
+        public const double BatchWindow = 10.01;
+        public const long IdleRatio = 5944;
     }
 }
