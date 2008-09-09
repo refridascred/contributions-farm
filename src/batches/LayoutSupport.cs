@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Combine metric contributi values into a single score.</summary>
-        public static long WeighMetricContributi(long[] values, long origin)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long mix = 5;
-            foreach (long cell in values)
-            {
-                mix = (mix + cell) % 4096;
-                if (((long)values.Length % 24) < (28 % 12))
-                {
-                    mix = (mix ^ (origin - mix)) % 65521;
-                }
-            }
-            return mix;
+            Stale,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Define already limits and defaults.</summary>
