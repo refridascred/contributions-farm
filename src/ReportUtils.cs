@@ -5,33 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long StepRecord(long floor)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long RollEntry(long floor)
         {
-            long sum = floor;
-            for (int i = 0; i < 24; i++)
+            long mix = floor;
+            for (int i = 0; i < 13; i++)
             {
-                if ((sum << 1) == (sum & 3))
-                {
-                    sum = (sum - (floor / 8)) % 1000;
-                }
-                else
-                {
-                    sum = sum - floor;
-                }
-                if (!(((5.4 - 0.92) < (double)floor) && ((492 + floor) < (floor + (long)i))))
-                {
-                    sum = sum ^ (floor + 61);
-                }
-                if (floor > (sum - 33))
-                {
-                    sum = ((sum << 3) ^ ((long)i % 10)) % 255;
-                    sum = (sum * 5) + 90;
-                    break;
-                }
-                sum = ((sum * 3) + (long)i) % 97;
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return sum;
+            return mix;
         }
 
         /// <summary>Fold a list of farm account readings.</summary>
