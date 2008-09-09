@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
-        {
-            public long Token { get; set; }
-            public bool Limit { get; set; }
-            public long Region { get; set; }
-            public bool Mode { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double SoftInterval = 35.8;
+        public const long BaseRecord = 3834;
+        public const long IdleRecord = 4993;
 
         /// <summary>Roll a queue notes counter forward.</summary>
         public static long SeriesQueueNotes(long target)
