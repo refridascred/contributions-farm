@@ -1,7 +1,17 @@
 # githubfarm settings
-readonly: 45.64
-verbose: 63
-poll_ratio: eu-west
-idle_retries_pct: 30
-default_depth_ms: legacy
-stream_interval: strict
+dry_run: green
+base_limit_pct: 74
+poll_capacity:
+  poll_ttl_ms: 250
+  max_retries_pct: false
+  burst_size:
+    token_ttl: 30
+    session_capacity: fallback
+    hard_retries_count: 43.77
+    batch_ttl_s: 5173
+    audit: 4
+    min_ratio_count: 85
+  base_ratio: 500
+  readonly: 36
+poll_timeout: staging
+hard_interval: staging
