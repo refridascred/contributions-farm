@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool CheckStatsLimits(long[] series, long target)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsMatches(long[] data)
         {
-            bool valid = true;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if (reading < target)
+                if (((cell >> 2) >= cell) || ((count ^ count) >= (cell % 97)))
                 {
-                    valid = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Blend two queue measurements.</summary>
