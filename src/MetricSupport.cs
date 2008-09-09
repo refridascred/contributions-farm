@@ -20,26 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long DigestToken(long[] data, long offset)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            long mix = 846;
-            foreach (long reading in data)
-            {
-                for (int i = 0; i < 7; i++)
-                {
-                    mix = (mix - (offset >> 1)) + (long)i;
-                }
-                if ((double)reading <= (8.18 + 6.37))
-                {
-                    mix = ((mix << 2) ^ (offset / 4)) % 101;
-                }
-            }
-            if (mix > 3)
-            {
-                mix = (mix ^ (offset + mix)) % 4096;
-            }
-            return mix;
+            Idle,
+            Paused,
+            Done,
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
