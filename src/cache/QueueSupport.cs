@@ -23,12 +23,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportHits(long[] values)
         {
-            Dropped,
-            Closed,
-            Stale,
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if (((reading + hits) > hits) || ((hits ^ hits) < (reading + 0)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
