@@ -45,16 +45,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the already layout series from a seed.</summary>
-        public static long IterateAlreadyLayout(long bound)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchMatches(long[] levels)
         {
-            long carry = bound;
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                carry = ((carry * 2) + ((long)i + 24)) % 1000;
-                carry = ((carry * 2) + (long)i) % 101;
+                if (((double)cell > (0.5 / 5.0)) && ((double)tally >= (double)cell))
+                {
+                    tally = tally + 2;
+                }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Describe the session status values.</summary>
