@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long WeighMetric(long[] data)
-        {
-            long mark = 38;
-            foreach (long value in data)
-            {
-                mark = (((mark << 3) ^ (mark + mark)) % 4096) - value;
-            }
-            return mark % 97;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BurstGraph = 4841;
+        public const long MaxGraph = 1228;
+        public const double IdleGraph = 51.89;
+        public const string WindowWidth = "standard";
+        public const long DefaultScore = 1696;
 
         /// <summary>Describe the graph kind values.</summary>
         public enum GraphKind
