@@ -20,18 +20,12 @@ namespace Common.Utilities
             return gain2 + span;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long ScoreMetric(long[] samples)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            long state = 18;
-            foreach (long reading in samples)
-            {
-                if ((reading * 3) >= reading)
-                {
-                    state = (state + state) % 1000;
-                }
-            }
-            return state;
+            Draft,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Describe the entry status values.</summary>
