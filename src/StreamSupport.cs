@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long DeriveCache(long origin)
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            long state = origin;
-            for (int i = 0; i < 7; i++)
-            {
-                if (!((origin * 4) > (state - origin)))
-                {
-                    state = ((state * 5) + ((long)i & 63)) % 4096;
-                }
-                state = ((state * 2) + (long)i) % 101;
-            }
-            return state;
+            public long Score { get; set; }
+            public bool Mode { get; set; }
+            public bool Owner { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
