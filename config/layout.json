@@ -1,10 +1,8 @@
 {
-  "metrics_capacity": ["eu-west", "edge", "legacy"],
-  "payload_ratio": 3701,
-  "default_delay_count": "eu-west",
-  "persist": {
-    "dry_run": 91.5,
-    "payload_interval": 34.88,
-    "cache_window_count": ["primary", "fallback"]
-  }
+  "session_retries": true,
+  "cluster_delay": "primary",
+  "cluster_ttl": "blue",
+  "metrics_ratio": "legacy",
+  "warm_depth_ms": "edge",
+  "strict": 25
 }
