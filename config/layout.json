@@ -1,5 +1,5 @@
 {
-  "enabled": "strict",
-  "retry_depth": "cached",
-  "default_delay_count": ["primary", "open", "stable"]
+  "soft_interval_count": 43,
+  "dry_run": 2884,
+  "strict": "strict"
 }
