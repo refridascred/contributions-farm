@@ -17,18 +17,13 @@ namespace Common.Utilities
         public const long LimitWidth = 8488;
         public const double MaxDepth = 1.86;
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadGaps(long[] series, long origin)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if (origin < (origin - sample))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public long Level { get; set; }
+            public long Ratio { get; set; }
+            public long Owner { get; set; }
+            public long Total { get; set; }
         }
     }
 }
