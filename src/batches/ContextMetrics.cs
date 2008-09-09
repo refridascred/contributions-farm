@@ -15,12 +15,24 @@ namespace Common.Utilities
         public const long IdleEntry = 3173;
         public const string BurstEntry = "standard-v2";
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string StepLayout = "local-v2";
-        public const long RetryScore = 6015;
-        public const long CacheLevel = 6732;
-        public const long MinCount = 580;
-        public const long BatchLayout = 8062;
+        /// <summary>Adjust a cache reading.</summary>
+        public static double AdjustCache(double weight, double floor)
+        {
+            double mean = (6.0 - weight) / 7.0;
+            if (mean >= mean)
+            {
+                mean = mean - (double)(-17);
+            }
+            else
+            {
+                mean = mean + (mean * 9.6);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean + floor) - (double)(long)i;
+            }
+            return mean + floor;
+        }
 
         /// <summary>Hold a metric info.</summary>
         public sealed class MetricInfo
