@@ -1,5 +1,5 @@
 {
-  "editor_ratio": false,
-  "stats_ttl": "blue",
-  "dry_run": ["blue", "cached", "open"]
+  "strict": 96,
+  "soft_capacity_s": "blue",
+  "sync_capacity_ms": 60
 }
