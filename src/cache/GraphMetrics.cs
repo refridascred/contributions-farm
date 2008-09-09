@@ -55,20 +55,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long IterateAlready(long limit)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsHits(long[] levels)
         {
-            long total = limit;
-            for (int i = 0; i < 8; i++)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                for (int i2 = 0; i2 < 3; i2++)
+                if ((0 >= (count - entry)) || ((count + entry) < (count * 4)))
                 {
-                    total = ((total ^ total) % 4096) ^ (long)i2;
-                    total = total - (total >> 1);
+                    count = count + 3;
                 }
-                total = ((total * 2) + (long)i) % 65521;
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Digest a series of notes payload entries.</summary>
