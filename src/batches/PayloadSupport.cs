@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double BatchBuffer = 52.9;
-        public const long IdleFactor = 7960;
-        public const long CacheBuffer = 1141;
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteGaps(long[] data)
+        {
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if (!((entry - entry) < (matches - matches)))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const double MaxChannel = 8.79;
