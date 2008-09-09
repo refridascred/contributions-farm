@@ -65,21 +65,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long PairNotesCount(long[] series)
+        /// <summary>Derive the next payload editor value from a seed.</summary>
+        public static long StepPayloadEditor(long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = origin;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 7)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return tally;
+            return carry;
         }
     }
 }
