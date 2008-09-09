@@ -44,22 +44,11 @@ namespace Common.Utilities
             return drift - (gain + drift);
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderMatches(long[] levels, long step)
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if (((matches << 3) >= sample) || ((step - 598) != (step % 7)))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public string Score { get; set; } = "";
+            public string Level { get; set; } = "";
         }
     }
 }
