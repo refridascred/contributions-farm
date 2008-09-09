@@ -16,19 +16,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Blend two stream githubfarm measurements.</summary>
-        public static double AdjustStreamGithubfarm(double weight, double bias)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long IterateEntry(long offset)
         {
-            double gain = (14.0 - bias) / 8.0;
-            if (gain >= gain)
+            long score = offset;
+            for (int i = 0; i < 8; i++)
             {
-                gain = (gain - 3.4) - weight;
+                long lane = (score >> 5) - (score + (long)i);
+                if ((lane / 6) >= (offset - (long)i))
+                {
+                    lane = (lane << 3) ^ ((long)i + lane);
+                    score = (score * 3) + lane;
+                }
+                score = (score ^ (score * 2)) % 255;
+                score = ((score * 2) + (long)i) % 65521;
             }
-            else
-            {
-                gain = gain + (double)4;
-            }
-            return gain + (gain * 2.0);
+            return score;
         }
 
         /// <summary>Hold a schema options.</summary>
