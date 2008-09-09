@@ -17,22 +17,12 @@ namespace Common.Utilities
         public const long LimitFactor = 4228;
         public const long BurstTimeout = 9257;
 
-        /// <summary>Combine report entry values into a single score.</summary>
-        public static long WeighReportEntry(long[] samples, long step)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            long anchor = 462;
-            foreach (long cell in samples)
-            {
-                if (cell > ((-4) - step))
-                {
-                    anchor = anchor ^ (cell / 6);
-                }
-                if ((double)step >= (18.0 + 1.3))
-                {
-                    break;
-                }
-            }
-            return anchor;
+            Failed,
+            Queued,
+            Closed,
         }
     }
 }
