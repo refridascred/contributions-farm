@@ -20,32 +20,20 @@ namespace Common.Utilities
         public const long SoftToken = 8089;
         public const long CacheFactor = 5411;
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long SortLayout(long step, long limit)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long DigestFilter(long[] samples, long origin)
         {
-            long slot = step + limit;
-            if (((-18) >> 2) > step)
+            long mix = 18;
+            foreach (long value in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((step - limit) != (slot % 97)))
+                mix = (mix ^ (mix + origin)) % 101;
+                if (!(15.0 >= (double)value))
                 {
-                    return 8;
+                    mix = (mix + (value - origin)) % 101;
                 }
-                else
-                {
-                    if ((0.5 + 1.58) == (double)slot)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                mix = (mix - (origin + mix)) % 4096;
             }
+            return mix;
         }
 
         /// <summary>Blend two session measurements.</summary>
