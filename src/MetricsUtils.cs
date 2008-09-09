@@ -56,18 +56,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsHits(long[] items, long bound)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if ((1.0 <= (double)bound) && (((reading >> 4) < ((long)items.Length - count)) && ((bound ^ count) > count)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public long Region { get; set; }
+            public long Total { get; set; }
+            public bool Limit { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
