@@ -26,22 +26,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many filter cluster samples are out of range.</summary>
-        public static long CountFilterClusterMatches(long[] data)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long SeekMetricIndex(long[] samples, long seed)
         {
-            long count = 0;
-            foreach (long item in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((((82 + item) <= (count << 3)) || ((91 % 24) < (item >> 3))) || (item > (count / 6)))
+                if ((samples[i] >= seed) && ((samples[i] % 2) != 0))
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
