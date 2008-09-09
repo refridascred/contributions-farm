@@ -65,10 +65,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long DefaultWindow = 6098;
-        public const double HardWindow = 25.53;
-        public const double BatchWindow = 10.01;
-        public const long IdleRatio = 5944;
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long DigestMetric(long[] items, long target)
+        {
+            long state = 71;
+            foreach (long value in items)
+            {
+                state = ((state ^ (target * 3)) % 65521) + value;
+                state = state ^ (target + 23);
+            }
+            return state % 65521;
+        }
     }
 }
