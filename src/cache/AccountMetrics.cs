@@ -29,39 +29,26 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long GradeGithubfarm(long origin, long bound)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long TallyCluster(long[] data, long limit)
         {
-            long delta = origin - bound;
-            if ((delta >> 4) <= (bound + delta))
+            long anchor = 2;
+            foreach (long reading in data)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((bound ^ bound) != (origin & 7)))
+                if ((double)reading < (2.32 - 18.0))
                 {
-                    return 2;
+                    anchor = (anchor * 3) + (reading - limit);
                 }
                 else
                 {
-                    if (((14 + bound) > (delta - delta)) || (6.85 >= (double)bound))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((origin << 1) <= (origin / 3))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    anchor = anchor + (reading + limit);
                 }
             }
+            if (anchor < (-379))
+            {
+                anchor = ((anchor << 2) ^ (anchor - limit)) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Blend two notes queue measurements.</summary>
