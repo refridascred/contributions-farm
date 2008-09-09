@@ -1,8 +1,14 @@
 {
-  "burst_ratio_ms": "strict",
-  "enabled": "primary",
-  "default_depth_pct": 7457,
-  "retry_depth": 60,
-  "burst_retries": "standard",
-  "buffer_depth": "eu-west"
+  "audit": "primary",
+  "enabled": {
+    "default_size": "strict",
+    "soft_ttl": 60,
+    "batches_limit": [1, 46, 41, 469],
+    "warm_threshold_s": {
+      "min_interval": false,
+      "max_timeout_ms": "primary",
+      "retry_ttl_count": "edge"
+    }
+  },
+  "cache_size": 2670
 }
