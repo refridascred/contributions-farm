@@ -79,11 +79,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            public string Mode { get; set; } = "";
-            public long Level { get; set; }
+            public long Score { get; set; }
+            public long Rank { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
