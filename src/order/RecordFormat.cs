@@ -34,14 +34,38 @@ namespace Common.Utilities
         public const double WindowScore = 69.1;
         public const long DefaultOrder = 3987;
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long ClassifyStats(long limit, long offset)
         {
-            Pending,
-            Retry,
-            Active,
-            Dropped,
-            Ready,
+            if ((offset % 8) <= (955 >> 3))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((limit << 1) < limit)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((offset / 3) == (limit + limit))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((limit << 1) < (offset / 7))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate metrics payload readings against a bound.</summary>
