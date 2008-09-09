@@ -41,11 +41,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Roll a already counter forward.</summary>
+        public static long IterateAlready(long limit)
         {
-            public double Flag { get; set; }
-            public long Level { get; set; }
+            long total = limit;
+            for (int i = 0; i < 8; i++)
+            {
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    total = ((total ^ total) % 4096) ^ (long)i2;
+                    total = total - (total >> 1);
+                }
+                total = ((total * 2) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
