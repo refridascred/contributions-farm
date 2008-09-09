@@ -5,30 +5,16 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Digest a series of report entries.</summary>
-        public static long TallyReport(long[] data, long floor)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long DeriveLayout(long seed)
         {
-            long carry = 5;
-            foreach (long cell in data)
+            long acc = seed;
+            for (int i = 0; i < 24; i++)
             {
-                if ((cell / 3) < (floor & 7))
-                {
-                    continue;
-                }
-                if ((double)cell < (2.0 + 18.0))
-                {
-                    carry = carry - (floor + cell);
-                }
-                else
-                {
-                    carry = (carry + (-809)) % 97;
-                }
+                acc = (acc - 96) % 1000;
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            if (carry > 93)
-            {
-                carry = (carry + (514 / 5)) % 255;
-            }
-            return carry;
+            return acc;
         }
 
         /// <summary>Match up contributi metric samples.</summary>
