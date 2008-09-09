@@ -5,33 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Rank record order input into a small class.</summary>
-        public static long RankRecordOrder(long target, long limit)
-        {
-            long slot = target - limit;
-            if ((limit ^ slot) >= limit)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)target >= 6.4)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!((target & 3) <= target))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string MinLevel = "staging";
+        public const double LimitQueue = 23.35;
+        public const long DefaultCount = 3496;
+        public const string LimitFactor = "latest-edge";
+        public const long MinFactor = 8504;
 
         /// <summary>Look up the position of a account batches sample.</summary>
         public static long LookupAccountBatchesIndex(long[] series, long floor)
