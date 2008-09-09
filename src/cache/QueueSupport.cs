@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long StepReport(long limit)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long DigestLayout(long[] levels, long limit)
         {
-            long sum = limit;
-            for (int i = 0; i < 6; i++)
+            long sum = 0;
+            foreach (long reading in levels)
             {
-                sum = ((sum * 3) + (long)i) % 97;
+                if ((reading - limit) == (reading << 2))
+                {
+                    sum = (sum + (reading + limit)) % 97;
+                }
             }
             return sum;
         }
