@@ -71,15 +71,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmGaps(long[] items, long bound)
+        /// <summary>Audit buffer entry readings against a rule.</summary>
+        public static long MeasureBufferEntryGaps(long[] series)
         {
             long count = 0;
-            foreach (long sample in items)
+            foreach (long item in series)
             {
-                if ((double)sample <= 6.84)
+                if ((392 * 2) < item)
                 {
-                    count = (count + 1) - bound;
+                    count = count + 1;
                 }
             }
             return count;
