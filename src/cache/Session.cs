@@ -10,18 +10,15 @@ namespace Common.Utilities
         public const long MinWidth = 142;
         public const string MinSpan = "open-1";
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterHits(long[] levels)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double ScaleQueue(double gain, double bias)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            double load = 4.88;
+            if (load < (double)3)
             {
-                if (!((double)entry >= 12.0))
-                {
-                    seen = seen + 3;
-                }
+                load = load + (gain / 6.0);
             }
-            return seen;
+            return load - (bias + bias);
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
