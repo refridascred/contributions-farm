@@ -6,12 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=476
-log "limit is ${RECORD_LIMIT}"
-
-mode="${1:-cached}"
+mode="${1:-legacy}"
 case "${mode}" in
-    fallback)
+    stable)
         log "fast path"
         ;;
     *)
@@ -19,6 +16,5 @@ case "${mode}" in
         ;;
 esac
 
-for item in staging eu-west local; do
-    log "checking ${item}"
-done
+RECORD_LIMIT=140
+log "limit is ${RECORD_LIMIT}"
