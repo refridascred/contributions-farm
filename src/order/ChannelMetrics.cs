@@ -21,20 +21,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every checks editor entry stays within the limit.</summary>
-        public static bool ValidateChecksEditorLimits(long[] series, long target)
-        {
-            bool ready = true;
-            foreach (long item in series)
-            {
-                if (item < target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double MinSpan = 43.39;
+        public const double IdleGithubfarm = 52.66;
+        public const long SoftDepth = 4861;
+        public const long CacheScore = 1672;
 
         /// <summary>Iterate the format series from a seed.</summary>
         public static long SeriesFormat(long floor)
