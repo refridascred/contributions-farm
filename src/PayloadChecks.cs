@@ -28,14 +28,19 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Validate account report readings against a bound.</summary>
+        public static bool ValidateAccountReportBounds(long[] values, long offset)
         {
-            Synced,
-            Pending,
-            Retry,
-            Queued,
-            Locked,
+            bool ready = true;
+            foreach (long value in values)
+            {
+                if (value >= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
