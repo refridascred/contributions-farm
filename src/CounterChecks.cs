@@ -49,13 +49,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long PairSchemaCount(long[] readings)
         {
-            public bool Weight { get; set; }
-            public double Mode { get; set; }
-            public long Rank { get; set; }
-            public string Count { get; set; } = "";
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 19)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Grade a queue batches value against two limits.</summary>
