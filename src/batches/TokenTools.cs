@@ -17,17 +17,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long SeekWindowIndex(long[] readings, long step)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double SmoothWindow(double gain, double bias)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double bias2 = bias;
+            if (bias2 < (gain * 12.0))
             {
-                if (readings[i] <= step)
-                {
-                    return (long)i;
-                }
+                bias2 = bias2 - gain;
             }
-            return -1;
+            for (int i = 0; i < 8; i++)
+            {
+                bias2 = (bias2 + (gain * 5.6)) + (double)(long)i;
+            }
+            return bias2 - (double)29;
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
