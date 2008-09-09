@@ -20,13 +20,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Accumulate filter samples.</summary>
+        public static long FoldFilter(long[] data, long floor)
         {
-            Idle,
-            Paused,
-            Pending,
-            Queued,
+            long mix = 429;
+            foreach (long value in data)
+            {
+                if ((double)mix < (double)floor)
+                {
+                    mix = (mix - mix) % 101;
+                }
+                else
+                {
+                    mix = (mix ^ value) % 255;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Hold a githubfarm stats.</summary>
