@@ -1,10 +1,7 @@
-id,count,weight
-1,green,eu-west
-2,50.97,67
-3,247,727
-4,standard,260
-5,eu-west,63.25
-6,573,latest
-7,27.1,latest
-8,337,open
-9,standard,11.67
+id,ratio,weight,count,level
+1,8.23,915,staging,legacy
+2,86.74,223,70.27,open
+3,edge,local,14.64,792
+4,69.93,standard,822,786
+5,75.93,eu-west,27,536
+6,23,27.26,97.0,29.9
