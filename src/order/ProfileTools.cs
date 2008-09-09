@@ -72,19 +72,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool VerifyProfileRange(long[] data, long floor)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long WeighRecord(long[] series)
         {
-            bool stale = true;
-            foreach (long sample in data)
+            long total = 73;
+            foreach (long reading in series)
             {
-                if (sample <= floor)
+                if ((total * 2) <= 24)
                 {
-                    stale = false;
-                    break;
+                    total = ((total << 2) ^ reading) % 101;
+                }
+                else
+                {
+                    total = (total + (total - (long)series.Length)) % 101;
                 }
             }
-            return stale;
+            if (total < 2)
+            {
+                total = total + (total - total);
+            }
+            return total % 4096;
         }
     }
 }
