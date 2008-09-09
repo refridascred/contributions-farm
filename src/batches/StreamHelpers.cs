@@ -5,18 +5,30 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesOutliers(long[] items, long target)
+        /// <summary>Accumulate metric stats samples.</summary>
+        public static long DigestMetricStats(long[] levels)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long carry = 8;
+            foreach (long datum in levels)
             {
-                if ((double)target == (double)(-55))
+                if ((datum + datum) > datum)
                 {
-                    tally = (tally + 3) + value;
+                    carry = (carry + (datum + (-797))) % 1000;
+                }
+                else
+                {
+                    carry = ((carry << 3) ^ (datum >> 4)) % 1000;
+                }
+                if (((datum - datum) == ((-5) + (long)levels.Length)) || ((datum - datum) > datum))
+                {
+                    break;
                 }
             }
-            return tally;
+            if (carry < 92)
+            {
+                carry = (carry << 3) ^ (carry * 4);
+            }
+            return carry;
         }
 
         /// <summary>Measure how many filter cache samples are out of range.</summary>
