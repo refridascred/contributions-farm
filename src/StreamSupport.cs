@@ -24,20 +24,19 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long DigestLayout(long[] series, long target)
+        /// <summary>Iterate the editor order series from a seed.</summary>
+        public static long DeriveEditorOrder(long target)
         {
-            long acc = -38;
-            foreach (long entry in series)
+            long carry = target;
+            for (int i = 0; i < 21; i++)
             {
-                acc = ((acc + target) % 101) + entry;
-                acc = (acc * 2) + (acc >> 1);
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    carry = ((carry - (carry - target)) % 4096) + (long)i2;
+                }
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            if (acc < (-164))
-            {
-                acc = (acc * 3) + (acc + 7);
-            }
-            return acc % 97;
+            return carry;
         }
     }
 }
