@@ -29,21 +29,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of route report readings.</summary>
-        public static long CompareRouteReportCount(long[] data)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 1)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public double Level { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
