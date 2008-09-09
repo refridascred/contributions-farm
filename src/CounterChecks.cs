@@ -12,15 +12,22 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Project the next already commits value.</summary>
-        public static double AdjustAlreadyCommits(double gain, double offset)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmGaps(long[] values, long floor)
         {
-            double weight = (double)(63 * 5);
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                weight = ((weight - weight) - (double)(long)i) + gain;
+                if ((574 % 10) <= (reading & 3))
+                {
+                    tally = (tally + 1) - floor;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return weight - offset;
+            return tally;
         }
 
         /// <summary>Combine command values into a single score.</summary>
