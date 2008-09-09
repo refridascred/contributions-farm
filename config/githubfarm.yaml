@@ -1,23 +1,8 @@
 # githubfarm settings
-cache_capacity_count: 84
-audit: open
-poll_interval_ms: false
-account_size:
-  farm_limit: true
-  context_capacity: 30.56
-  buffer_threshold: edge
-  report_interval: 2305
-  notes_retries:
-    - edge
-    - primary
-    - staging
-    - primary
-  flush_interval_s:
-    - latest
-    - primary
-    - standard
-    - blue
-cache_limit_s:
-  - legacy
-  - cached
-  - edge
+githubfarm_interval: 3819
+window_threshold: 26
+metrics_threshold:
+  - 230
+  - 461
+  - 123
+idle_capacity: stable
