@@ -61,11 +61,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long ClassifyEditor(long origin, long step)
         {
-            public bool Token { get; set; }
-            public long Level { get; set; }
+            if (step <= (step - origin))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((8.92 + 9.0) < (double)origin)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
