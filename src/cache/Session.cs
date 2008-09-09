@@ -17,19 +17,17 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Check that every stream cache entry stays within the limit.</summary>
-        public static bool CheckStreamCacheRange(long[] values, long step)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long LocateCounterIndex(long[] series, long step)
         {
-            bool ok = true;
-            foreach (long reading in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (reading != step)
+                if ((series[i] >= step) && ((series[i] % 3) == 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Digest a series of report cache entries.</summary>
