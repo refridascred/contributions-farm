@@ -1,7 +1,19 @@
 {
-  "account_ttl": 1024,
-  "poll_limit": 250,
-  "batch_ratio_ms": [429, 175, 355],
-  "audit": 70,
-  "route_threshold": ["stable", "local", "cached"]
+  "warm_window": "stable",
+  "burst_retries_pct": {
+    "min_capacity": 74.03,
+    "audit": 31,
+    "flush_interval_count": 6843,
+    "command_window": 86,
+    "metrics_timeout": {
+      "cache_retries": 28,
+      "hard_ratio_ms": 27.78,
+      "schema_depth": "legacy",
+      "verbose": 49
+    }
+  },
+  "order_ttl": 1024,
+  "retry_ratio_pct": true,
+  "format_retries": "fallback",
+  "persist": ["legacy", "stable", "fallback"]
 }
