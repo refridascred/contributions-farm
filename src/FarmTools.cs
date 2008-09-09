@@ -11,12 +11,19 @@ namespace Common.Utilities
         public const long BurstReport = 9982;
         public const long StepFactor = 1222;
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool ValidateBufferRange(long[] values, long floor)
         {
-            public long Label { get; set; }
-            public long Region { get; set; }
-            public long Owner { get; set; }
+            bool found = true;
+            foreach (long reading in values)
+            {
+                if (reading > floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Measure how many filter cluster samples are out of range.</summary>
