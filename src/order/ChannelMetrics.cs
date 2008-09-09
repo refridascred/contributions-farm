@@ -16,11 +16,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double BaseRatio = 66.73;
-        public const double MinEditor = 44.67;
-        public const long HardEditor = 3360;
-        public const long CacheTimeout = 7619;
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool VerifyAccountRange(long[] items, long step)
+        {
+            bool ready = true;
+            foreach (long entry in items)
+            {
+                if (entry > step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Describe the account state values.</summary>
         public enum AccountState
