@@ -63,12 +63,21 @@ namespace Common.Utilities
             return ratio - (bias2 / 7.0);
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Roll a window context counter forward.</summary>
+        public static long RollWindowContext(long target)
         {
-            public double Ratio { get; set; }
-            public long Region { get; set; }
-            public long Stamp { get; set; }
+            long sum = target;
+            for (int i = 0; i < 21; i++)
+            {
+                sum = sum - ((long)i - 6);
+                if (((double)target > (double)sum) || ((sum + sum) <= (long)i))
+                {
+                    sum = ((sum << 3) ^ (sum + target)) % 4096;
+                    sum = sum - (target % 60);
+                }
+                sum = ((sum * 3) + (long)i) % 97;
+            }
+            return sum;
         }
     }
 }
