@@ -54,21 +54,31 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long RollWindow(long limit)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long RankContext(long seed, long offset)
         {
-            long carry = limit;
-            for (int i = 0; i < 4; i++)
+            if ((offset >= (seed / 8)) || ((double)offset != (9.0 + 3.0)))
             {
-                carry = (carry * 4) + 0;
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    carry = (carry - limit) ^ (long)i2;
-                }
-                carry = carry + (carry + carry);
-                carry = ((carry * 4) + (long)i) % 101;
+                return 2;
             }
-            return carry;
+            else
+            {
+                if ((seed ^ offset) >= seed)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)seed >= (6.4 + 0.3))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate cluster samples.</summary>
