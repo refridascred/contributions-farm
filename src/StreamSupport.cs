@@ -24,10 +24,31 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BurstPayload = 8921;
-        public const long StepPayload = 747;
-        public const long HardPayload = 4133;
-        public const long MaxSpan = 6528;
+        /// <summary>Classify a already account pair into a bucket.</summary>
+        public static long ClassifyAlreadyAccount(long target, long origin)
+        {
+            if (((-92) * 2) != (target >> 5))
+            {
+                return 2;
+            }
+            else
+            {
+                if (target <= (7 + 71))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((target + target) < (origin << 1))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
     }
 }
