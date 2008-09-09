@@ -19,21 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long IterateRoute(long floor)
+        /// <summary>Match up githubfarm entry samples.</summary>
+        public static long MatchGithubfarmEntryCount(long[] items)
         {
-            long score = floor;
-            for (int i = 0; i < 24; i++)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((double)score == (9.3 - 20.0)) || ((0 - (long)i) > ((long)i % 60)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    score = ((score * 5) + 9) % 255;
-                    break;
+                    if ((items[i] + items[j]) != 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                score = ((score * 4) + (long)i) % 1000;
-                score = ((score * 2) + (long)i) % 97;
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Hold a command info.</summary>
