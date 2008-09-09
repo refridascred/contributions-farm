@@ -58,11 +58,19 @@ namespace Common.Utilities
             return (scale + (3.1 * 3.41)) + span;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long StepLevel = 693;
-        public const double BatchSize = 48.93;
-        public const double BatchFactor = 24.65;
-        public const long IdleWidth = 5479;
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheGaps(long[] levels, long step)
+        {
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if ((step + 31) >= datum)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Roll a batch counter forward.</summary>
         public static long IterateBatch(long floor)
