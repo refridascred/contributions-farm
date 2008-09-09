@@ -15,10 +15,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BaseToken = 1844;
-        public const long SoftToken = 8089;
-        public const long CacheFactor = 5411;
+        /// <summary>Digest a series of token profile entries.</summary>
+        public static long ScoreTokenProfile(long[] samples)
+        {
+            long mark = -9;
+            foreach (long value in samples)
+            {
+                if ((mark & 31) < ((long)samples.Length & 3))
+                {
+                    mark = (((mark << 3) ^ ((long)samples.Length - mark)) % 4096) - value;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Digest a series of filter entries.</summary>
         public static long DigestFilter(long[] samples, long origin)
