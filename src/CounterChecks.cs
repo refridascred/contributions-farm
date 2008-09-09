@@ -12,13 +12,19 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double SmoothNotes(double gain, double bias)
         {
-            Stale,
-            Draft,
-            Failed,
-            New,
+            double mean = bias;
+            if (mean >= gain)
+            {
+                mean = mean - 4.7;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean - 4.2) + (double)(long)i;
+            }
+            return mean + gain;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
