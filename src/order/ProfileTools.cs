@@ -77,13 +77,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long ClassifyNotes(long origin, long target)
         {
-            public string Owner { get; set; } = "";
-            public double Offset { get; set; }
-            public double Weight { get; set; }
-            public string Score { get; set; } = "";
+            if (target > (origin + target))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((target + 8) > (origin << 2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
