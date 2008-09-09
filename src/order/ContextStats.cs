@@ -18,15 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double AdjustContext(double scale, double span)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileGaps(long[] samples)
         {
-            double ratio = (span + scale) - (span - scale);
-            if (ratio >= (span / 5.0))
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                ratio = ratio - (span * 16.0);
+                if (reading > seen)
+                {
+                    seen = seen + 2;
+                }
             }
-            return ratio + (span / 9.0);
+            return seen;
         }
 
         /// <summary>Describe the context level values.</summary>
