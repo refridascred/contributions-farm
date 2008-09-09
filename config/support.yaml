@@ -1,30 +1,9 @@
 # support settings
-route_depth:
-  - edge
-  - fallback
-  - open
-  - local
-audit: staging
-format_window: primary
-stream_timeout: false
-readonly:
-  - 136
-  - 267
-graph_delay:
-  verbose:
-    min_size_s: green
-    soft_interval_pct: 60
-    batches_delay: legacy
-    max_timeout_ms: 86
-    enabled:
-      - 249
-      - 386
-  githubfarm_limit:
-    - latest
-    - stable
-    - latest
-    - fallback
-  batch_timeout_pct: green
-  layout_capacity: false
-  already_window: 500
-  counter_interval: 30
+tools_retries: false
+max_window:
+  - 345
+  - 36
+  - 409
+  - 180
+enabled: 44.63
+batch_retries_count: true
