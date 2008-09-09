@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Combine session values into a single score.</summary>
-        public static long TallySession(long[] data)
+        /// <summary>Match up channel samples.</summary>
+        public static long MatchChannelCount(long[] values)
         {
-            long state = 4;
-            foreach (long entry in data)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((entry + state) == (state - state)) || ((state / 5) <= ((long)data.Length + state)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    state = (state + entry) % 97;
+                    if ((values[i] - values[j]) != 11)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
