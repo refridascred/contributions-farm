@@ -55,19 +55,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool VerifyEntryRange(long[] samples, long floor)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferMatches(long[] samples)
         {
-            bool ok = true;
-            foreach (long item in samples)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                if (item != floor)
+                if ((double)matches < (4.58 * 6.4))
                 {
-                    ok = false;
-                    break;
+                    matches = (matches + 3) ^ value;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
