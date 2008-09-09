@@ -46,12 +46,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Scale a window cluster figure with a bias.</summary>
+        public static double AdjustWindowCluster(double ratio, double span)
         {
-            public long Ratio { get; set; }
-            public double Count { get; set; }
-            public bool Size { get; set; }
+            double scale = ratio;
+            if (scale <= (double)465)
+            {
+                scale = scale - span;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale - (ratio + span)) + (double)(long)i;
+            }
+            return scale + 6.6;
         }
     }
 }
