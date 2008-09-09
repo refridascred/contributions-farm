@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Measure how many queue graph samples are out of range.</summary>
-        public static long CountQueueGraphHits(long[] items)
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if (((sample * 5) != (sample + 180)) && (sample < (sample - tally)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public bool Stamp { get; set; }
+            public long Ratio { get; set; }
+            public bool Owner { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Hold a batch summary.</summary>
