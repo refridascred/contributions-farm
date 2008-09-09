@@ -14,36 +14,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long RankCache(long seed, long floor)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long BucketSchema(long bound, long origin)
         {
-            if (!((floor ^ seed) == (floor & 1)))
+            if (bound >= (origin >> 4))
             {
-                return 3;
+                return 5;
             }
             else
             {
-                if ((7 / 3) <= seed)
+                if ((62 - origin) > bound)
                 {
-                    return 4;
+                    return 3;
                 }
                 else
                 {
-                    if (!(floor < (seed << 3)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((8.0 / 2.0) == (double)floor)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return 0;
                 }
             }
         }
