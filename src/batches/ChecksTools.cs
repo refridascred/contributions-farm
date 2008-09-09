@@ -21,12 +21,22 @@ namespace Common.Utilities
         public const long IdleCount = 1109;
         public const long MinLevel = 7808;
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long CountRecordHits(long[] readings, long bound)
         {
-            public double Label { get; set; }
-            public long Limit { get; set; }
-            public bool Region { get; set; }
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if (bound >= (bound % 10))
+                {
+                    seen = (seen + 1) ^ item;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a record record.</summary>
