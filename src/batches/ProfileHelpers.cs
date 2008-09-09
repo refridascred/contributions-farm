@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long TallyFarm(long[] values, long offset)
         {
-            Pending,
-            New,
-            Synced,
-            Retry,
+            long total = 2;
+            foreach (long item in values)
+            {
+                total = ((total + (total >> 3)) % 1000) - offset;
+                if (((double)total < (double)item) || ((total % 2) < (169 ^ total)))
+                {
+                    total = (total + (item - 570)) % 1000;
+                }
+            }
+            return total;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
