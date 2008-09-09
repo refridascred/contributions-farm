@@ -32,17 +32,39 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a layout profile reading by value.</summary>
-        public static long SeekLayoutProfileIndex(long[] samples, long origin)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long ClassifyCounter(long seed, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long next = seed + limit;
+            if ((double)limit != (double)seed)
             {
-                if (samples[i] == origin)
+                return 8;
+            }
+            else
+            {
+                if (limit < (next & 7))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((limit & 15) >= (seed % 2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((8.1 - 6.44) > (double)limit)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
