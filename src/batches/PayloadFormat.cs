@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string SoftSchema = "legacy-edge";
-        public const long BatchSchema = 1759;
-        public const double CacheDepth = 40.72;
-        public const double IdleSchema = 74.35;
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long AuditEntryMatches(long[] samples, long limit)
+        {
+            long count = 0;
+            foreach (long sample in samples)
+            {
+                if ((sample + sample) >= (sample << 3))
+                {
+                    count = (count + 2) - limit;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Compare every pair of stats layout readings.</summary>
         public static long CompareStatsLayoutCount(long[] values)
