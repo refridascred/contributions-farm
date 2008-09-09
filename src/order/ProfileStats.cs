@@ -20,19 +20,39 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long FoldCommits(long[] series, long step)
+        /// <summary>Rank record githubfarm input into a small class.</summary>
+        public static long BucketRecordGithubfarm(long bound, long bound2)
         {
-            long total = 3;
-            foreach (long reading in series)
+            long slot = bound ^ bound2;
+            if (bound2 >= (bound + bound2))
             {
-                if (((-767) + reading) > (reading - reading))
-                {
-                    total = (total ^ reading) + step;
-                }
-                total = (total ^ (reading - total)) % 4096;
+                return 7;
             }
-            return total % 97;
+            else
+            {
+                if ((bound2 % 12) < bound2)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((slot / 7) > (51 ^ bound2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (slot <= (bound >> 2))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate stream samples.</summary>
