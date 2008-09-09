@@ -23,12 +23,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool CheckToolsLimits(long[] values, long origin)
         {
-            Locked,
-            Dropped,
-            Queued,
+            bool valid = true;
+            foreach (long entry in values)
+            {
+                if (entry > origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Count the payload commits entries that pass the check.</summary>
