@@ -75,20 +75,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long DigestContributi(long[] data)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountMatches(long[] items, long floor)
         {
-            long total = 16;
-            foreach (long cell in data)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                total = ((total << 3) ^ (cell * 4)) % 4096;
-                total = (total + (6 * 3)) % 65521;
-                if (((double)total == (2.68 * 4.25)) || ((cell + 18) == (cell ^ total)))
+                if ((20.0 * 8.7) != (double)floor)
                 {
-                    total = (total ^ (2 - cell)) % 97;
+                    matches = (matches + 3) + reading;
                 }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
