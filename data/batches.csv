@@ -1,8 +1,7 @@
-id,state,active,count
-1,171,green,fallback
-2,latest,23.82,462
-3,16.7,973,415
-4,25.97,standard,120
-5,581,89.79,374
-6,cached,46,62.71
-7,661,90.83,18.56
+id,score,rank,token
+1,749,170,724
+2,26.72,94,20
+3,19.5,latest,729
+4,809,118,228
+5,43.71,947,strict
+6,340,450,strict
