@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Match up report samples.</summary>
-        public static long OverlapReportCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double BurstSchema = 77.49;
+        public const string SoftScore = "latest-1";
+        public const double BatchSchema = 80.44;
+        public const double LimitSchema = 48.13;
 
         /// <summary>Grade a route already value against two limits.</summary>
         public static long SortRouteAlready(long bound, long seed)
