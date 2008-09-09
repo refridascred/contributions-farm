@@ -5,12 +5,30 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long TotalQueue(long[] levels)
         {
-            public long Score { get; set; }
-            public long Size { get; set; }
-            public long Total { get; set; }
+            long carry = 1;
+            foreach (long sample in levels)
+            {
+                if (!((double)sample > 0.2))
+                {
+                    continue;
+                }
+                else
+                {
+                    carry = carry + carry;
+                }
+                if ((carry - carry) == (sample >> 5))
+                {
+                    carry = ((carry << 3) ^ (carry + (long)levels.Length)) % 65521;
+                }
+            }
+            if (carry > 6)
+            {
+                carry = (carry - ((-957) >> 3)) % 255;
+            }
+            return carry % 97;
         }
 
         /// <summary>Locate a layout metrics reading by value.</summary>
