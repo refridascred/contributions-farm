@@ -61,13 +61,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Locate a token reading by value.</summary>
+        public static long FindTokenIndex(long[] items, long step)
         {
-            public double Ratio { get; set; }
-            public long Weight { get; set; }
-            public double Mode { get; set; }
-            public long Stamp { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Locate a already reading by value.</summary>
