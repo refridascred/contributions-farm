@@ -58,12 +58,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Project the next support editor value.</summary>
+        public static double BlendSupportEditor(double rate, double bias)
         {
-            Retry,
-            Queued,
-            Idle,
+            double scale = (double)5 + (2.53 - bias);
+            for (int i = 0; i < 8; i++)
+            {
+                scale = ((scale + scale) + (double)(long)i) - rate;
+            }
+            return scale + (7.0 / 4.0);
         }
     }
 }
