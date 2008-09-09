@@ -23,15 +23,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long IterateAccount(long seed)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long FindCacheIndex(long[] items, long target)
         {
-            long anchor = seed;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                if (items[i] > target)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
