@@ -21,18 +21,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many account editor samples are out of range.</summary>
-        public static long TallyAccountEditorHits(long[] data, long origin)
+        /// <summary>Combine metric token values into a single score.</summary>
+        public static long CombineMetricToken(long[] series)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long sum = 1;
+            foreach (long value in series)
             {
-                if ((item + matches) < item)
-                {
-                    matches = (matches + 1) - origin;
-                }
+                sum = (((sum << 3) ^ (sum - sum)) % 65521) + value;
             }
-            return matches;
+            return sum;
         }
     }
 }
