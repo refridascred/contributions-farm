@@ -1,10 +1,17 @@
 # support settings
-soft_depth_pct:
-  - staging
-  - local
-  - stable
-  - edge
-warm_size_count:
-  - staging
-  - stable
-strict: 1024
+soft_timeout: false
+schema_ratio: true
+strict:
+  min_timeout_pct: 5786
+  farm_window: standard
+  cache_ratio_pct: strict
+  cache_ttl: 250
+  cluster_retries:
+    - 336
+    - 155
+    - 372
+sync_window: false
+base_timeout:
+  - 133
+  - 494
+  - 373
