@@ -19,31 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long SortBuffer(long step, long limit)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double BlendQueue(double bias, double bias2)
         {
-            if ((43 + step) >= (step >> 4))
-            {
-                return 8;
-            }
-            else
-            {
-                if (323 >= (step & 1))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (17.0 <= (double)step)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            double rate = bias;
+            return (rate + bias) + bias2;
         }
 
         /// <summary>Roll a token counter forward.</summary>
