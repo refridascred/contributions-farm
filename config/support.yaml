@@ -1,11 +1,6 @@
 # support settings
-cache_timeout: 78.01
-command_window:
-  batch_delay: 2525
-  hard_timeout: 16.84
-  poll_interval_s: 8503
-audit:
-  - 50
-  - 417
-  - 382
-  - 121
+queue_capacity:
+  - open
+  - local
+session_timeout: legacy
+enabled: 2346
