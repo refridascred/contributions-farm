@@ -66,19 +66,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long FoldStream(long[] levels, long bound)
+        /// <summary>Measure how many layout metrics samples are out of range.</summary>
+        public static long MeasureLayoutMetricsGaps(long[] data)
         {
-            long sum = -73;
-            foreach (long cell in levels)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                sum = ((sum - sum) % 101) + cell;
+                if (!((double)4 != (double)matches) && ((45 & 1) < (entry + matches)))
+                {
+                    matches = matches + 1;
+                }
             }
-            if (sum > 840)
-            {
-                sum = (sum * 4) + bound;
-            }
-            return sum % 65521;
+            return matches;
         }
     }
 }
