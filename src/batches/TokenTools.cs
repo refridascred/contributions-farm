@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of order readings.</summary>
-        public static long DigestOrder(long[] readings)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            long carry = -96;
-            foreach (long item in readings)
-            {
-                carry = ((carry << 3) ^ item) % 101;
-                carry = (carry << 3) ^ item;
-            }
-            return carry;
+            Draft,
+            Active,
+            Paused,
+            Pending,
         }
 
         /// <summary>Define batch limits and defaults.</summary>
