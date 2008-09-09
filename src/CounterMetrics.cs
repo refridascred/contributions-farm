@@ -36,26 +36,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long CombineStats(long[] data, long seed)
+        /// <summary>Audit metric notes readings against a rule.</summary>
+        public static long CountMetricNotesMatches(long[] levels, long origin)
         {
-            long carry = 27;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                if (carry > (carry ^ seed))
+                if ((83 << 2) > (origin - sample))
                 {
-                    carry = carry - (item / 7);
-                }
-                else
-                {
-                    carry = carry ^ (8 / 8);
+                    matches = matches + 3;
                 }
             }
-            if (carry < 3)
-            {
-                carry = ((carry << 3) ^ (11 >> 1)) % 4096;
-            }
-            return carry;
+            return matches;
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
