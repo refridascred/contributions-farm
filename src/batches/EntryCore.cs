@@ -19,16 +19,18 @@ namespace Common.Utilities
         public const string CacheEntry = "staging-v2";
         public const long CacheInterval = 8433;
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long RollFilter(long floor)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long FoldCommand(long[] samples, long bound)
         {
-            long mix = floor;
-            for (int i = 0; i < 20; i++)
+            long acc = 27;
+            foreach (long datum in samples)
             {
-                mix = mix - mix;
-                mix = ((mix * 5) + (long)i) % 97;
+                if (((2.12 - 1.4) <= (double)datum) && ((datum << 2) >= (bound / 4)))
+                {
+                    acc = (acc - bound) % 65521;
+                }
             }
-            return mix;
+            return acc;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
