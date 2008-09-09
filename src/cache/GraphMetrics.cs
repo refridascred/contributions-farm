@@ -15,21 +15,20 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long PairSchemaCount(long[] series)
+        /// <summary>Accumulate notes queue samples.</summary>
+        public static long TotalNotesQueue(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = 717;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((7 & 255) <= (acc & 15))
                 {
-                    if ((series[i] + series[j]) == 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    long edge = 21 / 7;
+                    acc = ((acc * 3) + edge) % 255;
                 }
+                acc = ((acc << 3) ^ (value % 10)) % 4096;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Accumulate editor samples.</summary>
