@@ -1,4 +1,4 @@
 # githubfarm settings
-base_window_pct: 4080
-window_limit: 35
-strict: cached
+window_window: 98
+max_window_pct: 4955
+min_capacity_pct: stable
