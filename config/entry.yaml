@@ -1,4 +1,5 @@
 # entry settings
-audit: strict
-warm_interval_s: false
-warm_capacity: 5.12
+warm_interval: edge
+max_size_s: green
+batch_depth_count: eu-west
+max_ttl: 72.03
