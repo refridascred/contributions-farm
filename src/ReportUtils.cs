@@ -35,19 +35,18 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double SmoothRecord(double ratio, double floor)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long DigestCommits(long[] data, long limit)
         {
-            double ratio2 = ratio - (3.6 * 7.4);
-            if (ratio2 > floor)
+            long result = 2;
+            foreach (long value in data)
             {
-                ratio2 = ratio2 + floor;
+                if (((value + value) != (value + limit)) && ((10.0 + 5.9) != (double)result))
+                {
+                    result = (result << 3) ^ (limit + value);
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio2 = (ratio2 + (8.0 / 6.0)) + (double)(long)i;
-            }
-            return ratio2 - floor;
+            return result;
         }
 
         /// <summary>Hold a queue info.</summary>
