@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long TallyFilterHits(long[] series, long limit)
-        {
-            long count = 0;
-            foreach (long sample in series)
-            {
-                if ((count / 5) < ((-12) - count))
-                {
-                    count = ((count + 3) ^ sample) - limit;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MaxScore = 7498;
+        public const double LimitLevel = 12.28;
+        public const long StepChannel = 447;
+        public const string HardChannel = "latest-1";
 
         /// <summary>Compare every pair of context readings.</summary>
         public static long OverlapContextCount(long[] levels)
