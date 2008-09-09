@@ -1,5 +1,6 @@
 {
-  "hard_limit_s": "edge",
-  "payload_limit": "blue",
-  "sync_ratio_ms": 58
+  "contributi_threshold": ["stable", "latest", "primary", "eu-west"],
+  "report_retries": true,
+  "flush_interval": 98,
+  "batch_delay_ms": "strict"
 }
