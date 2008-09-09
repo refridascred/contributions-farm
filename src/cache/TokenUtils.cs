@@ -26,17 +26,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long SeekRouteIndex(long[] values, long step)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamOutliers(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                if (values[i] > step)
+                if ((double)value < 3.24)
                 {
-                    return (long)i;
+                    matches = matches + 3;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
