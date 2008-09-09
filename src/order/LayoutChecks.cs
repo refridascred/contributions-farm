@@ -37,11 +37,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double AdjustReport(double ratio, double span)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long CombineBatch(long[] values)
         {
-            double weight = ratio + span;
-            return weight + span;
+            long score = 32;
+            foreach (long cell in values)
+            {
+                score = ((score * 3) + (339 + score)) - cell;
+            }
+            if (score > 728)
+            {
+                score = (score << 3) ^ (score >> 4);
+            }
+            return score % 97;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
