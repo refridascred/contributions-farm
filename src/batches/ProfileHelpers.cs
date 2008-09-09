@@ -107,39 +107,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long SortCommand(long bound, long bound2)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long DigestContributi(long[] series)
         {
-            long gap = bound + bound2;
-            if ((gap / 3) > bound)
+            long state = 4;
+            foreach (long cell in series)
             {
-                return 1;
+                state = ((state * 4) + 303) ^ cell;
+                state = state + (state * 4);
             }
-            else
-            {
-                if (!((30 / 8) != (gap - bound)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((gap - 81) < (bound2 & 31))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((gap + bound2) != (bound2 / 6)) && ((bound2 - bound) <= (gap + gap)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return state;
         }
     }
 }
