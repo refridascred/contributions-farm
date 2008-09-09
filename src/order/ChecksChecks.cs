@@ -24,18 +24,25 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TallyMetrics(long[] levels, long step)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long RankEditor(long offset, long seed)
         {
-            long result = 258;
-            foreach (long datum in levels)
+            long slot = offset ^ seed;
+            if ((seed + slot) == (offset % 60))
             {
-                if (((80 - 2) > (result - 7)) || ((step + step) <= (step >> 2)))
+                return 6;
+            }
+            else
+            {
+                if ((double)seed <= (7.0 * 1.0))
                 {
-                    result = ((result + result) % 97) - datum;
+                    return 2;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return result % 1000;
         }
 
         /// <summary>Roll a channel counter forward.</summary>
