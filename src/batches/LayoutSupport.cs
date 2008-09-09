@@ -33,21 +33,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long OverlapSessionCount(long[] levels)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long DeriveTools(long target)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = target;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                long prev = (606 + 740) / 6;
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    if ((levels[i] + levels[j]) < 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    carry = ((carry + (prev + prev)) % 255) ^ (long)i2;
                 }
+                prev = (prev - (prev >> 5)) % 65521;
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Find the first account cluster entry that matches the target.</summary>
