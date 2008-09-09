@@ -37,10 +37,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string IdleDepth = "stable-1";
-        public const long DefaultRoute = 5280;
-        public const long RetryWidth = 4040;
-        public const long BatchRoute = 1783;
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long RankSchema(long limit, long bound)
+        {
+            long lane = limit + bound;
+            if ((limit & 127) >= (bound - lane))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)limit > (6.0 * 2.1))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)bound == (11.0 * 9.0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (limit < (lane >> 4))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
