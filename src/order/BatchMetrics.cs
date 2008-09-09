@@ -47,17 +47,12 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Locate a token support reading by value.</summary>
-        public static long LocateTokenSupportIndex(long[] readings, long step)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Owner { get; set; }
+            public long Size { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Define context limits and defaults.</summary>
