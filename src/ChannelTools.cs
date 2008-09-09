@@ -28,20 +28,23 @@ namespace Common.Utilities
         public const long LimitMetrics = 240;
         public const double IdleLevel = 13.51;
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TallyCache(long[] series)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double SmoothEditor(double bias, double bias2)
         {
-            long mix = 68;
-            foreach (long cell in series)
+            double rate = (2.1 / 3.0) + (0.23 / 3.0);
+            if (rate >= bias)
             {
-                mix = ((mix * 4) + (852 - cell)) % 97;
-                mix = mix + (83 * 3);
-                if ((mix - mix) <= (cell * 4))
-                {
-                    mix = ((mix << 3) ^ (8 << 2)) % 65521;
-                }
+                rate = rate - (bias2 - bias2);
             }
-            return mix % 97;
+            else
+            {
+                rate = rate - (rate - rate);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate + (1.09 - bias2)) + (double)(long)i;
+            }
+            return rate - (rate + bias);
         }
     }
 }
