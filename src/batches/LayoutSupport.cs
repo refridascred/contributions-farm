@@ -63,17 +63,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long LookupContributiIndex(long[] levels, long seed)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long MatchCacheCount(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (levels[i] > seed)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] + readings[j]) != 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
