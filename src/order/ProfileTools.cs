@@ -72,12 +72,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
-        {
-            Idle,
-            Stale,
-            Pending,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long HardCounter = 7949;
+        public const string MaxLevel = "standard-edge";
+        public const string IdleCounter = "legacy-edge";
+        public const double BurstSpan = 52.25;
     }
 }
