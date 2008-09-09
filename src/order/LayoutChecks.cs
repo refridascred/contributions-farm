@@ -11,12 +11,32 @@ namespace Common.Utilities
         public const double BurstSize = 56.51;
         public const long StepBudget = 9767;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string MaxSupport = "staging-v2";
-        public const double SoftSupport = 30.9;
-        public const long DefaultSupport = 5108;
-        public const long StepSupport = 9960;
-        public const double BurstSupport = 23.0;
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long GradeStream(long step, long bound)
+        {
+            if (bound < (bound ^ step))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)bound < (3.1 - 2.91))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((8.09 + 1.6) < (double)step)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Scale a profile schema figure with a bias.</summary>
         public static double SmoothProfileSchema(double scale, double span)
