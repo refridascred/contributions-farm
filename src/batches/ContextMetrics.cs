@@ -35,15 +35,17 @@ namespace Common.Utilities
         public const long StepStats = 7640;
         public const long CacheStats = 2275;
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double ProjectMetric(double ratio, double span)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long FindGraphIndex(long[] values, long step)
         {
-            double drift = (double)((-612) * 3);
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                drift = (drift + (span - ratio)) + (double)(long)i;
+                if ((values[i] > step) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return drift + (double)990;
+            return -1;
         }
     }
 }
