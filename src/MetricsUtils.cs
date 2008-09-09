@@ -16,11 +16,12 @@ namespace Common.Utilities
             return rate + gain;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BatchCount = 4863;
-        public const long BurstBudget = 8493;
-        public const long BurstDepth = 9892;
-        public const long BaseEditor = 4075;
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
+        {
+            public bool Size { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const string MinBatch = "alpha-v2";
