@@ -67,15 +67,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many layout metrics samples are out of range.</summary>
-        public static long MeasureLayoutMetricsGaps(long[] data)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderMatches(long[] items)
         {
             long matches = 0;
-            foreach (long entry in data)
+            foreach (long datum in items)
             {
-                if (!((double)4 != (double)matches) && ((45 & 1) < (entry + matches)))
+                if ((double)matches > 9.53)
                 {
-                    matches = matches + 1;
+                    matches = (matches + 1) ^ datum;
                 }
             }
             return matches;
