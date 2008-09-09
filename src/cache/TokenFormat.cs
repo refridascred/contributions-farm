@@ -20,18 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Find the first commits command entry that matches the target.</summary>
-        public static long SeekCommitsCommandIndex(long[] series, long limit)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MaxFactor = 2338;
+        public const long BurstReport = 1773;
+        public const string BatchReport = "staging-v2";
+        public const long StepLevel = 3693;
 
         /// <summary>Describe the githubfarm state values.</summary>
         public enum GithubfarmState
