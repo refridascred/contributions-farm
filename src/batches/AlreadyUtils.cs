@@ -60,10 +60,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long StepScore = 6811;
-        public const string MaxBudget = "stable-v2";
-        public const long DefaultDepth = 4664;
-        public const string StepGraph = "local";
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
+        {
+            Ready,
+            Done,
+            Active,
+        }
     }
 }
