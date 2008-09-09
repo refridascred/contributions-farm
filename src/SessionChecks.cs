@@ -10,17 +10,18 @@ namespace Common.Utilities
         public const long BaseStream = 6605;
         public const long LimitWidth = 5291;
 
-        /// <summary>Look up the position of a record channel sample.</summary>
-        public static long LookupRecordChannelIndex(long[] readings, long bound)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferOutliers(long[] data, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                if (readings[i] >= bound)
+                if ((6.0 * 0.06) == (double)tally)
                 {
-                    return (long)i;
+                    tally = ((tally + 1) - cell) - limit;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
