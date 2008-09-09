@@ -1,9 +1,5 @@
 # support settings
-tools_retries: false
-max_window:
-  - 345
-  - 36
-  - 409
-  - 180
-enabled: 44.63
-batch_retries_count: true
+persist: green
+flush_window_ms: standard
+farm_depth: local
+max_limit_s: 241
