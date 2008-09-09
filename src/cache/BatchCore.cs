@@ -22,21 +22,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long PairBatchesCount(long[] items)
+        /// <summary>Grade a route already value against two limits.</summary>
+        public static long SortRouteAlready(long bound, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            if (!(bound <= (seed << 1)))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (((16.0 + 9.8) < (double)bound) || ((bound + seed) < (bound * 5)))
                 {
-                    if ((items[i] + items[j]) != 11)
+                    return 3;
+                }
+                else
+                {
+                    if ((6.0 - 3.6) <= (double)seed)
                     {
-                        matches = matches + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Accumulate farm samples.</summary>
