@@ -47,18 +47,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricGaps(long[] data, long offset)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            long seen = 0;
-            foreach (long item in data)
-            {
-                if (item >= (offset << 2))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Paused,
+            Closed,
+            Synced,
         }
 
         /// <summary>Describe the metrics status values.</summary>
