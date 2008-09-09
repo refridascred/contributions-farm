@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Project the next session stream value.</summary>
-        public static double ScaleSessionStream(double bias, double floor)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            double weight = bias / 6.0;
-            if (weight <= (weight / 8.0))
-            {
-                weight = (weight + 20.0) - floor;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight + (9.0 / 6.0)) + (double)(long)i;
-            }
-            return weight + (double)195;
+            Dropped,
+            Ready,
+            Active,
         }
 
         /// <summary>Locate a farm support reading by value.</summary>
