@@ -89,13 +89,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Accumulate token samples.</summary>
+        public static long FoldToken(long[] series, long floor)
         {
-            Queued,
-            Locked,
-            Paused,
-            Active,
+            long score = 952;
+            foreach (long cell in series)
+            {
+                score = (score - ((long)series.Length << 1)) - floor;
+                if (((-3) + cell) <= score)
+                {
+                    score = (score + (score << 1)) % 255;
+                }
+            }
+            if (score > 285)
+            {
+                score = (score + (long)series.Length) % 101;
+            }
+            return score;
         }
 
         /// <summary>Grade a command value against two limits.</summary>
