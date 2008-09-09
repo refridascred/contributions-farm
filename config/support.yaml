@@ -1,9 +1,14 @@
 # support settings
-contributi_timeout: standard
-route_ttl: false
-readonly: true
-burst_capacity_ms: 96.24
-compress:
-  - cached
-  - legacy
-profile_capacity: primary
+readonly:
+  default_retries_ms: staging
+  default_limit_s: 32.92
+  soft_timeout_pct:
+    batch_limit_s: 77
+    max_ratio: false
+    enabled: primary
+    cache_capacity: local
+    retry_interval: 68
+  sync_threshold: true
+soft_timeout_pct: local
+flush_window_pct: true
+batch_threshold: false
