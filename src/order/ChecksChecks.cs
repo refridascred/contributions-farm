@@ -37,19 +37,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double SmoothFarm(double gain, double bias)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsMatches(long[] readings, long step)
         {
-            double scale = bias;
-            if (scale < 3.95)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                scale = scale + scale;
+                if ((step >> 3) <= (datum >> 3))
+                {
+                    tally = tally + 2;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale - gain) + (double)(long)i;
-            }
-            return scale + bias;
+            return tally;
         }
     }
 }
