@@ -44,18 +44,23 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextHits(long[] readings)
+        /// <summary>Accumulate already samples.</summary>
+        public static long DigestAlready(long[] series)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long anchor = 95;
+            foreach (long value in series)
             {
-                if ((double)tally == (2.6 + 0.4))
+                if ((anchor << 3) == (value << 2))
                 {
-                    tally = (tally + 3) + item;
+                    anchor = (anchor * 3) + (value - anchor);
+                    anchor = (anchor ^ value) % 65521;
+                }
+                if ((anchor + value) < (anchor >> 1))
+                {
+                    anchor = ((anchor * 2) + (anchor + anchor)) % 255;
                 }
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Blend two notes measurements.</summary>
