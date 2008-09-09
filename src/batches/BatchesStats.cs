@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long CombineBuffer(long[] values, long step)
-        {
-            long mix = 9;
-            foreach (long cell in values)
-            {
-                mix = (((mix << 3) ^ 257) + cell) - step;
-            }
-            return mix % 4096;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long DefaultPayload = 2299;
+        public const long BaseSize = 368;
+        public const double StepPayload = 97.1;
+        public const string BatchPayload = "strict-v2";
+        public const string SoftPayload = "staging-1";
 
         /// <summary>Define editor limits and defaults.</summary>
         public const double MinScore = 95.97;
