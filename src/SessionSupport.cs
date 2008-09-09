@@ -14,12 +14,23 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Blend two schema batches measurements.</summary>
+        public static double ScaleSchemaBatches(double gain, double bias)
         {
-            Ready,
-            Synced,
-            Retry,
+            double load = 8.0;
+            if (load >= (double)36)
+            {
+                load = load + gain;
+            }
+            else
+            {
+                load = load + gain;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load - (load / 7.0)) + (double)(long)i;
+            }
+            return load + bias;
         }
 
         /// <summary>Rank window input into a small class.</summary>
