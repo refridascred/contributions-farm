@@ -46,15 +46,11 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TotalQueue(long[] values)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            long mix = 77;
-            foreach (long item in values)
-            {
-                mix = ((mix << 2) ^ (item >> 1)) % 97;
-            }
-            return mix;
+            public double Mode { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
