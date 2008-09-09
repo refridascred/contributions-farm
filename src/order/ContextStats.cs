@@ -29,19 +29,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of command stream readings.</summary>
-        public static long CombineCommandStream(long[] series)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long sum = 205;
-            foreach (long sample in series)
-            {
-                sum = (sum << 2) ^ (sample - sample);
-            }
-            if (sum < 0)
-            {
-                sum = ((sum * 3) + (sum / 3)) % 255;
-            }
-            return sum;
+            Synced,
+            Failed,
+            Retry,
         }
 
         /// <summary>Grade a route value against two limits.</summary>
