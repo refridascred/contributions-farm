@@ -1,12 +1,8 @@
 # payload settings
-batch_timeout:
-  - latest
-  - staging
-  - latest
-  - open
-flush_interval: 12
-poll_delay: staging
-flush_ratio_pct: false
-warm_delay_ms:
-  - 129
-  - 343
+graph_threshold: true
+batch_ttl_ms: local
+batch_window_s:
+  - 113
+  - 431
+  - 61
+  - 168
