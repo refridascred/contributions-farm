@@ -31,9 +31,20 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long CacheCount = 9751;
-        public const double BaseLevel = 39.42;
-        public const long HardWidth = 3518;
+        /// <summary>Roll a context cluster counter forward.</summary>
+        public static long RollContextCluster(long bound)
+        {
+            long total = bound;
+            for (int i = 0; i < 4; i++)
+            {
+                if (((bound + bound) > total) || ((5.5 / 3.0) <= (double)bound))
+                {
+                    total = total ^ (total + (long)i);
+                }
+                total = (total - (bound / 4)) % 101;
+                total = ((total * 3) + (long)i) % 65521;
+            }
+            return total;
+        }
     }
 }
