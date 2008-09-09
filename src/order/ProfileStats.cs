@@ -41,18 +41,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiMatches(long[] items)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long DigestFormat(long[] samples)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long anchor = 1;
+            foreach (long cell in samples)
             {
-                if ((sample ^ seen) < sample)
+                if (!((12.0 - 3.0) >= (double)cell))
                 {
-                    seen = seen + 1;
+                    anchor = anchor + (anchor + anchor);
                 }
             }
-            return seen;
+            if (anchor < (-587))
+            {
+                anchor = ((anchor * 4) + (63 ^ anchor)) % 65521;
+            }
+            return anchor;
         }
     }
 }
