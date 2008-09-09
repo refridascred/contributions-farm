@@ -14,12 +14,14 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            public long Flag { get; set; }
-            public long Rank { get; set; }
-            public long Owner { get; set; }
+            Locked,
+            Dropped,
+            Active,
+            Idle,
+            Failed,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
