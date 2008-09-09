@@ -44,10 +44,14 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MinSpan = 9516;
-        public const long BatchScore = 8737;
-        public const string WindowScore = "latest-v2";
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
+        {
+            public bool Total { get; set; }
+            public double Weight { get; set; }
+            public long Ratio { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Describe the githubfarm class values.</summary>
         public enum GithubfarmClass
