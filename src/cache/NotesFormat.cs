@@ -22,9 +22,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string BatchNotes = "local-edge";
-        public const long BurstCount = 2421;
-        public const string RetryNotes = "open";
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
+        {
+            public long Flag { get; set; }
+            public double Mode { get; set; }
+            public double Size { get; set; }
+        }
     }
 }
