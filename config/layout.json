@@ -1,7 +1,5 @@
 {
-  "enabled": false,
-  "warm_timeout_ms": ["edge", "cached", "legacy", "fallback"],
-  "persist": 1024,
-  "token_interval": 38.06,
-  "max_limit": true
+  "entry_ttl": ["legacy", "cached"],
+  "strict": 100,
+  "contributi_ttl": 6.55
 }
