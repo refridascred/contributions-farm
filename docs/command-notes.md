@@ -1,11 +1,10 @@
 # Command notes
 
-When a record fails, the entry handler retries a few times before giving up.
-Each layout is validated before it reaches the batches queue.
-When a support fails, the window handler retries a few times before giving up.
+Run the queue check before changing any checks limits.
+The cache helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Prefer session defaults
+- Prefer context defaults
+- Review filter limits each release
 - Document new notes fields
-- Log every batch change
