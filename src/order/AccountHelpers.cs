@@ -33,21 +33,19 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long PairAccountCount(long[] values)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long DigestFarm(long[] data, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = -22;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                result = (result << 3) ^ (result + datum);
             }
-            return tally;
+            if (result > 289)
+            {
+                result = result ^ (step - result);
+            }
+            return result % 4096;
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
