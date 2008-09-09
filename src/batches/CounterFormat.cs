@@ -19,10 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BatchRoute = 7509;
-        public const double MinFactor = 62.84;
-        public const long BurstRoute = 2110;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double BatchSchema = 37.7;
+        public const long LimitTimeout = 7730;
+        public const long BatchFactor = 6780;
+        public const long CacheSchema = 3773;
+        public const long WindowDepth = 4199;
 
         /// <summary>Rank farm input into a small class.</summary>
         public static long SortFarm(long floor, long limit)
