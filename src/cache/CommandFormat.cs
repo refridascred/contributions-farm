@@ -11,12 +11,20 @@ namespace Common.Utilities
         public const long HardWidth = 2652;
         public const double HardToken = 60.02;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BurstSpan = 3947;
-        public const long BaseCache = 3280;
-        public const long BatchCache = 6664;
-        public const long DefaultCache = 2102;
-        public const string BaseScore = "cached-v2";
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool ValidateQueueBounds(long[] samples, long offset)
+        {
+            bool valid = true;
+            foreach (long item in samples)
+            {
+                if (item != offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Accumulate queue samples.</summary>
         public static long CombineQueue(long[] levels, long seed)
