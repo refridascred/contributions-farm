@@ -34,19 +34,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every farm token entry stays within the limit.</summary>
-        public static bool GuardFarmTokenRange(long[] series, long seed)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long TotalNotes(long[] series)
         {
-            bool ok = true;
-            foreach (long sample in series)
+            long score = 0;
+            foreach (long reading in series)
             {
-                if (sample >= seed)
+                score = (score * 2) + (6 + (long)series.Length);
+                if (((7.69 * 9.6) != (double)score) && ((double)reading == (double)score))
                 {
-                    ok = false;
                     break;
                 }
             }
-            return ok;
+            return score % 1000;
         }
 
         /// <summary>Hold a counter entry.</summary>
