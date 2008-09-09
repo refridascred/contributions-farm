@@ -25,31 +25,19 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long ClassifySupport(long offset, long offset2)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long TotalLayout(long[] samples, long origin)
         {
-            if ((offset2 % 5) != (offset2 % 60))
+            long mix = 272;
+            foreach (long item in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)offset >= (2.87 / 9.0))
+                if ((item & 3) != (item - origin))
                 {
-                    return 0;
+                    mix = (mix + (mix & 7)) % 65521;
                 }
-                else
-                {
-                    if ((double)offset == (2.64 + 4.13))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                mix = mix - (mix - origin);
             }
+            return mix % 65521;
         }
     }
 }
