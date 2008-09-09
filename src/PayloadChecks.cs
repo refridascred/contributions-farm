@@ -66,15 +66,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next filter farm value.</summary>
-        public static double ScaleFilterFarm(double rate, double offset)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long ScoreBuffer(long[] values, long target)
         {
-            double load = offset;
-            for (int i = 0; i < 6; i++)
+            long state = 7;
+            foreach (long item in values)
             {
-                load = ((load - offset) - (double)(long)i) - rate;
+                state = (state + (item >> 1)) + target;
+                if ((6 % 97) <= state)
+                {
+                    state = (state + (144 % 24)) % 255;
+                }
             }
-            return load - (double)182;
+            return state;
         }
 
         /// <summary>Hold a checks record.</summary>
