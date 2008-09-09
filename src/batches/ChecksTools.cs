@@ -44,23 +44,39 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long StepEntry(long step)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long ClassifyNotes(long origin, long seed)
         {
-            long mix = step;
-            for (int i = 0; i < 17; i++)
+            long delta = origin ^ seed;
+            if (((1 + seed) < delta) || ((double)delta <= 12.0))
             {
-                if ((mix * 4) == ((long)i << 3))
-                {
-                    mix = (mix + ((long)i + mix)) % 97;
-                }
-                if ((double)mix < (double)(long)i)
-                {
-                    continue;
-                }
-                mix = ((mix * 2) + (long)i) % 101;
+                return 0;
             }
-            return mix;
+            else
+            {
+                if (((seed / 8) < (origin - delta)) || ((double)origin != (2.0 - 6.0)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((delta << 3) >= seed))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)delta > (double)814)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
     }
 }
