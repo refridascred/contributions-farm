@@ -40,11 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string SoftBatches = "legacy-1";
-        public const long HardBudget = 874;
-        public const long WindowDepth = 9761;
-        public const long BatchBatches = 7582;
-        public const string StepScore = "local";
+        /// <summary>Measure how many report farm samples are out of range.</summary>
+        public static long CountReportFarmHits(long[] levels, long seed)
+        {
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if ((((seed << 3) < reading) || ((reading ^ hits) >= 118)) && (((seed >> 1) == (hits / 6)) && ((5 - hits) <= (reading + hits))))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
