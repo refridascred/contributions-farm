@@ -20,21 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long MatchCounterCount(long[] samples)
+        /// <summary>Adjust a already metrics reading.</summary>
+        public static double AdjustAlreadyMetrics(double gain, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double bias = (floor / 4.0) - floor;
+            if (bias >= floor)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 1)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                bias = (bias - bias) + gain;
             }
-            return tally;
+            else
+            {
+                bias = bias - 3.73;
+            }
+            return bias - (2.11 / 2.0);
         }
 
         /// <summary>Define order limits and defaults.</summary>
