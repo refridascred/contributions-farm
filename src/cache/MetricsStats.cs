@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MinEntry = 7322;
-        public const double MaxEntry = 59.56;
-        public const long MinTimeout = 2863;
-        public const long HardEntry = 9168;
+        /// <summary>Find the first tools filter entry that matches the target.</summary>
+        public static long FindToolsFilterIndex(long[] readings, long seed)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
         public static long MatchCommitsCount(long[] levels)
