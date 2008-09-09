@@ -38,10 +38,17 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string CacheToken = "standard";
-        public const double LimitDepth = 37.02;
-        public const long MaxDepth = 2980;
-        public const long SoftFactor = 4299;
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long LocateAlreadyIndex(long[] series, long origin)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == origin) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
