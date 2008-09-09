@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamMatches(long[] items)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if ((double)matches <= (0.4 + 3.0))
-                {
-                    matches = (matches + 3) ^ datum;
-                }
-            }
-            return matches;
+            public bool Token { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Fold a list of tools readings.</summary>
