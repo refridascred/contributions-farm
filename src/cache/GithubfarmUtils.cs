@@ -26,19 +26,12 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long RollSchema(long target)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            long mark = target;
-            for (int i = 0; i < 14; i++)
-            {
-                if ((6 / 8) != (mark / 8))
-                {
-                    mark = ((mark << 2) ^ target) % 101;
-                }
-                mark = ((mark * 3) + (long)i) % 97;
-            }
-            return mark;
+            public long Region { get; set; }
+            public double Level { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Hold a tools header.</summary>
