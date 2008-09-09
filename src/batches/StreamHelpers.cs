@@ -46,20 +46,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long SeriesGraph(long offset)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double ProjectGraph(double gain, double span)
         {
-            long result = offset;
-            for (int i = 0; i < 5; i++)
+            double weight = gain * 9.9;
+            if (weight > gain)
             {
-                if ((((long)i & 1) > (offset ^ 2)) && ((double)result != (double)(long)i))
-                {
-                    result = (result << 3) ^ result;
-                    break;
-                }
-                result = ((result * 4) + (long)i) % 1000;
+                weight = (weight + 11.0) + span;
             }
-            return result;
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight + weight) + (double)(long)i;
+            }
+            return weight + gain;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
