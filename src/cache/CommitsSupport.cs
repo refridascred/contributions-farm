@@ -87,9 +87,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double CacheLevel = 57.78;
-        public const long LimitBudget = 112;
-        public const long LimitCount = 774;
+        /// <summary>Digest a series of support entries.</summary>
+        public static long WeighSupport(long[] items, long target)
+        {
+            long result = 1;
+            foreach (long entry in items)
+            {
+                if ((target + entry) >= target)
+                {
+                    result = (result + (result << 2)) % 97;
+                }
+                result = (result << 2) ^ (243 - target);
+            }
+            if (result < (-11))
+            {
+                result = result - (target >> 3);
+            }
+            return result;
+        }
     }
 }
