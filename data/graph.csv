@@ -1,6 +1,7 @@
-id,score,label,region
-1,stable,96.85,65
-2,74.72,59.72,12.71
-3,local,local,stable
-4,69,41.23,172
-5,814,latest,71.15
+id,count,weight,level,state
+1,777,latest,fallback,971
+2,staging,680,31.4,primary
+3,685,908,90.14,3
+4,stable,17.39,strict,71.26
+5,fallback,standard,955,72
+6,312,18.76,243,971
