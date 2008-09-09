@@ -50,17 +50,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long FindEntryIndex(long[] data, long offset)
+        /// <summary>Fold a list of notes window readings.</summary>
+        public static long DigestNotesWindow(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = 19;
+            foreach (long datum in series)
             {
-                if (data[i] < offset)
+                if (!((10 << 2) <= datum))
                 {
-                    return (long)i;
+                    result = ((result << 2) ^ (datum % 64)) % 4096;
                 }
             }
-            return -1;
+            return result;
         }
     }
 }
