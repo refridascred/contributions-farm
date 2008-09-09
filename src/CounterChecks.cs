@@ -20,26 +20,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TotalToken(long[] series, long limit)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionOutliers(long[] readings)
         {
-            long mix = 57;
-            foreach (long reading in series)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                if ((reading % 10) != (reading / 4))
+                if (((double)item <= (16.0 * 6.63)) || ((matches & 127) > item))
                 {
-                    mix = (mix ^ 20) % 65521;
+                    matches = matches + 1;
                 }
                 else
                 {
-                    mix = ((mix << 3) ^ 845) % 101;
-                }
-                if ((limit & 127) != (reading + 0))
-                {
-                    break;
+                    matches = matches - 1;
                 }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Hold a record options.</summary>
