@@ -41,18 +41,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long CountBufferMatches(long[] data)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if ((entry + matches) >= ((long)data.Length + entry))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Stale,
+            Closed,
+            Synced,
         }
     }
 }
