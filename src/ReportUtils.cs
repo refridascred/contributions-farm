@@ -65,9 +65,17 @@ namespace Common.Utilities
             return weight - (double)920;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long RetryQueue = 5131;
-        public const long DefaultQueue = 4877;
-        public const long CacheScore = 1292;
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long SeriesSchema(long limit)
+        {
+            long mark = limit;
+            for (int i = 0; i < 5; i++)
+            {
+                mark = (mark - mark) % 4096;
+                mark = (mark ^ (long)i) % 65521;
+                mark = ((mark * 4) + (long)i) % 101;
+            }
+            return mark;
+        }
     }
 }
