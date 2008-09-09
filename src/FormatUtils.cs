@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteMatches(long[] values)
         {
-            Dropped,
-            Ready,
-            Active,
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if (count > sample)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Locate a farm support reading by value.</summary>
