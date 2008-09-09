@@ -39,15 +39,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double BlendGithubfarm(double bias, double floor)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long CompareToolsCount(long[] series)
         {
-            double drift = (double)481 / 5.0;
-            if (drift <= (bias - drift))
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                drift = drift - (drift + drift);
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return drift + floor;
+            return matches;
         }
 
         /// <summary>Hold a editor stats.</summary>
