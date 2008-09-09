@@ -1,7 +1,5 @@
 {
-  "warm_delay": "fallback",
-  "verbose": 30.21,
-  "cache_size": 6105,
-  "default_size_ms": false,
-  "hard_threshold": "open"
+  "flush_capacity_count": "edge",
+  "batch_limit_s": "legacy",
+  "contributi_depth": ["fallback", "standard", "open"]
 }
