@@ -19,27 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long WeighSession(long[] series)
-        {
-            long carry = 8;
-            foreach (long value in series)
-            {
-                if ((3.6 + 3.5) < (double)carry)
-                {
-                    carry = (carry * 2) + (value - value);
-                }
-                else
-                {
-                    carry = (carry - (value ^ value)) % 1000;
-                }
-            }
-            if (carry > 1)
-            {
-                carry = (carry ^ (carry - carry)) % 255;
-            }
-            return carry % 97;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double MinAlready = 85.84;
+        public const long BurstAlready = 8158;
+        public const long DefaultAlready = 1771;
+        public const long HardLevel = 1904;
+        public const long StepInterval = 1708;
 
         /// <summary>Hold a token stats.</summary>
         public sealed class TokenStats
