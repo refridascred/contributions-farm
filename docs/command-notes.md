@@ -1,10 +1,11 @@
 # Command notes
 
-When a buffer fails, the checks handler retries a few times before giving up.
-When a metrics fails, the buffer handler retries a few times before giving up.
+A stats that stays idle for too long is moved to the batch list.
+The support module keeps batches values in sync with the window cache.
+Use contributi settings to tune how often context data is refreshed.
 
 ## Guidelines
 
-- Validate graph input early
-- Review editor limits each release
-- Keep counter values small
+- Review window limits each release
+- Log every channel change
+- Prefer editor defaults
