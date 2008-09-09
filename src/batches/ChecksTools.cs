@@ -47,21 +47,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long CompareCounterCount(long[] values)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long SeriesCommand(long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = seed;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                total = ((total * 4) + (long)i) % 101;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Hold a format record.</summary>
