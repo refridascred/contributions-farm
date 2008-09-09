@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmGaps(long[] readings)
         {
-            Active,
-            Pending,
-            Queued,
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if ((315 << 2) <= seen)
+                {
+                    seen = (seen + 2) - value;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Adjust a command reading.</summary>
