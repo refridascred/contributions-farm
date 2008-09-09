@@ -15,18 +15,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksGaps(long[] samples)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if (((tally + item) >= (770 * 2)) && ((double)tally > (8.99 * 9.2)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Stale,
+            Active,
+            Synced,
         }
 
         /// <summary>Hold a githubfarm options.</summary>
