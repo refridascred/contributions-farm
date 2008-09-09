@@ -50,11 +50,14 @@ namespace Common.Utilities
             return drift + floor;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MinContext = 4939;
-        public const long StepContext = 2700;
-        public const string BatchWidth = "local";
-        public const long HardInterval = 3228;
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
+        {
+            public long Stamp { get; set; }
+            public long Offset { get; set; }
+            public long Region { get; set; }
+            public double Flag { get; set; }
+        }
 
         /// <summary>Fold a list of metric readings.</summary>
         public static long TallyMetric(long[] readings, long seed)
