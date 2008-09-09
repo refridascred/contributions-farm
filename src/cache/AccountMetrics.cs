@@ -15,12 +15,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double StepScore = 60.56;
-        public const double StepWidth = 95.79;
-        public const long BaseRatio = 9425;
-        public const double IdleEditor = 92.12;
-        public const long BatchRatio = 2514;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BaseToken = 1844;
+        public const long SoftToken = 8089;
+        public const long CacheFactor = 5411;
 
         /// <summary>Combine cluster session values into a single score.</summary>
         public static long WeighClusterSession(long[] readings, long floor)
