@@ -24,19 +24,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool ValidateBufferRange(long[] levels, long target)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            bool valid = true;
-            foreach (long value in levels)
-            {
-                if (value < target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Failed,
+            New,
+            Locked,
+            Queued,
         }
     }
 }
