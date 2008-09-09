@@ -13,19 +13,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double SmoothContext(double gain, double span)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            double gain2 = 5.79;
-            if (gain2 > (double)8)
-            {
-                gain2 = (gain2 + (6.0 - span)) - gain;
-            }
-            else
-            {
-                gain2 = gain2 + (double)(-7);
-            }
-            return gain2 - (9.81 * 19.0);
+            public bool Token { get; set; }
+            public long Ratio { get; set; }
+            public string Flag { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
