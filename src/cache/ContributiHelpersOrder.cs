@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            public string Label { get; set; } = "";
-            public string Region { get; set; } = "";
-            public long Score { get; set; }
-            public long Count { get; set; }
+            Paused,
+            Pending,
+            Synced,
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
