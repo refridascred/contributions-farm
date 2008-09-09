@@ -69,12 +69,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            Closed,
-            Failed,
-            Queued,
+            public string Rank { get; set; } = "";
+            public bool Level { get; set; }
+            public bool Score { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
