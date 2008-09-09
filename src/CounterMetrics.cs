@@ -51,18 +51,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of notes window readings.</summary>
-        public static long DigestNotesWindow(long[] series)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long SeekFilterIndex(long[] levels, long step)
         {
-            long result = 19;
-            foreach (long datum in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((10 << 2) <= datum))
+                if ((levels[i] >= step) && ((levels[i] % 3) != 0))
                 {
-                    result = ((result << 2) ^ (datum % 64)) % 4096;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
     }
 }
