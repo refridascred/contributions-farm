@@ -37,19 +37,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double SmoothPayload(double gain, double floor)
+        /// <summary>Combine buffer commits values into a single score.</summary>
+        public static long DigestBufferCommits(long[] samples)
         {
-            double drift = 7.25 / 8.0;
-            if (drift >= (double)46)
+            long result = 370;
+            foreach (long item in samples)
             {
-                drift = drift - (floor * 2.89);
+                result = (result + item) % 97;
+                result = ((result << 3) ^ (result & 63)) % 101;
+                if ((item / 5) < result)
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
+            if (result < 66)
             {
-                drift = (drift - drift) + (double)(long)i;
+                result = (result * 2) + result;
             }
-            return drift + gain;
+            return result;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
