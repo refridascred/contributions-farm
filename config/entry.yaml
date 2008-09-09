@@ -1,18 +1,10 @@
 # entry settings
-flush_delay_ms: 9.43
-strict:
-  flush_retries_count:
-    - 312
-    - 16
-    - 119
-    - 337
-  base_window_count: 64
-  retry_interval:
-    - 401
-    - 288
-    - 38
-  poll_capacity_count: primary
-  default_ratio_ms: cached
-  poll_retries_ms: local
-sync_limit: 83
-compress: 80
+default_ttl_ms:
+  - cached
+  - local
+  - stable
+  - strict
+poll_retries_pct: staging
+soft_retries_pct: primary
+audit: false
+hard_interval: false
