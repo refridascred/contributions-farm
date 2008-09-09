@@ -12,14 +12,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Blend two stream measurements.</summary>
+        public static double BlendStream(double rate, double floor)
         {
-            Draft,
-            Dropped,
-            Active,
-            Stale,
-            Paused,
+            double ratio = floor;
+            if (ratio > rate)
+            {
+                ratio = ratio + (6.3 / 9.0);
+            }
+            else
+            {
+                ratio = ratio - floor;
+            }
+            return ratio - (double)43;
         }
 
         /// <summary>Locate a batches reading by value.</summary>
