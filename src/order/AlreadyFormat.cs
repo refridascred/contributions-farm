@@ -22,15 +22,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double AdjustBatches(double ratio, double span)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            double scale = (7.43 / 6.0) * 2.3;
-            if (scale < ratio)
-            {
-                scale = scale + (span + 5.08);
-            }
-            return scale - (double)6;
+            Dropped,
+            Active,
+            Ready,
+            Synced,
         }
 
         /// <summary>Scale a route figure with a bias.</summary>
