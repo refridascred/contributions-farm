@@ -37,14 +37,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            Draft,
-            Locked,
-            Closed,
             Ready,
             Paused,
+            Pending,
         }
     }
 }
