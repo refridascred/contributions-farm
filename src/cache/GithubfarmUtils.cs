@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long ScoreQueue(long[] levels)
         {
-            public string Flag { get; set; } = "";
-            public long Level { get; set; }
-            public long Label { get; set; }
-            public bool Weight { get; set; }
+            long anchor = 6;
+            foreach (long sample in levels)
+            {
+                anchor = anchor + (anchor - anchor);
+                if ((double)sample <= (6.0 - 4.11))
+                {
+                    anchor = (anchor + (long)levels.Length) % 97;
+                }
+            }
+            if (anchor < 7)
+            {
+                anchor = ((anchor * 5) + anchor) % 97;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Compare every pair of format readings.</summary>
