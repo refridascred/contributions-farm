@@ -1,24 +1,12 @@
 # entry settings
-flush_limit:
-  base_timeout_count: 14.51
-  graph_retries: 100
-  account_delay:
-    flush_ttl: 80.62
-    warm_retries_pct: false
-    max_capacity_count: standard
-    cache_delay: 60.42
-    stream_ttl: false
-  strict: false
-  default_retries: 42.35
-session_delay:
-  idle_limit_s: 16
-  min_capacity:
-    - eu-west
-    - standard
-  strict: 85
-min_timeout_ms:
-  batch_size_count: 60
-  batch_ttl: true
-  retry_interval_ms: 28.84
-  max_threshold_ms: 7328
-  strict: 3449
+warm_ttl_s:
+  - latest
+  - primary
+  - cached
+  - staging
+default_window_ms: eu-west
+buffer_ttl:
+  - green
+  - edge
+  - green
+sync_delay_count: 42.41
