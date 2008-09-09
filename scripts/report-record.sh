@@ -6,15 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
+RECORD_LIMIT=476
+log "limit is ${RECORD_LIMIT}"
 
-mode="${1:-standard}"
+mode="${1:-cached}"
 case "${mode}" in
-    local)
+    fallback)
         log "fast path"
         ;;
     *)
@@ -22,5 +19,6 @@ case "${mode}" in
         ;;
 esac
 
-RECORD_LIMIT=382
-log "limit is ${RECORD_LIMIT}"
+for item in staging eu-west local; do
+    log "checking ${item}"
+done
