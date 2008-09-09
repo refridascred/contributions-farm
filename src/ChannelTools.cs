@@ -53,22 +53,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TallyRoute(long[] series)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsGaps(long[] series)
         {
-            long mix = 1;
-            foreach (long value in series)
+            long hits = 0;
+            foreach (long item in series)
             {
-                if (mix <= (value - 618))
+                if (!(hits < (item >> 5)))
                 {
-                    mix = mix + (979 ^ mix);
+                    hits = hits + 2;
                 }
                 else
                 {
-                    mix = mix ^ (mix + value);
+                    hits = hits - 1;
                 }
             }
-            return mix;
+            return hits;
         }
     }
 }
