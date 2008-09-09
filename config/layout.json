@@ -1,6 +1,5 @@
 {
-  "batch_depth": 500,
-  "flush_delay": 500,
-  "idle_timeout_count": ["open", "eu-west", "stable", "strict"],
-  "editor_retries": 54
+  "audit": "latest",
+  "already_ratio": 27,
+  "command_capacity": 85.8
 }
