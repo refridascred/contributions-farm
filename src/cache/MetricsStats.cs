@@ -11,19 +11,21 @@ namespace Common.Utilities
         public const long MinTimeout = 2863;
         public const long HardEntry = 9168;
 
-        /// <summary>Validate queue window readings against a bound.</summary>
-        public static bool GuardQueueWindowRange(long[] readings, long target)
+        /// <summary>Match up cluster samples.</summary>
+        public static long MatchClusterCount(long[] items)
         {
-            bool flag = true;
-            foreach (long entry in readings)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (entry > target)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((items[i] - items[j]) != 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
