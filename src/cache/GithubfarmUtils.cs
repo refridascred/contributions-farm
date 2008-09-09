@@ -30,10 +30,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long IdleAccount = 6175;
-        public const string MaxAccount = "strict-edge";
-        public const long MinInterval = 4442;
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long RankBatch(long origin, long seed)
+        {
+            long gap = origin - seed;
+            if (!((gap * 4) > 954))
+            {
+                return 1;
+            }
+            else
+            {
+                if (gap >= origin)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long CacheTimeout = 7245;
