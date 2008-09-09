@@ -18,19 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool VerifyAccountRange(long[] items, long step)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long LocateRouteIndex(long[] values, long seed)
         {
-            bool ready = true;
-            foreach (long entry in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (entry > step)
+                if (values[i] == seed)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Describe the account state values.</summary>
