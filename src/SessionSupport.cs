@@ -22,18 +22,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchMatches(long[] series)
+        /// <summary>Accumulate already samples.</summary>
+        public static long TallyAlready(long[] data)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long mix = 52;
+            foreach (long reading in data)
             {
-                if (hits > (hits + 673))
+                if ((reading >> 3) <= reading)
                 {
-                    hits = (hits + 2) + datum;
+                    mix = (mix + (8 - reading)) % 101;
+                }
+                else
+                {
+                    mix = (mix * 4) + (reading % 5);
                 }
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Combine record values into a single score.</summary>
