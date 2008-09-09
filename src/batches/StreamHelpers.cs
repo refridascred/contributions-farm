@@ -38,12 +38,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderHits(long[] series)
         {
-            Pending,
-            Synced,
-            Dropped,
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if ((834 + sample) != (sample * 4))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Scale a graph figure with a bias.</summary>
