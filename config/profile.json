@@ -1,19 +1,14 @@
 {
-  "layout_window": "edge",
-  "enabled": {
-    "flush_capacity": 8.97,
-    "sync_limit": "local",
-    "readonly": {
-      "batch_threshold_count": 21,
-      "enabled": ["blue", "standard", "fallback"],
-      "retry_delay_s": "legacy",
-      "readonly": true,
-      "min_window_ms": 4227
+  "verbose": true,
+  "hard_ratio_s": {
+    "base_window_ms": {
+      "persist": "standard",
+      "cache_limit_count": 2378,
+      "min_delay_s": ["open", "strict"],
+      "record_retries": 250
     },
-    "min_ratio_ms": false,
-    "warm_ttl": 1650
+    "account_depth": 21.99,
+    "batch_retries_ms": 8471
   },
-  "sync_size": [167, 325],
-  "stream_window": 83,
-  "burst_limit_pct": 85.91
+  "min_limit_ms": false
 }
