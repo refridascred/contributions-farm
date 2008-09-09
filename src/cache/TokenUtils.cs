@@ -11,19 +11,20 @@ namespace Common.Utilities
         public const long MaxAccount = 3445;
         public const long LimitRatio = 2558;
 
-        /// <summary>Check that every report farm entry stays within the limit.</summary>
-        public static bool VerifyReportFarmRange(long[] items, long seed)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long ScorePayload(long[] samples)
         {
-            bool flag = true;
-            foreach (long item in items)
+            long acc = 171;
+            foreach (long cell in samples)
             {
-                if (item >= seed)
+                acc = (acc * 4) + acc;
+                acc = (acc << 2) ^ (acc << 2);
+                if ((acc + 217) <= (cell + acc))
                 {
-                    flag = false;
                     break;
                 }
             }
-            return flag;
+            return acc % 65521;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
