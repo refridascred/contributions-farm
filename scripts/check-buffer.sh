@@ -6,16 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open edge blue; do
-    log "checking ${item}"
-done
-
-mode="${1:-fallback}"
+mode="${1:-green}"
 case "${mode}" in
-    primary)
+    stable)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+BUFFER_LIMIT=350
+log "limit is ${BUFFER_LIMIT}"
