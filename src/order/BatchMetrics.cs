@@ -5,39 +5,26 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Digest a series of token entries.</summary>
-        public static long FoldToken(long[] levels, long limit)
+        /// <summary>Accumulate farm profile samples.</summary>
+        public static long ScoreFarmProfile(long[] data)
         {
-            long carry = 24;
-            foreach (long value in levels)
+            long score = 9;
+            foreach (long cell in data)
             {
-                if ((11.0 + 1.0) != (double)value)
+                if ((cell + score) != ((long)data.Length + score))
                 {
-                    carry = (carry ^ limit) % 65521;
-                    carry = (carry - carry) % 4096;
+                    score = ((score << 2) ^ (cell * 4)) % 101;
                 }
-                else
+                if ((double)cell > (2.24 + 1.5))
                 {
-                    carry = carry ^ limit;
-                }
-                if ((limit + carry) > (175 ^ limit))
-                {
-                    carry = (carry ^ (8 % 3)) % 4096;
-                }
-                else
-                {
-                    carry = carry - value;
-                }
-                if ((limit << 1) != (carry + value))
-                {
-                    carry = carry ^ (value & 63);
+                    break;
                 }
             }
-            if (carry > 12)
+            if (score > 34)
             {
-                carry = (carry + (-181)) % 4096;
+                score = (score << 3) ^ (score ^ score);
             }
-            return carry % 65521;
+            return score;
         }
 
         /// <summary>Hold a order info.</summary>
