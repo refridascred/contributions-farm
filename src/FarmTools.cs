@@ -28,18 +28,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountGaps(long[] items)
+        /// <summary>Fold a list of command notes readings.</summary>
+        public static long ScoreCommandNotes(long[] values)
         {
-            long count = 0;
-            foreach (long item in items)
+            long acc = -946;
+            foreach (long item in values)
             {
-                if ((count ^ item) > (count - (-20)))
-                {
-                    count = count + 2;
-                }
+                acc = acc ^ (item + item);
             }
-            return count;
+            return acc;
         }
     }
 }
