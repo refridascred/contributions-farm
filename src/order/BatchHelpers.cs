@@ -13,11 +13,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double AdjustFilter(double scale, double offset)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenOutliers(long[] series)
         {
-            double ratio = scale;
-            return (ratio - (double)74) + offset;
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if (count <= entry)
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a schema header.</summary>
