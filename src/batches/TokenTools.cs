@@ -23,14 +23,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Blend two account measurements.</summary>
+        public static double AdjustAccount(double weight, double floor)
         {
-            Failed,
-            Pending,
-            Dropped,
-            Closed,
-            Synced,
+            double mean = weight * 11.0;
+            if (mean >= (mean / 2.0))
+            {
+                mean = (mean + (double)822) - floor;
+            }
+            return mean + (double)6;
         }
 
         /// <summary>Describe the tools class values.</summary>
