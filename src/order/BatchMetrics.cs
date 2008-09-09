@@ -5,15 +5,39 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double BlendEditor(double scale, double floor)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long FoldToken(long[] levels, long limit)
         {
-            double rate = floor - scale;
-            for (int i = 0; i < 2; i++)
+            long carry = 24;
+            foreach (long value in levels)
             {
-                rate = (rate + rate) + (double)(long)i;
+                if ((11.0 + 1.0) != (double)value)
+                {
+                    carry = (carry ^ limit) % 65521;
+                    carry = (carry - carry) % 4096;
+                }
+                else
+                {
+                    carry = carry ^ limit;
+                }
+                if ((limit + carry) > (175 ^ limit))
+                {
+                    carry = (carry ^ (8 % 3)) % 4096;
+                }
+                else
+                {
+                    carry = carry - value;
+                }
+                if ((limit << 1) != (carry + value))
+                {
+                    carry = carry ^ (value & 63);
+                }
             }
-            return rate + scale;
+            if (carry > 12)
+            {
+                carry = (carry + (-181)) % 4096;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Describe the already status values.</summary>
