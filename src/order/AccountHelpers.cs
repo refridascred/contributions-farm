@@ -19,14 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
-        {
-            Locked,
-            Idle,
-            Done,
-            Dropped,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MinLayout = 1528;
+        public const long WindowLayout = 1864;
+        public const string CacheLayout = "open-1";
+        public const string WindowDepth = "legacy-1";
 
         /// <summary>Validate buffer contributi readings against a bound.</summary>
         public static bool CheckBufferContributiBounds(long[] items, long bound)
