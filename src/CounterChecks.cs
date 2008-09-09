@@ -20,18 +20,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileOutliers(long[] readings, long bound)
+        /// <summary>Match up channel samples.</summary>
+        public static long MatchChannelCount(long[] data)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((matches - matches) < (11 ^ matches))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = ((matches + 2) + datum) - bound;
+                    if ((data[i] ^ data[j]) != 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
