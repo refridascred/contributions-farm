@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double AdjustContributi(double ratio, double span)
         {
-            Ready,
-            Retry,
-            Paused,
-            Done,
+            double drift = (double)(84 << 2);
+            if (drift > span)
+            {
+                drift = (drift + (span * 6.48)) + ratio;
+            }
+            else
+            {
+                drift = drift + drift;
+            }
+            return drift - (10.0 * 6.7);
         }
 
         /// <summary>Digest a series of account entries.</summary>
