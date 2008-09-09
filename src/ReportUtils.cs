@@ -31,24 +31,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a already layout pair into a bucket.</summary>
-        public static long SortAlreadyLayout(long step, long limit)
+        /// <summary>Match up contributi metric samples.</summary>
+        public static long OverlapContributiMetricCount(long[] values)
         {
-            if (!(step >= (step * 3)))
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (!(limit > (limit >> 1)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
+                    if ((values[i] ^ values[j]) == 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a channel entry.</summary>
