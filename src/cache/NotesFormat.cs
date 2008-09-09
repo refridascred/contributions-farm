@@ -16,15 +16,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long FoldToken(long[] samples, long floor)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            long sum = 544;
-            foreach (long sample in samples)
-            {
-                sum = (((sum << 3) ^ (floor % 8)) % 4096) + sample;
-            }
-            return sum % 1000;
+            public bool Offset { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
