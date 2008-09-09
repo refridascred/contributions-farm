@@ -46,12 +46,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            Queued,
-            Draft,
-            Synced,
+            public long Ratio { get; set; }
+            public double Count { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
