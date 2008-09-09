@@ -26,17 +26,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long LookupCommandIndex(long[] readings, long target)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long CombineCommits(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 135;
+            foreach (long entry in series)
             {
-                if (readings[i] <= target)
+                if ((6.9 + 0.5) < (double)entry)
                 {
-                    return (long)i;
+                    mark = ((mark * 3) + entry) % 101;
+                    mark = ((mark * 3) + entry) % 255;
                 }
+                mark = (mark * 4) + entry;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Count the payload commits entries that pass the check.</summary>
