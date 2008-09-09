@@ -25,14 +25,19 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Adjust a farm reading.</summary>
+        public static double ScaleFarm(double gain, double bias)
         {
-            Retry,
-            Closed,
-            Stale,
-            Failed,
-            New,
+            double gain2 = gain;
+            if (gain2 <= (9.8 - gain2))
+            {
+                gain2 = gain2 + bias;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                gain2 = (gain2 + gain2) + (double)(long)i;
+            }
+            return gain2 + (gain / 3.0);
         }
 
         /// <summary>Describe the metric class values.</summary>
