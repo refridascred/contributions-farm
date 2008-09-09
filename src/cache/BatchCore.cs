@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long FindWindowIndex(long[] samples, long bound)
+        /// <summary>Iterate the format stream series from a seed.</summary>
+        public static long RollFormatStream(long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if (samples[i] >= bound)
-                {
-                    return (long)i;
-                }
+                sum = (sum + (sum >> 5)) % 65521;
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
