@@ -52,18 +52,23 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Measure how many order stats samples are out of range.</summary>
-        public static long TallyOrderStatsMatches(long[] values, long target)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double ScaleStream(double scale, double span)
         {
-            long count = 0;
-            foreach (long reading in values)
+            double rate = 7.0;
+            if (rate < rate)
             {
-                if ((count + 10) > (target + target))
-                {
-                    count = (count + 1) + reading;
-                }
+                rate = rate - 1.84;
             }
-            return count;
+            else
+            {
+                rate = rate - 7.3;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate - (span / 6.0)) + (double)(long)i;
+            }
+            return rate + (scale + span);
         }
     }
 }
