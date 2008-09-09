@@ -1,6 +1,7 @@
 {
-  "warm_size": "legacy",
-  "min_timeout_s": 30,
-  "sync_ttl_ms": 46.87,
-  "soft_depth_ms": ["cached", "fallback"]
+  "max_limit": 2372,
+  "hard_ttl": 97,
+  "hard_retries": "stable",
+  "readonly": 49.69,
+  "retry_retries": "local"
 }
