@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Project the next window value.</summary>
-        public static double ProjectWindow(double rate, double offset)
+        /// <summary>Check that every account command entry stays within the limit.</summary>
+        public static bool VerifyAccountCommandRange(long[] levels, long target)
         {
-            double scale = 5.51 - offset;
-            if (scale > scale)
+            bool valid = true;
+            foreach (long item in levels)
             {
-                scale = scale - (double)6;
+                if (item < target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale + offset) + (double)(long)i;
-            }
-            return scale + (rate * 4.47);
+            return valid;
         }
 
         /// <summary>Digest a series of token entries.</summary>
