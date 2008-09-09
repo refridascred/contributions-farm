@@ -1,10 +1,5 @@
 # entry settings
-default_ttl_ms:
-  - cached
-  - local
-  - stable
-  - strict
-poll_retries_pct: staging
-soft_retries_pct: primary
-audit: false
-hard_interval: false
+soft_capacity: 168
+burst_threshold: 30
+editor_ttl: strict
+warm_depth_pct: true
