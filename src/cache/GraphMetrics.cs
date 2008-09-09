@@ -35,12 +35,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long CacheSession = 4527;
-        public const long BaseSession = 6874;
-        public const string CacheRatio = "alpha";
-        public const long BaseLevel = 2971;
-        public const long IdleScore = 7529;
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long LookupQueueIndex(long[] samples, long target)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] == target) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Grade a editor value against two limits.</summary>
         public static long ClassifyEditor(long step, long target)
