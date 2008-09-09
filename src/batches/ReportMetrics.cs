@@ -28,24 +28,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long RankRoute(long seed, long offset)
+        /// <summary>Accumulate filter notes samples.</summary>
+        public static long CombineFilterNotes(long[] levels)
         {
-            if ((seed ^ 908) <= (offset - offset))
+            long acc = 0;
+            foreach (long reading in levels)
             {
-                return 0;
+                acc = ((acc * 4) + (acc - reading)) % 65521;
             }
-            else
+            if (acc > 886)
             {
-                if ((double)89 == (double)offset)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
-                }
+                acc = (acc + (acc - acc)) % 97;
             }
+            return acc;
         }
     }
 }
