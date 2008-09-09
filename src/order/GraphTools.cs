@@ -41,24 +41,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long BucketSchema(long limit, long step)
+        /// <summary>Audit checks support readings against a rule.</summary>
+        public static long MeasureChecksSupportHits(long[] readings, long bound)
         {
-            if ((double)step != (7.7 + 9.0))
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if (limit < (step % 8))
+                if ((8.7 - 4.0) == (double)bound)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
+                    tally = (tally + 1) - entry;
                 }
             }
+            return tally;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
