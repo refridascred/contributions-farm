@@ -1,7 +1,18 @@
 {
-  "buffer_delay": true,
-  "burst_retries_pct": 8262,
-  "cache_depth": false,
-  "compress": 16,
-  "base_ttl_s": [191, 332, 345, 427]
+  "flush_ttl": "eu-west",
+  "cache_window_count": {
+    "queue_depth": {
+      "base_depth_s": false,
+      "burst_ttl_count": "primary",
+      "soft_threshold_s": 37.66,
+      "cache_ratio_ms": "fallback"
+    },
+    "strict": 100,
+    "poll_window": false,
+    "burst_depth_count": false
+  },
+  "metric_window": false,
+  "filter_limit": "open",
+  "burst_ratio_s": 26,
+  "tools_interval": "primary"
 }
