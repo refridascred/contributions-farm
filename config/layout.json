@@ -1,15 +1,6 @@
 {
-  "base_ttl": "legacy",
-  "persist": 30,
-  "idle_ratio_ms": {
-    "soft_ratio_pct": {
-      "support_delay": "local",
-      "readonly": false,
-      "max_interval_pct": true,
-      "persist": true
-    },
-    "strict": [135, 220, 256],
-    "batch_threshold_pct": "fallback"
-  },
-  "base_window_pct": false
+  "batches_size": "staging",
+  "strict": 100,
+  "verbose": 26,
+  "default_threshold_pct": false
 }
