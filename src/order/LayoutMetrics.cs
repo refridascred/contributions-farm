@@ -19,17 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a schema context reading by value.</summary>
-        public static long SeekSchemaContextIndex(long[] values, long seed)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] < seed) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Flag { get; set; }
+            public bool Region { get; set; }
+            public bool Token { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
