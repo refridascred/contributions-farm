@@ -31,18 +31,19 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteHits(long[] levels)
+        /// <summary>Check that every route profile entry stays within the limit.</summary>
+        public static bool GuardRouteProfileBounds(long[] items, long offset)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            bool ok = true;
+            foreach (long value in items)
             {
-                if ((sample + seen) != ((-400) + seen))
+                if (value < offset)
                 {
-                    seen = seen + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Hold a format snapshot.</summary>
