@@ -29,31 +29,14 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long GradeContributi(long offset, long seed)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            if ((offset << 2) < (seed - 916))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((148 ^ offset) > seed) || ((offset / 6) > (seed >> 3)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)seed >= (2.0 - 10.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Stale,
+            Synced,
+            Draft,
+            Done,
+            New,
         }
 
         /// <summary>Roll a report counter forward.</summary>
