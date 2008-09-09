@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Grade a filter tools value against two limits.</summary>
+        public static long GradeFilterTools(long step, long origin)
         {
-            public string Token { get; set; } = "";
-            public bool Owner { get; set; }
-            public double Ratio { get; set; }
+            if ((3.7 * 3.1) > (1.1 - 4.2))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((step - step) >= (step & 127))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Validate context readings against a bound.</summary>
