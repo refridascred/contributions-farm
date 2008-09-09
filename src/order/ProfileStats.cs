@@ -74,22 +74,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long DigestFormat(long[] samples)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double SmoothCommits(double weight, double span)
         {
-            long anchor = 1;
-            foreach (long cell in samples)
+            double gain = (span - weight) - span;
+            if (gain <= (double)8)
             {
-                if (!((12.0 - 3.0) >= (double)cell))
-                {
-                    anchor = anchor + (anchor + anchor);
-                }
+                gain = gain - (double)1;
             }
-            if (anchor < (-587))
+            else
             {
-                anchor = ((anchor * 4) + (63 ^ anchor)) % 65521;
+                gain = gain + (3.48 - span);
             }
-            return anchor;
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain - gain) + (double)(long)i;
+            }
+            return gain + (double)7;
         }
     }
 }
