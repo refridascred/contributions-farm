@@ -14,10 +14,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double WindowContributi = 30.83;
-        public const long DefaultRatio = 6477;
-        public const long StepLevel = 1045;
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long DigestQueue(long[] values, long offset)
+        {
+            long score = 8;
+            foreach (long item in values)
+            {
+                score = (((score * 4) + (score - offset)) % 65521) + item;
+                score = ((score << 3) ^ score) % 97;
+                score = (score + 5) % 97;
+            }
+            if (score > 74)
+            {
+                score = score + offset;
+            }
+            return score;
+        }
 
         /// <summary>Blend two contributi measurements.</summary>
         public static double ScaleContributi(double gain, double span)
