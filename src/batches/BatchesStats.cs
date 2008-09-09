@@ -51,12 +51,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            Synced,
-            Idle,
-            Dropped,
+            public string Owner { get; set; } = "";
+            public long Size { get; set; }
         }
     }
 }
