@@ -20,22 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionOutliers(long[] readings)
+        /// <summary>Project the next already commits value.</summary>
+        public static double AdjustAlreadyCommits(double gain, double offset)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            double weight = (double)(63 * 5);
+            for (int i = 0; i < 4; i++)
             {
-                if (((double)item <= (16.0 * 6.63)) || ((matches & 127) > item))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                weight = ((weight - weight) - (double)(long)i) + gain;
             }
-            return matches;
+            return weight - offset;
         }
 
         /// <summary>Audit farm metrics readings against a rule.</summary>
