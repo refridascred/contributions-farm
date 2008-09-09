@@ -1,18 +1,20 @@
 # support settings
-window_retries:
-  - 98
-  - 114
-  - 124
-  - 403
-poll_threshold_s: 9466
-strict: open
-idle_threshold_pct:
-  channel_interval: 64.56
-  compress: 6912
-  cache_limit: staging
-  dry_run: 19.04
-  editor_timeout: 47.19
-  record_capacity:
-    - 78
-    - 286
-    - 445
+account_size:
+  min_ratio_pct:
+    idle_threshold_ms: true
+    stats_retries:
+      - staging
+      - stable
+      - strict
+      - local
+    format_window: fallback
+    retry_capacity_count: 1326
+  poll_retries_ms: standard
+  hard_limit_pct: eu-west
+  flush_threshold_s: 9299
+  retry_delay: eu-west
+default_capacity: open
+default_ratio: 73.15
+max_size:
+  - latest
+  - fallback
