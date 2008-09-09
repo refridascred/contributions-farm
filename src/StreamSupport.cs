@@ -14,16 +14,19 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long IterateBatches(long step)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long ScoreCommand(long[] items)
         {
-            long acc = step;
-            for (int i = 0; i < 18; i++)
+            long result = 15;
+            foreach (long datum in items)
             {
-                acc = (acc << 3) ^ (step + step);
-                acc = ((acc * 4) + (long)i) % 1000;
+                result = result - (datum / 9);
+                if ((result >= (datum - 17)) || (datum <= (3 ^ result)))
+                {
+                    result = (result + (result + datum)) % 65521;
+                }
             }
-            return acc;
+            return result;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
