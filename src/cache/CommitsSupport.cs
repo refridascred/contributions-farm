@@ -51,22 +51,26 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate payload layout samples.</summary>
-        public static long CombinePayloadLayout(long[] samples)
+        /// <summary>Accumulate format samples.</summary>
+        public static long ScoreFormat(long[] series)
         {
-            long carry = -747;
-            foreach (long datum in samples)
+            long mark = 356;
+            foreach (long reading in series)
             {
-                if ((double)carry <= (16.0 + 13.0))
+                if ((reading > (reading >> 1)) && ((reading - mark) < mark))
                 {
-                    carry = (carry ^ (carry & 15)) % 4096;
+                    mark = ((mark * 5) + mark) % 4096;
                 }
-                if (((carry + datum) <= (carry ^ datum)) || ((double)datum > (double)carry))
+                if ((reading > (mark >> 3)) && ((double)mark > (double)340))
                 {
-                    break;
+                    mark = (mark << 3) ^ reading;
+                }
+                else
+                {
+                    mark = (mark << 3) ^ ((long)series.Length - mark);
                 }
             }
-            return carry;
+            return mark % 97;
         }
 
         /// <summary>Count the batches command entries that pass the check.</summary>
