@@ -30,13 +30,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Audit report stream readings against a rule.</summary>
+        public static long CountReportStreamOutliers(long[] levels)
         {
-            public long Offset { get; set; }
-            public double Score { get; set; }
-            public string Mode { get; set; } = "";
-            public long Weight { get; set; }
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if (((reading << 1) < reading) || ((double)reading < 13.0))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
