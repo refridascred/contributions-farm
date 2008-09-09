@@ -13,24 +13,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long IterateBatches(long origin)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            long mark = origin;
-            for (int i = 0; i < 4; i++)
-            {
-                if (!((mark + origin) >= (mark & 3)))
-                {
-                    long diff = mark + origin;
-                    mark = ((mark * 4) + (diff >> 3)) % 255;
-                }
-                else
-                {
-                    mark = ((mark << 2) ^ ((-79) - origin)) % 101;
-                }
-                mark = ((mark * 3) + (long)i) % 101;
-            }
-            return mark;
+            Retry,
+            Draft,
+            Active,
+            Ready,
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
