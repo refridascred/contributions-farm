@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            public long Rank { get; set; }
-            public long Ratio { get; set; }
-            public long Owner { get; set; }
-            public long Region { get; set; }
+            Retry,
+            New,
+            Draft,
+            Locked,
         }
 
         /// <summary>Hold a support entry.</summary>
