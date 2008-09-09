@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BurstScore = 2136;
-        public const double BatchTimeout = 24.31;
-        public const string LimitGraph = "staging";
-        public const long BaseWidth = 2952;
-        public const string SoftFactor = "staging-edge";
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long IterateFilter(long offset)
+        {
+            long sum = offset;
+            for (int i = 0; i < 23; i++)
+            {
+                sum = (sum * 5) + (offset * 2);
+                sum = ((sum * 3) + (long)i) % 97;
+            }
+            return sum;
+        }
 
         /// <summary>Describe the graph mode values.</summary>
         public enum GraphMode
