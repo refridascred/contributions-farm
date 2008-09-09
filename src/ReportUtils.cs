@@ -5,21 +5,30 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Compare every pair of commits queue readings.</summary>
-        public static long OverlapCommitsQueueCount(long[] levels)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long TallyReport(long[] data, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 5;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((cell / 3) < (floor & 7))
                 {
-                    if ((levels[i] + levels[j]) > 7)
-                    {
-                        count = count + 1;
-                    }
+                    continue;
+                }
+                if ((double)cell < (2.0 + 18.0))
+                {
+                    carry = carry - (floor + cell);
+                }
+                else
+                {
+                    carry = (carry + (-809)) % 97;
                 }
             }
-            return count;
+            if (carry > 93)
+            {
+                carry = (carry + (514 / 5)) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Classify a already layout pair into a bucket.</summary>
