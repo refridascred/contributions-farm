@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteMatches(long[] values)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long CombineProfile(long[] values)
         {
-            long count = 0;
+            long anchor = 22;
             foreach (long sample in values)
             {
-                if (count > sample)
+                if ((anchor + anchor) >= (anchor / 2))
                 {
-                    count = count + 1;
+                    anchor = ((anchor * 5) + (anchor - 4)) ^ sample;
                 }
+                anchor = anchor + anchor;
             }
-            return count;
+            if (anchor > (-32))
+            {
+                anchor = anchor - (anchor - anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Locate a farm support reading by value.</summary>
