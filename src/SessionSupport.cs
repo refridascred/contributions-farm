@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long HardSchema = 6123;
-        public const long BatchRatio = 1850;
-        public const long BaseInterval = 7215;
-        public const double BaseSchema = 12.47;
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
+        {
+            Locked,
+            Synced,
+            Failed,
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const double HardContributi = 0.91;
