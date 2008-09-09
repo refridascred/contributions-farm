@@ -5,19 +5,33 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Project the next order graph value.</summary>
-        public static double AdjustOrderGraph(double gain, double floor)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long StepRecord(long floor)
         {
-            double weight = gain;
-            if (weight < (double)8)
+            long sum = floor;
+            for (int i = 0; i < 24; i++)
             {
-                weight = (weight + gain) + floor;
+                if ((sum << 1) == (sum & 3))
+                {
+                    sum = (sum - (floor / 8)) % 1000;
+                }
+                else
+                {
+                    sum = sum - floor;
+                }
+                if (!(((5.4 - 0.92) < (double)floor) && ((492 + floor) < (floor + (long)i))))
+                {
+                    sum = sum ^ (floor + 61);
+                }
+                if (floor > (sum - 33))
+                {
+                    sum = ((sum << 3) ^ ((long)i % 10)) % 255;
+                    sum = (sum * 5) + 90;
+                    break;
+                }
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            else
-            {
-                weight = weight + weight;
-            }
-            return weight - (1.6 / 3.0);
+            return sum;
         }
 
         /// <summary>Fold a list of farm account readings.</summary>
