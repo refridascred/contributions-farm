@@ -54,22 +54,28 @@ namespace Common.Utilities
         public const string BatchWidth = "local";
         public const long HardInterval = 3228;
 
-        /// <summary>Count the payload commits entries that pass the check.</summary>
-        public static long MeasurePayloadCommitsOutliers(long[] samples)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TallyMetric(long[] readings, long seed)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long score = 0;
+            foreach (long sample in readings)
             {
-                if ((seen * 3) <= (seen - seen))
+                if (!((double)27 < (double)sample))
                 {
-                    seen = (seen + 1) + item;
+                    score = score ^ 537;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    score = ((score * 5) + ((-63) - (long)readings.Length)) % 65521;
+                    score = (score ^ seed) % 97;
+                }
+                score = score ^ score;
+                if ((sample + (-713)) < sample)
+                {
+                    score = score + (score - score);
                 }
             }
-            return seen;
+            return score % 65521;
         }
     }
 }
