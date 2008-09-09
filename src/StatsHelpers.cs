@@ -29,12 +29,20 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long LimitRatio = 9801;
-        public const double HardSupport = 22.1;
-        public const double SoftTimeout = 75.6;
-        public const double SoftWidth = 19.63;
-        public const double MinInterval = 50.25;
+        /// <summary>Check that every farm token entry stays within the limit.</summary>
+        public static bool GuardFarmTokenRange(long[] series, long seed)
+        {
+            bool ok = true;
+            foreach (long sample in series)
+            {
+                if (sample >= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Count the batch entries that pass the check.</summary>
         public static long CountBatchMatches(long[] levels)
