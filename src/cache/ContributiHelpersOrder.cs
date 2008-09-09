@@ -36,19 +36,17 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double BlendMetrics(double bias, double offset)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long LookupBatchIndex(long[] levels, long limit)
         {
-            double mean = (offset + offset) + (bias - offset);
-            if (mean <= 9.51)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mean = mean + (mean + mean);
+                if ((levels[i] >= limit) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                mean = mean - (mean + bias);
-            }
-            return mean + (offset + mean);
+            return -1;
         }
     }
 }
