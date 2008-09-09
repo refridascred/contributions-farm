@@ -1,16 +1,21 @@
 # githubfarm settings
-max_limit_ms:
-  max_size_count: 0.88
-  enabled: true
-  warm_size_pct:
-    - primary
-    - primary
-    - strict
-    - standard
-compress: false
-warm_depth_count: false
-audit: 944
-default_capacity_count: 92
-channel_retries:
-  - primary
-  - legacy
+warm_ratio: 46.69
+dry_run: 5801
+cache_depth_count: open
+batch_delay_count: 27.56
+retry_window_count:
+  context_interval: cached
+  dry_run: 72.64
+  metric_size: 5008
+  min_ratio_s:
+    - blue
+    - latest
+    - edge
+    - stable
+  queue_depth:
+    - 400
+    - 242
+    - 164
+  cache_limit_count:
+    - blue
+    - fallback
