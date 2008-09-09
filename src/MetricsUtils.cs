@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchGaps(long[] levels)
+        /// <summary>Blend two route measurements.</summary>
+        public static double BlendRoute(double gain, double bias)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            double rate = (double)(13 >> 1);
+            for (int i = 0; i < 3; i++)
             {
-                if (item <= (matches / 9))
-                {
-                    matches = matches + 3;
-                }
+                rate = ((rate - rate) + (double)(long)i) + bias;
             }
-            return matches;
+            return rate + gain;
         }
 
         /// <summary>Hold a context entry.</summary>
