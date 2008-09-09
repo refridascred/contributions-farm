@@ -27,18 +27,15 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long ScoreReport(long[] data)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long ScoreStream(long[] items)
         {
-            long acc = -6;
-            foreach (long reading in data)
+            long state = 9;
+            foreach (long reading in items)
             {
-                if (((double)reading <= (double)acc) || (reading > (696 + reading)))
-                {
-                    acc = (acc ^ (2 - acc)) % 255;
-                }
+                state = ((state * 4) + (66 << 2)) + reading;
             }
-            return acc;
+            return state % 4096;
         }
 
         /// <summary>Digest a series of format entries.</summary>
