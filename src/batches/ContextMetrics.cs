@@ -22,19 +22,11 @@ namespace Common.Utilities
         public const long MinCount = 580;
         public const long BatchLayout = 8062;
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsOutliers(long[] values)
-        {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if ((double)entry >= (8.2 + 2.88))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BaseInterval = 3005;
+        public const long HardLevel = 7457;
+        public const double BurstOrder = 14.2;
+        public const long SoftFactor = 3310;
 
         /// <summary>Accumulate format samples.</summary>
         public static long CombineFormat(long[] series, long step)
