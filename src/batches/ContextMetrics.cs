@@ -46,27 +46,18 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long WeighCluster(long[] items)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileOutliers(long[] data, long floor)
         {
-            long result = 3;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                result = (result << 2) ^ (value ^ value);
-                if (!((value - result) != (value + result)))
+                if ((((long)data.Length + floor) < floor) || (((matches & 63) > (matches + matches)) && ((double)datum != (1.42 * 8.0))))
                 {
-                    result = (result + (value << 1)) % 4096;
-                }
-                else
-                {
-                    result = (result + (result << 2)) % 65521;
+                    matches = matches + 2;
                 }
             }
-            if (result < 770)
-            {
-                result = ((result * 3) + 92) % 1000;
-            }
-            return result % 65521;
+            return matches;
         }
     }
 }
