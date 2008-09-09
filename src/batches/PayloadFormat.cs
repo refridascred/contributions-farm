@@ -40,13 +40,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
-        {
-            public long Limit { get; set; }
-            public double Mode { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double MinCache = 66.04;
+        public const long BurstCache = 6790;
+        public const long MaxCache = 900;
+        public const long RetryRatio = 1279;
 
         /// <summary>Project the next record value.</summary>
         public static double SmoothRecord(double scale, double floor)
