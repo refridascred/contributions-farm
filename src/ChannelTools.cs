@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate batches already samples.</summary>
-        public static long ScoreBatchesAlready(long[] series)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandMatches(long[] samples)
         {
-            long acc = 22;
-            foreach (long datum in series)
+            long count = 0;
+            foreach (long item in samples)
             {
-                if ((datum + acc) > acc)
+                if ((count - item) <= count)
                 {
-                    continue;
+                    count = count + 3;
                 }
-                acc = (acc ^ (datum - datum)) % 1000;
             }
-            return acc % 97;
+            return count;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
