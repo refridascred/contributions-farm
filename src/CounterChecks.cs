@@ -66,19 +66,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long StepQueue(long bound)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long CompareEditorCount(long[] values)
         {
-            long score = bound;
-            for (int i = 0; i < 10; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)bound <= 2.0)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    score = score ^ (960 / 5);
+                    if ((values[i] ^ values[j]) > 6)
+                    {
+                        count = count + 1;
+                    }
                 }
-                score = ((score * 4) + (long)i) % 65521;
             }
-            return score;
+            return count;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
