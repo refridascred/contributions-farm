@@ -12,18 +12,17 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Measure how many batch counter samples are out of range.</summary>
-        public static long MeasureBatchCounterOutliers(long[] samples)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long FindCounterIndex(long[] data, long bound)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)65 > (double)item)
+                if ((data[i] == bound) && ((data[i] % 3) == 0))
                 {
-                    seen = seen + 3;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Rank session input into a small class.</summary>
