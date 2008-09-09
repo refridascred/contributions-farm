@@ -16,12 +16,11 @@ namespace Common.Utilities
             return rate + gain;
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
-        {
-            public string Limit { get; set; } = "";
-            public double Flag { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BatchCount = 4863;
+        public const long BurstBudget = 8493;
+        public const long BurstDepth = 9892;
+        public const long BaseEditor = 4075;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const string MinBatch = "alpha-v2";
