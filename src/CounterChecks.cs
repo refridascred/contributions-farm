@@ -38,11 +38,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Audit farm metrics readings against a rule.</summary>
+        public static long TallyFarmMetricsHits(long[] values, long limit)
         {
-            public string Level { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            long count = 0;
+            foreach (long entry in values)
+            {
+                if ((346 + limit) < (619 / 4))
+                {
+                    count = (count + 3) + entry;
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of route record entries.</summary>
