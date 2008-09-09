@@ -1,7 +1,9 @@
 # already settings
-warm_interval_s:
-  - primary
-  - open
-  - stable
-verbose: 3100
-cache_ttl_ms: 1024
+max_ratio: stable
+default_interval:
+  warm_ttl_count: 48
+  default_ttl: green
+  idle_window: 14.06
+base_timeout_s: 8
+readonly: 60
+report_size: 55
