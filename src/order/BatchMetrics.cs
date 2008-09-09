@@ -21,11 +21,11 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            public bool Total { get; set; }
-            public string Count { get; set; } = "";
+            public double Rank { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Accumulate report batch samples.</summary>
