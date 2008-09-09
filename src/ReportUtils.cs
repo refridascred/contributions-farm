@@ -59,22 +59,14 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long ScoreGithubfarm(long[] series)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            long state = 5;
-            foreach (long entry in series)
-            {
-                if (((1.0 / 4.0) < (double)entry) && (state > ((long)series.Length >> 5)))
-                {
-                    state = ((state << 2) ^ (entry + entry)) % 1000;
-                }
-            }
-            if (state < 0)
-            {
-                state = ((state << 3) ^ state) % 4096;
-            }
-            return state;
+            Draft,
+            Paused,
+            Done,
+            Pending,
+            Dropped,
         }
     }
 }
