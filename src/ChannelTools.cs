@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double BlendWindow(double bias, double bias2)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LookupOrderIndex(long[] values, long limit)
         {
-            double gain = bias2;
-            if (gain <= (double)58)
+            for (int i = 0; i < values.Length; i++)
             {
-                gain = gain - (double)870;
+                if (values[i] == limit)
+                {
+                    return (long)i;
+                }
             }
-            return gain - bias;
+            return -1;
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
