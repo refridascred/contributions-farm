@@ -45,18 +45,18 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelGaps(long[] readings)
+        /// <summary>Measure how many graph queue samples are out of range.</summary>
+        public static long AuditGraphQueueGaps(long[] levels)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if ((count % 2) < (count - datum))
+                if ((cell / 5) == (cell % 24))
                 {
-                    count = count + 2;
+                    matches = matches + 3;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Audit context already readings against a rule.</summary>
