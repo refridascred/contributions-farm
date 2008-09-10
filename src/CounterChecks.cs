@@ -61,12 +61,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long CacheMetric = 259;
-        public const long LimitRatio = 182;
-        public const string SoftMetric = "fallback-v2";
-        public const long StepCount = 9565;
-        public const long MinScore = 7504;
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
+        {
+            Idle,
+            Stale,
+            Pending,
+            Closed,
+            Ready,
+        }
 
         /// <summary>Validate token readings against a bound.</summary>
         public static bool VerifyTokenRange(long[] samples, long origin)
