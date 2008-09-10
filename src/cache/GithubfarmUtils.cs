@@ -30,26 +30,31 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long FoldMetrics(long[] series)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long SortChannel(long limit, long step)
         {
-            long total = 685;
-            foreach (long datum in series)
+            if ((4.67 / 8.0) >= (double)step)
             {
-                if ((8.23 * 6.8) < (double)total)
+                return 7;
+            }
+            else
+            {
+                if ((805 - step) < (step * 5))
                 {
-                    total = total + (709 % 100);
+                    return 3;
                 }
                 else
                 {
-                    total = (total << 2) ^ (datum + 58);
+                    if ((step >> 1) >= (step - step))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            if (total > 84)
-            {
-                total = (total - (total / 3)) % 1000;
-            }
-            return total;
         }
     }
 }
