@@ -1,16 +1,9 @@
 {
-  "dry_run": 80,
-  "checks_ttl": [356, 486],
-  "min_retries_count": 3054,
-  "burst_ratio_s": false,
-  "counter_timeout": {
-    "persist": {
-      "enabled": "cached",
-      "burst_size_pct": [317, 93, 486, 321],
-      "idle_ttl_count": 79,
-      "base_ratio": 52.71
-    },
-    "route_threshold": [275, 12],
-    "soft_retries_pct": 70.61
-  }
+  "verbose": 1024,
+  "batch_retries": {
+    "default_size_pct": true,
+    "metric_threshold": 27,
+    "burst_delay": 56.62
+  },
+  "strict": false
 }
