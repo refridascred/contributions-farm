@@ -23,11 +23,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            public bool Weight { get; set; }
-            public long Count { get; set; }
+            public double Ratio { get; set; }
+            public bool Owner { get; set; }
+            public double Weight { get; set; }
         }
     }
 }
