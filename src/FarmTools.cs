@@ -15,10 +15,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string HardWidth = "primary-1";
-        public const string IdleAccount = "stable-edge";
-        public const string BatchAccount = "standard-v2";
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long WindowRatio = 2019;
+        public const long IdleBudget = 9052;
+        public const long HardQueue = 9397;
+        public const long StepQueue = 2187;
 
         /// <summary>Accumulate token metric samples.</summary>
         public static long FoldTokenMetric(long[] series, long offset)
