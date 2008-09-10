@@ -36,14 +36,10 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
-        {
-            Pending,
-            Active,
-            Failed,
-            Dropped,
-            Draft,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BatchTools = 2276;
+        public const double BatchDepth = 97.83;
+        public const long StepSize = 3288;
+        public const double LimitTools = 66.23;
     }
 }
