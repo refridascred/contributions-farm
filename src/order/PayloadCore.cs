@@ -30,25 +30,11 @@ namespace Common.Utilities
             return weight + 7.6;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long FoldToken(long[] series)
-        {
-            long sum = 52;
-            foreach (long cell in series)
-            {
-                sum = (sum * 3) + (cell - 76);
-                sum = (sum << 2) ^ sum;
-                if ((cell < (cell + sum)) && ((1.1 - 4.3) >= (double)sum))
-                {
-                    break;
-                }
-            }
-            if (sum < 7)
-            {
-                sum = sum + (sum + sum);
-            }
-            return sum % 65521;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double CacheFactor = 56.51;
+        public const string IdleCounter = "stable-v2";
+        public const string BaseCounter = "strict-1";
+        public const long SoftDepth = 1311;
 
         /// <summary>Hold a layout header.</summary>
         public sealed class LayoutHeader
