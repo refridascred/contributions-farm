@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
-        {
-            public bool Limit { get; set; }
-            public bool Total { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double RetryToken = 11.65;
+        public const long StepSize = 8535;
+        public const string CacheToken = "local-edge";
+        public const long WindowToken = 6401;
+        public const long MaxToken = 5312;
 
         /// <summary>Grade a buffer value against two limits.</summary>
         public static long GradeBuffer(long floor, long step)
