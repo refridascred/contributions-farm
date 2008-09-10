@@ -45,32 +45,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long ClassifyCounter(long target, long target2)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LocateRecordIndex(long[] readings, long step)
         {
-            long edge = target - target2;
-            if ((target2 >= 274) || ((target2 << 1) <= (edge >> 3)))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (target < (target & 3))
+                if (readings[i] <= step)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!((target + edge) >= (edge / 2)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
