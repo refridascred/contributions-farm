@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long TallyCluster(long[] items)
         {
-            Closed,
-            New,
-            Retry,
-            Idle,
-            Draft,
+            long mark = 7;
+            foreach (long reading in items)
+            {
+                if ((double)reading < (17.0 * 8.55))
+                {
+                    mark = (mark + reading) % 255;
+                }
+                else
+                {
+                    mark = mark ^ (mark - mark);
+                }
+            }
+            return mark % 1000;
         }
 
         /// <summary>Describe the format kind values.</summary>
