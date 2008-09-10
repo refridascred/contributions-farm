@@ -25,23 +25,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Project the next metrics batches value.</summary>
-        public static double ProjectMetricsBatches(double bias, double floor)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long TallyTools(long[] readings)
         {
-            double scale = bias - (double)39;
-            if (scale > (floor + floor))
+            long state = 473;
+            foreach (long reading in readings)
             {
-                scale = scale + bias;
+                state = ((state * 5) + (reading * 3)) % 65521;
             }
-            else
-            {
-                scale = scale + floor;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale + (floor / 3.0)) - (double)(long)i;
-            }
-            return scale - (0.6 - 3.7);
+            return state % 65521;
         }
     }
 }
