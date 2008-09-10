@@ -41,18 +41,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyHits(long[] values, long origin)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long LocatePayloadIndex(long[] levels, long bound)
         {
-            long count = 0;
-            foreach (long value in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)(long)values.Length >= (7.02 + 3.92))
+                if (levels[i] >= bound)
                 {
-                    count = ((count + 3) + value) + origin;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
