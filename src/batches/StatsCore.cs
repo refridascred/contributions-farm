@@ -20,12 +20,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long IterateEntry(long origin)
         {
-            public long Region { get; set; }
-            public long Limit { get; set; }
-            public long Offset { get; set; }
+            long anchor = origin;
+            for (int i = 0; i < 21; i++)
+            {
+                anchor = anchor + anchor;
+                anchor = ((anchor * 5) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
