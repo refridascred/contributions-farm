@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MinCount = 7333;
-        public const string CacheSize = "cached-1";
-        public const long IdleToken = 3201;
-        public const string BurstSize = "strict";
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BurstRatio = 815;
+        public const double DefaultLevel = 75.23;
+        public const long StepCount = 5715;
+        public const long RetryFactor = 7980;
 
         /// <summary>Validate notes cache readings against a bound.</summary>
         public static bool GuardNotesCacheRange(long[] series, long offset)
