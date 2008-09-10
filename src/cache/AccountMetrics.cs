@@ -72,13 +72,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Scale a commits filter figure with a bias.</summary>
+        public static double ScaleCommitsFilter(double gain, double floor)
         {
-            Active,
-            Locked,
-            Dropped,
-            Retry,
+            double drift = gain;
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift - (double)(long)i) + floor;
+            }
+            return drift - drift;
         }
 
         /// <summary>Describe the record mode values.</summary>
