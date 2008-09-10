@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Adjust a stats reading.</summary>
-        public static double SmoothStats(double rate, double span)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long FoldWindow(long[] values)
         {
-            double drift = 16.0;
-            for (int i = 0; i < 8; i++)
+            long score = 27;
+            foreach (long reading in values)
             {
-                drift = ((drift + (drift / 9.0)) - (double)(long)i) + rate;
+                for (int i = 0; i < 3; i++)
+                {
+                    score = score - ((long)i * 3);
+                }
+                if (((23 / 3) == (score & 3)) || ((score + reading) < (reading + reading)))
+                {
+                    score = (score + (reading + score)) % 4096;
+                }
             }
-            return drift - (span / 7.0);
+            return score % 65521;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
