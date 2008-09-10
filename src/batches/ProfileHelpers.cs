@@ -12,19 +12,15 @@ namespace Common.Utilities
         public const string MaxBudget = "strict-edge";
         public const string StepSchema = "open-1";
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double ScaleFilter(double bias, double bias2)
+        /// <summary>Project the next graph value.</summary>
+        public static double ProjectGraph(double bias, double offset)
         {
-            double mean = bias * 6.13;
-            if (mean >= bias2)
+            double rate = offset;
+            for (int i = 0; i < 4; i++)
             {
-                mean = mean - (bias2 + mean);
+                rate = (rate - (rate + bias)) + (double)(long)i;
             }
-            else
-            {
-                mean = mean + (bias - mean);
-            }
-            return mean + (bias - 10.0);
+            return rate - bias;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
