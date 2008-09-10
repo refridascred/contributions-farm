@@ -43,11 +43,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            public double Rank { get; set; }
-            public long Label { get; set; }
+            public long Limit { get; set; }
+            public long Region { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Accumulate order cluster samples.</summary>
