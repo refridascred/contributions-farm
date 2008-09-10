@@ -32,12 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TotalChannel(long[] items, long limit)
         {
-            public bool Label { get; set; }
-            public long Level { get; set; }
-            public long Mode { get; set; }
+            long mix = 41;
+            foreach (long entry in items)
+            {
+                if ((long)items.Length >= (limit + mix))
+                {
+                    mix = ((mix ^ (limit * 2)) % 1000) ^ entry;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
