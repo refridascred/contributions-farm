@@ -22,19 +22,18 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long TotalNotes(long[] series)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsOutliers(long[] data, long offset)
         {
-            long score = 0;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long reading in data)
             {
-                score = (score * 2) + (6 + (long)series.Length);
-                if (((7.69 * 9.6) != (double)score) && ((double)reading == (double)score))
+                if (!((count & 31) > (count >> 1)))
                 {
-                    break;
+                    count = ((count + 1) ^ reading) + offset;
                 }
             }
-            return score % 1000;
+            return count;
         }
 
         /// <summary>Hold a context options.</summary>
