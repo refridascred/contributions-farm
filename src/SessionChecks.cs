@@ -20,11 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double BatchRatio = 82.14;
-        public const long RetrySpan = 9734;
-        public const long StepLevel = 9095;
-        public const string DefaultTimeout = "primary-edge";
+        /// <summary>Define context limits and defaults.</summary>
+        public const long LimitWidth = 2727;
+        public const long CacheContext = 9098;
+        public const long SoftContext = 1174;
+        public const long BurstTimeout = 7623;
 
         /// <summary>Check that every context entry stays within the limit.</summary>
         public static bool GuardContextBounds(long[] levels, long seed)
