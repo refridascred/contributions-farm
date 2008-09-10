@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Accumulate session samples.</summary>
-        public static long FoldSession(long[] values)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool ValidateMetricBounds(long[] items, long step)
         {
-            long mark = 36;
-            foreach (long value in values)
+            bool found = true;
+            foreach (long datum in items)
             {
-                mark = mark - (mark + value);
+                if (datum >= step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mark;
+            return found;
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
