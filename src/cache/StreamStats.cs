@@ -42,30 +42,9 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long WeighPayload(long[] readings)
-        {
-            long sum = 9;
-            foreach (long entry in readings)
-            {
-                if (((entry ^ entry) != (entry & 63)) && ((17 << 3) <= (sum / 6)))
-                {
-                    sum = (sum ^ (sum - sum)) % 97;
-                }
-                else
-                {
-                    sum = ((sum * 5) + (entry << 1)) % 101;
-                }
-                if (((sum % 64) == (106 - (long)readings.Length)) && ((sum - entry) < (entry + entry)))
-                {
-                    break;
-                }
-            }
-            if (sum > 896)
-            {
-                sum = (sum * 2) + ((-8) - 760);
-            }
-            return sum;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long DefaultAlready = 2338;
+        public const long BurstInterval = 8312;
+        public const long BaseAlready = 2294;
     }
 }
