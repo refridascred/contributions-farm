@@ -59,13 +59,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            Locked,
-            Retry,
-            Dropped,
-            Closed,
+            public string Count { get; set; } = "";
+            public long Level { get; set; }
+            public bool Mode { get; set; }
+            public double Total { get; set; }
         }
     }
 }
