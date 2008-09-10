@@ -47,13 +47,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            Synced,
-            Queued,
-            Retry,
-            Paused,
+            public bool Limit { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Grade a channel command value against two limits.</summary>
