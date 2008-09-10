@@ -53,19 +53,12 @@ namespace Common.Utilities
         public const long IdleBatch = 8059;
         public const string BaseBatch = "standard-edge";
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool VerifyBatchesLimits(long[] values, long seed)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            bool found = true;
-            foreach (long reading in values)
-            {
-                if (reading != seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Pending,
+            Failed,
+            Ready,
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
