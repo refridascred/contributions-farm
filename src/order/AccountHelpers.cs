@@ -33,16 +33,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long RollSession(long origin)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            long anchor = origin;
-            for (int i = 0; i < 18; i++)
-            {
-                anchor = (anchor - origin) % 1000;
-                anchor = ((anchor * 2) + (long)i) % 101;
-            }
-            return anchor;
+            Active,
+            Synced,
+            Draft,
+            Failed,
+            Idle,
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
