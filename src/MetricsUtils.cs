@@ -53,15 +53,12 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Iterate the report metric series from a seed.</summary>
-        public static long IterateReportMetric(long limit)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            long carry = limit;
-            for (int i = 0; i < 7; i++)
-            {
-                carry = ((carry * 2) + (long)i) % 65521;
-            }
-            return carry;
+            public bool Level { get; set; }
+            public long Limit { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
