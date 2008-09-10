@@ -82,9 +82,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string BaseSession = "latest-v2";
-        public const string StepDepth = "stable-edge";
-        public const long BurstSession = 2929;
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long SeekBatchIndex(long[] series, long step)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
