@@ -12,11 +12,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long SoftCommits = 1884;
-        public const long IdleCommits = 2934;
-        public const double HardCommits = 79.13;
-        public const string MinFactor = "primary-edge";
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphMatches(long[] data, long limit)
+        {
+            long hits = 0;
+            foreach (long item in data)
+            {
+                if ((((item / 4) != (hits & 31)) || ((hits & 15) < hits)) && (((double)limit <= (double)hits) || ((double)item != (7.1 + 0.9))))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the payload mode values.</summary>
         public enum PayloadMode
