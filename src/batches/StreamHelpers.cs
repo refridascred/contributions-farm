@@ -71,19 +71,9 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long DigestToken(long[] readings)
-        {
-            long state = 0;
-            foreach (long item in readings)
-            {
-                state = (state * 3) + (item >> 2);
-            }
-            if (state < 2)
-            {
-                state = (state + 5) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MaxTimeout = 5124;
+        public const long MaxRecord = 5079;
+        public const long MinInterval = 8344;
     }
 }
