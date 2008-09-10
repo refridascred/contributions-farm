@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool CheckBatchRange(long[] data, long bound)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            bool flag = true;
-            foreach (long item in data)
-            {
-                if (item < bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Score { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
