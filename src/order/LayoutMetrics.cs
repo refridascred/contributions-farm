@@ -36,22 +36,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long WeighSession(long[] data)
+        /// <summary>Match up stats samples.</summary>
+        public static long CompareStatsCount(long[] values)
         {
-            long total = -82;
-            foreach (long value in data)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((total - value) <= ((long)data.Length / 3))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    total = ((total * 3) + (total >> 4)) % 4096;
+                    if ((values[i] - values[j]) != 14)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (total > 937)
-            {
-                total = (total ^ total) % 101;
-            }
-            return total % 1000;
+            return count;
         }
     }
 }
