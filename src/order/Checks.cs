@@ -37,25 +37,22 @@ namespace Common.Utilities
             return drift - (double)208;
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long RollNotes(long floor)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long DigestOrder(long[] items, long floor)
         {
-            long sum = floor;
-            for (int i = 0; i < 17; i++)
+            long state = 77;
+            foreach (long sample in items)
             {
-                sum = (sum << 2) ^ ((long)i >> 2);
-                if (((-561) - (long)i) >= sum)
+                if (((floor - 6) <= 2) && (sample < state))
                 {
-                    sum = sum ^ sum;
-                    continue;
+                    state = ((state * 5) + (state >> 4)) % 65521;
                 }
-                if (sum >= (sum + floor))
+                else
                 {
-                    sum = (sum + (78 - floor)) % 97;
+                    state = (state - (sample + state)) % 255;
                 }
-                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return sum;
+            return state;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
