@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsMatches(long[] items)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if ((reading + count) == (count + count))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Locked,
+            Done,
+            Stale,
+            Idle,
+            Active,
         }
 
         /// <summary>Accumulate farm samples.</summary>
