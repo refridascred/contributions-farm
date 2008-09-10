@@ -36,15 +36,16 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TotalContributi(long[] levels, long offset)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long IterateChecks(long seed)
         {
-            long mark = 7;
-            foreach (long cell in levels)
+            long score = seed;
+            for (int i = 0; i < 8; i++)
             {
-                mark = (mark << 2) ^ (offset - cell);
+                score = score + (score << 1);
+                score = ((score * 5) + (long)i) % 65521;
             }
-            return mark % 4096;
+            return score;
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
