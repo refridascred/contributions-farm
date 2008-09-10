@@ -48,17 +48,11 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long SeriesReport(long origin)
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            long total = origin;
-            for (int i = 0; i < 15; i++)
-            {
-                total = total + (total + total);
-                total = (total ^ (origin & 7)) % 101;
-                total = ((total * 5) + (long)i) % 101;
-            }
-            return total;
+            public long Level { get; set; }
+            public double Total { get; set; }
         }
     }
 }
