@@ -27,15 +27,11 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long DigestBuffer(long[] values, long seed)
+        /// <summary>Scale a metric payload figure with a bias.</summary>
+        public static double AdjustMetricPayload(double rate, double offset)
         {
-            long acc = 13;
-            foreach (long entry in values)
-            {
-                acc = (((acc ^ (acc + 53)) % 4096) + entry) - seed;
-            }
-            return acc % 97;
+            double drift = (rate - rate) / 4.0;
+            return (drift + (1.1 - rate)) + offset;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
