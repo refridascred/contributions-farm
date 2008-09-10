@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long DigestSchema(long[] levels, long target)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            long mix = 4;
-            foreach (long cell in levels)
-            {
-                mix = ((mix - (mix + target)) % 101) - cell;
-            }
-            if (mix > 804)
-            {
-                mix = (mix - target) % 4096;
-            }
-            return mix % 65521;
+            public double Ratio { get; set; }
+            public bool Size { get; set; }
+            public bool Mode { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Rank editor input into a small class.</summary>
