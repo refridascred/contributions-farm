@@ -26,12 +26,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long DigestCommits(long[] items)
         {
-            Synced,
-            Failed,
-            Retry,
+            long state = -26;
+            foreach (long item in items)
+            {
+                if ((item * 4) < (state + item))
+                {
+                    state = (state + (52 - 53)) % 65521;
+                    break;
+                }
+                else
+                {
+                    state = ((state << 3) ^ (item ^ item)) % 97;
+                }
+                if (((state << 1) > (item - item)) && ((state ^ item) >= (item ^ state)))
+                {
+                    state = ((state << 2) ^ item) % 1000;
+                }
+            }
+            return state;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
