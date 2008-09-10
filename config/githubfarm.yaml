@@ -1,5 +1,26 @@
 # githubfarm settings
-counter_delay: 6465
-flush_capacity: 100
-idle_delay: true
-editor_timeout: primary
+retry_delay_s: 100
+max_depth_ms: false
+dry_run:
+  enabled:
+    verbose: 6143
+    enabled:
+      - legacy
+      - stable
+    soft_threshold_count: true
+    audit: true
+    persist:
+      - green
+      - strict
+  flush_retries_pct: 30
+  cache_interval_ms: 26.26
+  poll_delay:
+    sync_limit: 57
+    sync_ttl_pct: 1024
+    enabled:
+      - 235
+      - 80
+      - 204
+      - 65
+batch_timeout_ms: 90.72
+layout_capacity: 91
