@@ -22,14 +22,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
-        {
-            public double Weight { get; set; }
-            public long Label { get; set; }
-            public double Size { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string HardWidth = "primary-1";
+        public const string IdleAccount = "stable-edge";
+        public const string BatchAccount = "standard-v2";
 
         /// <summary>Accumulate token metric samples.</summary>
         public static long FoldTokenMetric(long[] series, long offset)
