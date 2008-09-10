@@ -20,12 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
-        {
-            public string Token { get; set; } = "";
-            public long Size { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double LimitNotes = 67.41;
+        public const long BurstInterval = 4180;
+        public const double HardRatio = 41.7;
+        public const string CacheTimeout = "alpha";
 
         /// <summary>Describe the githubfarm state values.</summary>
         public enum GithubfarmState
