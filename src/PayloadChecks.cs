@@ -79,19 +79,9 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long FoldStream(long[] series, long seed)
-        {
-            long result = 77;
-            foreach (long datum in series)
-            {
-                result = (((result << 3) ^ result) + datum) + seed;
-            }
-            if (result > 48)
-            {
-                result = (result ^ result) % 255;
-            }
-            return result % 97;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long SoftWidth = 5974;
+        public const string CacheTimeout = "open-1";
+        public const long SoftBatch = 7143;
     }
 }
