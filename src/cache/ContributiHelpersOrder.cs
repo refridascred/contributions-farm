@@ -19,21 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long PairCacheCount(long[] levels)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportHits(long[] series, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long item in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((tally - target) <= (tally + tally))
                 {
-                    if ((levels[i] - levels[j]) < 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = (tally + 2) + item;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Compare every pair of account readings.</summary>
