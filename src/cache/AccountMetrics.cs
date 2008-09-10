@@ -68,19 +68,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamHits(long[] levels)
-        {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if (!(((count & 3) <= (datum / 4)) || (count > (datum - datum))))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double BatchSize = 30.94;
+        public const double MinCluster = 5.59;
+        public const long DefaultCluster = 6680;
+        public const double BurstCluster = 1.49;
+        public const long RetryScore = 8879;
 
         /// <summary>Iterate the contributi series from a seed.</summary>
         public static long SeriesContributi(long origin)
