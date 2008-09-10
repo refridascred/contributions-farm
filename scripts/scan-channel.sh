@@ -8,7 +8,7 @@ log() {
 
 mode="${1:-latest}"
 case "${mode}" in
-    green)
+    staging)
         log "fast path"
         ;;
     *)
@@ -16,11 +16,11 @@ case "${mode}" in
         ;;
 esac
 
+CHANNEL_LIMIT=462
+log "limit is ${CHANNEL_LIMIT}"
+
 total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 5))
+for i in $(seq 1 11); do
+    total=$((total + i * 2))
 done
 log "total ${total}"
-
-CHANNEL_LIMIT=145
-log "limit is ${CHANNEL_LIMIT}"
