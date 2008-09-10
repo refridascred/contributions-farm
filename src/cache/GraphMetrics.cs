@@ -28,21 +28,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long PairBufferCount(long[] items)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long GradeAlready(long limit, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((limit <= 1) && ((offset >> 4) > (offset ^ offset)))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((double)limit <= (double)offset)
                 {
-                    if ((items[i] ^ items[j]) < 11)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 4;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return seen;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
