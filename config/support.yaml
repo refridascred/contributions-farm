@@ -1,7 +1,8 @@
 # support settings
-cache_timeout:
-  - blue
-  - open
-  - edge
-cache_delay: open
-poll_timeout_ms: 59.73
+cache_capacity: blue
+default_delay:
+  - 192
+  - 293
+  - 13
+burst_ratio_count: eu-west
+idle_limit_ms: true
