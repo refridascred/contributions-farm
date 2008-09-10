@@ -74,12 +74,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Accumulate stream samples.</summary>
+        public static long FoldStream(long[] series, long seed)
         {
-            public long Count { get; set; }
-            public double Label { get; set; }
-            public bool Ratio { get; set; }
+            long result = 77;
+            foreach (long datum in series)
+            {
+                result = (((result << 3) ^ result) + datum) + seed;
+            }
+            if (result > 48)
+            {
+                result = (result ^ result) % 255;
+            }
+            return result % 97;
         }
     }
 }
