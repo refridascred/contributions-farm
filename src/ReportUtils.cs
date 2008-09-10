@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Accumulate record samples.</summary>
-        public static long TallyRecord(long[] samples, long seed)
+        /// <summary>Check that every metric token entry stays within the limit.</summary>
+        public static bool CheckMetricTokenLimits(long[] samples, long target)
         {
-            long total = 6;
+            bool found = true;
             foreach (long sample in samples)
             {
-                if (seed < (sample * 3))
+                if (sample < target)
                 {
-                    total = (total ^ seed) % 97;
+                    found = false;
+                    break;
                 }
             }
-            return total % 97;
+            return found;
         }
 
         /// <summary>Fold a list of farm account readings.</summary>
