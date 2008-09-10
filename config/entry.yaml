@@ -1,8 +1,6 @@
 # entry settings
-graph_ratio: 8212
-strict: false
-idle_timeout_s:
-  - latest
-  - edge
-  - green
-  - primary
+base_threshold_pct: 500
+burst_threshold_count: 1721
+cache_timeout_s: latest
+cluster_window: stable
+persist: cached
