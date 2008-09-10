@@ -1,7 +1,14 @@
 # entry settings
-burst_retries_s: 1024
-stats_size: open
-burst_depth_s: latest
-payload_size: stable
-hard_size: open
-verbose: 34
+batch_size_count: cached
+flush_limit_count:
+  cluster_ratio:
+    hard_retries_pct: open
+    audit: true
+    stats_ttl: 63.41
+  retry_threshold_count: 53.69
+  hard_capacity_ms: green
+poll_depth_pct: 95.98
+idle_window_s:
+  - standard
+  - stable
+payload_ttl: local
