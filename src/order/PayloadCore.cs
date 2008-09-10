@@ -25,11 +25,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double CacheFactor = 56.51;
-        public const string IdleCounter = "stable-v2";
-        public const string BaseCounter = "strict-1";
-        public const long SoftDepth = 1311;
+        /// <summary>Look up the position of a token graph sample.</summary>
+        public static long SeekTokenGraphIndex(long[] levels, long step)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
         public static long PairPayloadCount(long[] readings)
