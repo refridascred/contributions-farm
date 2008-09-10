@@ -28,18 +28,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmGaps(long[] samples)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double AdjustGraph(double ratio, double bias)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            double drift = 6.2;
+            if (drift < 5.0)
             {
-                if (((entry - tally) >= tally) && (((entry + (-74)) == (1 + entry)) && ((12.0 / 9.0) > (double)entry)))
-                {
-                    tally = tally + 2;
-                }
+                drift = ((drift - (double)70) - ratio) + bias;
             }
-            return tally;
+            return drift + 11.0;
         }
 
         /// <summary>Check that every buffer githubfarm entry stays within the limit.</summary>
