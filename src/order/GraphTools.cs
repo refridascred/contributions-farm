@@ -20,12 +20,19 @@ namespace Common.Utilities
             return drift - (span * 5.0);
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Check that every notes batches entry stays within the limit.</summary>
+        public static bool ValidateNotesBatchesBounds(long[] samples, long origin)
         {
-            Failed,
-            Idle,
-            Pending,
+            bool ready = true;
+            foreach (long entry in samples)
+            {
+                if (entry != origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Grade a cluster stream value against two limits.</summary>
