@@ -28,10 +28,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long IdleSpan = 1399;
-        public const long RetryCommand = 2246;
-        public const long WindowCommand = 2876;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BurstCache = 3303;
+        public const long WindowCache = 3479;
+        public const double DefaultCache = 13.42;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long MinCommits = 9132;
