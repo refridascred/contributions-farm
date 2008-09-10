@@ -21,11 +21,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double ProjectTools(double scale, double span)
+        /// <summary>Project the next notes value.</summary>
+        public static double ProjectNotes(double ratio, double span)
         {
-            double load = span;
-            return load - (scale * 2.8);
+            double ratio2 = span + (ratio * 10.0);
+            if (ratio2 <= (span - ratio2))
+            {
+                ratio2 = ratio2 - (double)(-972);
+            }
+            return ratio2 + (span * 7.0);
         }
     }
 }
