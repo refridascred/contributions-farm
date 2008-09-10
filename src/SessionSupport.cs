@@ -15,14 +15,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Adjust a channel reading.</summary>
+        public static double SmoothChannel(double bias, double span)
         {
-            Locked,
-            Retry,
-            Stale,
-            Done,
-            Ready,
+            double weight = 14.0 * 15.0;
+            if (weight < (double)0)
+            {
+                weight = weight - (span + span);
+            }
+            else
+            {
+                weight = weight - (double)104;
+            }
+            return weight + (span + bias);
         }
 
         /// <summary>Describe the already level values.</summary>
