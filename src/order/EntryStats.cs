@@ -43,9 +43,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double HardScore = 40.07;
-        public const long BatchTools = 7044;
-        public const long HardRatio = 1173;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MaxLevel = 7518;
+        public const double DefaultRatio = 14.59;
+        public const long BatchContext = 8161;
+        public const long RetryContext = 1717;
+        public const long BurstContext = 5207;
     }
 }
