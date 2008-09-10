@@ -36,12 +36,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
-        {
-            public string Count { get; set; } = "";
-            public long Limit { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BaseAlready = 1624;
+        public const long DefaultAlready = 620;
+        public const double StepCount = 18.06;
+        public const long BatchAlready = 8051;
+        public const string IdleAlready = "legacy-v2";
 
         /// <summary>Iterate the token series from a seed.</summary>
         public static long IterateToken(long floor)
