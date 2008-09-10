@@ -33,13 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            Paused,
-            Pending,
-            Idle,
-            Draft,
+            public long Score { get; set; }
+            public bool Limit { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
