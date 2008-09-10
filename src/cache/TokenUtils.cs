@@ -13,24 +13,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long ClassifyRoute(long limit, long offset)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            if (9.5 >= (double)limit)
-            {
-                return 0;
-            }
-            else
-            {
-                if (((offset >> 1) <= limit) || ((offset + offset) == (113 * 5)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public double Limit { get; set; }
+            public string Rank { get; set; } = "";
+            public string Label { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a stream entry.</summary>
