@@ -69,11 +69,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double SmoothTools(double weight, double bias)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            double weight2 = (double)((-1) - (-727));
-            return (weight2 - (bias / 9.0)) + weight;
+            public string Weight { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
     }
 }
