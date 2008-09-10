@@ -87,19 +87,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool ValidateSupportBounds(long[] readings, long origin)
-        {
-            bool found = true;
-            foreach (long reading in readings)
-            {
-                if (reading < origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long RetrySpan = 8518;
+        public const double IdlePayload = 53.92;
+        public const long BatchPayload = 1606;
+        public const long MinSpan = 6715;
+        public const long MinCount = 4906;
     }
 }
