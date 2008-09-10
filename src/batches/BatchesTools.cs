@@ -26,19 +26,9 @@ namespace Common.Utilities
         public const double StepLevel = 45.1;
         public const long MinWidth = 189;
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool GuardBufferBounds(long[] levels, long origin)
-        {
-            bool ok = true;
-            foreach (long reading in levels)
-            {
-                if (reading > origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BatchSchema = 6559;
+        public const long MaxScore = 2536;
+        public const long RetryRatio = 1793;
     }
 }
