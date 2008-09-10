@@ -36,12 +36,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long SortFilter(long offset, long floor)
         {
-            Failed,
-            Stale,
-            New,
+            long span = offset ^ floor;
+            if (offset >= (span & 31))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((6.2 * 6.46) == (double)floor)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((-68) & 7) > span)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((offset >> 3) != (7 << 1))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Match up buffer samples.</summary>
