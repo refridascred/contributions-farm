@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TallyGithubfarm(long[] series)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long SortCounter(long offset, long seed)
         {
-            long mix = 0;
-            foreach (long entry in series)
+            if (seed < (offset + offset))
             {
-                mix = ((mix * 2) + (entry % 16)) % 97;
-                if (mix < (entry << 2))
+                return 5;
+            }
+            else
+            {
+                if (offset <= (offset - offset))
                 {
-                    mix = (mix ^ (mix - mix)) % 255;
+                    return 0;
+                }
+                else
+                {
+                    if (((3.0 + 7.0) == (double)offset) && ((offset + offset) < (offset >> 3)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return mix;
         }
 
         /// <summary>Match up window samples.</summary>
