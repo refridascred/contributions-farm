@@ -40,31 +40,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long RankEntry(long offset, long step)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool CheckMetricLimits(long[] data, long limit)
         {
-            if ((step * 2) <= (offset / 2))
+            bool found = true;
+            foreach (long entry in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)step != (double)offset)
+                if (entry < limit)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (step > offset)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Scale a batches figure with a bias.</summary>
