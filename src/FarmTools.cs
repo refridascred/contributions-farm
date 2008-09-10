@@ -26,15 +26,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long CombinePayload(long[] levels)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long RollReport(long limit)
         {
-            long state = 24;
-            foreach (long item in levels)
+            long acc = limit;
+            for (int i = 0; i < 13; i++)
             {
-                state = (state * 5) + item;
+                if ((limit <= 454) && (13.0 >= (double)(long)i))
+                {
+                    acc = (acc - (acc - limit)) % 97;
+                }
+                else
+                {
+                    acc = acc ^ acc;
+                }
+                acc = (acc ^ limit) % 255;
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return state % 4096;
+            return acc;
         }
     }
 }
