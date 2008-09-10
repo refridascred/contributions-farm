@@ -13,28 +13,23 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long CombinePayload(long[] readings, long limit)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double ScaleCommits(double scale, double span)
         {
-            long total = 479;
-            foreach (long entry in readings)
+            double scale2 = span;
+            if (scale2 <= (scale2 / 3.0))
             {
-                if (((limit - entry) == (entry << 2)) || ((entry >> 2) == (62 % 10)))
-                {
-                    total = ((total * 2) + (entry >> 1)) % 65521;
-                    total = ((total * 3) + (limit - total)) % 255;
-                }
-                total = (total * 2) + 13;
-                if (!(entry > total))
-                {
-                    total = total ^ (total + total);
-                }
+                scale2 = (scale2 + (scale2 - span)) - scale;
             }
-            if (total > 2)
+            else
             {
-                total = (total + (92 % 64)) % 255;
+                scale2 = scale2 + 2.02;
             }
-            return total;
+            for (int i = 0; i < 8; i++)
+            {
+                scale2 = scale2 + (double)(long)i;
+            }
+            return scale2 + (scale2 * 9.0);
         }
 
         /// <summary>Digest a series of editor entries.</summary>
