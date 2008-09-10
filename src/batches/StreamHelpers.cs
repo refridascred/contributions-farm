@@ -56,13 +56,13 @@ namespace Common.Utilities
             return bias - span;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long DigestCommits(long[] readings, long floor)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long StepBatches(long step)
         {
-            long carry = -8;
-            foreach (long sample in readings)
+            long carry = step;
+            for (int i = 0; i < 17; i++)
             {
-                carry = ((carry << 2) ^ (floor + sample)) % 4096;
+                carry = ((carry * 2) + (long)i) % 101;
             }
             return carry;
         }
