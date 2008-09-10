@@ -52,17 +52,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long LocateQueueIndex(long[] series, long step)
+        /// <summary>Digest a series of stats entry entries.</summary>
+        public static long CombineStatsEntry(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = 38;
+            foreach (long reading in samples)
             {
-                if ((series[i] == step) && ((series[i] % 2) != 0))
+                if (((double)reading < (double)sum) || ((double)sum >= (double)reading))
                 {
-                    return (long)i;
+                    sum = ((sum * 3) + sum) % 65521;
                 }
             }
-            return -1;
+            return sum % 1000;
         }
     }
 }
