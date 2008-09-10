@@ -51,12 +51,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Check that every buffer githubfarm entry stays within the limit.</summary>
+        public static bool ValidateBufferGithubfarmLimits(long[] series, long offset)
         {
-            Closed,
-            Idle,
-            Stale,
+            bool ok = true;
+            foreach (long entry in series)
+            {
+                if (entry > offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
