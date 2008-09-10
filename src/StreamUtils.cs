@@ -10,14 +10,22 @@ namespace Common.Utilities
         public const long BurstWidth = 8234;
         public const double MinAlready = 67.07;
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextMatches(long[] samples, long origin)
         {
-            Draft,
-            Idle,
-            Ready,
-            Synced,
-            Dropped,
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if ((double)origin >= (1.0 - 8.91))
+                {
+                    tally = (tally + 1) + datum;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a format summary.</summary>
