@@ -1,11 +1,14 @@
 # Command notes
 
-The checks helpers are pure functions, so they are safe to call from any thread.
-When a schema fails, the metric handler retries a few times before giving up.
-When a order fails, the layout handler retries a few times before giving up.
+The commits module keeps contributi values in sync with the support cache.
+When a payload fails, the buffer handler retries a few times before giving up.
+
+Use githubfarm settings to tune how often token data is refreshed.
+Use cache settings to tune how often payload data is refreshed.
+The tools module keeps metric values in sync with the filter cache.
 
 ## Guidelines
 
-- Document new profile fields
-- Log every token change
-- Prefer contributi defaults
+- Keep payload values small
+- Validate cluster input early
+- Prefer order defaults
