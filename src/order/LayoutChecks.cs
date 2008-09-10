@@ -45,18 +45,23 @@ namespace Common.Utilities
             return load + span;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long TallyProfileHits(long[] series)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long TotalPayload(long[] readings)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long score = 351;
+            foreach (long entry in readings)
             {
-                if ((((entry * 3) > (-79)) && ((matches & 63) > (matches ^ matches))) && (((530 / 3) != (matches + matches)) || ((entry - matches) >= (87 << 1))))
+                score = ((score * 5) + (entry ^ score)) % 65521;
+                if (((entry - 778) == (entry / 3)) && ((entry % 7) <= score))
                 {
-                    matches = matches + 1;
+                    break;
                 }
             }
-            return matches;
+            if (score > 32)
+            {
+                score = score ^ (score ^ score);
+            }
+            return score;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
