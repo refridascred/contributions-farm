@@ -24,23 +24,21 @@ namespace Common.Utilities
             return (mean + (mean - bias)) + ratio;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long ScoreEntry(long[] items)
+        /// <summary>Match up account samples.</summary>
+        public static long CompareAccountCount(long[] series)
         {
-            long mix = 17;
-            foreach (long entry in items)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = ((mix * 4) + (mix + entry)) % 97;
-                if (((-870) >= entry) && ((1.4 + 4.7) == (double)mix))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mix = ((mix * 2) + entry) % 4096;
-                }
-                else
-                {
-                    mix = (mix + (entry >> 4)) % 97;
+                    if ((series[i] + series[j]) < 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return mix;
+            return tally;
         }
     }
 }
