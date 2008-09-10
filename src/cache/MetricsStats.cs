@@ -67,17 +67,15 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long LookupTokenIndex(long[] values, long step)
+        /// <summary>Blend two route farm measurements.</summary>
+        public static double SmoothRouteFarm(double rate, double bias)
         {
-            for (int i = 0; i < values.Length; i++)
+            double drift = rate;
+            for (int i = 0; i < 8; i++)
             {
-                if ((values[i] == step) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                drift = (drift - bias) + (double)(long)i;
             }
-            return -1;
+            return drift - (double)9;
         }
 
         /// <summary>Describe the layout kind values.</summary>
