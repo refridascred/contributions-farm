@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long SeriesSchema(long floor)
         {
-            public long Limit { get; set; }
-            public long Mode { get; set; }
+            long total = floor;
+            for (int i = 0; i < 20; i++)
+            {
+                total = (total << 2) ^ (floor & 255);
+                total = ((total * 3) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Describe the queue class values.</summary>
