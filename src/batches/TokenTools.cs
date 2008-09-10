@@ -43,12 +43,13 @@ namespace Common.Utilities
             return mean + (double)6;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            New,
-            Dropped,
-            Done,
+            public bool Offset { get; set; }
+            public long Size { get; set; }
+            public string Region { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
     }
 }
