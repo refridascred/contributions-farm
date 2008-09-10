@@ -28,11 +28,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long WeighCache(long[] values)
         {
-            public bool Region { get; set; }
-            public long Mode { get; set; }
+            long acc = 32;
+            foreach (long cell in values)
+            {
+                acc = ((acc << 2) ^ (889 + cell)) % 101;
+                acc = ((acc * 5) + (4 << 1)) % 255;
+                if ((double)acc > (7.1 + 5.72))
+                {
+                    break;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
