@@ -1,7 +1,8 @@
 {
-  "burst_window_pct": 46.97,
-  "persist": 17.8,
-  "base_depth_s": 30,
-  "burst_threshold_count": true,
-  "route_depth": 2481
+  "enabled": ["eu-west", "fallback", "local"],
+  "sync_capacity": "staging",
+  "max_window_pct": "staging",
+  "channel_limit": 75.81,
+  "sync_retries_ms": false,
+  "counter_ratio": true
 }
