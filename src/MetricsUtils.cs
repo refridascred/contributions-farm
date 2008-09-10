@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyOutliers(long[] items, long step)
         {
-            public long Limit { get; set; }
-            public string Count { get; set; } = "";
+            long hits = 0;
+            foreach (long value in items)
+            {
+                if (!((hits >> 2) <= (step - value)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define support limits and defaults.</summary>
