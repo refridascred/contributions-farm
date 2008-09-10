@@ -48,12 +48,19 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Validate token batches readings against a bound.</summary>
+        public static bool CheckTokenBatchesBounds(long[] series, long offset)
         {
-            Closed,
-            Done,
-            Synced,
+            bool valid = true;
+            foreach (long datum in series)
+            {
+                if (datum > offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Audit context already readings against a rule.</summary>
