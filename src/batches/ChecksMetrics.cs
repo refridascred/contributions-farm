@@ -54,21 +54,21 @@ namespace Common.Utilities
         public const string BaseFactor = "alpha-1";
         public const string DefaultRatio = "local-1";
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long DigestGithubfarm(long[] readings)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long CompareNotesCount(long[] items)
         {
-            long mark = 274;
-            foreach (long cell in readings)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                long seen = (mark - cell) + (cell % 7);
-                if (cell > (cell - cell))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mark = (mark ^ seen) % 1000;
-                    continue;
+                    if ((items[i] - items[j]) > 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                mark = mark + (mark + cell);
             }
-            return mark;
+            return tally;
         }
     }
 }
