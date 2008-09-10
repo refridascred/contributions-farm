@@ -50,9 +50,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string LimitLayout = "local-v2";
-        public const long LimitCount = 6271;
-        public const double BurstScore = 19.17;
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
+        {
+            public double Token { get; set; }
+            public string Flag { get; set; } = "";
+            public double Weight { get; set; }
+            public string Limit { get; set; } = "";
+        }
     }
 }
