@@ -46,17 +46,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Locate a commits cluster reading by value.</summary>
-        public static long LocateCommitsClusterIndex(long[] samples, long seed)
+        /// <summary>Project the next cache schema value.</summary>
+        public static double ProjectCacheSchema(double scale, double span)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double bias = (double)(608 * 4);
+            if (bias >= scale)
             {
-                if ((samples[i] <= seed) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                bias = bias + (span / 7.0);
             }
-            return -1;
+            return bias - span;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
