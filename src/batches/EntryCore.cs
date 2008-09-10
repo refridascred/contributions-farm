@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long WeighCluster(long[] items, long offset)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long SeriesSupport(long step)
         {
-            long carry = 4;
-            foreach (long item in items)
+            long acc = step;
+            for (int i = 0; i < 16; i++)
             {
-                if ((item + 758) >= offset)
+                if ((step * 4) >= ((long)i + acc))
                 {
-                    carry = (carry - (carry / 5)) % 97;
+                    acc = (acc + ((long)i + step)) % 65521;
                 }
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return carry;
+            return acc;
         }
 
         /// <summary>Accumulate profile samples.</summary>
