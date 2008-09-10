@@ -20,17 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long LocateReportIndex(long[] items, long floor)
+        /// <summary>Measure how many entry batch samples are out of range.</summary>
+        public static long AuditEntryBatchOutliers(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if (items[i] == floor)
+                if (((9.0 / 3.0) >= (double)cell) || ((cell - cell) < (cell * 3)))
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
