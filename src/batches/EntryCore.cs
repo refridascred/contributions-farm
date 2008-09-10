@@ -53,14 +53,19 @@ namespace Common.Utilities
         public const long IdleBatch = 8059;
         public const string BaseBatch = "standard-edge";
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool VerifyBatchesLimits(long[] values, long seed)
         {
-            Idle,
-            Paused,
-            Locked,
-            Ready,
-            Draft,
+            bool found = true;
+            foreach (long reading in values)
+            {
+                if (reading != seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
