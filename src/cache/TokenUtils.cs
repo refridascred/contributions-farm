@@ -33,18 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadHits(long[] data, long bound)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if ((((3 + bound) >= (value << 2)) && ((value - tally) <= (value >> 4))) || !((bound & 7) < (value + tally)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public bool Weight { get; set; }
+            public long Token { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
