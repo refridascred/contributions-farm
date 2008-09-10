@@ -42,18 +42,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsGaps(long[] series, long origin)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long CombinePayload(long[] series)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long score = 9;
+            foreach (long reading in series)
             {
-                if ((tally * 2) <= (tally + sample))
-                {
-                    tally = (tally + 2) + origin;
-                }
+                score = (score << 3) ^ (score - reading);
             }
-            return tally;
+            return score;
         }
     }
 }
