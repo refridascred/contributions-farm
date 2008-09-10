@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutMatches(long[] series)
         {
-            public string Level { get; set; } = "";
-            public long Total { get; set; }
-            public string Region { get; set; } = "";
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if ((cell + 46) != (cell + cell))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
