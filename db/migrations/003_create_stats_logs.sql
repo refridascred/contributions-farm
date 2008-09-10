@@ -2,10 +2,10 @@
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
     label TEXT,
+    score REAL NOT NULL DEFAULT 0,
     weight REAL,
-    state TEXT NOT NULL DEFAULT 'new'
+    ratio REAL,
+    rank INTEGER
 );
 
-CREATE INDEX IF NOT EXISTS idx_stats_logs_state ON stats_logs (state);
-
-INSERT INTO stats_logs (label, weight, state) VALUES ('open', 96.46, 'blue');
+CREATE INDEX IF NOT EXISTS idx_stats_logs_weight ON stats_logs (weight);
