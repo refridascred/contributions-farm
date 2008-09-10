@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double MinMetrics = 68.02;
-        public const double IdleInterval = 54.51;
-        public const long BaseSpan = 6239;
-        public const long MaxMetrics = 7078;
-        public const long BatchLevel = 8012;
+        /// <summary>Project the next queue value.</summary>
+        public static double AdjustQueue(double gain, double floor)
+        {
+            double rate = (double)37 + (floor / 4.0);
+            return (rate - 3.7) + gain;
+        }
 
         /// <summary>Grade a stream metric value against two limits.</summary>
         public static long GradeStreamMetric(long target, long bound)
