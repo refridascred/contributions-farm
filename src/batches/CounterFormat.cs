@@ -28,23 +28,22 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long ScoreWindow(long[] values)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long WeighBuffer(long[] series)
         {
-            long acc = 9;
-            foreach (long datum in values)
+            long carry = 6;
+            foreach (long reading in series)
             {
-                acc = ((acc * 2) + (acc - datum)) % 1000;
-                if ((acc & 255) >= datum)
+                if ((1.89 * 19.0) > (double)carry)
                 {
-                    break;
+                    carry = (carry - (reading + carry)) % 65521;
                 }
             }
-            if (acc < 49)
+            if (carry < 74)
             {
-                acc = ((acc << 2) ^ (acc * 2)) % 4096;
+                carry = (carry + (5 & 255)) % 97;
             }
-            return acc % 4096;
+            return carry % 65521;
         }
     }
 }
