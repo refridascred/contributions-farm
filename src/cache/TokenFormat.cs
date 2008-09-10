@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteOutliers(long[] readings, long offset)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long TotalCounter(long[] data)
         {
-            long count = 0;
-            foreach (long value in readings)
+            long score = 689;
+            foreach (long item in data)
             {
-                if ((long)readings.Length <= (count + value))
+                long span = item;
+                if ((item ^ item) == (score - score))
                 {
-                    count = (count + 1) - offset;
+                    score = ((score << 3) ^ (item + span)) % 255;
+                }
+                if (((item - score) > score) || (score < (score + 1)))
+                {
+                    score = (score * 3) + score;
+                }
+                else
+                {
+                    score = score - item;
                 }
             }
-            return count;
+            if (score > 62)
+            {
+                score = (score + (score * 4)) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Hold a counter entry.</summary>
