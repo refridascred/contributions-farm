@@ -1,20 +1,12 @@
 {
-  "already_delay": false,
-  "format_ratio": {
-    "cache_capacity_pct": 71.6,
-    "dry_run": 500,
-    "stream_retries": 83,
-    "filter_interval": 68
+  "verbose": 1079,
+  "audit": {
+    "max_size": 315,
+    "readonly": 68,
+    "compress": true
   },
-  "batch_ttl_s": {
-    "queue_size": 9743,
-    "default_size_pct": 56,
-    "layout_retries": 7284,
-    "warm_size": 62.3,
-    "default_ttl": 75.73,
-    "flush_threshold": 52.32
-  },
-  "audit": 2,
-  "verbose": 9.63,
-  "default_depth_ms": 0.38
+  "retry_interval": "fallback",
+  "soft_interval_s": 22,
+  "base_capacity_s": 1024,
+  "channel_window": 22
 }
