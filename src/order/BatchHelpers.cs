@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Locate a stream notes reading by value.</summary>
-        public static long SeekStreamNotesIndex(long[] series, long step)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double ScaleChannel(double scale, double floor)
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double load = floor - floor;
+            return (load - 4.0) + scale;
         }
 
         /// <summary>Adjust a graph window reading.</summary>
