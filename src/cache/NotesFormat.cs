@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Match up record samples.</summary>
-        public static long OverlapRecordCount(long[] levels)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 3)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public string Size { get; set; } = "";
+            public long Owner { get; set; }
+            public long Stamp { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
