@@ -25,19 +25,15 @@ namespace Common.Utilities
         public const long HardEntry = 7371;
         public const long BurstEntry = 226;
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool VerifyGithubfarmBounds(long[] values, long floor)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long RollBatch(long target)
         {
-            bool stale = true;
-            foreach (long datum in values)
+            long acc = target;
+            for (int i = 0; i < 6; i++)
             {
-                if (datum >= floor)
-                {
-                    stale = false;
-                    break;
-                }
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return stale;
+            return acc;
         }
 
         /// <summary>Hold a order info.</summary>
