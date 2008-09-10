@@ -26,18 +26,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheGaps(long[] items, long seed)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long GradeQueue(long floor, long step)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long delta = floor ^ step;
+            if ((delta % 97) > (floor % 5))
             {
-                if (!((datum - datum) != (seed & 31)) || !((19.0 - 0.15) <= (double)count))
+                return 4;
+            }
+            else
+            {
+                if (!((double)delta <= (double)step))
                 {
-                    count = count + 3;
+                    return 6;
+                }
+                else
+                {
+                    if (floor < (floor >> 1))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((68 * 2) > (floor ^ step))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Count the contributi account entries that pass the check.</summary>
