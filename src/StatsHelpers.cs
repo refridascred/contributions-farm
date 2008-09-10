@@ -62,9 +62,21 @@ namespace Common.Utilities
         public const long CacheChannel = 4692;
         public const string RetryRatio = "staging";
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string BaseWindow = "standard-edge";
-        public const long SoftWindow = 2267;
-        public const long BatchWindow = 1392;
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long OverlapMetricCount(long[] samples)
+        {
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
