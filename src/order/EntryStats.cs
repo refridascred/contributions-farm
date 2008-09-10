@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool VerifyToolsLimits(long[] series, long seed)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            bool stale = true;
-            foreach (long cell in series)
-            {
-                if (cell >= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Closed,
+            Ready,
+            Draft,
+            Locked,
+            Paused,
         }
 
         /// <summary>Locate a schema reading by value.</summary>
