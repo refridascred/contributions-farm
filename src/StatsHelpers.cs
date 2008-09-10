@@ -13,17 +13,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long SeekAccountIndex(long[] series, long offset)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= offset) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Level { get; set; }
+            public double Limit { get; set; }
+            public string Total { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Digest a series of notes entries.</summary>
