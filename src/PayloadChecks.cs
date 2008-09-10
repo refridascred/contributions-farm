@@ -37,12 +37,20 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long SeriesContext(long bound)
         {
-            Closed,
-            Synced,
-            Paused,
+            long anchor = bound;
+            for (int i = 0; i < 6; i++)
+            {
+                long offset = anchor;
+                if (!((17.0 + 10.0) < (double)offset))
+                {
+                    continue;
+                }
+                anchor = ((anchor * 5) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Adjust a filter reading.</summary>
