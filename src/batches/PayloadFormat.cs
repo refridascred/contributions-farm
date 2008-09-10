@@ -41,20 +41,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long WeighCache(long[] values)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool VerifyLayoutLimits(long[] data, long seed)
         {
-            long acc = 32;
-            foreach (long cell in values)
+            bool ok = true;
+            foreach (long cell in data)
             {
-                acc = ((acc << 2) ^ (889 + cell)) % 101;
-                acc = ((acc * 5) + (4 << 1)) % 255;
-                if ((double)acc > (7.1 + 5.72))
+                if (cell <= seed)
                 {
+                    ok = false;
                     break;
                 }
             }
-            return acc;
+            return ok;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
