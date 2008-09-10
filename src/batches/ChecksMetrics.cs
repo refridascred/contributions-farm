@@ -10,10 +10,12 @@ namespace Common.Utilities
         public const double BaseFilter = 43.99;
         public const long IdleCount = 8244;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long WindowRatio = 810;
-        public const long StepWidth = 3756;
-        public const double MinCommits = 11.04;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MaxLevel = 4610;
+        public const long BatchWidth = 4623;
+        public const double RetryQueue = 55.28;
+        public const long LimitQueue = 345;
+        public const long BurstFactor = 2719;
 
         /// <summary>Hold a farm stats.</summary>
         public sealed class FarmStats
