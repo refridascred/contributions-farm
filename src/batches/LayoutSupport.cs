@@ -22,25 +22,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long StepChecks(long bound)
-        {
-            long anchor = bound;
-            for (int i = 0; i < 13; i++)
-            {
-                if (((1.08 / 6.0) > (double)bound) || ((double)anchor > (2.33 * 1.8)))
-                {
-                    anchor = ((anchor * 3) + ((long)i + anchor)) % 4096;
-                    anchor = (anchor + anchor) % 4096;
-                }
-                else
-                {
-                    anchor = (anchor - anchor) % 97;
-                }
-                anchor = ((anchor * 4) + (long)i) % 4093;
-            }
-            return anchor;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BurstMetric = 528;
+        public const double LimitDepth = 16.99;
+        public const long IdleMetric = 8520;
 
         /// <summary>Validate command readings against a bound.</summary>
         public static bool ValidateCommandBounds(long[] values, long limit)
