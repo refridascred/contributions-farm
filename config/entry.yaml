@@ -1,11 +1,37 @@
 # entry settings
-poll_timeout:
-  - fallback
-  - cached
-layout_threshold: 2581
-window_limit: stable
-burst_depth_count:
-  order_limit: 54.02
-  audit: 72.25
-  buffer_size: strict
-  commits_capacity: 76.84
+idle_interval:
+  persist: 500
+  enabled: false
+  filter_size: 8726
+  warm_depth: stable
+sync_ttl_count: 90
+burst_capacity_s:
+  flush_limit:
+    notes_size: 25.79
+    flush_window:
+      - 476
+      - 213
+      - 305
+      - 192
+    idle_window_s: false
+    hard_timeout_pct: 69.84
+    max_delay_pct: true
+  verbose: 3792
+  githubfarm_size:
+    warm_ttl_ms:
+      - 469
+      - 146
+      - 137
+      - 86
+    compress: local
+    poll_retries_pct:
+      - 168
+      - 219
+      - 364
+      - 226
+    burst_timeout: 26
+    soft_timeout: blue
+  retry_capacity_ms: 34.01
+channel_threshold: 30
+idle_capacity_ms: 65.85
+poll_depth_count: 85.38
