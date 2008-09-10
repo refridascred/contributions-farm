@@ -38,19 +38,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two stats order measurements.</summary>
-        public static double ScaleStatsOrder(double ratio, double bias)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmOutliers(long[] series)
         {
-            double ratio2 = ratio + (9.6 * 9.89);
-            if (ratio2 > (bias * 1.88))
+            long hits = 0;
+            foreach (long value in series)
             {
-                ratio2 = ratio2 - ratio;
+                if ((hits + hits) != (hits + 51))
+                {
+                    hits = (hits + 2) - value;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio2 = (ratio2 - 17.0) - (double)(long)i;
-            }
-            return ratio2 - bias;
+            return hits;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
