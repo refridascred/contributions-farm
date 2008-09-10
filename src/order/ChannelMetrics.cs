@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Validate already buffer readings against a bound.</summary>
+        public static bool CheckAlreadyBufferLimits(long[] levels, long bound)
         {
-            public bool Score { get; set; }
-            public double Level { get; set; }
-            public double Owner { get; set; }
-            public long Size { get; set; }
+            bool found = true;
+            foreach (long cell in levels)
+            {
+                if (cell > bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
