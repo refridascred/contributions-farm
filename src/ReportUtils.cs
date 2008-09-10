@@ -63,13 +63,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            public string Count { get; set; } = "";
-            public long Level { get; set; }
-            public bool Mode { get; set; }
-            public double Total { get; set; }
+            Ready,
+            Retry,
+            Pending,
         }
     }
 }
