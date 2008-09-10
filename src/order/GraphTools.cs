@@ -28,11 +28,32 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string BatchScore = "standard-v2";
-        public const long MinBuffer = 7254;
-        public const long MaxSize = 6057;
-        public const long SoftScore = 3606;
+        /// <summary>Grade a cluster stream value against two limits.</summary>
+        public static long ClassifyClusterStream(long target, long seed)
+        {
+            if ((double)(-113) <= (double)target)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((seed & 3) >= (seed + target))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((seed + 657) > (seed & 63))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the order mode values.</summary>
         public enum OrderMode
