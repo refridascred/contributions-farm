@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long CombineCluster(long[] readings)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double BlendGraph(double bias, double span)
         {
-            long mix = 4;
-            foreach (long datum in readings)
+            double drift = (double)(972 / 4);
+            if (drift < (span * 9.3))
             {
-                mix = ((mix << 2) ^ 0) + datum;
+                drift = (drift + (drift / 2.0)) + bias;
             }
-            return mix % 4096;
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift + 8.0) - (double)(long)i;
+            }
+            return drift - drift;
         }
 
         /// <summary>Rank payload profile input into a small class.</summary>
