@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool VerifyChecksBounds(long[] samples, long limit)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsMatches(long[] series, long limit)
         {
-            bool stale = true;
-            foreach (long cell in samples)
+            long matches = 0;
+            foreach (long item in series)
             {
-                if (cell <= limit)
+                if ((limit >> 3) <= (limit * 3))
                 {
-                    stale = false;
-                    break;
+                    matches = (matches + 3) ^ item;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
