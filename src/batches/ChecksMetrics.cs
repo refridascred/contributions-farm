@@ -53,12 +53,20 @@ namespace Common.Utilities
             return load - bias;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long CacheFactor = 197;
-        public const long HardDepth = 8237;
-        public const long SoftMetric = 4548;
-        public const string BaseFactor = "alpha-1";
-        public const string DefaultRatio = "local-1";
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool GuardMetricsBounds(long[] items, long origin)
+        {
+            bool valid = true;
+            foreach (long sample in items)
+            {
+                if (sample > origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
         public static long CompareNotesCount(long[] items)
