@@ -14,19 +14,17 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Blend two contributi farm measurements.</summary>
-        public static double SmoothContributiFarm(double scale, double bias)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long LocateFarmIndex(long[] items, long floor)
         {
-            double mean = bias;
-            if (mean < (mean * 10.0))
+            for (int i = 0; i < items.Length; i++)
             {
-                mean = (mean + (double)495) - scale;
+                if ((items[i] < floor) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                mean = mean + bias;
-            }
-            return mean - (double)9;
+            return -1;
         }
 
         /// <summary>Project the next farm value.</summary>
