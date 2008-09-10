@@ -13,19 +13,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TotalFilter(long[] levels)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long OverlapSchemaCount(long[] data)
         {
-            long score = -67;
-            foreach (long cell in levels)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                score = (score << 2) ^ (cell * 3);
-                if ((cell > (cell - cell)) && ((double)cell == (0.44 / 4.0)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    score = ((score << 3) ^ score) % 101;
+                    if ((data[i] ^ data[j]) < 5)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return score % 97;
+            return tally;
         }
 
         /// <summary>Compare every pair of record readings.</summary>
