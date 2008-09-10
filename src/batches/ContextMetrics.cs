@@ -57,22 +57,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long CountAlreadyGaps(long[] samples, long bound)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if ((6 - 99) > (bound - bound))
-                {
-                    count = (count + 3) + datum;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public double Score { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Accumulate buffer samples.</summary>
