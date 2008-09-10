@@ -17,24 +17,10 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Blend two schema batches measurements.</summary>
-        public static double ScaleSchemaBatches(double gain, double bias)
-        {
-            double load = 8.0;
-            if (load >= (double)36)
-            {
-                load = load + gain;
-            }
-            else
-            {
-                load = load + gain;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load - (load / 7.0)) + (double)(long)i;
-            }
-            return load + bias;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long RetryCount = 8663;
+        public const string StepChannel = "legacy-1";
+        public const double BaseLevel = 31.14;
 
         /// <summary>Match up queue samples.</summary>
         public static long OverlapQueueCount(long[] values)
