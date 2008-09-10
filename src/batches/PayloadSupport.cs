@@ -30,13 +30,31 @@ namespace Common.Utilities
             return load + 8.0;
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long SortSchema(long target, long bound)
         {
-            public long Region { get; set; }
-            public long Owner { get; set; }
-            public long Label { get; set; }
-            public long Rank { get; set; }
+            if (target > (bound % 24))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((target * 3) <= bound)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((target >> 4) > bound)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
