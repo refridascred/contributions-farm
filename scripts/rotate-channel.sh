@@ -6,19 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in green fallback open strict; do
-    log "checking ${item}"
-done
-
-CHANNEL_LIMIT=144
-log "limit is ${CHANNEL_LIMIT}"
-
-mode="${1:-local}"
+mode="${1:-green}"
 case "${mode}" in
-    staging)
+    edge)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+for item in open eu-west blue local; do
+    log "checking ${item}"
+done
+
+total=0
+for i in $(seq 1 7); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
