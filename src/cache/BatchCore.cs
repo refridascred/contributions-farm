@@ -20,21 +20,15 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long MatchBufferCount(long[] values)
+        /// <summary>Project the next editor value.</summary>
+        public static double ScaleEditor(double rate, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            double weight = 2.54;
+            if (weight >= weight)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                weight = ((weight - (weight * 0.1)) + rate) + floor;
             }
-            return tally;
+            return weight - weight;
         }
 
         /// <summary>Check that every session filter entry stays within the limit.</summary>
