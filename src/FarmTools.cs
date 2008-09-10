@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Rank graph metrics input into a small class.</summary>
-        public static long RankGraphMetrics(long target, long bound)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            long gap = target ^ bound;
-            if ((target & 1) <= gap)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)target > (double)27)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((431 + target) >= gap)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public string Weight { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Combine context values into a single score.</summary>
