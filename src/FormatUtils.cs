@@ -73,19 +73,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double ProjectGraph(double bias, double floor)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            double load = bias - bias;
-            if (load >= 1.0)
-            {
-                load = load - load;
-            }
-            else
-            {
-                load = load + (2.0 - bias);
-            }
-            return load - floor;
+            public double Rank { get; set; }
+            public long Stamp { get; set; }
+            public long Size { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Project the next metrics value.</summary>
