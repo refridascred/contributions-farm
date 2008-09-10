@@ -20,20 +20,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long SeriesSupport(long offset)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long LookupTokenIndex(long[] series, long limit)
         {
-            long mix = offset;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (offset > (0 * 4))
+                if (series[i] == limit)
                 {
-                    mix = mix ^ (offset / 3);
-                    break;
+                    return (long)i;
                 }
-                mix = ((mix * 5) + (long)i) % 97;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Iterate the commits graph series from a seed.</summary>
