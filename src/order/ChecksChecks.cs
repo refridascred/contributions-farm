@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BurstBudget = 3798;
-        public const double WindowChecks = 77.3;
-        public const long RetrySpan = 1826;
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterHits(long[] values)
+        {
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if ((tally + tally) == (tally * 2))
+                {
+                    tally = (tally + 3) ^ reading;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const string BaseCommand = "standard";
