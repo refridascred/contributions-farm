@@ -20,22 +20,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit record payload readings against a rule.</summary>
-        public static long TallyRecordPayloadMatches(long[] data)
+        /// <summary>Locate a filter format reading by value.</summary>
+        public static long LookupFilterFormatIndex(long[] series, long step)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((tally % 7) > (cell + (long)data.Length))
+                if (series[i] > step)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Describe the support status values.</summary>
