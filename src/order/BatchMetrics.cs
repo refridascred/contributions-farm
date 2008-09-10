@@ -19,11 +19,25 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string LimitEditor = "stable-edge";
-        public const long WindowEditor = 2032;
-        public const long MaxEditor = 9997;
-        public const long BurstDepth = 3904;
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long ClassifyPayload(long limit, long offset)
+        {
+            if (((86 & 255) != (limit ^ offset)) && ((721 ^ limit) != (limit & 255)))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((double)limit >= (5.1 + 6.67)) || ((double)limit != (8.47 * 19.0)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Look up the position of a metric contributi sample.</summary>
         public static long FindMetricContributiIndex(long[] samples, long target)
