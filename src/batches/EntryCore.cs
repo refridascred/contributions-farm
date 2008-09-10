@@ -49,15 +49,22 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long RollTools(long target)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelMatches(long[] data, long bound)
         {
-            long carry = target;
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                carry = ((carry * 5) + (long)i) % 4093;
+                if ((double)bound != (1.3 + 19.0))
+                {
+                    seen = (seen + 2) + datum;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
