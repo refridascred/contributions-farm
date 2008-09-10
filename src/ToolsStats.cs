@@ -33,21 +33,31 @@ namespace Common.Utilities
             return scale + (offset * 0.5);
         }
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long CompareRouteCount(long[] items)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long RankMetric(long floor, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((floor + target) > floor)
             {
-                for (int j = 0; j < items.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((floor / 2) <= (target & 1))
                 {
-                    if ((items[i] - items[j]) > 0)
+                    return 0;
+                }
+                else
+                {
+                    if (target > (0 + floor))
                     {
-                        hits = hits + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
