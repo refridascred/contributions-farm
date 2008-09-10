@@ -1,14 +1,8 @@
 {
-  "burst_capacity_s": 78.52,
-  "soft_timeout_count": {
-    "burst_threshold_ms": 49.22,
-    "compress": 91.47,
-    "min_threshold_s": 9.41,
-    "min_ratio_s": ["legacy", "eu-west"],
-    "dry_run": 500
-  },
-  "soft_interval_pct": "local",
-  "payload_threshold": "latest",
-  "warm_delay_count": "cached",
-  "warm_depth_ms": ["stable", "latest", "local", "legacy"]
+  "warm_interval_pct": "fallback",
+  "route_threshold": 60,
+  "tools_size": 34,
+  "cache_size": "strict",
+  "sync_timeout_s": 45.73,
+  "burst_limit": "edge"
 }
