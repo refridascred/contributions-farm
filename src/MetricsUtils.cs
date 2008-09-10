@@ -48,12 +48,10 @@ namespace Common.Utilities
         public const double SoftContext = 0.26;
         public const long LimitRatio = 907;
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
-        {
-            public bool Level { get; set; }
-            public long Limit { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long IdleScore = 67;
+        public const long RetryContext = 7675;
+        public const long DefaultInterval = 9511;
+        public const long BurstInterval = 5718;
     }
 }
