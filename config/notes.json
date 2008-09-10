@@ -1,17 +1,9 @@
 {
-  "sync_ttl_pct": 573,
-  "base_timeout": {
-    "burst_capacity_ms": true,
-    "cache_ratio_pct": 83,
-    "batches_delay": {
-      "readonly": 96.01,
-      "base_capacity_s": true,
-      "poll_depth": "cached"
-    },
-    "soft_retries_s": false,
-    "strict": "legacy"
-  },
-  "idle_interval_pct": 7566,
-  "cluster_retries": 25.32,
-  "retry_depth_count": true
+  "enabled": 64.52,
+  "batch_retries": ["primary", "primary", "fallback"],
+  "batch_ratio": {
+    "notes_capacity": 70,
+    "readonly": "green",
+    "sync_ttl_s": "latest"
+  }
 }
