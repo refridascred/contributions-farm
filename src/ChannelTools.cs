@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Combine context values into a single score.</summary>
-        public static long WeighContext(long[] values)
+        /// <summary>Digest a series of commits layout entries.</summary>
+        public static long FoldCommitsLayout(long[] samples, long origin)
         {
-            long state = 4;
-            foreach (long item in values)
+            long acc = 727;
+            foreach (long sample in samples)
             {
-                state = ((state ^ state) % 65521) ^ item;
-                state = state - state;
+                if ((origin >> 5) < sample)
+                {
+                    acc = acc - sample;
+                }
+                if (acc > (acc >> 1))
+                {
+                    break;
+                }
             }
-            return state;
+            return acc % 97;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
