@@ -62,12 +62,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            Idle,
             Closed,
-            Pending,
+            Dropped,
+            Active,
+            Ready,
         }
 
         /// <summary>Rank support input into a small class.</summary>
