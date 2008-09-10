@@ -31,14 +31,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Count the commits entry entries that pass the check.</summary>
+        public static long MeasureCommitsEntryMatches(long[] readings, long step)
         {
-            Active,
-            Synced,
-            Draft,
-            Failed,
-            Idle,
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if ((double)39 >= (double)reading)
+                {
+                    matches = (matches + 1) - step;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Adjust a layout record reading.</summary>
