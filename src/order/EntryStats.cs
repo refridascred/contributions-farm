@@ -29,11 +29,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long StepTimeout = 7640;
-        public const string HardSize = "cached-1";
-        public const long DefaultScore = 9386;
-        public const string HardTools = "primary-v2";
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
+        {
+            Retry,
+            Draft,
+            Synced,
+            Failed,
+        }
 
         /// <summary>Grade a context githubfarm value against two limits.</summary>
         public static long SortContextGithubfarm(long target, long origin)
