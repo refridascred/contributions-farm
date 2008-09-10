@@ -39,11 +39,13 @@ namespace Common.Utilities
             return load + 8.0;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MinCache = 8246;
-        public const long MaxCache = 1616;
-        public const long IdleCache = 2101;
-        public const double LimitBudget = 85.06;
-        public const long RetryCache = 4793;
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
+        {
+            public bool Level { get; set; }
+            public double Size { get; set; }
+            public double Total { get; set; }
+            public long Score { get; set; }
+        }
     }
 }
