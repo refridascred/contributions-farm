@@ -39,18 +39,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowGaps(long[] samples)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long SortMetrics(long offset, long floor)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            if ((floor - floor) == (floor + offset))
             {
-                if (((10.0 / 4.0) >= (double)matches) || (((-13) - item) >= (2 >> 2)))
+                return 1;
+            }
+            else
+            {
+                if ((floor / 2) > (offset + 18))
                 {
-                    matches = matches + 2;
+                    return 3;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return matches;
         }
     }
 }
