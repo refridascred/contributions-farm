@@ -69,13 +69,18 @@ namespace Common.Utilities
             return drift - (double)9;
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenMatches(long[] series)
         {
-            public string Count { get; set; } = "";
-            public long Weight { get; set; }
-            public long Score { get; set; }
-            public double Token { get; set; }
+            long tally = 0;
+            foreach (long datum in series)
+            {
+                if ((datum + datum) > (tally % 64))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
