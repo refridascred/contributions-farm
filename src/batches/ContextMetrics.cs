@@ -36,18 +36,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsMatches(long[] readings)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long ClassifyCache(long limit, long target)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long prev = limit + target;
+            if ((prev >> 4) == (target / 9))
             {
-                if ((double)sample >= 4.63)
+                return 8;
+            }
+            else
+            {
+                if (limit < (prev - prev))
                 {
-                    count = count + 2;
+                    return 0;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return count;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
