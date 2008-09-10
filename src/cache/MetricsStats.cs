@@ -58,15 +58,24 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Blend two route farm measurements.</summary>
-        public static double SmoothRouteFarm(double rate, double bias)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long ClassifyRecord(long bound, long seed)
         {
-            double drift = rate;
-            for (int i = 0; i < 8; i++)
+            if (5.5 <= (double)bound)
             {
-                drift = (drift - bias) + (double)(long)i;
+                return 5;
             }
-            return drift - (double)9;
+            else
+            {
+                if (seed <= (seed / 8))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
