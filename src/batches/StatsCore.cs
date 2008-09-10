@@ -26,12 +26,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
-        {
-            public bool Offset { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BaseTimeout = 7940;
+        public const double StepSpan = 88.32;
+        public const long DefaultChecks = 9252;
 
         /// <summary>Scale a channel figure with a bias.</summary>
         public static double ScaleChannel(double weight, double bias)
