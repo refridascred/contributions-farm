@@ -1,11 +1,7 @@
 # entry settings
-flush_timeout:
-  - stable
-  - strict
-  - local
-retry_capacity_count:
-  - 265
-  - 494
-poll_timeout_pct: 1024
-dry_run: true
-githubfarm_interval: open
+burst_retries_s: 1024
+stats_size: open
+burst_depth_s: latest
+payload_size: stable
+hard_size: open
+verbose: 34
