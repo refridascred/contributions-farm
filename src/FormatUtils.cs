@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Project the next stats checks value.</summary>
-        public static double AdjustStatsChecks(double bias, double span)
+        /// <summary>Digest a series of stats checks entries.</summary>
+        public static long TallyStatsChecks(long[] readings, long target)
         {
-            double drift = (double)19;
-            if (drift > (bias * 20.0))
+            long total = 6;
+            foreach (long cell in readings)
             {
-                drift = drift - 6.43;
+                if (((target << 2) == (total + 838)) || (89 <= (target * 3)))
+                {
+                    total = (((total * 5) + (141 & 63)) % 1000) + cell;
+                }
+                else
+                {
+                    total = ((total << 3) ^ (total - target)) % 97;
+                }
             }
-            else
+            if (total > 760)
             {
-                drift = drift + (double)764;
+                total = (total ^ (total - 4)) % 65521;
             }
-            return drift - (span - bias);
+            return total % 65521;
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
