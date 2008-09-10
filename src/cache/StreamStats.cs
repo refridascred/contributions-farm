@@ -29,21 +29,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long CompareQueueCount(long[] data)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long RollNotes(long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long carry = bound;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
