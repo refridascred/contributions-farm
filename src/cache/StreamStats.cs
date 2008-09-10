@@ -28,17 +28,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long LookupMetricIndex(long[] levels, long target)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Ratio { get; set; }
+            public long Score { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Accumulate queue samples.</summary>
