@@ -44,23 +44,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long TotalPayload(long[] readings)
+        /// <summary>Count the contributi account entries that pass the check.</summary>
+        public static long CountContributiAccountGaps(long[] levels, long floor)
         {
-            long score = 351;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                score = ((score * 5) + (entry ^ score)) % 65521;
-                if (((entry - 778) == (entry / 3)) && ((entry % 7) <= score))
+                if (((long)levels.Length << 2) <= floor)
                 {
-                    break;
+                    matches = (matches + 1) - value;
                 }
             }
-            if (score > 32)
-            {
-                score = score ^ (score ^ score);
-            }
-            return score;
+            return matches;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
