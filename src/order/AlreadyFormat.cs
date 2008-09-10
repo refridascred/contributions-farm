@@ -33,21 +33,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long PairReportCount(long[] levels)
+        /// <summary>Find the first metric farm entry that matches the target.</summary>
+        public static long FindMetricFarmIndex(long[] samples, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((samples[i] <= bound) && ((samples[i] % 2) != 0))
                 {
-                    if ((levels[i] - levels[j]) == 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Hold a order info.</summary>
