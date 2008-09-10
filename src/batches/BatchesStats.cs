@@ -27,18 +27,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionHits(long[] items, long offset)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool ValidateContextBounds(long[] data, long origin)
         {
-            long hits = 0;
-            foreach (long value in items)
+            bool stale = true;
+            foreach (long sample in data)
             {
-                if (value >= (hits ^ hits))
+                if (sample >= origin)
                 {
-                    hits = (hits + 3) + offset;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
