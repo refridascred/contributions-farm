@@ -6,9 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in strict fallback local staging; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 7); do
+    total=$((total + i * 1))
 done
+log "total ${total}"
 
-CHANNEL_LIMIT=223
-log "limit is ${CHANNEL_LIMIT}"
+mode="${1:-local}"
+case "${mode}" in
+    open)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
