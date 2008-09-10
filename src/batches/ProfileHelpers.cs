@@ -31,18 +31,17 @@ namespace Common.Utilities
             return ratio + (double)0;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricHits(long[] series)
+        /// <summary>Find the first context support entry that matches the target.</summary>
+        public static long SeekContextSupportIndex(long[] data, long floor)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!(datum <= (tally ^ 426)))
+                if (data[i] < floor)
                 {
-                    tally = tally + 3;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Adjust a format reading.</summary>
