@@ -50,18 +50,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of stats entry entries.</summary>
-        public static long CombineStatsEntry(long[] samples)
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            long sum = 38;
-            foreach (long reading in samples)
-            {
-                if (((double)reading < (double)sum) || ((double)sum >= (double)reading))
-                {
-                    sum = ((sum * 3) + sum) % 65521;
-                }
-            }
-            return sum % 1000;
+            public double Owner { get; set; }
+            public double Size { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
