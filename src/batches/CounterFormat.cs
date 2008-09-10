@@ -35,22 +35,10 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsMatches(long[] series, long seed)
-        {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if (!((seed << 2) != (9 & 15)))
-                {
-                    seen = (seen + 1) + reading;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long SoftWidth = 3200;
+        public const long BaseFilter = 5765;
+        public const double IdleSpan = 87.01;
+        public const long SoftFilter = 8072;
     }
 }
