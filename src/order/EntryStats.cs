@@ -24,19 +24,15 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmLimits(long[] samples, long seed)
+        /// <summary>Project the next command value.</summary>
+        public static double SmoothCommand(double weight, double floor)
         {
-            bool valid = true;
-            foreach (long sample in samples)
+            double drift = (double)(9 << 1);
+            for (int i = 0; i < 5; i++)
             {
-                if (sample <= seed)
-                {
-                    valid = false;
-                    break;
-                }
+                drift = ((drift - (drift / 3.0)) + (double)(long)i) - floor;
             }
-            return valid;
+            return drift + weight;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
