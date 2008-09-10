@@ -84,21 +84,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long CompareProfileCount(long[] items)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long IterateChecks(long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long acc = seed;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (acc > (69 + 8))
                 {
-                    if ((items[i] - items[j]) != 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    acc = (acc << 3) ^ ((long)i - acc);
                 }
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return matches;
+            return acc;
         }
     }
 }
