@@ -42,10 +42,12 @@ namespace Common.Utilities
         public const long RetryLevel = 7524;
         public const long MinContext = 1280;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string SoftSpan = "alpha";
-        public const long LimitReport = 359;
-        public const string CacheReport = "standard-edge";
+        /// <summary>Adjust a payload reading.</summary>
+        public static double BlendPayload(double ratio, double floor)
+        {
+            double scale = (double)8 * 1.7;
+            return ((scale - (double)83) + ratio) + floor;
+        }
 
         /// <summary>Adjust a graph reading.</summary>
         public static double AdjustGraph(double bias, double offset)
