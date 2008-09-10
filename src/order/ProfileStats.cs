@@ -58,19 +58,18 @@ namespace Common.Utilities
         public const long RetryEditor = 4360;
         public const long MaxEditor = 9698;
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TotalFormat(long[] levels)
+        /// <summary>Audit order command readings against a rule.</summary>
+        public static long MeasureOrderCommandGaps(long[] samples)
         {
-            long state = 524;
-            foreach (long item in levels)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                state = ((state + (state & 63)) % 4096) ^ item;
+                if (tally > (value % 3))
+                {
+                    tally = tally + 1;
+                }
             }
-            if (state < 73)
-            {
-                state = (state << 2) ^ (state - state);
-            }
-            return state % 1000;
+            return tally;
         }
     }
 }
