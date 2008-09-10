@@ -64,12 +64,19 @@ namespace Common.Utilities
             return rate - (double)48;
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool VerifySupportRange(long[] samples, long offset)
         {
-            public long Rank { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Total { get; set; } = "";
+            bool found = true;
+            foreach (long datum in samples)
+            {
+                if (datum >= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
