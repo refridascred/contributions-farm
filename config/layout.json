@@ -1,12 +1,6 @@
 {
-  "sync_threshold_pct": false,
-  "soft_retries_ms": [396, 349],
-  "enabled": {
-    "audit": "green",
-    "stats_delay": "open",
-    "layout_threshold": 30,
-    "verbose": "legacy",
-    "flush_retries": "blue",
-    "githubfarm_capacity": 31
-  }
+  "persist": true,
+  "sync_ratio": "local",
+  "sync_ratio_s": [461, 128, 192, 451],
+  "command_ratio": true
 }
