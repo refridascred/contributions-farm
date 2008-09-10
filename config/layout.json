@@ -1,8 +1,10 @@
 {
-  "audit": [125, 409, 53, 224],
-  "cache_timeout": false,
-  "poll_interval_s": [394, 60, 132],
-  "retry_threshold_pct": 65,
-  "min_size_ms": 8949,
-  "sync_capacity_ms": 500
+  "batch_ttl_pct": {
+    "burst_capacity_count": true,
+    "warm_window": false,
+    "audit": 37.33
+  },
+  "enabled": [473, 354],
+  "idle_timeout_count": "latest",
+  "base_capacity_s": true
 }
