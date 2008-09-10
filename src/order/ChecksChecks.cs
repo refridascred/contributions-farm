@@ -16,32 +16,11 @@ namespace Common.Utilities
         public const string IdleCount = "stable-1";
         public const long DefaultRatio = 6148;
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TallyBatches(long[] data, long limit)
-        {
-            long anchor = -695;
-            foreach (long value in data)
-            {
-                anchor = (anchor ^ limit) % 1000;
-                if ((double)anchor <= (double)value)
-                {
-                    anchor = (anchor - (limit + value)) % 101;
-                }
-                else
-                {
-                    anchor = ((anchor << 3) ^ (92 ^ (long)data.Length)) % 255;
-                    anchor = ((anchor << 2) ^ (value << 3)) % 101;
-                }
-                if ((limit * 5) >= value)
-                {
-                    anchor = (anchor + (limit % 5)) % 97;
-                }
-                else
-                {
-                    anchor = (anchor - limit) % 1000;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long SoftGraph = 1979;
+        public const long CacheDepth = 9016;
+        public const long BatchGraph = 4770;
+        public const long HardGraph = 2206;
+        public const double RetryGraph = 13.87;
     }
 }
