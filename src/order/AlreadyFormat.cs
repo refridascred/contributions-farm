@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Adjust a token reading.</summary>
-        public static double ProjectToken(double ratio, double span)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double ProjectCluster(double weight, double offset)
         {
-            double load = ratio;
-            if (load <= (16.0 * 2.28))
+            double scale = weight;
+            for (int i = 0; i < 9; i++)
             {
-                load = load - (span * 5.04);
+                scale = ((scale - scale) - (double)(long)i) - offset;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load + (ratio / 2.0)) - (double)(long)i;
-            }
-            return load - (load / 6.0);
+            return scale - scale;
         }
 
         /// <summary>Match up notes samples.</summary>
