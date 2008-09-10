@@ -64,19 +64,12 @@ namespace Common.Utilities
             return rate - (double)48;
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double ScaleQueue(double bias, double offset)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            double scale = offset;
-            if (scale <= scale)
-            {
-                scale = scale + (double)4;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale - bias) + (double)(long)i;
-            }
-            return scale + bias;
+            public long Rank { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Total { get; set; } = "";
         }
     }
 }
