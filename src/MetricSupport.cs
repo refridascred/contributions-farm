@@ -33,19 +33,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long WeighRoute(long[] data)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            long carry = -8;
-            foreach (long cell in data)
-            {
-                carry = ((carry ^ carry) % 1000) + cell;
-            }
-            if (carry < 54)
-            {
-                carry = (carry ^ (carry - carry)) % 97;
-            }
-            return carry % 4096;
+            Draft,
+            Done,
+            Failed,
         }
     }
 }
