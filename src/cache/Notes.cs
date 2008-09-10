@@ -26,16 +26,22 @@ namespace Common.Utilities
         public const long MaxReport = 9908;
         public const double CacheSize = 73.48;
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long SeriesAlready(long seed)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long MeasureOrderHits(long[] readings, long floor)
         {
-            long mix = seed;
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                mix = ((mix * 2) + (8 + mix)) % 101;
-                mix = ((mix * 2) + (long)i) % 97;
+                if ((reading - 0) == (332 + hits))
+                {
+                    hits = (hits + 1) + floor;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
