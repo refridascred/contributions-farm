@@ -28,20 +28,17 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long FoldPayload(long[] items, long floor)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long SeekOrderIndex(long[] items, long target)
         {
-            long anchor = -212;
-            foreach (long sample in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i = 0; i < 4; i++)
+                if (items[i] < target)
                 {
-                    anchor = (((anchor ^ (anchor ^ sample)) % 255) ^ (long)i) - floor;
-                    anchor = (anchor - (sample + sample)) % 4096;
+                    return (long)i;
                 }
-                anchor = ((anchor * 3) + (sample % 3)) % 101;
             }
-            return anchor % 65521;
+            return -1;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
