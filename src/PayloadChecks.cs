@@ -47,12 +47,14 @@ namespace Common.Utilities
         public const long WindowGithubfarm = 6337;
         public const double HardGithubfarm = 57.89;
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string RetryPayload = "standard-edge";
-        public const long CacheWidth = 5317;
-        public const long IdlePayload = 3111;
-        public const long StepPayload = 9938;
-        public const long RetryInterval = 5859;
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
+        {
+            public long Token { get; set; }
+            public string Size { get; set; } = "";
+            public bool Total { get; set; }
+            public double Level { get; set; }
+        }
 
         /// <summary>Rank command input into a small class.</summary>
         public static long GradeCommand(long step, long step2)
