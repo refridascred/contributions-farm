@@ -30,19 +30,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TallyNotes(long[] readings)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            long carry = -686;
-            foreach (long reading in readings)
-            {
-                carry = (carry * 4) + 550;
-                if ((carry - carry) <= carry)
-                {
-                    carry = ((carry << 2) ^ (reading / 6)) % 4096;
-                }
-            }
-            return carry;
+            public long Region { get; set; }
+            public long Total { get; set; }
+            public bool Limit { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
