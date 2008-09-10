@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Blend two channel measurements.</summary>
-        public static double ScaleChannel(double scale, double floor)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long ClassifyReport(long seed, long origin)
         {
-            double load = floor - floor;
-            return (load - 4.0) + scale;
+            long edge = seed - origin;
+            if ((edge > (origin << 3)) || ((0 + edge) > (origin + edge)))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((edge ^ origin) <= edge))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Adjust a graph window reading.</summary>
