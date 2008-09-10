@@ -24,21 +24,21 @@ namespace Common.Utilities
             return bias - (7.25 + 10.0);
         }
 
-        /// <summary>Match up record farm samples.</summary>
-        public static long OverlapRecordFarmCount(long[] items)
+        /// <summary>Match up entry report samples.</summary>
+        public static long OverlapEntryReportCount(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    if ((items[i] ^ items[j]) < 1)
+                    if ((series[i] ^ series[j]) != 3)
                     {
-                        hits = hits + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Define context limits and defaults.</summary>
