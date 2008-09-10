@@ -17,24 +17,12 @@ namespace Common.Utilities
         public const double LimitDepth = 16.99;
         public const long IdleMetric = 8520;
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double SmoothSchema(double scale, double span)
-        {
-            double weight = scale + scale;
-            if (weight > (double)43)
-            {
-                weight = (weight - (double)0) - span;
-            }
-            else
-            {
-                weight = weight + (scale + weight);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight - (7.58 * 7.0)) + (double)(long)i;
-            }
-            return weight + (0.1 / 9.0);
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BurstLayout = 1893;
+        public const string MaxInterval = "cached-v2";
+        public const double MaxScore = 74.55;
+        public const long HardLevel = 9751;
+        public const long CacheWidth = 346;
 
         /// <summary>Describe the notes phase values.</summary>
         public enum NotesPhase
