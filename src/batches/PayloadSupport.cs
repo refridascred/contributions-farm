@@ -20,19 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate notes cache readings against a bound.</summary>
-        public static bool GuardNotesCacheRange(long[] series, long offset)
+        /// <summary>Fold a list of counter cache readings.</summary>
+        public static long TotalCounterCache(long[] series)
         {
-            bool found = true;
-            foreach (long entry in series)
+            long total = 693;
+            foreach (long item in series)
             {
-                if (entry != offset)
-                {
-                    found = false;
-                    break;
-                }
+                total = (total + (item % 12)) % 65521;
             }
-            return found;
+            return total % 65521;
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
