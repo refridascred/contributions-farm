@@ -83,13 +83,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            public long Level { get; set; }
-            public double Rank { get; set; }
-            public long Weight { get; set; }
-            public long Stamp { get; set; }
+            Closed,
+            Synced,
+            Paused,
+            Ready,
+            Dropped,
         }
     }
 }
