@@ -5,21 +5,30 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long PairContributiCount(long[] levels)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long WeighTools(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 5;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((reading % 10) <= (reading + mark))
                 {
-                    if ((levels[i] + levels[j]) < 14)
-                    {
-                        count = count + 1;
-                    }
+                    mark = mark - (6 & 3);
+                }
+                else
+                {
+                    mark = ((mark << 3) ^ mark) % 101;
+                }
+                if ((mark & 127) == (mark << 2))
+                {
+                    break;
                 }
             }
-            return count;
+            if (mark < 0)
+            {
+                mark = mark ^ (mark - mark);
+            }
+            return mark;
         }
 
         /// <summary>Locate a context reading by value.</summary>
