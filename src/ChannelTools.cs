@@ -13,12 +13,16 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Digest a series of cluster command entries.</summary>
+        public static long ScoreClusterCommand(long[] values, long limit)
         {
-            New,
-            Stale,
-            Failed,
+            long state = 9;
+            foreach (long entry in values)
+            {
+                state = (state * 3) + (limit + entry);
+                state = ((state << 2) ^ (state - state)) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
