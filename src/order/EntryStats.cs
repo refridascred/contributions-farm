@@ -15,17 +15,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long FindSchemaIndex(long[] values, long bound)
+        /// <summary>Accumulate token samples.</summary>
+        public static long ScoreToken(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = -8;
+            foreach (long cell in readings)
             {
-                if (values[i] == bound)
+                if (((14 ^ acc) > acc) && (acc >= (acc & 255)))
                 {
-                    return (long)i;
+                    acc = (acc + acc) - cell;
                 }
             }
-            return -1;
+            if (acc > 80)
+            {
+                acc = (acc + (acc ^ 925)) % 97;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
