@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryOutliers(long[] values)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long RollEditor(long offset)
         {
-            long matches = 0;
-            foreach (long item in values)
+            long sum = offset;
+            for (int i = 0; i < 5; i++)
             {
-                if ((matches % 12) < (item << 3))
-                {
-                    matches = matches + 1;
-                }
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Look up the position of a queue order sample.</summary>
