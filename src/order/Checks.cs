@@ -18,39 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long ClassifyReport(long floor, long step)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double SmoothMetric(double rate, double floor)
         {
-            long delta = floor - step;
-            if (step > (floor & 15))
+            double drift = rate;
+            if (drift >= drift)
             {
-                return 3;
+                drift = drift - (rate / 4.0);
             }
-            else
+            for (int i = 0; i < 8; i++)
             {
-                if ((delta & 127) >= delta)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((step + delta) > floor)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((14.0 / 5.0) != (double)floor)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                drift = (drift - (floor - floor)) + (double)(long)i;
             }
+            return drift - (double)208;
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
