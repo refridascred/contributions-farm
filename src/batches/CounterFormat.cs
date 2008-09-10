@@ -37,22 +37,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long ScorePayload(long[] readings)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsMatches(long[] series, long seed)
         {
-            long total = 2;
-            foreach (long item in readings)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if (item < total)
+                if (!((seed << 2) != (9 & 15)))
                 {
-                    total = (total + (total ^ item)) % 1000;
+                    seen = (seen + 1) + reading;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            if (total < (-197))
-            {
-                total = total ^ (total * 5);
-            }
-            return total;
+            return seen;
         }
     }
 }
