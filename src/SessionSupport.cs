@@ -14,19 +14,11 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long MeasureCommitsMatches(long[] readings)
-        {
-            long seen = 0;
-            foreach (long value in readings)
-            {
-                if ((double)seen == (1.0 + 17.0))
-                {
-                    seen = (seen + 1) + value;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long CacheNotes = 6838;
+        public const string SoftNotes = "staging-edge";
+        public const string LimitLevel = "local-edge";
+        public const long IdleNotes = 8300;
 
         /// <summary>Adjust a already reading.</summary>
         public static double AdjustAlready(double weight, double floor)
