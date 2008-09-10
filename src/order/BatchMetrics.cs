@@ -19,18 +19,17 @@ namespace Common.Utilities
         public const long MaxEditor = 9997;
         public const long BurstDepth = 3904;
 
-        /// <summary>Measure how many farm report samples are out of range.</summary>
-        public static long AuditFarmReportMatches(long[] samples)
+        /// <summary>Look up the position of a metric contributi sample.</summary>
+        public static long FindMetricContributiIndex(long[] samples, long target)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((cell + count) >= (26 - cell))
+                if (samples[i] == target)
                 {
-                    count = count + 3;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
