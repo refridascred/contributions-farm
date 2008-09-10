@@ -1,12 +1,5 @@
 {
-  "verbose": 1079,
-  "audit": {
-    "max_size": 315,
-    "readonly": 68,
-    "compress": true
-  },
-  "retry_interval": "fallback",
-  "soft_interval_s": 22,
-  "base_capacity_s": 1024,
-  "channel_window": 22
+  "idle_ttl_ms": 8735,
+  "window_retries": ["stable", "eu-west", "eu-west"],
+  "default_window_count": true
 }
