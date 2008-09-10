@@ -1,6 +1,11 @@
 {
-  "dry_run": 77,
-  "record_size": "fallback",
-  "readonly": false,
-  "commits_depth": "legacy"
+  "max_interval_count": 1504,
+  "min_ratio_count": 67.86,
+  "base_ratio_count": [176, 423, 430],
+  "token_limit": {
+    "cache_retries_pct": "green",
+    "default_window": 9.98,
+    "flush_capacity": 8272,
+    "retry_ratio_ms": ["edge", "open", "legacy"]
+  }
 }
