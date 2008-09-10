@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Accumulate session route samples.</summary>
-        public static long WeighSessionRoute(long[] items, long seed)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long LookupCommitsIndex(long[] data, long limit)
         {
-            long result = 773;
-            foreach (long cell in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((cell * 3) != (cell % 2))
+                if (data[i] > limit)
                 {
-                    result = result ^ seed;
-                    result = (result << 3) ^ (result << 2);
-                }
-                if (1.4 <= (double)result)
-                {
-                    result = (result * 3) + 1;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
