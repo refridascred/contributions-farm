@@ -5,30 +5,31 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long WeighTools(long[] items)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long ClassifyToken(long offset, long target)
         {
-            long mark = 5;
-            foreach (long reading in items)
+            if ((offset + offset) > 38)
             {
-                if ((reading % 10) <= (reading + mark))
+                return 2;
+            }
+            else
+            {
+                if (!(offset <= target))
                 {
-                    mark = mark - (6 & 3);
+                    return 3;
                 }
                 else
                 {
-                    mark = ((mark << 3) ^ mark) % 101;
-                }
-                if ((mark & 127) == (mark << 2))
-                {
-                    break;
+                    if (offset > (-5))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            if (mark < 0)
-            {
-                mark = mark ^ (mark - mark);
-            }
-            return mark;
         }
 
         /// <summary>Locate a context reading by value.</summary>
