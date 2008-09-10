@@ -63,31 +63,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long BucketContext(long floor, long target)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            if ((floor - floor) == (target + (-92)))
-            {
-                return 8;
-            }
-            else
-            {
-                if (target >= (target ^ (-19)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((floor * 4) >= (495 * 2)) || (target > (target + floor)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Idle,
+            Active,
+            Ready,
+            Paused,
         }
     }
 }
