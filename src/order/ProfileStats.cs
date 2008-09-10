@@ -44,18 +44,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsOutliers(long[] items, long step)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long LocateTokenIndex(long[] readings, long seed)
         {
-            long count = 0;
-            foreach (long item in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((0.5 - 0.81) <= (double)count)
+                if (readings[i] == seed)
                 {
-                    count = ((count + 1) + item) - step;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
