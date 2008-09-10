@@ -19,12 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long IdleProfile = 9384;
-        public const long BurstProfile = 8203;
-        public const long CacheScore = 343;
-        public const double StepLevel = 45.1;
-        public const long MinWidth = 189;
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
+        {
+            Stale,
+            New,
+            Paused,
+            Idle,
+            Locked,
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long BatchSchema = 6559;
