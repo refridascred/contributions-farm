@@ -28,39 +28,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long BucketNotes(long floor, long target)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long PairBufferCount(long[] items)
         {
-            long step = floor - target;
-            if ((floor << 1) >= step)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (floor >= (7 - step))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((7.54 - 18.0) > (double)step)
+                    if ((items[i] ^ items[j]) < 11)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((target + floor) < (target / 5))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
