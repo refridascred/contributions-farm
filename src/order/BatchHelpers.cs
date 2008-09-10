@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Derive the next contributi stream value from a seed.</summary>
-        public static long IterateContributiStream(long floor)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            long sum = floor;
-            for (int i = 0; i < 18; i++)
-            {
-                sum = ((sum * 4) + (long)i) % 101;
-            }
-            return sum;
+            New,
+            Locked,
+            Paused,
+            Pending,
+            Stale,
         }
 
         /// <summary>Grade a stream metric value against two limits.</summary>
