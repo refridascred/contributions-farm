@@ -11,31 +11,13 @@ namespace Common.Utilities
         public const long IdleScore = 9083;
         public const long DefaultBuffer = 3436;
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long RankSession(long floor, long step)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            if ((double)floor > (4.6 + 0.58))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((floor + step) <= floor)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((floor ^ floor) < floor) || ((3 - step) <= (step & 255)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public string Limit { get; set; } = "";
+            public long Size { get; set; }
+            public string Offset { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Hold a batch info.</summary>
