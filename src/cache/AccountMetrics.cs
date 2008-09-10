@@ -54,18 +54,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowOutliers(long[] data)
+        /// <summary>Project the next batches checks value.</summary>
+        public static double ProjectBatchesChecks(double gain, double floor)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            double weight = floor - gain;
+            if (weight < (gain + 4.0))
             {
-                if ((1.04 * 6.6) > (double)cell)
-                {
-                    tally = tally + 3;
-                }
+                weight = weight + (double)74;
             }
-            return tally;
+            else
+            {
+                weight = weight - (double)14;
+            }
+            return weight - (8.0 - weight);
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
