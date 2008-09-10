@@ -1,11 +1,5 @@
 {
-  "idle_timeout": "standard",
-  "sync_threshold_count": 500,
-  "queue_ttl": ["staging", "green", "strict"],
-  "hard_threshold_pct": 10,
-  "max_threshold_ms": {
-    "flush_delay": "local",
-    "sync_delay_s": [300, 467],
-    "soft_ratio_pct": ["local", "open"]
-  }
+  "sync_window_ms": ["local", "eu-west", "eu-west", "cached"],
+  "hard_depth_count": 73.73,
+  "flush_interval_pct": 1024
 }
