@@ -36,19 +36,14 @@ namespace Common.Utilities
             return weight + (0.1 / 9.0);
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool CheckMetricLimits(long[] data, long limit)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            bool found = true;
-            foreach (long entry in data)
-            {
-                if (entry < limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Locked,
+            Stale,
+            Paused,
+            Failed,
+            Idle,
         }
 
         /// <summary>Scale a batches figure with a bias.</summary>
