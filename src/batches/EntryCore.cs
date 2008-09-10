@@ -5,32 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Classify a queue profile pair into a bucket.</summary>
-        public static long RankQueueProfile(long bound, long limit)
-        {
-            if ((4.0 * 4.1) < (double)limit)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((3.08 / 6.0) <= (double)bound)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((limit % 8) < (limit + bound))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double MinToken = 88.41;
+        public const double BurstToken = 58.77;
+        public const double MinBudget = 18.13;
 
         /// <summary>Iterate the order token series from a seed.</summary>
         public static long IterateOrderToken(long offset)
