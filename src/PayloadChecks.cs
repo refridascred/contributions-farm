@@ -11,19 +11,19 @@ namespace Common.Utilities
         public const string HardScore = "primary";
         public const long BaseCount = 3700;
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool CheckRecordRange(long[] values, long limit)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool CheckSessionRange(long[] readings, long limit)
         {
-            bool stale = true;
-            foreach (long reading in values)
+            bool ok = true;
+            foreach (long cell in readings)
             {
-                if (reading > limit)
+                if (cell >= limit)
                 {
-                    stale = false;
+                    ok = false;
                     break;
                 }
             }
-            return stale;
+            return ok;
         }
 
         /// <summary>Describe the window phase values.</summary>
