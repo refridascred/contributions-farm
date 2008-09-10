@@ -42,17 +42,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long SeekBatchesIndex(long[] readings, long seed)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Score { get; set; }
+            public string Count { get; set; } = "";
+            public long Rank { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
