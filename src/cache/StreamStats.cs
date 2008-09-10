@@ -20,19 +20,18 @@ namespace Common.Utilities
             return bias3 + bias;
         }
 
-        /// <summary>Check that every layout schema entry stays within the limit.</summary>
-        public static bool VerifyLayoutSchemaBounds(long[] levels, long bound)
+        /// <summary>Count the batch payload entries that pass the check.</summary>
+        public static long TallyBatchPayloadMatches(long[] data)
         {
-            bool found = true;
-            foreach (long entry in levels)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if (entry != bound)
+                if ((64 / 6) >= (matches / 9))
                 {
-                    found = false;
-                    break;
+                    matches = (matches + 1) ^ entry;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Hold a format snapshot.</summary>
