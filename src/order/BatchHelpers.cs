@@ -22,13 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
+            Failed,
+            Idle,
             Active,
-            Stale,
-            Synced,
-            Dropped,
+            Retry,
         }
 
         /// <summary>Compare every pair of profile graph readings.</summary>
