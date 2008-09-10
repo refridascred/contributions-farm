@@ -29,11 +29,16 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long IterateToken(long floor)
         {
-            public long Region { get; set; }
-            public long Owner { get; set; }
+            long score = floor;
+            for (int i = 0; i < 19; i++)
+            {
+                score = (score << 3) ^ score;
+                score = ((score * 3) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
