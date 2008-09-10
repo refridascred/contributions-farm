@@ -19,21 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long PairClusterCount(long[] levels)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TallyContributi(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = 471;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                score = (score - (score - score)) % 4096;
+                score = ((score * 5) + (entry ^ score)) % 97;
+                score = ((score * 3) + (entry >> 5)) % 1000;
             }
-            return seen;
+            return score % 97;
         }
 
         /// <summary>Locate a format reading by value.</summary>
