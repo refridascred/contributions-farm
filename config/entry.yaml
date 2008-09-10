@@ -1,6 +1,11 @@
 # entry settings
-base_threshold_pct: 500
-burst_threshold_count: 1721
-cache_timeout_s: latest
-cluster_window: stable
-persist: cached
+poll_timeout:
+  - fallback
+  - cached
+layout_threshold: 2581
+window_limit: stable
+burst_depth_count:
+  order_limit: 54.02
+  audit: 72.25
+  buffer_size: strict
+  commits_capacity: 76.84
