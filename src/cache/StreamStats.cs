@@ -26,12 +26,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            public string Offset { get; set; } = "";
-            public long Size { get; set; }
-            public string Region { get; set; } = "";
+            public double Score { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Offset { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Roll a farm counter forward.</summary>
