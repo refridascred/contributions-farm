@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long PairContextCount(long[] readings)
+        /// <summary>Rank graph metrics input into a small class.</summary>
+        public static long RankGraphMetrics(long target, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long gap = target ^ bound;
+            if ((target & 1) <= gap)
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((double)target > (double)27)
                 {
-                    if ((readings[i] - readings[j]) == 16)
+                    return 6;
+                }
+                else
+                {
+                    if ((431 + target) >= gap)
                     {
-                        tally = tally + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Combine context values into a single score.</summary>
