@@ -36,19 +36,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long FoldStream(long[] data)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long LocateSchemaIndex(long[] series, long floor)
         {
-            long total = 368;
-            foreach (long sample in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                total = (((total * 5) + (total + total)) % 255) - sample;
+                if ((series[i] > floor) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (total > 29)
-            {
-                total = total ^ (total ^ (-58));
-            }
-            return total % 1000;
+            return -1;
         }
     }
 }
