@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricMatches(long[] items, long origin)
         {
-            public bool Ratio { get; set; }
-            public bool Count { get; set; }
-            public double Token { get; set; }
-            public bool Mode { get; set; }
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if (((origin + tally) <= (origin << 2)) || ((origin - origin) != (origin * 2)))
+                {
+                    tally = (tally + 1) ^ item;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every farm token entry stays within the limit.</summary>
