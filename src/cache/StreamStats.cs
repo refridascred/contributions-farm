@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const string DefaultRoute = "cached-1";
-        public const double BurstDepth = 68.5;
-        public const long WindowRatio = 9866;
-        public const long MinRoute = 2824;
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long CountProfileOutliers(long[] readings)
+        {
+            long matches = 0;
+            foreach (long datum in readings)
+            {
+                if ((((327 ^ (long)readings.Length) != ((-689) + matches)) || ((long)readings.Length > (8 - datum))) || ((matches & 7) == (datum / 8)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long BaseLevel = 2374;
