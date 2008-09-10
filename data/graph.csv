@@ -1,10 +1,6 @@
-id,token,count,weight,level
-1,stable,edge,36.39,86.55
-2,624,923,916,128
-3,22,71.87,264,eu-west
-4,97.88,518,614,931
-5,347,8.61,23,legacy
-6,legacy,64.58,8.97,90
-7,608,206,latest,98.58
-8,48.1,576,85.66,legacy
-9,green,staging,88.45,91.41
+id,owner,count
+1,86.64,legacy
+2,45.68,primary
+3,95.03,838
+4,117,16.15
+5,blue,staging
