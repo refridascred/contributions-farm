@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long LocatePayloadIndex(long[] series, long limit)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TotalTools(long[] series, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = 385;
+            foreach (long sample in series)
             {
-                if (series[i] <= limit)
+                if ((sample & 255) > (sum - (long)series.Length))
                 {
-                    return (long)i;
+                    sum = ((sum << 3) ^ bound) % 4096;
                 }
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
