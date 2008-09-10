@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long StepChecks(long seed)
-        {
-            long mark = seed;
-            for (int i = 0; i < 11; i++)
-            {
-                mark = ((mark * 3) + (long)i) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double CacheLevel = 90.68;
+        public const long WindowReport = 4114;
+        public const long CacheInterval = 494;
 
         /// <summary>Fold a list of support readings.</summary>
         public static long WeighSupport(long[] values, long step)
