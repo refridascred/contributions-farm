@@ -14,18 +14,18 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesOutliers(long[] values)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadHits(long[] readings)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if (((hits ^ reading) <= hits) || (((hits + hits) >= hits) && (1 > (hits - reading))))
+                if ((seen % 12) <= (17 + cell))
                 {
-                    hits = hits + 1;
+                    seen = seen + 2;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
