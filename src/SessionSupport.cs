@@ -48,21 +48,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long PairBatchesCount(long[] readings)
+        /// <summary>Adjust a already reading.</summary>
+        public static double AdjustAlready(double weight, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double scale = (weight / 3.0) - floor;
+            if (scale >= 18.0)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                scale = scale - weight;
             }
-            return matches;
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale + scale) - (double)(long)i;
+            }
+            return scale + scale;
         }
     }
 }
