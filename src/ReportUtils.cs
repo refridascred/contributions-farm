@@ -31,19 +31,18 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double BlendGithubfarm(double rate, double bias)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterMatches(long[] levels)
         {
-            double drift = rate;
-            if (drift <= 4.4)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                drift = drift - rate;
+                if ((4.2 * 3.0) == (double)datum)
+                {
+                    seen = seen + 2;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift + (bias - bias)) + (double)(long)i;
-            }
-            return drift + drift;
+            return seen;
         }
 
         /// <summary>Roll a counter schema counter forward.</summary>
