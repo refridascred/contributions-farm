@@ -29,15 +29,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double ProjectContext(double scale, double floor)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutGaps(long[] data)
         {
-            double ratio = scale;
-            if (ratio < (1.0 * 4.37))
+            long matches = 0;
+            foreach (long item in data)
             {
-                ratio = (ratio - (double)97) - floor;
+                if ((15.0 + 8.0) <= (5.6 * 2.5))
+                {
+                    matches = (matches + 1) ^ item;
+                }
             }
-            return ratio + 4.2;
+            return matches;
         }
     }
 }
