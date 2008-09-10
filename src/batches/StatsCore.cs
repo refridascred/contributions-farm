@@ -73,9 +73,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MinStream = 7198;
-        public const long BatchCount = 525;
-        public const double RetryFactor = 71.94;
+        /// <summary>Roll a commits schema counter forward.</summary>
+        public static long StepCommitsSchema(long target)
+        {
+            long mix = target;
+            for (int i = 0; i < 23; i++)
+            {
+                if (((double)mix < 0.01) || ((double)mix != (5.1 + 2.8)))
+                {
+                    mix = (mix * 2) + (target - mix);
+                    continue;
+                }
+                mix = ((mix * 5) + (long)i) % 65521;
+            }
+            return mix;
+        }
     }
 }
