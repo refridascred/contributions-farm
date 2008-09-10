@@ -20,11 +20,25 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long LimitWidth = 2727;
-        public const long CacheContext = 9098;
-        public const long SoftContext = 1174;
-        public const long BurstTimeout = 7623;
+        /// <summary>Classify a cluster checks pair into a bucket.</summary>
+        public static long BucketClusterChecks(long bound, long target)
+        {
+            if (!((double)target <= (17.0 * 7.7)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((target << 2) < bound)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
         public static bool GuardContextBounds(long[] levels, long seed)
