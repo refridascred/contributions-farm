@@ -10,31 +10,20 @@ namespace Common.Utilities
         public const long BurstWidth = 8234;
         public const double MinAlready = 67.07;
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long SortFarm(long step, long floor)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long SeriesSchema(long target)
         {
-            if ((step >> 4) <= (floor + step))
+            long state = target;
+            for (int i = 0; i < 12; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((step + step) < floor))
+                if (state > (64 & 3))
                 {
-                    return 7;
+                    state = (state - ((long)i - 9)) % 1000;
+                    state = ((state * 4) + (target >> 4)) % 4096;
                 }
-                else
-                {
-                    if ((double)floor < 7.36)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                state = ((state * 5) + (long)i) % 97;
             }
+            return state;
         }
 
         /// <summary>Hold a checks record.</summary>
