@@ -1,9 +1,7 @@
-id,state,rank
-1,851,59.81
-2,latest,436
-3,fallback,local
-4,0.34,33.53
-5,primary,781
-6,961,193
-7,69.84,72.77
-8,strict,fallback
+id,label,state
+1,84.32,954
+2,primary,730
+3,12.37,630
+4,31.66,49.92
+5,970,staging
+6,94.55,74
