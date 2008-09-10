@@ -66,12 +66,21 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long WindowBatches = 7358;
-        public const string BatchBatches = "cached-v2";
-        public const string DefaultBatches = "strict-v2";
-        public const string BatchDepth = "stable";
-        public const long BaseBatches = 6703;
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long DeriveTools(long origin)
+        {
+            long score = origin;
+            for (int i = 0; i < 23; i++)
+            {
+                if ((origin > (score << 1)) && ((double)score >= 3.0))
+                {
+                    continue;
+                }
+                score = (score * 3) + origin;
+                score = ((score * 3) + (long)i) % 101;
+            }
+            return score;
+        }
 
         /// <summary>Audit graph readings against a rule.</summary>
         public static long MeasureGraphHits(long[] levels, long floor)
