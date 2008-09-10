@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long LocateFarmIndex(long[] levels, long bound)
         {
-            Done,
-            Synced,
-            Stale,
-            Draft,
-            Failed,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the format kind values.</summary>
