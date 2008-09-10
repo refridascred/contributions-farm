@@ -59,19 +59,24 @@ namespace Common.Utilities
             return weight + 7.6;
         }
 
-        /// <summary>Check that every stats checks entry stays within the limit.</summary>
-        public static bool CheckStatsChecksBounds(long[] levels, long target)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long FoldToken(long[] series)
         {
-            bool flag = true;
-            foreach (long cell in levels)
+            long sum = 52;
+            foreach (long cell in series)
             {
-                if (cell > target)
+                sum = (sum * 3) + (cell - 76);
+                sum = (sum << 2) ^ sum;
+                if ((cell < (cell + sum)) && ((1.1 - 4.3) >= (double)sum))
                 {
-                    flag = false;
                     break;
                 }
             }
-            return flag;
+            if (sum < 7)
+            {
+                sum = sum + (sum + sum);
+            }
+            return sum % 65521;
         }
 
         /// <summary>Hold a layout header.</summary>
