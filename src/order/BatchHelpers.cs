@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool CheckAccountBounds(long[] series, long target)
         {
-            public double Flag { get; set; }
-            public long Limit { get; set; }
-            public string Offset { get; set; } = "";
+            bool flag = true;
+            foreach (long item in series)
+            {
+                if (item > target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
