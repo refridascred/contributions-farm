@@ -26,19 +26,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double ProjectEntry(double rate, double bias)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionGaps(long[] readings, long bound)
         {
-            double scale = (double)(7 - 3);
-            if (scale >= (bias - scale))
+            long seen = 0;
+            foreach (long item in readings)
             {
-                scale = (scale - (double)676) + rate;
+                if ((66 < (item >> 4)) && (((896 * 3) < (seen + seen)) && ((seen << 3) <= (bound & 127))))
+                {
+                    seen = seen + 1;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale - (double)8) + (double)(long)i;
-            }
-            return scale + (double)82;
+            return seen;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
