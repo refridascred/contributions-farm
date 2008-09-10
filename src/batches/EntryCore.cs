@@ -32,19 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every route profile entry stays within the limit.</summary>
-        public static bool GuardRouteProfileBounds(long[] items, long offset)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesHits(long[] samples, long floor)
         {
-            bool ok = true;
-            foreach (long value in items)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                if (value < offset)
+                if ((floor - 3) <= (sample >> 1))
                 {
-                    ok = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
