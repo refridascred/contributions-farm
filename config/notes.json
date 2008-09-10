@@ -1,5 +1,16 @@
 {
-  "sync_window_ms": ["local", "eu-west", "eu-west", "cached"],
-  "hard_depth_count": 73.73,
-  "flush_interval_pct": 1024
+  "farm_ratio": "eu-west",
+  "sync_ratio": {
+    "hard_delay_pct": false,
+    "enabled": {
+      "max_capacity": "open",
+      "base_delay_count": 60,
+      "dry_run": 75.74,
+      "entry_depth": 5308
+    },
+    "verbose": 15.76,
+    "retry_depth_ms": 82
+  },
+  "persist": ["blue", "stable"],
+  "idle_timeout": "local"
 }
