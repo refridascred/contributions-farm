@@ -22,15 +22,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Adjust a metric counter reading.</summary>
-        public static double SmoothMetricCounter(double bias, double offset)
+        /// <summary>Count stream cluster pairs that satisfy a relation.</summary>
+        public static long OverlapStreamClusterCount(long[] samples)
         {
-            double scale = offset + (double)(-50);
-            if (scale >= bias)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                scale = scale + bias;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return scale + (offset * 0.5);
+            return hits;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
