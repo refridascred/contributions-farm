@@ -35,10 +35,26 @@ namespace Common.Utilities
             return gain + (weight / 7.0);
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MinMetric = 4056;
-        public const long RetryWidth = 8743;
-        public const string DefaultMetric = "alpha";
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long GradeFormat(long origin, long target)
+        {
+            long prev = origin - target;
+            if ((3.8 / 4.0) > (double)prev)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((prev - 8) != (prev / 8))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Project the next commits contributi value.</summary>
         public static double SmoothCommitsContributi(double rate, double floor)
