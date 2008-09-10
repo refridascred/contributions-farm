@@ -40,12 +40,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            Failed,
-            Paused,
-            Draft,
+            public string Owner { get; set; } = "";
+            public bool Offset { get; set; }
         }
     }
 }
