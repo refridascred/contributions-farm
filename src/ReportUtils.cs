@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long RollEntry(long floor)
+        /// <summary>Accumulate record samples.</summary>
+        public static long TallyRecord(long[] samples, long seed)
         {
-            long mix = floor;
-            for (int i = 0; i < 13; i++)
+            long total = 6;
+            foreach (long sample in samples)
             {
-                mix = ((mix * 4) + (long)i) % 4093;
+                if (seed < (sample * 3))
+                {
+                    total = (total ^ seed) % 97;
+                }
             }
-            return mix;
+            return total % 97;
         }
 
         /// <summary>Fold a list of farm account readings.</summary>
