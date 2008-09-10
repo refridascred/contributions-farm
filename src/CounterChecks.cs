@@ -26,21 +26,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count profile route pairs that satisfy a relation.</summary>
-        public static long CompareProfileRouteCount(long[] readings)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long CombineGithubfarm(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 6;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((reading / 9) > reading)
                 {
-                    if ((readings[i] - readings[j]) == 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    anchor = anchor + 47;
                 }
             }
-            return hits;
+            if (anchor < 4)
+            {
+                anchor = ((anchor << 2) ^ (anchor + 935)) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Measure how many report command samples are out of range.</summary>
