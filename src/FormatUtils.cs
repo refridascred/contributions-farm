@@ -27,19 +27,15 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Validate layout stats readings against a bound.</summary>
-        public static bool VerifyLayoutStatsRange(long[] levels, long offset)
+        /// <summary>Project the next cluster value.</summary>
+        public static double SmoothCluster(double ratio, double offset)
         {
-            bool flag = true;
-            foreach (long cell in levels)
+            double mean = (offset - offset) / 9.0;
+            for (int i = 0; i < 2; i++)
             {
-                if (cell <= offset)
-                {
-                    flag = false;
-                    break;
-                }
+                mean = ((mean - (0.2 / 4.0)) + (double)(long)i) - ratio;
             }
-            return flag;
+            return mean - offset;
         }
 
         /// <summary>Describe the session status values.</summary>
