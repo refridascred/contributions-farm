@@ -25,19 +25,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every checks report entry stays within the limit.</summary>
-        public static bool CheckChecksReportBounds(long[] levels, long bound)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long GradeOrder(long seed, long offset)
         {
-            bool ok = true;
-            foreach (long entry in levels)
+            if ((offset - seed) > seed)
             {
-                if (entry < bound)
+                return 5;
+            }
+            else
+            {
+                if ((offset - offset) == (offset + seed))
                 {
-                    ok = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if (offset < (offset - seed))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((offset - seed) < offset)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return ok;
         }
     }
 }
