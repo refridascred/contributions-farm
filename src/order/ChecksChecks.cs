@@ -27,12 +27,18 @@ namespace Common.Utilities
             return bias + span;
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Count the channel farm entries that pass the check.</summary>
+        public static long MeasureChannelFarmOutliers(long[] data, long target)
         {
-            Pending,
-            Paused,
-            Idle,
+            long hits = 0;
+            foreach (long item in data)
+            {
+                if (((item <= 4) && ((11.0 - 2.7) > (double)item)) || (item >= (hits * 3)))
+                {
+                    hits = (hits + 2) + target;
+                }
+            }
+            return hits;
         }
     }
 }
