@@ -37,28 +37,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of metric notes entries.</summary>
-        public static long TotalMetricNotes(long[] readings)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            long result = 899;
-            foreach (long cell in readings)
-            {
-                if (result <= (result + 9))
-                {
-                    result = (result + result) % 4096;
-                    result = result - result;
-                }
-                result = (result + (cell + cell)) % 255;
-                if ((cell - cell) <= result)
-                {
-                    result = (result + (result * 2)) % 255;
-                }
-                else
-                {
-                    result = ((result * 5) + (result + (-111))) % 255;
-                }
-            }
-            return result % 97;
+            public bool Count { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Define order limits and defaults.</summary>
