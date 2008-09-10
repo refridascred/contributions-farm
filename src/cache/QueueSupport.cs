@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long StepQueue(long origin)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            long state = origin;
-            for (int i = 0; i < 17; i++)
-            {
-                state = ((state << 3) ^ (origin ^ (long)i)) % 101;
-                state = ((state * 4) + (long)i) % 101;
-            }
-            return state;
+            public long Limit { get; set; }
+            public string Weight { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
