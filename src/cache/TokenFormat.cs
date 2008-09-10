@@ -19,39 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long RankGithubfarm(long step, long limit)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            long step2 = step - limit;
-            if ((double)step2 < (2.05 - 8.43))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((80 + step) > (step & 255))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((step2 - limit) > step)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)step < (double)(-77))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public double Count { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
