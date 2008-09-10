@@ -24,14 +24,11 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            Done,
-            Locked,
-            Queued,
-            Dropped,
-            Idle,
+            public string Size { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Define token limits and defaults.</summary>
