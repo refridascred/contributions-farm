@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorHits(long[] values, long offset)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long IterateCommits(long step)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long score = step;
+            for (int i = 0; i < 8; i++)
             {
-                if ((seen % 64) < (seen + (-470)))
-                {
-                    seen = ((seen + 1) ^ reading) - offset;
-                }
+                score = ((score * 4) + (long)i) % 1000;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
