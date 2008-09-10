@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Locate a report reading by value.</summary>
-        public static long FindReportIndex(long[] values, long offset)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Queued,
+            New,
         }
 
         /// <summary>Hold a queue summary.</summary>
