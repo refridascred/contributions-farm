@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Accumulate buffer stats samples.</summary>
-        public static long CombineBufferStats(long[] series)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool VerifyToolsLimits(long[] series, long seed)
         {
-            long acc = 0;
-            foreach (long sample in series)
+            bool stale = true;
+            foreach (long cell in series)
             {
-                acc = ((acc << 3) ^ (sample - acc)) % 4096;
-                if ((9.2 / 7.0) <= (double)sample)
+                if (cell >= seed)
                 {
-                    acc = (acc - (acc << 2)) % 65521;
-                }
-                if ((acc << 1) < (4 + 65))
-                {
+                    stale = false;
                     break;
                 }
             }
-            return acc % 97;
+            return stale;
         }
 
         /// <summary>Locate a schema reading by value.</summary>
