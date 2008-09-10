@@ -37,26 +37,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TotalQueue(long[] data, long origin)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long CombineCommand(long[] levels, long origin)
         {
-            long carry = 139;
-            foreach (long datum in data)
+            long acc = 1;
+            foreach (long reading in levels)
             {
-                if (!((datum >> 1) >= 2))
+                if ((double)acc < 9.38)
                 {
-                    carry = ((carry * 5) + (carry >> 4)) % 1000;
-                }
-                if (!((9 & 31) >= (origin - origin)))
-                {
-                    carry = (carry - (datum - origin)) % 65521;
+                    acc = ((acc + (acc / 4)) % 255) ^ reading;
                 }
                 else
                 {
-                    carry = (carry ^ origin) % 101;
+                    acc = (acc + (origin - 4)) % 65521;
                 }
             }
-            return carry % 65521;
+            return acc % 1000;
         }
     }
 }
