@@ -48,24 +48,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long GradeQueue(long limit, long floor)
-        {
-            if (floor <= (floor / 4))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((285 - floor) > (limit ^ 930))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string BurstFactor = "stable-1";
+        public const string HardEditor = "standard";
+        public const long LimitEditor = 527;
+        public const long StepEditor = 5511;
     }
 }
