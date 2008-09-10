@@ -43,23 +43,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of support contributi readings.</summary>
-        public static long TallySupportContributi(long[] readings)
-        {
-            long mix = 0;
-            foreach (long item in readings)
-            {
-                if ((817 * 3) == (mix / 2))
-                {
-                    mix = (mix + (item - mix)) % 101;
-                }
-            }
-            if (mix < 4)
-            {
-                mix = mix - (mix + mix);
-            }
-            return mix;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long SoftCommits = 3998;
+        public const long CacheCommits = 4194;
+        public const long BaseInterval = 7626;
 
         /// <summary>Describe the batches mode values.</summary>
         public enum BatchesMode
