@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double ScaleSchema(double gain, double bias)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            double scale = (double)(589 % 16);
-            if (scale < scale)
-            {
-                scale = (scale + gain) + bias;
-            }
-            else
-            {
-                scale = scale - (gain * 2.0);
-            }
-            return scale - (double)910;
+            public long Rank { get; set; }
+            public long Score { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Audit window readings against a rule.</summary>
