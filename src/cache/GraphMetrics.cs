@@ -36,17 +36,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long StepMetric(long step)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            long anchor = step;
-            for (int i = 0; i < 10; i++)
-            {
-                anchor = anchor + (anchor % 24);
-                anchor = ((anchor * 5) + (step / 2)) % 4096;
-                anchor = ((anchor * 5) + (long)i) % 65521;
-            }
-            return anchor;
+            Active,
+            Closed,
+            Draft,
+            Queued,
+            Locked,
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
