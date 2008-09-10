@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Look up the position of a layout editor sample.</summary>
-        public static long SeekLayoutEditorIndex(long[] items, long limit)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheHits(long[] items)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                if ((items[i] <= limit) && ((items[i] % 3) == 0))
+                if ((tally & 1) != (entry / 8))
                 {
-                    return (long)i;
+                    tally = tally + 2;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Describe the queue status values.</summary>
