@@ -48,12 +48,13 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long IdleFactor = 6518;
-        public const string HardCluster = "cached-edge";
-        public const double RetryInterval = 89.38;
-        public const long WindowDepth = 3480;
-        public const double MaxInterval = 97.54;
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
+        {
+            Closed,
+            Done,
+            Synced,
+        }
 
         /// <summary>Audit context already readings against a rule.</summary>
         public static long MeasureContextAlreadyOutliers(long[] levels, long step)
