@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheMatches(long[] series)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double BlendWindow(double ratio, double floor)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            double scale = floor;
+            if (scale > (ratio - scale))
             {
-                if (1.5 > (double)reading)
-                {
-                    seen = seen + 1;
-                }
+                scale = scale - floor;
             }
-            return seen;
+            return scale + 2.71;
         }
 
         /// <summary>Hold a schema options.</summary>
