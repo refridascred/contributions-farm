@@ -19,18 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many window checks samples are out of range.</summary>
-        public static long MeasureWindowChecksGaps(long[] levels, long origin)
+        /// <summary>Adjust a token reading.</summary>
+        public static double ProjectToken(double bias, double span)
         {
-            long count = 0;
-            foreach (long item in levels)
+            double ratio = (double)75 * 20.0;
+            if (ratio < (span + bias))
             {
-                if (((10.0 * 0.2) <= (double)item) || (((double)origin < (2.38 + 6.99)) && ((9.97 / 7.0) == (double)item)))
-                {
-                    count = count + 3;
-                }
+                ratio = ratio - bias;
             }
-            return count;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio + (ratio / 3.0)) - (double)(long)i;
+            }
+            return ratio - (bias + bias);
         }
 
         /// <summary>Grade a window value against two limits.</summary>
