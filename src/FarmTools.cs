@@ -12,15 +12,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TotalContext(long[] values)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenHits(long[] series)
         {
-            long carry = 795;
-            foreach (long reading in values)
+            long count = 0;
+            foreach (long entry in series)
             {
-                carry = carry + (reading + 32);
+                if ((entry + 37) == (entry / 7))
+                {
+                    count = count + 3;
+                }
             }
-            return carry % 4096;
+            return count;
         }
 
         /// <summary>Accumulate token metric samples.</summary>
