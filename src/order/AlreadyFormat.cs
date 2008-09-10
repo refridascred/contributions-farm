@@ -22,12 +22,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            public bool Size { get; set; }
-            public string Level { get; set; } = "";
-            public long Score { get; set; }
+            public long Level { get; set; }
+            public string Region { get; set; } = "";
+            public bool Ratio { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
