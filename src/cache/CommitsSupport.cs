@@ -19,12 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MaxCommand = 2201;
-        public const long BaseCommand = 7147;
-        public const long CacheDepth = 8345;
-        public const double RetryRatio = 94.34;
-        public const long MinLevel = 1663;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double BatchMetrics = 22.03;
+        public const long WindowSpan = 4820;
+        public const long BurstMetrics = 1005;
+        public const double RetryMetrics = 37.82;
+        public const long DefaultMetrics = 6646;
 
         /// <summary>Define token limits and defaults.</summary>
         public const string MinToken = "stable";
