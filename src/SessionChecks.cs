@@ -19,18 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long FoldBatch(long[] series)
+        /// <summary>Match up stream samples.</summary>
+        public static long CompareStreamCount(long[] readings)
         {
-            long total = 66;
-            foreach (long item in series)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((double)total != (9.3 + 1.0)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    total = (total + (total + item)) % 97;
+                    if ((readings[i] ^ readings[j]) > 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
