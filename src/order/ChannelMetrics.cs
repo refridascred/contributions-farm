@@ -28,13 +28,18 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileHits(long[] series, long limit)
         {
-            Active,
-            Stale,
-            Failed,
-            Paused,
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if ((double)limit != (double)seen)
+                {
+                    seen = (seen + 1) + item;
+                }
+            }
+            return seen;
         }
     }
 }
