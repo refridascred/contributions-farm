@@ -66,18 +66,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the metric metrics entries that pass the check.</summary>
-        public static long CountMetricMetricsHits(long[] samples)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double ScaleEntry(double bias, double offset)
         {
-            long count = 0;
-            foreach (long item in samples)
+            double ratio = bias;
+            if (ratio < (double)994)
             {
-                if (item < (40 ^ count))
-                {
-                    count = count + 1;
-                }
+                ratio = ratio + 2.0;
             }
-            return count;
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio - offset) + (double)(long)i;
+            }
+            return ratio - ratio;
         }
     }
 }
