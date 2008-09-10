@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionMatches(long[] data)
+        /// <summary>Project the next stats record value.</summary>
+        public static double BlendStatsRecord(double scale, double span)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            double scale2 = scale - span;
+            if (scale2 >= (double)7)
             {
-                if (((tally ^ reading) > reading) || ((double)reading == (double)432))
-                {
-                    tally = tally + 3;
-                }
+                scale2 = scale2 - (scale - scale2);
             }
-            return tally;
+            return scale2 - scale2;
         }
 
         /// <summary>Audit queue editor readings against a rule.</summary>
