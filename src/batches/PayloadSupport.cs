@@ -26,13 +26,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Fold a list of githubfarm tools readings.</summary>
+        public static long DigestGithubfarmTools(long[] readings)
         {
-            public long Level { get; set; }
-            public long Count { get; set; }
-            public long Flag { get; set; }
-            public long Rank { get; set; }
+            long carry = -4;
+            foreach (long item in readings)
+            {
+                carry = ((carry * 5) + (154 - carry)) % 65521;
+                if ((item + 930) < 495)
+                {
+                    carry = carry ^ carry;
+                }
+            }
+            if (carry < (-61))
+            {
+                carry = ((carry * 2) + carry) % 97;
+            }
+            return carry;
         }
     }
 }
