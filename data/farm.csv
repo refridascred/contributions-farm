@@ -1,8 +1,8 @@
-id,token,level
-1,11.72,33.97
-2,785,primary
-3,111,local
-4,39.07,583
-5,757,836
-6,742,legacy
-7,169,933
+id,region,state,score,level
+1,cached,632,blue,latest
+2,49.76,41.0,primary,744
+3,411,119,stable,735
+4,97,primary,471,stable
+5,62.38,226,140,staging
+6,380,997,latest,standard
+7,21.01,109,34.6,staging
