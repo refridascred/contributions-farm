@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm metrics helpers.</summary>
     public static class FarmMetrics
     {
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long OverlapSessionCount(long[] readings)
+        /// <summary>Measure how many githubfarm queue samples are out of range.</summary>
+        public static long TallyGithubfarmQueueOutliers(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((matches % 97) <= (entry % 97))
                 {
-                    if ((readings[i] + readings[j]) < 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = matches + 3;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
