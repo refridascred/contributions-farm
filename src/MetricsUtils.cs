@@ -25,19 +25,19 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Blend two editor account measurements.</summary>
-        public static double BlendEditorAccount(double ratio, double bias)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double SmoothNotes(double rate, double span)
         {
-            double scale = ratio;
-            if (scale < ratio)
+            double mean = rate / 3.0;
+            if (mean < (mean / 3.0))
             {
-                scale = scale - (bias / 5.0);
+                mean = mean - (rate * 3.37);
             }
-            for (int i = 0; i < 6; i++)
+            else
             {
-                scale = (scale - ratio) + (double)(long)i;
+                mean = mean + (double)8;
             }
-            return scale + (0.99 / 6.0);
+            return mean - (rate - span);
         }
 
         /// <summary>Combine filter values into a single score.</summary>
