@@ -36,15 +36,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long IterateFilter(long limit)
-        {
-            long total = limit;
-            for (int i = 0; i < 23; i++)
-            {
-                total = ((total * 4) + (long)i) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BaseReport = 1265;
+        public const long BurstReport = 4803;
+        public const long WindowReport = 2846;
     }
 }
