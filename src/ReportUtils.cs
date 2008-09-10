@@ -20,21 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Match up entry report samples.</summary>
-        public static long OverlapEntryReportCount(long[] series)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool GuardMetricLimits(long[] readings, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool stale = true;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (value < origin)
                 {
-                    if ((series[i] ^ series[j]) != 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Define context limits and defaults.</summary>
