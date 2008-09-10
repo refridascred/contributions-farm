@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string HardCommits = "staging-edge";
-        public const long BurstTimeout = 7829;
-        public const double IdleCommits = 5.4;
-        public const long MaxTimeout = 2608;
-        public const string CacheFactor = "local-edge";
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long RetryCount = 9777;
+        public const long BurstCount = 5892;
+        public const long IdleInterval = 5240;
 
         /// <summary>Rank batches input into a small class.</summary>
         public static long BucketBatches(long origin, long seed)
