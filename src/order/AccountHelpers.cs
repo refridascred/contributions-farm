@@ -51,22 +51,12 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Accumulate order cluster samples.</summary>
-        public static long CombineOrderCluster(long[] levels)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            long state = 64;
-            foreach (long entry in levels)
-            {
-                if (state < (entry * 5))
-                {
-                    state = (state + (752 + entry)) % 97;
-                }
-            }
-            if (state > 38)
-            {
-                state = (state * 2) + state;
-            }
-            return state;
+            Paused,
+            Pending,
+            Idle,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
