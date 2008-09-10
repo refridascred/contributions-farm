@@ -1,6 +1,6 @@
 {
-  "retry_ratio": "eu-west",
-  "schema_timeout": true,
-  "idle_window": 44.96,
-  "flush_limit": 65
+  "sync_threshold": "green",
+  "session_size": ["local", "stable", "open"],
+  "audit": "eu-west",
+  "max_size_count": 12.85
 }
