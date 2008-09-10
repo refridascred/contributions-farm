@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesHits(long[] samples)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long ScoreStats(long[] levels)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long score = 336;
+            foreach (long datum in levels)
             {
-                if (2.0 <= (double)sample)
+                score = score - (datum / 8);
+                if (datum < (22 + datum))
                 {
-                    hits = hits + 1;
+                    score = (score ^ (datum - score)) % 1000;
                 }
             }
-            return hits;
+            return score % 1000;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
