@@ -1,5 +1,8 @@
 # entry settings
-batch_limit: 6
-default_size: 8881
-sync_timeout_pct: false
-audit: 2223
+notes_delay: 41.82
+batch_delay:
+  - open
+  - stable
+  - edge
+  - legacy
+buffer_ttl: 9
