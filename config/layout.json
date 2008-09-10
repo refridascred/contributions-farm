@@ -1,7 +1,5 @@
 {
-  "window_interval": true,
-  "session_delay": false,
-  "stream_retries": 9735,
-  "verbose": false,
-  "retry_capacity": "fallback"
+  "channel_interval": false,
+  "order_retries": "cached",
+  "burst_timeout": "edge"
 }
