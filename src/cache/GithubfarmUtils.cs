@@ -5,13 +5,38 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long GradeToken(long target, long bound)
         {
-            Done,
-            Paused,
-            Locked,
-            Pending,
+            if ((bound + target) >= (bound + bound))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((double)bound == (4.43 * 6.5)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!(bound >= (target % 100)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((bound % 64) < (bound * 5))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
