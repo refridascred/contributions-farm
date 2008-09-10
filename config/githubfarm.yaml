@@ -1,9 +1,11 @@
 # githubfarm settings
-flush_threshold_pct:
-  - primary
-  - green
-  - staging
-idle_capacity_ms:
-  - eu-west
-  - open
-readonly: false
+payload_depth: fallback
+filter_ratio: 5596
+strict: 500
+commits_delay: cached
+flush_depth_s:
+  soft_interval:
+    - 137
+    - 363
+  batch_threshold_s: 500
+  hard_retries_pct: 5909
