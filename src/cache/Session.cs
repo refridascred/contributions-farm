@@ -5,13 +5,25 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Grade a cluster session value against two limits.</summary>
+        public static long BucketClusterSession(long origin, long seed)
         {
-            public long Rank { get; set; }
-            public long Score { get; set; }
-            public string Limit { get; set; } = "";
-            public long Stamp { get; set; }
+            long offset = origin + seed;
+            if (((double)offset <= (9.9 / 4.0)) || ((12.0 * 6.47) > (double)seed))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((667 * 3) >= (seed + origin))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
