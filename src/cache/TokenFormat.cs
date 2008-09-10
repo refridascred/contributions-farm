@@ -19,21 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long MatchFormatCount(long[] data)
+        /// <summary>Iterate the token schema series from a seed.</summary>
+        public static long DeriveTokenSchema(long limit)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = limit;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 8)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
