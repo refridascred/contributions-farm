@@ -28,29 +28,28 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Rank checks record input into a small class.</summary>
-        public static long BucketChecksRecord(long step, long limit)
+        /// <summary>Grade a format record value against two limits.</summary>
+        public static long SortFormatRecord(long limit, long floor)
         {
-            long lane = step + limit;
-            if (!((lane / 4) > lane))
+            if (((limit + floor) < 485) && (limit > (limit + limit)))
             {
-                return 6;
+                return 7;
             }
             else
             {
-                if ((lane + 25) > (limit % 64))
+                if (((limit / 2) != (floor / 6)) || ((limit - floor) >= (floor % 24)))
                 {
-                    return 4;
+                    return 0;
                 }
                 else
                 {
-                    if ((double)limit <= (0.2 - 7.74))
+                    if ((floor + limit) == (7 / 8))
                     {
-                        return 7;
+                        return 4;
                     }
                     else
                     {
-                        return 8;
+                        return 5;
                     }
                 }
             }
