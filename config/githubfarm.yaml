@@ -1,12 +1,8 @@
 # githubfarm settings
-layout_ttl: false
-verbose: 1024
-idle_size_s: blue
-poll_retries:
-  order_timeout: true
-  min_limit_pct: 69.35
-  strict: stable
-  hard_size_ms: false
-  report_timeout: 4441
-  default_window_s: fallback
-channel_delay: blue
+default_retries_ms: strict
+soft_capacity_pct:
+  - 266
+  - 123
+  - 170
+batch_retries: 250
+githubfarm_capacity: 3940
