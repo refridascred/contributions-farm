@@ -83,25 +83,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long BucketContributi(long origin, long target)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long IterateBatch(long floor)
         {
-            long cur = origin - target;
-            if ((origin >> 2) != (target + cur))
+            long acc = floor;
+            for (int i = 0; i < 21; i++)
             {
-                return 8;
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            else
-            {
-                if (2.0 > (double)origin)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return acc;
         }
     }
 }
