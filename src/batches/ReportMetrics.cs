@@ -28,12 +28,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            public double Ratio { get; set; }
-            public bool Owner { get; set; }
-            public double Weight { get; set; }
+            Failed,
+            Paused,
+            Draft,
         }
     }
 }
