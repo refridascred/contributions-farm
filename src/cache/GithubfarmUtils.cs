@@ -30,18 +30,26 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Count the window session entries that pass the check.</summary>
-        public static long AuditWindowSessionOutliers(long[] levels)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long FoldMetrics(long[] series)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long total = 685;
+            foreach (long datum in series)
             {
-                if ((53 * 4) <= datum)
+                if ((8.23 * 6.8) < (double)total)
                 {
-                    seen = seen + 3;
+                    total = total + (709 % 100);
+                }
+                else
+                {
+                    total = (total << 2) ^ (datum + 58);
                 }
             }
-            return seen;
+            if (total > 84)
+            {
+                total = (total - (total / 3)) % 1000;
+            }
+            return total;
         }
     }
 }
