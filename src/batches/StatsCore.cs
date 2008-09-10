@@ -5,10 +5,26 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double MaxRatio = 25.14;
-        public const long WindowEditor = 1070;
-        public const long LimitFactor = 8343;
+        /// <summary>Classify a batches order pair into a bucket.</summary>
+        public static long ClassifyBatchesOrder(long target, long offset)
+        {
+            long edge = target - offset;
+            if ((offset - 813) < offset)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((edge < (target & 127)) || ((double)edge > (double)target))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Hold a queue options.</summary>
         public sealed class QueueOptions
