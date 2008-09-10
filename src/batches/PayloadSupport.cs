@@ -11,23 +11,38 @@ namespace Common.Utilities
         public const long IdleToken = 3201;
         public const string BurstSize = "strict";
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double ProjectCache(double bias, double floor)
+        /// <summary>Classify a entry editor pair into a bucket.</summary>
+        public static long ClassifyEntryEditor(long floor, long step)
         {
-            double load = bias;
-            if (load <= bias)
+            if ((7 > floor) && ((double)step > (6.0 * 5.1)))
             {
-                load = load - (7.48 - floor);
+                return 3;
             }
             else
             {
-                load = load - 5.4;
+                if ((double)floor > (15.0 / 9.0))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((double)floor < (12.0 + 7.2)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (floor >= (step >> 1))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load - (floor - 12.0)) + (double)(long)i;
-            }
-            return load + 8.0;
         }
 
         /// <summary>Rank schema input into a small class.</summary>
