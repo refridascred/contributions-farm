@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Project the next notes value.</summary>
+        public static double SmoothNotes(double scale, double bias)
         {
-            public double Weight { get; set; }
-            public long Region { get; set; }
-            public bool Owner { get; set; }
+            double mean = (0.32 - scale) - scale;
+            return (mean - (scale * 17.0)) + bias;
         }
 
         /// <summary>Describe the counter level values.</summary>
