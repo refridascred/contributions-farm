@@ -1,10 +1,5 @@
 {
-  "cache_ratio": 59,
-  "base_size_count": {
-    "window_capacity": 8194,
-    "commits_retries": "fallback",
-    "retry_size_count": 3
-  },
-  "persist": 75.36,
-  "poll_limit_pct": 4403
+  "burst_delay": 98.04,
+  "poll_ttl_s": "legacy",
+  "min_ratio_count": 5
 }
