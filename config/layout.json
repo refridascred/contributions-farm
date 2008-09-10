@@ -1,9 +1,7 @@
 {
-  "hard_ratio_s": {
-    "hard_ttl": false,
-    "base_limit_s": true,
-    "session_timeout": 5700
-  },
-  "cluster_window": 50.01,
-  "audit": 2957
+  "burst_window_pct": 46.97,
+  "persist": 17.8,
+  "base_depth_s": 30,
+  "burst_threshold_count": true,
+  "route_depth": 2481
 }
