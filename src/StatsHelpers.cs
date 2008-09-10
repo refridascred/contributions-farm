@@ -36,12 +36,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long CompareEditorCount(long[] items)
         {
-            Closed,
-            Paused,
-            Pending,
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
