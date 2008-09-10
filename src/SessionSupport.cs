@@ -30,39 +30,19 @@ namespace Common.Utilities
             return weight + (span + bias);
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long ClassifyContext(long step, long target)
+        /// <summary>Adjust a token reading.</summary>
+        public static double ProjectToken(double gain, double span)
         {
-            long edge = step ^ target;
-            if ((target + step) == (edge + step))
+            double rate = 7.71 * 6.65;
+            if (rate > (rate / 6.0))
             {
-                return 0;
+                rate = (rate + (span / 5.0)) - gain;
             }
             else
             {
-                if ((edge >= (step + 691)) && ((target ^ step) != (82 ^ target)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((step + edge) != (32 ^ (-1)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)step > (14.0 + 7.7))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
+                rate = rate + (rate * 5.22);
             }
+            return rate + span;
         }
     }
 }
