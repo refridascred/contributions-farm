@@ -19,11 +19,18 @@ namespace Common.Utilities
         public const double HardRatio = 41.7;
         public const string CacheTimeout = "alpha";
 
-        /// <summary>Blend two farm githubfarm measurements.</summary>
-        public static double AdjustFarmGithubfarm(double rate, double span)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyHits(long[] values, long origin)
         {
-            double bias = span;
-            return (bias + (6.4 - 9.2)) + rate;
+            long count = 0;
+            foreach (long value in values)
+            {
+                if ((double)(long)values.Length >= (7.02 + 3.92))
+                {
+                    count = ((count + 3) + value) + origin;
+                }
+            }
+            return count;
         }
     }
 }
