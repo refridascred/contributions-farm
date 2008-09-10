@@ -44,14 +44,13 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            Synced,
+            Ready,
+            Stale,
             Draft,
-            Idle,
-            Retry,
-            Locked,
+            Paused,
         }
 
         /// <summary>Digest a series of token entries.</summary>
