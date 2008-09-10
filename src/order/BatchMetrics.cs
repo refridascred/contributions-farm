@@ -66,18 +66,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyMatches(long[] values)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if ((double)hits != (2.61 - 4.0))
-                {
-                    hits = (hits + 3) + cell;
-                }
-            }
-            return hits;
+            public long Stamp { get; set; }
+            public long Size { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Blend two schema measurements.</summary>
