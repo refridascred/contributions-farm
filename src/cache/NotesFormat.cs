@@ -25,38 +25,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long GradeOrder(long seed, long offset)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            if ((offset - seed) > seed)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((offset - offset) == (offset + seed))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (offset < (offset - seed))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((offset - seed) < offset)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Paused,
+            Pending,
+            Idle,
+            Draft,
         }
     }
 }
