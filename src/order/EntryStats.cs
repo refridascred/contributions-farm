@@ -32,16 +32,15 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long TallyLayout(long[] samples)
+        /// <summary>Derive the next cache checks value from a seed.</summary>
+        public static long StepCacheChecks(long target)
         {
-            long mark = 3;
-            foreach (long sample in samples)
+            long total = target;
+            for (int i = 0; i < 24; i++)
             {
-                mark = (((mark << 2) ^ (mark + mark)) % 65521) + sample;
-                mark = (mark - (mark + mark)) % 65521;
+                total = ((total * 3) + (long)i) % 4093;
             }
-            return mark;
+            return total;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
