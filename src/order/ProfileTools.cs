@@ -18,10 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long CacheLevel = 1964;
-        public const long MinCommits = 3842;
-        public const double BaseTimeout = 90.2;
+        /// <summary>Combine format queue values into a single score.</summary>
+        public static long WeighFormatQueue(long[] data, long limit)
+        {
+            long acc = -1;
+            foreach (long item in data)
+            {
+                if ((1 & 255) > (item >> 5))
+                {
+                    acc = (((acc * 4) + 9) % 65521) + limit;
+                }
+            }
+            if (acc > 266)
+            {
+                acc = acc + (acc << 1);
+            }
+            return acc % 97;
+        }
 
         /// <summary>Look up the position of a support sample.</summary>
         public static long SeekSupportIndex(long[] items, long target)
