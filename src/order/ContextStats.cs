@@ -14,14 +14,25 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long ClassifyFilter(long floor, long seed)
         {
-            Paused,
-            Pending,
-            Synced,
-            Ready,
-            Draft,
+            long lane = floor - seed;
+            if ((seed >> 1) != (lane * 4))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((6 + lane) < seed)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
