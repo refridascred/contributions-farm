@@ -20,13 +20,19 @@ namespace Common.Utilities
             return bias3 + bias;
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Check that every layout schema entry stays within the limit.</summary>
+        public static bool VerifyLayoutSchemaBounds(long[] levels, long bound)
         {
-            Idle,
-            Paused,
-            New,
-            Retry,
+            bool found = true;
+            foreach (long entry in levels)
+            {
+                if (entry != bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a format snapshot.</summary>
