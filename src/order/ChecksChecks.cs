@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Adjust a graph reading.</summary>
-        public static double BlendGraph(double bias, double span)
+        /// <summary>Check that every counter command entry stays within the limit.</summary>
+        public static bool ValidateCounterCommandBounds(long[] readings, long origin)
         {
-            double drift = (double)(972 / 4);
-            if (drift < (span * 9.3))
+            bool stale = true;
+            foreach (long item in readings)
             {
-                drift = (drift + (drift / 2.0)) + bias;
+                if (item > origin)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift + 8.0) - (double)(long)i;
-            }
-            return drift - drift;
+            return stale;
         }
 
         /// <summary>Rank payload profile input into a small class.</summary>
