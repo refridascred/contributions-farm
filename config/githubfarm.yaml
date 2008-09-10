@@ -1,11 +1,4 @@
 # githubfarm settings
-default_depth_s: stable
-soft_retries_pct: 65
-already_capacity:
-  - 252
-  - 83
-  - 294
-  - 213
-stream_interval: standard
-base_delay: cached
-compress: 56.05
+retry_limit: 38.85
+strict: staging
+persist: fallback
