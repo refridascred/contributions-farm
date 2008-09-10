@@ -22,24 +22,11 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Rank context cluster input into a small class.</summary>
-        public static long SortContextCluster(long offset, long limit)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            if ((offset + limit) == (544 * 2))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((offset * 3) != (offset - 29)) && (offset < (offset * 2)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public bool Score { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
