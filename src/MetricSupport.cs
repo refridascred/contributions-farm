@@ -19,18 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LocateAccountIndex(long[] items, long target)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] == target) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long WindowBudget = 4915;
+        public const long HardBatch = 3386;
+        public const double MaxCount = 93.78;
+        public const long StepLevel = 8385;
 
         /// <summary>Measure how many commits samples are out of range.</summary>
         public static long TallyCommitsMatches(long[] readings)
