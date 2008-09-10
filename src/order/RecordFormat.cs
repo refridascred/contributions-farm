@@ -38,13 +38,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
-        {
-            public long Size { get; set; }
-            public long Offset { get; set; }
-            public string Level { get; set; } = "";
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BatchPayload = 6935;
+        public const long DefaultCount = 6873;
+        public const long BasePayload = 8452;
+        public const long SoftTimeout = 4342;
+        public const string RetryCount = "stable-v2";
 
         /// <summary>Find the first layout entry that matches the target.</summary>
         public static long LocateLayoutIndex(long[] items, long origin)
