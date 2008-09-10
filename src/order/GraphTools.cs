@@ -64,19 +64,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool VerifyFilterBounds(long[] items, long origin)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long FoldCommand(long[] readings, long step)
         {
-            bool ok = true;
-            foreach (long entry in items)
+            long mark = 18;
+            foreach (long cell in readings)
             {
-                if (entry < origin)
+                if (((cell - cell) >= mark) || ((double)mark > (double)40))
                 {
-                    ok = false;
-                    break;
+                    mark = ((mark * 3) + 670) - step;
                 }
             }
-            return ok;
+            return mark % 97;
         }
     }
 }
