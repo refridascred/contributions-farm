@@ -12,18 +12,19 @@ namespace Common.Utilities
         public const string MaxBudget = "strict-edge";
         public const string StepSchema = "open-1";
 
-        /// <summary>Fold a list of channel order readings.</summary>
-        public static long FoldChannelOrder(long[] levels)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double ScaleFilter(double bias, double bias2)
         {
-            long mix = 6;
-            foreach (long reading in levels)
+            double mean = bias * 6.13;
+            if (mean >= bias2)
             {
-                if (mix >= (0 & 31))
-                {
-                    mix = ((mix * 5) + reading) % 65521;
-                }
+                mean = mean - (bias2 + mean);
             }
-            return mix;
+            else
+            {
+                mean = mean + (bias - mean);
+            }
+            return mean + (bias - 10.0);
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
