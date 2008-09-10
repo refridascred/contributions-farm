@@ -32,24 +32,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long ClassifyGithubfarm(long step, long origin)
+        /// <summary>Find the first channel account entry that matches the target.</summary>
+        public static long FindChannelAccountIndex(long[] items, long seed)
         {
-            if ((step >> 5) < (step % 64))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((step % 5) <= origin)
+                if ((items[i] <= seed) && ((items[i] % 3) != 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
