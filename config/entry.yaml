@@ -1,10 +1,18 @@
 # entry settings
-audit:
-  - 82
-  - 205
-soft_delay: 1506
-sync_ttl_ms:
-  - eu-west
-  - cached
-  - strict
-notes_window: false
+farm_size: 59
+stream_retries:
+  - 375
+  - 46
+  - 50
+min_depth:
+  editor_size: false
+  account_delay:
+    channel_threshold: 28
+    poll_interval_ms: legacy
+    idle_ratio_count: 12
+    notes_timeout: cached
+    record_timeout: green
+    readonly: 8
+  warm_size_count: 1024
+  audit: primary
+  token_ratio: fallback
