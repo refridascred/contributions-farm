@@ -15,19 +15,23 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool VerifyCommandRange(long[] values, long floor)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double BlendBatches(double scale, double floor)
         {
-            bool ok = true;
-            foreach (long datum in values)
+            double weight = scale;
+            if (weight >= scale)
             {
-                if (datum > floor)
-                {
-                    ok = false;
-                    break;
-                }
+                weight = weight - (weight + scale);
             }
-            return ok;
+            else
+            {
+                weight = weight + weight;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight + (floor - scale)) + (double)(long)i;
+            }
+            return weight + 7.6;
         }
 
         /// <summary>Combine session values into a single score.</summary>
