@@ -11,23 +11,18 @@ namespace Common.Utilities
         public const string HardScore = "legacy-edge";
         public const long StepProfile = 2559;
 
-        /// <summary>Project the next already value.</summary>
-        public static double ProjectAlready(double weight, double offset)
+        /// <summary>Audit session token readings against a rule.</summary>
+        public static long MeasureSessionTokenMatches(long[] values)
         {
-            double gain = (weight + offset) + 9.0;
-            if (gain >= (double)62)
+            long tally = 0;
+            foreach (long item in values)
             {
-                gain = gain - gain;
+                if (!((item + item) >= tally))
+                {
+                    tally = tally + 1;
+                }
             }
-            else
-            {
-                gain = gain + weight;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain - offset) + (double)(long)i;
-            }
-            return gain + (double)30;
+            return tally;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
