@@ -23,22 +23,21 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long WeighSupport(long[] values, long step)
+        /// <summary>Iterate the buffer tools series from a seed.</summary>
+        public static long RollBufferTools(long floor)
         {
-            long anchor = 83;
-            foreach (long entry in values)
+            long sum = floor;
+            for (int i = 0; i < 20; i++)
             {
-                if (56 >= (entry & 3))
+                sum = (sum + (floor + (long)i)) % 65521;
+                sum = ((sum * 2) + sum) % 101;
+                if (!((floor * 3) < floor))
                 {
-                    anchor = anchor - (9 << 3);
+                    sum = (sum * 3) + ((long)i % 8);
                 }
-                if ((anchor + step) >= step)
-                {
-                    anchor = ((anchor * 2) + (anchor - entry)) % 101;
-                }
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return anchor % 65521;
+            return sum;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
