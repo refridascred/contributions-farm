@@ -19,15 +19,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the token schema series from a seed.</summary>
-        public static long DeriveTokenSchema(long limit)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long RankGithubfarm(long step, long limit)
         {
-            long mix = limit;
-            for (int i = 0; i < 20; i++)
+            long step2 = step - limit;
+            if ((double)step2 < (2.05 - 8.43))
             {
-                mix = ((mix * 3) + (long)i) % 4093;
+                return 5;
             }
-            return mix;
+            else
+            {
+                if ((80 + step) > (step & 255))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((step2 - limit) > step)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)step < (double)(-77))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
