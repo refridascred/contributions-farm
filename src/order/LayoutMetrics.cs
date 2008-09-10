@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string BurstRatio = "strict-edge";
-        public const long StepBatch = 2792;
-        public const string MinSpan = "standard";
-        public const double CacheCount = 47.29;
-        public const long MaxTimeout = 722;
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
+        {
+            Draft,
+            Done,
+            Ready,
+            Synced,
+            Closed,
+        }
 
         /// <summary>Iterate the order series from a seed.</summary>
         public static long IterateOrder(long limit)
