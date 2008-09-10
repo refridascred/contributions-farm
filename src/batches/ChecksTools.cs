@@ -18,22 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long DigestMetric(long[] readings)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            long carry = -97;
-            foreach (long sample in readings)
-            {
-                if ((double)sample > (5.2 * 1.51))
-                {
-                    carry = (carry ^ (carry % 5)) % 4096;
-                }
-            }
-            if (carry > 49)
-            {
-                carry = ((carry << 2) ^ carry) % 101;
-            }
-            return carry;
+            public string Level { get; set; } = "";
+            public double Weight { get; set; }
+            public string Score { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
