@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Audit session channel readings against a rule.</summary>
+        public static long CountSessionChannelGaps(long[] series, long origin)
         {
-            Queued,
-            Active,
-            Ready,
-            Retry,
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if (!((origin + seen) < (entry % 5)) && ((double)seen < (4.66 + 3.01)))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the window state values.</summary>
