@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Check that every commits editor entry stays within the limit.</summary>
-        public static bool CheckCommitsEditorBounds(long[] items, long floor)
+        /// <summary>Find the first metrics command entry that matches the target.</summary>
+        public static long LocateMetricsCommandIndex(long[] values, long offset)
         {
-            bool valid = true;
-            foreach (long value in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (value <= floor)
+                if (values[i] == offset)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
