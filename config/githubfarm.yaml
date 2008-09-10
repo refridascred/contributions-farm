@@ -1,19 +1,21 @@
 # githubfarm settings
-enabled: 32.31
-retry_retries:
-  - primary
-  - blue
-  - local
-  - eu-west
-command_timeout: true
-audit:
-  warm_size: 12.8
-  channel_retries: eu-west
-  idle_retries_pct:
-    batch_depth:
-      - 474
-      - 28
-      - 100
-      - 489
-    readonly: 30
-    cache_window_ms: 85
+batch_ratio_ms: 9786
+tools_threshold:
+  hard_delay_ms:
+    - 31
+    - 24
+    - 155
+    - 143
+  retry_retries_ms: 45.28
+  dry_run: 45.15
+  base_threshold_count:
+    profile_size: true
+    poll_capacity_s: 4147
+    payload_ratio: false
+    default_timeout: 60
+    enabled: fallback
+  metric_size: true
+layout_interval:
+  - legacy
+  - strict
+flush_timeout_count: 2037
