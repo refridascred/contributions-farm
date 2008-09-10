@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of commits layout entries.</summary>
-        public static long FoldCommitsLayout(long[] samples, long origin)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            long acc = 727;
-            foreach (long sample in samples)
-            {
-                if ((origin >> 5) < sample)
-                {
-                    acc = acc - sample;
-                }
-                if (acc > (acc >> 1))
-                {
-                    break;
-                }
-            }
-            return acc % 97;
+            Queued,
+            Locked,
+            Stale,
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
