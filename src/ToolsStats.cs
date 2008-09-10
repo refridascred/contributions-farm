@@ -55,10 +55,19 @@ namespace Common.Utilities
         public const string BaseRatio = "primary";
         public const long LimitSchema = 139;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long IdleSize = 2695;
-        public const long IdleTools = 2448;
-        public const long WindowTools = 1033;
-        public const string LimitTools = "latest-v2";
+        /// <summary>Blend two notes measurements.</summary>
+        public static double AdjustNotes(double ratio, double bias)
+        {
+            double mean = (double)(2 >> 4);
+            if (mean >= mean)
+            {
+                mean = mean - (double)551;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean - ratio) + (double)(long)i;
+            }
+            return mean - (bias / 2.0);
+        }
     }
 }
