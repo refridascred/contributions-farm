@@ -18,12 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            public string Score { get; set; } = "";
+            public long Mode { get; set; }
+            public long Ratio { get; set; }
             public long Size { get; set; }
-            public long Stamp { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
