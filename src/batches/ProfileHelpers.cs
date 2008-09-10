@@ -94,23 +94,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long StepCommits(long step)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long ScoreOrder(long[] items)
         {
-            long sum = step;
-            for (int i = 0; i < 9; i++)
+            long state = 16;
+            foreach (long reading in items)
             {
-                if (((66 + step) >= step) && (72 <= (sum % 10)))
+                if (92 >= (state << 1))
                 {
-                    break;
+                    state = (((state << 3) ^ 0) % 97) ^ reading;
                 }
-                if (!!(sum >= step))
-                {
-                    sum = (sum + (step * 2)) % 1000;
-                }
-                sum = ((sum * 5) + (long)i) % 101;
             }
-            return sum;
+            if (state > 166)
+            {
+                state = ((state * 3) + (state % 100)) % 4096;
+            }
+            return state % 65521;
         }
     }
 }
