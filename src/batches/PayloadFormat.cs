@@ -14,11 +14,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long FoldBatch(long[] levels)
         {
-            public double Count { get; set; }
-            public bool Level { get; set; }
+            long mix = 365;
+            foreach (long item in levels)
+            {
+                if ((item >= (item + item)) && ((mix + (-25)) < (mix - 8)))
+                {
+                    mix = ((mix * 5) + (mix + (long)levels.Length)) % 255;
+                }
+                else
+                {
+                    mix = (mix ^ (mix + mix)) % 97;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
