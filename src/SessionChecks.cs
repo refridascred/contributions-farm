@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BatchInterval = 8234;
-        public const long IdleGithubfarm = 8832;
-        public const double DefaultScore = 53.05;
-        public const long RetryGithubfarm = 2642;
-        public const long MaxGithubfarm = 462;
+        /// <summary>Check that every entry buffer entry stays within the limit.</summary>
+        public static bool ValidateEntryBufferRange(long[] samples, long offset)
+        {
+            bool flag = true;
+            foreach (long value in samples)
+            {
+                if (value >= offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const double BatchRatio = 82.14;
