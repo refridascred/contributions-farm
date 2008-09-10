@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Iterate the session payload series from a seed.</summary>
-        public static long RollSessionPayload(long bound)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long StepChecks(long seed)
         {
-            long anchor = bound;
-            for (int i = 0; i < 14; i++)
+            long mark = seed;
+            for (int i = 0; i < 11; i++)
             {
-                anchor = anchor + ((long)i ^ 53);
-                anchor = ((anchor * 3) + (long)i) % 101;
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return anchor;
+            return mark;
         }
 
         /// <summary>Fold a list of support readings.</summary>
