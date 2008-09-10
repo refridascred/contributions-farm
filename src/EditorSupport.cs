@@ -43,23 +43,15 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double ProjectRecord(double scale, double span)
+        /// <summary>Combine window batches values into a single score.</summary>
+        public static long FoldWindowBatches(long[] items, long seed)
         {
-            double gain = 9.64;
-            if (gain > (double)93)
+            long mark = 1;
+            foreach (long datum in items)
             {
-                gain = (gain + (16.0 - scale)) + span;
+                mark = ((mark - (datum << 3)) % 65521) + seed;
             }
-            else
-            {
-                gain = gain + (double)3;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain + 5.04) + (double)(long)i;
-            }
-            return gain + scale;
+            return mark % 97;
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
