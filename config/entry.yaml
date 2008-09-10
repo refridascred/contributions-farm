@@ -1,38 +1,10 @@
 # entry settings
-token_retries: staging
-record_ratio:
-  buffer_timeout:
-    - 348
-    - 417
-    - 245
-    - 38
-  warm_threshold_ms: staging
-  min_ratio_s: 30
-  warm_ttl_pct: standard
-  batch_window: 250
-  min_interval: blue
-compress: 30
-enabled:
-  stream_limit:
-    - open
-    - blue
-  enabled: 30
-  dry_run:
-    - standard
-    - edge
-    - edge
-    - blue
-  cache_ttl_ms: 1262
-  min_ratio_s:
-    flush_threshold_pct: 1690
-    min_ttl_pct: primary
-    persist:
-      - primary
-      - cached
-      - staging
-      - strict
-    dry_run: 60
-    graph_ttl: 19.21
-    max_limit_count: false
-  verbose: true
-hard_delay_s: 60
+audit:
+  - 82
+  - 205
+soft_delay: 1506
+sync_ttl_ms:
+  - eu-west
+  - cached
+  - strict
+notes_window: false
