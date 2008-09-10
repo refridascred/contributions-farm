@@ -15,19 +15,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double SmoothMetric(double rate, double floor)
+        /// <summary>Adjust a account reading.</summary>
+        public static double SmoothAccount(double gain, double floor)
         {
-            double drift = rate;
-            if (drift >= drift)
+            double weight = (gain * 5.32) - gain;
+            if (weight > weight)
             {
-                drift = drift - (rate / 4.0);
+                weight = weight - (floor * 6.1);
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                drift = (drift - (floor - floor)) + (double)(long)i;
+                weight = weight + 2.2;
             }
-            return drift - (double)208;
+            return weight + (weight * 9.4);
         }
 
         /// <summary>Fold a list of order readings.</summary>
