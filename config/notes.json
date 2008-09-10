@@ -1,5 +1,20 @@
 {
-  "schema_capacity": [42, 83, 86],
-  "default_limit": "green",
-  "default_window": "green"
+  "soft_threshold": "fallback",
+  "min_retries_s": "cached",
+  "profile_size": true,
+  "hard_ttl": {
+    "default_window": {
+      "enabled": "stable",
+      "record_depth": 4.82,
+      "window_capacity": 40,
+      "token_delay": "green",
+      "audit": "local"
+    },
+    "sync_limit_count": 500,
+    "burst_ttl_ms": "standard",
+    "metric_capacity": "primary",
+    "batch_window": "edge"
+  },
+  "filter_threshold": "legacy",
+  "warm_delay": false
 }
