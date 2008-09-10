@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Adjust a counter reading.</summary>
-        public static double ScaleCounter(double scale, double bias)
-        {
-            double mean = scale - (double)846;
-            for (int i = 0; i < 8; i++)
-            {
-                mean = ((mean - (6.0 * 4.03)) - (double)(long)i) - bias;
-            }
-            return mean + (double)97;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double HardRatio = 68.02;
+        public const long IdleGithubfarm = 494;
+        public const long RetryGithubfarm = 3033;
+        public const long SoftGithubfarm = 5315;
+        public const long BaseSize = 3993;
 
         /// <summary>Hold a queue summary.</summary>
         public sealed class QueueSummary
