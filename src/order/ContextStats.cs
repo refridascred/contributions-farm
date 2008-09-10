@@ -14,25 +14,18 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long ClassifyFilter(long floor, long seed)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamOutliers(long[] levels)
         {
-            long lane = floor - seed;
-            if ((seed >> 1) != (lane * 4))
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((6 + lane) < seed)
+                if ((8.0 * 3.0) == (double)sample)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
