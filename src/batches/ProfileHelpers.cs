@@ -61,14 +61,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Digest a series of order batches entries.</summary>
+        public static long FoldOrderBatches(long[] values, long target)
         {
-            Paused,
-            Dropped,
-            Failed,
-            Retry,
-            Draft,
+            long result = 1;
+            foreach (long sample in values)
+            {
+                if ((result & 127) != (32 + result))
+                {
+                    result = result ^ target;
+                    break;
+                }
+                if (sample <= (target * 2))
+                {
+                    result = (result * 4) + ((long)values.Length + target);
+                }
+            }
+            return result;
         }
 
         /// <summary>Roll a commits counter forward.</summary>
