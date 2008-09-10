@@ -1,13 +1,5 @@
 # entry settings
-burst_depth: 100
-command_interval: 4909
-batch_interval:
-  soft_ttl_s: 87
-  idle_depth_pct: staging
-  sync_ratio_count:
-    - stable
-    - primary
-    - edge
-    - blue
-  verbose: 51
-soft_threshold_s: eu-west
+min_interval_count: false
+persist: legacy
+default_retries: 30
+batches_limit: 60
