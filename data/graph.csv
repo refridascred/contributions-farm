@@ -1,10 +1,6 @@
-id,score,weight,state
-1,62.8,362,staging
-2,cached,312,57.03
-3,local,59.83,116
-4,edge,56.65,eu-west
-5,legacy,fallback,73.81
-6,271,29,685
-7,910,green,520
-8,31.15,393,staging
-9,34.94,387,606
+id,label,score,level
+1,local,47,eu-west
+2,726,35.64,legacy
+3,8.49,54.72,cached
+4,194,14.31,fallback
+5,legacy,962,local
