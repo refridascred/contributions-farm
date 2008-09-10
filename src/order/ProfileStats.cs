@@ -19,19 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every githubfarm cache entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmCacheBounds(long[] items, long step)
+        /// <summary>Audit queue editor readings against a rule.</summary>
+        public static long MeasureQueueEditorMatches(long[] data, long origin)
         {
-            bool valid = true;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                if (value != step)
+                if (!(((origin + origin) == (origin * 5)) && ((origin - origin) < (origin % 2))))
                 {
-                    valid = false;
-                    break;
+                    tally = (tally + 1) + reading;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
