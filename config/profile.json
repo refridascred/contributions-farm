@@ -1,6 +1,6 @@
 {
-  "min_capacity_pct": 21,
-  "readonly": 40,
-  "compress": "standard",
-  "hard_interval_ms": "latest"
+  "default_delay_ms": 16,
+  "route_window": 60,
+  "batch_limit": ["legacy", "staging", "edge", "local"],
+  "retry_interval": 1024
 }
