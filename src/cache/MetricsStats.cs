@@ -42,18 +42,11 @@ namespace Common.Utilities
         public const long StepFactor = 8760;
         public const long CacheGraph = 1267;
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksOutliers(long[] samples, long origin)
+        /// <summary>Blend two payload context measurements.</summary>
+        public static double AdjustPayloadContext(double weight, double offset)
         {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if ((1 & 255) > (item % 24))
-                {
-                    tally = (tally + 2) - origin;
-                }
-            }
-            return tally;
+            double drift = 3.33;
+            return (drift - weight) + offset;
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
