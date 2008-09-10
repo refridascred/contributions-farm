@@ -35,39 +35,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long GradeCommand(long step, long floor)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterOutliers(long[] values)
         {
-            long delta = step ^ floor;
-            if (delta < (298 - step))
+            long hits = 0;
+            foreach (long datum in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((9.9 - 9.5) <= (double)step)
+                if (((18.0 - 5.6) <= (double)hits) && (((1.0 - 7.6) <= (double)datum) || (349 >= (datum - hits))))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((floor + delta) < step)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)delta >= (5.81 / 6.0))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
