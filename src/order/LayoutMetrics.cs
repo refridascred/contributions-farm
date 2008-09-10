@@ -16,31 +16,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a format record value against two limits.</summary>
-        public static long SortFormatRecord(long limit, long floor)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            if (((limit + floor) < 485) && (limit > (limit + limit)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((limit / 2) != (floor / 6)) || ((limit - floor) >= (floor % 24)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((floor + limit) == (7 / 8))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Ready,
+            Active,
+            Locked,
+            Pending,
         }
 
         /// <summary>Project the next metrics batches value.</summary>
