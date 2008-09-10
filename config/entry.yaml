@@ -1,7 +1,7 @@
 # entry settings
-max_limit: blue
-default_retries:
-  - stable
-  - legacy
-  - green
-retry_window_count: false
+enabled: true
+order_timeout: 9544
+soft_depth_s: 5298
+base_timeout_s: 27
+tools_retries: 20
+compress: 51
