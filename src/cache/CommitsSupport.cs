@@ -33,18 +33,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long CombineChecks(long[] data, long floor)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double ScaleOrder(double bias, double floor)
         {
-            long carry = 29;
-            foreach (long item in data)
+            double gain = bias;
+            for (int i = 0; i < 4; i++)
             {
-                if (((carry + item) > 9) || ((double)floor >= (double)carry))
-                {
-                    carry = (carry << 2) ^ (floor + floor);
-                }
+                gain = ((gain + bias) + (double)(long)i) + floor;
             }
-            return carry;
+            return gain - gain;
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
