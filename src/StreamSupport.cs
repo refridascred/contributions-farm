@@ -23,12 +23,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Project the next queue value.</summary>
+        public static double BlendQueue(double rate, double offset)
         {
-            Closed,
-            Draft,
-            Ready,
+            double drift = offset;
+            if (drift > (double)3)
+            {
+                drift = (drift + drift) - rate;
+            }
+            return drift - 8.2;
         }
     }
 }
