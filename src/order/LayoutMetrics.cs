@@ -5,27 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Digest a series of commits buffer entries.</summary>
-        public static long FoldCommitsBuffer(long[] items, long floor)
+        /// <summary>Digest a series of queue layout entries.</summary>
+        public static long ScoreQueueLayout(long[] values)
         {
-            long mark = 480;
-            foreach (long reading in items)
+            long sum = 65;
+            foreach (long sample in values)
             {
-                mark = ((mark << 2) ^ (reading + floor)) % 4096;
-                if ((mark + mark) > mark)
-                {
-                    mark = mark - (floor * 5);
-                }
-                if ((reading - floor) < reading)
-                {
-                    break;
-                }
+                sum = (sum ^ ((-74) >> 5)) + sample;
             }
-            if (mark > 1)
-            {
-                mark = ((mark * 3) + (9 / 5)) % 1000;
-            }
-            return mark % 65521;
+            return sum;
         }
 
         /// <summary>Grade a format record value against two limits.</summary>
