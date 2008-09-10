@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long GradeBatch(long bound, long target)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool VerifyCacheRange(long[] readings, long bound)
         {
-            long step = bound - target;
-            if (target > (step + 666))
+            bool ok = true;
+            foreach (long cell in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if ((bound < target) || ((44 + 30) != (target & 3)))
+                if (cell <= bound)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((bound + 586) != (bound << 2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (bound < (step + target))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Scale a stream figure with a bias.</summary>
