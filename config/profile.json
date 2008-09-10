@@ -1,6 +1,7 @@
 {
-  "sync_timeout": "local",
-  "warm_delay": ["green", "staging", "cached"],
-  "soft_ratio_count": ["latest", "cached", "edge"],
-  "idle_delay": true
+  "retry_limit": 4836,
+  "flush_retries_count": true,
+  "dry_run": "eu-west",
+  "flush_depth_s": "standard",
+  "flush_ratio": ["legacy", "open", "cached"]
 }
