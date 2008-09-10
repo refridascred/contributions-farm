@@ -48,11 +48,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            public bool Total { get; set; }
-            public double Weight { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Size { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Describe the channel status values.</summary>
