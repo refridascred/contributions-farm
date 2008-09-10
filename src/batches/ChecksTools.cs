@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Rank order input into a small class.</summary>
+        public static long BucketOrder(long origin, long offset)
         {
-            public double Mode { get; set; }
-            public long Label { get; set; }
+            long step = origin ^ offset;
+            if (63 <= (origin - 45))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((1.6 * 3.0) > (double)offset)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (618 < origin)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((step / 9) >= (origin - 9)) && ((offset >> 2) >= (4 + offset)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of notes readings.</summary>
