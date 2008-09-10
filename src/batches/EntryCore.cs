@@ -32,18 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TotalChannel(long[] items, long limit)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool GuardCacheRange(long[] data, long floor)
         {
-            long mix = 41;
-            foreach (long entry in items)
+            bool found = true;
+            foreach (long reading in data)
             {
-                if ((long)items.Length >= (limit + mix))
+                if (reading != floor)
                 {
-                    mix = ((mix ^ (limit * 2)) % 1000) ^ entry;
+                    found = false;
+                    break;
                 }
             }
-            return mix;
+            return found;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
