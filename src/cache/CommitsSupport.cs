@@ -47,38 +47,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long RankEditor(long limit, long floor)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long LookupCommandIndex(long[] readings, long seed)
         {
-            if (floor >= limit)
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)limit < (0.37 * 8.1))
+                if ((readings[i] > seed) && ((readings[i] % 5) != 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)limit > (9.4 + 1.0))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((9.4 - 7.86) <= (double)limit)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Grade a channel command value against two limits.</summary>
