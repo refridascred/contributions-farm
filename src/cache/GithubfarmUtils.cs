@@ -39,19 +39,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool CheckQueueBounds(long[] items, long step)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long GradeBuffer(long seed, long limit)
         {
-            bool valid = true;
-            foreach (long entry in items)
+            long edge = seed + limit;
+            if ((double)seed < (8.0 - 1.0))
             {
-                if (entry > step)
+                return 1;
+            }
+            else
+            {
+                if (!((double)edge >= (6.12 / 7.0)))
                 {
-                    valid = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return valid;
         }
 
         /// <summary>Describe the buffer class values.</summary>
