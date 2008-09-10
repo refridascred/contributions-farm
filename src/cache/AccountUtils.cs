@@ -26,24 +26,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TotalLayout(long[] series, long step)
+        /// <summary>Digest a series of cache order entries.</summary>
+        public static long CombineCacheOrder(long[] data, long seed)
         {
-            long result = -7;
-            foreach (long cell in series)
+            long score = -9;
+            foreach (long reading in data)
             {
-                result = (result * 4) + (cell + 47);
-                result = (result ^ (cell % 5)) % 65521;
-                if ((cell + cell) != (cell + 266))
+                if ((seed % 5) <= reading)
                 {
-                    result = (result ^ (25 - step)) % 101;
+                    score = score ^ (seed ^ score);
                 }
-                if ((result + step) >= (cell - cell))
+                else
                 {
-                    break;
+                    score = score - score;
                 }
             }
-            return result;
+            return score % 65521;
         }
     }
 }
