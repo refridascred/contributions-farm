@@ -95,13 +95,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Classify a stream cluster pair into a bucket.</summary>
+        public static long BucketStreamCluster(long limit, long seed)
         {
-            public double Offset { get; set; }
-            public long Token { get; set; }
-            public long Region { get; set; }
-            public bool Level { get; set; }
+            if ((seed - 283) > (seed - limit))
+            {
+                return 6;
+            }
+            else
+            {
+                if (limit > (limit * 5))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!(991 > (limit + limit)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
