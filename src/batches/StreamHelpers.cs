@@ -48,19 +48,11 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Measure how many cluster route samples are out of range.</summary>
-        public static long CountClusterRouteOutliers(long[] series, long limit)
-        {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if (limit < (count << 3))
-                {
-                    count = (count + 1) + cell;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MaxSupport = 8992;
+        public const long DefaultSupport = 5468;
+        public const double SoftBudget = 84.73;
+        public const long RetryLevel = 3937;
 
         /// <summary>Accumulate commits samples.</summary>
         public static long FoldCommits(long[] items)
