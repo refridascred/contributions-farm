@@ -16,11 +16,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next stats cache value.</summary>
-        public static double ScaleStatsCache(double gain, double span)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            double scale = gain;
-            return (scale + (scale - scale)) + span;
+            Locked,
+            Queued,
+            Draft,
+            Active,
+            Stale,
         }
 
         /// <summary>Compare every pair of route readings.</summary>
