@@ -20,18 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyGaps(long[] values)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            long seen = 0;
-            foreach (long sample in values)
-            {
-                if (!!((sample / 9) >= (long)values.Length))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Active,
+            Stale,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Digest a series of editor entries.</summary>
