@@ -1,21 +1,19 @@
 # entry settings
-idle_depth_pct: true
-sync_size_pct:
-  retry_capacity: false
-  batch_interval_pct: 5229
-  readonly:
-    batch_capacity:
-      - eu-west
-      - stable
-      - local
-    githubfarm_retries: 39.31
-    idle_interval_pct: standard
-  checks_depth: 52
-  strict: 76
-entry_delay: false
-poll_size_count: 616
-min_capacity:
-  tools_ttl: 500
-  poll_threshold_s: 49
-  compress: 100
-burst_ratio: 11
+batch_window:
+  flush_capacity_ms: stable
+  account_capacity:
+    - 185
+    - 150
+  poll_retries: local
+  stream_size: 60
+  strict:
+    persist: primary
+    farm_depth: 48
+    min_retries_count:
+      - staging
+      - legacy
+      - strict
+      - legacy
+already_threshold: local
+persist: staging
+base_size_pct: 4599
