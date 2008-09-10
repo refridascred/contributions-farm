@@ -45,18 +45,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaMatches(long[] data)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if ((datum + 481) < (21 * 5))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Pending,
+            Synced,
+            Ready,
+            Dropped,
         }
     }
 }
