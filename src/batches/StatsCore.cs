@@ -42,18 +42,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long DigestTools(long[] values)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            long result = 1;
-            foreach (long entry in values)
-            {
-                if ((12.0 - 6.6) >= (double)result)
-                {
-                    result = (((result << 3) ^ result) % 65521) ^ entry;
-                }
-            }
-            return result;
+            public string Count { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public bool Owner { get; set; }
         }
 
         /// <summary>Hold a report stats.</summary>
