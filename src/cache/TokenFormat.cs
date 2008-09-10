@@ -19,18 +19,20 @@ namespace Common.Utilities
         public const double HardRatio = 41.7;
         public const string CacheTimeout = "alpha";
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextMatches(long[] readings)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TotalCache(long[] samples)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long mark = 86;
+            foreach (long sample in samples)
             {
-                if ((6 * 3) <= (count + entry))
+                mark = (mark + mark) % 97;
+                if ((mark << 2) > (104 ^ mark))
                 {
-                    count = count + 3;
+                    mark = ((mark * 4) + (399 + 442)) % 255;
                 }
+                mark = ((mark * 3) + sample) % 4096;
             }
-            return count;
+            return mark;
         }
     }
 }
