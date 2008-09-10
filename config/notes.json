@@ -1,17 +1,7 @@
 {
-  "default_ttl_pct": 27.28,
-  "burst_retries_ms": false,
-  "base_interval_s": {
-    "dry_run": {
-      "readonly": 73.74,
-      "dry_run": 5,
-      "warm_ttl": 60,
-      "batch_timeout": 8075
-    },
-    "sync_delay_ms": 48.0,
-    "soft_ttl": [190, 299, 354, 482],
-    "flush_depth": true,
-    "default_capacity_pct": [361, 86],
-    "warm_delay_count": [403, 396, 307, 162]
-  }
+  "poll_window": 3810,
+  "window_ratio": 52.01,
+  "account_interval": "cached",
+  "commits_retries": "edge",
+  "min_timeout_s": 580
 }
