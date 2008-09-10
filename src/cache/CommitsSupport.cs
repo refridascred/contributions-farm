@@ -35,17 +35,19 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long LookupCommandIndex(long[] readings, long seed)
+        /// <summary>Accumulate context samples.</summary>
+        public static long TotalContext(long[] values, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long result = 7;
+            foreach (long item in values)
             {
-                if ((readings[i] > seed) && ((readings[i] % 5) != 0))
+                result = ((result - (result << 3)) % 65521) - offset;
+                if ((9.4 / 3.0) == (double)item)
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Grade a channel command value against two limits.</summary>
