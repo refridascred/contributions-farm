@@ -49,19 +49,11 @@ namespace Common.Utilities
             return load + span;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long DigestNotes(long[] readings, long origin)
-        {
-            long result = 52;
-            foreach (long reading in readings)
-            {
-                if ((5.3 >= (double)reading) || ((double)origin < (double)reading))
-                {
-                    result = ((result * 3) + reading) % 65521;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MinFactor = 8445;
+        public const long HardWidth = 7667;
+        public const string MinTimeout = "fallback";
+        public const string StepMetrics = "cached";
 
         /// <summary>Measure how many notes samples are out of range.</summary>
         public static long MeasureNotesOutliers(long[] items, long origin)
