@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderOutliers(long[] data)
+        /// <summary>Combine tools batches values into a single score.</summary>
+        public static long WeighToolsBatches(long[] series, long limit)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long mix = 427;
+            foreach (long value in series)
             {
-                if ((double)reading <= (9.21 + 1.0))
+                if (value < (value >> 3))
                 {
-                    tally = tally + 2;
+                    mix = (mix - (limit + mix)) % 65521;
                 }
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
