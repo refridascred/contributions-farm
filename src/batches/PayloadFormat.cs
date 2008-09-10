@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Digest a series of route entries.</summary>
-        public static long ScoreRoute(long[] items)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            long mark = -445;
-            foreach (long entry in items)
-            {
-                if (!((entry % 24) <= (entry % 64)))
-                {
-                    mark = mark - (entry % 64);
-                }
-                mark = ((mark * 4) + (914 + (long)items.Length)) % 255;
-            }
-            if (mark > 880)
-            {
-                mark = (mark * 5) + (mark - mark);
-            }
-            return mark % 97;
+            Dropped,
+            Synced,
+            Active,
+            New,
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
