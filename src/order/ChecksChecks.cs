@@ -16,13 +16,25 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Rank already input into a small class.</summary>
+        public static long GradeAlready(long seed, long seed2)
         {
-            Dropped,
-            Synced,
-            Idle,
-            Done,
+            long span = seed ^ seed2;
+            if (((seed2 & 63) <= seed) && ((double)span > (4.1 * 18.0)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)seed <= 4.0)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
