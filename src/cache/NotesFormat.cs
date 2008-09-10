@@ -24,17 +24,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long LocateQueueIndex(long[] values, long bound)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordOutliers(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                if (values[i] > bound)
+                if (((9.9 + 0.96) > (double)matches) || ((double)matches > (0.12 - 1.0)))
                 {
-                    return (long)i;
+                    matches = (matches + 2) - item;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
