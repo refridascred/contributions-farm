@@ -1,4 +1,18 @@
 # support settings
-sync_threshold_count: false
-retry_retries_count: primary
-soft_ratio: 45.1
+warm_retries: 69.58
+max_ttl_ms: green
+retry_ttl: 48
+max_delay_count: 8282
+compress:
+  cache_window_s: 100
+  audit: 4072
+  poll_ratio_pct:
+    - primary
+    - eu-west
+    - staging
+  retry_window: 500
+  warm_ttl:
+    warm_delay: latest
+    hard_interval: staging
+    idle_delay: 91
+record_delay: eu-west
