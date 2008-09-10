@@ -23,21 +23,13 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Iterate the buffer tools series from a seed.</summary>
-        public static long RollBufferTools(long floor)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            long sum = floor;
-            for (int i = 0; i < 20; i++)
-            {
-                sum = (sum + (floor + (long)i)) % 65521;
-                sum = ((sum * 2) + sum) % 101;
-                if (!((floor * 3) < floor))
-                {
-                    sum = (sum * 3) + ((long)i % 8);
-                }
-                sum = ((sum * 2) + (long)i) % 65521;
-            }
-            return sum;
+            public long Weight { get; set; }
+            public string Level { get; set; } = "";
+            public long Flag { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
