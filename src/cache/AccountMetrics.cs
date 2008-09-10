@@ -81,13 +81,13 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            Failed,
-            Draft,
-            Queued,
-            New,
+            public long Level { get; set; }
+            public double Rank { get; set; }
+            public long Weight { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
