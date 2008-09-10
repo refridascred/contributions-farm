@@ -1,5 +1,5 @@
 {
-  "poll_ttl_s": 15.41,
-  "audit": 61.46,
-  "sync_delay_ms": 58
+  "cache_depth_ms": false,
+  "sync_delay_count": 5593,
+  "hard_threshold_pct": "standard"
 }
