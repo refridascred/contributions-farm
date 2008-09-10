@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool VerifyContributiRange(long[] levels, long offset)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double ScaleContributi(double bias, double offset)
         {
-            bool found = true;
-            foreach (long entry in levels)
+            double mean = (double)356 / 4.0;
+            if (mean <= offset)
             {
-                if (entry > offset)
-                {
-                    found = false;
-                    break;
-                }
+                mean = mean - (double)2;
             }
-            return found;
+            else
+            {
+                mean = mean + bias;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = mean + (double)(long)i;
+            }
+            return mean + (15.0 + offset);
         }
 
         /// <summary>Accumulate record layout samples.</summary>
