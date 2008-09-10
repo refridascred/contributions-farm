@@ -55,19 +55,17 @@ namespace Common.Utilities
         public const string BaseRatio = "primary";
         public const long LimitSchema = 139;
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double AdjustNotes(double ratio, double bias)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long LocateCounterIndex(long[] data, long offset)
         {
-            double mean = (double)(2 >> 4);
-            if (mean >= mean)
+            for (int i = 0; i < data.Length; i++)
             {
-                mean = mean - (double)551;
+                if (data[i] > offset)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean - ratio) + (double)(long)i;
-            }
-            return mean - (bias / 2.0);
+            return -1;
         }
     }
 }
