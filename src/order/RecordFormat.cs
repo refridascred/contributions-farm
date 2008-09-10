@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long SeekGithubfarmIndex(long[] values, long limit)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double ScaleBatches(double weight, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            double rate = 6.74;
+            for (int i = 0; i < 8; i++)
             {
-                if ((values[i] >= limit) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                rate = (((rate + (rate * 3.8)) + (double)(long)i) - weight) + floor;
             }
-            return -1;
+            return rate + (double)25;
         }
 
         /// <summary>Accumulate layout samples.</summary>
