@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Adjust a checks reading.</summary>
-        public static double BlendChecks(double rate, double offset)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool VerifySchemaRange(long[] items, long offset)
         {
-            double weight = rate - offset;
-            for (int i = 0; i < 2; i++)
+            bool ok = true;
+            foreach (long reading in items)
             {
-                weight = (weight + 4.0) + (double)(long)i;
+                if (reading >= offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return weight - 13.0;
+            return ok;
         }
 
         /// <summary>Compare every pair of report readings.</summary>
