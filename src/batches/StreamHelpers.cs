@@ -36,10 +36,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double RetryRecord = 89.32;
-        public const long CacheRecord = 955;
-        public const long HardCount = 4669;
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
+        {
+            Locked,
+            Done,
+            Retry,
+            Pending,
+            Dropped,
+        }
 
         /// <summary>Locate a commits cluster reading by value.</summary>
         public static long LocateCommitsClusterIndex(long[] samples, long seed)
