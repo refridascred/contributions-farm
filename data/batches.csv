@@ -1,7 +1,6 @@
-id,ratio,owner,region
-1,631,662,primary
-2,open,981,648
-3,528,standard,673
-4,standard,1.18,332
-5,eu-west,71.4,101
-6,482,17.82,open
+id,level,weight
+1,open,87.82
+2,27.59,green
+3,77.87,386
+4,green,blue
+5,98.04,6.06
