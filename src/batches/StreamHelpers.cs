@@ -69,13 +69,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long CombineProfile(long[] levels, long step)
         {
-            Stale,
-            Idle,
-            Draft,
-            Ready,
+            long acc = 914;
+            foreach (long datum in levels)
+            {
+                if (!(((double)step >= (double)datum) && ((4.6 * 6.0) != (double)datum)))
+                {
+                    acc = ((acc << 2) ^ (step * 2)) % 4096;
+                }
+                if (904 > (datum * 5))
+                {
+                    acc = (acc << 2) ^ (step >> 1);
+                }
+                acc = ((acc << 2) ^ datum) % 255;
+            }
+            return acc;
         }
     }
 }
