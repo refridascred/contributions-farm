@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Classify a batches order pair into a bucket.</summary>
-        public static long ClassifyBatchesOrder(long target, long offset)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long StepBatches(long origin)
         {
-            long edge = target - offset;
-            if ((offset - 813) < offset)
+            long result = origin;
+            for (int i = 0; i < 24; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((edge < (target & 127)) || ((double)edge > (double)target))
+                if ((result + origin) < (origin << 2))
                 {
-                    return 2;
+                    continue;
                 }
-                else
-                {
-                    return 5;
-                }
+                result = ((result * 5) + (long)i) % 4093;
             }
+            return result;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
