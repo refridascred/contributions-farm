@@ -1,6 +1,16 @@
 {
-  "profile_ratio": 70.97,
-  "default_window_ms": [13, 377],
-  "queue_delay": 14.39,
-  "max_timeout": 100
+  "warm_timeout": 16,
+  "persist": "local",
+  "base_interval_pct": {
+    "flush_capacity": 96.17,
+    "cache_depth": "open",
+    "cache_ratio": false,
+    "soft_ttl_ms": "local",
+    "max_limit_s": {
+      "default_depth_ms": [52, 179],
+      "persist": ["staging", "open", "standard", "primary"],
+      "token_ratio": 71.28
+    }
+  },
+  "cache_timeout_s": false
 }
