@@ -37,12 +37,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaHits(long[] data, long seed)
         {
-            public string Flag { get; set; } = "";
-            public long Owner { get; set; }
-            public bool Weight { get; set; }
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if ((double)hits == (double)reading)
+                {
+                    hits = (hits + 1) - seed;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate queue samples.</summary>
