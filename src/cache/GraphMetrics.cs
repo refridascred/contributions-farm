@@ -51,19 +51,12 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double ScaleLayout(double ratio, double offset)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            double load = (ratio + ratio) + (double)9;
-            if (load > offset)
-            {
-                load = load - (load / 9.0);
-            }
-            else
-            {
-                load = load - (double)9;
-            }
-            return load - 7.05;
+            public long Count { get; set; }
+            public long Limit { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
