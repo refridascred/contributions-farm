@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BaseSchema = 5886;
-        public const double HardTimeout = 78.69;
-        public const long StepSchema = 2896;
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BatchTimeout = 5503;
+        public const long BurstWidth = 8234;
+        public const double MinAlready = 67.07;
 
         /// <summary>Rank farm input into a small class.</summary>
         public static long SortFarm(long step, long floor)
