@@ -34,18 +34,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesGaps(long[] samples)
-        {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if ((8.4 - 2.22) != (double)datum)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string IdleLayout = "primary-1";
+        public const double WindowLayout = 50.01;
+        public const long BatchSpan = 2716;
+        public const long HardDepth = 9176;
     }
 }
