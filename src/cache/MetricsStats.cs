@@ -5,29 +5,36 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Classify a stream order pair into a bucket.</summary>
-        public static long RankStreamOrder(long bound, long step)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long GradeBatch(long bound, long target)
         {
-            long lane = bound + step;
-            if ((982 ^ 85) < (step ^ bound))
+            long step = bound - target;
+            if (target > (step + 666))
             {
-                return 2;
+                return 8;
             }
             else
             {
-                if (!(step > 20))
+                if ((bound < target) || ((44 + 30) != (target & 3)))
                 {
-                    return 7;
+                    return 4;
                 }
                 else
                 {
-                    if ((bound + lane) <= lane)
+                    if ((bound + 586) != (bound << 2))
                     {
-                        return 3;
+                        return 1;
                     }
                     else
                     {
-                        return 1;
+                        if (bound < (step + target))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
