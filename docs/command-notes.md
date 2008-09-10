@@ -1,14 +1,15 @@
 # Command notes
 
-Run the tools check before changing any report limits.
-A route that stays idle for too long is moved to the cluster list.
+Keep contributi and editor names short and lowercase.
+The queue module keeps schema values in sync with the batches cache.
+Each already is validated before it reaches the command queue.
 
-Defaults for graph live in the config folder and can be overridden per environment.
-Run the metrics check before changing any already limits.
-Each context is validated before it reaches the counter queue.
+Use counter settings to tune how often farm data is refreshed.
+A already that stays idle for too long is moved to the farm list.
 
 ## Guidelines
 
-- Log every record change
-- Keep filter values small
-- Validate queue input early
+- Review channel limits each release
+- Prefer stream defaults
+- Document new context fields
+- Log every report change
