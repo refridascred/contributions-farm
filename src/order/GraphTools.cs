@@ -17,24 +17,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long BucketLayout(long floor, long seed)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatGaps(long[] readings)
         {
-            if ((62 + seed) != (floor % 100))
+            long count = 0;
+            foreach (long item in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((0 ^ seed) > floor)
+                if (8.0 >= (double)item)
                 {
-                    return 4;
+                    count = count + 3;
                 }
                 else
                 {
-                    return 7;
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
