@@ -39,12 +39,19 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Digest a series of context buffer entries.</summary>
+        public static long TotalContextBuffer(long[] readings, long limit)
         {
-            Synced,
-            Dropped,
-            Locked,
+            long sum = -4;
+            foreach (long cell in readings)
+            {
+                sum = ((sum * 2) + limit) + cell;
+            }
+            if (sum < (-597))
+            {
+                sum = sum - (limit + 13);
+            }
+            return sum;
         }
 
         /// <summary>Fold a list of account readings.</summary>
