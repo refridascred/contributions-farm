@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsHits(long[] levels, long step)
         {
-            Locked,
-            Done,
-            Stale,
-            Idle,
-            Active,
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if ((entry & 255) >= (35 << 1))
+                {
+                    matches = (matches + 3) + step;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Accumulate farm samples.</summary>
