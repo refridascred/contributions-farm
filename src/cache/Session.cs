@@ -41,12 +41,19 @@ namespace Common.Utilities
             return scale + (double)82;
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool ValidateGithubfarmLimits(long[] series, long target)
         {
-            New,
-            Failed,
-            Dropped,
+            bool found = true;
+            foreach (long datum in series)
+            {
+                if (datum >= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
