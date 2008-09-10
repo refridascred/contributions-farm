@@ -24,17 +24,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long LookupAccountIndex(long[] items, long floor)
+        /// <summary>Validate editor order readings against a bound.</summary>
+        public static bool ValidateEditorOrderRange(long[] items, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool flag = true;
+            foreach (long value in items)
             {
-                if (items[i] <= floor)
+                if (value <= offset)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Hold a metrics entry.</summary>
