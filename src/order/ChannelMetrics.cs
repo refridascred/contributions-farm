@@ -20,18 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterOutliers(long[] values)
+        /// <summary>Combine buffer counter values into a single score.</summary>
+        public static long TallyBufferCounter(long[] readings)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            long state = 515;
+            foreach (long value in readings)
             {
-                if (((long)values.Length > 14) && !((9 ^ tally) <= (tally + sample)))
+                if ((100 + state) <= (9 + state))
                 {
-                    tally = tally + 3;
+                    state = ((state << 2) ^ (state & 31)) + value;
                 }
             }
-            return tally;
+            return state % 97;
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
