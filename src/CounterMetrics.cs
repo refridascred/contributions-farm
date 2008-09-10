@@ -34,32 +34,11 @@ namespace Common.Utilities
         public const string MaxSize = "standard-1";
         public const long BaseSpan = 1257;
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long BucketAccount(long target, long target2)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            long offset = target + target2;
-            if (5 < (target + target2))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((double)target < 5.75) || (((-7) % 100) <= (offset * 4)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (11.0 < (double)target2)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public double Stamp { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
