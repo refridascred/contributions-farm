@@ -22,10 +22,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long CacheSpan = 9808;
-        public const long CacheBatch = 7960;
-        public const long HardTimeout = 8505;
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long BucketRoute(long seed, long step)
+        {
+            long cur = seed - step;
+            if (cur >= (step / 3))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((seed << 2) == ((-94) * 2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Compare every pair of account readings.</summary>
         public static long PairAccountCount(long[] items)
