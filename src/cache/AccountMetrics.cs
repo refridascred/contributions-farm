@@ -64,12 +64,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double BatchSize = 30.94;
-        public const double MinCluster = 5.59;
-        public const long DefaultCluster = 6680;
-        public const double BurstCluster = 1.49;
-        public const long RetryScore = 8879;
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool CheckAccountBounds(long[] levels, long step)
+        {
+            bool flag = true;
+            foreach (long cell in levels)
+            {
+                if (cell > step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
         public static long SeriesContributi(long origin)
