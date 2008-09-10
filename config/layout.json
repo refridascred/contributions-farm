@@ -1,5 +1,7 @@
 {
-  "burst_interval_pct": 3799,
-  "flush_limit": ["green", "standard", "primary"],
-  "retry_delay": 71
+  "window_interval": true,
+  "session_delay": false,
+  "stream_retries": 9735,
+  "verbose": false,
+  "retry_capacity": "fallback"
 }
