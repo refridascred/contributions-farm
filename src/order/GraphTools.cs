@@ -25,19 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every notes batches entry stays within the limit.</summary>
-        public static bool ValidateNotesBatchesBounds(long[] samples, long origin)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long CountEntryHits(long[] data, long offset)
         {
-            bool ready = true;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if (entry != origin)
+                if (!((double)offset < (17.0 / 4.0)))
                 {
-                    ready = false;
-                    break;
+                    count = (count + 1) + cell;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Grade a cluster stream value against two limits.</summary>
