@@ -1,6 +1,15 @@
 {
-  "sync_threshold": "green",
-  "session_size": ["local", "stable", "open"],
-  "audit": "eu-west",
-  "max_size_count": 12.85
+  "flush_ttl_s": [499, 327, 50, 473],
+  "hard_timeout_count": "cached",
+  "compress": 94,
+  "strict": 30,
+  "contributi_threshold": {
+    "persist": 500,
+    "channel_depth": ["staging", "edge", "green"],
+    "report_delay": {
+      "audit": 18,
+      "batch_depth_count": 22,
+      "default_window_s": "primary"
+    }
+  }
 }
