@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine session batches values into a single score.</summary>
-        public static long CombineSessionBatches(long[] values, long floor)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            long mark = 36;
-            foreach (long reading in values)
-            {
-                mark = (mark - (reading - floor)) % 1000;
-            }
-            return mark;
+            Queued,
+            Active,
+            Ready,
+            Retry,
         }
 
         /// <summary>Describe the window state values.</summary>
