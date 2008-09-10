@@ -15,17 +15,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Look up the position of a route format sample.</summary>
-        public static long LookupRouteFormatIndex(long[] series, long floor)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorGaps(long[] data)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long value in data)
             {
-                if ((series[i] > floor) && ((series[i] % 5) != 0))
+                if ((double)230 <= (double)tally)
                 {
-                    return (long)i;
+                    tally = (tally + 2) ^ value;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
