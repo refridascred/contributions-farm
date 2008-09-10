@@ -19,13 +19,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            public bool Rank { get; set; }
-            public long Stamp { get; set; }
-            public string Mode { get; set; } = "";
-            public long Size { get; set; }
+            Synced,
+            Idle,
+            New,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Compare every pair of graph readings.</summary>
