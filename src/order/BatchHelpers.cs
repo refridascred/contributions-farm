@@ -13,39 +13,28 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Grade a stream metric value against two limits.</summary>
-        public static long GradeStreamMetric(long target, long bound)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long CombinePayload(long[] readings, long limit)
         {
-            long offset = target ^ bound;
-            if ((target * 5) >= (bound / 3))
+            long total = 479;
+            foreach (long entry in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if (target > (127 ^ offset))
+                if (((limit - entry) == (entry << 2)) || ((entry >> 2) == (62 % 10)))
                 {
-                    return 2;
+                    total = ((total * 2) + (entry >> 1)) % 65521;
+                    total = ((total * 3) + (limit - total)) % 255;
                 }
-                else
+                total = (total * 2) + 13;
+                if (!(entry > total))
                 {
-                    if ((-9) > (offset + 75))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (target < (target - offset))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    total = total ^ (total + total);
                 }
             }
+            if (total > 2)
+            {
+                total = (total + (92 % 64)) % 255;
+            }
+            return total;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
