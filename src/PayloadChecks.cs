@@ -41,11 +41,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string RetrySize = "local-edge";
-        public const long StepTimeout = 5469;
-        public const long WindowGithubfarm = 6337;
-        public const double HardGithubfarm = 57.89;
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
+        {
+            Paused,
+            Dropped,
+            Pending,
+            Stale,
+        }
 
         /// <summary>Hold a report record.</summary>
         public sealed class ReportRecord
