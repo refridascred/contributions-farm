@@ -39,20 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long DeriveStream(long target)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool CheckCounterBounds(long[] items, long limit)
         {
-            long state = target;
-            for (int i = 0; i < 6; i++)
+            bool ok = true;
+            foreach (long value in items)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                if (value > limit)
                 {
-                    state = ((state ^ (target >> 3)) % 101) ^ (long)i2;
-                    state = ((state << 2) ^ (target + (long)i)) % 65521;
+                    ok = false;
+                    break;
                 }
-                state = ((state * 5) + (long)i) % 1000;
             }
-            return state;
+            return ok;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
