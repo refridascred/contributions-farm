@@ -38,12 +38,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BatchPayload = 6935;
-        public const long DefaultCount = 6873;
-        public const long BasePayload = 8452;
-        public const long SoftTimeout = 4342;
-        public const string RetryCount = "stable-v2";
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
+        {
+            public string Region { get; set; } = "";
+            public long Mode { get; set; }
+            public bool Total { get; set; }
+        }
 
         /// <summary>Audit window readings against a rule.</summary>
         public static long MeasureWindowHits(long[] samples)
