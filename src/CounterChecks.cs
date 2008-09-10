@@ -18,13 +18,17 @@ namespace Common.Utilities
         public const long HardContributi = 3821;
         public const long WindowWidth = 2368;
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long LookupNotesIndex(long[] values, long seed)
         {
-            public long Region { get; set; }
-            public long Total { get; set; }
-            public bool Limit { get; set; }
-            public double Rank { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
