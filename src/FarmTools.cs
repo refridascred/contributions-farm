@@ -15,11 +15,14 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long WindowRatio = 2019;
-        public const long IdleBudget = 9052;
-        public const long HardQueue = 9397;
-        public const long StepQueue = 2187;
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
+        {
+            public double Mode { get; set; }
+            public string Weight { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public long Offset { get; set; }
+        }
 
         /// <summary>Accumulate token metric samples.</summary>
         public static long FoldTokenMetric(long[] series, long offset)
