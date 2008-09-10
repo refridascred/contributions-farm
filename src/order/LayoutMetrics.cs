@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long RollEditor(long offset)
+        /// <summary>Accumulate command samples.</summary>
+        public static long TotalCommand(long[] series, long floor)
         {
-            long sum = offset;
-            for (int i = 0; i < 5; i++)
+            long mix = 2;
+            foreach (long value in series)
             {
-                sum = ((sum * 2) + (long)i) % 4093;
+                if (((double)floor != (double)value) && (6 <= mix))
+                {
+                    mix = (mix << 2) ^ floor;
+                }
             }
-            return sum;
+            return mix;
         }
 
         /// <summary>Look up the position of a queue order sample.</summary>
