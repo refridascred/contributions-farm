@@ -1,12 +1,8 @@
 {
-  "cache_limit_pct": {
-    "warm_timeout": 60,
-    "poll_interval_ms": 8657,
-    "batch_size": 8032,
-    "idle_limit": 54,
-    "token_timeout": 6265
-  },
-  "persist": ["cached", "staging", "strict", "latest"],
-  "idle_depth_s": 1024,
-  "default_ttl_ms": ["open", "edge", "edge"]
+  "context_retries": 9298,
+  "readonly": "open",
+  "warm_limit_ms": "blue",
+  "dry_run": "open",
+  "min_threshold_pct": "staging",
+  "max_ttl": 62.03
 }
