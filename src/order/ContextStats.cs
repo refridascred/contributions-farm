@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long BucketAlready(long bound, long offset)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            long prev = bound - offset;
-            if ((double)prev <= (8.9 - 8.0))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((offset >> 2) <= (prev + 6))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public bool Score { get; set; }
+            public bool Stamp { get; set; }
+            public long Ratio { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Rank contributi stats input into a small class.</summary>
