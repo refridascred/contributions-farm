@@ -15,11 +15,23 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double BlendMetrics(double scale, double bias)
         {
-            public long Flag { get; set; }
-            public string Limit { get; set; } = "";
+            double bias2 = bias;
+            if (bias2 < (scale + scale))
+            {
+                bias2 = bias2 + 8.4;
+            }
+            else
+            {
+                bias2 = bias2 - (double)0;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias2 = (bias2 + bias) + (double)(long)i;
+            }
+            return bias2 + (bias / 3.0);
         }
 
         /// <summary>Describe the channel state values.</summary>
