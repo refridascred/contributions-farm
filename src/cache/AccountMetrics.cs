@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheHits(long[] levels, long limit)
+        /// <summary>Project the next stream value.</summary>
+        public static double BlendStream(double ratio, double offset)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            double bias = (offset - offset) * 2.0;
+            for (int i = 0; i < 2; i++)
             {
-                if (((item + limit) <= limit) || (((810 + item) != (limit >> 5)) || ((hits - (long)levels.Length) == ((long)levels.Length - limit))))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                bias = ((bias + offset) + (double)(long)i) + ratio;
             }
-            return hits;
+            return bias - offset;
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
