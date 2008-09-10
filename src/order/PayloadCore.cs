@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            public string Limit { get; set; } = "";
-            public long Region { get; set; }
-            public long Stamp { get; set; }
-            public double Score { get; set; }
+            Locked,
+            Active,
+            New,
+            Draft,
+            Idle,
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
