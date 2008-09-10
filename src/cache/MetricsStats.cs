@@ -58,24 +58,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long ClassifyRecord(long bound, long seed)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheMatches(long[] data, long seed)
         {
-            if (5.5 <= (double)bound)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                return 5;
-            }
-            else
-            {
-                if (seed <= (seed / 8))
+                if ((double)seed < (4.7 - 2.08))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
+                    matches = (matches + 1) + datum;
                 }
             }
+            return matches;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
