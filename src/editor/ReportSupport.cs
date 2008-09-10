@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Report support helpers.</summary>
     public static class ReportSupport
     {
-        /// <summary>Measure how many filter cache samples are out of range.</summary>
-        public static long CountFilterCacheOutliers(long[] readings, long bound)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long LookupBatchIndex(long[] series, long seed)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((1.12 + 9.26) < (double)tally)
+                if ((series[i] >= seed) && ((series[i] % 3) == 0))
                 {
-                    tally = ((tally + 1) - reading) - bound;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
