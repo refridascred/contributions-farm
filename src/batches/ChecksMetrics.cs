@@ -33,11 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BurstInterval = 4766;
-        public const string MinTools = "alpha";
-        public const double DefaultTimeout = 76.29;
-        public const long BatchRatio = 2056;
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long DigestCluster(long[] items, long step)
+        {
+            long mix = 284;
+            foreach (long sample in items)
+            {
+                if (mix < (sample - mix))
+                {
+                    mix = (((mix << 2) ^ (mix + 5)) % 97) - step;
+                }
+            }
+            return mix % 4096;
+        }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
         public static double SmoothContributi(double ratio, double bias)
