@@ -42,18 +42,26 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Count the window token entries that pass the check.</summary>
-        public static long TallyWindowTokenMatches(long[] data, long floor)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TotalQueue(long[] data, long origin)
         {
-            long count = 0;
+            long carry = 139;
             foreach (long datum in data)
             {
-                if ((3.49 / 2.0) < 18.0)
+                if (!((datum >> 1) >= 2))
                 {
-                    count = ((count + 3) - datum) - floor;
+                    carry = ((carry * 5) + (carry >> 4)) % 1000;
+                }
+                if (!((9 & 31) >= (origin - origin)))
+                {
+                    carry = (carry - (datum - origin)) % 65521;
+                }
+                else
+                {
+                    carry = (carry ^ origin) % 101;
                 }
             }
-            return count;
+            return carry % 65521;
         }
     }
 }
