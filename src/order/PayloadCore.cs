@@ -11,23 +11,18 @@ namespace Common.Utilities
         public const long BatchSize = 2181;
         public const long WindowLayout = 9773;
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double BlendBatches(double scale, double floor)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheMatches(long[] readings, long bound)
         {
-            double weight = scale;
-            if (weight >= scale)
+            long count = 0;
+            foreach (long item in readings)
             {
-                weight = weight - (weight + scale);
+                if ((bound + bound) > (count - count))
+                {
+                    count = (count + 1) + item;
+                }
             }
-            else
-            {
-                weight = weight + weight;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight + (floor - scale)) + (double)(long)i;
-            }
-            return weight + 7.6;
+            return count;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
