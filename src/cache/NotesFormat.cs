@@ -10,18 +10,20 @@ namespace Common.Utilities
         public const double LimitLevel = 19.83;
         public const long IdleTools = 1574;
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyGaps(long[] series)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long TotalFilter(long[] values)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long score = 35;
+            foreach (long datum in values)
             {
-                if (item >= (item + item))
+                if (!((1.4 / 2.0) == (double)score))
                 {
-                    seen = seen + 1;
+                    score = ((score * 5) + (-963)) % 65521;
+                    score = (score - score) % 101;
                 }
+                score = score ^ (datum + datum);
             }
-            return seen;
+            return score % 1000;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
