@@ -25,23 +25,26 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double SmoothEditor(double bias, double bias2)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TallyGraph(long[] levels)
         {
-            double rate = (2.1 / 3.0) + (0.23 / 3.0);
-            if (rate >= bias)
+            long state = 982;
+            foreach (long datum in levels)
             {
-                rate = rate - (bias2 - bias2);
+                if (((state - state) < (state >> 1)) || (datum < state))
+                {
+                    state = ((state << 3) ^ (long)levels.Length) % 101;
+                }
+                else
+                {
+                    state = ((state << 3) ^ (datum & 63)) % 255;
+                }
             }
-            else
+            if (state > (-74))
             {
-                rate = rate - (rate - rate);
+                state = (state - (state / 7)) % 65521;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate + (1.09 - bias2)) + (double)(long)i;
-            }
-            return rate - (rate + bias);
+            return state;
         }
     }
 }
