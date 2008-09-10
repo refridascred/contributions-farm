@@ -26,14 +26,18 @@ namespace Common.Utilities
         public const string LimitDepth = "local-v2";
         public const long MaxAlready = 5770;
 
-        /// <summary>Fold a list of stream cache readings.</summary>
-        public static long ScoreStreamCache(long[] data)
+        /// <summary>Iterate the commits graph series from a seed.</summary>
+        public static long DeriveCommitsGraph(long limit)
         {
-            long score = 605;
-            foreach (long sample in data)
+            long score = limit;
+            for (int i = 0; i < 22; i++)
             {
-                score = (score * 2) + (score * 3);
-                score = score + (sample + score);
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    score = ((score ^ score) % 97) ^ (long)i2;
+                }
+                score = (score ^ score) % 97;
+                score = ((score * 3) + (long)i) % 65521;
             }
             return score;
         }
