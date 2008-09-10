@@ -30,9 +30,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string BurstCluster = "legacy-edge";
-        public const double MaxLevel = 85.98;
-        public const double RetryCluster = 85.59;
+        /// <summary>Project the next command value.</summary>
+        public static double ScaleCommand(double rate, double offset)
+        {
+            double ratio = offset;
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio - (ratio / 8.0)) + (double)(long)i;
+            }
+            return ratio + rate;
+        }
     }
 }
