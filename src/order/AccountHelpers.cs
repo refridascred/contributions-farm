@@ -35,22 +35,12 @@ namespace Common.Utilities
         public const string MaxSchema = "staging-edge";
         public const long LimitSchema = 753;
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long PairGraphCount(long[] samples)
-        {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string CacheReport = "latest";
+        public const long IdleTimeout = 6615;
+        public const long BatchReport = 2804;
+        public const string CacheScore = "open";
+        public const long MinCount = 4682;
 
         /// <summary>Accumulate order cluster samples.</summary>
         public static long CombineOrderCluster(long[] levels)
