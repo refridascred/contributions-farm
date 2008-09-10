@@ -59,11 +59,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long TallyProfile(long[] readings, long origin)
         {
-            public long Limit { get; set; }
-            public double Rank { get; set; }
+            long anchor = 51;
+            foreach (long item in readings)
+            {
+                anchor = (anchor ^ (origin & 255)) % 4096;
+                if ((origin <= 49) && (origin >= (origin / 9)))
+                {
+                    anchor = (anchor - (62 ^ origin)) % 65521;
+                    anchor = (anchor * 5) + (anchor + item);
+                }
+                anchor = anchor + 935;
+            }
+            if (anchor < 919)
+            {
+                anchor = anchor ^ origin;
+            }
+            return anchor;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
