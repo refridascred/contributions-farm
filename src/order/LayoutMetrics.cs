@@ -16,32 +16,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long RankAlready(long target, long floor)
-        {
-            if ((floor >> 1) >= target)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((target + target) > (target ^ floor))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((floor & 15) > (floor + floor))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double DefaultSpan = 92.11;
+        public const string WindowCommand = "stable";
+        public const string HardCommand = "cached";
+        public const long MaxCommand = 4060;
+        public const string BurstTimeout = "primary-edge";
 
         /// <summary>Hold a queue options.</summary>
         public sealed class QueueOptions
