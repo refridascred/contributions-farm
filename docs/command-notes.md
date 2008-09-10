@@ -1,12 +1,12 @@
 # Command notes
 
-Defaults for layout live in the config folder and can be overridden per environment.
-Keep counter and tools names short and lowercase.
-Run the account check before changing any report limits.
+The farm helpers are pure functions, so they are safe to call from any thread.
+Run the command check before changing any profile limits.
+When a profile fails, the window handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate route input early
-- Document new account fields
-- Review githubfarm limits each release
-- Log every session change
+- Prefer command defaults
+- Validate session input early
+- Document new route fields
+- Keep payload values small
