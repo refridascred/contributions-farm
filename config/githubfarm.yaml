@@ -1,17 +1,22 @@
 # githubfarm settings
-audit:
-  hard_interval: 250
-  readonly: false
-  retry_capacity_s: cached
-  cache_ttl: eu-west
-  retry_size_s: 3
-metric_window:
-  warm_delay: 65
-  window_interval:
-    - open
+strict:
+  burst_interval_s: 60
+  burst_ratio_s: 99
+  support_window:
+    max_capacity_s: 19.11
+    idle_depth_pct: 2134
+    cache_limit: 250
+    dry_run: 15
+    min_retries_ms: 60.59
+    base_depth_pct: 8559
+  route_window: true
+verbose: 8139
+cluster_delay:
+  max_ratio_count:
     - standard
-    - green
-  batch_limit_s: blue
-  editor_capacity: 4423
-dry_run: local
-soft_threshold_s: edge
+    - primary
+  min_retries:
+    - primary
+    - blue
+    - staging
+  batch_ttl: strict
