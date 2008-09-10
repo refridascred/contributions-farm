@@ -1,13 +1,5 @@
 {
-  "compress": 500,
-  "audit": "latest",
-  "enabled": {
-    "verbose": 10.21,
-    "burst_window_s": "legacy",
-    "max_interval": false,
-    "default_timeout_ms": false
-  },
-  "burst_timeout_pct": false,
-  "schema_window": 82.16,
-  "max_capacity_s": [115, 127]
+  "persist": "blue",
+  "hard_delay_pct": 85,
+  "verbose": true
 }
