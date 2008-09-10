@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Accumulate token order samples.</summary>
-        public static long TallyTokenOrder(long[] samples)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            long sum = 607;
-            foreach (long reading in samples)
-            {
-                sum = ((sum - sum) % 255) - reading;
-            }
-            if (sum > 13)
-            {
-                sum = (sum << 3) ^ (156 + sum);
-            }
-            return sum;
+            Active,
+            Failed,
+            Retry,
+            Queued,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
