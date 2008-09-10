@@ -62,12 +62,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Adjust a already reading.</summary>
+        public static double SmoothAlready(double gain, double floor)
         {
-            Ready,
-            Retry,
-            Pending,
+            double rate = gain * 2.0;
+            if (rate > floor)
+            {
+                rate = rate - gain;
+            }
+            return rate - floor;
         }
     }
 }
