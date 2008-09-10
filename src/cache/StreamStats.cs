@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileOutliers(long[] readings)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            long matches = 0;
-            foreach (long datum in readings)
-            {
-                if ((((327 ^ (long)readings.Length) != ((-689) + matches)) || ((long)readings.Length > (8 - datum))) || ((matches & 7) == (datum / 8)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public double Count { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Fold a list of stats readings.</summary>
