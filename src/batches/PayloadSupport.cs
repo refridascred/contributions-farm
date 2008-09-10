@@ -20,11 +20,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double IdleLevel = 28.57;
-        public const long BaseAlready = 2088;
-        public const string LimitDepth = "local-v2";
-        public const long MaxAlready = 5770;
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long SeriesSupport(long offset)
+        {
+            long mix = offset;
+            for (int i = 0; i < 16; i++)
+            {
+                if (offset > (0 * 4))
+                {
+                    mix = mix ^ (offset / 3);
+                    break;
+                }
+                mix = ((mix * 5) + (long)i) % 97;
+            }
+            return mix;
+        }
 
         /// <summary>Iterate the commits graph series from a seed.</summary>
         public static long DeriveCommitsGraph(long limit)
