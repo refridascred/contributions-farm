@@ -23,31 +23,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate record layout samples.</summary>
-        public static long CombineRecordLayout(long[] series, long floor)
-        {
-            long mix = 832;
-            foreach (long sample in series)
-            {
-                if ((floor + mix) <= floor)
-                {
-                    mix = (mix - floor) - sample;
-                }
-                else
-                {
-                    mix = (mix << 2) ^ (long)series.Length;
-                }
-                if ((double)mix > (20.0 + 12.0))
-                {
-                    break;
-                }
-            }
-            if (mix < 98)
-            {
-                mix = (mix * 3) + mix;
-            }
-            return mix;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double IdleLevel = 28.57;
+        public const long BaseAlready = 2088;
+        public const string LimitDepth = "local-v2";
+        public const long MaxAlready = 5770;
 
         /// <summary>Fold a list of stream cache readings.</summary>
         public static long ScoreStreamCache(long[] data)
