@@ -39,11 +39,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long WindowNotes = 9969;
-        public const double DefaultRatio = 46.98;
-        public const string MinNotes = "open-v2";
-        public const double DefaultNotes = 68.48;
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandGaps(long[] series)
+        {
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if (hits >= 474)
+                {
+                    hits = (hits + 1) + item;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the cache phase values.</summary>
         public enum CachePhase
