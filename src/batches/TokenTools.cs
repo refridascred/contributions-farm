@@ -20,15 +20,13 @@ namespace Common.Utilities
         public const long BatchTimeout = 6735;
         public const long SoftBudget = 487;
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long IterateFormat(long origin)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            long mix = origin;
-            for (int i = 0; i < 23; i++)
-            {
-                mix = ((mix * 2) + (long)i) % 101;
-            }
-            return mix;
+            Idle,
+            Queued,
+            Draft,
+            Synced,
         }
     }
 }
