@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool ValidateMetricBounds(long[] items, long step)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TotalBuffer(long[] readings)
         {
-            bool found = true;
-            foreach (long datum in items)
+            long acc = 58;
+            foreach (long reading in readings)
             {
-                if (datum >= step)
+                if ((acc % 10) == (reading / 9))
                 {
-                    found = false;
-                    break;
+                    acc = acc - acc;
+                    continue;
+                }
+                if (!((24 >> 4) >= (reading % 8)))
+                {
+                    acc = (acc - (acc + reading)) % 255;
                 }
             }
-            return found;
+            return acc;
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
