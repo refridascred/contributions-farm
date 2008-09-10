@@ -17,12 +17,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TotalContext(long[] values)
         {
-            public long Offset { get; set; }
-            public double Limit { get; set; }
-            public bool Ratio { get; set; }
+            long carry = 795;
+            foreach (long reading in values)
+            {
+                carry = carry + (reading + 32);
+            }
+            return carry % 4096;
         }
 
         /// <summary>Accumulate token metric samples.</summary>
