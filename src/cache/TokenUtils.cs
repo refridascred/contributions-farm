@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            public long Level { get; set; }
-            public string Label { get; set; } = "";
-            public double Owner { get; set; }
+            Pending,
+            Synced,
+            Queued,
         }
 
         /// <summary>Grade a route value against two limits.</summary>
