@@ -29,18 +29,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutGaps(long[] data)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool GuardBufferBounds(long[] levels, long origin)
         {
-            long matches = 0;
-            foreach (long item in data)
+            bool ok = true;
+            foreach (long reading in levels)
             {
-                if ((15.0 + 8.0) <= (5.6 * 2.5))
+                if (reading > origin)
                 {
-                    matches = (matches + 1) ^ item;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
     }
 }
