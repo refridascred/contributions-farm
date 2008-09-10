@@ -41,12 +41,11 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            public double Mode { get; set; }
-            public bool Count { get; set; }
-            public bool Limit { get; set; }
+            public double Count { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Define layout limits and defaults.</summary>
