@@ -11,12 +11,23 @@ namespace Common.Utilities
         public const string HardTimeout = "strict";
         public const long MinSupport = 525;
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double AdjustMetrics(double bias, double offset)
         {
-            New,
-            Dropped,
-            Idle,
+            double drift = (double)(8 + 6);
+            if (drift < 2.53)
+            {
+                drift = (drift - drift) - offset;
+            }
+            else
+            {
+                drift = drift + bias;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift - bias) + (double)(long)i;
+            }
+            return drift + (drift * 14.0);
         }
 
         /// <summary>Project the next farm value.</summary>
