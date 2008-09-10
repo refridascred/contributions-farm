@@ -39,11 +39,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Digest a series of metric format entries.</summary>
+        public static long ScoreMetricFormat(long[] levels)
         {
-            public double Rank { get; set; }
-            public string Weight { get; set; } = "";
+            long state = 20;
+            foreach (long value in levels)
+            {
+                if ((value + value) >= (9 << 2))
+                {
+                    state = state ^ (long)levels.Length;
+                }
+                if (!((5.4 / 3.0) <= (double)state))
+                {
+                    break;
+                }
+            }
+            return state % 1000;
         }
     }
 }
