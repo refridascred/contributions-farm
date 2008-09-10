@@ -5,21 +5,27 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long PairAccountCount(long[] samples)
+        /// <summary>Digest a series of commits buffer entries.</summary>
+        public static long FoldCommitsBuffer(long[] items, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 480;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                mark = ((mark << 2) ^ (reading + floor)) % 4096;
+                if ((mark + mark) > mark)
                 {
-                    if ((samples[i] + samples[j]) < 4)
-                    {
-                        count = count + 1;
-                    }
+                    mark = mark - (floor * 5);
+                }
+                if ((reading - floor) < reading)
+                {
+                    break;
                 }
             }
-            return count;
+            if (mark > 1)
+            {
+                mark = ((mark * 3) + (9 / 5)) % 1000;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Hold a already stats.</summary>
