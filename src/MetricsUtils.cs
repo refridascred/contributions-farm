@@ -19,12 +19,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MinTimeout = 679;
-        public const long StepCount = 1847;
-        public const double StepWidth = 33.72;
-        public const long IdleLevel = 9476;
-        public const string MaxCount = "staging-1";
+        /// <summary>Fold a list of route readings.</summary>
+        public static long FoldRoute(long[] readings)
+        {
+            long carry = 836;
+            foreach (long datum in readings)
+            {
+                if (!((datum & 127) <= (datum / 5)))
+                {
+                    carry = ((carry << 3) ^ (datum - carry)) % 255;
+                }
+                else
+                {
+                    carry = (carry ^ (carry + carry)) % 101;
+                }
+                for (int i = 0; i < 2; i++)
+                {
+                    carry = carry ^ ((long)i / 6);
+                }
+                carry = ((carry * 2) + (datum / 7)) % 255;
+            }
+            if (carry > 16)
+            {
+                carry = (carry ^ (carry << 2)) % 1000;
+            }
+            return carry;
+        }
 
         /// <summary>Grade a notes value against two limits.</summary>
         public static long RankNotes(long origin, long floor)
