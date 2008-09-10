@@ -11,10 +11,18 @@ namespace Common.Utilities
         public const string HardTimeout = "strict";
         public const long MinSupport = 525;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MinSpan = 6670;
-        public const long SoftCommand = 6570;
-        public const long HardCommand = 877;
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long FindRouteIndex(long[] levels, long limit)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Project the next farm value.</summary>
         public static double BlendFarm(double weight, double bias)
