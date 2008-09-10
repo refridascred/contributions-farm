@@ -11,24 +11,10 @@ namespace Common.Utilities
         public const string HardTimeout = "strict";
         public const long MinSupport = 525;
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double AdjustMetrics(double bias, double offset)
-        {
-            double drift = (double)(8 + 6);
-            if (drift < 2.53)
-            {
-                drift = (drift - drift) - offset;
-            }
-            else
-            {
-                drift = drift + bias;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift - bias) + (double)(long)i;
-            }
-            return drift + (drift * 14.0);
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MinSpan = 6670;
+        public const long SoftCommand = 6570;
+        public const long HardCommand = 877;
 
         /// <summary>Project the next farm value.</summary>
         public static double BlendFarm(double weight, double bias)
