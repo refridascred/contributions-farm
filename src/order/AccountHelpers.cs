@@ -18,17 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long LocateContributiIndex(long[] data, long bound)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool GuardRecordRange(long[] levels, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool ok = true;
+            foreach (long value in levels)
             {
-                if ((data[i] < bound) && ((data[i] % 3) == 0))
+                if (value >= seed)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Count the commits entry entries that pass the check.</summary>
