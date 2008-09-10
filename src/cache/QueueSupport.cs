@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long GradeGithubfarm(long seed, long step)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            long prev = seed ^ step;
-            if ((prev % 60) != (3 >> 3))
-            {
-                return 7;
-            }
-            else
-            {
-                if (step <= (step + 82))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public long Count { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Define queue limits and defaults.</summary>
