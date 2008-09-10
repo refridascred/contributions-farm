@@ -1,6 +1,5 @@
 {
-  "hard_timeout": 8.05,
-  "base_depth_count": 3,
-  "compress": 5498,
-  "payload_retries": 8862
+  "max_limit_pct": 37,
+  "queue_interval": true,
+  "context_retries": "fallback"
 }
