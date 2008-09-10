@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long DigestQueue(long[] levels, long limit)
+        /// <summary>Find the first command graph entry that matches the target.</summary>
+        public static long SeekCommandGraphIndex(long[] readings, long offset)
         {
-            long anchor = -363;
-            foreach (long cell in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((-219) + 32) <= cell)
+                if ((readings[i] >= offset) && ((readings[i] % 3) == 0))
                 {
-                    anchor = (anchor + (cell + cell)) % 4096;
-                }
-                if ((limit % 60) != (limit * 5))
-                {
-                    anchor = ((anchor * 3) + (limit + limit)) % 65521;
+                    return (long)i;
                 }
             }
-            return anchor % 97;
+            return -1;
         }
 
         /// <summary>Blend two record measurements.</summary>
