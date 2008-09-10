@@ -1,5 +1,23 @@
 {
-  "flush_capacity": 81,
-  "hard_delay": 73.38,
-  "base_threshold_ms": 100
+  "account_retries": "stable",
+  "order_window": true,
+  "compress": {
+    "hard_interval": {
+      "readonly": "local",
+      "max_threshold_count": "legacy",
+      "burst_threshold_count": "green",
+      "batch_window": 100
+    },
+    "idle_depth_count": ["local", "latest", "standard", "legacy"],
+    "max_retries_s": "stable"
+  },
+  "dry_run": false,
+  "hard_retries": 5709,
+  "batches_limit": {
+    "idle_size_count": 67,
+    "idle_threshold_count": 3.68,
+    "already_interval": 60,
+    "strict": 79,
+    "poll_ratio_ms": 53.1
+  }
 }
