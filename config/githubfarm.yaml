@@ -1,6 +1,29 @@
 # githubfarm settings
-warm_delay:
-  - cached
-  - legacy
-default_timeout_ms: 79.75
-contributi_delay: strict
+enabled:
+  soft_window_count: 189
+  warm_ttl_count:
+    default_threshold_ms: 56.09
+    idle_window_ms: staging
+    buffer_timeout: 73.07
+    poll_retries_ms: 39
+    warm_threshold: 60
+    hard_interval_ms:
+      - 92
+      - 221
+      - 397
+      - 242
+  default_size_s: 34.08
+  metrics_interval: 83
+  warm_capacity: 636
+  default_timeout: 5542
+payload_retries:
+  cache_capacity: 75
+  verbose: 61
+  retry_delay_pct: false
+  hard_ratio_ms: staging
+max_timeout_count:
+  - edge
+  - staging
+  - eu-west
+  - green
+soft_window_pct: 8182
