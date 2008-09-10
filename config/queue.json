@@ -1,15 +1,7 @@
 {
-  "audit": [96, 390],
-  "max_capacity": {
-    "soft_delay_pct": 500,
-    "sync_ratio": true,
-    "burst_window_ms": "cached",
-    "idle_depth_count": "primary",
-    "soft_threshold_count": 48.38,
-    "readonly": ["fallback", "green"]
-  },
-  "idle_timeout_s": "primary",
-  "flush_interval_ms": "staging",
-  "dry_run": false,
-  "verbose": "blue"
+  "batch_delay": 8152,
+  "verbose": "stable",
+  "cluster_depth": "stable",
+  "channel_size": 250,
+  "batch_delay_s": 470
 }
