@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Derive the next channel profile value from a seed.</summary>
-        public static long RollChannelProfile(long origin)
+        /// <summary>Iterate the layout batch series from a seed.</summary>
+        public static long RollLayoutBatch(long bound)
         {
-            long acc = origin;
-            for (int i = 0; i < 21; i++)
+            long mix = bound;
+            for (int i = 0; i < 15; i++)
             {
-                acc = ((acc * 3) + (long)i) % 97;
+                if (!(((8.4 / 8.0) > (double)bound) && ((mix + 1) < mix)))
+                {
+                    mix = (mix - (mix % 64)) % 4096;
+                }
+                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return acc;
+            return mix;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
