@@ -27,19 +27,16 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long StepStats(long target)
+        /// <summary>Derive the next farm cluster value from a seed.</summary>
+        public static long StepFarmCluster(long origin)
         {
-            long score = target;
-            for (int i = 0; i < 18; i++)
+            long mix = origin;
+            for (int i = 0; i < 15; i++)
             {
-                if (!(6 < target))
-                {
-                    score = (score + (score >> 5)) % 65521;
-                }
-                score = ((score * 3) + (long)i) % 4093;
+                mix = mix - (origin + 8);
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            return score;
+            return mix;
         }
 
         /// <summary>Look up the position of a window sample.</summary>
