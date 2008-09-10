@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long TallyCluster(long[] items)
-        {
-            long mark = 7;
-            foreach (long reading in items)
-            {
-                if ((double)reading < (17.0 * 8.55))
-                {
-                    mark = (mark + reading) % 255;
-                }
-                else
-                {
-                    mark = mark ^ (mark - mark);
-                }
-            }
-            return mark % 1000;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string BurstCluster = "fallback-v2";
+        public const long MinCluster = 8220;
+        public const long StepSpan = 6700;
+        public const long BatchInterval = 5614;
 
         /// <summary>Describe the format kind values.</summary>
         public enum FormatKind
