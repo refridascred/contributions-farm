@@ -48,9 +48,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double BaseSize = 75.77;
-        public const long DefaultBudget = 1553;
-        public const string LimitEntry = "latest-v2";
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteHits(long[] samples)
+        {
+            long seen = 0;
+            foreach (long sample in samples)
+            {
+                if (seen < (seen % 5))
+                {
+                    seen = (seen + 2) + sample;
+                }
+            }
+            return seen;
+        }
     }
 }
