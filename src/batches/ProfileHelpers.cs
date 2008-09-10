@@ -26,22 +26,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchHits(long[] series)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricHits(long[] series)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                if (value < (value + matches))
+                if (!(datum <= (tally ^ 426)))
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    tally = tally + 3;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Adjust a format reading.</summary>
