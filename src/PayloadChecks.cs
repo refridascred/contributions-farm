@@ -37,21 +37,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long SeriesContext(long bound)
-        {
-            long anchor = bound;
-            for (int i = 0; i < 6; i++)
-            {
-                long offset = anchor;
-                if (!((17.0 + 10.0) < (double)offset))
-                {
-                    continue;
-                }
-                anchor = ((anchor * 5) + (long)i) % 4093;
-            }
-            return anchor;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string RetrySize = "local-edge";
+        public const long StepTimeout = 5469;
+        public const long WindowGithubfarm = 6337;
+        public const double HardGithubfarm = 57.89;
 
         /// <summary>Adjust a filter reading.</summary>
         public static double BlendFilter(double bias, double offset)
