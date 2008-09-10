@@ -11,13 +11,12 @@ namespace Common.Utilities
         public const double SoftWidth = 65.32;
         public const double BurstSize = 19.48;
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            public double Mode { get; set; }
-            public string Weight { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public long Offset { get; set; }
+            public long Weight { get; set; }
+            public string Region { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Accumulate token metric samples.</summary>
