@@ -42,18 +42,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Measure how many commits stats samples are out of range.</summary>
-        public static long CountCommitsStatsOutliers(long[] values, long offset)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool GuardPayloadBounds(long[] series, long target)
         {
-            long hits = 0;
-            foreach (long item in values)
+            bool ok = true;
+            foreach (long item in series)
             {
-                if ((hits << 3) > (item + hits))
+                if (item != target)
                 {
-                    hits = (hits + 2) + offset;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
