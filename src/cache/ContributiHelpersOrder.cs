@@ -26,19 +26,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double SmoothOrder(double scale, double offset)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long PairAccountCount(long[] items)
         {
-            double scale2 = scale;
-            if (scale2 > offset)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                scale2 = scale2 + (double)35;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                scale2 = scale2 + scale;
-            }
-            return scale2 + (scale / 3.0);
+            return hits;
         }
     }
 }
