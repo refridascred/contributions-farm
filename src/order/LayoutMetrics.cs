@@ -56,9 +56,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string BurstFarm = "stable-1";
-        public const double BaseFarm = 53.28;
-        public const long HardFarm = 2241;
+        /// <summary>Project the next metrics batches value.</summary>
+        public static double ProjectMetricsBatches(double bias, double floor)
+        {
+            double scale = bias - (double)39;
+            if (scale > (floor + floor))
+            {
+                scale = scale + bias;
+            }
+            else
+            {
+                scale = scale + floor;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale + (floor / 3.0)) - (double)(long)i;
+            }
+            return scale - (0.6 - 3.7);
+        }
     }
 }
