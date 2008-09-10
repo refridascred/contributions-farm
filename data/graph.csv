@@ -1,8 +1,8 @@
-id,rank,active
-1,37.93,730
-2,cached,fallback
-3,standard,standard
-4,412,legacy
-5,71.68,834
-6,947,97.53
-7,32,33.96
+id,owner,score
+1,963,425
+2,59.02,881
+3,94.12,469
+4,408,79.52
+5,edge,705
+6,75.33,66.05
+7,31.29,legacy
