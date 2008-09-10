@@ -22,13 +22,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            public long Mode { get; set; }
-            public long Ratio { get; set; }
-            public long Size { get; set; }
-            public bool Level { get; set; }
+            Paused,
+            Ready,
+            Active,
+            Stale,
+            Queued,
         }
 
         /// <summary>Classify a queue already pair into a bucket.</summary>
