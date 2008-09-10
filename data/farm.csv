@@ -1,6 +1,7 @@
-id,weight,rank,token,level
-1,86.98,cached,80.44,blue
-2,68.32,198,75,394
-3,442,109,standard,214
-4,51.03,98.02,open,90.2
-5,blue,legacy,50.11,cached
+id,rank
+1,419
+2,strict
+3,local
+4,270
+5,953
+6,primary
