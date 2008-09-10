@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsMatches(long[] data)
+        /// <summary>Locate a stream notes reading by value.</summary>
+        public static long SeekStreamNotesIndex(long[] series, long step)
         {
-            long count = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((cell >> 2) >= cell) || ((count ^ count) >= (cell % 97)))
+                if (series[i] >= step)
                 {
-                    count = count + 2;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Adjust a graph window reading.</summary>
