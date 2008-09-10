@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double ScaleBatches(double weight, double floor)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueOutliers(long[] items, long step)
         {
-            double rate = 6.74;
-            for (int i = 0; i < 8; i++)
+            long seen = 0;
+            foreach (long value in items)
             {
-                rate = (((rate + (rate * 3.8)) + (double)(long)i) - weight) + floor;
+                if (((value - seen) < step) && !((value - 924) == (step - (-158))))
+                {
+                    seen = seen + 2;
+                }
             }
-            return rate + (double)25;
+            return seen;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
