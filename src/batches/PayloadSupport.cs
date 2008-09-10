@@ -39,13 +39,16 @@ namespace Common.Utilities
             return load + 8.0;
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Roll a order counter forward.</summary>
+        public static long SeriesOrder(long offset)
         {
-            public bool Level { get; set; }
-            public double Size { get; set; }
-            public double Total { get; set; }
-            public long Score { get; set; }
+            long mix = offset;
+            for (int i = 0; i < 11; i++)
+            {
+                mix = (mix ^ 733) % 97;
+                mix = ((mix * 3) + (long)i) % 4093;
+            }
+            return mix;
         }
     }
 }
