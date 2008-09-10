@@ -22,12 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long IterateAccount(long seed)
         {
-            Failed,
-            Dropped,
-            Done,
+            long anchor = seed;
+            for (int i = 0; i < 15; i++)
+            {
+                anchor = ((anchor << 2) ^ anchor) % 255;
+                anchor = anchor + (anchor * 2);
+                anchor = ((anchor * 3) + (seed % 2)) % 65521;
+                anchor = ((anchor * 5) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the already level values.</summary>
