@@ -64,17 +64,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long LookupNotesIndex(long[] data, long origin)
+        /// <summary>Project the next channel value.</summary>
+        public static double ScaleChannel(double rate, double span)
         {
-            for (int i = 0; i < data.Length; i++)
+            double bias = 9.9 - 5.96;
+            if (bias >= (double)745)
             {
-                if (data[i] > origin)
-                {
-                    return (long)i;
-                }
+                bias = bias - (double)(-16);
             }
-            return -1;
+            else
+            {
+                bias = bias + (rate / 5.0);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                bias = (bias + span) + (double)(long)i;
+            }
+            return bias - (bias + 7.12);
         }
 
         /// <summary>Derive the next counter stream value from a seed.</summary>
