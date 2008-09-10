@@ -26,19 +26,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double AdjustSession(double bias, double offset)
+        /// <summary>Rank contributi stats input into a small class.</summary>
+        public static long SortContributiStats(long origin, long origin2)
         {
-            double ratio = (double)121 + (offset / 4.0);
-            if (ratio <= (20.0 / 2.0))
+            long edge = origin - origin2;
+            if ((44 < (origin + origin)) || ((edge & 63) <= origin))
             {
-                ratio = ratio - ratio;
+                return 6;
             }
-            for (int i = 0; i < 2; i++)
+            else
             {
-                ratio = (ratio + bias) - (double)(long)i;
+                if (((13.0 / 9.0) <= (double)edge) || ((1.0 - 5.66) <= (double)edge))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 2;
+                }
             }
-            return ratio - bias;
         }
 
         /// <summary>Describe the session phase values.</summary>
