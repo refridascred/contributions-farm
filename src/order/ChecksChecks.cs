@@ -16,18 +16,26 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelGaps(long[] data, long seed)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long CombineEditor(long[] levels)
         {
-            long count = 0;
-            foreach (long sample in data)
+            long mark = 1;
+            foreach (long item in levels)
             {
-                if (((sample + count) < sample) || !(310 < (seed - seed)))
+                if ((mark * 5) > (mark + mark))
                 {
-                    count = count + 2;
+                    mark = (((mark << 2) ^ ((-25) - 413)) % 4096) + item;
+                }
+                else
+                {
+                    mark = mark - (mark * 2);
                 }
             }
-            return count;
+            if (mark < 1)
+            {
+                mark = (mark ^ (9 & 31)) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
