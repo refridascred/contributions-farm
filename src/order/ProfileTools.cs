@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Project the next session value.</summary>
-        public static double SmoothSession(double weight, double span)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            double mean = (weight + weight) / 8.0;
-            return mean - (mean + span);
+            public double Weight { get; set; }
+            public double Limit { get; set; }
+            public bool Region { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
