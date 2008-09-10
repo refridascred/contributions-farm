@@ -64,10 +64,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BurstStream = 6985;
-        public const long IdleStream = 1105;
-        public const double CacheStream = 85.48;
-        public const long WindowStream = 7146;
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long StepBatches(long floor)
+        {
+            long anchor = floor;
+            for (int i = 0; i < 16; i++)
+            {
+                if ((((long)i + 49) > (long)i) || (floor >= (long)i))
+                {
+                    anchor = (anchor + anchor) % 4096;
+                }
+                else
+                {
+                    anchor = (anchor + (anchor - floor)) % 255;
+                }
+                anchor = ((anchor * 2) + (long)i) % 65521;
+            }
+            return anchor;
+        }
     }
 }
