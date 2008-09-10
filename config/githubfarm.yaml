@@ -1,13 +1,14 @@
 # githubfarm settings
-hard_capacity_pct:
-  - 66
-  - 278
-schema_interval: false
-notes_threshold: 30
-soft_ratio_s:
-  soft_limit_s:
-    - open
-    - edge
-  persist: 64
-  cluster_threshold: strict
-already_depth: true
+burst_window_s: cached
+commits_depth:
+  context_timeout: 85.23
+  profile_size:
+    - green
+    - local
+  idle_limit_s: 2.32
+  readonly: blue
+  sync_limit_ms: 4365
+  cluster_delay: 77.87
+hard_timeout_ms: primary
+stream_capacity: 5389
+retry_timeout_ms: false
