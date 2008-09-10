@@ -61,19 +61,22 @@ namespace Common.Utilities
             return (load - (2.0 + offset)) + gain;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool VerifyFarmBounds(long[] readings, long offset)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsGaps(long[] data, long floor)
         {
-            bool flag = true;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                if (reading < offset)
+                if (((floor >> 3) >= floor) || ((floor & 1) == (floor % 3)))
                 {
-                    flag = false;
-                    break;
+                    tally = (tally + 3) + cell;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return flag;
+            return tally;
         }
     }
 }
