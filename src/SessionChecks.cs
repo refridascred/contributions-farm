@@ -36,21 +36,39 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long PairRecordCount(long[] values)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long BucketQueue(long step, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long diff = step + offset;
+            if (!(diff > (step * 4)))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (((offset - step) >= diff) || ((step / 3) < diff))
                 {
-                    if ((values[i] + values[j]) < 5)
+                    return 7;
+                }
+                else
+                {
+                    if ((step << 3) > (offset + diff))
                     {
-                        hits = hits + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)step >= (4.0 - 4.5))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
-            return hits;
         }
     }
 }
