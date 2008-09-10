@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Combine format layout values into a single score.</summary>
-        public static long TallyFormatLayout(long[] readings, long bound)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksOutliers(long[] readings)
         {
-            long acc = 2;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                if (!!((acc % 24) != (acc - 759)))
+                if ((double)tally < (2.0 + 9.96))
                 {
-                    acc = (acc * 3) + (bound + reading);
+                    tally = (tally + 2) - sample;
                 }
-                acc = (acc + acc) % 4096;
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            if (acc > 4)
-            {
-                acc = (acc + (acc - 27)) % 255;
-            }
-            return acc % 65521;
+            return tally;
         }
 
         /// <summary>Hold a profile header.</summary>
