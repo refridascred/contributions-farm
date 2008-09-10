@@ -6,15 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 4); do
-    total=$((total + i * 2))
+count=0
+while [ "${count}" -lt 7 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
+log "ran ${count} rounds"
 
-RECORD_LIMIT=172
+RECORD_LIMIT=98
 log "limit is ${RECORD_LIMIT}"
 
-for item in fallback stable; do
-    log "checking ${item}"
-done
+mode="${1:-cached}"
+case "${mode}" in
+    fallback)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
