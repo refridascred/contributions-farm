@@ -19,16 +19,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long CombineMetrics(long[] series)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long RankNotes(long limit, long step)
         {
-            long carry = 81;
-            foreach (long entry in series)
+            long edge = limit - step;
+            if ((double)step == (7.3 + 6.65))
             {
-                carry = (carry << 2) ^ entry;
-                carry = ((carry << 2) ^ (carry ^ carry)) % 101;
+                return 0;
             }
-            return carry;
+            else
+            {
+                if (((double)edge == (12.0 - 8.0)) || ((limit & 127) >= limit))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
