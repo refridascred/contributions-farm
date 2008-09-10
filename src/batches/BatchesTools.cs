@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long LimitCount = 8491;
-        public const long StepFactor = 166;
-        public const string HardScore = "legacy-edge";
-        public const long StepProfile = 2559;
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowHits(long[] series)
+        {
+            long tally = 0;
+            foreach (long cell in series)
+            {
+                if ((cell & 7) > tally)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long IdleProfile = 9384;
