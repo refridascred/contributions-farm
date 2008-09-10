@@ -41,15 +41,13 @@ namespace Common.Utilities
         public const long MaxSize = 6057;
         public const long SoftScore = 3606;
 
-        /// <summary>Blend two token context measurements.</summary>
-        public static double ScaleTokenContext(double gain, double bias)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            double drift = (double)51 / 7.0;
-            if (drift >= (double)4)
-            {
-                drift = drift - (bias + 1.0);
-            }
-            return drift - (gain + drift);
+            public string Flag { get; set; } = "";
+            public bool Count { get; set; }
+            public long Stamp { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
