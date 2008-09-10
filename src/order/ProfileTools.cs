@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Iterate the session account series from a seed.</summary>
-        public static long DeriveSessionAccount(long offset)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long FindSupportIndex(long[] samples, long target)
         {
-            long total = offset;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = total - (total + 23);
-                for (int i2 = 0; i2 < 2; i2++)
+                if ((samples[i] < target) && ((samples[i] % 3) != 0))
                 {
-                    total = ((total << 3) ^ (3 + offset)) ^ (long)i2;
+                    return (long)i;
                 }
-                total = total + (5 + offset);
-                total = ((total * 3) + (long)i) % 65521;
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
