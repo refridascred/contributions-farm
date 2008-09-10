@@ -84,11 +84,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string StepDepth = "local";
-        public const double WindowLevel = 93.43;
-        public const double BurstRoute = 21.48;
-        public const string BaseWidth = "fallback-edge";
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long IterateStats(long bound)
+        {
+            long state = bound;
+            for (int i = 0; i < 21; i++)
+            {
+                if (!((bound + bound) == ((long)i + state)))
+                {
+                    state = state ^ state;
+                    state = ((state * 3) + ((long)i - state)) % 65521;
+                }
+                state = ((state << 2) ^ (bound ^ state)) % 255;
+                state = ((state * 4) + (long)i) % 4093;
+            }
+            return state;
+        }
 
         /// <summary>Describe the filter state values.</summary>
         public enum FilterState
