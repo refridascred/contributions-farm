@@ -33,19 +33,17 @@ namespace Common.Utilities
         public const long StepScore = 9622;
         public const long StepToken = 5133;
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long DigestContext(long[] items)
+        /// <summary>Derive the next batches account value from a seed.</summary>
+        public static long RollBatchesAccount(long seed)
         {
-            long carry = 1;
-            foreach (long entry in items)
+            long anchor = seed;
+            for (int i = 0; i < 5; i++)
             {
-                carry = (carry - (entry & 15)) % 1000;
+                anchor = (anchor - ((long)i << 3)) % 65521;
+                anchor = anchor + (anchor << 2);
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            if (carry > 7)
-            {
-                carry = (carry - carry) % 4096;
-            }
-            return carry;
+            return anchor;
         }
 
         /// <summary>Grade a session value against two limits.</summary>
