@@ -72,39 +72,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long RankSession(long bound, long offset)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            long span = bound ^ offset;
-            if ((span / 6) >= (bound ^ bound))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((bound & 31) >= span)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((span + bound) <= offset)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((2.45 / 7.0) < (0.96 + 5.75))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public double Offset { get; set; }
+            public long Token { get; set; }
+            public long Region { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
