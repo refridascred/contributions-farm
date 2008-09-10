@@ -13,11 +13,16 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MaxLayout = 9683;
-        public const string RetryLayout = "fallback-1";
-        public const double CacheSize = 64.52;
-        public const double SoftBudget = 17.07;
+        /// <summary>Project the next token value.</summary>
+        public static double ScaleToken(double rate, double offset)
+        {
+            double bias = (rate * 0.2) * 1.9;
+            for (int i = 0; i < 2; i++)
+            {
+                bias = ((bias + bias) + (double)(long)i) + offset;
+            }
+            return bias - bias;
+        }
 
         /// <summary>Audit order counter readings against a rule.</summary>
         public static long MeasureOrderCounterOutliers(long[] levels)
