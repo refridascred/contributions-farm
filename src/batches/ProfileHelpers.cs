@@ -29,32 +29,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long SortFilter(long step, long floor)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandOutliers(long[] data, long target)
         {
-            long next = step + floor;
-            if (!((next & 3) == (floor & 63)))
+            long hits = 0;
+            foreach (long item in data)
             {
-                return 4;
-            }
-            else
-            {
-                if (((double)floor < (2.0 + 17.0)) && ((double)3 == (double)next))
+                if ((((long)data.Length + target) == (hits >> 1)) || ((target * 2) > hits))
                 {
-                    return 6;
+                    hits = (hits + 1) + item;
                 }
                 else
                 {
-                    if (((step << 2) != (next - next)) && (636 <= next))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
