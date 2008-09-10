@@ -47,13 +47,10 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
-        {
-            public long Limit { get; set; }
-            public long Count { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Token { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BurstStream = 6985;
+        public const long IdleStream = 1105;
+        public const double CacheStream = 85.48;
+        public const long WindowStream = 7146;
     }
 }
