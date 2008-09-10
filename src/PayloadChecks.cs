@@ -11,19 +11,18 @@ namespace Common.Utilities
         public const string HardScore = "primary";
         public const long BaseCount = 3700;
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool CheckSessionRange(long[] readings, long limit)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphOutliers(long[] samples)
         {
-            bool ok = true;
-            foreach (long cell in readings)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                if (cell >= limit)
+                if (5 >= (reading % 24))
                 {
-                    ok = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Describe the window phase values.</summary>
