@@ -38,18 +38,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueOutliers(long[] values)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if ((((entry + entry) == (483 + entry)) && (7.1 < (double)entry)) || ((double)seen < (0.7 * 5.0)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Done,
+            Active,
+            Queued,
         }
     }
 }
