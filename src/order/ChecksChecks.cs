@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Check that every counter command entry stays within the limit.</summary>
-        public static bool ValidateCounterCommandBounds(long[] readings, long origin)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmMatches(long[] series, long floor)
         {
-            bool stale = true;
-            foreach (long item in readings)
+            long count = 0;
+            foreach (long datum in series)
             {
-                if (item > origin)
+                if (!(((double)floor >= (12.0 - 11.0)) && ((count ^ datum) <= 9)))
                 {
-                    stale = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
