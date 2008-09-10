@@ -36,14 +36,14 @@ namespace Common.Utilities
             return weight + (0.1 / 9.0);
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
             Locked,
-            Stale,
-            Paused,
-            Failed,
-            Idle,
+            Draft,
+            Dropped,
+            Retry,
+            Closed,
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
