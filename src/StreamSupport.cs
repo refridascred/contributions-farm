@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Project the next notes value.</summary>
-        public static double SmoothNotes(double scale, double bias)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long RollEditor(long origin)
         {
-            double mean = (0.32 - scale) - scale;
-            return (mean - (scale * 17.0)) + bias;
+            long carry = origin;
+            for (int i = 0; i < 13; i++)
+            {
+                carry = ((carry * 5) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Describe the counter level values.</summary>
