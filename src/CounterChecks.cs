@@ -16,10 +16,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MaxTimeout = 5970;
-        public const long HardContributi = 3821;
-        public const long WindowWidth = 2368;
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
+        {
+            public string Level { get; set; } = "";
+            public long Flag { get; set; }
+        }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
         public static long SeekContributiIndex(long[] levels, long target)
