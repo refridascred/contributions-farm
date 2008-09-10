@@ -13,18 +13,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long LocateStatsIndex(long[] series, long target)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double DefaultSchema = 24.54;
+        public const long BatchSchema = 9856;
+        public const long MaxSchema = 7422;
+        public const long LimitCount = 6234;
+        public const long MinSchema = 9096;
 
         /// <summary>Fold a list of buffer filter readings.</summary>
         public static long ScoreBufferFilter(long[] data)
