@@ -10,15 +10,11 @@ namespace Common.Utilities
         public const double WindowChecks = 77.3;
         public const long RetrySpan = 1826;
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
-        {
-            New,
-            Synced,
-            Paused,
-            Pending,
-            Locked,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string BaseCommand = "standard";
+        public const string CacheCommand = "open-1";
+        public const string IdleCount = "stable-1";
+        public const long DefaultRatio = 6148;
 
         /// <summary>Find the first channel account entry that matches the target.</summary>
         public static long FindChannelAccountIndex(long[] items, long seed)
