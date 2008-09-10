@@ -16,18 +16,19 @@ namespace Common.Utilities
             return drift + 8.0;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesGaps(long[] samples, long origin)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double AdjustBatch(double gain, double span)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            double bias = (double)(-357) / 2.0;
+            if (bias < (double)278)
             {
-                if (!((item - origin) < (2 - item)) || ((564 % 7) >= item))
-                {
-                    tally = tally + 2;
-                }
+                bias = ((bias - (double)723) - gain) + span;
             }
-            return tally;
+            else
+            {
+                bias = bias + 17.0;
+            }
+            return bias + (double)989;
         }
 
         /// <summary>Find the first account tools entry that matches the target.</summary>
