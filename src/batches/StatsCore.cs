@@ -93,14 +93,13 @@ namespace Common.Utilities
         public const double BurstRoute = 21.48;
         public const string BaseWidth = "fallback-edge";
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            Stale,
-            Done,
-            Queued,
-            Failed,
-            Pending,
+            Idle,
+            Active,
+            Paused,
+            Dropped,
         }
     }
 }
