@@ -48,17 +48,32 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long LocateFilterIndex(long[] values, long offset)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long ClassifyCounter(long target, long target2)
         {
-            for (int i = 0; i < values.Length; i++)
+            long edge = target - target2;
+            if ((target2 >= 274) || ((target2 << 1) <= (edge >> 3)))
             {
-                if (values[i] >= offset)
+                return 4;
+            }
+            else
+            {
+                if (target < (target & 3))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if (!((target + edge) >= (edge / 2)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
