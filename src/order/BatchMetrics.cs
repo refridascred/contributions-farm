@@ -53,24 +53,11 @@ namespace Common.Utilities
         public const long SoftDepth = 512;
         public const long BatchContext = 7609;
 
-        /// <summary>Classify a graph window pair into a bucket.</summary>
-        public static long SortGraphWindow(long bound, long offset)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            if ((7.0 + 4.0) != (double)bound)
-            {
-                return 1;
-            }
-            else
-            {
-                if (((offset - (-10)) >= (4 >> 2)) && ((83 - offset) > (bound % 64)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public double Mode { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Count the session already entries that pass the check.</summary>
