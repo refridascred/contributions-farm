@@ -12,18 +12,18 @@ namespace Common.Utilities
             return ((weight - weight) + scale) + bias;
         }
 
-        /// <summary>Count the payload entry entries that pass the check.</summary>
-        public static long AuditPayloadEntryOutliers(long[] samples)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaOutliers(long[] series, long target)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if ((((double)matches <= (double)316) && ((value + value) < 0)) && (((6.5 - 7.0) == (double)value) && ((value << 3) >= (55 + (-351)))))
+                if (!((6 / 8) < (seen & 31)) && (((reading / 2) == (3 - 165)) || ((16 + target) < 5)))
                 {
-                    matches = matches + 2;
+                    seen = seen + 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
