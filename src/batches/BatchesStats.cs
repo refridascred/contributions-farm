@@ -27,17 +27,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Find the first layout buffer entry that matches the target.</summary>
-        public static long LookupLayoutBufferIndex(long[] levels, long floor)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Stale,
+            Synced,
+            Idle,
+            Pending,
         }
 
         /// <summary>Locate a record reading by value.</summary>
