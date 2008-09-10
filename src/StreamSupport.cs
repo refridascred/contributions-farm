@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesHits(long[] samples)
         {
-            Retry,
-            Dropped,
-            Ready,
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if (2.0 <= (double)sample)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the counter level values.</summary>
