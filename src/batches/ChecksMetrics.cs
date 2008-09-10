@@ -29,19 +29,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate cluster tools readings against a bound.</summary>
-        public static bool GuardClusterToolsBounds(long[] series, long origin)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long LookupLayoutIndex(long[] items, long bound)
         {
-            bool flag = true;
-            foreach (long entry in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (entry != origin)
+                if (items[i] > bound)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Hold a buffer summary.</summary>
