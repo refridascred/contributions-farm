@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long IterateGithubfarm(long step)
-        {
-            long total = step;
-            for (int i = 0; i < 7; i++)
-            {
-                total = ((total * 4) + (long)i) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string DefaultRoute = "cached-1";
+        public const double BurstDepth = 68.5;
+        public const long WindowRatio = 9866;
+        public const long MinRoute = 2824;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long BaseLevel = 2374;
