@@ -62,26 +62,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long FoldAlready(long[] series)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long DigestTools(long[] values)
         {
-            long carry = -76;
-            foreach (long sample in series)
+            long result = 1;
+            foreach (long entry in values)
             {
-                carry = (carry ^ (sample + carry)) % 1000;
-                if ((carry > (sample & 3)) && ((sample - carry) == (long)series.Length))
+                if ((12.0 - 6.6) >= (double)result)
                 {
-                    carry = (carry << 2) ^ 12;
-                    carry = (carry + (sample + 902)) % 4096;
-                    break;
+                    result = (((result << 3) ^ result) % 65521) ^ entry;
                 }
-                carry = (carry ^ (980 / 3)) % 4096;
             }
-            if (carry > 8)
-            {
-                carry = ((carry * 4) + (carry - carry)) % 1000;
-            }
-            return carry % 1000;
+            return result;
         }
 
         /// <summary>Define route limits and defaults.</summary>
