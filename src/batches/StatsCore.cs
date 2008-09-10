@@ -36,13 +36,13 @@ namespace Common.Utilities
             return bias2 + 5.0;
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            Active,
-            Failed,
-            Done,
-            Synced,
+            public bool Weight { get; set; }
+            public long Mode { get; set; }
+            public double Ratio { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Define route limits and defaults.</summary>
