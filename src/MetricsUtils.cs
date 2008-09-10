@@ -12,15 +12,18 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Count the session checks entries that pass the check.</summary>
-        public static long TallySessionChecksGaps(long[] series, long limit)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long PairFarmCount(long[] levels)
         {
             long hits = 0;
-            foreach (long cell in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((limit - limit) < (limit * 2))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = (hits + 3) - cell;
+                    if ((levels[i] - levels[j]) < 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
