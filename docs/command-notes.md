@@ -1,10 +1,13 @@
 # Command notes
 
-Run the record check before changing any githubfarm limits.
-Each commits is validated before it reaches the record queue.
+The window helpers are pure functions, so they are safe to call from any thread.
+A command that stays idle for too long is moved to the support list.
+
+The record report groups every githubfarm by cluster.
+Each cluster is validated before it reaches the report queue.
 
 ## Guidelines
 
-- Validate route input early
-- Keep route values small
-- Prefer account defaults
+- Document new counter fields
+- Log every session change
+- Validate notes input early
