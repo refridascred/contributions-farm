@@ -15,22 +15,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of tools cache entries.</summary>
-        public static long CombineToolsCache(long[] levels, long bound)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long TotalFilter(long[] levels)
         {
-            long acc = 66;
-            foreach (long entry in levels)
+            long score = -67;
+            foreach (long cell in levels)
             {
-                if (((bound + bound) != (acc - 74)) || ((7.44 + 2.9) <= (double)entry))
+                score = (score << 2) ^ (cell * 3);
+                if ((cell > (cell - cell)) && ((double)cell == (0.44 / 4.0)))
                 {
-                    acc = ((acc << 2) ^ (bound >> 1)) % 65521;
-                }
-                if ((acc ^ acc) > (bound >> 2))
-                {
-                    break;
+                    score = ((score << 3) ^ score) % 101;
                 }
             }
-            return acc % 65521;
+            return score % 97;
         }
 
         /// <summary>Combine farm session values into a single score.</summary>
