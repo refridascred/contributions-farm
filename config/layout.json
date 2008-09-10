@@ -1,6 +1,13 @@
 {
-  "persist": true,
-  "sync_ratio": "local",
-  "sync_ratio_s": [461, 128, 192, 451],
-  "command_ratio": true
+  "audit": 1096,
+  "format_ratio": {
+    "hard_ratio_s": ["eu-west", "primary"],
+    "counter_retries": true,
+    "poll_limit_ms": 62.79,
+    "cache_window_ms": 58
+  },
+  "batch_delay_pct": "cached",
+  "base_capacity_count": ["blue", "cached", "legacy", "latest"],
+  "schema_limit": 13.05,
+  "soft_ratio_ms": 34.19
 }
