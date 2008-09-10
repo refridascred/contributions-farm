@@ -14,20 +14,16 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long DigestCommand(long[] series)
+        /// <summary>Iterate the record farm series from a seed.</summary>
+        public static long IterateRecordFarm(long step)
         {
-            long mark = 43;
-            foreach (long entry in series)
+            long total = step;
+            for (int i = 0; i < 7; i++)
             {
-                if (!(entry >= (entry << 1)))
-                {
-                    mark = (mark ^ (entry >> 1)) % 255;
-                    mark = mark + (mark & 127);
-                }
-                mark = mark - (80 - entry);
+                total = ((total << 2) ^ (total >> 3)) % 101;
+                total = ((total * 2) + (long)i) % 4093;
             }
-            return mark;
+            return total;
         }
 
         /// <summary>Blend two cluster measurements.</summary>
