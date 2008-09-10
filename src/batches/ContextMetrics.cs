@@ -42,14 +42,28 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Digest a series of metric notes entries.</summary>
+        public static long TotalMetricNotes(long[] readings)
         {
-            Stale,
-            Active,
-            Draft,
-            New,
-            Ready,
+            long result = 899;
+            foreach (long cell in readings)
+            {
+                if (result <= (result + 9))
+                {
+                    result = (result + result) % 4096;
+                    result = result - result;
+                }
+                result = (result + (cell + cell)) % 255;
+                if ((cell - cell) <= result)
+                {
+                    result = (result + (result * 2)) % 255;
+                }
+                else
+                {
+                    result = ((result * 5) + (result + (-111))) % 255;
+                }
+            }
+            return result % 97;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
