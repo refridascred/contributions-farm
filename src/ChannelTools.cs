@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Validate channel metrics readings against a bound.</summary>
+        public static bool ValidateChannelMetricsBounds(long[] series, long floor)
         {
-            public bool Ratio { get; set; }
-            public long Offset { get; set; }
+            bool ready = true;
+            foreach (long reading in series)
+            {
+                if (reading != floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Locate a context reading by value.</summary>
