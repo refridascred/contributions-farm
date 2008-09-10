@@ -1,7 +1,10 @@
 {
-  "order_ttl": ["fallback", "latest", "stable"],
-  "poll_interval_count": 60,
-  "cache_retries": 5.6,
-  "soft_delay_pct": ["local", "staging"],
-  "notes_window": 9671
+  "hard_depth_count": 29,
+  "retry_ratio_s": {
+    "counter_interval": "latest",
+    "burst_limit_ms": 84,
+    "persist": [487, 282]
+  },
+  "cluster_interval": "strict",
+  "readonly": "latest"
 }
