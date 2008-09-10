@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricMatches(long[] items, long origin)
+        /// <summary>Project the next session value.</summary>
+        public static double SmoothSession(double weight, double span)
         {
-            long tally = 0;
-            foreach (long item in items)
-            {
-                if (((origin + tally) <= (origin << 2)) || ((origin - origin) != (origin * 2)))
-                {
-                    tally = (tally + 1) ^ item;
-                }
-            }
-            return tally;
+            double mean = (weight + weight) / 8.0;
+            return mean - (mean + span);
         }
 
         /// <summary>Define commits limits and defaults.</summary>
