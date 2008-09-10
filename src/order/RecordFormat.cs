@@ -46,19 +46,17 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Digest a series of context buffer entries.</summary>
-        public static long TotalContextBuffer(long[] readings, long limit)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long LocateLayoutIndex(long[] items, long origin)
         {
-            long sum = -4;
-            foreach (long cell in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                sum = ((sum * 2) + limit) + cell;
+                if (items[i] <= origin)
+                {
+                    return (long)i;
+                }
             }
-            if (sum < (-597))
-            {
-                sum = sum - (limit + 13);
-            }
-            return sum;
+            return -1;
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
