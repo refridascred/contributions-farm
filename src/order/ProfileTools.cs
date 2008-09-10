@@ -27,17 +27,15 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long SeekSupportIndex(long[] items, long target)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long DigestBuffer(long[] values, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = 13;
+            foreach (long entry in values)
             {
-                if (items[i] == target)
-                {
-                    return (long)i;
-                }
+                acc = (((acc ^ (acc + 53)) % 4096) + entry) - seed;
             }
-            return -1;
+            return acc % 97;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
