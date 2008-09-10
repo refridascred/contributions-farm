@@ -17,22 +17,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long ScoreTools(long[] data, long offset)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            long carry = 927;
-            foreach (long reading in data)
-            {
-                if (((reading ^ 4) >= carry) && ((double)offset <= (double)reading))
-                {
-                    carry = (carry + (offset - offset)) % 4096;
-                }
-                else
-                {
-                    carry = (carry - (reading - reading)) % 4096;
-                }
-            }
-            return carry;
+            public string Offset { get; set; } = "";
+            public bool Token { get; set; }
+            public string Score { get; set; } = "";
+            public bool Weight { get; set; }
         }
 
         /// <summary>Match up buffer samples.</summary>
