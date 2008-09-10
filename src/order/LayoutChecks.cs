@@ -14,18 +14,18 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadHits(long[] readings)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long CombineGraph(long[] readings, long origin)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long carry = 162;
+            foreach (long entry in readings)
             {
-                if ((seen % 12) <= (17 + cell))
+                if (origin < (carry + origin))
                 {
-                    seen = seen + 2;
+                    carry = ((carry ^ (origin & 63)) % 1000) ^ entry;
                 }
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
