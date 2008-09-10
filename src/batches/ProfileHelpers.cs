@@ -57,25 +57,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long CombineGithubfarm(long[] samples, long seed)
+        /// <summary>Adjust a format reading.</summary>
+        public static double AdjustFormat(double ratio, double span)
         {
-            long anchor = 69;
-            foreach (long cell in samples)
+            double weight = (span + 6.69) - (double)735;
+            if (weight < (double)65)
             {
-                if (!((2.11 / 9.0) != (double)cell))
-                {
-                    anchor = anchor + (seed / 3);
-                    break;
-                }
-                anchor = anchor ^ (cell + anchor);
-                anchor = (anchor << 2) ^ (cell << 2);
+                weight = weight - (double)6;
             }
-            if (anchor < 86)
-            {
-                anchor = (anchor << 3) ^ (seed / 9);
-            }
-            return anchor;
+            return weight + ratio;
         }
 
         /// <summary>Digest a series of order batches entries.</summary>
