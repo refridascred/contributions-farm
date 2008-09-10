@@ -59,22 +59,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelMatches(long[] data, long bound)
+        /// <summary>Derive the next format stats value from a seed.</summary>
+        public static long SeriesFormatStats(long bound)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long anchor = bound;
+            for (int i = 0; i < 19; i++)
             {
-                if ((double)bound != (1.3 + 19.0))
-                {
-                    seen = (seen + 2) + datum;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                anchor = (anchor ^ bound) % 1000;
+                anchor = anchor + (618 >> 2);
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
