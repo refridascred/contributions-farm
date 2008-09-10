@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Accumulate command samples.</summary>
-        public static long TotalCommand(long[] series, long floor)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyOutliers(long[] readings, long origin)
         {
-            long mix = 2;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                if (((double)floor != (double)value) && (6 <= mix))
+                if (9 > matches)
                 {
-                    mix = (mix << 2) ^ floor;
+                    matches = ((matches + 1) + sample) + origin;
                 }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
