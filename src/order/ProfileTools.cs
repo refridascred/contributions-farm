@@ -62,11 +62,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long HardAccount = 172;
-        public const string BaseCount = "standard-edge";
-        public const long BaseAccount = 3853;
-        public const double MinAccount = 8.32;
-        public const double MaxFactor = 8.94;
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderBounds(long[] readings, long offset)
+        {
+            bool ready = true;
+            foreach (long sample in readings)
+            {
+                if (sample <= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
