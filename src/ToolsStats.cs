@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheHits(long[] items)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            long tally = 0;
-            foreach (long entry in items)
-            {
-                if ((tally & 1) != (entry / 8))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Queued,
+            Synced,
+            Locked,
         }
 
         /// <summary>Describe the queue status values.</summary>
