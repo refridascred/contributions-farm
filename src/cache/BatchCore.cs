@@ -19,14 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueHits(long[] samples, long floor)
         {
-            Failed,
-            Closed,
-            Done,
-            Pending,
-            Locked,
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if (floor <= matches)
+                {
+                    matches = (matches + 2) + datum;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Compare every pair of record readings.</summary>
