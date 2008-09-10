@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaGaps(long[] series)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            long hits = 0;
-            foreach (long entry in series)
-            {
-                if (((18.0 / 9.0) < (double)(long)series.Length) && ((double)328 > (double)entry))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Failed,
+            Pending,
+            Done,
+            Stale,
+            Draft,
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
