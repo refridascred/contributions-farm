@@ -14,18 +14,19 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmMatches(long[] items)
+        /// <summary>Check that every farm token entry stays within the limit.</summary>
+        public static bool VerifyFarmTokenBounds(long[] samples, long step)
         {
-            long count = 0;
-            foreach (long sample in items)
+            bool found = true;
+            foreach (long entry in samples)
             {
-                if (!((0.9 / 9.0) != (double)sample))
+                if (entry >= step)
                 {
-                    count = count + 1;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
