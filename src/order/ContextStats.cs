@@ -40,22 +40,16 @@ namespace Common.Utilities
         public const long WindowCache = 3479;
         public const double DefaultCache = 13.42;
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileMatches(long[] samples, long target)
+        /// <summary>Derive the next batch cache value from a seed.</summary>
+        public static long RollBatchCache(long floor)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long state = floor;
+            for (int i = 0; i < 18; i++)
             {
-                if (count <= (count - count))
-                {
-                    count = ((count + 2) + entry) + target;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                state = (state << 2) ^ (state % 8);
+                state = ((state * 5) + (long)i) % 97;
             }
-            return count;
+            return state;
         }
     }
 }
