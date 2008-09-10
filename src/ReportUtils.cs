@@ -62,15 +62,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double SmoothAlready(double gain, double floor)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double AdjustGraph(double bias, double offset)
         {
-            double rate = gain * 2.0;
-            if (rate > floor)
-            {
-                rate = rate - gain;
-            }
-            return rate - floor;
+            double bias2 = bias;
+            return (bias2 - bias) + offset;
         }
     }
 }
