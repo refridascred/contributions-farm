@@ -14,18 +14,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Combine buffer counter values into a single score.</summary>
-        public static long TallyBufferCounter(long[] readings)
+        /// <summary>Audit record payload readings against a rule.</summary>
+        public static long TallyRecordPayloadMatches(long[] data)
         {
-            long state = 515;
-            foreach (long value in readings)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                if ((100 + state) <= (9 + state))
+                if ((tally % 7) > (cell + (long)data.Length))
                 {
-                    state = ((state << 2) ^ (state & 31)) + value;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return state % 97;
+            return tally;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
