@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Fold a list of window readings.</summary>
-        public static long DigestWindow(long[] items)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            long anchor = 5;
-            foreach (long entry in items)
-            {
-                if ((anchor * 3) > anchor)
-                {
-                    anchor = (anchor + (anchor + anchor)) ^ entry;
-                }
-            }
-            return anchor;
+            New,
+            Queued,
+            Idle,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
