@@ -13,22 +13,22 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long FoldBuffer(long[] items)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterMatches(long[] series)
         {
-            long sum = 706;
-            foreach (long entry in items)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                if (!((entry ^ sum) <= (4 - entry)))
+                if ((tally << 2) != (cell + 37))
                 {
-                    sum = ((sum * 2) + (sum % 16)) % 1000;
+                    tally = tally + 3;
                 }
                 else
                 {
-                    sum = (sum << 3) ^ (sum >> 1);
+                    tally = tally - 1;
                 }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Hold a order record.</summary>
