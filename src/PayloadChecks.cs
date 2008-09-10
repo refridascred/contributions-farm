@@ -25,13 +25,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            Queued,
-            Synced,
-            Retry,
-            Done,
+            Active,
+            Failed,
+            Dropped,
             New,
         }
 
