@@ -55,11 +55,14 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            public double Count { get; set; }
-            public long Mode { get; set; }
+            Failed,
+            Ready,
+            Pending,
+            Retry,
+            Queued,
         }
 
         /// <summary>Blend two route farm measurements.</summary>
