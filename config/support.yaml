@@ -1,4 +1,7 @@
 # support settings
-context_delay: fallback
-cache_depth_s: false
-cache_window_pct: false
+cache_timeout:
+  - blue
+  - open
+  - edge
+cache_delay: open
+poll_timeout_ms: 59.73
