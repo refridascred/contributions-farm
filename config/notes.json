@@ -1,20 +1,7 @@
 {
-  "soft_threshold": "fallback",
-  "min_retries_s": "cached",
-  "profile_size": true,
-  "hard_ttl": {
-    "default_window": {
-      "enabled": "stable",
-      "record_depth": 4.82,
-      "window_capacity": 40,
-      "token_delay": "green",
-      "audit": "local"
-    },
-    "sync_limit_count": 500,
-    "burst_ttl_ms": "standard",
-    "metric_capacity": "primary",
-    "batch_window": "edge"
-  },
-  "filter_threshold": "legacy",
-  "warm_delay": false
+  "hard_threshold": 250,
+  "sync_threshold": 44.83,
+  "compress": 47.65,
+  "batch_threshold": 1868,
+  "retry_retries": 47.06
 }
