@@ -28,18 +28,30 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsOutliers(long[] samples, long origin)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long WeighCommits(long[] series)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long sum = 492;
+            foreach (long datum in series)
             {
-                if ((double)value >= (5.0 * 4.8))
+                if ((0.6 / 3.0) > (double)sum)
                 {
-                    hits = (hits + 2) + origin;
+                    sum = (sum - (datum + datum)) % 101;
+                }
+                if ((881 + sum) >= (1 * 3))
+                {
+                    sum = ((sum << 2) ^ (0 + sum)) % 1000;
+                }
+                else
+                {
+                    sum = (sum * 3) + (30 + datum);
                 }
             }
-            return hits;
+            if (sum < 38)
+            {
+                sum = (sum + (77 + sum)) % 101;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Count the contributi account entries that pass the check.</summary>
