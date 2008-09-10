@@ -16,19 +16,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double ScaleProfile(double ratio, double bias)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long SeekMetricsIndex(long[] data, long step)
         {
-            double drift = (double)(816 * 4);
-            if (drift <= (drift - bias))
+            for (int i = 0; i < data.Length; i++)
             {
-                drift = (drift + (double)163) - ratio;
+                if (data[i] > step)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift - 6.76) + (double)(long)i;
-            }
-            return drift + (8.0 + 8.0);
+            return -1;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
