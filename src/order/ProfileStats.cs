@@ -16,10 +16,22 @@ namespace Common.Utilities
             return scale2 - scale2;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long RetryRatio = 1740;
-        public const double RetryTimeout = 92.88;
-        public const long LimitBudget = 6261;
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long OverlapQueueCount(long[] samples)
+        {
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the filter state values.</summary>
         public enum FilterState
