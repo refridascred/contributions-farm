@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferHits(long[] readings, long seed)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphMatches(long[] series, long limit)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long tally = 0;
+            foreach (long value in series)
             {
-                if (seed < (seed + 95))
+                if ((tally + tally) == (tally - tally))
                 {
-                    matches = (matches + 2) ^ value;
+                    tally = ((tally + 2) + value) - limit;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
