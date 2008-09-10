@@ -1,5 +1,18 @@
 {
-  "payload_interval": 80,
-  "dry_run": 49.44,
-  "cache_depth_ms": "fallback"
+  "strict": true,
+  "poll_retries": 500,
+  "idle_capacity": {
+    "default_ttl_pct": {
+      "dry_run": [91, 199, 74, 148],
+      "batch_ttl": 1024,
+      "token_window": "local"
+    },
+    "warm_window": 250,
+    "record_capacity": 30,
+    "layout_ttl": 24.64,
+    "base_ttl_s": 26
+  },
+  "metric_delay": "staging",
+  "batches_interval": ["green", "fallback", "green"],
+  "poll_retries_ms": 92
 }
