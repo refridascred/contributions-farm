@@ -24,11 +24,12 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long LimitCounter = 475;
-        public const long MinDepth = 9093;
-        public const long BatchTimeout = 6735;
-        public const long SoftBudget = 487;
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
+        {
+            public long Token { get; set; }
+            public double Region { get; set; }
+        }
 
         /// <summary>Validate commits readings against a bound.</summary>
         public static bool GuardCommitsRange(long[] samples, long origin)
