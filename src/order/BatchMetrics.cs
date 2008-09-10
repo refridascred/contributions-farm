@@ -52,16 +52,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long RollEntry(long origin)
+        /// <summary>Fold a list of stream commits readings.</summary>
+        public static long CombineStreamCommits(long[] samples, long offset)
         {
-            long mark = origin;
-            for (int i = 0; i < 16; i++)
+            long result = 886;
+            foreach (long reading in samples)
             {
-                mark = (mark ^ (origin - mark)) % 101;
-                mark = ((mark * 4) + (long)i) % 97;
+                result = ((result - (reading + result)) % 255) - offset;
+                if ((reading << 1) > 46)
+                {
+                    result = (result << 2) ^ result;
+                }
             }
-            return mark;
+            return result;
         }
 
         /// <summary>Project the next channel value.</summary>
