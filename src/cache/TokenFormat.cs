@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long TotalCounter(long[] data)
+        /// <summary>Validate record batch readings against a bound.</summary>
+        public static bool VerifyRecordBatchBounds(long[] items, long offset)
         {
-            long score = 689;
-            foreach (long item in data)
+            bool found = true;
+            foreach (long reading in items)
             {
-                long span = item;
-                if ((item ^ item) == (score - score))
+                if (reading >= offset)
                 {
-                    score = ((score << 3) ^ (item + span)) % 255;
-                }
-                if (((item - score) > score) || (score < (score + 1)))
-                {
-                    score = (score * 3) + score;
-                }
-                else
-                {
-                    score = score - item;
+                    found = false;
+                    break;
                 }
             }
-            if (score > 62)
-            {
-                score = (score + (score * 4)) % 4096;
-            }
-            return score;
+            return found;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
