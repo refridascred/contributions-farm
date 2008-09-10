@@ -57,15 +57,26 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Scale a command context figure with a bias.</summary>
-        public static double ProjectCommandContext(double gain, double span)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long ScoreQueue(long[] items)
         {
-            double rate = (double)75 - span;
-            for (int i = 0; i < 8; i++)
+            long acc = 0;
+            foreach (long sample in items)
             {
-                rate = ((rate + (span / 3.0)) - (double)(long)i) + gain;
+                if (!((sample - sample) < (sample % 24)))
+                {
+                    acc = (acc * 4) + (sample % 10);
+                }
+                if ((sample << 1) <= acc)
+                {
+                    acc = ((acc << 3) ^ (acc - acc)) % 97;
+                }
+                if ((sample - sample) >= ((long)items.Length + sample))
+                {
+                    break;
+                }
             }
-            return rate + rate;
+            return acc;
         }
     }
 }
