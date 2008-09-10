@@ -27,38 +27,14 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long RankNotes(long target, long step)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            if (((step % 60) >= (step - step)) && ((target + target) != (target * 2)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((step * 3) >= (step ^ step)) && ((0.1 + 7.0) >= (double)step))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((step * 3) != (step ^ step)) && ((double)target > (double)8))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((target - target) < (step >> 2))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Draft,
+            Queued,
+            Paused,
+            Pending,
+            Closed,
         }
 
         /// <summary>Hold a cache header.</summary>
