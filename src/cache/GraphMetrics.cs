@@ -14,18 +14,18 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Audit stats counter readings against a rule.</summary>
-        public static long TallyStatsCounterMatches(long[] values)
+        /// <summary>Audit token command readings against a rule.</summary>
+        public static long MeasureTokenCommandMatches(long[] levels, long target)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                if ((cell ^ 9) < ((long)values.Length + count))
+                if (reading < (target * 2))
                 {
-                    count = count + 3;
+                    matches = matches + 3;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
