@@ -59,31 +59,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long SortCounter(long step, long origin)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            if ((origin >> 3) <= (5 << 3))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((origin <= (6 - origin)) || ((7.7 - 8.49) >= (double)step))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((step + origin) <= (7 >> 5))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            New,
+            Paused,
+            Done,
         }
     }
 }
