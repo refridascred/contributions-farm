@@ -28,24 +28,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long RollReport(long limit)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long RollRecord(long seed)
         {
-            long acc = limit;
-            for (int i = 0; i < 13; i++)
+            long result = seed;
+            for (int i = 0; i < 22; i++)
             {
-                if ((limit <= 454) && (13.0 >= (double)(long)i))
+                if ((double)(long)i < (double)seed)
                 {
-                    acc = (acc - (acc - limit)) % 97;
+                    result = (result ^ (result ^ (-78))) % 255;
+                    result = (result - ((-72) + seed)) % 65521;
                 }
-                else
-                {
-                    acc = acc ^ acc;
-                }
-                acc = (acc ^ limit) % 255;
-                acc = ((acc * 5) + (long)i) % 1000;
+                result = ((result * 3) + (long)i) % 97;
             }
-            return acc;
+            return result;
         }
     }
 }
