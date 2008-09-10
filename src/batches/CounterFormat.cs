@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Validate already support readings against a bound.</summary>
-        public static bool ValidateAlreadySupportRange(long[] items, long target)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            bool valid = true;
-            foreach (long value in items)
-            {
-                if (value <= target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Idle,
+            Locked,
+            Paused,
+            Done,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
