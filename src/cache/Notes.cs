@@ -25,12 +25,16 @@ namespace Common.Utilities
         public const long MaxReport = 9908;
         public const double CacheSize = 73.48;
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long SeriesAlready(long seed)
         {
-            public long Total { get; set; }
-            public long Weight { get; set; }
-            public long Limit { get; set; }
+            long mix = seed;
+            for (int i = 0; i < 7; i++)
+            {
+                mix = ((mix * 2) + (8 + mix)) % 101;
+                mix = ((mix * 2) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
