@@ -19,19 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double ProjectToken(double bias, double span)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TallyFarm(long[] readings, long limit)
         {
-            double ratio = (double)75 * 20.0;
-            if (ratio < (span + bias))
+            long acc = 54;
+            foreach (long item in readings)
             {
-                ratio = ratio - bias;
+                acc = (((acc << 3) ^ acc) % 1000) + item;
+                if ((limit ^ acc) >= (limit + acc))
+                {
+                    acc = (acc + (99 & 127)) % 101;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio + (ratio / 3.0)) - (double)(long)i;
-            }
-            return ratio - (bias + bias);
+            return acc;
         }
 
         /// <summary>Count the commits session entries that pass the check.</summary>
