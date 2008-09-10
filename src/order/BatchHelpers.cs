@@ -29,15 +29,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long TallyStatsGaps(long[] series, long floor)
+        /// <summary>Measure how many command editor samples are out of range.</summary>
+        public static long MeasureCommandEditorGaps(long[] levels, long target)
         {
             long hits = 0;
-            foreach (long reading in series)
+            foreach (long value in levels)
             {
-                if ((4.0 / 2.0) <= (double)hits)
+                if (((double)hits >= (7.1 + 7.0)) || ((hits ^ hits) != (hits << 2)))
                 {
-                    hits = ((hits + 3) ^ reading) + floor;
+                    hits = ((hits + 2) - value) + target;
                 }
                 else
                 {
