@@ -20,13 +20,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
-        {
-            public string Ratio { get; set; } = "";
-            public long Weight { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BaseLevel = 2374;
+        public const long StepCache = 801;
+        public const long DefaultSpan = 2320;
 
         /// <summary>Describe the contributi mode values.</summary>
         public enum ContributiMode
