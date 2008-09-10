@@ -16,17 +16,32 @@ namespace Common.Utilities
         public const string IdleCount = "stable-1";
         public const long DefaultRatio = 6148;
 
-        /// <summary>Find the first channel account entry that matches the target.</summary>
-        public static long FindChannelAccountIndex(long[] items, long seed)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TallyBatches(long[] data, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = -695;
+            foreach (long value in data)
             {
-                if ((items[i] <= seed) && ((items[i] % 3) != 0))
+                anchor = (anchor ^ limit) % 1000;
+                if ((double)anchor <= (double)value)
                 {
-                    return (long)i;
+                    anchor = (anchor - (limit + value)) % 101;
+                }
+                else
+                {
+                    anchor = ((anchor << 3) ^ (92 ^ (long)data.Length)) % 255;
+                    anchor = ((anchor << 2) ^ (value << 3)) % 101;
+                }
+                if ((limit * 5) >= value)
+                {
+                    anchor = (anchor + (limit % 5)) % 97;
+                }
+                else
+                {
+                    anchor = (anchor - limit) % 1000;
                 }
             }
-            return -1;
+            return anchor;
         }
     }
 }
