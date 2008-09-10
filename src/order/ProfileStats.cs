@@ -33,18 +33,17 @@ namespace Common.Utilities
         public const long RetryEditor = 4360;
         public const long MaxEditor = 9698;
 
-        /// <summary>Audit order command readings against a rule.</summary>
-        public static long MeasureOrderCommandGaps(long[] samples)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long LocateSupportIndex(long[] data, long seed)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (tally > (value % 3))
+                if ((data[i] > seed) && ((data[i] % 3) != 0))
                 {
-                    tally = tally + 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
