@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Accumulate notes samples.</summary>
-        public static long TallyNotes(long[] readings, long origin)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long SeekRecordIndex(long[] readings, long bound)
         {
-            long acc = 65;
-            foreach (long sample in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = ((((acc << 2) ^ acc) % 255) - sample) - origin;
+                if ((readings[i] < bound) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Rank entry input into a small class.</summary>
