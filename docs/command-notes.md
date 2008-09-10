@@ -1,16 +1,14 @@
 # Command notes
 
-Each format is validated before it reaches the tools queue.
-The account module keeps window values in sync with the checks cache.
-The metrics helpers are pure functions, so they are safe to call from any thread.
+Run the tools check before changing any report limits.
+A route that stays idle for too long is moved to the cluster list.
 
-Each format is validated before it reaches the buffer queue.
-Each route is validated before it reaches the command queue.
-Run the session check before changing any farm limits.
+Defaults for graph live in the config folder and can be overridden per environment.
+Run the metrics check before changing any already limits.
+Each context is validated before it reaches the counter queue.
 
 ## Guidelines
 
-- Document new report fields
-- Validate metrics input early
-- Prefer order defaults
-- Log every channel change
+- Log every record change
+- Keep filter values small
+- Validate queue input early
