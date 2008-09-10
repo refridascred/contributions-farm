@@ -1,8 +1,23 @@
 # githubfarm settings
-default_retries_ms: strict
-soft_capacity_pct:
-  - 266
-  - 123
-  - 170
-batch_retries: 250
-githubfarm_capacity: 3940
+strict: strict
+cache_window:
+  - 11
+  - 213
+notes_limit:
+  - edge
+  - eu-west
+  - strict
+enabled: 6131
+batch_capacity_s:
+  readonly: 250
+  cache_depth_pct: local
+  default_delay_ms: blue
+batch_threshold:
+  default_threshold_count: 48.5
+  persist:
+    contributi_timeout: 52.38
+    soft_interval_s: 60
+    readonly: fallback
+    compress: legacy
+  sync_ttl_ms: 30
+  max_window: cached
