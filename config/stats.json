@@ -1,8 +1,5 @@
 {
-  "base_window_pct": 66,
-  "schema_window": "edge",
-  "hard_delay_ms": ["primary", "open", "stable", "standard"],
-  "notes_ttl": 35.08,
-  "soft_retries": "local",
-  "payload_interval": true
+  "warm_delay": "local",
+  "cache_ttl": 500,
+  "checks_ratio": "cached"
 }
