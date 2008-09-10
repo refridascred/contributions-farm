@@ -51,20 +51,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of stream commits readings.</summary>
-        public static long CombineStreamCommits(long[] samples, long offset)
-        {
-            long result = 886;
-            foreach (long reading in samples)
-            {
-                result = ((result - (reading + result)) % 255) - offset;
-                if ((reading << 1) > 46)
-                {
-                    result = (result << 2) ^ result;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long WindowBuffer = 556;
+        public const double WindowCount = 5.01;
+        public const string DefaultInterval = "standard";
+        public const long DefaultTimeout = 647;
+        public const string BaseBuffer = "latest-v2";
 
         /// <summary>Blend two metrics cache measurements.</summary>
         public static double BlendMetricsCache(double gain, double bias)
