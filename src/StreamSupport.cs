@@ -13,12 +13,14 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            Retry,
+            Stale,
+            Draft,
+            Failed,
             Paused,
-            Idle,
+            Retry,
         }
 
         /// <summary>Locate a layout reading by value.</summary>
