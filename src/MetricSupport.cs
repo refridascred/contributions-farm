@@ -33,17 +33,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long LookupCommandIndex(long[] data, long seed)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long WeighRoute(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = -8;
+            foreach (long cell in data)
             {
-                if (data[i] <= seed)
-                {
-                    return (long)i;
-                }
+                carry = ((carry ^ carry) % 1000) + cell;
             }
-            return -1;
+            if (carry < 54)
+            {
+                carry = (carry ^ (carry - carry)) % 97;
+            }
+            return carry % 4096;
         }
     }
 }
