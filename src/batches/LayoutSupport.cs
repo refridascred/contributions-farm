@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double RetryStats = 5.89;
-        public const long WindowStats = 2376;
-        public const long BurstSize = 2374;
+        /// <summary>Match up githubfarm batch samples.</summary>
+        public static long MatchGithubfarmBatchCount(long[] levels)
+        {
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Iterate the checks series from a seed.</summary>
         public static long StepChecks(long bound)
