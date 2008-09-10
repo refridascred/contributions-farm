@@ -6,15 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 1))
+count=0
+while [ "${count}" -lt 5 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
+log "ran ${count} rounds"
 
-COMMAND_LIMIT=273
+COMMAND_LIMIT=199
 log "limit is ${COMMAND_LIMIT}"
-
-for item in open staging fallback; do
-    log "checking ${item}"
-done
