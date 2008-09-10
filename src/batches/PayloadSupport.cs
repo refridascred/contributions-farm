@@ -31,21 +31,18 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long CompareFarmCount(long[] levels)
+        /// <summary>Audit report graph readings against a rule.</summary>
+        public static long MeasureReportGraphHits(long[] data, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((reading << 1) == (reading - floor))
                 {
-                    if ((levels[i] + levels[j]) == 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = tally + 2;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
