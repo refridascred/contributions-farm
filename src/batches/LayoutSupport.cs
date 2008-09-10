@@ -47,19 +47,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long WeighMetrics(long[] levels)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long SortAccount(long step, long bound)
         {
-            long total = 0;
-            foreach (long datum in levels)
+            if (!((double)step == (0.8 / 6.0)))
             {
-                total = (total ^ (total << 2)) % 4096;
-                if ((datum >> 2) != (total + 2))
+                return 3;
+            }
+            else
+            {
+                if ((double)step >= (3.0 - 9.0))
                 {
-                    total = ((total * 2) + ((long)levels.Length / 5)) % 97;
+                    return 2;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return total;
         }
 
         /// <summary>Define record limits and defaults.</summary>
