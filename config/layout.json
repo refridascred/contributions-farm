@@ -1,16 +1,7 @@
 {
-  "notes_window": 31.41,
-  "flush_capacity": 17,
-  "context_delay": {
-    "hard_window": 61.89,
-    "verbose": 8475,
-    "commits_window": [309, 274],
-    "retry_size_pct": 78.28,
-    "enabled": {
-      "dry_run": 94.57,
-      "soft_limit_s": "latest",
-      "filter_size": 1024
-    },
-    "entry_retries": false
-  }
+  "dry_run": 52.77,
+  "hard_ratio": ["staging", "stable", "legacy", "open"],
+  "entry_depth": ["edge", "fallback", "latest"],
+  "format_size": true,
+  "flush_limit": 91.14
 }
