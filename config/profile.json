@@ -1,7 +1,9 @@
 {
-  "retry_limit": 4836,
-  "flush_retries_count": true,
-  "dry_run": "eu-west",
-  "flush_depth_s": "standard",
-  "flush_ratio": ["legacy", "open", "cached"]
+  "profile_ratio": "open",
+  "account_interval": 30,
+  "enabled": {
+    "burst_interval_ms": 42.45,
+    "dry_run": "eu-west",
+    "batch_capacity": "stable"
+  }
 }
