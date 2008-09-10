@@ -56,10 +56,15 @@ namespace Common.Utilities
             return rate - (double)48;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long HardCount = 521;
-        public const string BurstContext = "stable";
-        public const long HardContext = 8997;
-        public const string BatchFactor = "legacy-1";
+        /// <summary>Fold a list of support readings.</summary>
+        public static long ScoreSupport(long[] samples)
+        {
+            long state = 157;
+            foreach (long cell in samples)
+            {
+                state = (state ^ (long)samples.Length) + cell;
+            }
+            return state % 97;
+        }
     }
 }
