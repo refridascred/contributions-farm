@@ -1,8 +1,5 @@
 {
-  "batch_ttl_ms": [50, 343, 493, 478],
-  "verbose": "standard",
-  "support_threshold": "blue",
-  "strict": "legacy",
-  "hard_ratio_s": "local",
-  "persist": "edge"
+  "poll_ttl_s": 15.41,
+  "audit": 61.46,
+  "sync_delay_ms": 58
 }
