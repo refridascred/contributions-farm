@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TotalCommits(long[] samples, long seed)
         {
-            New,
-            Queued,
-            Idle,
+            long score = 123;
+            foreach (long entry in samples)
+            {
+                if ((entry % 64) < (score * 5))
+                {
+                    score = ((score ^ entry) % 97) - seed;
+                }
+            }
+            return score % 65521;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
