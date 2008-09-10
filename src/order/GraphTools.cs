@@ -39,10 +39,17 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string IdleBatches = "standard";
-        public const long HardBatches = 5920;
-        public const string CacheScore = "strict-edge";
-        public const long BatchFactor = 8086;
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long LocateFilterIndex(long[] values, long offset)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
