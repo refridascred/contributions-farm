@@ -37,11 +37,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyGaps(long[] samples, long bound)
         {
-            public bool Count { get; set; }
-            public string Offset { get; set; } = "";
+            long count = 0;
+            foreach (long datum in samples)
+            {
+                if ((6 - 99) > (bound - bound))
+                {
+                    count = (count + 3) + datum;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
