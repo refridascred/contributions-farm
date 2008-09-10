@@ -13,13 +13,24 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long ClassifyFilter(long target, long step)
         {
-            public string Offset { get; set; } = "";
-            public double Limit { get; set; }
-            public long Total { get; set; }
-            public long Flag { get; set; }
+            if ((step ^ target) > (target >> 1))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((target & 31) >= (4 + step))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Hold a stream entry.</summary>
