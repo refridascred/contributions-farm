@@ -40,11 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            public long Region { get; set; }
-            public long Weight { get; set; }
+            Dropped,
+            Failed,
+            Idle,
+            Queued,
         }
 
         /// <summary>Describe the layout level values.</summary>
