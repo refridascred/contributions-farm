@@ -36,26 +36,21 @@ namespace Common.Utilities
             return load + bias;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long DigestChecks(long[] samples, long target)
+        /// <summary>Match up queue samples.</summary>
+        public static long OverlapQueueCount(long[] values)
         {
-            long carry = 251;
-            foreach (long cell in samples)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((carry ^ carry) <= target))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    carry = ((carry << 3) ^ (target << 2)) % 101;
-                }
-                if (((1.0 / 8.0) < (double)cell) && ((double)carry != (3.0 + 17.0)))
-                {
-                    break;
+                    if ((values[i] + values[j]) > 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (carry > (-101))
-            {
-                carry = carry ^ (target / 6);
-            }
-            return carry;
+            return tally;
         }
     }
 }
