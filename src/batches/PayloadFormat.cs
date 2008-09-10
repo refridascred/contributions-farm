@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Iterate the command report series from a seed.</summary>
+        public static long RollCommandReport(long target)
         {
-            public string Offset { get; set; } = "";
-            public double Level { get; set; }
+            long anchor = target;
+            for (int i = 0; i < 4; i++)
+            {
+                anchor = ((anchor * 4) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
