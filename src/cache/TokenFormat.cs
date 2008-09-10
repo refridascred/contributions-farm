@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of account report readings.</summary>
-        public static long WeighAccountReport(long[] values, long offset)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferHits(long[] readings, long seed)
         {
-            long mark = 91;
-            foreach (long entry in values)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                if (((offset & 15) != (mark >> 1)) && ((58 >> 4) == (1 + (long)values.Length)))
+                if (seed < (seed + 95))
                 {
-                    mark = (mark ^ (5 ^ 8)) - entry;
+                    matches = (matches + 2) ^ value;
                 }
             }
-            if (mark > 10)
-            {
-                mark = (mark - mark) % 101;
-            }
-            return mark % 97;
+            return matches;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
