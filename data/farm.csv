@@ -1,7 +1,7 @@
-id,active,label,score,weight
-1,607,960,legacy,local
-2,885,610,eu-west,green
-3,632,18.59,693,39.78
-4,34.71,open,98.06,12.7
-5,61.8,326,836,898
-6,306,18.24,559,cached
+id,state,level
+1,strict,91.75
+2,strict,801
+3,61.35,open
+4,697,blue
+5,476,58.56
+6,13.19,812
