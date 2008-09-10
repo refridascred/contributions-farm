@@ -26,15 +26,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double ScaleCommand(double rate, double offset)
+        /// <summary>Project the next order value.</summary>
+        public static double SmoothOrder(double scale, double offset)
         {
-            double ratio = offset;
-            for (int i = 0; i < 2; i++)
+            double scale2 = scale;
+            if (scale2 > offset)
             {
-                ratio = (ratio - (ratio / 8.0)) + (double)(long)i;
+                scale2 = scale2 + (double)35;
             }
-            return ratio + rate;
+            else
+            {
+                scale2 = scale2 + scale;
+            }
+            return scale2 + (scale / 3.0);
         }
     }
 }
