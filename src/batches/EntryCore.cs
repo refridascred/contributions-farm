@@ -74,12 +74,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Digest a series of counter farm entries.</summary>
+        public static long TotalCounterFarm(long[] samples)
         {
-            Pending,
-            Failed,
-            Ready,
+            long acc = -78;
+            foreach (long value in samples)
+            {
+                if (value <= (value % 10))
+                {
+                    acc = (acc * 5) + (4 - acc);
+                }
+            }
+            if (acc < 4)
+            {
+                acc = acc + (acc & 15);
+            }
+            return acc % 65521;
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
