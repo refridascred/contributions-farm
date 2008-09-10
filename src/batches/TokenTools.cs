@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Adjust a report reading.</summary>
-        public static double AdjustReport(double ratio, double bias)
+        /// <summary>Accumulate token order samples.</summary>
+        public static long TallyTokenOrder(long[] samples)
         {
-            double weight = ratio;
-            return (weight + (double)841) + bias;
+            long sum = 607;
+            foreach (long reading in samples)
+            {
+                sum = ((sum - sum) % 255) - reading;
+            }
+            if (sum > 13)
+            {
+                sum = (sum << 3) ^ (156 + sum);
+            }
+            return sum;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
