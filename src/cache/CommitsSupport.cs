@@ -35,12 +35,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string MinToken = "stable";
-        public const double HardToken = 14.95;
-        public const string MaxToken = "alpha-v2";
-        public const long StepScore = 9622;
-        public const long StepToken = 5133;
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long CombineChecks(long[] data, long floor)
+        {
+            long carry = 29;
+            foreach (long item in data)
+            {
+                if (((carry + item) > 9) || ((double)floor >= (double)carry))
+                {
+                    carry = (carry << 2) ^ (floor + floor);
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Describe the token state values.</summary>
         public enum TokenState
