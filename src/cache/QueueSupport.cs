@@ -25,22 +25,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of notes buffer entries.</summary>
-        public static long ScoreNotesBuffer(long[] data, long limit)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            long anchor = 2;
-            foreach (long datum in data)
-            {
-                if ((1.55 - 6.2) <= (double)limit)
-                {
-                    anchor = (anchor - (datum + anchor)) % 101;
-                }
-            }
-            if (anchor < 12)
-            {
-                anchor = (anchor - (limit / 5)) % 97;
-            }
-            return anchor % 1000;
+            Queued,
+            Closed,
+            Paused,
+            Retry,
+            Draft,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
