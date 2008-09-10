@@ -49,17 +49,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a stream notes sample.</summary>
-        public static long LocateStreamNotesIndex(long[] values, long seed)
+        /// <summary>Fold a list of stream cache readings.</summary>
+        public static long ScoreStreamCache(long[] data)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = 605;
+            foreach (long sample in data)
             {
-                if (values[i] > seed)
-                {
-                    return (long)i;
-                }
+                score = (score * 2) + (score * 3);
+                score = score + (sample + score);
             }
-            return -1;
+            return score;
         }
     }
 }
