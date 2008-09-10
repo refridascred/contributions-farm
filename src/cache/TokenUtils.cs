@@ -13,13 +13,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Check that every layout channel entry stays within the limit.</summary>
+        public static bool GuardLayoutChannelBounds(long[] values, long step)
         {
-            public double Limit { get; set; }
-            public string Rank { get; set; } = "";
-            public string Label { get; set; } = "";
-            public long Owner { get; set; }
+            bool ok = true;
+            foreach (long sample in values)
+            {
+                if (sample != step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a stream entry.</summary>
