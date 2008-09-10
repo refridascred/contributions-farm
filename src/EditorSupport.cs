@@ -72,40 +72,10 @@ namespace Common.Utilities
             return ratio + floor;
         }
 
-        /// <summary>Rank payload stats input into a small class.</summary>
-        public static long GradePayloadStats(long seed, long origin)
-        {
-            long bound = seed + origin;
-            if ((634 - bound) < seed)
-            {
-                return 3;
-            }
-            else
-            {
-                if (((5.0 - 4.1) <= (double)origin) || (origin <= (bound - 65)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((origin >> 1) <= (seed + origin)) && ((9.05 - 2.59) >= (double)origin))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((20.0 * 1.82) == (double)seed)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double MaxRatio = 78.72;
+        public const double BaseSize = 37.91;
+        public const string StepFactor = "legacy";
 
         /// <summary>Hold a farm entry.</summary>
         public sealed class FarmEntry
