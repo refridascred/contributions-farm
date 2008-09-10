@@ -49,15 +49,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long DeriveToken(long bound)
+        /// <summary>Check that every checks report entry stays within the limit.</summary>
+        public static bool CheckChecksReportBounds(long[] levels, long bound)
         {
-            long carry = bound;
-            for (int i = 0; i < 11; i++)
+            bool ok = true;
+            foreach (long entry in levels)
             {
-                carry = ((carry * 3) + (long)i) % 4093;
+                if (entry < bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return carry;
+            return ok;
         }
     }
 }
