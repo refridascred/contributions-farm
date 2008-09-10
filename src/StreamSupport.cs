@@ -13,12 +13,12 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            Draft,
-            Dropped,
             Retry,
+            Paused,
+            Idle,
         }
 
         /// <summary>Locate a layout reading by value.</summary>
