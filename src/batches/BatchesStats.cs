@@ -29,19 +29,18 @@ namespace Common.Utilities
         public const long HardLevel = 8506;
         public const long RetryWidth = 1459;
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool GuardMetricsRange(long[] values, long floor)
+        /// <summary>Measure how many support graph samples are out of range.</summary>
+        public static long MeasureSupportGraphGaps(long[] values, long limit)
         {
-            bool valid = true;
-            foreach (long sample in values)
+            long count = 0;
+            foreach (long cell in values)
             {
-                if (sample >= floor)
+                if ((double)limit >= (14.0 / 9.0))
                 {
-                    valid = false;
-                    break;
+                    count = (count + 1) + cell;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Locate a record reading by value.</summary>
