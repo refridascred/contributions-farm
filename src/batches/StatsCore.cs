@@ -63,21 +63,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long IterateStats(long bound)
+        /// <summary>Iterate the route batches series from a seed.</summary>
+        public static long StepRouteBatches(long origin)
         {
-            long state = bound;
-            for (int i = 0; i < 21; i++)
+            long total = origin;
+            for (int i = 0; i < 9; i++)
             {
-                if (!((bound + bound) == ((long)i + state)))
-                {
-                    state = state ^ state;
-                    state = ((state * 3) + ((long)i - state)) % 65521;
-                }
-                state = ((state << 2) ^ (bound ^ state)) % 255;
-                state = ((state * 4) + (long)i) % 4093;
+                total = ((total * 3) + (long)i) % 65521;
             }
-            return state;
+            return total;
         }
 
         /// <summary>Describe the filter state values.</summary>
