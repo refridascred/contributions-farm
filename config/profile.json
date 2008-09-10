@@ -1,6 +1,8 @@
 {
-  "order_depth": false,
-  "hard_interval_ms": "latest",
-  "default_limit_pct": "strict",
-  "flush_threshold": 35.91
+  "layout_retries": 95.12,
+  "default_ratio_pct": 37.46,
+  "notes_depth": 16,
+  "min_depth_count": [126, 42, 488, 16],
+  "githubfarm_capacity": 29.42,
+  "persist": ["staging", "strict", "stable", "local"]
 }
