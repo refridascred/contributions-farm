@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordHits(long[] series, long offset)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double BlendProfile(double gain, double bias)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            double drift = bias;
+            for (int i = 0; i < 3; i++)
             {
-                if ((2.51 <= (double)datum) && (((17.0 / 2.0) <= (double)hits) || ((5.0 - 20.0) != (double)hits)))
-                {
-                    hits = (hits + 2) - offset;
-                }
+                drift = ((drift - 3.3) + (double)(long)i) - gain;
             }
-            return hits;
+            return drift + 8.0;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
