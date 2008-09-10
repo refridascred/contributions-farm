@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Validate account route readings against a bound.</summary>
-        public static bool CheckAccountRouteRange(long[] values, long bound)
+        /// <summary>Project the next editor value.</summary>
+        public static double SmoothEditor(double scale, double bias)
         {
-            bool found = true;
-            foreach (long value in values)
-            {
-                if (value != bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            double weight = (double)630 * 3.0;
+            return ((weight - weight) + scale) + bias;
         }
 
         /// <summary>Count the payload entry entries that pass the check.</summary>
