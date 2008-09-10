@@ -25,13 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Validate report queue readings against a bound.</summary>
+        public static bool VerifyReportQueueBounds(long[] data, long target)
         {
-            public double Offset { get; set; }
-            public bool Owner { get; set; }
-            public double Count { get; set; }
-            public double Region { get; set; }
+            bool valid = true;
+            foreach (long reading in data)
+            {
+                if (reading > target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the stream status values.</summary>
