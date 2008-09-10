@@ -24,14 +24,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Compare every pair of channel farm readings.</summary>
+        public static long MatchChannelFarmCount(long[] series)
         {
-            Locked,
-            Queued,
-            Draft,
-            Active,
-            Stale,
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Blend two support measurements.</summary>
