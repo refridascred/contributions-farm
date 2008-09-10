@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Iterate the context schema series from a seed.</summary>
-        public static long SeriesContextSchema(long seed)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool VerifyBatchRange(long[] readings, long step)
         {
-            long mix = seed;
-            for (int i = 0; i < 18; i++)
+            bool valid = true;
+            foreach (long item in readings)
             {
-                mix = ((mix * 5) + (mix & 15)) % 101;
-                if ((seed >> 4) >= (seed / 8))
+                if (item > step)
                 {
-                    mix = ((mix << 2) ^ (mix - (long)i)) % 1000;
+                    valid = false;
+                    break;
                 }
-                mix = (mix - (81 + seed)) % 1000;
-                mix = ((mix * 2) + (long)i) % 97;
             }
-            return mix;
+            return valid;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
