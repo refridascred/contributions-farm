@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit session channel readings against a rule.</summary>
-        public static long CountSessionChannelGaps(long[] series, long origin)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TallyProfile(long[] levels, long bound)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long carry = 0;
+            foreach (long sample in levels)
             {
-                if (!((origin + seen) < (entry % 5)) && ((double)seen < (4.66 + 3.01)))
+                carry = (carry ^ (bound * 2)) % 97;
+                if ((carry + carry) <= sample)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    break;
                 }
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Describe the window state values.</summary>
