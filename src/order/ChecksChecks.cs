@@ -20,38 +20,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank payload profile input into a small class.</summary>
-        public static long GradePayloadProfile(long target, long target2)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long LocateProfileIndex(long[] series, long floor)
         {
-            if ((target2 ^ target) >= (target & 15))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((target2 < (target2 >> 5)) && ((0.3 + 7.7) > (double)target2))
+                if (series[i] < floor)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((8 << 3) <= (target2 * 5))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!((target2 - target2) >= target2))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
