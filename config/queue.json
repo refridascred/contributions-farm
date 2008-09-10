@@ -1,5 +1,6 @@
 {
-  "cache_ttl_ms": 65.39,
-  "poll_window": "local",
-  "verbose": 25.06
+  "dry_run": 77,
+  "record_size": "fallback",
+  "readonly": false,
+  "commits_depth": "legacy"
 }
