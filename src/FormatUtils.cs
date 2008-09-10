@@ -75,13 +75,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double ProjectGraph(double bias, double floor)
         {
-            public long Region { get; set; }
-            public long Ratio { get; set; }
-            public long Owner { get; set; }
-            public long Label { get; set; }
+            double load = bias - bias;
+            if (load >= 1.0)
+            {
+                load = load - load;
+            }
+            else
+            {
+                load = load + (2.0 - bias);
+            }
+            return load - floor;
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
