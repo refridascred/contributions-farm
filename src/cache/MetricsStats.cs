@@ -33,12 +33,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long RankLayout(long limit, long offset)
         {
-            Active,
-            Synced,
-            Idle,
+            if (!(5 >= offset))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((434 + 9) > (offset << 3))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((8.5 * 2.74) == (double)limit))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a batches stats.</summary>
