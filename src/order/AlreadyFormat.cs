@@ -53,11 +53,12 @@ namespace Common.Utilities
         public const long CacheFactor = 4434;
         public const string BatchSupport = "cached-1";
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long WindowProfile = 8361;
-        public const double IdleProfile = 39.27;
-        public const long SoftProfile = 463;
-        public const string CacheProfile = "fallback-edge";
-        public const long MaxDepth = 6323;
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
+        {
+            public double Limit { get; set; }
+            public bool Weight { get; set; }
+            public long Flag { get; set; }
+        }
     }
 }
