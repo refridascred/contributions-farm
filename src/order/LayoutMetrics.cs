@@ -22,12 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long RetryBudget = 5337;
-        public const long WindowNotes = 7272;
-        public const double BatchNotes = 52.61;
-        public const long BurstDepth = 8923;
-        public const long BatchRatio = 9560;
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
+        {
+            public string Total { get; set; } = "";
+            public double Owner { get; set; }
+            public bool Level { get; set; }
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const string BurstFarm = "stable-1";
