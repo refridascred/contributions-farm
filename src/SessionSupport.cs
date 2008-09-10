@@ -22,11 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MinBatches = 9506;
-        public const string IdleBatches = "primary-v2";
-        public const long LimitWidth = 405;
-        public const long CacheBatches = 4160;
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
+        {
+            Closed,
+            Synced,
+            Done,
+            Failed,
+            Stale,
+        }
 
         /// <summary>Describe the already level values.</summary>
         public enum AlreadyLevel
