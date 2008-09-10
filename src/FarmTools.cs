@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long SeriesAccount(long origin)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            long mark = origin;
-            for (int i = 0; i < 15; i++)
-            {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    mark = (mark ^ (origin >> 4)) ^ (long)i2;
-                    mark = (mark ^ (mark + mark)) % 97;
-                }
-                mark = mark - mark;
-                mark = ((mark * 3) + (long)i) % 65521;
-            }
-            return mark;
+            Closed,
+            Active,
+            Ready,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Define account limits and defaults.</summary>
