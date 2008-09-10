@@ -25,14 +25,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            Queued,
+            Stale,
             Closed,
             Paused,
-            Retry,
-            Draft,
+            Failed,
+            Done,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
