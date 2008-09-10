@@ -48,16 +48,10 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long SeriesCache(long step)
-        {
-            long acc = step;
-            for (int i = 0; i < 19; i++)
-            {
-                acc = ((acc * 5) + (long)i) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long RetryDepth = 3395;
+        public const long CacheFactor = 4434;
+        public const string BatchSupport = "cached-1";
 
         /// <summary>Describe the editor mode values.</summary>
         public enum EditorMode
