@@ -28,39 +28,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long GradeQueue(long floor, long step)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsOutliers(long[] samples, long origin)
         {
-            long delta = floor ^ step;
-            if ((delta % 97) > (floor % 5))
+            long hits = 0;
+            foreach (long value in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((double)delta <= (double)step))
+                if ((double)value >= (5.0 * 4.8))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (floor < (floor >> 1))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((68 * 2) > (floor ^ step))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    hits = (hits + 2) + origin;
                 }
             }
+            return hits;
         }
 
         /// <summary>Count the contributi account entries that pass the check.</summary>
