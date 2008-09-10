@@ -29,14 +29,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool VerifyPayloadLimits(long[] samples, long limit)
         {
-            Active,
-            Synced,
-            Failed,
-            Dropped,
-            Ready,
+            bool ready = true;
+            foreach (long reading in samples)
+            {
+                if (reading > limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
