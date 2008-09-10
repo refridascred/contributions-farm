@@ -64,18 +64,19 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Audit metric account readings against a rule.</summary>
-        public static long MeasureMetricAccountMatches(long[] readings, long limit)
+        /// <summary>Scale a queue support figure with a bias.</summary>
+        public static double SmoothQueueSupport(double gain, double offset)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            double mean = offset;
+            if (mean <= offset)
             {
-                if (((reading ^ limit) > 14) || ((reading >> 1) < 5))
-                {
-                    seen = seen + 1;
-                }
+                mean = (mean - (3.1 / 5.0)) - gain;
             }
-            return seen;
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean - offset) - (double)(long)i;
+            }
+            return mean + 7.92;
         }
     }
 }
