@@ -69,18 +69,31 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportHits(long[] data)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long RankSchema(long offset, long origin)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            if (origin < (offset >> 5))
             {
-                if (!((entry + (-93)) >= seen) || !((seen & 31) <= (entry >> 2)))
+                return 6;
+            }
+            else
+            {
+                if (!((double)origin <= (2.0 + 19.0)))
                 {
-                    seen = seen + 3;
+                    return 5;
+                }
+                else
+                {
+                    if ((-7) >= (origin * 4))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return seen;
         }
     }
 }
