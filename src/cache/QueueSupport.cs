@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Roll a route counter forward.</summary>
-        public static long IterateRoute(long offset)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long OverlapMetricsCount(long[] levels)
         {
-            long anchor = offset;
-            for (int i = 0; i < 17; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                anchor = (anchor * 5) + offset;
-                if ((offset + offset) < anchor)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    anchor = (anchor - (offset * 4)) % 101;
+                    if ((levels[i] ^ levels[j]) == 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                else
-                {
-                    anchor = anchor ^ (318 % 16);
-                }
-                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Describe the queue mode values.</summary>
