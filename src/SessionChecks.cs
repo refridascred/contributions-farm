@@ -39,22 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long CompareToolsCount(long[] series)
-        {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double IdleWindow = 75.16;
+        public const double IdleBudget = 65.24;
+        public const long DefaultWindow = 7529;
+        public const string CacheWindow = "cached-1";
+        public const long DefaultWidth = 9816;
 
         /// <summary>Locate a batches reading by value.</summary>
         public static long SeekBatchesIndex(long[] samples, long limit)
