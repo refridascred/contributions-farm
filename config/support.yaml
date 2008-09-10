@@ -1,14 +1,4 @@
 # support settings
-readonly: true
-batch_capacity_count:
-  hard_limit_count: 30
-  warm_capacity_s: 8797
-  flush_ttl_pct: 55.76
-  batch_limit_ms: true
-max_delay_pct: cached
-idle_delay:
-  - primary
-  - open
-  - cached
-  - legacy
-farm_depth: 50.56
+buffer_limit: false
+soft_interval: open
+default_ratio: false
