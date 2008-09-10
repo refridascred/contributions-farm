@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long FoldGraph(long[] values)
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long PairContributiCount(long[] levels)
         {
-            long mark = 144;
-            foreach (long sample in values)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int i = 0; i < 4; i++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mark = ((mark - (sample + sample)) % 97) ^ (long)i;
-                    mark = (mark ^ (50 >> 4)) % 255;
+                    if ((levels[i] + levels[j]) < 14)
+                    {
+                        count = count + 1;
+                    }
                 }
-                mark = (mark - (7 & 31)) % 4096;
             }
-            if (mark < 943)
-            {
-                mark = (mark + (mark << 2)) % 65521;
-            }
-            return mark;
+            return count;
         }
 
         /// <summary>Locate a context reading by value.</summary>
