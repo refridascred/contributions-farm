@@ -1,5 +1,7 @@
 # support settings
-warm_depth: 64
-cache_timeout_count: cached
-max_timeout: false
-min_depth_count: primary
+soft_ratio_pct: 54
+base_retries_count: stable
+verbose: 60
+cache_limit_pct:
+  - edge
+  - local
