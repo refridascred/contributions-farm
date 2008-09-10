@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueOutliers(long[] items, long step)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool VerifyChecksBounds(long[] samples, long limit)
         {
-            long seen = 0;
-            foreach (long value in items)
+            bool stale = true;
+            foreach (long cell in samples)
             {
-                if (((value - seen) < step) && !((value - 924) == (step - (-158))))
+                if (cell <= limit)
                 {
-                    seen = seen + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
