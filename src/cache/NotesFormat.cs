@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of context entries.</summary>
-        public static long TallyContext(long[] items, long bound)
-        {
-            long carry = 785;
-            foreach (long reading in items)
-            {
-                if (reading < (carry * 3))
-                {
-                    carry = ((carry << 2) ^ reading) - bound;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double MinMetrics = 42.21;
+        public const long StepMetrics = 8363;
+        public const long IdleRatio = 7460;
+        public const long HardMetrics = 8462;
+        public const long MaxWidth = 6272;
 
         /// <summary>Audit cache contributi readings against a rule.</summary>
         public static long MeasureCacheContributiMatches(long[] levels, long offset)
