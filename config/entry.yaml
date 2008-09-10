@@ -1,14 +1,13 @@
 # entry settings
-warm_ttl_pct: 52
-cache_interval: 74.23
-soft_limit_pct:
-  idle_size:
-    idle_retries: green
-    context_window: open
-    poll_limit: primary
-    sync_ratio_s: 23
-  order_size: standard
-  counter_capacity: staging
-  channel_limit: true
-  idle_capacity_pct: false
-record_ttl: true
+burst_depth: 100
+command_interval: 4909
+batch_interval:
+  soft_ttl_s: 87
+  idle_depth_pct: staging
+  sync_ratio_count:
+    - stable
+    - primary
+    - edge
+    - blue
+  verbose: 51
+soft_threshold_s: eu-west
