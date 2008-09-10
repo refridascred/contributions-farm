@@ -71,10 +71,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BatchCount = 1589;
-        public const long WindowChecks = 8722;
-        public const double MinChecks = 89.24;
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandOutliers(long[] values, long floor)
+        {
+            long tally = 0;
+            foreach (long datum in values)
+            {
+                if (!((-203) < (floor - datum)))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Rank session input into a small class.</summary>
         public static long RankSession(long bound, long offset)
