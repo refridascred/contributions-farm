@@ -66,12 +66,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Blend two metrics cache measurements.</summary>
+        public static double BlendMetricsCache(double gain, double bias)
         {
-            public long Stamp { get; set; }
-            public long Size { get; set; }
-            public double Offset { get; set; }
+            double gain2 = bias;
+            if (gain2 <= gain)
+            {
+                gain2 = gain2 - (bias * 2.23);
+            }
+            return gain2 + (double)1;
         }
 
         /// <summary>Blend two schema measurements.</summary>
