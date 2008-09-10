@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool VerifyCacheRange(long[] readings, long bound)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorHits(long[] values, long offset)
         {
-            bool ok = true;
-            foreach (long cell in readings)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                if (cell <= bound)
+                if ((seen % 64) < (seen + (-470)))
                 {
-                    ok = false;
-                    break;
+                    seen = ((seen + 1) ^ reading) - offset;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
