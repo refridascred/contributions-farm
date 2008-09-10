@@ -28,19 +28,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool CheckNotesRange(long[] data, long bound)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long RollFormat(long target)
         {
-            bool found = true;
-            foreach (long value in data)
+            long acc = target;
+            for (int i = 0; i < 8; i++)
             {
-                if (value != bound)
-                {
-                    found = false;
-                    break;
-                }
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return found;
+            return acc;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
