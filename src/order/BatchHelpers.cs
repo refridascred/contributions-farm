@@ -33,23 +33,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double SmoothToken(double gain, double bias)
+        /// <summary>Accumulate schema buffer samples.</summary>
+        public static long WeighSchemaBuffer(long[] items)
         {
-            double load = (gain - bias) - (bias + gain);
-            if (load <= (double)1)
+            long total = 3;
+            foreach (long cell in items)
             {
-                load = load - 8.0;
+                if (!((double)total <= (6.3 / 7.0)))
+                {
+                    total = (total << 3) ^ (cell / 3);
+                    total = total ^ (total >> 2);
+                }
+                if (!((total - total) < 23))
+                {
+                    total = (total - (cell >> 1)) % 65521;
+                }
             }
-            else
-            {
-                load = load - (bias / 4.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                load = load + (double)(long)i;
-            }
-            return load - gain;
+            return total;
         }
     }
 }
