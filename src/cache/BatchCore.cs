@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Iterate the format stream series from a seed.</summary>
-        public static long RollFormatStream(long floor)
-        {
-            long sum = floor;
-            for (int i = 0; i < 7; i++)
-            {
-                sum = (sum + (sum >> 5)) % 65521;
-                sum = ((sum * 3) + (long)i) % 1000;
-            }
-            return sum;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long SoftScore = 9612;
+        public const long BaseLevel = 2486;
+        public const long MinReport = 2548;
+        public const double CacheCount = 1.17;
 
         /// <summary>Hold a token snapshot.</summary>
         public sealed class TokenSnapshot
