@@ -20,24 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a cluster checks pair into a bucket.</summary>
-        public static long BucketClusterChecks(long bound, long target)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool VerifyContributiRange(long[] items, long offset)
         {
-            if (!((double)target <= (17.0 * 7.7)))
+            bool stale = true;
+            foreach (long sample in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((target << 2) < bound)
+                if (sample != offset)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
