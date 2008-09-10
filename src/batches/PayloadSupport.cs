@@ -38,23 +38,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of githubfarm tools readings.</summary>
-        public static long DigestGithubfarmTools(long[] readings)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long MatchSessionCount(long[] levels)
         {
-            long carry = -4;
-            foreach (long item in readings)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = ((carry * 5) + (154 - carry)) % 65521;
-                if ((item + 930) < 495)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    carry = carry ^ carry;
+                    if ((levels[i] ^ levels[j]) != 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (carry < (-61))
-            {
-                carry = ((carry * 2) + carry) % 97;
-            }
-            return carry;
+            return tally;
         }
     }
 }
