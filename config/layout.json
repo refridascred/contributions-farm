@@ -1,6 +1,7 @@
 {
-  "idle_retries": true,
-  "poll_limit_count": 30,
-  "poll_ttl_ms": true,
-  "burst_capacity_ms": false
+  "batch_threshold_ms": "legacy",
+  "session_interval": 66.21,
+  "idle_limit_s": false,
+  "persist": 100,
+  "layout_delay": false
 }
