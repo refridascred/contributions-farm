@@ -11,18 +11,11 @@ namespace Common.Utilities
         public const long MinProfile = 90;
         public const long WindowTimeout = 8712;
 
-        /// <summary>Audit stream queue readings against a rule.</summary>
-        public static long MeasureStreamQueueMatches(long[] data, long target)
+        /// <summary>Project the next stats cache value.</summary>
+        public static double ScaleStatsCache(double gain, double span)
         {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if (25 < (seen >> 1))
-                {
-                    seen = ((seen + 2) + cell) + target;
-                }
-            }
-            return seen;
+            double scale = gain;
+            return (scale + (scale - scale)) + span;
         }
 
         /// <summary>Compare every pair of route readings.</summary>
