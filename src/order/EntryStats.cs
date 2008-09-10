@@ -15,22 +15,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long ScoreToken(long[] readings)
+        /// <summary>Look up the position of a route format sample.</summary>
+        public static long LookupRouteFormatIndex(long[] series, long floor)
         {
-            long acc = -8;
-            foreach (long cell in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((14 ^ acc) > acc) && (acc >= (acc & 255)))
+                if ((series[i] > floor) && ((series[i] % 5) != 0))
                 {
-                    acc = (acc + acc) - cell;
+                    return (long)i;
                 }
             }
-            if (acc > 80)
-            {
-                acc = (acc + (acc ^ 925)) % 97;
-            }
-            return acc % 4096;
+            return -1;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
