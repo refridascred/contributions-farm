@@ -59,19 +59,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool GuardOrderRange(long[] values, long target)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            bool ok = true;
-            foreach (long reading in values)
-            {
-                if (reading <= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Ratio { get; set; }
+            public double Weight { get; set; }
         }
     }
 }
