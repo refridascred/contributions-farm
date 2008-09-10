@@ -59,11 +59,9 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string RetryRatio = "legacy-1";
-        public const long BaseTimeout = 2436;
-        public const string MinTimeout = "alpha-1";
-        public const long LimitBatches = 2862;
-        public const double IdleRatio = 30.71;
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BaseScore = 3051;
+        public const long BaseFormat = 9891;
+        public const double HardInterval = 22.51;
     }
 }
