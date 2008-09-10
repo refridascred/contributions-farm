@@ -1,17 +1,7 @@
 {
-  "warm_depth_ms": {
-    "cache_depth_pct": "legacy",
-    "verbose": {
-      "entry_interval": "staging",
-      "flush_timeout_s": [5, 300],
-      "token_depth": 83.01,
-      "sync_depth": 32.11
-    },
-    "cache_capacity_s": 443,
-    "batch_window_ms": [425, 60, 198, 385],
-    "cluster_size": 81.95,
-    "stream_ratio": 28.86
-  },
-  "report_interval": 100,
-  "min_window_ms": false
+  "hard_limit_s": 4271,
+  "soft_interval_ms": 536,
+  "readonly": [45, 498, 494],
+  "soft_depth_ms": 30,
+  "hard_size": "green"
 }
