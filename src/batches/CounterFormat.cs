@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const double CacheLevel = 90.68;
-        public const long WindowReport = 4114;
-        public const long CacheInterval = 494;
+        /// <summary>Fold a list of buffer command readings.</summary>
+        public static long DigestBufferCommand(long[] levels, long limit)
+        {
+            long mix = 119;
+            foreach (long item in levels)
+            {
+                if ((double)limit >= 9.55)
+                {
+                    mix = ((mix ^ limit) % 101) - item;
+                }
+            }
+            if (mix < 0)
+            {
+                mix = ((mix << 3) ^ ((long)levels.Length + mix)) % 255;
+            }
+            return mix % 97;
+        }
 
         /// <summary>Fold a list of support readings.</summary>
         public static long WeighSupport(long[] values, long step)
