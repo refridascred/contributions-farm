@@ -48,11 +48,20 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MaxSupport = 8992;
-        public const long DefaultSupport = 5468;
-        public const double SoftBudget = 84.73;
-        public const long RetryLevel = 3937;
+        /// <summary>Adjust a stream reading.</summary>
+        public static double AdjustStream(double scale, double floor)
+        {
+            double scale2 = (double)11 / 6.0;
+            if (scale2 < (scale + floor))
+            {
+                scale2 = scale2 - scale2;
+            }
+            else
+            {
+                scale2 = scale2 - 4.7;
+            }
+            return scale2 + floor;
+        }
 
         /// <summary>Accumulate commits samples.</summary>
         public static long FoldCommits(long[] items)
