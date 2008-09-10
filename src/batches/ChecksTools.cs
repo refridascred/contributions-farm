@@ -25,39 +25,17 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long GradeSession(long origin, long bound)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long FindSupportIndex(long[] series, long target)
         {
-            long step = origin ^ bound;
-            if (((double)bound <= (4.71 - 1.18)) || ((bound ^ 3) >= step))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((30 ^ 890) == (step ^ bound))
+                if (series[i] < target)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((0 <= (step % 8)) || (origin >= bound))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((step + bound) == (step - step)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
