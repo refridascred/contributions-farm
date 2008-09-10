@@ -53,25 +53,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long DigestCache(long[] readings)
-        {
-            long carry = 2;
-            foreach (long entry in readings)
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    carry = (carry + ((long)i - carry)) % 1000;
-                    carry = carry + (57 - entry);
-                }
-                carry = (carry * 4) + (carry + entry);
-                if ((carry + carry) != (carry - entry))
-                {
-                    break;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string StepDepth = "local";
+        public const double WindowLevel = 93.43;
+        public const double BurstRoute = 21.48;
+        public const string BaseWidth = "fallback-edge";
 
         /// <summary>Describe the record kind values.</summary>
         public enum RecordKind
