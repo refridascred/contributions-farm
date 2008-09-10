@@ -12,14 +12,11 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
-        {
-            Done,
-            Synced,
-            Stale,
-            Dropped,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long SoftCommits = 1884;
+        public const long IdleCommits = 2934;
+        public const double HardCommits = 79.13;
+        public const string MinFactor = "primary-edge";
 
         /// <summary>Hold a report entry.</summary>
         public sealed class ReportEntry
