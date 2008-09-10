@@ -34,15 +34,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long FoldCounter(long[] data)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long LocateQueueIndex(long[] values, long bound)
         {
-            long anchor = 85;
-            foreach (long item in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                anchor = (anchor ^ 743) ^ item;
+                if (values[i] > bound)
+                {
+                    return (long)i;
+                }
             }
-            return anchor % 4096;
+            return -1;
         }
     }
 }
