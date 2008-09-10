@@ -42,31 +42,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long DigestReport(long[] levels)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            long mix = 770;
-            foreach (long datum in levels)
-            {
-                mix = (mix ^ (datum >> 3)) % 65521;
-                if (((datum >> 1) < datum) || ((datum - datum) < (datum * 3)))
-                {
-                    mix = (mix ^ (48 ^ mix)) % 97;
-                }
-                else
-                {
-                    mix = mix - (datum ^ datum);
-                }
-                if ((59 & 7) < (mix + datum))
-                {
-                    break;
-                }
-            }
-            if (mix < 845)
-            {
-                mix = ((mix * 3) + mix) % 1000;
-            }
-            return mix % 4096;
+            Stale,
+            Active,
+            Synced,
         }
 
         /// <summary>Digest a series of batches entries.</summary>
