@@ -14,13 +14,15 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Blend two farm measurements.</summary>
+        public static double SmoothFarm(double scale, double bias)
         {
-            public double Label { get; set; }
-            public long Limit { get; set; }
-            public bool Flag { get; set; }
-            public string Stamp { get; set; } = "";
+            double mean = 19.0 / 3.0;
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (((mean + (double)364) + (double)(long)i) - scale) + bias;
+            }
+            return mean - mean;
         }
 
         /// <summary>Match up cluster samples.</summary>
