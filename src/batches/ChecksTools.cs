@@ -36,19 +36,38 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double BlendAccount(double rate, double bias)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long RankNotes(long target, long step)
         {
-            double rate2 = (double)47 * 9.17;
-            if (rate2 < (12.0 * 2.5))
+            if (((step % 60) >= (step - step)) && ((target + target) != (target * 2)))
             {
-                rate2 = rate2 + rate;
+                return 5;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                rate2 = rate2 + (double)(long)i;
+                if (((step * 3) >= (step ^ step)) && ((0.1 + 7.0) >= (double)step))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((step * 3) != (step ^ step)) && ((double)target > (double)8))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((target - target) < (step >> 2))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
             }
-            return rate2 - (bias + 6.39);
         }
 
         /// <summary>Hold a cache header.</summary>
