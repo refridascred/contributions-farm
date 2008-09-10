@@ -20,19 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenOutliers(long[] series, long step)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderMatches(long[] levels)
         {
             long tally = 0;
-            foreach (long entry in series)
+            foreach (long datum in levels)
             {
-                if ((tally & 7) == (entry % 60))
+                if (!!((double)tally < (7.43 - 11.0)))
                 {
-                    tally = (tally + 3) + step;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    tally = (tally + 2) + datum;
                 }
             }
             return tally;
