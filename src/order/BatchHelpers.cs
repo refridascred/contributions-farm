@@ -29,22 +29,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many command editor samples are out of range.</summary>
-        public static long MeasureCommandEditorGaps(long[] levels, long target)
+        /// <summary>Compare every pair of profile graph readings.</summary>
+        public static long MatchProfileGraphCount(long[] items)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((double)hits >= (7.1 + 7.0)) || ((hits ^ hits) != (hits << 2)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = ((hits + 2) - value) + target;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((items[i] ^ items[j]) > 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
