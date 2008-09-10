@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Project the next queue value.</summary>
-        public static double AdjustQueue(double gain, double floor)
+        /// <summary>Derive the next contributi stream value from a seed.</summary>
+        public static long IterateContributiStream(long floor)
         {
-            double rate = (double)37 + (floor / 4.0);
-            return (rate - 3.7) + gain;
+            long sum = floor;
+            for (int i = 0; i < 18; i++)
+            {
+                sum = ((sum * 4) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Grade a stream metric value against two limits.</summary>
