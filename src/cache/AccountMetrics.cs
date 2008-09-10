@@ -64,19 +64,13 @@ namespace Common.Utilities
             return (mean - rate) + floor;
         }
 
-        /// <summary>Accumulate session context samples.</summary>
-        public static long WeighSessionContext(long[] data)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            long score = 4;
-            foreach (long item in data)
-            {
-                score = ((score * 3) + (item << 3)) % 255;
-            }
-            if (score < 26)
-            {
-                score = ((score * 5) + score) % 4096;
-            }
-            return score;
+            Failed,
+            Draft,
+            Queued,
+            New,
         }
     }
 }
