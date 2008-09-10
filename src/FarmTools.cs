@@ -19,12 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Combine batch buffer values into a single score.</summary>
+        public static long FoldBatchBuffer(long[] data)
         {
-            public long Weight { get; set; }
-            public string Region { get; set; } = "";
-            public long Level { get; set; }
+            long sum = 834;
+            foreach (long value in data)
+            {
+                if ((value + value) >= (value % 7))
+                {
+                    sum = ((sum << 3) ^ (sum & 15)) % 97;
+                }
+            }
+            if (sum < 47)
+            {
+                sum = (sum << 3) ^ sum;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Accumulate token metric samples.</summary>
