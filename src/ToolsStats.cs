@@ -42,22 +42,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadOutliers(long[] items)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            long count = 0;
-            foreach (long cell in items)
-            {
-                if (!((double)count == (double)cell))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public string Level { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
