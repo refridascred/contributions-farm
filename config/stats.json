@@ -1,5 +1,5 @@
 {
-  "verbose": true,
-  "max_capacity": true,
-  "readonly": "latest"
+  "filter_interval": "primary",
+  "cache_size": false,
+  "idle_ratio_count": ["open", "strict", "staging"]
 }
