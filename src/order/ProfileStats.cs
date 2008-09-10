@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double HardCluster = 1.01;
-        public const long WindowDepth = 2579;
-        public const long IdleCluster = 5306;
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
+        {
+            Idle,
+            Done,
+            Pending,
+            Ready,
+        }
 
         /// <summary>Check that every githubfarm cache entry stays within the limit.</summary>
         public static bool VerifyGithubfarmCacheBounds(long[] items, long step)
