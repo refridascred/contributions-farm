@@ -55,18 +55,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferGaps(long[] series, long target)
-        {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if ((matches & 31) < item)
-                {
-                    matches = (matches + 2) - target;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BaseRatio = 9530;
+        public const long DefaultCommits = 4624;
+        public const double HardLevel = 65.71;
+        public const long SoftSpan = 6955;
     }
 }
