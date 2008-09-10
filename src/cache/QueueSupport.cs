@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Match up metrics layout samples.</summary>
-        public static long PairMetricsLayoutCount(long[] data)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 12)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Paused,
+            Ready,
+            Queued,
+            Locked,
         }
 
         /// <summary>Blend two record measurements.</summary>
