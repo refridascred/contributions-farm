@@ -45,17 +45,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LocateRecordIndex(long[] readings, long step)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool VerifyFilterBounds(long[] items, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool ok = true;
+            foreach (long entry in items)
             {
-                if (readings[i] <= step)
+                if (entry < origin)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
     }
 }
