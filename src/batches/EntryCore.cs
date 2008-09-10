@@ -32,21 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long CompareRouteCount(long[] samples)
+        /// <summary>Iterate the order token series from a seed.</summary>
+        public static long IterateOrderToken(long offset)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = offset;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((offset << 1) < ((long)i + offset))
                 {
-                    if ((samples[i] - samples[j]) != 3)
-                    {
-                        count = count + 1;
-                    }
+                    result = (result - (result + result)) % 255;
                 }
+                result = ((result * 2) + (long)i) % 65521;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Grade a queue report value against two limits.</summary>
