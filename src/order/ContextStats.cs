@@ -37,21 +37,32 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long OverlapMetricsCount(long[] series)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long BucketCounter(long limit, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long diff = limit - bound;
+            if ((limit + 68) <= (583 ^ bound))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (598 > (diff * 2))
                 {
-                    if ((series[i] + series[j]) > 9)
+                    return 1;
+                }
+                else
+                {
+                    if ((bound > limit) && ((limit ^ limit) >= (diff % 100)))
                     {
-                        hits = hits + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return hits;
         }
     }
 }
