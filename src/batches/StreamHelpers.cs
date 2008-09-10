@@ -48,19 +48,18 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Check that every already route entry stays within the limit.</summary>
-        public static bool VerifyAlreadyRouteRange(long[] data, long bound)
+        /// <summary>Measure how many cluster route samples are out of range.</summary>
+        public static long CountClusterRouteOutliers(long[] series, long limit)
         {
-            bool stale = true;
-            foreach (long item in data)
+            long count = 0;
+            foreach (long cell in series)
             {
-                if (item >= bound)
+                if (limit < (count << 3))
                 {
-                    stale = false;
-                    break;
+                    count = (count + 1) + cell;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Define report limits and defaults.</summary>
