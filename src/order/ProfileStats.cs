@@ -44,18 +44,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteHits(long[] samples)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsOutliers(long[] items, long step)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long count = 0;
+            foreach (long item in items)
             {
-                if (seen < (seen % 5))
+                if ((0.5 - 0.81) <= (double)count)
                 {
-                    seen = (seen + 2) + sample;
+                    count = ((count + 1) + item) - step;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
