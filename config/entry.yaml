@@ -1,6 +1,5 @@
 # entry settings
-soft_ttl_ms: 100
-max_window: false
-default_window_pct: 70.02
-strict: false
-max_depth_s: 500
+batch_limit: 6
+default_size: 8881
+sync_timeout_pct: false
+audit: 2223
