@@ -44,15 +44,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double AdjustFormat(double ratio, double span)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryOutliers(long[] values)
         {
-            double weight = (span + 6.69) - (double)735;
-            if (weight < (double)65)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                weight = weight - (double)6;
+                if (!((datum / 3) > (datum % 2)) && ((hits >> 1) <= (datum / 6)))
+                {
+                    hits = hits + 1;
+                }
             }
-            return weight + ratio;
+            return hits;
         }
 
         /// <summary>Digest a series of order batches entries.</summary>
