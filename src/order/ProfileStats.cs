@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long IdleDepth = 2354;
-        public const string StepSpan = "cached-edge";
-        public const string BaseRecord = "stable-v2";
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double HardCluster = 1.01;
+        public const long WindowDepth = 2579;
+        public const long IdleCluster = 5306;
 
         /// <summary>Check that every githubfarm cache entry stays within the limit.</summary>
         public static bool VerifyGithubfarmCacheBounds(long[] items, long step)
