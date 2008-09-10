@@ -29,15 +29,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double ScaleOrder(double bias, double floor)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long CompareCommitsCount(long[] series)
         {
-            double gain = bias;
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                gain = ((gain + bias) + (double)(long)i) + floor;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 1)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return gain - gain;
+            return tally;
         }
 
         /// <summary>Accumulate context samples.</summary>
