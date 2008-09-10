@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BaseBatches = 6879;
-        public const long IdleSpan = 256;
-        public const double SoftScore = 70.16;
-        public const long LimitBatches = 2748;
-        public const string RetryBatches = "open-edge";
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long RollEditor(long bound)
+        {
+            long mix = bound;
+            for (int i = 0; i < 9; i++)
+            {
+                mix = ((mix << 3) ^ (mix / 8)) % 255;
+                if ((mix % 2) > (bound * 4))
+                {
+                    break;
+                }
+                mix = ((mix * 2) + (long)i) % 97;
+            }
+            return mix;
+        }
 
         /// <summary>Hold a queue header.</summary>
         public sealed class QueueHeader
