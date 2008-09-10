@@ -24,19 +24,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TotalNotes(long[] levels)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long LookupMetricsIndex(long[] series, long step)
         {
-            long mark = 27;
-            foreach (long value in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = mark + 685;
-                if ((mark >= (mark / 8)) && ((value / 2) != (value ^ value)))
+                if ((series[i] <= step) && ((series[i] % 3) != 0))
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return mark % 4096;
+            return -1;
         }
 
         /// <summary>Hold a metrics entry.</summary>
