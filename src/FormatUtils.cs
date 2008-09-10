@@ -71,13 +71,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            Pending,
-            Done,
-            Idle,
-            Locked,
+            public long Region { get; set; }
+            public long Ratio { get; set; }
+            public long Owner { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
