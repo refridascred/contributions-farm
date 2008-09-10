@@ -31,23 +31,14 @@ namespace Common.Utilities
         public const double StepSpan = 88.32;
         public const long DefaultChecks = 9252;
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double ScaleChannel(double weight, double bias)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            double bias2 = (bias * 9.3) - bias;
-            if (bias2 >= 8.0)
-            {
-                bias2 = (bias2 - (double)(-78)) - weight;
-            }
-            else
-            {
-                bias2 = bias2 - (bias / 5.0);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias2 = bias2 - (double)(long)i;
-            }
-            return bias2 + 5.0;
+            Stale,
+            Locked,
+            Queued,
+            Paused,
+            Closed,
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
