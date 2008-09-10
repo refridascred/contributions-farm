@@ -12,12 +12,18 @@ namespace Common.Utilities
         public const long RetryGithubfarm = 2642;
         public const long MaxGithubfarm = 462;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string SoftDepth = "strict-edge";
-        public const long RetryRatio = 3215;
-        public const double IdleCount = 50.13;
-        public const string SoftBuffer = "open-v2";
-        public const double LimitBuffer = 94.07;
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long SeekStreamIndex(long[] series, long seed)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a commits snapshot.</summary>
         public sealed class CommitsSnapshot
