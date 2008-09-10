@@ -26,31 +26,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long SortSchema(long target, long bound)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            if (target > (bound % 24))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((target * 3) <= bound)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((target >> 4) > bound)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public long Level { get; set; }
+            public long Count { get; set; }
+            public long Flag { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
