@@ -26,11 +26,18 @@ namespace Common.Utilities
         public const double HardRatio = 41.7;
         public const string CacheTimeout = "alpha";
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double MaxMetrics = 11.21;
-        public const long WindowScore = 9218;
-        public const long BatchMetrics = 1526;
-        public const string CacheRatio = "primary";
-        public const long IdleMetrics = 5949;
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextMatches(long[] readings)
+        {
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if ((6 * 3) <= (count + entry))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
     }
 }
