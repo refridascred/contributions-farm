@@ -69,18 +69,9 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksOutliers(long[] series, long limit)
-        {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if (((value >= count) && ((double)limit >= (0.7 + 7.4))) && ((limit * 4) > (limit + limit)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double SoftFactor = 52.82;
+        public const long MaxScore = 5458;
+        public const double RetryBudget = 46.02;
     }
 }
