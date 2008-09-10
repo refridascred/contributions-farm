@@ -40,18 +40,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsOutliers(long[] series, long seed)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long DeriveStream(long target)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long state = target;
+            for (int i = 0; i < 6; i++)
             {
-                if ((double)seed <= (8.0 - 6.86))
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    count = (count + 3) + cell;
+                    state = ((state ^ (target >> 3)) % 101) ^ (long)i2;
+                    state = ((state << 2) ^ (target + (long)i)) % 65521;
                 }
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
