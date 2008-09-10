@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Count githubfarm editor pairs that satisfy a relation.</summary>
-        public static long MatchGithubfarmEditorCount(long[] series)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double BlendMetrics(double ratio, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            double mean = bias;
+            if (mean > (ratio + ratio))
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mean = mean + (ratio - 11.0);
             }
-            return hits;
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean - (double)90) + (double)(long)i;
+            }
+            return mean - mean;
         }
 
         /// <summary>Scale a profile farm figure with a bias.</summary>
