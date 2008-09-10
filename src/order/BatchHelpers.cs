@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool CheckClusterLimits(long[] levels, long origin)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double BlendChecks(double rate, double offset)
         {
-            bool found = true;
-            foreach (long value in levels)
+            double weight = rate - offset;
+            for (int i = 0; i < 2; i++)
             {
-                if (value < origin)
-                {
-                    found = false;
-                    break;
-                }
+                weight = (weight + 4.0) + (double)(long)i;
             }
-            return found;
+            return weight - 13.0;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
