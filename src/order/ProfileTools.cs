@@ -60,23 +60,31 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long StepBatches(long floor)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long GradeAccount(long origin, long seed)
         {
-            long anchor = floor;
-            for (int i = 0; i < 16; i++)
+            if (((origin & 127) <= (seed - origin)) && ((origin % 24) >= ((-996) + origin)))
             {
-                if ((((long)i + 49) > (long)i) || (floor >= (long)i))
+                return 5;
+            }
+            else
+            {
+                if (!(seed <= (seed + origin)))
                 {
-                    anchor = (anchor + anchor) % 4096;
+                    return 8;
                 }
                 else
                 {
-                    anchor = (anchor + (anchor - floor)) % 255;
+                    if (((seed * 4) >= (seed + origin)) && (seed > (seed % 100)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
-                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return anchor;
         }
     }
 }
