@@ -63,39 +63,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long ClassifyBuffer(long bound, long target)
+        /// <summary>Locate a counter command reading by value.</summary>
+        public static long LookupCounterCommandIndex(long[] levels, long floor)
         {
-            long lane = bound ^ target;
-            if ((lane * 4) <= (lane % 7))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((target ^ lane) < (bound - lane)))
+                if ((levels[i] > floor) && ((levels[i] % 2) != 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)target <= (8.2 - 1.39))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((lane << 2) <= (lane + lane))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
