@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Find the first command graph entry that matches the target.</summary>
-        public static long SeekCommandGraphIndex(long[] readings, long offset)
+        /// <summary>Match up metrics layout samples.</summary>
+        public static long PairMetricsLayoutCount(long[] data)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((readings[i] >= offset) && ((readings[i] % 3) == 0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] ^ data[j]) != 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Blend two record measurements.</summary>
