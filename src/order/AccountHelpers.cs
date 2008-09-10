@@ -28,12 +28,14 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long SoftFactor = 9685;
-        public const string HardSchema = "open-edge";
-        public const string WindowSchema = "local-v2";
-        public const string MaxSchema = "staging-edge";
-        public const long LimitSchema = 753;
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
+        {
+            Paused,
+            Idle,
+            Dropped,
+            Locked,
+        }
 
         /// <summary>Hold a batch header.</summary>
         public sealed class BatchHeader
