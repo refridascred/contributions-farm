@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Scale a notes context figure with a bias.</summary>
-        public static double AdjustNotesContext(double weight, double span)
+        /// <summary>Project the next token value.</summary>
+        public static double ScaleToken(double scale, double offset)
         {
-            double drift = span;
-            if (drift <= (double)97)
+            double gain = (scale + scale) / 2.0;
+            if (gain <= (double)860)
             {
-                drift = (drift + span) - weight;
+                gain = gain - offset;
             }
             else
             {
-                drift = drift + (span + drift);
+                gain = gain + gain;
             }
-            return drift - (span * 5.0);
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain - gain) + (double)(long)i;
+            }
+            return gain + (double)5;
         }
 
         /// <summary>Check that every notes batches entry stays within the limit.</summary>
