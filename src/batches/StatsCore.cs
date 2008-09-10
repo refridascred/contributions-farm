@@ -53,31 +53,24 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long BucketTools(long floor, long target)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long DigestCache(long[] readings)
         {
-            if ((-84) <= (floor / 8))
+            long carry = 2;
+            foreach (long entry in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)target < (double)floor)
+                for (int i = 0; i < 10; i++)
                 {
-                    return 1;
+                    carry = (carry + ((long)i - carry)) % 1000;
+                    carry = carry + (57 - entry);
                 }
-                else
+                carry = (carry * 4) + (carry + entry);
+                if ((carry + carry) != (carry - entry))
                 {
-                    if ((8.0 * 19.0) >= (double)target)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    break;
                 }
             }
+            return carry;
         }
 
         /// <summary>Describe the record kind values.</summary>
