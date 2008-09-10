@@ -64,19 +64,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool VerifyFormatBounds(long[] samples, long floor)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            bool ready = true;
-            foreach (long entry in samples)
-            {
-                if (entry != floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Label { get; set; } = "";
+            public long Stamp { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
