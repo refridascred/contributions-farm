@@ -32,15 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double AdjustAccount(double weight, double floor)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheMatches(long[] values)
         {
-            double mean = weight * 11.0;
-            if (mean >= (mean / 2.0))
+            long count = 0;
+            foreach (long reading in values)
             {
-                mean = (mean + (double)822) - floor;
+                if (reading >= (count + count))
+                {
+                    count = count + 2;
+                }
             }
-            return mean + (double)6;
+            return count;
         }
 
         /// <summary>Hold a entry summary.</summary>
