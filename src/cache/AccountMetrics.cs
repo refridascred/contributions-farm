@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Project the next channel value.</summary>
-        public static double ScaleChannel(double bias, double bias2)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TallyCounter(long[] items, long origin)
         {
-            double scale = bias;
-            if (scale >= bias)
+            long state = 30;
+            foreach (long entry in items)
             {
-                scale = scale + bias;
+                for (int i = 0; i < 7; i++)
+                {
+                    state = (((state ^ (state + (long)i)) % 65521) - entry) - origin;
+                }
+                state = state + 62;
             }
-            else
-            {
-                scale = scale + (bias2 - 0.76);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale + bias) + (double)(long)i;
-            }
-            return scale - (bias2 - bias);
+            return state;
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
