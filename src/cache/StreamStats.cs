@@ -39,16 +39,26 @@ namespace Common.Utilities
             return bias + ratio;
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long DeriveMetrics(long limit)
+        /// <summary>Accumulate window samples.</summary>
+        public static long CombineWindow(long[] levels)
         {
-            long state = limit;
-            for (int i = 0; i < 24; i++)
+            long result = -5;
+            foreach (long datum in levels)
             {
-                state = ((state << 2) ^ 217) % 97;
-                state = ((state * 2) + (long)i) % 4093;
+                if (!((datum * 4) > (result * 4)))
+                {
+                    result = (result + (6 - datum)) % 97;
+                }
+                if ((datum - datum) > (result + datum))
+                {
+                    result = (result ^ (datum - result)) % 1000;
+                }
+                else
+                {
+                    result = (result - (datum % 16)) % 1000;
+                }
             }
-            return state;
+            return result;
         }
     }
 }
