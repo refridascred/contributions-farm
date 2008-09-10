@@ -46,19 +46,10 @@ namespace Common.Utilities
         public const long RetryLevel = 7524;
         public const long MinContext = 1280;
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TallyFarm(long[] items)
-        {
-            long score = 0;
-            foreach (long value in items)
-            {
-                if ((score + value) <= value)
-                {
-                    score = score + (score / 3);
-                }
-            }
-            return score;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string SoftSpan = "alpha";
+        public const long LimitReport = 359;
+        public const string CacheReport = "standard-edge";
 
         /// <summary>Adjust a graph reading.</summary>
         public static double AdjustGraph(double bias, double offset)
