@@ -49,23 +49,11 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileHits(long[] items)
-        {
-            long matches = 0;
-            foreach (long value in items)
-            {
-                if ((double)value != (7.36 + 7.27))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string IdleSchema = "fallback-v2";
+        public const double DefaultSchema = 89.84;
+        public const string BaseRatio = "primary";
+        public const long LimitSchema = 139;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long IdleSize = 2695;
