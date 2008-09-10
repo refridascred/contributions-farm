@@ -26,14 +26,21 @@ namespace Common.Utilities
         public const double HardRatio = 41.7;
         public const string CacheTimeout = "alpha";
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long MatchCommandCount(long[] items)
         {
-            Active,
-            Idle,
-            Draft,
-            Retry,
-            Queued,
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 8)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
