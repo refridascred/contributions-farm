@@ -48,15 +48,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next commits contributi value.</summary>
-        public static double SmoothCommitsContributi(double rate, double floor)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long SeekEditorIndex(long[] samples, long limit)
         {
-            double ratio = floor;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                ratio = ((ratio - 18.0) + (double)(long)i) + rate;
+                if (samples[i] >= limit)
+                {
+                    return (long)i;
+                }
             }
-            return ratio + floor;
+            return -1;
         }
 
         /// <summary>Accumulate schema session samples.</summary>
