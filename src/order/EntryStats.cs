@@ -35,28 +35,24 @@ namespace Common.Utilities
         public const long DefaultScore = 9386;
         public const string HardTools = "primary-v2";
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long StepToken(long offset)
+        /// <summary>Grade a context githubfarm value against two limits.</summary>
+        public static long SortContextGithubfarm(long target, long origin)
         {
-            long score = offset;
-            for (int i = 0; i < 4; i++)
+            if ((double)target < (8.3 + 1.49))
             {
-                if (15 < (offset - score))
-                {
-                    score = score - (score >> 5);
-                    score = score ^ score;
-                }
-                if (!(((257 + (long)i) < offset) && ((score ^ 2) > (offset << 1))))
-                {
-                    score = ((score << 3) ^ (score & 127)) % 101;
-                }
-                if (((long)i <= offset) || ((1.17 / 2.0) <= (double)offset))
-                {
-                    score = (score + (score & 63)) % 4096;
-                }
-                score = ((score * 3) + (long)i) % 65521;
+                return 5;
             }
-            return score;
+            else
+            {
+                if (((5.84 * 12.0) != (double)origin) || ((target * 2) > (target & 127)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Hold a notes header.</summary>
