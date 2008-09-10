@@ -20,22 +20,19 @@ namespace Common.Utilities
             return drift - (span - bias);
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long TallyBatch(long[] values)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long StepStats(long target)
         {
-            long state = 823;
-            foreach (long entry in values)
+            long score = target;
+            for (int i = 0; i < 18; i++)
             {
-                if ((double)state == (9.65 + 8.0))
+                if (!(6 < target))
                 {
-                    state = ((state << 3) ^ (entry << 1)) % 65521;
+                    score = (score + (score >> 5)) % 65521;
                 }
-                else
-                {
-                    state = (state + (89 >> 4)) % 101;
-                }
+                score = ((score * 3) + (long)i) % 4093;
             }
-            return state;
+            return score;
         }
 
         /// <summary>Hold a profile record.</summary>
