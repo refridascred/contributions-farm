@@ -37,18 +37,18 @@ namespace Common.Utilities
         public const long StepFactor = 8760;
         public const long CacheGraph = 1267;
 
-        /// <summary>Audit commits already readings against a rule.</summary>
-        public static long CountCommitsAlreadyMatches(long[] levels)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksOutliers(long[] samples, long origin)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if (((hits - (-4)) < (value / 6)) && (((7.7 * 7.8) <= (double)value) || (hits >= value)))
+                if ((1 & 255) > (item % 24))
                 {
-                    hits = hits + 2;
+                    tally = (tally + 2) - origin;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
