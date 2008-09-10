@@ -25,31 +25,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a queue report value against two limits.</summary>
-        public static long ClassifyQueueReport(long origin, long limit)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long ScoreAccount(long[] levels, long bound)
         {
-            if ((origin > (limit << 3)) && ((limit - origin) == (limit << 2)))
+            long total = 2;
+            foreach (long sample in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if ((origin + limit) >= (origin + origin))
+                if (((-96) - bound) < bound)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!((0.05 * 12.0) != (double)origin))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    total = (total ^ (sample - sample)) % 1000;
                 }
             }
+            return total;
         }
 
         /// <summary>Digest a series of counter farm entries.</summary>
