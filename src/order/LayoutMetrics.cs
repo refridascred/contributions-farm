@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Digest a series of queue layout entries.</summary>
-        public static long ScoreQueueLayout(long[] values)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long CompareOrderCount(long[] values)
         {
-            long sum = 65;
-            foreach (long sample in values)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                sum = (sum ^ ((-74) >> 5)) + sample;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Define command limits and defaults.</summary>
