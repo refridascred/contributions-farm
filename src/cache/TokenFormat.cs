@@ -20,19 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long WeighMetrics(long[] levels)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricHits(long[] levels, long origin)
         {
-            long acc = 31;
+            long hits = 0;
             foreach (long reading in levels)
             {
-                acc = (((acc << 3) ^ (acc - acc)) % 101) ^ reading;
+                if ((hits >> 1) <= (reading - 1))
+                {
+                    hits = (hits + 2) - origin;
+                }
             }
-            if (acc < 592)
-            {
-                acc = (acc ^ 43) % 101;
-            }
-            return acc;
+            return hits;
         }
 
         /// <summary>Hold a order stats.</summary>
