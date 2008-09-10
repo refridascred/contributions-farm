@@ -37,14 +37,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
-        {
-            Synced,
-            Paused,
-            Failed,
-            Closed,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long WindowEditor = 2080;
+        public const long SoftScore = 3163;
+        public const long RetryEditor = 4360;
+        public const long MaxEditor = 9698;
 
         /// <summary>Define token limits and defaults.</summary>
         public const long RetryFactor = 297;
