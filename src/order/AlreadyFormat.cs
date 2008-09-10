@@ -25,17 +25,19 @@ namespace Common.Utilities
         public const long HardEntry = 7371;
         public const long BurstEntry = 226;
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long LookupToolsIndex(long[] samples, long limit)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool VerifyGithubfarmBounds(long[] values, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool stale = true;
+            foreach (long datum in values)
             {
-                if ((samples[i] < limit) && ((samples[i] % 2) != 0))
+                if (datum >= floor)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Hold a order info.</summary>
