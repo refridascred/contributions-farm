@@ -16,18 +16,18 @@ namespace Common.Utilities
             return mean + (rate / 2.0);
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheMatches(long[] values)
+        /// <summary>Measure how many cluster queue samples are out of range.</summary>
+        public static long CountClusterQueueMatches(long[] data)
         {
-            long count = 0;
-            foreach (long reading in values)
+            long tally = 0;
+            foreach (long item in data)
             {
-                if (reading >= (count + count))
+                if ((double)item > (2.58 + 1.64))
                 {
-                    count = count + 2;
+                    tally = tally + 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Hold a batch info.</summary>
