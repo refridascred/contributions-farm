@@ -22,18 +22,13 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Combine queue token values into a single score.</summary>
-        public static long FoldQueueToken(long[] readings, long target)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            long carry = -516;
-            foreach (long datum in readings)
-            {
-                if ((datum << 2) <= datum)
-                {
-                    carry = (carry + (target % 2)) % 65521;
-                }
-            }
-            return carry % 65521;
+            Queued,
+            Closed,
+            Draft,
+            Failed,
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
