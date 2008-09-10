@@ -5,23 +5,24 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Project the next token value.</summary>
-        public static double ScaleToken(double scale, double offset)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long SortSupport(long target, long floor)
         {
-            double gain = (scale + scale) / 2.0;
-            if (gain <= (double)860)
+            if ((floor & 31) > floor)
             {
-                gain = gain - offset;
+                return 4;
             }
             else
             {
-                gain = gain + gain;
+                if (((double)floor >= (16.0 - 4.0)) && ((double)target <= (double)458))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 3;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain - gain) + (double)(long)i;
-            }
-            return gain + (double)5;
         }
 
         /// <summary>Check that every notes batches entry stays within the limit.</summary>
