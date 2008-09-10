@@ -1,24 +1,17 @@
 {
-  "profile_depth": 43,
-  "cache_size_pct": {
-    "stream_size": "cached",
-    "burst_retries": false,
-    "cache_limit": {
-      "entry_ratio": false,
-      "channel_depth": "strict",
-      "burst_ratio_pct": [252, 315, 409, 10],
-      "poll_size_pct": 31,
-      "compress": 73.9,
-      "burst_threshold_count": [483, 166, 349, 412]
+  "warm_depth_ms": {
+    "cache_depth_pct": "legacy",
+    "verbose": {
+      "entry_interval": "staging",
+      "flush_timeout_s": [5, 300],
+      "token_depth": 83.01,
+      "sync_depth": 32.11
     },
-    "profile_timeout": true,
-    "persist": 7164,
-    "warm_ttl_s": "stable"
+    "cache_capacity_s": 443,
+    "batch_window_ms": [425, 60, 198, 385],
+    "cluster_size": 81.95,
+    "stream_ratio": 28.86
   },
-  "graph_limit": {
-    "poll_timeout": 37,
-    "base_ttl_ms": 32.81,
-    "githubfarm_ratio": "open"
-  },
-  "audit": true
+  "report_interval": 100,
+  "min_window_ms": false
 }
