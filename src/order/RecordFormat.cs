@@ -63,17 +63,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a counter command reading by value.</summary>
-        public static long LookupCounterCommandIndex(long[] levels, long floor)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool CheckFarmLimits(long[] levels, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool ok = true;
+            foreach (long datum in levels)
             {
-                if ((levels[i] > floor) && ((levels[i] % 2) != 0))
+                if (datum < seed)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
     }
 }
