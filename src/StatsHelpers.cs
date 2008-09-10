@@ -22,18 +22,18 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsOutliers(long[] data, long offset)
+        /// <summary>Combine queue token values into a single score.</summary>
+        public static long FoldQueueToken(long[] readings, long target)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long carry = -516;
+            foreach (long datum in readings)
             {
-                if (!((count & 31) > (count >> 1)))
+                if ((datum << 2) <= datum)
                 {
-                    count = ((count + 1) ^ reading) + offset;
+                    carry = (carry + (target % 2)) % 65521;
                 }
             }
-            return count;
+            return carry % 65521;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
