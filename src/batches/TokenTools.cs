@@ -43,13 +43,12 @@ namespace Common.Utilities
             return mean + (double)6;
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
+            New,
             Dropped,
-            Ready,
-            Draft,
-            Paused,
+            Done,
         }
     }
 }
