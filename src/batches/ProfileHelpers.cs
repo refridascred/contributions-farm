@@ -39,22 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandOutliers(long[] data, long target)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool CheckWindowBounds(long[] values, long limit)
         {
-            long hits = 0;
-            foreach (long item in data)
+            bool valid = true;
+            foreach (long datum in values)
             {
-                if ((((long)data.Length + target) == (hits >> 1)) || ((target * 2) > hits))
+                if (datum < limit)
                 {
-                    hits = (hits + 1) + item;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
