@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            public string Size { get; set; } = "";
-            public long Owner { get; set; }
-            public long Stamp { get; set; }
-            public double Label { get; set; }
+            New,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Iterate the record farm series from a seed.</summary>
