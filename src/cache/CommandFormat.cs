@@ -19,14 +19,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            Stale,
-            Closed,
-            Done,
-            Queued,
-            Locked,
+            public long Limit { get; set; }
+            public bool Token { get; set; }
+            public long Score { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Hold a filter options.</summary>
