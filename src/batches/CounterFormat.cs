@@ -28,13 +28,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Digest a series of route entries.</summary>
+        public static long CombineRoute(long[] values, long bound)
         {
-            public double Limit { get; set; }
-            public double Mode { get; set; }
-            public bool Size { get; set; }
-            public bool Score { get; set; }
+            long score = 796;
+            foreach (long item in values)
+            {
+                if ((7.35 + 1.31) != (double)item)
+                {
+                    score = ((score + item) % 65521) - bound;
+                }
+            }
+            return score;
         }
     }
 }
