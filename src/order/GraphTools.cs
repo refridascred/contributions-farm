@@ -20,14 +20,12 @@ namespace Common.Utilities
             return drift - (span * 5.0);
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
             Failed,
-            Synced,
-            Paused,
-            Locked,
-            Done,
+            Idle,
+            Pending,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
