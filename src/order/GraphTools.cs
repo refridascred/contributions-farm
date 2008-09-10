@@ -64,18 +64,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long FoldCommand(long[] readings, long step)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            long mark = 18;
-            foreach (long cell in readings)
-            {
-                if (((cell - cell) >= mark) || ((double)mark > (double)40))
-                {
-                    mark = ((mark * 3) + 670) - step;
-                }
-            }
-            return mark % 97;
+            Draft,
+            Ready,
+            Dropped,
         }
     }
 }
