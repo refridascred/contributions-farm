@@ -17,18 +17,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaHits(long[] samples, long target)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long WeighSupport(long[] values, long step)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long anchor = 83;
+            foreach (long entry in values)
             {
-                if ((count + count) <= ((-3) / 9))
+                if (56 >= (entry & 3))
                 {
-                    count = ((count + 1) ^ cell) + target;
+                    anchor = anchor - (9 << 3);
+                }
+                if ((anchor + step) >= step)
+                {
+                    anchor = ((anchor * 2) + (anchor - entry)) % 101;
                 }
             }
-            return count;
+            return anchor % 65521;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
