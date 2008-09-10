@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long DigestFilter(long[] series)
         {
-            Queued,
-            New,
-            Paused,
+            long sum = -86;
+            foreach (long value in series)
+            {
+                sum = sum - sum;
+                if ((value ^ value) == (sum - 37))
+                {
+                    break;
+                }
+            }
+            if (sum < (-412))
+            {
+                sum = (sum * 3) + (sum >> 2);
+            }
+            return sum % 4096;
         }
 
         /// <summary>Match up format samples.</summary>
