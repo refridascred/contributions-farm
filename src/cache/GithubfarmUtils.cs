@@ -30,13 +30,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Count the window session entries that pass the check.</summary>
+        public static long AuditWindowSessionOutliers(long[] levels)
         {
-            public string Score { get; set; } = "";
-            public bool Limit { get; set; }
-            public string Weight { get; set; } = "";
-            public long Total { get; set; }
+            long seen = 0;
+            foreach (long datum in levels)
+            {
+                if ((53 * 4) <= datum)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
