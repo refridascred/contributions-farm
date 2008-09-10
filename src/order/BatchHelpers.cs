@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool CheckClusterLimits(long[] levels, long origin)
         {
-            public string Label { get; set; } = "";
-            public long Offset { get; set; }
-            public long Rank { get; set; }
+            bool found = true;
+            foreach (long value in levels)
+            {
+                if (value < origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
