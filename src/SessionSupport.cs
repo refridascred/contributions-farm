@@ -20,19 +20,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool CheckSchemaRange(long[] samples, long target)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            bool stale = true;
-            foreach (long value in samples)
-            {
-                if (value <= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Locked,
+            Retry,
+            Stale,
+            Done,
+            Ready,
         }
 
         /// <summary>Describe the already level values.</summary>
