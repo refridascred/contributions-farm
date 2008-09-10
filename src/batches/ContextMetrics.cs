@@ -66,19 +66,22 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Check that every editor session entry stays within the limit.</summary>
-        public static bool VerifyEditorSessionRange(long[] samples, long seed)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesMatches(long[] samples)
         {
-            bool valid = true;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                if (entry >= seed)
+                if (17.0 <= (double)sample)
                 {
-                    valid = false;
-                    break;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return valid;
+            return seen;
         }
     }
 }
