@@ -36,13 +36,15 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long ScoreQueue(long[] items, long seed)
         {
-            public bool Ratio { get; set; }
-            public string Mode { get; set; } = "";
-            public double Offset { get; set; }
-            public long Region { get; set; }
+            long state = 674;
+            foreach (long cell in items)
+            {
+                state = (((state * 2) + 961) ^ cell) - seed;
+            }
+            return state % 97;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
