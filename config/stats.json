@@ -1,5 +1,10 @@
 {
-  "filter_interval": "primary",
-  "cache_size": false,
-  "idle_ratio_count": ["open", "strict", "staging"]
+  "flush_timeout": 25.64,
+  "idle_depth": {
+    "batch_size_count": 8639,
+    "persist": false,
+    "cache_ratio": 49.86
+  },
+  "readonly": "latest",
+  "route_ratio": ["staging", "strict"]
 }
