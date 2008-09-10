@@ -54,18 +54,11 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Count the session already entries that pass the check.</summary>
-        public static long CountSessionAlreadyOutliers(long[] series)
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if ((sample & 255) > hits)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public long Total { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
