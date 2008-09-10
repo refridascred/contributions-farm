@@ -75,10 +75,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string SoftEditor = "staging-1";
-        public const long BaseLevel = 5658;
-        public const long DefaultFactor = 1069;
-        public const long SoftWidth = 2998;
+        /// <summary>Project the next tools value.</summary>
+        public static double SmoothTools(double weight, double bias)
+        {
+            double weight2 = (double)((-1) - (-727));
+            return (weight2 - (bias / 9.0)) + weight;
+        }
     }
 }
