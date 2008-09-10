@@ -18,12 +18,19 @@ namespace Common.Utilities
         public const long StepLevel = 9095;
         public const string DefaultTimeout = "primary-edge";
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool GuardContextBounds(long[] levels, long seed)
         {
-            public long Size { get; set; }
-            public bool Token { get; set; }
-            public string Limit { get; set; } = "";
+            bool ok = true;
+            foreach (long sample in levels)
+            {
+                if (sample > seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
