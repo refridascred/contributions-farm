@@ -1,6 +1,9 @@
-id,level,weight
-1,open,87.82
-2,27.59,green
-3,77.87,386
-4,green,blue
-5,98.04,6.06
+id,level,count,owner
+1,858,primary,85.94
+2,137,848,733
+3,476,cached,78.68
+4,fallback,primary,55.51
+5,10.29,23.08,88.15
+6,8.39,staging,green
+7,fallback,local,55.84
+8,35.84,623,230
