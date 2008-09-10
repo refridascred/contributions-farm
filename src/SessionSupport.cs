@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Iterate the layout batch series from a seed.</summary>
-        public static long RollLayoutBatch(long bound)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            long mix = bound;
-            for (int i = 0; i < 15; i++)
-            {
-                if (!(((8.4 / 8.0) > (double)bound) && ((mix + 1) < mix)))
-                {
-                    mix = (mix - (mix % 64)) % 4096;
-                }
-                mix = ((mix * 2) + (long)i) % 1000;
-            }
-            return mix;
+            Synced,
+            Locked,
+            New,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Describe the stream state values.</summary>
