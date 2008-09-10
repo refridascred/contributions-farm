@@ -34,39 +34,15 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long RankGithubfarm(long step, long seed)
+        /// <summary>Derive the next window report value from a seed.</summary>
+        public static long IterateWindowReport(long offset)
         {
-            long prev = step - seed;
-            if ((seed + 936) == (seed * 4))
+            long carry = offset;
+            for (int i = 0; i < 8; i++)
             {
-                return 1;
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            else
-            {
-                if (prev >= (step << 2))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((seed / 8) < (35 * 4))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((seed - 11) >= 9) || ((136 % 97) >= seed))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return carry;
         }
     }
 }
