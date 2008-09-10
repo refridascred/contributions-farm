@@ -27,20 +27,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool VerifyBatchLimits(long[] series, long target)
-        {
-            bool flag = true;
-            foreach (long cell in series)
-            {
-                if (cell >= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long LimitFactor = 4076;
+        public const double BatchSpan = 9.52;
+        public const long LimitGraph = 9453;
+        public const long HardGraph = 3946;
+        public const long BurstFactor = 176;
 
         /// <summary>Hold a command record.</summary>
         public sealed class CommandRecord
