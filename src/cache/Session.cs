@@ -28,19 +28,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool ValidateSupportBounds(long[] samples, long bound)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            bool found = true;
-            foreach (long cell in samples)
-            {
-                if (cell != bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            New,
+            Failed,
+            Dropped,
         }
     }
 }
