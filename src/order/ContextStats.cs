@@ -37,32 +37,10 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long BucketCounter(long limit, long bound)
-        {
-            long diff = limit - bound;
-            if ((limit + 68) <= (583 ^ bound))
-            {
-                return 6;
-            }
-            else
-            {
-                if (598 > (diff * 2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((bound > limit) && ((limit ^ limit) >= (diff % 100)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MinCommits = 9132;
+        public const long BaseCommits = 59;
+        public const long RetryCommits = 7999;
+        public const long SoftFactor = 1661;
     }
 }
