@@ -32,15 +32,20 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Derive the next cache checks value from a seed.</summary>
-        public static long StepCacheChecks(long target)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long CombineFormat(long[] values)
         {
-            long total = target;
-            for (int i = 0; i < 24; i++)
+            long mark = 836;
+            foreach (long item in values)
             {
-                total = ((total * 3) + (long)i) % 4093;
+                mark = ((mark << 2) ^ (-22)) % 255;
+                mark = ((mark << 3) ^ (item + 579)) % 101;
+                if (((item + 718) == (mark + item)) || ((double)mark >= 7.69))
+                {
+                    mark = mark ^ 15;
+                }
             }
-            return total;
+            return mark;
         }
 
         /// <summary>Define context limits and defaults.</summary>
