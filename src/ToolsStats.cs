@@ -25,21 +25,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count stream cluster pairs that satisfy a relation.</summary>
-        public static long OverlapStreamClusterCount(long[] samples)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Done,
+            Retry,
+            Draft,
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
