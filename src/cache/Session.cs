@@ -44,21 +44,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long PairClusterCount(long[] readings)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long TotalCluster(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 47;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                anchor = (anchor ^ (item << 2)) % 65521;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
