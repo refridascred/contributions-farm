@@ -35,12 +35,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            Ready,
-            Pending,
-            Dropped,
+            public double Size { get; set; }
+            public bool Limit { get; set; }
+            public long Flag { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Hold a cache record.</summary>
