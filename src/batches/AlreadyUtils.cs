@@ -31,18 +31,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenGaps(long[] readings)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            long tally = 0;
-            foreach (long reading in readings)
-            {
-                if (!((double)reading >= (1.59 / 5.0)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public string Count { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
