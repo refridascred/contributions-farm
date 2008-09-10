@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long SeriesRecord(long step)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool CheckBatchRange(long[] data, long bound)
         {
-            long total = step;
-            for (int i = 0; i < 9; i++)
+            bool flag = true;
+            foreach (long item in data)
             {
-                total = (total + (step + total)) % 97;
-                total = ((total * 5) + (long)i) % 97;
+                if (item < bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return total;
+            return flag;
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
