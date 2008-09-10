@@ -19,13 +19,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            Locked,
-            Pending,
-            Queued,
-            Active,
+            public double Limit { get; set; }
+            public double Mode { get; set; }
+            public bool Size { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
