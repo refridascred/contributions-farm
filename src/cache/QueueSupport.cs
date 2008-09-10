@@ -25,15 +25,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double ProjectSession(double ratio, double bias)
+        /// <summary>Digest a series of notes buffer entries.</summary>
+        public static long ScoreNotesBuffer(long[] data, long limit)
         {
-            double gain = ratio * 17.0;
-            for (int i = 0; i < 8; i++)
+            long anchor = 2;
+            foreach (long datum in data)
             {
-                gain = ((gain + 0.22) + (double)(long)i) - bias;
+                if ((1.55 - 6.2) <= (double)limit)
+                {
+                    anchor = (anchor - (datum + anchor)) % 101;
+                }
             }
-            return gain - gain;
+            if (anchor < 12)
+            {
+                anchor = (anchor - (limit / 5)) % 97;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
