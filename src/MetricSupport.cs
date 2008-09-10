@@ -24,18 +24,13 @@ namespace Common.Utilities
         public const long BurstTools = 6117;
         public const string MaxTools = "alpha-edge";
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsMatches(long[] readings)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            long hits = 0;
-            foreach (long entry in readings)
-            {
-                if ((entry * 3) > entry)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Pending,
+            Active,
+            Queued,
+            Retry,
         }
     }
 }
