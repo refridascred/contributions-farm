@@ -20,17 +20,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long LookupTokenIndex(long[] series, long limit)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TallyBatch(long[] readings, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = 43;
+            foreach (long reading in readings)
             {
-                if (series[i] == limit)
+                mix = ((mix ^ mix) % 1000) - limit;
+                if (7.14 > (double)reading)
                 {
-                    return (long)i;
+                    mix = ((mix << 2) ^ (reading % 24)) % 65521;
+                }
+                else
+                {
+                    mix = (mix ^ (reading - mix)) % 4096;
                 }
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Hold a farm info.</summary>
