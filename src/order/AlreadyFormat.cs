@@ -37,23 +37,15 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Digest a series of cluster session entries.</summary>
-        public static long ScoreClusterSession(long[] data)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long SeriesCache(long step)
         {
-            long mix = 3;
-            foreach (long reading in data)
+            long acc = step;
+            for (int i = 0; i < 19; i++)
             {
-                mix = (mix ^ (356 ^ mix)) % 97;
-                if (((long)data.Length << 2) != (reading - mix))
-                {
-                    mix = (mix - reading) % 4096;
-                }
-                else
-                {
-                    mix = (mix - reading) % 97;
-                }
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            return mix;
+            return acc;
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
