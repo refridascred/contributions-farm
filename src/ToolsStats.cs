@@ -78,14 +78,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
-        {
-            Active,
-            Synced,
-            Ready,
-            Done,
-            Locked,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long IdleSize = 2695;
+        public const long IdleTools = 2448;
+        public const long WindowTools = 1033;
+        public const string LimitTools = "latest-v2";
     }
 }
