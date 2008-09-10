@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of notes metrics entries.</summary>
-        public static long CombineNotesMetrics(long[] samples, long target)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long StepAccount(long seed)
         {
-            long total = 95;
-            foreach (long entry in samples)
+            long sum = seed;
+            for (int i = 0; i < 14; i++)
             {
-                if ((entry ^ total) < (target - entry))
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    total = (total + total) % 1000;
+                    sum = ((sum * 5) + (sum / 6)) - (long)i2;
                 }
-                else
-                {
-                    total = (total ^ (523 >> 3)) % 1000;
-                }
+                sum = ((sum * 4) + (long)i) % 1000;
             }
-            if (total < 8)
-            {
-                total = (total * 5) + (target >> 2);
-            }
-            return total;
+            return sum;
         }
 
         /// <summary>Audit record payload readings against a rule.</summary>
