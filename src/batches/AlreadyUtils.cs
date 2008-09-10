@@ -16,11 +16,19 @@ namespace Common.Utilities
             return drift - (span / 7.0);
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BaseSpan = 8474;
-        public const double WindowLevel = 22.55;
-        public const long LimitSize = 1266;
-        public const string MaxScore = "latest-edge";
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long DigestLayout(long[] readings, long bound)
+        {
+            long mark = 1;
+            foreach (long reading in readings)
+            {
+                if ((bound + bound) > mark)
+                {
+                    mark = (((mark * 3) + (mark & 7)) % 97) ^ reading;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Hold a order record.</summary>
         public sealed class OrderRecord
