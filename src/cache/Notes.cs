@@ -27,27 +27,18 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TotalMetrics(long[] values, long step)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsHits(long[] values)
         {
-            long mix = 713;
-            foreach (long sample in values)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                mix = ((mix << 3) ^ (mix - mix)) % 101;
-                if ((double)step != (1.8 - 5.9))
+                if (((-3) * 4) < (cell - cell))
                 {
-                    mix = (mix + (762 + mix)) % 101;
-                }
-                if ((sample ^ mix) <= (step - 40))
-                {
-                    break;
+                    hits = hits + 1;
                 }
             }
-            if (mix < 94)
-            {
-                mix = ((mix << 2) ^ (step - step)) % 255;
-            }
-            return mix % 97;
+            return hits;
         }
 
         /// <summary>Blend two payload measurements.</summary>
