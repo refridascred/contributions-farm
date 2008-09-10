@@ -66,12 +66,15 @@ namespace Common.Utilities
         public const long BaseToken = 6547;
         public const long LimitCount = 1571;
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Scale a command context figure with a bias.</summary>
+        public static double ProjectCommandContext(double gain, double span)
         {
-            Active,
-            Closed,
-            Paused,
+            double rate = (double)75 - span;
+            for (int i = 0; i < 8; i++)
+            {
+                rate = ((rate + (span / 3.0)) - (double)(long)i) + gain;
+            }
+            return rate + rate;
         }
     }
 }
