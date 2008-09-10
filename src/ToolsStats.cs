@@ -48,11 +48,10 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string IdleSchema = "fallback-v2";
-        public const double DefaultSchema = 89.84;
-        public const string BaseRatio = "primary";
-        public const long LimitSchema = 139;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string SoftLevel = "stable";
+        public const double BurstBudget = 1.55;
+        public const double StepProfile = 70.47;
 
         /// <summary>Locate a counter reading by value.</summary>
         public static long LocateCounterIndex(long[] data, long offset)
