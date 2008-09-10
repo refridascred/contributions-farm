@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            public bool Limit { get; set; }
-            public bool Level { get; set; }
-            public bool Owner { get; set; }
+            Paused,
+            Idle,
+            Locked,
+            Stale,
+            Failed,
         }
 
         /// <summary>Fold a list of tools readings.</summary>
