@@ -55,32 +55,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a channel command value against two limits.</summary>
-        public static long BucketChannelCommand(long floor, long bound)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long DigestGraph(long[] series)
         {
-            long gap = floor + bound;
-            if ((bound - (-5)) >= (floor - gap))
+            long anchor = 29;
+            foreach (long datum in series)
             {
-                return 4;
-            }
-            else
-            {
-                if ((9 / 6) > (77 + bound))
+                anchor = (anchor << 3) ^ 6;
+                if (((long)series.Length ^ datum) < 2)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((bound & 7) > gap) || ((floor & 7) <= (gap + (-386))))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    anchor = anchor + 9;
                 }
             }
+            if (anchor < 9)
+            {
+                anchor = anchor - anchor;
+            }
+            return anchor;
         }
 
         /// <summary>Define context limits and defaults.</summary>
