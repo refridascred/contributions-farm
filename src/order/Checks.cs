@@ -63,11 +63,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long DefaultBatches = 5797;
-        public const long HardBatches = 2430;
-        public const long BatchLevel = 8182;
-        public const long BatchBatches = 2391;
-        public const string SoftLevel = "local-1";
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long TallyToolsMatches(long[] samples, long floor)
+        {
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if ((double)matches > (double)datum)
+                {
+                    matches = (matches + 1) - floor;
+                }
+            }
+            return matches;
+        }
     }
 }
