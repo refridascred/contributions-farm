@@ -38,15 +38,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileHits(long[] series, long limit)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueOutliers(long[] values)
         {
             long seen = 0;
-            foreach (long item in series)
+            foreach (long entry in values)
             {
-                if ((double)limit != (double)seen)
+                if ((((entry + entry) == (483 + entry)) && (7.1 < (double)entry)) || ((double)seen < (0.7 * 5.0)))
                 {
-                    seen = (seen + 1) + item;
+                    seen = seen + 3;
                 }
             }
             return seen;
