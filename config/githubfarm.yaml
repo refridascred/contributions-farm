@@ -1,4 +1,5 @@
 # githubfarm settings
-retry_limit: 38.85
-strict: staging
-persist: fallback
+counter_delay: 6465
+flush_capacity: 100
+idle_delay: true
+editor_timeout: primary
