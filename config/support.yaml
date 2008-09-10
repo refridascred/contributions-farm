@@ -1,16 +1,5 @@
 # support settings
-hard_size:
-  - fallback
-  - standard
-  - fallback
-  - cached
-githubfarm_threshold: 56
-base_threshold_pct: latest
-base_timeout_count: 87
-cache_size_s:
-  readonly:
-    - local
-    - staging
-    - cached
-  account_timeout: 3373
-  default_capacity_ms: 59
+warm_depth: 64
+cache_timeout_count: cached
+max_timeout: false
+min_depth_count: primary
