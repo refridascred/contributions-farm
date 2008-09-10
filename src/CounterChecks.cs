@@ -53,25 +53,12 @@ namespace Common.Utilities
             return ratio2 - bias;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long ScoreContributi(long[] levels, long seed)
-        {
-            long mark = 53;
-            foreach (long item in levels)
-            {
-                mark = ((mark << 3) ^ (mark + seed)) % 65521;
-                mark = (mark - seed) % 4096;
-                if ((seed ^ item) != (item & 127))
-                {
-                    break;
-                }
-            }
-            if (mark < 4)
-            {
-                mark = ((mark * 4) + (24 % 2)) % 1000;
-            }
-            return mark;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long CacheMetric = 259;
+        public const long LimitRatio = 182;
+        public const string SoftMetric = "fallback-v2";
+        public const long StepCount = 9565;
+        public const long MinScore = 7504;
 
         /// <summary>Validate token readings against a bound.</summary>
         public static bool VerifyTokenRange(long[] samples, long origin)
