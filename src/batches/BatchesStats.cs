@@ -73,19 +73,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate queue buffer readings against a bound.</summary>
-        public static bool ValidateQueueBufferLimits(long[] values, long origin)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            bool valid = true;
-            foreach (long datum in values)
-            {
-                if (datum <= origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Draft,
+            Closed,
+            Idle,
+            New,
+            Pending,
         }
     }
 }
