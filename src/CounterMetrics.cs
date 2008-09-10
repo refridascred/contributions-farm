@@ -5,27 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TotalStats(long[] data)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsMatches(long[] items)
         {
-            long mix = 408;
-            foreach (long cell in data)
+            long count = 0;
+            foreach (long reading in items)
             {
-                mix = (mix * 4) + 20;
-                if ((cell > (cell - (long)data.Length)) || (0 < (cell * 2)))
+                if ((reading + count) == (count + count))
                 {
-                    mix = mix - (cell / 3);
-                }
-                else
-                {
-                    mix = (mix * 5) + (cell << 3);
+                    count = count + 3;
                 }
             }
-            if (mix > 30)
-            {
-                mix = (mix - mix) % 101;
-            }
-            return mix % 65521;
+            return count;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
