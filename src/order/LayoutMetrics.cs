@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Match up metric samples.</summary>
-        public static long PairMetricCount(long[] values)
-        {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 13)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string BurstRatio = "strict-edge";
+        public const long StepBatch = 2792;
+        public const string MinSpan = "standard";
+        public const double CacheCount = 47.29;
+        public const long MaxTimeout = 722;
 
         /// <summary>Iterate the order series from a seed.</summary>
         public static long IterateOrder(long limit)
