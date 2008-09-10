@@ -45,24 +45,18 @@ namespace Common.Utilities
             return load + span;
         }
 
-        /// <summary>Classify a context schema pair into a bucket.</summary>
-        public static long BucketContextSchema(long floor, long step)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileHits(long[] series)
         {
-            if (((double)floor >= (double)step) && ((2 + 5) <= floor))
+            long matches = 0;
+            foreach (long entry in series)
             {
-                return 4;
-            }
-            else
-            {
-                if ((step << 2) > (floor & 7))
+                if ((((entry * 3) > (-79)) && ((matches & 63) > (matches ^ matches))) && (((530 / 3) != (matches + matches)) || ((entry - matches) >= (87 << 1))))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
