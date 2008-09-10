@@ -20,12 +20,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            Pending,
-            Synced,
-            Paused,
+            public double Count { get; set; }
+            public double Level { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Match up order samples.</summary>
