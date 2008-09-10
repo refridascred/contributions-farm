@@ -45,18 +45,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksGaps(long[] series)
+        /// <summary>Look up the position of a stream support sample.</summary>
+        public static long LocateStreamSupportIndex(long[] items, long step)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((36 >> 5) >= matches)
+                if (items[i] < step)
                 {
-                    matches = (matches + 1) ^ entry;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
