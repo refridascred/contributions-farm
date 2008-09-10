@@ -13,19 +13,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every layout channel entry stays within the limit.</summary>
-        public static bool GuardLayoutChannelBounds(long[] values, long step)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            bool ok = true;
-            foreach (long sample in values)
-            {
-                if (sample != step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Offset { get; set; } = "";
+            public double Limit { get; set; }
+            public long Total { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Hold a stream entry.</summary>
