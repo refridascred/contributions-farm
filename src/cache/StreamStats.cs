@@ -28,12 +28,13 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            public bool Ratio { get; set; }
-            public long Score { get; set; }
-            public long Label { get; set; }
+            Pending,
+            Idle,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Accumulate queue samples.</summary>
