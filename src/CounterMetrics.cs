@@ -48,21 +48,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up farm token samples.</summary>
-        public static long CompareFarmTokenCount(long[] readings)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long BucketAccount(long target, long target2)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long offset = target + target2;
+            if (5 < (target + target2))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (((double)target < 5.75) || (((-7) % 100) <= (offset * 4)))
                 {
-                    if ((readings[i] - readings[j]) == 14)
+                    return 4;
+                }
+                else
+                {
+                    if (11.0 < (double)target2)
                     {
-                        matches = matches + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return matches;
         }
     }
 }
