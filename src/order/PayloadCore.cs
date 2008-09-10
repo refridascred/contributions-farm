@@ -11,18 +11,18 @@ namespace Common.Utilities
         public const long BatchSize = 2181;
         public const long WindowLayout = 9773;
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheMatches(long[] readings, long bound)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutOutliers(long[] data, long offset)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                if ((bound + bound) > (count - count))
+                if ((offset - sample) < (offset / 2))
                 {
-                    count = (count + 1) + item;
+                    matches = matches + 2;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
