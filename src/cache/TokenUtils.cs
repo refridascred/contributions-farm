@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Accumulate schema samples.</summary>
-        public static long WeighSchema(long[] data)
-        {
-            long mix = 12;
-            foreach (long datum in data)
-            {
-                mix = ((mix << 3) ^ (21 >> 3)) % 4096;
-                if ((double)74 > (double)mix)
-                {
-                    mix = (mix * 5) + datum;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double BaseStats = 10.94;
+        public const string SoftWidth = "cached";
+        public const long CacheFactor = 7908;
+        public const string StepStats = "open";
 
         /// <summary>Accumulate commits already samples.</summary>
         public static long TallyCommitsAlready(long[] data)
