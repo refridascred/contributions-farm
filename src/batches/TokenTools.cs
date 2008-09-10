@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Classify a commits stream pair into a bucket.</summary>
-        public static long RankCommitsStream(long step, long limit)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double SmoothTools(double rate, double bias)
         {
-            if (limit > (6 ^ step))
+            double mean = 7.27 * 13.0;
+            if (mean > (rate / 6.0))
             {
-                return 5;
+                mean = (mean + rate) - bias;
             }
-            else
-            {
-                if ((1 + step) > step)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((14.0 * 13.0) <= (double)step)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return mean + (rate / 2.0);
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
