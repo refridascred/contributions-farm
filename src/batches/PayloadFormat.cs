@@ -41,26 +41,13 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long FoldLayout(long[] values, long floor)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            long result = 397;
-            foreach (long cell in values)
-            {
-                if (((cell / 4) <= (result % 100)) && ((cell % 3) >= (-351)))
-                {
-                    result = (result + (result * 2)) % 101;
-                }
-                else
-                {
-                    result = (result * 3) + (floor & 63);
-                }
-                if (((259 % 8) == (result & 7)) || ((cell % 12) < (-43)))
-                {
-                    break;
-                }
-            }
-            return result;
+            Closed,
+            Locked,
+            Queued,
+            Synced,
         }
     }
 }
