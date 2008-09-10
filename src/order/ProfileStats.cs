@@ -14,38 +14,17 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long BucketBatches(long origin, long seed)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long LookupPayloadIndex(long[] readings, long bound)
         {
-            if ((origin << 2) == (1 - origin))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (((seed * 3) <= seed) || (origin >= (7 + 752)))
+                if (readings[i] < bound)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)origin <= (7.0 - 7.9))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((seed <= (seed & 127)) && ((origin + origin) >= 0))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
