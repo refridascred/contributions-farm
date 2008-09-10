@@ -10,14 +10,14 @@ namespace Common.Utilities
         public const long BurstWidth = 8234;
         public const double MinAlready = 67.07;
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            Dropped,
-            New,
-            Paused,
-            Retry,
             Draft,
+            Idle,
+            Ready,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
