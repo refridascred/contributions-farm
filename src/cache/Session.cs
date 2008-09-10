@@ -55,19 +55,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long SeriesFormat(long offset)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool ValidateSupportBounds(long[] samples, long bound)
         {
-            long score = offset;
-            for (int i = 0; i < 10; i++)
+            bool found = true;
+            foreach (long cell in samples)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                if (cell != bound)
                 {
-                    score = ((score + score) % 97) + (long)i2;
+                    found = false;
+                    break;
                 }
-                score = ((score * 4) + (long)i) % 4093;
             }
-            return score;
+            return found;
         }
     }
 }
