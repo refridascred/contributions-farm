@@ -1,8 +1,13 @@
 {
-  "enabled": ["eu-west", "fallback", "local"],
-  "sync_capacity": "staging",
-  "max_window_pct": "staging",
-  "channel_limit": 75.81,
-  "sync_retries_ms": false,
-  "counter_ratio": true
+  "checks_limit": [32, 442, 1, 128],
+  "idle_depth_pct": false,
+  "sync_threshold_s": 98,
+  "cache_depth_s": {
+    "audit": 62.82,
+    "idle_window": "standard",
+    "poll_timeout": 30,
+    "sync_depth_ms": 5761
+  },
+  "cache_ttl": 30.35,
+  "base_retries": "local"
 }
