@@ -28,11 +28,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long DefaultScore = 1735;
-        public const string StepGithubfarm = "standard";
-        public const string MaxSize = "standard-1";
-        public const long BaseSpan = 1257;
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool CheckNotesRange(long[] data, long bound)
+        {
+            bool found = true;
+            foreach (long value in data)
+            {
+                if (value != bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long BaseWidth = 528;
