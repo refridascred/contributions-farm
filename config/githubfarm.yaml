@@ -1,6 +1,48 @@
 # githubfarm settings
-poll_size_s: standard
-cache_ratio: 500
-strict: 8637
-soft_threshold_s: 16.84
-min_timeout_s: strict
+base_ratio_ms: 59.76
+soft_threshold_s:
+  retry_ratio_ms: 43
+  default_retries_count:
+    already_size: 77
+    session_size:
+      - 411
+      - 302
+      - 169
+      - 380
+    format_delay: staging
+    cache_depth: 4799
+    layout_depth: 73.11
+    compress: false
+  batch_threshold_count:
+    cache_ratio_s: 975
+    githubfarm_window: 60
+    window_delay: 3003
+  base_delay_s: 3.01
+  default_interval_s: true
+  counter_size:
+    schema_size:
+      - primary
+      - local
+      - latest
+    persist: false
+    batch_timeout_s: local
+    hard_limit_s:
+      - 94
+      - 470
+      - 193
+      - 95
+    batch_timeout: 3364
+batch_interval_pct: 69.85
+batch_ratio: 59
+min_capacity_s:
+  tools_limit:
+    warm_limit_ms: false
+    batch_capacity_pct: 1204
+    batch_ratio: eu-west
+  enabled:
+    - standard
+    - strict
+    - cached
+    - legacy
+  dry_run: 42
+  hard_limit: 60
