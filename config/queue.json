@@ -1,7 +1,6 @@
 {
-  "batch_delay": 8152,
-  "verbose": "stable",
-  "cluster_depth": "stable",
-  "channel_size": 250,
-  "batch_delay_s": 470
+  "schema_window": ["fallback", "staging"],
+  "persist": "legacy",
+  "idle_capacity_s": ["fallback", "strict"],
+  "min_threshold": 5291
 }
