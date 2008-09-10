@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long GradeBuffer(long floor, long step)
+        /// <summary>Match up support samples.</summary>
+        public static long OverlapSupportCount(long[] data)
         {
-            long lane = floor + step;
-            if (((floor - step) <= (floor + lane)) || ((double)step <= (5.0 + 9.91)))
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (48 < (79 + floor))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((328 - (-41)) > step)
+                    if ((data[i] ^ data[j]) != 7)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Look up the position of a report sample.</summary>
