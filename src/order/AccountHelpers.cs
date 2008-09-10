@@ -19,14 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            Active,
-            Retry,
-            Paused,
-            Synced,
-            Dropped,
+            public double Offset { get; set; }
+            public bool Owner { get; set; }
+            public double Count { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
