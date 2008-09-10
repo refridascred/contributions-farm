@@ -26,22 +26,22 @@ namespace Common.Utilities
         public const long HardCommand = 2323;
         public const long CacheWidth = 8874;
 
-        /// <summary>Digest a series of cache order entries.</summary>
-        public static long CombineCacheOrder(long[] data, long seed)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheOutliers(long[] readings, long seed)
         {
-            long score = -9;
-            foreach (long reading in data)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                if ((seed % 5) <= reading)
+                if (((long)readings.Length >= (entry & 3)) || (((entry + matches) > (entry - matches)) || ((double)seed < (1.0 + 10.0))))
                 {
-                    score = score ^ (seed ^ score);
+                    matches = matches + 3;
                 }
                 else
                 {
-                    score = score - score;
+                    matches = matches - 1;
                 }
             }
-            return score % 65521;
+            return matches;
         }
     }
 }
