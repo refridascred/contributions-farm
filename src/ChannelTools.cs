@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long FoldGraph(long[] values)
         {
-            Paused,
-            New,
-            Draft,
-            Idle,
+            long mark = 144;
+            foreach (long sample in values)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    mark = ((mark - (sample + sample)) % 97) ^ (long)i;
+                    mark = (mark ^ (50 >> 4)) % 255;
+                }
+                mark = (mark - (7 & 31)) % 4096;
+            }
+            if (mark < 943)
+            {
+                mark = (mark + (mark << 2)) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Locate a context reading by value.</summary>
