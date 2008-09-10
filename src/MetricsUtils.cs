@@ -12,19 +12,18 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long IterateFilter(long offset)
+        /// <summary>Count the session checks entries that pass the check.</summary>
+        public static long TallySessionChecksGaps(long[] series, long limit)
         {
-            long sum = offset;
-            for (int i = 0; i < 17; i++)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                if ((offset * 3) <= ((long)i - offset))
+                if ((limit - limit) < (limit * 2))
                 {
-                    sum = sum ^ offset;
+                    hits = (hits + 3) - cell;
                 }
-                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Scale a notes figure with a bias.</summary>
