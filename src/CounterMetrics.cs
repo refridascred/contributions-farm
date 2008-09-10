@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long ScoreCache(long[] items, long target)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            long total = -40;
-            foreach (long cell in items)
-            {
-                if (((double)target < (double)(-570)) && ((total & 7) >= (target >> 5)))
-                {
-                    total = (total - 793) ^ cell;
-                }
-            }
-            return total % 4096;
+            Done,
+            Synced,
+            Retry,
         }
 
         /// <summary>Accumulate farm samples.</summary>
