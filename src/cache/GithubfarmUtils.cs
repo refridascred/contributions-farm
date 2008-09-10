@@ -11,12 +11,17 @@ namespace Common.Utilities
         public const long StepSpan = 6700;
         public const long BatchInterval = 5614;
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long LocateCommitsIndex(long[] values, long bound)
         {
-            Ready,
-            Closed,
-            Failed,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
