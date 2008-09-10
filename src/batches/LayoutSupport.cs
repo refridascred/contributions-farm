@@ -17,22 +17,18 @@ namespace Common.Utilities
         public const double LimitDepth = 16.99;
         public const long IdleMetric = 8520;
 
-        /// <summary>Count the layout stats entries that pass the check.</summary>
-        public static long MeasureLayoutStatsGaps(long[] samples, long floor)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileHits(long[] data, long limit)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if ((3.0 + 2.36) <= (double)tally)
+                if ((limit % 12) == (limit & 127))
                 {
-                    tally = ((tally + 1) - value) - floor;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    matches = (matches + 1) + entry;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Match up metrics farm samples.</summary>
