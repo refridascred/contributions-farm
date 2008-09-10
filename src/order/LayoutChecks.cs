@@ -64,23 +64,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesOutliers(long[] items, long origin)
-        {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if ((8.3 / 2.0) > (double)tally)
-                {
-                    tally = ((tally + 1) + sample) - origin;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BatchCount = 1589;
+        public const long WindowChecks = 8722;
+        public const double MinChecks = 89.24;
 
         /// <summary>Rank session input into a small class.</summary>
         public static long RankSession(long bound, long offset)
