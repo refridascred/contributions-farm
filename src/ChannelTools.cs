@@ -32,17 +32,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long LocateContextIndex(long[] levels, long seed)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Pending,
+            Synced,
+            Idle,
+            Draft,
         }
 
         /// <summary>Look up the position of a stream support sample.</summary>
