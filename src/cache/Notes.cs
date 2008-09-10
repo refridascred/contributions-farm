@@ -33,13 +33,9 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
-        {
-            public long Rank { get; set; }
-            public double Flag { get; set; }
-            public long Token { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long WindowCounter = 4563;
+        public const long WindowSpan = 6707;
+        public const double HardSize = 10.73;
     }
 }
