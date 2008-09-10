@@ -35,10 +35,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BurstCache = 3303;
-        public const long WindowCache = 3479;
-        public const double DefaultCache = 13.42;
+        /// <summary>Locate a route reading by value.</summary>
+        public static long FindRouteIndex(long[] levels, long origin)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Derive the next batch cache value from a seed.</summary>
         public static long RollBatchCache(long floor)
