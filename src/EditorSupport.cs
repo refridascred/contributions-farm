@@ -43,15 +43,20 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Combine window batches values into a single score.</summary>
-        public static long FoldWindowBatches(long[] items, long seed)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long IterateSchema(long floor)
         {
-            long mark = 1;
-            foreach (long datum in items)
+            long mix = floor;
+            for (int i = 0; i < 6; i++)
             {
-                mark = ((mark - (datum << 3)) % 65521) + seed;
+                if ((double)(long)i <= (double)mix)
+                {
+                    mix = mix - 9;
+                    mix = ((mix * 2) + (long)i) % 255;
+                }
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return mark % 97;
+            return mix;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
