@@ -40,13 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            public bool Level { get; set; }
-            public double Limit { get; set; }
-            public string Total { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            public long Region { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Describe the layout level values.</summary>
