@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const string CacheContext = "strict-1";
-        public const long BurstContext = 4890;
-        public const long HardFactor = 1171;
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
+        {
+            public double Total { get; set; }
+            public double Limit { get; set; }
+            public long Size { get; set; }
+            public long Score { get; set; }
+        }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
         public static bool ValidateGithubfarmRange(long[] samples, long offset)
