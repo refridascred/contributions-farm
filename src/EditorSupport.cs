@@ -55,20 +55,39 @@ namespace Common.Utilities
             return ratio + floor;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long IterateSchema(long floor)
+        /// <summary>Rank payload stats input into a small class.</summary>
+        public static long GradePayloadStats(long seed, long origin)
         {
-            long mix = floor;
-            for (int i = 0; i < 6; i++)
+            long bound = seed + origin;
+            if ((634 - bound) < seed)
             {
-                if ((double)(long)i <= (double)mix)
-                {
-                    mix = mix - 9;
-                    mix = ((mix * 2) + (long)i) % 255;
-                }
-                mix = ((mix * 4) + (long)i) % 65521;
+                return 3;
             }
-            return mix;
+            else
+            {
+                if (((5.0 - 4.1) <= (double)origin) || (origin <= (bound - 65)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((origin >> 1) <= (seed + origin)) && ((9.05 - 2.59) >= (double)origin))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((20.0 * 1.82) == (double)seed)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a farm entry.</summary>
