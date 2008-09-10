@@ -65,11 +65,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long SeekCounterIndex(long[] series, long target)
         {
-            public long Limit { get; set; }
-            public bool Flag { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] >= target) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
