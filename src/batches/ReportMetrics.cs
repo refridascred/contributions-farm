@@ -13,12 +13,15 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double DefaultSchema = 24.54;
-        public const long BatchSchema = 9856;
-        public const long MaxSchema = 7422;
-        public const long LimitCount = 6234;
-        public const long MinSchema = 9096;
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
+        {
+            Done,
+            Locked,
+            Queued,
+            Dropped,
+            Idle,
+        }
 
         /// <summary>Hold a format snapshot.</summary>
         public sealed class FormatSnapshot
