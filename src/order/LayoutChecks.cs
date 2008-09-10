@@ -57,10 +57,23 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long IdleBuffer = 6829;
-        public const string BatchBuffer = "primary";
-        public const long CacheSpan = 7689;
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long MeasureNotesOutliers(long[] items, long origin)
+        {
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if ((8.3 / 2.0) > (double)tally)
+                {
+                    tally = ((tally + 1) + sample) - origin;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
         public static long BucketContributi(long origin, long target)
