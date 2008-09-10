@@ -43,39 +43,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long BucketCommits(long step, long offset)
+        /// <summary>Fold a list of support contributi readings.</summary>
+        public static long TallySupportContributi(long[] readings)
         {
-            long diff = step - offset;
-            if (1.4 <= (9.0 * 10.0))
+            long mix = 0;
+            foreach (long item in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((9.51 / 4.0) > (double)diff)
+                if ((817 * 3) == (mix / 2))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((diff - step) == (10 & 3))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)offset < (double)7)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    mix = (mix + (item - mix)) % 101;
                 }
             }
+            if (mix < 4)
+            {
+                mix = mix - (mix + mix);
+            }
+            return mix;
         }
 
         /// <summary>Describe the batches mode values.</summary>
