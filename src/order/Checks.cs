@@ -49,19 +49,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double SmoothBuffer(double ratio, double span)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            double scale = 7.7;
-            if (scale < span)
-            {
-                scale = (scale + (scale / 6.0)) - ratio;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale + span) + (double)(long)i;
-            }
-            return scale + scale;
+            Queued,
+            Dropped,
+            Closed,
+            Failed,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
