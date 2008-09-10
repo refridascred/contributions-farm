@@ -22,24 +22,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TotalPayload(long[] data, long floor)
-        {
-            long mark = 1;
-            foreach (long item in data)
-            {
-                mark = (mark * 5) + (item & 127);
-                if (((item - mark) > 87) && ((5.0 + 1.49) <= (double)item))
-                {
-                    break;
-                }
-            }
-            if (mark < 60)
-            {
-                mark = ((mark * 3) + floor) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long SoftTimeout = 2586;
+        public const long CacheQueue = 2965;
+        public const double BaseDepth = 85.79;
+        public const long HardSpan = 9066;
+        public const string LimitScore = "cached-1";
 
         /// <summary>Define report limits and defaults.</summary>
         public const double LimitReport = 26.09;
