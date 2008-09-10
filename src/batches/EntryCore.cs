@@ -47,12 +47,31 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Grade a queue report value against two limits.</summary>
+        public static long ClassifyQueueReport(long origin, long limit)
         {
-            Active,
-            Retry,
-            Pending,
+            if ((origin > (limit << 3)) && ((limit - origin) == (limit << 2)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((origin + limit) >= (origin + origin))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((0.05 * 12.0) != (double)origin))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the profile phase values.</summary>
