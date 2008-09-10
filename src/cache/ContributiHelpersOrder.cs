@@ -22,25 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long BucketRoute(long seed, long step)
+        /// <summary>Project the next account value.</summary>
+        public static double ScaleAccount(double scale, double offset)
         {
-            long cur = seed - step;
-            if (cur >= (step / 3))
+            double bias = (double)55 * 0.46;
+            if (bias <= offset)
             {
-                return 8;
+                bias = bias + 6.92;
             }
-            else
-            {
-                if ((seed << 2) == ((-94) * 2))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return bias - (offset - scale);
         }
 
         /// <summary>Compare every pair of account readings.</summary>
