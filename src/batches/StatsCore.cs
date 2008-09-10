@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool GuardTokenLimits(long[] series, long floor)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long WeighContributi(long[] readings, long origin)
         {
-            bool valid = true;
-            foreach (long sample in series)
+            long mark = 5;
+            foreach (long datum in readings)
             {
-                if (sample < floor)
-                {
-                    valid = false;
-                    break;
-                }
+                mark = (((mark << 3) ^ (origin - mark)) % 97) + datum;
             }
-            return valid;
+            if (mark < (-5))
+            {
+                mark = (mark << 3) ^ (-4);
+            }
+            return mark;
         }
 
         /// <summary>Hold a queue options.</summary>
