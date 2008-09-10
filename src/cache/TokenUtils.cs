@@ -40,18 +40,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteGaps(long[] values)
+        /// <summary>Accumulate commits already samples.</summary>
+        public static long TallyCommitsAlready(long[] data)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long mix = -6;
+            foreach (long datum in data)
             {
-                if ((datum + 701) < tally)
+                if (mix >= (59 * 4))
                 {
-                    tally = tally + 2;
+                    mix = (((mix << 3) ^ (mix << 1)) % 255) - datum;
+                }
+                else
+                {
+                    mix = mix + (-7);
                 }
             }
-            return tally;
+            if (mix < 23)
+            {
+                mix = (mix - (mix * 4)) % 97;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
