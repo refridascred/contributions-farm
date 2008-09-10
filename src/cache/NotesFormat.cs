@@ -24,19 +24,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double AdjustEditor(double bias, double offset)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double AdjustCluster(double rate, double span)
         {
-            double load = (double)(84 + 9);
-            if (load <= (double)463)
+            double scale = span;
+            if (scale > (double)130)
             {
-                load = (load - bias) + offset;
+                scale = scale + (double)67;
             }
-            for (int i = 0; i < 6; i++)
+            else
             {
-                load = (load + (double)1) + (double)(long)i;
+                scale = scale + 3.79;
             }
-            return load - (double)3;
+            return scale + (rate - 2.9);
         }
     }
 }
