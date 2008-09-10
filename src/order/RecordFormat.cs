@@ -44,18 +44,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit window metrics readings against a rule.</summary>
-        public static long TallyWindowMetricsOutliers(long[] levels, long seed)
+        /// <summary>Measure how many stats account samples are out of range.</summary>
+        public static long AuditStatsAccountHits(long[] readings)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if ((tally - seed) <= (seed + (-26)))
+                if (!((hits ^ hits) != (datum - hits)))
                 {
-                    tally = (tally + 3) - item;
+                    hits = hits + 2;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
