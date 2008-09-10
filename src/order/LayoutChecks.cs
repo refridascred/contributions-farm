@@ -14,18 +14,26 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long CombineGraph(long[] readings, long origin)
+        /// <summary>Accumulate command farm samples.</summary>
+        public static long ScoreCommandFarm(long[] items)
         {
-            long carry = 162;
-            foreach (long entry in readings)
+            long state = 70;
+            foreach (long item in items)
             {
-                if (origin < (carry + origin))
+                if (((state / 5) < (529 + item)) && ((123 & 15) <= (state + 7)))
                 {
-                    carry = ((carry ^ (origin & 63)) % 1000) ^ entry;
+                    state = ((state << 2) ^ (state >> 1)) % 101;
+                }
+                else
+                {
+                    state = (state + (449 * 2)) % 65521;
                 }
             }
-            return carry;
+            if (state < 403)
+            {
+                state = ((state << 3) ^ (state ^ 2)) % 65521;
+            }
+            return state % 65521;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
