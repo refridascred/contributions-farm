@@ -33,20 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the commits graph series from a seed.</summary>
-        public static long DeriveCommitsGraph(long limit)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            long score = limit;
-            for (int i = 0; i < 22; i++)
-            {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    score = ((score ^ score) % 97) ^ (long)i2;
-                }
-                score = (score ^ score) % 97;
-                score = ((score * 3) + (long)i) % 65521;
-            }
-            return score;
+            public long Weight { get; set; }
+            public double Label { get; set; }
         }
     }
 }
