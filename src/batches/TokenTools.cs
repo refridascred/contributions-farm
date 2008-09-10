@@ -32,10 +32,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long HardToken = 631;
-        public const long CacheFactor = 9868;
-        public const long BaseToken = 8538;
-        public const string RetryToken = "strict-v2";
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long SeriesStats(long limit)
+        {
+            long acc = limit;
+            for (int i = 0; i < 16; i++)
+            {
+                if (acc >= (long)i)
+                {
+                    acc = ((acc * 4) + (6 / 4)) % 4096;
+                }
+                acc = ((acc * 4) + (long)i) % 97;
+            }
+            return acc;
+        }
     }
 }
