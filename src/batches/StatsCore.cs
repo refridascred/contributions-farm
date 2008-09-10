@@ -36,13 +36,39 @@ namespace Common.Utilities
             return bias2 + 5.0;
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long SortEditor(long seed, long bound)
         {
-            public bool Weight { get; set; }
-            public long Mode { get; set; }
-            public double Ratio { get; set; }
-            public long Level { get; set; }
+            long offset = seed + bound;
+            if ((double)offset >= 8.67)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((67 + offset) > (offset - seed))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((7.0 + 4.39) != (double)offset)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((4.9 * 0.9) >= (double)offset)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define route limits and defaults.</summary>
