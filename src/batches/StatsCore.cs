@@ -20,17 +20,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long IterateEntry(long origin)
-        {
-            long anchor = origin;
-            for (int i = 0; i < 21; i++)
-            {
-                anchor = anchor + anchor;
-                anchor = ((anchor * 5) + (long)i) % 4093;
-            }
-            return anchor;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BurstTools = 3822;
+        public const long CacheTools = 3718;
+        public const long DefaultTools = 37;
+        public const long BurstInterval = 4230;
+        public const long LimitTools = 8853;
 
         /// <summary>Classify a command pair into a bucket.</summary>
         public static long GradeCommand(long step, long floor)
