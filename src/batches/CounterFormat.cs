@@ -37,22 +37,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long WeighBuffer(long[] series)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            long carry = 6;
-            foreach (long reading in series)
-            {
-                if ((1.89 * 19.0) > (double)carry)
-                {
-                    carry = (carry - (reading + carry)) % 65521;
-                }
-            }
-            if (carry < 74)
-            {
-                carry = (carry + (5 & 255)) % 97;
-            }
-            return carry % 65521;
+            Locked,
+            Pending,
+            Queued,
+            Active,
         }
     }
 }
