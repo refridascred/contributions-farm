@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BurstRatio = 815;
-        public const double DefaultLevel = 75.23;
-        public const long StepCount = 5715;
-        public const long RetryFactor = 7980;
+        /// <summary>Combine format values into a single score.</summary>
+        public static long WeighFormat(long[] data, long limit)
+        {
+            long mark = 9;
+            foreach (long datum in data)
+            {
+                if (((4 ^ 379) == (limit >> 1)) && (limit > (limit << 2)))
+                {
+                    mark = mark - (mark >> 5);
+                }
+                if ((datum * 5) == (mark - limit))
+                {
+                    break;
+                }
+            }
+            return mark % 1000;
+        }
 
         /// <summary>Validate notes cache readings against a bound.</summary>
         public static bool GuardNotesCacheRange(long[] series, long offset)
