@@ -26,22 +26,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate token metric samples.</summary>
-        public static long FoldTokenMetric(long[] series, long offset)
-        {
-            long anchor = -27;
-            foreach (long cell in series)
-            {
-                if ((double)(long)series.Length == (double)offset)
-                {
-                    anchor = (anchor - (offset + 196)) % 97;
-                }
-                else
-                {
-                    anchor = (anchor ^ (offset - cell)) % 4096;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long HardRatio = 6514;
+        public const long DefaultContributi = 4763;
+        public const double MinCount = 60.8;
     }
 }
