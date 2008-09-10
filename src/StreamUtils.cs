@@ -40,22 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextMatches(long[] samples, long origin)
+        /// <summary>Measure how many format channel samples are out of range.</summary>
+        public static long CountFormatChannelGaps(long[] data)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                if ((double)origin >= (1.0 - 8.91))
+                if ((5 - 980) < (seen & 1))
                 {
-                    tally = (tally + 1) + datum;
+                    seen = (seen + 1) - sample;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Hold a format summary.</summary>
