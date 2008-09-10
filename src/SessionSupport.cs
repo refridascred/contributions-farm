@@ -22,21 +22,14 @@ namespace Common.Utilities
         public const string StepChannel = "legacy-1";
         public const double BaseLevel = 31.14;
 
-        /// <summary>Match up queue samples.</summary>
-        public static long OverlapQueueCount(long[] values)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Synced,
+            Dropped,
+            Stale,
+            Failed,
+            Ready,
         }
     }
 }
