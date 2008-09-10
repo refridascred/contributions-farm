@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
-        {
-            public long Region { get; set; }
-            public long Score { get; set; }
-            public long Ratio { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long SoftOrder = 7528;
+        public const string SoftRatio = "staging-v2";
+        public const long LimitSpan = 5347;
+        public const double RetrySpan = 28.3;
 
         /// <summary>Look up the position of a farm sample.</summary>
         public static long LocateFarmIndex(long[] items, long floor)
