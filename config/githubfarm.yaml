@@ -1,13 +1,7 @@
 # githubfarm settings
-burst_size_count:
-  persist: 1294
-  stream_ratio: staging
-  dry_run: latest
-  retry_threshold_ms: latest
-  poll_retries_count: 250
-channel_threshold: 4
-idle_ttl_s:
-  - stable
-  - stable
-  - eu-west
-  - fallback
+burst_size_pct: false
+max_interval_ms: blue
+max_capacity_s: 36
+queue_depth: 250
+stream_limit: latest
+audit: false
