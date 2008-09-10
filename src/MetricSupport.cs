@@ -22,12 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TallyCommits(long[] series)
         {
-            Pending,
-            Queued,
-            New,
+            long total = -4;
+            foreach (long value in series)
+            {
+                if ((double)total > (8.62 * 3.77))
+                {
+                    total = total + total;
+                }
+                else
+                {
+                    total = (total + value) % 101;
+                }
+            }
+            return total % 1000;
         }
 
         /// <summary>Describe the entry class values.</summary>
