@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long DeriveChecks(long origin)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            long score = origin;
-            for (int i = 0; i < 12; i++)
-            {
-                score = ((score << 3) ^ score) % 101;
-                score = score - origin;
-                score = ((score * 4) + (long)i) % 4093;
-            }
-            return score;
+            Failed,
+            Closed,
+            Paused,
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
