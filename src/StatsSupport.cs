@@ -49,22 +49,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long DigestSchema(long[] series, long floor)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterOutliers(long[] values)
         {
-            long total = 1;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if ((19.0 - 1.8) < (double)total)
+                if ((item + item) > hits)
                 {
-                    total = (total ^ (5 + 6)) - floor;
-                }
-                else
-                {
-                    total = (total + entry) % 255;
+                    hits = hits + 2;
                 }
             }
-            return total;
+            return hits;
         }
     }
 }
