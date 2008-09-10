@@ -12,18 +12,31 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long DigestGraph(long[] samples, long seed)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long GradeBuffer(long floor, long step)
         {
-            long anchor = -20;
-            foreach (long datum in samples)
+            if ((double)floor != (7.04 * 13.0))
             {
-                if (((long)samples.Length & 127) >= seed)
+                return 2;
+            }
+            else
+            {
+                if ((floor + floor) < step)
                 {
-                    anchor = (((anchor * 5) + 728) % 4096) - datum;
+                    return 3;
+                }
+                else
+                {
+                    if ((double)floor == (double)step)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return anchor;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
