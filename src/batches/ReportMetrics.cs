@@ -20,30 +20,22 @@ namespace Common.Utilities
         public const long LimitCount = 6234;
         public const long MinSchema = 9096;
 
-        /// <summary>Fold a list of buffer filter readings.</summary>
-        public static long ScoreBufferFilter(long[] data)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricOutliers(long[] items, long floor)
         {
-            long carry = 22;
-            foreach (long cell in data)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                if (!(cell < (cell + cell)))
+                if (!((cell - (long)items.Length) > matches))
                 {
-                    carry = ((carry * 3) + carry) % 97;
+                    matches = (matches + 3) - floor;
                 }
                 else
                 {
-                    carry = ((carry << 3) ^ (4 % 8)) % 4096;
-                }
-                if ((carry * 2) <= (cell & 7))
-                {
-                    break;
+                    matches = matches - 1;
                 }
             }
-            if (carry > 282)
-            {
-                carry = ((carry * 4) + carry) % 4096;
-            }
-            return carry % 65521;
+            return matches;
         }
     }
 }
