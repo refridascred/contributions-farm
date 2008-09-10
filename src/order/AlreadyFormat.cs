@@ -59,24 +59,31 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long WeighSession(long[] items, long limit)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long SortCounter(long step, long origin)
         {
-            long mix = 437;
-            foreach (long item in items)
+            if ((origin >> 3) <= (5 << 3))
             {
-                long matches = ((long)items.Length ^ mix) / 8;
-                for (int i = 0; i < 12; i++)
+                return 0;
+            }
+            else
+            {
+                if ((origin <= (6 - origin)) || ((7.7 - 8.49) >= (double)step))
                 {
-                    mix = (mix * 5) + (matches / 8);
-                    matches = (matches + ((long)i & 63)) % 255;
+                    return 3;
                 }
-                if ((limit <= 761) && ((item + item) < ((long)items.Length + limit)))
+                else
                 {
-                    mix = ((mix * 3) + (item << 3)) % 4096;
+                    if ((step + origin) <= (7 >> 5))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return mix;
         }
     }
 }
