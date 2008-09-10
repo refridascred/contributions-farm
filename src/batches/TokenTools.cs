@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Accumulate editor samples.</summary>
+        public static long DigestEditor(long[] series, long limit)
         {
-            Active,
-            Failed,
-            Retry,
-            Queued,
+            long anchor = 955;
+            foreach (long reading in series)
+            {
+                if ((double)limit > (double)365)
+                {
+                    anchor = ((anchor * 4) + (reading & 1)) % 255;
+                }
+                else
+                {
+                    anchor = ((anchor << 2) ^ anchor) % 1000;
+                }
+                anchor = (anchor << 3) ^ (reading >> 4);
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
