@@ -14,18 +14,14 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Measure how many token buffer samples are out of range.</summary>
-        public static long MeasureTokenBufferGaps(long[] items)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if ((71 + matches) != (90 - (long)items.Length))
-                {
-                    matches = (matches + 1) - entry;
-                }
-            }
-            return matches;
+            Paused,
+            Pending,
+            Synced,
+            Ready,
+            Draft,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
