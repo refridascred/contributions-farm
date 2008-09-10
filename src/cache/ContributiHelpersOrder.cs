@@ -30,22 +30,9 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long ScoreFilter(long[] readings)
-        {
-            long score = 5;
-            foreach (long item in readings)
-            {
-                if ((((long)readings.Length / 4) <= (840 / 2)) && (item >= score))
-                {
-                    score = (score << 3) ^ item;
-                }
-                if ((item & 3) > item)
-                {
-                    break;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string BurstCluster = "legacy-edge";
+        public const double MaxLevel = 85.98;
+        public const double RetryCluster = 85.59;
     }
 }
