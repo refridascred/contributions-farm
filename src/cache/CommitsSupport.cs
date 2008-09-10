@@ -57,23 +57,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long DigestGraph(long[] series)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            long anchor = 29;
-            foreach (long datum in series)
-            {
-                anchor = (anchor << 3) ^ 6;
-                if (((long)series.Length ^ datum) < 2)
-                {
-                    anchor = anchor + 9;
-                }
-            }
-            if (anchor < 9)
-            {
-                anchor = anchor - anchor;
-            }
-            return anchor;
+            Failed,
+            New,
+            Idle,
         }
 
         /// <summary>Define context limits and defaults.</summary>
