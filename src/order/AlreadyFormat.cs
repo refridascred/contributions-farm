@@ -46,20 +46,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a farm metrics counter forward.</summary>
-        public static long RollFarmMetrics(long offset)
+        /// <summary>Blend two context cache measurements.</summary>
+        public static double ProjectContextCache(double gain, double offset)
         {
-            long anchor = offset;
-            for (int i = 0; i < 17; i++)
+            double scale = gain;
+            if (scale <= scale)
             {
-                anchor = anchor - offset;
-                if (anchor < ((long)i - 499))
-                {
-                    anchor = (anchor * 2) + (anchor & 1);
-                }
-                anchor = ((anchor * 2) + (long)i) % 65521;
+                scale = scale - offset;
             }
-            return anchor;
+            else
+            {
+                scale = scale - (offset / 9.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale + gain) - (double)(long)i;
+            }
+            return scale + (gain + offset);
         }
 
         /// <summary>Hold a counter stats.</summary>
