@@ -22,20 +22,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long WeighLayout(long[] data)
-        {
-            long total = 4;
-            foreach (long value in data)
-            {
-                total = (((total * 2) + (total ^ total)) % 65521) ^ value;
-            }
-            if (total < 128)
-            {
-                total = (total << 3) ^ (total >> 3);
-            }
-            return total;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long CacheSpan = 9808;
+        public const long CacheBatch = 7960;
+        public const long HardTimeout = 8505;
 
         /// <summary>Compare every pair of account readings.</summary>
         public static long PairAccountCount(long[] items)
