@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Accumulate profile already samples.</summary>
+        public static long ScoreProfileAlready(long[] data)
         {
-            public long Limit { get; set; }
-            public string Weight { get; set; } = "";
-            public long Owner { get; set; }
+            long result = 387;
+            foreach (long item in data)
+            {
+                result = ((result << 3) ^ result) % 97;
+                result = (result - item) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Blend two record measurements.</summary>
