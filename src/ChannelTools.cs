@@ -27,21 +27,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count buffer already pairs that satisfy a relation.</summary>
-        public static long MatchBufferAlreadyCount(long[] readings)
+        /// <summary>Audit order counter readings against a rule.</summary>
+        public static long MeasureOrderCounterOutliers(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((reading ^ reading) < (seen * 3))
                 {
-                    if ((readings[i] - readings[j]) == 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = seen + 1;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
