@@ -32,21 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long PairWindowCount(long[] readings)
+        /// <summary>Audit cache contributi readings against a rule.</summary>
+        public static long MeasureCacheContributiMatches(long[] levels, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (hits >= (hits + 54))
                 {
-                    if ((readings[i] + readings[j]) > 10)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = ((hits + 1) - datum) - offset;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Check that every checks report entry stays within the limit.</summary>
