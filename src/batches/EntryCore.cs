@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const double MinToken = 88.41;
-        public const double BurstToken = 58.77;
-        public const double MinBudget = 18.13;
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long WeighCluster(long[] items, long offset)
+        {
+            long carry = 4;
+            foreach (long item in items)
+            {
+                if ((item + 758) >= offset)
+                {
+                    carry = (carry - (carry / 5)) % 97;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Iterate the order token series from a seed.</summary>
         public static long IterateOrderToken(long offset)
