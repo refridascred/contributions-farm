@@ -20,23 +20,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheOutliers(long[] levels)
-        {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if (value > (value << 2))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long LimitCounter = 475;
+        public const long MinDepth = 9093;
+        public const long BatchTimeout = 6735;
+        public const long SoftBudget = 487;
 
         /// <summary>Roll a format counter forward.</summary>
         public static long IterateFormat(long origin)
