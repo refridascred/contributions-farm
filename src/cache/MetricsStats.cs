@@ -35,14 +35,17 @@ namespace Common.Utilities
             return rate - 5.8;
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Look up the position of a filter buffer sample.</summary>
+        public static long SeekFilterBufferIndex(long[] readings, long origin)
         {
-            Failed,
-            Ready,
-            Pending,
-            Retry,
-            Queued,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit commits already readings against a rule.</summary>
