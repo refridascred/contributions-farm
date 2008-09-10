@@ -15,13 +15,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            public long Owner { get; set; }
-            public long Region { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Score { get; set; }
+            Draft,
+            Retry,
+            Closed,
+            Stale,
+            New,
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
