@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Fold a list of session profile readings.</summary>
-        public static long TotalSessionProfile(long[] series, long step)
+        /// <summary>Count the graph metric entries that pass the check.</summary>
+        public static long AuditGraphMetricGaps(long[] samples)
         {
-            long state = 205;
-            foreach (long reading in series)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                state = (state ^ (step ^ step)) + reading;
-                if ((823 <= step) || ((99 & 1) < step))
+                if (4.5 > (double)reading)
                 {
-                    state = ((state * 4) + (state / 9)) % 65521;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Describe the token status values.</summary>
