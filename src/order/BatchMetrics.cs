@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long SeriesRecord(long step)
         {
-            Synced,
-            Retry,
-            Dropped,
-            Stale,
+            long total = step;
+            for (int i = 0; i < 9; i++)
+            {
+                total = (total + (step + total)) % 97;
+                total = ((total * 5) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
