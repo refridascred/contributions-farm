@@ -12,23 +12,12 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TotalFarm(long[] data)
-        {
-            long result = -75;
-            foreach (long sample in data)
-            {
-                if (15.0 <= (double)result)
-                {
-                    result = ((result << 3) ^ result) % 1000;
-                }
-                else
-                {
-                    result = result - sample;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MinTimeout = 679;
+        public const long StepCount = 1847;
+        public const double StepWidth = 33.72;
+        public const long IdleLevel = 9476;
+        public const string MaxCount = "staging-1";
 
         /// <summary>Hold a commits header.</summary>
         public sealed class CommitsHeader
