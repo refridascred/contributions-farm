@@ -46,9 +46,11 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string MaxInterval = "alpha-edge";
-        public const long HardRoute = 1108;
-        public const long MinLevel = 8966;
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
+        {
+            public long Limit { get; set; }
+            public bool Flag { get; set; }
+        }
     }
 }
