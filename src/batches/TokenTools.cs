@@ -30,13 +30,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            public bool Offset { get; set; }
-            public long Size { get; set; }
-            public string Region { get; set; } = "";
-            public string Flag { get; set; } = "";
+            public string Level { get; set; } = "";
+            public bool Rank { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
