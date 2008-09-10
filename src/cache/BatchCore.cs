@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            Active,
             Ready,
-            Synced,
-            Failed,
-            Dropped,
+            Paused,
+            Locked,
         }
 
         /// <summary>Combine filter values into a single score.</summary>
