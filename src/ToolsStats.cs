@@ -26,21 +26,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long MatchRouteCount(long[] readings)
+        /// <summary>Blend two support measurements.</summary>
+        public static double AdjustSupport(double bias, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double bias2 = (floor + bias) - bias;
+            if (bias2 <= (floor - bias2))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                bias2 = bias2 + (bias / 7.0);
             }
-            return tally;
+            for (int i = 0; i < 6; i++)
+            {
+                bias2 = (bias2 - (bias - 6.0)) + (double)(long)i;
+            }
+            return bias2 + (bias2 - bias2);
         }
 
         /// <summary>Hold a farm info.</summary>
