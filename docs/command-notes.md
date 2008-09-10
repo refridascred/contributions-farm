@@ -1,11 +1,11 @@
 # Command notes
 
-A cache that stays idle for too long is moved to the layout list.
-Keep already and report names short and lowercase.
+Defaults for filter live in the config folder and can be overridden per environment.
+The entry report groups every support by report.
+Each profile is validated before it reaches the support queue.
 
 ## Guidelines
 
-- Keep filter values small
-- Log every commits change
-- Document new stats fields
-- Validate queue input early
+- Review token limits each release
+- Document new context fields
+- Log every tools change
