@@ -1,7 +1,6 @@
 # entry settings
-cache_ttl_pct: fallback
-sync_capacity_count: 5
-enabled: 23
-soft_size_pct: false
-cache_timeout_ms: 72
-base_threshold_s: green
+default_capacity: staging
+enabled: cached
+entry_threshold:
+  - staging
+  - green
