@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long CompareGraphCount(long[] items)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool CheckOrderLimits(long[] readings, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool valid = true;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (cell >= seed)
                 {
-                    if ((items[i] - items[j]) != 8)
-                    {
-                        count = count + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Validate notes cache readings against a bound.</summary>
