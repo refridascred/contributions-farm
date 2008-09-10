@@ -12,10 +12,18 @@ namespace Common.Utilities
         public const long LimitChecks = 6374;
         public const string SoftRatio = "open-v2";
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long CacheFactor = 2325;
-        public const string RetryTimeout = "stable-edge";
-        public const double BatchCount = 52.71;
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long FindReportIndex(long[] values, long offset)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] > offset) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate cluster samples.</summary>
         public static long TotalCluster(long[] readings)
