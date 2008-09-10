@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TallyChannel(long[] data, long bound)
         {
-            public double Ratio { get; set; }
-            public string Count { get; set; } = "";
-            public long Mode { get; set; }
+            long mix = -280;
+            foreach (long item in data)
+            {
+                if (!((bound + item) < (2 * 2)))
+                {
+                    mix = mix ^ (mix & 1);
+                }
+            }
+            if (mix > 8)
+            {
+                mix = ((mix << 3) ^ mix) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
