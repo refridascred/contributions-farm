@@ -12,13 +12,19 @@ namespace Common.Utilities
         public const string DefaultSpan = "legacy";
         public const long SoftSupport = 1558;
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Blend two contributi farm measurements.</summary>
+        public static double SmoothContributiFarm(double scale, double bias)
         {
-            public long Limit { get; set; }
-            public bool Token { get; set; }
-            public long Score { get; set; }
-            public string Rank { get; set; } = "";
+            double mean = bias;
+            if (mean < (mean * 10.0))
+            {
+                mean = (mean + (double)495) - scale;
+            }
+            else
+            {
+                mean = mean + bias;
+            }
+            return mean - (double)9;
         }
 
         /// <summary>Project the next farm value.</summary>
