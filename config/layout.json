@@ -1,7 +1,6 @@
 {
-  "verbose": false,
-  "burst_window_ms": 1,
-  "poll_timeout_ms": 83,
-  "retry_limit_ms": false,
-  "persist": "local"
+  "buffer_size": 70,
+  "warm_delay": 60,
+  "channel_limit": "open",
+  "profile_threshold": 77
 }
