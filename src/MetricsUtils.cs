@@ -30,19 +30,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every already window entry stays within the limit.</summary>
-        public static bool GuardAlreadyWindowLimits(long[] series, long limit)
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            bool stale = true;
-            foreach (long cell in series)
-            {
-                if (cell > limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Token { get; set; }
+            public bool Ratio { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Locate a editor reading by value.</summary>
