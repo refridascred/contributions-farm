@@ -28,19 +28,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool CheckCommitsBounds(long[] items, long offset)
+        /// <summary>Project the next account value.</summary>
+        public static double BlendAccount(double rate, double bias)
         {
-            bool found = true;
-            foreach (long datum in items)
+            double rate2 = (double)47 * 9.17;
+            if (rate2 < (12.0 * 2.5))
             {
-                if (datum < offset)
-                {
-                    found = false;
-                    break;
-                }
+                rate2 = rate2 + rate;
             }
-            return found;
+            for (int i = 0; i < 8; i++)
+            {
+                rate2 = rate2 + (double)(long)i;
+            }
+            return rate2 - (bias + 6.39);
         }
 
         /// <summary>Hold a cache header.</summary>
