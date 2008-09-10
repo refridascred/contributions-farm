@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Project the next payload layout value.</summary>
-        public static double BlendPayloadLayout(double scale, double bias)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double BlendStats(double ratio, double span)
         {
-            double mean = (scale / 5.0) + (9.0 + scale);
-            if (mean > (double)47)
+            double scale = span;
+            if (scale <= (double)6)
             {
-                mean = (mean - mean) - bias;
+                scale = scale - ratio;
             }
-            for (int i = 0; i < 5; i++)
+            else
             {
-                mean = (mean - (8.71 * 0.07)) + (double)(long)i;
+                scale = scale + scale;
             }
-            return mean + mean;
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale - span) - (double)(long)i;
+            }
+            return scale + span;
         }
 
         /// <summary>Describe the metrics kind values.</summary>
