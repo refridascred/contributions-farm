@@ -54,10 +54,19 @@ namespace Common.Utilities
         public const long RetryEditor = 4360;
         public const long MaxEditor = 9698;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long RetryFactor = 297;
-        public const double CacheToken = 39.11;
-        public const double StepToken = 40.81;
-        public const long BurstToken = 7546;
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TotalFormat(long[] levels)
+        {
+            long state = 524;
+            foreach (long item in levels)
+            {
+                state = ((state + (state & 63)) % 4096) ^ item;
+            }
+            if (state < 73)
+            {
+                state = (state << 2) ^ (state - state);
+            }
+            return state % 1000;
+        }
     }
 }
