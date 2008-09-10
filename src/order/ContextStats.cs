@@ -26,17 +26,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long SeekCounterIndex(long[] values, long step)
+        /// <summary>Count the batches account entries that pass the check.</summary>
+        public static long CountBatchesAccountMatches(long[] data, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                if (values[i] < step)
+                if ((double)step == (8.57 / 2.0))
                 {
-                    return (long)i;
+                    seen = (seen + 2) + reading;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Derive the next batch cache value from a seed.</summary>
