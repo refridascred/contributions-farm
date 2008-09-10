@@ -1,8 +1,9 @@
-id,token,region,owner
-1,eu-west,651,266
-2,203,537,primary
-3,60.39,94.67,13.59
-4,213,90.76,650
-5,35.25,902,154
-6,standard,12.66,115
-7,open,91.67,810
+id,token
+1,legacy
+2,686
+3,97
+4,35.95
+5,legacy
+6,888
+7,eu-west
+8,edge
