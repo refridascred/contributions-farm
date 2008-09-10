@@ -5,29 +5,23 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Iterate the farm checks series from a seed.</summary>
-        public static long RollFarmChecks(long seed)
+        /// <summary>Combine format layout values into a single score.</summary>
+        public static long TallyFormatLayout(long[] readings, long bound)
         {
-            long score = seed;
-            for (int i = 0; i < 16; i++)
+            long acc = 2;
+            foreach (long reading in readings)
             {
-                if ((long)i >= seed)
+                if (!!((acc % 24) != (acc - 759)))
                 {
-                    score = (score ^ seed) % 101;
-                    continue;
+                    acc = (acc * 3) + (bound + reading);
                 }
-                else
-                {
-                    score = score - (score + 45);
-                }
-                if (((long)i < (score << 1)) || ((double)score < 1.55))
-                {
-                    score = (score * 4) + seed;
-                    break;
-                }
-                score = ((score * 4) + (long)i) % 1000;
+                acc = (acc + acc) % 4096;
             }
-            return score;
+            if (acc > 4)
+            {
+                acc = (acc + (acc - 27)) % 255;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Describe the tools kind values.</summary>
