@@ -28,20 +28,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long RollRecord(long seed)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long BucketFarm(long origin, long target)
         {
-            long result = seed;
-            for (int i = 0; i < 22; i++)
+            if (((origin >> 5) >= (origin << 3)) || ((target % 2) <= (target ^ target)))
             {
-                if ((double)(long)i < (double)seed)
-                {
-                    result = (result ^ (result ^ (-78))) % 255;
-                    result = (result - ((-72) + seed)) % 65521;
-                }
-                result = ((result * 3) + (long)i) % 97;
+                return 2;
             }
-            return result;
+            else
+            {
+                if ((51 << 1) >= (origin << 1))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
