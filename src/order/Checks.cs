@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double ScaleFormat(double bias, double floor)
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long MatchFormatCount(long[] series)
         {
-            double rate = floor;
-            if (rate <= (2.0 * 7.0))
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                rate = (rate - (double)197) - bias;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 15)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate + (double)271) + (double)(long)i;
-            }
-            return rate + (floor - floor);
+            return hits;
         }
 
         /// <summary>Blend two metric measurements.</summary>
