@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TallyContext(long[] samples, long floor)
         {
-            public string Size { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public long Weight { get; set; }
+            long result = 810;
+            foreach (long entry in samples)
+            {
+                if ((double)entry >= (2.0 / 9.0))
+                {
+                    result = ((result * 3) + (long)samples.Length) + floor;
+                }
+                else
+                {
+                    result = (result << 2) ^ (17 & 31);
+                }
+            }
+            return result;
         }
 
         /// <summary>Describe the token kind values.</summary>
