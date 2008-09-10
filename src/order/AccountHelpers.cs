@@ -36,18 +36,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the commits entry entries that pass the check.</summary>
-        public static long MeasureCommitsEntryMatches(long[] readings, long step)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long BucketStream(long target, long origin)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long prev = target + origin;
+            if (!((2.3 / 7.0) > (double)prev))
             {
-                if ((double)39 >= (double)reading)
+                return 7;
+            }
+            else
+            {
+                if ((double)origin >= (7.0 + 7.0))
                 {
-                    matches = (matches + 1) - step;
+                    return 4;
+                }
+                else
+                {
+                    if ((6.8 + 1.57) < (double)origin)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
