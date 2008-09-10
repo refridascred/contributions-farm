@@ -23,20 +23,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool VerifyPayloadLimits(long[] samples, long limit)
-        {
-            bool ready = true;
-            foreach (long reading in samples)
-            {
-                if (reading > limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long DefaultCommits = 2062;
+        public const string DefaultLevel = "local-v2";
+        public const long BatchCommits = 545;
 
         /// <summary>Look up the position of a batches sample.</summary>
         public static long SeekBatchesIndex(long[] readings, long seed)
