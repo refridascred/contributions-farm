@@ -1,9 +1,7 @@
 # entry settings
-entry_timeout: 60
-min_limit_ms:
-  - 85
-  - 256
-  - 60
-  - 295
-compress: 500
-audit: edge
+max_limit: blue
+default_retries:
+  - stable
+  - legacy
+  - green
+retry_window_count: false
