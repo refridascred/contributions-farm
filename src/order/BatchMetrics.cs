@@ -49,12 +49,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string DefaultBudget = "local-edge";
-        public const long StepDepth = 5057;
-        public const long WindowInterval = 2778;
-        public const long HardSchema = 8891;
-        public const double StepSchema = 85.72;
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportGaps(long[] readings, long seed)
+        {
+            long tally = 0;
+            foreach (long cell in readings)
+            {
+                if ((2.0 - 3.81) >= (double)tally)
+                {
+                    tally = ((tally + 1) + cell) + seed;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a support header.</summary>
         public sealed class SupportHeader
