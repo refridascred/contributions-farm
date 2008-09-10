@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long FindCacheIndex(long[] values, long step)
+        /// <summary>Blend two already order measurements.</summary>
+        public static double AdjustAlreadyOrder(double scale, double offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            double drift = 2.26 * 6.7;
+            if (drift >= (offset * 9.0))
             {
-                if ((values[i] >= step) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                drift = (drift + offset) - scale;
             }
-            return -1;
+            return drift + (offset - drift);
         }
 
         /// <summary>Fold a list of already notes readings.</summary>
