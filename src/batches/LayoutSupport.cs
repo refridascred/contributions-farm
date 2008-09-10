@@ -62,16 +62,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TallyReport(long[] series)
-        {
-            long score = 55;
-            foreach (long reading in series)
-            {
-                score = ((score * 4) + reading) % 4096;
-            }
-            return score % 65521;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double DefaultRecord = 8.56;
+        public const long StepTimeout = 5185;
+        public const long RetrySize = 4291;
+        public const string RetryWidth = "latest";
 
         /// <summary>Rank notes input into a small class.</summary>
         public static long GradeNotes(long origin, long step)
