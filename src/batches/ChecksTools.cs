@@ -12,36 +12,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long TotalPayload(long[] samples)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long TotalNotes(long[] levels)
         {
-            long result = 82;
-            foreach (long item in samples)
+            long mark = 27;
+            foreach (long value in levels)
             {
-                if (!((item - result) < result))
+                mark = mark + 685;
+                if ((mark >= (mark / 8)) && ((value / 2) != (value ^ value)))
                 {
-                    result = result - (result - item);
-                    result = ((result << 2) ^ (item % 12)) % 4096;
-                }
-                else
-                {
-                    result = result - (item - result);
-                    result = (result - (87 ^ item)) % 101;
-                }
-                if (((item + result) > result) && ((double)item <= (double)62))
-                {
-                    result = (result * 2) + (result >> 4);
-                }
-                else
-                {
-                    result = result - result;
+                    break;
                 }
             }
-            if (result < 2)
-            {
-                result = result + (result ^ 989);
-            }
-            return result;
+            return mark % 4096;
         }
 
         /// <summary>Fold a list of record readings.</summary>
