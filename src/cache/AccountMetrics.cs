@@ -36,16 +36,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long RollContributi(long offset)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsOutliers(long[] series, long seed)
         {
-            long mark = offset;
-            for (int i = 0; i < 21; i++)
+            long count = 0;
+            foreach (long cell in series)
             {
-                mark = (mark + offset) % 97;
-                mark = ((mark * 4) + (long)i) % 4093;
+                if ((double)seed <= (8.0 - 6.86))
+                {
+                    count = (count + 3) + cell;
+                }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
