@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Rank stream account input into a small class.</summary>
-        public static long BucketStreamAccount(long offset, long target)
+        /// <summary>Match up batch samples.</summary>
+        public static long CompareBatchCount(long[] items)
         {
-            long gap = offset + target;
-            if ((double)target == (7.4 - 1.5))
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (target > (2 / 6))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((17.0 * 6.19) <= (double)gap)
+                    if ((items[i] - items[j]) < 15)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
