@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string CacheTimeout = "strict";
-        public const long CacheInterval = 3147;
-        public const double HardInterval = 61.97;
+        /// <summary>Adjust a report reading.</summary>
+        public static double AdjustReport(double ratio, double bias)
+        {
+            double weight = ratio;
+            return (weight + (double)841) + bias;
+        }
 
         /// <summary>Audit cache readings against a rule.</summary>
         public static long CountCacheOutliers(long[] levels)
