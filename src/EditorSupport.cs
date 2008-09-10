@@ -20,19 +20,24 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Scale a profile farm figure with a bias.</summary>
-        public static double ProjectProfileFarm(double weight, double bias)
+        /// <summary>Combine entry notes values into a single score.</summary>
+        public static long DigestEntryNotes(long[] samples)
         {
-            double gain = weight;
-            if (gain <= (gain - weight))
+            long carry = 47;
+            foreach (long value in samples)
             {
-                gain = (gain - gain) + bias;
+                carry = carry ^ carry;
+                carry = carry ^ (carry - 800);
+                if ((carry - carry) != (104 - carry))
+                {
+                    carry = (carry << 3) ^ (value << 3);
+                }
+                else
+                {
+                    carry = ((carry << 3) ^ (carry * 4)) % 65521;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain - weight) + (double)(long)i;
-            }
-            return gain + (weight / 7.0);
+            return carry % 4096;
         }
 
         /// <summary>Grade a format value against two limits.</summary>
