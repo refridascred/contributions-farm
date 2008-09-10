@@ -16,25 +16,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long GradeAlready(long seed, long seed2)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelGaps(long[] data, long seed)
         {
-            long span = seed ^ seed2;
-            if (((seed2 & 63) <= seed) && ((double)span > (4.1 * 18.0)))
+            long count = 0;
+            foreach (long sample in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)seed <= 4.0)
+                if (((sample + count) < sample) || !(310 < (seed - seed)))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
+                    count = count + 2;
                 }
             }
+            return count;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
