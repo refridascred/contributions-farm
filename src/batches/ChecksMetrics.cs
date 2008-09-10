@@ -37,19 +37,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool GuardMetricsBounds(long[] items, long origin)
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            bool valid = true;
-            foreach (long sample in items)
-            {
-                if (sample > origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Token { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
