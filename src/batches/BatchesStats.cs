@@ -45,13 +45,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Validate queue buffer readings against a bound.</summary>
+        public static bool ValidateQueueBufferLimits(long[] values, long origin)
         {
-            Pending,
-            Synced,
-            Ready,
-            Dropped,
+            bool valid = true;
+            foreach (long datum in values)
+            {
+                if (datum <= origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
