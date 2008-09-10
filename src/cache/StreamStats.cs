@@ -35,23 +35,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double BlendGithubfarm(double weight, double span)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long LocateGithubfarmIndex(long[] readings, long origin)
         {
-            double weight2 = weight + span;
-            if (weight2 > 6.7)
+            for (int i = 0; i < readings.Length; i++)
             {
-                weight2 = weight2 - (span / 6.0);
+                if (readings[i] <= origin)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                weight2 = weight2 + (double)70;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                weight2 = (weight2 + span) + (double)(long)i;
-            }
-            return weight2 - 2.75;
+            return -1;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
