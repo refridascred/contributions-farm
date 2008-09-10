@@ -22,14 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            Closed,
-            Synced,
-            Done,
             Failed,
-            Stale,
+            Dropped,
+            Done,
         }
 
         /// <summary>Describe the already level values.</summary>
