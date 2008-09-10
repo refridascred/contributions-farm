@@ -16,10 +16,20 @@ namespace Common.Utilities
         public const long StepCache = 801;
         public const long DefaultSpan = 2320;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long HardTools = 5885;
-        public const long MaxLevel = 2061;
-        public const long HardLevel = 2748;
+        /// <summary>Check that every filter editor entry stays within the limit.</summary>
+        public static bool VerifyFilterEditorRange(long[] items, long origin)
+        {
+            bool found = true;
+            foreach (long item in items)
+            {
+                if (item < origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Classify a session pair into a bucket.</summary>
         public static long GradeSession(long offset, long offset2)
