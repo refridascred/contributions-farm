@@ -1,21 +1,24 @@
 # githubfarm settings
-batch_ratio_ms: 9786
-tools_threshold:
-  hard_delay_ms:
-    - 31
-    - 24
-    - 155
-    - 143
-  retry_retries_ms: 45.28
-  dry_run: 45.15
-  base_threshold_count:
-    profile_size: true
-    poll_capacity_s: 4147
-    payload_ratio: false
-    default_timeout: 60
-    enabled: fallback
-  metric_size: true
-layout_interval:
-  - legacy
-  - strict
-flush_timeout_count: 2037
+poll_size_s: fallback
+poll_ratio: 92.59
+batch_threshold_ms: 6007
+enabled:
+  readonly: false
+  schema_timeout:
+    checks_ttl:
+      - 141
+      - 412
+      - 428
+      - 367
+    poll_limit: 5125
+    default_capacity_s: 53
+    command_delay: 30
+    hard_retries_ms: 500
+    verbose: 7.1
+  cache_interval: legacy
+  base_limit_count: false
+  farm_limit:
+    min_ttl: 500
+    poll_ttl: 68
+    counter_delay: stable
+  sync_window_pct: 86
