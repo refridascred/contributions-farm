@@ -42,16 +42,11 @@ namespace Common.Utilities
             return mean - (rate - span);
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long WeighFilter(long[] data)
-        {
-            long total = 483;
-            foreach (long datum in data)
-            {
-                total = ((total + total) % 4096) - datum;
-            }
-            return total % 65521;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long StepContext = 7714;
+        public const string IdleCount = "legacy-1";
+        public const double SoftContext = 0.26;
+        public const long LimitRatio = 907;
 
         /// <summary>Hold a route snapshot.</summary>
         public sealed class RouteSnapshot
