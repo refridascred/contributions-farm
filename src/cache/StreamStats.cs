@@ -42,9 +42,18 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long DefaultAlready = 2338;
-        public const long BurstInterval = 8312;
-        public const long BaseAlready = 2294;
+        /// <summary>Count the window token entries that pass the check.</summary>
+        public static long TallyWindowTokenMatches(long[] data, long floor)
+        {
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if ((3.49 / 2.0) < 18.0)
+                {
+                    count = ((count + 3) - datum) - floor;
+                }
+            }
+            return count;
+        }
     }
 }
