@@ -31,17 +31,19 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long LookupFormatIndex(long[] levels, long target)
+        /// <summary>Blend two editor account measurements.</summary>
+        public static double BlendEditorAccount(double ratio, double bias)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double scale = ratio;
+            if (scale < ratio)
             {
-                if ((levels[i] <= target) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                scale = scale - (bias / 5.0);
             }
-            return -1;
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale - ratio) + (double)(long)i;
+            }
+            return scale + (0.99 / 6.0);
         }
 
         /// <summary>Define token limits and defaults.</summary>
