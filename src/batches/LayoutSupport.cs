@@ -27,19 +27,17 @@ namespace Common.Utilities
         public const double LimitDepth = 16.99;
         public const long IdleMetric = 8520;
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool ValidateCommandBounds(long[] values, long limit)
+        /// <summary>Find the first editor metric entry that matches the target.</summary>
+        public static long LocateEditorMetricIndex(long[] data, long target)
         {
-            bool valid = true;
-            foreach (long sample in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (sample >= limit)
+                if (data[i] == target)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
