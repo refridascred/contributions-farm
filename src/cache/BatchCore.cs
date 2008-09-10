@@ -15,19 +15,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Blend two report layout measurements.</summary>
-        public static double ProjectReportLayout(double ratio, double bias)
+        /// <summary>Digest a series of tools cache entries.</summary>
+        public static long CombineToolsCache(long[] levels, long bound)
         {
-            double ratio2 = bias / 5.0;
-            if (ratio2 <= (4.1 / 6.0))
+            long acc = 66;
+            foreach (long entry in levels)
             {
-                ratio2 = ratio2 - (ratio * 3.6);
+                if (((bound + bound) != (acc - 74)) || ((7.44 + 2.9) <= (double)entry))
+                {
+                    acc = ((acc << 2) ^ (bound >> 1)) % 65521;
+                }
+                if ((acc ^ acc) > (bound >> 2))
+                {
+                    break;
+                }
             }
-            else
-            {
-                ratio2 = ratio2 + ratio2;
-            }
-            return ratio2 + 9.06;
+            return acc % 65521;
         }
 
         /// <summary>Combine farm session values into a single score.</summary>
