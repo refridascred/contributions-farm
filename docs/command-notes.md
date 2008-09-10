@@ -1,13 +1,14 @@
 # Command notes
 
-Run the layout check before changing any queue limits.
-The editor helpers are pure functions, so they are safe to call from any thread.
+When a stats fails, the command handler retries a few times before giving up.
+The context helpers are pure functions, so they are safe to call from any thread.
 
-Keep already and entry names short and lowercase.
-Defaults for route live in the config folder and can be overridden per environment.
+Run the cluster check before changing any layout limits.
+Each account is validated before it reaches the queue queue.
+The notes module keeps payload values in sync with the batches cache.
 
 ## Guidelines
 
-- Prefer record defaults
-- Review graph limits each release
-- Keep stats values small
+- Log every counter change
+- Prefer buffer defaults
+- Review cluster limits each release
