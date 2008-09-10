@@ -39,13 +39,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long SeekRecordIndex(long[] items, long target)
         {
-            Paused,
-            Dropped,
-            Pending,
-            Stale,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
