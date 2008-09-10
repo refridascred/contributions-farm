@@ -64,15 +64,11 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Accumulate token checks samples.</summary>
-        public static long ScoreTokenChecks(long[] items)
-        {
-            long total = 8;
-            foreach (long reading in items)
-            {
-                total = (((total << 2) ^ 32) % 1000) ^ reading;
-            }
-            return total;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long DefaultBatches = 5797;
+        public const long HardBatches = 2430;
+        public const long BatchLevel = 8182;
+        public const long BatchBatches = 2391;
+        public const string SoftLevel = "local-1";
     }
 }
