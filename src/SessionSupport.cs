@@ -17,10 +17,11 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long RetryCount = 8663;
-        public const string StepChannel = "legacy-1";
-        public const double BaseLevel = 31.14;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MinBatches = 9506;
+        public const string IdleBatches = "primary-v2";
+        public const long LimitWidth = 405;
+        public const long CacheBatches = 4160;
 
         /// <summary>Describe the already level values.</summary>
         public enum AlreadyLevel
