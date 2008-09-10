@@ -1,7 +1,10 @@
 {
-  "batch_capacity_s": 30,
-  "hard_capacity": 30,
-  "max_size_count": 18,
-  "retry_timeout_pct": 16.93,
-  "cache_size": 35
+  "cache_ratio": 59,
+  "base_size_count": {
+    "window_capacity": 8194,
+    "commits_retries": "fallback",
+    "retry_size_count": 3
+  },
+  "persist": 75.36,
+  "poll_limit_pct": 4403
 }
