@@ -45,13 +45,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Count the farm route entries that pass the check.</summary>
+        public static long TallyFarmRouteMatches(long[] data)
         {
-            Stale,
-            Ready,
-            Dropped,
-            Synced,
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if (!(entry < (tally / 5)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a window record.</summary>
