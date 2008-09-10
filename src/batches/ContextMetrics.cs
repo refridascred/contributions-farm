@@ -66,22 +66,19 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportOutliers(long[] values, long step)
+        /// <summary>Check that every editor session entry stays within the limit.</summary>
+        public static bool VerifyEditorSessionRange(long[] samples, long seed)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            bool valid = true;
+            foreach (long entry in samples)
             {
-                if ((long)values.Length < step)
+                if (entry >= seed)
                 {
-                    matches = (matches + 1) + reading;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
     }
 }
