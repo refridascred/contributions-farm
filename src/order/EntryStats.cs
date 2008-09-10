@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            Closed,
-            Ready,
-            Draft,
+            Dropped,
             Locked,
-            Paused,
+            Draft,
+            Stale,
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
