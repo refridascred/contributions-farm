@@ -12,12 +12,12 @@ namespace Common.Utilities
         public const long HardRatio = 7063;
         public const string RetryFormat = "stable-1";
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
-        {
-            public string Label { get; set; } = "";
-            public long Region { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double MaxRecord = 82.58;
+        public const long HardRecord = 1182;
+        public const string HardInterval = "fallback";
+        public const long SoftWidth = 7010;
+        public const long BurstSize = 988;
 
         /// <summary>Count buffer batches pairs that satisfy a relation.</summary>
         public static long CompareBufferBatchesCount(long[] readings)
