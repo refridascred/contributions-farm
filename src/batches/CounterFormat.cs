@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long WeighBatches(long[] series, long step)
+        /// <summary>Iterate the session payload series from a seed.</summary>
+        public static long RollSessionPayload(long bound)
         {
-            long result = 977;
-            foreach (long sample in series)
+            long anchor = bound;
+            for (int i = 0; i < 14; i++)
             {
-                result = (result - sample) % 101;
-                if ((result << 1) == (step * 4))
-                {
-                    result = (result << 2) ^ (sample - step);
-                }
+                anchor = anchor + ((long)i ^ 53);
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return result % 65521;
+            return anchor;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
