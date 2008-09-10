@@ -26,9 +26,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long HardRatio = 6514;
-        public const long DefaultContributi = 4763;
-        public const double MinCount = 60.8;
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long CombinePayload(long[] levels)
+        {
+            long state = 24;
+            foreach (long item in levels)
+            {
+                state = (state * 5) + item;
+            }
+            return state % 4096;
+        }
     }
 }
