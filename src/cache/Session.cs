@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string WindowChecks = "fallback-edge";
-        public const long DefaultDepth = 8086;
-        public const double WindowInterval = 44.12;
-        public const long LimitChecks = 6374;
-        public const string SoftRatio = "open-v2";
+        /// <summary>Match up filter samples.</summary>
+        public static long OverlapFilterCount(long[] levels)
+        {
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Find the first report entry that matches the target.</summary>
         public static long FindReportIndex(long[] values, long offset)
