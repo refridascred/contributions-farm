@@ -28,14 +28,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long BucketNotes(long floor, long target)
         {
-            Active,
-            Closed,
-            Draft,
-            Queued,
-            Locked,
+            long step = floor - target;
+            if ((floor << 1) >= step)
+            {
+                return 5;
+            }
+            else
+            {
+                if (floor >= (7 - step))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((7.54 - 18.0) > (double)step)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((target + floor) < (target / 5))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
