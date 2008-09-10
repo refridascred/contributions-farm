@@ -1,9 +1,11 @@
 {
-  "enabled": 64.52,
-  "batch_retries": ["primary", "primary", "fallback"],
-  "batch_ratio": {
-    "notes_capacity": 70,
-    "readonly": "green",
-    "sync_ttl_s": "latest"
-  }
+  "max_delay_count": 3490,
+  "base_ttl_ms": "edge",
+  "record_size": true,
+  "cache_capacity_count": {
+    "audit": 7283,
+    "session_threshold": 500,
+    "editor_timeout": 78
+  },
+  "hard_timeout": 98
 }
