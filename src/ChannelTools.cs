@@ -19,11 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long WindowRatio = 5223;
-        public const long WindowTools = 7628;
-        public const double CacheScore = 81.8;
-        public const long BurstTools = 8578;
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
+        {
+            Retry,
+            Locked,
+            Queued,
+            Done,
+            Failed,
+        }
 
         /// <summary>Scale a editor figure with a bias.</summary>
         public static double SmoothEditor(double bias, double bias2)
