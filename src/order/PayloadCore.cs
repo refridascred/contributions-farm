@@ -27,18 +27,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long CombineEditor(long[] items, long offset)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool GuardMetricsLimits(long[] samples, long target)
         {
-            long sum = 6;
-            foreach (long entry in items)
+            bool ready = true;
+            foreach (long reading in samples)
             {
-                if (sum <= (sum * 4))
+                if (reading != target)
                 {
-                    sum = ((sum ^ (entry / 5)) % 1000) - offset;
+                    ready = false;
+                    break;
                 }
             }
-            return sum % 97;
+            return ready;
         }
 
         /// <summary>Describe the channel state values.</summary>
