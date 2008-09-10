@@ -12,18 +12,11 @@ namespace Common.Utilities
         public const long HardRatio = 7063;
         public const string RetryFormat = "stable-1";
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesOutliers(long[] data, long bound)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if ((4.95 * 6.27) > (double)datum)
-                {
-                    count = (count + 1) + bound;
-                }
-            }
-            return count;
+            public string Label { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Count buffer batches pairs that satisfy a relation.</summary>
