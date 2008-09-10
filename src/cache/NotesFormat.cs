@@ -31,32 +31,15 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long SortRecord(long seed, long target)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long DeriveToken(long bound)
         {
-            long bound = seed - target;
-            if (((double)seed <= (1.0 / 4.0)) || ((2 + 87) < seed))
+            long carry = bound;
+            for (int i = 0; i < 11; i++)
             {
-                return 4;
+                carry = ((carry * 3) + (long)i) % 4093;
             }
-            else
-            {
-                if ((seed + seed) > (seed ^ seed))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!((seed ^ target) < bound))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return carry;
         }
     }
 }
