@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Combine window values into a single score.</summary>
-        public static long FoldWindow(long[] values)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksOutliers(long[] levels, long limit)
         {
-            long score = 27;
-            foreach (long reading in values)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                for (int i = 0; i < 3; i++)
+                if ((double)sample > (4.5 / 5.0))
                 {
-                    score = score - ((long)i * 3);
-                }
-                if (((23 / 3) == (score & 3)) || ((score + reading) < (reading + reading)))
-                {
-                    score = (score + (reading + score)) % 4096;
+                    hits = (hits + 1) - limit;
                 }
             }
-            return score % 65521;
+            return hits;
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
