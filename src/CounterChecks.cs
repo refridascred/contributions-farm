@@ -47,19 +47,24 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Validate token batches readings against a bound.</summary>
-        public static bool CheckTokenBatchesBounds(long[] series, long offset)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long ScoreContributi(long[] levels, long seed)
         {
-            bool valid = true;
-            foreach (long datum in series)
+            long mark = 53;
+            foreach (long item in levels)
             {
-                if (datum > offset)
+                mark = ((mark << 3) ^ (mark + seed)) % 65521;
+                mark = (mark - seed) % 4096;
+                if ((seed ^ item) != (item & 127))
                 {
-                    valid = false;
                     break;
                 }
             }
-            return valid;
+            if (mark < 4)
+            {
+                mark = ((mark * 4) + (24 % 2)) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
