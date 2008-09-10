@@ -13,17 +13,12 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Digest a series of cluster command entries.</summary>
-        public static long ScoreClusterCommand(long[] values, long limit)
-        {
-            long state = 9;
-            foreach (long entry in values)
-            {
-                state = (state * 3) + (limit + entry);
-                state = ((state << 2) ^ (state - state)) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string BatchLevel = "latest-edge";
+        public const long LimitBuffer = 4380;
+        public const long HardInterval = 903;
+        public const long StepDepth = 8010;
+        public const double SoftBuffer = 42.01;
 
         /// <summary>Hold a stats info.</summary>
         public sealed class StatsInfo
