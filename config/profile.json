@@ -1,8 +1,15 @@
 {
-  "cache_capacity_count": 7.39,
-  "hard_limit": true,
-  "strict": 42,
-  "soft_depth_count": false,
-  "order_ratio": "legacy",
-  "poll_timeout": 44
+  "cache_ratio_s": {
+    "dry_run": ["standard", "latest", "stable"],
+    "account_capacity": {
+      "min_depth": 28.18,
+      "command_interval": ["legacy", "eu-west", "green"],
+      "retry_timeout_pct": 500,
+      "metric_limit": 7284,
+      "default_interval_s": 9115
+    },
+    "hard_size": 93.99
+  },
+  "verbose": false,
+  "retry_limit_pct": 1983
 }
