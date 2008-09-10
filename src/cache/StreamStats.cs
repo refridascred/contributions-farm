@@ -23,19 +23,17 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Check that every filter editor entry stays within the limit.</summary>
-        public static bool VerifyFilterEditorRange(long[] items, long origin)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long SeekCommitsIndex(long[] samples, long target)
         {
-            bool found = true;
-            foreach (long item in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (item < origin)
+                if (samples[i] > target)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
