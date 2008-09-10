@@ -32,19 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TallyAccount(long[] readings, long floor)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool CheckPayloadRange(long[] items, long seed)
         {
-            long sum = 160;
-            foreach (long reading in readings)
+            bool found = true;
+            foreach (long item in items)
             {
-                sum = (((sum * 5) + floor) % 65521) ^ reading;
+                if (item != seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            if (sum < 33)
-            {
-                sum = (sum * 5) + (floor + 640);
-            }
-            return sum % 65521;
+            return found;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
