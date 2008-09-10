@@ -16,13 +16,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            New,
-            Paused,
-            Synced,
-            Pending,
+            Dropped,
+            Failed,
+            Queued,
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
