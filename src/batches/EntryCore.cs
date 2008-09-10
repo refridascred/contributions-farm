@@ -32,18 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesHits(long[] samples, long floor)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            long hits = 0;
-            foreach (long sample in samples)
-            {
-                if ((floor - 3) <= (sample >> 1))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public bool Label { get; set; }
+            public long Level { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
