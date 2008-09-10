@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit token window readings against a rule.</summary>
-        public static long CountTokenWindowMatches(long[] data)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long CompareToolsCount(long[] data)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((long)data.Length != (cell + 740))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((data[i] ^ data[j]) != 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Fold a list of account readings.</summary>
