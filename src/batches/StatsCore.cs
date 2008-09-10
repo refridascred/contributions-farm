@@ -76,13 +76,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Measure how many layout metrics samples are out of range.</summary>
+        public static long CountLayoutMetricsGaps(long[] readings, long step)
         {
-            Idle,
-            Active,
-            Paused,
-            Dropped,
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if (612 > (0 ^ step))
+                {
+                    hits = (hits + 1) - item;
+                }
+            }
+            return hits;
         }
     }
 }
