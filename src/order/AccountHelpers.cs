@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Accumulate buffer profile samples.</summary>
-        public static long TallyBufferProfile(long[] levels)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            long mix = -983;
-            foreach (long value in levels)
-            {
-                mix = (mix << 3) ^ (value & 7);
-            }
-            if (mix < 45)
-            {
-                mix = (mix + (96 - mix)) % 1000;
-            }
-            return mix;
+            Stale,
+            Retry,
+            Done,
+            Idle,
+            Pending,
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
