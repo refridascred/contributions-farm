@@ -1,11 +1,34 @@
 # support settings
-warm_timeout: cached
-batch_limit_pct: 76
-soft_delay_pct: stable
-payload_threshold: 32
-enabled:
-  - cached
-  - edge
-  - latest
-  - strict
-retry_retries_ms: blue
+verbose:
+  soft_limit_s: 250
+  idle_window_s:
+    - standard
+    - stable
+    - fallback
+    - standard
+  burst_capacity:
+    - staging
+    - fallback
+  retry_window_s: 90
+  idle_window_pct:
+    - latest
+    - open
+    - primary
+    - staging
+batches_ratio:
+  soft_retries_ms: standard
+  report_limit:
+    - edge
+    - strict
+  batch_threshold: latest
+  dry_run: 7.12
+  checks_threshold:
+    - cached
+    - strict
+    - staging
+  hard_window:
+    - 343
+    - 274
+max_interval_ms: standard
+warm_size_pct: 30
+checks_timeout: local
