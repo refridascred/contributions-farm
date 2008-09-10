@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Match up batch samples.</summary>
-        public static long CompareBatchCount(long[] items)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long SeriesSupport(long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mark = bound;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)(long)i > (double)bound)
                 {
-                    if ((items[i] - items[j]) < 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    mark = (mark * 3) + (bound ^ mark);
                 }
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
