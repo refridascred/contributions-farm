@@ -35,12 +35,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            Ready,
-            Stale,
-            Draft,
+            Closed,
+            Synced,
             Paused,
         }
 
