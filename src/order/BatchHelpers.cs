@@ -38,23 +38,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate schema buffer samples.</summary>
-        public static long WeighSchemaBuffer(long[] items)
+        /// <summary>Compare every pair of stream filter readings.</summary>
+        public static long CompareStreamFilterCount(long[] levels)
         {
-            long total = 3;
-            foreach (long cell in items)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((double)total <= (6.3 / 7.0)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    total = (total << 3) ^ (cell / 3);
-                    total = total ^ (total >> 2);
-                }
-                if (!((total - total) < 23))
-                {
-                    total = (total - (cell >> 1)) % 65521;
+                    if ((levels[i] ^ levels[j]) < 10)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return total;
+            return count;
         }
     }
 }
