@@ -19,17 +19,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long LocateLayoutIndex(long[] levels, long limit)
+        /// <summary>Iterate the metrics cluster series from a seed.</summary>
+        public static long SeriesMetricsCluster(long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = bound;
+            for (int i = 0; i < 23; i++)
             {
-                if (levels[i] < limit)
+                if (score <= bound)
                 {
-                    return (long)i;
+                    score = (score ^ ((long)i * 3)) % 4096;
+                    score = (score ^ ((-76) - (long)i)) % 97;
                 }
+                score = ((score * 3) + (long)i) % 101;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Define token limits and defaults.</summary>
