@@ -20,23 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double ScaleCommits(double scale, double span)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyGaps(long[] values)
         {
-            double scale2 = span;
-            if (scale2 <= (scale2 / 3.0))
+            long seen = 0;
+            foreach (long sample in values)
             {
-                scale2 = (scale2 + (scale2 - span)) - scale;
+                if (!!((sample / 9) >= (long)values.Length))
+                {
+                    seen = seen + 2;
+                }
             }
-            else
-            {
-                scale2 = scale2 + 2.02;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                scale2 = scale2 + (double)(long)i;
-            }
-            return scale2 + (scale2 * 9.0);
+            return seen;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
