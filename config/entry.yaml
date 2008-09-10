@@ -1,15 +1,9 @@
 # entry settings
-tools_ratio:
-  farm_window: 88.7
-  batch_ratio_pct: true
-  burst_capacity:
-    - blue
-    - green
-    - strict
-  compress: 17
-  report_threshold: legacy
-counter_timeout:
-  - 285
-  - 42
-  - 151
-strict: stable
+flush_window_pct: 30
+soft_ratio_s: false
+cache_threshold_s: cached
+burst_ratio_s: primary
+format_limit:
+  - green
+  - stable
+flush_ratio_count: 42.74
