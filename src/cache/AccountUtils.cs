@@ -19,12 +19,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
-        {
-            public bool Total { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long SoftSpan = 657;
+        public const double BatchCommand = 19.53;
+        public const long LimitCommand = 5869;
+        public const long HardCommand = 2323;
+        public const long CacheWidth = 8874;
 
         /// <summary>Digest a series of cache order entries.</summary>
         public static long CombineCacheOrder(long[] data, long seed)
