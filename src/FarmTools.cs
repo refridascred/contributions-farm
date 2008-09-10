@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Validate queue entry readings against a bound.</summary>
-        public static bool GuardQueueEntryRange(long[] levels, long bound)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long SeriesAccount(long origin)
         {
-            bool ok = true;
-            foreach (long reading in levels)
+            long mark = origin;
+            for (int i = 0; i < 15; i++)
             {
-                if (reading <= bound)
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    ok = false;
-                    break;
+                    mark = (mark ^ (origin >> 4)) ^ (long)i2;
+                    mark = (mark ^ (mark + mark)) % 97;
                 }
+                mark = mark - mark;
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return ok;
+            return mark;
         }
 
         /// <summary>Hold a githubfarm record.</summary>
