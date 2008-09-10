@@ -43,21 +43,11 @@ namespace Common.Utilities
             return bias + weight;
         }
 
-        /// <summary>Compare every pair of format session readings.</summary>
-        public static long OverlapFormatSessionCount(long[] series)
-        {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 5)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long HardTimeout = 5801;
+        public const long HardAccount = 379;
+        public const string LimitFactor = "legacy-v2";
+        public const long CacheAccount = 920;
+        public const double BatchAccount = 6.56;
     }
 }
