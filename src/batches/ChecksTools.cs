@@ -31,14 +31,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool CheckCommitsBounds(long[] items, long offset)
         {
-            Stale,
-            Retry,
-            Done,
-            Closed,
-            New,
+            bool found = true;
+            foreach (long datum in items)
+            {
+                if (datum < offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a cache header.</summary>
