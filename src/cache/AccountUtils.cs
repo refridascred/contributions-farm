@@ -35,18 +35,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long TallyEntryGaps(long[] samples)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if ((reading ^ count) < reading)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public double Label { get; set; }
+            public long Mode { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
