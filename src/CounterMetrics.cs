@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsHits(long[] levels, long step)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long ScoreCache(long[] items, long target)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long total = -40;
+            foreach (long cell in items)
             {
-                if ((entry & 255) >= (35 << 1))
+                if (((double)target < (double)(-570)) && ((total & 7) >= (target >> 5)))
                 {
-                    matches = (matches + 3) + step;
+                    total = (total - 793) ^ cell;
                 }
             }
-            return matches;
+            return total % 4096;
         }
 
         /// <summary>Accumulate farm samples.</summary>
