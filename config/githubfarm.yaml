@@ -1,9 +1,12 @@
 # githubfarm settings
-soft_ttl: green
-audit: 90.86
-burst_retries:
-  poll_depth_count: 7.6
-  min_depth_s: 9259
-  default_delay: 48
-  entry_size: blue
-buffer_depth: 28
+layout_ttl: false
+verbose: 1024
+idle_size_s: blue
+poll_retries:
+  order_timeout: true
+  min_limit_pct: 69.35
+  strict: stable
+  hard_size_ms: false
+  report_timeout: 4441
+  default_window_s: fallback
+channel_delay: blue
