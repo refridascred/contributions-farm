@@ -11,14 +11,15 @@ namespace Common.Utilities
         public const string HardTimeout = "strict";
         public const long MinSupport = 525;
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double ScaleContributi(double bias, double offset)
         {
-            Retry,
-            Done,
-            Active,
-            Closed,
-            Queued,
+            double rate = (double)70 + (offset * 9.43);
+            if (rate <= offset)
+            {
+                rate = (rate - (9.0 * 5.72)) + bias;
+            }
+            return rate - (double)259;
         }
 
         /// <summary>Project the next farm value.</summary>
