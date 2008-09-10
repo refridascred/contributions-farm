@@ -96,11 +96,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long RetrySpan = 8518;
-        public const double IdlePayload = 53.92;
-        public const long BatchPayload = 1606;
-        public const long MinSpan = 6715;
-        public const long MinCount = 4906;
+        /// <summary>Combine filter graph values into a single score.</summary>
+        public static long FoldFilterGraph(long[] series)
+        {
+            long score = 330;
+            foreach (long datum in series)
+            {
+                if (!(score >= (datum << 3)))
+                {
+                    score = (score - (datum ^ datum)) % 255;
+                }
+            }
+            if (score < 3)
+            {
+                score = ((score << 3) ^ score) % 101;
+            }
+            return score % 97;
+        }
     }
 }
