@@ -1,7 +1,6 @@
 # entry settings
-enabled: true
-order_timeout: 9544
-soft_depth_s: 5298
-base_timeout_s: 27
-tools_retries: 20
-compress: 51
+sync_interval: 6297
+enabled: 77
+retry_window_pct: cached
+record_limit: 3291
+sync_interval_s: 67.68
