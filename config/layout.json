@@ -1,7 +1,6 @@
 {
-  "max_delay_count": "edge",
-  "support_depth": 22.74,
-  "strict": "edge",
-  "soft_depth": true,
-  "retry_threshold": ["strict", "cached", "cached"]
+  "session_timeout": "primary",
+  "token_interval": 1024,
+  "flush_ratio_ms": 60,
+  "window_retries": "eu-west"
 }
