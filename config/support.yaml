@@ -1,12 +1,5 @@
 # support settings
-warm_depth: 8788
-channel_limit:
-  tools_size: 8030
-  base_retries_ms: standard
-  max_threshold: 1971
-  token_window: local
-  verbose:
-    - 106
-    - 76
-flush_limit: 3029
-warm_delay_count: 2854
+cluster_interval: staging
+sync_threshold_count: stable
+sync_interval: false
+readonly: 37
