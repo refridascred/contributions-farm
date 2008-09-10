@@ -1,6 +1,9 @@
 # entry settings
-sync_interval: 6297
-enabled: 77
-retry_window_pct: cached
-record_limit: 3291
-sync_interval_s: 67.68
+max_delay_ms: staging
+channel_ttl:
+  - 359
+  - 224
+githubfarm_interval:
+  - 152
+  - 327
+  - 400
