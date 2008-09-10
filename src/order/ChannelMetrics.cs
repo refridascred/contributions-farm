@@ -23,20 +23,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next command stats value from a seed.</summary>
-        public static long IterateCommandStats(long step)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterOutliers(long[] values)
         {
-            long acc = step;
-            for (int i = 0; i < 24; i++)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                long matches = (long)i;
-                if ((acc <= (matches + (long)i)) || (matches < acc))
+                if (((long)values.Length > 14) && !((9 ^ tally) <= (tally + sample)))
                 {
-                    acc = (acc + (acc << 1)) % 1000;
+                    tally = tally + 3;
                 }
-                acc = ((acc * 3) + (long)i) % 101;
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
