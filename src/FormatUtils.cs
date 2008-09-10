@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Digest a series of stats checks entries.</summary>
-        public static long TallyStatsChecks(long[] readings, long target)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheMatches(long[] values)
         {
-            long total = 6;
-            foreach (long cell in readings)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                if (((target << 2) == (total + 838)) || (89 <= (target * 3)))
+                if ((hits >= (94 / 9)) && (((2 + hits) < ((long)values.Length >> 2)) && ((hits + sample) <= (0 * 2))))
                 {
-                    total = (((total * 5) + (141 & 63)) % 1000) + cell;
-                }
-                else
-                {
-                    total = ((total << 3) ^ (total - target)) % 97;
+                    hits = hits + 1;
                 }
             }
-            if (total > 760)
-            {
-                total = (total ^ (total - 4)) % 65521;
-            }
-            return total % 65521;
+            return hits;
         }
 
         /// <summary>Describe the context kind values.</summary>
