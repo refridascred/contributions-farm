@@ -45,18 +45,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheMatches(long[] data, long seed)
+        /// <summary>Audit commits already readings against a rule.</summary>
+        public static long CountCommitsAlreadyMatches(long[] levels)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if ((double)seed < (4.7 - 2.08))
+                if (((hits - (-4)) < (value / 6)) && (((7.7 * 7.8) <= (double)value) || (hits >= value)))
                 {
-                    matches = (matches + 1) + datum;
+                    hits = hits + 2;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
