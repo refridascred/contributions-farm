@@ -59,11 +59,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MaxLevel = 7518;
-        public const double DefaultRatio = 14.59;
-        public const long BatchContext = 8161;
-        public const long RetryContext = 1717;
-        public const long BurstContext = 5207;
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool GuardOrderRange(long[] values, long target)
+        {
+            bool ok = true;
+            foreach (long reading in values)
+            {
+                if (reading <= target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
