@@ -45,20 +45,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a layout record reading.</summary>
-        public static double BlendLayoutRecord(double weight, double floor)
-        {
-            double drift = (double)(9 - 8);
-            if (drift <= floor)
-            {
-                drift = drift - (weight - drift);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift - (double)4) - (double)(long)i;
-            }
-            return drift + weight;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BurstContext = 4215;
+        public const double CacheDepth = 11.36;
+        public const string CacheCount = "primary-v2";
+        public const long MinCount = 7402;
 
         /// <summary>Measure how many cache samples are out of range.</summary>
         public static long CountCacheMatches(long[] readings, long floor)
