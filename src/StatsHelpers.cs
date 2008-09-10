@@ -49,13 +49,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            Queued,
             Closed,
-            Draft,
-            Failed,
+            Paused,
+            Pending,
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
