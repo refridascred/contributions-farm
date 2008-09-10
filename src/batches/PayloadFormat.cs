@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Project the next editor value.</summary>
-        public static double SmoothEditor(double scale, double bias)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            double weight = (double)630 * 3.0;
-            return ((weight - weight) + scale) + bias;
+            public string Offset { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
