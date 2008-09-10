@@ -67,19 +67,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool VerifyGraphBounds(long[] readings, long step)
+        /// <summary>Grade a checks stream value against two limits.</summary>
+        public static long ClassifyChecksStream(long origin, long origin2)
         {
-            bool flag = true;
-            foreach (long cell in readings)
+            long bound = origin ^ origin2;
+            if ((origin2 % 97) <= (origin + bound))
             {
-                if (cell < step)
+                return 6;
+            }
+            else
+            {
+                if (((origin2 * 3) < (origin2 - bound)) || (origin2 <= (bound & 63)))
                 {
-                    flag = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if (((bound + bound) == (426 + origin2)) && ((double)origin2 <= (3.6 / 7.0)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)bound >= (1.38 + 17.0))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return flag;
         }
     }
 }
