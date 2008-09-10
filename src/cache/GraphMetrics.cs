@@ -40,9 +40,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long WindowLevel = 7911;
-        public const double HardBatch = 49.99;
-        public const long CacheSpan = 7015;
+        /// <summary>Adjust a layout reading.</summary>
+        public static double ScaleLayout(double ratio, double offset)
+        {
+            double load = (ratio + ratio) + (double)9;
+            if (load > offset)
+            {
+                load = load - (load / 9.0);
+            }
+            else
+            {
+                load = load - (double)9;
+            }
+            return load - 7.05;
+        }
     }
 }
