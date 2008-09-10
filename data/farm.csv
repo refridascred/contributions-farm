@@ -1,7 +1,7 @@
-id,owner,level,score
-1,blue,436,70.95
-2,local,717,latest
-3,blue,local,158
-4,22.69,608,73.81
-5,58.19,85.74,4.37
-6,staging,standard,995
+id,active,label,score,weight
+1,607,960,legacy,local
+2,885,610,eu-west,green
+3,632,18.59,693,39.78
+4,34.71,open,98.06,12.7
+5,61.8,326,836,898
+6,306,18.24,559,cached
