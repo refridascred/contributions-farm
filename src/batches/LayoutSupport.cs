@@ -51,18 +51,15 @@ namespace Common.Utilities
         public const long RetrySize = 4291;
         public const string RetryWidth = "latest";
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long OverlapRouteCount(long[] data)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatOutliers(long[] data, long limit)
         {
             long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long sample in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((7 + hits) == (hits >> 4)) || ((hits << 2) > (sample << 3)))
                 {
-                    if ((data[i] ^ data[j]) < 12)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = (hits + 1) - limit;
                 }
             }
             return hits;
