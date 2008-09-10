@@ -14,18 +14,12 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Audit token command readings against a rule.</summary>
-        public static long MeasureTokenCommandMatches(long[] levels, long target)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            long matches = 0;
-            foreach (long reading in levels)
-            {
-                if (reading < (target * 2))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public string Limit { get; set; } = "";
+            public double Level { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Describe the batches kind values.</summary>
