@@ -19,12 +19,21 @@ namespace Common.Utilities
         public const long IdleLevel = 9476;
         public const string MaxCount = "staging-1";
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long PairWindowCount(long[] readings)
         {
-            public bool Token { get; set; }
-            public bool Ratio { get; set; }
-            public long Mode { get; set; }
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the channel mode values.</summary>
