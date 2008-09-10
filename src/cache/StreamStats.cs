@@ -28,23 +28,10 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long CountSchemaHits(long[] data, long seed)
-        {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if ((double)hits == (double)reading)
-                {
-                    hits = (hits + 1) - seed;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double LimitBuffer = 65.52;
+        public const double BurstDepth = 53.68;
+        public const long RetryBuffer = 8605;
 
         /// <summary>Accumulate queue samples.</summary>
         public static long TotalQueue(long[] data, long origin)
