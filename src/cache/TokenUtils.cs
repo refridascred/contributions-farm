@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Classify a farm cache pair into a bucket.</summary>
-        public static long RankFarmCache(long seed, long offset)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long WeighSchema(long[] data)
         {
-            long next = seed - offset;
-            if ((next ^ next) < next)
+            long mix = 12;
+            foreach (long datum in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((seed % 16) > (next << 2))
+                mix = ((mix << 3) ^ (21 >> 3)) % 4096;
+                if ((double)74 > (double)mix)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (!((seed / 6) < (next / 5)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((14.0 + 2.02) <= (double)seed) && ((11.0 * 6.0) == (double)next))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    mix = (mix * 5) + datum;
                 }
             }
+            return mix;
         }
 
         /// <summary>Accumulate commits already samples.</summary>
