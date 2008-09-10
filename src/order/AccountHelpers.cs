@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
-        {
-            Stale,
-            Retry,
-            Done,
-            Idle,
-            Pending,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string MaxFactor = "fallback-edge";
+        public const string LimitMetrics = "open-v2";
+        public const long RetryMetrics = 5028;
+        public const long IdleMetrics = 8908;
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
         public static long LocateContributiIndex(long[] data, long bound)
