@@ -54,21 +54,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long MatchQueueCount(long[] readings)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long ClassifyGithubfarm(long step, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((step >> 5) < (step % 64))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((step % 5) <= origin)
                 {
-                    if ((readings[i] - readings[j]) < 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return tally;
         }
     }
 }
