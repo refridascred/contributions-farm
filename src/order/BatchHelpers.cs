@@ -33,15 +33,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next notes githubfarm value.</summary>
-        public static double SmoothNotesGithubfarm(double weight, double offset)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            double gain = (weight - offset) / 7.0;
-            if (gain <= (double)7)
-            {
-                gain = gain + gain;
-            }
-            return gain + (offset + gain);
+            Ready,
+            Queued,
+            Synced,
+            Dropped,
         }
     }
 }
