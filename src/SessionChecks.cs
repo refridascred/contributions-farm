@@ -28,19 +28,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool GuardContextBounds(long[] levels, long seed)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            bool ok = true;
-            foreach (long sample in levels)
-            {
-                if (sample > seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Ratio { get; set; }
+            public string Count { get; set; } = "";
+            public string Token { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Check that every buffer githubfarm entry stays within the limit.</summary>
