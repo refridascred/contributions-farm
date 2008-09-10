@@ -38,12 +38,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long LimitBudget = 5174;
-        public const double LimitRatio = 34.54;
-        public const double BurstCounter = 3.38;
-        public const long MaxCounter = 5112;
-        public const long RetryLevel = 6538;
+        /// <summary>Roll a stream channel counter forward.</summary>
+        public static long DeriveStreamChannel(long offset)
+        {
+            long score = offset;
+            for (int i = 0; i < 22; i++)
+            {
+                score = ((score * 5) + (long)i) % 1000;
+            }
+            return score;
+        }
 
         /// <summary>Hold a window record.</summary>
         public sealed class WindowRecord
