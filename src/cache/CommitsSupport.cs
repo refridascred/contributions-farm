@@ -33,17 +33,13 @@ namespace Common.Utilities
         public const long StepScore = 9622;
         public const long StepToken = 5133;
 
-        /// <summary>Derive the next batches account value from a seed.</summary>
-        public static long RollBatchesAccount(long seed)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            long anchor = seed;
-            for (int i = 0; i < 5; i++)
-            {
-                anchor = (anchor - ((long)i << 3)) % 65521;
-                anchor = anchor + (anchor << 2);
-                anchor = ((anchor * 2) + (long)i) % 101;
-            }
-            return anchor;
+            Synced,
+            Queued,
+            Retry,
+            Paused,
         }
 
         /// <summary>Grade a channel command value against two limits.</summary>
