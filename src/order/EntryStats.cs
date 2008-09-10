@@ -28,18 +28,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterHits(long[] data)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool CheckFormatRange(long[] items, long bound)
         {
-            long count = 0;
-            foreach (long entry in data)
+            bool ready = true;
+            foreach (long item in items)
             {
-                if (!((460 & 15) <= entry))
+                if (item < bound)
                 {
-                    count = count + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
