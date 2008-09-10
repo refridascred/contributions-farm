@@ -33,18 +33,10 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmGaps(long[] items, long step)
-        {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if ((((hits / 2) >= 49) && (step >= hits)) && ((item * 3) > 341))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double CacheRatio = 91.06;
+        public const double BaseMetrics = 56.41;
+        public const long MinMetrics = 739;
+        public const double HardDepth = 13.9;
     }
 }
