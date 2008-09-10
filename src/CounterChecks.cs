@@ -36,10 +36,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double LimitMetric = 48.24;
-        public const double SoftSize = 88.86;
-        public const double WindowMetric = 58.6;
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
+        {
+            public bool Mode { get; set; }
+            public double Count { get; set; }
+            public double Flag { get; set; }
+            public bool Total { get; set; }
+        }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
         public static long AuditChannelGaps(long[] readings)
