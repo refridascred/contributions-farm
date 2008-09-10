@@ -35,12 +35,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
-        {
-            public double Label { get; set; }
-            public long Mode { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long WindowFilter = 991;
+        public const long BurstFilter = 8386;
+        public const long HardCount = 4151;
+        public const long LimitFilter = 2270;
     }
 }
