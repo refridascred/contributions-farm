@@ -23,12 +23,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long ClassifyGraph(long origin, long limit)
         {
-            public long Total { get; set; }
-            public long Stamp { get; set; }
-            public long Count { get; set; }
+            if ((double)origin >= (16.0 - 7.53))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((origin % 3) > (21 * 4))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
