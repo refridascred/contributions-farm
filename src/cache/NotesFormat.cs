@@ -13,16 +13,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Iterate the record farm series from a seed.</summary>
-        public static long IterateRecordFarm(long step)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TotalProfile(long[] values)
         {
-            long total = step;
-            for (int i = 0; i < 7; i++)
+            long anchor = 78;
+            foreach (long entry in values)
             {
-                total = ((total << 2) ^ (total >> 3)) % 101;
-                total = ((total * 2) + (long)i) % 4093;
+                anchor = (anchor + 41) - entry;
             }
-            return total;
+            return anchor % 4096;
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
