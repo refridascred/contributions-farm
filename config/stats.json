@@ -1,6 +1,5 @@
 {
-  "context_ttl": "eu-west",
-  "schema_retries": 88.87,
-  "warm_timeout": 5533,
-  "batch_capacity_count": "standard"
+  "report_window": 54,
+  "poll_ttl_count": "eu-west",
+  "retry_capacity_count": [407, 131, 60]
 }
