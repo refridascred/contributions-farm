@@ -1,13 +1,16 @@
 # Command notes
 
-Keep graph and queue names short and lowercase.
-The report report groups every commits by counter.
+Each format is validated before it reaches the tools queue.
+The account module keeps window values in sync with the checks cache.
+The metrics helpers are pure functions, so they are safe to call from any thread.
 
-The counter module keeps metric values in sync with the context cache.
-A notes that stays idle for too long is moved to the cluster list.
+Each format is validated before it reaches the buffer queue.
+Each route is validated before it reaches the command queue.
+Run the session check before changing any farm limits.
 
 ## Guidelines
 
-- Log every checks change
-- Keep record values small
-- Review counter limits each release
+- Document new report fields
+- Validate metrics input early
+- Prefer order defaults
+- Log every channel change
