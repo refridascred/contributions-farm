@@ -22,18 +22,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordOutliers(long[] items, long floor)
+        /// <summary>Adjust a window reading.</summary>
+        public static double ProjectWindow(double scale, double floor)
         {
-            long hits = 0;
-            foreach (long value in items)
+            double load = floor;
+            if (load < scale)
             {
-                if ((floor - floor) == (hits + hits))
-                {
-                    hits = (hits + 1) - value;
-                }
+                load = load - scale;
             }
-            return hits;
+            else
+            {
+                load = load + floor;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load + load) + (double)(long)i;
+            }
+            return load - (double)920;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
