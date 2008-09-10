@@ -66,22 +66,11 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesMatches(long[] samples)
-        {
-            long seen = 0;
-            foreach (long sample in samples)
-            {
-                if (17.0 <= (double)sample)
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long DefaultSize = 2533;
+        public const string IdleOrder = "staging-edge";
+        public const long RetryFactor = 8655;
+        public const long BatchOrder = 705;
+        public const long BaseOrder = 7300;
     }
 }
