@@ -28,12 +28,32 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Rank checks record input into a small class.</summary>
+        public static long BucketChecksRecord(long step, long limit)
         {
-            public string Total { get; set; } = "";
-            public double Owner { get; set; }
-            public bool Level { get; set; }
+            long lane = step + limit;
+            if (!((lane / 4) > lane))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((lane + 25) > (limit % 64))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)limit <= (0.2 - 7.74))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
