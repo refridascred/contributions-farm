@@ -37,14 +37,17 @@ namespace Common.Utilities
         public const double MinCache = 68.49;
         public const double SoftCache = 45.65;
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Find the first notes contributi entry that matches the target.</summary>
+        public static long LocateNotesContributiIndex(long[] samples, long step)
         {
-            Idle,
-            Synced,
-            Active,
-            Dropped,
-            Pending,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] <= step) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the batches mode values.</summary>
