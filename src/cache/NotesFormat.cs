@@ -33,12 +33,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            public long Score { get; set; }
-            public bool Limit { get; set; }
-            public string Count { get; set; } = "";
+            public double Rank { get; set; }
+            public long Token { get; set; }
+            public string Weight { get; set; } = "";
+            public string Total { get; set; } = "";
         }
     }
 }
