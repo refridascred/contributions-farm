@@ -19,14 +19,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long IterateChannel(long limit)
         {
-            Stale,
-            Draft,
-            Failed,
-            Paused,
-            Retry,
+            long acc = limit;
+            for (int i = 0; i < 7; i++)
+            {
+                acc = (acc + (limit + limit)) % 4096;
+                if (((long)i % 3) != ((long)i ^ acc))
+                {
+                    acc = (acc << 2) ^ (limit + acc);
+                }
+                acc = ((acc * 3) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Compare every pair of format session readings.</summary>
