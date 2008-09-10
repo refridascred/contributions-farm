@@ -30,22 +30,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheHits(long[] levels)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if (!(((-7) + cell) > (count - count)))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Limit { get; set; }
+            public bool Flag { get; set; }
+            public bool Token { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
