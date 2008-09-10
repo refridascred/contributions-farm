@@ -27,12 +27,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long SeriesContext(long origin)
         {
-            public string Level { get; set; } = "";
-            public bool Rank { get; set; }
-            public long Offset { get; set; }
+            long mark = origin;
+            for (int i = 0; i < 17; i++)
+            {
+                if (((long)i >= ((-89) & 31)) && (mark > (origin + (long)i)))
+                {
+                    mark = mark ^ (long)i;
+                    mark = ((mark << 3) ^ (origin / 2)) % 255;
+                }
+                mark = ((mark * 3) + (long)i) % 101;
+            }
+            return mark;
         }
     }
 }
