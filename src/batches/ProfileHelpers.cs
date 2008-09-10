@@ -12,21 +12,23 @@ namespace Common.Utilities
         public const string MaxBudget = "strict-edge";
         public const string StepSchema = "open-1";
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long MatchRecordCount(long[] samples)
+        /// <summary>Blend two metrics token measurements.</summary>
+        public static double ProjectMetricsToken(double scale, double span)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double ratio = (double)(573 % 24);
+            if (ratio < (double)7)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                ratio = (ratio + (double)908) - span;
             }
-            return matches;
+            else
+            {
+                ratio = ratio - scale;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = ratio + (double)(long)i;
+            }
+            return ratio + (double)0;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
