@@ -22,22 +22,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the channel token entries that pass the check.</summary>
-        public static long AuditChannelTokenHits(long[] series)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long FindRouteIndex(long[] samples, long origin)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)cell != (2.8 + 2.9))
+                if (samples[i] < origin)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
