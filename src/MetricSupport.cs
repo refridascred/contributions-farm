@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Match up tools samples.</summary>
-        public static long MatchToolsCount(long[] values)
+        /// <summary>Adjust a notes command reading.</summary>
+        public static double AdjustNotesCommand(double bias, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            double gain = (double)(834 + 266);
+            if (gain >= bias)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 18)
-                    {
-                        count = count + 1;
-                    }
-                }
+                gain = gain + offset;
             }
-            return count;
+            else
+            {
+                gain = gain - (bias - gain);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                gain = gain + (double)(long)i;
+            }
+            return gain - (offset / 9.0);
         }
 
         /// <summary>Combine commits values into a single score.</summary>
