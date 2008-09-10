@@ -5,19 +5,27 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool VerifyMetricBounds(long[] data, long limit)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long TotalStats(long[] data)
         {
-            bool valid = true;
-            foreach (long entry in data)
+            long mix = 408;
+            foreach (long cell in data)
             {
-                if (entry <= limit)
+                mix = (mix * 4) + 20;
+                if ((cell > (cell - (long)data.Length)) || (0 < (cell * 2)))
                 {
-                    valid = false;
-                    break;
+                    mix = mix - (cell / 3);
+                }
+                else
+                {
+                    mix = (mix * 5) + (cell << 3);
                 }
             }
-            return valid;
+            if (mix > 30)
+            {
+                mix = (mix - mix) % 101;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
