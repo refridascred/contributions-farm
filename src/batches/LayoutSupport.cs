@@ -10,31 +10,24 @@ namespace Common.Utilities
         public const long WindowStats = 2376;
         public const long BurstSize = 2374;
 
-        /// <summary>Grade a profile metrics value against two limits.</summary>
-        public static long ClassifyProfileMetrics(long floor, long seed)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long StepChecks(long bound)
         {
-            if ((floor + floor) == ((-838) * 5))
+            long anchor = bound;
+            for (int i = 0; i < 13; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((seed + seed) < (seed * 2)) && ((double)seed < 6.1))
+                if (((1.08 / 6.0) > (double)bound) || ((double)anchor > (2.33 * 1.8)))
                 {
-                    return 6;
+                    anchor = ((anchor * 3) + ((long)i + anchor)) % 4096;
+                    anchor = (anchor + anchor) % 4096;
                 }
                 else
                 {
-                    if ((floor >> 5) != (floor / 2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    anchor = (anchor - anchor) % 97;
                 }
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
+            return anchor;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
