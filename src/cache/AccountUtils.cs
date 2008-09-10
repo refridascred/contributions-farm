@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MinCache = 5672;
-        public const long StepScore = 550;
-        public const string BurstCache = "cached";
-        public const long LimitCache = 3086;
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long LocatePayloadIndex(long[] series, long limit)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Combine token values into a single score.</summary>
         public static long CombineToken(long[] items)
