@@ -19,12 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
-        {
-            public double Flag { get; set; }
-            public double Level { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MaxCommand = 2201;
+        public const long BaseCommand = 7147;
+        public const long CacheDepth = 8345;
+        public const double RetryRatio = 94.34;
+        public const long MinLevel = 1663;
 
         /// <summary>Derive the next tools value from a seed.</summary>
         public static long DeriveTools(long floor)
