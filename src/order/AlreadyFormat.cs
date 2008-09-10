@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LookupContributiIndex(long[] values, long limit)
+        /// <summary>Adjust a token reading.</summary>
+        public static double ProjectToken(double ratio, double span)
         {
-            for (int i = 0; i < values.Length; i++)
+            double load = ratio;
+            if (load <= (16.0 * 2.28))
             {
-                if (values[i] == limit)
-                {
-                    return (long)i;
-                }
+                load = load - (span * 5.04);
             }
-            return -1;
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load + (ratio / 2.0)) - (double)(long)i;
+            }
+            return load - (load / 6.0);
         }
 
         /// <summary>Define entry limits and defaults.</summary>
