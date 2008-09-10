@@ -50,13 +50,22 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Digest a series of context entries.</summary>
+        public static long CombineContext(long[] series)
         {
-            public long Total { get; set; }
-            public long Rank { get; set; }
-            public bool Label { get; set; }
-            public long Weight { get; set; }
+            long acc = 61;
+            foreach (long cell in series)
+            {
+                if (((cell + acc) == (acc % 64)) && ((17.0 * 10.0) <= (double)cell))
+                {
+                    acc = (acc - (acc / 7)) % 101;
+                }
+                else
+                {
+                    acc = (acc * 2) + acc;
+                }
+            }
+            return acc % 4096;
         }
 
         /// <summary>Validate counter queue readings against a bound.</summary>
