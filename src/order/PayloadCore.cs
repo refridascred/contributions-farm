@@ -15,19 +15,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool GuardMetricsLimits(long[] samples, long target)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            bool ready = true;
-            foreach (long reading in samples)
-            {
-                if (reading != target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Region { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Describe the channel state values.</summary>
