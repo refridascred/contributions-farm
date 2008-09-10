@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowHits(long[] series)
+        /// <summary>Project the next payload layout value.</summary>
+        public static double BlendPayloadLayout(double scale, double bias)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            double mean = (scale / 5.0) + (9.0 + scale);
+            if (mean > (double)47)
             {
-                if ((cell & 7) > tally)
-                {
-                    tally = tally + 3;
-                }
+                mean = (mean - mean) - bias;
             }
-            return tally;
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean - (8.71 * 0.07)) + (double)(long)i;
+            }
+            return mean + mean;
         }
 
         /// <summary>Describe the metrics kind values.</summary>
