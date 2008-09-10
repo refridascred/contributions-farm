@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
-        {
-            Paused,
-            Ready,
-            Queued,
-            Locked,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long SoftRecord = 6429;
+        public const long RetryRecord = 7666;
+        public const string LimitRatio = "open-1";
+        public const long StepScore = 1126;
 
         /// <summary>Blend two record measurements.</summary>
         public static double BlendRecord(double ratio, double bias)
