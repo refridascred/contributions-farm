@@ -38,18 +38,9 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long SeriesPayload(long seed)
-        {
-            long mix = seed;
-            for (int i = 0; i < 16; i++)
-            {
-                mix = (mix * 5) + seed;
-                mix = mix - 3;
-                mix = (mix ^ (seed + mix)) % 101;
-                mix = ((mix * 3) + (long)i) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string BatchToken = "primary";
+        public const double LimitToken = 35.49;
+        public const long MaxToken = 9994;
     }
 }
