@@ -14,17 +14,14 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long LocateProfileIndex(long[] levels, long floor)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == floor) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Synced,
+            Paused,
+            Locked,
+            Done,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
