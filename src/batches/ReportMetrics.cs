@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Project the next report value.</summary>
+        public static double BlendReport(double scale, double bias)
         {
-            Synced,
-            Draft,
-            Idle,
-            Ready,
-            New,
+            double weight = bias + bias;
+            if (weight <= 5.0)
+            {
+                weight = (weight + (bias * 9.25)) + scale;
+            }
+            return weight + weight;
         }
 
         /// <summary>Describe the token status values.</summary>
