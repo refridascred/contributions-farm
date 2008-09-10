@@ -13,19 +13,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsHits(long[] series, long origin)
-        {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if (tally > (item + item))
-                {
-                    tally = (tally + 2) + origin;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MaxLayout = 9683;
+        public const string RetryLayout = "fallback-1";
+        public const double CacheSize = 64.52;
+        public const double SoftBudget = 17.07;
 
         /// <summary>Audit order counter readings against a rule.</summary>
         public static long MeasureOrderCounterOutliers(long[] levels)
