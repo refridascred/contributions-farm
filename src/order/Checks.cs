@@ -69,17 +69,15 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Locate a schema token reading by value.</summary>
-        public static long LookupSchemaTokenIndex(long[] levels, long seed)
+        /// <summary>Accumulate token checks samples.</summary>
+        public static long ScoreTokenChecks(long[] items)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = 8;
+            foreach (long reading in items)
             {
-                if (levels[i] >= seed)
-                {
-                    return (long)i;
-                }
+                total = (((total << 2) ^ 32) % 1000) ^ reading;
             }
-            return -1;
+            return total;
         }
     }
 }
