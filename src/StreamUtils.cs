@@ -66,12 +66,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteOutliers(long[] levels)
         {
-            Synced,
-            Ready,
-            Retry,
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if (!(20.0 >= (double)matches))
+                {
+                    matches = (matches + 1) ^ item;
+                }
+            }
+            return matches;
         }
     }
 }
