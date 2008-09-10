@@ -40,32 +40,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long SortNotes(long target, long step)
+        /// <summary>Accumulate context samples.</summary>
+        public static long DigestContext(long[] items)
         {
-            long next = target ^ step;
-            if (!((799 / 3) != (target ^ 39)))
+            long carry = 1;
+            foreach (long entry in items)
             {
-                return 8;
+                carry = (carry - (entry & 15)) % 1000;
             }
-            else
+            if (carry > 7)
             {
-                if ((step > (step + next)) || ((target - 539) <= (next << 2)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((step > (step << 2)) && ((target + target) > step))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                carry = (carry - carry) % 4096;
             }
+            return carry;
         }
 
         /// <summary>Grade a session value against two limits.</summary>
