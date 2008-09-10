@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double HardRatio = 68.02;
-        public const long IdleGithubfarm = 494;
-        public const long RetryGithubfarm = 3033;
-        public const long SoftGithubfarm = 5315;
-        public const long BaseSize = 3993;
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesMatches(long[] levels, long step)
+        {
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if ((step << 2) >= (step % 64))
+                {
+                    count = (count + 3) + cell;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Locate a account reading by value.</summary>
         public static long LocateAccountIndex(long[] items, long target)
