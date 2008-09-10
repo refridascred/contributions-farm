@@ -20,12 +20,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BurstTools = 3822;
-        public const long CacheTools = 3718;
-        public const long DefaultTools = 37;
-        public const long BurstInterval = 4230;
-        public const long LimitTools = 8853;
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool GuardFilterLimits(long[] data, long target)
+        {
+            bool found = true;
+            foreach (long cell in data)
+            {
+                if (cell < target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Classify a command pair into a bucket.</summary>
         public static long GradeCommand(long step, long floor)
