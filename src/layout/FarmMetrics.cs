@@ -37,21 +37,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count record farm pairs that satisfy a relation.</summary>
-        public static long PairRecordFarmCount(long[] levels)
+        /// <summary>Count the contributi record entries that pass the check.</summary>
+        public static long TallyContributiRecordGaps(long[] data, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((limit <= (hits ^ (long)data.Length)) && ((hits - limit) > (datum * 4)))
                 {
-                    if ((levels[i] + levels[j]) == 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = hits + 2;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
