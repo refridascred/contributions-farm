@@ -55,9 +55,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long SoftWidth = 5974;
-        public const string CacheTimeout = "open-1";
-        public const long SoftBatch = 7143;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long HardCount = 521;
+        public const string BurstContext = "stable";
+        public const long HardContext = 8997;
+        public const string BatchFactor = "legacy-1";
     }
 }
