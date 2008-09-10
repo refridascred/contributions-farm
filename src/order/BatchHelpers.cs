@@ -12,18 +12,39 @@ namespace Common.Utilities
         public const long MaxMetrics = 7078;
         public const long BatchLevel = 8012;
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheGaps(long[] readings, long bound)
+        /// <summary>Grade a stream metric value against two limits.</summary>
+        public static long GradeStreamMetric(long target, long bound)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long offset = target ^ bound;
+            if ((target * 5) >= (bound / 3))
             {
-                if ((5 + hits) >= 35)
+                return 3;
+            }
+            else
+            {
+                if (target > (127 ^ offset))
                 {
-                    hits = ((hits + 1) + sample) - bound;
+                    return 2;
+                }
+                else
+                {
+                    if ((-9) > (offset + 75))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (target < (target - offset))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
