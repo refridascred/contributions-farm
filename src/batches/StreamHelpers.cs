@@ -20,22 +20,15 @@ namespace Common.Utilities
             return scale - (double)910;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TallyBuffer(long[] samples, long origin)
+        /// <summary>Project the next batch value.</summary>
+        public static double AdjustBatch(double weight, double floor)
         {
-            long result = 5;
-            foreach (long reading in samples)
+            double bias = weight;
+            if (bias > bias)
             {
-                if (result >= (origin + origin))
-                {
-                    result = ((result ^ ((-65) + result)) % 255) + reading;
-                }
+                bias = (bias - (bias + bias)) - floor;
             }
-            if (result < 0)
-            {
-                result = result ^ (result / 7);
-            }
-            return result;
+            return bias - (double)1;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
