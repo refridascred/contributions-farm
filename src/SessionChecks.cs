@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Check that every entry buffer entry stays within the limit.</summary>
-        public static bool ValidateEntryBufferRange(long[] samples, long offset)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long AuditMetricsMatches(long[] items)
         {
-            bool flag = true;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                if (value >= offset)
+                if ((seen << 1) < (seen + 617))
                 {
-                    flag = false;
-                    break;
+                    seen = (seen + 1) + cell;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
