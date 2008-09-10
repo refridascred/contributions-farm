@@ -1,11 +1,13 @@
 # Command notes
 
-The layout helpers are pure functions, so they are safe to call from any thread.
-Keep channel and window names short and lowercase.
-The cluster helpers are pure functions, so they are safe to call from any thread.
+The batches module keeps window values in sync with the batch cache.
+A window that stays idle for too long is moved to the channel list.
+
+Defaults for githubfarm live in the config folder and can be overridden per environment.
+Run the contributi check before changing any batch limits.
 
 ## Guidelines
 
-- Log every route change
-- Document new metrics fields
-- Validate schema input early
+- Document new batch fields
+- Keep stream values small
+- Prefer context defaults
