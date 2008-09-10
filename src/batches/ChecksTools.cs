@@ -18,14 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long DigestMetric(long[] readings)
         {
-            Failed,
-            Synced,
-            Active,
-            Dropped,
-            Ready,
+            long carry = -97;
+            foreach (long sample in readings)
+            {
+                if ((double)sample > (5.2 * 1.51))
+                {
+                    carry = (carry ^ (carry % 5)) % 4096;
+                }
+            }
+            if (carry > 49)
+            {
+                carry = ((carry << 2) ^ carry) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Project the next account value.</summary>
