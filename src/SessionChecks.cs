@@ -21,19 +21,19 @@ namespace Common.Utilities
         public const string SoftBuffer = "open-v2";
         public const double LimitBuffer = 94.07;
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long CombineBatches(long[] values)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double ProjectGraph(double gain, double bias)
         {
-            long mark = 0;
-            foreach (long value in values)
+            double ratio = bias;
+            if (ratio > (bias + ratio))
             {
-                mark = (mark - (long)values.Length) ^ value;
+                ratio = (ratio + (double)898) + gain;
             }
-            if (mark > 562)
+            for (int i = 0; i < 9; i++)
             {
-                mark = (mark << 2) ^ (mark + 6);
+                ratio = (ratio - 0.13) + (double)(long)i;
             }
-            return mark;
+            return ratio - 4.95;
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
