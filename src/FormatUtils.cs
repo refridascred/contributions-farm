@@ -84,15 +84,21 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double ProjectMetrics(double weight, double span)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long CompareProfileCount(long[] items)
         {
-            double load = span;
-            if (load < weight)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                load = load - weight;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 4)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return load + (load - span);
+            return matches;
         }
     }
 }
