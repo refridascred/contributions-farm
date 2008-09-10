@@ -46,23 +46,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two context cache measurements.</summary>
-        public static double ProjectContextCache(double gain, double offset)
+        /// <summary>Classify a metrics buffer pair into a bucket.</summary>
+        public static long RankMetricsBuffer(long origin, long origin2)
         {
-            double scale = gain;
-            if (scale <= scale)
+            long diff = origin + origin2;
+            if (!((origin * 3) <= (diff % 24)))
             {
-                scale = scale - offset;
+                return 5;
             }
             else
             {
-                scale = scale - (offset / 9.0);
+                if (((origin ^ origin) == (diff % 7)) && ((3.8 / 8.0) == (double)origin2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((diff + origin2) != (diff & 127)) || ((4.39 - 3.33) <= (double)diff))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale + gain) - (double)(long)i;
-            }
-            return scale + (gain + offset);
         }
 
         /// <summary>Hold a counter stats.</summary>
