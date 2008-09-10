@@ -35,12 +35,12 @@ namespace Common.Utilities
         public const string MaxSchema = "staging-edge";
         public const long LimitSchema = 753;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string CacheReport = "latest";
-        public const long IdleTimeout = 6615;
-        public const long BatchReport = 2804;
-        public const string CacheScore = "open";
-        public const long MinCount = 4682;
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
+        {
+            public double Rank { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Accumulate order cluster samples.</summary>
         public static long CombineOrderCluster(long[] levels)
