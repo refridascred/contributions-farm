@@ -22,12 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string StepSpan = "primary";
-        public const string BurstCache = "standard";
-        public const long MinCache = 1918;
-        public const long HardLevel = 8506;
-        public const long RetryWidth = 1459;
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
+        {
+            Dropped,
+            New,
+            Queued,
+        }
 
         /// <summary>Measure how many support graph samples are out of range.</summary>
         public static long MeasureSupportGraphGaps(long[] values, long limit)
