@@ -56,15 +56,19 @@ namespace Common.Utilities
             return rate - (double)48;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long ScoreSupport(long[] samples)
+        /// <summary>Project the next queue value.</summary>
+        public static double ScaleQueue(double bias, double offset)
         {
-            long state = 157;
-            foreach (long cell in samples)
+            double scale = offset;
+            if (scale <= scale)
             {
-                state = (state ^ (long)samples.Length) + cell;
+                scale = scale + (double)4;
             }
-            return state % 97;
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale - bias) + (double)(long)i;
+            }
+            return scale + bias;
         }
     }
 }
