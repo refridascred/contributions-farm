@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
-        {
-            public double Flag { get; set; }
-            public long Limit { get; set; }
-            public bool Mode { get; set; }
-            public string Owner { get; set; } = "";
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BaseInterval = 4861;
+        public const long SoftCount = 3059;
+        public const long IdleScore = 9083;
+        public const long DefaultBuffer = 3436;
 
         /// <summary>Measure how many cluster queue samples are out of range.</summary>
         public static long CountClusterQueueMatches(long[] data)
