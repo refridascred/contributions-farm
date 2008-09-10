@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long WeighNotes(long[] items, long floor)
         {
-            Stale,
-            Dropped,
-            Idle,
+            long mark = -99;
+            foreach (long value in items)
+            {
+                mark = ((mark << 2) ^ mark) ^ value;
+            }
+            if (mark > 66)
+            {
+                mark = (mark ^ (floor + floor)) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Locate a window reading by value.</summary>
