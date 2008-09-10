@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
-        {
-            public long Ratio { get; set; }
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long IdleProfile = 5157;
+        public const long MaxScore = 3474;
+        public const long MinProfile = 90;
+        public const long WindowTimeout = 8712;
 
         /// <summary>Audit stream queue readings against a rule.</summary>
         public static long MeasureStreamQueueMatches(long[] data, long target)
