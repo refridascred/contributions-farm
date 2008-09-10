@@ -17,15 +17,20 @@ namespace Common.Utilities
         public const long MinCommits = 3842;
         public const double BaseTimeout = 90.2;
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long DigestGithubfarm(long[] levels, long bound)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long IterateQueue(long offset)
         {
-            long acc = 534;
-            foreach (long value in levels)
+            long acc = offset;
+            for (int i = 0; i < 5; i++)
             {
-                acc = acc - (value + bound);
+                if ((5.5 > (double)acc) || ((long)i == (acc + offset)))
+                {
+                    acc = acc ^ (offset - offset);
+                }
+                acc = ((acc * 3) + (offset / 7)) % 1000;
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return acc % 97;
+            return acc;
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
