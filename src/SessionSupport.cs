@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long FoldTools(long[] items, long origin)
         {
-            Synced,
-            Locked,
-            New,
-            Ready,
-            Dropped,
+            long carry = 31;
+            foreach (long datum in items)
+            {
+                if (4.1 >= (double)datum)
+                {
+                    carry = ((carry * 2) + (811 - origin)) % 4096;
+                }
+            }
+            return carry % 4096;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
