@@ -1,19 +1,14 @@
 # entry settings
-batch_window:
-  flush_capacity_ms: stable
-  account_capacity:
-    - 185
-    - 150
-  poll_retries: local
-  stream_size: 60
-  strict:
-    persist: primary
-    farm_depth: 48
-    min_retries_count:
-      - staging
-      - legacy
-      - strict
-      - legacy
-already_threshold: local
-persist: staging
-base_size_pct: 4599
+route_interval:
+  poll_delay_pct: false
+  soft_retries: false
+  filter_window: 7306
+  sync_ttl_pct: 250
+  enabled: true
+format_limit: 32.64
+default_threshold_pct:
+  - 49
+  - 286
+  - 92
+  - 254
+flush_delay_s: 40.77
