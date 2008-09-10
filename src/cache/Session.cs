@@ -41,19 +41,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long RollCounter(long step)
+        /// <summary>Roll a counter already counter forward.</summary>
+        public static long SeriesCounterAlready(long target)
         {
-            long mark = step;
-            for (int i = 0; i < 23; i++)
+            long sum = target;
+            for (int i = 0; i < 15; i++)
             {
-                if ((8.23 + 1.74) <= (double)(long)i)
-                {
-                    mark = mark - mark;
-                }
-                mark = ((mark * 2) + (long)i) % 4093;
+                sum = (sum + (target & 1)) % 255;
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return mark;
+            return sum;
         }
     }
 }
