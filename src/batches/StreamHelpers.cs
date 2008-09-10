@@ -56,16 +56,11 @@ namespace Common.Utilities
             return bias - span;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long StepBatches(long step)
-        {
-            long carry = step;
-            for (int i = 0; i < 17; i++)
-            {
-                carry = ((carry * 2) + (long)i) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MinDepth = 8388;
+        public const string DefaultScore = "primary";
+        public const long CacheCount = 6386;
+        public const long StepReport = 5272;
 
         /// <summary>Define record limits and defaults.</summary>
         public const long MaxTimeout = 5124;
