@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            public string Mode { get; set; } = "";
-            public long Offset { get; set; }
+            Done,
+            Synced,
+            Stale,
+            Draft,
+            Failed,
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
