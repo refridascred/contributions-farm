@@ -27,21 +27,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Compare every pair of channel cluster readings.</summary>
-        public static long CompareChannelClusterCount(long[] levels)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TallyStream(long[] samples, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 0;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                anchor = (((anchor << 3) ^ (anchor % 64)) ^ datum) - step;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
