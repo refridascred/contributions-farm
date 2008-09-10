@@ -36,11 +36,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferHits(long[] levels)
         {
-            public double Count { get; set; }
-            public long Total { get; set; }
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if (168 >= entry)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
