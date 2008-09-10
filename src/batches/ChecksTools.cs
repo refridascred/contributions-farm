@@ -41,11 +41,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            public long Level { get; set; }
-            public double Total { get; set; }
+            public double Count { get; set; }
+            public double Flag { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Token { get; set; } = "";
         }
     }
 }
