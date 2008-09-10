@@ -22,23 +22,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double ProjectWindow(double scale, double floor)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long PairMetricsCount(long[] data)
         {
-            double load = floor;
-            if (load < scale)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                load = load - scale;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 16)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                load = load + floor;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load + load) + (double)(long)i;
-            }
-            return load - (double)920;
+            return tally;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
