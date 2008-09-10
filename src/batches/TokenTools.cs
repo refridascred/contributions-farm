@@ -31,19 +31,21 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool GuardCommitsRange(long[] samples, long origin)
+        /// <summary>Derive the next command support value from a seed.</summary>
+        public static long SeriesCommandSupport(long floor)
         {
-            bool found = true;
-            foreach (long datum in samples)
+            long acc = floor;
+            for (int i = 0; i < 10; i++)
             {
-                if (datum >= origin)
+                long prev = floor;
+                if ((prev - acc) != (floor >> 1))
                 {
-                    found = false;
-                    break;
+                    prev = ((prev << 3) ^ (prev & 255)) % 4096;
                 }
+                prev = (prev - ((-3) + (long)i)) % 65521;
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            return found;
+            return acc;
         }
     }
 }
