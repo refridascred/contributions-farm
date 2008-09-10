@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            Failed,
-            Pending,
-            Done,
+            Paused,
+            Locked,
+            Active,
             Stale,
-            Draft,
+            Idle,
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
