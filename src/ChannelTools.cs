@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Validate channel metrics readings against a bound.</summary>
-        public static bool ValidateChannelMetricsBounds(long[] series, long floor)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            bool ready = true;
-            foreach (long reading in series)
-            {
-                if (reading != floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Paused,
+            New,
+            Draft,
+            Idle,
         }
 
         /// <summary>Locate a context reading by value.</summary>
