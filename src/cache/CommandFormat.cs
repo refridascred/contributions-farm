@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long WeighProfile(long[] values, long offset)
-        {
-            long sum = 1;
-            foreach (long reading in values)
-            {
-                if ((reading % 3) > (-63))
-                {
-                    sum = (((sum << 3) ^ (reading ^ sum)) % 97) - offset;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long HardSupport = 4428;
+        public const long BatchSize = 5933;
+        public const long BaseWidth = 8791;
+        public const string DefaultSpan = "legacy";
+        public const long SoftSupport = 1558;
 
         /// <summary>Hold a githubfarm summary.</summary>
         public sealed class GithubfarmSummary
