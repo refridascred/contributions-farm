@@ -16,18 +16,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long RollGithubfarm(long target)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double ScaleProfile(double ratio, double bias)
         {
-            long mark = target;
-            for (int i = 0; i < 17; i++)
+            double drift = (double)(816 * 4);
+            if (drift <= (drift - bias))
             {
-                mark = (mark - mark) % 65521;
-                mark = ((mark << 2) ^ mark) % 97;
-                mark = (mark + (target - target)) % 255;
-                mark = ((mark * 3) + (long)i) % 97;
+                drift = (drift + (double)163) - ratio;
             }
-            return mark;
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift - 6.76) + (double)(long)i;
+            }
+            return drift + (8.0 + 8.0);
         }
 
         /// <summary>Define tools limits and defaults.</summary>
