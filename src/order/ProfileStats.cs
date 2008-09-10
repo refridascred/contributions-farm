@@ -22,19 +22,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every notes contributi entry stays within the limit.</summary>
-        public static bool ValidateNotesContributiBounds(long[] items, long step)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long BucketBatches(long origin, long seed)
         {
-            bool ready = true;
-            foreach (long entry in items)
+            if ((origin << 2) == (1 - origin))
             {
-                if (entry != step)
+                return 0;
+            }
+            else
+            {
+                if (((seed * 3) <= seed) || (origin >= (7 + 752)))
                 {
-                    ready = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((double)origin <= (7.0 - 7.9))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((seed <= (seed & 127)) && ((origin + origin) >= 0))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
