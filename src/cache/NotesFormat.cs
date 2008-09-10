@@ -10,18 +10,11 @@ namespace Common.Utilities
         public const double LimitLevel = 19.83;
         public const long IdleTools = 1574;
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchMatches(long[] data)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            long hits = 0;
-            foreach (long item in data)
-            {
-                if (((0.19 / 9.0) >= (double)item) && (hits <= (508 ^ hits)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public long Rank { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
