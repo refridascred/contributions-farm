@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            public double Weight { get; set; }
-            public double Limit { get; set; }
-            public bool Region { get; set; }
-            public long Label { get; set; }
+            public long Limit { get; set; }
+            public bool Score { get; set; }
+            public string Weight { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
