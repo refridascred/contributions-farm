@@ -1,9 +1,8 @@
 {
-  "profile_ratio": "open",
-  "account_interval": 30,
-  "enabled": {
-    "burst_interval_ms": 42.45,
-    "dry_run": "eu-west",
-    "batch_capacity": "stable"
-  }
+  "cache_capacity_count": 7.39,
+  "hard_limit": true,
+  "strict": 42,
+  "soft_depth_count": false,
+  "order_ratio": "legacy",
+  "poll_timeout": 44
 }
