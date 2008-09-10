@@ -1,20 +1,5 @@
 # support settings
-burst_ttl:
-  - open
-  - latest
-  - staging
-account_ratio: false
-base_delay_count: strict
-burst_depth:
-  - standard
-  - staging
-  - strict
-  - fallback
-notes_size:
-  farm_threshold: edge
-  base_size: 1024
-  warm_threshold:
-    warm_size: 67
-    cache_capacity_s: 20.02
-    default_interval_count: local
-    burst_ratio_pct: 55
+default_threshold_count: 74
+warm_limit_pct: 56
+min_limit_ms: 3764
+enabled: edge
