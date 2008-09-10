@@ -44,18 +44,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long CombineCache(long[] series)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long IterateAlready(long offset)
         {
-            long anchor = 11;
-            foreach (long sample in series)
+            long mix = offset;
+            for (int i = 0; i < 16; i++)
             {
-                if (((8 >> 2) >= sample) && ((1 & 63) < sample))
+                if (((double)offset != (double)mix) || ((13.0 / 4.0) == (double)mix))
                 {
-                    anchor = (anchor * 4) + (22 >> 1);
+                    mix = (mix ^ (long)i) % 65521;
+                    mix = (mix - (mix + offset)) % 65521;
+                    continue;
                 }
+                else
+                {
+                    mix = mix ^ mix;
+                }
+                mix = ((mix << 2) ^ (long)i) % 65521;
+                mix = (mix ^ mix) % 1000;
+                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return anchor;
+            return mix;
         }
 
         /// <summary>Describe the route phase values.</summary>
