@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Match up entry samples.</summary>
-        public static long OverlapEntryCount(long[] series)
+        /// <summary>Derive the next channel profile value from a seed.</summary>
+        public static long RollChannelProfile(long origin)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = origin;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 2)
-                    {
-                        count = count + 1;
-                    }
-                }
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
