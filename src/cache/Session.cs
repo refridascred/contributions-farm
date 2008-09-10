@@ -27,18 +27,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionGaps(long[] readings, long bound)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if ((66 < (item >> 4)) && (((896 * 3) < (seen + seen)) && ((seen << 3) <= (bound & 127))))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Synced,
+            Dropped,
+            Failed,
+            Locked,
         }
 
         /// <summary>Roll a counter already counter forward.</summary>
