@@ -38,25 +38,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long ClassifyCache(long limit, long target)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool CheckReportBounds(long[] readings, long step)
         {
-            long prev = limit + target;
-            if ((prev >> 4) == (target / 9))
+            bool found = true;
+            foreach (long value in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if (limit < (prev - prev))
+                if (value < step)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
