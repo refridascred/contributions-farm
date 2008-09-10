@@ -71,13 +71,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
-        {
-            Idle,
-            Active,
-            Locked,
-            Paused,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string BaseWindow = "standard-edge";
+        public const long SoftWindow = 2267;
+        public const long BatchWindow = 1392;
     }
 }
