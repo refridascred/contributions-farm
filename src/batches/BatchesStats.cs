@@ -26,22 +26,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyMatches(long[] items, long seed)
+        /// <summary>Find the first layout buffer entry that matches the target.</summary>
+        public static long LookupLayoutBufferIndex(long[] levels, long floor)
         {
-            long count = 0;
-            foreach (long datum in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((datum * 3) > (datum / 3))
+                if (levels[i] <= floor)
                 {
-                    count = (count + 1) + seed;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Locate a record reading by value.</summary>
