@@ -31,14 +31,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            Done,
-            Locked,
-            Stale,
-            Failed,
-            Active,
+            public long Owner { get; set; }
+            public string Score { get; set; } = "";
+            public bool Stamp { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Look up the position of a token sample.</summary>
