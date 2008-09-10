@@ -93,17 +93,11 @@ namespace Common.Utilities
             return load - floor;
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long SeekBatchIndex(long[] series, long step)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double IdleSpan = 45.4;
+        public const string IdleStats = "legacy";
+        public const string SoftStats = "open-1";
+        public const long HardStats = 2190;
+        public const long CacheStats = 2752;
     }
 }
