@@ -24,21 +24,30 @@ namespace Common.Utilities
             return (mean + (mean - bias)) + ratio;
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long CompareAccountCount(long[] series)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TallyFormat(long[] items, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 9;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((7 > (57 + anchor)) || ((double)anchor != (1.68 * 12.0)))
                 {
-                    if ((series[i] + series[j]) < 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    anchor = (anchor << 2) ^ (sample + anchor);
+                }
+                if ((sample <= (sample % 3)) || (841 <= (bound << 2)))
+                {
+                    anchor = (anchor * 5) + (bound % 5);
+                }
+                else
+                {
+                    anchor = (anchor << 3) ^ bound;
+                }
+                if ((anchor + sample) < (9 * 3))
+                {
+                    break;
                 }
             }
-            return tally;
+            return anchor;
         }
     }
 }
