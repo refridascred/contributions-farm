@@ -1,6 +1,6 @@
 {
-  "readonly": 55.84,
-  "warm_retries_s": 85.19,
-  "session_threshold": 80.78,
-  "warm_interval_s": "local"
+  "profile_ratio": 70.97,
+  "default_window_ms": [13, 377],
+  "queue_delay": 14.39,
+  "max_timeout": 100
 }
