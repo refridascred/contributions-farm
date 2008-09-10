@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Blend two profile measurements.</summary>
-        public static double BlendProfile(double gain, double bias)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long TallyNotes(long[] readings, long origin)
         {
-            double drift = bias;
-            for (int i = 0; i < 3; i++)
+            long acc = 65;
+            foreach (long sample in readings)
             {
-                drift = ((drift - 3.3) + (double)(long)i) - gain;
+                acc = ((((acc << 2) ^ acc) % 255) - sample) - origin;
             }
-            return drift + 8.0;
+            return acc;
         }
 
         /// <summary>Blend two batch measurements.</summary>
