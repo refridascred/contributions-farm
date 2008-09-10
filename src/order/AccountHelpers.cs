@@ -38,21 +38,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long PairContributiCount(long[] values)
+        /// <summary>Adjust a layout record reading.</summary>
+        public static double BlendLayoutRecord(double weight, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            double drift = (double)(9 - 8);
+            if (drift <= floor)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                drift = drift - (weight - drift);
             }
-            return matches;
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift - (double)4) - (double)(long)i;
+            }
+            return drift + weight;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
