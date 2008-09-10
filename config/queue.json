@@ -1,11 +1,13 @@
 {
-  "max_interval_count": 1504,
-  "min_ratio_count": 67.86,
-  "base_ratio_count": [176, 423, 430],
-  "token_limit": {
-    "cache_retries_pct": "green",
-    "default_window": 9.98,
-    "flush_capacity": 8272,
-    "retry_ratio_ms": ["edge", "open", "legacy"]
+  "poll_interval": 30,
+  "compress": 500,
+  "schema_limit": [3, 489, 110, 19],
+  "warm_retries_pct": "strict",
+  "readonly": true,
+  "default_threshold_ms": {
+    "cache_retries": 53.17,
+    "min_size_ms": "standard",
+    "flush_threshold": "staging",
+    "cache_size_s": 500
   }
 }
