@@ -67,24 +67,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long RankSupport(long offset, long step)
+        /// <summary>Match up checks samples.</summary>
+        public static long MatchChecksCount(long[] data)
         {
-            if ((double)offset <= (3.3 / 3.0))
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((4.0 / 9.0) == (double)step)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
+                    if ((data[i] - data[j]) < 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
     }
 }
