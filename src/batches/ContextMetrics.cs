@@ -16,11 +16,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long SortEntry(long origin, long bound)
         {
-            public double Ratio { get; set; }
-            public long Token { get; set; }
+            if ((bound < 569) || (bound < (origin % 60)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((4.9 * 11.0) <= (double)origin)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
