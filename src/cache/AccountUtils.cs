@@ -36,9 +36,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BaseReport = 1265;
-        public const long BurstReport = 4803;
-        public const long WindowReport = 2846;
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long TallyEntryGaps(long[] samples)
+        {
+            long count = 0;
+            foreach (long reading in samples)
+            {
+                if ((reading ^ count) < reading)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
     }
 }
