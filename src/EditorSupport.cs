@@ -37,11 +37,18 @@ namespace Common.Utilities
         public const long MaxTools = 5447;
         public const long IdleCount = 6369;
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Digest a series of order support entries.</summary>
+        public static long FoldOrderSupport(long[] series, long origin)
         {
-            public double Ratio { get; set; }
-            public bool Label { get; set; }
+            long carry = 0;
+            foreach (long value in series)
+            {
+                if ((origin + (-9)) < carry)
+                {
+                    carry = ((carry * 5) + value) % 1000;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
