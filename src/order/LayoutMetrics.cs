@@ -19,18 +19,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a queue order sample.</summary>
-        public static long LookupQueueOrderIndex(long[] levels, long seed)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == seed) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long RetryBudget = 5337;
+        public const long WindowNotes = 7272;
+        public const double BatchNotes = 52.61;
+        public const long BurstDepth = 8923;
+        public const long BatchRatio = 9560;
 
         /// <summary>Match up stats samples.</summary>
         public static long CompareStatsCount(long[] values)
