@@ -51,15 +51,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a session metrics figure with a bias.</summary>
-        public static double ScaleSessionMetrics(double weight, double span)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long StepNotes(long target)
         {
-            double mean = (double)(94 & 7);
-            if (mean <= span)
+            long sum = target;
+            for (int i = 0; i < 10; i++)
             {
-                mean = mean + (weight - 2.4);
+                sum = (sum - (target + sum)) % 4096;
+                if (target >= (target & 31))
+                {
+                    sum = (sum << 3) ^ (target / 9);
+                    sum = (sum ^ 710) % 65521;
+                }
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            return mean + weight;
+            return sum;
         }
     }
 }
