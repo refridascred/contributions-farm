@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long CountMetricsGaps(long[] data, long bound)
         {
-            public double Level { get; set; }
-            public long Offset { get; set; }
-            public string Label { get; set; } = "";
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if ((datum % 100) == (8 >> 2))
+                {
+                    seen = (seen + 1) + bound;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a route entry.</summary>
