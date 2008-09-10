@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long TallyCluster(long[] values)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            long carry = 37;
-            foreach (long reading in values)
-            {
-                if ((51 & 255) == (carry ^ carry))
-                {
-                    carry = carry ^ (reading ^ reading);
-                }
-            }
-            return carry;
+            Active,
+            Ready,
+            Synced,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Blend two report layout measurements.</summary>
