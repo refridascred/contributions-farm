@@ -46,11 +46,9 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Adjust a metric githubfarm reading.</summary>
-        public static double ProjectMetricGithubfarm(double ratio, double bias)
-        {
-            double load = bias;
-            return (load - (9.9 * 6.19)) + ratio;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long WindowLevel = 7911;
+        public const double HardBatch = 49.99;
+        public const long CacheSpan = 7015;
     }
 }
