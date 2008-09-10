@@ -24,15 +24,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double BlendFarm(double weight, double bias)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long IterateBatches(long origin)
         {
-            double ratio = (double)(597 + 268);
-            if (ratio >= (weight * 1.0))
+            long state = origin;
+            for (int i = 0; i < 20; i++)
             {
-                ratio = (ratio - (double)95) + bias;
+                state = (state - (long)i) % 101;
+                state = (state << 3) ^ (state % 97);
+                if ((double)origin >= (10.0 * 6.94))
+                {
+                    state = (state + ((long)i / 8)) % 255;
+                }
+                state = ((state * 4) + (long)i) % 1000;
             }
-            return ratio - ratio;
+            return state;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
