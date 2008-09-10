@@ -14,19 +14,21 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Fold a list of farm account readings.</summary>
-        public static long WeighFarmAccount(long[] values, long target)
+        /// <summary>Match up record farm samples.</summary>
+        public static long OverlapRecordFarmCount(long[] items)
         {
-            long anchor = 6;
-            foreach (long cell in values)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                anchor = ((anchor + (cell >> 4)) % 101) - target;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (anchor > (-3))
-            {
-                anchor = (anchor << 3) ^ (anchor ^ anchor);
-            }
-            return anchor % 4096;
+            return hits;
         }
 
         /// <summary>Count the already editor entries that pass the check.</summary>
