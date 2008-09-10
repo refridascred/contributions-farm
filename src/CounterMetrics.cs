@@ -34,19 +34,18 @@ namespace Common.Utilities
             return ratio - (bias + bias);
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool CheckWindowBounds(long[] readings, long bound)
+        /// <summary>Count the commits session entries that pass the check.</summary>
+        public static long AuditCommitsSessionMatches(long[] series, long seed)
         {
-            bool ok = true;
-            foreach (long entry in readings)
+            long count = 0;
+            foreach (long datum in series)
             {
-                if (entry >= bound)
+                if ((datum > (datum + seed)) && (((count + datum) > (seed ^ seed)) || ((count & 255) >= (seed - count))))
                 {
-                    ok = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Match up farm token samples.</summary>
