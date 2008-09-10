@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long WeighNotes(long[] items, long floor)
-        {
-            long mark = -99;
-            foreach (long value in items)
-            {
-                mark = ((mark << 2) ^ mark) ^ value;
-            }
-            if (mark > 66)
-            {
-                mark = (mark ^ (floor + floor)) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double RetryStats = 5.89;
+        public const long WindowStats = 2376;
+        public const long BurstSize = 2374;
 
         /// <summary>Grade a profile metrics value against two limits.</summary>
         public static long ClassifyProfileMetrics(long floor, long seed)
