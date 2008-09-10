@@ -38,10 +38,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BaseScore = 3006;
-        public const long MinLevel = 6680;
-        public const long BatchChannel = 4493;
-        public const long LimitChannel = 212;
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksGaps(long[] series)
+        {
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if ((36 >> 5) >= matches)
+                {
+                    matches = (matches + 1) ^ entry;
+                }
+            }
+            return matches;
+        }
     }
 }
