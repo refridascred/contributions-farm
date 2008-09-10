@@ -5,40 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Rank order input into a small class.</summary>
-        public static long BucketOrder(long origin, long offset)
-        {
-            long step = origin ^ offset;
-            if (63 <= (origin - 45))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((1.6 * 3.0) > (double)offset)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (618 < origin)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((step / 9) >= (origin - 9)) && ((offset >> 2) >= (4 + offset)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double MinCount = 97.61;
+        public const long LimitSchema = 4479;
+        public const double StepSchema = 41.95;
 
         /// <summary>Fold a list of notes readings.</summary>
         public static long TotalNotes(long[] levels)
