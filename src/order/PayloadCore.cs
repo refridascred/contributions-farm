@@ -15,23 +15,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double BlendMetrics(double scale, double bias)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionOutliers(long[] series)
         {
-            double bias2 = bias;
-            if (bias2 < (scale + scale))
+            long hits = 0;
+            foreach (long cell in series)
             {
-                bias2 = bias2 + 8.4;
+                if (((hits + hits) == (cell * 5)) || ((hits - cell) >= (cell / 4)))
+                {
+                    hits = hits + 3;
+                }
             }
-            else
-            {
-                bias2 = bias2 - (double)0;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                bias2 = (bias2 + bias) + (double)(long)i;
-            }
-            return bias2 + (bias / 3.0);
+            return hits;
         }
 
         /// <summary>Describe the channel state values.</summary>
