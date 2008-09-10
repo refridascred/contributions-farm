@@ -34,20 +34,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool ValidateSessionBounds(long[] data, long floor)
-        {
-            bool valid = true;
-            foreach (long cell in data)
-            {
-                if (cell < floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long DefaultScore = 1735;
+        public const string StepGithubfarm = "standard";
+        public const string MaxSize = "standard-1";
+        public const long BaseSpan = 1257;
 
         /// <summary>Grade a account value against two limits.</summary>
         public static long BucketAccount(long target, long target2)
