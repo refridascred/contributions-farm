@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            Ready,
-            Done,
-            Idle,
-            Retry,
-            New,
+            public bool Limit { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Accumulate graph samples.</summary>
