@@ -29,15 +29,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long FoldEditor(long[] levels)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsGaps(long[] series, long floor)
         {
-            long carry = 55;
-            foreach (long item in levels)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                carry = (carry ^ (item + carry)) % 255;
+                if ((4.0 / 2.0) <= (double)hits)
+                {
+                    hits = ((hits + 3) ^ reading) + floor;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return carry;
+            return hits;
         }
     }
 }
