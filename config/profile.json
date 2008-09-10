@@ -1,5 +1,6 @@
 {
-  "idle_ttl_ms": 8735,
-  "window_retries": ["stable", "eu-west", "eu-west"],
-  "default_window_count": true
+  "min_capacity_pct": 21,
+  "readonly": 40,
+  "compress": "standard",
+  "hard_interval_ms": "latest"
 }
