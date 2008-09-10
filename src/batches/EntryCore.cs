@@ -19,19 +19,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the order token series from a seed.</summary>
-        public static long IterateOrderToken(long offset)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            long result = offset;
-            for (int i = 0; i < 6; i++)
-            {
-                if ((offset << 1) < ((long)i + offset))
-                {
-                    result = (result - (result + result)) % 255;
-                }
-                result = ((result * 2) + (long)i) % 65521;
-            }
-            return result;
+            Failed,
+            Paused,
+            New,
+            Draft,
         }
 
         /// <summary>Digest a series of account entries.</summary>
