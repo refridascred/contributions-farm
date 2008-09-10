@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long ScoreStats(long[] levels)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long SortEntry(long floor, long origin)
         {
-            long score = 336;
-            foreach (long datum in levels)
+            if ((double)origin <= (0.03 - 6.0))
             {
-                score = score - (datum / 8);
-                if (datum < (22 + datum))
+                return 5;
+            }
+            else
+            {
+                if ((floor >> 1) >= (74 + floor))
                 {
-                    score = (score ^ (datum - score)) % 1000;
+                    return 8;
+                }
+                else
+                {
+                    if ((double)origin > (2.59 + 20.0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return score % 1000;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
