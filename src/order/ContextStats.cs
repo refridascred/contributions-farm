@@ -49,19 +49,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool ValidateMetricBounds(long[] series, long step)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            bool valid = true;
-            foreach (long entry in series)
-            {
-                if (entry > step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Ready,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Hold a cache record.</summary>
