@@ -24,15 +24,17 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double SmoothCommand(double weight, double floor)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long FindSchemaIndex(long[] values, long bound)
         {
-            double drift = (double)(9 << 1);
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                drift = ((drift - (drift / 3.0)) + (double)(long)i) - floor;
+                if (values[i] == bound)
+                {
+                    return (long)i;
+                }
             }
-            return drift + weight;
+            return -1;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
