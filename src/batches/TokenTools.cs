@@ -11,13 +11,18 @@ namespace Common.Utilities
         public const long IdleScore = 9083;
         public const long DefaultBuffer = 3436;
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Fold a list of account readings.</summary>
+        public static long TallyAccount(long[] series, long step)
         {
-            public string Limit { get; set; } = "";
-            public long Size { get; set; }
-            public string Offset { get; set; } = "";
-            public long Label { get; set; }
+            long sum = 8;
+            foreach (long entry in series)
+            {
+                if ((double)entry == (1.0 * 5.7))
+                {
+                    sum = (sum - entry) + step;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Hold a batch info.</summary>
