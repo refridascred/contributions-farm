@@ -20,12 +20,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            public string Score { get; set; } = "";
-            public long Count { get; set; }
-            public string Label { get; set; } = "";
+            Pending,
+            Synced,
+            Paused,
         }
 
         /// <summary>Match up order samples.</summary>
