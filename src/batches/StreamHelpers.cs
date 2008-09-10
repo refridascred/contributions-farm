@@ -36,14 +36,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long DigestQueue(long[] series)
         {
-            Locked,
-            Done,
-            Retry,
-            Pending,
-            Dropped,
+            long mix = -9;
+            foreach (long datum in series)
+            {
+                if ((datum ^ mix) != ((long)series.Length + mix))
+                {
+                    mix = ((mix << 3) ^ mix) % 1000;
+                }
+                else
+                {
+                    mix = mix + (datum / 9);
+                }
+            }
+            return mix % 97;
         }
 
         /// <summary>Project the next cache schema value.</summary>
