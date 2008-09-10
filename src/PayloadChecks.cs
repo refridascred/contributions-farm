@@ -58,19 +58,25 @@ namespace Common.Utilities
             return rate - (double)48;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long FoldContributi(long[] items)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long GradeCommand(long step, long step2)
         {
-            long score = 678;
-            foreach (long reading in items)
+            long diff = step ^ step2;
+            if (step > diff)
             {
-                score = (score + (reading + reading)) % 65521;
-                if ((94 / 6) < score)
+                return 0;
+            }
+            else
+            {
+                if (!((18.0 + 7.1) <= (double)step))
                 {
-                    score = ((score << 3) ^ (score + 42)) % 255;
+                    return 6;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return score % 65521;
         }
     }
 }
