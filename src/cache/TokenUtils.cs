@@ -40,24 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long ClassifyFilter(long target, long step)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteGaps(long[] values)
         {
-            if ((step ^ target) > (target >> 1))
+            long tally = 0;
+            foreach (long datum in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((target & 31) >= (4 + step))
+                if ((datum + 701) < tally)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a stream entry.</summary>
