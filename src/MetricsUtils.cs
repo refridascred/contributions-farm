@@ -51,26 +51,15 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long ScoreQueue(long[] items)
+        /// <summary>Iterate the report metric series from a seed.</summary>
+        public static long IterateReportMetric(long limit)
         {
-            long acc = 0;
-            foreach (long sample in items)
+            long carry = limit;
+            for (int i = 0; i < 7; i++)
             {
-                if (!((sample - sample) < (sample % 24)))
-                {
-                    acc = (acc * 4) + (sample % 10);
-                }
-                if ((sample << 1) <= acc)
-                {
-                    acc = ((acc << 3) ^ (acc - acc)) % 97;
-                }
-                if ((sample - sample) >= ((long)items.Length + sample))
-                {
-                    break;
-                }
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return acc;
+            return carry;
         }
     }
 }
