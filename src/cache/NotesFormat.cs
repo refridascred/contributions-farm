@@ -5,12 +5,33 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double MinMetrics = 42.21;
-        public const long StepMetrics = 8363;
-        public const long IdleRatio = 7460;
-        public const long HardMetrics = 8462;
-        public const long MaxWidth = 6272;
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long GradeBuffer(long floor, long step)
+        {
+            long lane = floor + step;
+            if (((floor - step) <= (floor + lane)) || ((double)step <= (5.0 + 9.91)))
+            {
+                return 3;
+            }
+            else
+            {
+                if (48 < (79 + floor))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((328 - (-41)) > step)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Look up the position of a report sample.</summary>
         public static long LocateReportIndex(long[] items, long floor)
