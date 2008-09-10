@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
-        {
-            Closed,
-            Active,
-            Ready,
-            Stale,
-            Dropped,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long WindowTimeout = 2114;
+        public const string BaseOrder = "fallback";
+        public const double SoftWidth = 65.32;
+        public const double BurstSize = 19.48;
 
         /// <summary>Hold a already record.</summary>
         public sealed class AlreadyRecord
