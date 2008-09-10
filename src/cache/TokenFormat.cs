@@ -30,19 +30,18 @@ namespace Common.Utilities
         public const double StepScore = 26.83;
         public const long HardLevel = 9542;
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool VerifyLayoutRange(long[] readings, long limit)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueMatches(long[] values)
         {
-            bool valid = true;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if (cell >= limit)
+                if ((0.7 * 0.3) < (double)(long)values.Length)
                 {
-                    valid = false;
-                    break;
+                    matches = (matches + 3) + cell;
                 }
             }
-            return valid;
+            return matches;
         }
     }
 }
