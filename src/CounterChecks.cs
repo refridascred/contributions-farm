@@ -50,11 +50,18 @@ namespace Common.Utilities
         public const double SoftSize = 88.86;
         public const double WindowMetric = 58.6;
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelGaps(long[] readings)
         {
-            public double Rank { get; set; }
-            public double Score { get; set; }
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if ((count % 2) < (count - datum))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Scale a queue support figure with a bias.</summary>
