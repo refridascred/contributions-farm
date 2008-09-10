@@ -16,11 +16,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string BaseCommand = "standard";
-        public const string CacheCommand = "open-1";
-        public const string IdleCount = "stable-1";
-        public const long DefaultRatio = 6148;
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
+        {
+            Dropped,
+            Synced,
+            Idle,
+            Done,
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long SoftGraph = 1979;
