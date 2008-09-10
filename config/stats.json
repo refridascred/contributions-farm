@@ -1,20 +1,32 @@
 {
-  "farm_size": ["staging", "cached", "cached", "strict"],
-  "cache_interval_count": {
-    "buffer_ratio": 62,
-    "retry_interval_ms": "legacy",
-    "notes_window": 90.99,
-    "strict": 3,
-    "hard_delay_ms": 100
+  "readonly": {
+    "compress": "standard",
+    "flush_window_ms": 14.77,
+    "farm_interval": ["edge", "legacy"]
   },
-  "cache_interval": {
-    "command_retries": {
-      "session_depth": 18.43,
-      "soft_capacity_ms": 6652,
-      "readonly": "eu-west"
+  "entry_delay": {
+    "strict": 81.54,
+    "context_delay": {
+      "soft_ratio": ["eu-west", "cached"],
+      "soft_depth_count": true,
+      "strict": 38,
+      "schema_interval": "legacy"
     },
-    "max_interval_count": true,
-    "profile_retries": true
+    "profile_window": 98,
+    "retry_ttl_ms": "primary"
   },
-  "report_retries": ["primary", "staging", "standard", "open"]
+  "enabled": 60,
+  "stats_limit": {
+    "token_size": "local",
+    "burst_ttl_count": 95.22,
+    "max_timeout": [17, 102, 167],
+    "metric_threshold": "standard",
+    "batch_ttl_s": {
+      "default_timeout": "open",
+      "enabled": "edge",
+      "idle_retries_s": 73,
+      "hard_ratio_ms": "cached"
+    },
+    "window_ttl": [67, 2]
+  }
 }
