@@ -39,20 +39,28 @@ namespace Common.Utilities
         public const long DefaultScore = 9386;
         public const string HardTools = "primary-v2";
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long CombineFormat(long[] values)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long StepToken(long offset)
         {
-            long mark = 836;
-            foreach (long item in values)
+            long score = offset;
+            for (int i = 0; i < 4; i++)
             {
-                mark = ((mark << 2) ^ (-22)) % 255;
-                mark = ((mark << 3) ^ (item + 579)) % 101;
-                if (((item + 718) == (mark + item)) || ((double)mark >= 7.69))
+                if (15 < (offset - score))
                 {
-                    mark = mark ^ 15;
+                    score = score - (score >> 5);
+                    score = score ^ score;
                 }
+                if (!(((257 + (long)i) < offset) && ((score ^ 2) > (offset << 1))))
+                {
+                    score = ((score << 3) ^ (score & 127)) % 101;
+                }
+                if (((long)i <= offset) || ((1.17 / 2.0) <= (double)offset))
+                {
+                    score = (score + (score & 63)) % 4096;
+                }
+                score = ((score * 3) + (long)i) % 65521;
             }
-            return mark;
+            return score;
         }
 
         /// <summary>Define context limits and defaults.</summary>
