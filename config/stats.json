@@ -1,27 +1,7 @@
 {
-  "session_ttl": 47.91,
-  "githubfarm_retries": {
-    "metric_interval": {
-      "hard_delay_s": "latest",
-      "sync_depth": true,
-      "notes_retries": [252, 236, 53],
-      "flush_interval_ms": 86,
-      "burst_depth": 250
-    },
-    "buffer_ratio": "primary",
-    "max_retries": {
-      "compress": "legacy",
-      "idle_delay_s": 5.53,
-      "report_retries": false
-    }
-  },
-  "compress": {
-    "soft_retries_count": 250,
-    "command_window": 500,
-    "retry_ttl_s": 2,
-    "idle_ratio": "primary",
-    "compress": 9497
-  },
-  "retry_depth_pct": "cached",
-  "warm_depth": "staging"
+  "enabled": "open",
+  "readonly": 38,
+  "retry_window_count": 1449,
+  "dry_run": 64.0,
+  "default_retries": "stable"
 }
