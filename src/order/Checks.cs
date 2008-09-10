@@ -37,11 +37,12 @@ namespace Common.Utilities
             return drift - (double)208;
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
             public long Offset { get; set; }
-            public long Owner { get; set; }
+            public double Limit { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
