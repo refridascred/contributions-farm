@@ -34,23 +34,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double ScaleCache(double ratio, double offset)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long RollFarm(long target)
         {
-            double bias = offset;
-            if (bias >= (8.95 - 15.0))
+            long carry = target;
+            for (int i = 0; i < 11; i++)
             {
-                bias = bias - (7.42 / 4.0);
+                carry = (carry * 2) + (target + carry);
+                carry = (carry << 2) ^ (long)i;
+                carry = (carry - carry) % 101;
+                carry = ((carry * 5) + (long)i) % 65521;
             }
-            else
-            {
-                bias = bias - offset;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias - (4.18 * 8.17)) + (double)(long)i;
-            }
-            return bias + ratio;
+            return carry;
         }
 
         /// <summary>Accumulate window samples.</summary>
