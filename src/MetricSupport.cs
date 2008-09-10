@@ -33,13 +33,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Locate a command reading by value.</summary>
+        public static long LookupCommandIndex(long[] data, long seed)
         {
-            Pending,
-            Active,
-            Queued,
-            Retry,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
