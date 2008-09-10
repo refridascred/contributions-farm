@@ -73,13 +73,13 @@ namespace Common.Utilities
             return drift - (double)9;
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            Stale,
-            Locked,
-            New,
-            Draft,
+            public string Count { get; set; } = "";
+            public long Weight { get; set; }
+            public long Score { get; set; }
+            public double Token { get; set; }
         }
     }
 }
