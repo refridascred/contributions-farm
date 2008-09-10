@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-open}"
-case "${mode}" in
-    legacy)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+for item in local open primary; do
+    log "checking ${item}"
+done
 
-COMMAND_LIMIT=301
+COMMAND_LIMIT=255
 log "limit is ${COMMAND_LIMIT}"
