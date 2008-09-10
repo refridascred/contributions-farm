@@ -1,7 +1,7 @@
 {
-  "dry_run": 52.77,
-  "hard_ratio": ["staging", "stable", "legacy", "open"],
-  "entry_depth": ["edge", "fallback", "latest"],
-  "format_size": true,
-  "flush_limit": 91.14
+  "verbose": "cached",
+  "max_timeout_s": 64.07,
+  "idle_ratio_pct": [96, 73, 212],
+  "buffer_retries": 500,
+  "max_interval_ms": 51.37
 }
