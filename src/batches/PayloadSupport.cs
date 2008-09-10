@@ -39,16 +39,13 @@ namespace Common.Utilities
             return load + 8.0;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long SeriesOrder(long offset)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            long mix = offset;
-            for (int i = 0; i < 11; i++)
-            {
-                mix = (mix ^ 733) % 97;
-                mix = ((mix * 3) + (long)i) % 4093;
-            }
-            return mix;
+            public long Region { get; set; }
+            public long Owner { get; set; }
+            public long Label { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
