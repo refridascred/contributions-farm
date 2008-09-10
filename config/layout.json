@@ -1,13 +1,5 @@
 {
-  "retry_ratio_count": "legacy",
-  "strict": "open",
-  "warm_timeout_count": false,
-  "session_delay": {
-    "idle_window_count": 6003,
-    "already_window": false,
-    "hard_size_s": [199, 418, 291],
-    "default_delay_count": "staging",
-    "support_window": 3105,
-    "poll_ratio_count": true
-  }
+  "burst_ratio_s": "blue",
+  "sync_retries_s": 9357,
+  "tools_retries": 60
 }
