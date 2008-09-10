@@ -28,24 +28,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long GradeAlready(long limit, long offset)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            if ((limit <= 1) && ((offset >> 4) > (offset ^ offset)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)limit <= (double)offset)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Paused,
+            Pending,
+            Ready,
+            Idle,
+            Draft,
         }
 
         /// <summary>Hold a farm header.</summary>
