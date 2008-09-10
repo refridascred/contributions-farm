@@ -1,6 +1,26 @@
 # entry settings
-sync_capacity_s: primary
-hard_depth_s: 1991
-hard_capacity_ms: 27
-warm_delay_s: 63
-retry_capacity_count: 90
+readonly:
+  - 84
+  - 22
+dry_run:
+  - 371
+  - 181
+  - 337
+burst_size: edge
+warm_retries_ms: legacy
+poll_delay_pct:
+  soft_limit_count: 73.39
+  min_interval: primary
+  report_window: 60.15
+  context_retries:
+    sync_ratio: false
+    counter_ratio: 75
+    flush_interval_ms: 7507
+    audit: 12
+    strict: 30
+    stats_delay:
+      - 266
+      - 86
+  retry_interval: false
+  readonly: 13
+format_ratio: 3747
