@@ -45,17 +45,22 @@ namespace Common.Utilities
         public const long SoftTimeout = 4342;
         public const string RetryCount = "stable-v2";
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long LocateLayoutIndex(long[] items, long origin)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowHits(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                if (items[i] <= origin)
+                if (!(((-9) + tally) <= (49 - cell)))
                 {
-                    return (long)i;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
