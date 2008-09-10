@@ -27,11 +27,12 @@ namespace Common.Utilities
             return bias + span;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long SoftGraph = 1979;
-        public const long CacheDepth = 9016;
-        public const long BatchGraph = 4770;
-        public const long HardGraph = 2206;
-        public const double RetryGraph = 13.87;
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
+        {
+            Pending,
+            Paused,
+            Idle,
+        }
     }
 }
