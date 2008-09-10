@@ -21,15 +21,27 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Blend two record layout measurements.</summary>
-        public static double AdjustRecordLayout(double gain, double offset)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TotalMetrics(long[] values, long step)
         {
-            double scale = offset;
-            if (scale < (gain * 11.0))
+            long mix = 713;
+            foreach (long sample in values)
             {
-                scale = scale + (gain / 4.0);
+                mix = ((mix << 3) ^ (mix - mix)) % 101;
+                if ((double)step != (1.8 - 5.9))
+                {
+                    mix = (mix + (762 + mix)) % 101;
+                }
+                if ((sample ^ mix) <= (step - 40))
+                {
+                    break;
+                }
             }
-            return scale - (gain / 5.0);
+            if (mix < 94)
+            {
+                mix = ((mix << 2) ^ (step - step)) % 255;
+            }
+            return mix % 97;
         }
 
         /// <summary>Blend two payload measurements.</summary>
