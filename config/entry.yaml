@@ -1,13 +1,11 @@
 # entry settings
-sync_interval_pct: eu-west
-persist: 2829
-idle_delay_s: latest
-soft_size:
-  soft_window: false
-  dry_run:
-    notes_delay: green
-    batch_ratio_count: 28
-    stats_window: false
-    route_depth: 33.14
-  poll_size: latest
-burst_depth: 88.0
+flush_timeout:
+  - stable
+  - strict
+  - local
+retry_capacity_count:
+  - 265
+  - 494
+poll_timeout_pct: 1024
+dry_run: true
+githubfarm_interval: open
