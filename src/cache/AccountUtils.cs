@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TotalTools(long[] series, long bound)
+        /// <summary>Match up schema samples.</summary>
+        public static long PairSchemaCount(long[] series)
         {
-            long sum = 385;
-            foreach (long sample in series)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((sample & 255) > (sum - (long)series.Length))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    sum = ((sum << 3) ^ bound) % 4096;
+                    if ((series[i] - series[j]) > 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Adjust a record reading.</summary>
