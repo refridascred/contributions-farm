@@ -24,14 +24,14 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            Paused,
-            Pending,
+            Dropped,
+            Queued,
             Ready,
             Idle,
-            Draft,
+            Active,
         }
 
         /// <summary>Hold a farm header.</summary>
