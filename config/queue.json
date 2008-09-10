@@ -1,7 +1,12 @@
 {
-  "default_interval": 250,
-  "sync_limit": "fallback",
-  "flush_ttl_pct": ["blue", "local", "local", "legacy"],
-  "sync_threshold_s": 50,
-  "enabled": 500
+  "checks_window": {
+    "profile_ttl": false,
+    "record_limit": 100,
+    "channel_threshold": "strict",
+    "hard_depth": 30.33,
+    "flush_window_ms": "staging",
+    "schema_depth": ["staging", "green", "local"]
+  },
+  "warm_limit_pct": 84,
+  "hard_size_s": 9189
 }
