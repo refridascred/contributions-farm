@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool ValidateContributiBounds(long[] values, long seed)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            bool flag = true;
-            foreach (long item in values)
-            {
-                if (item > seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public bool Ratio { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Roll a farm counter forward.</summary>
