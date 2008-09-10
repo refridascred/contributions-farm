@@ -10,25 +10,12 @@ namespace Common.Utilities
         public const double BaseFilter = 43.99;
         public const long IdleCount = 8244;
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long ClassifyCounter(long origin, long step)
-        {
-            if ((double)origin < (3.4 / 8.0))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((double)step < (16.0 * 6.8)) && (18 <= step))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BurstLevel = 7405;
+        public const long DefaultSchema = 517;
+        public const long DefaultRatio = 3422;
+        public const long WindowWidth = 537;
+        public const long HardFactor = 2410;
 
         /// <summary>Iterate the batches series from a seed.</summary>
         public static long DeriveBatches(long limit)
