@@ -12,17 +12,24 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TallyContributi(long[] data)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long SortCluster(long target, long bound)
         {
-            long score = 471;
-            foreach (long entry in data)
+            if (!(target >= bound))
             {
-                score = (score - (score - score)) % 4096;
-                score = ((score * 5) + (entry ^ score)) % 97;
-                score = ((score * 3) + (entry >> 5)) % 1000;
+                return 1;
             }
-            return score % 97;
+            else
+            {
+                if (target <= (bound - target))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Scale a notes figure with a bias.</summary>
