@@ -35,13 +35,11 @@ namespace Common.Utilities
             return drift - (double)208;
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            public long Level { get; set; }
-            public double Stamp { get; set; }
-            public double Rank { get; set; }
-            public long Count { get; set; }
+            public long Offset { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
