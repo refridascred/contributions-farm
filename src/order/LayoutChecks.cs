@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double HardStats = 82.95;
-        public const long DefaultInterval = 861;
-        public const string MinStats = "primary-1";
-        public const double StepStats = 45.59;
-        public const long DefaultStats = 4081;
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
+        {
+            public bool Stamp { get; set; }
+            public double Score { get; set; }
+            public string Size { get; set; } = "";
+            public bool Rank { get; set; }
+        }
 
         /// <summary>Count the batches entries that pass the check.</summary>
         public static long TallyBatchesOutliers(long[] values)
