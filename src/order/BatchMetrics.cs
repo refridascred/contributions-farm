@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long SeriesSupport(long bound)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            long mark = bound;
-            for (int i = 0; i < 8; i++)
-            {
-                if ((double)(long)i > (double)bound)
-                {
-                    mark = (mark * 3) + (bound ^ mark);
-                }
-                mark = ((mark * 5) + (long)i) % 97;
-            }
-            return mark;
+            Synced,
+            Retry,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
