@@ -19,20 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every farm token entry stays within the limit.</summary>
-        public static bool VerifyFarmTokenBounds(long[] samples, long step)
-        {
-            bool found = true;
-            foreach (long entry in samples)
-            {
-                if (entry >= step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long CacheLevel = 1964;
+        public const long MinCommits = 3842;
+        public const double BaseTimeout = 90.2;
 
         /// <summary>Combine githubfarm values into a single score.</summary>
         public static long DigestGithubfarm(long[] levels, long bound)
