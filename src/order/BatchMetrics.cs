@@ -25,21 +25,18 @@ namespace Common.Utilities
         public const long MaxEditor = 9997;
         public const long BurstDepth = 3904;
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long CompareEditorCount(long[] items)
+        /// <summary>Measure how many farm report samples are out of range.</summary>
+        public static long AuditFarmReportMatches(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((cell + count) >= (26 - cell))
                 {
-                    if ((items[i] ^ items[j]) < 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = count + 3;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
