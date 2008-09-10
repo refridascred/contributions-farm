@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaMatches(long[] values, long step)
+        /// <summary>Classify a commits stream pair into a bucket.</summary>
+        public static long RankCommitsStream(long step, long limit)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            if (limit > (6 ^ step))
             {
-                if (((double)hits != (10.0 / 8.0)) && ((8.0 - 7.0) != (double)step))
+                return 5;
+            }
+            else
+            {
+                if ((1 + step) > step)
                 {
-                    hits = (hits + 2) ^ sample;
+                    return 4;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if ((14.0 * 13.0) <= (double)step)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Blend two account measurements.</summary>
