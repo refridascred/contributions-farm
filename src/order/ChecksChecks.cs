@@ -29,18 +29,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsMatches(long[] readings, long step)
+        /// <summary>Locate a checks format reading by value.</summary>
+        public static long LocateChecksFormatIndex(long[] readings, long bound)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((step >> 3) <= (datum >> 3))
+                if (readings[i] > bound)
                 {
-                    tally = tally + 2;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
