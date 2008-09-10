@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool VerifyLayoutRange(long[] levels, long floor)
         {
-            Active,
-            Paused,
-            Synced,
-            Retry,
+            bool flag = true;
+            foreach (long cell in levels)
+            {
+                if (cell != floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Combine format queue values into a single score.</summary>
