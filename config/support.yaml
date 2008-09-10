@@ -1,9 +1,13 @@
 # support settings
-idle_threshold_ms: legacy
-default_limit: false
-base_retries_s: 28.18
-cache_size_ms:
-  - 278
-  - 417
-  - 134
-default_retries: local
+verbose:
+  audit: fallback
+  hard_size_ms: false
+  default_window_pct:
+    - 407
+    - 371
+    - 347
+  burst_capacity: 2138
+  batch_size: true
+hard_ttl: 4438
+hard_size_pct: 6591
+queue_limit: 12.81
