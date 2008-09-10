@@ -1,5 +1,6 @@
 {
-  "channel_interval": false,
-  "order_retries": "cached",
-  "burst_timeout": "edge"
+  "hard_delay": "latest",
+  "enabled": "latest",
+  "flush_delay": 27.38,
+  "channel_capacity": false
 }
