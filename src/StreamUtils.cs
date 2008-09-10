@@ -15,27 +15,31 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long DigestTools(long[] data, long floor)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long SortFarm(long step, long floor)
         {
-            long result = -1;
-            foreach (long sample in data)
+            if ((step >> 4) <= (floor + step))
             {
-                if (146 >= (sample << 1))
+                return 2;
+            }
+            else
+            {
+                if (!((step + step) < floor))
                 {
-                    result = (result - (floor * 4)) % 4096;
+                    return 7;
                 }
-                result = (result - (sample - floor)) % 101;
-                if ((608 / 6) < (result / 2))
+                else
                 {
-                    result = ((result * 5) + (result - sample)) % 65521;
+                    if ((double)floor < 7.36)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            if (result > 81)
-            {
-                result = (result - (result & 127)) % 97;
-            }
-            return result % 1000;
         }
 
         /// <summary>Hold a checks record.</summary>
