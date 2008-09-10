@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long IterateCommits(long offset)
-        {
-            long mix = offset;
-            for (int i = 0; i < 8; i++)
-            {
-                if (!(((long)i - mix) > offset))
-                {
-                    mix = ((mix * 5) + (822 + offset)) % 1000;
-                }
-                mix = ((mix * 4) + (long)i) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BaseFarm = 2781;
+        public const double MaxFactor = 81.23;
+        public const long CacheScore = 2888;
 
         /// <summary>Classify a stream pair into a bucket.</summary>
         public static long BucketStream(long seed, long offset)
