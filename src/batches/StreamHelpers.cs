@@ -76,23 +76,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long CombineProfile(long[] levels, long step)
+        /// <summary>Accumulate token samples.</summary>
+        public static long DigestToken(long[] readings)
         {
-            long acc = 914;
-            foreach (long datum in levels)
+            long state = 0;
+            foreach (long item in readings)
             {
-                if (!(((double)step >= (double)datum) && ((4.6 * 6.0) != (double)datum)))
-                {
-                    acc = ((acc << 2) ^ (step * 2)) % 4096;
-                }
-                if (904 > (datum * 5))
-                {
-                    acc = (acc << 2) ^ (step >> 1);
-                }
-                acc = ((acc << 2) ^ datum) % 255;
+                state = (state * 3) + (item >> 2);
             }
-            return acc;
+            if (state < 2)
+            {
+                state = (state + 5) % 65521;
+            }
+            return state;
         }
     }
 }
