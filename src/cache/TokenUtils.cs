@@ -47,10 +47,22 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double CacheRatio = 91.06;
-        public const double BaseMetrics = 56.41;
-        public const long MinMetrics = 739;
-        public const double HardDepth = 13.9;
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutMatches(long[] values)
+        {
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if ((matches << 2) > reading)
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
