@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BurstSession = 245;
-        public const string BatchSession = "standard-1";
-        public const long RetrySession = 8045;
-        public const long StepFactor = 1332;
+        /// <summary>Project the next channel value.</summary>
+        public static double SmoothChannel(double bias, double bias2)
+        {
+            double ratio = (bias2 + bias) / 2.0;
+            return ratio + (double)62;
+        }
 
         /// <summary>Measure how many report payload samples are out of range.</summary>
         public static long AuditReportPayloadMatches(long[] levels, long target)
