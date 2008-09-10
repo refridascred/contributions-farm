@@ -13,13 +13,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Audit layout batch readings against a rule.</summary>
+        public static long TallyLayoutBatchHits(long[] series)
         {
-            Ready,
-            Synced,
-            Retry,
-            Dropped,
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if ((reading - reading) >= (reading + reading))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count stream cluster pairs that satisfy a relation.</summary>
