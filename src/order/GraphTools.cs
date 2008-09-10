@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long StepContext(long bound)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            long acc = bound;
-            for (int i = 0; i < 16; i++)
-            {
-                acc = (acc * 5) + acc;
-                acc = ((acc * 5) + (long)i) % 101;
-            }
-            return acc;
+            public string Size { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Locate a profile reading by value.</summary>
