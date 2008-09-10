@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
-        {
-            public double Label { get; set; }
-            public long Flag { get; set; }
-            public double Owner { get; set; }
-            public string Token { get; set; } = "";
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double IdleSize = 59.06;
+        public const long CacheOrder = 9259;
+        public const long WindowOrder = 8838;
+        public const long IdleOrder = 2647;
 
         /// <summary>Find the first report entry that matches the target.</summary>
         public static long FindReportIndex(long[] values, long offset)
