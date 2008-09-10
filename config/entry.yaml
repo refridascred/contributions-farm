@@ -1,4 +1,14 @@
 # entry settings
-default_ratio: 22.8
-cluster_window: 77.77
-flush_timeout_count: 41.53
+warm_ttl_pct: 52
+cache_interval: 74.23
+soft_limit_pct:
+  idle_size:
+    idle_retries: green
+    context_window: open
+    poll_limit: primary
+    sync_ratio_s: 23
+  order_size: standard
+  counter_capacity: staging
+  channel_limit: true
+  idle_capacity_pct: false
+record_ttl: true
