@@ -24,10 +24,20 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long LimitRatio = 7665;
-        public const long MaxSize = 7541;
-        public const long SoftReport = 4292;
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmLimits(long[] samples, long seed)
+        {
+            bool valid = true;
+            foreach (long sample in samples)
+            {
+                if (sample <= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long StepTimeout = 7640;
