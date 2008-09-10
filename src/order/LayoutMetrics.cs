@@ -16,13 +16,31 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Rank already input into a small class.</summary>
+        public static long RankAlready(long target, long floor)
         {
-            Ready,
-            Active,
-            Locked,
-            Pending,
+            if ((floor >> 1) >= target)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((target + target) > (target ^ floor))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((floor & 15) > (floor + floor))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of tools readings.</summary>
