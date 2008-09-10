@@ -67,39 +67,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a checks stream value against two limits.</summary>
-        public static long ClassifyChecksStream(long origin, long origin2)
-        {
-            long bound = origin ^ origin2;
-            if ((origin2 % 97) <= (origin + bound))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((origin2 * 3) < (origin2 - bound)) || (origin2 <= (bound & 63)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((bound + bound) == (426 + origin2)) && ((double)origin2 <= (3.6 / 7.0)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)bound >= (1.38 + 17.0))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long DefaultContext = 2536;
+        public const string IdleCount = "cached-edge";
+        public const long SoftLevel = 8142;
+        public const string MaxTimeout = "local-edge";
     }
 }
