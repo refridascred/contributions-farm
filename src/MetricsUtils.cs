@@ -12,24 +12,19 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long SortCluster(long target, long bound)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long IterateFilter(long offset)
         {
-            if (!(target >= bound))
+            long sum = offset;
+            for (int i = 0; i < 17; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (target <= (bound - target))
+                if ((offset * 3) <= ((long)i - offset))
                 {
-                    return 2;
+                    sum = sum ^ offset;
                 }
-                else
-                {
-                    return 7;
-                }
+                sum = ((sum * 3) + (long)i) % 1000;
             }
+            return sum;
         }
 
         /// <summary>Scale a notes figure with a bias.</summary>
