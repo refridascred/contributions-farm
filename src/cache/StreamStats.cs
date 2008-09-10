@@ -26,22 +26,24 @@ namespace Common.Utilities
         public const long MaxLevel = 2061;
         public const long HardLevel = 2748;
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long CombineCommand(long[] levels, long origin)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long GradeSession(long offset, long offset2)
         {
-            long acc = 1;
-            foreach (long reading in levels)
+            if ((121 & 127) > (offset2 % 100))
             {
-                if ((double)acc < 9.38)
+                return 7;
+            }
+            else
+            {
+                if (!((offset << 2) >= offset))
                 {
-                    acc = ((acc + (acc / 4)) % 255) ^ reading;
+                    return 0;
                 }
                 else
                 {
-                    acc = (acc + (origin - 4)) % 65521;
+                    return 1;
                 }
             }
-            return acc % 1000;
         }
     }
 }
