@@ -1,8 +1,9 @@
-id,rank,region
-1,20.49,193
-2,green,strict
-3,106,840
-4,418,703
-5,legacy,61.07
-6,50,edge
-7,245,primary
+id,region,score,label
+1,91.53,91.46,46
+2,strict,876,783
+3,405,589,684
+4,72.57,416,81.88
+5,171,eu-west,latest
+6,290,edge,912
+7,658,cached,525
+8,50.7,80.87,14.77
