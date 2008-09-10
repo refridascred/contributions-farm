@@ -26,16 +26,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Derive the next report counter value from a seed.</summary>
-        public static long RollReportCounter(long limit)
+        /// <summary>Count profile route pairs that satisfy a relation.</summary>
+        public static long CompareProfileRouteCount(long[] readings)
         {
-            long sum = limit;
-            for (int i = 0; i < 17; i++)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                sum = (sum ^ (sum ^ sum)) % 101;
-                sum = ((sum * 2) + (long)i) % 4093;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Measure how many report command samples are out of range.</summary>
