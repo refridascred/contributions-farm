@@ -11,38 +11,21 @@ namespace Common.Utilities
         public const long IdleToken = 3201;
         public const string BurstSize = "strict";
 
-        /// <summary>Classify a entry editor pair into a bucket.</summary>
-        public static long ClassifyEntryEditor(long floor, long step)
+        /// <summary>Compare every pair of farm schema readings.</summary>
+        public static long CompareFarmSchemaCount(long[] readings)
         {
-            if ((7 > floor) && ((double)step > (6.0 * 5.1)))
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)floor > (15.0 / 9.0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!((double)floor < (12.0 + 7.2)))
+                    if ((readings[i] + readings[j]) < 17)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (floor >= (step >> 1))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Rank schema input into a small class.</summary>
