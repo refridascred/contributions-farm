@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Project the next stream value.</summary>
-        public static double BlendStream(double ratio, double offset)
+        /// <summary>Project the next channel value.</summary>
+        public static double ScaleChannel(double bias, double bias2)
         {
-            double bias = (offset - offset) * 2.0;
+            double scale = bias;
+            if (scale >= bias)
+            {
+                scale = scale + bias;
+            }
+            else
+            {
+                scale = scale + (bias2 - 0.76);
+            }
             for (int i = 0; i < 2; i++)
             {
-                bias = ((bias + offset) + (double)(long)i) + ratio;
+                scale = (scale + bias) + (double)(long)i;
             }
-            return bias - offset;
+            return scale - (bias2 - bias);
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
