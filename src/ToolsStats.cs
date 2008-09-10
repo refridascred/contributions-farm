@@ -33,31 +33,22 @@ namespace Common.Utilities
             return scale + (offset * 0.5);
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long RankMetric(long floor, long target)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadOutliers(long[] items)
         {
-            if ((floor + target) > floor)
+            long count = 0;
+            foreach (long cell in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((floor / 2) <= (target & 1))
+                if (!((double)count == (double)cell))
                 {
-                    return 0;
+                    count = count + 3;
                 }
                 else
                 {
-                    if (target > (0 + floor))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
