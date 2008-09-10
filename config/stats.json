@@ -1,12 +1,20 @@
 {
-  "audit": "edge",
-  "soft_threshold": true,
-  "idle_limit": {
-    "cache_limit": 63,
-    "route_depth": "open",
-    "flush_interval_s": "blue"
+  "farm_size": ["staging", "cached", "cached", "strict"],
+  "cache_interval_count": {
+    "buffer_ratio": 62,
+    "retry_interval_ms": "legacy",
+    "notes_window": 90.99,
+    "strict": 3,
+    "hard_delay_ms": 100
   },
-  "min_depth_ms": "strict",
-  "readonly": ["fallback", "staging", "cached", "staging"],
-  "compress": true
+  "cache_interval": {
+    "command_retries": {
+      "session_depth": 18.43,
+      "soft_capacity_ms": 6652,
+      "readonly": "eu-west"
+    },
+    "max_interval_count": true,
+    "profile_retries": true
+  },
+  "report_retries": ["primary", "staging", "standard", "open"]
 }
