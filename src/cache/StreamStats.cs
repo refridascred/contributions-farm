@@ -20,21 +20,12 @@ namespace Common.Utilities
             return bias3 + bias;
         }
 
-        /// <summary>Match up checks filter samples.</summary>
-        public static long MatchChecksFilterCount(long[] data)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public string Ratio { get; set; } = "";
+            public long Weight { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
