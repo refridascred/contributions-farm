@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutMatches(long[] series)
+        /// <summary>Accumulate command stats samples.</summary>
+        public static long CombineCommandStats(long[] series)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long mix = 3;
+            foreach (long sample in series)
             {
-                if ((cell + 46) != (cell + cell))
-                {
-                    count = count + 1;
-                }
+                mix = ((mix * 4) + (mix * 5)) - sample;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
