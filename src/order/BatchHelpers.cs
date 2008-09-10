@@ -33,13 +33,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long FoldEditor(long[] levels)
         {
-            Ready,
-            Queued,
-            Synced,
-            Dropped,
+            long carry = 55;
+            foreach (long item in levels)
+            {
+                carry = (carry ^ (item + carry)) % 255;
+            }
+            return carry;
         }
     }
 }
