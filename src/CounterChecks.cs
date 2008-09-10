@@ -16,14 +16,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            Closed,
-            Ready,
-            Idle,
-            Draft,
-            Failed,
+            New,
+            Paused,
+            Synced,
+            Pending,
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
