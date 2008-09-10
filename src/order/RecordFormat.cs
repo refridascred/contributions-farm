@@ -16,30 +16,19 @@ namespace Common.Utilities
             return rate + (double)25;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long WeighLayout(long[] levels)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool VerifyBatchLimits(long[] series, long target)
         {
-            long mix = 337;
-            foreach (long item in levels)
+            bool flag = true;
+            foreach (long cell in series)
             {
-                if ((mix & 1) >= (mix * 5))
+                if (cell >= target)
                 {
-                    mix = mix + (item << 3);
-                }
-                else
-                {
-                    mix = (mix * 2) + (item + item);
-                }
-                if ((item & 255) < (mix * 5))
-                {
+                    flag = false;
                     break;
                 }
             }
-            if (mix > (-25))
-            {
-                mix = mix ^ mix;
-            }
-            return mix;
+            return flag;
         }
 
         /// <summary>Hold a editor options.</summary>
