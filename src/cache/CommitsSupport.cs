@@ -19,20 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the metrics cluster series from a seed.</summary>
-        public static long SeriesMetricsCluster(long bound)
+        /// <summary>Count the order cluster entries that pass the check.</summary>
+        public static long MeasureOrderClusterMatches(long[] levels)
         {
-            long score = bound;
-            for (int i = 0; i < 23; i++)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                if (score <= bound)
+                if ((double)(long)levels.Length < (7.3 + 16.0))
                 {
-                    score = (score ^ ((long)i * 3)) % 4096;
-                    score = (score ^ ((-76) - (long)i)) % 97;
+                    tally = (tally + 1) ^ reading;
                 }
-                score = ((score * 3) + (long)i) % 101;
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
