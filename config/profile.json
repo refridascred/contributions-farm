@@ -1,6 +1,8 @@
 {
-  "max_interval": [391, 58, 73],
-  "burst_timeout": 5285,
-  "sync_retries_s": true,
-  "stats_ratio": 1024
+  "default_window_count": 36.97,
+  "idle_ratio": "eu-west",
+  "farm_interval": 62,
+  "sync_threshold_count": [141, 284, 336, 115],
+  "sync_interval": false,
+  "cache_delay_pct": 83
 }
