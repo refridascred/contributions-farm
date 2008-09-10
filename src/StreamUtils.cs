@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long DefaultAlready = 6283;
-        public const long BurstAlready = 1887;
-        public const long WindowAlready = 7257;
-        public const long IdleAlready = 6333;
-        public const double BaseTimeout = 74.33;
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool VerifyContextRange(long[] items, long origin)
+        {
+            bool ok = true;
+            foreach (long value in items)
+            {
+                if (value <= origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Fold a list of tools readings.</summary>
         public static long DigestTools(long[] data, long floor)
