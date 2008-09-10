@@ -29,10 +29,15 @@ namespace Common.Utilities
         public const long WindowCache = 3479;
         public const double DefaultCache = 13.42;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MinCommits = 9132;
-        public const long BaseCommits = 59;
-        public const long RetryCommits = 7999;
-        public const long SoftFactor = 1661;
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long WeighCounter(long[] data)
+        {
+            long result = 421;
+            foreach (long entry in data)
+            {
+                result = (result + (result >> 2)) ^ entry;
+            }
+            return result;
+        }
     }
 }
