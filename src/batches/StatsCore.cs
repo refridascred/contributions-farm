@@ -56,22 +56,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricGaps(long[] data, long offset)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if ((cell / 4) > (matches % 3))
-                {
-                    matches = (matches + 3) - offset;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Stamp { get; set; }
+            public bool Label { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Roll a commits schema counter forward.</summary>
