@@ -26,20 +26,15 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Derive the next editor channel value from a seed.</summary>
-        public static long SeriesEditorChannel(long origin)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long DeriveRecord(long origin)
         {
-            long acc = origin;
-            for (int i = 0; i < 6; i++)
+            long state = origin;
+            for (int i = 0; i < 22; i++)
             {
-                if ((acc <= 12) && ((origin + origin) == (acc * 3)))
-                {
-                    acc = ((acc << 3) ^ ((-2) >> 2)) % 65521;
-                    break;
-                }
-                acc = ((acc * 3) + (long)i) % 101;
+                state = ((state * 5) + (long)i) % 65521;
             }
-            return acc;
+            return state;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
