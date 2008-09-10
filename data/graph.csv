@@ -1,6 +1,11 @@
-id,weight,state
-1,353,93.2
-2,29.59,eu-west
-3,650,stable
-4,fallback,738
-5,206,20.63
+id,label,ratio,token,owner
+1,427,786,primary,local
+2,168,local,87.82,primary
+3,staging,848,blue,fallback
+4,eu-west,34.3,latest,staging
+5,88.7,931,571,cached
+6,green,916,76.49,239
+7,948,905,legacy,83.64
+8,strict,282,87.57,standard
+9,864,573,legacy,open
+10,fallback,277,309,328
