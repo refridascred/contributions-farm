@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const double RetryToken = 11.65;
-        public const long StepSize = 8535;
-        public const string CacheToken = "local-edge";
-        public const long WindowToken = 6401;
-        public const long MaxToken = 5312;
+        /// <summary>Match up stream notes samples.</summary>
+        public static long PairStreamNotesCount(long[] levels)
+        {
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 12)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Fold a list of channel order readings.</summary>
         public static long FoldChannelOrder(long[] levels)
