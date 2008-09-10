@@ -1,34 +1,14 @@
 # support settings
-verbose:
-  soft_limit_s: 250
-  idle_window_s:
-    - standard
-    - stable
-    - fallback
-    - standard
-  burst_capacity:
-    - staging
-    - fallback
-  retry_window_s: 90
-  idle_window_pct:
-    - latest
-    - open
-    - primary
-    - staging
-batches_ratio:
-  soft_retries_ms: standard
-  report_limit:
-    - edge
-    - strict
-  batch_threshold: latest
-  dry_run: 7.12
-  checks_threshold:
-    - cached
-    - strict
-    - staging
-  hard_window:
-    - 343
-    - 274
-max_interval_ms: standard
-warm_size_pct: 30
-checks_timeout: local
+readonly: true
+batch_capacity_count:
+  hard_limit_count: 30
+  warm_capacity_s: 8797
+  flush_ttl_pct: 55.76
+  batch_limit_ms: true
+max_delay_pct: cached
+idle_delay:
+  - primary
+  - open
+  - cached
+  - legacy
+farm_depth: 50.56
