@@ -51,31 +51,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a route session value against two limits.</summary>
-        public static long BucketRouteSession(long floor, long floor2)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            if (!((floor2 % 97) != (8 % 12)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)floor2 >= 1.93)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((floor2 & 15) == (floor2 >> 3))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Closed,
+            Idle,
+            Stale,
         }
     }
 }
