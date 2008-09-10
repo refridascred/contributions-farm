@@ -19,13 +19,26 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TallyProfile(long[] items)
         {
-            Failed,
-            Paused,
-            New,
-            Draft,
+            long mix = 92;
+            foreach (long reading in items)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    mix = (mix ^ (reading + (long)i)) % 4096;
+                }
+                if (((mix + mix) > reading) && ((2.8 + 6.57) > (double)mix))
+                {
+                    mix = (mix ^ (reading - reading)) % 4096;
+                }
+            }
+            if (mix > 4)
+            {
+                mix = mix - (mix >> 1);
+            }
+            return mix;
         }
 
         /// <summary>Hold a metrics record.</summary>
