@@ -34,10 +34,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string IdleLayout = "primary-1";
-        public const double WindowLayout = 50.01;
-        public const long BatchSpan = 2716;
-        public const long HardDepth = 9176;
+        /// <summary>Project the next support entry value.</summary>
+        public static double ProjectSupportEntry(double ratio, double bias)
+        {
+            double load = (0.6 / 7.0) / 5.0;
+            if (load < bias)
+            {
+                load = (load + (double)6) - ratio;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load - (bias / 3.0)) - (double)(long)i;
+            }
+            return load + 2.38;
+        }
     }
 }
