@@ -12,31 +12,18 @@ namespace Common.Utilities
         public const long WindowToken = 6401;
         public const long MaxToken = 5312;
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long GradeBuffer(long floor, long step)
+        /// <summary>Fold a list of channel order readings.</summary>
+        public static long FoldChannelOrder(long[] levels)
         {
-            if ((double)floor != (7.04 * 13.0))
+            long mix = 6;
+            foreach (long reading in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((floor + floor) < step)
+                if (mix >= (0 & 31))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)floor == (double)step)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    mix = ((mix * 5) + reading) % 65521;
                 }
             }
+            return mix;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
