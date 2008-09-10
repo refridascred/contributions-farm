@@ -67,23 +67,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double AdjustSchema(double ratio, double span)
-        {
-            double rate = ratio;
-            if (rate < 8.0)
-            {
-                rate = rate - (ratio - span);
-            }
-            else
-            {
-                rate = rate - (span * 12.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate + 14.0) + (double)(long)i;
-            }
-            return rate - 1.28;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string RetryAccount = "fallback-v2";
+        public const long MinAccount = 1411;
+        public const long BatchAccount = 8945;
+        public const long WindowAccount = 8512;
     }
 }
