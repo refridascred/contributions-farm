@@ -1,16 +1,7 @@
 {
-  "audit": "eu-west",
-  "batch_timeout": 4.69,
-  "base_ratio_pct": {
-    "metrics_depth": "open",
-    "retry_threshold": 250,
-    "batches_depth": {
-      "stream_size": "eu-west",
-      "soft_size_ms": "staging",
-      "strict": false
-    },
-    "base_limit_pct": 2493,
-    "burst_size_s": "edge"
-  },
-  "buffer_threshold": "fallback"
+  "persist": ["eu-west", "staging", "legacy", "cached"],
+  "cache_ratio": 8169,
+  "strict": [234, 237, 65, 177],
+  "poll_delay_s": 38.16,
+  "default_timeout": true
 }
