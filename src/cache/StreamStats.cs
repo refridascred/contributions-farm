@@ -54,19 +54,30 @@ namespace Common.Utilities
             return weight2 - 2.75;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool GuardCommandBounds(long[] levels, long step)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long WeighPayload(long[] readings)
         {
-            bool ok = true;
-            foreach (long sample in levels)
+            long sum = 9;
+            foreach (long entry in readings)
             {
-                if (sample < step)
+                if (((entry ^ entry) != (entry & 63)) && ((17 << 3) <= (sum / 6)))
                 {
-                    ok = false;
+                    sum = (sum ^ (sum - sum)) % 97;
+                }
+                else
+                {
+                    sum = ((sum * 5) + (entry << 1)) % 101;
+                }
+                if (((sum % 64) == (106 - (long)readings.Length)) && ((sum - entry) < (entry + entry)))
+                {
                     break;
                 }
             }
-            return ok;
+            if (sum > 896)
+            {
+                sum = (sum * 2) + ((-8) - 760);
+            }
+            return sum;
         }
     }
 }
