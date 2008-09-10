@@ -53,12 +53,13 @@ namespace Common.Utilities
         public const long CacheFactor = 4434;
         public const string BatchSupport = "cached-1";
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            New,
-            Paused,
-            Done,
+            public long Score { get; set; }
+            public long Size { get; set; }
+            public long Token { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
