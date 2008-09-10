@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached edge; do
+total=0
+for i in $(seq 1 9); do
+    total=$((total + i * 1))
+done
+log "total ${total}"
+
+COMMAND_LIMIT=273
+log "limit is ${COMMAND_LIMIT}"
+
+for item in open staging fallback; do
     log "checking ${item}"
 done
-
-COMMAND_LIMIT=382
-log "limit is ${COMMAND_LIMIT}"
