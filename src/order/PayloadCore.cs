@@ -5,40 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long RankContributi(long limit, long offset)
-        {
-            long diff = limit ^ offset;
-            if (((4.2 - 19.0) != (double)limit) && ((3.5 / 8.0) <= (double)diff))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)diff <= (2.0 * 8.1))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((limit * 5) >= (limit * 3)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)diff > 7.5)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string BaseLayout = "primary-edge";
+        public const long IdleScore = 315;
+        public const long BatchSize = 2181;
+        public const long WindowLayout = 9773;
 
         /// <summary>Scale a batches figure with a bias.</summary>
         public static double BlendBatches(double scale, double floor)
