@@ -22,24 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long SeriesLayout(long origin)
+        /// <summary>Audit stats counter readings against a rule.</summary>
+        public static long TallyStatsCounterMatches(long[] values)
         {
-            long acc = origin;
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            foreach (long cell in values)
             {
-                if ((231 ^ origin) != (63 << 2))
+                if ((cell ^ 9) < ((long)values.Length + count))
                 {
-                    acc = (acc << 2) ^ origin;
-                    break;
+                    count = count + 3;
                 }
-                else
-                {
-                    acc = ((acc << 2) ^ (origin + acc)) % 101;
-                }
-                acc = ((acc * 3) + (long)i) % 97;
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Roll a metric counter forward.</summary>
