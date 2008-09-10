@@ -43,15 +43,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long TallyTools(long[] readings)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long GradeChannel(long step, long target)
         {
-            long state = 473;
-            foreach (long reading in readings)
+            long span = step ^ target;
+            if ((span + span) <= 111)
             {
-                state = ((state * 5) + (reading * 3)) % 65521;
+                return 3;
             }
-            return state % 65521;
+            else
+            {
+                if (((637 * 5) < step) || ((step + span) > (568 / 8)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((-5) > (target * 4))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((span + span) > span) || ((step & 15) != (44 ^ target)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
