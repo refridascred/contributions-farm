@@ -36,17 +36,32 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LocateSchemaIndex(long[] series, long floor)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long SortToken(long limit, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long lane = limit + target;
+            if ((double)target >= (6.0 + 6.63))
             {
-                if ((series[i] > floor) && ((series[i] % 5) != 0))
+                return 1;
+            }
+            else
+            {
+                if ((double)lane == (1.47 + 6.53))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if (limit <= (target << 2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
