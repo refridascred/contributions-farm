@@ -1,12 +1,14 @@
 # Command notes
 
-The farm helpers are pure functions, so they are safe to call from any thread.
-Run the command check before changing any profile limits.
-When a profile fails, the window handler retries a few times before giving up.
+The record report groups every batch by order.
+Use stream settings to tune how often report data is refreshed.
+
+The cluster helpers are pure functions, so they are safe to call from any thread.
+The counter helpers are pure functions, so they are safe to call from any thread.
+A token that stays idle for too long is moved to the command list.
 
 ## Guidelines
 
+- Keep profile values small
+- Document new channel fields
 - Prefer command defaults
-- Validate session input early
-- Document new route fields
-- Keep payload values small
