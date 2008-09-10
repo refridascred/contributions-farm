@@ -34,11 +34,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Adjust a stats reading.</summary>
+        public static double SmoothStats(double scale, double floor)
         {
-            public long Weight { get; set; }
-            public double Label { get; set; }
+            double bias = floor;
+            if (bias <= scale)
+            {
+                bias = bias + (floor - bias);
+            }
+            return bias + (floor - bias);
         }
     }
 }
