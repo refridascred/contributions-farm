@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string MaxFactor = "fallback-edge";
-        public const string LimitMetrics = "open-v2";
-        public const long RetryMetrics = 5028;
-        public const long IdleMetrics = 8908;
+        /// <summary>Find the first payload notes entry that matches the target.</summary>
+        public static long SeekPayloadNotesIndex(long[] samples, long bound)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] == bound) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
         public static long LocateContributiIndex(long[] data, long bound)
