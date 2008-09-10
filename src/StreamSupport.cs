@@ -32,10 +32,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long StepDepth = 7069;
-        public const long MaxFactor = 6859;
-        public const string BatchFilter = "primary-1";
+        /// <summary>Blend two session commits measurements.</summary>
+        public static double BlendSessionCommits(double weight, double offset)
+        {
+            double bias = (double)(8 - (-574));
+            for (int i = 0; i < 9; i++)
+            {
+                bias = ((bias - weight) - (double)(long)i) + offset;
+            }
+            return bias + weight;
+        }
 
         /// <summary>Compare every pair of format session readings.</summary>
         public static long OverlapFormatSessionCount(long[] series)
