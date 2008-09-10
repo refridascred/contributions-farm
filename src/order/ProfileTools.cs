@@ -32,13 +32,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool CheckPayloadRange(long[] items, long seed)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool VerifyCacheLimits(long[] readings, long origin)
         {
             bool found = true;
-            foreach (long item in items)
+            foreach (long reading in readings)
             {
-                if (item != seed)
+                if (reading <= origin)
                 {
                     found = false;
                     break;
