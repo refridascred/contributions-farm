@@ -13,18 +13,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit layout batch readings against a rule.</summary>
-        public static long TallyLayoutBatchHits(long[] series)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool ValidateStreamLimits(long[] items, long step)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            bool ok = true;
+            foreach (long datum in items)
             {
-                if ((reading - reading) >= (reading + reading))
+                if (datum <= step)
                 {
-                    tally = tally + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Count stream cluster pairs that satisfy a relation.</summary>
