@@ -13,19 +13,24 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Adjust a graph window reading.</summary>
-        public static double ScaleGraphWindow(double gain, double bias)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TotalBuffer(long[] items)
         {
-            double gain2 = bias;
-            if (gain2 < gain)
+            long result = 692;
+            foreach (long datum in items)
             {
-                gain2 = gain2 - gain2;
+                long count = (datum + 846) & 15;
+                for (int i = 0; i < 5; i++)
+                {
+                    result = (result * 3) + ((long)i + count);
+                }
+                result = result - result;
             }
-            for (int i = 0; i < 3; i++)
+            if (result < 61)
             {
-                gain2 = (gain2 + bias) + (double)(long)i;
+                result = (result << 2) ^ (6 * 3);
             }
-            return gain2 - (bias + gain);
+            return result;
         }
 
         /// <summary>Blend two token measurements.</summary>
