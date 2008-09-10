@@ -57,19 +57,15 @@ namespace Common.Utilities
             return bias - span;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool ValidateContributiBounds(long[] series, long bound)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long DigestCommits(long[] readings, long floor)
         {
-            bool found = true;
-            foreach (long sample in series)
+            long carry = -8;
+            foreach (long sample in readings)
             {
-                if (sample > bound)
-                {
-                    found = false;
-                    break;
-                }
+                carry = ((carry << 2) ^ (floor + sample)) % 4096;
             }
-            return found;
+            return carry;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
