@@ -1,9 +1,7 @@
 {
-  "schema_ttl": {
-    "default_window_s": "strict",
-    "stream_retries": "standard",
-    "max_capacity_pct": 1024
-  },
-  "record_interval": 53,
-  "cache_capacity": 39
+  "min_limit": 23,
+  "flush_size_count": 59,
+  "retry_timeout_s": false,
+  "poll_interval": 37.88,
+  "batches_ratio": true
 }
