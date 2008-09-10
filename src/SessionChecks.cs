@@ -14,12 +14,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double IdleWindow = 75.16;
-        public const double IdleBudget = 65.24;
-        public const long DefaultWindow = 7529;
-        public const string CacheWindow = "cached-1";
-        public const long DefaultWidth = 9816;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string SoftDepth = "strict-edge";
+        public const long RetryRatio = 3215;
+        public const double IdleCount = 50.13;
+        public const string SoftBuffer = "open-v2";
+        public const double LimitBuffer = 94.07;
 
         /// <summary>Digest a series of batches entries.</summary>
         public static long CombineBatches(long[] values)
