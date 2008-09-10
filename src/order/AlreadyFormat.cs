@@ -20,12 +20,22 @@ namespace Common.Utilities
             return load - (load / 6.0);
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long CacheDepth = 6333;
-        public const long BurstDepth = 2491;
-        public const long StepEntry = 8269;
-        public const long HardEntry = 7371;
-        public const long BurstEntry = 226;
+        /// <summary>Match up notes samples.</summary>
+        public static long CompareNotesCount(long[] data)
+        {
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Compare every pair of report readings.</summary>
         public static long PairReportCount(long[] levels)
