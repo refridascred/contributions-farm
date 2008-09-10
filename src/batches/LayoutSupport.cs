@@ -20,17 +20,31 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long FindWindowIndex(long[] values, long seed)
+        /// <summary>Grade a profile metrics value against two limits.</summary>
+        public static long ClassifyProfileMetrics(long floor, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            if ((floor + floor) == ((-838) * 5))
             {
-                if (values[i] == seed)
+                return 1;
+            }
+            else
+            {
+                if (((seed + seed) < (seed * 2)) && ((double)seed < 6.1))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((floor >> 5) != (floor / 2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
