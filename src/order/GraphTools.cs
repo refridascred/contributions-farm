@@ -39,31 +39,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a cluster stream value against two limits.</summary>
-        public static long ClassifyClusterStream(long target, long seed)
+        /// <summary>Fold a list of cluster contributi readings.</summary>
+        public static long DigestClusterContributi(long[] series)
         {
-            if ((double)(-113) <= (double)target)
+            long result = 642;
+            foreach (long datum in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((seed & 3) >= (seed + target))
+                if (((4.9 + 4.94) > (double)datum) || ((1.0 - 8.44) > (double)datum))
                 {
-                    return 3;
+                    result = (result * 2) + datum;
                 }
-                else
+                if (((361 + result) <= (datum * 5)) && (20.0 >= (double)datum))
                 {
-                    if ((seed + 657) > (seed & 63))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    break;
                 }
             }
+            return result % 1000;
         }
 
         /// <summary>Describe the order mode values.</summary>
