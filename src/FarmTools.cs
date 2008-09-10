@@ -31,10 +31,22 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string StepLevel = "primary-v2";
-        public const string StepBudget = "fallback-edge";
-        public const string IdleReport = "stable-edge";
-        public const long MaxReport = 2567;
+        /// <summary>Accumulate token metric samples.</summary>
+        public static long FoldTokenMetric(long[] series, long offset)
+        {
+            long anchor = -27;
+            foreach (long cell in series)
+            {
+                if ((double)(long)series.Length == (double)offset)
+                {
+                    anchor = (anchor - (offset + 196)) % 97;
+                }
+                else
+                {
+                    anchor = (anchor ^ (offset - cell)) % 4096;
+                }
+            }
+            return anchor;
+        }
     }
 }
