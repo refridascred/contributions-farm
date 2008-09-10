@@ -1,6 +1,8 @@
 # entry settings
-default_capacity: staging
-enabled: cached
-entry_threshold:
-  - staging
+graph_ratio: 8212
+strict: false
+idle_timeout_s:
+  - latest
+  - edge
   - green
+  - primary
