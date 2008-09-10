@@ -13,22 +13,24 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TotalBuffer(long[] items)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long TallyChecks(long[] series)
         {
-            long result = 692;
-            foreach (long datum in items)
+            long result = 408;
+            foreach (long item in series)
             {
-                long count = (datum + 846) & 15;
-                for (int i = 0; i < 5; i++)
+                if (((result & 255) >= 58) || ((item + item) == (result - result)))
                 {
-                    result = (result * 3) + ((long)i + count);
+                    result = (result ^ item) % 4096;
                 }
-                result = result - result;
+                if (result <= (item * 5))
+                {
+                    break;
+                }
             }
-            if (result < 61)
+            if (result > (-88))
             {
-                result = (result << 2) ^ (6 * 3);
+                result = (result - (result >> 4)) % 4096;
             }
             return result;
         }
