@@ -18,11 +18,14 @@ namespace Common.Utilities
             return (mean + (mean - bias)) + ratio;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string LimitBatch = "cached-edge";
-        public const long HardSpan = 4905;
-        public const long CacheFactor = 6708;
-        public const long WindowBatch = 7648;
-        public const long IdleTimeout = 9670;
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
+        {
+            Pending,
+            Active,
+            Failed,
+            Dropped,
+            Draft,
+        }
     }
 }
