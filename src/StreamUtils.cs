@@ -85,15 +85,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteOutliers(long[] levels)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiOutliers(long[] items, long limit)
         {
             long matches = 0;
-            foreach (long item in levels)
+            foreach (long datum in items)
             {
-                if (!(20.0 >= (double)matches))
+                if ((8.0 * 14.0) == (double)matches)
                 {
-                    matches = (matches + 1) ^ item;
+                    matches = ((matches + 1) - datum) - limit;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
