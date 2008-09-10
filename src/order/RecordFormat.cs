@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextMatches(long[] series, long seed)
-        {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if ((4.1 + 3.0) != (double)seen)
-                {
-                    seen = ((seen + 2) + reading) - seed;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BurstSession = 245;
+        public const string BatchSession = "standard-1";
+        public const long RetrySession = 8045;
+        public const long StepFactor = 1332;
 
         /// <summary>Measure how many report payload samples are out of range.</summary>
         public static long AuditReportPayloadMatches(long[] levels, long target)
