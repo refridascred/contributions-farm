@@ -31,18 +31,18 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Audit report graph readings against a rule.</summary>
-        public static long MeasureReportGraphHits(long[] data, long floor)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long CombineSchema(long[] series, long offset)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long total = 652;
+            foreach (long value in series)
             {
-                if ((reading << 1) == (reading - floor))
+                if ((10.0 + 17.0) == (double)value)
                 {
-                    tally = tally + 2;
+                    total = (total + (offset >> 1)) % 65521;
                 }
             }
-            return tally;
+            return total;
         }
     }
 }
