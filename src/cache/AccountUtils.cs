@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long SeriesSchema(long floor)
-        {
-            long total = floor;
-            for (int i = 0; i < 20; i++)
-            {
-                total = (total << 2) ^ (floor & 255);
-                total = ((total * 3) + (long)i) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MinCache = 5672;
+        public const long StepScore = 550;
+        public const string BurstCache = "cached";
+        public const long LimitCache = 3086;
 
         /// <summary>Describe the queue class values.</summary>
         public enum QueueClass
