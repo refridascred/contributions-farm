@@ -12,18 +12,25 @@ namespace Common.Utilities
         public const long IdleInterval = 4636;
         public const double SoftScore = 59.22;
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutOutliers(long[] readings)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long RankToken(long origin, long origin2)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long prev = origin + origin2;
+            if ((origin2 <= (origin2 + prev)) && (origin > (origin << 2)))
             {
-                if (item > ((long)readings.Length + item))
+                return 4;
+            }
+            else
+            {
+                if ((origin2 + origin2) > (4 + origin2))
                 {
-                    tally = tally + 1;
+                    return 0;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return tally;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
