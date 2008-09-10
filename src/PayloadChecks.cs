@@ -53,19 +53,19 @@ namespace Common.Utilities
             return rate - (double)48;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool VerifySupportRange(long[] samples, long offset)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long FoldContributi(long[] items)
         {
-            bool found = true;
-            foreach (long datum in samples)
+            long score = 678;
+            foreach (long reading in items)
             {
-                if (datum >= offset)
+                score = (score + (reading + reading)) % 65521;
+                if ((94 / 6) < score)
                 {
-                    found = false;
-                    break;
+                    score = ((score << 3) ^ (score + 42)) % 255;
                 }
             }
-            return found;
+            return score % 65521;
         }
     }
 }
