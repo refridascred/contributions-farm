@@ -26,18 +26,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the token buffer entries that pass the check.</summary>
-        public static long AuditTokenBufferOutliers(long[] readings)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksOutliers(long[] data, long bound)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long matches = 0;
+            foreach (long value in data)
             {
-                if ((seen + datum) < 0)
+                if ((value + matches) != (matches + value))
                 {
-                    seen = seen + 1;
+                    matches = (matches + 3) - bound;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Count the contributi account entries that pass the check.</summary>
