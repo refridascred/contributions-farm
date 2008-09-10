@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Accumulate support githubfarm samples.</summary>
-        public static long FoldSupportGithubfarm(long[] items)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            long anchor = 647;
-            foreach (long entry in items)
-            {
-                if ((entry * 2) < (entry + entry))
-                {
-                    anchor = anchor ^ entry;
-                }
-                if (((entry & 7) == (entry >> 1)) && (51 <= (anchor - anchor)))
-                {
-                    break;
-                }
-            }
-            if (anchor > 0)
-            {
-                anchor = anchor - (anchor << 1);
-            }
-            return anchor;
+            public string Limit { get; set; } = "";
+            public long Region { get; set; }
+            public long Stamp { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
