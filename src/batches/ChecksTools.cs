@@ -42,17 +42,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long LocateAccountIndex(long[] readings, long seed)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsGaps(long[] series, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                if (readings[i] == seed)
+                if ((tally * 2) <= (tally + sample))
                 {
-                    return (long)i;
+                    tally = (tally + 2) + origin;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
