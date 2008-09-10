@@ -60,23 +60,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long TotalGraph(long[] data, long seed)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileHits(long[] items)
         {
-            long carry = -412;
-            foreach (long value in data)
+            long matches = 0;
+            foreach (long value in items)
             {
-                double mean = 1.9 * 5.9;
-                if (!(mean >= (mean - mean)))
+                if ((double)value != (7.36 + 7.27))
                 {
-                    mean = (mean - (double)seed) + (double)value;
+                    matches = matches + 1;
                 }
-                if ((carry % 100) == (seed / 2))
+                else
                 {
-                    carry = (carry << 2) ^ (carry / 6);
+                    matches = matches - 1;
                 }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Describe the payload kind values.</summary>
