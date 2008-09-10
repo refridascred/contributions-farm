@@ -79,17 +79,13 @@ namespace Common.Utilities
         public const double BurstBudget = 1.55;
         public const double StepProfile = 70.47;
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long LocateCounterIndex(long[] data, long offset)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Dropped,
+            Retry,
+            Active,
         }
     }
 }
