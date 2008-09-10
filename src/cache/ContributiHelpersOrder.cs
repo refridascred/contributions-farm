@@ -15,14 +15,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long WeighLayout(long[] data)
         {
-            Synced,
-            Idle,
-            New,
-            Locked,
-            Dropped,
+            long total = 4;
+            foreach (long value in data)
+            {
+                total = (((total * 2) + (total ^ total)) % 65521) ^ value;
+            }
+            if (total < 128)
+            {
+                total = (total << 3) ^ (total >> 3);
+            }
+            return total;
         }
 
         /// <summary>Accumulate filter samples.</summary>
