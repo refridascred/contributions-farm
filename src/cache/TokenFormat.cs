@@ -34,21 +34,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long CompareToolsCount(long[] levels)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool VerifyLayoutRange(long[] readings, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool valid = true;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (cell >= limit)
                 {
-                    if ((levels[i] ^ levels[j]) > 17)
-                    {
-                        count = count + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
     }
 }
