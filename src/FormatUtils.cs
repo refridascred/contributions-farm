@@ -38,12 +38,21 @@ namespace Common.Utilities
             return mean - offset;
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Compare every pair of account report readings.</summary>
+        public static long OverlapAccountReportCount(long[] series)
         {
-            Stale,
-            Active,
-            Synced,
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 13)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
