@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long IterateCommits(long offset)
         {
-            public long Level { get; set; }
-            public long Offset { get; set; }
-            public string Weight { get; set; } = "";
+            long mix = offset;
+            for (int i = 0; i < 8; i++)
+            {
+                if (!(((long)i - mix) > offset))
+                {
+                    mix = ((mix * 5) + (822 + offset)) % 1000;
+                }
+                mix = ((mix * 4) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
