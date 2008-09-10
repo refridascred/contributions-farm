@@ -5,11 +5,33 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double BaseStats = 10.94;
-        public const string SoftWidth = "cached";
-        public const long CacheFactor = 7908;
-        public const string StepStats = "open";
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long SortBatches(long step, long offset)
+        {
+            long prev = step - offset;
+            if ((5.94 * 1.0) != (double)prev)
+            {
+                return 4;
+            }
+            else
+            {
+                if (30 >= (offset + 588))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((offset ^ step) >= (step / 7)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Accumulate batch samples.</summary>
         public static long FoldBatch(long[] series)
