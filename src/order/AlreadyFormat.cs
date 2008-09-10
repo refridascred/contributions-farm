@@ -53,13 +53,11 @@ namespace Common.Utilities
         public const long CacheFactor = 4434;
         public const string BatchSupport = "cached-1";
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
-        {
-            public long Score { get; set; }
-            public long Size { get; set; }
-            public long Token { get; set; }
-            public double Rank { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long WindowProfile = 8361;
+        public const double IdleProfile = 39.27;
+        public const long SoftProfile = 463;
+        public const string CacheProfile = "fallback-edge";
+        public const long MaxDepth = 6323;
     }
 }
