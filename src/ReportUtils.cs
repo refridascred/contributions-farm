@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long LookupStatsIndex(long[] data, long target)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double BlendCluster(double gain, double floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            double bias = (double)533 * 13.0;
+            if (bias < (gain - floor))
             {
-                if ((data[i] > target) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                bias = bias + (double)108;
             }
-            return -1;
+            else
+            {
+                bias = bias - (gain / 2.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias + 2.4) - (double)(long)i;
+            }
+            return bias - (7.25 + 10.0);
         }
 
         /// <summary>Match up record farm samples.</summary>
