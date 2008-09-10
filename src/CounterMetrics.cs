@@ -34,18 +34,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the commits session entries that pass the check.</summary>
-        public static long AuditCommitsSessionMatches(long[] series, long seed)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool ValidateSessionBounds(long[] data, long floor)
         {
-            long count = 0;
-            foreach (long datum in series)
+            bool valid = true;
+            foreach (long cell in data)
             {
-                if ((datum > (datum + seed)) && (((count + datum) > (seed ^ seed)) || ((count & 255) >= (seed - count))))
+                if (cell < floor)
                 {
-                    count = count + 3;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Grade a account value against two limits.</summary>
