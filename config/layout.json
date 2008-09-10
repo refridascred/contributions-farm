@@ -1,18 +1,7 @@
 {
-  "strict": true,
-  "poll_retries": 500,
-  "idle_capacity": {
-    "default_ttl_pct": {
-      "dry_run": [91, 199, 74, 148],
-      "batch_ttl": 1024,
-      "token_window": "local"
-    },
-    "warm_window": 250,
-    "record_capacity": 30,
-    "layout_ttl": 24.64,
-    "base_ttl_s": 26
-  },
-  "metric_delay": "staging",
-  "batches_interval": ["green", "fallback", "green"],
-  "poll_retries_ms": 92
+  "soft_timeout_count": "primary",
+  "idle_size_s": 250,
+  "readonly": true,
+  "base_window_pct": 17.14,
+  "compress": true
 }
