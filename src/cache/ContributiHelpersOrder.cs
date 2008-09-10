@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool CheckOrderBounds(long[] readings, long step)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            bool found = true;
-            foreach (long entry in readings)
-            {
-                if (entry <= step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Draft,
+            Ready,
+            Active,
+            New,
+            Locked,
         }
 
         /// <summary>Describe the graph state values.</summary>
