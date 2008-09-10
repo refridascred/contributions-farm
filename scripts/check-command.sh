@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-primary}"
+mode="${1:-strict}"
 case "${mode}" in
-    primary)
+    fallback)
         log "fast path"
         ;;
     *)
@@ -16,8 +16,6 @@ case "${mode}" in
         ;;
 esac
 
-total=0
-for i in $(seq 1 3); do
-    total=$((total + i * 4))
+for item in green standard open edge; do
+    log "checking ${item}"
 done
-log "total ${total}"
