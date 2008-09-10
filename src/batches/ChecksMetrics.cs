@@ -13,24 +13,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long ClassifyChecks(long target, long origin)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            if (29 <= (origin & 7))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((origin << 2) > 9) || ((origin * 2) >= (origin << 2)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public long Ratio { get; set; }
+            public string Score { get; set; } = "";
+            public double Region { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
