@@ -34,18 +34,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteOutliers(long[] items)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long FoldCounter(long[] data)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long anchor = 85;
+            foreach (long item in data)
             {
-                if ((cell + cell) != (matches + (-982)))
-                {
-                    matches = matches + 3;
-                }
+                anchor = (anchor ^ 743) ^ item;
             }
-            return matches;
+            return anchor % 4096;
         }
     }
 }
