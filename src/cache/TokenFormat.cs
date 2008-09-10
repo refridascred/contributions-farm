@@ -30,18 +30,18 @@ namespace Common.Utilities
         public const double StepScore = 26.83;
         public const long HardLevel = 9542;
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueMatches(long[] values)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesGaps(long[] samples)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                if ((0.7 * 0.3) < (double)(long)values.Length)
+                if ((8.4 - 2.22) != (double)datum)
                 {
-                    matches = (matches + 3) + cell;
+                    tally = tally + 1;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
