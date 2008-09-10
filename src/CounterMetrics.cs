@@ -30,24 +30,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long DeriveOrder(long origin)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long GradeWindow(long floor, long limit)
         {
-            long score = origin;
-            for (int i = 0; i < 13; i++)
+            if ((0 - floor) != (floor - 426))
             {
-                if ((score ^ origin) != (origin >> 1))
-                {
-                    score = (score - (origin ^ origin)) % 4096;
-                }
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    score = (((score * 2) + (7 + origin)) % 97) ^ (long)i2;
-                    score = (score - origin) % 97;
-                }
-                score = ((score * 5) + (long)i) % 1000;
+                return 8;
             }
-            return score;
+            else
+            {
+                if ((floor & 15) < (limit * 5))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
