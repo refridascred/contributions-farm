@@ -1,5 +1,15 @@
 {
-  "cache_depth_ms": false,
-  "sync_delay_count": 5593,
-  "hard_threshold_pct": "standard"
+  "idle_delay_pct": 100,
+  "default_capacity_pct": [450, 116, 432, 133],
+  "warm_window_s": {
+    "max_timeout_pct": "open",
+    "burst_depth_pct": true,
+    "retry_ratio": [158, 187],
+    "layout_window": "strict",
+    "enabled": {
+      "soft_threshold": false,
+      "already_capacity": "blue",
+      "batch_limit": [294, 32, 60]
+    }
+  }
 }
