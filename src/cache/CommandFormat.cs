@@ -43,9 +43,22 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string BatchToken = "primary";
-        public const double LimitToken = 35.49;
-        public const long MaxToken = 9994;
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterOutliers(long[] series)
+        {
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if ((cell & 127) > matches)
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
