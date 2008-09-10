@@ -19,21 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long CompareReportCount(long[] readings)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheGaps(long[] readings, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((5 + hits) >= 35)
                 {
-                    if ((readings[i] - readings[j]) > 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = ((hits + 1) + sample) - bound;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
