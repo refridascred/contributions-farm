@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long SortCounter(long offset, long seed)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long TallyContext(long[] items, long bound)
         {
-            if (seed < (offset + offset))
+            long carry = 785;
+            foreach (long reading in items)
             {
-                return 5;
-            }
-            else
-            {
-                if (offset <= (offset - offset))
+                if (reading < (carry * 3))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((3.0 + 7.0) == (double)offset) && ((offset + offset) < (offset >> 3)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    carry = ((carry << 2) ^ reading) - bound;
                 }
             }
+            return carry;
         }
 
         /// <summary>Audit cache contributi readings against a rule.</summary>
