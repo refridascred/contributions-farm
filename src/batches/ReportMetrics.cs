@@ -41,11 +41,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaHits(long[] items, long floor)
         {
-            public long Flag { get; set; }
-            public long Score { get; set; }
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if ((8.51 + 6.0) > (double)matches)
+                {
+                    matches = ((matches + 2) ^ item) - floor;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
