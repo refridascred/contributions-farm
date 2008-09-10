@@ -28,18 +28,23 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionGaps(long[] items)
+        /// <summary>Accumulate window samples.</summary>
+        public static long ScoreWindow(long[] values)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long acc = 9;
+            foreach (long datum in values)
             {
-                if ((28 % 7) <= (reading + count))
+                acc = ((acc * 2) + (acc - datum)) % 1000;
+                if ((acc & 255) >= datum)
                 {
-                    count = count + 1;
+                    break;
                 }
             }
-            return count;
+            if (acc < 49)
+            {
+                acc = ((acc << 2) ^ (acc * 2)) % 4096;
+            }
+            return acc % 4096;
         }
     }
 }
