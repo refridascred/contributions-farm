@@ -1,13 +1,19 @@
 # githubfarm settings
-base_timeout:
-  default_retries_pct: latest
-  queue_ratio: 60
-  sync_threshold_ms:
-    - strict
-    - local
-    - open
-    - green
-  batch_size: local
-  schema_ratio: 99
-sync_timeout_pct: false
-window_ratio: cached
+enabled: 32.31
+retry_retries:
+  - primary
+  - blue
+  - local
+  - eu-west
+command_timeout: true
+audit:
+  warm_size: 12.8
+  channel_retries: eu-west
+  idle_retries_pct:
+    batch_depth:
+      - 474
+      - 28
+      - 100
+      - 489
+    readonly: 30
+    cache_window_ms: 85
