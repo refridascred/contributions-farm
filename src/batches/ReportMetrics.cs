@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the graph metric entries that pass the check.</summary>
-        public static long AuditGraphMetricGaps(long[] samples)
+        /// <summary>Grade a stream queue value against two limits.</summary>
+        public static long ClassifyStreamQueue(long target, long offset)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long delta = target + offset;
+            if ((delta & 255) < (offset << 2))
             {
-                if (4.5 > (double)reading)
+                return 2;
+            }
+            else
+            {
+                if ((delta + (-1)) >= (target + delta))
                 {
-                    matches = matches + 2;
+                    return 8;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((delta >> 4) == (6 << 2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the token status values.</summary>
