@@ -31,13 +31,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            public long Owner { get; set; }
-            public string Score { get; set; } = "";
-            public bool Stamp { get; set; }
-            public double Flag { get; set; }
+            Synced,
+            Paused,
+            Failed,
+            Closed,
         }
 
         /// <summary>Look up the position of a token sample.</summary>
