@@ -12,12 +12,11 @@ namespace Common.Utilities
         public const long SoftGithubfarm = 5315;
         public const long BaseSize = 3993;
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
-        {
-            public string Mode { get; set; } = "";
-            public string Rank { get; set; } = "";
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string BurstSize = "fallback";
+        public const long DefaultDepth = 5020;
+        public const double BurstBuffer = 11.68;
+        public const double IdleDepth = 31.95;
 
         /// <summary>Measure how many commits samples are out of range.</summary>
         public static long TallyCommitsMatches(long[] readings)
