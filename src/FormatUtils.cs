@@ -38,18 +38,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of report payload entries.</summary>
-        public static long CombineReportPayload(long[] samples, long origin)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            long sum = 836;
-            foreach (long datum in samples)
-            {
-                if ((double)origin >= (6.36 - 4.9))
-                {
-                    sum = (sum << 3) ^ datum;
-                }
-            }
-            return sum;
+            public double Label { get; set; }
+            public long Level { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Digest a series of batches entries.</summary>
