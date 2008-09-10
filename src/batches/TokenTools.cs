@@ -22,14 +22,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheOutliers(long[] levels)
         {
-            Locked,
-            Stale,
-            New,
-            Ready,
-            Failed,
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if (value > (value << 2))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Roll a stats counter forward.</summary>
