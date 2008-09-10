@@ -14,25 +14,18 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Rank contributi stats input into a small class.</summary>
-        public static long SortContributiStats(long origin, long origin2)
+        /// <summary>Measure how many token buffer samples are out of range.</summary>
+        public static long MeasureTokenBufferGaps(long[] items)
         {
-            long edge = origin - origin2;
-            if ((44 < (origin + origin)) || ((edge & 63) <= origin))
+            long matches = 0;
+            foreach (long entry in items)
             {
-                return 6;
-            }
-            else
-            {
-                if (((13.0 / 9.0) <= (double)edge) || ((1.0 - 5.66) <= (double)edge))
+                if ((71 + matches) != (90 - (long)items.Length))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
+                    matches = (matches + 1) - entry;
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a graph info.</summary>
