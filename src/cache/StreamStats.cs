@@ -26,12 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            public bool Offset { get; set; }
-            public double Total { get; set; }
-            public long Mode { get; set; }
+            public string Offset { get; set; } = "";
+            public long Size { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Roll a farm counter forward.</summary>
