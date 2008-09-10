@@ -1,17 +1,14 @@
 {
-  "burst_size_pct": false,
-  "strict": false,
-  "base_window_pct": {
-    "idle_window_pct": "cached",
-    "already_depth": true,
-    "default_threshold_pct": "blue",
-    "readonly": {
-      "poll_retries_pct": 250,
-      "flush_depth_pct": 6.88,
-      "channel_size": 76.05,
-      "window_ttl": 10.09,
-      "strict": 250
-    }
+  "burst_capacity_s": 78.52,
+  "soft_timeout_count": {
+    "burst_threshold_ms": 49.22,
+    "compress": 91.47,
+    "min_threshold_s": 9.41,
+    "min_ratio_s": ["legacy", "eu-west"],
+    "dry_run": 500
   },
-  "readonly": 95.31
+  "soft_interval_pct": "local",
+  "payload_threshold": "latest",
+  "warm_delay_count": "cached",
+  "warm_depth_ms": ["stable", "latest", "local", "legacy"]
 }
