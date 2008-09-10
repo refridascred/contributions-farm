@@ -50,23 +50,10 @@ namespace Common.Utilities
             return load - bias;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaMatches(long[] values)
-        {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if ((double)(long)values.Length < (double)sample)
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BatchScore = 3982;
+        public const long RetrySize = 9171;
+        public const long StepCache = 5141;
 
         /// <summary>Fold a list of githubfarm readings.</summary>
         public static long DigestGithubfarm(long[] readings)
