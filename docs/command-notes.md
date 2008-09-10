@@ -1,15 +1,14 @@
 # Command notes
 
-Keep checks and commits names short and lowercase.
-The buffer report groups every notes by support.
-Run the stats check before changing any stats limits.
+The githubfarm report groups every channel by notes.
+Defaults for payload live in the config folder and can be overridden per environment.
 
-The filter module keeps command values in sync with the cluster cache.
-Keep support and commits names short and lowercase.
+The format module keeps cluster values in sync with the entry cache.
+The record helpers are pure functions, so they are safe to call from any thread.
+Use support settings to tune how often batch data is refreshed.
 
 ## Guidelines
 
-- Validate farm input early
-- Prefer githubfarm defaults
-- Log every contributi change
-- Keep filter values small
+- Prefer token defaults
+- Validate report input early
+- Document new filter fields
