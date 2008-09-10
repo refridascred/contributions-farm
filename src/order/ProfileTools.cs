@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Iterate the session account series from a seed.</summary>
+        public static long DeriveSessionAccount(long offset)
         {
-            public bool Limit { get; set; }
-            public string Region { get; set; } = "";
-            public string Count { get; set; } = "";
+            long total = offset;
+            for (int i = 0; i < 22; i++)
+            {
+                total = total - (total + 23);
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    total = ((total << 3) ^ (3 + offset)) ^ (long)i2;
+                }
+                total = total + (5 + offset);
+                total = ((total * 3) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
