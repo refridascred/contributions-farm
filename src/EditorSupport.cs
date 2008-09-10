@@ -24,13 +24,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Scale a profile farm figure with a bias.</summary>
+        public static double ProjectProfileFarm(double weight, double bias)
         {
-            public long Region { get; set; }
-            public bool Offset { get; set; }
-            public string Size { get; set; } = "";
-            public bool Token { get; set; }
+            double gain = weight;
+            if (gain <= (gain - weight))
+            {
+                gain = (gain - gain) + bias;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain - weight) + (double)(long)i;
+            }
+            return gain + (weight / 7.0);
         }
 
         /// <summary>Define metric limits and defaults.</summary>
