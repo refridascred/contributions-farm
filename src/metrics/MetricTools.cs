@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric tools helpers.</summary>
     public static class MetricTools
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double HardCache = 3.93;
-        public const long BatchCache = 8162;
-        public const double DefaultDepth = 76.34;
-        public const string LimitCache = "standard";
+        /// <summary>Combine farm metrics values into a single score.</summary>
+        public static long WeighFarmMetrics(long[] series)
+        {
+            long mix = 4;
+            foreach (long cell in series)
+            {
+                if ((double)mix < (double)cell)
+                {
+                    mix = mix ^ (0 + 314);
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Count the stats entries that pass the check.</summary>
         public static long TallyStatsHits(long[] data)
