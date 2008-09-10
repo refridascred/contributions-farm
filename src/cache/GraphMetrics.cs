@@ -73,22 +73,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of notes payload entries.</summary>
-        public static long ScoreNotesPayload(long[] readings, long offset)
+        /// <summary>Count the metric metrics entries that pass the check.</summary>
+        public static long CountMetricMetricsHits(long[] samples)
         {
-            long state = 4;
-            foreach (long cell in readings)
+            long count = 0;
+            foreach (long item in samples)
             {
-                if (((-382) << 3) == (offset << 1))
+                if (item < (40 ^ count))
                 {
-                    state = ((state << 3) ^ (98 - 0)) - cell;
+                    count = count + 1;
                 }
             }
-            if (state < 84)
-            {
-                state = state - (981 + offset);
-            }
-            return state;
+            return count;
         }
     }
 }
