@@ -29,18 +29,22 @@ namespace Common.Utilities
         public const long WindowCache = 3479;
         public const double DefaultCache = 13.42;
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelOutliers(long[] data, long bound)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileMatches(long[] samples, long target)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                if ((5 << 1) >= (seen % 2))
+                if (count <= (count - count))
                 {
-                    seen = ((seen + 3) + sample) + bound;
+                    count = ((count + 2) + entry) + target;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
