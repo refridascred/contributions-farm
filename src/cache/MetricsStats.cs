@@ -41,18 +41,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many commits githubfarm samples are out of range.</summary>
-        public static long AuditCommitsGithubfarmGaps(long[] values, long target)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if ((reading ^ 623) > (reading - (long)values.Length))
-                {
-                    matches = (matches + 2) - target;
-                }
-            }
-            return matches;
+            public double Count { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Compare every pair of channel context readings.</summary>
