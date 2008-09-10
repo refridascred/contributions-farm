@@ -6,9 +6,14 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in standard staging latest green; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 5); do
+    total=$((total + i * 1))
 done
+log "total ${total}"
+
+BUFFER_LIMIT=356
+log "limit is ${BUFFER_LIMIT}"
 
 count=0
 while [ "${count}" -lt 7 ]; do
