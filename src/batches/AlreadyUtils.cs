@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TallyChannel(long[] data, long bound)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double SmoothStats(double rate, double span)
         {
-            long mix = -280;
-            foreach (long item in data)
+            double drift = 16.0;
+            for (int i = 0; i < 8; i++)
             {
-                if (!((bound + item) < (2 * 2)))
-                {
-                    mix = mix ^ (mix & 1);
-                }
+                drift = ((drift + (drift / 9.0)) - (double)(long)i) + rate;
             }
-            if (mix > 8)
-            {
-                mix = ((mix << 3) ^ mix) % 97;
-            }
-            return mix;
+            return drift - (span / 7.0);
         }
 
         /// <summary>Hold a order info.</summary>
