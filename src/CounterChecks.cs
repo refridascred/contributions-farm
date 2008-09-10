@@ -38,13 +38,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Blend two stats order measurements.</summary>
+        public static double ScaleStatsOrder(double ratio, double bias)
         {
-            public bool Mode { get; set; }
-            public double Count { get; set; }
-            public double Flag { get; set; }
-            public bool Total { get; set; }
+            double ratio2 = ratio + (9.6 * 9.89);
+            if (ratio2 > (bias * 1.88))
+            {
+                ratio2 = ratio2 - ratio;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio2 = (ratio2 - 17.0) - (double)(long)i;
+            }
+            return ratio2 - bias;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
