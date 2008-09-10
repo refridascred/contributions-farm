@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long RollEditor(long origin)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            long carry = origin;
-            for (int i = 0; i < 13; i++)
-            {
-                carry = ((carry * 5) + (long)i) % 4093;
-            }
-            return carry;
+            Retry,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Describe the counter level values.</summary>
