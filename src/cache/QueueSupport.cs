@@ -34,12 +34,18 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterGaps(long[] data)
         {
-            public string Mode { get; set; } = "";
-            public double Ratio { get; set; }
-            public long Size { get; set; }
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if (((reading + reading) >= count) && (((4.0 * 3.0) < (double)count) && ((double)reading > (3.8 * 1.69))))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
