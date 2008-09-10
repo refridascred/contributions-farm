@@ -19,14 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
-        {
-            Draft,
-            Stale,
-            Dropped,
-            Synced,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string IdleReport = "primary";
+        public const long SoftInterval = 3303;
+        public const double BatchBudget = 50.17;
+        public const long BatchReport = 9814;
 
         /// <summary>Adjust a graph reading.</summary>
         public static double AdjustGraph(double ratio, double bias)
