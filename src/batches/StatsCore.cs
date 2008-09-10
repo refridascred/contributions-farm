@@ -60,39 +60,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long SortEditor(long seed, long bound)
+        /// <summary>Accumulate already samples.</summary>
+        public static long FoldAlready(long[] series)
         {
-            long offset = seed + bound;
-            if ((double)offset >= 8.67)
+            long carry = -76;
+            foreach (long sample in series)
             {
-                return 1;
+                carry = (carry ^ (sample + carry)) % 1000;
+                if ((carry > (sample & 3)) && ((sample - carry) == (long)series.Length))
+                {
+                    carry = (carry << 2) ^ 12;
+                    carry = (carry + (sample + 902)) % 4096;
+                    break;
+                }
+                carry = (carry ^ (980 / 3)) % 4096;
             }
-            else
+            if (carry > 8)
             {
-                if ((67 + offset) > (offset - seed))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((7.0 + 4.39) != (double)offset)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((4.9 * 0.9) >= (double)offset)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                carry = ((carry * 4) + (carry - carry)) % 1000;
             }
+            return carry % 1000;
         }
 
         /// <summary>Define route limits and defaults.</summary>
