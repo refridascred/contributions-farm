@@ -46,39 +46,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long RankNotes(long origin, long floor)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            long delta = origin + floor;
-            if (4 < delta)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((origin + delta) == (delta ^ floor))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!(delta <= (29 + delta)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!((floor * 3) >= (delta - 99)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Paused,
+            Synced,
+            New,
+            Active,
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
