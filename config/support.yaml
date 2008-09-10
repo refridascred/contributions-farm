@@ -1,5 +1,4 @@
 # support settings
-default_threshold_count: 74
-warm_limit_pct: 56
-min_limit_ms: 3764
-enabled: edge
+context_delay: fallback
+cache_depth_s: false
+cache_window_pct: false
