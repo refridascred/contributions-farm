@@ -64,19 +64,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool CheckFarmLimits(long[] levels, long seed)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool VerifyFormatBounds(long[] samples, long floor)
         {
-            bool ok = true;
-            foreach (long datum in levels)
+            bool ready = true;
+            foreach (long entry in samples)
             {
-                if (datum < seed)
+                if (entry != floor)
                 {
-                    ok = false;
+                    ready = false;
                     break;
                 }
             }
-            return ok;
+            return ready;
         }
     }
 }
