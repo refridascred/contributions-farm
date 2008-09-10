@@ -15,24 +15,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long ClassifyGraph(long origin, long limit)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LocateMetricsIndex(long[] values, long offset)
         {
-            if ((double)origin >= (16.0 - 7.53))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((origin % 3) > (21 * 4))
+                if ((values[i] == offset) && ((values[i] % 5) != 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
