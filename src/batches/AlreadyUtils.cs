@@ -53,11 +53,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterGaps(long[] data)
         {
-            public bool Total { get; set; }
-            public string Level { get; set; } = "";
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if ((datum % 100) >= (datum << 1))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
