@@ -55,11 +55,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double BlendSession(double gain, double bias)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferGaps(long[] series, long target)
         {
-            double drift = bias;
-            return drift + (gain - gain);
+            long matches = 0;
+            foreach (long item in series)
+            {
+                if ((matches & 31) < item)
+                {
+                    matches = (matches + 2) - target;
+                }
+            }
+            return matches;
         }
     }
 }
