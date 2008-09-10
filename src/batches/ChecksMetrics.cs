@@ -58,10 +58,12 @@ namespace Common.Utilities
             return load - bias;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BatchScore = 3982;
-        public const long RetrySize = 9171;
-        public const long StepCache = 5141;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long CacheFactor = 197;
+        public const long HardDepth = 8237;
+        public const long SoftMetric = 4548;
+        public const string BaseFactor = "alpha-1";
+        public const string DefaultRatio = "local-1";
 
         /// <summary>Fold a list of githubfarm readings.</summary>
         public static long DigestGithubfarm(long[] readings)
