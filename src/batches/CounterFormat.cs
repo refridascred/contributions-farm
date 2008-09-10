@@ -23,13 +23,18 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterMatches(long[] samples)
         {
-            public long Weight { get; set; }
-            public string Level { get; set; } = "";
-            public long Flag { get; set; }
-            public bool Ratio { get; set; }
+            long count = 0;
+            foreach (long item in samples)
+            {
+                if ((count & 3) <= (count / 2))
+                {
+                    count = (count + 1) + item;
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
