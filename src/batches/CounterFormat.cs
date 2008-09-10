@@ -28,35 +28,18 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long TallyGraph(long[] levels)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionGaps(long[] items)
         {
-            long state = 84;
-            foreach (long entry in levels)
+            long count = 0;
+            foreach (long reading in items)
             {
-                if ((state ^ state) <= ((-4) + 57))
+                if ((28 % 7) <= (reading + count))
                 {
-                    state = (state - (state % 60)) % 65521;
-                }
-                if ((state * 3) > (state / 2))
-                {
-                    state = state + (entry * 3);
-                    break;
-                }
-                else
-                {
-                    state = state ^ state;
-                }
-                if ((double)entry != (1.3 + 4.06))
-                {
-                    state = state + state;
-                }
-                else
-                {
-                    state = (state - (entry % 5)) % 4096;
+                    count = count + 1;
                 }
             }
-            return state % 97;
+            return count;
         }
     }
 }
