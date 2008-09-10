@@ -40,22 +40,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate cluster notes samples.</summary>
-        public static long CombineClusterNotes(long[] series)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            long anchor = 653;
-            foreach (long value in series)
-            {
-                if ((anchor >> 3) >= anchor)
-                {
-                    anchor = anchor ^ value;
-                }
-                else
-                {
-                    anchor = ((anchor * 4) + (value / 3)) % 255;
-                }
-            }
-            return anchor;
+            public long Limit { get; set; }
+            public long Count { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Token { get; set; }
         }
     }
 }
