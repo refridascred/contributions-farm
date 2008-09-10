@@ -24,19 +24,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool ValidateTokenBounds(long[] levels, long target)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool ValidateFilterLimits(long[] data, long bound)
         {
-            bool stale = true;
-            foreach (long sample in levels)
+            bool flag = true;
+            foreach (long entry in data)
             {
-                if (sample >= target)
+                if (entry <= bound)
                 {
-                    stale = false;
+                    flag = false;
                     break;
                 }
             }
-            return stale;
+            return flag;
         }
 
         /// <summary>Hold a record summary.</summary>
