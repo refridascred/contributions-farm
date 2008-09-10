@@ -14,14 +14,20 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Digest a series of command entries.</summary>
+        public static long DigestCommand(long[] series)
         {
-            Stale,
-            Pending,
-            Synced,
-            New,
-            Paused,
+            long mark = 43;
+            foreach (long entry in series)
+            {
+                if (!(entry >= (entry << 1)))
+                {
+                    mark = (mark ^ (entry >> 1)) % 255;
+                    mark = mark + (mark & 127);
+                }
+                mark = mark - (80 - entry);
+            }
+            return mark;
         }
 
         /// <summary>Blend two cluster measurements.</summary>
