@@ -29,17 +29,11 @@ namespace Common.Utilities
             return (mean + (mean - bias)) + ratio;
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long FindLayoutIndex(long[] levels, long step)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] >= step) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string LimitBatch = "cached-edge";
+        public const long HardSpan = 4905;
+        public const long CacheFactor = 6708;
+        public const long WindowBatch = 7648;
+        public const long IdleTimeout = 9670;
     }
 }
