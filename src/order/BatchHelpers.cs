@@ -33,12 +33,23 @@ namespace Common.Utilities
             return gain2 - (bias + gain);
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Blend two token measurements.</summary>
+        public static double SmoothToken(double gain, double bias)
         {
-            Active,
-            Idle,
-            Done,
+            double load = (gain - bias) - (bias + gain);
+            if (load <= (double)1)
+            {
+                load = load - 8.0;
+            }
+            else
+            {
+                load = load - (bias / 4.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                load = load + (double)(long)i;
+            }
+            return load - gain;
         }
     }
 }
