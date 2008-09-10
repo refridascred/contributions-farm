@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Compare every pair of schema command readings.</summary>
-        public static long OverlapSchemaCommandCount(long[] readings)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public double Level { get; set; }
+            public long Offset { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Project the next account value.</summary>
