@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmMatches(long[] series, long floor)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long RankGraph(long bound, long target)
         {
-            long count = 0;
-            foreach (long datum in series)
+            long offset = bound - target;
+            if ((bound + offset) == (bound >> 1))
             {
-                if (!(((double)floor >= (12.0 - 11.0)) && ((count ^ datum) <= 9)))
+                return 2;
+            }
+            else
+            {
+                if (bound <= (target + target))
                 {
-                    count = count + 2;
+                    return 6;
+                }
+                else
+                {
+                    if (6 >= (992 + target))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (offset > (offset << 2))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
