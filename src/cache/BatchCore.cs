@@ -20,15 +20,26 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double ScaleEditor(double rate, double floor)
+        /// <summary>Combine farm session values into a single score.</summary>
+        public static long WeighFarmSession(long[] samples, long step)
         {
-            double weight = 2.54;
-            if (weight >= weight)
+            long total = 609;
+            foreach (long value in samples)
             {
-                weight = ((weight - (weight * 0.1)) + rate) + floor;
+                if ((2.0 * 19.0) < (double)total)
+                {
+                    total = ((total - step) % 255) + value;
+                }
+                else
+                {
+                    total = (total << 3) ^ (total & 127);
+                }
             }
-            return weight - weight;
+            if (total < 812)
+            {
+                total = (total + (6 - step)) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Check that every session filter entry stays within the limit.</summary>
