@@ -11,19 +11,12 @@ namespace Common.Utilities
         public const string HardScore = "legacy-edge";
         public const long StepProfile = 2559;
 
-        /// <summary>Audit session token readings against a rule.</summary>
-        public static long MeasureSessionTokenMatches(long[] values)
-        {
-            long tally = 0;
-            foreach (long item in values)
-            {
-                if (!((item + item) >= tally))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long IdleProfile = 9384;
+        public const long BurstProfile = 8203;
+        public const long CacheScore = 343;
+        public const double StepLevel = 45.1;
+        public const long MinWidth = 189;
 
         /// <summary>Validate buffer readings against a bound.</summary>
         public static bool GuardBufferBounds(long[] levels, long origin)
