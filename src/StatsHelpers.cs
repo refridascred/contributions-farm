@@ -13,18 +13,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryOutliers(long[] readings)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool VerifySupportLimits(long[] data, long origin)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            bool stale = true;
+            foreach (long item in data)
             {
-                if ((item * 5) == ((long)readings.Length ^ tally))
+                if (item <= origin)
                 {
-                    tally = tally + 1;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
