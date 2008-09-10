@@ -1,6 +1,17 @@
 # support settings
-graph_limit: 30
-tools_size: 9598
-session_threshold:
+buffer_ttl:
   - blue
+  - stable
+  - primary
+  - cached
+default_timeout: latest
+warm_threshold_ms:
+  - open
+  - green
   - local
+batch_limit: true
+flush_capacity:
+  - primary
+  - primary
+  - blue
+  - latest
