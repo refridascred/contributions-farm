@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool ValidateNotesBounds(long[] series, long origin)
-        {
-            bool ready = true;
-            foreach (long item in series)
-            {
-                if (item <= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long SoftTools = 9820;
+        public const double LimitLevel = 19.83;
+        public const long IdleTools = 1574;
 
         /// <summary>Measure how many entry batch samples are out of range.</summary>
         public static long AuditEntryBatchOutliers(long[] levels)
