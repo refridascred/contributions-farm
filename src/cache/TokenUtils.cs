@@ -33,12 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            public long Weight { get; set; }
-            public bool Rank { get; set; }
-            public double Level { get; set; }
+            public bool Label { get; set; }
+            public bool Token { get; set; }
         }
     }
 }
