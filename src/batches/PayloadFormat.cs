@@ -14,18 +14,31 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaOutliers(long[] series, long target)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long GradeNotes(long origin, long target)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            if (((376 % 24) == (origin / 3)) || ((6.0 * 19.0) > (double)target))
             {
-                if (!((6 / 8) < (seen & 31)) && (((reading / 2) == (3 - 165)) || ((16 + target) < 5)))
+                return 6;
+            }
+            else
+            {
+                if (target >= (origin & 63))
                 {
-                    seen = seen + 1;
+                    return 2;
+                }
+                else
+                {
+                    if (!((origin / 4) >= target))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
