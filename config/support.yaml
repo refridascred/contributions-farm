@@ -1,21 +1,6 @@
 # support settings
-batch_timeout_s:
-  dry_run: 2
-  readonly:
-    entry_delay: 89.23
-    warm_ttl: true
-    sync_ratio_pct: green
-  support_ttl:
-    persist: blue
-    contributi_size:
-      - 220
-      - 182
-      - 367
-      - 34
-    warm_ratio_pct: 500
-    githubfarm_limit: 500
-    retry_retries_pct: strict
-    soft_size_ms: 35.54
-counter_threshold: 250
-layout_limit: legacy
-idle_window: 41
+graph_limit: 30
+tools_size: 9598
+session_threshold:
+  - blue
+  - local
