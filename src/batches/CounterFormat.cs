@@ -35,10 +35,35 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long SoftWidth = 3200;
-        public const long BaseFilter = 5765;
-        public const double IdleSpan = 87.01;
-        public const long SoftFilter = 8072;
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long TallyGraph(long[] levels)
+        {
+            long state = 84;
+            foreach (long entry in levels)
+            {
+                if ((state ^ state) <= ((-4) + 57))
+                {
+                    state = (state - (state % 60)) % 65521;
+                }
+                if ((state * 3) > (state / 2))
+                {
+                    state = state + (entry * 3);
+                    break;
+                }
+                else
+                {
+                    state = state ^ state;
+                }
+                if ((double)entry != (1.3 + 4.06))
+                {
+                    state = state + state;
+                }
+                else
+                {
+                    state = (state - (entry % 5)) % 4096;
+                }
+            }
+            return state % 97;
+        }
     }
 }
