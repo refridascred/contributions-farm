@@ -37,13 +37,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long SeekClusterIndex(long[] values, long step)
         {
-            public long Level { get; set; }
-            public double Ratio { get; set; }
-            public long Score { get; set; }
-            public double Offset { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] > step) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a tools summary.</summary>
