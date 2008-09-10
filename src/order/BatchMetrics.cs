@@ -52,11 +52,15 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Derive the next counter stream value from a seed.</summary>
+        public static long SeriesCounterStream(long seed)
         {
-            public long Total { get; set; }
-            public string Score { get; set; } = "";
+            long mark = seed;
+            for (int i = 0; i < 10; i++)
+            {
+                mark = ((mark * 3) + (long)i) % 4093;
+            }
+            return mark;
         }
     }
 }
