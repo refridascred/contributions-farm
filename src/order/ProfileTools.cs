@@ -20,18 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterMatches(long[] data)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            long tally = 0;
-            foreach (long reading in data)
-            {
-                if ((reading << 3) <= tally)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public double Offset { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Look up the position of a support sample.</summary>
