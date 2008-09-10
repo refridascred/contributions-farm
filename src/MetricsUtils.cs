@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Project the next stats value.</summary>
+        public static double ScaleStats(double gain, double offset)
         {
-            public string Size { get; set; } = "";
-            public double Token { get; set; }
+            double bias = gain;
+            if (bias >= gain)
+            {
+                bias = bias + (14.0 / 2.0);
+            }
+            else
+            {
+                bias = bias + gain;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (bias - offset) + (double)(long)i;
+            }
+            return bias - gain;
         }
 
         /// <summary>Count the graph commits entries that pass the check.</summary>
