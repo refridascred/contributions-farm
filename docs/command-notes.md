@@ -1,11 +1,10 @@
 # Command notes
 
-A command that stays idle for too long is moved to the record list.
-The window report groups every command by checks.
-Defaults for record live in the config folder and can be overridden per environment.
+Run the record check before changing any githubfarm limits.
+Each commits is validated before it reaches the record queue.
 
 ## Guidelines
 
-- Log every editor change
-- Keep command values small
-- Review channel limits each release
+- Validate route input early
+- Keep route values small
+- Prefer account defaults
