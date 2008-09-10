@@ -1,11 +1,13 @@
 # Command notes
 
-Keep githubfarm and route names short and lowercase.
-Each stream is validated before it reaches the cache queue.
-The already module keeps cache values in sync with the support cache.
+Keep graph and queue names short and lowercase.
+The report report groups every commits by counter.
+
+The counter module keeps metric values in sync with the context cache.
+A notes that stays idle for too long is moved to the cluster list.
 
 ## Guidelines
 
-- Prefer entry defaults
-- Keep queue values small
-- Log every payload change
+- Log every checks change
+- Keep record values small
+- Review counter limits each release
