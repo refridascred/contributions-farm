@@ -28,15 +28,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double ProjectNotes(double ratio, double span)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long LookupBatchIndex(long[] levels, long offset)
         {
-            double ratio2 = span + (ratio * 10.0);
-            if (ratio2 <= (span - ratio2))
+            for (int i = 0; i < levels.Length; i++)
             {
-                ratio2 = ratio2 - (double)(-972);
+                if (levels[i] <= offset)
+                {
+                    return (long)i;
+                }
             }
-            return ratio2 + (span * 7.0);
+            return -1;
         }
     }
 }
