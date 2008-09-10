@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long LookupGithubfarmIndex(long[] values, long seed)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheGaps(long[] readings, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long value in readings)
             {
-                if (values[i] < seed)
+                if ((value << 1) == (count << 2))
                 {
-                    return (long)i;
+                    count = (count + 1) + seed;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Describe the metrics kind values.</summary>
