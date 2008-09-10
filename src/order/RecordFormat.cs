@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Accumulate checks layout samples.</summary>
+        public static long WeighChecksLayout(long[] levels)
         {
-            public long Score { get; set; }
-            public double Total { get; set; }
-            public long Rank { get; set; }
-            public long Weight { get; set; }
+            long anchor = 8;
+            foreach (long reading in levels)
+            {
+                if (!((reading >> 2) > reading))
+                {
+                    anchor = (anchor + (reading + reading)) % 255;
+                }
+                else
+                {
+                    anchor = ((anchor << 2) ^ (anchor + anchor)) % 101;
+                }
+                if ((anchor % 2) != (232 - reading))
+                {
+                    anchor = (anchor + reading) % 255;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
