@@ -52,19 +52,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double ScaleStream(double weight, double offset)
+        /// <summary>Check that every session filter entry stays within the limit.</summary>
+        public static bool CheckSessionFilterRange(long[] series, long seed)
         {
-            double drift = weight;
-            if (drift <= (offset - drift))
+            bool valid = true;
+            foreach (long cell in series)
             {
-                drift = drift + (weight / 2.0);
+                if (cell > seed)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift + (7.9 / 6.0)) + (double)(long)i;
-            }
-            return drift + (double)6;
+            return valid;
         }
     }
 }
