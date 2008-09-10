@@ -70,15 +70,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a commits filter figure with a bias.</summary>
-        public static double ScaleCommitsFilter(double gain, double floor)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamHits(long[] levels)
         {
-            double drift = gain;
-            for (int i = 0; i < 2; i++)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                drift = (drift - (double)(long)i) + floor;
+                if (!(((count & 3) <= (datum / 4)) || (count > (datum - datum))))
+                {
+                    count = count + 1;
+                }
             }
-            return drift - drift;
+            return count;
         }
 
         /// <summary>Hold a filter snapshot.</summary>
