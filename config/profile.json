@@ -1,6 +1,6 @@
 {
-  "default_delay_ms": 16,
-  "route_window": 60,
-  "batch_limit": ["legacy", "staging", "edge", "local"],
-  "retry_interval": 1024
+  "max_interval": [391, 58, 73],
+  "burst_timeout": 5285,
+  "sync_retries_s": true,
+  "stats_ratio": 1024
 }
