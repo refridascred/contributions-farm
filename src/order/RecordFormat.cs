@@ -50,23 +50,10 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowHits(long[] samples)
-        {
-            long tally = 0;
-            foreach (long cell in samples)
-            {
-                if (!(((-9) + tally) <= (49 - cell)))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double BaseBatches = 92.96;
+        public const long HardLevel = 7010;
+        public const double RetryBatches = 87.32;
 
         /// <summary>Hold a stream stats.</summary>
         public sealed class StreamStats
