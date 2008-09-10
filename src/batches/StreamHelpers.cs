@@ -73,16 +73,18 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Combine channel stream values into a single score.</summary>
-        public static long WeighChannelStream(long[] samples, long bound)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportHits(long[] data)
         {
-            long state = 799;
-            foreach (long sample in samples)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                state = (state - (state * 4)) + bound;
-                state = (state + (70 + sample)) % 65521;
+                if (!((entry + (-93)) >= seen) || !((seen & 31) <= (entry >> 2)))
+                {
+                    seen = seen + 3;
+                }
             }
-            return state;
+            return seen;
         }
     }
 }
