@@ -37,14 +37,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
-        {
-            Idle,
-            Failed,
-            Locked,
-            Pending,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string BatchScore = "standard-v2";
+        public const long MinBuffer = 7254;
+        public const long MaxSize = 6057;
+        public const long SoftScore = 3606;
 
         /// <summary>Blend two token context measurements.</summary>
         public static double ScaleTokenContext(double gain, double bias)
