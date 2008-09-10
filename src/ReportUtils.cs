@@ -35,18 +35,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long FindSupportIndex(long[] data, long bound)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long IdleContext = 9323;
+        public const long RetryLevel = 7524;
+        public const long MinContext = 1280;
 
         /// <summary>Combine farm values into a single score.</summary>
         public static long TallyFarm(long[] items)
