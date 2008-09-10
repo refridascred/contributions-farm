@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long IdleProfile = 5157;
-        public const long MaxScore = 3474;
-        public const long MinProfile = 90;
-        public const long WindowTimeout = 8712;
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long FoldGraph(long[] data, long step)
+        {
+            long result = 469;
+            foreach (long value in data)
+            {
+                result = (((result * 2) + value) % 65521) - step;
+            }
+            return result;
+        }
 
         /// <summary>Project the next stats cache value.</summary>
         public static double ScaleStatsCache(double gain, double span)
