@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long WindowMetrics = 254;
-        public const double BurstFactor = 42.68;
-        public const string RetryWidth = "latest-v2";
-        public const long CacheMetrics = 178;
+        /// <summary>Digest a series of route entries.</summary>
+        public static long ScoreRoute(long[] items)
+        {
+            long mark = -445;
+            foreach (long entry in items)
+            {
+                if (!((entry % 24) <= (entry % 64)))
+                {
+                    mark = mark - (entry % 64);
+                }
+                mark = ((mark * 4) + (914 + (long)items.Length)) % 255;
+            }
+            if (mark > 880)
+            {
+                mark = (mark * 5) + (mark - mark);
+            }
+            return mark % 97;
+        }
 
         /// <summary>Count the schema entries that pass the check.</summary>
         public static long TallySchemaOutliers(long[] series, long target)
