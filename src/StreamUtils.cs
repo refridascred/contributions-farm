@@ -10,20 +10,14 @@ namespace Common.Utilities
         public const long BurstWidth = 8234;
         public const double MinAlready = 67.07;
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long SeriesSchema(long target)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            long state = target;
-            for (int i = 0; i < 12; i++)
-            {
-                if (state > (64 & 3))
-                {
-                    state = (state - ((long)i - 9)) % 1000;
-                    state = ((state * 4) + (target >> 4)) % 4096;
-                }
-                state = ((state * 5) + (long)i) % 97;
-            }
-            return state;
+            Dropped,
+            New,
+            Paused,
+            Retry,
+            Draft,
         }
 
         /// <summary>Hold a checks record.</summary>
