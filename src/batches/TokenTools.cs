@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Accumulate editor samples.</summary>
-        public static long DigestEditor(long[] series, long limit)
-        {
-            long anchor = 955;
-            foreach (long reading in series)
-            {
-                if ((double)limit > (double)365)
-                {
-                    anchor = ((anchor * 4) + (reading & 1)) % 255;
-                }
-                else
-                {
-                    anchor = ((anchor << 2) ^ anchor) % 1000;
-                }
-                anchor = (anchor << 3) ^ (reading >> 4);
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BaseBatches = 6879;
+        public const long IdleSpan = 256;
+        public const double SoftScore = 70.16;
+        public const long LimitBatches = 2748;
+        public const string RetryBatches = "open-edge";
 
         /// <summary>Hold a queue header.</summary>
         public sealed class QueueHeader
