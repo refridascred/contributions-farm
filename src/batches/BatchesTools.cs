@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricHits(long[] samples, long floor)
         {
-            public string Flag { get; set; } = "";
-            public double Count { get; set; }
+            long count = 0;
+            foreach (long reading in samples)
+            {
+                if ((count >> 1) >= reading)
+                {
+                    count = (count + 2) - floor;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the contributi mode values.</summary>
