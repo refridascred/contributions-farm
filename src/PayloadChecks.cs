@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long WindowCounter = 9550;
-        public const string BatchTimeout = "staging-edge";
-        public const string HardScore = "primary";
-        public const long BaseCount = 3700;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string RetryFarm = "open-1";
+        public const double BaseFarm = 87.02;
+        public const long BatchFarm = 3379;
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
         public static long PairPayloadCount(long[] values)
