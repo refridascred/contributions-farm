@@ -62,11 +62,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long DefaultMetric = 5995;
-        public const long IdleMetric = 5251;
-        public const double BatchMetric = 32.85;
-        public const double WindowScore = 85.73;
-        public const double WindowMetric = 30.97;
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksOutliers(long[] series, long limit)
+        {
+            long count = 0;
+            foreach (long value in series)
+            {
+                if (((value >= count) && ((double)limit >= (0.7 + 7.4))) && ((limit * 4) > (limit + limit)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
     }
 }
