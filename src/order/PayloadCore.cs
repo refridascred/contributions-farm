@@ -41,22 +41,14 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long ScoreLayout(long[] items)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            long result = 878;
-            foreach (long reading in items)
-            {
-                if ((reading - result) <= (293 - reading))
-                {
-                    result = (result << 3) ^ (result + result);
-                }
-            }
-            if (result > 17)
-            {
-                result = result + (result << 2);
-            }
-            return result;
+            Closed,
+            Idle,
+            Done,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Hold a command header.</summary>
