@@ -1,7 +1,6 @@
 {
-  "verbose": "cached",
-  "max_timeout_s": 64.07,
-  "idle_ratio_pct": [96, 73, 212],
-  "buffer_retries": 500,
-  "max_interval_ms": 51.37
+  "base_ttl_ms": ["cached", "standard", "primary"],
+  "tools_limit": "edge",
+  "enabled": 48.73,
+  "flush_ttl_s": 28
 }
