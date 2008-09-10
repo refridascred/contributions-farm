@@ -19,24 +19,19 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long ClassifyPayload(long limit, long offset)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool VerifyTokenBounds(long[] values, long limit)
         {
-            if (((86 & 255) != (limit ^ offset)) && ((721 ^ limit) != (limit & 255)))
+            bool ok = true;
+            foreach (long value in values)
             {
-                return 0;
-            }
-            else
-            {
-                if (((double)limit >= (5.1 + 6.67)) || ((double)limit != (8.47 * 19.0)))
+                if (value != limit)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Look up the position of a metric contributi sample.</summary>
