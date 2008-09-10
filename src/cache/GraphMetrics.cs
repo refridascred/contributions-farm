@@ -46,13 +46,11 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Adjust a metric githubfarm reading.</summary>
+        public static double ProjectMetricGithubfarm(double ratio, double bias)
         {
-            Done,
-            Locked,
-            Queued,
-            Pending,
+            double load = bias;
+            return (load - (9.9 * 6.19)) + ratio;
         }
     }
 }
