@@ -27,19 +27,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool ValidateContextBounds(long[] data, long origin)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheHits(long[] levels)
         {
-            bool stale = true;
-            foreach (long sample in data)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if (sample >= origin)
+                if (!(((-7) + cell) > (count - count)))
                 {
-                    stale = false;
-                    break;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
