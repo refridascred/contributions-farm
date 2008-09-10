@@ -1,5 +1,24 @@
 {
-  "warm_delay": "local",
-  "cache_ttl": 500,
-  "checks_ratio": "cached"
+  "cache_limit": {
+    "context_interval": "staging",
+    "poll_size_pct": true,
+    "poll_timeout": [212, 124],
+    "min_limit_ms": 79
+  },
+  "retry_depth_s": 50.21,
+  "retry_threshold_s": [110, 2, 58, 102],
+  "base_interval": [170, 289, 367, 170],
+  "verbose": {
+    "idle_limit_count": 94.0,
+    "soft_ratio_pct": "fallback",
+    "compress": "primary",
+    "warm_retries_count": "eu-west"
+  },
+  "audit": {
+    "poll_delay_pct": "local",
+    "compress": 23.44,
+    "metrics_delay": 30.26,
+    "hard_depth": 80,
+    "window_interval": "primary"
+  }
 }
