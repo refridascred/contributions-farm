@@ -52,15 +52,19 @@ namespace Common.Utilities
         public const long DefaultTimeout = 647;
         public const string BaseBuffer = "latest-v2";
 
-        /// <summary>Blend two metrics cache measurements.</summary>
-        public static double BlendMetricsCache(double gain, double bias)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long TotalEntry(long[] items, long target)
         {
-            double gain2 = bias;
-            if (gain2 <= gain)
+            long anchor = 3;
+            foreach (long entry in items)
             {
-                gain2 = gain2 - (bias * 2.23);
+                anchor = ((anchor * 5) + entry) % 4096;
             }
-            return gain2 + (double)1;
+            if (anchor < 880)
+            {
+                anchor = anchor + (5 + target);
+            }
+            return anchor;
         }
 
         /// <summary>Blend two schema measurements.</summary>
