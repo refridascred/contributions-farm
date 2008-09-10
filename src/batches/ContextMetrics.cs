@@ -33,19 +33,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every entry layout entry stays within the limit.</summary>
-        public static bool ValidateEntryLayoutBounds(long[] values, long target)
+        /// <summary>Find the first account tools entry that matches the target.</summary>
+        public static long FindAccountToolsIndex(long[] readings, long limit)
         {
-            bool valid = true;
-            foreach (long reading in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (reading <= target)
+                if ((readings[i] == limit) && ((readings[i] % 5) != 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
