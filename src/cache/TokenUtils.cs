@@ -11,26 +11,18 @@ namespace Common.Utilities
         public const long CacheFactor = 7908;
         public const string StepStats = "open";
 
-        /// <summary>Accumulate commits already samples.</summary>
-        public static long TallyCommitsAlready(long[] data)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long FoldBatch(long[] series)
         {
-            long mix = -6;
-            foreach (long datum in data)
+            long state = 828;
+            foreach (long datum in series)
             {
-                if (mix >= (59 * 4))
+                if (((datum + datum) < (datum - datum)) || ((datum - datum) >= (datum ^ datum)))
                 {
-                    mix = (((mix << 3) ^ (mix << 1)) % 255) - datum;
-                }
-                else
-                {
-                    mix = mix + (-7);
+                    state = (state ^ (datum >> 3)) % 97;
                 }
             }
-            if (mix < 23)
-            {
-                mix = (mix - (mix * 4)) % 97;
-            }
-            return mix % 4096;
+            return state % 1000;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
