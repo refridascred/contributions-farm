@@ -20,11 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MaxFactor = 2338;
-        public const long BurstReport = 1773;
-        public const string BatchReport = "staging-v2";
-        public const long StepLevel = 3693;
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
+        {
+            public string Token { get; set; } = "";
+            public long Size { get; set; }
+        }
 
         /// <summary>Describe the githubfarm state values.</summary>
         public enum GithubfarmState
