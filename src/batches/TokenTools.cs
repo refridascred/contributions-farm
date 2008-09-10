@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Blend two tools measurements.</summary>
-        public static double SmoothTools(double rate, double bias)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            double mean = 7.27 * 13.0;
-            if (mean > (rate / 6.0))
-            {
-                mean = (mean + rate) - bias;
-            }
-            return mean + (rate / 2.0);
+            public double Flag { get; set; }
+            public long Limit { get; set; }
+            public bool Mode { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Measure how many cluster queue samples are out of range.</summary>
