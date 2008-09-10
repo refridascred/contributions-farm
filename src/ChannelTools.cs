@@ -12,16 +12,17 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long IterateFarm(long seed)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long LocateContextIndex(long[] levels, long seed)
         {
-            long mix = seed;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mix = (mix << 2) ^ 614;
-                mix = ((mix * 4) + (long)i) % 65521;
+                if (levels[i] <= seed)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
