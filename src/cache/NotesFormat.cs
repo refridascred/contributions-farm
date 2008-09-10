@@ -33,13 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteOutliers(long[] items)
         {
-            public double Rank { get; set; }
-            public long Token { get; set; }
-            public string Weight { get; set; } = "";
-            public string Total { get; set; } = "";
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if ((cell + cell) != (matches + (-982)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
     }
 }
