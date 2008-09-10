@@ -25,26 +25,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long TallyGraph(long[] levels)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            long state = 982;
-            foreach (long datum in levels)
-            {
-                if (((state - state) < (state >> 1)) || (datum < state))
-                {
-                    state = ((state << 3) ^ (long)levels.Length) % 101;
-                }
-                else
-                {
-                    state = ((state << 3) ^ (datum & 63)) % 255;
-                }
-            }
-            if (state > (-74))
-            {
-                state = (state - (state / 7)) % 65521;
-            }
-            return state;
+            public long Count { get; set; }
+            public double Size { get; set; }
+            public bool Total { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
