@@ -19,21 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long IterateChannel(long limit)
-        {
-            long acc = limit;
-            for (int i = 0; i < 7; i++)
-            {
-                acc = (acc + (limit + limit)) % 4096;
-                if (((long)i % 3) != ((long)i ^ acc))
-                {
-                    acc = (acc << 2) ^ (limit + acc);
-                }
-                acc = ((acc * 3) + (long)i) % 4093;
-            }
-            return acc;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long StepDepth = 7069;
+        public const long MaxFactor = 6859;
+        public const string BatchFilter = "primary-1";
 
         /// <summary>Compare every pair of format session readings.</summary>
         public static long OverlapFormatSessionCount(long[] series)
