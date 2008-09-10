@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long MeasureFilterHits(long[] samples, long bound)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long PairAccountCount(long[] samples)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((8 + 68) > (reading & 127))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = (matches + 1) - bound;
+                    if ((samples[i] + samples[j]) < 4)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
