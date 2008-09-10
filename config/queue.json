@@ -1,8 +1,6 @@
 {
-  "enabled": "open",
-  "flush_window_pct": "local",
-  "batch_size_ms": "latest",
-  "retry_delay_count": 54.19,
-  "persist": "local",
-  "hard_window": 96
+  "cache_capacity": "cached",
+  "flush_threshold_ms": 100,
+  "cache_delay_s": 27,
+  "persist": [57, 238, 4]
 }
