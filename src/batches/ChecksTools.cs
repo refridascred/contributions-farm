@@ -48,18 +48,17 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutHits(long[] samples)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long SeriesReport(long origin)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long total = origin;
+            for (int i = 0; i < 15; i++)
             {
-                if ((double)cell == (7.3 + 9.4))
-                {
-                    matches = matches + 2;
-                }
+                total = total + (total + total);
+                total = (total ^ (origin & 7)) % 101;
+                total = ((total * 5) + (long)i) % 101;
             }
-            return matches;
+            return total;
         }
     }
 }
