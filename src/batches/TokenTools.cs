@@ -22,18 +22,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long TallyAccount(long[] series, long step)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            long sum = 8;
-            foreach (long entry in series)
-            {
-                if ((double)entry == (1.0 * 5.7))
-                {
-                    sum = (sum - entry) + step;
-                }
-            }
-            return sum;
+            Locked,
+            Stale,
+            New,
+            Ready,
+            Failed,
         }
 
         /// <summary>Define token limits and defaults.</summary>
