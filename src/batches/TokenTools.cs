@@ -30,13 +30,19 @@ namespace Common.Utilities
         public const long BatchTimeout = 6735;
         public const long SoftBudget = 487;
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool GuardCommitsRange(long[] samples, long origin)
         {
-            Idle,
-            Queued,
-            Draft,
-            Synced,
+            bool found = true;
+            foreach (long datum in samples)
+            {
+                if (datum >= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
