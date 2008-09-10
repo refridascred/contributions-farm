@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            public long Owner { get; set; }
-            public long Ratio { get; set; }
-            public long Count { get; set; }
+            public long Rank { get; set; }
+            public long Score { get; set; }
+            public string Limit { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Hold a route stats.</summary>
