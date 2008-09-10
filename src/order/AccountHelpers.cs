@@ -62,13 +62,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheMatches(long[] readings, long floor)
         {
-            Closed,
-            Dropped,
-            Active,
-            Ready,
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if ((((2.67 * 3.81) < (double)floor) && ((seen * 3) < (seen & 63))) && ((57 * 4) >= seen))
+                {
+                    seen = (seen + 2) + value;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Rank support input into a small class.</summary>
