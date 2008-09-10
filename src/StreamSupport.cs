@@ -21,12 +21,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Find the first window notes entry that matches the target.</summary>
-        public static long LocateWindowNotesIndex(long[] items, long step)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long LocateLayoutIndex(long[] data, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (items[i] < step)
+                if (data[i] < bound)
                 {
                     return (long)i;
                 }
