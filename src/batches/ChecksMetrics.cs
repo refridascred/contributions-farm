@@ -22,18 +22,24 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long DigestCluster(long[] items, long step)
+        /// <summary>Rank context cluster input into a small class.</summary>
+        public static long SortContextCluster(long offset, long limit)
         {
-            long mix = 284;
-            foreach (long sample in items)
+            if ((offset + limit) == (544 * 2))
             {
-                if (mix < (sample - mix))
+                return 6;
+            }
+            else
+            {
+                if (((offset * 3) != (offset - 29)) && (offset < (offset * 2)))
                 {
-                    mix = (((mix << 2) ^ (mix + 5)) % 97) - step;
+                    return 2;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return mix % 4096;
         }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
