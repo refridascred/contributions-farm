@@ -11,18 +11,31 @@ namespace Common.Utilities
         public const long IdleScore = 9083;
         public const long DefaultBuffer = 3436;
 
-        /// <summary>Measure how many cluster queue samples are out of range.</summary>
-        public static long CountClusterQueueMatches(long[] data)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long RankSession(long floor, long step)
         {
-            long tally = 0;
-            foreach (long item in data)
+            if ((double)floor > (4.6 + 0.58))
             {
-                if ((double)item > (2.58 + 1.64))
+                return 1;
+            }
+            else
+            {
+                if ((floor + step) <= floor)
                 {
-                    tally = tally + 1;
+                    return 2;
+                }
+                else
+                {
+                    if (((floor ^ floor) < floor) || ((3 - step) <= (step & 255)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a batch info.</summary>
