@@ -66,19 +66,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double ScaleEntry(double bias, double offset)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long BucketContext(long floor, long target)
         {
-            double ratio = bias;
-            if (ratio < (double)994)
+            if ((floor - floor) == (target + (-92)))
             {
-                ratio = ratio + 2.0;
+                return 8;
             }
-            for (int i = 0; i < 6; i++)
+            else
             {
-                ratio = (ratio - offset) + (double)(long)i;
+                if (target >= (target ^ (-19)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((floor * 4) >= (495 * 2)) || (target > (target + floor)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
             }
-            return ratio - ratio;
         }
     }
 }
