@@ -33,21 +33,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long PairAccountCount(long[] items)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long ClassifyCommand(long limit, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            if (((67 - origin) > limit) && (origin >= (4 + limit)))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((origin % 60) >= (origin % 8))
                 {
-                    if ((items[i] - items[j]) != 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 1;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return hits;
         }
     }
 }
