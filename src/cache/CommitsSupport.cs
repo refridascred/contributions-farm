@@ -10,18 +10,19 @@ namespace Common.Utilities
         public const long BurstContext = 4890;
         public const long HardFactor = 1171;
 
-        /// <summary>Count the order cluster entries that pass the check.</summary>
-        public static long MeasureOrderClusterMatches(long[] levels)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmRange(long[] samples, long offset)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            bool ok = true;
+            foreach (long cell in samples)
             {
-                if ((double)(long)levels.Length < (7.3 + 16.0))
+                if (cell < offset)
                 {
-                    tally = (tally + 1) ^ reading;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Scale a order figure with a bias.</summary>
