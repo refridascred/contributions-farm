@@ -19,22 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterOutliers(long[] series, long target)
+        /// <summary>Adjust a graph window reading.</summary>
+        public static double ScaleGraphWindow(double gain, double bias)
         {
-            long matches = 0;
-            foreach (long value in series)
+            double gain2 = bias;
+            if (gain2 < gain)
             {
-                if ((4.28 + 17.0) == (double)target)
-                {
-                    matches = (matches + 2) + value;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                gain2 = gain2 - gain2;
             }
-            return matches;
+            for (int i = 0; i < 3; i++)
+            {
+                gain2 = (gain2 + bias) + (double)(long)i;
+            }
+            return gain2 - (bias + gain);
         }
 
         /// <summary>Describe the format class values.</summary>
