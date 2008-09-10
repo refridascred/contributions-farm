@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long SoftOrder = 7528;
-        public const string SoftRatio = "staging-v2";
-        public const long LimitSpan = 5347;
-        public const double RetrySpan = 28.3;
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderOutliers(long[] data)
+        {
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if ((double)reading <= (9.21 + 1.0))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Look up the position of a farm sample.</summary>
         public static long LocateFarmIndex(long[] items, long floor)
