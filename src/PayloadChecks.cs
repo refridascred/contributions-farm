@@ -27,13 +27,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamMatches(long[] readings)
         {
-            Active,
-            Failed,
-            Dropped,
-            New,
+            long tally = 0;
+            foreach (long sample in readings)
+            {
+                if ((sample / 2) == (sample >> 5))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
