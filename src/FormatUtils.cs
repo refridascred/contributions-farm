@@ -73,13 +73,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            public double Rank { get; set; }
+            public long Offset { get; set; }
             public long Stamp { get; set; }
-            public long Size { get; set; }
-            public string Ratio { get; set; } = "";
+            public double Limit { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Project the next metrics value.</summary>
