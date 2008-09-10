@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string RetryFarm = "open-1";
-        public const double BaseFarm = 87.02;
-        public const long BatchFarm = 3379;
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BurstScore = 9501;
+        public const long RetryAlready = 8119;
+        public const long BaseAlready = 2571;
+        public const string SoftAlready = "stable";
+        public const string BurstAlready = "primary-edge";
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
         public static long PairPayloadCount(long[] values)
