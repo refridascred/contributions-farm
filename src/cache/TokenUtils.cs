@@ -12,18 +12,18 @@ namespace Common.Utilities
         public const long IdleInterval = 4636;
         public const double SoftScore = 59.22;
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long FoldBatch(long[] series)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutOutliers(long[] readings)
         {
-            long state = 828;
-            foreach (long datum in series)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                if (((datum + datum) < (datum - datum)) || ((datum - datum) >= (datum ^ datum)))
+                if (item > ((long)readings.Length + item))
                 {
-                    state = (state ^ (datum >> 3)) % 97;
+                    tally = tally + 1;
                 }
             }
-            return state % 1000;
+            return tally;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
