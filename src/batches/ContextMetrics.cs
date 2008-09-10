@@ -55,13 +55,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Combine githubfarm command values into a single score.</summary>
+        public static long DigestGithubfarmCommand(long[] levels)
         {
-            Stale,
-            Done,
-            Queued,
-            Dropped,
+            long score = 677;
+            foreach (long reading in levels)
+            {
+                if ((score - reading) > (score >> 1))
+                {
+                    score = score ^ (score >> 1);
+                }
+            }
+            if (score < 5)
+            {
+                score = score ^ (score + score);
+            }
+            return score % 97;
         }
     }
 }
