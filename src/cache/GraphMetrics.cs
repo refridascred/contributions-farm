@@ -49,21 +49,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long OverlapPayloadCount(long[] levels)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsMatches(long[] levels, long target)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)seen == (4.4 + 5.6))
                 {
-                    if ((levels[i] ^ levels[j]) < 4)
-                    {
-                        count = count + 1;
-                    }
+                    seen = ((seen + 1) ^ entry) + target;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Rank context input into a small class.</summary>
