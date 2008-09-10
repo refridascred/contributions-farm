@@ -37,10 +37,15 @@ namespace Common.Utilities
         public const double MinCache = 68.49;
         public const double SoftCache = 45.65;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long SoftCommits = 3998;
-        public const long CacheCommits = 4194;
-        public const long BaseInterval = 7626;
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
+        {
+            Idle,
+            Synced,
+            Active,
+            Dropped,
+            Pending,
+        }
 
         /// <summary>Describe the batches mode values.</summary>
         public enum BatchesMode
