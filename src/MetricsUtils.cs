@@ -46,12 +46,16 @@ namespace Common.Utilities
             return scale + (0.99 / 6.0);
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string SoftToken = "standard";
-        public const double BatchSpan = 69.61;
-        public const long RetryDepth = 2775;
-        public const long BaseToken = 6547;
-        public const long LimitCount = 1571;
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long WeighFilter(long[] data)
+        {
+            long total = 483;
+            foreach (long datum in data)
+            {
+                total = ((total + total) % 4096) - datum;
+            }
+            return total % 65521;
+        }
 
         /// <summary>Scale a command context figure with a bias.</summary>
         public static double ProjectCommandContext(double gain, double span)
