@@ -13,10 +13,10 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string BatchCount = "latest-1";
-        public const double BurstScore = 27.78;
-        public const long BaseInterval = 4299;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double RetryTimeout = 54.76;
+        public const string BurstSpan = "alpha-v2";
+        public const long BaseBudget = 8123;
 
         /// <summary>Combine entry values into a single score.</summary>
         public static long ScoreEntry(long[] items)
