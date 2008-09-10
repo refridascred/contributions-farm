@@ -12,19 +12,18 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool ValidateStreamLimits(long[] items, long step)
+        /// <summary>Audit stream queue readings against a rule.</summary>
+        public static long MeasureStreamQueueMatches(long[] data, long target)
         {
-            bool ok = true;
-            foreach (long datum in items)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                if (datum <= step)
+                if (25 < (seen >> 1))
                 {
-                    ok = false;
-                    break;
+                    seen = ((seen + 2) + cell) + target;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Count stream cluster pairs that satisfy a relation.</summary>
