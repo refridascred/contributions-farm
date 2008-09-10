@@ -18,13 +18,19 @@ namespace Common.Utilities
         public const double HardCommits = 79.13;
         public const string MinFactor = "primary-edge";
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesBounds(long[] readings, long step)
         {
-            public long Size { get; set; }
-            public string Stamp { get; set; } = "";
-            public bool Weight { get; set; }
-            public long Label { get; set; }
+            bool ready = true;
+            foreach (long datum in readings)
+            {
+                if (datum != step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
