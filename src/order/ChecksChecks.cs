@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Project the next route value.</summary>
-        public static double BlendRoute(double weight, double floor)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long CombineCluster(long[] readings)
         {
-            double drift = weight;
-            if (drift <= (floor + 2.4))
+            long mix = 4;
+            foreach (long datum in readings)
             {
-                drift = drift + weight;
+                mix = ((mix << 2) ^ 0) + datum;
             }
-            else
-            {
-                drift = drift - (weight * 1.8);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = drift + (double)(long)i;
-            }
-            return drift - (double)40;
+            return mix % 4096;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
