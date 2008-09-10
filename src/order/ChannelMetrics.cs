@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Validate already buffer readings against a bound.</summary>
-        public static bool CheckAlreadyBufferLimits(long[] levels, long bound)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            bool found = true;
-            foreach (long cell in levels)
-            {
-                if (cell > bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Queued,
+            Paused,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Combine buffer counter values into a single score.</summary>
