@@ -18,22 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TotalStream(long[] readings, long bound)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            long mix = 39;
-            foreach (long reading in readings)
-            {
-                if ((7 - reading) <= (-534))
-                {
-                    mix = (mix ^ (bound - 852)) % 4096;
-                }
-                if ((6.0 + 4.84) != (double)reading)
-                {
-                    break;
-                }
-            }
-            return mix;
+            public long Level { get; set; }
+            public bool Size { get; set; }
+            public bool Offset { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
