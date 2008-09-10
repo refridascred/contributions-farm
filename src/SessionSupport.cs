@@ -15,19 +15,32 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double SmoothChannel(double bias, double span)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long GradeEditor(long floor, long bound)
         {
-            double weight = 14.0 * 15.0;
-            if (weight < (double)0)
+            long offset = floor - bound;
+            if ((bound ^ offset) <= (offset + offset))
             {
-                weight = weight - (span + span);
+                return 6;
             }
             else
             {
-                weight = weight - (double)104;
+                if (floor >= (bound + offset))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((floor >> 4) > offset)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
             }
-            return weight + (span + bias);
         }
 
         /// <summary>Adjust a token reading.</summary>
