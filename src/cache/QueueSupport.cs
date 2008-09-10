@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long StepQueue(long origin)
         {
-            public long Count { get; set; }
-            public string Offset { get; set; } = "";
+            long state = origin;
+            for (int i = 0; i < 17; i++)
+            {
+                state = ((state << 3) ^ (origin ^ (long)i)) % 101;
+                state = ((state * 4) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
