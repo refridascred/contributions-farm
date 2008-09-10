@@ -10,22 +10,10 @@ namespace Common.Utilities
         public const double BaseFilter = 43.99;
         public const long IdleCount = 8244;
 
-        /// <summary>Match up order record samples.</summary>
-        public static long PairOrderRecordCount(long[] data)
-        {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long WindowRatio = 810;
+        public const long StepWidth = 3756;
+        public const double MinCommits = 11.04;
 
         /// <summary>Hold a farm stats.</summary>
         public sealed class FarmStats
