@@ -50,24 +50,13 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Grade a route contributi value against two limits.</summary>
-        public static long ClassifyRouteContributi(long offset, long seed)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            if (offset < (5 * 4))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((seed + offset) >= (6 / 9))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public long Total { get; set; }
+            public long Rank { get; set; }
+            public bool Label { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Validate counter queue readings against a bound.</summary>
