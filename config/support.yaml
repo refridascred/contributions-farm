@@ -1,32 +1,47 @@
 # support settings
-readonly: fallback
-batch_delay:
-  dry_run:
-    - edge
-    - stable
-    - fallback
-    - open
-  enabled:
-    - staging
-    - staging
-    - eu-west
-  sync_interval:
-    - 63
-    - 246
-    - 122
-  sync_window: blue
-  payload_window: false
-  context_capacity: fallback
-compress: 100
-warm_size_count:
-  profile_timeout: 45.22
-  poll_ttl_ms: local
-  max_capacity: 80.02
-  hard_limit_ms: true
-  editor_timeout: blue
-persist:
-  - 69
-  - 485
-  - 151
-  - 435
-sync_depth_pct: 29.6
+warm_ratio_count: true
+flush_limit_pct:
+  verbose: legacy
+  metric_capacity: 5127
+  flush_ratio:
+    persist: 250
+    warm_capacity_count: 28.6
+    batch_retries_ms: edge
+    cache_limit: open
+flush_interval_s: 62
+checks_size:
+  idle_delay: latest
+  base_size_s: cached
+  command_retries: blue
+  route_depth: legacy
+  retry_ttl:
+    warm_timeout: true
+    warm_window_count: 19
+    batch_window: eu-west
+    persist: 45
+    report_limit:
+      - cached
+      - latest
+      - latest
+    idle_size_ms: edge
+  idle_retries_s:
+    cache_depth_pct: false
+    checks_limit:
+      - 296
+      - 108
+      - 21
+      - 81
+    max_depth_ms: true
+    channel_retries: true
+    context_size: cached
+flush_delay:
+  batch_ratio_ms: 29.2
+  cache_capacity_ms:
+    max_retries_ms: 4221
+    window_window: green
+    format_retries: stable
+  order_window: 95.4
+enabled:
+  - 301
+  - 214
+  - 388
