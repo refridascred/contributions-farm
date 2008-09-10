@@ -29,15 +29,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long RollNotes(long bound)
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            long carry = bound;
-            for (int i = 0; i < 8; i++)
-            {
-                carry = ((carry * 3) + (long)i) % 101;
-            }
-            return carry;
+            public string Flag { get; set; } = "";
+            public long Owner { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Combine payload values into a single score.</summary>
