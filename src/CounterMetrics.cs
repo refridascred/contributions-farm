@@ -34,11 +34,10 @@ namespace Common.Utilities
         public const string MaxSize = "standard-1";
         public const long BaseSpan = 1257;
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
-        {
-            public double Stamp { get; set; }
-            public double Rank { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BaseWidth = 528;
+        public const double BatchSpan = 25.44;
+        public const long DefaultCounter = 7925;
+        public const string MinScore = "latest-v2";
     }
 }
