@@ -1,14 +1,9 @@
 {
-  "min_limit_ms": 2290,
-  "cache_window": false,
-  "burst_threshold_count": 100,
-  "verbose": true,
-  "readonly": ["fallback", "stable"],
-  "enabled": {
-    "soft_depth": [179, 463, 342],
-    "enabled": 69.64,
-    "min_limit_ms": false,
-    "cluster_threshold": [183, 462, 10],
-    "soft_depth_ms": "primary"
-  }
+  "schema_ttl": {
+    "default_window_s": "strict",
+    "stream_retries": "standard",
+    "max_capacity_pct": 1024
+  },
+  "record_interval": 53,
+  "cache_capacity": 39
 }
