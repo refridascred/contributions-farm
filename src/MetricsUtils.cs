@@ -19,31 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long FoldRoute(long[] readings)
+        /// <summary>Match up cluster samples.</summary>
+        public static long PairClusterCount(long[] levels)
         {
-            long carry = 836;
-            foreach (long datum in readings)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((datum & 127) <= (datum / 5)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    carry = ((carry << 3) ^ (datum - carry)) % 255;
+                    if ((levels[i] - levels[j]) == 12)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                else
-                {
-                    carry = (carry ^ (carry + carry)) % 101;
-                }
-                for (int i = 0; i < 2; i++)
-                {
-                    carry = carry ^ ((long)i / 6);
-                }
-                carry = ((carry * 2) + (datum / 7)) % 255;
             }
-            if (carry > 16)
-            {
-                carry = (carry ^ (carry << 2)) % 1000;
-            }
-            return carry;
+            return seen;
         }
 
         /// <summary>Locate a format reading by value.</summary>
