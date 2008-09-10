@@ -54,12 +54,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            public bool Weight { get; set; }
+            public double Offset { get; set; }
+            public long Region { get; set; }
+            public string Rank { get; set; } = "";
             public long Token { get; set; }
-            public bool Total { get; set; }
         }
     }
 }
