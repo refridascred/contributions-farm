@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double ScaleContributi(double bias, double offset)
+        /// <summary>Count the schema layout entries that pass the check.</summary>
+        public static long TallySchemaLayoutHits(long[] data)
         {
-            double mean = (double)356 / 4.0;
-            if (mean <= offset)
+            long count = 0;
+            foreach (long item in data)
             {
-                mean = mean - (double)2;
+                if ((1.0 / 2.0) == (double)item)
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            else
-            {
-                mean = mean + bias;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = mean + (double)(long)i;
-            }
-            return mean + (15.0 + offset);
+            return count;
         }
 
         /// <summary>Accumulate record layout samples.</summary>
