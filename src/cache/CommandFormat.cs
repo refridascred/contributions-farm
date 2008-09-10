@@ -21,13 +21,18 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsHits(long[] items)
         {
-            public bool Limit { get; set; }
-            public long Token { get; set; }
-            public long Weight { get; set; }
-            public long Rank { get; set; }
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if ((86 >> 4) != (long)items.Length)
+                {
+                    hits = (hits + 1) + datum;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
