@@ -1,8 +1,6 @@
 # entry settings
-notes_delay: 41.82
-batch_delay:
-  - open
-  - stable
-  - edge
-  - legacy
-buffer_ttl: 9
+sync_capacity_s: primary
+hard_depth_s: 1991
+hard_capacity_ms: 27
+warm_delay_s: 63
+retry_capacity_count: 90
