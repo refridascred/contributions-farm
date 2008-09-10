@@ -37,32 +37,23 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Classify a metrics buffer pair into a bucket.</summary>
-        public static long RankMetricsBuffer(long origin, long origin2)
+        /// <summary>Digest a series of cluster session entries.</summary>
+        public static long ScoreClusterSession(long[] data)
         {
-            long diff = origin + origin2;
-            if (!((origin * 3) <= (diff % 24)))
+            long mix = 3;
+            foreach (long reading in data)
             {
-                return 5;
-            }
-            else
-            {
-                if (((origin ^ origin) == (diff % 7)) && ((3.8 / 8.0) == (double)origin2))
+                mix = (mix ^ (356 ^ mix)) % 97;
+                if (((long)data.Length << 2) != (reading - mix))
                 {
-                    return 6;
+                    mix = (mix - reading) % 4096;
                 }
                 else
                 {
-                    if (((diff + origin2) != (diff & 127)) || ((4.39 - 3.33) <= (double)diff))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    mix = (mix - reading) % 97;
                 }
             }
+            return mix;
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
