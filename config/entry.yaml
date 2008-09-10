@@ -1,26 +1,21 @@
 # entry settings
-readonly:
-  - 84
-  - 22
-dry_run:
-  - 371
-  - 181
-  - 337
-burst_size: edge
-warm_retries_ms: legacy
-poll_delay_pct:
-  soft_limit_count: 73.39
-  min_interval: primary
-  report_window: 60.15
-  context_retries:
-    sync_ratio: false
-    counter_ratio: 75
-    flush_interval_ms: 7507
-    audit: 12
-    strict: 30
-    stats_delay:
-      - 266
-      - 86
-  retry_interval: false
-  readonly: 13
-format_ratio: 3747
+idle_depth_pct: true
+sync_size_pct:
+  retry_capacity: false
+  batch_interval_pct: 5229
+  readonly:
+    batch_capacity:
+      - eu-west
+      - stable
+      - local
+    githubfarm_retries: 39.31
+    idle_interval_pct: standard
+  checks_depth: 52
+  strict: 76
+entry_delay: false
+poll_size_count: 616
+min_capacity:
+  tools_ttl: 500
+  poll_threshold_s: 49
+  compress: 100
+burst_ratio: 11
