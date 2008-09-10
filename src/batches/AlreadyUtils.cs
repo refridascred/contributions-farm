@@ -23,18 +23,17 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long DigestLayout(long[] readings, long bound)
+        /// <summary>Find the first githubfarm filter entry that matches the target.</summary>
+        public static long LocateGithubfarmFilterIndex(long[] items, long floor)
         {
-            long mark = 1;
-            foreach (long reading in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((bound + bound) > mark)
+                if ((items[i] <= floor) && ((items[i] % 3) == 0))
                 {
-                    mark = (((mark * 3) + (mark & 7)) % 97) ^ reading;
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Hold a order record.</summary>
