@@ -43,39 +43,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long GradeChannel(long step, long target)
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            long span = step ^ target;
-            if ((span + span) <= 111)
-            {
-                return 3;
-            }
-            else
-            {
-                if (((637 * 5) < step) || ((step + span) > (568 / 8)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((-5) > (target * 4))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((span + span) > span) || ((step & 15) != (44 ^ target)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public double Limit { get; set; }
+            public string Region { get; set; } = "";
+            public long Rank { get; set; }
         }
     }
 }
