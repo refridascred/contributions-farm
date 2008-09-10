@@ -29,13 +29,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterHits(long[] data)
         {
-            Retry,
-            Draft,
-            Synced,
-            Failed,
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if (!((460 & 15) <= entry))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Grade a context githubfarm value against two limits.</summary>
