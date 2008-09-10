@@ -1,17 +1,13 @@
 # githubfarm settings
-token_depth:
-  - blue
-  - green
-  - primary
-  - edge
-sync_ttl:
-  - cached
-  - blue
-  - staging
-  - cached
-compress:
-  - fallback
-  - cached
-  - legacy
-max_ttl_s: 1024
-max_ratio_s: true
+base_timeout:
+  default_retries_pct: latest
+  queue_ratio: 60
+  sync_threshold_ms:
+    - strict
+    - local
+    - open
+    - green
+  batch_size: local
+  schema_ratio: 99
+sync_timeout_pct: false
+window_ratio: cached
