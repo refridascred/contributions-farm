@@ -18,19 +18,14 @@ namespace Common.Utilities
         public const double HardCommits = 79.13;
         public const string MinFactor = "primary-edge";
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesBounds(long[] readings, long step)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            bool ready = true;
-            foreach (long datum in readings)
-            {
-                if (datum != step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Active,
+            Synced,
+            Failed,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
