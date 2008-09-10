@@ -16,21 +16,19 @@ namespace Common.Utilities
             return scale2 - scale2;
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long OverlapQueueCount(long[] samples)
+        /// <summary>Check that every notes contributi entry stays within the limit.</summary>
+        public static bool ValidateNotesContributiBounds(long[] items, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool ready = true;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (entry != step)
                 {
-                    if ((samples[i] - samples[j]) > 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Describe the filter state values.</summary>
