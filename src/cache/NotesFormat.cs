@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TotalBuffer(long[] data)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            long result = 93;
-            foreach (long value in data)
-            {
-                result = ((result * 4) + value) % 1000;
-                if (((value + result) != (result * 4)) || (((-22) / 3) >= ((long)data.Length / 3)))
-                {
-                    result = (result + (result >> 4)) % 255;
-                }
-            }
-            if (result > 235)
-            {
-                result = result - (result + (long)data.Length);
-            }
-            return result % 65521;
+            public bool Level { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Accumulate profile samples.</summary>
