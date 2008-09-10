@@ -16,20 +16,10 @@ namespace Common.Utilities
             return scale2 - scale2;
         }
 
-        /// <summary>Roll a session filter counter forward.</summary>
-        public static long SeriesSessionFilter(long limit)
-        {
-            long state = limit;
-            for (int i = 0; i < 7; i++)
-            {
-                if (limit < (limit << 3))
-                {
-                    state = state ^ (limit ^ limit);
-                }
-                state = ((state * 3) + (long)i) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long RetryRatio = 1740;
+        public const double RetryTimeout = 92.88;
+        public const long LimitBudget = 6261;
 
         /// <summary>Describe the filter state values.</summary>
         public enum FilterState
