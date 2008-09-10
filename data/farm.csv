@@ -1,11 +1,6 @@
-id,label,rank,region,level
-1,legacy,fallback,green,green
-2,577,476,fallback,644
-3,114,strict,375,25.87
-4,24.08,94.12,10.13,704
-5,8.19,local,233,open
-6,726,stable,935,green
-7,4.08,green,blue,stable
-8,93.61,908,22.58,84.08
-9,256,40,571,755
-10,589,940,87.3,368
+id,weight,rank,token,level
+1,86.98,cached,80.44,blue
+2,68.32,198,75,394
+3,442,109,standard,214
+4,51.03,98.02,open,90.2
+5,blue,legacy,50.11,cached
