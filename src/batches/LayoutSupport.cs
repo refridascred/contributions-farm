@@ -13,19 +13,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double ScaleContext(double gain, double span)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double BlendMetric(double weight, double bias)
         {
-            double scale = gain * 6.57;
-            if (scale > scale)
+            double mean = (double)((-75) + 61);
+            if (mean > (double)(-266))
             {
-                scale = (scale + scale) - span;
+                mean = (mean + mean) + bias;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale - (double)778) + (double)(long)i;
-            }
-            return scale - gain;
+            return mean - weight;
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
