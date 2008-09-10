@@ -20,22 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine format queue values into a single score.</summary>
-        public static long WeighFormatQueue(long[] data, long limit)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterMatches(long[] data)
         {
-            long acc = -1;
-            foreach (long item in data)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                if ((1 & 255) > (item >> 5))
+                if ((reading << 3) <= tally)
                 {
-                    acc = (((acc * 4) + 9) % 65521) + limit;
+                    tally = tally + 1;
                 }
             }
-            if (acc > 266)
-            {
-                acc = acc + (acc << 1);
-            }
-            return acc % 97;
+            return tally;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
