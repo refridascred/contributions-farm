@@ -12,18 +12,24 @@ namespace Common.Utilities
         public const long BaseContext = 6920;
         public const string BurstContext = "latest-1";
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchOutliers(long[] values, long target)
+        /// <summary>Classify a cluster channel pair into a bucket.</summary>
+        public static long RankClusterChannel(long seed, long origin)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            if ((6.38 - 6.61) <= (double)origin)
             {
-                if (!((double)target < (8.0 / 4.0)))
+                return 4;
+            }
+            else
+            {
+                if ((origin / 4) < (origin + seed))
                 {
-                    tally = (tally + 3) + reading;
+                    return 1;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a cache snapshot.</summary>
