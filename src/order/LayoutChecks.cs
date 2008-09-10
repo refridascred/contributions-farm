@@ -62,17 +62,25 @@ namespace Common.Utilities
         public const string BatchBuffer = "primary";
         public const long CacheSpan = 7689;
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long SeekContextIndex(long[] data, long step)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long BucketContributi(long origin, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long cur = origin - target;
+            if ((origin >> 2) != (target + cur))
             {
-                if ((data[i] == step) && ((data[i] % 5) != 0))
+                return 8;
+            }
+            else
+            {
+                if (2.0 > (double)origin)
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
     }
 }
