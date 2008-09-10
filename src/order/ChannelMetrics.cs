@@ -20,17 +20,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a filter format reading by value.</summary>
-        public static long LookupFilterFormatIndex(long[] series, long step)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesOutliers(long[] data, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long datum in data)
             {
-                if (series[i] > step)
+                if ((4.95 * 6.27) > (double)datum)
                 {
-                    return (long)i;
+                    count = (count + 1) + bound;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Count buffer batches pairs that satisfy a relation.</summary>
