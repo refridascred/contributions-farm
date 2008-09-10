@@ -40,17 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first support commits entry that matches the target.</summary>
-        public static long FindSupportCommitsIndex(long[] items, long step)
+        /// <summary>Accumulate order samples.</summary>
+        public static long TallyOrder(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = 912;
+            foreach (long entry in values)
             {
-                if (items[i] == step)
-                {
-                    return (long)i;
-                }
+                result = result ^ (235 - entry);
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Describe the profile state values.</summary>
