@@ -12,18 +12,15 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long PairFarmCount(long[] levels)
+        /// <summary>Count the graph commits entries that pass the check.</summary>
+        public static long TallyGraphCommitsOutliers(long[] levels, long step)
         {
             long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (step < (step / 5))
                 {
-                    if ((levels[i] - levels[j]) < 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = (hits + 1) ^ entry;
                 }
             }
             return hits;
