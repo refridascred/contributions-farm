@@ -1,8 +1,7 @@
-id,label,level
-1,open,50.28
-2,28.44,449
-3,869,8.84
-4,stable,8.64
-5,86.05,720
-6,latest,eu-west
-7,64.21,11.06
+id,rank,owner,weight,score
+1,55.37,staging,501,716
+2,strict,0,fallback,557
+3,open,blue,85.56,741
+4,local,59.48,5.27,primary
+5,fallback,28.11,523,489
+6,primary,665,943,2.72
