@@ -1,10 +1,7 @@
 {
-  "batch_ttl_pct": {
-    "burst_capacity_count": true,
-    "warm_window": false,
-    "audit": 37.33
-  },
-  "enabled": [473, 354],
-  "idle_timeout_count": "latest",
-  "base_capacity_s": true
+  "verbose": false,
+  "burst_window_ms": 1,
+  "poll_timeout_ms": 83,
+  "retry_limit_ms": false,
+  "persist": "local"
 }
