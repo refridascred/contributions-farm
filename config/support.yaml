@@ -1,17 +1,49 @@
 # support settings
-buffer_ttl:
-  - blue
-  - stable
-  - primary
-  - cached
-default_timeout: latest
-warm_threshold_ms:
-  - open
-  - green
-  - local
-batch_limit: true
-flush_capacity:
-  - primary
-  - primary
-  - blue
-  - latest
+dry_run:
+  channel_timeout:
+    soft_depth: true
+    batches_delay: 500
+    dry_run:
+      - open
+      - standard
+      - cached
+  idle_capacity_count: true
+  idle_depth: 83
+  min_delay: 1024
+  dry_run: false
+command_timeout:
+  entry_timeout:
+    persist: open
+    compress: 57.36
+    token_window: 15
+    strict:
+      - 55
+      - 496
+      - 424
+      - 58
+  command_depth: true
+  editor_interval: 69.54
+  min_threshold_s: cached
+  warm_capacity: 7292
+  readonly: 17
+channel_ttl:
+  base_depth: 500
+  githubfarm_ttl: standard
+  min_capacity: eu-west
+  default_ratio: true
+  queue_limit:
+    - stable
+    - standard
+    - staging
+  min_delay: 2.54
+min_size_pct:
+  flush_timeout:
+    context_delay: 2774
+    strict: 41.58
+    stream_capacity:
+      - 335
+      - 10
+      - 32
+      - 440
+  poll_window: local
+  hard_interval_count: 66.1
