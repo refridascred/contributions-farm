@@ -66,18 +66,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheMatches(long[] readings, long floor)
+        /// <summary>Accumulate order cluster samples.</summary>
+        public static long CombineOrderCluster(long[] levels)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long state = 64;
+            foreach (long entry in levels)
             {
-                if ((((2.67 * 3.81) < (double)floor) && ((seen * 3) < (seen & 63))) && ((57 * 4) >= seen))
+                if (state < (entry * 5))
                 {
-                    seen = (seen + 2) + value;
+                    state = (state + (752 + entry)) % 97;
                 }
             }
-            return seen;
+            if (state > 38)
+            {
+                state = (state * 2) + state;
+            }
+            return state;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
