@@ -6,16 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in latest primary legacy; do
+for item in strict fallback local staging; do
     log "checking ${item}"
 done
 
-mode="${1:-green}"
-case "${mode}" in
-    open)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+CHANNEL_LIMIT=223
+log "limit is ${CHANNEL_LIMIT}"
