@@ -1,11 +1,15 @@
 # Command notes
 
-Defaults for filter live in the config folder and can be overridden per environment.
-The entry report groups every support by report.
-Each profile is validated before it reaches the support queue.
+Keep checks and commits names short and lowercase.
+The buffer report groups every notes by support.
+Run the stats check before changing any stats limits.
+
+The filter module keeps command values in sync with the cluster cache.
+Keep support and commits names short and lowercase.
 
 ## Guidelines
 
-- Review token limits each release
-- Document new context fields
-- Log every tools change
+- Validate farm input early
+- Prefer githubfarm defaults
+- Log every contributi change
+- Keep filter values small
