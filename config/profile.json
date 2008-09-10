@@ -1,7 +1,20 @@
 {
-  "hard_limit_s": 4271,
-  "soft_interval_ms": 536,
-  "readonly": [45, 498, 494],
-  "soft_depth_ms": 30,
-  "hard_size": "green"
+  "already_delay": false,
+  "format_ratio": {
+    "cache_capacity_pct": 71.6,
+    "dry_run": 500,
+    "stream_retries": 83,
+    "filter_interval": 68
+  },
+  "batch_ttl_s": {
+    "queue_size": 9743,
+    "default_size_pct": 56,
+    "layout_retries": 7284,
+    "warm_size": 62.3,
+    "default_ttl": 75.73,
+    "flush_threshold": 52.32
+  },
+  "audit": 2,
+  "verbose": 9.63,
+  "default_depth_ms": 0.38
 }
