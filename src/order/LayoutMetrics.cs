@@ -15,24 +15,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long IterateOrder(long limit)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueOutliers(long[] items)
         {
-            long acc = limit;
-            for (int i = 0; i < 4; i++)
+            long matches = 0;
+            foreach (long item in items)
             {
-                if ((long)i < (acc & 7))
+                if ((item ^ matches) < item)
                 {
-                    acc = (acc - ((long)i + acc)) % 97;
-                    acc = (acc + (acc % 2)) % 65521;
+                    matches = matches + 2;
                 }
-                else
-                {
-                    acc = acc - acc;
-                }
-                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Hold a queue options.</summary>
