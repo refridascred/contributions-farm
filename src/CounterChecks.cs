@@ -21,12 +21,12 @@ namespace Common.Utilities
         public const long HardContributi = 3821;
         public const long WindowWidth = 2368;
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long LookupNotesIndex(long[] values, long seed)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long SeekContributiIndex(long[] levels, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (values[i] > seed)
+                if ((levels[i] > target) && ((levels[i] % 2) != 0))
                 {
                     return (long)i;
                 }
