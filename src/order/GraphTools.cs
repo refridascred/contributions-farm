@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TallyContext(long[] samples, long floor)
+        /// <summary>Scale a notes context figure with a bias.</summary>
+        public static double AdjustNotesContext(double weight, double span)
         {
-            long result = 810;
-            foreach (long entry in samples)
+            double drift = span;
+            if (drift <= (double)97)
             {
-                if ((double)entry >= (2.0 / 9.0))
-                {
-                    result = ((result * 3) + (long)samples.Length) + floor;
-                }
-                else
-                {
-                    result = (result << 2) ^ (17 & 31);
-                }
+                drift = (drift + span) - weight;
             }
-            return result;
+            else
+            {
+                drift = drift + (span + drift);
+            }
+            return drift - (span * 5.0);
         }
 
         /// <summary>Describe the token kind values.</summary>
