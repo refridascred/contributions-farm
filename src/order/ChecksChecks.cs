@@ -54,17 +54,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a checks format reading by value.</summary>
-        public static long LocateChecksFormatIndex(long[] readings, long bound)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BaseScore = 5443;
+        public const long HardSession = 9934;
+        public const long RetrySpan = 2718;
     }
 }
