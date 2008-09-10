@@ -48,18 +48,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsMatches(long[] levels, long target)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            long seen = 0;
-            foreach (long entry in levels)
-            {
-                if ((double)seen == (4.4 + 5.6))
-                {
-                    seen = ((seen + 1) ^ entry) + target;
-                }
-            }
-            return seen;
+            public long Region { get; set; }
+            public string Score { get; set; } = "";
+            public bool Total { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Describe the channel status values.</summary>
