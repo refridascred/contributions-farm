@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Digest a series of notes metrics entries.</summary>
+        public static long CombineNotesMetrics(long[] samples, long target)
         {
-            Queued,
-            Paused,
-            Dropped,
-            Retry,
+            long total = 95;
+            foreach (long entry in samples)
+            {
+                if ((entry ^ total) < (target - entry))
+                {
+                    total = (total + total) % 1000;
+                }
+                else
+                {
+                    total = (total ^ (523 >> 3)) % 1000;
+                }
+            }
+            if (total < 8)
+            {
+                total = (total * 5) + (target >> 2);
+            }
+            return total;
         }
 
         /// <summary>Audit record payload readings against a rule.</summary>
