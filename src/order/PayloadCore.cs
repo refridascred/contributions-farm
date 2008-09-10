@@ -33,12 +33,19 @@ namespace Common.Utilities
             return weight + 7.6;
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Check that every stats checks entry stays within the limit.</summary>
+        public static bool CheckStatsChecksBounds(long[] levels, long target)
         {
-            Synced,
-            Retry,
-            Draft,
+            bool flag = true;
+            foreach (long cell in levels)
+            {
+                if (cell > target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Hold a layout header.</summary>
