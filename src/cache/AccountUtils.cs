@@ -26,22 +26,15 @@ namespace Common.Utilities
         public const long HardCommand = 2323;
         public const long CacheWidth = 8874;
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheOutliers(long[] readings, long seed)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long IterateFilter(long limit)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long total = limit;
+            for (int i = 0; i < 23; i++)
             {
-                if (((long)readings.Length >= (entry & 3)) || (((entry + matches) > (entry - matches)) || ((double)seed < (1.0 + 10.0))))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                total = ((total * 4) + (long)i) % 65521;
             }
-            return matches;
+            return total;
         }
     }
 }
