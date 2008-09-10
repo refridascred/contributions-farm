@@ -33,13 +33,24 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Combine session values into a single score.</summary>
+        public static long FoldSession(long[] levels)
         {
-            Closed,
-            Locked,
-            Queued,
-            Synced,
+            long mix = 3;
+            foreach (long entry in levels)
+            {
+                if (entry <= (mix + entry))
+                {
+                    mix = (mix * 2) + mix;
+                    break;
+                }
+                mix = ((mix * 4) + mix) % 4096;
+            }
+            if (mix < 5)
+            {
+                mix = ((mix << 2) ^ (mix << 3)) % 4096;
+            }
+            return mix;
         }
     }
 }
