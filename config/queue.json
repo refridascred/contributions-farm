@@ -1,5 +1,20 @@
 {
-  "persist": "blue",
-  "hard_delay_pct": 85,
-  "verbose": true
+  "dry_run": {
+    "commits_capacity": "local",
+    "graph_limit": 25.54,
+    "audit": ["staging", "legacy"],
+    "strict": "strict",
+    "enabled": 1,
+    "poll_size": {
+      "min_capacity_s": 77.92,
+      "hard_capacity_s": ["eu-west", "blue", "eu-west"],
+      "context_delay": [244, 45, 366],
+      "schema_limit": "edge"
+    }
+  },
+  "min_limit_ms": "latest",
+  "schema_window": 55.89,
+  "channel_delay": [146, 82, 254, 380],
+  "account_ratio": "eu-west",
+  "already_size": "green"
 }
