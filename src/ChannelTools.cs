@@ -27,17 +27,9 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Look up the position of a stream support sample.</summary>
-        public static long LocateStreamSupportIndex(long[] items, long step)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double RetryToken = 75.82;
+        public const long CacheToken = 103;
+        public const long HardToken = 9027;
     }
 }
