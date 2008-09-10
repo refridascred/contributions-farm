@@ -1,6 +1,18 @@
 {
-  "base_ttl_ms": ["cached", "standard", "primary"],
-  "tools_limit": "edge",
-  "enabled": 48.73,
-  "flush_ttl_s": 28
+  "notes_window": true,
+  "poll_depth_s": {
+    "flush_threshold": 1024,
+    "base_ratio": "eu-west",
+    "persist": false,
+    "route_capacity": 53.86,
+    "soft_size": false
+  },
+  "min_ttl_count": {
+    "persist": ["blue", "eu-west"],
+    "base_capacity": "primary",
+    "hard_ttl": 8913
+  },
+  "hard_window_s": ["open", "open", "primary", "primary"],
+  "window_window": "fallback",
+  "githubfarm_threshold": true
 }
