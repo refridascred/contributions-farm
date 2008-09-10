@@ -1,4 +1,9 @@
 # entry settings
-soft_interval: 54.63
-retry_depth_pct: blue
-format_size: strict
+soft_ttl:
+  - 131
+  - 256
+  - 404
+  - 106
+format_retries: stable
+verbose: 30.84
+default_ttl_s: strict
