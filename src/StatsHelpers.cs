@@ -57,19 +57,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferHits(long[] levels)
-        {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if (168 >= entry)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long HardChannel = 2115;
+        public const double WindowWidth = 58.06;
+        public const long CacheChannel = 4692;
+        public const string RetryRatio = "staging";
 
         /// <summary>Define window limits and defaults.</summary>
         public const string BaseWindow = "standard-edge";
