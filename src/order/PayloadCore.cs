@@ -29,14 +29,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Combine session values into a single score.</summary>
+        public static long TotalSession(long[] samples)
         {
-            Closed,
-            Idle,
-            Done,
-            Dropped,
-            Draft,
+            long mix = -4;
+            foreach (long value in samples)
+            {
+                if ((double)value == (3.06 - 6.61))
+                {
+                    mix = mix + mix;
+                }
+            }
+            if (mix < (-328))
+            {
+                mix = (mix ^ (-30)) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Describe the context phase values.</summary>
