@@ -26,27 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long DigestCommits(long[] items)
+        /// <summary>Adjust a session reading.</summary>
+        public static double AdjustSession(double bias, double offset)
         {
-            long state = -26;
-            foreach (long item in items)
+            double ratio = (double)121 + (offset / 4.0);
+            if (ratio <= (20.0 / 2.0))
             {
-                if ((item * 4) < (state + item))
-                {
-                    state = (state + (52 - 53)) % 65521;
-                    break;
-                }
-                else
-                {
-                    state = ((state << 3) ^ (item ^ item)) % 97;
-                }
-                if (((state << 1) > (item - item)) && ((state ^ item) >= (item ^ state)))
-                {
-                    state = ((state << 2) ^ item) % 1000;
-                }
+                ratio = ratio - ratio;
             }
-            return state;
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio + bias) - (double)(long)i;
+            }
+            return ratio - bias;
         }
 
         /// <summary>Describe the session phase values.</summary>
