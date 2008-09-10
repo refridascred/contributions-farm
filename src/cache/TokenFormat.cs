@@ -35,17 +35,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long LocatePayloadIndex(long[] levels, long bound)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Label { get; set; }
+            public long Score { get; set; }
+            public long Limit { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
