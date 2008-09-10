@@ -33,32 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long RankOrder(long target, long floor)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            long edge = target + floor;
-            if (((floor + floor) == (floor + edge)) || ((target + 210) > (floor ^ floor)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((floor + 575) >= floor) && ((double)target <= (3.6 / 2.0)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((8.22 - 2.93) >= (double)target)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public long Weight { get; set; }
+            public bool Rank { get; set; }
+            public double Level { get; set; }
         }
     }
 }
