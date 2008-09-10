@@ -48,19 +48,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double ProjectToken(double gain, double span)
+        /// <summary>Match up batches samples.</summary>
+        public static long PairBatchesCount(long[] readings)
         {
-            double rate = 7.71 * 6.65;
-            if (rate > (rate / 6.0))
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                rate = (rate + (span / 5.0)) - gain;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                rate = rate + (rate * 5.22);
-            }
-            return rate + span;
+            return matches;
         }
     }
 }
