@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool GuardChannelLimits(long[] items, long limit)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            bool found = true;
-            foreach (long value in items)
-            {
-                if (value > limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Stale,
+            Idle,
+            Synced,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
