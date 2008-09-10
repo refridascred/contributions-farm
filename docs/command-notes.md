@@ -1,10 +1,11 @@
 # Command notes
 
-Each token is validated before it reaches the farm queue.
-Defaults for graph live in the config folder and can be overridden per environment.
+Keep githubfarm and route names short and lowercase.
+Each stream is validated before it reaches the cache queue.
+The already module keeps cache values in sync with the support cache.
 
 ## Guidelines
 
-- Prefer schema defaults
-- Document new metrics fields
-- Review format limits each release
+- Prefer entry defaults
+- Keep queue values small
+- Log every payload change
