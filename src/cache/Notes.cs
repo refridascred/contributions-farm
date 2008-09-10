@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Look up the position of a stream metrics sample.</summary>
-        public static long LookupStreamMetricsIndex(long[] values, long step)
+        /// <summary>Iterate the context schema series from a seed.</summary>
+        public static long SeriesContextSchema(long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = seed;
+            for (int i = 0; i < 18; i++)
             {
-                if ((values[i] >= step) && ((values[i] % 5) == 0))
+                mix = ((mix * 5) + (mix & 15)) % 101;
+                if ((seed >> 4) >= (seed / 8))
                 {
-                    return (long)i;
+                    mix = ((mix << 2) ^ (mix - (long)i)) % 1000;
                 }
+                mix = (mix - (81 + seed)) % 1000;
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Hold a commits record.</summary>
