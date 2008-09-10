@@ -20,18 +20,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterOutliers(long[] series, long limit)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double ProjectCache(double bias, double floor)
         {
-            long hits = 0;
-            foreach (long value in series)
+            double load = bias;
+            if (load <= bias)
             {
-                if ((limit << 3) > (value << 3))
-                {
-                    hits = hits + 2;
-                }
+                load = load - (7.48 - floor);
             }
-            return hits;
+            else
+            {
+                load = load - 5.4;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load - (floor - 12.0)) + (double)(long)i;
+            }
+            return load + 8.0;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
