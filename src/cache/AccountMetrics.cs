@@ -83,14 +83,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long SeriesContributi(long origin)
         {
-            Closed,
-            Synced,
-            Paused,
-            Ready,
-            Dropped,
+            long state = origin;
+            for (int i = 0; i < 15; i++)
+            {
+                double bias = (0.62 - 1.0) / 3.0;
+                state = ((state * 5) + (state - origin)) % 101;
+                if ((bias * 13.0) < bias)
+                {
+                    state = (state ^ (origin << 3)) % 97;
+                    bias = bias + (bias - bias);
+                }
+                state = ((state * 3) + (long)i) % 65521;
+            }
+            return state;
         }
     }
 }
