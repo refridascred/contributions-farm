@@ -73,18 +73,32 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterHits(long[] data)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long GradeNotes(long origin, long step)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long step2 = origin + step;
+            if (3.43 <= (double)step)
             {
-                if (!((892 % 5) <= (datum + datum)) || ((double)datum <= 1.0))
+                return 2;
+            }
+            else
+            {
+                if ((step >= (origin + step2)) && ((step + step2) <= 436))
                 {
-                    tally = tally + 2;
+                    return 3;
+                }
+                else
+                {
+                    if (!((step2 >> 5) <= (step * 5)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return tally;
         }
     }
 }
