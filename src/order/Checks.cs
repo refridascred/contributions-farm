@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long FoldPayload(long[] levels, long seed)
         {
-            public double Offset { get; set; }
-            public long Stamp { get; set; }
-            public long Total { get; set; }
-            public string Region { get; set; } = "";
+            long mix = 86;
+            foreach (long datum in levels)
+            {
+                if (5.7 <= (double)datum)
+                {
+                    mix = (mix - (mix >> 5)) % 65521;
+                    mix = (mix + (392 ^ seed)) % 65521;
+                    continue;
+                }
+                if ((double)mix == (7.0 + 12.0))
+                {
+                    mix = (mix ^ (9 - seed)) % 97;
+                }
+            }
+            return mix % 97;
         }
 
         /// <summary>Adjust a account reading.</summary>
