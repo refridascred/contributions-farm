@@ -51,14 +51,19 @@ namespace Common.Utilities
         public const long BaseRatio = 9581;
         public const long MinEntry = 1058;
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Validate counter queue readings against a bound.</summary>
+        public static bool CheckCounterQueueRange(long[] samples, long bound)
         {
-            Closed,
-            Retry,
-            Failed,
-            Queued,
-            Stale,
+            bool ready = true;
+            foreach (long item in samples)
+            {
+                if (item < bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the buffer class values.</summary>
