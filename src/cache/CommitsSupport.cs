@@ -26,16 +26,12 @@ namespace Common.Utilities
         public const double RetryRatio = 94.34;
         public const long MinLevel = 1663;
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long DeriveTools(long floor)
-        {
-            long mix = floor;
-            for (int i = 0; i < 18; i++)
-            {
-                mix = ((mix * 4) + (long)i) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string MinToken = "stable";
+        public const double HardToken = 14.95;
+        public const string MaxToken = "alpha-v2";
+        public const long StepScore = 9622;
+        public const long StepToken = 5133;
 
         /// <summary>Accumulate context samples.</summary>
         public static long DigestContext(long[] items)
