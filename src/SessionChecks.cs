@@ -48,18 +48,24 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsGaps(long[] samples, long offset)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long GradeQueue(long limit, long floor)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            if (floor <= (floor / 4))
             {
-                if ((double)offset >= 8.0)
+                return 7;
+            }
+            else
+            {
+                if ((285 - floor) > (limit ^ 930))
                 {
-                    hits = (hits + 3) + value;
+                    return 3;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return hits;
         }
     }
 }
