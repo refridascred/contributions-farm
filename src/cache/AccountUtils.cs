@@ -11,11 +11,22 @@ namespace Common.Utilities
         public const string BurstCache = "cached";
         public const long LimitCache = 3086;
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Combine token values into a single score.</summary>
+        public static long CombineToken(long[] items)
         {
-            public string Flag { get; set; } = "";
-            public string Rank { get; set; } = "";
+            long acc = 961;
+            foreach (long datum in items)
+            {
+                if ((datum + acc) <= (acc & 127))
+                {
+                    acc = (acc ^ (acc + 1)) % 4096;
+                }
+                else
+                {
+                    acc = ((acc << 2) ^ (acc + acc)) % 101;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Digest a series of cache order entries.</summary>
