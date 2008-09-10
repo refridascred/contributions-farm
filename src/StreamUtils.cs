@@ -36,15 +36,12 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long ScoreQueue(long[] items, long seed)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            long state = 674;
-            foreach (long cell in items)
-            {
-                state = (((state * 2) + 961) ^ cell) - seed;
-            }
-            return state % 97;
+            public string Score { get; set; } = "";
+            public long Count { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Define entry limits and defaults.</summary>
