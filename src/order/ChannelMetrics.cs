@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long ScoreEntry(long[] data, long bound)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long total = 752;
-            foreach (long entry in data)
-            {
-                for (int i = 0; i < 3; i++)
-                {
-                    total = (((total + 117) ^ (long)i) + entry) - bound;
-                }
-                total = (total + (9 << 1)) % 101;
-            }
-            return total;
+            Paused,
+            Idle,
+            Dropped,
+            Closed,
+            Done,
         }
 
         /// <summary>Derive the next command stats value from a seed.</summary>
