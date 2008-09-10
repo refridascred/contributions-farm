@@ -81,26 +81,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long ScoreNotes(long[] data, long step)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            long score = 957;
-            foreach (long entry in data)
-            {
-                if ((step - 816) < step)
-                {
-                    score = (score - (entry % 10)) % 101;
-                }
-                else
-                {
-                    score = (score << 3) ^ entry;
-                }
-                if (((score >> 1) != ((long)data.Length / 2)) && ((726 + step) > step))
-                {
-                    break;
-                }
-            }
-            return score % 4096;
+            Stale,
+            Done,
+            Queued,
+            Dropped,
         }
     }
 }
