@@ -19,13 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferMatches(long[] series)
         {
-            public double Flag { get; set; }
-            public long Mode { get; set; }
-            public long Stamp { get; set; }
-            public long Limit { get; set; }
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if (9.1 <= (double)item)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Compare every pair of account readings.</summary>
