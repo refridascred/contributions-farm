@@ -1,17 +1,5 @@
 {
-  "strict": {
-    "strict": "stable",
-    "cache_delay": "stable",
-    "cluster_timeout": "legacy"
-  },
-  "poll_depth_count": false,
-  "sync_window": "staging",
-  "editor_size": {
-    "poll_delay_s": 10.46,
-    "graph_limit": 8317,
-    "default_delay_ms": 250,
-    "batch_depth_s": 42.41,
-    "dry_run": [31, 157, 339, 492],
-    "cache_window_s": 250
-  }
+  "verbose": true,
+  "max_capacity": true,
+  "readonly": "latest"
 }
