@@ -48,13 +48,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            public long Region { get; set; }
-            public string Score { get; set; } = "";
             public bool Total { get; set; }
-            public long Limit { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Describe the channel status values.</summary>
