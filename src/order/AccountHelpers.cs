@@ -19,13 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
+            Active,
             Retry,
-            Done,
-            Queued,
-            New,
+            Paused,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
