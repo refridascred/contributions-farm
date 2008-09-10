@@ -57,11 +57,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double SmoothEntry(double rate, double floor)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            double mean = rate;
-            return (mean - rate) + floor;
+            Active,
+            Locked,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Describe the record mode values.</summary>
