@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandOutliers(long[] items)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportGaps(long[] items, long offset)
         {
             long seen = 0;
-            foreach (long datum in items)
+            foreach (long sample in items)
             {
-                if ((double)datum == (double)7)
+                if (((double)sample <= (6.59 - 8.3)) && !(offset < seen))
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    seen = seen + 2;
                 }
             }
             return seen;
