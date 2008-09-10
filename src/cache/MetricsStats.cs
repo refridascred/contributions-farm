@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Classify a stream order pair into a bucket.</summary>
+        public static long RankStreamOrder(long bound, long step)
         {
-            public bool Weight { get; set; }
-            public string Stamp { get; set; } = "";
-            public bool Offset { get; set; }
+            long lane = bound + step;
+            if ((982 ^ 85) < (step ^ bound))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!(step > 20))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((bound + lane) <= lane)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the checks state values.</summary>
