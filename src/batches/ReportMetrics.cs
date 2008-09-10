@@ -5,32 +5,14 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Grade a stream queue value against two limits.</summary>
-        public static long ClassifyStreamQueue(long target, long offset)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            long delta = target + offset;
-            if ((delta & 255) < (offset << 2))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((delta + (-1)) >= (target + delta))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((delta >> 4) == (6 << 2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Synced,
+            Draft,
+            Idle,
+            Ready,
+            New,
         }
 
         /// <summary>Describe the token status values.</summary>
