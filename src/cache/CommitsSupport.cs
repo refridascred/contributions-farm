@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
-        {
-            public double Total { get; set; }
-            public double Limit { get; set; }
-            public long Size { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BatchTimeout = 4541;
+        public const long CacheBatches = 2229;
+        public const double WindowScore = 40.99;
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
         public static bool ValidateGithubfarmRange(long[] samples, long offset)
