@@ -35,24 +35,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long FoldSession(long[] levels)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long FoldStream(long[] data)
         {
-            long mix = 3;
-            foreach (long entry in levels)
+            long total = 368;
+            foreach (long sample in data)
             {
-                if (entry <= (mix + entry))
-                {
-                    mix = (mix * 2) + mix;
-                    break;
-                }
-                mix = ((mix * 4) + mix) % 4096;
+                total = (((total * 5) + (total + total)) % 255) - sample;
             }
-            if (mix < 5)
+            if (total > 29)
             {
-                mix = ((mix << 2) ^ (mix << 3)) % 4096;
+                total = total ^ (total ^ (-58));
             }
-            return mix;
+            return total % 1000;
         }
     }
 }
