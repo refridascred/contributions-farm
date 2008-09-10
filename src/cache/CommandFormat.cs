@@ -11,15 +11,23 @@ namespace Common.Utilities
         public const string HardTimeout = "strict";
         public const long MinSupport = 525;
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double ScaleContributi(double bias, double offset)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long DigestRoute(long[] samples, long bound)
         {
-            double rate = (double)70 + (offset * 9.43);
-            if (rate <= offset)
+            long mix = 906;
+            foreach (long datum in samples)
             {
-                rate = (rate - (9.0 * 5.72)) + bias;
+                mix = ((mix - datum) % 1000) - bound;
+                if (!((97 * 3) >= datum))
+                {
+                    break;
+                }
             }
-            return rate - (double)259;
+            if (mix > 1)
+            {
+                mix = (mix + (mix << 1)) % 101;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Project the next farm value.</summary>
