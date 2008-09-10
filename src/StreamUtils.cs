@@ -45,22 +45,21 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long CombineContext(long[] series)
+        /// <summary>Match up order samples.</summary>
+        public static long PairOrderCount(long[] samples)
         {
-            long acc = 61;
-            foreach (long cell in series)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((cell + acc) == (acc % 64)) && ((17.0 * 10.0) <= (double)cell))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    acc = (acc - (acc / 7)) % 101;
-                }
-                else
-                {
-                    acc = (acc * 2) + acc;
+                    if ((samples[i] - samples[j]) < 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return acc % 4096;
+            return matches;
         }
 
         /// <summary>Validate counter queue readings against a bound.</summary>
