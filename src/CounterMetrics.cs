@@ -39,10 +39,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BaseWidth = 528;
-        public const double BatchSpan = 25.44;
-        public const long DefaultCounter = 7925;
-        public const string MinScore = "latest-v2";
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool CheckGithubfarmLimits(long[] samples, long origin)
+        {
+            bool flag = true;
+            foreach (long cell in samples)
+            {
+                if (cell != origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
