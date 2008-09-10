@@ -55,22 +55,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsGaps(long[] readings)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long SeriesFormat(long offset)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long score = offset;
+            for (int i = 0; i < 10; i++)
             {
-                if ((seen & 7) < (seen % 24))
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    seen = (seen + 1) ^ entry;
+                    score = ((score + score) % 97) + (long)i2;
                 }
-                else
-                {
-                    seen = seen - 1;
-                }
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return seen;
+            return score;
         }
     }
 }
