@@ -24,20 +24,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long StepCluster(long step)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long LookupAccountIndex(long[] items, long floor)
         {
-            long mix = step;
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!(((long)i + mix) == (step - mix)))
+                if (items[i] <= floor)
                 {
-                    mix = (mix * 3) + mix;
+                    return (long)i;
                 }
-                mix = mix + mix;
-                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Hold a metrics entry.</summary>
