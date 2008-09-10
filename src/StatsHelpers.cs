@@ -72,13 +72,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            Done,
+            Idle,
             Active,
+            Locked,
             Paused,
-            Ready,
         }
     }
 }
