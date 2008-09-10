@@ -59,11 +59,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            public double Score { get; set; }
-            public string Ratio { get; set; } = "";
+            public long Limit { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Accumulate buffer samples.</summary>
