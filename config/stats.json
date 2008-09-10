@@ -1,9 +1,7 @@
 {
-  "verbose": 1024,
-  "batch_retries": {
-    "default_size_pct": true,
-    "metric_threshold": 27,
-    "burst_delay": 56.62
-  },
-  "strict": false
+  "verbose": "cached",
+  "enabled": 97,
+  "compress": 60,
+  "soft_interval_pct": ["green", "strict"],
+  "cache_ttl_ms": ["edge", "green", "open"]
 }
