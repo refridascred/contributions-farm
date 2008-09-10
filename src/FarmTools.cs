@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BatchWidth = 2611;
-        public const long BaseDepth = 4364;
-        public const long MaxMetric = 9603;
-        public const double HardMetric = 40.9;
+        /// <summary>Validate queue entry readings against a bound.</summary>
+        public static bool GuardQueueEntryRange(long[] levels, long bound)
+        {
+            bool ok = true;
+            foreach (long reading in levels)
+            {
+                if (reading <= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Hold a githubfarm record.</summary>
         public sealed class GithubfarmRecord
