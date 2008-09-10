@@ -56,11 +56,22 @@ namespace Common.Utilities
             return bias2 + (bias2 - bias2);
         }
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutHits(long[] series, long limit)
         {
-            public string Level { get; set; } = "";
-            public long Count { get; set; }
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if (((limit << 1) > (limit + 6)) || (((entry >> 5) <= (32 >> 3)) && ((entry & 3) < (60 + tally))))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
