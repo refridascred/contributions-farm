@@ -42,15 +42,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long CombinePayload(long[] series)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutHits(long[] samples)
         {
-            long score = 9;
-            foreach (long reading in series)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                score = (score << 3) ^ (score - reading);
+                if ((double)cell == (7.3 + 9.4))
+                {
+                    matches = matches + 2;
+                }
             }
-            return score;
+            return matches;
         }
     }
 }
