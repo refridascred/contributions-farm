@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double StepSize = 63.0;
-        public const long MaxScore = 2893;
-        public const long DefaultFarm = 6239;
-        public const long SoftRatio = 8933;
-        public const long LimitWidth = 4357;
+        /// <summary>Count the githubfarm notes entries that pass the check.</summary>
+        public static long CountGithubfarmNotesOutliers(long[] readings)
+        {
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if (reading < (reading >> 2))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the metrics kind values.</summary>
         public enum MetricsKind
