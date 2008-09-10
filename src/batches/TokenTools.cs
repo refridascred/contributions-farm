@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Audit token window readings against a rule.</summary>
+        public static long CountTokenWindowMatches(long[] data)
         {
-            Paused,
-            Failed,
-            New,
+            long seen = 0;
+            foreach (long cell in data)
+            {
+                if ((long)data.Length != (cell + 740))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of account readings.</summary>
