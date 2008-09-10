@@ -24,18 +24,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordOutliers(long[] samples)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            long matches = 0;
-            foreach (long item in samples)
-            {
-                if (((9.9 + 0.96) > (double)matches) || ((double)matches > (0.12 - 1.0)))
-                {
-                    matches = (matches + 2) - item;
-                }
-            }
-            return matches;
+            public long Mode { get; set; }
+            public long Size { get; set; }
+            public long Token { get; set; }
         }
     }
 }
