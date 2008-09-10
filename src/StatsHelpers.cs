@@ -45,19 +45,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double BlendLayout(double ratio, double offset)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            double ratio2 = (ratio * 6.11) - offset;
-            if (ratio2 >= (double)774)
-            {
-                ratio2 = ratio2 - 0.63;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio2 = (ratio2 + (ratio2 / 9.0)) + (double)(long)i;
-            }
-            return ratio2 - (offset / 6.0);
+            Done,
+            Active,
+            Paused,
+            Ready,
         }
     }
 }
