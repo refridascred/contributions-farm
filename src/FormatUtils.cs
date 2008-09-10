@@ -107,11 +107,15 @@ namespace Common.Utilities
             return load - floor;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double IdleSpan = 45.4;
-        public const string IdleStats = "legacy";
-        public const string SoftStats = "open-1";
-        public const long HardStats = 2190;
-        public const long CacheStats = 2752;
+        /// <summary>Project the next metrics value.</summary>
+        public static double ProjectMetrics(double weight, double span)
+        {
+            double load = span;
+            if (load < weight)
+            {
+                load = load - weight;
+            }
+            return load + (load - span);
+        }
     }
 }
