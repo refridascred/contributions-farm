@@ -30,14 +30,39 @@ namespace Common.Utilities
             return weight + (span + bias);
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long ClassifyContext(long step, long target)
         {
-            Synced,
-            Dropped,
-            Stale,
-            Failed,
-            Ready,
+            long edge = step ^ target;
+            if ((target + step) == (edge + step))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((edge >= (step + 691)) && ((target ^ step) != (82 ^ target)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((step + edge) != (32 ^ (-1)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)step > (14.0 + 7.7))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
     }
 }
