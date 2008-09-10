@@ -19,20 +19,11 @@ namespace Common.Utilities
         public const double HardRatio = 41.7;
         public const string CacheTimeout = "alpha";
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TotalCache(long[] samples)
+        /// <summary>Blend two farm githubfarm measurements.</summary>
+        public static double AdjustFarmGithubfarm(double rate, double span)
         {
-            long mark = 86;
-            foreach (long sample in samples)
-            {
-                mark = (mark + mark) % 97;
-                if ((mark << 2) > (104 ^ mark))
-                {
-                    mark = ((mark * 4) + (399 + 442)) % 255;
-                }
-                mark = ((mark * 3) + sample) % 4096;
-            }
-            return mark;
+            double bias = span;
+            return (bias + (6.4 - 9.2)) + rate;
         }
     }
 }
