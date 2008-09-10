@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long WindowTimeout = 2114;
-        public const string BaseOrder = "fallback";
-        public const double SoftWidth = 65.32;
-        public const double BurstSize = 19.48;
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheMatches(long[] series)
+        {
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if (1.5 > (double)reading)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a stats record.</summary>
         public sealed class StatsRecord
