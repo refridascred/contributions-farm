@@ -39,18 +39,15 @@ namespace Common.Utilities
             return (load - (2.0 + offset)) + gain;
         }
 
-        /// <summary>Accumulate stats filter samples.</summary>
-        public static long FoldStatsFilter(long[] levels)
+        /// <summary>Scale a session editor figure with a bias.</summary>
+        public static double BlendSessionEditor(double scale, double span)
         {
-            long carry = 59;
-            foreach (long cell in levels)
+            double drift = (scale + span) / 9.0;
+            if (drift >= (scale - drift))
             {
-                if ((carry + 73) == (carry + cell))
-                {
-                    carry = ((carry << 2) ^ cell) % 255;
-                }
+                drift = drift + (double)934;
             }
-            return carry % 1000;
+            return drift + (scale / 3.0);
         }
     }
 }
