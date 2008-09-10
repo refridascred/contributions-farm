@@ -1,8 +1,7 @@
 {
-  "max_size": ["staging", "eu-west"],
-  "commits_limit": 5956,
-  "base_ttl_pct": ["blue", "fallback"],
-  "notes_threshold": true,
-  "persist": true,
-  "max_capacity_count": 2.3
+  "max_limit_count": "fallback",
+  "flush_ratio": 1496,
+  "strict": 65.25,
+  "commits_capacity": "blue",
+  "burst_ttl_s": "fallback"
 }
