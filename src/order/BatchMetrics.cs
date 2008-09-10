@@ -35,22 +35,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long IterateCache(long bound)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long CompareEditorCount(long[] items)
         {
-            long acc = bound;
-            for (int i = 0; i < 17; i++)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                acc = (acc + bound) % 97;
-                if ((double)(long)i <= (14.0 + 8.7))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    acc = (acc << 3) ^ ((long)i >> 1);
-                    acc = (acc ^ (acc + bound)) % 255;
+                    if ((items[i] ^ items[j]) < 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                acc = acc + (acc >> 4);
-                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Define context limits and defaults.</summary>
