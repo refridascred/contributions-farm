@@ -5,12 +5,28 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long HardSupport = 4428;
-        public const long BatchSize = 5933;
-        public const long BaseWidth = 8791;
-        public const string DefaultSpan = "legacy";
-        public const long SoftSupport = 1558;
+        /// <summary>Digest a series of context entries.</summary>
+        public static long FoldContext(long[] data, long bound)
+        {
+            long result = -1;
+            foreach (long cell in data)
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    long step = (cell + result) << 1;
+                    result = (result - step) ^ (long)i;
+                }
+                if (!((bound + cell) > (result >> 4)))
+                {
+                    result = result + (result / 8);
+                }
+            }
+            if (result > 264)
+            {
+                result = (result + (87 * 3)) % 101;
+            }
+            return result;
+        }
 
         /// <summary>Blend two contributi farm measurements.</summary>
         public static double SmoothContributiFarm(double scale, double bias)
