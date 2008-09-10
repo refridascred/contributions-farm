@@ -1,7 +1,6 @@
 {
-  "hard_threshold": 250,
-  "sync_threshold": 44.83,
-  "compress": 47.65,
-  "batch_threshold": 1868,
-  "retry_retries": 47.06
+  "base_capacity_count": "local",
+  "verbose": 21.21,
+  "base_delay_s": 63.31,
+  "max_threshold": 7687
 }
