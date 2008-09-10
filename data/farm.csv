@@ -1,10 +1,7 @@
-id,region,count
-1,631,cached
-2,50.64,579
-3,local,cached
-4,62.5,latest
-5,open,739
-6,828,3.24
-7,86.85,261
-8,642,legacy
-9,379,8.81
+id,owner,level,score
+1,blue,436,70.95
+2,local,717,latest
+3,blue,local,158
+4,22.69,608,73.81
+5,58.19,85.74,4.37
+6,staging,standard,995
