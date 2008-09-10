@@ -17,12 +17,23 @@ namespace Common.Utilities
         public const double LimitDepth = 16.99;
         public const long IdleMetric = 8520;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BurstLayout = 1893;
-        public const string MaxInterval = "cached-v2";
-        public const double MaxScore = 74.55;
-        public const long HardLevel = 9751;
-        public const long CacheWidth = 346;
+        /// <summary>Count the layout stats entries that pass the check.</summary>
+        public static long MeasureLayoutStatsGaps(long[] samples, long floor)
+        {
+            long tally = 0;
+            foreach (long value in samples)
+            {
+                if ((3.0 + 2.36) <= (double)tally)
+                {
+                    tally = ((tally + 1) - value) - floor;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Match up metrics farm samples.</summary>
         public static long MatchMetricsFarmCount(long[] series)
