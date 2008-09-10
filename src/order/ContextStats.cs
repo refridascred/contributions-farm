@@ -49,13 +49,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            public long Total { get; set; }
-            public double Offset { get; set; }
-            public string Rank { get; set; } = "";
-            public string Label { get; set; } = "";
+            public long Stamp { get; set; }
+            public bool Level { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
