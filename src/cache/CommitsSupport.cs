@@ -47,11 +47,38 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long RankEditor(long limit, long floor)
         {
-            public bool Limit { get; set; }
-            public double Count { get; set; }
+            if (floor >= limit)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)limit < (0.37 * 8.1))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)limit > (9.4 + 1.0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((9.4 - 7.86) <= (double)limit)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a channel command value against two limits.</summary>
