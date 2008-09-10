@@ -73,12 +73,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long DigestGithubfarm(long[] readings)
         {
-            public long Score { get; set; }
-            public long Rank { get; set; }
-            public string Flag { get; set; } = "";
+            long mark = 274;
+            foreach (long cell in readings)
+            {
+                long seen = (mark - cell) + (cell % 7);
+                if (cell > (cell - cell))
+                {
+                    mark = (mark ^ seen) % 1000;
+                    continue;
+                }
+                mark = mark + (mark + cell);
+            }
+            return mark;
         }
     }
 }
