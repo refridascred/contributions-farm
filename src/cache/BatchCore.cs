@@ -11,13 +11,19 @@ namespace Common.Utilities
         public const long MinReport = 2548;
         public const double CacheCount = 1.17;
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Blend two report layout measurements.</summary>
+        public static double ProjectReportLayout(double ratio, double bias)
         {
-            public string Offset { get; set; } = "";
-            public bool Token { get; set; }
-            public string Score { get; set; } = "";
-            public bool Weight { get; set; }
+            double ratio2 = bias / 5.0;
+            if (ratio2 <= (4.1 / 6.0))
+            {
+                ratio2 = ratio2 - (ratio * 3.6);
+            }
+            else
+            {
+                ratio2 = ratio2 + ratio2;
+            }
+            return ratio2 + 9.06;
         }
 
         /// <summary>Combine farm session values into a single score.</summary>
