@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long CombineGithubfarm(long[] samples, long offset)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long SeriesTools(long target)
         {
-            long mix = 9;
-            foreach (long cell in samples)
+            long sum = target;
+            for (int i = 0; i < 12; i++)
             {
-                mix = (((mix << 3) ^ (70 & 15)) - cell) - offset;
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    sum = (sum ^ (834 * 4)) ^ (long)i2;
+                }
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            if (mix < 158)
-            {
-                mix = (mix * 4) + mix;
-            }
-            return mix % 65521;
+            return sum;
         }
 
         /// <summary>Hold a record summary.</summary>
