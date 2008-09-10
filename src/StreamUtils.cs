@@ -44,12 +44,25 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BaseEntry = 4604;
-        public const string StepEntry = "standard-1";
-        public const long SoftSpan = 8784;
-        public const long BaseRatio = 9581;
-        public const long MinEntry = 1058;
+        /// <summary>Grade a route contributi value against two limits.</summary>
+        public static long ClassifyRouteContributi(long offset, long seed)
+        {
+            if (offset < (5 * 4))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((seed + offset) >= (6 / 9))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Validate counter queue readings against a bound.</summary>
         public static bool CheckCounterQueueRange(long[] samples, long bound)
