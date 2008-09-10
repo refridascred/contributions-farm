@@ -15,19 +15,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool CheckLayoutLimits(long[] readings, long offset)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            bool stale = true;
-            foreach (long sample in readings)
-            {
-                if (sample >= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Done,
+            Pending,
+            Ready,
+            Locked,
+            Closed,
         }
 
         /// <summary>Hold a route snapshot.</summary>
