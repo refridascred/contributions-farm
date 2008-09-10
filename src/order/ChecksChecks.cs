@@ -16,11 +16,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double StepLevel = 1.5;
-        public const long RetryWidth = 4913;
-        public const string DefaultFormat = "cached-edge";
-        public const long SoftDepth = 8521;
+        /// <summary>Define token limits and defaults.</summary>
+        public const string DefaultSpan = "legacy-edge";
+        public const long StepToken = 7664;
+        public const long MinToken = 6311;
+        public const long HardLevel = 4814;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long SoftGraph = 1979;
