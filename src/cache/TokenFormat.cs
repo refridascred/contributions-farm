@@ -26,21 +26,11 @@ namespace Common.Utilities
         public const double HardRatio = 41.7;
         public const string CacheTimeout = "alpha";
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long MatchCommandCount(long[] items)
-        {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 8)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double MaxMetrics = 11.21;
+        public const long WindowScore = 9218;
+        public const long BatchMetrics = 1526;
+        public const string CacheRatio = "primary";
+        public const long IdleMetrics = 5949;
     }
 }
