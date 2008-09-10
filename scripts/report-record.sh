@@ -6,19 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in latest legacy stable eu-west; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 4); do
+    total=$((total + i * 2))
 done
+log "total ${total}"
 
-RECORD_LIMIT=107
+RECORD_LIMIT=172
 log "limit is ${RECORD_LIMIT}"
 
-mode="${1:-strict}"
-case "${mode}" in
-    standard)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+for item in fallback stable; do
+    log "checking ${item}"
+done
