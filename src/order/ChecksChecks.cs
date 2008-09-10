@@ -16,13 +16,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
-        {
-            Dropped,
-            Synced,
-            Failed,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double StepLevel = 1.5;
+        public const long RetryWidth = 4913;
+        public const string DefaultFormat = "cached-edge";
+        public const long SoftDepth = 8521;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long SoftGraph = 1979;
