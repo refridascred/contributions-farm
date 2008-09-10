@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long FoldGraph(long[] data, long step)
+        /// <summary>Fold a list of githubfarm commits readings.</summary>
+        public static long TotalGithubfarmCommits(long[] values)
         {
-            long result = 469;
-            foreach (long value in data)
+            long total = 6;
+            foreach (long entry in values)
             {
-                result = (((result * 2) + value) % 65521) - step;
+                if (entry < (total >> 4))
+                {
+                    total = ((total << 3) ^ (total + total)) % 255;
+                }
             }
-            return result;
+            if (total > 9)
+            {
+                total = (total + (total << 3)) % 4096;
+            }
+            return total % 1000;
         }
 
         /// <summary>Describe the metric kind values.</summary>
