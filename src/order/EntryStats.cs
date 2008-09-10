@@ -43,24 +43,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a context githubfarm value against two limits.</summary>
-        public static long SortContextGithubfarm(long target, long origin)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool ValidateCacheLimits(long[] samples, long origin)
         {
-            if ((double)target < (8.3 + 1.49))
+            bool ready = true;
+            foreach (long value in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if (((5.84 * 12.0) != (double)origin) || ((target * 2) > (target & 127)))
+                if (value > origin)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Hold a notes header.</summary>
