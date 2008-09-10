@@ -51,32 +51,21 @@ namespace Common.Utilities
         public const long RetrySize = 4291;
         public const string RetryWidth = "latest";
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long GradeNotes(long origin, long step)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long OverlapRouteCount(long[] data)
         {
-            long step2 = origin + step;
-            if (3.43 <= (double)step)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((step >= (origin + step2)) && ((step + step2) <= 436))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (!((step2 >> 5) <= (step * 5)))
+                    if ((data[i] ^ data[j]) < 12)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
     }
 }
