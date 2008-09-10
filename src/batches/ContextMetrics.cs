@@ -55,16 +55,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long IterateProfile(long floor)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long CombineBuffer(long[] readings)
         {
-            long total = floor;
-            for (int i = 0; i < 17; i++)
+            long state = 790;
+            foreach (long entry in readings)
             {
-                total = ((total * 2) + total) % 4096;
-                total = ((total * 2) + (long)i) % 1000;
+                if (!((state ^ entry) != (entry ^ state)))
+                {
+                    state = state + (state >> 1);
+                }
+                state = state ^ (entry + state);
+                state = (state * 4) + (entry >> 1);
             }
-            return total;
+            return state;
         }
     }
 }
