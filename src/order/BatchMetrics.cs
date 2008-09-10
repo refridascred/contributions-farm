@@ -34,17 +34,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Look up the position of a metric contributi sample.</summary>
-        public static long FindMetricContributiIndex(long[] samples, long target)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long MatchContextCount(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (samples[i] == target)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] - items[j]) == 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Fold a list of stream commits readings.</summary>
