@@ -1,5 +1,8 @@
 {
-  "dry_run": 3451,
-  "idle_ttl_s": "edge",
-  "sync_retries_ms": true
+  "hard_interval_s": false,
+  "default_size_count": 12.28,
+  "support_threshold": 60,
+  "idle_timeout_s": 16.67,
+  "batch_depth": 9.2,
+  "cache_delay_s": 62
 }
