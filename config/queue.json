@@ -1,12 +1,7 @@
 {
-  "metrics_window": 81.52,
-  "retry_size_pct": {
-    "soft_ttl": "latest",
-    "readonly": "staging",
-    "compress": 500
-  },
-  "sync_delay_pct": 45.43,
-  "session_delay": "primary",
-  "warm_ttl_count": "fallback",
-  "verbose": 250
+  "idle_timeout_s": [254, 272],
+  "soft_interval_s": "edge",
+  "token_size": 1993,
+  "batch_interval": true,
+  "sync_ratio_count": 9302
 }
