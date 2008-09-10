@@ -29,22 +29,19 @@ namespace Common.Utilities
             return weight + (weight * 9.4);
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long DigestOrder(long[] items, long floor)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool CheckSchemaRange(long[] readings, long offset)
         {
-            long state = 77;
-            foreach (long sample in items)
+            bool flag = true;
+            foreach (long item in readings)
             {
-                if (((floor - 6) <= 2) && (sample < state))
+                if (item >= offset)
                 {
-                    state = ((state * 5) + (state >> 4)) % 65521;
-                }
-                else
-                {
-                    state = (state - (sample + state)) % 255;
+                    flag = false;
+                    break;
                 }
             }
-            return state;
+            return flag;
         }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
