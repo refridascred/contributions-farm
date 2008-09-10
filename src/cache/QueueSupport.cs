@@ -30,30 +30,17 @@ namespace Common.Utilities
             return (mean + (mean - bias)) + ratio;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TallyFormat(long[] items, long bound)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long FindLayoutIndex(long[] levels, long step)
         {
-            long anchor = 9;
-            foreach (long sample in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((7 > (57 + anchor)) || ((double)anchor != (1.68 * 12.0)))
+                if ((levels[i] >= step) && ((levels[i] % 2) == 0))
                 {
-                    anchor = (anchor << 2) ^ (sample + anchor);
-                }
-                if ((sample <= (sample % 3)) || (841 <= (bound << 2)))
-                {
-                    anchor = (anchor * 5) + (bound % 5);
-                }
-                else
-                {
-                    anchor = (anchor << 3) ^ bound;
-                }
-                if ((anchor + sample) < (9 * 3))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
     }
 }
