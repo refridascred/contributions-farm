@@ -20,12 +20,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            public long Count { get; set; }
-            public double Ratio { get; set; }
-            public double Rank { get; set; }
+            public bool Limit { get; set; }
+            public double Score { get; set; }
+            public bool Mode { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Locate a order reading by value.</summary>
