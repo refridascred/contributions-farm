@@ -47,21 +47,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up cluster entry samples.</summary>
-        public static long MatchClusterEntryCount(long[] levels)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 8)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Locked,
+            Ready,
+            Closed,
+            Active,
         }
     }
 }
