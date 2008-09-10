@@ -1,13 +1,18 @@
 # support settings
-verbose:
-  audit: fallback
-  hard_size_ms: false
-  default_window_pct:
-    - 407
-    - 371
-    - 347
-  burst_capacity: 2138
-  batch_size: true
-hard_ttl: 4438
-hard_size_pct: 6591
-queue_limit: 12.81
+strict: cached
+report_ratio:
+  default_capacity: 83
+  buffer_ratio: 2509
+  soft_size_pct: false
+  readonly:
+    - 253
+    - 74
+    - 437
+  cache_retries: 1024
+hard_retries: true
+soft_ttl_ms: false
+retry_window: 95.89
+retry_ratio_pct:
+  - 38
+  - 189
+  - 217
