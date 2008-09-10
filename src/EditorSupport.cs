@@ -29,11 +29,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string WindowTools = "stable-edge";
-        public const long RetryTools = 1380;
-        public const long MaxTools = 5447;
-        public const long IdleCount = 6369;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MinMetric = 4056;
+        public const long RetryWidth = 8743;
+        public const string DefaultMetric = "alpha";
 
         /// <summary>Match up route samples.</summary>
         public static long OverlapRouteCount(long[] items)
