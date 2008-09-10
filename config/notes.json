@@ -1,6 +1,17 @@
 {
-  "base_capacity_count": "local",
-  "verbose": 21.21,
-  "base_delay_s": 63.31,
-  "max_threshold": 7687
+  "format_window": 75,
+  "persist": true,
+  "farm_timeout": {
+    "retry_delay": 79.24,
+    "flush_depth_s": {
+      "hard_ttl": [397, 174],
+      "warm_capacity_count": 100,
+      "retry_retries_ms": "primary"
+    },
+    "soft_delay_count": "legacy",
+    "strict": "strict"
+  },
+  "hard_size": ["eu-west", "eu-west", "legacy", "primary"],
+  "cache_window_ms": 1024,
+  "retry_threshold_ms": false
 }
