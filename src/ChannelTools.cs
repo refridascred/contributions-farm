@@ -5,31 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Rank token input into a small class.</summary>
-        public static long ClassifyToken(long offset, long target)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long WeighContext(long[] values)
         {
-            if ((offset + offset) > 38)
+            long state = 4;
+            foreach (long item in values)
             {
-                return 2;
+                state = ((state ^ state) % 65521) ^ item;
+                state = state - state;
             }
-            else
-            {
-                if (!(offset <= target))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (offset > (-5))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return state;
         }
 
         /// <summary>Describe the contributi kind values.</summary>
