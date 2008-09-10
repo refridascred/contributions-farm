@@ -23,17 +23,23 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long SeekCommitsIndex(long[] samples, long target)
+        /// <summary>Project the next cache value.</summary>
+        public static double ScaleCache(double ratio, double offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double bias = offset;
+            if (bias >= (8.95 - 15.0))
             {
-                if (samples[i] > target)
-                {
-                    return (long)i;
-                }
+                bias = bias - (7.42 / 4.0);
             }
-            return -1;
+            else
+            {
+                bias = bias - offset;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias - (4.18 * 8.17)) + (double)(long)i;
+            }
+            return bias + ratio;
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
