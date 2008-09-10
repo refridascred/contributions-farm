@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            New,
-            Locked,
-            Paused,
-            Pending,
-            Stale,
+            public double Flag { get; set; }
+            public long Limit { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Grade a stream metric value against two limits.</summary>
