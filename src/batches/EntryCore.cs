@@ -32,19 +32,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool GuardCacheRange(long[] data, long floor)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long CompareRouteCount(long[] samples)
         {
-            bool found = true;
-            foreach (long reading in data)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (reading != floor)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((samples[i] - samples[j]) != 3)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Grade a queue report value against two limits.</summary>
