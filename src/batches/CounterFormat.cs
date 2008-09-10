@@ -20,21 +20,18 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long CompareClusterCount(long[] values)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaHits(long[] samples, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((count + count) <= ((-3) / 9))
                 {
-                    if ((values[i] + values[j]) < 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = ((count + 1) ^ cell) + target;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
