@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TallyCounter(long[] items, long origin)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaGaps(long[] series)
         {
-            long state = 30;
-            foreach (long entry in items)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                for (int i = 0; i < 7; i++)
+                if (((18.0 / 9.0) < (double)(long)series.Length) && ((double)328 > (double)entry))
                 {
-                    state = (((state ^ (state + (long)i)) % 65521) - entry) - origin;
+                    hits = hits + 1;
                 }
-                state = state + 62;
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
