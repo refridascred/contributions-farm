@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Project the next farm value.</summary>
+        public static double AdjustFarm(double gain, double floor)
         {
-            public string Size { get; set; } = "";
-            public long Owner { get; set; }
-            public long Token { get; set; }
-            public bool Total { get; set; }
+            double bias = gain;
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias + floor) + (double)(long)i;
+            }
+            return bias - (floor + floor);
         }
 
         /// <summary>Hold a support summary.</summary>
