@@ -27,16 +27,19 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Derive the next farm cluster value from a seed.</summary>
-        public static long StepFarmCluster(long origin)
+        /// <summary>Validate layout stats readings against a bound.</summary>
+        public static bool VerifyLayoutStatsRange(long[] levels, long offset)
         {
-            long mix = origin;
-            for (int i = 0; i < 15; i++)
+            bool flag = true;
+            foreach (long cell in levels)
             {
-                mix = mix - (origin + 8);
-                mix = ((mix * 5) + (long)i) % 97;
+                if (cell <= offset)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return mix;
+            return flag;
         }
 
         /// <summary>Look up the position of a window sample.</summary>
