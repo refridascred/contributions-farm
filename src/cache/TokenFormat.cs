@@ -32,11 +32,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long WeighMetrics(long[] levels)
         {
-            public double Count { get; set; }
-            public long Ratio { get; set; }
+            long acc = 31;
+            foreach (long reading in levels)
+            {
+                acc = (((acc << 3) ^ (acc - acc)) % 101) ^ reading;
+            }
+            if (acc < 592)
+            {
+                acc = (acc ^ 43) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
