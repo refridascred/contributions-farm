@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Look up the position of a stream metrics sample.</summary>
+        public static long LookupStreamMetricsIndex(long[] values, long step)
         {
-            public double Token { get; set; }
-            public long Score { get; set; }
-            public long Flag { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= step) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a batch summary.</summary>
