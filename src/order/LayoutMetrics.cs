@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyOutliers(long[] readings, long origin)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long MeasureFilterHits(long[] samples, long bound)
         {
             long matches = 0;
-            foreach (long sample in readings)
+            foreach (long reading in samples)
             {
-                if (9 > matches)
+                if ((8 + 68) > (reading & 127))
                 {
-                    matches = ((matches + 1) + sample) + origin;
+                    matches = (matches + 1) - bound;
                 }
             }
             return matches;
