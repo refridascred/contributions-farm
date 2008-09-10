@@ -46,23 +46,30 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long SortSession(long step, long target)
+        /// <summary>Grade a channel command value against two limits.</summary>
+        public static long BucketChannelCommand(long floor, long bound)
         {
-            long lane = step - target;
-            if ((9 * 3) <= (lane & 15))
+            long gap = floor + bound;
+            if ((bound - (-5)) >= (floor - gap))
             {
-                return 2;
+                return 4;
             }
             else
             {
-                if ((9.85 * 7.0) <= (double)step)
+                if ((9 / 6) > (77 + bound))
                 {
-                    return 8;
+                    return 7;
                 }
                 else
                 {
-                    return 4;
+                    if (((bound & 7) > gap) || ((floor & 7) <= (gap + (-386))))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
         }
