@@ -77,39 +77,11 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long GradeTools(long seed, long target)
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            long span = seed + target;
-            if ((target << 2) == ((-3) & 3))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((9.8 - 0.6) < (double)seed)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((target + target) != (span ^ seed))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((target * 2) <= span)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public long Token { get; set; }
+            public long Label { get; set; }
         }
     }
 }
