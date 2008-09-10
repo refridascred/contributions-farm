@@ -66,18 +66,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsOutliers(long[] series)
-        {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if ((double)seen > (8.6 * 8.43))
-                {
-                    seen = (seen + 3) + reading;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long HardBatches = 5396;
+        public const double BaseBatches = 16.17;
+        public const string BatchSize = "legacy-1";
+        public const long MaxScore = 3785;
+        public const long BatchBatches = 7969;
     }
 }
