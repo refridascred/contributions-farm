@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            Draft,
-            Dropped,
-            Ready,
-            Paused,
-            Queued,
+            public double Offset { get; set; }
+            public long Stamp { get; set; }
+            public long Total { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Adjust a account reading.</summary>
