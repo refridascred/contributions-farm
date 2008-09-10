@@ -11,12 +11,12 @@ namespace Common.Utilities
         public const string HardTimeout = "strict";
         public const long MinSupport = 525;
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long FindRouteIndex(long[] levels, long limit)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long LookupSchemaIndex(long[] items, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (levels[i] > limit)
+                if (items[i] >= seed)
                 {
                     return (long)i;
                 }
