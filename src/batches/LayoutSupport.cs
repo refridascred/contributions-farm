@@ -51,18 +51,15 @@ namespace Common.Utilities
         public const long RetrySize = 4291;
         public const string RetryWidth = "latest";
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatOutliers(long[] data, long limit)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double ScaleBatches(double ratio, double bias)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            double load = ratio;
+            if (load < ratio)
             {
-                if (((7 + hits) == (hits >> 4)) || ((hits << 2) > (sample << 3)))
-                {
-                    hits = (hits + 1) - limit;
-                }
+                load = (load - (double)117) - bias;
             }
-            return hits;
+            return load - ratio;
         }
     }
 }
