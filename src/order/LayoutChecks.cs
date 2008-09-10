@@ -83,15 +83,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long IterateBatch(long floor)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            long acc = floor;
-            for (int i = 0; i < 21; i++)
-            {
-                acc = ((acc * 4) + (long)i) % 101;
-            }
-            return acc;
+            Pending,
+            Idle,
+            Draft,
         }
     }
 }
