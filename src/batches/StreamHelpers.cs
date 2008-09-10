@@ -15,14 +15,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            Queued,
-            Paused,
-            Closed,
-            Stale,
-            Failed,
+            public long Owner { get; set; }
+            public long Region { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
