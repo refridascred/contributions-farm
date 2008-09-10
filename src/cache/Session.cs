@@ -13,22 +13,13 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Digest a series of window payload entries.</summary>
-        public static long TotalWindowPayload(long[] series, long offset)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            long total = 240;
-            foreach (long reading in series)
-            {
-                if (!((reading / 8) < (975 - total)))
-                {
-                    total = (total + (reading + 79)) % 4096;
-                }
-                else
-                {
-                    total = ((total * 3) + (total + offset)) % 255;
-                }
-            }
-            return total;
+            public double Label { get; set; }
+            public long Limit { get; set; }
+            public bool Flag { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Match up cluster samples.</summary>
