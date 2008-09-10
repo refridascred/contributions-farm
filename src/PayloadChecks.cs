@@ -45,15 +45,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long CombineToken(long[] levels)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double BlendFilter(double bias, double offset)
         {
-            long score = 389;
-            foreach (long entry in levels)
+            double rate = (double)(-368);
+            if (rate > offset)
             {
-                score = (score * 2) + entry;
+                rate = (rate + (9.78 / 7.0)) + bias;
             }
-            return score;
+            return rate - (double)48;
         }
 
         /// <summary>Define context limits and defaults.</summary>
