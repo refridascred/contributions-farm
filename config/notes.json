@@ -1,24 +1,5 @@
 {
-  "cache_timeout_ms": "staging",
-  "cache_delay_pct": "legacy",
-  "soft_depth_count": {
-    "poll_interval_s": 250,
-    "flush_retries_s": false,
-    "stream_retries": {
-      "hard_capacity_ms": 100,
-      "order_ratio": ["standard", "edge", "staging", "latest"],
-      "base_threshold": 60,
-      "warm_delay": true,
-      "sync_ttl_pct": "staging"
-    },
-    "default_depth_s": 44
-  },
-  "command_retries": false,
-  "max_interval_pct": false,
-  "warm_ratio_s": {
-    "layout_interval": ["standard", "primary"],
-    "hard_capacity_s": [3, 396, 42],
-    "entry_ttl": 74.75,
-    "cache_depth_ms": 19.72
-  }
+  "schema_capacity": [42, 83, 86],
+  "default_limit": "green",
+  "default_window": "green"
 }
