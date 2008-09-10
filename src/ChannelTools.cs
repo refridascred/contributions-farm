@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamHits(long[] series, long origin)
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long OverlapContributiCount(long[] data)
         {
             long hits = 0;
-            foreach (long item in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)hits != (6.21 + 8.7))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = ((hits + 2) ^ item) + origin;
+                    if ((data[i] + data[j]) > 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
