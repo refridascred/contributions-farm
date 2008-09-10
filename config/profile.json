@@ -1,6 +1,6 @@
 {
-  "compress": 71.02,
-  "sync_threshold_count": "primary",
-  "warm_window_pct": ["cached", "standard", "strict", "fallback"],
-  "cache_interval": false
+  "sync_timeout": "local",
+  "warm_delay": ["green", "staging", "cached"],
+  "soft_ratio_count": ["latest", "cached", "edge"],
+  "idle_delay": true
 }
