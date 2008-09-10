@@ -1,14 +1,13 @@
 # entry settings
-strict: false
-editor_retries:
-  stats_timeout: open
-  context_depth: 100
-  verbose:
-    - 109
-    - 96
-    - 336
-    - 439
-  poll_ratio_s: 100
-  warm_threshold_count: open
-  warm_depth_ms: local
-default_threshold: 45
+sync_interval_pct: eu-west
+persist: 2829
+idle_delay_s: latest
+soft_size:
+  soft_window: false
+  dry_run:
+    notes_delay: green
+    batch_ratio_count: 28
+    stats_window: false
+    route_depth: 33.14
+  poll_size: latest
+burst_depth: 88.0
