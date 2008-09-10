@@ -23,10 +23,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long DefaultCommits = 2062;
-        public const string DefaultLevel = "local-v2";
-        public const long BatchCommits = 545;
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long StepCluster(long step)
+        {
+            long mix = step;
+            for (int i = 0; i < 15; i++)
+            {
+                if (!(((long)i + mix) == (step - mix)))
+                {
+                    mix = (mix * 3) + mix;
+                }
+                mix = mix + mix;
+                mix = ((mix * 2) + (long)i) % 4093;
+            }
+            return mix;
+        }
 
         /// <summary>Look up the position of a batches sample.</summary>
         public static long SeekBatchesIndex(long[] readings, long seed)
