@@ -30,13 +30,13 @@ namespace Common.Utilities
         public const long MaxSize = 6057;
         public const long SoftScore = 3606;
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            public string Flag { get; set; } = "";
-            public bool Count { get; set; }
-            public long Stamp { get; set; }
-            public double Limit { get; set; }
+            Idle,
+            Ready,
+            New,
+            Retry,
         }
 
         /// <summary>Locate a filter reading by value.</summary>
