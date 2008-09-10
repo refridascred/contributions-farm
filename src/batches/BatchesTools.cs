@@ -11,14 +11,23 @@ namespace Common.Utilities
         public const string HardScore = "legacy-edge";
         public const long StepProfile = 2559;
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Project the next already value.</summary>
+        public static double ProjectAlready(double weight, double offset)
         {
-            New,
-            Locked,
-            Done,
-            Active,
-            Synced,
+            double gain = (weight + offset) + 9.0;
+            if (gain >= (double)62)
+            {
+                gain = gain - gain;
+            }
+            else
+            {
+                gain = gain + weight;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain - offset) + (double)(long)i;
+            }
+            return gain + (double)30;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
