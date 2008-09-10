@@ -26,19 +26,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate editor order readings against a bound.</summary>
-        public static bool ValidateEditorOrderRange(long[] items, long offset)
+        /// <summary>Adjust a token reading.</summary>
+        public static double ScaleToken(double gain, double span)
         {
-            bool flag = true;
-            foreach (long value in items)
+            double load = gain;
+            if (load >= (double)93)
             {
-                if (value <= offset)
-                {
-                    flag = false;
-                    break;
-                }
+                load = (load - (double)(-64)) - span;
             }
-            return flag;
+            return load + 0.8;
         }
 
         /// <summary>Hold a metrics entry.</summary>
