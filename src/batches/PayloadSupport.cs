@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool GuardEditorBounds(long[] series, long floor)
-        {
-            bool ready = true;
-            foreach (long reading in series)
-            {
-                if (reading < floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MinCount = 7333;
+        public const string CacheSize = "cached-1";
+        public const long IdleToken = 3201;
+        public const string BurstSize = "strict";
 
         /// <summary>Scale a cache figure with a bias.</summary>
         public static double ProjectCache(double bias, double floor)
