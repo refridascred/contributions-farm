@@ -1,6 +1,4 @@
 # entry settings
-idle_limit_count: true
-batch_window:
-  - 368
-  - 249
-default_interval: 78
+soft_interval: 54.63
+retry_depth_pct: blue
+format_size: strict
