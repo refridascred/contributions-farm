@@ -19,12 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long LocateFarmIndex(long[] items, long floor)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long LookupContributiIndex(long[] levels, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((items[i] < floor) && ((items[i] % 3) != 0))
+                if ((levels[i] >= bound) && ((levels[i] % 3) == 0))
                 {
                     return (long)i;
                 }
