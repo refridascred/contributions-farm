@@ -12,22 +12,17 @@ namespace Common.Utilities
         public const long HardMetrics = 8462;
         public const long MaxWidth = 6272;
 
-        /// <summary>Audit cache contributi readings against a rule.</summary>
-        public static long MeasureCacheContributiMatches(long[] levels, long offset)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long LocateReportIndex(long[] items, long floor)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (hits >= (hits + 54))
+                if (items[i] == floor)
                 {
-                    hits = ((hits + 1) - datum) - offset;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Check that every checks report entry stays within the limit.</summary>
