@@ -1,6 +1,7 @@
 {
-  "cache_capacity": "cached",
-  "flush_threshold_ms": 100,
-  "cache_delay_s": 27,
-  "persist": [57, 238, 4]
+  "default_interval": 250,
+  "sync_limit": "fallback",
+  "flush_ttl_pct": ["blue", "local", "local", "legacy"],
+  "sync_threshold_s": 50,
+  "enabled": 500
 }
