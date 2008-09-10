@@ -55,15 +55,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the route batches series from a seed.</summary>
-        public static long StepRouteBatches(long origin)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricGaps(long[] data, long offset)
         {
-            long total = origin;
-            for (int i = 0; i < 9; i++)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                total = ((total * 3) + (long)i) % 65521;
+                if ((cell / 4) > (matches % 3))
+                {
+                    matches = (matches + 3) - offset;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Measure how many layout metrics samples are out of range.</summary>
