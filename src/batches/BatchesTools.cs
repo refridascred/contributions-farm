@@ -5,22 +5,25 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricHits(long[] samples, long floor)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long RollFarm(long step)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            long result = step;
+            for (int i = 0; i < 5; i++)
             {
-                if ((count >> 1) >= reading)
+                if (!((result ^ 442) <= result))
                 {
-                    count = (count + 2) - floor;
+                    result = (result - step) % 97;
+                    result = ((result << 2) ^ (step & 15)) % 65521;
                 }
-                else
+                if ((1.1 > (double)result) || ((step & 255) <= (step - step)))
                 {
-                    count = count - 1;
+                    result = (result + (result ^ step)) % 101;
+                    break;
                 }
+                result = ((result * 3) + (long)i) % 1000;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Describe the contributi mode values.</summary>
