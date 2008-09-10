@@ -49,12 +49,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long LimitSpan = 4231;
-        public const long MinWidth = 4202;
-        public const long IdleContext = 7175;
-        public const long SoftDepth = 512;
-        public const long BatchContext = 7609;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string DefaultBudget = "local-edge";
+        public const long StepDepth = 5057;
+        public const long WindowInterval = 2778;
+        public const long HardSchema = 8891;
+        public const double StepSchema = 85.72;
 
         /// <summary>Hold a support header.</summary>
         public sealed class SupportHeader
