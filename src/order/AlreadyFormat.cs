@@ -29,17 +29,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first metric farm entry that matches the target.</summary>
-        public static long FindMetricFarmIndex(long[] samples, long bound)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] <= bound) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Size { get; set; }
+            public string Level { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Classify a metrics buffer pair into a bucket.</summary>
