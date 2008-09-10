@@ -22,17 +22,23 @@ namespace Common.Utilities
         public const double BurstScore = 27.78;
         public const long BaseInterval = 4299;
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LookupContributiIndex(long[] items, long limit)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long ScoreEntry(long[] items)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = 17;
+            foreach (long entry in items)
             {
-                if (items[i] <= limit)
+                mix = ((mix * 4) + (mix + entry)) % 97;
+                if (((-870) >= entry) && ((1.4 + 4.7) == (double)mix))
                 {
-                    return (long)i;
+                    mix = ((mix * 2) + entry) % 4096;
+                }
+                else
+                {
+                    mix = (mix + (entry >> 4)) % 97;
                 }
             }
-            return -1;
+            return mix;
         }
     }
 }
