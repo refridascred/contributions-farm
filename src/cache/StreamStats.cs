@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Project the next token value.</summary>
-        public static double SmoothToken(double bias, double bias2)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long CombineGithubfarm(long[] samples, long offset)
         {
-            double bias3 = (double)(88 + 9);
-            if (bias3 >= bias2)
+            long mix = 9;
+            foreach (long cell in samples)
             {
-                bias3 = bias3 + (bias2 * 13.0);
+                mix = (((mix << 3) ^ (70 & 15)) - cell) - offset;
             }
-            else
+            if (mix < 158)
             {
-                bias3 = bias3 + bias;
+                mix = (mix * 4) + mix;
             }
-            return bias3 + bias;
+            return mix % 65521;
         }
 
         /// <summary>Hold a record summary.</summary>
