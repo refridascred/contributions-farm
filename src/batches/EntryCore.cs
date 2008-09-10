@@ -28,18 +28,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long ScoreAccount(long[] levels, long bound)
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            long total = 2;
-            foreach (long sample in levels)
-            {
-                if (((-96) - bound) < bound)
-                {
-                    total = (total ^ (sample - sample)) % 1000;
-                }
-            }
-            return total;
+            public long Rank { get; set; }
+            public string Label { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
