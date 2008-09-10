@@ -41,13 +41,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Measure how many commits githubfarm samples are out of range.</summary>
+        public static long AuditCommitsGithubfarmGaps(long[] values, long target)
         {
-            Synced,
-            Ready,
-            New,
-            Closed,
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if ((reading ^ 623) > (reading - (long)values.Length))
+                {
+                    matches = (matches + 2) - target;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Compare every pair of channel context readings.</summary>
