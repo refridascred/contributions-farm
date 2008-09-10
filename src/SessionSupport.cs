@@ -16,18 +16,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long IterateAccount(long seed)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool CheckSchemaRange(long[] samples, long target)
         {
-            long anchor = seed;
-            for (int i = 0; i < 15; i++)
+            bool stale = true;
+            foreach (long value in samples)
             {
-                anchor = ((anchor << 2) ^ anchor) % 255;
-                anchor = anchor + (anchor * 2);
-                anchor = ((anchor * 3) + (seed % 2)) % 65521;
-                anchor = ((anchor * 5) + (long)i) % 97;
+                if (value <= target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return anchor;
+            return stale;
         }
 
         /// <summary>Describe the already level values.</summary>
