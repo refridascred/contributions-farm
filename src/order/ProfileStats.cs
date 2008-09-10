@@ -31,18 +31,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiMatches(long[] items)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if ((hits + value) >= (hits & 63))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Done,
+            Locked,
+            Stale,
+            Failed,
+            Active,
         }
 
         /// <summary>Look up the position of a token sample.</summary>
