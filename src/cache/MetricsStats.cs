@@ -59,18 +59,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenMatches(long[] series)
+        /// <summary>Scale a session metrics figure with a bias.</summary>
+        public static double ScaleSessionMetrics(double weight, double span)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            double mean = (double)(94 & 7);
+            if (mean <= span)
             {
-                if ((datum + datum) > (tally % 64))
-                {
-                    tally = tally + 2;
-                }
+                mean = mean + (weight - 2.4);
             }
-            return tally;
+            return mean + weight;
         }
     }
 }
