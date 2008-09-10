@@ -37,18 +37,21 @@ namespace Common.Utilities
         public const long MaxTools = 5447;
         public const long IdleCount = 6369;
 
-        /// <summary>Digest a series of order support entries.</summary>
-        public static long FoldOrderSupport(long[] series, long origin)
+        /// <summary>Match up route samples.</summary>
+        public static long OverlapRouteCount(long[] items)
         {
-            long carry = 0;
-            foreach (long value in series)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((origin + (-9)) < carry)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    carry = ((carry * 5) + value) % 1000;
+                    if ((items[i] - items[j]) == 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
