@@ -53,18 +53,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterGaps(long[] data)
-        {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if ((datum % 100) >= (datum << 1))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double SoftFactor = 92.1;
+        public const long WindowFactor = 576;
+        public const string SoftBudget = "primary-edge";
+        public const string MaxFactor = "latest-1";
     }
 }
