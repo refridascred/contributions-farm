@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool VerifySchemaRange(long[] items, long offset)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long FindFarmIndex(long[] items, long bound)
         {
-            bool ok = true;
-            foreach (long reading in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading >= offset)
+                if ((items[i] < bound) && ((items[i] % 3) != 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Compare every pair of report readings.</summary>
