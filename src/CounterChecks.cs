@@ -38,18 +38,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmOutliers(long[] series)
+        /// <summary>Measure how many report command samples are out of range.</summary>
+        public static long CountReportCommandOutliers(long[] data, long bound)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                if ((hits + hits) != (hits + 51))
+                if ((seen >> 5) > (seen << 1))
                 {
-                    hits = (hits + 2) - value;
+                    seen = ((seen + 2) - cell) + bound;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
