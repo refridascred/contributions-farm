@@ -30,26 +30,21 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Combine farm session values into a single score.</summary>
-        public static long WeighFarmSession(long[] samples, long step)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long CompareRecordCount(long[] data)
         {
-            long total = 609;
-            foreach (long value in samples)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((2.0 * 19.0) < (double)total)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    total = ((total - step) % 255) + value;
-                }
-                else
-                {
-                    total = (total << 3) ^ (total & 127);
+                    if ((data[i] ^ data[j]) == 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (total < 812)
-            {
-                total = (total + (6 - step)) % 4096;
-            }
-            return total;
+            return hits;
         }
 
         /// <summary>Check that every session filter entry stays within the limit.</summary>
