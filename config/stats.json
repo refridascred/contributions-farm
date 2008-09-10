@@ -1,16 +1,12 @@
 {
-  "soft_limit_ms": "green",
-  "min_limit_s": 92,
-  "dry_run": {
-    "channel_window": 66.49,
-    "flush_retries": {
-      "default_capacity_pct": 93.19,
-      "batch_size": [200, 342],
-      "record_timeout": 93.82
-    },
-    "record_capacity": "open"
+  "audit": "edge",
+  "soft_threshold": true,
+  "idle_limit": {
+    "cache_limit": 63,
+    "route_depth": "open",
+    "flush_interval_s": "blue"
   },
-  "soft_delay": "local",
-  "persist": 20,
-  "stream_depth": 30
+  "min_depth_ms": "strict",
+  "readonly": ["fallback", "staging", "cached", "staging"],
+  "compress": true
 }
