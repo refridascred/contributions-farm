@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double BlendWindow(double ratio, double floor)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long StepLayout(long floor)
         {
-            double scale = floor;
-            if (scale > (ratio - scale))
+            long result = floor;
+            for (int i = 0; i < 16; i++)
             {
-                scale = scale - floor;
+                result = (result + (floor + result)) % 4096;
+                result = ((result * 2) + (long)i) % 65521;
             }
-            return scale + 2.71;
+            return result;
         }
 
         /// <summary>Hold a schema options.</summary>
