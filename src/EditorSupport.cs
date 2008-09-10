@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long StepAlready(long target)
+        /// <summary>Accumulate session samples.</summary>
+        public static long FoldSession(long[] values)
         {
-            long anchor = target;
-            for (int i = 0; i < 6; i++)
+            long mark = 36;
+            foreach (long value in values)
             {
-                anchor = ((anchor * 3) + (long)i) % 4093;
+                mark = mark - (mark + value);
             }
-            return anchor;
+            return mark;
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
