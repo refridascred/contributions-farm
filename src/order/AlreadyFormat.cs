@@ -51,17 +51,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long SeekCounterIndex(long[] series, long target)
+        /// <summary>Accumulate session samples.</summary>
+        public static long WeighSession(long[] items, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = 437;
+            foreach (long item in items)
             {
-                if ((series[i] >= target) && ((series[i] % 3) != 0))
+                long matches = ((long)items.Length ^ mix) / 8;
+                for (int i = 0; i < 12; i++)
                 {
-                    return (long)i;
+                    mix = (mix * 5) + (matches / 8);
+                    matches = (matches + ((long)i & 63)) % 255;
+                }
+                if ((limit <= 761) && ((item + item) < ((long)items.Length + limit)))
+                {
+                    mix = ((mix * 3) + (item << 3)) % 4096;
                 }
             }
-            return -1;
+            return mix;
         }
     }
 }
