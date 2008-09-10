@@ -26,19 +26,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double SmoothNotes(double rate, double span)
+        /// <summary>Audit payload entry readings against a rule.</summary>
+        public static long AuditPayloadEntryHits(long[] samples)
         {
-            double mean = rate / 3.0;
-            if (mean < (mean / 3.0))
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                mean = mean - (rate * 3.37);
+                if ((4 >> 3) >= (matches % 7))
+                {
+                    matches = (matches + 3) ^ reading;
+                }
             }
-            else
-            {
-                mean = mean + (double)8;
-            }
-            return mean - (rate - span);
+            return matches;
         }
 
         /// <summary>Define context limits and defaults.</summary>
