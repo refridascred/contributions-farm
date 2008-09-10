@@ -27,21 +27,23 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long CompareTokenCount(long[] items)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double ScaleChannel(double weight, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            double bias2 = (bias * 9.3) - bias;
+            if (bias2 >= 8.0)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                bias2 = (bias2 - (double)(-78)) - weight;
             }
-            return matches;
+            else
+            {
+                bias2 = bias2 - (bias / 5.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias2 = bias2 - (double)(long)i;
+            }
+            return bias2 + 5.0;
         }
 
         /// <summary>Describe the counter class values.</summary>
