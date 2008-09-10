@@ -40,17 +40,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long LocateTokenIndex(long[] readings, long seed)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long RetryFactor = 297;
+        public const double CacheToken = 39.11;
+        public const double StepToken = 40.81;
+        public const long BurstToken = 7546;
     }
 }
