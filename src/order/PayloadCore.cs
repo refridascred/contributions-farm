@@ -15,12 +15,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            public string Region { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public bool Ratio { get; set; }
+            public long Flag { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Describe the channel state values.</summary>
