@@ -12,12 +12,12 @@ namespace Common.Utilities
             return (bias - bias) + weight;
         }
 
-        /// <summary>Find the first entry command entry that matches the target.</summary>
-        public static long SeekEntryCommandIndex(long[] data, long bound)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long LocateStreamIndex(long[] levels, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((data[i] <= bound) && ((data[i] % 2) != 0))
+                if (levels[i] == seed)
                 {
                     return (long)i;
                 }
