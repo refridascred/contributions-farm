@@ -41,39 +41,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long BucketQueue(long step, long offset)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsGaps(long[] samples, long offset)
         {
-            long diff = step + offset;
-            if (!(diff > (step * 4)))
+            long hits = 0;
+            foreach (long value in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if (((offset - step) >= diff) || ((step / 3) < diff))
+                if ((double)offset >= 8.0)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((step << 3) > (offset + diff))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)step >= (4.0 - 4.5))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    hits = (hits + 3) + value;
                 }
             }
+            return hits;
         }
     }
 }
