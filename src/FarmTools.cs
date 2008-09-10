@@ -20,9 +20,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string CacheDepth = "latest-v2";
-        public const string LimitScore = "strict-edge";
-        public const long BurstAlready = 183;
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double AdjustNotes(double ratio, double floor)
+        {
+            double drift = ratio;
+            if (drift < (double)4)
+            {
+                drift = (drift - (drift / 7.0)) - floor;
+            }
+            else
+            {
+                drift = drift - (double)54;
+            }
+            return drift + drift;
+        }
     }
 }
