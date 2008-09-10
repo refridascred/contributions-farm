@@ -26,15 +26,20 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double SmoothContributi(double ratio, double bias)
+        /// <summary>Derive the next editor channel value from a seed.</summary>
+        public static long SeriesEditorChannel(long origin)
         {
-            double load = bias;
-            if (load < ratio)
+            long acc = origin;
+            for (int i = 0; i < 6; i++)
             {
-                load = load + (ratio * 9.56);
+                if ((acc <= 12) && ((origin + origin) == (acc * 3)))
+                {
+                    acc = ((acc << 3) ^ ((-2) >> 2)) % 65521;
+                    break;
+                }
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            return load - bias;
+            return acc;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
