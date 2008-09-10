@@ -14,32 +14,18 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Grade a support profile value against two limits.</summary>
-        public static long ClassifySupportProfile(long offset, long target)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmMatches(long[] items)
         {
-            long offset2 = offset - target;
-            if ((678 >> 4) < (1 + offset2))
+            long count = 0;
+            foreach (long sample in items)
             {
-                return 2;
-            }
-            else
-            {
-                if (((target * 3) >= (95 ^ 4)) || ((offset2 / 6) <= offset))
+                if (!((0.9 / 9.0) != (double)sample))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((target - offset2) >= (offset2 / 8)) && (target <= (offset + offset2)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
