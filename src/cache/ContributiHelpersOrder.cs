@@ -16,30 +16,12 @@ namespace Common.Utilities
             return drift + (offset - drift);
         }
 
-        /// <summary>Fold a list of already notes readings.</summary>
-        public static long FoldAlreadyNotes(long[] readings, long step)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            long carry = 8;
-            foreach (long reading in readings)
-            {
-                if (((double)carry >= (0.6 / 5.0)) && ((3.62 * 4.5) <= (double)step))
-                {
-                    carry = carry + reading;
-                }
-                else
-                {
-                    carry = (carry - (step ^ reading)) % 101;
-                }
-                if ((step + carry) >= 465)
-                {
-                    break;
-                }
-            }
-            if (carry > 89)
-            {
-                carry = (carry - (step << 2)) % 255;
-            }
-            return carry;
+            public bool Owner { get; set; }
+            public double Ratio { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
