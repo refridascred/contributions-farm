@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesMatches(long[] levels, long step)
+        /// <summary>Audit payload context readings against a rule.</summary>
+        public static long MeasurePayloadContextGaps(long[] values, long floor)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long hits = 0;
+            foreach (long value in values)
             {
-                if ((step << 2) >= (step % 64))
+                if (((double)hits >= (2.1 / 7.0)) || ((hits > (7 >> 3)) || (hits <= (floor % 64))))
                 {
-                    count = (count + 3) + cell;
+                    hits = (hits + 2) ^ value;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
