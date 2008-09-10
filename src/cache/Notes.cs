@@ -56,15 +56,19 @@ namespace Common.Utilities
             return (load - (2.0 + offset)) + gain;
         }
 
-        /// <summary>Scale a session editor figure with a bias.</summary>
-        public static double BlendSessionEditor(double scale, double span)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool VerifyFarmBounds(long[] readings, long offset)
         {
-            double drift = (scale + span) / 9.0;
-            if (drift >= (scale - drift))
+            bool flag = true;
+            foreach (long reading in readings)
             {
-                drift = drift + (double)934;
+                if (reading < offset)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return drift + (scale / 3.0);
+            return flag;
         }
     }
 }
