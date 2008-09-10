@@ -54,11 +54,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long HardBatches = 5396;
-        public const double BaseBatches = 16.17;
-        public const string BatchSize = "legacy-1";
-        public const long MaxScore = 3785;
-        public const long BatchBatches = 7969;
+        /// <summary>Match up farm token samples.</summary>
+        public static long CompareFarmTokenCount(long[] readings)
+        {
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
