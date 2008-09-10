@@ -29,21 +29,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long OverlapGraphCount(long[] levels)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long ScoreFilter(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = 5;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((((long)readings.Length / 4) <= (840 / 2)) && (item >= score))
                 {
-                    if ((levels[i] - levels[j]) != 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    score = (score << 3) ^ item;
+                }
+                if ((item & 3) > item)
+                {
+                    break;
                 }
             }
-            return seen;
+            return score;
         }
     }
 }
