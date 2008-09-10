@@ -17,11 +17,16 @@ namespace Common.Utilities
         public const long LimitQueue = 345;
         public const long BurstFactor = 2719;
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long DeriveBatches(long limit)
         {
-            public bool Score { get; set; }
-            public double Total { get; set; }
+            long score = limit;
+            for (int i = 0; i < 10; i++)
+            {
+                score = ((score * 5) + (score << 3)) % 65521;
+                score = ((score * 3) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Roll a record counter forward.</summary>
