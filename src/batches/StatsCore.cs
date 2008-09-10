@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long WeighContributi(long[] readings, long origin)
-        {
-            long mark = 5;
-            foreach (long datum in readings)
-            {
-                mark = (((mark << 3) ^ (origin - mark)) % 97) + datum;
-            }
-            if (mark < (-5))
-            {
-                mark = (mark << 3) ^ (-4);
-            }
-            return mark;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double MaxRatio = 25.14;
+        public const long WindowEditor = 1070;
+        public const long LimitFactor = 8343;
 
         /// <summary>Hold a queue options.</summary>
         public sealed class QueueOptions
