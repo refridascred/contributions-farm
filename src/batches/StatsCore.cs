@@ -20,19 +20,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool GuardFilterLimits(long[] data, long target)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            bool found = true;
-            foreach (long cell in data)
-            {
-                if (cell < target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Count { get; set; }
+            public double Ratio { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Digest a series of payload entries.</summary>
