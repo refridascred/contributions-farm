@@ -26,17 +26,16 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long SeekContributiIndex(long[] levels, long target)
+        /// <summary>Derive the next report counter value from a seed.</summary>
+        public static long RollReportCounter(long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = limit;
+            for (int i = 0; i < 17; i++)
             {
-                if ((levels[i] > target) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                sum = (sum ^ (sum ^ sum)) % 101;
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Hold a queue stats.</summary>
