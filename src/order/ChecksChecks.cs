@@ -16,11 +16,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string DefaultSpan = "legacy-edge";
-        public const long StepToken = 7664;
-        public const long MinToken = 6311;
-        public const long HardLevel = 4814;
+        /// <summary>Blend two metric measurements.</summary>
+        public static double ScaleMetric(double scale, double span)
+        {
+            double bias = (span / 9.0) + (11.0 - scale);
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias - (bias * 0.1)) + (double)(long)i;
+            }
+            return bias + span;
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long SoftGraph = 1979;
