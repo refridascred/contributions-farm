@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double BlendMetrics(double ratio, double bias)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            double mean = bias;
-            if (mean > (ratio + ratio))
-            {
-                mean = mean + (ratio - 11.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean - (double)90) + (double)(long)i;
-            }
-            return mean - mean;
+            Retry,
+            Stale,
+            Locked,
+            Paused,
+            Closed,
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
