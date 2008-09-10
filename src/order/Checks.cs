@@ -39,14 +39,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool CheckSessionRange(long[] readings, long limit)
         {
-            Paused,
-            Locked,
-            Stale,
-            Pending,
-            Active,
+            bool flag = true;
+            foreach (long cell in readings)
+            {
+                if (cell >= limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the cache phase values.</summary>
