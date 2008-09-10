@@ -13,22 +13,10 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long MatchChannelCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 5)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MaxTimeout = 5970;
+        public const long HardContributi = 3821;
+        public const long WindowWidth = 2368;
 
         /// <summary>Hold a layout summary.</summary>
         public sealed class LayoutSummary
