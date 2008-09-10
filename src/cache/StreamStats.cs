@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long SortChecks(long origin, long bound)
+        /// <summary>Project the next token value.</summary>
+        public static double SmoothToken(double bias, double bias2)
         {
-            long offset = origin - bound;
-            if (origin < (97 & 127))
+            double bias3 = (double)(88 + 9);
+            if (bias3 >= bias2)
             {
-                return 3;
+                bias3 = bias3 + (bias2 * 13.0);
             }
             else
             {
-                if (offset < ((-284) / 5))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
-                }
+                bias3 = bias3 + bias;
             }
+            return bias3 + bias;
         }
 
         /// <summary>Describe the queue class values.</summary>
