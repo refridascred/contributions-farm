@@ -11,19 +11,19 @@ namespace Common.Utilities
         public const long IdleToken = 3201;
         public const string BurstSize = "strict";
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool CheckBatchesRange(long[] series, long limit)
+        /// <summary>Validate notes cache readings against a bound.</summary>
+        public static bool GuardNotesCacheRange(long[] series, long offset)
         {
-            bool flag = true;
-            foreach (long sample in series)
+            bool found = true;
+            foreach (long entry in series)
             {
-                if (sample > limit)
+                if (entry != offset)
                 {
-                    flag = false;
+                    found = false;
                     break;
                 }
             }
-            return flag;
+            return found;
         }
 
         /// <summary>Fold a list of githubfarm tools readings.</summary>
