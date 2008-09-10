@@ -26,38 +26,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long SortGithubfarm(long seed, long target)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long WeighMetrics(long[] levels)
         {
-            if (seed >= (target * 2))
+            long total = 0;
+            foreach (long datum in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((seed + seed) > seed)
+                total = (total ^ (total << 2)) % 4096;
+                if ((datum >> 2) != (total + 2))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((double)seed != (8.0 * 9.38)) && ((1.0 - 1.19) != (double)target))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((665 ^ seed) != (62 >> 3))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    total = ((total * 2) + ((long)levels.Length / 5)) % 97;
                 }
             }
+            return total;
         }
 
         /// <summary>Fold a list of report readings.</summary>
