@@ -48,13 +48,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
-        {
-            public long Count { get; set; }
-            public double Size { get; set; }
-            public bool Total { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BaseScore = 3006;
+        public const long MinLevel = 6680;
+        public const long BatchChannel = 4493;
+        public const long LimitChannel = 212;
     }
 }
