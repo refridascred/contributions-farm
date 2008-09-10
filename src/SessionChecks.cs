@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
-        {
-            Active,
-            Paused,
-            Dropped,
-            Queued,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BatchInterval = 8234;
+        public const long IdleGithubfarm = 8832;
+        public const double DefaultScore = 53.05;
+        public const long RetryGithubfarm = 2642;
+        public const long MaxGithubfarm = 462;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const string SoftDepth = "strict-edge";
