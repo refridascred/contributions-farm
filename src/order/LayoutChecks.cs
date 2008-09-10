@@ -49,12 +49,18 @@ namespace Common.Utilities
             return load + span;
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long DigestNotes(long[] readings, long origin)
         {
-            public string Mode { get; set; } = "";
-            public long Flag { get; set; }
-            public bool Offset { get; set; }
+            long result = 52;
+            foreach (long reading in readings)
+            {
+                if ((5.3 >= (double)reading) || ((double)origin < (double)reading))
+                {
+                    result = ((result * 3) + reading) % 65521;
+                }
+            }
+            return result;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
