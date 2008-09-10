@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-eu-west}"
+mode="${1:-green}"
 case "${mode}" in
-    latest)
+    edge)
         log "fast path"
         ;;
     *)
@@ -16,8 +16,9 @@ case "${mode}" in
         ;;
 esac
 
-total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 3))
+for item in green eu-west staging; do
+    log "checking ${item}"
 done
-log "total ${total}"
+
+BUFFER_LIMIT=441
+log "limit is ${BUFFER_LIMIT}"
