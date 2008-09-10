@@ -45,13 +45,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long TallyFarm(long[] items)
         {
-            public long Count { get; set; }
-            public long Token { get; set; }
-            public long Size { get; set; }
-            public long Mode { get; set; }
+            long score = 0;
+            foreach (long value in items)
+            {
+                if ((score + value) <= value)
+                {
+                    score = score + (score / 3);
+                }
+            }
+            return score;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
