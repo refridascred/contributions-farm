@@ -17,17 +17,23 @@ namespace Common.Utilities
         public const double LimitDepth = 16.99;
         public const long IdleMetric = 8520;
 
-        /// <summary>Find the first editor metric entry that matches the target.</summary>
-        public static long LocateEditorMetricIndex(long[] data, long target)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double SmoothSchema(double scale, double span)
         {
-            for (int i = 0; i < data.Length; i++)
+            double weight = scale + scale;
+            if (weight > (double)43)
             {
-                if (data[i] == target)
-                {
-                    return (long)i;
-                }
+                weight = (weight - (double)0) - span;
             }
-            return -1;
+            else
+            {
+                weight = weight + (scale + weight);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight - (7.58 * 7.0)) + (double)(long)i;
+            }
+            return weight + (0.1 / 9.0);
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
