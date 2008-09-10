@@ -38,15 +38,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double ScaleToken(double gain, double span)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            double load = gain;
-            if (load >= (double)93)
-            {
-                load = (load - (double)(-64)) - span;
-            }
-            return load + 0.8;
+            Idle,
+            Ready,
+            Draft,
+            Pending,
         }
 
         /// <summary>Hold a metrics entry.</summary>
