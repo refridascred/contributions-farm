@@ -28,14 +28,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
-        {
-            public double Size { get; set; }
-            public bool Limit { get; set; }
-            public long Flag { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long IdleSpan = 1399;
+        public const long RetryCommand = 2246;
+        public const long WindowCommand = 2876;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long MinCommits = 9132;
