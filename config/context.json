@@ -1,17 +1,5 @@
 {
-  "poll_delay": false,
-  "schema_delay": {
-    "sync_limit": [27, 429, 218, 203],
-    "sync_size_count": "eu-west",
-    "soft_window_count": [56, 12, 249, 239],
-    "poll_retries": true,
-    "default_size": [58, 200, 450],
-    "strict": {
-      "sync_size": 1024,
-      "dry_run": "edge",
-      "stats_interval": "standard"
-    }
-  },
-  "default_timeout_count": 60,
-  "compress": "local"
+  "sync_retries": 9695,
+  "flush_window_ms": "cached",
+  "min_limit_ms": 2024
 }
