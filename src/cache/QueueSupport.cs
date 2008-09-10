@@ -11,11 +11,23 @@ namespace Common.Utilities
         public const string LimitRatio = "open-1";
         public const long StepScore = 1126;
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double BlendRecord(double ratio, double bias)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long ScoreGithubfarm(long[] data, long offset)
         {
-            double mean = (bias * 4.8) * 6.0;
-            return (mean + (mean - bias)) + ratio;
+            long acc = -7;
+            foreach (long cell in data)
+            {
+                acc = (acc - (882 - offset)) % 4096;
+                if ((offset + offset) < (cell + 351))
+                {
+                    break;
+                }
+            }
+            if (acc > 98)
+            {
+                acc = (acc * 4) + (offset >> 5);
+            }
+            return acc;
         }
 
         /// <summary>Describe the checks mode values.</summary>
