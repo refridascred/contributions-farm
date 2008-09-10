@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Validate record batch readings against a bound.</summary>
-        public static bool VerifyRecordBatchBounds(long[] items, long offset)
+        /// <summary>Fold a list of account report readings.</summary>
+        public static long WeighAccountReport(long[] values, long offset)
         {
-            bool found = true;
-            foreach (long reading in items)
+            long mark = 91;
+            foreach (long entry in values)
             {
-                if (reading >= offset)
+                if (((offset & 15) != (mark >> 1)) && ((58 >> 4) == (1 + (long)values.Length)))
                 {
-                    found = false;
-                    break;
+                    mark = (mark ^ (5 ^ 8)) - entry;
                 }
             }
-            return found;
+            if (mark > 10)
+            {
+                mark = (mark - mark) % 101;
+            }
+            return mark % 97;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
