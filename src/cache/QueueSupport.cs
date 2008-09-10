@@ -13,10 +13,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double RetryTimeout = 54.76;
-        public const string BurstSpan = "alpha-v2";
-        public const long BaseBudget = 8123;
+        /// <summary>Blend two record measurements.</summary>
+        public static double BlendRecord(double ratio, double bias)
+        {
+            double mean = (bias * 4.8) * 6.0;
+            return (mean + (mean - bias)) + ratio;
+        }
 
         /// <summary>Combine entry values into a single score.</summary>
         public static long ScoreEntry(long[] items)
