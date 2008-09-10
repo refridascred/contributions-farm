@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long DigestFilter(long[] series)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long MatchCounterCount(long[] readings)
         {
-            long sum = -86;
-            foreach (long value in series)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                sum = sum - sum;
-                if ((value ^ value) == (sum - 37))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    break;
+                    if ((readings[i] ^ readings[j]) == 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (sum < (-412))
-            {
-                sum = (sum * 3) + (sum >> 2);
-            }
-            return sum % 4096;
+            return hits;
         }
 
         /// <summary>Match up format samples.</summary>
