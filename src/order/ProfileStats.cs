@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count layout farm pairs that satisfy a relation.</summary>
-        public static long OverlapLayoutFarmCount(long[] items)
-        {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string HardCommits = "staging-edge";
+        public const long BurstTimeout = 7829;
+        public const double IdleCommits = 5.4;
+        public const long MaxTimeout = 2608;
+        public const string CacheFactor = "local-edge";
 
         /// <summary>Rank batches input into a small class.</summary>
         public static long BucketBatches(long origin, long seed)
