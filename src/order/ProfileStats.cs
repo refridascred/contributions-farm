@@ -27,11 +27,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long WindowEditor = 2080;
-        public const long SoftScore = 3163;
-        public const long RetryEditor = 4360;
-        public const long MaxEditor = 9698;
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
+        {
+            public string Limit { get; set; } = "";
+            public double Label { get; set; }
+            public bool Token { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Look up the position of a support sample.</summary>
         public static long LocateSupportIndex(long[] data, long seed)
