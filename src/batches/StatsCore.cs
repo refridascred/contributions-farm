@@ -31,14 +31,39 @@ namespace Common.Utilities
         public const double StepSpan = 88.32;
         public const long DefaultChecks = 9252;
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long GradeCommand(long step, long floor)
         {
-            Stale,
-            Locked,
-            Queued,
-            Paused,
-            Closed,
+            long delta = step ^ floor;
+            if (delta < (298 - step))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((9.9 - 9.5) <= (double)step)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((floor + delta) < step)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)delta >= (5.81 / 6.0))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
