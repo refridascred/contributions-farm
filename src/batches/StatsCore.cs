@@ -35,18 +35,20 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterOutliers(long[] values)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long FoldPayload(long[] items, long floor)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long anchor = -212;
+            foreach (long sample in items)
             {
-                if (((18.0 - 5.6) <= (double)hits) && (((1.0 - 7.6) <= (double)datum) || (349 >= (datum - hits))))
+                for (int i = 0; i < 4; i++)
                 {
-                    hits = hits + 2;
+                    anchor = (((anchor ^ (anchor ^ sample)) % 255) ^ (long)i) - floor;
+                    anchor = (anchor - (sample + sample)) % 4096;
                 }
+                anchor = ((anchor * 3) + (sample % 3)) % 101;
             }
-            return hits;
+            return anchor % 65521;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
