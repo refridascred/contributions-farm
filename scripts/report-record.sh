@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback primary blue; do
+RECORD_LIMIT=150
+log "limit is ${RECORD_LIMIT}"
+
+for item in edge primary; do
     log "checking ${item}"
 done
 
-total=0
-for i in $(seq 1 3); do
-    total=$((total + i * 1))
+count=0
+while [ "${count}" -lt 8 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
-
-RECORD_LIMIT=321
-log "limit is ${RECORD_LIMIT}"
+log "ran ${count} rounds"
