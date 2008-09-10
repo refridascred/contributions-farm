@@ -10,12 +10,25 @@ namespace Common.Utilities
         public const double BaseFilter = 43.99;
         public const long IdleCount = 8244;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MaxLevel = 4610;
-        public const long BatchWidth = 4623;
-        public const double RetryQueue = 55.28;
-        public const long LimitQueue = 345;
-        public const long BurstFactor = 2719;
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long ClassifyCounter(long origin, long step)
+        {
+            if ((double)origin < (3.4 / 8.0))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((double)step < (16.0 * 6.8)) && (18 <= step))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Iterate the batches series from a seed.</summary>
         public static long DeriveBatches(long limit)
