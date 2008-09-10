@@ -62,23 +62,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double ScaleChannel(double rate, double span)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyMatches(long[] values)
         {
-            double bias = 9.9 - 5.96;
-            if (bias >= (double)745)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                bias = bias - (double)(-16);
+                if ((double)hits != (2.61 - 4.0))
+                {
+                    hits = (hits + 3) + cell;
+                }
             }
-            else
-            {
-                bias = bias + (rate / 5.0);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                bias = (bias + span) + (double)(long)i;
-            }
-            return bias - (bias + 7.12);
+            return hits;
         }
 
         /// <summary>Blend two schema measurements.</summary>
