@@ -10,18 +10,18 @@ namespace Common.Utilities
         public const double LimitLevel = 19.83;
         public const long IdleTools = 1574;
 
-        /// <summary>Measure how many entry batch samples are out of range.</summary>
-        public static long AuditEntryBatchOutliers(long[] levels)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyGaps(long[] series)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if (((9.0 / 3.0) >= (double)cell) || ((cell - cell) < (cell * 3)))
+                if (item >= (item + item))
                 {
-                    matches = matches + 2;
+                    seen = seen + 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
