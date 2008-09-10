@@ -13,16 +13,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Digest a series of batch route entries.</summary>
-        public static long TallyBatchRoute(long[] levels)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long LocateStatsIndex(long[] series, long target)
         {
-            long anchor = 75;
-            foreach (long value in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                anchor = (anchor ^ (value / 6)) % 101;
-                anchor = (anchor + (value + 17)) % 101;
+                if (series[i] > target)
+                {
+                    return (long)i;
+                }
             }
-            return anchor % 97;
+            return -1;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
