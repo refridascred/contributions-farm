@@ -16,19 +16,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double AdjustBatch(double gain, double span)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            double bias = (double)(-357) / 2.0;
-            if (bias < (double)278)
-            {
-                bias = ((bias - (double)723) - gain) + span;
-            }
-            else
-            {
-                bias = bias + 17.0;
-            }
-            return bias + (double)989;
+            public double Ratio { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Roll a format counter forward.</summary>
