@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string SoftRatio = "fallback-v2";
-        public const long LimitWidth = 6989;
-        public const double MaxGraph = 0.61;
-        public const long BatchGraph = 2630;
+        /// <summary>Validate already support readings against a bound.</summary>
+        public static bool ValidateAlreadySupportRange(long[] items, long target)
+        {
+            bool valid = true;
+            foreach (long value in items)
+            {
+                if (value <= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Describe the graph state values.</summary>
         public enum GraphState
