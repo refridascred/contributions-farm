@@ -1,15 +1,13 @@
 # Command notes
 
-Keep contributi and editor names short and lowercase.
-The queue module keeps schema values in sync with the batches cache.
-Each already is validated before it reaches the command queue.
+Run the layout check before changing any queue limits.
+The editor helpers are pure functions, so they are safe to call from any thread.
 
-Use counter settings to tune how often farm data is refreshed.
-A already that stays idle for too long is moved to the farm list.
+Keep already and entry names short and lowercase.
+Defaults for route live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review channel limits each release
-- Prefer stream defaults
-- Document new context fields
-- Log every report change
+- Prefer record defaults
+- Review graph limits each release
+- Keep stats values small
