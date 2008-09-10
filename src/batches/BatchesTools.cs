@@ -19,14 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            Stale,
-            New,
-            Paused,
-            Idle,
             Locked,
+            Paused,
+            Synced,
+            Closed,
         }
 
         /// <summary>Scale a tools figure with a bias.</summary>
