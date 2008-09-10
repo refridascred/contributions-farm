@@ -1,7 +1,12 @@
 {
-  "persist": ["eu-west", "staging", "legacy", "cached"],
-  "cache_ratio": 8169,
-  "strict": [234, 237, 65, 177],
-  "poll_delay_s": 38.16,
-  "default_timeout": true
+  "metrics_window": 81.52,
+  "retry_size_pct": {
+    "soft_ttl": "latest",
+    "readonly": "staging",
+    "compress": 500
+  },
+  "sync_delay_pct": 45.43,
+  "session_delay": "primary",
+  "warm_ttl_count": "fallback",
+  "verbose": 250
 }
