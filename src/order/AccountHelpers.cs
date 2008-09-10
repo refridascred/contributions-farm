@@ -33,22 +33,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountMatches(long[] data, long seed)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long RollSession(long origin)
         {
-            long hits = 0;
-            foreach (long item in data)
+            long anchor = origin;
+            for (int i = 0; i < 18; i++)
             {
-                if ((hits >> 1) < (364 ^ seed))
-                {
-                    hits = (hits + 1) + item;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                anchor = (anchor - origin) % 1000;
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
