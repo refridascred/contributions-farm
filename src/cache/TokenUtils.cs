@@ -54,13 +54,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmGaps(long[] items, long step)
         {
-            public double Offset { get; set; }
-            public long Region { get; set; }
-            public string Rank { get; set; } = "";
-            public long Token { get; set; }
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if ((((hits / 2) >= 49) && (step >= hits)) && ((item * 3) > 341))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
