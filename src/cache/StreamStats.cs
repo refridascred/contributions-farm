@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long SeriesTools(long target)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long IterateGithubfarm(long step)
         {
-            long sum = target;
-            for (int i = 0; i < 12; i++)
+            long total = step;
+            for (int i = 0; i < 7; i++)
             {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    sum = (sum ^ (834 * 4)) ^ (long)i2;
-                }
-                sum = ((sum * 2) + (long)i) % 1000;
+                total = ((total * 4) + (long)i) % 65521;
             }
-            return sum;
+            return total;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
