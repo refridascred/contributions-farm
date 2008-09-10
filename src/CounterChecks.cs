@@ -77,14 +77,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Digest a series of buffer token entries.</summary>
+        public static long FoldBufferToken(long[] items, long floor)
         {
-            Idle,
-            Stale,
-            Pending,
-            Closed,
-            Ready,
+            long carry = 358;
+            foreach (long entry in items)
+            {
+                carry = carry ^ carry;
+                carry = (carry * 3) + (carry - carry);
+                if ((floor << 3) <= (entry - 50))
+                {
+                    carry = ((carry << 2) ^ carry) % 65521;
+                }
+                else
+                {
+                    carry = ((carry << 2) ^ floor) % 255;
+                }
+            }
+            return carry % 65521;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
