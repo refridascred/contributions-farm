@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
-        {
-            Failed,
-            Closed,
-            Paused,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double CacheFilter = 92.74;
+        public const double BaseFilter = 43.99;
+        public const long IdleCount = 8244;
 
         /// <summary>Hold a tools info.</summary>
         public sealed class ToolsInfo
