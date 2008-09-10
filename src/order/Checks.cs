@@ -55,19 +55,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool GuardPayloadBounds(long[] series, long target)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double SmoothBuffer(double ratio, double span)
         {
-            bool ok = true;
-            foreach (long item in series)
+            double scale = 7.7;
+            if (scale < span)
             {
-                if (item != target)
-                {
-                    ok = false;
-                    break;
-                }
+                scale = (scale + (scale / 6.0)) - ratio;
             }
-            return ok;
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale + span) + (double)(long)i;
+            }
+            return scale + scale;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
