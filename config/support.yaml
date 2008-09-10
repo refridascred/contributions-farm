@@ -1,18 +1,15 @@
 # support settings
-warm_retries: 69.58
-max_ttl_ms: green
-retry_ttl: 48
-max_delay_count: 8282
-compress:
-  cache_window_s: 100
-  audit: 4072
-  poll_ratio_pct:
-    - primary
-    - eu-west
-    - staging
-  retry_window: 500
-  warm_ttl:
-    warm_delay: latest
-    hard_interval: staging
-    idle_delay: 91
-record_delay: eu-west
+metric_timeout:
+  compress:
+    - blue
+    - strict
+    - latest
+    - latest
+  context_interval: 30
+  default_size: staging
+  session_depth: 10
+  commits_delay: open
+checks_retries: 36.33
+audit: false
+commits_delay: open
+min_threshold_s: eu-west
