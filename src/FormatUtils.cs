@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheMatches(long[] values)
+        /// <summary>Check that every route cache entry stays within the limit.</summary>
+        public static bool VerifyRouteCacheBounds(long[] levels, long seed)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            bool stale = true;
+            foreach (long sample in levels)
             {
-                if ((hits >= (94 / 9)) && (((2 + hits) < ((long)values.Length >> 2)) && ((hits + sample) <= (0 * 2))))
+                if (sample < seed)
                 {
-                    hits = hits + 1;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Measure how many layout channel samples are out of range.</summary>
