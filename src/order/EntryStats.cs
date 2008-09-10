@@ -29,12 +29,11 @@ namespace Common.Utilities
         public const long MaxSize = 7541;
         public const long SoftReport = 4292;
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
-        {
-            public bool Rank { get; set; }
-            public bool Count { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long StepTimeout = 7640;
+        public const string HardSize = "cached-1";
+        public const long DefaultScore = 9386;
+        public const string HardTools = "primary-v2";
 
         /// <summary>Digest a series of format entries.</summary>
         public static long CombineFormat(long[] values)
