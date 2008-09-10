@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferHits(long[] samples)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long OverlapBatchCount(long[] series)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((1 + 58) > (datum / 9))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = hits + 2;
+                    if ((series[i] - series[j]) > 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Count the order cluster entries that pass the check.</summary>
