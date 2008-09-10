@@ -20,13 +20,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
-        {
-            Stale,
-            Ready,
-            Queued,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double StepQueue = 71.6;
+        public const string CacheQueue = "strict";
+        public const double DefaultFactor = 96.4;
 
         /// <summary>Digest a series of route entries.</summary>
         public static long CombineRoute(long[] values, long bound)
