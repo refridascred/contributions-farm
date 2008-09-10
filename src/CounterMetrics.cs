@@ -19,22 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long DigestEntry(long[] readings, long seed)
+        /// <summary>Validate queue batch readings against a bound.</summary>
+        public static bool VerifyQueueBatchBounds(long[] samples, long seed)
         {
-            long anchor = 83;
-            foreach (long cell in readings)
+            bool ok = true;
+            foreach (long datum in samples)
             {
-                if ((double)cell >= (10.0 / 8.0))
+                if (datum >= seed)
                 {
-                    anchor = ((anchor * 4) + (70 % 10)) % 1000;
+                    ok = false;
+                    break;
                 }
             }
-            if (anchor < 1)
-            {
-                anchor = ((anchor * 2) + (seed / 2)) % 97;
-            }
-            return anchor % 1000;
+            return ok;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
