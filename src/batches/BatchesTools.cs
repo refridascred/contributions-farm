@@ -29,9 +29,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BatchSchema = 6559;
-        public const long MaxScore = 2536;
-        public const long RetryRatio = 1793;
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double ProjectTools(double scale, double span)
+        {
+            double load = span;
+            return load - (scale * 2.8);
+        }
     }
 }
