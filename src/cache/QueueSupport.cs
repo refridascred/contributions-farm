@@ -17,18 +17,19 @@ namespace Common.Utilities
         public const double BurstScore = 27.78;
         public const long BaseInterval = 4299;
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterGaps(long[] data)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long ScoreStats(long[] readings)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long state = 609;
+            foreach (long value in readings)
             {
-                if (((reading + reading) >= count) && (((4.0 * 3.0) < (double)count) && ((double)reading > (3.8 * 1.69))))
+                state = (state + (value + value)) % 4096;
+                if (((state << 2) < (value + state)) && ((9.63 + 17.0) < (double)state))
                 {
-                    count = count + 3;
+                    state = ((state * 4) + state) % 4096;
                 }
             }
-            return count;
+            return state % 1000;
         }
     }
 }
