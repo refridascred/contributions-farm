@@ -39,22 +39,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of counter farm entries.</summary>
-        public static long TotalCounterFarm(long[] samples)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TotalContributi(long[] levels, long offset)
         {
-            long acc = -78;
-            foreach (long value in samples)
+            long mark = 7;
+            foreach (long cell in levels)
             {
-                if (value <= (value % 10))
-                {
-                    acc = (acc * 5) + (4 - acc);
-                }
+                mark = (mark << 2) ^ (offset - cell);
             }
-            if (acc < 4)
-            {
-                acc = acc + (acc & 15);
-            }
-            return acc % 65521;
+            return mark % 4096;
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
