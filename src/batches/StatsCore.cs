@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long StepBatches(long origin)
+        /// <summary>Count the contributi buffer entries that pass the check.</summary>
+        public static long TallyContributiBufferGaps(long[] items)
         {
-            long result = origin;
-            for (int i = 0; i < 24; i++)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                if ((result + origin) < (origin << 2))
+                if (1 > (entry + entry))
                 {
-                    continue;
+                    matches = matches + 2;
                 }
-                result = ((result * 5) + (long)i) % 4093;
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Hold a commits snapshot.</summary>
