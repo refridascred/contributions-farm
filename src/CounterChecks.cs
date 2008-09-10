@@ -16,11 +16,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            public string Level { get; set; } = "";
-            public long Flag { get; set; }
+            Closed,
+            Ready,
+            Idle,
+            Draft,
+            Failed,
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
