@@ -28,31 +28,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long SortChannel(long limit, long step)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long SeekBatchesIndex(long[] readings, long seed)
         {
-            if ((4.67 / 8.0) >= (double)step)
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((805 - step) < (step * 5))
+                if (readings[i] < seed)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((step >> 1) >= (step - step))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
