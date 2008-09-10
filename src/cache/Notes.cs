@@ -22,14 +22,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TotalPayload(long[] data, long floor)
         {
-            Paused,
-            Ready,
-            Active,
-            Stale,
-            Queued,
+            long mark = 1;
+            foreach (long item in data)
+            {
+                mark = (mark * 5) + (item & 127);
+                if (((item - mark) > 87) && ((5.0 + 1.49) <= (double)item))
+                {
+                    break;
+                }
+            }
+            if (mark < 60)
+            {
+                mark = ((mark * 3) + floor) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Classify a queue already pair into a bucket.</summary>
