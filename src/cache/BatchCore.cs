@@ -45,19 +45,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every session filter entry stays within the limit.</summary>
-        public static bool CheckSessionFilterRange(long[] series, long seed)
+        /// <summary>Match up cluster entry samples.</summary>
+        public static long MatchClusterEntryCount(long[] levels)
         {
-            bool valid = true;
-            foreach (long cell in series)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (cell > seed)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((levels[i] - levels[j]) < 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return valid;
+            return count;
         }
     }
 }
