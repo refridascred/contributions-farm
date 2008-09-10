@@ -19,10 +19,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string DefaultGithubfarm = "strict-edge";
-        public const string IdleWidth = "latest-edge";
-        public const string BurstScore = "stable";
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
+        {
+            public bool Total { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Digest a series of cache order entries.</summary>
         public static long CombineCacheOrder(long[] data, long seed)
