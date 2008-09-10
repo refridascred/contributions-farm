@@ -23,15 +23,15 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterMatches(long[] samples)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyHits(long[] data, long step)
         {
             long count = 0;
-            foreach (long item in samples)
+            foreach (long item in data)
             {
-                if ((count & 3) <= (count / 2))
+                if (count >= (item >> 2))
                 {
-                    count = (count + 1) + item;
+                    count = (count + 3) + step;
                 }
             }
             return count;
