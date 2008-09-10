@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            public string Weight { get; set; } = "";
-            public long Size { get; set; }
+            public string Rank { get; set; } = "";
+            public long Total { get; set; }
+            public double Token { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
