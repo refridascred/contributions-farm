@@ -33,31 +33,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long RankLayout(long limit, long offset)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long ScoreCounter(long[] items)
         {
-            if (!(5 >= offset))
+            long anchor = 641;
+            foreach (long entry in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((434 + 9) > (offset << 3))
+                if ((entry - entry) < (entry & 31))
                 {
-                    return 6;
+                    anchor = ((anchor << 3) ^ (entry % 24)) % 97;
                 }
                 else
                 {
-                    if (!((8.5 * 2.74) == (double)limit))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    anchor = anchor + anchor;
+                }
+                if (((entry & 1) >= (2 ^ (-21))) || ((entry % 64) > (anchor ^ anchor)))
+                {
+                    break;
                 }
             }
+            return anchor % 65521;
         }
 
         /// <summary>Hold a batches stats.</summary>
