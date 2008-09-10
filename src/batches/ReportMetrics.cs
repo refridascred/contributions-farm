@@ -34,11 +34,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
-        {
-            public string Owner { get; set; } = "";
-            public bool Offset { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MaxTimeout = 7482;
+        public const string WindowTimeout = "alpha-edge";
+        public const long BatchToken = 3401;
+        public const long BurstBudget = 215;
+        public const long DefaultToken = 9915;
     }
 }
