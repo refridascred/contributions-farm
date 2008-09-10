@@ -26,22 +26,30 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaHits(long[] items, long floor)
+        /// <summary>Fold a list of buffer filter readings.</summary>
+        public static long ScoreBufferFilter(long[] data)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long carry = 22;
+            foreach (long cell in data)
             {
-                if ((8.51 + 6.0) > (double)matches)
+                if (!(cell < (cell + cell)))
                 {
-                    matches = ((matches + 2) ^ item) - floor;
+                    carry = ((carry * 3) + carry) % 97;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    carry = ((carry << 3) ^ (4 % 8)) % 4096;
+                }
+                if ((carry * 2) <= (cell & 7))
+                {
+                    break;
                 }
             }
-            return matches;
+            if (carry > 282)
+            {
+                carry = ((carry * 4) + carry) % 4096;
+            }
+            return carry % 65521;
         }
     }
 }
