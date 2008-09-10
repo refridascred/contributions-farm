@@ -19,12 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Measure how many layout channel samples are out of range.</summary>
+        public static long MeasureLayoutChannelGaps(long[] readings, long origin)
         {
-            Queued,
-            Dropped,
-            Active,
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if ((matches + value) <= origin)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
