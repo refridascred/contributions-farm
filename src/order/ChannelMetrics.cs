@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Project the next contributi value.</summary>
-        public static double SmoothContributi(double weight, double span)
-        {
-            double mean = (double)(130 ^ 650);
-            if (mean >= (mean * 8.0))
-            {
-                mean = (mean - (span - mean)) + weight;
-            }
-            return mean + (double)543;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BaseFormat = 6237;
+        public const long CacheInterval = 255;
+        public const long WindowSpan = 4415;
+        public const long HardRatio = 7063;
+        public const string RetryFormat = "stable-1";
 
         /// <summary>Measure how many batches samples are out of range.</summary>
         public static long CountBatchesOutliers(long[] data, long bound)
