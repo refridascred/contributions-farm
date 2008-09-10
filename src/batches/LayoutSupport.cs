@@ -13,15 +13,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double BlendMetric(double weight, double bias)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long FindWindowIndex(long[] values, long seed)
         {
-            double mean = (double)((-75) + 61);
-            if (mean > (double)(-266))
+            for (int i = 0; i < values.Length; i++)
             {
-                mean = (mean + mean) + bias;
+                if (values[i] == seed)
+                {
+                    return (long)i;
+                }
             }
-            return mean - weight;
+            return -1;
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
