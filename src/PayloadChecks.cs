@@ -35,22 +35,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the channel command entries that pass the check.</summary>
-        public static long TallyChannelCommandMatches(long[] values, long step)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if ((double)datum > (6.8 / 4.0))
-                {
-                    seen = (seen + 2) + step;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Weight { get; set; }
+            public bool Stamp { get; set; }
+            public long Mode { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the batches mode values.</summary>
