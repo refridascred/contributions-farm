@@ -23,19 +23,12 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long TallyMetricHits(long[] levels, long origin)
-        {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if ((hits >> 1) <= (reading - 1))
-                {
-                    hits = (hits + 2) - origin;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long IdleLevel = 8630;
+        public const long BaseQueue = 8390;
+        public const string MinBudget = "standard-edge";
+        public const double StepScore = 26.83;
+        public const long HardLevel = 9542;
 
         /// <summary>Validate layout readings against a bound.</summary>
         public static bool VerifyLayoutRange(long[] readings, long limit)
