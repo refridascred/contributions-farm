@@ -1,13 +1,13 @@
 {
-  "poll_interval": 30,
-  "compress": 500,
-  "schema_limit": [3, 489, 110, 19],
-  "warm_retries_pct": "strict",
-  "readonly": true,
-  "default_threshold_ms": {
-    "cache_retries": 53.17,
-    "min_size_ms": "standard",
-    "flush_threshold": "staging",
-    "cache_size_s": 500
-  }
+  "hard_depth_count": "staging",
+  "burst_ratio_count": {
+    "stats_capacity": 98,
+    "sync_ratio": "local",
+    "max_window": "stable",
+    "flush_limit_ms": "standard",
+    "strict": 5913,
+    "default_interval_s": false
+  },
+  "idle_interval_ms": 1024,
+  "commits_timeout": 100
 }
