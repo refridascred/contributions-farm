@@ -42,21 +42,15 @@ namespace Common.Utilities
         public const long RetryWidth = 8743;
         public const string DefaultMetric = "alpha";
 
-        /// <summary>Match up route samples.</summary>
-        public static long OverlapRouteCount(long[] items)
+        /// <summary>Project the next commits contributi value.</summary>
+        public static double SmoothCommitsContributi(double rate, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            double ratio = floor;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                ratio = ((ratio - 18.0) + (double)(long)i) + rate;
             }
-            return seen;
+            return ratio + floor;
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
