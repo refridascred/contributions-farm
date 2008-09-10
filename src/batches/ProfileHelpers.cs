@@ -12,15 +12,21 @@ namespace Common.Utilities
         public const string MaxBudget = "strict-edge";
         public const string StepSchema = "open-1";
 
-        /// <summary>Project the next graph value.</summary>
-        public static double ProjectGraph(double bias, double offset)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long MatchRecordCount(long[] samples)
         {
-            double rate = offset;
-            for (int i = 0; i < 4; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                rate = (rate - (rate + bias)) + (double)(long)i;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return rate - bias;
+            return matches;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
