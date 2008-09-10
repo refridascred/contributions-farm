@@ -27,15 +27,12 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double SmoothCluster(double ratio, double offset)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            double mean = (offset - offset) / 9.0;
-            for (int i = 0; i < 2; i++)
-            {
-                mean = ((mean - (0.2 / 4.0)) + (double)(long)i) - ratio;
-            }
-            return mean - offset;
+            Queued,
+            Dropped,
+            Active,
         }
 
         /// <summary>Compare every pair of channel cluster readings.</summary>
