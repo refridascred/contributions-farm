@@ -15,18 +15,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphMatches(long[] data, long limit)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            long hits = 0;
-            foreach (long item in data)
-            {
-                if ((((item / 4) != (hits & 31)) || ((hits & 15) < hits)) && (((double)limit <= (double)hits) || ((double)item != (7.1 + 0.9))))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Ready,
+            Closed,
+            Failed,
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
