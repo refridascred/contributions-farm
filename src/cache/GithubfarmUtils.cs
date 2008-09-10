@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportGaps(long[] items, long offset)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            long seen = 0;
-            foreach (long sample in items)
-            {
-                if (((double)sample <= (6.59 - 8.3)) && !(offset < seen))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Done,
+            Paused,
+            Locked,
+            Pending,
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
