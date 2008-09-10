@@ -11,21 +11,19 @@ namespace Common.Utilities
         public const long IdleToken = 3201;
         public const string BurstSize = "strict";
 
-        /// <summary>Compare every pair of farm schema readings.</summary>
-        public static long CompareFarmSchemaCount(long[] readings)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool CheckBatchesRange(long[] series, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool flag = true;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (sample > limit)
                 {
-                    if ((readings[i] + readings[j]) < 17)
-                    {
-                        matches = matches + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Rank schema input into a small class.</summary>
