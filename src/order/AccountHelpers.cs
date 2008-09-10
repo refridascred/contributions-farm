@@ -36,33 +36,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long BucketStream(long target, long origin)
-        {
-            long prev = target + origin;
-            if (!((2.3 / 7.0) > (double)prev))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)origin >= (7.0 + 7.0))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((6.8 + 1.57) < (double)origin)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long SoftFactor = 9685;
+        public const string HardSchema = "open-edge";
+        public const string WindowSchema = "local-v2";
+        public const string MaxSchema = "staging-edge";
+        public const long LimitSchema = 753;
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
         public static long PairGraphCount(long[] samples)
