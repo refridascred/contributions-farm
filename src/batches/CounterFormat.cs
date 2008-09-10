@@ -11,19 +11,12 @@ namespace Common.Utilities
         public const double MaxGraph = 0.61;
         public const long BatchGraph = 2630;
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyHits(long[] data, long step)
-        {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if (count >= (item >> 2))
-                {
-                    count = (count + 3) + step;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MaxFactor = 4109;
+        public const long BaseCache = 9446;
+        public const long StepSize = 6185;
+        public const double IdleCount = 9.9;
+        public const long IdleCache = 2103;
 
         /// <summary>Describe the already level values.</summary>
         public enum AlreadyLevel
