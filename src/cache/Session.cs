@@ -41,19 +41,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool ValidateGithubfarmLimits(long[] series, long target)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            bool found = true;
-            foreach (long datum in series)
-            {
-                if (datum >= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Token { get; set; }
+            public long Level { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
