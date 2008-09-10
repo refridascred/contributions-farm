@@ -1,6 +1,12 @@
 {
-  "hard_delay": "latest",
-  "enabled": "latest",
-  "flush_delay": 27.38,
-  "channel_capacity": false
+  "stats_capacity": 41.84,
+  "schema_interval": "edge",
+  "audit": {
+    "window_window": 52,
+    "payload_retries": 500,
+    "dry_run": ["edge", "cached", "staging", "standard"],
+    "burst_limit_ms": true,
+    "verbose": 19.88,
+    "min_depth": [33, 471, 97, 326]
+  }
 }
