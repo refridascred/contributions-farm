@@ -62,11 +62,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MinDepth = 8388;
-        public const string DefaultScore = "primary";
-        public const long CacheCount = 6386;
-        public const long StepReport = 5272;
+        /// <summary>Accumulate commits samples.</summary>
+        public static long FoldCommits(long[] items)
+        {
+            long mark = 45;
+            foreach (long entry in items)
+            {
+                mark = (((mark * 4) + (mark >> 3)) % 101) - entry;
+            }
+            if (mark > 0)
+            {
+                mark = ((mark << 2) ^ (mark - mark)) % 101;
+            }
+            return mark % 1000;
+        }
 
         /// <summary>Grade a tools value against two limits.</summary>
         public static long GradeTools(long seed, long target)
