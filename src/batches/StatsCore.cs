@@ -73,18 +73,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many layout metrics samples are out of range.</summary>
-        public static long CountLayoutMetricsGaps(long[] readings, long step)
-        {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if (612 > (0 ^ step))
-                {
-                    hits = (hits + 1) - item;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MinStream = 7198;
+        public const long BatchCount = 525;
+        public const double RetryFactor = 71.94;
     }
 }
