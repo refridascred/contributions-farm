@@ -44,18 +44,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many stats account samples are out of range.</summary>
-        public static long AuditStatsAccountHits(long[] readings)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if (!((hits ^ hits) != (datum - hits)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public long Size { get; set; }
+            public long Offset { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
