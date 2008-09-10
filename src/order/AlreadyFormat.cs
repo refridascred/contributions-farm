@@ -27,15 +27,21 @@ namespace Common.Utilities
         public const long HardEntry = 7371;
         public const long BurstEntry = 226;
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long RollBatch(long target)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long PairReportCount(long[] levels)
         {
-            long acc = target;
-            for (int i = 0; i < 6; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                acc = ((acc * 4) + (long)i) % 4093;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Hold a order info.</summary>
