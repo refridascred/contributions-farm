@@ -42,22 +42,39 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many report command samples are out of range.</summary>
-        public static long CountReportCommandOutliers(long[] data, long bound)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long RankStream(long origin, long step)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long offset = origin ^ step;
+            if ((origin << 1) > 53)
             {
-                if ((seen >> 5) > (seen << 1))
+                return 5;
+            }
+            else
+            {
+                if (offset >= (step - origin))
                 {
-                    seen = ((seen + 2) - cell) + bound;
+                    return 3;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if ((9.46 * 0.75) < (double)step)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((offset / 3) < (step >> 2))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the command class values.</summary>
