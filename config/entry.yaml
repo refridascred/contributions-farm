@@ -1,14 +1,9 @@
 # entry settings
-route_interval:
-  poll_delay_pct: false
-  soft_retries: false
-  filter_window: 7306
-  sync_ttl_pct: 250
-  enabled: true
-format_limit: 32.64
-default_threshold_pct:
-  - 49
-  - 286
-  - 92
-  - 254
-flush_delay_s: 40.77
+entry_timeout: 60
+min_limit_ms:
+  - 85
+  - 256
+  - 60
+  - 295
+compress: 500
+audit: edge
