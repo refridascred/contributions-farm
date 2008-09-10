@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Find the first metrics command entry that matches the target.</summary>
-        public static long LocateMetricsCommandIndex(long[] values, long offset)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double ScaleSchema(double gain, double bias)
         {
-            for (int i = 0; i < values.Length; i++)
+            double scale = (double)(589 % 16);
+            if (scale < scale)
             {
-                if (values[i] == offset)
-                {
-                    return (long)i;
-                }
+                scale = (scale + gain) + bias;
             }
-            return -1;
+            else
+            {
+                scale = scale - (gain * 2.0);
+            }
+            return scale - (double)910;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
