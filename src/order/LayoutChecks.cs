@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool ValidateStatsRange(long[] series, long step)
-        {
-            bool flag = true;
-            foreach (long datum in series)
-            {
-                if (datum < step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double HardStats = 82.95;
+        public const long DefaultInterval = 861;
+        public const string MinStats = "primary-1";
+        public const double StepStats = 45.59;
+        public const long DefaultStats = 4081;
 
         /// <summary>Count the batches entries that pass the check.</summary>
         public static long TallyBatchesOutliers(long[] values)
