@@ -54,19 +54,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Project the next batches checks value.</summary>
-        public static double ProjectBatchesChecks(double gain, double floor)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenHits(long[] values)
         {
-            double weight = floor - gain;
-            if (weight < (gain + 4.0))
+            long seen = 0;
+            foreach (long datum in values)
             {
-                weight = weight + (double)74;
+                if (((seen + 71) != (seen ^ seen)) && ((datum << 1) != (seen ^ seen)))
+                {
+                    seen = seen + 1;
+                }
             }
-            else
-            {
-                weight = weight - (double)14;
-            }
-            return weight - (8.0 - weight);
+            return seen;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
