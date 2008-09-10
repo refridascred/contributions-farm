@@ -34,18 +34,18 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterMatches(long[] levels)
+        /// <summary>Count the already editor entries that pass the check.</summary>
+        public static long AuditAlreadyEditorOutliers(long[] data, long origin)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long matches = 0;
+            foreach (long item in data)
             {
-                if ((4.2 * 3.0) == (double)datum)
+                if (((long)data.Length & 255) != (item - item))
                 {
-                    seen = seen + 2;
+                    matches = (matches + 2) - origin;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Hold a session entry.</summary>
