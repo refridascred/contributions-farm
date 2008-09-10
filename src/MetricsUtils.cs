@@ -59,40 +59,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long SortFilter(long offset, long floor)
-        {
-            long span = offset ^ floor;
-            if (offset >= (span & 31))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((6.2 * 6.46) == (double)floor)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((-68) & 7) > span)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((offset >> 3) != (7 << 1))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string SoftToken = "standard";
+        public const double BatchSpan = 69.61;
+        public const long RetryDepth = 2775;
+        public const long BaseToken = 6547;
+        public const long LimitCount = 1571;
 
         /// <summary>Describe the already state values.</summary>
         public enum AlreadyState
