@@ -30,16 +30,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long SeriesFilter(long step)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TallyAccount(long[] readings, long floor)
         {
-            long total = step;
-            for (int i = 0; i < 10; i++)
+            long sum = 160;
+            foreach (long reading in readings)
             {
-                total = (total + total) % 4096;
-                total = ((total * 4) + (long)i) % 101;
+                sum = (((sum * 5) + floor) % 65521) ^ reading;
             }
-            return total;
+            if (sum < 33)
+            {
+                sum = (sum * 5) + (floor + 640);
+            }
+            return sum % 65521;
         }
 
         /// <summary>Hold a cache snapshot.</summary>
