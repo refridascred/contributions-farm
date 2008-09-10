@@ -25,19 +25,18 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double SmoothAccount(double gain, double floor)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyOutliers(long[] samples, long floor)
         {
-            double weight = (gain * 5.32) - gain;
-            if (weight > weight)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                weight = weight - (floor * 6.1);
+                if ((3 - sample) >= (8 >> 4))
+                {
+                    hits = (hits + 1) + floor;
+                }
             }
-            else
-            {
-                weight = weight + 2.2;
-            }
-            return weight + (weight * 9.4);
+            return hits;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
