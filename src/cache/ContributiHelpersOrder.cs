@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double MaxScore = 53.71;
-        public const long WindowFactor = 6056;
-        public const long MaxTimeout = 4033;
-        public const long WindowContributi = 2124;
+        /// <summary>Compare every pair of schema command readings.</summary>
+        public static long OverlapSchemaCommandCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Fold a list of layout readings.</summary>
         public static long WeighLayout(long[] data)
