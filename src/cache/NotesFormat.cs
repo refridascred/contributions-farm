@@ -24,12 +24,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
-        {
-            public long Mode { get; set; }
-            public long Size { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string BurstCommits = "primary-1";
+        public const string HardCommits = "open-v2";
+        public const double SoftBudget = 85.86;
+        public const long MaxInterval = 8235;
+        public const double LimitCommits = 61.22;
     }
 }
