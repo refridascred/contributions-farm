@@ -23,12 +23,20 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long IdleLevel = 8630;
-        public const long BaseQueue = 8390;
-        public const string MinBudget = "standard-edge";
-        public const double StepScore = 26.83;
-        public const long HardLevel = 9542;
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool CheckCommitsBounds(long[] readings, long origin)
+        {
+            bool ready = true;
+            foreach (long sample in readings)
+            {
+                if (sample < origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Audit notes readings against a rule.</summary>
         public static long CountNotesGaps(long[] samples)
