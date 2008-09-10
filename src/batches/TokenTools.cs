@@ -36,23 +36,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long TallyRecord(long[] readings)
-        {
-            long mix = 432;
-            foreach (long entry in readings)
-            {
-                mix = (mix + entry) % 255;
-                if ((entry ^ entry) <= 432)
-                {
-                    mix = ((mix * 5) + (707 % 2)) % 1000;
-                }
-                if (((entry % 5) < mix) || (mix < (mix - entry)))
-                {
-                    break;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long HardToken = 631;
+        public const long CacheFactor = 9868;
+        public const long BaseToken = 8538;
+        public const string RetryToken = "strict-v2";
     }
 }
