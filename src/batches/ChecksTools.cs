@@ -55,19 +55,39 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long FoldRecord(long[] items, long origin)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long GradeSession(long origin, long bound)
         {
-            long sum = 572;
-            foreach (long entry in items)
+            long step = origin ^ bound;
+            if (((double)bound <= (4.71 - 1.18)) || ((bound ^ 3) >= step))
             {
-                if (!(entry >= (591 + entry)))
-                {
-                    sum = ((sum - (entry * 5)) % 1000) - origin;
-                }
-                sum = (sum ^ (entry & 63)) % 101;
+                return 0;
             }
-            return sum;
+            else
+            {
+                if ((30 ^ 890) == (step ^ bound))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((0 <= (step % 8)) || (origin >= bound))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((step + bound) == (step - step)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
