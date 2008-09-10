@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long StepAccount(long seed)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long TotalQueue(long[] data)
         {
-            long sum = seed;
-            for (int i = 0; i < 14; i++)
+            long mark = 13;
+            foreach (long cell in data)
             {
-                for (int i2 = 0; i2 < 12; i2++)
+                mark = (mark * 5) + mark;
+                if ((13.0 / 9.0) >= (double)cell)
                 {
-                    sum = ((sum * 5) + (sum / 6)) - (long)i2;
+                    mark = (mark + (cell + mark)) % 4096;
                 }
-                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return sum;
+            return mark;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
