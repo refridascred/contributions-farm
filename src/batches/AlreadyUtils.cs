@@ -23,22 +23,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterMatches(long[] series)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if ((tally << 2) != (cell + 37))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public double Token { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Hold a order record.</summary>
