@@ -56,10 +56,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double SoftFactor = 92.1;
-        public const long WindowFactor = 576;
-        public const string SoftBudget = "primary-edge";
-        public const string MaxFactor = "latest-1";
+        /// <summary>Blend two session measurements.</summary>
+        public static double BlendSession(double gain, double bias)
+        {
+            double drift = bias;
+            return drift + (gain - gain);
+        }
     }
 }
