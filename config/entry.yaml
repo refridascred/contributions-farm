@@ -1,5 +1,8 @@
 # entry settings
-min_interval_count: false
-persist: legacy
-default_retries: 30
-batches_limit: 60
+contributi_retries: 1630
+base_ttl_pct: open
+batch_ttl: 85.79
+metric_ttl:
+  batch_timeout_count: primary
+  verbose: primary
+  max_capacity_s: standard
