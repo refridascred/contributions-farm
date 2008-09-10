@@ -14,31 +14,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long GradeNotes(long origin, long target)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            if (((376 % 24) == (origin / 3)) || ((6.0 * 19.0) > (double)target))
-            {
-                return 6;
-            }
-            else
-            {
-                if (target >= (origin & 63))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((origin / 4) >= target))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public double Count { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
