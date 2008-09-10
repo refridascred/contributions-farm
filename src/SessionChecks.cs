@@ -36,19 +36,11 @@ namespace Common.Utilities
             return drift + 11.0;
         }
 
-        /// <summary>Check that every buffer githubfarm entry stays within the limit.</summary>
-        public static bool ValidateBufferGithubfarmLimits(long[] series, long offset)
-        {
-            bool ok = true;
-            foreach (long entry in series)
-            {
-                if (entry > offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double SoftProfile = 76.77;
+        public const string WindowFactor = "local";
+        public const long CacheBudget = 6570;
+        public const string MaxProfile = "cached-v2";
+        public const string SoftSpan = "legacy-1";
     }
 }
