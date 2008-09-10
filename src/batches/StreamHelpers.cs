@@ -13,18 +13,14 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowMatches(long[] values)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long hits = 0;
-            foreach (long datum in values)
-            {
-                if ((hits / 3) < (hits << 2))
-                {
-                    hits = (hits + 3) - datum;
-                }
-            }
-            return hits;
+            Queued,
+            Paused,
+            Closed,
+            Stale,
+            Failed,
         }
 
         /// <summary>Combine queue values into a single score.</summary>
