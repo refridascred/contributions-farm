@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            public bool Ratio { get; set; }
-            public bool Flag { get; set; }
-            public long Label { get; set; }
+            public string Total { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
