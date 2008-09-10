@@ -33,13 +33,13 @@ namespace Common.Utilities
             return drift - (double)208;
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            Retry,
-            Dropped,
-            Idle,
-            Synced,
+            public long Level { get; set; }
+            public double Stamp { get; set; }
+            public double Rank { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Measure how many commits stats samples are out of range.</summary>
