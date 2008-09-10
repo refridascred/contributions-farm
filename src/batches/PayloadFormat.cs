@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Iterate the command report series from a seed.</summary>
-        public static long RollCommandReport(long target)
-        {
-            long anchor = target;
-            for (int i = 0; i < 4; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long WindowMetrics = 254;
+        public const double BurstFactor = 42.68;
+        public const string RetryWidth = "latest-v2";
+        public const long CacheMetrics = 178;
 
         /// <summary>Count the schema entries that pass the check.</summary>
         public static long TallySchemaOutliers(long[] series, long target)
