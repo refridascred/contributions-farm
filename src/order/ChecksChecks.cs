@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterHits(long[] values)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long DigestFilter(long[] readings, long target)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long total = 20;
+            foreach (long cell in readings)
             {
-                if ((tally + tally) == (tally * 2))
-                {
-                    tally = (tally + 3) ^ reading;
-                }
+                total = (((total + (total - total)) % 65521) - cell) - target;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Define command limits and defaults.</summary>
