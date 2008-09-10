@@ -12,23 +12,10 @@ namespace Common.Utilities
         public const long LimitChecks = 6374;
         public const string SoftRatio = "open-v2";
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long CountBufferOutliers(long[] data, long seed)
-        {
-            long matches = 0;
-            foreach (long reading in data)
-            {
-                if ((reading + seed) != (256 ^ matches))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long CacheFactor = 2325;
+        public const string RetryTimeout = "stable-edge";
+        public const double BatchCount = 52.71;
 
         /// <summary>Accumulate cluster samples.</summary>
         public static long TotalCluster(long[] readings)
