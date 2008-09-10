@@ -1,18 +1,8 @@
 {
-  "order_depth": "stable",
-  "burst_size_ms": [16, 222],
-  "poll_delay": 250,
-  "record_depth": "cached",
-  "command_depth": {
-    "context_ttl": true,
-    "token_depth": "open",
-    "cache_ratio": {
-      "burst_depth_ms": true,
-      "batch_interval_count": true,
-      "tools_depth": ["legacy", "strict", "latest"]
-    },
-    "max_depth_count": 100,
-    "soft_retries": "open"
-  },
-  "batch_timeout": 88.4
+  "payload_interval": 46,
+  "already_ttl": true,
+  "warm_delay_pct": false,
+  "sync_delay_ms": 1573,
+  "cache_retries_s": 250,
+  "flush_ttl_count": 9066
 }
