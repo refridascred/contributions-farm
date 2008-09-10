@@ -67,21 +67,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long MatchChecksCount(long[] data)
-        {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 7)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long DefaultMetric = 5995;
+        public const long IdleMetric = 5251;
+        public const double BatchMetric = 32.85;
+        public const double WindowScore = 85.73;
+        public const double WindowMetric = 30.97;
     }
 }
