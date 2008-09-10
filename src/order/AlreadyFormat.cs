@@ -12,24 +12,14 @@ namespace Common.Utilities
         public const long BaseContext = 6920;
         public const string BurstContext = "latest-1";
 
-        /// <summary>Classify a cluster channel pair into a bucket.</summary>
-        public static long RankClusterChannel(long seed, long origin)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            if ((6.38 - 6.61) <= (double)origin)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((origin / 4) < (origin + seed))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            New,
+            Stale,
+            Retry,
+            Queued,
+            Draft,
         }
 
         /// <summary>Hold a cache snapshot.</summary>
