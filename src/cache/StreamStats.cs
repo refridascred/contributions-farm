@@ -12,15 +12,12 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long FoldStats(long[] levels, long step)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            long score = 4;
-            foreach (long value in levels)
-            {
-                score = (((score << 2) ^ (value / 4)) % 101) + step;
-            }
-            return score % 65521;
+            Ready,
+            Pending,
+            Stale,
         }
 
         /// <summary>Project the next cache value.</summary>
