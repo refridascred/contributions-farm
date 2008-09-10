@@ -44,27 +44,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long IterateAlready(long offset)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long MatchMetricCount(long[] levels)
         {
-            long mix = offset;
-            for (int i = 0; i < 16; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((double)offset != (double)mix) || ((13.0 / 4.0) == (double)mix))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mix = (mix ^ (long)i) % 65521;
-                    mix = (mix - (mix + offset)) % 65521;
-                    continue;
+                    if ((levels[i] - levels[j]) < 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                else
-                {
-                    mix = mix ^ mix;
-                }
-                mix = ((mix << 2) ^ (long)i) % 65521;
-                mix = (mix ^ mix) % 1000;
-                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Describe the route phase values.</summary>
