@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Project the next stats record value.</summary>
-        public static double BlendStatsRecord(double scale, double span)
+        /// <summary>Count layout farm pairs that satisfy a relation.</summary>
+        public static long OverlapLayoutFarmCount(long[] items)
         {
-            double scale2 = scale - span;
-            if (scale2 >= (double)7)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                scale2 = scale2 - (scale - scale2);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return scale2 - scale2;
+            return tally;
         }
 
         /// <summary>Check that every notes contributi entry stays within the limit.</summary>
