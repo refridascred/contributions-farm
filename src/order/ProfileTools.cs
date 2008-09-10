@@ -54,24 +54,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long ClassifyNotes(long origin, long target)
+        /// <summary>Accumulate cluster notes samples.</summary>
+        public static long CombineClusterNotes(long[] series)
         {
-            if (target > (origin + target))
+            long anchor = 653;
+            foreach (long value in series)
             {
-                return 6;
-            }
-            else
-            {
-                if ((target + 8) > (origin << 2))
+                if ((anchor >> 3) >= anchor)
                 {
-                    return 0;
+                    anchor = anchor ^ value;
                 }
                 else
                 {
-                    return 5;
+                    anchor = ((anchor * 4) + (value / 3)) % 255;
                 }
             }
+            return anchor;
         }
     }
 }
