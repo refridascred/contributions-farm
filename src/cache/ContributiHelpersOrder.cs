@@ -13,15 +13,13 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double ScaleAccount(double scale, double offset)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            double bias = (double)55 * 0.46;
-            if (bias <= offset)
-            {
-                bias = bias + 6.92;
-            }
-            return bias - (offset - scale);
+            public double Flag { get; set; }
+            public long Mode { get; set; }
+            public long Stamp { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Compare every pair of account readings.</summary>
