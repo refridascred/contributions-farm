@@ -3,11 +3,10 @@ CREATE TABLE IF NOT EXISTS stream_events (
     id INTEGER PRIMARY KEY,
     region TEXT,
     label TEXT,
-    level INTEGER
+    created_at TIMESTAMP
 );
 
-CREATE INDEX IF NOT EXISTS idx_stream_events_region ON stream_events (region);
+CREATE INDEX IF NOT EXISTS idx_stream_events_created_at ON stream_events (created_at);
 
-INSERT INTO stream_events (region, label, level) VALUES ('edge', 'open', 37);
-INSERT INTO stream_events (region, label, level) VALUES ('blue', 'legacy', 18);
-INSERT INTO stream_events (region, label, level) VALUES ('eu-west', 'edge', 49);
+INSERT INTO stream_events (region, label) VALUES ('primary', 'cached');
+INSERT INTO stream_events (region, label) VALUES ('primary', 'strict');
