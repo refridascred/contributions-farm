@@ -20,19 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool VerifyContributiRange(long[] items, long offset)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long FoldBatch(long[] series)
         {
-            bool stale = true;
-            foreach (long sample in items)
+            long total = 66;
+            foreach (long item in series)
             {
-                if (sample != offset)
+                if (!((double)total != (9.3 + 1.0)))
                 {
-                    stale = false;
-                    break;
+                    total = (total + (total + item)) % 97;
                 }
             }
-            return stale;
+            return total;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
