@@ -1,6 +1,11 @@
 {
-  "report_depth": "green",
-  "counter_depth": ["legacy", "fallback", "local"],
-  "record_ratio": "legacy",
-  "report_ratio": false
+  "verbose": {
+    "token_window": "local",
+    "cache_ttl": 67.45,
+    "dry_run": 97,
+    "base_window_count": 99,
+    "hard_window": "stable"
+  },
+  "default_threshold_s": 1024,
+  "sync_threshold_pct": false
 }
