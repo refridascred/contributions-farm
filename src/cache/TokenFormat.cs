@@ -34,13 +34,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Match up tools samples.</summary>
+        public static long CompareToolsCount(long[] levels)
         {
-            public long Rank { get; set; }
-            public string Token { get; set; } = "";
-            public double Weight { get; set; }
-            public string Mode { get; set; } = "";
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 17)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
