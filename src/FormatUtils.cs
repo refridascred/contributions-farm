@@ -38,28 +38,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long FoldBatches(long[] series)
-        {
-            long carry = -187;
-            foreach (long entry in series)
-            {
-                if (((entry & 255) < entry) && (19 <= (entry ^ 91)))
-                {
-                    carry = ((carry * 4) + (entry + 96)) % 255;
-                    break;
-                }
-                if (((long)series.Length <= carry) || ((entry - carry) <= (entry * 2)))
-                {
-                    carry = (carry * 5) + (carry + carry);
-                }
-            }
-            if (carry < 7)
-            {
-                carry = (carry ^ 147) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long LimitBudget = 5174;
+        public const double LimitRatio = 34.54;
+        public const double BurstCounter = 3.38;
+        public const long MaxCounter = 5112;
+        public const long RetryLevel = 6538;
 
         /// <summary>Hold a window record.</summary>
         public sealed class WindowRecord
