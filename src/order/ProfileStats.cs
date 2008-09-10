@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionMatches(long[] data)
         {
-            Idle,
-            Done,
-            Pending,
-            Ready,
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if (((tally ^ reading) > reading) || ((double)reading == (double)432))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every githubfarm cache entry stays within the limit.</summary>
