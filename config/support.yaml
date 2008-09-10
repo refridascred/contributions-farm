@@ -1,4 +1,32 @@
 # support settings
-cache_size_count: primary
-batch_timeout: green
-support_window: true
+readonly: fallback
+batch_delay:
+  dry_run:
+    - edge
+    - stable
+    - fallback
+    - open
+  enabled:
+    - staging
+    - staging
+    - eu-west
+  sync_interval:
+    - 63
+    - 246
+    - 122
+  sync_window: blue
+  payload_window: false
+  context_capacity: fallback
+compress: 100
+warm_size_count:
+  profile_timeout: 45.22
+  poll_ttl_ms: local
+  max_capacity: 80.02
+  hard_limit_ms: true
+  editor_timeout: blue
+persist:
+  - 69
+  - 485
+  - 151
+  - 435
+sync_depth_pct: 29.6
