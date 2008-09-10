@@ -1,33 +1,5 @@
 {
-  "burst_retries_s": 94,
-  "verbose": {
-    "min_retries": 59.4,
-    "min_depth": 250,
-    "enabled": {
-      "min_interval_s": 2649,
-      "cache_limit_pct": 46.5,
-      "cache_ttl": "cached",
-      "compress": false
-    },
-    "sync_retries": "legacy",
-    "compress": {
-      "burst_retries": "green",
-      "channel_capacity": "primary",
-      "soft_delay_count": false,
-      "base_size_ms": 90.15,
-      "sync_limit_ms": 30,
-      "commits_limit": "standard"
-    }
-  },
-  "token_delay": {
-    "max_ratio_count": 100,
-    "max_retries_pct": true,
-    "compress": ["fallback", "staging", "strict", "stable"],
-    "contributi_delay": 86.38,
-    "queue_timeout": ["blue", "stable"],
-    "hard_window": [99, 341]
-  },
-  "batch_window_s": 3731,
-  "schema_ttl": true,
-  "warm_size_count": 6824
+  "payload_interval": 80,
+  "dry_run": 49.44,
+  "cache_depth_ms": "fallback"
 }
