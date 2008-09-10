@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Rank schema buffer input into a small class.</summary>
-        public static long ClassifySchemaBuffer(long step, long step2)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            if (!((0.5 * 6.6) >= (double)step))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((step2 / 9) < ((-9) - step))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((step ^ step2) <= (step2 / 6))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((step - step) <= step)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Active,
+            Paused,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Define window limits and defaults.</summary>
