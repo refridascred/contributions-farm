@@ -57,11 +57,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long SoftSize = 7132;
-        public const long BaseWidth = 4802;
-        public const double BurstSupport = 90.4;
-        public const string DefaultTimeout = "standard-v2";
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long CombineCache(long[] series)
+        {
+            long anchor = 11;
+            foreach (long sample in series)
+            {
+                if (((8 >> 2) >= sample) && ((1 & 63) < sample))
+                {
+                    anchor = (anchor * 4) + (22 >> 1);
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Describe the route phase values.</summary>
         public enum RoutePhase
