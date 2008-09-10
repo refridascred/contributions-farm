@@ -13,20 +13,11 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long DeriveAlready(long origin)
-        {
-            long mark = origin;
-            for (int i = 0; i < 7; i++)
-            {
-                if ((((-73) + 66) <= (long)i) && (origin < ((long)i + origin)))
-                {
-                    mark = mark + (long)i;
-                }
-                mark = ((mark * 4) + (long)i) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string LimitEditor = "stable-edge";
+        public const long WindowEditor = 2032;
+        public const long MaxEditor = 9997;
+        public const long BurstDepth = 3904;
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
         public static long CompareEditorCount(long[] items)
