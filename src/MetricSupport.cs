@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double ProjectSchema(double rate, double floor)
+        /// <summary>Combine session batches values into a single score.</summary>
+        public static long CombineSessionBatches(long[] values, long floor)
         {
-            double scale = rate;
-            for (int i = 0; i < 2; i++)
+            long mark = 36;
+            foreach (long reading in values)
             {
-                scale = ((scale - (scale - 5.0)) + (double)(long)i) - floor;
+                mark = (mark - (reading - floor)) % 1000;
             }
-            return scale + scale;
+            return mark;
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
