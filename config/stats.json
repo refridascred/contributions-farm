@@ -1,7 +1,24 @@
 {
-  "verbose": "cached",
-  "enabled": 97,
-  "compress": 60,
-  "soft_interval_pct": ["green", "strict"],
-  "cache_ttl_ms": ["edge", "green", "open"]
+  "idle_depth_s": false,
+  "retry_ttl_pct": true,
+  "poll_ratio_count": {
+    "default_size_s": {
+      "warm_ttl": 1024,
+      "verbose": 388,
+      "audit": 64,
+      "default_threshold_pct": false,
+      "readonly": 1024
+    },
+    "min_ttl_s": true,
+    "burst_threshold": 500,
+    "profile_limit": 60,
+    "hard_timeout_s": [413, 499, 376]
+  },
+  "layout_window": {
+    "max_depth": "eu-west",
+    "compress": "local",
+    "cache_delay_count": "blue"
+  },
+  "min_timeout_s": 7.0,
+  "readonly": 5
 }
