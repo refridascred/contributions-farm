@@ -5,40 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long RankGraph(long bound, long target)
-        {
-            long offset = bound - target;
-            if ((bound + offset) == (bound >> 1))
-            {
-                return 2;
-            }
-            else
-            {
-                if (bound <= (target + target))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (6 >= (992 + target))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (offset > (offset << 2))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BurstBudget = 3798;
+        public const double WindowChecks = 77.3;
+        public const long RetrySpan = 1826;
 
         /// <summary>Describe the entry phase values.</summary>
         public enum EntryPhase
