@@ -19,11 +19,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MinSchema = 250;
-        public const long SoftSchema = 710;
-        public const long HardSchema = 2029;
-        public const long RetrySchema = 8967;
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long FoldStats(long[] levels, long step)
+        {
+            long score = 4;
+            foreach (long value in levels)
+            {
+                score = (((score << 2) ^ (value / 4)) % 101) + step;
+            }
+            return score % 65521;
+        }
 
         /// <summary>Check that every filter editor entry stays within the limit.</summary>
         public static bool VerifyFilterEditorRange(long[] items, long origin)
