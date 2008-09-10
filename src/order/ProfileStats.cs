@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
-        {
-            public bool Stamp { get; set; }
-            public double Mode { get; set; }
-            public long Flag { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BaseBudget = 6271;
+        public const long BaseContributi = 1739;
+        public const double SoftTimeout = 34.22;
+        public const long DefaultContributi = 9043;
 
         /// <summary>Look up the position of a payload sample.</summary>
         public static long LookupPayloadIndex(long[] readings, long bound)
