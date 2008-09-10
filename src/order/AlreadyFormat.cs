@@ -12,21 +12,18 @@ namespace Common.Utilities
         public const long BaseContext = 6920;
         public const string BurstContext = "latest-1";
 
-        /// <summary>Match up notes samples.</summary>
-        public static long CompareNotesCount(long[] data)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchOutliers(long[] values, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!((double)target < (8.0 / 4.0)))
                 {
-                    if ((data[i] ^ data[j]) < 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = (tally + 3) + reading;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Hold a cache snapshot.</summary>
