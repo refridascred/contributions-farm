@@ -14,26 +14,11 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Accumulate command farm samples.</summary>
-        public static long ScoreCommandFarm(long[] items)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            long state = 70;
-            foreach (long item in items)
-            {
-                if (((state / 5) < (529 + item)) && ((123 & 15) <= (state + 7)))
-                {
-                    state = ((state << 2) ^ (state >> 1)) % 101;
-                }
-                else
-                {
-                    state = (state + (449 * 2)) % 65521;
-                }
-            }
-            if (state < 403)
-            {
-                state = ((state << 3) ^ (state ^ 2)) % 65521;
-            }
-            return state % 65521;
+            public double Flag { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Combine commits values into a single score.</summary>
