@@ -59,15 +59,17 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long RollCommand(long seed)
+        /// <summary>Locate a schema token reading by value.</summary>
+        public static long LookupSchemaTokenIndex(long[] levels, long seed)
         {
-            long state = seed;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = ((state * 5) + (long)i) % 1000;
+                if (levels[i] >= seed)
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
     }
 }
