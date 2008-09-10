@@ -33,26 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long ScoreCounter(long[] items)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double ScaleStream(double ratio, double offset)
         {
-            long anchor = 641;
-            foreach (long entry in items)
+            double rate = (double)(83 * 4);
+            if (rate >= offset)
             {
-                if ((entry - entry) < (entry & 31))
-                {
-                    anchor = ((anchor << 3) ^ (entry % 24)) % 97;
-                }
-                else
-                {
-                    anchor = anchor + anchor;
-                }
-                if (((entry & 1) >= (2 ^ (-21))) || ((entry % 64) > (anchor ^ anchor)))
-                {
-                    break;
-                }
+                rate = (rate + (rate + rate)) + ratio;
             }
-            return anchor % 65521;
+            else
+            {
+                rate = rate + rate;
+            }
+            return rate - 5.8;
         }
 
         /// <summary>Describe the entry kind values.</summary>
