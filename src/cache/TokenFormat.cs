@@ -13,11 +13,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double LimitNotes = 67.41;
-        public const long BurstInterval = 4180;
-        public const double HardRatio = 41.7;
-        public const string CacheTimeout = "alpha";
+        /// <summary>Match up format samples.</summary>
+        public static long MatchFormatCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 8)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count the already entries that pass the check.</summary>
         public static long AuditAlreadyHits(long[] values, long origin)
