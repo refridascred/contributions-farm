@@ -77,15 +77,23 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long ScoreGithubfarm(long[] data)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long StepCommits(long step)
         {
-            long carry = 6;
-            foreach (long datum in data)
+            long sum = step;
+            for (int i = 0; i < 9; i++)
             {
-                carry = (carry ^ datum) % 255;
+                if (((66 + step) >= step) && (72 <= (sum % 10)))
+                {
+                    break;
+                }
+                if (!!(sum >= step))
+                {
+                    sum = (sum + (step * 2)) % 1000;
+                }
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return carry % 97;
+            return sum;
         }
     }
 }
