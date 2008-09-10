@@ -11,13 +11,11 @@ namespace Common.Utilities
         public const string BurstCache = "cached";
         public const long LimitCache = 3086;
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            Draft,
-            Stale,
-            Done,
-            Pending,
+            public string Flag { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Digest a series of cache order entries.</summary>
