@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Project the next report value.</summary>
-        public static double BlendReport(double scale, double bias)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            double weight = bias + bias;
-            if (weight <= 5.0)
-            {
-                weight = (weight + (bias * 9.25)) + scale;
-            }
-            return weight + weight;
+            Failed,
+            Ready,
+            Pending,
         }
 
         /// <summary>Digest a series of batch route entries.</summary>
