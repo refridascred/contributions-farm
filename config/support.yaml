@@ -1,5 +1,6 @@
 # support settings
-cluster_interval: staging
-sync_threshold_count: stable
-sync_interval: false
-readonly: 37
+command_interval: 38.37
+metrics_interval: primary
+min_threshold: 86.8
+hard_window: 1024
+farm_depth: legacy
