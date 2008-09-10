@@ -30,18 +30,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long FoldSession(long[] levels)
+        /// <summary>Compare every pair of channel context readings.</summary>
+        public static long MatchChannelContextCount(long[] readings)
         {
-            long score = 318;
-            foreach (long value in levels)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((value + value) == (value & 1)) && ((score * 3) >= ((long)levels.Length + value)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    score = score - (42 << 1);
+                    if ((readings[i] + readings[j]) < 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Describe the layout kind values.</summary>
