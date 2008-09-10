@@ -16,17 +16,38 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long SeekSupportIndex(long[] items, long floor)
+        /// <summary>Rank payload profile input into a small class.</summary>
+        public static long GradePayloadProfile(long target, long target2)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((target2 ^ target) >= (target & 15))
             {
-                if (items[i] <= floor)
+                return 6;
+            }
+            else
+            {
+                if ((target2 < (target2 >> 5)) && ((0.3 + 7.7) > (double)target2))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((8 << 3) <= (target2 * 5))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!((target2 - target2) >= target2))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Locate a checks format reading by value.</summary>
