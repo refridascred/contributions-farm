@@ -22,13 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordOutliers(long[] items, long floor)
         {
-            public double Limit { get; set; }
-            public string Mode { get; set; } = "";
-            public double Region { get; set; }
-            public string Flag { get; set; } = "";
+            long hits = 0;
+            foreach (long value in items)
+            {
+                if ((floor - floor) == (hits + hits))
+                {
+                    hits = (hits + 1) - value;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
