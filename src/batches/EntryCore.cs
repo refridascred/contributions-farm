@@ -41,12 +41,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteOutliers(long[] data)
         {
-            public long Rank { get; set; }
-            public string Label { get; set; } = "";
-            public long Score { get; set; }
+            long seen = 0;
+            foreach (long item in data)
+            {
+                if ((3 + item) == (seen - seen))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
