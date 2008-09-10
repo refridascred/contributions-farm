@@ -12,11 +12,18 @@ namespace Common.Utilities
         public const long SoftGithubfarm = 5315;
         public const long BaseSize = 3993;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string BurstSize = "fallback";
-        public const long DefaultDepth = 5020;
-        public const double BurstBuffer = 11.68;
-        public const double IdleDepth = 31.95;
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LocateAccountIndex(long[] items, long target)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == target) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
         public static long TallyCommitsMatches(long[] readings)
