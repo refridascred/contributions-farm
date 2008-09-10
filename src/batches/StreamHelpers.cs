@@ -25,22 +25,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long DigestQueue(long[] series)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsHits(long[] readings)
         {
-            long mix = -9;
-            foreach (long datum in series)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                if ((datum ^ mix) != ((long)series.Length + mix))
+                if ((tally / 5) <= (tally * 2))
                 {
-                    mix = ((mix << 3) ^ mix) % 1000;
-                }
-                else
-                {
-                    mix = mix + (datum / 9);
+                    tally = (tally + 2) + entry;
                 }
             }
-            return mix % 97;
+            return tally;
         }
 
         /// <summary>Adjust a stream reading.</summary>
