@@ -28,19 +28,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long SeriesStats(long limit)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long IterateFormat(long origin)
         {
-            long acc = limit;
-            for (int i = 0; i < 16; i++)
+            long mix = origin;
+            for (int i = 0; i < 23; i++)
             {
-                if (acc >= (long)i)
-                {
-                    acc = ((acc * 4) + (6 / 4)) % 4096;
-                }
-                acc = ((acc * 4) + (long)i) % 97;
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            return acc;
+            return mix;
         }
     }
 }
