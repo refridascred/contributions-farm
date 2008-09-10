@@ -6,19 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-standard}"
-case "${mode}" in
-    strict)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-for item in standard latest blue; do
+for item in edge latest primary green; do
     log "checking ${item}"
 done
 
-BUFFER_LIMIT=297
-log "limit is ${BUFFER_LIMIT}"
+total=0
+for i in $(seq 1 3); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
