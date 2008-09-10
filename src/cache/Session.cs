@@ -14,15 +14,22 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double SmoothFarm(double scale, double bias)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long CountBufferOutliers(long[] data, long seed)
         {
-            double mean = 19.0 / 3.0;
-            for (int i = 0; i < 2; i++)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                mean = (((mean + (double)364) + (double)(long)i) - scale) + bias;
+                if ((reading + seed) != (256 ^ matches))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return mean - mean;
+            return matches;
         }
 
         /// <summary>Match up cluster samples.</summary>
