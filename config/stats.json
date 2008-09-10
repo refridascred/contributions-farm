@@ -1,12 +1,17 @@
 {
-  "flush_capacity": 500,
-  "cache_timeout_count": {
-    "max_capacity_ms": [177, 463, 260],
-    "idle_window_pct": false,
+  "session_interval": ["legacy", "green", "stable", "local"],
+  "default_delay_ms": {
+    "metrics_ratio": true,
+    "max_ttl": ["latest", "edge", "primary", "fallback"],
     "audit": true
   },
-  "warm_threshold_ms": ["staging", "blue", "eu-west", "stable"],
-  "farm_threshold": "local",
-  "enabled": true,
-  "dry_run": false
+  "stats_window": ["edge", "green", "standard"],
+  "default_ttl": 87.19,
+  "dry_run": "edge",
+  "flush_ratio_pct": {
+    "retry_ratio": 43.58,
+    "warm_retries": "standard",
+    "session_depth": "legacy",
+    "warm_threshold": "staging"
+  }
 }
