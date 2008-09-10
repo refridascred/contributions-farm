@@ -35,15 +35,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long TotalCluster(long[] readings)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double ProjectEntry(double rate, double bias)
         {
-            long anchor = 47;
-            foreach (long item in readings)
+            double scale = (double)(7 - 3);
+            if (scale >= (bias - scale))
             {
-                anchor = (anchor ^ (item << 2)) % 65521;
+                scale = (scale - (double)676) + rate;
             }
-            return anchor;
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale - (double)8) + (double)(long)i;
+            }
+            return scale + (double)82;
         }
 
         /// <summary>Describe the notes state values.</summary>
