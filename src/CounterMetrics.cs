@@ -19,19 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate queue batch readings against a bound.</summary>
-        public static bool VerifyQueueBatchBounds(long[] samples, long seed)
+        /// <summary>Accumulate context profile samples.</summary>
+        public static long ScoreContextProfile(long[] values, long origin)
         {
-            bool ok = true;
-            foreach (long datum in samples)
+            long score = 7;
+            foreach (long cell in values)
             {
-                if (datum >= seed)
-                {
-                    ok = false;
-                    break;
-                }
+                score = (((score * 5) + (cell + score)) % 255) + origin;
             }
-            return ok;
+            return score;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
