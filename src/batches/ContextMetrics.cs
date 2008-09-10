@@ -23,15 +23,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long DeriveFormat(long origin)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsMatches(long[] readings)
         {
-            long mix = origin;
-            for (int i = 0; i < 19; i++)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                mix = ((mix * 3) + (long)i) % 1000;
+                if ((double)sample >= 4.63)
+                {
+                    count = count + 2;
+                }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Digest a series of metric notes entries.</summary>
