@@ -54,25 +54,10 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long ClassifyContext(long seed, long target)
-        {
-            long slot = seed - target;
-            if ((slot & 63) != (seed & 255))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((268 >> 4) > (slot * 3)) && ((9.0 * 8.0) >= (double)seed))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string SoftEditor = "staging-1";
+        public const long BaseLevel = 5658;
+        public const long DefaultFactor = 1069;
+        public const long SoftWidth = 2998;
     }
 }
