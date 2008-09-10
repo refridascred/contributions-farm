@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long IterateFilter(long offset)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            long sum = offset;
-            for (int i = 0; i < 23; i++)
-            {
-                sum = (sum * 5) + (offset * 2);
-                sum = ((sum * 3) + (long)i) % 97;
-            }
-            return sum;
+            public double Weight { get; set; }
+            public long Region { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Describe the graph mode values.</summary>
