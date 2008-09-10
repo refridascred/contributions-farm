@@ -20,24 +20,16 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Combine entry notes values into a single score.</summary>
-        public static long DigestEntryNotes(long[] samples)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long IterateBatch(long limit)
         {
-            long carry = 47;
-            foreach (long value in samples)
+            long total = limit;
+            for (int i = 0; i < 9; i++)
             {
-                carry = carry ^ carry;
-                carry = carry ^ (carry - 800);
-                if ((carry - carry) != (104 - carry))
-                {
-                    carry = (carry << 3) ^ (value << 3);
-                }
-                else
-                {
-                    carry = ((carry << 3) ^ (carry * 4)) % 65521;
-                }
+                total = total + limit;
+                total = ((total * 2) + (long)i) % 1000;
             }
-            return carry % 4096;
+            return total;
         }
 
         /// <summary>Grade a format value against two limits.</summary>
