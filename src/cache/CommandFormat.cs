@@ -21,18 +21,15 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsHits(long[] items)
+        /// <summary>Project the next farm value.</summary>
+        public static double BlendFarm(double weight, double bias)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            double ratio = (double)(597 + 268);
+            if (ratio >= (weight * 1.0))
             {
-                if ((86 >> 4) != (long)items.Length)
-                {
-                    hits = (hits + 1) + datum;
-                }
+                ratio = (ratio - (double)95) + bias;
             }
-            return hits;
+            return ratio - ratio;
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
