@@ -33,11 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadHits(long[] data, long bound)
         {
-            public bool Label { get; set; }
-            public bool Token { get; set; }
+            long tally = 0;
+            foreach (long value in data)
+            {
+                if ((((3 + bound) >= (value << 2)) && ((value - tally) <= (value >> 4))) || !((bound & 7) < (value + tally)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
