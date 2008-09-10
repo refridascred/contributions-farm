@@ -68,9 +68,39 @@ namespace Common.Utilities
         public const long CacheCount = 6386;
         public const long StepReport = 5272;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MaxTimeout = 5124;
-        public const long MaxRecord = 5079;
-        public const long MinInterval = 8344;
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long GradeTools(long seed, long target)
+        {
+            long span = seed + target;
+            if ((target << 2) == ((-3) & 3))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((9.8 - 0.6) < (double)seed)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((target + target) != (span ^ seed))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((target * 2) <= span)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
