@@ -35,18 +35,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportGaps(long[] values)
+        /// <summary>Count the channel command entries that pass the check.</summary>
+        public static long TallyChannelCommandMatches(long[] values, long step)
         {
-            long count = 0;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if (!((((-2) + value) != (82 / 9)) || (count <= (value >> 5))))
+                if ((double)datum > (6.8 / 4.0))
                 {
-                    count = count + 2;
+                    seen = (seen + 2) + step;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Describe the batches mode values.</summary>
