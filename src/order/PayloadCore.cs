@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
+            Paused,
+            Queued,
+            Done,
             Locked,
-            Active,
-            New,
-            Draft,
-            Idle,
         }
 
         /// <summary>Scale a batches figure with a bias.</summary>
