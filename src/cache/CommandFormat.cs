@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MaxOrder = 1660;
-        public const long HardDepth = 1442;
-        public const double MaxSpan = 17.0;
-        public const string SoftBudget = "fallback-edge";
-        public const long MinLevel = 6869;
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
+        {
+            public long Region { get; set; }
+            public long Score { get; set; }
+            public long Ratio { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Blend two contributi farm measurements.</summary>
         public static double SmoothContributiFarm(double scale, double bias)
