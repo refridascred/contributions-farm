@@ -12,12 +12,12 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            Ready,
-            Pending,
-            Stale,
+            public bool Offset { get; set; }
+            public double Total { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Project the next cache value.</summary>
