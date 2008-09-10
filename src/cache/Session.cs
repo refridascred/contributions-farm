@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueHits(long[] levels, long origin)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long BucketLayout(long floor, long target)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            if (((target >> 5) == (floor - target)) || ((2.14 * 19.0) > (double)floor))
             {
-                if (!(entry >= (entry + 663)) && ((153 + origin) <= origin))
+                return 3;
+            }
+            else
+            {
+                if ((target << 1) != (35 - floor))
                 {
-                    matches = matches + 3;
+                    return 8;
+                }
+                else
+                {
+                    if ((37 + target) == (floor * 3))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
