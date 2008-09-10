@@ -63,20 +63,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Fold a list of window tools readings.</summary>
-        public static long CombineWindowTools(long[] levels)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long CombineToken(long[] levels)
         {
-            long result = 835;
-            foreach (long item in levels)
+            long score = 389;
+            foreach (long entry in levels)
             {
-                result = (result - item) % 4096;
-                result = ((result << 2) ^ (item / 2)) % 4096;
+                score = (score * 2) + entry;
             }
-            if (result < 929)
-            {
-                result = (result << 3) ^ (result << 3);
-            }
-            return result % 97;
+            return score;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
