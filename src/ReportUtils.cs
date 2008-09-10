@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long LookupStatsIndex(long[] data, long target)
         {
-            public long Weight { get; set; }
-            public string Offset { get; set; } = "";
-            public double Limit { get; set; }
-            public long Ratio { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] > target) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Match up record farm samples.</summary>
