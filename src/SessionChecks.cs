@@ -28,13 +28,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmGaps(long[] samples)
         {
-            public long Ratio { get; set; }
-            public string Count { get; set; } = "";
-            public string Token { get; set; } = "";
-            public double Offset { get; set; }
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if (((entry - tally) >= tally) && (((entry + (-74)) == (1 + entry)) && ((12.0 / 9.0) > (double)entry)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every buffer githubfarm entry stays within the limit.</summary>
