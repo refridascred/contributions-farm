@@ -25,17 +25,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a token graph sample.</summary>
-        public static long SeekTokenGraphIndex(long[] levels, long step)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long CountRecordGaps(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                if (levels[i] <= step)
+                if ((double)tally < (10.0 * 1.7))
                 {
-                    return (long)i;
+                    tally = (tally + 1) ^ sample;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
