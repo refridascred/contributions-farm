@@ -1,10 +1,7 @@
 {
-  "hard_depth_count": 29,
-  "retry_ratio_s": {
-    "counter_interval": "latest",
-    "burst_limit_ms": 84,
-    "persist": [487, 282]
-  },
-  "cluster_interval": "strict",
-  "readonly": "latest"
+  "max_delay_count": "edge",
+  "support_depth": 22.74,
+  "strict": "edge",
+  "soft_depth": true,
+  "retry_threshold": ["strict", "cached", "cached"]
 }
