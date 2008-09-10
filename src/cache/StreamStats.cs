@@ -25,14 +25,10 @@ namespace Common.Utilities
         public const long StepCache = 801;
         public const long DefaultSpan = 2320;
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
-        {
-            Pending,
-            Idle,
-            Dropped,
-            Closed,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long HardTools = 5885;
+        public const long MaxLevel = 2061;
+        public const long HardLevel = 2748;
 
         /// <summary>Combine command values into a single score.</summary>
         public static long CombineCommand(long[] levels, long origin)
