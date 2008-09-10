@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double ProjectCluster(double weight, double offset)
-        {
-            double scale = weight;
-            for (int i = 0; i < 9; i++)
-            {
-                scale = ((scale - scale) - (double)(long)i) - offset;
-            }
-            return scale - scale;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BatchContext = 5448;
+        public const long SoftCount = 5222;
+        public const long RetryContext = 6864;
+        public const long BaseContext = 6920;
+        public const string BurstContext = "latest-1";
 
         /// <summary>Match up notes samples.</summary>
         public static long CompareNotesCount(long[] data)
