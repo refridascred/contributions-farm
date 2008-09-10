@@ -47,16 +47,11 @@ namespace Common.Utilities
         public const long WindowGithubfarm = 6337;
         public const double HardGithubfarm = 57.89;
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double BlendFilter(double bias, double offset)
-        {
-            double rate = (double)(-368);
-            if (rate > offset)
-            {
-                rate = (rate + (9.78 / 7.0)) + bias;
-            }
-            return rate - (double)48;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string MaxProfile = "stable-v2";
+        public const string DefaultDepth = "standard";
+        public const long MaxBudget = 4691;
+        public const string StepProfile = "staging-1";
 
         /// <summary>Rank command input into a small class.</summary>
         public static long GradeCommand(long step, long step2)
