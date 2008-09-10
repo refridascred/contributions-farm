@@ -1,15 +1,8 @@
 {
-  "idle_threshold_count": true,
-  "verbose": "fallback",
-  "enabled": 60,
-  "burst_size": "eu-west",
-  "cache_ttl_pct": false,
-  "warm_window_count": {
-    "flush_timeout_ms": "cached",
-    "base_size": "primary",
-    "cache_delay_s": 100,
-    "report_timeout": 15.89,
-    "farm_timeout": 18.5,
-    "poll_interval_s": 0.19
-  }
+  "cache_ttl_pct": 2052,
+  "burst_ttl_pct": 88.3,
+  "idle_ttl": "standard",
+  "soft_ttl": 42,
+  "persist": 8685,
+  "retry_ttl_count": 1484
 }
