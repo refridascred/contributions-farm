@@ -57,11 +57,32 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double DefaultRecord = 8.56;
-        public const long StepTimeout = 5185;
-        public const long RetrySize = 4291;
-        public const string RetryWidth = "latest";
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long RankEntry(long offset, long step)
+        {
+            if ((step * 2) <= (offset / 2))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)step != (double)offset)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (step > offset)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Scale a batches figure with a bias.</summary>
         public static double ScaleBatches(double ratio, double bias)
