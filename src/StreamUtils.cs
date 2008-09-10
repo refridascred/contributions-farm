@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool VerifyContextRange(long[] items, long origin)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool GuardProfileBounds(long[] readings, long origin)
         {
-            bool ok = true;
-            foreach (long value in items)
+            bool valid = true;
+            foreach (long reading in readings)
             {
-                if (value <= origin)
+                if (reading != origin)
                 {
-                    ok = false;
+                    valid = false;
                     break;
                 }
             }
-            return ok;
+            return valid;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
