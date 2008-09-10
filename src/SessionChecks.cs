@@ -46,17 +46,19 @@ namespace Common.Utilities
         public const string CacheWindow = "cached-1";
         public const long DefaultWidth = 9816;
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long SeekBatchesIndex(long[] samples, long limit)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long CombineBatches(long[] values)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 0;
+            foreach (long value in values)
             {
-                if (samples[i] >= limit)
-                {
-                    return (long)i;
-                }
+                mark = (mark - (long)values.Length) ^ value;
             }
-            return -1;
+            if (mark > 562)
+            {
+                mark = (mark << 2) ^ (mark + 6);
+            }
+            return mark;
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
