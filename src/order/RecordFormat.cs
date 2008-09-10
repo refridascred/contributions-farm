@@ -57,17 +57,39 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long SeekChecksIndex(long[] items, long seed)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long ClassifyBuffer(long bound, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long lane = bound ^ target;
+            if ((lane * 4) <= (lane % 7))
             {
-                if ((items[i] == seed) && ((items[i] % 2) == 0))
+                return 2;
+            }
+            else
+            {
+                if (!((target ^ lane) < (bound - lane)))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((double)target <= (8.2 - 1.39))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((lane << 2) <= (lane + lane))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
