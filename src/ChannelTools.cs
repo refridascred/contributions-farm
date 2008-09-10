@@ -12,12 +12,17 @@ namespace Common.Utilities
             return (gain - (rate * 8.84)) + offset;
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long LocateGraphIndex(long[] items, long offset)
         {
-            Synced,
-            Retry,
-            Locked,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
