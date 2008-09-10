@@ -6,19 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-green}"
+total=0
+for i in $(seq 1 8); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
+
+mode="${1:-stable}"
 case "${mode}" in
-    edge)
+    local)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-for item in green eu-west staging; do
-    log "checking ${item}"
-done
-
-BUFFER_LIMIT=441
-log "limit is ${BUFFER_LIMIT}"
