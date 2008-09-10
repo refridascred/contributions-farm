@@ -1,7 +1,7 @@
-id,rank,owner,weight,score
-1,55.37,staging,501,716
-2,strict,0,fallback,557
-3,open,blue,85.56,741
-4,local,59.48,5.27,primary
-5,fallback,28.11,523,489
-6,primary,665,943,2.72
+id,count,level,rank,owner
+1,636,legacy,69.64,88.0
+2,83.59,308,903,387
+3,595,open,607,latest
+4,678,4.28,25.15,987
+5,98.07,latest,local,573
+6,791,91.37,570,legacy
