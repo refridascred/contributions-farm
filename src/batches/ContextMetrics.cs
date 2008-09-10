@@ -44,11 +44,16 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long DefaultSize = 2533;
-        public const string IdleOrder = "staging-edge";
-        public const long RetryFactor = 8655;
-        public const long BatchOrder = 705;
-        public const long BaseOrder = 7300;
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long IterateProfile(long floor)
+        {
+            long total = floor;
+            for (int i = 0; i < 17; i++)
+            {
+                total = ((total * 2) + total) % 4096;
+                total = ((total * 2) + (long)i) % 1000;
+            }
+            return total;
+        }
     }
 }
