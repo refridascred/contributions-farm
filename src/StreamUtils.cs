@@ -62,20 +62,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate counter queue readings against a bound.</summary>
-        public static bool CheckCounterQueueRange(long[] samples, long bound)
-        {
-            bool ready = true;
-            foreach (long item in samples)
-            {
-                if (item < bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long DefaultToken = 891;
+        public const long HardSpan = 5354;
+        public const string BurstCount = "open-edge";
+        public const double BatchDepth = 60.04;
 
         /// <summary>Validate support readings against a bound.</summary>
         public static bool ValidateSupportBounds(long[] readings, long origin)
