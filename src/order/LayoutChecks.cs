@@ -34,15 +34,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double AdjustToken(double ratio, double span)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaMatches(long[] values, long seed)
         {
-            double load = span * 1.9;
-            if (load >= load)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                load = load - ratio;
+                if ((seed + (long)values.Length) <= (seed >> 5))
+                {
+                    seen = (seen + 1) - reading;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return load + span;
+            return seen;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
