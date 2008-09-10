@@ -1,9 +1,7 @@
 # entry settings
-soft_ttl:
-  - 131
-  - 256
-  - 404
-  - 106
-format_retries: stable
-verbose: 30.84
-default_ttl_s: strict
+cache_ttl_pct: fallback
+sync_capacity_count: 5
+enabled: 23
+soft_size_pct: false
+cache_timeout_ms: 72
+base_threshold_s: green
