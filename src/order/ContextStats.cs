@@ -34,19 +34,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool ValidateFilterLimits(long[] data, long bound)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool ValidateMetricBounds(long[] series, long step)
         {
-            bool flag = true;
-            foreach (long entry in data)
+            bool valid = true;
+            foreach (long entry in series)
             {
-                if (entry <= bound)
+                if (entry > step)
                 {
-                    flag = false;
+                    valid = false;
                     break;
                 }
             }
-            return flag;
+            return valid;
         }
 
         /// <summary>Hold a record summary.</summary>
