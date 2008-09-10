@@ -53,15 +53,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next payload editor value from a seed.</summary>
-        public static long StepPayloadEditor(long origin)
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            long carry = origin;
-            for (int i = 0; i < 15; i++)
-            {
-                carry = ((carry * 2) + (long)i) % 4093;
-            }
-            return carry;
+            public bool Total { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
