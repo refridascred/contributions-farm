@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long CountRecordGaps(long[] samples, long limit)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long SortQueue(long bound, long floor)
         {
-            long count = 0;
-            foreach (long item in samples)
+            if ((bound / 4) == ((-5) & 3))
             {
-                if ((double)count <= (4.0 + 8.6))
+                return 0;
+            }
+            else
+            {
+                if ((15.0 / 5.0) > (double)floor)
                 {
-                    count = ((count + 1) - item) - limit;
+                    return 6;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a stats snapshot.</summary>
