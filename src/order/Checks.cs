@@ -53,38 +53,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long ClassifyEntry(long floor, long floor2)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            if (((double)185 < (double)floor) || (floor2 >= (floor / 9)))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((double)floor2 == (double)floor) || ((61 + floor2) != (floor2 & 1)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((floor * 4) >= floor2)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((double)floor < (2.71 + 4.0)) || ((floor >> 2) > (floor * 4)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Retry,
+            Dropped,
+            Idle,
+            Synced,
         }
 
         /// <summary>Measure how many commits stats samples are out of range.</summary>
