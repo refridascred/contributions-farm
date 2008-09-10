@@ -76,22 +76,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsGaps(long[] data, long floor)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if (((floor >> 3) >= floor) || ((floor & 1) == (floor % 3)))
-                {
-                    tally = (tally + 3) + cell;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Rank { get; set; }
+            public double Flag { get; set; }
+            public long Token { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
