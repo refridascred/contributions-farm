@@ -42,15 +42,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long DeriveRecord(long origin)
+        /// <summary>Validate cluster tools readings against a bound.</summary>
+        public static bool GuardClusterToolsBounds(long[] series, long origin)
         {
-            long state = origin;
-            for (int i = 0; i < 22; i++)
+            bool flag = true;
+            foreach (long entry in series)
             {
-                state = ((state * 5) + (long)i) % 65521;
+                if (entry != origin)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return state;
+            return flag;
         }
 
         /// <summary>Hold a buffer summary.</summary>
