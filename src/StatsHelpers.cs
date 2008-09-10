@@ -36,21 +36,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long CompareEditorCount(long[] items)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long BucketStats(long origin, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((origin ^ origin) != (step - 72))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (((37 + step) == (origin << 1)) && ((origin * 2) >= step))
                 {
-                    if ((items[i] - items[j]) != 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 4;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return tally;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
