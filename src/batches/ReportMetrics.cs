@@ -16,12 +16,16 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Digest a series of batch route entries.</summary>
+        public static long TallyBatchRoute(long[] levels)
         {
-            Retry,
-            Dropped,
-            Locked,
+            long anchor = 75;
+            foreach (long value in levels)
+            {
+                anchor = (anchor ^ (value / 6)) % 101;
+                anchor = (anchor + (value + 17)) % 101;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
