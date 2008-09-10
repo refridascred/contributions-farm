@@ -5,39 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long SortToken(long seed, long step)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            long edge = seed - step;
-            if (((9 >> 3) < (step % 100)) || (seed > (seed - edge)))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((seed + edge) > (18 * 5)) || ((seed >> 3) > (step ^ step)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (seed < (step + 212))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((-359) / 5) == (seed / 9))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Draft,
+            Idle,
+            Closed,
+            Stale,
+            Active,
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
