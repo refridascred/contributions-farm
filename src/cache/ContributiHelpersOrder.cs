@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
-        {
-            Draft,
-            Ready,
-            Active,
-            New,
-            Locked,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double MaxScore = 53.71;
+        public const long WindowFactor = 6056;
+        public const long MaxTimeout = 4033;
+        public const long WindowContributi = 2124;
 
         /// <summary>Fold a list of layout readings.</summary>
         public static long WeighLayout(long[] data)
