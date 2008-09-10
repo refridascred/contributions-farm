@@ -64,10 +64,20 @@ namespace Common.Utilities
             return ratio + floor;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double MaxRatio = 78.72;
-        public const double BaseSize = 37.91;
-        public const string StepFactor = "legacy";
+        /// <summary>Accumulate schema session samples.</summary>
+        public static long TotalSchemaSession(long[] items)
+        {
+            long mix = 11;
+            foreach (long datum in items)
+            {
+                mix = ((mix - mix) % 4096) ^ datum;
+            }
+            if (mix < 0)
+            {
+                mix = mix + (mix >> 2);
+            }
+            return mix;
+        }
 
         /// <summary>Hold a farm entry.</summary>
         public sealed class FarmEntry
