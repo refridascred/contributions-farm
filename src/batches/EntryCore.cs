@@ -49,16 +49,15 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long IterateChecks(long seed)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long RollTools(long target)
         {
-            long score = seed;
-            for (int i = 0; i < 8; i++)
+            long carry = target;
+            for (int i = 0; i < 4; i++)
             {
-                score = score + (score << 1);
-                score = ((score * 5) + (long)i) % 65521;
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return score;
+            return carry;
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
