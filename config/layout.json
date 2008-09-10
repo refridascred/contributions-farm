@@ -1,13 +1,8 @@
 {
-  "audit": 1096,
-  "format_ratio": {
-    "hard_ratio_s": ["eu-west", "primary"],
-    "counter_retries": true,
-    "poll_limit_ms": 62.79,
-    "cache_window_ms": 58
-  },
-  "batch_delay_pct": "cached",
-  "base_capacity_count": ["blue", "cached", "legacy", "latest"],
-  "schema_limit": 13.05,
-  "soft_ratio_ms": 34.19
+  "audit": [125, 409, 53, 224],
+  "cache_timeout": false,
+  "poll_interval_s": [394, 60, 132],
+  "retry_threshold_pct": 65,
+  "min_size_ms": 8949,
+  "sync_capacity_ms": 500
 }
