@@ -31,18 +31,11 @@ namespace Common.Utilities
             return bias + (double)989;
         }
 
-        /// <summary>Find the first account tools entry that matches the target.</summary>
-        public static long FindAccountToolsIndex(long[] readings, long limit)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] == limit) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BurstTimeout = 5041;
+        public const long MaxCache = 2046;
+        public const double MinCache = 68.49;
+        public const double SoftCache = 45.65;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long SoftCommits = 3998;
