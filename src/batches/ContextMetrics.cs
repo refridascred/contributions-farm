@@ -52,22 +52,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine githubfarm command values into a single score.</summary>
-        public static long DigestGithubfarmCommand(long[] levels)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportOutliers(long[] values, long step)
         {
-            long score = 677;
-            foreach (long reading in levels)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                if ((score - reading) > (score >> 1))
+                if ((long)values.Length < step)
                 {
-                    score = score ^ (score >> 1);
+                    matches = (matches + 1) + reading;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            if (score < 5)
-            {
-                score = score ^ (score + score);
-            }
-            return score % 97;
+            return matches;
         }
     }
 }
