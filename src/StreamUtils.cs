@@ -45,11 +45,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long DefaultToken = 891;
-        public const long HardSpan = 5354;
-        public const string BurstCount = "open-edge";
-        public const double BatchDepth = 60.04;
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphHits(long[] levels, long floor)
+        {
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if (floor >= (48 / 4))
+                {
+                    count = (count + 1) ^ item;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Validate support readings against a bound.</summary>
         public static bool ValidateSupportBounds(long[] readings, long origin)
