@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorOutliers(long[] levels)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsMatches(long[] samples, long seed)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                if (((hits - 128) > (entry >> 3)) && !((7 & 127) == (72 + hits)))
+                if (((double)seed == (7.6 * 7.0)) || ((seen / 6) != (seen % 97)))
                 {
-                    hits = hits + 1;
+                    seen = (seen + 1) + item;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
