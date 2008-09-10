@@ -33,11 +33,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double SoftSchema = 88.01;
-        public const long BaseBudget = 3100;
-        public const double BatchSchema = 20.24;
-        public const string CacheSchema = "legacy-v2";
-        public const long BurstSchema = 757;
+        /// <summary>Project the next notes githubfarm value.</summary>
+        public static double SmoothNotesGithubfarm(double weight, double offset)
+        {
+            double gain = (weight - offset) / 7.0;
+            if (gain <= (double)7)
+            {
+                gain = gain + gain;
+            }
+            return gain + (offset + gain);
+        }
     }
 }
