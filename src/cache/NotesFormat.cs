@@ -32,10 +32,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long LimitMetrics = 5880;
-        public const long BatchMetrics = 6717;
-        public const long HardScore = 8305;
-        public const double DefaultMetrics = 59.08;
+        /// <summary>Project the next editor value.</summary>
+        public static double AdjustEditor(double bias, double offset)
+        {
+            double load = (double)(84 + 9);
+            if (load <= (double)463)
+            {
+                load = (load - bias) + offset;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load + (double)1) + (double)(long)i;
+            }
+            return load - (double)3;
+        }
     }
 }
