@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long TotalQueue(long[] data)
+        /// <summary>Project the next contributi value.</summary>
+        public static double SmoothContributi(double weight, double span)
         {
-            long mark = 13;
-            foreach (long cell in data)
+            double mean = (double)(130 ^ 650);
+            if (mean >= (mean * 8.0))
             {
-                mark = (mark * 5) + mark;
-                if ((13.0 / 9.0) >= (double)cell)
-                {
-                    mark = (mark + (cell + mark)) % 4096;
-                }
+                mean = (mean - (span - mean)) + weight;
             }
-            return mark;
+            return mean + (double)543;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
