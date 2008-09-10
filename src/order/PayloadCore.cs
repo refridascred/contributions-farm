@@ -32,22 +32,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of metric format entries.</summary>
-        public static long ScoreMetricFormat(long[] levels)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            long state = 20;
-            foreach (long value in levels)
-            {
-                if ((value + value) >= (9 << 2))
-                {
-                    state = state ^ (long)levels.Length;
-                }
-                if (!((5.4 / 3.0) <= (double)state))
-                {
-                    break;
-                }
-            }
-            return state % 1000;
+            Done,
+            Retry,
+            Pending,
         }
     }
 }
