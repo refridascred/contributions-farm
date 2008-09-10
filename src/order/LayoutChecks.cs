@@ -26,22 +26,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksOutliers(long[] data, long bound)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheGaps(long[] items, long seed)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long datum in items)
             {
-                if ((value + matches) != (matches + value))
+                if (!((datum - datum) != (seed & 31)) || !((19.0 - 0.15) <= (double)count))
                 {
-                    matches = (matches + 3) - bound;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    count = count + 3;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Count the contributi account entries that pass the check.</summary>
