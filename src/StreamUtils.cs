@@ -66,13 +66,12 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
-        {
-            Draft,
-            Retry,
-            Idle,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long WindowBatches = 7358;
+        public const string BatchBatches = "cached-v2";
+        public const string DefaultBatches = "strict-v2";
+        public const string BatchDepth = "stable";
+        public const long BaseBatches = 6703;
 
         /// <summary>Audit graph readings against a rule.</summary>
         public static long MeasureGraphHits(long[] levels, long floor)
