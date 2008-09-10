@@ -47,13 +47,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            Stale,
             Active,
+            Retry,
             Pending,
-            Locked,
         }
 
         /// <summary>Describe the profile phase values.</summary>
