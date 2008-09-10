@@ -11,17 +11,19 @@ namespace Common.Utilities
         public const long StepSpan = 6700;
         public const long BatchInterval = 5614;
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long LocateCommitsIndex(long[] values, long bound)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool CheckQueueBounds(long[] items, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool valid = true;
+            foreach (long entry in items)
             {
-                if (values[i] < bound)
+                if (entry > step)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Validate editor order readings against a bound.</summary>
