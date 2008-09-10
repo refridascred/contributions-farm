@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            public long Level { get; set; }
-            public long Rank { get; set; }
-            public double Mode { get; set; }
-            public long Label { get; set; }
+            public long Weight { get; set; }
+            public string Offset { get; set; } = "";
+            public double Limit { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Match up record farm samples.</summary>
