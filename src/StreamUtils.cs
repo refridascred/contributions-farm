@@ -78,22 +78,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiOutliers(long[] items, long limit)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool ValidateSupportBounds(long[] readings, long origin)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            bool found = true;
+            foreach (long reading in readings)
             {
-                if ((8.0 * 14.0) == (double)matches)
+                if (reading < origin)
                 {
-                    matches = ((matches + 1) - datum) - limit;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
     }
 }
