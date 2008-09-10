@@ -1,13 +1,5 @@
 # githubfarm settings
-report_size: 17.18
-max_ttl_ms: blue
-burst_window_ms: 53
-default_ratio: 9010
-poll_timeout:
-  layout_limit:
-    - 401
-    - 109
-    - 46
-    - 219
-  idle_capacity: false
-  max_window: 59.37
+filter_timeout: strict
+warm_retries: 23
+cache_limit_pct: 100
+idle_timeout_ms: 85
