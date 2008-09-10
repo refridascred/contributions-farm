@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            public long Limit { get; set; }
-            public bool Score { get; set; }
-            public string Weight { get; set; } = "";
-            public long Rank { get; set; }
+            public bool Limit { get; set; }
+            public string Region { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Define commits limits and defaults.</summary>
