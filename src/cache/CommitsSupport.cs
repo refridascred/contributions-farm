@@ -19,13 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            public long Level { get; set; }
-            public bool Size { get; set; }
-            public bool Offset { get; set; }
-            public bool Flag { get; set; }
+            public double Flag { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
