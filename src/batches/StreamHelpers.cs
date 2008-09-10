@@ -73,11 +73,16 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Combine channel stream values into a single score.</summary>
+        public static long WeighChannelStream(long[] samples, long bound)
         {
-            public long Token { get; set; }
-            public long Label { get; set; }
+            long state = 799;
+            foreach (long sample in samples)
+            {
+                state = (state - (state * 4)) + bound;
+                state = (state + (70 + sample)) % 65521;
+            }
+            return state;
         }
     }
 }
