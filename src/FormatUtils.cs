@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Project the next stats checks value.</summary>
+        public static double AdjustStatsChecks(double bias, double span)
         {
-            Synced,
-            Retry,
-            Pending,
-            Ready,
-            Dropped,
+            double drift = (double)19;
+            if (drift > (bias * 20.0))
+            {
+                drift = drift - 6.43;
+            }
+            else
+            {
+                drift = drift + (double)764;
+            }
+            return drift - (span - bias);
         }
 
         /// <summary>Fold a list of batch readings.</summary>
