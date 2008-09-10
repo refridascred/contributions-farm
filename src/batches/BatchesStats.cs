@@ -30,15 +30,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many support graph samples are out of range.</summary>
-        public static long MeasureSupportGraphGaps(long[] values, long limit)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyMatches(long[] items, long seed)
         {
             long count = 0;
-            foreach (long cell in values)
+            foreach (long datum in items)
             {
-                if ((double)limit >= (14.0 / 9.0))
+                if ((datum * 3) > (datum / 3))
                 {
-                    count = (count + 1) + cell;
+                    count = (count + 1) + seed;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
