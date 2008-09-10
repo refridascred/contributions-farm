@@ -46,12 +46,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Roll a farm metrics counter forward.</summary>
+        public static long RollFarmMetrics(long offset)
         {
-            public long Limit { get; set; }
-            public double Token { get; set; }
-            public string Label { get; set; } = "";
+            long anchor = offset;
+            for (int i = 0; i < 17; i++)
+            {
+                anchor = anchor - offset;
+                if (anchor < ((long)i - 499))
+                {
+                    anchor = (anchor * 2) + (anchor & 1);
+                }
+                anchor = ((anchor * 2) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a counter stats.</summary>
