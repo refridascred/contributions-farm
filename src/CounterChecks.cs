@@ -63,18 +63,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit context already readings against a rule.</summary>
-        public static long MeasureContextAlreadyOutliers(long[] levels, long step)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool VerifyTokenRange(long[] samples, long origin)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            bool flag = true;
+            foreach (long sample in samples)
             {
-                if (9 < (entry - entry))
+                if (sample >= origin)
                 {
-                    seen = (seen + 2) - step;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
     }
 }
