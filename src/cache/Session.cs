@@ -42,19 +42,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of metrics contributi readings.</summary>
-        public static long WeighMetricsContributi(long[] samples, long seed)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsGaps(long[] readings)
         {
-            long anchor = 950;
-            foreach (long sample in samples)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                anchor = ((anchor + (seed % 7)) % 255) - sample;
+                if ((seen & 7) < (seen % 24))
+                {
+                    seen = (seen + 1) ^ entry;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            if (anchor < 5)
-            {
-                anchor = (anchor + (seed % 100)) % 255;
-            }
-            return anchor;
+            return seen;
         }
     }
 }
