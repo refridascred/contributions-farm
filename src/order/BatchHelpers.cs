@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long ClassifyReport(long seed, long origin)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            long edge = seed - origin;
-            if ((edge > (origin << 3)) || ((0 + edge) > (origin + edge)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((edge ^ origin) <= edge))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public string Label { get; set; } = "";
+            public long Offset { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Adjust a graph window reading.</summary>
