@@ -16,26 +16,21 @@ namespace Common.Utilities
             return weight - 13.0;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TallyChecks(long[] series)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long CompareReportCount(long[] readings)
         {
-            long result = 408;
-            foreach (long item in series)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((result & 255) >= 58) || ((item + item) == (result - result)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    result = (result ^ item) % 4096;
-                }
-                if (result <= (item * 5))
-                {
-                    break;
+                    if ((readings[i] - readings[j]) > 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (result > (-88))
-            {
-                result = (result - (result >> 4)) % 4096;
-            }
-            return result;
+            return seen;
         }
 
         /// <summary>Compare every pair of stream filter readings.</summary>
