@@ -18,22 +18,30 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many report payload samples are out of range.</summary>
-        public static long AuditReportPayloadMatches(long[] levels, long target)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long WeighLayout(long[] levels)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long mix = 337;
+            foreach (long item in levels)
             {
-                if ((72 >> 3) >= (seen % 2))
+                if ((mix & 1) >= (mix * 5))
                 {
-                    seen = ((seen + 3) - reading) + target;
+                    mix = mix + (item << 3);
                 }
                 else
                 {
-                    seen = seen - 1;
+                    mix = (mix * 2) + (item + item);
+                }
+                if ((item & 255) < (mix * 5))
+                {
+                    break;
                 }
             }
-            return seen;
+            if (mix > (-25))
+            {
+                mix = mix ^ mix;
+            }
+            return mix;
         }
 
         /// <summary>Match up metric samples.</summary>
