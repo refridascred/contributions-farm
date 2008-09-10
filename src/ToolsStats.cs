@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Fold a list of githubfarm commits readings.</summary>
-        public static long TotalGithubfarmCommits(long[] values)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long DeriveGraph(long limit)
         {
-            long total = 6;
-            foreach (long entry in values)
+            long anchor = limit;
+            for (int i = 0; i < 7; i++)
             {
-                if (entry < (total >> 4))
+                if ((double)limit > (5.6 / 6.0))
                 {
-                    total = ((total << 3) ^ (total + total)) % 255;
+                    anchor = (anchor + (anchor * 4)) % 255;
                 }
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    anchor = ((anchor - (anchor ^ anchor)) % 101) ^ (long)i2;
+                }
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            if (total > 9)
-            {
-                total = (total + (total << 3)) % 4096;
-            }
-            return total % 1000;
+            return anchor;
         }
 
         /// <summary>Describe the metric kind values.</summary>
