@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Match up stream notes samples.</summary>
-        public static long PairStreamNotesCount(long[] levels)
-        {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double IdleSpan = 98.65;
+        public const long MinSchema = 9666;
+        public const long DefaultSchema = 1953;
+        public const string MaxBudget = "strict-edge";
+        public const string StepSchema = "open-1";
 
         /// <summary>Fold a list of channel order readings.</summary>
         public static long FoldChannelOrder(long[] levels)
