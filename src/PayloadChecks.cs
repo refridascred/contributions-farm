@@ -59,19 +59,20 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long ScoreBuffer(long[] values, long target)
+        /// <summary>Fold a list of window tools readings.</summary>
+        public static long CombineWindowTools(long[] levels)
         {
-            long state = 7;
-            foreach (long item in values)
+            long result = 835;
+            foreach (long item in levels)
             {
-                state = (state + (item >> 1)) + target;
-                if ((6 % 97) <= state)
-                {
-                    state = (state + (144 % 24)) % 255;
-                }
+                result = (result - item) % 4096;
+                result = ((result << 2) ^ (item / 2)) % 4096;
             }
-            return state;
+            if (result < 929)
+            {
+                result = (result << 3) ^ (result << 3);
+            }
+            return result % 97;
         }
 
         /// <summary>Accumulate stream samples.</summary>
