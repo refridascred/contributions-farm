@@ -23,11 +23,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Compare every pair of format session readings.</summary>
+        public static long OverlapFormatSessionCount(long[] series)
         {
-            public bool Limit { get; set; }
-            public double Ratio { get; set; }
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 5)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
