@@ -41,12 +41,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long RollCounter(long step)
         {
-            public long Token { get; set; }
-            public long Level { get; set; }
-            public long Offset { get; set; }
+            long mark = step;
+            for (int i = 0; i < 23; i++)
+            {
+                if ((8.23 + 1.74) <= (double)(long)i)
+                {
+                    mark = mark - mark;
+                }
+                mark = ((mark * 2) + (long)i) % 4093;
+            }
+            return mark;
         }
     }
 }
