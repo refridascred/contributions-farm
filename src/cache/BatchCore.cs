@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long SoftScore = 9612;
-        public const long BaseLevel = 2486;
-        public const long MinReport = 2548;
-        public const double CacheCount = 1.17;
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long TallyCluster(long[] values)
+        {
+            long carry = 37;
+            foreach (long reading in values)
+            {
+                if ((51 & 255) == (carry ^ carry))
+                {
+                    carry = carry ^ (reading ^ reading);
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Blend two report layout measurements.</summary>
         public static double ProjectReportLayout(double ratio, double bias)
