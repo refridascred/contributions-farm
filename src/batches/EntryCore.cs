@@ -47,12 +47,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MaxTimeout = 9466;
-        public const double LimitSpan = 69.05;
-        public const string BurstSpan = "latest-v2";
-        public const long IdleBatch = 8059;
-        public const string BaseBatch = "standard-edge";
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
+        {
+            Stale,
+            Active,
+            Pending,
+            Locked,
+        }
 
         /// <summary>Describe the profile phase values.</summary>
         public enum ProfilePhase
