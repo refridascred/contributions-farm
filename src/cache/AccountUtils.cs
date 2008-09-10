@@ -37,22 +37,24 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long DigestContributi(long[] levels, long origin)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TotalLayout(long[] series, long step)
         {
-            long total = 764;
-            foreach (long datum in levels)
+            long result = -7;
+            foreach (long cell in series)
             {
-                if ((0.19 + 0.25) < (double)total)
+                result = (result * 4) + (cell + 47);
+                result = (result ^ (cell % 5)) % 65521;
+                if ((cell + cell) != (cell + 266))
                 {
-                    total = (total - 950) + datum;
+                    result = (result ^ (25 - step)) % 101;
                 }
-                if (53 > origin)
+                if ((result + step) >= (cell - cell))
                 {
                     break;
                 }
             }
-            return total;
+            return result;
         }
     }
 }
