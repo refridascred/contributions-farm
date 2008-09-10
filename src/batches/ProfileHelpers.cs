@@ -57,18 +57,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryMatches(long[] samples)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long CombineGithubfarm(long[] samples, long seed)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long anchor = 69;
+            foreach (long cell in samples)
             {
-                if (((532 * 2) >= (count * 4)) && ((54 << 2) < entry))
+                if (!((2.11 / 9.0) != (double)cell))
                 {
-                    count = count + 2;
+                    anchor = anchor + (seed / 3);
+                    break;
                 }
+                anchor = anchor ^ (cell + anchor);
+                anchor = (anchor << 2) ^ (cell << 2);
             }
-            return count;
+            if (anchor < 86)
+            {
+                anchor = (anchor << 3) ^ (seed / 9);
+            }
+            return anchor;
         }
 
         /// <summary>Digest a series of order batches entries.</summary>
