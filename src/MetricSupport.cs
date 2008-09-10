@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TallyProfile(long[] levels, long bound)
+        /// <summary>Match up tools samples.</summary>
+        public static long MatchToolsCount(long[] values)
         {
-            long carry = 0;
-            foreach (long sample in levels)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = (carry ^ (bound * 2)) % 97;
-                if ((carry + carry) <= sample)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    break;
+                    if ((values[i] + values[j]) != 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Describe the window state values.</summary>
