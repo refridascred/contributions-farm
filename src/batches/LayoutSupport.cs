@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Match up githubfarm batch samples.</summary>
-        public static long MatchGithubfarmBatchCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MinCount = 6438;
+        public const long BatchScore = 7095;
+        public const long LimitBudget = 5606;
+        public const long BaseFactor = 9068;
+        public const double CacheDepth = 16.25;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long BurstMetric = 528;
