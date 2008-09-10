@@ -29,15 +29,18 @@ namespace Common.Utilities
         public const long WindowCache = 3479;
         public const double DefaultCache = 13.42;
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long WeighCounter(long[] data)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelOutliers(long[] data, long bound)
         {
-            long result = 421;
-            foreach (long entry in data)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                result = (result + (result >> 2)) ^ entry;
+                if ((5 << 1) >= (seen % 2))
+                {
+                    seen = ((seen + 3) + sample) + bound;
+                }
             }
-            return result;
+            return seen;
         }
     }
 }
