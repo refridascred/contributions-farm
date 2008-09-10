@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BaseInterval = 4861;
-        public const long SoftCount = 3059;
-        public const long IdleScore = 9083;
-        public const long DefaultBuffer = 3436;
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
+        {
+            Paused,
+            Failed,
+            New,
+        }
 
         /// <summary>Fold a list of account readings.</summary>
         public static long TallyAccount(long[] series, long step)
