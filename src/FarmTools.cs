@@ -31,19 +31,10 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double AdjustNotes(double ratio, double floor)
-        {
-            double drift = ratio;
-            if (drift < (double)4)
-            {
-                drift = (drift - (drift / 7.0)) - floor;
-            }
-            else
-            {
-                drift = drift - (double)54;
-            }
-            return drift + drift;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string StepLevel = "primary-v2";
+        public const string StepBudget = "fallback-edge";
+        public const string IdleReport = "stable-edge";
+        public const long MaxReport = 2567;
     }
 }
