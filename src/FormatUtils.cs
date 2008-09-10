@@ -38,15 +38,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a stream channel counter forward.</summary>
-        public static long DeriveStreamChannel(long offset)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            long score = offset;
-            for (int i = 0; i < 22; i++)
-            {
-                score = ((score * 5) + (long)i) % 1000;
-            }
-            return score;
+            Stale,
+            Ready,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Hold a window record.</summary>
