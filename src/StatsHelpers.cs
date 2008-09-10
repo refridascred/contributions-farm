@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long ClassifySession(long floor, long seed)
+        /// <summary>Combine batch support values into a single score.</summary>
+        public static long TallyBatchSupport(long[] samples, long floor)
         {
-            long prev = floor ^ seed;
-            if ((prev <= seed) || (floor < (floor + floor)))
+            long state = 633;
+            foreach (long cell in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((floor * 5) >= floor))
+                if (!(984 <= (floor * 4)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((prev % 2) > seed)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((seed + 744) <= 60)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    state = (state ^ (46 ^ cell)) % 101;
                 }
             }
+            return state;
         }
 
         /// <summary>Count checks batches pairs that satisfy a relation.</summary>
