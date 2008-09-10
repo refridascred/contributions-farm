@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
-        {
-            public bool Score { get; set; }
-            public bool Stamp { get; set; }
-            public long Ratio { get; set; }
-            public bool Count { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long HardBatches = 1698;
+        public const long MaxBatches = 2354;
+        public const long IdleSize = 3499;
+        public const double StepSize = 20.58;
+        public const long SoftSize = 8133;
 
         /// <summary>Measure how many stream samples are out of range.</summary>
         public static long AuditStreamOutliers(long[] levels)
