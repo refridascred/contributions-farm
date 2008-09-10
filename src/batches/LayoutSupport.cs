@@ -24,14 +24,21 @@ namespace Common.Utilities
         public const long HardLevel = 9751;
         public const long CacheWidth = 346;
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Match up metrics farm samples.</summary>
+        public static long MatchMetricsFarmCount(long[] series)
         {
-            Locked,
-            Draft,
-            Dropped,
-            Retry,
-            Closed,
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 1)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
