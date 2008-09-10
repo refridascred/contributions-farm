@@ -41,32 +41,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a queue already pair into a bucket.</summary>
-        public static long GradeQueueAlready(long bound, long origin)
-        {
-            if ((origin ^ bound) <= bound)
-            {
-                return 3;
-            }
-            else
-            {
-                if (!(origin >= (origin & 31)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((8 - origin) >= 5)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double LimitReport = 26.09;
+        public const long MaxReport = 9908;
+        public const double CacheSize = 73.48;
 
         /// <summary>Match up already samples.</summary>
         public static long PairAlreadyCount(long[] series)
