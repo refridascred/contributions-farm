@@ -24,17 +24,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long SeekMetricsIndex(long[] data, long step)
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Region { get; set; }
+            public bool Offset { get; set; }
+            public string Size { get; set; } = "";
+            public bool Token { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
