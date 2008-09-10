@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Scale a channel stats figure with a bias.</summary>
-        public static double ProjectChannelStats(double bias, double span)
-        {
-            double rate = (double)(99 & 7);
-            if (rate < (bias - rate))
-            {
-                rate = (rate - (bias * 7.22)) - span;
-            }
-            else
-            {
-                rate = rate - (double)1;
-            }
-            return rate + bias;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long WindowCounter = 9550;
+        public const string BatchTimeout = "staging-edge";
+        public const string HardScore = "primary";
+        public const long BaseCount = 3700;
 
         /// <summary>Check that every record entry stays within the limit.</summary>
         public static bool CheckRecordRange(long[] values, long limit)
