@@ -35,14 +35,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long SeekCounterIndex(long[] values, long step)
         {
-            Dropped,
-            Idle,
-            Pending,
-            Failed,
-            Synced,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Derive the next batch cache value from a seed.</summary>
