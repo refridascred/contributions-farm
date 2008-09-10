@@ -20,15 +20,18 @@ namespace Common.Utilities
             return scale - (double)910;
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double AdjustBatch(double weight, double floor)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowMatches(long[] values)
         {
-            double bias = weight;
-            if (bias > bias)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                bias = (bias - (bias + bias)) - floor;
+                if ((hits / 3) < (hits << 2))
+                {
+                    hits = (hits + 3) - datum;
+                }
             }
-            return bias - (double)1;
+            return hits;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
