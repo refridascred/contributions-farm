@@ -1,8 +1,12 @@
 {
-  "payload_interval": 46,
-  "already_ttl": true,
-  "warm_delay_pct": false,
-  "sync_delay_ms": 1573,
-  "cache_retries_s": 250,
-  "flush_ttl_count": 9066
+  "flush_interval_s": 80.29,
+  "support_ttl": {
+    "sync_depth": 1644,
+    "enabled": 61.7,
+    "default_retries": "green",
+    "cache_size_s": ["cached", "staging", "edge", "green"],
+    "max_ratio": "primary"
+  },
+  "batch_retries": ["strict", "legacy", "edge", "latest"],
+  "default_threshold": 93.15
 }
