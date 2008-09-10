@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowGaps(long[] series)
         {
-            Ready,
-            Paused,
-            Locked,
+            long count = 0;
+            foreach (long value in series)
+            {
+                if ((value % 12) < value)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
