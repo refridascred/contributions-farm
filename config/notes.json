@@ -1,16 +1,12 @@
 {
-  "warm_timeout": 16,
-  "persist": "local",
-  "base_interval_pct": {
-    "flush_capacity": 96.17,
-    "cache_depth": "open",
-    "cache_ratio": false,
-    "soft_ttl_ms": "local",
-    "max_limit_s": {
-      "default_depth_ms": [52, 179],
-      "persist": ["staging", "open", "standard", "primary"],
-      "token_ratio": 71.28
-    }
+  "cache_limit_pct": {
+    "warm_timeout": 60,
+    "poll_interval_ms": 8657,
+    "batch_size": 8032,
+    "idle_limit": 54,
+    "token_timeout": 6265
   },
-  "cache_timeout_s": false
+  "persist": ["cached", "staging", "strict", "latest"],
+  "idle_depth_s": 1024,
+  "default_ttl_ms": ["open", "edge", "edge"]
 }
