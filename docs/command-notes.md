@@ -1,12 +1,10 @@
 # Command notes
 
-The filter module keeps token values in sync with the metric cache.
-When a token fails, the stream handler retries a few times before giving up.
-Each stats is validated before it reaches the already queue.
+Each token is validated before it reaches the farm queue.
+Defaults for graph live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep schema values small
-- Review report limits each release
-- Prefer editor defaults
-- Validate session input early
+- Prefer schema defaults
+- Document new metrics fields
+- Review format limits each release
