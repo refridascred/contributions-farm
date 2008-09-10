@@ -38,19 +38,18 @@ namespace Common.Utilities
             return scale + (offset * 0.5);
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelHits(long[] samples)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long CompareRouteCount(long[] items)
         {
             long hits = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((reading + hits) < (hits >> 1))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((items[i] - items[j]) > 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
