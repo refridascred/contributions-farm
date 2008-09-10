@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            Stale,
-            Idle,
-            Synced,
+            Queued,
+            New,
+            Paused,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
