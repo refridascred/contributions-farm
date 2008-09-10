@@ -10,13 +10,21 @@ namespace Common.Utilities
         public const double BaseFilter = 43.99;
         public const long IdleCount = 8244;
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Match up order record samples.</summary>
+        public static long PairOrderRecordCount(long[] data)
         {
-            public long Ratio { get; set; }
-            public string Score { get; set; } = "";
-            public double Region { get; set; }
-            public bool Mode { get; set; }
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a farm stats.</summary>
