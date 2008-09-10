@@ -62,11 +62,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long SoftSpan = 291;
-        public const string LimitInterval = "open-1";
-        public const long BatchRatio = 8215;
-        public const long MinLevel = 9387;
-        public const long SoftBudget = 411;
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
+        {
+            Done,
+            Locked,
+            Queued,
+            Pending,
+        }
     }
 }
