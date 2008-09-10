@@ -25,18 +25,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferMatches(long[] samples)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiMatches(long[] items)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long hits = 0;
+            foreach (long value in items)
             {
-                if ((double)matches < (4.58 * 6.4))
+                if ((hits + value) >= (hits & 63))
                 {
-                    matches = (matches + 3) ^ value;
+                    hits = hits + 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
