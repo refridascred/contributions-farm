@@ -64,11 +64,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long LookupNotesIndex(long[] data, long origin)
         {
-            public double Mode { get; set; }
-            public long Label { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Derive the next counter stream value from a seed.</summary>
