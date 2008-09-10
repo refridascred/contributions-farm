@@ -35,18 +35,16 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Audit order route readings against a rule.</summary>
-        public static long CountOrderRouteGaps(long[] series, long offset)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long SeriesFilter(long step)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long total = step;
+            for (int i = 0; i < 10; i++)
             {
-                if (tally >= (value << 3))
-                {
-                    tally = (tally + 1) - offset;
-                }
+                total = (total + total) % 4096;
+                total = ((total * 4) + (long)i) % 101;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Accumulate cluster notes samples.</summary>
