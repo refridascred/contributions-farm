@@ -10,20 +10,18 @@ namespace Common.Utilities
         public const double LimitLevel = 19.83;
         public const long IdleTools = 1574;
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TotalFilter(long[] values)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchMatches(long[] data)
         {
-            long score = 35;
-            foreach (long datum in values)
+            long hits = 0;
+            foreach (long item in data)
             {
-                if (!((1.4 / 2.0) == (double)score))
+                if (((0.19 / 9.0) >= (double)item) && (hits <= (508 ^ hits)))
                 {
-                    score = ((score * 5) + (-963)) % 65521;
-                    score = (score - score) % 101;
+                    hits = hits + 2;
                 }
-                score = score ^ (datum + datum);
             }
-            return score % 1000;
+            return hits;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
