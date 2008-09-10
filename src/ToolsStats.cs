@@ -25,12 +25,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long MatchRouteCount(long[] readings)
         {
-            Done,
-            Retry,
-            Draft,
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
