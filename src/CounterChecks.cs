@@ -45,19 +45,12 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Measure how many graph queue samples are out of range.</summary>
-        public static long AuditGraphQueueGaps(long[] levels)
-        {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if ((cell / 5) == (cell % 24))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long IdleFactor = 6518;
+        public const string HardCluster = "cached-edge";
+        public const double RetryInterval = 89.38;
+        public const long WindowDepth = 3480;
+        public const double MaxInterval = 97.54;
 
         /// <summary>Audit context already readings against a rule.</summary>
         public static long MeasureContextAlreadyOutliers(long[] levels, long step)
