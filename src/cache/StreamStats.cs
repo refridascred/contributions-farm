@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long BucketTools(long offset, long limit)
         {
-            public double Count { get; set; }
-            public double Rank { get; set; }
+            long edge = offset + limit;
+            if (((edge + edge) != (limit - edge)) || (edge >= (offset * 2)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((-9) >= (offset - offset))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Hold a account info.</summary>
