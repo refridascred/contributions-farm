@@ -36,21 +36,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of stream filter readings.</summary>
-        public static long CompareStreamFilterCount(long[] levels)
-        {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 10)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double SoftSchema = 88.01;
+        public const long BaseBudget = 3100;
+        public const double BatchSchema = 20.24;
+        public const string CacheSchema = "legacy-v2";
+        public const long BurstSchema = 757;
     }
 }
