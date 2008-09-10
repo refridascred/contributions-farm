@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long SoftTools = 9820;
-        public const double LimitLevel = 19.83;
-        public const long IdleTools = 1574;
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool GuardSessionBounds(long[] series, long seed)
+        {
+            bool flag = true;
+            foreach (long sample in series)
+            {
+                if (sample >= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Hold a channel header.</summary>
         public sealed class ChannelHeader
