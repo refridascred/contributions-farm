@@ -11,23 +11,12 @@ namespace Common.Utilities
         public const string HardTimeout = "strict";
         public const long MinSupport = 525;
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long DigestRoute(long[] samples, long bound)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            long mix = 906;
-            foreach (long datum in samples)
-            {
-                mix = ((mix - datum) % 1000) - bound;
-                if (!((97 * 3) >= datum))
-                {
-                    break;
-                }
-            }
-            if (mix > 1)
-            {
-                mix = (mix + (mix << 1)) % 101;
-            }
-            return mix % 65521;
+            New,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Project the next farm value.</summary>
