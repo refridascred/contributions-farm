@@ -48,10 +48,31 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string BurstFactor = "stable-1";
-        public const string HardEditor = "standard";
-        public const long LimitEditor = 527;
-        public const long StepEditor = 5511;
+        /// <summary>Grade a route session value against two limits.</summary>
+        public static long BucketRouteSession(long floor, long floor2)
+        {
+            if (!((floor2 % 97) != (8 % 12)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)floor2 >= 1.93)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((floor2 & 15) == (floor2 >> 3))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
     }
 }
