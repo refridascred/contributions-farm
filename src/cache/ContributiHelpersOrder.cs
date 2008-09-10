@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Blend two already order measurements.</summary>
-        public static double AdjustAlreadyOrder(double scale, double offset)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterMatches(long[] samples)
         {
-            double drift = 2.26 * 6.7;
-            if (drift >= (offset * 9.0))
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                drift = (drift + offset) - scale;
+                if ((seen + seen) < seen)
+                {
+                    seen = (seen + 1) + cell;
+                }
             }
-            return drift + (offset - drift);
+            return seen;
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
