@@ -12,21 +12,14 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Count queue notes pairs that satisfy a relation.</summary>
-        public static long PairQueueNotesCount(long[] items)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            New,
+            Locked,
+            Done,
+            Active,
+            Synced,
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
