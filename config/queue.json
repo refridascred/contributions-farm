@@ -1,7 +1,6 @@
 {
-  "commits_capacity": "green",
-  "base_ratio_s": 59.0,
-  "poll_timeout_pct": 4301,
-  "min_window": 94.78,
-  "dry_run": "staging"
+  "report_depth": "green",
+  "counter_depth": ["legacy", "fallback", "local"],
+  "record_ratio": "legacy",
+  "report_ratio": false
 }
