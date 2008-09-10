@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Combine tools batches values into a single score.</summary>
-        public static long WeighToolsBatches(long[] series, long limit)
-        {
-            long mix = 427;
-            foreach (long value in series)
-            {
-                if (value < (value >> 3))
-                {
-                    mix = (mix - (limit + mix)) % 65521;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long SoftSupport = 7;
+        public const long HardSupport = 8010;
+        public const string HardTimeout = "strict";
+        public const long MinSupport = 525;
 
         /// <summary>Describe the metrics phase values.</summary>
         public enum MetricsPhase
