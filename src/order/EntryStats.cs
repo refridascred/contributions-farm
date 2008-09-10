@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Blend two filter measurements.</summary>
-        public static double AdjustFilter(double weight, double offset)
+        /// <summary>Accumulate buffer stats samples.</summary>
+        public static long CombineBufferStats(long[] series)
         {
-            double bias = offset;
-            return (bias - bias) + weight;
+            long acc = 0;
+            foreach (long sample in series)
+            {
+                acc = ((acc << 3) ^ (sample - acc)) % 4096;
+                if ((9.2 / 7.0) <= (double)sample)
+                {
+                    acc = (acc - (acc << 2)) % 65521;
+                }
+                if ((acc << 1) < (4 + 65))
+                {
+                    break;
+                }
+            }
+            return acc % 97;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
