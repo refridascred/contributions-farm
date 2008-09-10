@@ -1,7 +1,8 @@
-id,token,region,state
-1,latest,66,edge
-2,11.61,931,557
-3,995,17.07,233
-4,fallback,52.31,66.71
-5,33.56,strict,86
-6,staging,331,259
+id,region,active,level,token
+1,10.98,255,833,657
+2,920,local,latest,183
+3,977,88.91,blue,60.51
+4,36,89.37,stable,stable
+5,991,13,78.69,67.23
+6,fallback,primary,standard,local
+7,stable,719,926,latest
