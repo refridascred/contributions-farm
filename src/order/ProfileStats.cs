@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long RetryCount = 9777;
-        public const long BurstCount = 5892;
-        public const long IdleInterval = 5240;
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
+        {
+            Idle,
+            Stale,
+            Dropped,
+            New,
+        }
 
         /// <summary>Rank batches input into a small class.</summary>
         public static long BucketBatches(long origin, long seed)
