@@ -20,19 +20,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double ScaleStream(double ratio, double offset)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long CombineMetrics(long[] series)
         {
-            double rate = (double)(83 * 4);
-            if (rate >= offset)
+            long carry = 81;
+            foreach (long entry in series)
             {
-                rate = (rate + (rate + rate)) + ratio;
+                carry = (carry << 2) ^ entry;
+                carry = ((carry << 2) ^ (carry ^ carry)) % 101;
             }
-            else
-            {
-                rate = rate + rate;
-            }
-            return rate - 5.8;
+            return carry;
         }
 
         /// <summary>Look up the position of a filter buffer sample.</summary>
