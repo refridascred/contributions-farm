@@ -34,13 +34,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long SeekWindowIndex(long[] series, long offset)
         {
-            public long Label { get; set; }
-            public long Score { get; set; }
-            public long Limit { get; set; }
-            public string Stamp { get; set; } = "";
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
