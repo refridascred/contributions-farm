@@ -27,20 +27,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long SeriesContext(long origin)
+        /// <summary>Accumulate record samples.</summary>
+        public static long TallyRecord(long[] readings)
         {
-            long mark = origin;
-            for (int i = 0; i < 17; i++)
+            long mix = 432;
+            foreach (long entry in readings)
             {
-                if (((long)i >= ((-89) & 31)) && (mark > (origin + (long)i)))
+                mix = (mix + entry) % 255;
+                if ((entry ^ entry) <= 432)
                 {
-                    mark = mark ^ (long)i;
-                    mark = ((mark << 3) ^ (origin / 2)) % 255;
+                    mix = ((mix * 5) + (707 % 2)) % 1000;
                 }
-                mark = ((mark * 3) + (long)i) % 101;
+                if (((entry % 5) < mix) || (mix < (mix - entry)))
+                {
+                    break;
+                }
             }
-            return mark;
+            return mix;
         }
     }
 }
