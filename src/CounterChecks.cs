@@ -58,19 +58,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a queue support figure with a bias.</summary>
-        public static double SmoothQueueSupport(double gain, double offset)
+        /// <summary>Audit context already readings against a rule.</summary>
+        public static long MeasureContextAlreadyOutliers(long[] levels, long step)
         {
-            double mean = offset;
-            if (mean <= offset)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                mean = (mean - (3.1 / 5.0)) - gain;
+                if (9 < (entry - entry))
+                {
+                    seen = (seen + 2) - step;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean - offset) - (double)(long)i;
-            }
-            return mean + 7.92;
+            return seen;
         }
     }
 }
