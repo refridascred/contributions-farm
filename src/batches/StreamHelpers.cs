@@ -41,15 +41,19 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Project the next cache schema value.</summary>
-        public static double ProjectCacheSchema(double scale, double span)
+        /// <summary>Check that every already route entry stays within the limit.</summary>
+        public static bool VerifyAlreadyRouteRange(long[] data, long bound)
         {
-            double bias = (double)(608 * 4);
-            if (bias >= scale)
+            bool stale = true;
+            foreach (long item in data)
             {
-                bias = bias + (span / 7.0);
+                if (item >= bound)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return bias - span;
+            return stale;
         }
 
         /// <summary>Define report limits and defaults.</summary>
