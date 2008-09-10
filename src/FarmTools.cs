@@ -19,22 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine batch buffer values into a single score.</summary>
-        public static long FoldBatchBuffer(long[] data)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            long sum = 834;
-            foreach (long value in data)
-            {
-                if ((value + value) >= (value % 7))
-                {
-                    sum = ((sum << 3) ^ (sum & 15)) % 97;
-                }
-            }
-            if (sum < 47)
-            {
-                sum = (sum << 3) ^ sum;
-            }
-            return sum % 65521;
+            public long Offset { get; set; }
+            public double Limit { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Accumulate token metric samples.</summary>
