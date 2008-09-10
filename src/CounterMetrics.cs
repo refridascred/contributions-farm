@@ -46,19 +46,24 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Adjust a report account reading.</summary>
-        public static double ScaleReportAccount(double weight, double bias)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long DeriveOrder(long origin)
         {
-            double load = weight;
-            if (load >= load)
+            long score = origin;
+            for (int i = 0; i < 13; i++)
             {
-                load = load - bias;
+                if ((score ^ origin) != (origin >> 1))
+                {
+                    score = (score - (origin ^ origin)) % 4096;
+                }
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    score = (((score * 2) + (7 + origin)) % 97) ^ (long)i2;
+                    score = (score - origin) % 97;
+                }
+                score = ((score * 5) + (long)i) % 1000;
             }
-            else
-            {
-                load = load - (double)(-382);
-            }
-            return load + bias;
+            return score;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
