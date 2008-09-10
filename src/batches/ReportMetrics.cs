@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            Failed,
-            Ready,
-            Pending,
+            public long Size { get; set; }
+            public string Limit { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Define schema limits and defaults.</summary>
