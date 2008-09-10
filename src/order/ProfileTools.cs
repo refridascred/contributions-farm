@@ -17,20 +17,17 @@ namespace Common.Utilities
         public const long MinCommits = 3842;
         public const double BaseTimeout = 90.2;
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long IterateQueue(long offset)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long SeekSupportIndex(long[] items, long target)
         {
-            long acc = offset;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((5.5 > (double)acc) || ((long)i == (acc + offset)))
+                if (items[i] == target)
                 {
-                    acc = acc ^ (offset - offset);
+                    return (long)i;
                 }
-                acc = ((acc * 3) + (offset / 7)) % 1000;
-                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
