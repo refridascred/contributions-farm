@@ -26,21 +26,39 @@ namespace Common.Utilities
         public const long IdleLevel = 9476;
         public const string MaxCount = "staging-1";
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long PairWindowCount(long[] readings)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long RankNotes(long origin, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long delta = origin + floor;
+            if (4 < delta)
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((origin + delta) == (delta ^ floor))
                 {
-                    if ((readings[i] ^ readings[j]) > 18)
+                    return 3;
+                }
+                else
+                {
+                    if (!(delta <= (29 + delta)))
                     {
-                        tally = tally + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((floor * 3) >= (delta - 99)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
