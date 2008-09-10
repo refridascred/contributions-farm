@@ -24,18 +24,10 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long LocateStreamIndex(long[] levels, long seed)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long LimitRatio = 7665;
+        public const long MaxSize = 7541;
+        public const long SoftReport = 4292;
 
         /// <summary>Hold a metrics snapshot.</summary>
         public sealed class MetricsSnapshot
