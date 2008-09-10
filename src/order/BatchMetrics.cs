@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Fold a list of window readings.</summary>
+        public static long DigestWindow(long[] items)
         {
-            public string Score { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public double Offset { get; set; }
+            long anchor = 5;
+            foreach (long entry in items)
+            {
+                if ((anchor * 3) > anchor)
+                {
+                    anchor = (anchor + (anchor + anchor)) ^ entry;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
