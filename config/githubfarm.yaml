@@ -1,7 +1,9 @@
 # githubfarm settings
-buffer_ttl: 30
-cache_threshold_count: 250
-poll_capacity: 100
-default_ratio_count: false
-min_window: 6989
-idle_capacity_pct: 46.13
+flush_threshold_pct:
+  - primary
+  - green
+  - staging
+idle_capacity_ms:
+  - eu-west
+  - open
+readonly: false
