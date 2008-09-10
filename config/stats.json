@@ -1,17 +1,16 @@
 {
-  "session_interval": ["legacy", "green", "stable", "local"],
-  "default_delay_ms": {
-    "metrics_ratio": true,
-    "max_ttl": ["latest", "edge", "primary", "fallback"],
-    "audit": true
-  },
-  "stats_window": ["edge", "green", "standard"],
-  "default_ttl": 87.19,
-  "dry_run": "edge",
-  "flush_ratio_pct": {
-    "retry_ratio": 43.58,
-    "warm_retries": "standard",
-    "session_depth": "legacy",
-    "warm_threshold": "staging"
+  "dry_run": 80,
+  "checks_ttl": [356, 486],
+  "min_retries_count": 3054,
+  "burst_ratio_s": false,
+  "counter_timeout": {
+    "persist": {
+      "enabled": "cached",
+      "burst_size_pct": [317, 93, 486, 321],
+      "idle_ttl_count": 79,
+      "base_ratio": 52.71
+    },
+    "route_threshold": [275, 12],
+    "soft_retries_pct": 70.61
   }
 }
