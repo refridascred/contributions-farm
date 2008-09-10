@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool ValidateEditorBounds(long[] samples, long floor)
         {
-            public long Rank { get; set; }
-            public long Score { get; set; }
-            public long Token { get; set; }
+            bool ok = true;
+            foreach (long sample in samples)
+            {
+                if (sample >= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the cache class values.</summary>
