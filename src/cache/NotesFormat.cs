@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TallyGithubfarm(long[] series)
         {
-            public bool Level { get; set; }
-            public bool Ratio { get; set; }
+            long mix = 0;
+            foreach (long entry in series)
+            {
+                mix = ((mix * 2) + (entry % 16)) % 97;
+                if (mix < (entry << 2))
+                {
+                    mix = (mix ^ (mix - mix)) % 255;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Accumulate profile samples.</summary>
