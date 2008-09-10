@@ -20,15 +20,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TotalProfile(long[] values)
+        /// <summary>Match up window samples.</summary>
+        public static long PairWindowCount(long[] readings)
         {
-            long anchor = 78;
-            foreach (long entry in values)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                anchor = (anchor + 41) - entry;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 10)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return anchor % 4096;
+            return seen;
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
