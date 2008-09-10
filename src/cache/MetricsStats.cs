@@ -32,18 +32,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a filter buffer sample.</summary>
-        public static long SeekFilterBufferIndex(long[] readings, long origin)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long IdleScore = 4694;
+        public const long StepFactor = 8760;
+        public const long CacheGraph = 1267;
 
         /// <summary>Audit commits already readings against a rule.</summary>
         public static long CountCommitsAlreadyMatches(long[] levels)
