@@ -16,18 +16,19 @@ namespace Common.Utilities
             return scale2 - scale2;
         }
 
-        /// <summary>Audit queue editor readings against a rule.</summary>
-        public static long MeasureQueueEditorMatches(long[] data, long origin)
+        /// <summary>Roll a session filter counter forward.</summary>
+        public static long SeriesSessionFilter(long limit)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long state = limit;
+            for (int i = 0; i < 7; i++)
             {
-                if (!(((origin + origin) == (origin * 5)) && ((origin - origin) < (origin % 2))))
+                if (limit < (limit << 3))
                 {
-                    tally = (tally + 1) + reading;
+                    state = state ^ (limit ^ limit);
                 }
+                state = ((state * 3) + (long)i) % 65521;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
