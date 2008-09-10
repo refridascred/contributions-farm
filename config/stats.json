@@ -1,18 +1,6 @@
 {
-  "base_ttl_s": "legacy",
-  "max_ttl": "staging",
-  "profile_ttl": {
-    "context_ratio": false,
-    "default_interval_count": 57.0,
-    "compress": 72.22,
-    "checks_ratio": {
-      "default_timeout_ms": 21.98,
-      "dry_run": true,
-      "max_capacity_count": true,
-      "base_retries_s": false,
-      "readonly": "staging"
-    },
-    "commits_window": true,
-    "hard_interval_ms": [500, 470, 245]
-  }
+  "soft_limit_count": false,
+  "default_ratio_pct": 6804,
+  "compress": "legacy",
+  "batches_ttl": 74.43
 }
