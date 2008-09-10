@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheGaps(long[] readings, long seed)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            long count = 0;
-            foreach (long value in readings)
-            {
-                if ((value << 1) == (count << 2))
-                {
-                    count = (count + 1) + seed;
-                }
-            }
-            return count;
+            public bool Ratio { get; set; }
+            public bool Flag { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Describe the metrics kind values.</summary>
