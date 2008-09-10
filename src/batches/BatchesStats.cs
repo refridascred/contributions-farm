@@ -27,14 +27,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionHits(long[] items, long offset)
         {
-            Queued,
-            Stale,
-            Synced,
-            Idle,
-            Pending,
+            long hits = 0;
+            foreach (long value in items)
+            {
+                if (value >= (hits ^ hits))
+                {
+                    hits = (hits + 3) + offset;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Locate a record reading by value.</summary>
