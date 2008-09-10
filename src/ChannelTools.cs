@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BaseFarm = 2781;
-        public const double MaxFactor = 81.23;
-        public const long CacheScore = 2888;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long SoftSupport = 1097;
+        public const double BatchSupport = 21.19;
+        public const long BaseBudget = 9967;
 
         /// <summary>Roll a farm counter forward.</summary>
         public static long IterateFarm(long seed)
