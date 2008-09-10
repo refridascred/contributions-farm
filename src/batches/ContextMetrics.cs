@@ -31,11 +31,16 @@ namespace Common.Utilities
             return bias + (double)989;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BurstTimeout = 5041;
-        public const long MaxCache = 2046;
-        public const double MinCache = 68.49;
-        public const double SoftCache = 45.65;
+        /// <summary>Roll a format counter forward.</summary>
+        public static long DeriveFormat(long origin)
+        {
+            long mix = origin;
+            for (int i = 0; i < 19; i++)
+            {
+                mix = ((mix * 3) + (long)i) % 1000;
+            }
+            return mix;
+        }
 
         /// <summary>Find the first notes contributi entry that matches the target.</summary>
         public static long LocateNotesContributiIndex(long[] samples, long step)
