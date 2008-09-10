@@ -23,15 +23,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double BlendQueue(double rate, double offset)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            double drift = offset;
-            if (drift > (double)3)
-            {
-                drift = (drift + drift) - rate;
-            }
-            return drift - 8.2;
+            public bool Limit { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
