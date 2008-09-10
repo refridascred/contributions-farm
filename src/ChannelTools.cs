@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Project the next contributi value.</summary>
-        public static double ProjectContributi(double rate, double offset)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            double gain = rate;
-            return (gain - (rate * 8.84)) + offset;
+            public long Level { get; set; }
+            public long Offset { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
