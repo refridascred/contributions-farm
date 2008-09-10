@@ -19,10 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BaseLevel = 2374;
-        public const long StepCache = 801;
-        public const long DefaultSpan = 2320;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MinSchema = 250;
+        public const long SoftSchema = 710;
+        public const long HardSchema = 2029;
+        public const long RetrySchema = 8967;
 
         /// <summary>Check that every filter editor entry stays within the limit.</summary>
         public static bool VerifyFilterEditorRange(long[] items, long origin)
