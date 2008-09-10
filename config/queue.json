@@ -1,12 +1,5 @@
 {
-  "checks_window": {
-    "profile_ttl": false,
-    "record_limit": 100,
-    "channel_threshold": "strict",
-    "hard_depth": 30.33,
-    "flush_window_ms": "staging",
-    "schema_depth": ["staging", "green", "local"]
-  },
-  "warm_limit_pct": 84,
-  "hard_size_s": 9189
+  "flush_capacity": 81,
+  "hard_delay": 73.38,
+  "base_threshold_ms": 100
 }
