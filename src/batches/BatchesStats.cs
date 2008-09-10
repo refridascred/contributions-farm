@@ -48,14 +48,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long RollOrder(long offset)
         {
-            Draft,
-            Closed,
-            Idle,
-            New,
-            Pending,
+            long mark = offset;
+            for (int i = 0; i < 23; i++)
+            {
+                mark = mark + (386 / 8);
+                mark = ((mark * 2) + (long)i) % 97;
+            }
+            return mark;
         }
     }
 }
