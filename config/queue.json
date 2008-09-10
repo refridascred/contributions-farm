@@ -1,11 +1,14 @@
 {
-  "verbose": {
-    "token_window": "local",
-    "cache_ttl": 67.45,
-    "dry_run": 97,
-    "base_window_count": 99,
-    "hard_window": "stable"
-  },
-  "default_threshold_s": 1024,
-  "sync_threshold_pct": false
+  "min_limit_ms": 2290,
+  "cache_window": false,
+  "burst_threshold_count": 100,
+  "verbose": true,
+  "readonly": ["fallback", "stable"],
+  "enabled": {
+    "soft_depth": [179, 463, 342],
+    "enabled": 69.64,
+    "min_limit_ms": false,
+    "cluster_threshold": [183, 462, 10],
+    "soft_depth_ms": "primary"
+  }
 }
