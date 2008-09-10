@@ -34,15 +34,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double SmoothStats(double scale, double floor)
-        {
-            double bias = floor;
-            if (bias <= scale)
-            {
-                bias = bias + (floor - bias);
-            }
-            return bias + (floor - bias);
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MinCache = 8246;
+        public const long MaxCache = 1616;
+        public const long IdleCache = 2101;
+        public const double LimitBudget = 85.06;
+        public const long RetryCache = 4793;
     }
 }
