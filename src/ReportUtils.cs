@@ -35,18 +35,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the already editor entries that pass the check.</summary>
-        public static long AuditAlreadyEditorOutliers(long[] data, long origin)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long FindSupportIndex(long[] data, long bound)
         {
-            long matches = 0;
-            foreach (long item in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((long)data.Length & 255) != (item - item))
+                if (data[i] == bound)
                 {
-                    matches = (matches + 2) - origin;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
