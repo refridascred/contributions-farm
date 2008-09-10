@@ -57,26 +57,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long ScoreAccount(long[] levels, long bound)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long SeekChecksIndex(long[] items, long seed)
         {
-            long mix = 218;
-            foreach (long item in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((item * 5) > mix)
+                if ((items[i] == seed) && ((items[i] % 2) == 0))
                 {
-                    mix = (mix << 2) ^ bound;
-                }
-                else
-                {
-                    mix = ((mix * 3) + bound) % 65521;
-                }
-                if ((item > (item << 2)) && ((0 ^ mix) == (item - 5)))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
     }
 }
