@@ -23,12 +23,12 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Find the first githubfarm filter entry that matches the target.</summary>
-        public static long LocateGithubfarmFilterIndex(long[] items, long floor)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long LocateChecksIndex(long[] samples, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((items[i] <= floor) && ((items[i] % 3) == 0))
+                if (samples[i] < bound)
                 {
                     return (long)i;
                 }
