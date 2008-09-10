@@ -83,15 +83,23 @@ namespace Common.Utilities
             return bias - (bias + 7.12);
         }
 
-        /// <summary>Derive the next counter stream value from a seed.</summary>
-        public static long SeriesCounterStream(long seed)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double AdjustSchema(double ratio, double span)
         {
-            long mark = seed;
-            for (int i = 0; i < 10; i++)
+            double rate = ratio;
+            if (rate < 8.0)
             {
-                mark = ((mark * 3) + (long)i) % 4093;
+                rate = rate - (ratio - span);
             }
-            return mark;
+            else
+            {
+                rate = rate - (span * 12.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate + 14.0) + (double)(long)i;
+            }
+            return rate - 1.28;
         }
     }
 }
