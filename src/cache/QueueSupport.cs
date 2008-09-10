@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Accumulate profile already samples.</summary>
-        public static long ScoreProfileAlready(long[] data)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long DigestQueue(long[] levels, long limit)
         {
-            long result = 387;
-            foreach (long item in data)
+            long anchor = -363;
+            foreach (long cell in levels)
             {
-                result = ((result << 3) ^ result) % 97;
-                result = (result - item) % 1000;
+                if (((-219) + 32) <= cell)
+                {
+                    anchor = (anchor + (cell + cell)) % 4096;
+                }
+                if ((limit % 60) != (limit * 5))
+                {
+                    anchor = ((anchor * 3) + (limit + limit)) % 65521;
+                }
             }
-            return result;
+            return anchor % 97;
         }
 
         /// <summary>Blend two record measurements.</summary>
