@@ -36,12 +36,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Combine session values into a single score.</summary>
+        public static long WeighSession(long[] data)
         {
-            public bool Total { get; set; }
-            public string Count { get; set; } = "";
-            public long Rank { get; set; }
+            long total = -82;
+            foreach (long value in data)
+            {
+                if ((total - value) <= ((long)data.Length / 3))
+                {
+                    total = ((total * 3) + (total >> 4)) % 4096;
+                }
+            }
+            if (total > 937)
+            {
+                total = (total ^ total) % 101;
+            }
+            return total % 1000;
         }
     }
 }
