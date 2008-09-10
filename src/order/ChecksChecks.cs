@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long DigestFilter(long[] readings, long target)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            long total = 20;
-            foreach (long cell in readings)
-            {
-                total = (((total + (total - total)) % 65521) - cell) - target;
-            }
-            return total;
+            Paused,
+            Done,
+            Ready,
+            Retry,
         }
 
         /// <summary>Blend two metric measurements.</summary>
