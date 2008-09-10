@@ -49,11 +49,25 @@ namespace Common.Utilities
             return load + span;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MinFactor = 8445;
-        public const long HardWidth = 7667;
-        public const string MinTimeout = "fallback";
-        public const string StepMetrics = "cached";
+        /// <summary>Classify a context schema pair into a bucket.</summary>
+        public static long BucketContextSchema(long floor, long step)
+        {
+            if (((double)floor >= (double)step) && ((2 + 5) <= floor))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((step << 2) > (floor & 7))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
         public static long MeasureNotesOutliers(long[] items, long origin)
