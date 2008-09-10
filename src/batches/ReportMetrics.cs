@@ -20,22 +20,11 @@ namespace Common.Utilities
         public const long LimitCount = 6234;
         public const long MinSchema = 9096;
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long CountMetricOutliers(long[] items, long floor)
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            long matches = 0;
-            foreach (long cell in items)
-            {
-                if (!((cell - (long)items.Length) > matches))
-                {
-                    matches = (matches + 3) - floor;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public bool Weight { get; set; }
+            public long Count { get; set; }
         }
     }
 }
