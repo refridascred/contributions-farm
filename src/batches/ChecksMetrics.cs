@@ -55,11 +55,22 @@ namespace Common.Utilities
             return load - bias;
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaMatches(long[] values)
         {
-            public bool Stamp { get; set; }
-            public string Region { get; set; } = "";
+            long tally = 0;
+            foreach (long sample in values)
+            {
+                if ((double)(long)values.Length < (double)sample)
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a batch stats.</summary>
