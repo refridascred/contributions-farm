@@ -46,15 +46,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double ScaleBatches(double ratio, double bias)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool ValidateFilterLimits(long[] data, long step)
         {
-            double load = ratio;
-            if (load < ratio)
+            bool valid = true;
+            foreach (long entry in data)
             {
-                load = (load - (double)117) - bias;
+                if (entry >= step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return load - ratio;
+            return valid;
         }
     }
 }
