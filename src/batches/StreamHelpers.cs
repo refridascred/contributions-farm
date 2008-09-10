@@ -71,13 +71,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            Queued,
+            Stale,
+            Idle,
+            Draft,
             Ready,
-            Failed,
-            Done,
         }
     }
 }
