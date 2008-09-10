@@ -7,11 +7,11 @@ log() {
 }
 
 count=0
-while [ "${count}" -lt 4 ]; do
+while [ "${count}" -lt 2 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-for item in stable cached eu-west local; do
+for item in staging blue fallback edge; do
     log "checking ${item}"
 done
