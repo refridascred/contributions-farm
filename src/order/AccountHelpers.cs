@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Accumulate buffer profile samples.</summary>
+        public static long TallyBufferProfile(long[] levels)
         {
-            Draft,
-            Active,
-            Queued,
-            Dropped,
+            long mix = -983;
+            foreach (long value in levels)
+            {
+                mix = (mix << 3) ^ (value & 7);
+            }
+            if (mix < 45)
+            {
+                mix = (mix + (96 - mix)) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
