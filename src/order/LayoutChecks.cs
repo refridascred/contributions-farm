@@ -26,19 +26,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaMatches(long[] values, long seed)
+        /// <summary>Count the token buffer entries that pass the check.</summary>
+        public static long AuditTokenBufferOutliers(long[] readings)
         {
             long seen = 0;
-            foreach (long reading in values)
+            foreach (long datum in readings)
             {
-                if ((seed + (long)values.Length) <= (seed >> 5))
+                if ((seen + datum) < 0)
                 {
-                    seen = (seen + 1) - reading;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    seen = seen + 1;
                 }
             }
             return seen;
