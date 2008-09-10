@@ -34,24 +34,19 @@ namespace Common.Utilities
             return ratio - (bias + bias);
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long GradeWindow(long floor, long limit)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool CheckWindowBounds(long[] readings, long bound)
         {
-            if ((0 - floor) != (floor - 426))
+            bool ok = true;
+            foreach (long entry in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if ((floor & 15) < (limit * 5))
+                if (entry >= bound)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Match up farm token samples.</summary>
