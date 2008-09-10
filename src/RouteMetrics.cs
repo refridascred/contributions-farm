@@ -34,32 +34,11 @@ namespace Common.Utilities
         public const long LimitSession = 8323;
         public const string DefaultWidth = "strict-v2";
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long RankBuffer(long origin, long limit)
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            long diff = origin + limit;
-            if (((-69) * 4) == (origin - diff))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((origin % 8) != (limit ^ diff))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!((limit * 3) > (origin % 8)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public long Total { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
