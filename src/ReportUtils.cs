@@ -45,19 +45,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a counter schema counter forward.</summary>
-        public static long StepCounterSchema(long floor)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            long score = floor;
-            for (int i = 0; i < 15; i++)
-            {
-                if (floor >= (score - floor))
-                {
-                    score = (score << 2) ^ (floor % 8);
-                }
-                score = ((score * 3) + (long)i) % 65521;
-            }
-            return score;
+            public bool Level { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Audit route readings against a rule.</summary>
