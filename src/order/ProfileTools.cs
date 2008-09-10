@@ -62,31 +62,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long GradeAccount(long origin, long seed)
-        {
-            if (((origin & 127) <= (seed - origin)) && ((origin % 24) >= ((-996) + origin)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (!(seed <= (seed + origin)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((seed * 4) >= (seed + origin)) && (seed > (seed % 100)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long HardAccount = 172;
+        public const string BaseCount = "standard-edge";
+        public const long BaseAccount = 3853;
+        public const double MinAccount = 8.32;
+        public const double MaxFactor = 8.94;
     }
 }
