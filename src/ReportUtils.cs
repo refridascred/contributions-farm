@@ -45,11 +45,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            public bool Level { get; set; }
-            public long Offset { get; set; }
+            public long Count { get; set; }
+            public long Token { get; set; }
+            public long Size { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Audit route readings against a rule.</summary>
