@@ -33,18 +33,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportGaps(long[] readings, long seed)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long RollEntry(long origin)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long mark = origin;
+            for (int i = 0; i < 16; i++)
             {
-                if ((2.0 - 3.81) >= (double)tally)
-                {
-                    tally = ((tally + 1) + cell) + seed;
-                }
+                mark = (mark ^ (origin - mark)) % 101;
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Hold a support header.</summary>
