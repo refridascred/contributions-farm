@@ -35,12 +35,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool CheckFarmBounds(long[] data, long origin)
         {
-            public double Label { get; set; }
-            public long Level { get; set; }
-            public string Count { get; set; } = "";
+            bool flag = true;
+            foreach (long cell in data)
+            {
+                if (cell > origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
