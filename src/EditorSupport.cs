@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TotalBuffer(long[] readings)
+        /// <summary>Count githubfarm editor pairs that satisfy a relation.</summary>
+        public static long MatchGithubfarmEditorCount(long[] series)
         {
-            long acc = 58;
-            foreach (long reading in readings)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((acc % 10) == (reading / 9))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    acc = acc - acc;
-                    continue;
-                }
-                if (!((24 >> 4) >= (reading % 8)))
-                {
-                    acc = (acc - (acc + reading)) % 255;
+                    if ((series[i] + series[j]) > 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Scale a profile farm figure with a bias.</summary>
