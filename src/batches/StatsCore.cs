@@ -19,13 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            public bool Limit { get; set; }
-            public double Score { get; set; }
-            public bool Mode { get; set; }
-            public double Region { get; set; }
+            Dropped,
+            Retry,
+            Queued,
         }
 
         /// <summary>Locate a order reading by value.</summary>
