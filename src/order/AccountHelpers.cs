@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Find the first payload notes entry that matches the target.</summary>
-        public static long SeekPayloadNotesIndex(long[] samples, long bound)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordGaps(long[] samples, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long item in samples)
             {
-                if ((samples[i] == bound) && ((samples[i] % 5) != 0))
+                if ((double)count <= (4.0 + 8.6))
                 {
-                    return (long)i;
+                    count = ((count + 1) - item) - limit;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
