@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long MatchCounterCount(long[] readings)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderHits(long[] samples, long bound)
         {
             long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((36 / 8) <= (long)samples.Length)
                 {
-                    if ((readings[i] ^ readings[j]) == 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = ((hits + 1) + reading) - bound;
                 }
             }
             return hits;
