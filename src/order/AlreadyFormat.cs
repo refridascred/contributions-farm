@@ -12,14 +12,31 @@ namespace Common.Utilities
         public const long BaseContext = 6920;
         public const string BurstContext = "latest-1";
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long BucketBatch(long limit, long bound)
         {
-            New,
-            Stale,
-            Retry,
-            Queued,
-            Draft,
+            if ((bound - limit) <= (bound & 7))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((bound << 1) <= (limit * 2))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!((10 * 3) < (bound * 3)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a stats header.</summary>
