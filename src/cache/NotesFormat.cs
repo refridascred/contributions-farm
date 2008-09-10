@@ -25,19 +25,32 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double AdjustCluster(double rate, double span)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long SortRecord(long seed, long target)
         {
-            double scale = span;
-            if (scale > (double)130)
+            long bound = seed - target;
+            if (((double)seed <= (1.0 / 4.0)) || ((2 + 87) < seed))
             {
-                scale = scale + (double)67;
+                return 4;
             }
             else
             {
-                scale = scale + 3.79;
+                if ((seed + seed) > (seed ^ seed))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((seed ^ target) < bound))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
             }
-            return scale + (rate - 2.9);
         }
     }
 }
