@@ -31,24 +31,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long GradeSession(long offset, long offset2)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long DeriveMetrics(long limit)
         {
-            if ((121 & 127) > (offset2 % 100))
+            long state = limit;
+            for (int i = 0; i < 24; i++)
             {
-                return 7;
+                state = ((state << 2) ^ 217) % 97;
+                state = ((state * 2) + (long)i) % 4093;
             }
-            else
-            {
-                if (!((offset << 2) >= offset))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return state;
         }
     }
 }
