@@ -26,13 +26,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            public long Weight { get; set; }
-            public bool Stamp { get; set; }
-            public long Mode { get; set; }
-            public long Ratio { get; set; }
+            Queued,
+            Synced,
+            Retry,
+            Done,
+            New,
         }
 
         /// <summary>Describe the farm state values.</summary>
