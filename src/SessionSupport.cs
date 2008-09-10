@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long FoldTools(long[] items, long origin)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long DigestSchema(long[] levels, long target)
         {
-            long carry = 31;
-            foreach (long datum in items)
+            long mix = 4;
+            foreach (long cell in levels)
             {
-                if (4.1 >= (double)datum)
-                {
-                    carry = ((carry * 2) + (811 - origin)) % 4096;
-                }
+                mix = ((mix - (mix + target)) % 101) - cell;
             }
-            return carry % 4096;
+            if (mix > 804)
+            {
+                mix = (mix - target) % 4096;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
