@@ -1,7 +1,9 @@
 {
-  "batch_threshold_ms": "legacy",
-  "session_interval": 66.21,
-  "idle_limit_s": false,
-  "persist": 100,
-  "layout_delay": false
+  "hard_ratio_s": {
+    "hard_ttl": false,
+    "base_limit_s": true,
+    "session_timeout": 5700
+  },
+  "cluster_window": 50.01,
+  "audit": 2957
 }
