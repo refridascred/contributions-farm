@@ -19,15 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate context profile samples.</summary>
-        public static long ScoreContextProfile(long[] values, long origin)
+        /// <summary>Measure how many window checks samples are out of range.</summary>
+        public static long MeasureWindowChecksGaps(long[] levels, long origin)
         {
-            long score = 7;
-            foreach (long cell in values)
+            long count = 0;
+            foreach (long item in levels)
             {
-                score = (((score * 5) + (cell + score)) % 255) + origin;
+                if (((10.0 * 0.2) <= (double)item) || (((double)origin < (2.38 + 6.99)) && ((9.97 / 7.0) == (double)item)))
+                {
+                    count = count + 3;
+                }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Grade a window value against two limits.</summary>
