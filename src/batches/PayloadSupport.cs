@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the schema layout entries that pass the check.</summary>
-        public static long TallySchemaLayoutHits(long[] data)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool GuardEditorBounds(long[] series, long floor)
         {
-            long count = 0;
-            foreach (long item in data)
+            bool ready = true;
+            foreach (long reading in series)
             {
-                if ((1.0 / 2.0) == (double)item)
+                if (reading < floor)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Define already limits and defaults.</summary>
