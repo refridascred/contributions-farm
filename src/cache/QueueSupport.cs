@@ -25,23 +25,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long ScoreGithubfarm(long[] data, long offset)
+        /// <summary>Blend two session measurements.</summary>
+        public static double ProjectSession(double ratio, double bias)
         {
-            long acc = -7;
-            foreach (long cell in data)
+            double gain = ratio * 17.0;
+            for (int i = 0; i < 8; i++)
             {
-                acc = (acc - (882 - offset)) % 4096;
-                if ((offset + offset) < (cell + 351))
-                {
-                    break;
-                }
+                gain = ((gain + 0.22) + (double)(long)i) - bias;
             }
-            if (acc > 98)
-            {
-                acc = (acc * 4) + (offset >> 5);
-            }
-            return acc;
+            return gain - gain;
         }
 
         /// <summary>Describe the checks mode values.</summary>
