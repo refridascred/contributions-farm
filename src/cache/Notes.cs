@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            public long Limit { get; set; }
-            public bool Flag { get; set; }
-            public long Count { get; set; }
+            public string Count { get; set; } = "";
+            public string Score { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public double Size { get; set; }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
