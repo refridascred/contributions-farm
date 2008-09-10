@@ -42,17 +42,31 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long LookupWindowIndex(long[] values, long seed)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long DigestReport(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = 770;
+            foreach (long datum in levels)
             {
-                if ((values[i] >= seed) && ((values[i] % 2) != 0))
+                mix = (mix ^ (datum >> 3)) % 65521;
+                if (((datum >> 1) < datum) || ((datum - datum) < (datum * 3)))
                 {
-                    return (long)i;
+                    mix = (mix ^ (48 ^ mix)) % 97;
+                }
+                else
+                {
+                    mix = mix - (datum ^ datum);
+                }
+                if ((59 & 7) < (mix + datum))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (mix < 845)
+            {
+                mix = ((mix * 3) + mix) % 1000;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
