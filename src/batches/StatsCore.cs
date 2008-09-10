@@ -20,10 +20,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BaseTimeout = 7940;
-        public const double StepSpan = 88.32;
-        public const long DefaultChecks = 9252;
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
+        {
+            public long Region { get; set; }
+            public long Limit { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Classify a command pair into a bucket.</summary>
         public static long GradeCommand(long step, long floor)
