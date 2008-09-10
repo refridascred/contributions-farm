@@ -33,22 +33,21 @@ namespace Common.Utilities
             return weight + 7.6;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long TotalSession(long[] samples)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long PairMetricsCount(long[] values)
         {
-            long mix = -4;
-            foreach (long value in samples)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)value == (3.06 - 6.61))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mix = mix + mix;
+                    if ((values[i] ^ values[j]) == 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (mix < (-328))
-            {
-                mix = (mix ^ (-30)) % 4096;
-            }
-            return mix;
+            return seen;
         }
 
         /// <summary>Digest a series of stats entry entries.</summary>
