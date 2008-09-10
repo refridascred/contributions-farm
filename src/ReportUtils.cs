@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double BlendCluster(double gain, double floor)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool GuardSupportLimits(long[] data, long floor)
         {
-            double bias = (double)533 * 13.0;
-            if (bias < (gain - floor))
+            bool stale = true;
+            foreach (long cell in data)
             {
-                bias = bias + (double)108;
+                if (cell <= floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                bias = bias - (gain / 2.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias + 2.4) - (double)(long)i;
-            }
-            return bias - (7.25 + 10.0);
+            return stale;
         }
 
         /// <summary>Match up entry report samples.</summary>
