@@ -38,20 +38,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool CheckReportBounds(long[] readings, long step)
-        {
-            bool found = true;
-            foreach (long value in readings)
-            {
-                if (value < step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long StepSize = 6571;
+        public const long DefaultMetrics = 5465;
+        public const long DefaultRatio = 1674;
 
         /// <summary>Fold a list of profile readings.</summary>
         public static long TallyProfile(long[] readings, long origin)
