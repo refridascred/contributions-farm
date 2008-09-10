@@ -37,24 +37,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long SortAccount(long step, long bound)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool ValidateCommandBounds(long[] values, long limit)
         {
-            if (!((double)step == (0.8 / 6.0)))
+            bool valid = true;
+            foreach (long sample in values)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)step >= (3.0 - 9.0))
+                if (sample >= limit)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Define record limits and defaults.</summary>
