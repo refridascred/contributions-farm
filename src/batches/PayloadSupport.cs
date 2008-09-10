@@ -20,23 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TallyBatch(long[] readings, long limit)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterOutliers(long[] series, long limit)
         {
-            long mix = 43;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long value in series)
             {
-                mix = ((mix ^ mix) % 1000) - limit;
-                if (7.14 > (double)reading)
+                if ((limit << 3) > (value << 3))
                 {
-                    mix = ((mix << 2) ^ (reading % 24)) % 65521;
-                }
-                else
-                {
-                    mix = (mix ^ (reading - mix)) % 4096;
+                    hits = hits + 2;
                 }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Hold a farm info.</summary>
