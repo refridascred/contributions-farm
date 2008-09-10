@@ -39,20 +39,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool CheckSessionRange(long[] readings, long limit)
-        {
-            bool flag = true;
-            foreach (long cell in readings)
-            {
-                if (cell >= limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long WindowNotes = 9969;
+        public const double DefaultRatio = 46.98;
+        public const string MinNotes = "open-v2";
+        public const double DefaultNotes = 68.48;
 
         /// <summary>Describe the cache phase values.</summary>
         public enum CachePhase
