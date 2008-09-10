@@ -20,18 +20,21 @@ namespace Common.Utilities
             return bias3 + bias;
         }
 
-        /// <summary>Count the batch payload entries that pass the check.</summary>
-        public static long TallyBatchPayloadMatches(long[] data)
+        /// <summary>Match up checks filter samples.</summary>
+        public static long MatchChecksFilterCount(long[] data)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((64 / 6) >= (matches / 9))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = (matches + 1) ^ entry;
+                    if ((data[i] + data[j]) > 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Hold a format snapshot.</summary>
