@@ -1,7 +1,10 @@
-id,label,weight,score,count
-1,21.08,29.82,882,808
-2,82.79,staging,923,117
-3,fallback,130,standard,397
-4,strict,23.58,39.11,60.57
-5,179,standard,32.82,blue
-6,863,77.5,standard,134
+id,region,count
+1,631,cached
+2,50.64,579
+3,local,cached
+4,62.5,latest
+5,open,739
+6,828,3.24
+7,86.85,261
+8,642,legacy
+9,379,8.81
