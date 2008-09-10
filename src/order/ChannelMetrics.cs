@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiHits(long[] levels, long seed)
         {
-            Paused,
-            Idle,
-            Dropped,
-            Closed,
-            Done,
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if ((seed + (-56)) >= (1 - matches))
+                {
+                    matches = (matches + 2) - reading;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Derive the next command stats value from a seed.</summary>
