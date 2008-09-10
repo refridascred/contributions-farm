@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueHits(long[] levels, long origin)
         {
-            Locked,
-            Synced,
-            Active,
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if (!(entry >= (entry + 663)) && ((153 + origin) <= origin))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
