@@ -1,8 +1,23 @@
 {
-  "audit": 4579,
-  "batch_delay_ms": "fallback",
-  "route_ttl": false,
-  "base_limit_count": [400, 310, 359, 480],
-  "flush_ttl_s": ["open", "strict"],
-  "batch_interval": "primary"
+  "hard_depth": [369, 169],
+  "flush_capacity_pct": 93.18,
+  "commits_timeout": {
+    "min_window_s": {
+      "batch_limit": true,
+      "base_ratio": 500,
+      "default_ttl_pct": 57,
+      "min_interval_ms": "staging",
+      "retry_threshold_count": 68.75,
+      "checks_capacity": 100
+    },
+    "tools_limit": 30,
+    "contributi_window": "blue",
+    "hard_capacity_pct": {
+      "channel_retries": "fallback",
+      "verbose": 500,
+      "min_threshold_s": 60,
+      "max_size": 61
+    },
+    "entry_threshold": false
+  }
 }
