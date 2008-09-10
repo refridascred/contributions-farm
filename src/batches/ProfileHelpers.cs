@@ -73,21 +73,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long OverlapCacheCount(long[] data)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long ScoreGithubfarm(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long carry = 6;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                carry = (carry ^ datum) % 255;
             }
-            return seen;
+            return carry % 97;
         }
     }
 }
