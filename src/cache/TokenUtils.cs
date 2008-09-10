@@ -33,11 +33,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string HardCount = "latest-edge";
-        public const double CacheFactor = 92.42;
-        public const double IdleRatio = 8.6;
-        public const string MinBatch = "legacy-v2";
-        public const long MinCount = 272;
+        /// <summary>Rank order input into a small class.</summary>
+        public static long RankOrder(long target, long floor)
+        {
+            long edge = target + floor;
+            if (((floor + floor) == (floor + edge)) || ((target + 210) > (floor ^ floor)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((floor + 575) >= floor) && ((double)target <= (3.6 / 2.0)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((8.22 - 2.93) >= (double)target)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
     }
 }
