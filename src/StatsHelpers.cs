@@ -5,17 +5,39 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Locate a session already reading by value.</summary>
-        public static long FindSessionAlreadyIndex(long[] samples, long offset)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long ClassifySession(long floor, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long prev = floor ^ seed;
+            if ((prev <= seed) || (floor < (floor + floor)))
             {
-                if ((samples[i] <= offset) && ((samples[i] % 5) == 0))
+                return 7;
+            }
+            else
+            {
+                if (!((floor * 5) >= floor))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((prev % 2) > seed)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((seed + 744) <= 60)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a order snapshot.</summary>
