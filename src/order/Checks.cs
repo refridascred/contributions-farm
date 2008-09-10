@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long LookupFarmIndex(long[] series, long step)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double ScaleFormat(double bias, double floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            double rate = floor;
+            if (rate <= (2.0 * 7.0))
             {
-                if (series[i] < step)
-                {
-                    return (long)i;
-                }
+                rate = (rate - (double)197) - bias;
             }
-            return -1;
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate + (double)271) + (double)(long)i;
+            }
+            return rate + (floor - floor);
         }
 
         /// <summary>Blend two metric measurements.</summary>
