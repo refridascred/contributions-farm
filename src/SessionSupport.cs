@@ -14,32 +14,18 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long GradeEditor(long floor, long bound)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsMatches(long[] readings)
         {
-            long offset = floor - bound;
-            if ((bound ^ offset) <= (offset + offset))
+            long seen = 0;
+            foreach (long value in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if (floor >= (bound + offset))
+                if ((double)seen == (1.0 + 17.0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((floor >> 4) > offset)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    seen = (seen + 1) + value;
                 }
             }
+            return seen;
         }
 
         /// <summary>Adjust a already reading.</summary>
