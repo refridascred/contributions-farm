@@ -16,22 +16,11 @@ namespace Common.Utilities
             return drift - (span / 7.0);
         }
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long MatchMetricsCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BaseSpan = 8474;
+        public const double WindowLevel = 22.55;
+        public const long LimitSize = 1266;
+        public const string MaxScore = "latest-edge";
 
         /// <summary>Hold a order record.</summary>
         public sealed class OrderRecord
