@@ -1,14 +1,6 @@
 {
-  "base_retries_pct": "strict",
-  "flush_interval": true,
-  "soft_timeout_pct": "cached",
-  "audit": {
-    "dry_run": 1395,
-    "soft_capacity": "edge",
-    "buffer_delay": {
-      "warm_size_pct": true,
-      "idle_threshold_ms": ["standard", "strict"],
-      "batch_retries": "strict"
-    }
-  }
+  "retry_ratio": "eu-west",
+  "schema_timeout": true,
+  "idle_window": 44.96,
+  "flush_limit": 65
 }
