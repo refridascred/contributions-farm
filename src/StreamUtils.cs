@@ -5,10 +5,40 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BatchTimeout = 5503;
-        public const long BurstWidth = 8234;
-        public const double MinAlready = 67.07;
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long ClassifyBatch(long floor, long offset)
+        {
+            long span = floor + offset;
+            if ((span ^ span) < (floor - 993))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((74 >= (floor & 255)) || ((offset - floor) < (offset * 4)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((0.9 > (double)floor) || ((offset + offset) == (floor >> 3)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (span <= (span << 1))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many context samples are out of range.</summary>
         public static long CountContextMatches(long[] samples, long origin)
