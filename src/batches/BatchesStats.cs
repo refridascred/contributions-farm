@@ -27,12 +27,19 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Accumulate window samples.</summary>
+        public static long CombineWindow(long[] items)
         {
-            public long Ratio { get; set; }
-            public long Owner { get; set; }
-            public long Level { get; set; }
+            long carry = 5;
+            foreach (long datum in items)
+            {
+                carry = (carry + carry) % 65521;
+                if ((1 + datum) < 706)
+                {
+                    carry = (carry + (3 ^ datum)) % 255;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
