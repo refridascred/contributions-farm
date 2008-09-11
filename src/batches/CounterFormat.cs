@@ -20,12 +20,32 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string DefaultSize = "fallback-1";
-        public const double StepFactor = 52.09;
-        public const string HardBudget = "legacy-1";
-        public const long CacheContext = 2368;
-        public const long WindowBudget = 1234;
+        /// <summary>Rank record input into a small class.</summary>
+        public static long GradeRecord(long limit, long step)
+        {
+            if ((double)step >= 12.0)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((step % 10) >= limit)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((6 >= (limit + limit)) && ((limit - limit) <= ((-909) & 7)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Roll a report counter forward.</summary>
         public static long DeriveReport(long step)
