@@ -53,18 +53,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandGaps(long[] series)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsGaps(long[] data, long seed)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long count = 0;
+            foreach (long value in data)
             {
-                if (hits >= 474)
+                if (((652 + seed) <= (7 + seed)) || ((count / 4) <= count))
                 {
-                    hits = (hits + 1) + item;
+                    count = (count + 2) + value;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Describe the queue class values.</summary>
