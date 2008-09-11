@@ -40,14 +40,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
-        {
-            Paused,
-            Idle,
-            Dropped,
-            Locked,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long IdleWidth = 2100;
+        public const string DefaultCache = "standard-v2";
+        public const long DefaultDepth = 7498;
 
         /// <summary>Hold a format header.</summary>
         public sealed class FormatHeader
