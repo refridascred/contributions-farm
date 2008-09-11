@@ -1,8 +1,8 @@
 # githubfarm settings
-dry_run: 33
-default_retries_ms: cached
-verbose: 58
-idle_capacity: false
-base_timeout_s:
-  - 192
-  - 2
+readonly: false
+warm_capacity:
+  - 88
+  - 194
+poll_size: green
+audit: 500
+verbose: edge
