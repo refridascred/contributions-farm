@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long SortMetric(long seed, long target)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool VerifyChannelRange(long[] data, long origin)
         {
-            if (((3.3 + 9.0) == (double)seed) || (seed >= (seed >> 1)))
+            bool valid = true;
+            foreach (long datum in data)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((19 + seed) <= 373))
+                if (datum < origin)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((5.42 > (double)target) && ((double)target == (9.0 - 6.4)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((seed >> 1) <= (seed >> 5))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Measure how many format channel samples are out of range.</summary>
