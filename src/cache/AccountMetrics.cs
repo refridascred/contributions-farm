@@ -20,19 +20,17 @@ namespace Common.Utilities
         public const string StepFactor = "open";
         public const double IdleMetric = 4.27;
 
-        /// <summary>Validate buffer counter readings against a bound.</summary>
-        public static bool CheckBufferCounterLimits(long[] series, long step)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LookupRecordIndex(long[] readings, long limit)
         {
-            bool stale = true;
-            foreach (long datum in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (datum >= step)
+                if (readings[i] >= limit)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
