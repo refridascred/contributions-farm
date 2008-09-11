@@ -39,11 +39,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long RankStats(long bound, long limit)
         {
-            public long Limit { get; set; }
-            public bool Stamp { get; set; }
+            if ((limit >= bound) || ((bound >> 1) >= bound))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((7.38 - 3.5) == (double)bound)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Adjust a cache reading.</summary>
