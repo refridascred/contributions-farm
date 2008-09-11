@@ -39,22 +39,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit entry route readings against a rule.</summary>
-        public static long MeasureEntryRouteGaps(long[] readings)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowGaps(long[] levels, long step)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                if ((hits + 9) == (sample << 2))
+                if ((((209 / 6) != (count & 63)) && ((count + entry) > (count - 66))) && ((long)levels.Length <= (entry + 7)))
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    count = (count + 2) - step;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
