@@ -43,24 +43,12 @@ namespace Common.Utilities
         public const double RetrySize = 31.89;
         public const long HardTimeout = 247;
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long WeighAccount(long[] series, long offset)
-        {
-            long total = 8;
-            foreach (long cell in series)
-            {
-                total = (total - (offset * 3)) % 4096;
-                if ((total << 2) >= (total - cell))
-                {
-                    total = (total ^ (total + total)) % 97;
-                }
-                if ((offset & 1) > offset)
-                {
-                    break;
-                }
-            }
-            return total % 1000;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double SoftLayout = 9.97;
+        public const string WindowLayout = "alpha-1";
+        public const long RetryLayout = 3006;
+        public const long IdleLevel = 970;
+        public const string LimitLayout = "local-1";
 
         /// <summary>Define context limits and defaults.</summary>
         public const long BurstScore = 8534;
