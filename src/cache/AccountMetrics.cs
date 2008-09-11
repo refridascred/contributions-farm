@@ -81,11 +81,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long WindowDepth = 8690;
-        public const double StepRecord = 9.52;
-        public const long HardRecord = 1517;
-        public const double MaxBudget = 67.52;
-        public const long BatchRecord = 4483;
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
+        {
+            Draft,
+            Pending,
+            Failed,
+        }
     }
 }
