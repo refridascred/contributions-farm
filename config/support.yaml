@@ -1,27 +1,12 @@
 # support settings
-batch_depth_s: 14.52
-token_timeout:
-  burst_timeout: blue
-  burst_threshold_count:
-    - 210
-    - 459
-  session_retries: stable
-  idle_ttl: false
-cache_ttl_count:
-  max_ttl_s: 43.0
-  cache_retries: standard
-  idle_timeout: 2306
-  soft_depth:
-    counter_ttl: 8974
-    token_window:
-      - eu-west
-      - staging
-    dry_run: 75.72
-    hard_limit_ms: cached
-    min_window_ms: local
-  default_timeout_count:
-    - 271
-    - 195
-    - 119
-    - 383
-  retry_threshold: 645
+warm_size_count:
+  counter_limit:
+    commits_limit: 1024
+    idle_ratio_ms: open
+    report_depth: false
+  base_capacity_count: 38
+  retry_size_ms: 84.29
+  farm_retries: true
+cache_limit_ms: 40.13
+metric_timeout: false
+burst_limit_count: 38.51
