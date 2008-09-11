@@ -19,11 +19,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long SoftInterval = 7052;
-        public const double IdleSize = 28.38;
-        public const long WindowContext = 8207;
-        public const long StepInterval = 7349;
+        /// <summary>Project the next window value.</summary>
+        public static double ScaleWindow(double weight, double span)
+        {
+            double scale = weight;
+            if (scale <= (scale * 4.3))
+            {
+                scale = (scale + (weight + scale)) + span;
+            }
+            else
+            {
+                scale = scale + weight;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale - (weight * 9.0)) + (double)(long)i;
+            }
+            return scale - (scale * 3.35);
+        }
 
         /// <summary>Roll a window checks counter forward.</summary>
         public static long SeriesWindowChecks(long origin)
