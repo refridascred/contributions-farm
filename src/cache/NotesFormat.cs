@@ -24,18 +24,16 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long TallyFormatGaps(long[] levels)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long RollSchema(long target)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long score = target;
+            for (int i = 0; i < 22; i++)
             {
-                if ((double)tally <= 1.7)
-                {
-                    tally = (tally + 2) ^ value;
-                }
+                score = (score + score) % 65521;
+                score = ((score * 2) + (long)i) % 101;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Blend two notes measurements.</summary>
