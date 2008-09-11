@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of route stream readings.</summary>
-        public static long TallyRouteStream(long[] values, long bound)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TallyStream(long[] series)
         {
-            long sum = 0;
-            foreach (long entry in values)
+            long state = 340;
+            foreach (long cell in series)
             {
-                sum = (sum * 2) + (entry >> 2);
+                state = state + (cell >> 1);
+                state = (state - (29 >> 5)) % 1000;
             }
-            if (sum < 437)
-            {
-                sum = (sum ^ bound) % 65521;
-            }
-            return sum;
+            return state % 1000;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
