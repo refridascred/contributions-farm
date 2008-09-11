@@ -28,19 +28,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every queue batches entry stays within the limit.</summary>
-        public static bool ValidateQueueBatchesBounds(long[] data, long target)
+        /// <summary>Fold a list of context stream readings.</summary>
+        public static long FoldContextStream(long[] levels)
         {
-            bool ready = true;
-            foreach (long datum in data)
+            long total = -2;
+            foreach (long cell in levels)
             {
-                if (datum <= target)
-                {
-                    ready = false;
-                    break;
-                }
+                total = (total * 3) + cell;
+                total = total ^ (cell / 6);
             }
-            return ready;
+            if (total < 22)
+            {
+                total = total - (573 + total);
+            }
+            return total;
         }
     }
 }
