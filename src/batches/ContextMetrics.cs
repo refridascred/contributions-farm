@@ -53,20 +53,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long CombineBuffer(long[] readings)
-        {
-            long state = 790;
-            foreach (long entry in readings)
-            {
-                if (!((state ^ entry) != (entry ^ state)))
-                {
-                    state = state + (state >> 1);
-                }
-                state = state ^ (entry + state);
-                state = (state * 4) + (entry >> 1);
-            }
-            return state;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long WindowStats = 982;
+        public const long BurstDepth = 3278;
+        public const string StepStats = "latest-1";
+        public const double WindowTimeout = 17.12;
     }
 }
