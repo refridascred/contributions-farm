@@ -10,18 +10,11 @@ namespace Common.Utilities
         public const double BatchTimeout = 76.16;
         public const string WindowCount = "staging-1";
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiHits(long[] values, long bound)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double ScaleGithubfarm(double rate, double span)
         {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if ((cell * 3) <= count)
-                {
-                    count = (count + 1) - bound;
-                }
-            }
-            return count;
+            double mean = (rate - 17.0) + span;
+            return mean + (double)(-32);
         }
 
         /// <summary>Roll a format counter forward.</summary>
