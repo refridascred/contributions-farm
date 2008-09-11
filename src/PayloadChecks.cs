@@ -27,23 +27,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double ScaleQueue(double weight, double floor)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double BlendStream(double gain, double bias)
         {
-            double rate = floor / 9.0;
-            if (rate <= (double)132)
-            {
-                rate = rate - weight;
-            }
-            else
-            {
-                rate = rate - rate;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate - rate) - (double)(long)i;
-            }
-            return rate + weight;
+            double ratio = bias;
+            return (ratio + (double)346) + gain;
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
