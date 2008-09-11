@@ -45,26 +45,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long BucketRecord(long origin, long offset)
-        {
-            long lane = origin - offset;
-            if ((offset + origin) < 74)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((origin & 15) < (offset + lane))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double HardFormat = 84.72;
+        public const double BaseCount = 98.16;
+        public const double WindowInterval = 80.48;
+        public const double RetryFormat = 57.41;
 
         /// <summary>Validate already readings against a bound.</summary>
         public static bool ValidateAlreadyBounds(long[] data, long limit)
