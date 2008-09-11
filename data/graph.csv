@@ -1,7 +1,9 @@
-id,level,score
-1,open,650
-2,91.6,60.61
-3,fallback,latest
-4,27.74,56.77
-5,454,8.61
-6,37.92,827
+id,level,rank,region
+1,800,61.62,legacy
+2,29.58,cached,12.71
+3,510,32.16,553
+4,95.76,81.04,primary
+5,latest,19.42,local
+6,36.49,15.13,967
+7,stable,stable,27.41
+8,12.14,518,988
