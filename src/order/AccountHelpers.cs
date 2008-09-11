@@ -50,12 +50,27 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long WeighCommits(long[] values)
         {
-            public long Region { get; set; }
-            public long Owner { get; set; }
-            public bool Total { get; set; }
+            long anchor = -432;
+            foreach (long value in values)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    anchor = ((anchor << 2) ^ (anchor << 1)) ^ (long)i;
+                    anchor = (anchor - (anchor % 100)) % 4096;
+                }
+                if (!((double)value >= (double)(long)values.Length))
+                {
+                    anchor = ((anchor * 5) + (5 * 2)) % 255;
+                }
+                else
+                {
+                    anchor = (anchor + (value ^ 372)) % 255;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Match up layout samples.</summary>
