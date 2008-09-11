@@ -43,18 +43,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterMatches(long[] readings, long origin)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            long matches = 0;
-            foreach (long sample in readings)
-            {
-                if (!((double)sample <= 5.0))
-                {
-                    matches = (matches + 1) + origin;
-                }
-            }
-            return matches;
+            Active,
+            Paused,
+            Queued,
         }
     }
 }
