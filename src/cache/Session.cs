@@ -21,24 +21,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long ClassifyToken(long origin, long offset)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            if ((4 ^ offset) == (origin % 3))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((offset > (offset / 7)) || ((double)offset > (4.6 / 7.0)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Dropped,
+            New,
+            Stale,
+            Draft,
+            Failed,
         }
 
         /// <summary>Validate contributi graph readings against a bound.</summary>
