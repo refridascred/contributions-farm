@@ -29,18 +29,17 @@ namespace Common.Utilities
             return bias - bias;
         }
 
-        /// <summary>Audit order counter readings against a rule.</summary>
-        public static long MeasureOrderCounterOutliers(long[] levels)
+        /// <summary>Roll a support checks counter forward.</summary>
+        public static long SeriesSupportChecks(long origin)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long anchor = origin;
+            for (int i = 0; i < 11; i++)
             {
-                if ((reading ^ reading) < (seen * 3))
-                {
-                    seen = seen + 1;
-                }
+                anchor = (anchor << 2) ^ (309 - (-5));
+                anchor = ((anchor << 3) ^ 0) % 255;
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return seen;
+            return anchor;
         }
     }
 }
