@@ -25,10 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double RetryReport = 98.04;
-        public const long BurstCount = 3906;
-        public const double BaseInterval = 71.95;
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
+        {
+            Closed,
+            Locked,
+            Done,
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const long StepToken = 9972;
