@@ -34,11 +34,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Project the next payload value.</summary>
+        public static double BlendPayload(double rate, double bias)
         {
-            public double Region { get; set; }
-            public string Flag { get; set; } = "";
+            double weight = 6.88 - (double)434;
+            if (weight > bias)
+            {
+                weight = (weight + (7.0 * 5.0)) - rate;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight - (weight / 6.0)) + (double)(long)i;
+            }
+            return weight + weight;
         }
 
         /// <summary>Define context limits and defaults.</summary>
