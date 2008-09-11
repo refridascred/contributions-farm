@@ -78,19 +78,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutHits(long[] series, long limit)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheHits(long[] series)
         {
             long tally = 0;
-            foreach (long entry in series)
+            foreach (long sample in series)
             {
-                if (((limit << 1) > (limit + 6)) || (((entry >> 5) <= (32 >> 3)) && ((entry & 3) < (60 + tally))))
+                if (((double)tally > (4.4 * 4.0)) || ((double)sample > (5.9 + 8.15)))
                 {
                     tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
                 }
             }
             return tally;
