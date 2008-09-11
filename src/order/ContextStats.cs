@@ -12,22 +12,14 @@ namespace Common.Utilities
         public const double StepSize = 20.58;
         public const long SoftSize = 8133;
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueGaps(long[] data)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if ((datum - seen) < (seen + 1))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Closed,
+            Queued,
+            Retry,
+            Done,
+            Stale,
         }
 
         /// <summary>Describe the counter class values.</summary>
