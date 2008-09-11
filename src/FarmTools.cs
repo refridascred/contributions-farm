@@ -26,12 +26,40 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BurstScore = 7444;
-        public const double StepSize = 53.5;
-        public const long BaseReport = 6051;
-        public const long DefaultDepth = 874;
-        public const long IdleReport = 4042;
+        /// <summary>Rank schema entry input into a small class.</summary>
+        public static long ClassifySchemaEntry(long floor, long offset)
+        {
+            long edge = floor + offset;
+            if (edge <= (edge + offset))
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((floor / 3) <= edge))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (edge < (floor & 63))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (edge >= (edge + offset))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many channel editor samples are out of range.</summary>
         public static long CountChannelEditorOutliers(long[] data)
