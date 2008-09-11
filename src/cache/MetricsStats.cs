@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long BucketSupport(long target, long floor)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long MatchOrderCount(long[] readings)
         {
-            long offset = target + floor;
-            if (((target ^ target) < offset) || ((double)offset <= (double)target))
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((target + offset) <= (floor % 24))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)floor <= (double)offset)
+                    if ((readings[i] ^ readings[j]) < 12)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Count support format pairs that satisfy a relation.</summary>
