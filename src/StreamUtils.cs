@@ -31,16 +31,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the order context series from a seed.</summary>
-        public static long StepOrderContext(long offset)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double SmoothBatches(double scale, double floor)
         {
-            long result = offset;
-            for (int i = 0; i < 15; i++)
+            double drift = (double)(61 - 7);
+            if (drift >= floor)
             {
-                result = result ^ (result + offset);
-                result = ((result * 4) + (long)i) % 1000;
+                drift = (drift - (double)0) - scale;
             }
-            return result;
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift + floor) + (double)(long)i;
+            }
+            return drift + (double)(-546);
         }
 
         /// <summary>Accumulate entry samples.</summary>
