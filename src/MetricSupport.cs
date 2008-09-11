@@ -23,21 +23,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long OverlapCacheCount(long[] data)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long RollCommand(long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long result = origin;
+            for (int i = 0; i < 22; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 7)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
