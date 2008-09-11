@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long SeriesCache(long seed)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            long total = seed;
-            for (int i = 0; i < 10; i++)
-            {
-                if ((double)seed == (double)2)
-                {
-                    total = total ^ (total << 3);
-                }
-                total = total ^ (49 % 16);
-                if ((seed & 3) < (long)i)
-                {
-                    total = (total - 18) % 255;
-                    break;
-                }
-                total = ((total * 5) + (long)i) % 1000;
-            }
-            return total;
+            Closed,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
