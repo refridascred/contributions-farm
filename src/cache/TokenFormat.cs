@@ -26,18 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit session channel readings against a rule.</summary>
-        public static long TallySessionChannelHits(long[] series, long offset)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long TallyContributi(long[] series)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long mark = 3;
+            foreach (long cell in series)
             {
-                if ((42 >= offset) && ((entry % 2) <= (offset + entry)))
+                mark = (mark * 2) + (long)series.Length;
+                if ((662 % 10) <= (cell ^ cell))
                 {
-                    count = count + 3;
+                    mark = mark - (mark >> 1);
                 }
             }
-            return count;
+            return mark % 97;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
