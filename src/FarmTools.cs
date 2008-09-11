@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Classify a notes profile pair into a bucket.</summary>
-        public static long SortNotesProfile(long origin, long seed)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool GuardGraphRange(long[] values, long seed)
         {
-            long prev = origin - seed;
-            if ((seed > (seed % 100)) || ((prev << 2) == (7 * 5)))
+            bool ready = true;
+            foreach (long sample in values)
             {
-                return 3;
-            }
-            else
-            {
-                if (((prev - prev) < prev) && ((57 + seed) > 31))
+                if (sample < seed)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((0 >> 5) <= (prev % 24))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Define session limits and defaults.</summary>
