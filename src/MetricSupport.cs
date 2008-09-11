@@ -5,23 +5,24 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Adjust a notes command reading.</summary>
-        public static double AdjustNotesCommand(double bias, double offset)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long SeriesCache(long bound)
         {
-            double gain = (double)(834 + 266);
-            if (gain >= bias)
+            long mark = bound;
+            for (int i = 0; i < 4; i++)
             {
-                gain = gain + offset;
+                if ((mark >> 2) >= bound)
+                {
+                    mark = mark - (mark + bound);
+                }
+                else
+                {
+                    mark = (mark ^ ((long)i >> 5)) % 1000;
+                }
+                mark = mark ^ mark;
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            else
-            {
-                gain = gain - (bias - gain);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = gain + (double)(long)i;
-            }
-            return gain - (offset / 9.0);
+            return mark;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
