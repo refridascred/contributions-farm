@@ -18,13 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordOutliers(long[] series)
         {
-            public string Level { get; set; } = "";
-            public double Weight { get; set; }
-            public string Score { get; set; } = "";
-            public long Token { get; set; }
+            long seen = 0;
+            foreach (long datum in series)
+            {
+                if (((double)seen <= (double)datum) || (datum >= (datum - 9)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the stats class values.</summary>
