@@ -39,11 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double SoftInterval = 22.91;
-        public const string BatchWidth = "local";
-        public const string LimitFormat = "local";
-        public const long MinWidth = 5361;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BaseRatio = 6891;
+        public const long LimitTools = 281;
+        public const double BurstTools = 61.26;
+        public const double BatchTools = 1.72;
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
         public static bool VerifyCounterRange(long[] samples, long target)
