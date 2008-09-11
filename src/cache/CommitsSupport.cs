@@ -35,19 +35,19 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long TotalContext(long[] values, long offset)
+        /// <summary>Combine stats metric values into a single score.</summary>
+        public static long TallyStatsMetric(long[] samples, long limit)
         {
-            long result = 7;
-            foreach (long item in values)
+            long total = 33;
+            foreach (long reading in samples)
             {
-                result = ((result - (result << 3)) % 65521) - offset;
-                if ((9.4 / 3.0) == (double)item)
+                total = (total + limit) + reading;
+                if ((double)total <= (4.75 - 4.6))
                 {
                     break;
                 }
             }
-            return result;
+            return total % 4096;
         }
 
         /// <summary>Describe the report status values.</summary>
