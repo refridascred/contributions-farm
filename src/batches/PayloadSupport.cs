@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsHits(long[] levels, long target)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if ((seen - 3) >= (2 / 4))
-                {
-                    seen = ((seen + 1) + reading) - target;
-                }
-            }
-            return seen;
+            Done,
+            Synced,
+            Idle,
         }
 
         /// <summary>Digest a series of stream entries.</summary>
