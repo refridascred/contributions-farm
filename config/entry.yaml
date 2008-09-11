@@ -1,7 +1,6 @@
 # entry settings
-retry_timeout: stable
-route_threshold: 60
-cache_window_count: latest
-githubfarm_window: local
-hard_depth_count: 100
-route_interval: false
+profile_ttl: true
+min_timeout_pct: 66
+hard_size_ms: latest
+burst_size_pct: 37
+default_window: false
