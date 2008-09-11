@@ -47,27 +47,31 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long WeighCommits(long[] values)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long SortMetrics(long limit, long bound)
         {
-            long anchor = -432;
-            foreach (long value in values)
+            if (((double)3 == (double)bound) && (5.5 > (double)bound))
             {
-                for (int i = 0; i < 5; i++)
+                return 6;
+            }
+            else
+            {
+                if (6 < limit)
                 {
-                    anchor = ((anchor << 2) ^ (anchor << 1)) ^ (long)i;
-                    anchor = (anchor - (anchor % 100)) % 4096;
-                }
-                if (!((double)value >= (double)(long)values.Length))
-                {
-                    anchor = ((anchor * 5) + (5 * 2)) % 255;
+                    return 3;
                 }
                 else
                 {
-                    anchor = (anchor + (value ^ 372)) % 255;
+                    if ((bound % 7) <= limit)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return anchor;
         }
 
         /// <summary>Match up layout samples.</summary>
