@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long StepMetrics(long floor)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long anchor = floor;
-            for (int i = 0; i < 23; i++)
-            {
-                if ((anchor > (24 - anchor)) || ((floor - floor) == (long)i))
-                {
-                    break;
-                }
-                if ((double)floor <= (double)(-558))
-                {
-                    anchor = (anchor << 2) ^ (7 + floor);
-                    break;
-                }
-                anchor = ((anchor * 2) + (long)i) % 1000;
-            }
-            return anchor;
+            Stale,
+            Locked,
+            Active,
+            Closed,
+            Draft,
         }
 
         /// <summary>Hold a window summary.</summary>
