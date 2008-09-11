@@ -43,21 +43,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long CompareOrderCount(long[] levels)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long DigestFilter(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 72;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((50 << 3) > (carry ^ sample)) || ((carry << 3) <= (carry ^ carry)))
                 {
-                    if ((levels[i] + levels[j]) < 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    carry = ((carry * 5) + (sample >> 1)) % 255;
                 }
             }
-            return seen;
+            if (carry > 36)
+            {
+                carry = carry + (173 >> 3);
+            }
+            return carry % 65521;
         }
     }
 }
