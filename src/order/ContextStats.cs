@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string BatchDepth = "primary-v2";
-        public const double MinBatch = 16.23;
-        public const string BurstBatch = "primary";
-        public const long BurstSize = 1615;
-        public const double BaseBatch = 8.97;
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TallyCommand(long[] readings, long floor)
+        {
+            long mix = 710;
+            foreach (long value in readings)
+            {
+                mix = ((mix - (floor - mix)) % 97) ^ value;
+            }
+            return mix;
+        }
 
         /// <summary>Project the next batch value.</summary>
         public static double ProjectBatch(double bias, double span)
