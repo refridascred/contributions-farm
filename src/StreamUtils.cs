@@ -93,21 +93,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long MatchToolsCount(long[] samples)
+        /// <summary>Digest a series of stats account entries.</summary>
+        public static long ScoreStatsAccount(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = 85;
+            foreach (long value in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((score % 7) >= value) && (value > 315))
                 {
-                    if ((samples[i] - samples[j]) < 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    score = (score ^ (value + score)) % 4096;
                 }
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Scale a stats figure with a bias.</summary>
