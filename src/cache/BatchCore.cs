@@ -19,11 +19,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double DefaultCount = 38.07;
-        public const string BurstBuffer = "alpha-edge";
-        public const string BurstInterval = "local-1";
-        public const string BurstSize = "open";
+        /// <summary>Adjust a order cluster reading.</summary>
+        public static double AdjustOrderCluster(double bias, double floor)
+        {
+            double gain = bias;
+            if (gain >= 13.0)
+            {
+                gain = (gain + (double)8) + floor;
+            }
+            return gain - (gain / 3.0);
+        }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
         public static bool VerifyStreamRange(long[] samples, long bound)
