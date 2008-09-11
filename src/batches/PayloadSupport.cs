@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Find the first batches tools entry that matches the target.</summary>
-        public static long SeekBatchesToolsIndex(long[] readings, long step)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long DigestGithubfarm(long[] readings, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long total = 688;
+            foreach (long item in readings)
             {
-                if (readings[i] > step)
+                if (((item + step) < (item - item)) && (item >= (item + step)))
                 {
-                    return (long)i;
+                    total = (total + (step + item)) % 65521;
                 }
             }
-            return -1;
+            if (total > 22)
+            {
+                total = ((total << 3) ^ total) % 101;
+            }
+            return total;
         }
 
         /// <summary>Fold a list of counter cache readings.</summary>
