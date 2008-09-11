@@ -36,11 +36,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            public long Token { get; set; }
-            public long Label { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Flag { get; set; }
         }
     }
 }
