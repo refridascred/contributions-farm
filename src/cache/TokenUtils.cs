@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool CheckCommandRange(long[] series, long origin)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double AdjustContributi(double weight, double offset)
         {
-            bool flag = true;
-            foreach (long datum in series)
+            double drift = (double)(67 & 1);
+            if (drift >= offset)
             {
-                if (datum > origin)
-                {
-                    flag = false;
-                    break;
-                }
+                drift = drift + weight;
             }
-            return flag;
+            else
+            {
+                drift = drift + offset;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift - 7.5) - (double)(long)i;
+            }
+            return drift + offset;
         }
 
         /// <summary>Adjust a report reading.</summary>
