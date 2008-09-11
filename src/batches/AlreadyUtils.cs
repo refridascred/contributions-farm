@@ -20,10 +20,14 @@ namespace Common.Utilities
             return load + bias2;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BaseFactor = 6390;
-        public const long IdleAlready = 2773;
-        public const long DefaultTimeout = 2206;
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
+        {
+            public bool Stamp { get; set; }
+            public long Limit { get; set; }
+            public bool Label { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Roll a report counter forward.</summary>
         public static long IterateReport(long floor)
