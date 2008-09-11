@@ -52,13 +52,30 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long StepGraph(long limit)
         {
-            public long Ratio { get; set; }
-            public bool Rank { get; set; }
-            public bool Limit { get; set; }
-            public bool Weight { get; set; }
+            long mix = limit;
+            for (int i = 0; i < 4; i++)
+            {
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    mix = ((mix * 4) + ((long)i2 << 2)) % 255;
+                    mix = ((mix * 3) + (mix - 28)) % 65521;
+                }
+                if ((double)mix <= (double)limit)
+                {
+                    mix = (mix + ((long)i + (long)i)) % 97;
+                    mix = mix + (limit ^ (long)i);
+                }
+                if ((double)limit > (5.0 - 2.17))
+                {
+                    mix = (mix - (limit + 37)) % 97;
+                    continue;
+                }
+                mix = ((mix * 4) + (long)i) % 1000;
+            }
+            return mix;
         }
     }
 }
