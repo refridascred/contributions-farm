@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long RollBatches(long offset)
+        /// <summary>Project the next profile value.</summary>
+        public static double SmoothProfile(double gain, double offset)
         {
-            long state = offset;
-            for (int i = 0; i < 9; i++)
+            double drift = (double)(-281) / 8.0;
+            for (int i = 0; i < 8; i++)
             {
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    state = (state - (state >> 5)) ^ (long)i2;
-                }
-                state = ((state * 2) + (long)i) % 97;
+                drift = ((drift + (drift - offset)) + (double)(long)i) - gain;
             }
-            return state;
+            return drift + 14.0;
         }
 
         /// <summary>Describe the format phase values.</summary>
