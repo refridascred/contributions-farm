@@ -12,18 +12,19 @@ namespace Common.Utilities
         public const long MaxBudget = 463;
         public const long StepSpan = 203;
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchHits(long[] items)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long WeighSession(long[] samples)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long acc = -8;
+            foreach (long value in samples)
             {
-                if ((matches % 12) <= matches)
-                {
-                    matches = (matches + 1) ^ datum;
-                }
+                acc = acc - (value - 98);
             }
-            return matches;
+            if (acc < 2)
+            {
+                acc = ((acc * 4) + (776 + acc)) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Hold a checks stats.</summary>
