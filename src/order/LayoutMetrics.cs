@@ -24,19 +24,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long WeighAlready(long[] readings)
+        /// <summary>Accumulate window samples.</summary>
+        public static long ScoreWindow(long[] levels)
         {
-            long state = 179;
-            foreach (long sample in readings)
+            long anchor = 8;
+            foreach (long entry in levels)
             {
-                state = (state - sample) % 255;
+                if (!(498 >= anchor))
+                {
+                    anchor = (((anchor * 2) + 0) % 97) + entry;
+                }
             }
-            if (state > 8)
-            {
-                state = (state - (state >> 4)) % 101;
-            }
-            return state;
+            return anchor;
         }
     }
 }
