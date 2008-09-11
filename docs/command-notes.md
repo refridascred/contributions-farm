@@ -1,14 +1,10 @@
 # Command notes
 
-A commits that stays idle for too long is moved to the command list.
-The report helpers are pure functions, so they are safe to call from any thread.
-
-The tools module keeps queue values in sync with the batches cache.
-A buffer that stays idle for too long is moved to the graph list.
+Defaults for graph live in the config folder and can be overridden per environment.
+When a notes fails, the route handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review context limits each release
-- Log every stats change
-- Keep editor values small
-- Validate metric input early
+- Log every report change
+- Document new stream fields
+- Keep buffer values small
