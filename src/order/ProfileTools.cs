@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long ClassifySchema(long bound, long target)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long CompareGithubfarmCount(long[] items)
         {
-            if (((target ^ 866) <= 47) && ((double)target < (8.35 - 3.94)))
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((510 - target) > bound)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)target <= (2.0 - 5.9))
+                    if ((items[i] ^ items[j]) != 15)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((147 > target) || ((target - bound) < (target / 5)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Classify a layout schema pair into a bucket.</summary>
