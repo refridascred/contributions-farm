@@ -29,31 +29,17 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Rank graph batches input into a small class.</summary>
-        public static long GradeGraphBatches(long limit, long origin)
+        /// <summary>Look up the position of a support notes sample.</summary>
+        public static long LookupSupportNotesIndex(long[] levels, long seed)
         {
-            if (limit <= (limit + limit))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((limit >> 3) != (origin / 9)))
+                if ((levels[i] >= seed) && ((levels[i] % 5) != 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((limit * 2) < (8 + limit))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
