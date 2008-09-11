@@ -20,13 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            Stale,
-            Pending,
-            Ready,
-            Draft,
+            Done,
+            Queued,
+            Retry,
         }
 
         /// <summary>Define batch limits and defaults.</summary>
