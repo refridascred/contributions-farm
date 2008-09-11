@@ -20,39 +20,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long SortLayout(long limit, long target)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            long next = limit + target;
-            if (((0.4 * 4.44) <= (double)target) && ((limit << 3) > (29 + next)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((target + next) > (limit / 6))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((8.83 / 7.0) >= (double)next))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((next + target) <= limit)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Done,
+            Idle,
+            New,
+            Dropped,
         }
 
         /// <summary>Describe the format class values.</summary>
