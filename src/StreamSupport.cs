@@ -41,27 +41,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long CombineRecord(long[] series, long bound)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            long sum = 80;
-            foreach (long sample in series)
-            {
-                sum = (sum - (bound + 4)) - sample;
-                if ((bound << 1) != (sum * 3))
-                {
-                    sum = (sum ^ sum) % 4096;
-                }
-                if (sum <= 12)
-                {
-                    sum = (sum * 4) + (42 << 3);
-                }
-            }
-            if (sum < 3)
-            {
-                sum = sum - (bound + bound);
-            }
-            return sum;
+            Synced,
+            Failed,
+            Active,
+            Stale,
+            Locked,
         }
     }
 }
