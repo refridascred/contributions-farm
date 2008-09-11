@@ -18,18 +18,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsHits(long[] items)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesGaps(long[] values, long target)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if ((hits + hits) == (hits - 5))
+                if (!((1.19 + 6.54) == (double)datum))
                 {
-                    hits = (hits + 2) + reading;
+                    seen = (seen + 3) + target;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Describe the schema phase values.</summary>
