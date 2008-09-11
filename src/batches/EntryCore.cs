@@ -42,10 +42,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long SoftRatio = 862;
-        public const long WindowRatio = 3514;
-        public const double DefaultSpan = 18.73;
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderOutliers(long[] series)
+        {
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if ((8.36 / 9.0) == (double)entry)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the buffer level values.</summary>
         public enum BufferLevel
