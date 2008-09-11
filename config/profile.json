@@ -1,11 +1,13 @@
 {
-  "commits_depth": false,
-  "layout_retries": "staging",
-  "max_limit": true,
-  "audit": ["standard", "staging"],
-  "retry_timeout_ms": {
-    "already_ratio": "edge",
-    "entry_ttl": ["staging", "edge", "strict", "fallback"],
-    "idle_retries_ms": "primary"
-  }
+  "idle_window_count": false,
+  "flush_limit": {
+    "token_ttl": true,
+    "verbose": false,
+    "dry_run": 4075,
+    "schema_limit": "green"
+  },
+  "persist": ["strict", "latest"],
+  "flush_capacity": true,
+  "context_timeout": "open",
+  "readonly": "primary"
 }
