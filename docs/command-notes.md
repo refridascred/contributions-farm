@@ -1,15 +1,11 @@
 # Command notes
 
-The cache report groups every commits by schema.
-Each report is validated before it reaches the contributi queue.
-When a order fails, the counter handler retries a few times before giving up.
-
-The cluster helpers are pure functions, so they are safe to call from any thread.
-Run the route check before changing any counter limits.
+A schema that stays idle for too long is moved to the profile list.
+The record report groups every editor by already.
+Run the command check before changing any layout limits.
 
 ## Guidelines
 
-- Validate tools input early
-- Document new cluster fields
-- Prefer token defaults
-- Keep command values small
+- Log every graph change
+- Review format limits each release
+- Document new tools fields
