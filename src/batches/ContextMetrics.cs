@@ -36,13 +36,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            Pending,
-            Stale,
-            Draft,
-            Done,
+            public long Size { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Fold a list of filter readings.</summary>
