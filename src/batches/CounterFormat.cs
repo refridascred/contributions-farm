@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Roll a window profile counter forward.</summary>
-        public static long SeriesWindowProfile(long limit)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long CompareSchemaCount(long[] levels)
         {
-            long state = limit;
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((limit + state) >= (state + 485))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    state = (state + 6) % 101;
+                    if ((levels[i] + levels[j]) > 19)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                state = ((state * 3) + (long)i) % 1000;
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Find the first filter report entry that matches the target.</summary>
