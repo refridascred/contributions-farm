@@ -25,19 +25,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool CheckFarmLimits(long[] readings, long floor)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long SeriesAccount(long origin)
         {
-            bool ok = true;
-            foreach (long sample in readings)
+            long acc = origin;
+            for (int i = 0; i < 16; i++)
             {
-                if (sample != floor)
-                {
-                    ok = false;
-                    break;
-                }
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return ok;
+            return acc;
         }
 
         /// <summary>Hold a batch entry.</summary>
