@@ -12,11 +12,13 @@ namespace Common.Utilities
         public const long MaxBudget = 463;
         public const long StepSpan = 203;
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            public string Size { get; set; } = "";
-            public long Label { get; set; }
+            public double Size { get; set; }
+            public string Count { get; set; } = "";
+            public long Region { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Hold a checks stats.</summary>
