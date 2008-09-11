@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long SoftFormat = 1169;
-        public const string WindowBudget = "stable-v2";
-        public const string SoftBudget = "latest-edge";
-        public const long IdleInterval = 4636;
-        public const double SoftScore = 59.22;
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long BucketCache(long origin, long bound)
+        {
+            if ((bound << 1) <= origin)
+            {
+                return 6;
+            }
+            else
+            {
+                if (((double)bound != (5.65 - 11.0)) || ((origin >> 2) <= (4 * 5)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((origin & 15) <= (bound / 4))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((origin < (bound - origin)) && ((double)bound < 4.0))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Rank token input into a small class.</summary>
         public static long RankToken(long origin, long origin2)
