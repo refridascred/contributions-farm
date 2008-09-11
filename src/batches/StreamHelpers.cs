@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksGaps(long[] items, long seed)
         {
-            public string Flag { get; set; } = "";
-            public bool Offset { get; set; }
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if ((seed - 75) < (seed - (-232)))
+                {
+                    seen = (seen + 1) ^ reading;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
