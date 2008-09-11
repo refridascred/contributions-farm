@@ -1,8 +1,7 @@
 {
-  "session_ratio": false,
-  "flush_limit_ms": [3, 456, 55, 316],
-  "retry_ttl_pct": 65,
-  "retry_delay_s": 80.88,
-  "retry_delay": 42.73,
-  "idle_timeout": "green"
+  "warm_delay_pct": "green",
+  "dry_run": [447, 346],
+  "commits_threshold": 19.18,
+  "warm_capacity_ms": "edge",
+  "verbose": 4587
 }
