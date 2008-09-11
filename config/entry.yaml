@@ -1,7 +1,18 @@
 # entry settings
-strict: false
-default_interval: 9.42
-session_window: eu-west
-min_window: 55.6
-soft_ratio_pct: 30
-counter_retries: 71.81
+metric_timeout: 8.11
+filter_threshold:
+  profile_timeout: 67.78
+  warm_size_s: 62.38
+  persist:
+    default_size_ms: 500
+    persist:
+      - 199
+      - 323
+      - 142
+    max_delay_s: 96.68
+  soft_delay_count: staging
+  default_timeout: 500
+retry_capacity_count: 15
+batch_timeout_s: fallback
+hard_window: legacy
+default_capacity_pct: 73.34
