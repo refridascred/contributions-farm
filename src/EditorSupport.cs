@@ -25,19 +25,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool VerifyBatchesRange(long[] data, long limit)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            bool stale = true;
-            foreach (long cell in data)
-            {
-                if (cell <= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Done,
+            Queued,
+            Active,
         }
 
         /// <summary>Grade a format value against two limits.</summary>
