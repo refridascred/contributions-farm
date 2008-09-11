@@ -41,32 +41,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long ClassifyCommand(long step, long floor)
-        {
-            long delta = step - floor;
-            if ((delta / 9) >= (floor & 15))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((step + step) < (floor - floor))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((delta >> 2) != (step & 127))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double StepCache = 67.29;
+        public const long BaseCache = 7436;
+        public const double SoftCache = 38.84;
+        public const string CacheCount = "local";
+        public const double HardSize = 60.32;
     }
 }
