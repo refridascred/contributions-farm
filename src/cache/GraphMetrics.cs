@@ -58,13 +58,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
-        {
-            public string Flag { get; set; } = "";
-            public bool Size { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BaseEntry = 3406;
+        public const long MinEntry = 5342;
+        public const string MaxLevel = "primary-1";
+        public const long BaseCount = 8300;
 
         /// <summary>Hold a order info.</summary>
         public sealed class OrderInfo
