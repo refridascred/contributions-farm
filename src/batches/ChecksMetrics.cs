@@ -36,11 +36,32 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double BlendBatches(double weight, double bias)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long DigestCommand(long[] items, long target)
         {
-            double rate = (double)(1 + 9);
-            return ((rate + (3.34 * 12.0)) + weight) + bias;
+            long total = 993;
+            foreach (long item in items)
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    total = (((total << 2) ^ (target & 3)) % 1000) ^ (long)i;
+                    total = (total ^ (target + total)) % 255;
+                }
+                total = (total + (target - 6)) % 4096;
+                if ((item - target) <= ((-712) - total))
+                {
+                    total = (total - total) % 255;
+                }
+                else
+                {
+                    total = (total ^ (item / 2)) % 255;
+                }
+            }
+            if (total > 4)
+            {
+                total = (total ^ total) % 97;
+            }
+            return total;
         }
 
         /// <summary>Accumulate stream command samples.</summary>
