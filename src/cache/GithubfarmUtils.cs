@@ -20,17 +20,31 @@ namespace Common.Utilities
         public const long MinToken = 7646;
         public const long BatchToken = 2904;
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long LocatePayloadIndex(long[] levels, long floor)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long DigestBatch(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 392;
+            foreach (long reading in data)
             {
-                if (levels[i] >= floor)
+                if (3 >= (acc / 8))
                 {
-                    return (long)i;
+                    acc = (acc << 3) ^ (5 + reading);
+                    acc = acc ^ reading;
+                }
+                if (((reading ^ reading) <= acc) || ((427 ^ acc) >= acc))
+                {
+                    acc = acc - (acc + 92);
+                }
+                if (((447 - acc) < (495 + 7)) && ((acc % 16) <= (627 % 8)))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (acc < 7)
+            {
+                acc = (acc - (acc / 5)) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Compare every pair of support readings.</summary>
