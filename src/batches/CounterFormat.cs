@@ -38,19 +38,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every support stats entry stays within the limit.</summary>
-        public static bool CheckSupportStatsRange(long[] items, long floor)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            bool ready = true;
-            foreach (long reading in items)
-            {
-                if (reading != floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Paused,
+            Dropped,
+            Done,
+            Draft,
         }
     }
 }
