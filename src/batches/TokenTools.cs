@@ -20,18 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesGaps(long[] items, long target)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if (((double)item >= (double)count) || !((double)item != (double)target))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Stale,
+            Pending,
+            Ready,
+            Draft,
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
