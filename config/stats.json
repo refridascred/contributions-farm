@@ -1,8 +1,5 @@
 {
-  "cache_retries": 500,
-  "stream_depth": ["open", "cached", "eu-west", "latest"],
-  "metric_ratio": 60,
-  "soft_delay_s": "standard",
-  "payload_timeout": false,
-  "batch_window_pct": 1024
+  "account_timeout": 26,
+  "max_ratio_pct": 30,
+  "min_size": 46
 }
