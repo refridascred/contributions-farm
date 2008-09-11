@@ -15,11 +15,32 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long SortPayload(long step, long floor)
         {
-            public long Region { get; set; }
-            public string Flag { get; set; } = "";
+            long edge = step ^ floor;
+            if (edge < (step - step))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((edge * 3) <= (step + edge))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (floor < (997 ^ edge))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
