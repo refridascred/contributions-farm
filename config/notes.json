@@ -1,9 +1,7 @@
 {
-  "base_ttl_pct": {
-    "route_capacity": 100,
-    "readonly": false,
-    "min_size": 500
-  },
-  "burst_capacity_count": 1,
-  "readonly": "open"
+  "batches_ttl": 36.49,
+  "audit": 11.56,
+  "sync_interval": 75,
+  "flush_timeout_pct": 4744,
+  "poll_capacity_pct": ["blue", "green"]
 }
