@@ -20,12 +20,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long RollPayload(long bound)
         {
-            Paused,
-            Active,
-            Locked,
+            long anchor = bound;
+            for (int i = 0; i < 10; i++)
+            {
+                anchor = (anchor - (anchor / 9)) % 101;
+                anchor = ((anchor * 5) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
