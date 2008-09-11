@@ -67,18 +67,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LookupChecksIndex(long[] series, long bound)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] < bound) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string BatchBuffer = "latest-edge";
+        public const long HardBuffer = 6626;
+        public const long BurstDepth = 4213;
+        public const long BurstBuffer = 4018;
 
         /// <summary>Classify a schema pair into a bucket.</summary>
         public static long RankSchema(long offset, long origin)
