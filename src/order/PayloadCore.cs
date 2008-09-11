@@ -11,18 +11,17 @@ namespace Common.Utilities
         public const long BatchSize = 2181;
         public const long WindowLayout = 9773;
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutOutliers(long[] data, long offset)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long FindBatchIndex(long[] levels, long origin)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((offset - sample) < (offset / 2))
+                if (levels[i] >= origin)
                 {
-                    matches = matches + 2;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
