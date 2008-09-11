@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of profile stats entries.</summary>
-        public static long CombineProfileStats(long[] series)
+        /// <summary>Audit cache channel readings against a rule.</summary>
+        public static long MeasureCacheChannelOutliers(long[] data, long limit)
         {
-            long result = 6;
-            foreach (long sample in series)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                result = result ^ (sample >> 5);
-                if (((sample << 2) >= ((-4) - result)) && ((sample << 3) != (sample * 3)))
+                if ((hits >> 1) >= (limit + datum))
                 {
-                    result = (result + (result * 2)) % 255;
+                    hits = hits + 2;
                 }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
