@@ -12,15 +12,19 @@ namespace Common.Utilities
         public const double StepSize = 20.58;
         public const long SoftSize = 8133;
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamOutliers(long[] levels)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueGaps(long[] data)
         {
             long seen = 0;
-            foreach (long sample in levels)
+            foreach (long datum in data)
             {
-                if ((8.0 * 3.0) == (double)sample)
+                if ((datum - seen) < (seen + 1))
                 {
                     seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
