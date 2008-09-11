@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Match up report already samples.</summary>
-        public static long MatchReportAlreadyCount(long[] levels)
+        /// <summary>Measure how many githubfarm context samples are out of range.</summary>
+        public static long CountGithubfarmContextGaps(long[] data, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (matches >= reading)
                 {
-                    if ((levels[i] + levels[j]) > 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = (matches + 3) - seed;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Accumulate context samples.</summary>
