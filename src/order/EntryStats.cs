@@ -33,19 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long SeriesEditor(long origin)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            long anchor = origin;
-            for (int i = 0; i < 5; i++)
-            {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    anchor = (anchor - anchor) ^ (long)i2;
-                }
-                anchor = ((anchor * 5) + (long)i) % 65521;
-            }
-            return anchor;
+            Locked,
+            Closed,
+            Synced,
+            Failed,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
