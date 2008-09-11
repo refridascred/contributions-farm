@@ -10,18 +10,12 @@ namespace Common.Utilities
         public const long IdleGraph = 9280;
         public const string BatchGraph = "latest";
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricOutliers(long[] readings, long origin)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if (value >= (value >> 4))
-                {
-                    hits = (hits + 1) - origin;
-                }
-            }
-            return hits;
+            public double Token { get; set; }
+            public double Ratio { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
