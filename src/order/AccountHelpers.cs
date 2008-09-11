@@ -25,11 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MinDepth = 502;
-        public const string SoftEntry = "legacy-edge";
-        public const long IdleEntry = 4230;
-        public const double WindowEntry = 3.44;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string BaseDepth = "standard-edge";
+        public const long DefaultSpan = 8681;
+        public const long SoftSize = 7306;
+        public const long BatchFactor = 7164;
 
         /// <summary>Match up checks samples.</summary>
         public static long OverlapChecksCount(long[] readings)
