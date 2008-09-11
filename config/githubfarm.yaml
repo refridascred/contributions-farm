@@ -1,10 +1,29 @@
 # githubfarm settings
-verbose: fallback
-counter_size: 100
-dry_run: blue
-min_ratio_ms:
-  - local
-  - latest
-  - standard
-  - green
-min_threshold_pct: stable
+persist:
+  sync_timeout: 6.23
+  poll_delay_pct: 17.25
+  sync_ttl_s: 100
+  hard_timeout_pct:
+    - 159
+    - 120
+verbose: staging
+account_capacity: 65.22
+channel_window:
+  audit:
+    metric_threshold: 83
+    readonly: fallback
+    retry_capacity: edge
+  hard_retries_count: 5.72
+  cache_capacity_ms: 36.12
+  base_limit:
+    batch_ratio_s:
+      - primary
+      - open
+      - latest
+      - standard
+    sync_depth: 30
+    warm_ratio_pct:
+      - 400
+      - 278
+  hard_timeout_count: 70
+  githubfarm_interval: latest
