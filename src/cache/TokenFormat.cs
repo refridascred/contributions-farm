@@ -26,11 +26,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Fold a list of account readings.</summary>
+        public static long DigestAccount(long[] data)
         {
-            public long Mode { get; set; }
-            public long Region { get; set; }
+            long state = -2;
+            foreach (long reading in data)
+            {
+                if ((13.0 - 4.0) != (double)reading)
+                {
+                    state = state + state;
+                }
+            }
+            if (state > 863)
+            {
+                state = ((state << 2) ^ (state - state)) % 101;
+            }
+            return state % 97;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
