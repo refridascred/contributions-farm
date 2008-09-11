@@ -19,13 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            New,
-            Dropped,
-            Paused,
-            Queued,
+            public string Flag { get; set; } = "";
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
