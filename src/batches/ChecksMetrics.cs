@@ -21,12 +21,11 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            public string Region { get; set; } = "";
-            public string Label { get; set; } = "";
-            public long Mode { get; set; }
+            public bool Token { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Combine command values into a single score.</summary>
