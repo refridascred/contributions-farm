@@ -37,19 +37,10 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Measure how many counter route samples are out of range.</summary>
-        public static long AuditCounterRouteGaps(long[] levels, long target)
-        {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if (((5.3 - 0.81) <= (double)sample) || ((count + count) <= (target % 10)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long SoftRatio = 862;
+        public const long WindowRatio = 3514;
+        public const double DefaultSpan = 18.73;
 
         /// <summary>Describe the buffer level values.</summary>
         public enum BufferLevel
