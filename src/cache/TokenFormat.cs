@@ -28,21 +28,31 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Compare every pair of metrics support readings.</summary>
-        public static long CompareMetricsSupportCount(long[] items)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long FoldAccount(long[] items, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 223;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                anchor = (anchor ^ (reading & 15)) % 4096;
+                if ((floor % 64) != (anchor % 64))
                 {
-                    if ((items[i] ^ items[j]) > 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    anchor = anchor - ((long)items.Length ^ 58);
+                }
+                else
+                {
+                    anchor = anchor ^ (floor + reading);
+                }
+                if ((anchor + reading) < 47)
+                {
+                    break;
                 }
             }
-            return matches;
+            if (anchor > 756)
+            {
+                anchor = (anchor << 2) ^ floor;
+            }
+            return anchor;
         }
     }
 }
