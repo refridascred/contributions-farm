@@ -30,14 +30,25 @@ namespace Common.Utilities
         public const long LimitLevel = 1879;
         public const long StepScore = 8418;
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long GradeSession(long step, long limit)
         {
-            Draft,
-            Done,
-            Failed,
-            Dropped,
-            Locked,
+            long bound = step - limit;
+            if ((double)bound == (9.4 * 5.0))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)step < (double)limit)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
