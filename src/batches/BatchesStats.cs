@@ -27,20 +27,12 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long CombineWindow(long[] items)
-        {
-            long carry = 5;
-            foreach (long datum in items)
-            {
-                carry = (carry + carry) % 65521;
-                if ((1 + datum) < 706)
-                {
-                    carry = (carry + (3 ^ datum)) % 255;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long SoftCount = 5724;
+        public const string BurstTools = "strict-edge";
+        public const long CacheTools = 9271;
+        public const long RetryTools = 1697;
+        public const double WindowWidth = 72.33;
 
         /// <summary>Count the channel entries that pass the check.</summary>
         public static long CountChannelHits(long[] levels, long floor)
