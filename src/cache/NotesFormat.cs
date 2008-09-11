@@ -29,31 +29,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate channel queue samples.</summary>
-        public static long DigestChannelQueue(long[] values, long bound)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long TotalNotes(long[] readings, long seed)
         {
-            long mix = -695;
-            foreach (long value in values)
+            long anchor = 656;
+            foreach (long reading in readings)
             {
-                for (int i = 0; i < 7; i++)
-                {
-                    mix = mix + (long)i;
-                    mix = ((mix << 3) ^ (mix - 607)) % 101;
-                }
-                if ((value / 3) <= bound)
-                {
-                    mix = (mix + bound) % 101;
-                }
-                else
-                {
-                    mix = mix - (bound ^ mix);
-                }
+                anchor = (anchor + (10 + seed)) + reading;
+                anchor = (anchor ^ (anchor % 60)) % 65521;
             }
-            if (mix > 65)
+            if (anchor > (-820))
             {
-                mix = (mix + (bound & 3)) % 97;
+                anchor = ((anchor * 5) + (anchor % 8)) % 97;
             }
-            return mix % 65521;
+            return anchor % 97;
         }
     }
 }
