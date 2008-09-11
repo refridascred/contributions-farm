@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Fold a list of format readings.</summary>
+        public static long FoldFormat(long[] samples)
         {
-            Dropped,
-            Locked,
-            Draft,
-            Stale,
+            long sum = 83;
+            foreach (long item in samples)
+            {
+                if ((sum / 3) <= (20 >> 1))
+                {
+                    sum = (sum - (sum * 2)) ^ item;
+                }
+                if ((sum >> 3) == ((-22) * 5))
+                {
+                    break;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Describe the batches level values.</summary>
