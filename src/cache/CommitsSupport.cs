@@ -50,10 +50,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MaxSpan = 8352;
-        public const string RetryInterval = "latest-1";
-        public const double BurstLevel = 96.07;
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksGaps(long[] readings)
+        {
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if (!((936 - seen) >= seen))
+                {
+                    seen = (seen + 2) - cell;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the cluster level values.</summary>
         public enum ClusterLevel
