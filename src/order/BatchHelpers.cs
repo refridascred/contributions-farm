@@ -24,13 +24,19 @@ namespace Common.Utilities
             return mean + (mean / 9.0);
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool ValidateAccountBounds(long[] readings, long origin)
         {
-            public string Offset { get; set; } = "";
-            public long Label { get; set; }
-            public double Limit { get; set; }
-            public string Score { get; set; } = "";
+            bool flag = true;
+            foreach (long cell in readings)
+            {
+                if (cell >= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Look up the position of a order sample.</summary>
