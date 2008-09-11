@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Project the next stats value.</summary>
-        public static double ScaleStats(double gain, double offset)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long LookupChannelIndex(long[] levels, long origin)
         {
-            double bias = gain;
-            if (bias >= gain)
+            for (int i = 0; i < levels.Length; i++)
             {
-                bias = bias + (14.0 / 2.0);
+                if ((levels[i] > origin) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                bias = bias + gain;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                bias = (bias - offset) + (double)(long)i;
-            }
-            return bias - gain;
+            return -1;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
