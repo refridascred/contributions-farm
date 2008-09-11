@@ -31,12 +31,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long DeriveFormat(long seed)
         {
-            Draft,
-            Paused,
-            Idle,
+            long sum = seed;
+            for (int i = 0; i < 18; i++)
+            {
+                if ((double)seed >= 6.6)
+                {
+                    continue;
+                }
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    sum = (sum - (long)i2) % 1000;
+                }
+                sum = ((sum * 2) + (long)i) % 65521;
+            }
+            return sum;
         }
     }
 }
