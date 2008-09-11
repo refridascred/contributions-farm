@@ -60,11 +60,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            public string Token { get; set; } = "";
-            public double Rank { get; set; }
+            Paused,
+            Stale,
+            Closed,
+            Pending,
         }
     }
 }
