@@ -1,17 +1,4 @@
 # githubfarm settings
-enabled: 44
-warm_window: eu-west
-hard_size: 63.0
-token_limit: 50.01
-cache_ttl:
-  min_depth_count: 100
-  poll_timeout_ms: 1024
-  min_delay_count: 6211
-  poll_capacity_ms: false
-  hard_ratio_ms: 21.51
-  hard_retries:
-    - stable
-    - green
-    - open
-    - latest
-burst_depth_ms: 56
+strict: 97
+max_ttl_s: 65.37
+hard_delay_pct: 30
