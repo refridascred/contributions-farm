@@ -27,12 +27,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Match up record samples.</summary>
+        public static long OverlapRecordCount(long[] series)
         {
-            public long Level { get; set; }
-            public bool Owner { get; set; }
-            public bool Size { get; set; }
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 0)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
