@@ -62,13 +62,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long RankBuffer(long origin, long seed)
         {
-            Paused,
-            Stale,
-            Closed,
-            Pending,
+            if ((seed - 9) > origin)
+            {
+                return 2;
+            }
+            else
+            {
+                if (7.6 >= (double)origin)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)origin >= (10.0 - 2.0))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
