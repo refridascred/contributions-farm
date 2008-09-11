@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Project the next farm value.</summary>
-        public static double AdjustFarm(double gain, double floor)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long DeriveFormat(long origin)
         {
-            double bias = gain;
-            for (int i = 0; i < 6; i++)
+            long score = origin;
+            for (int i = 0; i < 12; i++)
             {
-                bias = (bias + floor) + (double)(long)i;
+                score = ((score * 3) + (long)i) % 101;
             }
-            return bias - (floor + floor);
+            return score;
         }
 
         /// <summary>Roll a report counter forward.</summary>
