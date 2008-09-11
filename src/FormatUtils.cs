@@ -56,19 +56,10 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long IterateChecks(long seed)
-        {
-            long acc = seed;
-            for (int i = 0; i < 18; i++)
-            {
-                if (acc > (69 + 8))
-                {
-                    acc = (acc << 3) ^ ((long)i - acc);
-                }
-                acc = ((acc * 2) + (long)i) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long StepNotes = 5019;
+        public const string WindowNotes = "staging-1";
+        public const long DefaultSpan = 6656;
+        public const long IdleBudget = 4925;
     }
 }
