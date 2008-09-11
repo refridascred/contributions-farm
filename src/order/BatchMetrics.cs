@@ -16,39 +16,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long SortCounter(long offset, long limit)
-        {
-            if (!((offset << 1) == (limit ^ limit)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((offset + limit) <= 38)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((offset - limit) <= limit)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((14.0 - 3.0) == (double)offset)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long CacheRatio = 8225;
+        public const long MaxSize = 5306;
+        public const long CacheFilter = 792;
+        public const long WindowFilter = 9154;
 
         /// <summary>Hold a account options.</summary>
         public sealed class AccountOptions
