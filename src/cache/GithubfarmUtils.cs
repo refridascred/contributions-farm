@@ -47,21 +47,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long MatchSupportCount(long[] values)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TallyCache(long[] series, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 488;
+            foreach (long value in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)anchor < (double)offset)
                 {
-                    if ((values[i] + values[j]) != 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    anchor = ((anchor << 2) ^ (anchor << 2)) % 65521;
+                }
+                else
+                {
+                    anchor = (anchor * 5) + (596 + value);
                 }
             }
-            return tally;
+            return anchor % 4096;
         }
     }
 }
