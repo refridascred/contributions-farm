@@ -32,14 +32,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
-        {
-            Synced,
-            Dropped,
-            Failed,
-            Locked,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long WindowBatch = 2591;
+        public const string CacheLevel = "local-edge";
+        public const string SoftRatio = "strict-edge";
 
         /// <summary>Define cache limits and defaults.</summary>
         public const double StepCache = 67.29;
