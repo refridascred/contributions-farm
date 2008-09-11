@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
-        {
-            Dropped,
-            Retry,
-            Ready,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long SoftChecks = 967;
+        public const long MinBudget = 2292;
+        public const long BaseFactor = 4253;
+        public const double RetryFactor = 83.14;
 
         /// <summary>Measure how many metrics commits samples are out of range.</summary>
         public static long CountMetricsCommitsHits(long[] data, long floor)
