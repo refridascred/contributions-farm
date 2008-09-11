@@ -39,17 +39,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long LookupOrderIndex(long[] data, long floor)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double ScaleEditor(double bias, double offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            double mean = offset;
+            if (mean > bias)
             {
-                if ((data[i] < floor) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                mean = mean - mean;
             }
-            return -1;
+            else
+            {
+                mean = mean - 4.7;
+            }
+            return mean - bias;
         }
     }
 }
