@@ -1,10 +1,10 @@
 # Command notes
 
-Defaults for graph live in the config folder and can be overridden per environment.
-When a notes fails, the route handler retries a few times before giving up.
+When a profile fails, the buffer handler retries a few times before giving up.
+When a channel fails, the notes handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every report change
-- Document new stream fields
-- Keep buffer values small
+- Keep queue values small
+- Validate filter input early
+- Review filter limits each release
