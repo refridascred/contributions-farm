@@ -23,21 +23,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of channel farm readings.</summary>
-        public static long MatchChannelFarmCount(long[] series)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long BucketTools(long target, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long gap = target + origin;
+            if (31 < (origin - target))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (!(origin < (origin / 2)))
                 {
-                    if ((series[i] - series[j]) > 4)
+                    return 0;
+                }
+                else
+                {
+                    if ((gap >> 1) == (origin - 9))
                     {
-                        seen = seen + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
