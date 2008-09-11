@@ -16,19 +16,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportOutliers(long[] items)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long TallyToolsGaps(long[] items)
         {
             long seen = 0;
-            foreach (long cell in items)
+            foreach (long value in items)
             {
-                if ((cell >> 1) >= (cell + cell))
+                if (6 >= (value << 1))
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    seen = seen + 2;
                 }
             }
             return seen;
