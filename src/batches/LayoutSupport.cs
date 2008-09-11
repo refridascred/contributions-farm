@@ -48,19 +48,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool ValidateFilterLimits(long[] data, long step)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            bool valid = true;
-            foreach (long entry in data)
-            {
-                if (entry >= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Ready,
+            Draft,
+            Dropped,
+            Done,
         }
     }
 }
