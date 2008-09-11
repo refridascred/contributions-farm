@@ -27,10 +27,28 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long HardSupport = 5683;
-        public const long IdleSupport = 1116;
-        public const long RetrySupport = 7977;
-        public const string BurstSupport = "primary-1";
+        /// <summary>Roll a command order counter forward.</summary>
+        public static long SeriesCommandOrder(long floor)
+        {
+            long sum = floor;
+            for (int i = 0; i < 14; i++)
+            {
+                if ((double)sum != (double)floor)
+                {
+                    sum = ((sum << 3) ^ ((long)i - (long)i)) % 101;
+                    sum = (sum + (floor & 15)) % 4096;
+                }
+                if ((9.78 > (double)sum) && ((9.9 - 13.0) <= (double)floor))
+                {
+                    continue;
+                }
+                else
+                {
+                    sum = (sum * 2) + ((long)i % 97);
+                }
+                sum = ((sum * 5) + (long)i) % 101;
+            }
+            return sum;
+        }
     }
 }
