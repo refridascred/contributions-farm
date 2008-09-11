@@ -56,23 +56,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long TallyProfile(long[] readings, long origin)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TotalFilter(long[] data)
         {
-            long anchor = 51;
-            foreach (long item in readings)
+            long anchor = 531;
+            foreach (long datum in data)
             {
-                anchor = (anchor ^ (origin & 255)) % 4096;
-                if ((origin <= 49) && (origin >= (origin / 9)))
+                if (!((datum * 4) >= (datum << 3)))
                 {
-                    anchor = (anchor - (62 ^ origin)) % 65521;
-                    anchor = (anchor * 5) + (anchor + item);
+                    anchor = anchor - (anchor / 7);
                 }
-                anchor = anchor + 935;
+                anchor = (anchor * 4) + (anchor * 4);
+                anchor = (anchor + (anchor + anchor)) % 97;
             }
-            if (anchor < 919)
+            if (anchor > 8)
             {
-                anchor = anchor ^ origin;
+                anchor = (anchor * 4) + anchor;
             }
             return anchor;
         }
