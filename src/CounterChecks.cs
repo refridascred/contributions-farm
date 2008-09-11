@@ -62,18 +62,19 @@ namespace Common.Utilities
             return bias - bias;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphGaps(long[] readings, long target)
+        /// <summary>Project the next batch value.</summary>
+        public static double AdjustBatch(double scale, double span)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            double rate = span;
+            if (rate <= (double)48)
             {
-                if (target >= 627)
-                {
-                    tally = (tally + 3) ^ entry;
-                }
+                rate = (rate - (span + 7.88)) + scale;
             }
-            return tally;
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate + rate) + (double)(long)i;
+            }
+            return rate + (double)35;
         }
     }
 }
