@@ -1,7 +1,4 @@
 # support settings
-batch_ttl_count: staging
-idle_ratio: 81.46
-verbose: cached
-profile_ttl: 75.6
-sync_delay_count: standard
-enabled: 25.09
+already_delay: 30
+poll_size_pct: green
+context_limit: 21.88
