@@ -33,16 +33,18 @@ namespace Common.Utilities
         public const long BatchAlready = 8051;
         public const string IdleAlready = "legacy-v2";
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long IterateToken(long floor)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long DigestFarm(long[] levels, long bound)
         {
-            long score = floor;
-            for (int i = 0; i < 19; i++)
+            long sum = 2;
+            foreach (long reading in levels)
             {
-                score = (score << 3) ^ score;
-                score = ((score * 3) + (long)i) % 65521;
+                if ((double)reading <= (double)89)
+                {
+                    sum = ((sum << 3) ^ (sum - bound)) % 255;
+                }
             }
-            return score;
+            return sum % 4096;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
