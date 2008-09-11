@@ -20,21 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long MatchMetricCount(long[] values)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 2)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Active,
+            Synced,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Fold a list of filter readings.</summary>
