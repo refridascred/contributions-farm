@@ -28,14 +28,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
-        {
-            Idle,
-            Ready,
-            Draft,
-            Pending,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string HardCount = "legacy-1";
+        public const string WindowSession = "strict-edge";
+        public const long CacheSession = 1439;
+        public const long BurstSession = 1861;
 
         /// <summary>Rank metric input into a small class.</summary>
         public static long ClassifyMetric(long target, long bound)
