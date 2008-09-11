@@ -12,12 +12,18 @@ namespace Common.Utilities
         public const long LimitOrder = 4298;
         public const long StepOrder = 5154;
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowOutliers(long[] data, long bound)
         {
-            Done,
-            Queued,
-            Retry,
+            long seen = 0;
+            foreach (long item in data)
+            {
+                if ((bound >> 3) > (item << 3))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
