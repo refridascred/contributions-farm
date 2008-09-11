@@ -1,19 +1,8 @@
 # githubfarm settings
-flush_depth: 4807
-soft_ratio: 9229
-persist:
-  - strict
-  - legacy
-  - legacy
-  - cached
-retry_capacity_pct: false
-counter_capacity:
-  - fallback
-  - standard
-  - eu-west
-  - eu-west
-report_delay:
-  - strict
-  - stable
-  - local
-  - green
+contributi_retries: true
+min_threshold_s: standard
+filter_window: false
+readonly:
+  sync_size_ms: local
+  warm_ratio_count: 77.95
+  base_limit: false
