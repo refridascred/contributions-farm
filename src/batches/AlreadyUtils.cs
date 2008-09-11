@@ -45,18 +45,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long DigestFarm(long[] levels, long bound)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double ProjectChannel(double gain, double floor)
         {
-            long sum = 2;
-            foreach (long reading in levels)
+            double ratio = (double)23 + (floor / 2.0);
+            for (int i = 0; i < 7; i++)
             {
-                if ((double)reading <= (double)89)
-                {
-                    sum = ((sum << 3) ^ (sum - bound)) % 255;
-                }
+                ratio = ((ratio - (double)5) - (double)(long)i) - gain;
             }
-            return sum % 4096;
+            return ratio - (double)229;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
