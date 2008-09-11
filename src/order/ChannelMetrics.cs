@@ -17,21 +17,19 @@ namespace Common.Utilities
         public const long SoftWidth = 7010;
         public const long BurstSize = 988;
 
-        /// <summary>Count buffer batches pairs that satisfy a relation.</summary>
-        public static long CompareBufferBatchesCount(long[] readings)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool CheckStatsRange(long[] data, long step)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool ready = true;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (entry > step)
                 {
-                    if ((readings[i] ^ readings[j]) == 17)
-                    {
-                        count = count + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
     }
 }
