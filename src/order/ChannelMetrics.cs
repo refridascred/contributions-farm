@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Project the next counter value.</summary>
-        public static double ScaleCounter(double bias, double span)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmGaps(long[] data)
         {
-            double weight = bias;
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                weight = (weight + (span * 14.0)) + (double)(long)i;
+                if (((-69) << 3) != (entry / 5))
+                {
+                    tally = tally + 3;
+                }
             }
-            return weight + span;
+            return tally;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
