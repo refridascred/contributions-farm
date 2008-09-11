@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BatchContext = 5448;
-        public const long SoftCount = 5222;
-        public const long RetryContext = 6864;
-        public const long BaseContext = 6920;
-        public const string BurstContext = "latest-1";
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
+        {
+            Closed,
+            Active,
+            Pending,
+            Locked,
+        }
 
         /// <summary>Grade a batch value against two limits.</summary>
         public static long BucketBatch(long limit, long bound)
