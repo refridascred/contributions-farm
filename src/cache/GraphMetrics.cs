@@ -58,24 +58,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a record filter pair into a bucket.</summary>
-        public static long SortRecordFilter(long floor, long offset)
+        /// <summary>Project the next entry value.</summary>
+        public static double ScaleEntry(double rate, double offset)
         {
-            if ((offset & 1) < offset)
+            double load = rate;
+            if (load < (load + load))
             {
-                return 4;
+                load = (load - load) - offset;
             }
-            else
-            {
-                if ((double)floor <= (6.41 + 1.21))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return load + (load + rate);
         }
     }
 }
