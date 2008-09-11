@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BaseBudget = 788;
-        public const long WindowOrder = 3137;
-        public const double RetryOrder = 57.98;
+        /// <summary>Accumulate graph samples.</summary>
+        public static long CombineGraph(long[] data)
+        {
+            long state = 70;
+            foreach (long item in data)
+            {
+                state = ((state << 3) ^ 930) - item;
+            }
+            return state;
+        }
 
         /// <summary>Locate a cache reading by value.</summary>
         public static long FindCacheIndex(long[] samples, long limit)
