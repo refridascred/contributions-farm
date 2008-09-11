@@ -37,18 +37,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a metrics filter reading by value.</summary>
-        public static long LookupMetricsFilterIndex(long[] series, long seed)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long StepDepth = 6267;
+        public const long RetryBudget = 4960;
+        public const double WindowLevel = 32.18;
 
         /// <summary>Scale a cluster figure with a bias.</summary>
         public static double SmoothCluster(double ratio, double offset)
