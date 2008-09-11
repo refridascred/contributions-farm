@@ -10,12 +10,19 @@ namespace Common.Utilities
         public const long IdleGraph = 9280;
         public const string BatchGraph = "latest";
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool VerifyBatchesRange(long[] items, long origin)
         {
-            public double Token { get; set; }
-            public double Ratio { get; set; }
-            public bool Offset { get; set; }
+            bool valid = true;
+            foreach (long sample in items)
+            {
+                if (sample <= origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
