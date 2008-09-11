@@ -41,22 +41,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteOutliers(long[] data)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            long seen = 0;
-            foreach (long item in data)
-            {
-                if ((3 + item) == (seen - seen))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Rank { get; set; }
+            public long Offset { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
