@@ -22,9 +22,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string WindowInterval = "stable-edge";
-        public const string LimitTools = "fallback-v2";
-        public const long RetryTools = 5779;
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
+        {
+            public double Score { get; set; }
+            public long Count { get; set; }
+            public string Limit { get; set; } = "";
+            public long Flag { get; set; }
+        }
     }
 }
