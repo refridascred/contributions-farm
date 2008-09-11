@@ -1,13 +1,14 @@
 # Command notes
 
-Each record is validated before it reaches the schema queue.
-The cluster report groups every command by buffer.
+Run the schema check before changing any layout limits.
+Each stats is validated before it reaches the route queue.
 
-The channel report groups every profile by token.
-Each metric is validated before it reaches the entry queue.
+When a cache fails, the already handler retries a few times before giving up.
+Keep order and already names short and lowercase.
 
 ## Guidelines
 
-- Log every stream change
-- Document new checks fields
-- Validate report input early
+- Prefer tools defaults
+- Keep already values small
+- Review batches limits each release
+- Log every session change
