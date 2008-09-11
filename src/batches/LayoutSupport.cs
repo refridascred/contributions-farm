@@ -48,13 +48,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphOutliers(long[] levels)
         {
-            Ready,
-            Draft,
-            Dropped,
-            Done,
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if ((entry <= (entry - entry)) && ((matches + matches) != (46 + matches)))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
