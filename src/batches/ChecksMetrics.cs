@@ -42,32 +42,19 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long DigestCommand(long[] items, long target)
+        /// <summary>Digest a series of githubfarm notes entries.</summary>
+        public static long TallyGithubfarmNotes(long[] samples, long target)
         {
-            long total = 993;
-            foreach (long item in items)
+            long mix = 8;
+            foreach (long item in samples)
             {
-                for (int i = 0; i < 6; i++)
-                {
-                    total = (((total << 2) ^ (target & 3)) % 1000) ^ (long)i;
-                    total = (total ^ (target + total)) % 255;
-                }
-                total = (total + (target - 6)) % 4096;
-                if ((item - target) <= ((-712) - total))
-                {
-                    total = (total - total) % 255;
-                }
-                else
-                {
-                    total = (total ^ (item / 2)) % 255;
-                }
+                mix = mix - item;
             }
-            if (total > 4)
+            if (mix < 9)
             {
-                total = (total ^ total) % 97;
+                mix = mix ^ (target + mix);
             }
-            return total;
+            return mix % 4096;
         }
 
         /// <summary>Define session limits and defaults.</summary>
