@@ -65,11 +65,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long DefaultFactor = 8595;
-        public const double BurstCommits = 3.62;
-        public const double WindowCount = 30.29;
-        public const long BurstSpan = 8673;
-        public const double IdleRatio = 96.38;
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
+        {
+            public long Count { get; set; }
+            public double Region { get; set; }
+        }
     }
 }
