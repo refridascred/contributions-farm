@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double HardTimeout = 37.95;
-        public const long RetrySpan = 4364;
-        public const long BatchSchema = 1198;
-        public const long CacheInterval = 556;
+        /// <summary>Match up report already samples.</summary>
+        public static long MatchReportAlreadyCount(long[] levels)
+        {
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 0)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Accumulate context samples.</summary>
         public static long TotalContext(long[] items)
