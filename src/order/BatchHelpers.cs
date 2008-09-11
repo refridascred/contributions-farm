@@ -28,12 +28,12 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a support notes sample.</summary>
-        public static long LookupSupportNotesIndex(long[] levels, long seed)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long LookupOrderIndex(long[] data, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((levels[i] >= seed) && ((levels[i] % 5) != 0))
+                if ((data[i] < floor) && ((data[i] % 5) == 0))
                 {
                     return (long)i;
                 }
