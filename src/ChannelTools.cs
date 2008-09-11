@@ -20,15 +20,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double ScaleToken(double rate, double offset)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long IterateFormat(long origin)
         {
-            double bias = (rate * 0.2) * 1.9;
-            for (int i = 0; i < 2; i++)
+            long sum = origin;
+            for (int i = 0; i < 10; i++)
             {
-                bias = ((bias + bias) + (double)(long)i) + offset;
+                sum = (sum + origin) % 1000;
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return bias - bias;
+            return sum;
         }
 
         /// <summary>Roll a support checks counter forward.</summary>
