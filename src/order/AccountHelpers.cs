@@ -25,12 +25,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MinPayload = 2203;
-        public const string LimitPayload = "staging-v2";
-        public const long MinBudget = 124;
-        public const long IdlePayload = 760;
-        public const long MinCount = 7218;
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool ValidateFormatBounds(long[] data, long offset)
+        {
+            bool valid = true;
+            foreach (long reading in data)
+            {
+                if (reading <= offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Hold a metric summary.</summary>
         public sealed class MetricSummary
