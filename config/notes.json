@@ -1,8 +1,5 @@
 {
-  "command_threshold": 100,
-  "batch_limit_count": "strict",
-  "strict": 436,
-  "max_retries_count": "cached",
-  "min_depth_ms": 11,
-  "base_ttl": ["strict", "standard", "standard", "standard"]
+  "hard_capacity": false,
+  "poll_ttl_s": [220, 168],
+  "contributi_ttl": "strict"
 }
