@@ -1,10 +1,14 @@
 # Command notes
 
-The context module keeps schema values in sync with the stream cache.
-The batch report groups every window by contributi.
+Use checks settings to tune how often account data is refreshed.
+Use counter settings to tune how often channel data is refreshed.
+
+Use report settings to tune how often payload data is refreshed.
+Run the contributi check before changing any farm limits.
 
 ## Guidelines
 
-- Prefer support defaults
-- Log every token change
-- Review metric limits each release
+- Validate already input early
+- Document new record fields
+- Keep contributi values small
+- Log every notes change
