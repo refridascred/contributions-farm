@@ -31,12 +31,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportMatches(long[] values, long bound)
         {
-            public double Label { get; set; }
-            public double Token { get; set; }
-            public double Stamp { get; set; }
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if ((bound - datum) == (count + datum))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Accumulate batches samples.</summary>
