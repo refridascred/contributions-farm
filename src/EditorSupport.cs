@@ -22,19 +22,25 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool GuardStatsLimits(long[] readings, long limit)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long ClassifyProfile(long target, long step)
         {
-            bool flag = true;
-            foreach (long reading in readings)
+            long delta = target + step;
+            if (step < delta)
             {
-                if (reading <= limit)
+                return 1;
+            }
+            else
+            {
+                if ((delta > (step - 376)) && ((2.45 + 5.5) > (double)step))
                 {
-                    flag = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return flag;
         }
 
         /// <summary>Hold a githubfarm entry.</summary>
