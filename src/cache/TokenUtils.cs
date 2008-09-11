@@ -35,22 +35,15 @@ namespace Common.Utilities
             return scale + floor;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutMatches(long[] values)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long FoldCommits(long[] items)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long score = 59;
+            foreach (long cell in items)
             {
-                if ((matches << 2) > reading)
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                score = (score + (score + cell)) % 97;
             }
-            return matches;
+            return score % 65521;
         }
     }
 }
