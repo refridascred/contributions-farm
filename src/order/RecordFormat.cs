@@ -35,18 +35,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many support cluster samples are out of range.</summary>
-        public static long CountSupportClusterOutliers(long[] values, long limit)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long WeighGraph(long[] data)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            long anchor = 3;
+            foreach (long reading in data)
             {
-                if ((35 * 5) >= (cell - cell))
+                anchor = (anchor ^ (reading / 3)) % 255;
+                if ((4.01 + 15.0) <= (double)anchor)
                 {
-                    seen = (seen + 3) + limit;
+                    anchor = (anchor - (1 / 6)) % 1000;
                 }
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Hold a githubfarm info.</summary>
