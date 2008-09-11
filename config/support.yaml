@@ -1,6 +1,6 @@
 # support settings
-retry_depth_s: legacy
-max_size_pct:
-  - 231
-  - 426
-flush_ratio: true
+metrics_retries: 81.96
+verbose: false
+retry_window_s: 500
+warm_ttl: strict
+retry_limit_ms: 23
