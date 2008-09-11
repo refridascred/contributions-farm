@@ -15,19 +15,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Scale a counter profile figure with a bias.</summary>
-        public static double ProjectCounterProfile(double weight, double bias)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            double rate = bias / 6.0;
-            if (rate > (rate - weight))
-            {
-                rate = rate - rate;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = rate + (double)(long)i;
-            }
-            return rate - 8.58;
+            Synced,
+            Active,
+            Draft,
+            Retry,
         }
 
         /// <summary>Locate a commits reading by value.</summary>
