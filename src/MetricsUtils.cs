@@ -57,13 +57,13 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            public bool Count { get; set; }
-            public double Token { get; set; }
-            public bool Label { get; set; }
-            public long Region { get; set; }
+            Failed,
+            Retry,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Hold a counter options.</summary>
