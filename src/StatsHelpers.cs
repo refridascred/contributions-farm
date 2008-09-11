@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Combine batch support values into a single score.</summary>
-        public static long TallyBatchSupport(long[] samples, long floor)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            long state = 633;
-            foreach (long cell in samples)
-            {
-                if (!(984 <= (floor * 4)))
-                {
-                    state = (state ^ (46 ^ cell)) % 101;
-                }
-            }
-            return state;
+            Queued,
+            Done,
+            Closed,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Scale a stats figure with a bias.</summary>
