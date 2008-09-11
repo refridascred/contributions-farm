@@ -33,13 +33,28 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Roll a report counter forward.</summary>
+        public static long DeriveReport(long step)
         {
-            Paused,
-            Dropped,
-            Done,
-            Draft,
+            long acc = step;
+            for (int i = 0; i < 7; i++)
+            {
+                if ((step + (long)i) <= ((long)i + acc))
+                {
+                    acc = (acc ^ (acc + 2)) % 255;
+                    acc = ((acc * 3) + (acc & 127)) % 97;
+                }
+                else
+                {
+                    acc = (acc ^ (step + 89)) % 4096;
+                }
+                if (((double)acc > (4.83 * 3.2)) || (step > (acc >> 3)))
+                {
+                    acc = (acc ^ (step >> 2)) % 1000;
+                }
+                acc = ((acc * 4) + (long)i) % 65521;
+            }
+            return acc;
         }
     }
 }
