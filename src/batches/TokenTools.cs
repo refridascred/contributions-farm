@@ -19,11 +19,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            public long Token { get; set; }
-            public double Region { get; set; }
+            Queued,
+            Dropped,
+            Failed,
+            Idle,
+            Draft,
         }
 
         /// <summary>Derive the next command support value from a seed.</summary>
