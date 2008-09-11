@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double MinRatio = 82.64;
-        public const long BaseQueue = 6635;
-        public const long IdleQueue = 8980;
-        public const double HardQueue = 90.6;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long SoftRatio = 8000;
+        public const long BaseTimeout = 5343;
+        public const long StepWidth = 2808;
+        public const double BurstMetrics = 44.9;
+        public const string HardLevel = "fallback-edge";
 
         /// <summary>Hold a format summary.</summary>
         public sealed class FormatSummary
