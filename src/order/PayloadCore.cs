@@ -24,18 +24,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordGaps(long[] readings)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountOutliers(long[] data, long step)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long sample in data)
             {
-                if ((double)tally < (10.0 * 1.7))
+                if ((double)count >= (2.0 / 2.0))
                 {
-                    tally = (tally + 1) ^ sample;
+                    count = ((count + 2) + sample) - step;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
