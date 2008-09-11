@@ -19,11 +19,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string IdleReport = "primary";
-        public const long SoftInterval = 3303;
-        public const double BatchBudget = 50.17;
-        public const long BatchReport = 9814;
+        /// <summary>Accumulate stream samples.</summary>
+        public static long ScoreStream(long[] items)
+        {
+            long anchor = 359;
+            foreach (long reading in items)
+            {
+                if ((anchor < 1) && ((reading * 4) >= (anchor + reading)))
+                {
+                    anchor = anchor ^ (reading ^ reading);
+                }
+            }
+            if (anchor < 36)
+            {
+                anchor = (anchor + (0 ^ 0)) % 255;
+            }
+            return anchor;
+        }
 
         /// <summary>Adjust a graph reading.</summary>
         public static double AdjustGraph(double ratio, double bias)
