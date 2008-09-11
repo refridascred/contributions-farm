@@ -20,21 +20,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long CompareEditorCount(long[] series)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandHits(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (162 > (matches - 603))
                 {
-                    if ((series[i] + series[j]) < 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = (matches + 3) + datum;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
