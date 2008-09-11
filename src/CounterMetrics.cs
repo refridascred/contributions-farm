@@ -57,32 +57,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long ClassifyBatch(long seed, long limit)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsOutliers(long[] samples, long bound)
         {
-            long gap = seed + limit;
-            if ((seed <= (seed ^ seed)) && ((limit << 3) < (gap * 3)))
+            long count = 0;
+            foreach (long reading in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if (limit <= (seed % 3))
+                if (((double)reading > 3.63) && (((bound - count) != (count + 6)) || ((count * 5) > (reading << 1))))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)gap >= 3.44)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
     }
 }
