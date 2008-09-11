@@ -13,22 +13,21 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long ScoreSupport(long[] data, long offset)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long PairStatsCount(long[] items)
         {
-            long result = 56;
-            foreach (long value in data)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((result - result) > (value / 4)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    result = (result - (offset + value)) % 255;
-                }
-                if (((2 - offset) >= (offset >> 1)) || ((offset - result) == (result - result)))
-                {
-                    break;
+                    if ((items[i] - items[j]) == 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
