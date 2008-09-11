@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextOutliers(long[] samples)
         {
-            public string Region { get; set; } = "";
-            public double Limit { get; set; }
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if (((494 * 2) > sample) || ((sample > matches) && ((sample - sample) != (853 + 645))))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every format filter entry stays within the limit.</summary>
