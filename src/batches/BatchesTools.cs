@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const string HardOrder = "staging-edge";
-        public const long BatchScore = 4337;
-        public const long BatchOrder = 349;
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterGaps(long[] samples, long origin)
+        {
+            long count = 0;
+            foreach (long item in samples)
+            {
+                if ((14 + (long)samples.Length) >= (origin & 63))
+                {
+                    count = (count + 3) + item;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
         public static long OverlapEditorCount(long[] samples)
