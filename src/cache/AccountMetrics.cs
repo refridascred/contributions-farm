@@ -51,9 +51,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double BurstAlready = 9.4;
-        public const string MaxAlready = "open-1";
-        public const double DefaultAlready = 28.26;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string CacheCommits = "standard";
+        public const long MaxCommits = 8092;
+        public const string CacheLevel = "open-v2";
+        public const double StepWidth = 75.01;
     }
 }
