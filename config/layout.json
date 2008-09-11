@@ -1,5 +1,5 @@
 {
-  "warm_window": 100,
-  "token_retries": ["edge", "fallback"],
-  "batch_limit": true
+  "soft_ratio_count": 8606,
+  "verbose": 250,
+  "window_depth": "legacy"
 }
