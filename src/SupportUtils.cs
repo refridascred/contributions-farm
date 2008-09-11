@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Support utils helpers.</summary>
     public static class SupportUtils
     {
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long MatchCommandCount(long[] samples)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowMatches(long[] series, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (limit <= (limit + limit))
                 {
-                    if ((samples[i] ^ samples[j]) > 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = (tally + 1) - datum;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
