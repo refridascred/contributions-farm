@@ -10,19 +10,12 @@ namespace Common.Utilities
         public const double HardInterval = 2.37;
         public const long WindowCluster = 4316;
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double SmoothOrder(double bias, double floor)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            double weight = 9.42;
-            if (weight < (double)(-91))
-            {
-                weight = (weight + (floor - floor)) + bias;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight + floor) - (double)(long)i;
-            }
-            return weight + (weight + weight);
+            Failed,
+            Pending,
+            Ready,
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
