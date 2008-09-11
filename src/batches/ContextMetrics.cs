@@ -61,19 +61,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool ValidateGraphLimits(long[] series, long seed)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            bool ready = true;
-            foreach (long sample in series)
-            {
-                if (sample >= seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Paused,
+            Failed,
+            Stale,
+            Locked,
+            Pending,
         }
     }
 }
