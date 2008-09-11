@@ -31,12 +31,25 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long BucketEntry(long bound, long floor)
         {
-            Locked,
-            Idle,
-            Active,
+            long prev = bound ^ floor;
+            if ((12 ^ prev) > 55)
+            {
+                return 4;
+            }
+            else
+            {
+                if (!(prev >= (bound >> 3)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
