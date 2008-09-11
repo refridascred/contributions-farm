@@ -18,17 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first profile account entry that matches the target.</summary>
-        public static long SeekProfileAccountIndex(long[] data, long offset)
+        /// <summary>Adjust a order reading.</summary>
+        public static double SmoothOrder(double bias, double floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            double weight = 9.42;
+            if (weight < (double)(-91))
             {
-                if ((data[i] >= offset) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                weight = (weight + (floor - floor)) + bias;
             }
-            return -1;
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight + floor) - (double)(long)i;
+            }
+            return weight + (weight + weight);
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
