@@ -28,19 +28,11 @@ namespace Common.Utilities
         public const long MaxDepth = 1150;
         public const string IdleBudget = "latest-edge";
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool ValidateSchemaLimits(long[] levels, long step)
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            bool stale = true;
-            foreach (long value in levels)
-            {
-                if (value != step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Region { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
