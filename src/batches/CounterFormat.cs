@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long SeriesGithubfarm(long origin)
+        /// <summary>Roll a notes farm counter forward.</summary>
+        public static long SeriesNotesFarm(long floor)
         {
-            long result = origin;
-            for (int i = 0; i < 18; i++)
+            long result = floor;
+            for (int i = 0; i < 13; i++)
             {
-                result = result ^ ((long)i + origin);
-                if (!((result % 5) >= (origin / 8)))
-                {
-                    result = (result + (result ^ result)) % 1000;
-                }
-                if ((2.8 * 4.0) != (double)result)
-                {
-                    result = result ^ ((long)i + origin);
-                }
-                result = ((result * 5) + (long)i) % 1000;
+                result = ((result * 2) + (long)i) % 97;
             }
             return result;
         }
