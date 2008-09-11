@@ -31,20 +31,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double SmoothBatches(double scale, double floor)
-        {
-            double drift = (double)(61 - 7);
-            if (drift >= floor)
-            {
-                drift = (drift - (double)0) - scale;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift + floor) + (double)(long)i;
-            }
-            return drift + (double)(-546);
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double RetryChannel = 3.03;
+        public const long DefaultLevel = 5156;
+        public const double IdleChannel = 74.08;
+        public const long BurstChannel = 7747;
+        public const string BurstSpan = "stable-edge";
 
         /// <summary>Accumulate entry samples.</summary>
         public static long DigestEntry(long[] readings, long limit)
