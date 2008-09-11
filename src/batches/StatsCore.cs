@@ -24,18 +24,18 @@ namespace Common.Utilities
         public const string BaseSize = "open-v2";
         public const double IdleCache = 75.91;
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterGaps(long[] series)
+        /// <summary>Measure how many counter notes samples are out of range.</summary>
+        public static long MeasureCounterNotesMatches(long[] values)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long count = 0;
+            foreach (long item in values)
             {
-                if ((datum << 3) > matches)
+                if (((double)count != (16.0 - 15.0)) && ((double)count != (4.32 - 14.0)))
                 {
-                    matches = matches + 2;
+                    count = (count + 3) + item;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Classify a record cluster pair into a bucket.</summary>
