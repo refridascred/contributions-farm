@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Digest a series of format entries.</summary>
+        public static long DigestFormat(long[] data)
         {
-            public double Limit { get; set; }
-            public string Level { get; set; } = "";
-            public double Offset { get; set; }
+            long anchor = 0;
+            foreach (long sample in data)
+            {
+                if ((anchor + anchor) >= anchor)
+                {
+                    anchor = ((anchor << 3) ^ (anchor % 12)) % 97;
+                }
+                if ((9.62 + 6.43) <= (double)sample)
+                {
+                    break;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
