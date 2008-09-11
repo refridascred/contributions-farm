@@ -58,21 +58,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Match up support editor samples.</summary>
-        public static long OverlapSupportEditorCount(long[] items)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public double Region { get; set; }
+            public long Ratio { get; set; }
+            public long Limit { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
