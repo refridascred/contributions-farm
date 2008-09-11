@@ -10,12 +10,11 @@ namespace Common.Utilities
         public const double HardInterval = 2.37;
         public const long WindowCluster = 4316;
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            Failed,
-            Pending,
-            Ready,
+            public string Score { get; set; } = "";
+            public bool Owner { get; set; }
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
