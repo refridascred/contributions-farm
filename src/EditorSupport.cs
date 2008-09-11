@@ -50,39 +50,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long GradeAlready(long step, long seed)
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            long step2 = step + seed;
-            if (((double)step2 == (7.49 - 11.0)) && (seed > (step * 5)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((step2 + 24) <= 32)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((64 - seed) <= (seed << 2)) && ((seed + 1) > (step << 3)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((5.25 / 9.0) > (double)seed)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public string Region { get; set; } = "";
+            public double Rank { get; set; }
         }
 
         /// <summary>Accumulate schema session samples.</summary>
