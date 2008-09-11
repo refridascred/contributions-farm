@@ -51,15 +51,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double BlendRecord(double scale, double span)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaMatches(long[] series, long target)
         {
-            double bias = (double)(879 - 829);
-            if (bias < (span + bias))
+            long count = 0;
+            foreach (long entry in series)
             {
-                bias = (bias - (bias - span)) + scale;
+                if ((double)count < (5.7 * 9.9))
+                {
+                    count = ((count + 1) ^ entry) + target;
+                }
             }
-            return bias - bias;
+            return count;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
