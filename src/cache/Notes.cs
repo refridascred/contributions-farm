@@ -56,13 +56,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            public long Size { get; set; }
-            public double Weight { get; set; }
-            public long Mode { get; set; }
-            public bool Count { get; set; }
+            Idle,
+            Retry,
+            Locked,
+            Pending,
+            Synced,
         }
     }
 }
