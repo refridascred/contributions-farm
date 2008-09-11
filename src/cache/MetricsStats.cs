@@ -5,12 +5,33 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BatchCounter = 5738;
-        public const long BaseSize = 2242;
-        public const long LimitCounter = 4519;
-        public const long BaseLevel = 2717;
-        public const string MaxCounter = "standard-1";
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long BucketSupport(long target, long floor)
+        {
+            long offset = target + floor;
+            if (((target ^ target) < offset) || ((double)offset <= (double)target))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((target + offset) <= (floor % 24))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)floor <= (double)offset)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Count support format pairs that satisfy a relation.</summary>
         public static long OverlapSupportFormatCount(long[] readings)
