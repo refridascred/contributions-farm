@@ -28,17 +28,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Locate a commits counter reading by value.</summary>
-        public static long FindCommitsCounterIndex(long[] items, long origin)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsGaps(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                if ((items[i] == origin) && ((items[i] % 3) != 0))
+                if (((tally + (long)levels.Length) > (reading - tally)) || ((reading + reading) <= (tally + tally)))
                 {
-                    return (long)i;
+                    tally = tally + 1;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
