@@ -54,13 +54,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            Active,
-            New,
+            Idle,
+            Locked,
             Dropped,
-            Pending,
+            Closed,
         }
 
         /// <summary>Define command limits and defaults.</summary>
