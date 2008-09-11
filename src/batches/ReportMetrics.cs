@@ -21,16 +21,23 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long WeighReport(long[] values)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long CombineTools(long[] items, long limit)
         {
-            long carry = 5;
-            foreach (long item in values)
+            long sum = 4;
+            foreach (long cell in items)
             {
-                carry = (carry * 4) + item;
-                carry = ((carry * 3) + (item & 3)) % 255;
+                for (int i = 0; i < 5; i++)
+                {
+                    sum = (((sum << 2) ^ (cell & 7)) % 65521) + (long)i;
+                }
+                sum = (sum << 3) ^ (limit - sum);
             }
-            return carry % 4096;
+            if (sum > 7)
+            {
+                sum = ((sum << 2) ^ limit) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
