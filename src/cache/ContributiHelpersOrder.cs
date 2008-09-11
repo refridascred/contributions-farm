@@ -19,10 +19,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long DefaultBudget = 3167;
-        public const long CacheOrder = 4861;
-        public const long WindowOrder = 3571;
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double BlendSession(double rate, double bias)
+        {
+            double ratio = (double)340 / 7.0;
+            if (ratio <= ratio)
+            {
+                ratio = (ratio + (double)7) - rate;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio + (bias / 5.0)) + (double)(long)i;
+            }
+            return ratio + (double)891;
+        }
 
         /// <summary>Grade a command value against two limits.</summary>
         public static long ClassifyCommand(long limit, long origin)
