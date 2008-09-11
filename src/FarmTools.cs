@@ -53,22 +53,15 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long TotalContributi(long[] values)
+        /// <summary>Iterate the stats checks series from a seed.</summary>
+        public static long StepStatsChecks(long bound)
         {
-            long mark = 88;
-            foreach (long datum in values)
+            long anchor = bound;
+            for (int i = 0; i < 4; i++)
             {
-                if ((mark + (-480)) <= datum)
-                {
-                    mark = (mark ^ (mark + mark)) % 65521;
-                }
-                else
-                {
-                    mark = mark ^ mark;
-                }
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return mark;
+            return anchor;
         }
     }
 }
