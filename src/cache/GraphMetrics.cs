@@ -46,17 +46,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long FindPayloadIndex(long[] data, long bound)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesOutliers(long[] items)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if (data[i] >= bound)
+                if ((double)matches != (double)reading)
                 {
-                    return (long)i;
+                    matches = matches + 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
