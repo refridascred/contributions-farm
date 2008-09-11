@@ -1,7 +1,6 @@
-id,token,owner
-1,61.83,67.22
-2,78.18,green
-3,948,726
-4,13,cached
-5,primary,strict
-6,358,23.08
+id,ratio,level,region,weight
+1,56.4,staging,8.66,13.26
+2,blue,104,22.43,open
+3,203,79.44,latest,15.3
+4,primary,50.09,green,cached
+5,green,41,34,4.75
