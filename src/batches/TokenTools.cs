@@ -27,39 +27,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long SortSession(long step, long limit)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            long span = step + limit;
-            if ((limit ^ step) < step)
-            {
-                return 5;
-            }
-            else
-            {
-                if (((double)limit > (double)(-8)) || ((limit / 3) >= (step / 8)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((double)step < (double)span))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((7.0 * 5.46) == (double)limit)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Paused,
+            Pending,
+            Done,
         }
     }
 }
