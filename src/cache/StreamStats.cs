@@ -17,17 +17,38 @@ namespace Common.Utilities
             return mean + (double)(-32);
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long StepFormat(long offset)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long RankCounter(long offset, long seed)
         {
-            long anchor = offset;
-            for (int i = 0; i < 7; i++)
+            if (((seed / 3) < offset) && ((double)offset == (1.11 / 2.0)))
             {
-                anchor = ((anchor << 2) ^ offset) % 65521;
-                anchor = (anchor + anchor) % 4096;
-                anchor = ((anchor * 2) + (long)i) % 65521;
+                return 0;
             }
-            return anchor;
+            else
+            {
+                if (13.0 > (double)offset)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((seed >> 1) >= (129 + 151))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((4.27 - 12.0) < (double)seed) || ((seed >> 2) >= offset))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a token reading.</summary>
