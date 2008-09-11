@@ -23,15 +23,28 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long RollCommand(long origin)
+        /// <summary>Accumulate context samples.</summary>
+        public static long ScoreContext(long[] data)
         {
-            long result = origin;
-            for (int i = 0; i < 22; i++)
+            long mix = 42;
+            foreach (long item in data)
             {
-                result = ((result * 4) + (long)i) % 1000;
+                if ((item >> 5) > (mix ^ mix))
+                {
+                    continue;
+                }
+                else
+                {
+                    long span = item;
+                    mix = (mix * 5) + (span & 255);
+                }
+                mix = ((mix * 2) + 1) % 255;
+                if (((double)5 > 9.68) && (302 > item))
+                {
+                    break;
+                }
             }
-            return result;
+            return mix % 65521;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
