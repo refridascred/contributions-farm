@@ -45,15 +45,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long WeighGraph(long[] levels)
+        /// <summary>Locate a entry queue reading by value.</summary>
+        public static long FindEntryQueueIndex(long[] items, long offset)
         {
-            long total = 649;
-            foreach (long sample in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                total = total + sample;
+                if (items[i] >= offset)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
