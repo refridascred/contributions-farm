@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterHits(long[] series, long origin)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsMatches(long[] items, long target)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long count = 0;
+            foreach (long item in items)
             {
-                if ((819 % 2) > tally)
+                if ((35 + item) >= (count & 3))
                 {
-                    tally = ((tally + 3) + datum) - origin;
+                    count = (count + 3) - target;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Validate checks batches readings against a bound.</summary>
