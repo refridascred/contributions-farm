@@ -20,13 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            public bool Weight { get; set; }
-            public long Limit { get; set; }
-            public bool Level { get; set; }
-            public long Flag { get; set; }
+            public string Offset { get; set; } = "";
+            public long Label { get; set; }
+            public double Limit { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Rank graph batches input into a small class.</summary>
