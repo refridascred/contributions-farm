@@ -1,7 +1,9 @@
-id,count,rank
-1,strict,cached
-2,335,509
-3,staging,924
-4,blue,60.9
-5,edge,889
-6,15.42,474
+id,active,region,label
+1,49,primary,505
+2,green,258,50
+3,stable,925,green
+4,548,692,51.34
+5,788,893,23.64
+6,blue,794,eu-west
+7,570,743,678
+8,88.96,staging,295
