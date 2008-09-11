@@ -1,11 +1,6 @@
 # support settings
-persist:
-  - cached
-  - edge
-  - green
-warm_limit: false
-poll_threshold_s: false
-flush_interval_count:
-  - 251
-  - 282
-  - 396
+base_retries_count: legacy
+idle_depth: staging
+min_timeout_count: green
+poll_delay: edge
+warm_delay_s: true
