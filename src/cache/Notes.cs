@@ -27,21 +27,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long StepCounter(long limit)
-        {
-            long acc = limit;
-            for (int i = 0; i < 22; i++)
-            {
-                acc = (acc << 2) ^ ((long)i << 2);
-                if ((9.1 - 3.0) <= (double)limit)
-                {
-                    acc = ((acc << 3) ^ (acc & 7)) % 4096;
-                }
-                acc = ((acc * 4) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long CacheReport = 2003;
+        public const double BurstReport = 92.69;
+        public const long BaseScore = 116;
+        public const double HardSpan = 78.39;
+        public const long WindowReport = 3000;
 
         /// <summary>Describe the format level values.</summary>
         public enum FormatLevel
