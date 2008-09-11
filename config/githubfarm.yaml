@@ -1,11 +1,5 @@
 # githubfarm settings
-persist: 30.88
-route_ratio: standard
-base_retries_s:
-  idle_ratio_pct: 30
-  report_delay:
-    batch_timeout: 4557
-    warm_size: false
-    burst_ratio_s: 7038
-  max_size: open
-  dry_run: edge
+audit: 3253
+filter_interval: 52
+default_interval_pct: 39
+burst_size_s: 7.3
