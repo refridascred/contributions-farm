@@ -56,11 +56,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long WindowFactor = 2071;
-        public const long IdleInterval = 3336;
-        public const double DefaultSession = 84.51;
-        public const string RetrySession = "fallback-edge";
+        /// <summary>Project the next route entry value.</summary>
+        public static double ProjectRouteEntry(double ratio, double span)
+        {
+            double scale = ratio;
+            if (scale < scale)
+            {
+                scale = scale - (double)79;
+            }
+            else
+            {
+                scale = scale - (span + 3.9);
+            }
+            return scale - (double)(-15);
+        }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
         public static bool GuardFarmLimits(long[] items, long limit)
