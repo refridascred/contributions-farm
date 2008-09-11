@@ -1,5 +1,5 @@
 {
-  "audit": "latest",
-  "idle_threshold_s": [67, 142],
-  "retry_window_ms": "legacy"
+  "sync_timeout": 250,
+  "compress": 100,
+  "cache_window_ms": 4.16
 }
