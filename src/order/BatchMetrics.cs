@@ -56,32 +56,23 @@ namespace Common.Utilities
         public const double CacheDepth = 10.72;
         public const long BaseFactor = 6998;
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long BucketCommits(long offset, long target)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double AdjustProfile(double bias, double floor)
         {
-            long step = offset ^ target;
-            if (((target + step) <= step) && (2.9 > (double)step))
+            double drift = (double)149 / 2.0;
+            if (drift >= (double)7)
             {
-                return 0;
+                drift = (drift + (floor / 3.0)) - bias;
             }
             else
             {
-                if (37 <= (target >> 1))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)(-8) != (double)step)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
+                drift = drift + (drift + floor);
             }
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift - (11.0 - floor)) + (double)(long)i;
+            }
+            return drift + floor;
         }
 
         /// <summary>Accumulate command samples.</summary>
