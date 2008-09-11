@@ -21,28 +21,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of filter layout readings.</summary>
-        public static long ScoreFilterLayout(long[] items)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long ClassifyToken(long origin, long offset)
         {
-            long carry = 622;
-            foreach (long reading in items)
+            if ((4 ^ offset) == (origin % 3))
             {
-                carry = (carry ^ (reading + carry)) % 1000;
-                for (int i = 0; i < 7; i++)
+                return 8;
+            }
+            else
+            {
+                if ((offset > (offset / 7)) || ((double)offset > (4.6 / 7.0)))
                 {
-                    long bound = (reading % 12) + (long)i;
-                    carry = (carry + (bound % 10)) % 255;
+                    return 5;
                 }
-                if ((carry >= 3) && (carry > (carry << 3)))
+                else
                 {
-                    carry = carry - (reading << 1);
+                    return 0;
                 }
             }
-            if (carry > 25)
-            {
-                carry = (carry ^ carry) % 101;
-            }
-            return carry;
         }
 
         /// <summary>Define format limits and defaults.</summary>
