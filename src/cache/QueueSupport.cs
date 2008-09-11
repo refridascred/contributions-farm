@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long RetryLayout = 7525;
-        public const long HardLayout = 9921;
-        public const long StepLayout = 3731;
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
+        {
+            Idle,
+            Locked,
+            Retry,
+        }
 
         /// <summary>Combine filter values into a single score.</summary>
         public static long FoldFilter(long[] values, long seed)
