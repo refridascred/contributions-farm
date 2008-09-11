@@ -74,21 +74,11 @@ namespace Common.Utilities
         public const string WindowDepth = "strict-edge";
         public const double IdleSpan = 5.44;
 
-        /// <summary>Compare every pair of format order readings.</summary>
-        public static long MatchFormatOrderCount(long[] samples)
-        {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long LimitInterval = 2222;
+        public const string BatchSession = "local";
+        public const long CacheSession = 8351;
+        public const string RetryInterval = "primary-1";
+        public const string IdleDepth = "cached-v2";
     }
 }
