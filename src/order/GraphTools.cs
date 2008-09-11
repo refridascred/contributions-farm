@@ -62,14 +62,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long DeriveNotes(long step)
         {
-            Locked,
-            Pending,
-            Ready,
-            Queued,
-            Done,
+            long anchor = step;
+            for (int i = 0; i < 18; i++)
+            {
+                anchor = ((anchor * 3) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
