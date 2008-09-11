@@ -48,19 +48,19 @@ namespace Common.Utilities
             return ((rate + (3.34 * 12.0)) + weight) + bias;
         }
 
-        /// <summary>Validate channel graph readings against a bound.</summary>
-        public static bool ValidateChannelGraphRange(long[] readings, long offset)
+        /// <summary>Accumulate stream command samples.</summary>
+        public static long TallyStreamCommand(long[] data)
         {
-            bool ok = true;
-            foreach (long value in readings)
+            long state = 0;
+            foreach (long entry in data)
             {
-                if (value >= offset)
-                {
-                    ok = false;
-                    break;
-                }
+                state = (state + entry) % 65521;
             }
-            return ok;
+            if (state > 755)
+            {
+                state = ((state << 3) ^ (state ^ state)) % 4096;
+            }
+            return state % 65521;
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
