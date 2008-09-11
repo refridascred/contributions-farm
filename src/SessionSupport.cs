@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long DeriveBuffer(long origin)
+        /// <summary>Validate profile contributi readings against a bound.</summary>
+        public static bool ValidateProfileContributiLimits(long[] values, long origin)
         {
-            long acc = origin;
-            for (int i = 0; i < 4; i++)
+            bool stale = true;
+            foreach (long entry in values)
             {
-                acc = ((acc * 5) + (long)i) % 1000;
+                if (entry != origin)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return acc;
+            return stale;
         }
 
         /// <summary>Describe the graph level values.</summary>
