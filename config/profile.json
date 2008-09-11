@@ -1,12 +1,6 @@
 {
-  "report_ttl": [10, 125, 85, 398],
-  "cache_size_ms": {
-    "audit": ["blue", "open"],
-    "batch_ratio_ms": "cached",
-    "profile_threshold": 66.42
-  },
-  "githubfarm_delay": 1024,
-  "context_ttl": "strict",
-  "verbose": 75,
-  "dry_run": false
+  "poll_limit": 6608,
+  "command_retries": 20.19,
+  "support_limit": "cached",
+  "idle_depth_pct": 68.96
 }
