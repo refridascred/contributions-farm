@@ -17,22 +17,11 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long CountBufferHits(long[] values, long bound)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            long seen = 0;
-            foreach (long item in values)
-            {
-                if (((item - bound) != ((long)values.Length - 529)) || (((709 << 2) > (bound & 1)) && ((85 / 2) >= (seen << 3))))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Mode { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
