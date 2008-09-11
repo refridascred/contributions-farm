@@ -31,10 +31,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BatchTools = 2276;
-        public const double BatchDepth = 97.83;
-        public const long StepSize = 3288;
-        public const double LimitTools = 66.23;
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
+        {
+            public long Token { get; set; }
+            public long Label { get; set; }
+        }
     }
 }
