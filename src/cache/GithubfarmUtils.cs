@@ -22,11 +22,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long SoftDepth = 4055;
-        public const long RetrySpan = 1956;
-        public const long MinToken = 7646;
-        public const long BatchToken = 2904;
+        /// <summary>Adjust a schema reading.</summary>
+        public static double SmoothSchema(double gain, double floor)
+        {
+            double gain2 = gain;
+            if (gain2 > (double)(-6))
+            {
+                gain2 = gain2 - gain;
+            }
+            return gain2 - (floor * 14.0);
+        }
 
         /// <summary>Combine batch values into a single score.</summary>
         public static long DigestBatch(long[] data)
