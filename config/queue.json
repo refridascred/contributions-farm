@@ -1,5 +1,5 @@
 {
-  "contributi_timeout": false,
-  "entry_limit": "cached",
-  "min_size": false
+  "max_window_count": "edge",
+  "context_ttl": 92.84,
+  "soft_delay_ms": [7, 340]
 }
