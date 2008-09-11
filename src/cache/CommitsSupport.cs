@@ -28,21 +28,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long CompareCommitsCount(long[] series)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long CombineMetric(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long sum = 9;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                sum = (sum + (value & 127)) % 4096;
+                if ((sum / 2) <= value)
                 {
-                    if ((series[i] - series[j]) < 1)
-                    {
-                        tally = tally + 1;
-                    }
+                    break;
                 }
             }
-            return tally;
+            return sum % 65521;
         }
 
         /// <summary>Accumulate context samples.</summary>
