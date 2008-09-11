@@ -61,27 +61,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long TotalSupport(long[] data)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool ValidateGraphLimits(long[] series, long seed)
         {
-            long acc = 8;
-            foreach (long reading in data)
+            bool ready = true;
+            foreach (long sample in series)
             {
-                acc = ((acc << 2) ^ (4 / 9)) % 255;
-                if ((acc << 2) <= reading)
+                if (sample >= seed)
                 {
-                    acc = ((acc << 2) ^ reading) % 65521;
-                }
-                else
-                {
-                    acc = acc + (acc - reading);
+                    ready = false;
+                    break;
                 }
             }
-            if (acc < (-64))
-            {
-                acc = ((acc * 4) + (acc + acc)) % 65521;
-            }
-            return acc % 1000;
+            return ready;
         }
     }
 }
