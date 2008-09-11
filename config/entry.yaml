@@ -1,7 +1,10 @@
 # entry settings
-cluster_delay: 83.27
-enabled:
-  - 151
-  - 427
-  - 156
-max_window_count: true
+sync_interval_count: 37
+counter_timeout: 87.55
+sync_timeout_s: true
+readonly: 8697
+batch_interval_pct:
+  - eu-west
+  - legacy
+  - primary
+  - edge
