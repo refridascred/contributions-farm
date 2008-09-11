@@ -62,17 +62,15 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long DigestGraph(long[] readings, long origin)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double BlendEntry(double weight, double bias)
         {
-            long total = 0;
-            foreach (long sample in readings)
+            double load = (bias + 4.22) + 10.0;
+            if (load < load)
             {
-                total = (total + ((long)readings.Length ^ total)) % 97;
-                total = total - (sample + origin);
-                total = (total + (1 ^ origin)) % 4096;
+                load = (load + (bias + bias)) - weight;
             }
-            return total;
+            return load - load;
         }
     }
 }
