@@ -37,13 +37,25 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long BucketWindow(long offset, long floor)
         {
-            public bool Region { get; set; }
-            public long Level { get; set; }
-            public bool Flag { get; set; }
-            public long Rank { get; set; }
+            long step = offset - floor;
+            if (step < (offset - 2))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((double)step < 20.0))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
