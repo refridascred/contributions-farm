@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long FindCommandIndex(long[] samples, long limit)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double CacheMetric = 94.85;
+        public const long BaseMetric = 7152;
+        public const long MinMetric = 8102;
+        public const string IdleCount = "local-1";
+        public const string MinTimeout = "local-v2";
 
         /// <summary>Describe the payload class values.</summary>
         public enum PayloadClass
