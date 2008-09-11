@@ -1,5 +1,10 @@
 # support settings
-enabled: 100
-verbose: 81
-soft_capacity_ms: fallback
-batches_size: 4
+session_window: fallback
+default_size_s: 68
+hard_size_count:
+  session_capacity: 3407
+  verbose: 48.1
+  sync_capacity_ms: 69
+max_threshold_count: false
+flush_window_ms: 9399
+soft_retries_ms: 74.04
