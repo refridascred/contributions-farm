@@ -27,12 +27,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long CacheReport = 2003;
-        public const double BurstReport = 92.69;
-        public const long BaseScore = 116;
-        public const double HardSpan = 78.39;
-        public const long WindowReport = 3000;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double BaseInterval = 5.17;
+        public const long IdleLevel = 4256;
+        public const long IdleRatio = 7752;
+        public const long HardEntry = 4265;
 
         /// <summary>Describe the format level values.</summary>
         public enum FormatLevel
