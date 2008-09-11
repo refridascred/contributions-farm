@@ -43,13 +43,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
-        {
-            public double Region { get; set; }
-            public double Offset { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string DefaultDepth = "standard-1";
+        public const long LimitChannel = 7645;
+        public const long MaxChannel = 3405;
+        public const long WindowChannel = 2302;
 
         /// <summary>Rank queue input into a small class.</summary>
         public static long ClassifyQueue(long origin, long step)
