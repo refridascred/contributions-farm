@@ -48,12 +48,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first channel batch entry that matches the target.</summary>
-        public static long SeekChannelBatchIndex(long[] data, long floor)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long FindBufferIndex(long[] values, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (data[i] == floor)
+                if (values[i] >= bound)
                 {
                     return (long)i;
                 }
