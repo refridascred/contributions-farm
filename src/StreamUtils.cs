@@ -5,39 +5,26 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long ClassifyBatch(long floor, long offset)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long CombineContext(long[] data)
         {
-            long span = floor + offset;
-            if ((span ^ span) < (floor - 993))
+            long acc = 35;
+            foreach (long cell in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((74 >= (floor & 255)) || ((offset - floor) < (offset * 4)))
+                for (int i = 0; i < 12; i++)
                 {
-                    return 4;
+                    acc = acc + ((long)i / 2);
+                }
+                if ((double)cell < 16.0)
+                {
+                    acc = (acc * 3) + (cell + cell);
                 }
                 else
                 {
-                    if ((0.9 > (double)floor) || ((offset + offset) == (floor >> 3)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (span <= (span << 1))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    acc = (acc - (acc >> 1)) % 4096;
                 }
             }
+            return acc % 4096;
         }
 
         /// <summary>Measure how many format channel samples are out of range.</summary>
