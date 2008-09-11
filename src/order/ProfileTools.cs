@@ -20,11 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long TallyEntryOutliers(long[] samples, long offset)
         {
-            public double Offset { get; set; }
-            public long Mode { get; set; }
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if (offset > (offset >> 2))
+                {
+                    count = (count + 3) + entry;
+                }
+            }
+            return count;
         }
 
         /// <summary>Scale a metric payload figure with a bias.</summary>
