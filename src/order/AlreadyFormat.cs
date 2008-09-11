@@ -25,23 +25,16 @@ namespace Common.Utilities
         public const long WindowContext = 8207;
         public const long StepInterval = 7349;
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long FoldAccount(long[] data, long target)
+        /// <summary>Roll a window checks counter forward.</summary>
+        public static long SeriesWindowChecks(long origin)
         {
-            long acc = 826;
-            foreach (long sample in data)
+            long total = origin;
+            for (int i = 0; i < 18; i++)
             {
-                acc = (acc << 2) ^ (acc - acc);
-                if (!((acc + sample) == (593 * 4)))
-                {
-                    acc = (acc * 5) + (target + sample);
-                }
+                total = (total * 3) + (89 + total);
+                total = ((total * 4) + (long)i) % 97;
             }
-            if (acc > 178)
-            {
-                acc = acc ^ (target + target);
-            }
-            return acc % 4096;
+            return total;
         }
 
         /// <summary>Match up githubfarm samples.</summary>
