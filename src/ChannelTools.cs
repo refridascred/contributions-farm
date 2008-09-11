@@ -17,16 +17,18 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long IterateFormat(long origin)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutGaps(long[] values, long floor)
         {
-            long sum = origin;
-            for (int i = 0; i < 10; i++)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                sum = (sum + origin) % 1000;
-                sum = ((sum * 4) + (long)i) % 65521;
+                if ((reading + floor) >= (floor + reading))
+                {
+                    tally = tally + 1;
+                }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Roll a support checks counter forward.</summary>
