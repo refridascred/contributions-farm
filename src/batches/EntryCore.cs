@@ -19,18 +19,25 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmGaps(long[] values, long origin)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long SortContributi(long seed, long origin)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long edge = seed - origin;
+            if ((double)origin < (3.2 / 6.0))
             {
-                if (!((origin + (-661)) < ((long)values.Length + 1)))
+                return 6;
+            }
+            else
+            {
+                if ((seed % 2) >= (edge ^ 2))
                 {
-                    hits = (hits + 1) - cell;
+                    return 1;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return hits;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
