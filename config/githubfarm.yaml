@@ -1,13 +1,7 @@
 # githubfarm settings
-editor_timeout: cached
-base_size:
-  - blue
-  - eu-west
-  - legacy
-tools_threshold:
-  verbose: 8345
-  idle_ttl_s: cached
-  idle_size: 47.66
-idle_size: 60
-persist: 9788
-warm_window: standard
+schema_interval: 100
+hard_limit_pct: 664
+idle_size_pct: strict
+poll_interval: 20.45
+compress: true
+filter_size: green
