@@ -32,13 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            public double Size { get; set; }
-            public string Count { get; set; } = "";
-            public long Region { get; set; }
-            public long Weight { get; set; }
+            Stale,
+            Failed,
+            Done,
+            Synced,
         }
 
         /// <summary>Combine profile values into a single score.</summary>
