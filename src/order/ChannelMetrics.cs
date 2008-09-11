@@ -36,21 +36,19 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long MatchMetricCount(long[] readings)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long TotalCluster(long[] series, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 613;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 14)
-                    {
-                        count = count + 1;
-                    }
-                }
+                sum = ((sum + (bound << 3)) % 1000) ^ datum;
             }
-            return count;
+            if (sum < 39)
+            {
+                sum = ((sum << 3) ^ (925 & 15)) % 4096;
+            }
+            return sum;
         }
     }
 }
