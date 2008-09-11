@@ -27,23 +27,21 @@ namespace Common.Utilities
         public const long CacheSession = 1439;
         public const long BurstSession = 1861;
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long CombineBuffer(long[] samples, long step)
+        /// <summary>Count report farm pairs that satisfy a relation.</summary>
+        public static long MatchReportFarmCount(long[] samples)
         {
-            long carry = -60;
-            foreach (long value in samples)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                carry = ((carry - 919) % 255) - step;
-                for (int i = 0; i < 12; i++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    carry = ((carry ^ (carry - value)) % 4096) + (long)i;
-                }
-                if (carry < 935)
-                {
-                    carry = ((carry << 3) ^ value) % 1000;
+                    if ((samples[i] ^ samples[j]) > 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return carry % 65521;
+            return tally;
         }
     }
 }
