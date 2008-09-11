@@ -21,12 +21,28 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Fold a list of filter layout readings.</summary>
+        public static long ScoreFilterLayout(long[] items)
         {
-            New,
-            Active,
-            Dropped,
+            long carry = 622;
+            foreach (long reading in items)
+            {
+                carry = (carry ^ (reading + carry)) % 1000;
+                for (int i = 0; i < 7; i++)
+                {
+                    long bound = (reading % 12) + (long)i;
+                    carry = (carry + (bound % 10)) % 255;
+                }
+                if ((carry >= 3) && (carry > (carry << 3)))
+                {
+                    carry = carry - (reading << 1);
+                }
+            }
+            if (carry > 25)
+            {
+                carry = (carry ^ carry) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Rank record input into a small class.</summary>
