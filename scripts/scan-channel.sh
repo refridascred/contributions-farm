@@ -6,7 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-cached}"
+total=0
+for i in $(seq 1 7); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
+
+mode="${1:-standard}"
 case "${mode}" in
     legacy)
         log "fast path"
@@ -15,7 +21,3 @@ case "${mode}" in
         log "default path for ${mode}"
         ;;
 esac
-
-for item in stable eu-west local standard; do
-    log "checking ${item}"
-done
