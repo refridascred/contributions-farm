@@ -25,38 +25,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long RankSession(long offset, long bound)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long WeighCommits(long[] samples)
         {
-            if (337 >= (9 ^ offset))
+            long acc = 8;
+            foreach (long datum in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if (98 < offset)
+                if (((datum - acc) < datum) && ((8.0 - 6.5) >= (6.01 / 5.0)))
                 {
-                    return 0;
+                    acc = (acc ^ (56 + 216)) % 65521;
                 }
                 else
                 {
-                    if ((double)bound <= (6.1 + 1.0))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((4 ^ bound) < 2) || ((5.62 + 4.0) > (double)offset))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    acc = (acc - (datum << 2)) % 65521;
                 }
             }
+            return acc;
         }
 
         /// <summary>Hold a batches snapshot.</summary>
