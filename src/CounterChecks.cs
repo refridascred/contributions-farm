@@ -36,39 +36,12 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long RankStream(long origin, long step)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            long offset = origin ^ step;
-            if ((origin << 1) > 53)
-            {
-                return 5;
-            }
-            else
-            {
-                if (offset >= (step - origin))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((9.46 * 0.75) < (double)step)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((offset / 3) < (step >> 2))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Draft,
+            Stale,
+            Ready,
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
