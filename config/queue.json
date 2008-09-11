@@ -1,8 +1,5 @@
 {
-  "idle_size_ms": "open",
-  "flush_threshold_ms": "blue",
-  "max_depth": 45,
-  "dry_run": "eu-west",
-  "metric_capacity": 24.43,
-  "burst_capacity_count": [131, 75]
+  "report_delay": 250,
+  "checks_delay": ["eu-west", "open"],
+  "readonly": "staging"
 }
