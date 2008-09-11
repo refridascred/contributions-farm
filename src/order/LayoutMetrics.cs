@@ -34,11 +34,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double StepBudget = 52.91;
-        public const long RetryCount = 6581;
-        public const long MaxLevel = 7484;
-        public const string DefaultContributi = "stable-v2";
-        public const long BurstContributi = 8381;
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TallyLayout(long[] readings, long floor)
+        {
+            long sum = 982;
+            foreach (long reading in readings)
+            {
+                sum = (((sum << 3) ^ (sum << 1)) % 255) ^ reading;
+            }
+            if (sum < (-979))
+            {
+                sum = sum ^ (floor / 3);
+            }
+            return sum % 65521;
+        }
     }
 }
