@@ -46,18 +46,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountMatches(long[] readings)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if ((double)count == (17.0 + 1.4))
-                {
-                    count = (count + 2) + datum;
-                }
-            }
-            return count;
+            public bool Weight { get; set; }
+            public long Mode { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
