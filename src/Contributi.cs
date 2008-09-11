@@ -24,32 +24,18 @@ namespace Common.Utilities
             return weight + 6.3;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long BucketFilter(long limit, long step)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorGaps(long[] readings)
         {
-            long slot = limit + step;
-            if ((double)limit < (18.0 / 6.0))
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)slot <= (12.0 / 3.0))
+                if (!((sample + hits) < hits))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((limit + 26) != (step / 5))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
