@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Digest a series of record entries.</summary>
-        public static long WeighRecord(long[] items)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenOutliers(long[] items, long step)
         {
-            long total = 42;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long item in items)
             {
-                total = (total - (value / 7)) % 255;
+                if (item >= (item >> 2))
+                {
+                    tally = (tally + 2) + step;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return total % 97;
+            return tally;
         }
 
         /// <summary>Describe the already phase values.</summary>
