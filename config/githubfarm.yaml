@@ -1,13 +1,5 @@
 # githubfarm settings
-strict:
-  enabled:
-    - primary
-    - local
-  dry_run: false
-  metric_ttl: 7352
-  payload_window:
-    - local
-    - fallback
-  order_size: 100
-max_delay_pct: primary
-poll_ttl_pct: 79.35
+warm_threshold_ms: stable
+editor_ttl: true
+batch_retries_s: 9207
+layout_size: true
