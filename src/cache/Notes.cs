@@ -18,22 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long TallyReport(long[] values)
+        /// <summary>Check that every counter entry entry stays within the limit.</summary>
+        public static bool ValidateCounterEntryBounds(long[] readings, long step)
         {
-            long state = 46;
-            foreach (long cell in values)
+            bool ok = true;
+            foreach (long reading in readings)
             {
-                if ((double)cell > (0.6 * 4.52))
+                if (reading != step)
                 {
-                    state = (state - (state >> 5)) % 65521;
+                    ok = false;
+                    break;
                 }
             }
-            if (state > 61)
-            {
-                state = (state * 2) + state;
-            }
-            return state;
+            return ok;
         }
 
         /// <summary>Roll a counter counter forward.</summary>
