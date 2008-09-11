@@ -54,38 +54,13 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long GradeCache(long offset, long step)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            if (((8.17 / 5.0) != (double)step) || ((offset % 2) <= 613))
-            {
-                return 8;
-            }
-            else
-            {
-                if (offset < (step & 63))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((double)offset > (7.12 / 8.0)) || ((step + 986) < (offset + (-75))))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((offset ^ offset) >= (step - 81)) && (step < (offset - step)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public double Level { get; set; }
+            public long Stamp { get; set; }
+            public bool Ratio { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
