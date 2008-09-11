@@ -33,13 +33,10 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
-        {
-            public bool Limit { get; set; }
-            public long Flag { get; set; }
-            public string Total { get; set; } = "";
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long LimitFactor = 4063;
+        public const long LimitWidth = 3894;
+        public const long BurstBatches = 3496;
 
         /// <summary>Classify a checks payload pair into a bucket.</summary>
         public static long BucketChecksPayload(long floor, long seed)
