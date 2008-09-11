@@ -1,8 +1,8 @@
 # githubfarm settings
-readonly: false
-warm_capacity:
-  - 88
-  - 194
-poll_size: green
-audit: 500
-verbose: edge
+flush_ttl:
+  - 59
+  - 164
+  - 450
+min_ttl_s: 60.99
+burst_window_pct: false
+dry_run: 500
