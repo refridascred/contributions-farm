@@ -50,14 +50,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
-        {
-            public long Region { get; set; }
-            public string Score { get; set; } = "";
-            public bool Flag { get; set; }
-            public string Limit { get; set; } = "";
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long SoftTimeout = 5709;
+        public const long BaseCounter = 1497;
+        public const long BatchCounter = 1661;
+        public const string BatchRatio = "stable-1";
 
         /// <summary>Accumulate batches samples.</summary>
         public static long TotalBatches(long[] series)
