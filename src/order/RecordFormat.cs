@@ -49,22 +49,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsGaps(long[] items)
+        /// <summary>Check that every checks counter entry stays within the limit.</summary>
+        public static bool CheckChecksCounterBounds(long[] data, long floor)
         {
-            long tally = 0;
-            foreach (long value in items)
+            bool found = true;
+            foreach (long reading in data)
             {
-                if (value <= (tally * 3))
+                if (reading < floor)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
     }
 }
