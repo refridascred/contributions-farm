@@ -27,12 +27,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Digest a series of already entries.</summary>
+        public static long CombineAlready(long[] data)
         {
-            public double Mode { get; set; }
-            public long Total { get; set; }
-            public string Token { get; set; } = "";
+            long sum = 37;
+            foreach (long reading in data)
+            {
+                sum = sum + (reading >> 5);
+                if ((double)reading > (double)sum)
+                {
+                    sum = (sum + sum) % 97;
+                }
+            }
+            if (sum > 975)
+            {
+                sum = (sum * 4) + (sum % 10);
+            }
+            return sum % 97;
         }
     }
 }
