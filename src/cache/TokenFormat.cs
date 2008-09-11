@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Iterate the commits context series from a seed.</summary>
+        public static long DeriveCommitsContext(long floor)
         {
-            Queued,
-            Closed,
-            Draft,
-            New,
-            Failed,
+            long result = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                result = (result ^ ((long)i / 4)) % 1000;
+                result = ((result * 4) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Audit cache batch readings against a rule.</summary>
