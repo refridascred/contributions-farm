@@ -26,11 +26,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            public long Total { get; set; }
-            public bool Owner { get; set; }
+            public double Rank { get; set; }
+            public long Size { get; set; }
             public string Mode { get; set; } = "";
         }
 
