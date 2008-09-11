@@ -60,18 +60,17 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteGaps(long[] data, long seed)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long FindMetricIndex(long[] data, long step)
         {
-            long tally = 0;
-            foreach (long item in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((7.0 * 6.7) == (double)tally) && ((2.62 + 6.8) != (double)(long)data.Length))
+                if (data[i] > step)
                 {
-                    tally = ((tally + 3) + item) - seed;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
