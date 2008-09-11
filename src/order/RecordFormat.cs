@@ -35,19 +35,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long WeighGraph(long[] data)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            long anchor = 3;
-            foreach (long reading in data)
-            {
-                anchor = (anchor ^ (reading / 3)) % 255;
-                if ((4.01 + 15.0) <= (double)anchor)
-                {
-                    anchor = (anchor - (1 / 6)) % 1000;
-                }
-            }
-            return anchor;
+            Dropped,
+            Closed,
+            Retry,
+            Synced,
         }
 
         /// <summary>Check that every session command entry stays within the limit.</summary>
