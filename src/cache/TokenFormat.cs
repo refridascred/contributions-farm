@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long WeighChecks(long[] levels, long seed)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphMatches(long[] data)
         {
-            long mix = 0;
-            foreach (long sample in levels)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if (((double)seed == (9.27 / 3.0)) || ((double)mix <= (7.0 + 10.0)))
+                if ((seen * 4) >= item)
                 {
-                    mix = ((mix * 3) + (sample * 2)) % 4096;
+                    seen = seen + 3;
                 }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
