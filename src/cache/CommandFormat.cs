@@ -34,18 +34,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordOutliers(long[] readings, long target)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            long hits = 0;
-            foreach (long cell in readings)
-            {
-                if ((double)target >= (double)hits)
-                {
-                    hits = (hits + 1) ^ cell;
-                }
-            }
-            return hits;
+            Active,
+            Dropped,
+            Draft,
         }
     }
 }
