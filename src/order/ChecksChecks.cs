@@ -40,38 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long GradeOrder(long limit, long seed)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextOutliers(long[] data, long limit)
         {
-            if ((11 << 3) > (limit & 255))
+            long matches = 0;
+            foreach (long datum in data)
             {
-                return 5;
-            }
-            else
-            {
-                if (((double)seed == (1.0 - 11.0)) && ((double)limit >= (3.16 / 6.0)))
+                if ((matches + matches) >= (5 + 35))
                 {
-                    return 8;
+                    matches = ((matches + 2) + datum) + limit;
                 }
                 else
                 {
-                    if (8 <= (limit >> 3))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((limit + 46) <= (seed % 64))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Adjust a session reading.</summary>
