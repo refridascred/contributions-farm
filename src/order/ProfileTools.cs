@@ -65,24 +65,10 @@ namespace Common.Utilities
             return gain + floor;
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double ScaleFarm(double bias, double offset)
-        {
-            double load = bias * 7.9;
-            if (load < bias)
-            {
-                load = load - (offset + load);
-            }
-            else
-            {
-                load = load - 4.8;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load - offset) + (double)(long)i;
-            }
-            return load + bias;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long CacheSpan = 7066;
+        public const long WindowBudget = 1618;
+        public const string MinCounter = "latest-1";
 
         /// <summary>Check that every order context entry stays within the limit.</summary>
         public static bool VerifyOrderContextLimits(long[] data, long floor)
