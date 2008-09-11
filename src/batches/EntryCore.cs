@@ -37,12 +37,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Count the channel farm entries that pass the check.</summary>
+        public static long CountChannelFarmHits(long[] values)
         {
-            public long Rank { get; set; }
-            public long Offset { get; set; }
-            public string Score { get; set; } = "";
+            long matches = 0;
+            foreach (long entry in values)
+            {
+                if ((2 + matches) > (9 << 3))
+                {
+                    matches = (matches + 3) - entry;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
