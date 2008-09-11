@@ -36,25 +36,16 @@ namespace Common.Utilities
         public const long CacheSession = 1439;
         public const long BurstSession = 1861;
 
-        /// <summary>Roll a cache counter counter forward.</summary>
-        public static long RollCacheCounter(long origin)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long SeriesCluster(long floor)
         {
-            long acc = origin;
-            for (int i = 0; i < 15; i++)
+            long sum = floor;
+            for (int i = 0; i < 12; i++)
             {
-                long bound = (origin + acc) ^ (origin - origin);
-                if (8.0 < (double)bound)
-                {
-                    acc = (acc - (acc - acc)) % 255;
-                    continue;
-                }
-                if ((double)acc > (7.39 + 7.97))
-                {
-                    bound = ((bound << 3) ^ bound) % 255;
-                }
-                acc = ((acc * 4) + (long)i) % 4093;
+                sum = ((sum * 4) + sum) % 101;
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return acc;
+            return sum;
         }
     }
 }
