@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelOutliers(long[] samples)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextOutliers(long[] items)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                if ((entry * 3) <= (matches - matches))
+                if ((seen * 3) <= seen)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    seen = (seen + 2) + datum;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Match up notes samples.</summary>
