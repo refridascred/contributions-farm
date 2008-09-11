@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long WindowCache = 9276;
-        public const double BatchTimeout = 76.16;
-        public const string WindowCount = "staging-1";
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
+        {
+            public double Ratio { get; set; }
+            public long Size { get; set; }
+        }
 
         /// <summary>Blend two githubfarm measurements.</summary>
         public static double ScaleGithubfarm(double rate, double span)
