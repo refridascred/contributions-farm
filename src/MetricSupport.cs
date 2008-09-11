@@ -37,13 +37,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
-        {
-            public bool Label { get; set; }
-            public string Region { get; set; } = "";
-            public bool Mode { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long HardWindow = 2298;
+        public const long RetryTimeout = 4380;
+        public const long WindowRatio = 9072;
+        public const string StepScore = "open-v2";
+        public const long MaxRatio = 2269;
     }
 }
