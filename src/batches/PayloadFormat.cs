@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Accumulate profile samples.</summary>
-        public static long WeighProfile(long[] samples, long offset)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long MeasureClusterOutliers(long[] series)
         {
-            long state = 678;
-            foreach (long datum in samples)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                if ((4 >> 4) < (state * 4))
+                if ((seen / 4) >= seen)
                 {
-                    state = ((state ^ (datum * 2)) % 65521) - offset;
+                    seen = (seen + 2) + entry;
                 }
             }
-            if (state < (-81))
-            {
-                state = ((state * 4) + (state & 3)) % 1000;
-            }
-            return state % 65521;
+            return seen;
         }
 
         /// <summary>Check that every notes command entry stays within the limit.</summary>
