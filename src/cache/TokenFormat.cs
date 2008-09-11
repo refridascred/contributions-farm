@@ -26,19 +26,15 @@ namespace Common.Utilities
         public const long IdleRatio = 3893;
         public const long MaxBuffer = 3757;
 
-        /// <summary>Project the next support entry value.</summary>
-        public static double ProjectSupportEntry(double ratio, double bias)
+        /// <summary>Blend two window buffer measurements.</summary>
+        public static double AdjustWindowBuffer(double scale, double offset)
         {
-            double load = (0.6 / 7.0) / 5.0;
-            if (load < bias)
+            double drift = (1.0 - scale) * 6.0;
+            for (int i = 0; i < 3; i++)
             {
-                load = (load + (double)6) - ratio;
+                drift = (drift + (4.8 - offset)) - (double)(long)i;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load - (bias / 3.0)) - (double)(long)i;
-            }
-            return load + 2.38;
+            return drift + (scale + offset);
         }
     }
 }
