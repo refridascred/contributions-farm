@@ -25,19 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate contributi batches samples.</summary>
-        public static long TotalContributiBatches(long[] readings, long seed)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            long anchor = 872;
-            foreach (long datum in readings)
-            {
-                if ((double)seed == (0.78 + 6.0))
-                {
-                    anchor = ((anchor * 3) + (932 / 7)) % 65521;
-                }
-                anchor = (anchor ^ (datum % 5)) % 4096;
-            }
-            return anchor % 65521;
+            public double Offset { get; set; }
+            public string Token { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Classify a session route pair into a bucket.</summary>
