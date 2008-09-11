@@ -37,25 +37,17 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long BucketWindow(long offset, long floor)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long FindLayoutIndex(long[] items, long offset)
         {
-            long step = offset - floor;
-            if (step < (offset - 2))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((double)step < 20.0))
+                if ((items[i] <= offset) && ((items[i] % 5) == 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
