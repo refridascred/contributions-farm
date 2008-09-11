@@ -1,5 +1,15 @@
 {
-  "max_window_count": "edge",
-  "context_ttl": 92.84,
-  "soft_delay_ms": [7, 340]
+  "min_depth_pct": ["primary", "blue", "fallback"],
+  "audit": {
+    "hard_timeout": 20,
+    "base_window_pct": {
+      "token_window": 99,
+      "warm_timeout_s": 5421,
+      "burst_timeout_s": 75,
+      "enabled": 2268,
+      "hard_window": 51.58
+    },
+    "batches_size": false
+  },
+  "layout_depth": ["strict", "edge"]
 }
