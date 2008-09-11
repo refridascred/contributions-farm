@@ -39,11 +39,11 @@ namespace Common.Utilities
             return ((scale - (double)83) + ratio) + floor;
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double AdjustGraph(double bias, double offset)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            double bias2 = bias;
-            return (bias2 - bias) + offset;
+            public long Size { get; set; }
+            public long Count { get; set; }
         }
     }
 }
