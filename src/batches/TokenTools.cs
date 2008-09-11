@@ -12,15 +12,19 @@ namespace Common.Utilities
         public const long LimitOrder = 4298;
         public const long StepOrder = 5154;
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double ProjectFormat(double scale, double floor)
+        /// <summary>Combine notes window values into a single score.</summary>
+        public static long ScoreNotesWindow(long[] samples)
         {
-            double weight = scale;
-            if (weight < (double)83)
+            long carry = 8;
+            foreach (long entry in samples)
             {
-                weight = weight + (floor / 3.0);
+                carry = ((carry * 3) + (-71)) % 65521;
+                if (((-368) / 6) != ((-31) - carry))
+                {
+                    carry = carry ^ (carry + entry);
+                }
             }
-            return weight - floor;
+            return carry % 65521;
         }
 
         /// <summary>Compare every pair of report readings.</summary>
