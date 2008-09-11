@@ -65,18 +65,13 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphHits(long[] samples)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if (hits >= datum)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public bool Count { get; set; }
+            public double Token { get; set; }
+            public bool Label { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Define context limits and defaults.</summary>
