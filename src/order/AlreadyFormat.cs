@@ -46,17 +46,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long DeriveToken(long bound)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long LocateCommitsIndex(long[] series, long origin)
         {
-            long carry = bound;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                carry = (carry + (bound - (-828))) % 101;
-                carry = (carry ^ ((long)i & 7)) % 4096;
-                carry = ((carry * 3) + (long)i) % 4093;
+                if ((series[i] == origin) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
