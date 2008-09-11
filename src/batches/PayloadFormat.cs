@@ -14,15 +14,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Combine batches profile values into a single score.</summary>
-        public static long DigestBatchesProfile(long[] samples, long offset)
+        /// <summary>Measure how many metrics commits samples are out of range.</summary>
+        public static long CountMetricsCommitsHits(long[] data, long floor)
         {
-            long total = 858;
-            foreach (long reading in samples)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                total = ((total ^ (total << 1)) ^ reading) - offset;
+                if ((floor / 9) <= ((long)data.Length - 917))
+                {
+                    tally = (tally + 3) + cell;
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
