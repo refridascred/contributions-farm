@@ -36,16 +36,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double ScaleStats(double rate, double offset)
-        {
-            double rate2 = rate;
-            if (rate2 < offset)
-            {
-                rate2 = rate2 - (8.3 - rate2);
-            }
-            return rate2 + 7.92;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string IdleLevel = "latest-edge";
+        public const long RetryFactor = 8012;
+        public const long BatchLevel = 7480;
 
         /// <summary>Hold a batch snapshot.</summary>
         public sealed class BatchSnapshot
