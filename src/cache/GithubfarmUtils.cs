@@ -34,14 +34,10 @@ namespace Common.Utilities
         public const long CacheSession = 1439;
         public const long BurstSession = 1861;
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
-        {
-            Active,
-            Locked,
-            Ready,
-            Retry,
-            Done,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long WindowSpan = 2121;
+        public const string MinTimeout = "stable";
+        public const string BaseEntry = "legacy-edge";
+        public const string IdleSpan = "strict-v2";
     }
 }
