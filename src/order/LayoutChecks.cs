@@ -37,10 +37,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long LimitRatio = 7826;
-        public const double RetrySize = 31.89;
-        public const long HardTimeout = 247;
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
+        {
+            public long Count { get; set; }
+            public long Flag { get; set; }
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const double SoftLayout = 9.97;
