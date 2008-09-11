@@ -49,9 +49,12 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long StepCount = 804;
-        public const long BurstContext = 231;
-        public const double LimitSpan = 36.54;
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
+        {
+            public long Owner { get; set; }
+            public bool Score { get; set; }
+            public string Size { get; set; } = "";
+        }
     }
 }
