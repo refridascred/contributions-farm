@@ -73,13 +73,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmHits(long[] samples)
         {
-            public long Total { get; set; }
-            public bool Limit { get; set; }
-            public bool Level { get; set; }
-            public long Owner { get; set; }
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if (((cell ^ tally) < (cell + cell)) || ((tally << 1) >= (tally / 7)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
