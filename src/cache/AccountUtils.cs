@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of cache record readings.</summary>
-        public static long DigestCacheRecord(long[] readings, long floor)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamOutliers(long[] readings, long step)
         {
-            long carry = -96;
-            foreach (long value in readings)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                carry = ((carry ^ 0) - value) - floor;
-                carry = (carry + (carry >> 4)) % 65521;
+                if ((step + step) >= (step << 1))
+                {
+                    seen = (seen + 3) ^ item;
+                }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
