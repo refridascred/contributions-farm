@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long StepToken = 5486;
-        public const long BaseToken = 53;
-        public const string MinToken = "local-v2";
-        public const long MaxFactor = 1492;
-        public const long IdleDepth = 9674;
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
+        {
+            public bool Rank { get; set; }
+            public long Weight { get; set; }
+            public double Label { get; set; }
+        }
 
         /// <summary>Iterate the payload series from a seed.</summary>
         public static long StepPayload(long offset)
