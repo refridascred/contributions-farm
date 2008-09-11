@@ -72,15 +72,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TallyCluster(long[] samples)
+        /// <summary>Compare every pair of report editor readings.</summary>
+        public static long MatchReportEditorCount(long[] samples)
         {
-            long sum = 7;
-            foreach (long cell in samples)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                sum = (sum + (sum ^ cell)) % 1000;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 10)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return sum % 97;
+            return count;
         }
     }
 }
