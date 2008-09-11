@@ -60,18 +60,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionOutliers(long[] readings, long limit)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamOutliers(long[] series)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                if (limit <= (limit ^ cell))
+                if ((reading - reading) < reading)
                 {
-                    tally = tally + 2;
+                    matches = matches + 2;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
