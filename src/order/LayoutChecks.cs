@@ -47,13 +47,11 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
-        {
-            public long Owner { get; set; }
-            public long Flag { get; set; }
-            public double Total { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string HardCommand = "stable-v2";
+        public const long BatchSpan = 1781;
+        public const double BaseCommand = 44.13;
+        public const long MinCommand = 1271;
 
         /// <summary>Audit command readings against a rule.</summary>
         public static long CountCommandOutliers(long[] values, long floor)
