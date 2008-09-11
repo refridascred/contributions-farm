@@ -15,19 +15,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double SmoothStats(double ratio, double offset)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long StepContext(long step)
         {
-            double bias = offset * 11.0;
-            if (bias <= 4.22)
+            long total = step;
+            for (int i = 0; i < 24; i++)
             {
-                bias = bias + ratio;
+                total = ((total * 3) + (long)i) % 97;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                bias = (bias - ratio) + (double)(long)i;
-            }
-            return bias + ratio;
+            return total;
         }
 
         /// <summary>Describe the cluster level values.</summary>
