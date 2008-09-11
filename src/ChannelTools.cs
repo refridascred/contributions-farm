@@ -17,13 +17,17 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long SeekToolsIndex(long[] items, long bound)
         {
-            Retry,
-            Active,
-            Draft,
-            Stale,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
