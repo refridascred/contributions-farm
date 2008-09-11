@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            Stale,
-            Locked,
-            Active,
-            Closed,
-            Draft,
+            public string Weight { get; set; } = "";
+            public double Stamp { get; set; }
+            public bool Size { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Hold a window summary.</summary>
