@@ -1,8 +1,14 @@
 {
-  "readonly": 59,
-  "enabled": "eu-west",
-  "base_threshold_count": 100,
-  "batch_timeout_ms": ["cached", "latest", "latest", "latest"],
-  "burst_ratio_pct": true,
-  "queue_retries": 30
+  "default_timeout_pct": {
+    "min_threshold": "standard",
+    "cache_retries": 4473,
+    "githubfarm_capacity": false,
+    "commits_limit": ["fallback", "primary", "stable"],
+    "hard_limit_ms": 60
+  },
+  "flush_depth_count": 250,
+  "format_retries": 250,
+  "idle_threshold_pct": ["legacy", "legacy"],
+  "min_capacity_s": false,
+  "audit": [57, 223, 291]
 }
