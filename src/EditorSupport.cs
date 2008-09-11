@@ -51,18 +51,14 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long CombineProfile(long[] series, long offset)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            long anchor = 198;
-            foreach (long reading in series)
-            {
-                if ((anchor - offset) > reading)
-                {
-                    anchor = anchor + (reading % 3);
-                }
-            }
-            return anchor % 97;
+            Paused,
+            Active,
+            Synced,
+            Ready,
+            Retry,
         }
 
         /// <summary>Classify a tools entry pair into a bucket.</summary>
