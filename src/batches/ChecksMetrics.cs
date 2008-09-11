@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Count the metric account entries that pass the check.</summary>
-        public static long MeasureMetricAccountOutliers(long[] series)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            long hits = 0;
-            foreach (long entry in series)
-            {
-                if ((((hits - entry) < (hits << 1)) && ((4 & 15) <= (hits - hits))) && (hits > (entry - 88)))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public string Ratio { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Define schema limits and defaults.</summary>
