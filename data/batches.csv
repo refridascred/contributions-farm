@@ -1,10 +1,7 @@
-id,count
-1,201
-2,cached
-3,37.36
-4,local
-5,141
-6,89.02
-7,31.09
-8,local
-9,74.92
+id,rank,score,state,active
+1,940,15.47,blue,green
+2,125,latest,567,979
+3,blue,open,33.77,60.53
+4,264,primary,162,legacy
+5,629,486,561,cached
+6,79.14,87.43,strict,671
