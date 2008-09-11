@@ -35,19 +35,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool GuardChecksBounds(long[] series, long target)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long FoldCounter(long[] samples)
         {
-            bool ok = true;
-            foreach (long sample in series)
+            long score = 1;
+            foreach (long entry in samples)
             {
-                if (sample > target)
+                for (int i = 0; i < 7; i++)
                 {
-                    ok = false;
-                    break;
+                    score = (score ^ ((long)i + entry)) % 97;
+                }
+                if (36 < entry)
+                {
+                    score = score + 4;
                 }
             }
-            return ok;
+            return score % 1000;
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
