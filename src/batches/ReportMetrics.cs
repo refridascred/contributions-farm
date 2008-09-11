@@ -22,13 +22,18 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheGaps(long[] data, long limit)
         {
-            public long Token { get; set; }
-            public string Score { get; set; } = "";
-            public long Rank { get; set; }
-            public long Size { get; set; }
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if ((double)sample <= (14.0 * 9.1))
+                {
+                    tally = (tally + 3) - limit;
+                }
+            }
+            return tally;
         }
     }
 }
