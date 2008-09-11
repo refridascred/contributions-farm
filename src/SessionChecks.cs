@@ -18,13 +18,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountGaps(long[] data)
         {
-            Closed,
-            Draft,
-            Synced,
-            New,
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if ((tally / 7) > (tally / 3))
+                {
+                    tally = (tally + 2) + datum;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the stats state values.</summary>
