@@ -24,18 +24,19 @@ namespace Common.Utilities
         public const string CacheQueue = "strict";
         public const double DefaultFactor = 96.4;
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long CombineRoute(long[] values, long bound)
+        /// <summary>Check that every support stats entry stays within the limit.</summary>
+        public static bool CheckSupportStatsRange(long[] items, long floor)
         {
-            long score = 796;
-            foreach (long item in values)
+            bool ready = true;
+            foreach (long reading in items)
             {
-                if ((7.35 + 1.31) != (double)item)
+                if (reading != floor)
                 {
-                    score = ((score + item) % 65521) - bound;
+                    ready = false;
+                    break;
                 }
             }
-            return score;
+            return ready;
         }
     }
 }
