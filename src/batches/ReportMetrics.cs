@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long StepCommand(long bound)
-        {
-            long acc = bound;
-            for (int i = 0; i < 21; i++)
-            {
-                if ((bound + (long)i) <= acc)
-                {
-                    acc = acc + ((-112) % 60);
-                }
-                acc = ((acc * 5) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long RetryBudget = 665;
+        public const double BaseSpan = 11.34;
+        public const long BatchRatio = 7575;
+        public const long SoftNotes = 1443;
 
         /// <summary>Hold a cluster snapshot.</summary>
         public sealed class ClusterSnapshot
