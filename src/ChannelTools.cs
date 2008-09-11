@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TallyStream(long[] series)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterHits(long[] series, long origin)
         {
-            long state = 340;
-            foreach (long cell in series)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                state = state + (cell >> 1);
-                state = (state - (29 >> 5)) % 1000;
+                if ((819 % 2) > tally)
+                {
+                    tally = ((tally + 3) + datum) - origin;
+                }
             }
-            return state % 1000;
+            return tally;
         }
 
         /// <summary>Validate checks batches readings against a bound.</summary>
