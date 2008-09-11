@@ -37,18 +37,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TotalCluster(long[] values)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long PairSchemaCount(long[] readings)
         {
-            long sum = -308;
-            foreach (long datum in values)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (datum >= (datum / 7))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    sum = ((sum << 3) ^ (datum << 3)) % 101;
+                    if ((readings[i] - readings[j]) < 12)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return sum % 97;
+            return hits;
         }
     }
 }
