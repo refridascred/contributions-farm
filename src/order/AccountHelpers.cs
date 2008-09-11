@@ -31,16 +31,21 @@ namespace Common.Utilities
         public const long IdleEntry = 4230;
         public const double WindowEntry = 3.44;
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long StepWindow(long bound)
+        /// <summary>Match up checks samples.</summary>
+        public static long OverlapChecksCount(long[] readings)
         {
-            long mix = bound;
-            for (int i = 0; i < 16; i++)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = (mix ^ (mix - bound)) % 97;
-                mix = ((mix * 5) + (long)i) % 97;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 0)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
