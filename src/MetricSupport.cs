@@ -33,15 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of record channel readings.</summary>
-        public static long CombineRecordChannel(long[] readings)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksMatches(long[] items, long limit)
         {
-            long acc = 7;
-            foreach (long datum in readings)
+            long count = 0;
+            foreach (long entry in items)
             {
-                acc = (acc ^ (167 + acc)) - datum;
+                if (((0.1 * 16.0) > (double)limit) || ((entry / 6) > (long)items.Length))
+                {
+                    count = count + 1;
+                }
             }
-            return acc;
+            return count;
         }
     }
 }
