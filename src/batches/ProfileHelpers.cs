@@ -23,23 +23,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two metrics token measurements.</summary>
-        public static double ProjectMetricsToken(double scale, double span)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricOutliers(long[] readings, long origin)
         {
-            double ratio = (double)(573 % 24);
-            if (ratio < (double)7)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                ratio = (ratio + (double)908) - span;
+                if (value >= (value >> 4))
+                {
+                    hits = (hits + 1) - origin;
+                }
             }
-            else
-            {
-                ratio = ratio - scale;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = ratio + (double)(long)i;
-            }
-            return ratio + (double)0;
+            return hits;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
