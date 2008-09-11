@@ -37,10 +37,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long StepDepth = 6267;
-        public const long RetryBudget = 4960;
-        public const double WindowLevel = 32.18;
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
+        {
+            Draft,
+            Ready,
+            Queued,
+            Retry,
+            Locked,
+        }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
         public static double SmoothCluster(double ratio, double offset)
