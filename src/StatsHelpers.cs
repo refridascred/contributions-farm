@@ -44,18 +44,18 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchOutliers(long[] readings, long floor)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricGaps(long[] samples)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if ((78 % 100) > (floor - floor))
+                if ((double)tally < 9.9)
                 {
-                    count = (count + 3) ^ item;
+                    tally = (tally + 3) ^ item;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
