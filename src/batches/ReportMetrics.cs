@@ -30,18 +30,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long WeighProfile(long[] readings, long seed)
-        {
-            long acc = 99;
-            foreach (long datum in readings)
-            {
-                if (acc <= 635)
-                {
-                    acc = ((acc ^ (seed << 2)) % 255) - datum;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MinGraph = 7792;
+        public const double HardGraph = 26.05;
+        public const long IdleGraph = 2860;
+        public const long BatchSpan = 3004;
     }
 }
