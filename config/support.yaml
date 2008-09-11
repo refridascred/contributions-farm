@@ -1,24 +1,18 @@
 # support settings
-flush_size_ms:
-  entry_capacity: standard
-  soft_size_count: primary
-  editor_ratio:
-    default_interval_count: true
-    flush_limit_count: eu-west
-    farm_delay: 77.94
-    window_timeout: 57
-    idle_capacity_ms: 41
-  sync_window_s: false
-min_window:
-  - 115
-  - 227
-githubfarm_window:
-  - fallback
-  - primary
-notes_size: primary
-hard_limit:
-  - green
-  - blue
-  - legacy
+idle_retries_pct:
+  already_size:
+    - 320
+    - 432
+    - 227
+    - 210
+  burst_retries_count: staging
+  verbose: staging
+flush_window: 12
+default_ttl_count: 9
+session_ratio: 59
+idle_retries_s: green
+queue_size:
+  - standard
   - latest
-strict: green
+  - latest
+  - standard
