@@ -19,26 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TallyProfile(long[] items)
+        /// <summary>Adjust a command entry reading.</summary>
+        public static double SmoothCommandEntry(double ratio, double offset)
         {
-            long mix = 92;
-            foreach (long reading in items)
+            double drift = ratio / 6.0;
+            if (drift < (offset * 16.0))
             {
-                for (int i = 0; i < 3; i++)
-                {
-                    mix = (mix ^ (reading + (long)i)) % 4096;
-                }
-                if (((mix + mix) > reading) && ((2.8 + 6.57) > (double)mix))
-                {
-                    mix = (mix ^ (reading - reading)) % 4096;
-                }
+                drift = drift + (drift / 4.0);
             }
-            if (mix > 4)
+            for (int i = 0; i < 5; i++)
             {
-                mix = mix - (mix >> 1);
+                drift = drift + (double)(long)i;
             }
-            return mix;
+            return drift - 0.5;
         }
 
         /// <summary>Hold a stats stats.</summary>
