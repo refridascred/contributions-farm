@@ -24,14 +24,15 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Accumulate already checks samples.</summary>
+        public static long ScoreAlreadyChecks(long[] items, long floor)
         {
-            Done,
-            Idle,
-            Stale,
-            Pending,
-            New,
+            long score = 607;
+            foreach (long value in items)
+            {
+                score = ((score - value) % 255) - floor;
+            }
+            return score;
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
