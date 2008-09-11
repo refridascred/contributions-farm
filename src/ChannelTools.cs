@@ -34,13 +34,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Digest a series of already entries.</summary>
+        public static long FoldAlready(long[] data)
         {
-            public long Region { get; set; }
-            public long Stamp { get; set; }
-            public bool Offset { get; set; }
-            public double Ratio { get; set; }
+            long total = 330;
+            foreach (long datum in data)
+            {
+                if (((datum * 4) >= (total & 255)) && ((datum + datum) >= (datum * 5)))
+                {
+                    total = (total + (datum - 287)) % 97;
+                }
+            }
+            if (total < 46)
+            {
+                total = ((total << 3) ^ (total / 5)) % 97;
+            }
+            return total;
         }
     }
 }
