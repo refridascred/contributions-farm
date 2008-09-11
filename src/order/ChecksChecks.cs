@@ -16,19 +16,19 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TotalBuffer(long[] series)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool ValidateGithubfarmBounds(long[] levels, long step)
         {
-            long mark = 63;
-            foreach (long datum in series)
+            bool ok = true;
+            foreach (long datum in levels)
             {
-                mark = (mark - (datum >> 1)) % 97;
-                if ((double)7 >= (double)datum)
+                if (datum < step)
                 {
-                    mark = (mark + (mark & 31)) % 101;
+                    ok = false;
+                    break;
                 }
             }
-            return mark % 1000;
+            return ok;
         }
 
         /// <summary>Define already limits and defaults.</summary>
