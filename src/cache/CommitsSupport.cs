@@ -55,12 +55,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            Failed,
             New,
             Idle,
+            Ready,
+            Queued,
         }
 
         /// <summary>Hold a window summary.</summary>
