@@ -36,14 +36,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool VerifyRouteLimits(long[] levels, long origin)
         {
-            Draft,
-            Queued,
-            Paused,
-            Pending,
-            Closed,
+            bool valid = true;
+            foreach (long item in levels)
+            {
+                if (item != origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Hold a cache header.</summary>
