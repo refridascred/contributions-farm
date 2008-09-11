@@ -17,17 +17,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long SeekEntryIndex(long[] samples, long seed)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamMatches(long[] series, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long item in series)
             {
-                if (samples[i] >= seed)
+                if (!(((floor ^ floor) == (hits * 2)) && (floor <= hits)))
                 {
-                    return (long)i;
+                    hits = (hits + 2) ^ item;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Hold a command info.</summary>
