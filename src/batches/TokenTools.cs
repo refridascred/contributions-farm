@@ -27,21 +27,39 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long OverlapRecordCount(long[] series)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long SortSession(long step, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long span = step + limit;
+            if ((limit ^ step) < step)
             {
-                for (int j = 0; j < series.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (((double)limit > (double)(-8)) || ((limit / 3) >= (step / 8)))
                 {
-                    if ((series[i] ^ series[j]) > 0)
+                    return 4;
+                }
+                else
+                {
+                    if (!((double)step < (double)span))
                     {
-                        hits = hits + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((7.0 * 5.46) == (double)limit)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
-            return hits;
         }
     }
 }
