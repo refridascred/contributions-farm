@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long RankAlready(long target, long floor)
         {
-            public long Stamp { get; set; }
-            public long Ratio { get; set; }
-            public double Region { get; set; }
+            long slot = target ^ floor;
+            if ((floor + target) > (floor * 4))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((target ^ floor) != (57 - slot))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((2.8 + 15.0) > (double)target)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
