@@ -76,19 +76,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool VerifyStreamLimits(long[] levels, long floor)
-        {
-            bool stale = true;
-            foreach (long value in levels)
-            {
-                if (value > floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long CacheSize = 3504;
+        public const long HardGithubfarm = 8470;
+        public const long MaxScore = 4495;
+        public const long HardSpan = 9457;
     }
 }
