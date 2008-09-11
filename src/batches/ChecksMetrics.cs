@@ -35,11 +35,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double MaxTools = 54.03;
-        public const double MinTools = 62.19;
-        public const long RetryLevel = 6078;
-        public const string LimitFactor = "cached-1";
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
+        {
+            public bool Stamp { get; set; }
+            public long Limit { get; set; }
+            public string Owner { get; set; } = "";
+            public long Weight { get; set; }
+        }
 
         /// <summary>Count the token entries that pass the check.</summary>
         public static long MeasureTokenHits(long[] values, long origin)
