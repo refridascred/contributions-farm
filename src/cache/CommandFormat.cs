@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long SoftSupport = 7;
-        public const long HardSupport = 8010;
-        public const string HardTimeout = "strict";
-        public const long MinSupport = 525;
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
+        {
+            Locked,
+            Ready,
+            Dropped,
+        }
 
         /// <summary>Look up the position of a schema sample.</summary>
         public static long LookupSchemaIndex(long[] items, long seed)
