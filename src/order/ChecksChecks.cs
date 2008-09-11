@@ -16,23 +16,19 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double SmoothLayout(double weight, double floor)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool VerifyContributiRange(long[] items, long origin)
         {
-            double drift = floor / 2.0;
-            if (drift <= (drift + floor))
+            bool ready = true;
+            foreach (long cell in items)
             {
-                drift = drift - (weight + weight);
+                if (cell < origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                drift = drift - (weight + drift);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift + (1.0 - drift)) + (double)(long)i;
-            }
-            return drift - (double)(-1);
+            return ready;
         }
 
         /// <summary>Match up commits samples.</summary>
