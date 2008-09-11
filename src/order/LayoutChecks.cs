@@ -13,10 +13,14 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BaseBudget = 1948;
-        public const double MaxScore = 2.48;
-        public const long BaseWidth = 1367;
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
+        {
+            public double Offset { get; set; }
+            public double Ratio { get; set; }
+            public double Rank { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Combine stream values into a single score.</summary>
         public static long WeighStream(long[] readings)
