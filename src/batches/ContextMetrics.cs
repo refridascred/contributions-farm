@@ -62,14 +62,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Find the first order layout entry that matches the target.</summary>
+        public static long FindOrderLayoutIndex(long[] items, long target)
         {
-            Queued,
-            New,
-            Draft,
-            Retry,
-            Synced,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= target) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate context tools readings against a bound.</summary>
