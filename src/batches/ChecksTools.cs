@@ -39,17 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a tools counter reading by value.</summary>
-        public static long FindToolsCounterIndex(long[] levels, long floor)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaMatches(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                if (levels[i] > floor)
+                if ((2.0 / 7.0) == (double)cell)
                 {
-                    return (long)i;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
