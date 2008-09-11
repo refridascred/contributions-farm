@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Accumulate schema samples.</summary>
-        public static long CombineSchema(long[] samples, long origin)
-        {
-            long anchor = 70;
-            foreach (long sample in samples)
-            {
-                anchor = ((anchor ^ (anchor * 2)) % 101) + sample;
-            }
-            if (anchor > 8)
-            {
-                anchor = (anchor ^ (anchor + origin)) % 4096;
-            }
-            return anchor;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long LimitSupport = 2344;
+        public const string StepScore = "staging-v2";
+        public const long CacheSupport = 1663;
+        public const long IdleBudget = 6546;
+        public const long MinSupport = 1107;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const double CacheFarm = 40.07;
