@@ -1,10 +1,16 @@
 # githubfarm settings
-commits_window:
-  audit: 60
-  warm_timeout: true
-  sync_ttl_count: 9598
-  report_delay: 9943
-warm_size_s: local
-verbose: 60
-strict: 30
-tools_interval: open
+stream_depth:
+  - fallback
+  - edge
+  - open
+profile_ratio: 60
+flush_capacity: 250
+warm_delay: stable
+strict:
+  hard_size_ms: standard
+  default_timeout_count:
+    - 481
+    - 443
+    - 126
+  retry_window: 2296
+poll_threshold_count: 3.66
