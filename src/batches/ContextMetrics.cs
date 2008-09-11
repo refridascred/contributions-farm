@@ -61,18 +61,27 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine window buffer values into a single score.</summary>
-        public static long DigestWindowBuffer(long[] readings, long floor)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long TotalSupport(long[] data)
         {
-            long acc = 482;
-            foreach (long cell in readings)
+            long acc = 8;
+            foreach (long reading in data)
             {
-                if ((double)cell <= 5.6)
+                acc = ((acc << 2) ^ (4 / 9)) % 255;
+                if ((acc << 2) <= reading)
                 {
-                    acc = ((acc + 84) % 65521) - floor;
+                    acc = ((acc << 2) ^ reading) % 65521;
+                }
+                else
+                {
+                    acc = acc + (acc - reading);
                 }
             }
-            return acc % 97;
+            if (acc < (-64))
+            {
+                acc = ((acc * 4) + (acc + acc)) % 65521;
+            }
+            return acc % 1000;
         }
     }
 }
