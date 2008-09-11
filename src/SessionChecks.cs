@@ -19,11 +19,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Combine already values into a single score.</summary>
+        public static long DigestAlready(long[] data)
         {
-            public double Size { get; set; }
-            public long Total { get; set; }
+            long carry = 7;
+            foreach (long value in data)
+            {
+                if ((double)value <= (19.0 + 2.0))
+                {
+                    carry = carry ^ 886;
+                    carry = ((carry * 3) + (157 / 6)) % 101;
+                }
+                if ((value >> 4) < (45 + carry))
+                {
+                    carry = (carry ^ (carry << 1)) % 255;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Describe the context status values.</summary>
