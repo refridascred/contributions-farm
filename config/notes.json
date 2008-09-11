@@ -1,5 +1,27 @@
 {
-  "retry_retries_ms": 31,
-  "record_window": 20.01,
-  "session_limit": [291, 225]
+  "tools_ttl": 88.75,
+  "max_interval": {
+    "cache_ttl": {
+      "route_ratio": [145, 398, 71, 391],
+      "min_delay_pct": "staging",
+      "support_capacity": false,
+      "poll_ratio_count": true,
+      "readonly": "open"
+    },
+    "retry_size_s": "staging",
+    "idle_size_ms": "eu-west",
+    "warm_size_ms": 93,
+    "burst_retries_ms": 250,
+    "record_capacity": true
+  },
+  "idle_size_count": {
+    "max_timeout_pct": "latest",
+    "flush_limit_ms": "eu-west",
+    "batch_interval_count": 7.19,
+    "sync_timeout_pct": 12,
+    "readonly": "strict"
+  },
+  "min_retries": "legacy",
+  "sync_ttl_count": false,
+  "idle_retries": 30
 }
