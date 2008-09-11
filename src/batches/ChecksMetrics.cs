@@ -42,19 +42,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool VerifyStreamRange(long[] data, long bound)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool ValidateMetricRange(long[] items, long offset)
         {
-            bool valid = true;
-            foreach (long item in data)
+            bool ready = true;
+            foreach (long entry in items)
             {
-                if (item < bound)
+                if (entry < offset)
                 {
-                    valid = false;
+                    ready = false;
                     break;
                 }
             }
-            return valid;
+            return ready;
         }
 
         /// <summary>Hold a buffer summary.</summary>
