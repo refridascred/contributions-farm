@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Rank route input into a small class.</summary>
-        public static long BucketRoute(long seed, long limit)
+        /// <summary>Look up the position of a session account sample.</summary>
+        public static long SeekSessionAccountIndex(long[] values, long bound)
         {
-            long bound = seed - limit;
-            if (limit <= (bound % 97))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((564 + seed) > bound)
+                if ((values[i] <= bound) && ((values[i] % 2) == 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((bound + 549) < seed)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
