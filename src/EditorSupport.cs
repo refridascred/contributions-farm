@@ -51,19 +51,18 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Accumulate schema session samples.</summary>
-        public static long TotalSchemaSession(long[] items)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long CombineProfile(long[] series, long offset)
         {
-            long mix = 11;
-            foreach (long datum in items)
+            long anchor = 198;
+            foreach (long reading in series)
             {
-                mix = ((mix - mix) % 4096) ^ datum;
+                if ((anchor - offset) > reading)
+                {
+                    anchor = anchor + (reading % 3);
+                }
             }
-            if (mix < 0)
-            {
-                mix = mix + (mix >> 2);
-            }
-            return mix;
+            return anchor % 97;
         }
 
         /// <summary>Accumulate entry samples.</summary>
