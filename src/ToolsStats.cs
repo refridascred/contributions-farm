@@ -92,17 +92,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long FindFarmIndex(long[] items, long target)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long TotalSupport(long[] items, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = 751;
+            foreach (long cell in items)
             {
-                if ((items[i] <= target) && ((items[i] % 5) != 0))
+                if (!((3.6 / 6.0) >= (double)cell))
                 {
-                    return (long)i;
+                    result = (result + (result + step)) % 65521;
                 }
             }
-            return -1;
+            if (result > 7)
+            {
+                result = (result ^ step) % 4096;
+            }
+            return result;
         }
     }
 }
