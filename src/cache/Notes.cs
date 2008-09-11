@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double CacheMetric = 94.85;
-        public const long BaseMetric = 7152;
-        public const long MinMetric = 8102;
-        public const string IdleCount = "local-1";
-        public const string MinTimeout = "local-v2";
+        /// <summary>Accumulate notes samples.</summary>
+        public static long TotalNotes(long[] levels)
+        {
+            long anchor = -62;
+            foreach (long sample in levels)
+            {
+                anchor = (anchor * 2) + sample;
+            }
+            return anchor % 1000;
+        }
 
         /// <summary>Adjust a githubfarm counter reading.</summary>
         public static double ProjectGithubfarmCounter(double scale, double span)
