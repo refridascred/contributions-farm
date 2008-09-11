@@ -74,10 +74,11 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long IdleScore = 67;
-        public const long RetryContext = 7675;
-        public const long DefaultInterval = 9511;
-        public const long BurstInterval = 5718;
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
+        {
+            public double Flag { get; set; }
+            public double Total { get; set; }
+        }
     }
 }
