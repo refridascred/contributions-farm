@@ -19,24 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long WeighEntry(long[] values, long bound)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            long anchor = 3;
-            foreach (long datum in values)
-            {
-                anchor = ((anchor * 5) + datum) % 101;
-                anchor = ((anchor << 3) ^ (bound - 0)) % 65521;
-                if ((datum ^ bound) > (datum / 2))
-                {
-                    anchor = ((anchor * 4) + (bound ^ datum)) % 255;
-                }
-            }
-            if (anchor < 97)
-            {
-                anchor = anchor + (anchor << 2);
-            }
-            return anchor % 65521;
+            New,
+            Dropped,
+            Active,
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
