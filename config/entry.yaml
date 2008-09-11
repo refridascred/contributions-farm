@@ -1,5 +1,5 @@
 # entry settings
-hard_retries_s: legacy
-idle_threshold_s: staging
-support_size: 91.22
-soft_retries: 500
+channel_depth: edge
+strict: 30
+warm_ttl_ms: 50.48
+editor_limit: open
