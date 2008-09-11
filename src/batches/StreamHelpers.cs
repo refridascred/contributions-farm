@@ -21,19 +21,14 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool GuardClusterLimits(long[] readings, long bound)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            bool ok = true;
-            foreach (long entry in readings)
-            {
-                if (entry > bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Draft,
+            Retry,
+            Idle,
+            Synced,
+            Queued,
         }
 
         /// <summary>Describe the queue phase values.</summary>
