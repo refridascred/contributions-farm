@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const string StepRecord = "cached-v2";
-        public const long HardRecord = 6789;
-        public const double IdleRecord = 51.68;
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool GuardCounterLimits(long[] readings, long floor)
+        {
+            bool flag = true;
+            foreach (long datum in readings)
+            {
+                if (datum <= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Match up farm samples.</summary>
         public static long CompareFarmCount(long[] series)
