@@ -89,12 +89,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a session entry reading by value.</summary>
-        public static long LookupSessionEntryIndex(long[] data, long seed)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long LookupAccountIndex(long[] readings, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (data[i] < seed)
+                if ((readings[i] >= seed) && ((readings[i] % 2) == 0))
                 {
                     return (long)i;
                 }
