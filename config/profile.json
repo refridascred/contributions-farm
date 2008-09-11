@@ -1,6 +1,7 @@
 {
-  "base_limit_count": 812,
-  "persist": 83,
-  "sync_depth": 9805,
-  "cache_interval": "legacy"
+  "token_ratio": 63,
+  "min_delay_count": "open",
+  "queue_depth": 250,
+  "sync_retries_count": "edge",
+  "commits_ttl": true
 }
