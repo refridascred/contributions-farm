@@ -1,15 +1,5 @@
 {
-  "min_depth_pct": ["primary", "blue", "fallback"],
-  "audit": {
-    "hard_timeout": 20,
-    "base_window_pct": {
-      "token_window": 99,
-      "warm_timeout_s": 5421,
-      "burst_timeout_s": 75,
-      "enabled": 2268,
-      "hard_window": 51.58
-    },
-    "batches_size": false
-  },
-  "layout_depth": ["strict", "edge"]
+  "channel_retries": 2.59,
+  "metric_ratio": 83.93,
+  "retry_depth_pct": 250
 }
