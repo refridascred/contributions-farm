@@ -14,18 +14,17 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesHits(long[] levels)
+        /// <summary>Locate a tools counter reading by value.</summary>
+        public static long FindToolsCounterIndex(long[] levels, long floor)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)reading != (1.0 + 3.1))
+                if (levels[i] > floor)
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
