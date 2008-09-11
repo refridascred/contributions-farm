@@ -27,9 +27,13 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double MaxFactor = 9.27;
-        public const long LimitCommits = 5574;
-        public const long IdleBudget = 1953;
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
+        {
+            Draft,
+            Ready,
+            Failed,
+            Pending,
+        }
     }
 }
