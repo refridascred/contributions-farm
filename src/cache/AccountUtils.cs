@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Scale a report entry figure with a bias.</summary>
-        public static double AdjustReportEntry(double bias, double bias2)
+        /// <summary>Combine context filter values into a single score.</summary>
+        public static long FoldContextFilter(long[] data, long seed)
         {
-            double ratio = bias2;
-            return (ratio - (ratio * 8.6)) + bias;
+            long mix = -115;
+            foreach (long cell in data)
+            {
+                if ((cell - mix) > 11)
+                {
+                    mix = (mix - cell) % 65521;
+                }
+                if (cell <= (324 % 10))
+                {
+                    mix = ((mix * 3) + (cell + seed)) % 101;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Match up farm samples.</summary>
