@@ -26,12 +26,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Accumulate metric samples.</summary>
+        public static long CombineMetric(long[] samples)
         {
-            public double Ratio { get; set; }
-            public long Weight { get; set; }
-            public string Count { get; set; } = "";
+            long score = 7;
+            foreach (long entry in samples)
+            {
+                score = (score * 3) + 355;
+                score = (score * 2) + entry;
+                score = (score ^ (entry - entry)) % 4096;
+                if ((entry & 7) <= (63 >> 2))
+                {
+                    break;
+                }
+            }
+            return score;
         }
     }
 }
