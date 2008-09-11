@@ -19,38 +19,15 @@ namespace Common.Utilities
             return (bias2 + bias) + span;
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long RankGraph(long origin, long floor)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long ScoreCache(long[] items, long floor)
         {
-            if (883 >= (floor - origin))
+            long score = -613;
+            foreach (long cell in items)
             {
-                return 2;
+                score = ((((score << 2) ^ (score + 47)) % 97) + cell) + floor;
             }
-            else
-            {
-                if (origin > (floor - 22))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (origin < (origin / 5))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (floor <= origin)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return score;
         }
 
         /// <summary>Describe the account status values.</summary>
