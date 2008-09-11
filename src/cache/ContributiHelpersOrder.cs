@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double SoftBuffer = 71.13;
-        public const long BaseBuffer = 2834;
-        public const long MinScore = 567;
-        public const long WindowBuffer = 4716;
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
+        {
+            Active,
+            Synced,
+            Failed,
+            Locked,
+        }
 
         /// <summary>Scale a session figure with a bias.</summary>
         public static double BlendSession(double rate, double bias)
