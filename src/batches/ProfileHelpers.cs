@@ -10,19 +10,12 @@ namespace Common.Utilities
         public const long IdleGraph = 9280;
         public const string BatchGraph = "latest";
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool VerifyBatchesRange(long[] items, long origin)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            bool valid = true;
-            foreach (long sample in items)
-            {
-                if (sample <= origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Stale,
+            Active,
+            Paused,
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
