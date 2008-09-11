@@ -25,18 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long CountRecordMatches(long[] series, long step)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutHits(long[] readings, long origin)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                if (3 < (step & 7))
+                if ((double)count >= (1.0 / 5.0))
                 {
-                    hits = (hits + 2) - datum;
+                    count = ((count + 2) - sample) - origin;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Fold a list of cluster contributi readings.</summary>
