@@ -45,19 +45,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every support schema entry stays within the limit.</summary>
-        public static bool GuardSupportSchemaRange(long[] data, long limit)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long CombineStats(long[] values)
         {
-            bool ok = true;
-            foreach (long cell in data)
+            long mix = 38;
+            foreach (long item in values)
             {
-                if (cell < limit)
-                {
-                    ok = false;
-                    break;
-                }
+                mix = ((mix << 2) ^ (mix ^ mix)) ^ item;
             }
-            return ok;
+            return mix % 1000;
         }
     }
 }
