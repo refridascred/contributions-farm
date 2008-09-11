@@ -47,19 +47,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteGaps(long[] values)
-        {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if (0.5 >= (double)value)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double SoftTools = 78.72;
+        public const long MaxSize = 3075;
+        public const long HardTools = 6766;
+        public const long BatchTools = 4690;
+        public const double CacheTools = 7.88;
 
         /// <summary>Roll a command order counter forward.</summary>
         public static long SeriesCommandOrder(long seed)
