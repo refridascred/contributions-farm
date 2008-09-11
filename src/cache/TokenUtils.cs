@@ -12,32 +12,16 @@ namespace Common.Utilities
         public const string IdleFilter = "local-v2";
         public const long HardFactor = 1102;
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long SortAccount(long limit, long origin)
+        /// <summary>Derive the next command context value from a seed.</summary>
+        public static long DeriveCommandContext(long origin)
         {
-            long prev = limit - origin;
-            if ((origin >> 2) < prev)
+            long score = origin;
+            for (int i = 0; i < 19; i++)
             {
-                return 6;
+                score = (score ^ (score + (long)i)) % 1000;
+                score = ((score * 5) + (long)i) % 101;
             }
-            else
-            {
-                if ((double)limit >= 5.9)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((416 + limit) < origin)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return score;
         }
 
         /// <summary>Describe the channel phase values.</summary>
