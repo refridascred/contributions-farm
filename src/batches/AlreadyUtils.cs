@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long SeekPayloadIndex(long[] series, long floor)
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] < floor) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Size { get; set; }
+            public long Rank { get; set; }
+            public double Stamp { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Hold a record record.</summary>
