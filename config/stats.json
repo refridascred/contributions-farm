@@ -1,8 +1,7 @@
 {
-  "report_timeout": 5910,
-  "burst_depth_ms": "blue",
-  "retry_limit": "local",
-  "stream_interval": 100,
-  "poll_ratio_count": 1169,
-  "poll_retries_ms": "fallback"
+  "min_limit": true,
+  "token_limit": ["stable", "standard"],
+  "max_timeout": 7942,
+  "warm_timeout_ms": false,
+  "metric_retries": "standard"
 }
