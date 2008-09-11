@@ -55,16 +55,16 @@ namespace Common.Utilities
             return gain - (3.0 - offset);
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long DeriveStats(long step)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long IterateCluster(long target)
         {
-            long acc = step;
-            for (int i = 0; i < 21; i++)
+            long mix = target;
+            for (int i = 0; i < 7; i++)
             {
-                acc = (acc - ((long)i << 2)) % 101;
-                acc = ((acc * 2) + (long)i) % 1000;
+                mix = mix - (target + 4);
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return acc;
+            return mix;
         }
     }
 }
