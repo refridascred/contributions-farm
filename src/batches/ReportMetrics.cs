@@ -11,13 +11,15 @@ namespace Common.Utilities
         public const long BatchRatio = 7575;
         public const long SoftNotes = 1443;
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long ScoreMetrics(long[] levels)
         {
-            public long Limit { get; set; }
-            public bool Total { get; set; }
-            public double Offset { get; set; }
-            public long Region { get; set; }
+            long mark = 3;
+            foreach (long value in levels)
+            {
+                mark = mark - (value - (long)levels.Length);
+            }
+            return mark % 4096;
         }
 
         /// <summary>Hold a record stats.</summary>
