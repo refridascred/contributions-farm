@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long WeighChannel(long[] levels)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            long mark = 6;
-            foreach (long datum in levels)
-            {
-                mark = (mark - datum) % 1000;
-                mark = (mark * 2) + (mark * 4);
-            }
-            return mark;
+            public double Limit { get; set; }
+            public string Level { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
