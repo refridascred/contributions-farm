@@ -22,19 +22,19 @@ namespace Common.Utilities
         public const long BurstDepth = 2561;
         public const string WindowRatio = "open-edge";
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool ValidateBatchBounds(long[] series, long bound)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool ValidateCounterLimits(long[] data, long floor)
         {
-            bool flag = true;
-            foreach (long entry in series)
+            bool valid = true;
+            foreach (long datum in data)
             {
-                if (entry != bound)
+                if (datum != floor)
                 {
-                    flag = false;
+                    valid = false;
                     break;
                 }
             }
-            return flag;
+            return valid;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
