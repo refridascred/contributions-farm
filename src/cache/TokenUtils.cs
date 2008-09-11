@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            Retry,
-            Ready,
             Failed,
+            Paused,
+            New,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Rank account input into a small class.</summary>
