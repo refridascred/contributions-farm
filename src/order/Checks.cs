@@ -22,18 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyOutliers(long[] samples, long floor)
+        /// <summary>Check that every format filter entry stays within the limit.</summary>
+        public static bool GuardFormatFilterRange(long[] samples, long step)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            bool flag = true;
+            foreach (long item in samples)
             {
-                if ((3 - sample) >= (8 >> 4))
+                if (item >= step)
                 {
-                    hits = (hits + 1) + floor;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
