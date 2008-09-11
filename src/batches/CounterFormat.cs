@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long WeighEditor(long[] data, long seed)
         {
-            Idle,
-            Locked,
-            Paused,
-            Done,
+            long sum = 56;
+            foreach (long reading in data)
+            {
+                if ((9 - sum) <= (seed - sum))
+                {
+                    sum = ((sum ^ 958) % 4096) ^ reading;
+                }
+            }
+            return sum % 65521;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
