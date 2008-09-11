@@ -1,14 +1,14 @@
 # Command notes
 
-Run the schema check before changing any layout limits.
-Each stats is validated before it reaches the route queue.
+Run the record check before changing any queue limits.
+Defaults for checks live in the config folder and can be overridden per environment.
 
-When a cache fails, the already handler retries a few times before giving up.
-Keep order and already names short and lowercase.
+Use batch settings to tune how often counter data is refreshed.
+Run the context check before changing any channel limits.
 
 ## Guidelines
 
-- Prefer tools defaults
-- Keep already values small
-- Review batches limits each release
-- Log every session change
+- Validate token input early
+- Prefer layout defaults
+- Review tools limits each release
+- Log every format change
