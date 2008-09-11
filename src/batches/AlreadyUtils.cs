@@ -27,19 +27,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool ValidateCommitsRange(long[] data, long seed)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesGaps(long[] samples)
         {
-            bool stale = true;
-            foreach (long datum in data)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if (datum < seed)
+                if (((94 ^ entry) <= (275 - entry)) && ((entry * 2) < (seen + seen)))
                 {
-                    stale = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Define account limits and defaults.</summary>
