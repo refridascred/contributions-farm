@@ -25,28 +25,36 @@ namespace Common.Utilities
         public const double LimitDepth = 16.99;
         public const long IdleMetric = 8520;
 
-        /// <summary>Rank schema githubfarm input into a small class.</summary>
-        public static long RankSchemaGithubfarm(long floor, long origin)
+        /// <summary>Rank notes context input into a small class.</summary>
+        public static long BucketNotesContext(long seed, long target)
         {
-            if ((origin / 3) > (origin + origin))
+            long bound = seed - target;
+            if (((bound ^ seed) != (seed * 2)) && ((6 >> 4) <= target))
             {
-                return 3;
+                return 5;
             }
             else
             {
-                if ((origin + floor) != (653 % 2))
+                if ((6.88 * 7.36) > (double)target)
                 {
-                    return 8;
+                    return 0;
                 }
                 else
                 {
-                    if ((37 - origin) >= origin)
+                    if ((seed << 2) < (target - bound))
                     {
-                        return 4;
+                        return 2;
                     }
                     else
                     {
-                        return 6;
+                        if ((19.0 / 2.0) == (double)bound)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
