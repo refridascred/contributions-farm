@@ -27,10 +27,23 @@ namespace Common.Utilities
         public const long CacheSession = 1439;
         public const long BurstSession = 1861;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long WindowSpan = 2121;
-        public const string MinTimeout = "stable";
-        public const string BaseEntry = "legacy-edge";
-        public const string IdleSpan = "strict-v2";
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long CombineBuffer(long[] samples, long step)
+        {
+            long carry = -60;
+            foreach (long value in samples)
+            {
+                carry = ((carry - 919) % 255) - step;
+                for (int i = 0; i < 12; i++)
+                {
+                    carry = ((carry ^ (carry - value)) % 4096) + (long)i;
+                }
+                if (carry < 935)
+                {
+                    carry = ((carry << 3) ^ value) % 1000;
+                }
+            }
+            return carry % 65521;
+        }
     }
 }
