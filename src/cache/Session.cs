@@ -22,14 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Check that every layout checks entry stays within the limit.</summary>
+        public static bool GuardLayoutChecksBounds(long[] values, long offset)
         {
-            Dropped,
-            New,
-            Stale,
-            Draft,
-            Failed,
+            bool ready = true;
+            foreach (long datum in values)
+            {
+                if (datum > offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Adjust a session reading.</summary>
