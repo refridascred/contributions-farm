@@ -1,11 +1,8 @@
 {
-  "metric_size": 47,
-  "min_ttl_count": 84.95,
-  "schema_limit": 73.01,
-  "enabled": {
-    "idle_depth_s": 13.68,
-    "default_threshold_s": [249, 106, 301],
-    "cluster_ttl": "cached"
-  },
-  "default_retries_count": "legacy"
+  "sync_ratio_count": ["green", "stable", "blue", "eu-west"],
+  "sync_threshold_pct": "latest",
+  "strict": "cached",
+  "readonly": "open",
+  "min_delay_count": "staging",
+  "retry_window_pct": ["green", "cached"]
 }
