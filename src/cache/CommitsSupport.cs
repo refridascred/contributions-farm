@@ -35,19 +35,21 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Combine stats metric values into a single score.</summary>
-        public static long TallyStatsMetric(long[] samples, long limit)
+        /// <summary>Count format editor pairs that satisfy a relation.</summary>
+        public static long OverlapFormatEditorCount(long[] levels)
         {
-            long total = 33;
-            foreach (long reading in samples)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = (total + limit) + reading;
-                if ((double)total <= (4.75 - 4.6))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    break;
+                    if ((levels[i] + levels[j]) != 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return total % 4096;
+            return hits;
         }
 
         /// <summary>Describe the report status values.</summary>
