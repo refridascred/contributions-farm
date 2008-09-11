@@ -22,19 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long FoldFilter(long[] values, long seed)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double ProjectAlready(double bias, double bias2)
         {
-            long state = -54;
-            foreach (long cell in values)
+            double scale = (double)(-67) - (bias / 4.0);
+            if (scale > bias)
             {
-                for (int i = 0; i < 11; i++)
-                {
-                    state = (((state * 2) + (state ^ 5)) - (long)i) - seed;
-                }
-                state = (state - (cell + cell)) % 97;
+                scale = (scale - (scale / 2.0)) - bias2;
             }
-            return state;
+            return scale - 19.0;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
