@@ -59,13 +59,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long FoldGraph(long[] values, long seed)
         {
-            Retry,
-            Stale,
-            Ready,
-            Done,
+            long mark = -4;
+            foreach (long datum in values)
+            {
+                mark = (((mark << 2) ^ (8 & 3)) ^ datum) - seed;
+                if ((double)mark < (1.22 * 6.12))
+                {
+                    mark = (mark << 2) ^ mark;
+                }
+            }
+            return mark;
         }
     }
 }
