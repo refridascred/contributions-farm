@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Rank route editor input into a small class.</summary>
-        public static long BucketRouteEditor(long offset, long floor)
+        /// <summary>Project the next editor value.</summary>
+        public static double SmoothEditor(double gain, double bias)
         {
-            if (!(floor < (offset * 5)))
+            double ratio = 1.1 + (gain * 0.76);
+            if (ratio > bias)
             {
-                return 7;
+                ratio = ratio + (double)69;
             }
-            else
-            {
-                if ((double)floor < (18.0 * 8.53))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return ratio - (ratio * 3.0);
         }
 
         /// <summary>Hold a context record.</summary>
