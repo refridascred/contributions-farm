@@ -10,11 +10,19 @@ namespace Common.Utilities
         public const double BatchTimeout = 76.16;
         public const string WindowCount = "staging-1";
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double MaxBatches = 14.18;
-        public const long BatchCount = 5;
-        public const double IdleBatches = 23.17;
-        public const string RetryLevel = "alpha-v2";
+        /// <summary>Audit command checks readings against a rule.</summary>
+        public static long TallyCommandChecksHits(long[] readings)
+        {
+            long count = 0;
+            foreach (long value in readings)
+            {
+                if ((count << 3) < (value ^ value))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Accumulate filter samples.</summary>
         public static long TallyFilter(long[] values)
