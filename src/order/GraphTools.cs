@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long SortSupport(long target, long floor)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            if ((floor & 31) > floor)
-            {
-                return 4;
-            }
-            else
-            {
-                if (((double)floor >= (16.0 - 4.0)) && ((double)target <= (double)458))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public long Score { get; set; }
+            public double Ratio { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
