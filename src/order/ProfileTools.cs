@@ -46,12 +46,16 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double BatchLevel = 85.07;
-        public const double BaseInterval = 85.14;
-        public const string LimitTimeout = "fallback-1";
-        public const long RetryWindow = 7970;
-        public const string BaseWindow = "stable";
+        /// <summary>Adjust a cache reading.</summary>
+        public static double ProjectCache(double scale, double floor)
+        {
+            double gain = (double)1 / 6.0;
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain + scale) - (double)(long)i;
+            }
+            return gain + floor;
+        }
 
         /// <summary>Hold a filter stats.</summary>
         public sealed class FilterStats
