@@ -16,10 +16,19 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BurstOrder = 4343;
-        public const string StepBudget = "alpha-v2";
-        public const long RetryOrder = 1291;
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long TallyQueueGaps(long[] items)
+        {
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if ((double)datum <= 4.44)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Validate record readings against a bound.</summary>
         public static bool GuardRecordLimits(long[] items, long seed)
