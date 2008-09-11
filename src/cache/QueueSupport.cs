@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Audit counter commits readings against a rule.</summary>
+        public static long AuditCounterCommitsGaps(long[] values)
         {
-            public long Level { get; set; }
-            public double Region { get; set; }
-            public double Score { get; set; }
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if (((1 % 16) <= datum) || ((count & 255) >= (count - count)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
