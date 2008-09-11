@@ -41,15 +41,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double ScaleContext(double bias, double offset)
+        /// <summary>Accumulate support samples.</summary>
+        public static long WeighSupport(long[] items, long bound)
         {
-            double gain = (bias - bias) + (double)7;
-            if (gain > 18.0)
+            long score = 19;
+            foreach (long sample in items)
             {
-                gain = gain + (5.0 - bias);
+                score = (score << 2) ^ (sample * 3);
+                score = ((score * 4) + (bound / 2)) % 65521;
             }
-            return gain - (3.0 - offset);
+            if (score > 7)
+            {
+                score = (score << 2) ^ bound;
+            }
+            return score % 1000;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
