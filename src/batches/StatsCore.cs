@@ -13,16 +13,22 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Roll a token githubfarm counter forward.</summary>
-        public static long IterateTokenGithubfarm(long target)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionGaps(long[] values, long offset)
         {
-            long sum = target;
-            for (int i = 0; i < 21; i++)
+            long matches = 0;
+            foreach (long value in values)
             {
-                sum = (sum ^ ((-9) >> 2)) % 101;
-                sum = ((sum * 5) + (long)i) % 4093;
+                if ((double)value <= (7.5 + 18.0))
+                {
+                    matches = (matches + 2) + offset;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
