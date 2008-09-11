@@ -22,24 +22,23 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long RankSchema(long origin, long bound)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TallyCommand(long[] levels, long floor)
         {
-            if (origin >= bound)
+            long state = 2;
+            foreach (long entry in levels)
             {
-                return 5;
+                for (int i = 0; i < 10; i++)
+                {
+                    state = (((state - (945 - (long)i)) % 255) ^ entry) - floor;
+                }
+                state = (state ^ (14 + state)) % 65521;
             }
-            else
+            if (state > 7)
             {
-                if ((origin & 15) >= (bound + 49))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
-                }
+                state = (state - state) % 255;
             }
+            return state;
         }
 
         /// <summary>Locate a already reading by value.</summary>
