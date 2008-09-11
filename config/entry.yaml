@@ -1,11 +1,6 @@
 # entry settings
-command_timeout:
-  already_ttl: strict
-  queue_timeout: false
-  default_capacity_count: false
-  base_capacity_s: 79.13
-  compress: legacy
-  payload_depth: true
-warm_ttl: 15.85
-compress: edge
-graph_size: eu-west
+contributi_threshold: 63.38
+already_ttl: primary
+poll_window_count: 60
+hard_timeout: fallback
+strict: blue
