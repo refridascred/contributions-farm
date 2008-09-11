@@ -1,9 +1,18 @@
 # githubfarm settings
-audit: true
-persist: 96
-queue_threshold: 100
-warm_ttl_count:
-  - strict
-  - primary
-  - cached
-  - primary
+hard_limit: 2598
+audit: open
+hard_retries: 100
+dry_run:
+  cache_retries:
+    retry_limit_count: 50.84
+    enabled: true
+    batch_size_count: 60
+  warm_window_pct: 7
+  idle_size_count:
+    - green
+    - staging
+    - local
+  command_size: fallback
+  farm_retries: cached
+enabled: true
+profile_ratio: legacy
