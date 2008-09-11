@@ -27,12 +27,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Adjust a queue reading.</summary>
+        public static double ScaleQueue(double weight, double floor)
         {
-            public string Score { get; set; } = "";
-            public long Total { get; set; }
-            public string Ratio { get; set; } = "";
+            double rate = floor / 9.0;
+            if (rate <= (double)132)
+            {
+                rate = rate - weight;
+            }
+            else
+            {
+                rate = rate - rate;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate - rate) - (double)(long)i;
+            }
+            return rate + weight;
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
