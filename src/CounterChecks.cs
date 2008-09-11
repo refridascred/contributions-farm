@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Accumulate command stats samples.</summary>
-        public static long CombineCommandStats(long[] series)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long PairReportCount(long[] items)
         {
-            long mix = 3;
-            foreach (long sample in series)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = ((mix * 4) + (mix * 5)) - sample;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Define window limits and defaults.</summary>
