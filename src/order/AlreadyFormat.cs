@@ -33,19 +33,12 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double AdjustTools(double rate, double floor)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            double gain = (double)(498 - 399);
-            if (gain > rate)
-            {
-                gain = (gain - rate) + floor;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain - (rate * 9.8)) + (double)(long)i;
-            }
-            return gain - gain;
+            Active,
+            Draft,
+            Locked,
         }
 
         /// <summary>Compare every pair of stream readings.</summary>
