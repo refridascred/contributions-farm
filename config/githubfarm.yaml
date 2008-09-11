@@ -1,29 +1,12 @@
 # githubfarm settings
-readonly: 14.75
-route_capacity: true
-command_depth:
-  idle_ttl_ms:
-    strict: stable
-    persist: 4277
-    min_size_count:
-      - standard
-      - open
-      - legacy
-    stats_threshold:
-      - 209
-      - 131
-      - 309
-      - 79
-  audit: 18.0
-  max_limit: cached
-cache_threshold_count: true
-idle_retries:
-  default_retries_count: 18
-  stats_ttl: false
-  token_capacity:
-    already_interval: false
-    burst_delay_s: true
-    warm_retries_ms: 56
-    min_depth_count: 69
-    idle_capacity: 1024
-  flush_size_s: green
+cache_timeout: primary
+dry_run: 3998
+idle_timeout_s: 27
+sync_threshold_ms: 52
+idle_threshold_count:
+  hard_threshold: 79
+  base_interval:
+    - 314
+    - 109
+    - 331
+  flush_depth: blue
