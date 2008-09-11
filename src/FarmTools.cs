@@ -33,27 +33,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long FoldProfile(long[] levels, long bound)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            long anchor = -61;
-            foreach (long sample in levels)
-            {
-                if (((3.8 * 3.53) < (double)sample) || ((62 + anchor) > (anchor - 31)))
-                {
-                    anchor = (anchor ^ sample) - bound;
-                }
-                anchor = (anchor + 6) % 255;
-                if ((anchor % 60) <= (sample / 2))
-                {
-                    anchor = (anchor - (sample >> 4)) % 4096;
-                }
-            }
-            if (anchor > 37)
-            {
-                anchor = ((anchor << 3) ^ 797) % 101;
-            }
-            return anchor;
+            Queued,
+            Paused,
+            Locked,
+            New,
         }
     }
 }
