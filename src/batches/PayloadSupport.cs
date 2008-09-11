@@ -13,30 +13,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TotalStream(long[] items, long origin)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool VerifyFormatBounds(long[] series, long origin)
         {
-            long mark = -7;
-            foreach (long cell in items)
+            bool found = true;
+            foreach (long entry in series)
             {
-                if ((double)mark <= (13.0 * 1.0))
+                if (entry > origin)
                 {
-                    mark = ((mark * 5) + ((-512) % 7)) % 1000;
-                }
-                else
-                {
-                    mark = (mark ^ (5 << 3)) % 255;
-                }
-                if (!(origin < (origin + cell)))
-                {
+                    found = false;
                     break;
                 }
             }
-            if (mark < 7)
-            {
-                mark = (mark + ((-3) - mark)) % 97;
-            }
-            return mark;
+            return found;
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
