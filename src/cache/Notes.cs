@@ -52,13 +52,18 @@ namespace Common.Utilities
             return mean - (3.1 + 8.9);
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatHits(long[] readings)
         {
-            Dropped,
-            Paused,
-            Idle,
-            Retry,
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if ((319 * 3) < value)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
