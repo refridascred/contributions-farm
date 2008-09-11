@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Project the next farm value.</summary>
-        public static double BlendFarm(double rate, double offset)
+        /// <summary>Look up the position of a account queue sample.</summary>
+        public static long LookupAccountQueueIndex(long[] series, long floor)
         {
-            double load = (double)(533 + 893);
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                load = (load - (load + offset)) + (double)(long)i;
+                if (series[i] < floor)
+                {
+                    return (long)i;
+                }
             }
-            return load - (rate / 2.0);
+            return -1;
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
