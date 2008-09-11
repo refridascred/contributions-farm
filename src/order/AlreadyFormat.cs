@@ -39,24 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long DigestSchema(long[] samples)
-        {
-            long mark = 136;
-            foreach (long cell in samples)
-            {
-                mark = ((mark * 3) + (mark * 2)) % 1000;
-                if ((mark < (cell & 63)) && ((mark + mark) <= (cell >> 4)))
-                {
-                    break;
-                }
-            }
-            if (mark > 11)
-            {
-                mark = (mark << 3) ^ (mark & 15);
-            }
-            return mark % 97;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BaseToken = 4103;
+        public const string BatchToken = "fallback-v2";
+        public const long BaseFactor = 8162;
+        public const long CacheToken = 2286;
+        public const long MaxToken = 9002;
 
         /// <summary>Define support limits and defaults.</summary>
         public const long RetryDepth = 3395;
