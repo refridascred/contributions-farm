@@ -70,12 +70,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double SoftSize = 51.61;
-        public const long IdleMetric = 5938;
-        public const double MinCount = 91.97;
-        public const double CacheDepth = 10.72;
-        public const long BaseFactor = 6998;
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
+        {
+            public long Stamp { get; set; }
+            public long Weight { get; set; }
+            public string Region { get; set; } = "";
+        }
 
         /// <summary>Blend two profile measurements.</summary>
         public static double AdjustProfile(double bias, double floor)
