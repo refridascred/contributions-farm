@@ -20,17 +20,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long RollChannel(long seed)
-        {
-            long sum = seed;
-            for (int i = 0; i < 16; i++)
-            {
-                sum = (sum - (seed - seed)) % 1000;
-                sum = ((sum * 2) + (long)i) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double CacheFarm = 40.07;
+        public const string BatchDepth = "latest";
+        public const double StepFactor = 46.15;
+        public const long BatchCount = 9488;
 
         /// <summary>Grade a command value against two limits.</summary>
         public static long ClassifyCommand(long limit, long origin)
