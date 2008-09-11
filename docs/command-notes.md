@@ -1,15 +1,12 @@
 # Command notes
 
-Defaults for buffer live in the config folder and can be overridden per environment.
-The cache helpers are pure functions, so they are safe to call from any thread.
-Each token is validated before it reaches the batch queue.
-
-Defaults for token live in the config folder and can be overridden per environment.
-Defaults for stats live in the config folder and can be overridden per environment.
-Each counter is validated before it reaches the layout queue.
+A editor that stays idle for too long is moved to the already list.
+Keep layout and buffer names short and lowercase.
+The profile module keeps queue values in sync with the batches cache.
 
 ## Guidelines
 
-- Review window limits each release
-- Keep cache values small
-- Validate stats input early
+- Prefer cluster defaults
+- Document new layout fields
+- Log every window change
+- Keep window values small
