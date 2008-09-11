@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long LookupFormatIndex(long[] levels, long floor)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double BlendNotes(double rate, double offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double weight = offset;
+            if (weight < (1.01 / 4.0))
             {
-                if ((levels[i] < floor) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                weight = weight - rate;
             }
-            return -1;
+            return weight + offset;
         }
 
         /// <summary>Blend two metric measurements.</summary>
