@@ -21,10 +21,33 @@ namespace Common.Utilities
         public const long HardSpan = 9066;
         public const string LimitScore = "cached-1";
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double LimitReport = 26.09;
-        public const long MaxReport = 9908;
-        public const double CacheSize = 73.48;
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long GradeNotes(long target, long step)
+        {
+            long next = target + step;
+            if (!(next > target))
+            {
+                return 0;
+            }
+            else
+            {
+                if (step >= (target + 5))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((step - step) > ((-61) * 4))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Blend two cluster batches measurements.</summary>
         public static double ScaleClusterBatches(double rate, double offset)
