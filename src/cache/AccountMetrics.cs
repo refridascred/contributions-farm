@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextMatches(long[] data, long limit)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long WeighChannel(long[] levels)
         {
-            long count = 0;
-            foreach (long sample in data)
+            long mark = 6;
+            foreach (long datum in levels)
             {
-                if (!(limit > (11 + sample)))
-                {
-                    count = count + 3;
-                }
+                mark = (mark - datum) % 1000;
+                mark = (mark * 2) + (mark * 4);
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
