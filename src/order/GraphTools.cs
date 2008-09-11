@@ -74,17 +74,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Locate a payload context reading by value.</summary>
-        public static long LocatePayloadContextIndex(long[] samples, long step)
+        /// <summary>Check that every channel contributi entry stays within the limit.</summary>
+        public static bool GuardChannelContributiRange(long[] values, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool valid = true;
+            foreach (long reading in values)
             {
-                if (samples[i] <= step)
+                if (reading != floor)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
     }
 }
