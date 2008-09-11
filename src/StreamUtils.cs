@@ -20,22 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many format channel samples are out of range.</summary>
-        public static long CountFormatChannelGaps(long[] data)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long SeriesContributi(long origin)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long sum = origin;
+            for (int i = 0; i < 12; i++)
             {
-                if ((5 - 980) < (seen & 1))
-                {
-                    seen = (seen + 1) - sample;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Iterate the order context series from a seed.</summary>
