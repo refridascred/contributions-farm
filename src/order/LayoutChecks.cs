@@ -46,11 +46,14 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string HardCommand = "stable-v2";
-        public const long BatchSpan = 1781;
-        public const double BaseCommand = 44.13;
-        public const long MinCommand = 1271;
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
+        {
+            public long Label { get; set; }
+            public long Total { get; set; }
+            public long Limit { get; set; }
+            public long Weight { get; set; }
+        }
 
         /// <summary>Blend two command measurements.</summary>
         public static double AdjustCommand(double ratio, double bias)
