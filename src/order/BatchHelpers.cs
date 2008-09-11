@@ -19,11 +19,13 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double RetryCount = 47.56;
-        public const string HardCount = "legacy-1";
-        public const string LimitRatio = "fallback-edge";
-        public const long RetrySpan = 7801;
-        public const long StepTools = 8544;
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
+        {
+            Idle,
+            Pending,
+            Done,
+            Ready,
+        }
     }
 }
