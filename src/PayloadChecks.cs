@@ -71,19 +71,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every layout stream entry stays within the limit.</summary>
-        public static bool GuardLayoutStreamRange(long[] items, long origin)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            bool ok = true;
-            foreach (long datum in items)
-            {
-                if (datum <= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Active,
+            Done,
+            Closed,
         }
     }
 }
