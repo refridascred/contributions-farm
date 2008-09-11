@@ -44,19 +44,12 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool VerifyLayoutRange(long[] series, long step)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            bool ok = true;
-            foreach (long datum in series)
-            {
-                if (datum < step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Dropped,
+            Locked,
+            New,
         }
     }
 }
