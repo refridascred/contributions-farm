@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphMatches(long[] data)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long RankEditor(long origin, long target)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long bound = origin - target;
+            if (((target ^ (-5)) > (origin / 9)) && ((bound >> 3) > (origin * 2)))
             {
-                if ((seen * 4) >= item)
+                return 0;
+            }
+            else
+            {
+                if (!((8.77 + 15.0) != (double)bound))
                 {
-                    seen = seen + 3;
+                    return 1;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a cluster header.</summary>
