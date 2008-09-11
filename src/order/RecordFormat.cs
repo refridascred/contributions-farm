@@ -20,31 +20,19 @@ namespace Common.Utilities
             return weight + (weight * 2.6);
         }
 
-        /// <summary>Grade a farm schema value against two limits.</summary>
-        public static long BucketFarmSchema(long bound, long limit)
+        /// <summary>Check that every metrics stats entry stays within the limit.</summary>
+        public static bool CheckMetricsStatsLimits(long[] series, long bound)
         {
-            if ((limit + limit) != (limit / 5))
+            bool ready = true;
+            foreach (long entry in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((4.0 / 2.0) >= (double)limit)
+                if (entry <= bound)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((bound - limit) != (1 & 127))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
