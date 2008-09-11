@@ -1,4 +1,6 @@
 # entry settings
-retry_limit: false
-compress: cached
-strict: true
+base_interval_ms: 87.46
+readonly: 7487
+schema_depth: 4218
+batch_ttl_pct: true
+soft_depth_count: 6.32
