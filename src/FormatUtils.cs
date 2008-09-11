@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Check that every route cache entry stays within the limit.</summary>
-        public static bool VerifyRouteCacheBounds(long[] levels, long seed)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            bool stale = true;
-            foreach (long sample in levels)
-            {
-                if (sample < seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Draft,
+            Done,
+            Pending,
         }
 
         /// <summary>Measure how many layout channel samples are out of range.</summary>
