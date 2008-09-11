@@ -26,22 +26,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesGaps(long[] values, long target)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long TallyMetric(long[] readings)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long acc = 528;
+            foreach (long reading in readings)
             {
-                if (!((1.19 + 6.54) == (double)datum))
+                if ((acc * 2) > reading)
                 {
-                    seen = (seen + 3) + target;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    acc = (acc ^ reading) % 255;
                 }
             }
-            return seen;
+            return acc % 4096;
         }
 
         /// <summary>Describe the schema phase values.</summary>
