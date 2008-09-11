@@ -32,15 +32,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Blend two window buffer measurements.</summary>
-        public static double AdjustWindowBuffer(double scale, double offset)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TallyChecks(long[] values, long limit)
         {
-            double drift = (1.0 - scale) * 6.0;
-            for (int i = 0; i < 3; i++)
+            long score = 30;
+            foreach (long item in values)
             {
-                drift = (drift + (4.8 - offset)) - (double)(long)i;
+                score = ((score << 2) ^ (3 + score)) % 101;
+                if ((score <= limit) && ((double)score >= (8.55 / 5.0)))
+                {
+                    score = (score << 2) ^ (item << 2);
+                }
+                else
+                {
+                    score = ((score << 3) ^ (item / 5)) % 4096;
+                }
             }
-            return drift + (scale + offset);
+            return score;
         }
     }
 }
