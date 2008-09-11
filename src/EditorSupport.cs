@@ -13,16 +13,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long IterateBatch(long limit)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordMatches(long[] series)
         {
-            long total = limit;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                total = total + limit;
-                total = ((total * 2) + (long)i) % 1000;
+                if ((cell - 5) <= (76 & 31))
+                {
+                    seen = seen + 2;
+                }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Grade a format value against two limits.</summary>
