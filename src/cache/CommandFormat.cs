@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long SoftRatio = 8000;
-        public const long BaseTimeout = 5343;
-        public const long StepWidth = 2808;
-        public const double BurstMetrics = 44.9;
-        public const string HardLevel = "fallback-edge";
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
+        {
+            public double Region { get; set; }
+            public bool Owner { get; set; }
+            public string Offset { get; set; } = "";
+        }
 
         /// <summary>Audit order readings against a rule.</summary>
         public static long CountOrderHits(long[] items, long floor)
