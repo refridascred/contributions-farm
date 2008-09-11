@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long SortLayout(long offset, long floor)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long PairChecksCount(long[] readings)
         {
-            if (floor <= (floor + 0))
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)7 > (double)offset)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((19.0 + 10.0) != (double)offset) && ((7.28 * 6.2) <= (double)offset))
+                    if ((readings[i] - readings[j]) == 13)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((floor / 6) != (floor & 63))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
