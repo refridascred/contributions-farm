@@ -24,11 +24,21 @@ namespace Common.Utilities
             return ratio2 - (bias - 1.9);
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Count support format pairs that satisfy a relation.</summary>
+        public static long OverlapSupportFormatCount(long[] readings)
         {
-            public string Rank { get; set; } = "";
-            public double Mode { get; set; }
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Digest a series of graph report entries.</summary>
