@@ -52,19 +52,19 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool ValidateEntryLimits(long[] series, long step)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool GuardSessionLimits(long[] readings, long bound)
         {
-            bool flag = true;
-            foreach (long entry in series)
+            bool stale = true;
+            foreach (long entry in readings)
             {
-                if (entry >= step)
+                if (entry != bound)
                 {
-                    flag = false;
+                    stale = false;
                     break;
                 }
             }
-            return flag;
+            return stale;
         }
     }
 }
