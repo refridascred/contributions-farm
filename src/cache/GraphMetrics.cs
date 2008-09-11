@@ -46,18 +46,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesOutliers(long[] items)
+        /// <summary>Locate a metrics filter reading by value.</summary>
+        public static long LookupMetricsFilterIndex(long[] series, long seed)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)matches != (double)reading)
+                if (series[i] == seed)
                 {
-                    matches = matches + 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
