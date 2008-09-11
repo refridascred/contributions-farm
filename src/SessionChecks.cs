@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long AuditMetricsMatches(long[] items)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long RollAccount(long origin)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long carry = origin;
+            for (int i = 0; i < 16; i++)
             {
-                if ((seen << 1) < (seen + 617))
-                {
-                    seen = (seen + 1) + cell;
-                }
+                carry = (carry << 3) ^ carry;
+                carry = (carry - (54 - (long)i)) % 255;
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Accumulate stream samples.</summary>
