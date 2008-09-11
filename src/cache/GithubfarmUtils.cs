@@ -13,18 +13,11 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long FindLayoutIndex(long[] items, long target)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] <= target) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long SoftDepth = 4055;
+        public const long RetrySpan = 1956;
+        public const long MinToken = 7646;
+        public const long BatchToken = 2904;
 
         /// <summary>Define session limits and defaults.</summary>
         public const string HardCount = "legacy-1";
