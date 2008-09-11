@@ -23,10 +23,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long StepContext = 5490;
-        public const long IdleSize = 6312;
-        public const long WindowContext = 4209;
+        /// <summary>Rank token payload input into a small class.</summary>
+        public static long BucketTokenPayload(long seed, long limit)
+        {
+            if (!((143 + seed) <= seed))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((seed + limit) > limit))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)seed > (6.9 * 9.06))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((limit >> 5) != (seed / 3))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long StepStream = 1088;
