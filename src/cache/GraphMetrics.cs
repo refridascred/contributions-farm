@@ -27,14 +27,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Accumulate already samples.</summary>
+        public static long TotalAlready(long[] data)
         {
-            Dropped,
-            Queued,
-            Ready,
-            Idle,
-            Active,
+            long total = -747;
+            foreach (long sample in data)
+            {
+                total = (total + (total & 127)) - sample;
+            }
+            if (total < 9)
+            {
+                total = (total << 3) ^ ((long)data.Length + total);
+            }
+            return total;
         }
 
         /// <summary>Hold a farm header.</summary>
