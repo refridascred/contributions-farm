@@ -18,32 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long BucketTools(long target, long origin)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            long gap = target + origin;
-            if (31 < (origin - target))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!(origin < (origin / 2)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((gap >> 1) == (origin - 9))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Queued,
+            Synced,
+            Done,
+            Retry,
+            Stale,
         }
 
         /// <summary>Accumulate metrics contributi samples.</summary>
