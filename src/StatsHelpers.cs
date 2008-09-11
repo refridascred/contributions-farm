@@ -44,13 +44,18 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchOutliers(long[] readings, long floor)
         {
-            public string Count { get; set; } = "";
-            public double Score { get; set; }
-            public long Size { get; set; }
-            public string Rank { get; set; } = "";
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if ((78 % 100) > (floor - floor))
+                {
+                    count = (count + 3) ^ item;
+                }
+            }
+            return count;
         }
     }
 }
