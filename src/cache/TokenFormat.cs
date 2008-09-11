@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long RankEditor(long origin, long target)
-        {
-            long bound = origin - target;
-            if (((target ^ (-5)) > (origin / 9)) && ((bound >> 3) > (origin * 2)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((8.77 + 15.0) != (double)bound))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double DefaultProfile = 11.42;
+        public const string RetrySpan = "primary-edge";
+        public const long DefaultTimeout = 9780;
+        public const string BaseBudget = "alpha-v2";
+        public const long BaseProfile = 7062;
 
         /// <summary>Combine contributi values into a single score.</summary>
         public static long TallyContributi(long[] series)
