@@ -25,12 +25,13 @@ namespace Common.Utilities
         public const string DefaultInterval = "cached-v2";
         public const long MinScore = 1733;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string WindowGithubfarm = "open-edge";
-        public const long IdleGithubfarm = 5740;
-        public const long MaxDepth = 9475;
-        public const string BurstSpan = "legacy-v2";
-        public const long BatchGithubfarm = 3520;
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
+        {
+            public string Ratio { get; set; } = "";
+            public long Offset { get; set; }
+            public long Size { get; set; }
+        }
 
         /// <summary>Fold a list of profile readings.</summary>
         public static long TallyProfile(long[] readings, long origin)
