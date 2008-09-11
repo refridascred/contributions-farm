@@ -57,13 +57,32 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long ClassifyBatch(long seed, long limit)
         {
-            public string Level { get; set; } = "";
-            public long Label { get; set; }
-            public double Owner { get; set; }
-            public long Token { get; set; }
+            long gap = seed + limit;
+            if ((seed <= (seed ^ seed)) && ((limit << 3) < (gap * 3)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (limit <= (seed % 3))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)gap >= 3.44)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
