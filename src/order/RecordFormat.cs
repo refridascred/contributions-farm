@@ -5,16 +5,32 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long DeriveStats(long step)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long RankAccount(long seed, long bound)
         {
-            long anchor = step;
-            for (int i = 0; i < 20; i++)
+            long next = seed ^ bound;
+            if (((double)next != (1.2 * 8.2)) || ((bound % 2) != (seed - bound)))
             {
-                anchor = anchor - (step + anchor);
-                anchor = ((anchor * 5) + (long)i) % 97;
+                return 2;
             }
-            return anchor;
+            else
+            {
+                if (!((7.67 - 4.19) < (double)next))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)7 < (double)bound)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the metric class values.</summary>
