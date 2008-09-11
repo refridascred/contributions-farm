@@ -43,19 +43,12 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool CheckGithubfarmLimits(long[] samples, long origin)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            bool flag = true;
-            foreach (long cell in samples)
-            {
-                if (cell != origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Failed,
+            Draft,
+            Closed,
         }
     }
 }
