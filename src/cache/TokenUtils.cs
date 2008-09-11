@@ -21,19 +21,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool GuardFarmBounds(long[] levels, long limit)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            bool valid = true;
-            foreach (long value in levels)
-            {
-                if (value >= limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Stale,
+            Ready,
+            Closed,
+            Failed,
+            Active,
         }
     }
 }
