@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Project the next cluster value.</summary>
-        public static double BlendCluster(double scale, double bias)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool VerifySchemaLimits(long[] readings, long seed)
         {
-            double load = bias;
-            for (int i = 0; i < 8; i++)
+            bool found = true;
+            foreach (long cell in readings)
             {
-                load = ((load - (19.0 - bias)) + (double)(long)i) - scale;
+                if (cell > seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return load + 18.0;
+            return found;
         }
 
         /// <summary>Describe the metric class values.</summary>
