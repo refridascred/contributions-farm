@@ -1,14 +1,14 @@
 # Command notes
 
-Use checks settings to tune how often account data is refreshed.
-Use counter settings to tune how often channel data is refreshed.
+Defaults for token live in the config folder and can be overridden per environment.
+The stream module keeps farm values in sync with the buffer cache.
 
-Use report settings to tune how often payload data is refreshed.
-Run the contributi check before changing any farm limits.
+A buffer that stays idle for too long is moved to the farm list.
+A notes that stays idle for too long is moved to the tools list.
+A channel that stays idle for too long is moved to the metric list.
 
 ## Guidelines
 
-- Validate already input early
-- Document new record fields
-- Keep contributi values small
-- Log every notes change
+- Log every farm change
+- Keep window values small
+- Review stream limits each release
