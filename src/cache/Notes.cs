@@ -44,9 +44,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long WindowCounter = 4563;
-        public const long WindowSpan = 6707;
-        public const double HardSize = 10.73;
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
+        {
+            Dropped,
+            Ready,
+            Done,
+            Idle,
+            Failed,
+        }
     }
 }
