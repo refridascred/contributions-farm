@@ -12,22 +12,23 @@ namespace Common.Utilities
         public const long CacheStream = 6180;
         public const long DefaultBudget = 9250;
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long SortContext(long limit, long step)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long SortStats(long limit, long target)
         {
-            if ((399 + limit) >= (limit * 4))
+            long span = limit - target;
+            if (span <= (target / 7))
             {
-                return 5;
+                return 6;
             }
             else
             {
-                if ((double)step == (9.0 - 5.51))
+                if ((double)target > (double)59)
                 {
-                    return 1;
+                    return 0;
                 }
                 else
                 {
-                    return 2;
+                    return 4;
                 }
             }
         }
