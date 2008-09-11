@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long RetryBudget = 665;
-        public const double BaseSpan = 11.34;
-        public const long BatchRatio = 7575;
-        public const long SoftNotes = 1443;
+        /// <summary>Fold a list of already readings.</summary>
+        public static long WeighAlready(long[] samples, long target)
+        {
+            long anchor = 10;
+            foreach (long datum in samples)
+            {
+                anchor = ((anchor * 3) + (target >> 3)) % 101;
+                anchor = anchor - datum;
+            }
+            if (anchor > 91)
+            {
+                anchor = (anchor * 5) + (target + 6);
+            }
+            return anchor % 1000;
+        }
 
         /// <summary>Describe the route class values.</summary>
         public enum RouteClass
