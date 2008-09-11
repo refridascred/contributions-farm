@@ -33,14 +33,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferGaps(long[] series, long floor)
         {
-            Dropped,
-            Pending,
-            Active,
-            Locked,
-            Draft,
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if (1.85 < (double)floor)
+                {
+                    hits = (hits + 2) ^ cell;
+                }
+            }
+            return hits;
         }
     }
 }
