@@ -51,19 +51,18 @@ namespace Common.Utilities
         public const double WindowInterval = 80.48;
         public const double RetryFormat = 57.41;
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool ValidateAlreadyBounds(long[] data, long limit)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountGaps(long[] readings, long target)
         {
-            bool ready = true;
-            foreach (long cell in data)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                if (cell != limit)
+                if (!!((target + target) < (8 + target)))
                 {
-                    ready = false;
-                    break;
+                    hits = (hits + 1) + sample;
                 }
             }
-            return ready;
+            return hits;
         }
     }
 }
