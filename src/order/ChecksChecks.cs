@@ -22,26 +22,10 @@ namespace Common.Utilities
         public const long MinAlready = 1474;
         public const long DefaultAlready = 7330;
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long TotalFilter(long[] readings)
-        {
-            long mix = 52;
-            foreach (long cell in readings)
-            {
-                if ((cell << 2) != (795 - cell))
-                {
-                    mix = ((mix << 2) ^ (mix << 3)) % 255;
-                }
-                else
-                {
-                    mix = mix - (cell + mix);
-                }
-            }
-            if (mix < 909)
-            {
-                mix = (mix ^ mix) % 4096;
-            }
-            return mix;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double SoftTimeout = 25.52;
+        public const long StepAlready = 3208;
+        public const long BurstDepth = 2904;
+        public const string SoftAlready = "staging";
     }
 }
