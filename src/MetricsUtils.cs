@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const double LimitOrder = 38.16;
-        public const long BatchOrder = 2710;
-        public const long HardOrder = 8167;
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadGaps(long[] data)
+        {
+            long seen = 0;
+            foreach (long item in data)
+            {
+                if ((item + item) > (seen + item))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Combine route values into a single score.</summary>
         public static long WeighRoute(long[] levels, long bound)
