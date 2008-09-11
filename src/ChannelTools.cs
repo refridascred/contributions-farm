@@ -17,18 +17,13 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutGaps(long[] values, long floor)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if ((reading + floor) >= (floor + reading))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Retry,
+            Active,
+            Draft,
+            Stale,
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
