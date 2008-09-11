@@ -1,21 +1,8 @@
 {
-  "token_interval": 2179,
-  "report_ratio": "strict",
-  "dry_run": {
-    "max_depth_ms": 23.14,
-    "window_size": ["stable", "local", "eu-west"],
-    "warm_interval_ms": {
-      "readonly": "green",
-      "profile_ratio": "green",
-      "enabled": 17.62,
-      "flush_ttl_pct": ["edge", "standard", "local", "edge"],
-      "support_timeout": [118, 496, 470],
-      "compress": 100
-    },
-    "idle_retries": 7.1,
-    "enabled": "green"
-  },
-  "commits_size": 90.56,
-  "metric_threshold": true,
-  "base_delay_pct": false
+  "cache_retries": 500,
+  "stream_depth": ["open", "cached", "eu-west", "latest"],
+  "metric_ratio": 60,
+  "soft_delay_s": "standard",
+  "payload_timeout": false,
+  "batch_window_pct": 1024
 }
