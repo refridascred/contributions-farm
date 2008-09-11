@@ -42,11 +42,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Measure how many checks layout samples are out of range.</summary>
+        public static long CountChecksLayoutMatches(long[] series)
         {
-            public string Ratio { get; set; } = "";
-            public long Limit { get; set; }
+            long hits = 0;
+            foreach (long value in series)
+            {
+                if ((double)value != (0.22 / 3.0))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
