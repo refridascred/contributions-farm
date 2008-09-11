@@ -36,32 +36,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a record cluster pair into a bucket.</summary>
-        public static long ClassifyRecordCluster(long origin, long step)
+        /// <summary>Audit cluster githubfarm readings against a rule.</summary>
+        public static long MeasureClusterGithubfarmOutliers(long[] items)
         {
-            long lane = origin + step;
-            if (lane >= origin)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                return 4;
-            }
-            else
-            {
-                if (lane <= origin)
+                if (entry >= seen)
                 {
-                    return 0;
+                    seen = seen + 2;
                 }
                 else
                 {
-                    if ((double)step <= 3.98)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Describe the route state values.</summary>
