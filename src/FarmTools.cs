@@ -30,16 +30,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Derive the next queue context value from a seed.</summary>
-        public static long DeriveQueueContext(long limit)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderOutliers(long[] data, long seed)
         {
-            long result = limit;
-            for (int i = 0; i < 13; i++)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                result = (result - (result >> 4)) % 101;
-                result = ((result * 2) + (long)i) % 65521;
+                if ((seed + datum) > (datum % 12))
+                {
+                    matches = matches + 2;
+                }
             }
-            return result;
+            return matches;
         }
     }
 }
