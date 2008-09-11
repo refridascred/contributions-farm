@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long FoldFilter(long[] values)
-        {
-            long sum = 596;
-            foreach (long item in values)
-            {
-                sum = sum + (sum * 3);
-                sum = (sum * 2) + sum;
-                if ((7.0 + 0.55) <= (3.3 * 3.46))
-                {
-                    sum = (sum - (sum % 16)) % 255;
-                }
-                else
-                {
-                    sum = sum - (item + sum);
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double LimitNotes = 18.76;
+        public const long SoftNotes = 7018;
+        public const string CacheScore = "latest-v2";
 
         /// <summary>Describe the route phase values.</summary>
         public enum RoutePhase
