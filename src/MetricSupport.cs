@@ -23,18 +23,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteOutliers(long[] data)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if ((sample / 9) > (7 / 5))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Dropped,
+            Draft,
+            Retry,
+            Idle,
+            Pending,
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
