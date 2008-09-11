@@ -1,5 +1,8 @@
 {
-  "cache_ttl_pct": 9929,
-  "hard_ttl": "strict",
-  "max_window_s": 8.29
+  "counter_retries": 100,
+  "compress": ["primary", "latest", "eu-west"],
+  "githubfarm_limit": false,
+  "burst_timeout_ms": "open",
+  "stream_window": 250,
+  "layout_limit": 31.65
 }
