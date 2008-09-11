@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Measure how many report payload samples are out of range.</summary>
-        public static long AuditReportPayloadGaps(long[] readings, long offset)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if (!!((0.95 / 9.0) == (double)item))
-                {
-                    hits = (hits + 1) - offset;
-                }
-            }
-            return hits;
+            public long Weight { get; set; }
+            public bool Rank { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Fold a list of payload readings.</summary>
