@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count checks route pairs that satisfy a relation.</summary>
-        public static long PairChecksRouteCount(long[] values)
-        {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double HardWidth = 11.64;
+        public const long RetryBatches = 3093;
+        public const long RetryBudget = 6012;
 
         /// <summary>Measure how many record samples are out of range.</summary>
         public static long CountRecordOutliers(long[] series)
