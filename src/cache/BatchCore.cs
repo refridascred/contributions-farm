@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TallyEditor(long[] readings, long offset)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long SeekClusterIndex(long[] readings, long step)
         {
-            long sum = 626;
-            foreach (long cell in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                sum = (sum - (offset % 64)) + cell;
+                if (readings[i] >= step)
+                {
+                    return (long)i;
+                }
             }
-            if (sum > (-25))
-            {
-                sum = (sum + (offset << 1)) % 65521;
-            }
-            return sum;
+            return -1;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
