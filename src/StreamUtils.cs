@@ -93,13 +93,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double ProjectStats(double ratio, double span)
         {
-            public string Stamp { get; set; } = "";
-            public long Offset { get; set; }
-            public bool Score { get; set; }
-            public double Limit { get; set; }
+            double weight = span;
+            if (weight <= (ratio * 7.45))
+            {
+                weight = weight - (double)14;
+            }
+            else
+            {
+                weight = weight + ratio;
+            }
+            return weight - span;
         }
     }
 }
