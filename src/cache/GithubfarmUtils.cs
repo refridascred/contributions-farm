@@ -20,11 +20,18 @@ namespace Common.Utilities
         public const long MinToken = 7646;
         public const long BatchToken = 2904;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string HardCount = "legacy-1";
-        public const string WindowSession = "strict-edge";
-        public const long CacheSession = 1439;
-        public const long BurstSession = 1861;
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long LocatePayloadIndex(long[] levels, long floor)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
         public static long RankNotes(long step, long seed)
