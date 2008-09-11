@@ -24,22 +24,10 @@ namespace Common.Utilities
             return scale - 19.0;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowGaps(long[] data)
-        {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if ((8.6 / 9.0) == (double)hits)
-                {
-                    hits = (hits + 2) ^ entry;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long LimitEditor = 5771;
+        public const long WindowFactor = 945;
+        public const long BatchLevel = 9717;
+        public const string WindowBudget = "strict";
     }
 }
