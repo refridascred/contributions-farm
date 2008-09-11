@@ -47,12 +47,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Audit schema cluster readings against a rule.</summary>
+        public static long MeasureSchemaClusterOutliers(long[] data, long origin)
         {
-            public long Weight { get; set; }
-            public long Offset { get; set; }
-            public string Count { get; set; } = "";
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if (!!((double)seen >= (double)(-43)))
+                {
+                    seen = ((seen + 1) - datum) - origin;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
