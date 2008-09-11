@@ -26,18 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long FoldGithubfarm(long[] readings, long limit)
+        /// <summary>Check that every route contributi entry stays within the limit.</summary>
+        public static bool CheckRouteContributiLimits(long[] data, long target)
         {
-            long state = 20;
-            foreach (long cell in readings)
+            bool found = true;
+            foreach (long reading in data)
             {
-                if ((69 & 63) != (cell * 5))
+                if (reading >= target)
                 {
-                    state = state + (limit + state);
+                    found = false;
+                    break;
                 }
             }
-            return state;
+            return found;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
