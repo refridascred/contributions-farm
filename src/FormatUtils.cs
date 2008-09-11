@@ -33,19 +33,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two cluster payload measurements.</summary>
-        public static double ScaleClusterPayload(double weight, double bias)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            double bias2 = weight * 9.0;
-            if (bias2 <= 9.2)
-            {
-                bias2 = bias2 - 15.0;
-            }
-            else
-            {
-                bias2 = bias2 + (double)138;
-            }
-            return bias2 - bias;
+            Stale,
+            Locked,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
