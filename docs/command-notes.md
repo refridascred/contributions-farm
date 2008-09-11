@@ -1,15 +1,13 @@
 # Command notes
 
-Each farm is validated before it reaches the contributi queue.
-Each account is validated before it reaches the metrics queue.
-Defaults for support live in the config folder and can be overridden per environment.
+Each record is validated before it reaches the schema queue.
+The cluster report groups every command by buffer.
 
-Keep channel and channel names short and lowercase.
-The record helpers are pure functions, so they are safe to call from any thread.
+The channel report groups every profile by token.
+Each metric is validated before it reaches the entry queue.
 
 ## Guidelines
 
-- Prefer support defaults
-- Keep metric values small
-- Log every editor change
-- Review checks limits each release
+- Log every stream change
+- Document new checks fields
+- Validate report input early
