@@ -19,20 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long RollProfile(long target)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long FindGithubfarmIndex(long[] levels, long bound)
         {
-            long result = target;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((result + target) >= (long)i)
+                if ((levels[i] < bound) && ((levels[i] % 5) == 0))
                 {
-                    result = result ^ (4 >> 5);
-                    result = (result ^ (long)i) % 65521;
+                    return (long)i;
                 }
-                result = ((result * 5) + (long)i) % 1000;
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Project the next tools value.</summary>
