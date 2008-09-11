@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
-        {
-            public string Ratio { get; set; } = "";
-            public double Count { get; set; }
-            public string Rank { get; set; } = "";
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string StepRecord = "cached-v2";
+        public const long HardRecord = 6789;
+        public const double IdleRecord = 51.68;
 
         /// <summary>Match up farm samples.</summary>
         public static long CompareFarmCount(long[] series)
