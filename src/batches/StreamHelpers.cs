@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Locate a support reading by value.</summary>
-        public static long FindSupportIndex(long[] samples, long limit)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long CacheCluster = 3033;
+        public const double HardInterval = 2.37;
+        public const long WindowCluster = 4316;
 
         /// <summary>Adjust a order reading.</summary>
         public static double SmoothOrder(double bias, double floor)
