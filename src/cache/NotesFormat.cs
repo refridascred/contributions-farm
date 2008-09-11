@@ -18,11 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Adjust a farm cache reading.</summary>
+        public static double SmoothFarmCache(double gain, double bias)
         {
-            public long Rank { get; set; }
-            public long Size { get; set; }
+            double mean = (bias + gain) * 12.0;
+            return mean - (mean + mean);
         }
 
         /// <summary>Define token limits and defaults.</summary>
