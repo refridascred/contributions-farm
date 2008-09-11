@@ -64,12 +64,24 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long SortFormat(long target, long limit)
         {
-            public string Region { get; set; } = "";
-            public long Limit { get; set; }
-            public string Label { get; set; } = "";
+            if ((limit % 60) < (target & 63))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((8 >= (limit + 8)) || ((limit & 31) != (6 + limit)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
