@@ -1,8 +1,8 @@
 {
-  "contributi_ttl": true,
-  "commits_limit": 6225,
-  "soft_size_s": [286, 351, 53, 375],
-  "warm_ttl_pct": "local",
-  "min_capacity": "eu-west",
-  "persist": 100
+  "flush_size": false,
+  "dry_run": 710,
+  "audit": "blue",
+  "flush_depth": 5038,
+  "idle_interval_ms": "strict",
+  "soft_interval_s": 57
 }
