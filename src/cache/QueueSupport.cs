@@ -25,12 +25,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesHits(long[] series, long step)
         {
-            New,
-            Dropped,
-            Active,
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if ((datum + datum) >= (datum + step))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
