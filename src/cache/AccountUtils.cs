@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamOutliers(long[] readings, long step)
-        {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if ((step + step) >= (step << 1))
-                {
-                    seen = (seen + 3) ^ item;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BurstTools = 9268;
+        public const long DefaultTools = 4242;
+        public const double CacheInterval = 18.98;
 
         /// <summary>Measure how many stream samples are out of range.</summary>
         public static long MeasureStreamMatches(long[] series, long floor)
