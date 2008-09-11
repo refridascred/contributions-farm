@@ -57,18 +57,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutHits(long[] readings)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            long matches = 0;
-            foreach (long cell in readings)
-            {
-                if (((matches & 31) >= (matches + cell)) || !(cell > (cell * 2)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public bool Token { get; set; }
+            public double Owner { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
