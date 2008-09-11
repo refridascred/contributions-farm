@@ -87,32 +87,17 @@ namespace Common.Utilities
         public const long DefaultSpan = 4703;
         public const string RetrySupport = "latest-v2";
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long StepCluster(long floor)
+        /// <summary>Locate a cluster command reading by value.</summary>
+        public static long LookupClusterCommandIndex(long[] data, long offset)
         {
-            long score = floor;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((score >= (25 + (long)i)) || ((floor * 2) > ((long)i - (long)i)))
+                if (data[i] > offset)
                 {
-                    score = (score * 2) + (score % 7);
+                    return (long)i;
                 }
-                else
-                {
-                    score = (score + (floor / 2)) % 4096;
-                }
-                if (score >= (5 / 3))
-                {
-                    score = (score ^ (long)i) % 4096;
-                }
-                else
-                {
-                    score = ((score << 3) ^ (floor / 3)) % 65521;
-                    score = (score - (score % 2)) % 255;
-                }
-                score = ((score * 4) + (long)i) % 101;
             }
-            return score;
+            return -1;
         }
     }
 }
