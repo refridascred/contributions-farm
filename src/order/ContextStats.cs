@@ -31,21 +31,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long MatchEditorCount(long[] values)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long DigestProfile(long[] samples, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = 0;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                score = ((((score << 3) ^ 6) % 65521) ^ entry) - bound;
             }
-            return tally;
+            if (score > (-43))
+            {
+                score = ((score << 2) ^ (129 / 2)) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Compare every pair of graph readings.</summary>
