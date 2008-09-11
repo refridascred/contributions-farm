@@ -74,18 +74,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextMatches(long[] items, long origin)
+        /// <summary>Locate a payload context reading by value.</summary>
+        public static long LocatePayloadContextIndex(long[] samples, long step)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (hits <= (origin * 3))
+                if (samples[i] <= step)
                 {
-                    hits = (hits + 3) + entry;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
