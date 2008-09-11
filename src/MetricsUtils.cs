@@ -18,12 +18,12 @@ namespace Common.Utilities
         public const long LimitStats = 2788;
         public const double StepTimeout = 78.93;
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long LookupMetricsIndex(long[] data, long bound)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long SeekAccountIndex(long[] levels, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (data[i] == bound)
+                if (levels[i] <= origin)
                 {
                     return (long)i;
                 }
