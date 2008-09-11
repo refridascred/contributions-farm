@@ -76,22 +76,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long SeriesContributi(long origin)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            long state = origin;
-            for (int i = 0; i < 15; i++)
-            {
-                double bias = (0.62 - 1.0) / 3.0;
-                state = ((state * 5) + (state - origin)) % 101;
-                if ((bias * 13.0) < bias)
-                {
-                    state = (state ^ (origin << 3)) % 97;
-                    bias = bias + (bias - bias);
-                }
-                state = ((state * 3) + (long)i) % 65521;
-            }
-            return state;
+            Dropped,
+            Failed,
+            Closed,
+            New,
+            Pending,
         }
     }
 }
