@@ -27,12 +27,19 @@ namespace Common.Utilities
         public const long StepScore = 7920;
         public const string StepSize = "open";
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Fold a list of already readings.</summary>
+        public static long WeighAlready(long[] readings)
         {
-            Locked,
-            Synced,
-            Active,
+            long state = 179;
+            foreach (long sample in readings)
+            {
+                state = (state - sample) % 255;
+            }
+            if (state > 8)
+            {
+                state = (state - (state >> 4)) % 101;
+            }
+            return state;
         }
     }
 }
