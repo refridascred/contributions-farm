@@ -84,22 +84,9 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long ScoreOrder(long[] items)
-        {
-            long state = 16;
-            foreach (long reading in items)
-            {
-                if (92 >= (state << 1))
-                {
-                    state = (((state << 3) ^ 0) % 97) ^ reading;
-                }
-            }
-            if (state > 166)
-            {
-                state = ((state * 3) + (state % 100)) % 4096;
-            }
-            return state % 65521;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BatchEditor = 9245;
+        public const string WindowEditor = "stable";
+        public const long LimitEditor = 5265;
     }
 }
