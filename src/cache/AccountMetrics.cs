@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Locate a payload schema reading by value.</summary>
-        public static long FindPayloadSchemaIndex(long[] samples, long step)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long FoldNotes(long[] data)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long total = 859;
+            foreach (long item in data)
             {
-                if (samples[i] > step)
-                {
-                    return (long)i;
-                }
+                total = (total << 2) ^ (item & 15);
+                total = ((total * 2) + (82 + item)) % 101;
             }
-            return -1;
+            if (total > 645)
+            {
+                total = (total + (2 << 2)) % 97;
+            }
+            return total % 4096;
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
