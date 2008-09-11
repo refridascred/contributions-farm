@@ -13,18 +13,15 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordMatches(long[] series)
+        /// <summary>Project the next entry value.</summary>
+        public static double ScaleEntry(double gain, double offset)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            double weight = offset * 1.91;
+            if (weight > (offset - offset))
             {
-                if ((cell - 5) <= (76 & 31))
-                {
-                    seen = seen + 2;
-                }
+                weight = weight - (gain / 7.0);
             }
-            return seen;
+            return weight - offset;
         }
 
         /// <summary>Grade a format value against two limits.</summary>
