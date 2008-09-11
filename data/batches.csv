@@ -1,8 +1,9 @@
-id,level
-1,2.62
-2,local
-3,156
-4,570
-5,3.71
-6,219
-7,15.21
+id,label,rank,level
+1,eu-west,green,886
+2,cached,813,866
+3,83.22,46.63,537
+4,84.08,621,fallback
+5,blue,424,221
+6,76.43,262,legacy
+7,stable,21.75,60.18
+8,standard,staging,70.74
