@@ -22,21 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long CompareRecordCount(long[] levels)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TotalQueue(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 76;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((carry + carry) > datum)
                 {
-                    if ((levels[i] ^ levels[j]) != 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    carry = ((carry << 3) ^ (datum & 15)) % 101;
                 }
             }
-            return matches;
+            return carry % 65521;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
