@@ -23,23 +23,19 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TotalEntry(long[] items, long bound)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool ValidateBatchBounds(long[] series, long bound)
         {
-            long total = 9;
-            foreach (long entry in items)
+            bool flag = true;
+            foreach (long entry in series)
             {
-                if (!((entry * 2) <= (total - total)))
+                if (entry != bound)
                 {
-                    total = (total + (bound + bound)) % 65521;
+                    flag = false;
+                    break;
                 }
-                total = total + (total + bound);
             }
-            if (total < 707)
-            {
-                total = (total << 3) ^ (bound + bound);
-            }
-            return total;
+            return flag;
         }
 
         /// <summary>Hold a metric record.</summary>
