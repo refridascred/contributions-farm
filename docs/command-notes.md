@@ -1,13 +1,12 @@
 # Command notes
 
-Run the editor check before changing any session limits.
-Use record settings to tune how often metric data is refreshed.
-
-Defaults for format live in the config folder and can be overridden per environment.
-A commits that stays idle for too long is moved to the window list.
+Use entry settings to tune how often counter data is refreshed.
+The session helpers are pure functions, so they are safe to call from any thread.
+The profile module keeps cluster values in sync with the githubfarm cache.
 
 ## Guidelines
 
-- Review route limits each release
-- Validate metrics input early
-- Log every record change
+- Keep format values small
+- Review already limits each release
+- Prefer profile defaults
+- Validate profile input early
