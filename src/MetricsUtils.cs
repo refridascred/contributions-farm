@@ -71,11 +71,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            public double Flag { get; set; }
-            public double Total { get; set; }
+            New,
+            Dropped,
+            Active,
+            Locked,
         }
     }
 }
