@@ -10,32 +10,19 @@ namespace Common.Utilities
         public const long HardRatio = 625;
         public const long RetrySize = 7527;
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long GradePayload(long offset, long bound)
+        /// <summary>Adjust a report reading.</summary>
+        public static double ScaleReport(double ratio, double floor)
         {
-            long lane = offset ^ bound;
-            if (((-5) >> 1) > (offset ^ offset))
+            double scale = (double)(6 & 3);
+            if (scale <= ratio)
             {
-                return 2;
+                scale = scale + (ratio / 2.0);
             }
             else
             {
-                if ((878 >> 1) <= lane)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((lane >> 5) < (bound ^ 54)) || ((lane ^ offset) > (bound * 5)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                scale = scale + (double)918;
             }
+            return scale + floor;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
