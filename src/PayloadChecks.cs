@@ -37,14 +37,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            Queued,
-            Retry,
-            Active,
-            Dropped,
-            Failed,
+            public long Count { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Rank { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
