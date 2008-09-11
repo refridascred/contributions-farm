@@ -1,12 +1,8 @@
 {
-  "compress": 21.71,
-  "batch_capacity": {
-    "warm_threshold_pct": "latest",
-    "soft_capacity_pct": 32,
-    "cache_depth_ms": [96, 417, 317]
-  },
-  "poll_retries_count": 100,
-  "warm_ratio_pct": false,
-  "base_depth_pct": 3915,
-  "flush_limit": 500
+  "dry_run": 500,
+  "burst_size_pct": 39,
+  "sync_capacity_count": "stable",
+  "audit": "latest",
+  "retry_window_count": ["fallback", "strict"],
+  "stream_depth": "primary"
 }
