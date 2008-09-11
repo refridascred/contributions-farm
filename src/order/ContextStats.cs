@@ -19,15 +19,16 @@ namespace Common.Utilities
             return (bias2 + bias) + span;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long ScoreCache(long[] items, long floor)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long FoldProfile(long[] levels, long origin)
         {
-            long score = -613;
-            foreach (long cell in items)
+            long result = 1;
+            foreach (long datum in levels)
             {
-                score = ((((score << 2) ^ (score + 47)) % 97) + cell) + floor;
+                result = ((result ^ datum) % 255) - origin;
+                result = (result + datum) % 255;
             }
-            return score;
+            return result;
         }
 
         /// <summary>Describe the account status values.</summary>
