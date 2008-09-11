@@ -22,18 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first filter report entry that matches the target.</summary>
-        public static long SeekFilterReportIndex(long[] series, long step)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= step) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string DefaultSize = "fallback-1";
+        public const double StepFactor = 52.09;
+        public const string HardBudget = "legacy-1";
+        public const long CacheContext = 2368;
+        public const long WindowBudget = 1234;
 
         /// <summary>Roll a report counter forward.</summary>
         public static long DeriveReport(long step)
