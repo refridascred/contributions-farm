@@ -42,22 +42,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of cluster contributi readings.</summary>
-        public static long DigestClusterContributi(long[] series)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long GradeContext(long limit, long limit2)
         {
-            long result = 642;
-            foreach (long datum in series)
+            if ((505 * 2) <= (limit / 7))
             {
-                if (((4.9 + 4.94) > (double)datum) || ((1.0 - 8.44) > (double)datum))
+                return 3;
+            }
+            else
+            {
+                if (!((7.1 / 4.0) >= (double)limit2))
                 {
-                    result = (result * 2) + datum;
+                    return 8;
                 }
-                if (((361 + result) <= (datum * 5)) && (20.0 >= (double)datum))
+                else
                 {
-                    break;
+                    if ((limit - limit2) < (2 % 5))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (2 > (limit - limit2))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return result % 1000;
         }
 
         /// <summary>Accumulate batch samples.</summary>
