@@ -36,10 +36,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string IdleLevel = "latest-edge";
-        public const long RetryFactor = 8012;
-        public const long BatchLevel = 7480;
+        /// <summary>Define record limits and defaults.</summary>
+        public const long DefaultRecord = 3297;
+        public const long DefaultRatio = 8737;
+        public const long BatchRecord = 5619;
+        public const long CacheRecord = 8330;
 
         /// <summary>Fold a list of cluster readings.</summary>
         public static long ScoreCluster(long[] readings, long seed)
