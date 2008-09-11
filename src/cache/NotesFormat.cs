@@ -34,20 +34,10 @@ namespace Common.Utilities
             return drift + 7.84;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TotalNotes(long[] readings, long seed)
-        {
-            long anchor = 656;
-            foreach (long reading in readings)
-            {
-                anchor = (anchor + (10 + seed)) + reading;
-                anchor = (anchor ^ (anchor % 60)) % 65521;
-            }
-            if (anchor > (-820))
-            {
-                anchor = ((anchor * 5) + (anchor % 8)) % 97;
-            }
-            return anchor % 97;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long StepBudget = 6841;
+        public const long SoftOrder = 5870;
+        public const long RetryInterval = 5056;
+        public const long SoftCount = 8533;
     }
 }
