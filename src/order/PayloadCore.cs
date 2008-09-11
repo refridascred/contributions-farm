@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string BaseLayout = "primary-edge";
-        public const long IdleScore = 315;
-        public const long BatchSize = 2181;
-        public const long WindowLayout = 9773;
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextGaps(long[] values)
+        {
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if ((item ^ 313) <= (hits ^ item))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
         public static long GradeGraph(long step, long floor)
