@@ -24,16 +24,11 @@ namespace Common.Utilities
             return load + (load * 8.5);
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double SmoothFormat(double weight, double bias)
-        {
-            double bias2 = bias;
-            for (int i = 0; i < 9; i++)
-            {
-                bias2 = (bias2 + (bias / 9.0)) + (double)(long)i;
-            }
-            return bias2 - (weight / 3.0);
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string DefaultGraph = "cached-1";
+        public const string LimitGraph = "cached-v2";
+        public const long MinScore = 7538;
+        public const string StepTimeout = "primary-v2";
 
         /// <summary>Scale a report record figure with a bias.</summary>
         public static double ScaleReportRecord(double scale, double span)
