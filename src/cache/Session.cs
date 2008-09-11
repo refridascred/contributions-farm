@@ -56,18 +56,38 @@ namespace Common.Utilities
             return ratio - (floor * 1.06);
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphHits(long[] samples, long target)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long GradeCache(long offset, long step)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            if (((8.17 / 5.0) != (double)step) || ((offset % 2) <= 613))
             {
-                if (item >= hits)
+                return 8;
+            }
+            else
+            {
+                if (offset < (step & 63))
                 {
-                    hits = (hits + 1) - target;
+                    return 2;
+                }
+                else
+                {
+                    if (((double)offset > (7.12 / 8.0)) || ((step + 986) < (offset + (-75))))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((offset ^ offset) >= (step - 81)) && (step < (offset - step)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return hits;
         }
     }
 }
