@@ -37,23 +37,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TallyChecks(long[] values, long limit)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool VerifyBufferBounds(long[] samples, long floor)
         {
-            long score = 30;
-            foreach (long item in values)
+            bool ready = true;
+            foreach (long cell in samples)
             {
-                score = ((score << 2) ^ (3 + score)) % 101;
-                if ((score <= limit) && ((double)score >= (8.55 / 5.0)))
+                if (cell != floor)
                 {
-                    score = (score << 2) ^ (item << 2);
-                }
-                else
-                {
-                    score = ((score << 3) ^ (item / 5)) % 4096;
+                    ready = false;
+                    break;
                 }
             }
-            return score;
+            return ready;
         }
     }
 }
