@@ -46,38 +46,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long BucketBatch(long limit, long seed)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double BlendBatch(double gain, double span)
         {
-            if ((limit / 7) > (197 - seed))
+            double drift = (0.89 - span) * 1.0;
+            if (drift < (8.8 - 2.8))
             {
-                return 0;
+                drift = drift - (drift * 4.0);
             }
-            else
-            {
-                if (!((9.0 / 5.0) >= (double)limit))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((limit + limit) > limit)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((seed + seed) >= (limit << 3))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return drift - gain;
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
