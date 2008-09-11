@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Fold a list of filter queue readings.</summary>
-        public static long DigestFilterQueue(long[] items, long limit)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmMatches(long[] samples, long target)
         {
-            long result = 405;
-            foreach (long item in items)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                result = result - (546 ^ result);
-                if ((item << 3) > limit)
+                if ((count + 183) > (951 % 8))
                 {
-                    break;
+                    count = ((count + 2) - reading) - target;
                 }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
