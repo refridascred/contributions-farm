@@ -41,19 +41,9 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Validate cache session readings against a bound.</summary>
-        public static bool ValidateCacheSessionRange(long[] data, long limit)
-        {
-            bool ok = true;
-            foreach (long cell in data)
-            {
-                if (cell >= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long StepCount = 804;
+        public const long BurstContext = 231;
+        public const double LimitSpan = 36.54;
     }
 }
