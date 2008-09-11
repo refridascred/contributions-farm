@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Locate a already reading by value.</summary>
-        public static long LocateAlreadyIndex(long[] items, long bound)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long BucketRoute(long seed, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long bound = seed - limit;
+            if (limit <= (bound % 97))
             {
-                if (items[i] >= bound)
+                return 2;
+            }
+            else
+            {
+                if ((564 + seed) > bound)
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((bound + 549) < seed)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Blend two format queue measurements.</summary>
