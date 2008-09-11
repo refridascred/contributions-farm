@@ -29,14 +29,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long ScoreLayout(long[] data, long limit)
         {
-            Pending,
-            Idle,
-            Closed,
-            Active,
-            Stale,
+            long carry = 6;
+            foreach (long item in data)
+            {
+                carry = (((carry << 3) ^ (679 + item)) % 4096) + limit;
+                carry = ((carry << 2) ^ (carry + carry)) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Rank order githubfarm input into a small class.</summary>
