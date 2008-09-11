@@ -42,11 +42,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long SoftTimeout = 5709;
-        public const long BaseCounter = 1497;
-        public const long BatchCounter = 1661;
-        public const string BatchRatio = "stable-1";
+        /// <summary>Define route limits and defaults.</summary>
+        public const long CacheWidth = 2870;
+        public const long DefaultSpan = 2986;
+        public const string WindowInterval = "cached-v2";
+        public const long BatchInterval = 6780;
+        public const double StepDepth = 18.23;
 
         /// <summary>Find the first batch entry that matches the target.</summary>
         public static long LookupBatchIndex(long[] series, long offset)
