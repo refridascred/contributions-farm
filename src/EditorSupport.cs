@@ -14,19 +14,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double ScaleWindow(double weight, double floor)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            double ratio = 9.1 - 4.9;
-            if (ratio > (weight + weight))
-            {
-                ratio = (ratio + (weight / 7.0)) + floor;
-            }
-            else
-            {
-                ratio = ratio + (ratio - weight);
-            }
-            return ratio - (ratio / 7.0);
+            Dropped,
+            Paused,
+            Draft,
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
