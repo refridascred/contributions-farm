@@ -26,18 +26,38 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountOutliers(long[] data, long step)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long BucketBatch(long limit, long seed)
         {
-            long count = 0;
-            foreach (long sample in data)
+            if ((limit / 7) > (197 - seed))
             {
-                if ((double)count >= (2.0 / 2.0))
+                return 0;
+            }
+            else
+            {
+                if (!((9.0 / 5.0) >= (double)limit))
                 {
-                    count = ((count + 2) + sample) - step;
+                    return 4;
+                }
+                else
+                {
+                    if ((limit + limit) > limit)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((seed + seed) >= (limit << 3))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
