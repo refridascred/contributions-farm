@@ -50,21 +50,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Match up editor checks samples.</summary>
-        public static long OverlapEditorChecksCount(long[] series)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 11)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public string Rank { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public long Level { get; set; }
         }
     }
 }
