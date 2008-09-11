@@ -16,19 +16,23 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool ValidateGithubfarmBounds(long[] levels, long step)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double SmoothLayout(double weight, double floor)
         {
-            bool ok = true;
-            foreach (long datum in levels)
+            double drift = floor / 2.0;
+            if (drift <= (drift + floor))
             {
-                if (datum < step)
-                {
-                    ok = false;
-                    break;
-                }
+                drift = drift - (weight + weight);
             }
-            return ok;
+            else
+            {
+                drift = drift - (weight + drift);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift + (1.0 - drift)) + (double)(long)i;
+            }
+            return drift - (double)(-1);
         }
 
         /// <summary>Define already limits and defaults.</summary>
