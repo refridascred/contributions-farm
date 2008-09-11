@@ -33,10 +33,12 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long LimitFactor = 4063;
-        public const long LimitWidth = 3894;
-        public const long BurstBatches = 3496;
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
+        {
+            public long Flag { get; set; }
+            public bool Ratio { get; set; }
+        }
 
         /// <summary>Classify a checks payload pair into a bucket.</summary>
         public static long BucketChecksPayload(long floor, long seed)
