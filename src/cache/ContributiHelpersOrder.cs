@@ -18,24 +18,18 @@ namespace Common.Utilities
         public const double StepFactor = 46.15;
         public const long BatchCount = 9488;
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long ClassifyCommand(long limit, long origin)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportOutliers(long[] series, long target)
         {
-            if (((67 - origin) > limit) && (origin >= (4 + limit)))
+            long count = 0;
+            foreach (long value in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((origin % 60) >= (origin % 8))
+                if (count < (target >> 1))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
+                    count = (count + 1) ^ value;
                 }
             }
+            return count;
         }
     }
 }
