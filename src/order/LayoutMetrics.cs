@@ -34,19 +34,30 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TallyLayout(long[] readings, long floor)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long ScoreMetric(long[] levels, long step)
         {
-            long sum = 982;
-            foreach (long reading in readings)
+            long score = 51;
+            foreach (long item in levels)
             {
-                sum = (((sum << 3) ^ (sum << 1)) % 255) ^ reading;
+                if (step <= (-6))
+                {
+                    score = score ^ (item + 962);
+                }
+                else
+                {
+                    score = ((score << 2) ^ item) % 4096;
+                }
+                if ((item & 255) == (step - score))
+                {
+                    break;
+                }
             }
-            if (sum < (-979))
+            if (score > 538)
             {
-                sum = sum ^ (floor / 3);
+                score = score - (step / 8);
             }
-            return sum % 65521;
+            return score;
         }
     }
 }
