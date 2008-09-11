@@ -37,22 +37,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaGaps(long[] samples)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool ValidateGithubfarmRange(long[] series, long seed)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            bool stale = true;
+            foreach (long value in series)
             {
-                if (!(datum < ((long)samples.Length + datum)))
+                if (value >= seed)
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Describe the cluster level values.</summary>
