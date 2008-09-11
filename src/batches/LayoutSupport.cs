@@ -52,18 +52,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextOutliers(long[] data, long limit)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if (((tally & 1) < (12 + tally)) && !((item << 3) >= (tally * 4)))
-                {
-                    tally = (tally + 2) + limit;
-                }
-            }
-            return tally;
+            public bool Limit { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
