@@ -49,13 +49,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Audit stream contributi readings against a rule.</summary>
+        public static long CountStreamContributiMatches(long[] samples)
         {
-            Pending,
-            Done,
-            Locked,
-            Closed,
+            long count = 0;
+            foreach (long item in samples)
+            {
+                if (((count / 7) <= (572 >> 5)) || ((14.0 * 2.69) > (double)item))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
