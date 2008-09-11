@@ -54,21 +54,12 @@ namespace Common.Utilities
             return mean - (3.1 + 8.9);
         }
 
-        /// <summary>Count githubfarm metric pairs that satisfy a relation.</summary>
-        public static long CompareGithubfarmMetricCount(long[] series)
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Level { get; set; }
+            public string Rank { get; set; } = "";
+            public long Limit { get; set; }
         }
     }
 }
