@@ -29,19 +29,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a editor farm reading.</summary>
-        public static double ScaleEditorFarm(double bias, double span)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            double load = bias;
-            if (load < (bias / 6.0))
-            {
-                load = load - bias;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load - bias) + (double)(long)i;
-            }
-            return load + span;
+            public string Weight { get; set; } = "";
+            public string Token { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
