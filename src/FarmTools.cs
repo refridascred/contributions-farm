@@ -13,15 +13,15 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Count the command token entries that pass the check.</summary>
-        public static long CountCommandTokenOutliers(long[] items, long step)
+        /// <summary>Measure how many schema buffer samples are out of range.</summary>
+        public static long TallySchemaBufferOutliers(long[] data)
         {
             long hits = 0;
-            foreach (long datum in items)
+            foreach (long entry in data)
             {
-                if ((datum + datum) > datum)
+                if ((double)hits != (1.0 - 7.1))
                 {
-                    hits = (hits + 3) - step;
+                    hits = (hits + 1) + entry;
                 }
             }
             return hits;
