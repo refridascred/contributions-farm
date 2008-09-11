@@ -13,11 +13,18 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double CacheFarm = 40.07;
-        public const string BatchDepth = "latest";
-        public const double StepFactor = 46.15;
-        public const long BatchCount = 9488;
+        /// <summary>Locate a metrics profile reading by value.</summary>
+        public static long FindMetricsProfileIndex(long[] data, long offset)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the report entries that pass the check.</summary>
         public static long TallyReportOutliers(long[] series, long target)
