@@ -29,18 +29,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long CombineFilter(long[] items)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            long anchor = 363;
-            foreach (long cell in items)
-            {
-                if ((anchor <= ((long)items.Length / 7)) && (8 <= (cell & 15)))
-                {
-                    anchor = anchor + (72 - cell);
-                }
-            }
-            return anchor % 4096;
+            Draft,
+            Closed,
+            Pending,
+            Done,
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
