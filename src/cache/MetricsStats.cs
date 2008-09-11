@@ -17,11 +17,24 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long ClassifyCounter(long bound, long limit)
         {
-            public long Mode { get; set; }
-            public string Region { get; set; } = "";
+            if (!(63 > (limit % 2)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((bound << 2) == (limit >> 1))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
