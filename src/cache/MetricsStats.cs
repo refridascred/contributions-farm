@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Match up cache contributi samples.</summary>
-        public static long MatchCacheContributiCount(long[] series)
+        /// <summary>Count the cluster githubfarm entries that pass the check.</summary>
+        public static long TallyClusterGithubfarmOutliers(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((seen < (entry - entry)) && ((44 - (long)series.Length) < (461 / 6)))
                 {
-                    if ((series[i] - series[j]) == 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = seen + 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Hold a payload summary.</summary>
