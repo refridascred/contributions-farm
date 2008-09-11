@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BaseBudget = 6271;
-        public const long BaseContributi = 1739;
-        public const double SoftTimeout = 34.22;
-        public const long DefaultContributi = 9043;
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandHits(long[] data)
+        {
+            long matches = 0;
+            foreach (long sample in data)
+            {
+                if (((matches + matches) < (73 * 2)) || ((sample & 15) <= (968 / 9)))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Look up the position of a payload sample.</summary>
         public static long LookupPayloadIndex(long[] readings, long bound)
