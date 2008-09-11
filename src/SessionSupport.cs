@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Validate profile contributi readings against a bound.</summary>
-        public static bool ValidateProfileContributiLimits(long[] values, long origin)
-        {
-            bool stale = true;
-            foreach (long entry in values)
-            {
-                if (entry != origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long WindowRatio = 4922;
+        public const string HardStats = "open-v2";
+        public const long LimitStats = 1951;
+        public const double SoftCount = 51.26;
 
         /// <summary>Describe the graph level values.</summary>
         public enum GraphLevel
