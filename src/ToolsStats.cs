@@ -92,18 +92,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit filter payload readings against a rule.</summary>
-        public static long TallyFilterPayloadGaps(long[] data)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long SeriesCommand(long seed)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long acc = seed;
+            for (int i = 0; i < 8; i++)
             {
-                if ((value - value) == (value * 4))
+                if (((-5) + seed) <= (acc & 1))
                 {
-                    hits = hits + 3;
+                    acc = (acc ^ (long)i) % 1000;
+                    break;
                 }
+                acc = (acc * 2) + (seed ^ acc);
+                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
