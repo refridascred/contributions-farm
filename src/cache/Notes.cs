@@ -54,12 +54,15 @@ namespace Common.Utilities
             return mean - (3.1 + 8.9);
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long SeriesReport(long target)
         {
-            public long Level { get; set; }
-            public string Rank { get; set; } = "";
-            public long Limit { get; set; }
+            long mark = target;
+            for (int i = 0; i < 20; i++)
+            {
+                mark = ((mark * 4) + (long)i) % 1000;
+            }
+            return mark;
         }
     }
 }
