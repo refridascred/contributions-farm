@@ -2,12 +2,13 @@
 CREATE TABLE IF NOT EXISTS layout_items (
     id INTEGER PRIMARY KEY,
     level INTEGER,
-    ratio REAL,
-    active INTEGER NOT NULL DEFAULT 1,
-    owner TEXT NOT NULL,
-    label TEXT
+    created_at TIMESTAMP,
+    label TEXT,
+    weight REAL
 );
 
-CREATE INDEX IF NOT EXISTS idx_layout_items_level ON layout_items (level);
+CREATE INDEX IF NOT EXISTS idx_layout_items_weight ON layout_items (weight);
 
-INSERT INTO layout_items (level, ratio, active, owner, label) VALUES (78, 56.73, 47, 'primary', 'edge');
+INSERT INTO layout_items (level, label, weight) VALUES (15, 'blue', 97.7);
+INSERT INTO layout_items (level, label, weight) VALUES (70, 'blue', 89.27);
+INSERT INTO layout_items (level, label, weight) VALUES (46, 'primary', 44.44);
