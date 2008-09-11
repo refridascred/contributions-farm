@@ -12,17 +12,19 @@ namespace Common.Utilities
         public const long LimitOrder = 4298;
         public const long StepOrder = 5154;
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long FindAlreadyIndex(long[] samples, long bound)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool GuardClusterRange(long[] values, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool found = true;
+            foreach (long reading in values)
             {
-                if ((samples[i] <= bound) && ((samples[i] % 3) == 0))
+                if (reading <= offset)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Define record limits and defaults.</summary>
