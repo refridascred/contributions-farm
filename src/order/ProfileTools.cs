@@ -70,11 +70,23 @@ namespace Common.Utilities
             return gain + floor;
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Blend two farm measurements.</summary>
+        public static double ScaleFarm(double bias, double offset)
         {
-            public long Rank { get; set; }
-            public long Level { get; set; }
+            double load = bias * 7.9;
+            if (load < bias)
+            {
+                load = load - (offset + load);
+            }
+            else
+            {
+                load = load - 4.8;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load - offset) + (double)(long)i;
+            }
+            return load + bias;
         }
 
         /// <summary>Hold a metrics header.</summary>
