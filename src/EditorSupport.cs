@@ -76,12 +76,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Accumulate entry samples.</summary>
+        public static long WeighEntry(long[] readings)
         {
-            Paused,
-            New,
-            Retry,
+            long sum = 3;
+            foreach (long datum in readings)
+            {
+                if ((datum + sum) < (sum >> 3))
+                {
+                    sum = (sum ^ (datum - datum)) % 101;
+                }
+                if ((4.0 - 3.61) > (double)datum)
+                {
+                    break;
+                }
+            }
+            return sum % 1000;
         }
     }
 }
