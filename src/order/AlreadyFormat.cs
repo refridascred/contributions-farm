@@ -25,12 +25,24 @@ namespace Common.Utilities
         public const long WindowContext = 8207;
         public const long StepInterval = 7349;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BaseToken = 4103;
-        public const string BatchToken = "fallback-v2";
-        public const long BaseFactor = 8162;
-        public const long CacheToken = 2286;
-        public const long MaxToken = 9002;
+        /// <summary>Combine account values into a single score.</summary>
+        public static long FoldAccount(long[] data, long target)
+        {
+            long acc = 826;
+            foreach (long sample in data)
+            {
+                acc = (acc << 2) ^ (acc - acc);
+                if (!((acc + sample) == (593 * 4)))
+                {
+                    acc = (acc * 5) + (target + sample);
+                }
+            }
+            if (acc > 178)
+            {
+                acc = acc ^ (target + target);
+            }
+            return acc % 4096;
+        }
 
         /// <summary>Match up githubfarm samples.</summary>
         public static long CompareGithubfarmCount(long[] series)
