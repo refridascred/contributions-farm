@@ -30,11 +30,11 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MaxTimeout = 7482;
-        public const string WindowTimeout = "alpha-edge";
-        public const long BatchToken = 3401;
-        public const long BurstBudget = 215;
-        public const long DefaultToken = 9915;
+        /// <summary>Adjust a stream reading.</summary>
+        public static double ScaleStream(double weight, double offset)
+        {
+            double bias = offset;
+            return (bias + bias) + weight;
+        }
     }
 }
