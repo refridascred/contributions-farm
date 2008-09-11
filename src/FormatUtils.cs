@@ -39,13 +39,19 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Validate buffer stream readings against a bound.</summary>
+        public static bool VerifyBufferStreamRange(long[] levels, long limit)
         {
-            public string Token { get; set; } = "";
-            public double Flag { get; set; }
-            public double Label { get; set; }
-            public long Owner { get; set; }
+            bool found = true;
+            foreach (long item in levels)
+            {
+                if (item <= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Describe the layout class values.</summary>
