@@ -43,15 +43,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long SeriesReport(long target)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            long mark = target;
-            for (int i = 0; i < 20; i++)
-            {
-                mark = ((mark * 4) + (long)i) % 1000;
-            }
-            return mark;
+            public bool Label { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
