@@ -1,8 +1,11 @@
 # support settings
-retry_limit_s: 68.61
-idle_ratio_ms: legacy
-min_interval_s:
-  hard_depth_s: false
-  default_delay: 50.6
-  record_limit: legacy
-flush_ratio_pct: standard
+persist:
+  - cached
+  - edge
+  - green
+warm_limit: false
+poll_threshold_s: false
+flush_interval_count:
+  - 251
+  - 282
+  - 396
