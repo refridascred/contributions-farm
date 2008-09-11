@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
-        {
-            Closed,
-            Locked,
-            Ready,
-            Retry,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long SoftScore = 2998;
+        public const string DefaultSupport = "legacy-v2";
+        public const string StepSupport = "primary";
+        public const long WindowSupport = 1452;
+        public const long MaxSupport = 2515;
 
         /// <summary>Classify a order pair into a bucket.</summary>
         public static long GradeOrder(long limit, long seed)
