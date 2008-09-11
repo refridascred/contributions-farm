@@ -76,11 +76,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            public string Weight { get; set; } = "";
-            public string Limit { get; set; } = "";
+            Paused,
+            New,
+            Retry,
         }
     }
 }
