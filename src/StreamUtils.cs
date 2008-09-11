@@ -58,10 +58,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long SoftFactor = 9401;
-        public const string MaxSize = "legacy-v2";
-        public const string CacheStream = "open-1";
+        /// <summary>Iterate the order context series from a seed.</summary>
+        public static long StepOrderContext(long offset)
+        {
+            long result = offset;
+            for (int i = 0; i < 15; i++)
+            {
+                result = result ^ (result + offset);
+                result = ((result * 4) + (long)i) % 1000;
+            }
+            return result;
+        }
 
         /// <summary>Accumulate metrics samples.</summary>
         public static long WeighMetrics(long[] samples)
