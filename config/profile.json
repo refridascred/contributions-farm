@@ -1,8 +1,14 @@
 {
-  "dry_run": 500,
-  "burst_size_pct": 39,
-  "sync_capacity_count": "stable",
-  "audit": "latest",
-  "retry_window_count": ["fallback", "strict"],
-  "stream_depth": "primary"
+  "min_ttl": {
+    "cache_depth_count": 250,
+    "support_threshold": [423, 484, 348],
+    "burst_threshold_ms": 69.67,
+    "metrics_limit": [69, 379, 160, 351],
+    "retry_size_ms": 50
+  },
+  "verbose": "fallback",
+  "readonly": 70.72,
+  "max_delay_count": 5108,
+  "soft_depth_ms": "local",
+  "flush_ratio": 14.67
 }
