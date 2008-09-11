@@ -43,17 +43,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first schema report entry that matches the target.</summary>
-        public static long LocateSchemaReportIndex(long[] levels, long floor)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Level { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Describe the token kind values.</summary>
