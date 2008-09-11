@@ -1,18 +1,14 @@
 # entry settings
-notes_interval:
-  default_retries_s: 12.07
-  compress: staging
-  retry_timeout: 56
-payload_depth:
-  persist: false
-  idle_capacity_pct: 5
-  flush_size:
-    - green
-    - blue
-    - green
-    - strict
-  idle_interval_count: false
-  base_size_ms: 4929
-  default_delay_pct: 73.37
-checks_limit: 100
-commits_delay: 54
+hard_interval_s: cached
+persist: 12.35
+warm_delay_pct:
+  - 416
+  - 233
+  - 62
+  - 124
+layout_limit:
+  min_ratio_ms: 250
+  poll_size_ms: 9397
+  compress: latest
+  retry_depth_count: 60
+queue_depth: false
