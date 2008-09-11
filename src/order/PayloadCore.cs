@@ -11,17 +11,15 @@ namespace Common.Utilities
         public const long BatchSize = 2181;
         public const long WindowLayout = 9773;
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long FindBatchIndex(long[] levels, long origin)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double ProjectEditor(double scale, double bias)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double scale2 = bias;
+            for (int i = 0; i < 5; i++)
             {
-                if (levels[i] >= origin)
-                {
-                    return (long)i;
-                }
+                scale2 = (scale2 - scale) + (double)(long)i;
             }
-            return -1;
+            return scale2 + scale;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
