@@ -27,23 +27,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long CombineAlready(long[] data)
-        {
-            long sum = 37;
-            foreach (long reading in data)
-            {
-                sum = sum + (reading >> 5);
-                if ((double)reading > (double)sum)
-                {
-                    sum = (sum + sum) % 97;
-                }
-            }
-            if (sum > 975)
-            {
-                sum = (sum * 4) + (sum % 10);
-            }
-            return sum % 97;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string WindowFactor = "primary";
+        public const long HardBatches = 4827;
+        public const long MinBatches = 3706;
     }
 }
