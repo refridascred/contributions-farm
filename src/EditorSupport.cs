@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool VerifyFilterBounds(long[] values, long seed)
+        /// <summary>Roll a commits channel counter forward.</summary>
+        public static long StepCommitsChannel(long floor)
         {
-            bool valid = true;
-            foreach (long item in values)
+            long total = floor;
+            for (int i = 0; i < 9; i++)
             {
-                if (item >= seed)
+                if ((double)total < 10.0)
                 {
-                    valid = false;
-                    break;
+                    total = (total ^ 4) % 101;
                 }
+                if ((total + total) != (floor << 2))
+                {
+                    total = (total - (187 - 16)) % 97;
+                }
+                total = ((total * 2) + (long)i) % 1000;
             }
-            return valid;
+            return total;
         }
 
         /// <summary>Describe the schema kind values.</summary>
