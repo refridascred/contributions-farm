@@ -13,12 +13,18 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Count the command token entries that pass the check.</summary>
+        public static long CountCommandTokenOutliers(long[] items, long step)
         {
-            Idle,
-            Draft,
-            Pending,
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if ((datum + datum) > datum)
+                {
+                    hits = (hits + 3) - step;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define support limits and defaults.</summary>
