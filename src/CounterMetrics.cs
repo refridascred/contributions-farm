@@ -32,18 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the session metric entries that pass the check.</summary>
-        public static long TallySessionMetricOutliers(long[] samples, long limit)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double SmoothFilter(double gain, double offset)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            double rate = (double)3 * 7.3;
+            for (int i = 0; i < 2; i++)
             {
-                if ((limit * 4) == (matches + (long)samples.Length))
-                {
-                    matches = (matches + 1) - value;
-                }
+                rate = ((rate + (rate * 8.0)) + (double)(long)i) + gain;
             }
-            return matches;
+            return rate - (offset / 3.0);
         }
 
         /// <summary>Combine profile values into a single score.</summary>
