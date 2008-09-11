@@ -1,49 +1,11 @@
 # support settings
-soft_depth_ms:
-  warm_delay_s: legacy
-  readonly:
-    soft_threshold_ms:
-      - legacy
-      - green
-    strict:
-      - stable
-      - blue
-      - fallback
-    persist: 48
-  default_timeout_ms:
-    batch_interval_pct: strict
-    session_delay: 250
-    cache_ttl_ms: standard
-    cache_capacity_pct:
-      - edge
-      - blue
-      - open
-      - standard
-cache_limit_pct:
-  cache_threshold: 76.51
-  editor_window: 7757
-  cache_timeout: true
-  hard_threshold_pct: false
-  batches_ttl: 100
-  stats_delay: 49.63
-min_size_count:
-  hard_capacity_count: false
-  window_timeout:
-    min_limit: 67
-    hard_ttl_count: edge
-    window_depth: true
-    tools_retries: 13.78
-  max_ttl_ms: latest
-  dry_run: cached
-  verbose: primary
-max_timeout_s: fallback
-payload_window:
-  readonly: true
-  base_size_pct:
-    idle_ttl: edge
-    retry_size: false
-    max_ratio_count: open
-    retry_limit: legacy
-    cache_size: true
-    compress: true
-  batch_ttl_ms: 76.29
+batch_size: blue
+warm_delay_ms: blue
+retry_capacity_ms:
+  - 402
+  - 17
+  - 484
+  - 413
+stream_size:
+  - 245
+  - 206
