@@ -1,13 +1,20 @@
 {
-  "hard_depth_count": "staging",
-  "burst_ratio_count": {
-    "stats_capacity": 98,
-    "sync_ratio": "local",
-    "max_window": "stable",
-    "flush_limit_ms": "standard",
-    "strict": 5913,
-    "default_interval_s": false
+  "sync_window": "blue",
+  "sync_window_count": true,
+  "soft_depth_pct": "fallback",
+  "dry_run": {
+    "persist": 5.78,
+    "layout_depth": true,
+    "cache_threshold_ms": {
+      "already_ratio": 39.93,
+      "warm_delay": 8795,
+      "batch_capacity": "local",
+      "commits_size": 53,
+      "entry_depth": false,
+      "retry_threshold": true
+    },
+    "queue_capacity": 4132,
+    "enabled": 250
   },
-  "idle_interval_ms": 1024,
-  "commits_timeout": 100
+  "base_window_pct": true
 }
