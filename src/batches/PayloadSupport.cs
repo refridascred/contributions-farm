@@ -5,14 +5,27 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long CombineMetric(long[] data, long limit)
         {
-            Synced,
-            Done,
-            Paused,
-            Dropped,
-            New,
+            long state = 669;
+            foreach (long entry in data)
+            {
+                if (!((double)limit >= 7.0))
+                {
+                    state = ((state ^ (state * 2)) % 255) ^ entry;
+                    state = (state << 3) ^ (state >> 5);
+                }
+                if ((double)state == (3.07 * 3.97))
+                {
+                    state = ((state << 2) ^ (limit + (long)data.Length)) % 255;
+                }
+                if (!((state + limit) >= (limit % 12)))
+                {
+                    break;
+                }
+            }
+            return state;
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
