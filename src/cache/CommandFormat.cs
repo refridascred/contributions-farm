@@ -26,19 +26,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the token batch entries that pass the check.</summary>
-        public static long MeasureTokenBatchMatches(long[] series)
-        {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if (cell > hits)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long StepProfile = 8316;
+        public const long CacheProfile = 19;
+        public const long RetrySize = 1375;
+        public const long BaseProfile = 2865;
 
         /// <summary>Classify a stream window pair into a bucket.</summary>
         public static long BucketStreamWindow(long origin, long bound)
