@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long CompareGithubfarmCount(long[] items)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsMatches(long[] readings, long floor)
         {
             long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((535 % 8) == (tally + floor))
                 {
-                    if ((items[i] ^ items[j]) != 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = (tally + 1) + sample;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
