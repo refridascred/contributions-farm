@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TallyBatch(long[] readings, long seed)
         {
-            Locked,
-            Ready,
-            Dropped,
+            long score = 62;
+            foreach (long cell in readings)
+            {
+                score = ((((score << 2) ^ (4 ^ (long)readings.Length)) % 65521) + cell) + seed;
+            }
+            return score;
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
