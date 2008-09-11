@@ -30,11 +30,13 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double ScaleStream(double weight, double offset)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            double bias = offset;
-            return (bias + bias) + weight;
+            public long Token { get; set; }
+            public string Score { get; set; } = "";
+            public long Rank { get; set; }
+            public long Size { get; set; }
         }
     }
 }
