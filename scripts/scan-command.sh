@@ -6,17 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 4))
+COMMAND_LIMIT=365
+log "limit is ${COMMAND_LIMIT}"
+
+for item in strict staging open; do
+    log "checking ${item}"
 done
-log "total ${total}"
 
 count=0
-while [ "${count}" -lt 3 ]; do
+while [ "${count}" -lt 5 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
-
-COMMAND_LIMIT=177
-log "limit is ${COMMAND_LIMIT}"
