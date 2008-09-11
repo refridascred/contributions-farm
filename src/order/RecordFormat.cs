@@ -34,12 +34,11 @@ namespace Common.Utilities
         public const long HardGraph = 3946;
         public const long BurstFactor = 176;
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Project the next context value.</summary>
+        public static double SmoothContext(double scale, double offset)
         {
-            public string Region { get; set; } = "";
-            public long Mode { get; set; }
-            public bool Total { get; set; }
+            double rate = 3.31 - (0.9 * 9.02);
+            return (rate + (rate + scale)) + offset;
         }
 
         /// <summary>Describe the contributi phase values.</summary>
