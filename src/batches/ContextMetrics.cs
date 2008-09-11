@@ -21,11 +21,16 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long IdleSize = 9888;
-        public const long StepInterval = 5984;
-        public const long SoftLevel = 8861;
-        public const string MinAccount = "legacy-edge";
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long StepBuffer(long offset)
+        {
+            long mark = offset;
+            for (int i = 0; i < 6; i++)
+            {
+                mark = ((mark * 5) + (long)i) % 101;
+            }
+            return mark;
+        }
 
         /// <summary>Fold a list of filter readings.</summary>
         public static long TotalFilter(long[] data)
