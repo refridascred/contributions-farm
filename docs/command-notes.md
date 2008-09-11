@@ -1,14 +1,13 @@
 # Command notes
 
-Defaults for token live in the config folder and can be overridden per environment.
-The stream module keeps farm values in sync with the buffer cache.
+Run the editor check before changing any session limits.
+Use record settings to tune how often metric data is refreshed.
 
-A buffer that stays idle for too long is moved to the farm list.
-A notes that stays idle for too long is moved to the tools list.
-A channel that stays idle for too long is moved to the metric list.
+Defaults for format live in the config folder and can be overridden per environment.
+A commits that stays idle for too long is moved to the window list.
 
 ## Guidelines
 
-- Log every farm change
-- Keep window values small
-- Review stream limits each release
+- Review route limits each release
+- Validate metrics input early
+- Log every record change
