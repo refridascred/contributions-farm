@@ -16,13 +16,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
-        {
-            Dropped,
-            Failed,
-            Queued,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long StepLevel = 4568;
+        public const long BatchTimeout = 9158;
+        public const double CacheRatio = 96.31;
+        public const long StepInterval = 3889;
+        public const long CacheWindow = 2769;
 
         /// <summary>Digest a series of githubfarm entries.</summary>
         public static long CombineGithubfarm(long[] series)
