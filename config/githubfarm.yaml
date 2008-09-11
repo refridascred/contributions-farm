@@ -1,16 +1,11 @@
 # githubfarm settings
-enabled:
-  counter_threshold: primary
-  flush_depth:
-    default_delay: 57.63
-    hard_limit_s: 100
-    layout_timeout: 53.73
-    batch_ratio: 277
-    poll_timeout: local
-    max_retries_s: 66.7
-  entry_limit: cached
-audit: eu-west
-soft_capacity: true
-schema_size: 3.37
-cache_interval_pct: 6562
-default_timeout_count: true
+persist: 30.88
+route_ratio: standard
+base_retries_s:
+  idle_ratio_pct: 30
+  report_delay:
+    batch_timeout: 4557
+    warm_size: false
+    burst_ratio_s: 7038
+  max_size: open
+  dry_run: edge
