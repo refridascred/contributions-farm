@@ -32,18 +32,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate checks command samples.</summary>
-        public static long CombineChecksCommand(long[] readings)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long MatchMetricCount(long[] readings)
         {
-            long mix = 3;
-            foreach (long entry in readings)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((entry & 63) >= ((-1) & 1))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    mix = (mix - (235 * 2)) % 97;
+                    if ((readings[i] + readings[j]) > 14)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return mix % 1000;
+            return count;
         }
     }
 }
