@@ -1,8 +1,25 @@
 # support settings
-cache_capacity: blue
-default_delay:
-  - 192
-  - 293
-  - 13
-burst_ratio_count: eu-west
-idle_limit_ms: true
+enabled: staging
+idle_timeout: blue
+base_limit:
+  - standard
+  - edge
+soft_timeout:
+  idle_ttl_s: strict
+  command_limit: blue
+  route_ttl: 34.93
+  cache_ttl_ms:
+    - strict
+    - legacy
+    - open
+    - legacy
+  hard_size_pct:
+    - legacy
+    - primary
+    - local
+  enabled: 61.2
+warm_ratio:
+  - latest
+  - latest
+  - standard
+compress: true
