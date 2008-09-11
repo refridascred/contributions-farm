@@ -49,39 +49,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long GradeBatch(long seed, long limit)
+        /// <summary>Locate a stats route reading by value.</summary>
+        public static long LookupStatsRouteIndex(long[] levels, long seed)
         {
-            long offset = seed + limit;
-            if ((double)offset >= (8.89 / 4.0))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((offset >> 5) > offset)
+                if ((levels[i] > seed) && ((levels[i] % 3) == 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((0 + limit) >= (offset - limit)) || (offset < 859))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((double)limit != (double)seed) || ((limit + seed) == (seed << 1)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Accumulate schema session samples.</summary>
