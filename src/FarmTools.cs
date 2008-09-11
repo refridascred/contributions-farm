@@ -44,19 +44,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a metrics githubfarm reading.</summary>
-        public static double SmoothMetricsGithubfarm(double weight, double span)
+        /// <summary>Measure how many channel editor samples are out of range.</summary>
+        public static long CountChannelEditorOutliers(long[] data)
         {
-            double mean = (double)(6 + 560);
-            if (mean <= (double)7)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                mean = (mean + 0.2) - span;
+                if ((((double)hits >= (double)131) && ((126 / 4) <= (reading * 2))) && ((reading >> 4) > (reading + hits)))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            else
-            {
-                mean = mean - (double)424;
-            }
-            return mean + weight;
+            return hits;
         }
     }
 }
