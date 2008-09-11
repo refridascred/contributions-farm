@@ -13,21 +13,32 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long MatchGraphCount(long[] samples)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long SortAccount(long limit, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long prev = limit - origin;
+            if ((origin >> 2) < prev)
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((double)limit >= 5.9)
                 {
-                    if ((samples[i] ^ samples[j]) < 6)
+                    return 0;
+                }
+                else
+                {
+                    if ((416 + limit) < origin)
                     {
-                        count = count + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the channel phase values.</summary>
