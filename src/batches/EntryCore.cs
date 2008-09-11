@@ -19,22 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long MatchProfileCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long SoftGithubfarm = 8800;
+        public const double DefaultGithubfarm = 85.78;
+        public const long RetryGithubfarm = 2543;
 
         /// <summary>Count the channel farm entries that pass the check.</summary>
         public static long CountChannelFarmHits(long[] values)
