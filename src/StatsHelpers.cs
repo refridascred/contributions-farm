@@ -15,15 +15,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long StepContext(long step)
+        /// <summary>Scale a counter profile figure with a bias.</summary>
+        public static double ProjectCounterProfile(double weight, double bias)
         {
-            long total = step;
-            for (int i = 0; i < 24; i++)
+            double rate = bias / 6.0;
+            if (rate > (rate - weight))
             {
-                total = ((total * 3) + (long)i) % 97;
+                rate = rate - rate;
             }
-            return total;
+            for (int i = 0; i < 5; i++)
+            {
+                rate = rate + (double)(long)i;
+            }
+            return rate - 8.58;
         }
 
         /// <summary>Locate a commits reading by value.</summary>
