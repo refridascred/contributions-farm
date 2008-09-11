@@ -13,16 +13,12 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double ProjectAlready(double bias, double bias2)
-        {
-            double scale = (double)(-67) - (bias / 4.0);
-            if (scale > bias)
-            {
-                scale = (scale - (scale / 2.0)) - bias2;
-            }
-            return scale - 19.0;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long CacheTimeout = 6197;
+        public const long RetryInterval = 6743;
+        public const string CacheRoute = "alpha";
+        public const long RetryBudget = 1756;
+        public const long DefaultRoute = 7205;
 
         /// <summary>Audit counter readings against a rule.</summary>
         public static long MeasureCounterMatches(long[] readings, long origin)
