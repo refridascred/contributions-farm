@@ -74,9 +74,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BatchEditor = 9245;
-        public const string WindowEditor = "stable";
-        public const long LimitEditor = 5265;
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
+        {
+            public long Offset { get; set; }
+            public bool Region { get; set; }
+            public long Mode { get; set; }
+        }
     }
 }
