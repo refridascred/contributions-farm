@@ -23,31 +23,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long ClassifyAlready(long offset, long step)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            if (step < (offset / 6))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((step - offset) > (offset & 7))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)step < (6.95 / 7.0))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public double Weight { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Adjust a stream reading.</summary>
