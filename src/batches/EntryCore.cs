@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long HardTools = 7685;
-        public const long DefaultDepth = 3808;
-        public const double BatchTools = 82.88;
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long SeekStreamIndex(long[] levels, long origin)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the githubfarm phase values.</summary>
         public enum GithubfarmPhase
