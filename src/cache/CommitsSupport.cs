@@ -66,24 +66,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long SortFormat(long target, long limit)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            if ((limit % 60) < (target & 63))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((8 >= (limit + 8)) || ((limit & 31) != (6 + limit)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public double Rank { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
