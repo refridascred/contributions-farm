@@ -62,16 +62,9 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long RollWindow(long floor)
-        {
-            long carry = floor;
-            for (int i = 0; i < 20; i++)
-            {
-                carry = ((carry * 4) + (carry % 97)) % 97;
-                carry = ((carry * 3) + (long)i) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BurstScore = 8534;
+        public const long RetryContext = 6848;
+        public const double RetryCount = 10.04;
     }
 }
