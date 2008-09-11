@@ -95,18 +95,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutOutliers(long[] series)
+        /// <summary>Locate a session entry reading by value.</summary>
+        public static long LookupSessionEntryIndex(long[] data, long seed)
         {
-            long tally = 0;
-            foreach (long value in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((7.6 * 7.7) < (double)tally) && ((1 + tally) > tally))
+                if (data[i] < seed)
                 {
-                    tally = (tally + 1) - value;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
