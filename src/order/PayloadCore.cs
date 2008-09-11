@@ -35,11 +35,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long WindowInterval = 5726;
-        public const long BaseLayout = 353;
-        public const double MinSize = 23.38;
-        public const long CacheLayout = 6662;
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
+        {
+            Done,
+            Idle,
+            Stale,
+            Pending,
+            New,
+        }
 
         /// <summary>Derive the next payload value from a seed.</summary>
         public static long RollPayload(long origin)
