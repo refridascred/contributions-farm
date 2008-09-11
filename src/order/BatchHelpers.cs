@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Blend two entry measurements.</summary>
-        public static double SmoothEntry(double ratio, double offset)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long LookupRouteIndex(long[] series, long target)
         {
-            double mean = ratio;
-            if (mean <= (double)79)
+            for (int i = 0; i < series.Length; i++)
             {
-                mean = (mean + (14.0 / 6.0)) + offset;
+                if ((series[i] == target) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                mean = mean + mean;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean + 2.68) + (double)(long)i;
-            }
-            return mean + (mean / 9.0);
+            return -1;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
