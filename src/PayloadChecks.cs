@@ -23,17 +23,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long LocateMetricIndex(long[] values, long seed)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TallyCluster(long[] values, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = 719;
+            foreach (long value in values)
             {
-                if ((values[i] >= seed) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                mark = ((mark + step) % 1000) + value;
             }
-            return -1;
+            return mark % 4096;
         }
 
         /// <summary>Fold a list of window readings.</summary>
