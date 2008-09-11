@@ -23,18 +23,11 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Measure how many editor counter samples are out of range.</summary>
-        public static long TallyEditorCounterMatches(long[] readings, long limit)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if ((limit << 2) >= matches)
-                {
-                    matches = (matches + 3) - value;
-                }
-            }
-            return matches;
+            public double Ratio { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
