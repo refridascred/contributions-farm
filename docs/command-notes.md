@@ -1,10 +1,10 @@
 # Command notes
 
-When a profile fails, the buffer handler retries a few times before giving up.
-When a channel fails, the notes handler retries a few times before giving up.
+Defaults for entry live in the config folder and can be overridden per environment.
+Keep support and record names short and lowercase.
 
 ## Guidelines
 
-- Keep queue values small
-- Validate filter input early
-- Review filter limits each release
+- Document new context fields
+- Log every farm change
+- Prefer notes defaults
