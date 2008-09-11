@@ -37,19 +37,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool VerifyLayoutLimits(long[] data, long seed)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long RankSession(long offset, long bound)
         {
-            bool ok = true;
-            foreach (long cell in data)
+            if (337 >= (9 ^ offset))
             {
-                if (cell <= seed)
+                return 5;
+            }
+            else
+            {
+                if (98 < offset)
                 {
-                    ok = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((double)bound <= (6.1 + 1.0))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((4 ^ bound) < 2) || ((5.62 + 4.0) > (double)offset))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Hold a batches snapshot.</summary>
