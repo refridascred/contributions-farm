@@ -12,19 +12,23 @@ namespace Common.Utilities
         public const string IdleCount = "local-1";
         public const string MinTimeout = "local-v2";
 
-        /// <summary>Check that every checks report entry stays within the limit.</summary>
-        public static bool CheckChecksReportRange(long[] series, long seed)
+        /// <summary>Adjust a githubfarm counter reading.</summary>
+        public static double ProjectGithubfarmCounter(double scale, double span)
         {
-            bool stale = true;
-            foreach (long item in series)
+            double weight = 3.57;
+            if (weight >= span)
             {
-                if (item < seed)
-                {
-                    stale = false;
-                    break;
-                }
+                weight = weight + 13.0;
             }
-            return stale;
+            else
+            {
+                weight = weight + (scale - weight);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight - weight) + (double)(long)i;
+            }
+            return weight + scale;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
