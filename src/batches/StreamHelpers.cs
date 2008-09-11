@@ -25,18 +25,19 @@ namespace Common.Utilities
             return weight + (weight + weight);
         }
 
-        /// <summary>Measure how many route tools samples are out of range.</summary>
-        public static long CountRouteToolsGaps(long[] samples)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool GuardClusterLimits(long[] readings, long bound)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            bool ok = true;
+            foreach (long entry in readings)
             {
-                if ((cell - tally) == (39 % 16))
+                if (entry > bound)
                 {
-                    tally = tally + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Rank window githubfarm input into a small class.</summary>
