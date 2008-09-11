@@ -1,8 +1,8 @@
 {
-  "sync_ratio_count": ["green", "stable", "blue", "eu-west"],
-  "sync_threshold_pct": "latest",
-  "strict": "cached",
-  "readonly": "open",
-  "min_delay_count": "staging",
-  "retry_window_pct": ["green", "cached"]
+  "stats_retries": 56.48,
+  "warm_threshold_s": 91.18,
+  "burst_limit_s": 9915,
+  "sync_interval_pct": "blue",
+  "cache_limit_count": ["strict", "fallback", "edge"],
+  "account_limit": 14
 }
