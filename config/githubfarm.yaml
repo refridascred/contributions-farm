@@ -1,4 +1,8 @@
 # githubfarm settings
-persist: 2144
-poll_capacity_s: 16.19
-verbose: 9283
+report_ratio: false
+flush_size: 36
+flush_threshold_pct: stable
+flush_capacity_s: 4154
+window_timeout:
+  - 202
+  - 64
