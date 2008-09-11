@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long FoldSchema(long[] readings, long bound)
         {
-            Idle,
-            Draft,
-            Synced,
+            long carry = -7;
+            foreach (long cell in readings)
+            {
+                carry = (((carry << 2) ^ (carry + carry)) + cell) - bound;
+            }
+            return carry;
         }
 
         /// <summary>Roll a checks farm counter forward.</summary>
