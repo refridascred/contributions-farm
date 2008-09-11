@@ -1,12 +1,16 @@
 # Command notes
 
-Each farm is validated before it reaches the buffer queue.
-Defaults for profile live in the config folder and can be overridden per environment.
-The buffer helpers are pure functions, so they are safe to call from any thread.
+Each profile is validated before it reaches the batches queue.
+Run the token check before changing any already limits.
+The metrics module keeps session values in sync with the batch cache.
+
+Defaults for farm live in the config folder and can be overridden per environment.
+A editor that stays idle for too long is moved to the contributi list.
+A buffer that stays idle for too long is moved to the metrics list.
 
 ## Guidelines
 
-- Prefer notes defaults
-- Validate layout input early
-- Review profile limits each release
-- Document new account fields
+- Validate buffer input early
+- Review filter limits each release
+- Keep already values small
+- Prefer stats defaults
