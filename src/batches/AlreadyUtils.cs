@@ -15,13 +15,16 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long IterateToken(long limit)
         {
-            public bool Stamp { get; set; }
-            public long Limit { get; set; }
-            public bool Label { get; set; }
-            public long Owner { get; set; }
+            long acc = limit;
+            for (int i = 0; i < 15; i++)
+            {
+                acc = ((acc * 3) + (acc + (long)i)) % 4096;
+                acc = ((acc * 3) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
