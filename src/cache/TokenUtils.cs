@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long LimitLevel = 1527;
-        public const long HardRatio = 625;
-        public const long RetrySize = 7527;
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool CheckCommandRange(long[] series, long origin)
+        {
+            bool flag = true;
+            foreach (long datum in series)
+            {
+                if (datum > origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Adjust a report reading.</summary>
         public static double ScaleReport(double ratio, double floor)
