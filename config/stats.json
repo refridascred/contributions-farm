@@ -1,5 +1,8 @@
 {
-  "sync_ttl_s": 3614,
-  "retry_retries_ms": 31,
-  "batch_interval": [454, 272]
+  "compress": 89,
+  "metrics_depth": "fallback",
+  "batch_size": 1699,
+  "sync_window_s": 250,
+  "min_retries_pct": 30,
+  "flush_window_count": "strict"
 }
