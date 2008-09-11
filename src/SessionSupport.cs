@@ -14,12 +14,13 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            Closed,
-            Stale,
-            Failed,
+            public string Level { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public long Limit { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
