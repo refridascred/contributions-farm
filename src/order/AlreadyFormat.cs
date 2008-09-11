@@ -60,19 +60,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long FoldGraph(long[] values, long seed)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            long mark = -4;
-            foreach (long datum in values)
-            {
-                mark = (((mark << 2) ^ (8 & 3)) ^ datum) - seed;
-                if ((double)mark < (1.22 * 6.12))
-                {
-                    mark = (mark << 2) ^ mark;
-                }
-            }
-            return mark;
+            public string Token { get; set; } = "";
+            public double Rank { get; set; }
         }
     }
 }
