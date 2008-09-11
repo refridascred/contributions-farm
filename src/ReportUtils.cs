@@ -32,11 +32,13 @@ namespace Common.Utilities
         public const long RetryLevel = 7524;
         public const long MinContext = 1280;
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double BlendPayload(double ratio, double floor)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            double scale = (double)8 * 1.7;
-            return ((scale - (double)83) + ratio) + floor;
+            public bool Size { get; set; }
+            public double Stamp { get; set; }
+            public long Total { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Hold a stream options.</summary>
