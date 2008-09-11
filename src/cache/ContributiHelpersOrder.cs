@@ -20,19 +20,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double BlendSession(double rate, double bias)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long RollChannel(long seed)
         {
-            double ratio = (double)340 / 7.0;
-            if (ratio <= ratio)
+            long sum = seed;
+            for (int i = 0; i < 16; i++)
             {
-                ratio = (ratio + (double)7) - rate;
+                sum = (sum - (seed - seed)) % 1000;
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio + (bias / 5.0)) + (double)(long)i;
-            }
-            return ratio + (double)891;
+            return sum;
         }
 
         /// <summary>Grade a command value against two limits.</summary>
