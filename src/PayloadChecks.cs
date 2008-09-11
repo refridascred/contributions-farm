@@ -49,12 +49,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long StepSpan = 9688;
-        public const long BaseDepth = 762;
-        public const long RetryBuffer = 8612;
-        public const long IdleBuffer = 4839;
-        public const double MinDepth = 86.31;
+        /// <summary>Find the first channel batch entry that matches the target.</summary>
+        public static long SeekChannelBatchIndex(long[] data, long floor)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Rank command input into a small class.</summary>
         public static long GradeCommand(long step, long step2)
