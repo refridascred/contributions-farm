@@ -19,19 +19,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a command entry reading.</summary>
-        public static double SmoothCommandEntry(double ratio, double offset)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long GradeReport(long floor, long seed)
         {
-            double drift = ratio / 6.0;
-            if (drift < (offset * 16.0))
+            if ((seed <= (floor << 3)) || ((seed + floor) <= (seed & 127)))
             {
-                drift = drift + (drift / 4.0);
+                return 2;
             }
-            for (int i = 0; i < 5; i++)
+            else
             {
-                drift = drift + (double)(long)i;
+                if ((3.5 + 15.0) <= (double)seed)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((6.9 / 9.0) <= (double)floor) || ((floor + seed) > seed))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (seed > (seed + floor))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
             }
-            return drift - 0.5;
         }
 
         /// <summary>Hold a stats stats.</summary>
