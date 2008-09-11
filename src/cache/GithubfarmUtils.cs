@@ -27,21 +27,25 @@ namespace Common.Utilities
         public const long CacheSession = 1439;
         public const long BurstSession = 1861;
 
-        /// <summary>Count report farm pairs that satisfy a relation.</summary>
-        public static long MatchReportFarmCount(long[] samples)
+        /// <summary>Roll a cache counter counter forward.</summary>
+        public static long RollCacheCounter(long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = origin;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                long bound = (origin + acc) ^ (origin - origin);
+                if (8.0 < (double)bound)
                 {
-                    if ((samples[i] ^ samples[j]) > 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    acc = (acc - (acc - acc)) % 255;
+                    continue;
                 }
+                if ((double)acc > (7.39 + 7.97))
+                {
+                    bound = ((bound << 3) ^ bound) % 255;
+                }
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return tally;
+            return acc;
         }
     }
 }
