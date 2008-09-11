@@ -43,31 +43,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long BucketFarm(long bound, long origin)
+        /// <summary>Check that every stream format entry stays within the limit.</summary>
+        public static bool CheckStreamFormatRange(long[] items, long target)
         {
-            if ((origin + bound) != (737 % 8))
+            bool stale = true;
+            foreach (long entry in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((bound << 1) <= bound)
+                if (entry > target)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((3.0 * 10.0) < (double)origin)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Validate farm cluster readings against a bound.</summary>
