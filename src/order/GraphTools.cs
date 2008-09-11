@@ -74,19 +74,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every channel contributi entry stays within the limit.</summary>
-        public static bool GuardChannelContributiRange(long[] values, long floor)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            bool valid = true;
-            foreach (long reading in values)
-            {
-                if (reading != floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Total { get; set; }
+            public bool Limit { get; set; }
+            public bool Level { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
