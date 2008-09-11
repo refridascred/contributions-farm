@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long PairReportCount(long[] items)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Limit { get; set; }
+            public double Owner { get; set; }
+            public bool Flag { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
