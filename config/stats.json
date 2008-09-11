@@ -1,8 +1,8 @@
 {
-  "stats_retries": 56.48,
-  "warm_threshold_s": 91.18,
-  "burst_limit_s": 9915,
-  "sync_interval_pct": "blue",
-  "cache_limit_count": ["strict", "fallback", "edge"],
-  "account_limit": 14
+  "report_timeout": 5910,
+  "burst_depth_ms": "blue",
+  "retry_limit": "local",
+  "stream_interval": 100,
+  "poll_ratio_count": 1169,
+  "poll_retries_ms": "fallback"
 }
