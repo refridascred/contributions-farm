@@ -60,11 +60,13 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            public bool Label { get; set; }
-            public double Mode { get; set; }
+            public long Size { get; set; }
+            public double Weight { get; set; }
+            public long Mode { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
