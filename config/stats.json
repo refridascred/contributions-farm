@@ -1,5 +1,6 @@
 {
-  "account_timeout": 26,
-  "max_ratio_pct": 30,
-  "min_size": 46
+  "compress": 92,
+  "checks_threshold": "cached",
+  "audit": 60,
+  "base_ratio": 31.72
 }
