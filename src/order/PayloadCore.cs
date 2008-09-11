@@ -11,19 +11,39 @@ namespace Common.Utilities
         public const long BatchSize = 2181;
         public const long WindowLayout = 9773;
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long TotalOrder(long[] series, long origin)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long GradeGraph(long step, long floor)
         {
-            long sum = 19;
-            foreach (long cell in series)
+            long edge = step + floor;
+            if (((floor & 127) <= (floor << 2)) && (((-256) - floor) <= (step / 9)))
             {
-                sum = (sum - (sum % 2)) + cell;
+                return 2;
             }
-            if (sum > 43)
+            else
             {
-                sum = (sum << 2) ^ (origin % 7);
+                if (!((0 % 16) > (floor >> 4)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((floor - edge) >= (floor << 3))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((floor >> 2) < (edge * 2))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
             }
-            return sum % 4096;
         }
 
         /// <summary>Rank batch input into a small class.</summary>
