@@ -1,5 +1,6 @@
 # support settings
-enabled: stable
-compress: latest
-persist: true
-audit: 3
+retry_depth_s: legacy
+max_size_pct:
+  - 231
+  - 426
+flush_ratio: true
