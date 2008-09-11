@@ -61,19 +61,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate stats cluster readings against a bound.</summary>
-        public static bool ValidateStatsClusterBounds(long[] samples, long offset)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long GradeBatch(long seed, long limit)
         {
-            bool valid = true;
-            foreach (long datum in samples)
+            long offset = seed + limit;
+            if ((double)offset >= (8.89 / 4.0))
             {
-                if (datum < offset)
+                return 6;
+            }
+            else
+            {
+                if ((offset >> 5) > offset)
                 {
-                    valid = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (((0 + limit) >= (offset - limit)) || (offset < 859))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((double)limit != (double)seed) || ((limit + seed) == (seed << 1)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Accumulate schema session samples.</summary>
