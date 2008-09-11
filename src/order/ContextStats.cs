@@ -19,11 +19,39 @@ namespace Common.Utilities
             return (bias2 + bias) + span;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string RetryCommand = "legacy-v2";
-        public const long StepCommand = 7164;
-        public const long LimitCommand = 1558;
-        public const long MaxCommand = 9566;
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long RankGraph(long origin, long floor)
+        {
+            if (883 >= (floor - origin))
+            {
+                return 2;
+            }
+            else
+            {
+                if (origin > (floor - 22))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (origin < (origin / 5))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (floor <= origin)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the account status values.</summary>
         public enum AccountStatus
