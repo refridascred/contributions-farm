@@ -56,18 +56,13 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordHits(long[] levels)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if ((sample % 64) < (sample % 7))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Retry,
+            Paused,
+            New,
+            Idle,
         }
 
         /// <summary>Define report limits and defaults.</summary>
