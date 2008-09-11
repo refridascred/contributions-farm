@@ -1,5 +1,12 @@
 {
-  "sync_timeout": 250,
-  "compress": 100,
-  "cache_window_ms": 4.16
+  "idle_depth": ["green", "cached"],
+  "warm_capacity_count": {
+    "strict": "primary",
+    "max_delay": 1077,
+    "profile_delay": 92,
+    "soft_threshold_pct": 1960
+  },
+  "idle_timeout_pct": 100,
+  "cluster_retries": 250,
+  "sync_threshold_ms": 37.04
 }
