@@ -1,7 +1,6 @@
 {
-  "batch_depth_ms": 5925,
-  "commits_interval": 18.69,
-  "sync_limit": "stable",
-  "order_size": 7814,
-  "sync_threshold": "eu-west"
+  "hard_threshold_count": 7029,
+  "batch_retries": false,
+  "notes_depth": "cached",
+  "cache_size": 1044
 }
