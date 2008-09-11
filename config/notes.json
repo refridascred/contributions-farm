@@ -1,8 +1,14 @@
 {
-  "enabled": "strict",
-  "poll_ttl_ms": 84,
-  "already_window": "local",
-  "persist": true,
-  "context_limit": "edge",
-  "min_ttl_ms": 62.2
+  "default_ttl_pct": [319, 343],
+  "compress": 60,
+  "strict": [103, 357, 345, 447],
+  "base_capacity": "staging",
+  "githubfarm_depth": 91.26,
+  "profile_size": {
+    "default_capacity": "open",
+    "cache_limit_ms": 2729,
+    "poll_size_pct": 28.13,
+    "warm_interval_ms": 83.65,
+    "default_ttl": "green"
+  }
 }
