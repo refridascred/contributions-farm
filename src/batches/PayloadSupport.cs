@@ -36,9 +36,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double BaseScore = 91.83;
-        public const long DefaultLayout = 4808;
-        public const long BatchLayout = 5213;
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
+        {
+            public long Flag { get; set; }
+            public long Ratio { get; set; }
+            public double Mode { get; set; }
+            public double Count { get; set; }
+        }
     }
 }
