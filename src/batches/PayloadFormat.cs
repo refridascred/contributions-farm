@@ -49,30 +49,23 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long SortToken(long limit, long target)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long RankChannel(long floor, long offset)
         {
-            long lane = limit + target;
-            if ((double)target >= (6.0 + 6.63))
+            long bound = floor ^ offset;
+            if (floor < (bound % 8))
             {
-                return 1;
+                return 2;
             }
             else
             {
-                if ((double)lane == (1.47 + 6.53))
+                if ((offset + 8) < (bound ^ offset))
                 {
-                    return 4;
+                    return 6;
                 }
                 else
                 {
-                    if (limit <= (target << 2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return 4;
                 }
             }
         }
