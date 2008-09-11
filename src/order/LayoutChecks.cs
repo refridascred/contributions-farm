@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            public bool Stamp { get; set; }
-            public double Score { get; set; }
-            public string Size { get; set; } = "";
-            public bool Rank { get; set; }
+            Paused,
+            Retry,
+            Locked,
         }
 
         /// <summary>Digest a series of window entries.</summary>
