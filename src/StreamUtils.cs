@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool VerifyChannelRange(long[] data, long origin)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long DigestBatches(long[] values, long bound)
         {
-            bool valid = true;
-            foreach (long datum in data)
+            long mix = 10;
+            foreach (long datum in values)
             {
-                if (datum < origin)
+                if (datum < (datum % 24))
                 {
-                    valid = false;
-                    break;
+                    mix = (mix ^ mix) % 101;
+                }
+                else
+                {
+                    mix = (mix * 3) + (bound - mix);
                 }
             }
-            return valid;
+            if (mix > 996)
+            {
+                mix = mix - bound;
+            }
+            return mix;
         }
 
         /// <summary>Project the next command value.</summary>
