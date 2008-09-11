@@ -13,23 +13,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double AdjustCounter(double rate, double bias)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatGaps(long[] levels)
         {
-            double drift = bias;
-            if (drift >= 11.0)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                drift = (drift + (double)7) - rate;
+                if ((double)tally <= 1.7)
+                {
+                    tally = (tally + 2) ^ value;
+                }
             }
-            else
-            {
-                drift = drift - bias;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift - drift) - (double)(long)i;
-            }
-            return drift + 7.84;
+            return tally;
         }
 
         /// <summary>Define order limits and defaults.</summary>
