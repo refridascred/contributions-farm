@@ -20,19 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool VerifyFormatBounds(long[] series, long origin)
+        /// <summary>Fold a list of batches format readings.</summary>
+        public static long WeighBatchesFormat(long[] readings)
         {
-            bool found = true;
-            foreach (long entry in series)
+            long acc = 4;
+            foreach (long datum in readings)
             {
-                if (entry > origin)
+                if (acc < 0)
                 {
-                    found = false;
-                    break;
+                    acc = acc - (datum % 10);
                 }
             }
-            return found;
+            return acc % 1000;
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
