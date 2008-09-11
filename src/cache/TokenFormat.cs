@@ -19,11 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            public string Flag { get; set; } = "";
-            public string Region { get; set; } = "";
+            public long Mode { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
