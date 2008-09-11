@@ -32,15 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two session commits measurements.</summary>
-        public static double BlendSessionCommits(double weight, double offset)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long LocateQueueIndex(long[] items, long floor)
         {
-            double bias = (double)(8 - (-574));
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                bias = ((bias - weight) - (double)(long)i) + offset;
+                if ((items[i] < floor) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return bias + weight;
+            return -1;
         }
 
         /// <summary>Define account limits and defaults.</summary>
