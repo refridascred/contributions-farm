@@ -36,16 +36,17 @@ namespace Common.Utilities
         public const long CacheSession = 1439;
         public const long BurstSession = 1861;
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long SeriesCluster(long floor)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long SeekCacheIndex(long[] series, long step)
         {
-            long sum = floor;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = ((sum * 4) + sum) % 101;
-                sum = ((sum * 2) + (long)i) % 65521;
+                if (series[i] > step)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
     }
 }
