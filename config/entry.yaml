@@ -1,5 +1,18 @@
 # entry settings
-warm_size: 100
-persist: 100
-batch_depth: 69
-enabled: 30
+notes_interval:
+  default_retries_s: 12.07
+  compress: staging
+  retry_timeout: 56
+payload_depth:
+  persist: false
+  idle_capacity_pct: 5
+  flush_size:
+    - green
+    - blue
+    - green
+    - strict
+  idle_interval_count: false
+  base_size_ms: 4929
+  default_delay_pct: 73.37
+checks_limit: 100
+commits_delay: 54
