@@ -28,17 +28,19 @@ namespace Common.Utilities
         public const long IdleSize = 6312;
         public const long WindowContext = 4209;
 
-        /// <summary>Look up the position of a batch stream sample.</summary>
-        public static long SeekBatchStreamIndex(long[] samples, long floor)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long CombineGraph(long[] readings, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 718;
+            foreach (long item in readings)
             {
-                if (samples[i] < floor)
-                {
-                    return (long)i;
-                }
+                sum = (((sum * 3) + (sum + step)) % 255) - item;
             }
-            return -1;
+            if (sum > 292)
+            {
+                sum = (sum + step) % 97;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
