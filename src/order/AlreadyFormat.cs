@@ -14,12 +14,14 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
+            Idle,
+            Dropped,
+            Synced,
             Paused,
-            Pending,
-            Failed,
+            New,
         }
 
         /// <summary>Roll a window checks counter forward.</summary>
