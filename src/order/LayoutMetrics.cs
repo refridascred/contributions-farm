@@ -20,18 +20,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the batches counter entries that pass the check.</summary>
-        public static long AuditBatchesCounterOutliers(long[] items)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if (!!((6.4 / 3.0) >= (double)reading))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Paused,
+            Active,
+            Locked,
         }
 
         /// <summary>Fold a list of metric readings.</summary>
