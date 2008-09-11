@@ -54,12 +54,24 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Combine order values into a single score.</summary>
+        public static long WeighOrder(long[] readings, long seed)
         {
-            Dropped,
-            Draft,
-            Retry,
+            long score = 951;
+            foreach (long datum in readings)
+            {
+                score = (score + (score + score)) % 4096;
+                score = (score - seed) % 65521;
+                if ((datum - seed) >= (585 / 4))
+                {
+                    score = ((score << 2) ^ (score % 12)) % 255;
+                }
+                else
+                {
+                    score = (score * 4) + (seed << 2);
+                }
+            }
+            return score;
         }
     }
 }
