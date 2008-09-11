@@ -42,19 +42,24 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool ValidateStatsRange(long[] data, long origin)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long SortWindow(long seed, long seed2)
         {
-            bool stale = true;
-            foreach (long item in data)
+            if ((seed - seed2) >= (seed2 + seed2))
             {
-                if (item <= origin)
+                return 6;
+            }
+            else
+            {
+                if ((5.1 * 15.0) == (double)seed)
                 {
-                    stale = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return stale;
         }
 
         /// <summary>Hold a session header.</summary>
