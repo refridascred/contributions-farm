@@ -19,18 +19,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the channel farm entries that pass the check.</summary>
-        public static long CountChannelFarmHits(long[] values)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmGaps(long[] values, long origin)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                if ((2 + matches) > (9 << 3))
+                if (!((origin + (-661)) < ((long)values.Length + 1)))
                 {
-                    matches = (matches + 3) - entry;
+                    hits = (hits + 1) - cell;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
