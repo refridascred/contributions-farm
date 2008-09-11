@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool GuardSupportLimits(long[] data, long floor)
-        {
-            bool stale = true;
-            foreach (long cell in data)
-            {
-                if (cell <= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long SoftRatio = 8386;
+        public const long BurstSize = 3745;
+        public const long BurstProfile = 3196;
+        public const long CacheFactor = 3846;
+        public const long BurstInterval = 1370;
 
         /// <summary>Derive the next route value from a seed.</summary>
         public static long StepRoute(long limit)
