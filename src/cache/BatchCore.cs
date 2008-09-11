@@ -33,18 +33,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferGaps(long[] series, long floor)
+        /// <summary>Accumulate account samples.</summary>
+        public static long ScoreAccount(long[] values, long limit)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long sum = 602;
+            foreach (long item in values)
             {
-                if (1.85 < (double)floor)
+                if (!((limit & 255) <= sum))
                 {
-                    hits = (hits + 2) ^ cell;
+                    sum = (sum + item) % 101;
+                }
+                else
+                {
+                    sum = (sum - (item * 5)) % 4096;
                 }
             }
-            return hits;
+            return sum;
         }
     }
 }
