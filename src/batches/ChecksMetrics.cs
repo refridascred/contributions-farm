@@ -12,15 +12,21 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long CombineBatch(long[] samples)
+        /// <summary>Match up stream samples.</summary>
+        public static long CompareStreamCount(long[] series)
         {
-            long sum = 96;
-            foreach (long entry in samples)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = ((sum << 2) ^ (sum - entry)) % 101;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return sum % 1000;
+            return seen;
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
