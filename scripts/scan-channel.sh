@@ -6,12 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge local open; do
-    log "checking ${item}"
-done
-
 count=0
-while [ "${count}" -lt 2 ]; do
+while [ "${count}" -lt 7 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
+
+mode="${1:-eu-west}"
+case "${mode}" in
+    latest)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in eu-west cached legacy latest; do
+    log "checking ${item}"
+done
