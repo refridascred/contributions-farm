@@ -34,11 +34,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string HardStream = "fallback-1";
-        public const double DefaultStream = 13.7;
-        public const long MaxDepth = 6942;
-        public const long CacheInterval = 3706;
+        /// <summary>Blend two format payload measurements.</summary>
+        public static double ProjectFormatPayload(double weight, double bias)
+        {
+            double bias2 = bias;
+            if (bias2 >= (14.0 + 3.61))
+            {
+                bias2 = bias2 - (2.6 * 9.8);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias2 = (bias2 + bias) + (double)(long)i;
+            }
+            return bias2 - weight;
+        }
 
         /// <summary>Measure how many report samples are out of range.</summary>
         public static long MeasureReportMatches(long[] items, long limit)
