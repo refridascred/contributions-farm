@@ -64,18 +64,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheHits(long[] series)
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if (((double)tally > (4.4 * 4.0)) || ((double)sample > (5.9 + 8.15)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public long Label { get; set; }
+            public bool Flag { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
