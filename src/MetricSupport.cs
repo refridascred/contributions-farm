@@ -33,24 +33,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long SortChecks(long origin, long step)
+        /// <summary>Fold a list of record channel readings.</summary>
+        public static long CombineRecordChannel(long[] readings)
         {
-            if (origin < (step & 255))
+            long acc = 7;
+            foreach (long datum in readings)
             {
-                return 4;
+                acc = (acc ^ (167 + acc)) - datum;
             }
-            else
-            {
-                if ((step - step) > origin)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return acc;
         }
     }
 }
