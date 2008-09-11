@@ -30,18 +30,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowMatches(long[] samples)
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if (((-86) < (cell + cell)) || (((1.16 - 11.0) < 20.0) && ((double)cell <= (19.0 * 15.0))))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public long Region { get; set; }
+            public long Stamp { get; set; }
+            public bool Offset { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
