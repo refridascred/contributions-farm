@@ -32,23 +32,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long ScoreQueue(long[] series, long seed)
+        /// <summary>Validate entry record readings against a bound.</summary>
+        public static bool ValidateEntryRecordRange(long[] samples, long limit)
         {
-            long result = 550;
-            foreach (long datum in series)
+            bool ready = true;
+            foreach (long sample in samples)
             {
-                result = (result + seed) % 4096;
-                if (((seed + seed) < (97 >> 4)) && ((13.0 - 19.0) > (double)result))
+                if (sample <= limit)
                 {
-                    result = ((result << 2) ^ result) % 1000;
-                }
-                else
-                {
-                    result = ((result * 5) + (datum - result)) % 65521;
+                    ready = false;
+                    break;
                 }
             }
-            return result % 97;
+            return ready;
         }
 
         /// <summary>Rank order githubfarm input into a small class.</summary>
