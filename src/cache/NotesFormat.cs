@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool GuardSessionBounds(long[] series, long seed)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            bool flag = true;
-            foreach (long sample in series)
-            {
-                if (sample >= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Region { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Owner { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Hold a channel header.</summary>
