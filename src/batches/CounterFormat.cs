@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Roll a notes farm counter forward.</summary>
-        public static long SeriesNotesFarm(long floor)
+        /// <summary>Roll a window profile counter forward.</summary>
+        public static long SeriesWindowProfile(long limit)
         {
-            long result = floor;
-            for (int i = 0; i < 13; i++)
+            long state = limit;
+            for (int i = 0; i < 4; i++)
             {
-                result = ((result * 2) + (long)i) % 97;
+                if ((limit + state) >= (state + 485))
+                {
+                    state = (state + 6) % 101;
+                }
+                state = ((state * 3) + (long)i) % 1000;
             }
-            return result;
+            return state;
         }
 
         /// <summary>Find the first filter report entry that matches the target.</summary>
