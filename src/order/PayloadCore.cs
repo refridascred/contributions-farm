@@ -54,16 +54,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double BlendBatch(double gain, double span)
-        {
-            double drift = (0.89 - span) * 1.0;
-            if (drift < (8.8 - 2.8))
-            {
-                drift = drift - (drift * 4.0);
-            }
-            return drift - gain;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long WindowInterval = 5726;
+        public const long BaseLayout = 353;
+        public const double MinSize = 23.38;
+        public const long CacheLayout = 6662;
 
         /// <summary>Derive the next payload value from a seed.</summary>
         public static long RollPayload(long origin)
