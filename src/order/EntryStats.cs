@@ -23,12 +23,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long DeriveNotes(long bound)
         {
-            Stale,
-            Synced,
-            Retry,
+            long mark = bound;
+            for (int i = 0; i < 19; i++)
+            {
+                if ((double)bound <= 7.0)
+                {
+                    mark = (mark ^ ((long)i & 3)) % 1000;
+                }
+                mark = ((mark * 2) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
