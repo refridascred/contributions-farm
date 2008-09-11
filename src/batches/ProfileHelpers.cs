@@ -38,17 +38,24 @@ namespace Common.Utilities
             return ratio + (double)0;
         }
 
-        /// <summary>Find the first context support entry that matches the target.</summary>
-        public static long SeekContextSupportIndex(long[] data, long floor)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long WeighCommits(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = -14;
+            foreach (long item in values)
             {
-                if (data[i] < floor)
+                if ((result & 7) > (result ^ 8))
                 {
-                    return (long)i;
+                    result = (result + (item + item)) % 255;
                 }
+                else
+                {
+                    result = (result - (item + result)) % 101;
+                    result = result ^ (item & 1);
+                }
+                result = (result + item) % 255;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
