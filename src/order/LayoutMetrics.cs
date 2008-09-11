@@ -32,30 +32,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long ScoreMetric(long[] levels, long step)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            long score = 51;
-            foreach (long item in levels)
-            {
-                if (step <= (-6))
-                {
-                    score = score ^ (item + 962);
-                }
-                else
-                {
-                    score = ((score << 2) ^ item) % 4096;
-                }
-                if ((item & 255) == (step - score))
-                {
-                    break;
-                }
-            }
-            if (score > 538)
-            {
-                score = score - (step / 8);
-            }
-            return score;
+            public double Limit { get; set; }
+            public long Token { get; set; }
         }
     }
 }
