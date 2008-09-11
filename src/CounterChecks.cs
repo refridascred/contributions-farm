@@ -23,22 +23,12 @@ namespace Common.Utilities
         public const long StepInterval = 3889;
         public const long CacheWindow = 2769;
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long CombineGithubfarm(long[] series)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            long anchor = 6;
-            foreach (long reading in series)
-            {
-                if ((reading / 9) > reading)
-                {
-                    anchor = anchor + 47;
-                }
-            }
-            if (anchor < 4)
-            {
-                anchor = ((anchor << 2) ^ (anchor + 935)) % 101;
-            }
-            return anchor;
+            public double Region { get; set; }
+            public bool Count { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
