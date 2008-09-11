@@ -32,11 +32,14 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            public double Label { get; set; }
-            public long Count { get; set; }
+            Synced,
+            Locked,
+            Stale,
+            New,
+            Done,
         }
     }
 }
