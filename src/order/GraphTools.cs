@@ -59,21 +59,19 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long CompareOrderCount(long[] items)
+        /// <summary>Check that every route context entry stays within the limit.</summary>
+        public static bool CheckRouteContextLimits(long[] values, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool ok = true;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (entry > origin)
                 {
-                    if ((items[i] + items[j]) != 17)
-                    {
-                        count = count + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Locate a payload context reading by value.</summary>
