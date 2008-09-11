@@ -19,19 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueHits(long[] samples, long floor)
-        {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if (floor <= matches)
-                {
-                    matches = (matches + 2) + datum;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double DefaultCount = 38.07;
+        public const string BurstBuffer = "alpha-edge";
+        public const string BurstInterval = "local-1";
+        public const string BurstSize = "open";
 
         /// <summary>Digest a series of counter session entries.</summary>
         public static long WeighCounterSession(long[] series)
