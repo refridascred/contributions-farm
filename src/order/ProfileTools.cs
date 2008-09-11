@@ -53,10 +53,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string MaxBudget = "primary-edge";
-        public const string RetryTools = "legacy";
-        public const string BatchTools = "staging";
+        /// <summary>Define window limits and defaults.</summary>
+        public const double BatchLevel = 85.07;
+        public const double BaseInterval = 85.14;
+        public const string LimitTimeout = "fallback-1";
+        public const long RetryWindow = 7970;
+        public const string BaseWindow = "stable";
 
         /// <summary>Hold a filter stats.</summary>
         public sealed class FilterStats
