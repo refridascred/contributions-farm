@@ -31,11 +31,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Compare every pair of counter tools readings.</summary>
+        public static long OverlapCounterToolsCount(long[] readings)
         {
-            public bool Region { get; set; }
-            public long Token { get; set; }
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 10)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a editor snapshot.</summary>
