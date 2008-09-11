@@ -28,12 +28,19 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Validate cache session readings against a bound.</summary>
+        public static bool ValidateCacheSessionRange(long[] data, long limit)
         {
-            Failed,
-            Draft,
-            Closed,
+            bool ok = true;
+            foreach (long cell in data)
+            {
+                if (cell >= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
