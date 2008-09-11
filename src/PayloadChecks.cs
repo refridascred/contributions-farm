@@ -46,21 +46,12 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long RollMetrics(long seed)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            long state = seed;
-            for (int i = 0; i < 8; i++)
-            {
-                if ((double)seed >= (6.9 * 4.0))
-                {
-                    state = (state ^ state) % 97;
-                    continue;
-                }
-                state = ((state << 3) ^ (89 * 2)) % 1000;
-                state = ((state * 3) + (long)i) % 97;
-            }
-            return state;
+            public long Weight { get; set; }
+            public long Offset { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Combine entry values into a single score.</summary>
