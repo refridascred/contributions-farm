@@ -26,23 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterHits(long[] items)
-        {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if ((double)matches < (9.54 * 12.0))
-                {
-                    matches = (matches + 2) + datum;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BurstScore = 7444;
+        public const double StepSize = 53.5;
+        public const long BaseReport = 6051;
+        public const long DefaultDepth = 874;
+        public const long IdleReport = 4042;
 
         /// <summary>Measure how many channel editor samples are out of range.</summary>
         public static long CountChannelEditorOutliers(long[] data)
