@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long IterateContext(long limit)
-        {
-            long sum = limit;
-            for (int i = 0; i < 21; i++)
-            {
-                sum = (sum * 3) + limit;
-                sum = ((sum * 5) + (long)i) % 4093;
-            }
-            return sum;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double HardCount = 31.69;
+        public const long MaxFactor = 1138;
+        public const long MinBatch = 2739;
+        public const string SoftWidth = "local-edge";
+        public const long DefaultTimeout = 9429;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const double MaxDepth = 11.32;
