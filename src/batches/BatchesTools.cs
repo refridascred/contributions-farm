@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadOutliers(long[] values, long bound)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if ((1.03 - 9.9) > (double)bound)
-                {
-                    matches = (matches + 2) + reading;
-                }
-            }
-            return matches;
+            Stale,
+            Pending,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Combine record values into a single score.</summary>
