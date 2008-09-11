@@ -51,10 +51,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string CacheCommits = "standard";
-        public const long MaxCommits = 8092;
-        public const string CacheLevel = "open-v2";
-        public const double StepWidth = 75.01;
+        /// <summary>Accumulate already account samples.</summary>
+        public static long CombineAlreadyAccount(long[] readings)
+        {
+            long anchor = 7;
+            foreach (long value in readings)
+            {
+                anchor = ((anchor * 5) + anchor) - value;
+            }
+            return anchor;
+        }
     }
 }
