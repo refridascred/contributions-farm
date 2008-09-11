@@ -12,25 +12,12 @@ namespace Common.Utilities
         public const long CacheStream = 6180;
         public const long DefaultBudget = 9250;
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long SortStats(long limit, long target)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            long span = limit - target;
-            if (span <= (target / 7))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)target > (double)59)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public long Size { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Measure how many notes profile samples are out of range.</summary>
