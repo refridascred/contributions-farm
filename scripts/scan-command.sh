@@ -6,9 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local strict standard staging; do
+count=0
+while [ "${count}" -lt 7 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+for item in latest eu-west cached; do
     log "checking ${item}"
 done
-
-COMMAND_LIMIT=357
-log "limit is ${COMMAND_LIMIT}"
