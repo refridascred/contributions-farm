@@ -19,21 +19,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long PairNotesCount(long[] values)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long SortCounter(long offset, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            if (!((offset << 1) == (limit ^ limit)))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((offset + limit) <= 38)
                 {
-                    if ((values[i] - values[j]) == 18)
+                    return 7;
+                }
+                else
+                {
+                    if ((offset - limit) <= limit)
                     {
-                        hits = hits + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((14.0 - 3.0) == (double)offset)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
