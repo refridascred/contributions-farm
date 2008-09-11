@@ -43,19 +43,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long TotalAlready(long[] data)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long FindPayloadIndex(long[] data, long bound)
         {
-            long total = -747;
-            foreach (long sample in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                total = (total + (total & 127)) - sample;
+                if (data[i] >= bound)
+                {
+                    return (long)i;
+                }
             }
-            if (total < 9)
-            {
-                total = (total << 3) ^ ((long)data.Length + total);
-            }
-            return total;
+            return -1;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
