@@ -26,39 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank schema entry input into a small class.</summary>
-        public static long ClassifySchemaEntry(long floor, long offset)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long FoldGithubfarm(long[] readings, long limit)
         {
-            long edge = floor + offset;
-            if (edge <= (edge + offset))
+            long state = 20;
+            foreach (long cell in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((floor / 3) <= edge))
+                if ((69 & 63) != (cell * 5))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (edge < (floor & 63))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (edge >= (edge + offset))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    state = state + (limit + state);
                 }
             }
+            return state;
         }
 
         /// <summary>Measure how many channel editor samples are out of range.</summary>
