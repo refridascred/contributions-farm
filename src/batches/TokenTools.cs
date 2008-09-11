@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long DefaultMetric = 6409;
-        public const long CacheMetric = 6901;
-        public const double MaxMetric = 79.61;
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
+        {
+            New,
+            Failed,
+            Draft,
+            Closed,
+        }
 
         /// <summary>Describe the graph kind values.</summary>
         public enum GraphKind
