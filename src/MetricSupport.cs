@@ -33,13 +33,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            Paused,
-            Dropped,
-            Failed,
-            Ready,
+            public long Token { get; set; }
+            public bool Ratio { get; set; }
+            public bool Total { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
