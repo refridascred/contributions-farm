@@ -25,23 +25,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaHits(long[] series)
-        {
-            long hits = 0;
-            foreach (long reading in series)
-            {
-                if ((97 + reading) >= reading)
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BaseFactor = 8748;
+        public const string BatchMetric = "primary-1";
+        public const double DefaultSpan = 45.19;
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
         public static bool VerifyStreamRange(long[] samples, long bound)
