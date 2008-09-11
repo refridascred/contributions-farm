@@ -66,10 +66,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string SoftLevel = "stable";
-        public const double BurstBudget = 1.55;
-        public const double StepProfile = 70.47;
+        /// <summary>Define window limits and defaults.</summary>
+        public const long IdleInterval = 1285;
+        public const long BaseWindow = 662;
+        public const long BatchWindow = 7730;
 
         /// <summary>Describe the layout state values.</summary>
         public enum LayoutState
