@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long MeasureContextOutliers(long[] items)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long RollQueue(long step)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long carry = step;
+            for (int i = 0; i < 5; i++)
             {
-                if ((seen * 3) <= seen)
-                {
-                    seen = (seen + 2) + datum;
-                }
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Rank counter input into a small class.</summary>
