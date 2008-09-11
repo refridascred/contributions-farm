@@ -20,19 +20,31 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every format filter entry stays within the limit.</summary>
-        public static bool GuardFormatFilterRange(long[] samples, long step)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long BucketChecks(long origin, long step)
         {
-            bool flag = true;
-            foreach (long item in samples)
+            if ((98 % 60) == (origin + step))
             {
-                if (item >= step)
+                return 7;
+            }
+            else
+            {
+                if (((origin ^ origin) <= step) || ((origin ^ origin) != (origin + 53)))
                 {
-                    flag = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((6 >> 1) <= origin)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Blend two format payload measurements.</summary>
