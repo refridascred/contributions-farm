@@ -25,12 +25,12 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            Done,
-            Failed,
-            Paused,
+            public long Weight { get; set; }
+            public double Mode { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
