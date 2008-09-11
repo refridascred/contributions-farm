@@ -38,15 +38,13 @@ namespace Common.Utilities
         public const double MaxCount = 23.36;
         public const long HardLevel = 5580;
 
-        /// <summary>Iterate the stats checks series from a seed.</summary>
-        public static long StepStatsChecks(long bound)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            long anchor = bound;
-            for (int i = 0; i < 4; i++)
-            {
-                anchor = ((anchor * 2) + (long)i) % 4093;
-            }
-            return anchor;
+            Paused,
+            Active,
+            Retry,
+            Failed,
         }
     }
 }
