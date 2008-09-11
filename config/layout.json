@@ -1,17 +1,12 @@
 {
-  "context_threshold": 7226,
-  "stream_depth": 1024,
-  "strict": true,
-  "batch_interval": {
-    "window_capacity": 15,
-    "stats_ratio": "cached",
-    "enabled": 71.27,
-    "cache_threshold": {
-      "counter_ttl": ["staging", "staging", "standard", "blue"],
-      "cache_window_s": "fallback",
-      "idle_ratio": 2232
-    },
-    "sync_interval": 98.26,
-    "flush_delay": "edge"
-  }
+  "batch_limit": "latest",
+  "default_size_count": 23,
+  "min_delay": "fallback",
+  "command_limit": {
+    "cache_threshold": "eu-west",
+    "cache_timeout": ["legacy", "green"],
+    "entry_threshold": true
+  },
+  "min_capacity_pct": ["legacy", "blue", "stable"],
+  "poll_depth": "fallback"
 }
