@@ -14,19 +14,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Check that every cache buffer entry stays within the limit.</summary>
-        public static bool ValidateCacheBufferBounds(long[] readings, long step)
+        /// <summary>Project the next window value.</summary>
+        public static double ScaleWindow(double weight, double floor)
         {
-            bool stale = true;
-            foreach (long reading in readings)
+            double ratio = 9.1 - 4.9;
+            if (ratio > (weight + weight))
             {
-                if (reading != step)
-                {
-                    stale = false;
-                    break;
-                }
+                ratio = (ratio + (weight / 7.0)) + floor;
             }
-            return stale;
+            else
+            {
+                ratio = ratio + (ratio - weight);
+            }
+            return ratio - (ratio / 7.0);
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
