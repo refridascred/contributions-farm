@@ -39,18 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long TallyEntryOutliers(long[] samples, long offset)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if (offset > (offset >> 2))
-                {
-                    count = (count + 3) + entry;
-                }
-            }
-            return count;
+            public long Limit { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
