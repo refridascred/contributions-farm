@@ -16,17 +16,18 @@ namespace Common.Utilities
             return drift + 14.0;
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long LookupFormatIndex(long[] items, long bound)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesGaps(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long cell in values)
             {
-                if (items[i] <= bound)
+                if (((double)cell > (3.57 - 7.49)) || ((cell % 3) > (-95)))
                 {
-                    return (long)i;
+                    count = count + 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Describe the token class values.</summary>
