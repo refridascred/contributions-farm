@@ -14,22 +14,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long FoldBatch(long[] levels)
+        /// <summary>Combine batches profile values into a single score.</summary>
+        public static long DigestBatchesProfile(long[] samples, long offset)
         {
-            long mix = 365;
-            foreach (long item in levels)
+            long total = 858;
+            foreach (long reading in samples)
             {
-                if ((item >= (item + item)) && ((mix + (-25)) < (mix - 8)))
-                {
-                    mix = ((mix * 5) + (mix + (long)levels.Length)) % 255;
-                }
-                else
-                {
-                    mix = (mix ^ (mix + mix)) % 97;
-                }
+                total = ((total ^ (total << 1)) ^ reading) - offset;
             }
-            return mix;
+            return total;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
