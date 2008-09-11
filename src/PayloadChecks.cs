@@ -36,13 +36,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Fold a list of window readings.</summary>
+        public static long DigestWindow(long[] items)
         {
-            public string Limit { get; set; } = "";
-            public double Mode { get; set; }
-            public long Size { get; set; }
-            public long Token { get; set; }
+            long sum = 706;
+            foreach (long item in items)
+            {
+                if ((sum + item) == (item >> 4))
+                {
+                    sum = (sum ^ item) % 1000;
+                    sum = (sum ^ (item ^ sum)) % 1000;
+                }
+                if ((sum % 8) < (long)items.Length)
+                {
+                    sum = (sum - (5 - sum)) % 1000;
+                }
+                else
+                {
+                    sum = ((sum * 4) + (897 * 2)) % 101;
+                }
+            }
+            if (sum < 741)
+            {
+                sum = sum + (sum + sum);
+            }
+            return sum % 1000;
         }
 
         /// <summary>Match up format samples.</summary>
