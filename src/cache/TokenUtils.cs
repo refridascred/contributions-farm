@@ -10,15 +10,21 @@ namespace Common.Utilities
         public const double CacheSize = 89.22;
         public const long MaxDepth = 5607;
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long IterateCache(long origin)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long MatchGraphCount(long[] samples)
         {
-            long acc = origin;
-            for (int i = 0; i < 23; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                acc = ((acc * 2) + (long)i) % 1000;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 6)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Describe the channel phase values.</summary>
