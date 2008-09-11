@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Measure how many report payload samples are out of range.</summary>
+        public static long AuditReportPayloadGaps(long[] readings, long offset)
         {
-            Failed,
-            Synced,
-            Idle,
-            Stale,
-            Ready,
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if (!!((0.95 / 9.0) == (double)item))
+                {
+                    hits = (hits + 1) - offset;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
