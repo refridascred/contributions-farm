@@ -18,13 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long PairPayloadCount(long[] levels)
         {
-            public string Token { get; set; } = "";
-            public bool Ratio { get; set; }
-            public string Total { get; set; } = "";
-            public double Size { get; set; }
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 3)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a cache stats.</summary>
