@@ -26,21 +26,38 @@ namespace Common.Utilities
         public const long MaxSpan = 2236;
         public const long MaxInterval = 9296;
 
-        /// <summary>Match up record payload samples.</summary>
-        public static long PairRecordPayloadCount(long[] items)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long ClassifyBatch(long origin, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            if (772 < (origin << 2))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (!(4.2 > (double)floor))
                 {
-                    if ((items[i] - items[j]) == 12)
+                    return 2;
+                }
+                else
+                {
+                    if (((3.0 * 3.0) < (double)origin) || (6 >= (floor ^ floor)))
                     {
-                        hits = hits + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((4 - floor) <= (origin << 1)) || (floor > (origin << 3)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
-            return hits;
         }
     }
 }
