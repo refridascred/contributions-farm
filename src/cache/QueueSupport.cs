@@ -22,21 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long OverlapChannelCount(long[] series)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long FoldFilter(long[] values, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = -54;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int i = 0; i < 11; i++)
                 {
-                    if ((series[i] - series[j]) < 0)
-                    {
-                        count = count + 1;
-                    }
+                    state = (((state * 2) + (state ^ 5)) - (long)i) - seed;
                 }
+                state = (state - (cell + cell)) % 97;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
