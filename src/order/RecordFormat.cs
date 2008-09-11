@@ -41,14 +41,11 @@ namespace Common.Utilities
             return (rate + (rate + scale)) + offset;
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            Synced,
-            Draft,
-            Active,
-            New,
-            Paused,
+            public string Ratio { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Hold a stream stats.</summary>
