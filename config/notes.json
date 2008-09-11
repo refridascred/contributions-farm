@@ -1,9 +1,5 @@
 {
-  "flush_size_pct": 9605,
-  "session_size": false,
-  "flush_timeout_pct": {
-    "batch_limit_s": "blue",
-    "strict": 1024,
-    "window_window": 5
-  }
+  "readonly": 27,
+  "retry_ratio_ms": false,
+  "strict": false
 }
