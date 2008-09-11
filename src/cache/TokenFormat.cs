@@ -17,18 +17,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit cache batch readings against a rule.</summary>
-        public static long TallyCacheBatchHits(long[] readings, long offset)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool GuardCacheLimits(long[] levels, long origin)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            bool flag = true;
+            foreach (long sample in levels)
             {
-                if ((hits / 9) == (7 + hits))
+                if (sample != origin)
                 {
-                    hits = ((hits + 3) ^ datum) + offset;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Blend two window buffer measurements.</summary>
