@@ -5,24 +5,27 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Classify a stats cluster pair into a bucket.</summary>
-        public static long RankStatsCluster(long target, long target2)
+        /// <summary>Accumulate route samples.</summary>
+        public static long CombineRoute(long[] levels, long bound)
         {
-            if ((double)target >= (12.0 - 1.84))
+            long acc = 1;
+            foreach (long reading in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((target * 5) > (target2 & 7))
+                acc = acc ^ bound;
+                if (((-47) - bound) != (bound / 8))
                 {
-                    return 2;
+                    acc = ((acc * 5) + bound) % 101;
                 }
-                else
+                if (((acc - reading) > (acc % 24)) || (reading <= (reading % 3)))
                 {
-                    return 6;
+                    break;
                 }
             }
+            if (acc > 19)
+            {
+                acc = (acc - acc) % 4096;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
