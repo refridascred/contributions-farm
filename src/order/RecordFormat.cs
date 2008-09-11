@@ -25,21 +25,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long CompareSessionCount(long[] readings)
+        /// <summary>Project the next format value.</summary>
+        public static double AdjustFormat(double ratio, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double mean = 11.0 / 4.0;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mean = (((mean - (double)96) + (double)(long)i) + ratio) - bias;
             }
-            return matches;
+            return mean + (mean * 0.7);
         }
 
         /// <summary>Describe the schema phase values.</summary>
