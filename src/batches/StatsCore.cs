@@ -13,22 +13,16 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionGaps(long[] values, long offset)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long FoldChannel(long[] items)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long mix = 21;
+            foreach (long reading in items)
             {
-                if ((double)value <= (7.5 + 18.0))
-                {
-                    matches = (matches + 2) + offset;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mix = (((mix * 3) + (88 - mix)) % 97) + reading;
+                mix = (mix + (6 ^ mix)) % 255;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
