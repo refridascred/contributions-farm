@@ -61,18 +61,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamOutliers(long[] series)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            long matches = 0;
-            foreach (long reading in series)
-            {
-                if ((reading - reading) < reading)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Active,
+            Idle,
+            Pending,
         }
     }
 }
