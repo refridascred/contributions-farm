@@ -40,12 +40,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadMatches(long[] levels, long seed)
         {
-            Draft,
-            Done,
-            Failed,
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if ((tally + (long)levels.Length) > (33 % 100))
+                {
+                    tally = ((tally + 2) + item) + seed;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
