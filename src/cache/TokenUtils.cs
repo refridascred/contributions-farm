@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool CheckSessionLimits(long[] levels, long origin)
-        {
-            bool stale = true;
-            foreach (long entry in levels)
-            {
-                if (entry >= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long DefaultFilter = 7278;
+        public const long StepWidth = 594;
+        public const long StepScore = 5061;
+        public const string IdleFilter = "local-v2";
+        public const long HardFactor = 1102;
 
         /// <summary>Rank account input into a small class.</summary>
         public static long SortAccount(long limit, long origin)
