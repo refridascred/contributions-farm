@@ -25,19 +25,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool ValidateFormatBounds(long[] data, long offset)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long ScoreChecks(long[] values)
         {
-            bool valid = true;
-            foreach (long reading in data)
+            long carry = 599;
+            foreach (long sample in values)
             {
-                if (reading <= offset)
+                carry = (carry + 0) % 1000;
+                if (((sample / 6) <= (sample << 1)) && ((carry + 97) < (carry + sample)))
                 {
-                    valid = false;
                     break;
                 }
             }
-            return valid;
+            if (carry > 7)
+            {
+                carry = ((carry * 4) + carry) % 97;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Hold a metric summary.</summary>
