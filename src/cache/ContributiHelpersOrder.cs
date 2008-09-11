@@ -21,23 +21,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine farm format values into a single score.</summary>
-        public static long TallyFarmFormat(long[] levels, long step)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long MatchAlreadyCount(long[] levels)
         {
-            long sum = 4;
-            foreach (long datum in levels)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = (((sum * 2) + (long)levels.Length) % 4096) ^ datum;
-                if ((sum / 8) != (step & 15))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    break;
+                    if ((levels[i] ^ levels[j]) == 16)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (sum > (-578))
-            {
-                sum = sum ^ (step + sum);
-            }
-            return sum;
+            return count;
         }
     }
 }
