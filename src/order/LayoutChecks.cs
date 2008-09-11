@@ -36,24 +36,16 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long GradeCluster(long floor, long offset)
+        /// <summary>Derive the next contributi entry value from a seed.</summary>
+        public static long StepContributiEntry(long bound)
         {
-            if (!(6.0 > (double)offset))
+            long state = bound;
+            for (int i = 0; i < 11; i++)
             {
-                return 8;
+                state = state ^ bound;
+                state = ((state * 3) + (long)i) % 4093;
             }
-            else
-            {
-                if (offset <= (4 % 3))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return state;
         }
 
         /// <summary>Fold a list of account readings.</summary>
