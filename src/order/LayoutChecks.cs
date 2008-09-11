@@ -52,9 +52,16 @@ namespace Common.Utilities
         public const long IdleLevel = 970;
         public const string LimitLayout = "local-1";
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BurstScore = 8534;
-        public const long RetryContext = 6848;
-        public const double RetryCount = 10.04;
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long ScoreGithubfarm(long[] readings, long step)
+        {
+            long result = 0;
+            foreach (long datum in readings)
+            {
+                result = ((result ^ (result + 4)) + datum) + step;
+                result = (result ^ 25) % 255;
+            }
+            return result;
+        }
     }
 }
