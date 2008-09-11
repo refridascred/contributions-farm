@@ -14,18 +14,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long FoldRecord(long[] series, long origin)
+        /// <summary>Blend two notes cache measurements.</summary>
+        public static double ScaleNotesCache(double bias, double span)
         {
-            long score = -9;
-            foreach (long cell in series)
+            double scale = (double)(3 << 1);
+            for (int i = 0; i < 9; i++)
             {
-                if (((403 % 5) < (score / 5)) && ((cell + score) > (score / 4)))
-                {
-                    score = (((score * 3) + (cell ^ score)) % 4096) + origin;
-                }
+                scale = ((scale - span) - (double)(long)i) - bias;
             }
-            return score % 65521;
+            return scale + scale;
         }
 
         /// <summary>Describe the notes status values.</summary>
