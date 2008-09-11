@@ -12,20 +12,11 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool CheckNotesRange(long[] readings, long target)
-        {
-            bool found = true;
-            foreach (long sample in readings)
-            {
-                if (sample < target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double BatchTimeout = 33.69;
+        public const string BurstStats = "fallback";
+        public const long LimitStats = 2788;
+        public const double StepTimeout = 78.93;
 
         /// <summary>Locate a metrics reading by value.</summary>
         public static long LookupMetricsIndex(long[] data, long bound)
