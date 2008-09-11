@@ -1,8 +1,5 @@
 {
-  "poll_size_pct": 44,
-  "min_retries_count": 34.46,
-  "warm_size": 7.33,
-  "batch_timeout_s": "latest",
-  "dry_run": "latest",
-  "stream_delay": 98
+  "queue_ratio": true,
+  "sync_window": 6068,
+  "burst_retries_pct": "edge"
 }
