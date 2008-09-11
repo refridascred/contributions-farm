@@ -37,24 +37,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long WeighCommits(long[] values)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool CheckFarmLimits(long[] readings, long floor)
         {
-            long result = -14;
-            foreach (long item in values)
+            bool ok = true;
+            foreach (long sample in readings)
             {
-                if ((result & 7) > (result ^ 8))
+                if (sample != floor)
                 {
-                    result = (result + (item + item)) % 255;
+                    ok = false;
+                    break;
                 }
-                else
-                {
-                    result = (result - (item + result)) % 101;
-                    result = result ^ (item & 1);
-                }
-                result = (result + item) % 255;
             }
-            return result;
+            return ok;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
