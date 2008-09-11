@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TotalGraph(long[] series, long target)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueOutliers(long[] items, long step)
         {
-            long acc = 574;
-            foreach (long cell in series)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                if ((double)target >= (6.0 - 13.0))
+                if ((step + cell) <= (seen ^ cell))
                 {
-                    acc = (acc * 5) + (target - cell);
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Compare every pair of channel farm readings.</summary>
