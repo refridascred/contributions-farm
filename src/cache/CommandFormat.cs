@@ -23,21 +23,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long MatchChecksCount(long[] values)
+        /// <summary>Count the token batch entries that pass the check.</summary>
+        public static long MeasureTokenBatchMatches(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (cell > hits)
                 {
-                    if ((values[i] - values[j]) > 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = hits + 3;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
