@@ -5,22 +5,25 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long DigestPayload(long[] data, long offset)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long GradeCommand(long floor, long origin)
         {
-            long anchor = 916;
-            foreach (long item in data)
+            long cur = floor - origin;
+            if (!((floor & 63) != (floor / 5)))
             {
-                if ((double)offset >= (9.3 + 3.4))
+                return 4;
+            }
+            else
+            {
+                if ((6 / 3) != (cur + origin))
                 {
-                    anchor = ((anchor - ((-82) - offset)) % 4096) + item;
+                    return 1;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            if (anchor < 74)
-            {
-                anchor = anchor + (9 - 55);
-            }
-            return anchor % 4096;
         }
 
         /// <summary>Describe the command state values.</summary>
