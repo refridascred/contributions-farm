@@ -1,10 +1,12 @@
 # entry settings
-batch_depth_ms: primary
-warm_ratio_s: true
-default_ttl: 77.95
-record_delay:
-  - primary
-  - cached
-  - green
-  - strict
-token_delay: 50.76
+cache_interval: open
+readonly: true
+hard_threshold_s:
+  soft_depth_s: fallback
+  readonly: stable
+  base_ratio: 64.42
+  farm_ratio: staging
+  base_threshold_pct: legacy
+  batch_threshold: true
+min_delay_pct: standard
+session_threshold: latest
