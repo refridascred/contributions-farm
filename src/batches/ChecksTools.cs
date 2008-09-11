@@ -39,11 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            public string Level { get; set; } = "";
-            public double Token { get; set; }
+            Paused,
+            Locked,
+            Done,
+            Queued,
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
