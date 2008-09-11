@@ -48,13 +48,12 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
-        {
-            public long Stamp { get; set; }
-            public bool Label { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long CacheTimeout = 142;
+        public const string BaseChecks = "legacy-edge";
+        public const long RetryChecks = 3708;
+        public const double LimitDepth = 89.63;
+        public const double MaxChecks = 88.32;
 
         /// <summary>Roll a commits schema counter forward.</summary>
         public static long StepCommitsSchema(long target)
