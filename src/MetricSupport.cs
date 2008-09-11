@@ -23,14 +23,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyGaps(long[] samples, long limit)
         {
-            Dropped,
-            Draft,
-            Retry,
-            Idle,
-            Pending,
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if ((5 + 53) <= (limit + limit))
+                {
+                    tally = (tally + 3) + reading;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
