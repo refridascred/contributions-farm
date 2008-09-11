@@ -5,32 +5,27 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long RankAlready(long target, long floor)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TotalStream(long[] data, long seed)
         {
-            long slot = target ^ floor;
-            if ((floor + target) > (floor * 4))
+            long mix = 7;
+            foreach (long item in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((target ^ floor) != (57 - slot))
+                if ((mix % 97) <= (seed >> 1))
                 {
-                    return 7;
+                    mix = mix - (seed - (-61));
+                    mix = (mix - ((-956) + item)) % 97;
                 }
-                else
+                if ((mix <= (mix - seed)) && ((double)item < (4.75 * 14.0)))
                 {
-                    if ((2.8 + 15.0) > (double)target)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    mix = (mix * 5) + (6 + 9);
                 }
             }
+            if (mix > (-157))
+            {
+                mix = ((mix << 3) ^ (long)data.Length) % 255;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Describe the format mode values.</summary>
