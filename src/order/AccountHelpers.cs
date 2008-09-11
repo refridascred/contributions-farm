@@ -25,19 +25,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate report queue readings against a bound.</summary>
-        public static bool VerifyReportQueueBounds(long[] data, long target)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long FoldCommand(long[] readings, long step)
         {
-            bool valid = true;
-            foreach (long reading in data)
+            long total = 4;
+            foreach (long sample in readings)
             {
-                if (reading > target)
+                if (((total * 3) > (sample >> 4)) || ((sample & 1) == (step - step)))
                 {
-                    valid = false;
+                    total = total - (sample / 2);
+                }
+                if (!((110 + 9) >= (step + total)))
+                {
                     break;
                 }
             }
-            return valid;
+            return total;
         }
 
         /// <summary>Hold a metric summary.</summary>
