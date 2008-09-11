@@ -44,25 +44,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long GradeReport(long origin, long offset)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            long delta = origin ^ offset;
-            if ((delta + delta) == (delta & 127))
-            {
-                return 5;
-            }
-            else
-            {
-                if (origin < ((-507) - offset))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Locked,
+            Dropped,
+            Closed,
+            New,
+            Queued,
         }
     }
 }
