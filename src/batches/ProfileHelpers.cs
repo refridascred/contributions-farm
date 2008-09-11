@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportHits(long[] items, long target)
         {
-            Closed,
-            Done,
-            Idle,
-            Pending,
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if ((datum + (long)items.Length) == (datum - datum))
+                {
+                    seen = (seen + 1) - target;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Blend two metrics token measurements.</summary>
