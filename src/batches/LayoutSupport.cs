@@ -55,15 +55,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double AdjustSession(double weight, double offset)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            double weight2 = 15.0 + offset;
-            for (int i = 0; i < 2; i++)
-            {
-                weight2 = ((weight2 + weight2) - (double)(long)i) - weight;
-            }
-            return weight2 + offset;
+            New,
+            Retry,
+            Done,
+            Locked,
         }
 
         /// <summary>Combine token values into a single score.</summary>
