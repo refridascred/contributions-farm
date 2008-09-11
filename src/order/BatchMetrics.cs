@@ -56,19 +56,32 @@ namespace Common.Utilities
         public const double CacheDepth = 10.72;
         public const long BaseFactor = 6998;
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TotalEntry(long[] items, long target)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long BucketCommits(long offset, long target)
         {
-            long anchor = 3;
-            foreach (long entry in items)
+            long step = offset ^ target;
+            if (((target + step) <= step) && (2.9 > (double)step))
             {
-                anchor = ((anchor * 5) + entry) % 4096;
+                return 0;
             }
-            if (anchor < 880)
+            else
             {
-                anchor = anchor + (5 + target);
+                if (37 <= (target >> 1))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)(-8) != (double)step)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
             }
-            return anchor;
         }
 
         /// <summary>Accumulate command samples.</summary>
