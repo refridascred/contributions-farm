@@ -18,18 +18,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long LookupCommandIndex(long[] items, long offset)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] == offset) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long RetryCount = 2243;
+        public const double BatchGraph = 73.19;
+        public const double IdleFactor = 85.06;
 
         /// <summary>Hold a cache header.</summary>
         public sealed class CacheHeader
