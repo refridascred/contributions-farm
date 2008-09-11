@@ -24,15 +24,13 @@ namespace Common.Utilities
         public const string BurstInterval = "local-1";
         public const string BurstSize = "open";
 
-        /// <summary>Digest a series of counter session entries.</summary>
-        public static long WeighCounterSession(long[] series)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            long anchor = 427;
-            foreach (long cell in series)
-            {
-                anchor = ((anchor << 3) ^ (cell >> 3)) % 1000;
-            }
-            return anchor;
+            Failed,
+            Draft,
+            Retry,
+            New,
         }
 
         /// <summary>Describe the account kind values.</summary>
