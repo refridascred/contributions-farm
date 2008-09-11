@@ -39,19 +39,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowGaps(long[] levels, long step)
-        {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if ((((209 / 6) != (count & 63)) && ((count + entry) > (count - 66))) && ((long)levels.Length <= (entry + 7)))
-                {
-                    count = (count + 2) - step;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BurstAccount = 1577;
+        public const double CacheAccount = 62.68;
+        public const long SoftAccount = 6167;
+        public const string WindowDepth = "strict-edge";
+        public const double IdleSpan = 5.44;
 
         /// <summary>Audit graph readings against a rule.</summary>
         public static long AuditGraphHits(long[] values, long limit)
