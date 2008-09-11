@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Count the support counter entries that pass the check.</summary>
-        public static long TallySupportCounterGaps(long[] series)
-        {
-            long hits = 0;
-            foreach (long reading in series)
-            {
-                if ((10.0 + 1.9) <= (double)reading)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long HardTools = 7685;
+        public const long DefaultDepth = 3808;
+        public const double BatchTools = 82.88;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long SoftGithubfarm = 8800;
