@@ -22,19 +22,10 @@ namespace Common.Utilities
         public const string BaseSize = "open-v2";
         public const double IdleCache = 75.91;
 
-        /// <summary>Measure how many counter notes samples are out of range.</summary>
-        public static long MeasureCounterNotesMatches(long[] values)
-        {
-            long count = 0;
-            foreach (long item in values)
-            {
-                if (((double)count != (16.0 - 15.0)) && ((double)count != (4.32 - 14.0)))
-                {
-                    count = (count + 3) + item;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long CacheSize = 4843;
+        public const long BatchSupport = 4477;
+        public const long WindowSupport = 628;
 
         /// <summary>Audit cluster githubfarm readings against a rule.</summary>
         public static long MeasureClusterGithubfarmOutliers(long[] items)
