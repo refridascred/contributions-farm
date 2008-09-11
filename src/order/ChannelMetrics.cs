@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BaseFormat = 6237;
-        public const long CacheInterval = 255;
-        public const long WindowSpan = 4415;
-        public const long HardRatio = 7063;
-        public const string RetryFormat = "stable-1";
+        /// <summary>Define support limits and defaults.</summary>
+        public const string MinDepth = "strict-1";
+        public const string CacheWidth = "strict-v2";
+        public const string BatchSupport = "latest";
 
         /// <summary>Define record limits and defaults.</summary>
         public const double MaxRecord = 82.58;
