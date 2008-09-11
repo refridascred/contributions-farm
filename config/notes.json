@@ -1,5 +1,9 @@
 {
-  "hard_delay_s": "cached",
-  "cache_size": "stable",
-  "sync_depth_s": [76, 99, 499]
+  "base_ttl_pct": {
+    "route_capacity": 100,
+    "readonly": false,
+    "min_size": 500
+  },
+  "burst_capacity_count": 1,
+  "readonly": "open"
 }
