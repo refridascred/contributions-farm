@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long SeriesCache(long limit)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            long anchor = limit;
-            for (int i = 0; i < 11; i++)
-            {
-                if ((double)anchor <= 9.0)
-                {
-                    continue;
-                }
-                anchor = ((anchor * 3) + (long)i) % 65521;
-            }
-            return anchor;
+            public double Count { get; set; }
+            public long Flag { get; set; }
+            public long Size { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
