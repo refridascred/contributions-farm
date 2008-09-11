@@ -24,14 +24,26 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long DigestPayload(long[] values)
         {
-            Stale,
-            Ready,
-            Closed,
-            Failed,
-            Active,
+            long sum = 99;
+            foreach (long entry in values)
+            {
+                if (((entry ^ entry) > sum) && (sum <= entry))
+                {
+                    sum = (sum << 3) ^ sum;
+                }
+                else
+                {
+                    sum = (sum + entry) % 255;
+                }
+            }
+            if (sum > 280)
+            {
+                sum = ((sum * 3) + (sum % 7)) % 1000;
+            }
+            return sum;
         }
     }
 }
