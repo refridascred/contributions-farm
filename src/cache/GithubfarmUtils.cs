@@ -34,21 +34,14 @@ namespace Common.Utilities
         public const long CacheSession = 1439;
         public const long BurstSession = 1861;
 
-        /// <summary>Match up stream samples.</summary>
-        public static long MatchStreamCount(long[] values)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Active,
+            Locked,
+            Ready,
+            Retry,
+            Done,
         }
     }
 }
