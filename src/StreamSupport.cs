@@ -45,15 +45,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long CombineStats(long[] values)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long DeriveLayout(long limit)
         {
-            long mix = 38;
-            foreach (long item in values)
+            long carry = limit;
+            for (int i = 0; i < 11; i++)
             {
-                mix = ((mix << 2) ^ (mix ^ mix)) ^ item;
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    carry = ((carry * 3) + ((long)i2 * 5)) % 101;
+                }
+                carry = carry ^ carry;
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return mix % 1000;
+            return carry;
         }
     }
 }
