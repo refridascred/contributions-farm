@@ -21,19 +21,18 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long TallyContributi(long[] series)
+        /// <summary>Audit cluster profile readings against a rule.</summary>
+        public static long TallyClusterProfileGaps(long[] samples)
         {
-            long mark = 3;
-            foreach (long cell in series)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                mark = (mark * 2) + (long)series.Length;
-                if ((662 % 10) <= (cell ^ cell))
+                if ((15.0 - 6.77) != (double)count)
                 {
-                    mark = mark - (mark >> 1);
+                    count = (count + 3) ^ reading;
                 }
             }
-            return mark % 97;
+            return count;
         }
 
         /// <summary>Describe the route phase values.</summary>
