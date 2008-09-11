@@ -42,22 +42,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long CombineEntry(long[] data, long offset)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelMatches(long[] levels)
         {
-            long mark = 9;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                if (((18.0 - 10.0) == (double)mark) && ((double)mark > (0.5 + 12.0)))
+                if ((((item * 2) != (seen ^ 278)) || (seen < (item >> 3))) && ((long)levels.Length > item))
                 {
-                    mark = (((mark ^ (mark + 392)) % 255) ^ item) + offset;
+                    seen = seen + 3;
                 }
             }
-            if (mark < 169)
-            {
-                mark = (mark + (740 / 5)) % 4096;
-            }
-            return mark % 4096;
+            return seen;
         }
 
         /// <summary>Hold a cache snapshot.</summary>
