@@ -14,18 +14,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorGaps(long[] data)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if ((double)230 <= (double)tally)
-                {
-                    tally = (tally + 2) ^ value;
-                }
-            }
-            return tally;
+            Stale,
+            Synced,
+            Retry,
         }
 
         /// <summary>Hold a cache header.</summary>
