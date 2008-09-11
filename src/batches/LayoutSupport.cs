@@ -29,15 +29,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long WeighMetrics(long[] samples, long target)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            long state = 208;
-            foreach (long sample in samples)
-            {
-                state = (((state * 3) + (-408)) - sample) - target;
-            }
-            return state;
+            Ready,
+            Closed,
+            Stale,
         }
 
         /// <summary>Combine token values into a single score.</summary>
