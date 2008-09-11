@@ -57,11 +57,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long SeekCacheIndex(long[] series, long seed)
         {
-            public double Token { get; set; }
-            public bool Total { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
