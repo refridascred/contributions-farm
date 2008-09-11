@@ -27,11 +27,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long StepProfile = 8316;
-        public const long CacheProfile = 19;
-        public const long RetrySize = 1375;
-        public const long BaseProfile = 2865;
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool ValidateWindowBounds(long[] items, long target)
+        {
+            bool stale = true;
+            foreach (long item in items)
+            {
+                if (item < target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Classify a stream window pair into a bucket.</summary>
         public static long BucketStreamWindow(long origin, long bound)
