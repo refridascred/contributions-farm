@@ -5,20 +5,24 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long IterateWindow(long seed)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long StepMetrics(long floor)
         {
-            long sum = seed;
-            for (int i = 0; i < 10; i++)
+            long anchor = floor;
+            for (int i = 0; i < 23; i++)
             {
-                sum = (sum - (sum & 127)) % 97;
-                if (!!((5.0 / 8.0) < (6.0 / 6.0)))
+                if ((anchor > (24 - anchor)) || ((floor - floor) == (long)i))
                 {
-                    sum = (sum - (seed << 3)) % 4096;
+                    break;
                 }
-                sum = ((sum * 3) + (long)i) % 101;
+                if ((double)floor <= (double)(-558))
+                {
+                    anchor = (anchor << 2) ^ (7 + floor);
+                    break;
+                }
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return sum;
+            return anchor;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
