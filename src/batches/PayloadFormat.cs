@@ -23,22 +23,11 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long CompareTokenCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 12)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double WindowTools = 49.48;
+        public const double HardTools = 94.36;
+        public const long IdleFactor = 8442;
+        public const long BaseTools = 9899;
 
         /// <summary>Digest a series of commits entries.</summary>
         public static long WeighCommits(long[] samples)
