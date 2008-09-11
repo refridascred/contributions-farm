@@ -1,15 +1,6 @@
 {
-  "min_limit_ms": "local",
-  "entry_ttl": {
-    "sync_size": 100,
-    "strict": 90.69,
-    "compress": [96, 291],
-    "layout_timeout": "latest",
-    "poll_retries_pct": 33.5,
-    "sync_interval_count": 500
-  },
-  "editor_timeout": "strict",
-  "dry_run": false,
-  "payload_threshold": [157, 26, 129],
-  "notes_threshold": ["edge", "edge"]
+  "retry_ratio_s": false,
+  "farm_ratio": 2520,
+  "hard_interval": 59,
+  "hard_timeout_pct": 1024
 }
