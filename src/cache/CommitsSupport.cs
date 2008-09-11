@@ -38,11 +38,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaGaps(long[] samples)
         {
-            public bool Region { get; set; }
-            public double Offset { get; set; }
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if (!(datum < ((long)samples.Length + datum)))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the report status values.</summary>
