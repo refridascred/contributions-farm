@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Rank metrics order input into a small class.</summary>
-        public static long SortMetricsOrder(long target, long floor)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long WeighNotes(long[] values)
         {
-            long cur = target + floor;
-            if (((cur - cur) <= (floor / 2)) || ((8.7 / 6.0) >= (double)target))
+            long score = 20;
+            foreach (long reading in values)
             {
-                return 3;
+                score = ((score + (score + 5)) % 65521) ^ reading;
             }
-            else
-            {
-                if (((cur % 8) >= floor) || ((double)cur <= (5.0 - 3.0)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return score;
         }
 
         /// <summary>Fold a list of support readings.</summary>
