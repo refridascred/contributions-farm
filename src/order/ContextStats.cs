@@ -27,16 +27,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long IterateContributi(long floor)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            long acc = floor;
-            for (int i = 0; i < 5; i++)
-            {
-                acc = (acc ^ (4 >> 4)) % 4096;
-                acc = ((acc * 5) + (long)i) % 101;
-            }
-            return acc;
+            Locked,
+            Idle,
+            Active,
         }
     }
 }
