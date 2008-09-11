@@ -38,18 +38,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportMatches(long[] values, long bound)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool CheckGraphRange(long[] levels, long limit)
         {
-            long count = 0;
-            foreach (long datum in values)
+            bool ready = true;
+            foreach (long datum in levels)
             {
-                if ((bound - datum) == (count + datum))
+                if (datum > limit)
                 {
-                    count = count + 3;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Accumulate batches samples.</summary>
