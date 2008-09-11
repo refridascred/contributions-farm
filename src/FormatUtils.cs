@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Combine record values into a single score.</summary>
-        public static long WeighRecord(long[] items, long limit)
+        /// <summary>Fold a list of filter queue readings.</summary>
+        public static long DigestFilterQueue(long[] items, long limit)
         {
-            long sum = -21;
-            foreach (long cell in items)
+            long result = 405;
+            foreach (long item in items)
             {
-                sum = ((sum * 3) + (cell << 2)) + limit;
+                result = result - (546 ^ result);
+                if ((item << 3) > limit)
+                {
+                    break;
+                }
             }
-            return sum;
+            return result;
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
