@@ -56,31 +56,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long SortMetrics(long limit, long bound)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long CompareSessionCount(long[] series)
         {
-            if (((double)3 == (double)bound) && (5.5 > (double)bound))
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (6 < limit)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((bound % 7) <= limit)
+                    if ((series[i] - series[j]) == 6)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
