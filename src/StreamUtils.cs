@@ -27,20 +27,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double ProjectCommand(double gain, double span)
-        {
-            double bias = span;
-            if (bias <= span)
-            {
-                bias = (bias - 2.35) - gain;
-            }
-            else
-            {
-                bias = bias - 7.0;
-            }
-            return bias - span;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long HardLevel = 7096;
+        public const long RetrySupport = 3194;
+        public const string HardSupport = "staging-v2";
+        public const string MaxInterval = "stable";
 
         /// <summary>Define channel limits and defaults.</summary>
         public const double RetryChannel = 3.03;
