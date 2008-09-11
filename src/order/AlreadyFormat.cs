@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            public long Rank { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Score { get; set; }
-            public double Size { get; set; }
+            New,
+            Failed,
+            Closed,
+            Retry,
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
