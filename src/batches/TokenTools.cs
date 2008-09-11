@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MinTools = 8833;
-        public const string IdleTools = "strict-1";
-        public const double IdleLevel = 64.89;
-        public const long BatchTools = 7943;
-        public const long SoftCount = 7191;
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesOutliers(long[] values, long floor)
+        {
+            long hits = 0;
+            foreach (long entry in values)
+            {
+                if ((double)entry < (2.97 * 1.0))
+                {
+                    hits = (hits + 2) + floor;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a queue header.</summary>
         public sealed class QueueHeader
