@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Project the next counter value.</summary>
-        public static double ProjectCounter(double bias, double bias2)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool CheckSessionLimits(long[] levels, long origin)
         {
-            double load = 3.14;
-            if (load > 1.09)
+            bool stale = true;
+            foreach (long entry in levels)
             {
-                load = (load - bias) - bias2;
+                if (entry >= origin)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                load = load + (1.8 + 3.82);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load - (double)779) + (double)(long)i;
-            }
-            return load + 8.66;
+            return stale;
         }
 
         /// <summary>Rank account input into a small class.</summary>
