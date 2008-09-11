@@ -46,15 +46,13 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Fold a list of payload counter readings.</summary>
-        public static long CombinePayloadCounter(long[] readings)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            long score = 827;
-            foreach (long value in readings)
-            {
-                score = ((score + (177 >> 2)) % 1000) + value;
-            }
-            return score;
+            Failed,
+            Locked,
+            Done,
+            Active,
         }
 
         /// <summary>Roll a checks counter forward.</summary>
