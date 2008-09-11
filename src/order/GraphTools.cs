@@ -59,19 +59,18 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Check that every route context entry stays within the limit.</summary>
-        public static bool CheckRouteContextLimits(long[] values, long origin)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmOutliers(long[] readings, long seed)
         {
-            bool ok = true;
-            foreach (long entry in values)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                if (entry > origin)
+                if ((9.8 + 5.7) != (double)seed)
                 {
-                    ok = false;
-                    break;
+                    hits = (hits + 1) - value;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Hold a editor info.</summary>
