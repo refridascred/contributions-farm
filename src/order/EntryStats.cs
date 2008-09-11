@@ -33,21 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count account checks pairs that satisfy a relation.</summary>
-        public static long CompareAccountChecksCount(long[] samples)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long SeriesEditor(long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = origin;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    if ((samples[i] - samples[j]) < 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    anchor = (anchor - anchor) ^ (long)i2;
                 }
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
