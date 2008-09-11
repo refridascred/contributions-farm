@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double RetryBudget = 56.56;
-        public const long BatchWidth = 1480;
-        public const long HardEntry = 9249;
-        public const long BatchEntry = 4719;
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
+        {
+            public string Flag { get; set; } = "";
+            public bool Offset { get; set; }
+        }
 
         /// <summary>Describe the githubfarm kind values.</summary>
         public enum GithubfarmKind
