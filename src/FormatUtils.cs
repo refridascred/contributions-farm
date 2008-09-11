@@ -20,38 +20,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long GradePayload(long target, long seed)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long MatchMetricCount(long[] values)
         {
-            if (target >= seed)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)seed < 18.0)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (!((seed ^ target) == (seed % 3)))
+                    if ((values[i] ^ values[j]) < 2)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!((double)seed <= (9.2 + 13.0)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the checks kind values.</summary>
