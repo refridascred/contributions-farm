@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Blend two entry measurements.</summary>
-        public static double ScaleEntry(double ratio, double bias)
-        {
-            double ratio2 = (double)972 + (double)4;
-            if (ratio2 > (ratio * 6.3))
-            {
-                ratio2 = ratio2 - (double)11;
-            }
-            else
-            {
-                ratio2 = ratio2 + bias;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio2 = (ratio2 - (8.0 - 2.78)) + (double)(long)i;
-            }
-            return ratio2 - (bias - 1.9);
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BatchCounter = 5738;
+        public const long BaseSize = 2242;
+        public const long LimitCounter = 4519;
+        public const long BaseLevel = 2717;
+        public const string MaxCounter = "standard-1";
 
         /// <summary>Count support format pairs that satisfy a relation.</summary>
         public static long OverlapSupportFormatCount(long[] readings)
