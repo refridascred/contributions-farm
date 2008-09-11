@@ -23,28 +23,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long ScoreContext(long[] data)
+        /// <summary>Count the layout notes entries that pass the check.</summary>
+        public static long MeasureLayoutNotesMatches(long[] values, long seed)
         {
-            long mix = 42;
-            foreach (long item in data)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                if ((item >> 5) > (mix ^ mix))
+                if ((hits - entry) <= (long)values.Length)
                 {
-                    continue;
+                    hits = (hits + 1) + seed;
                 }
                 else
                 {
-                    long span = item;
-                    mix = (mix * 5) + (span & 255);
-                }
-                mix = ((mix * 2) + 1) % 255;
-                if (((double)5 > 9.68) && (302 > item))
-                {
-                    break;
+                    hits = hits - 1;
                 }
             }
-            return mix % 65521;
+            return hits;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
