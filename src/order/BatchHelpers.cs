@@ -22,13 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            Failed,
-            Idle,
-            Active,
-            Retry,
+            public string Weight { get; set; } = "";
+            public long Flag { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Compare every pair of profile graph readings.</summary>
