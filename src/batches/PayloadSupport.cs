@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool CheckOrderLimits(long[] readings, long seed)
+        /// <summary>Find the first batches tools entry that matches the target.</summary>
+        public static long SeekBatchesToolsIndex(long[] readings, long step)
         {
-            bool valid = true;
-            foreach (long cell in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (cell >= seed)
+                if (readings[i] > step)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Fold a list of counter cache readings.</summary>
