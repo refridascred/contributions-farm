@@ -58,12 +58,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            public double Count { get; set; }
-            public double Level { get; set; }
-            public double Limit { get; set; }
+            Dropped,
+            Synced,
+            Retry,
+            Failed,
+            Queued,
         }
 
         /// <summary>Roll a tools counter forward.</summary>
