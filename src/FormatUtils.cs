@@ -32,31 +32,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long ClassifyChannel(long step, long limit)
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            if ((limit % 24) <= (step + step))
-            {
-                return 7;
-            }
-            else
-            {
-                if (17 <= step)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((step + step) >= (limit << 3))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public long Size { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Hold a farm summary.</summary>
