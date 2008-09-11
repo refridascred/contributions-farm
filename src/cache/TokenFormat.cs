@@ -19,19 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool GuardCacheLimits(long[] levels, long origin)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            bool flag = true;
-            foreach (long sample in levels)
-            {
-                if (sample != origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            New,
+            Dropped,
+            Paused,
+            Queued,
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
