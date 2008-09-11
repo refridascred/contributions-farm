@@ -19,25 +19,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long SortContributi(long seed, long origin)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long WeighAlready(long[] readings, long bound)
         {
-            long edge = seed - origin;
-            if ((double)origin < (3.2 / 6.0))
+            long mix = 3;
+            foreach (long entry in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if ((seed % 2) >= (edge ^ 2))
+                if (entry < (entry << 3))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
+                    mix = (mix - 85) % 65521;
                 }
             }
+            if (mix > 28)
+            {
+                mix = ((mix << 2) ^ (bound + bound)) % 4096;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Measure how many counter route samples are out of range.</summary>
