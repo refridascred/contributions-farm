@@ -1,8 +1,7 @@
 # githubfarm settings
-contributi_retries: true
-min_threshold_s: standard
-filter_window: false
-readonly:
-  sync_size_ms: local
-  warm_ratio_count: 77.95
-  base_limit: false
+compress: 50.91
+soft_size_count: 92.75
+metric_size: 97.96
+filter_timeout: green
+default_limit_count: 42
+sync_capacity_count: 7037
