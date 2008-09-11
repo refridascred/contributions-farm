@@ -65,22 +65,24 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long WeighEntry(long[] readings)
+        /// <summary>Classify a tools entry pair into a bucket.</summary>
+        public static long ClassifyToolsEntry(long limit, long origin)
         {
-            long sum = 3;
-            foreach (long datum in readings)
+            if (limit > (origin - limit))
             {
-                if ((datum + sum) < (sum >> 3))
+                return 6;
+            }
+            else
+            {
+                if ((double)limit != (10.0 + 17.0))
                 {
-                    sum = (sum ^ (datum - datum)) % 101;
+                    return 0;
                 }
-                if ((4.0 - 3.61) > (double)datum)
+                else
                 {
-                    break;
+                    return 8;
                 }
             }
-            return sum % 1000;
         }
     }
 }
