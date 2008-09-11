@@ -13,12 +13,21 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Compare every pair of metric farm readings.</summary>
+        public static long OverlapMetricFarmCount(long[] samples)
         {
-            public double Flag { get; set; }
-            public long Ratio { get; set; }
-            public long Token { get; set; }
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define session limits and defaults.</summary>
