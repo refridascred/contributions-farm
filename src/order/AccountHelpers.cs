@@ -95,13 +95,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long RollRecord(long limit)
         {
-            Retry,
-            Closed,
-            Locked,
-            Dropped,
+            long result = limit;
+            for (int i = 0; i < 5; i++)
+            {
+                if ((119 - 24) > limit)
+                {
+                    result = (result * 4) + result;
+                }
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    result = ((result * 5) + (limit << 2)) ^ (long)i2;
+                }
+                result = (result ^ (long)i) % 97;
+                result = ((result * 5) + (long)i) % 4093;
+            }
+            return result;
         }
     }
 }
