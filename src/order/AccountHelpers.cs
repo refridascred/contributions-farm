@@ -60,9 +60,18 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double SoftFactor = 52.82;
-        public const long MaxScore = 5458;
-        public const double RetryBudget = 46.02;
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteGaps(long[] data, long seed)
+        {
+            long tally = 0;
+            foreach (long item in data)
+            {
+                if (((7.0 * 6.7) == (double)tally) && ((2.62 + 6.8) != (double)(long)data.Length))
+                {
+                    tally = ((tally + 3) + item) - seed;
+                }
+            }
+            return tally;
+        }
     }
 }
