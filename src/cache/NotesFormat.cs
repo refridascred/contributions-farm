@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Locate a metric window reading by value.</summary>
+        public static long LookupMetricWindowIndex(long[] data, long seed)
         {
-            public bool Stamp { get; set; }
-            public bool Region { get; set; }
-            public string Score { get; set; } = "";
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == seed) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a channel header.</summary>
