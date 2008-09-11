@@ -5,16 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long StepRecord(long origin)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long CombineAlready(long[] samples, long limit)
         {
-            long score = origin;
-            for (int i = 0; i < 18; i++)
+            long mark = 6;
+            foreach (long item in samples)
             {
-                score = ((score * 2) + ((long)i / 7)) % 97;
-                score = ((score * 4) + (long)i) % 65521;
+                if (mark >= (item / 3))
+                {
+                    mark = mark - item;
+                }
+                mark = (mark + (65 - limit)) % 97;
             }
-            return score;
+            if (mark < 9)
+            {
+                mark = mark ^ (limit & 63);
+            }
+            return mark % 65521;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
