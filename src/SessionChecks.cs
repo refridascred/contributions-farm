@@ -27,12 +27,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MaxNotes = 4815;
-        public const long StepSize = 7253;
-        public const long RetryLevel = 8245;
-        public const long DefaultNotes = 5165;
-        public const long CacheNotes = 9873;
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
+        {
+            Paused,
+            Done,
+            Closed,
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const double SoftProfile = 76.77;
