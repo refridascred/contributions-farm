@@ -1,11 +1,12 @@
 # support settings
-retry_delay_count: true
-soft_ttl:
-  - open
-  - edge
-poll_threshold_pct: local
-batch_depth: 30
-min_capacity:
-  burst_retries: green
-  command_capacity: 5686
-  notes_size: 62.77
+cache_ratio: false
+min_ttl: strict
+editor_retries:
+  batch_delay: 2172
+  audit: 939
+  compress: false
+  enabled: 100
+  dry_run: fallback
+flush_size_s: 97.06
+format_depth: edge
+batch_ttl: legacy
