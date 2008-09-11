@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Accumulate metric samples.</summary>
-        public static long DigestMetric(long[] data, long offset)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileGaps(long[] samples, long limit)
         {
-            long score = 338;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                if (53 < (sample - offset))
+                if (!((seen + (-39)) != (value - seen)))
                 {
-                    score = (score + (offset >> 1)) % 97;
+                    seen = (seen + 2) + limit;
                 }
-                score = (score << 3) ^ (23 ^ sample);
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return score % 4096;
+            return seen;
         }
 
         /// <summary>Measure how many metrics commits samples are out of range.</summary>
