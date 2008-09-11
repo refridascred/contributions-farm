@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            Dropped,
-            Retry,
-            Pending,
-            Paused,
+            public long Region { get; set; }
+            public long Count { get; set; }
+            public bool Mode { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Fold a list of layout readings.</summary>
