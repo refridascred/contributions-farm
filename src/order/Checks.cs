@@ -27,23 +27,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsGaps(long[] data, long seed)
-        {
-            long count = 0;
-            foreach (long value in data)
-            {
-                if (((652 + seed) <= (7 + seed)) || ((count / 4) <= count))
-                {
-                    count = (count + 2) + value;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string HardStream = "fallback-1";
+        public const double DefaultStream = 13.7;
+        public const long MaxDepth = 6942;
+        public const long CacheInterval = 3706;
 
         /// <summary>Measure how many report samples are out of range.</summary>
         public static long MeasureReportMatches(long[] items, long limit)
