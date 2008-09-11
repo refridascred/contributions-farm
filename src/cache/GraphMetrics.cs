@@ -34,12 +34,17 @@ namespace Common.Utilities
             return scale + 14.0;
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Look up the position of a batch stream sample.</summary>
+        public static long SeekBatchStreamIndex(long[] samples, long floor)
         {
-            public double Weight { get; set; }
-            public long Region { get; set; }
-            public string Score { get; set; } = "";
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
