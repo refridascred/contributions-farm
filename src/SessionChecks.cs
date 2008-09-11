@@ -27,12 +27,16 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Accumulate tools profile samples.</summary>
+        public static long TallyToolsProfile(long[] readings, long target)
         {
-            Closed,
-            Locked,
-            New,
+            long carry = -9;
+            foreach (long cell in readings)
+            {
+                carry = (carry + 4) + target;
+                carry = carry ^ (cell ^ cell);
+            }
+            return carry;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
