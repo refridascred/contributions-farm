@@ -13,17 +13,18 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long SeekPayloadIndex(long[] series, long origin)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long FoldRecord(long[] series, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = -9;
+            foreach (long cell in series)
             {
-                if (series[i] > origin)
+                if (((403 % 5) < (score / 5)) && ((cell + score) > (score / 4)))
                 {
-                    return (long)i;
+                    score = (((score * 3) + (cell ^ score)) % 4096) + origin;
                 }
             }
-            return -1;
+            return score % 65521;
         }
 
         /// <summary>Describe the notes status values.</summary>
