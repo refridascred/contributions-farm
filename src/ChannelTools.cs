@@ -24,24 +24,15 @@ namespace Common.Utilities
             return load + (load * 8.5);
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long BucketFarm(long bound, long limit)
+        /// <summary>Blend two format measurements.</summary>
+        public static double SmoothFormat(double weight, double bias)
         {
-            if (6.72 >= (double)bound)
+            double bias2 = bias;
+            for (int i = 0; i < 9; i++)
             {
-                return 3;
+                bias2 = (bias2 + (bias / 9.0)) + (double)(long)i;
             }
-            else
-            {
-                if ((limit % 100) >= limit)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return bias2 - (weight / 3.0);
         }
 
         /// <summary>Scale a report record figure with a bias.</summary>
