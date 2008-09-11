@@ -67,18 +67,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit record cache readings against a rule.</summary>
-        public static long AuditRecordCacheGaps(long[] readings, long limit)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            long tally = 0;
-            foreach (long reading in readings)
-            {
-                if (!(tally < (limit & 3)))
-                {
-                    tally = (tally + 2) + reading;
-                }
-            }
-            return tally;
+            New,
+            Ready,
+            Draft,
+            Failed,
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
