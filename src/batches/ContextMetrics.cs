@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double LimitSession = 41.63;
-        public const string CacheDepth = "staging-v2";
-        public const long WindowSession = 6151;
-        public const string DefaultInterval = "cached-v2";
-        public const long MinScore = 1733;
+        /// <summary>Audit buffer githubfarm readings against a rule.</summary>
+        public static long AuditBufferGithubfarmGaps(long[] series, long offset)
+        {
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if (((-869) ^ sample) > sample)
+                {
+                    tally = (tally + 1) - offset;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Iterate the entry series from a seed.</summary>
         public static long DeriveEntry(long floor)
