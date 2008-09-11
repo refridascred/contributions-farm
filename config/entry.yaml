@@ -1,14 +1,5 @@
 # entry settings
-hard_interval_s: cached
-persist: 12.35
-warm_delay_pct:
-  - 416
-  - 233
-  - 62
-  - 124
-layout_limit:
-  min_ratio_ms: 250
-  poll_size_ms: 9397
-  compress: latest
-  retry_depth_count: 60
-queue_depth: false
+hard_retries_s: legacy
+idle_threshold_s: staging
+support_size: 91.22
+soft_retries: 500
