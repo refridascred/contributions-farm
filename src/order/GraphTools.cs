@@ -65,12 +65,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long DefaultTimeout = 111;
-        public const long BurstTimeout = 9108;
-        public const long MaxBudget = 8572;
-        public const long HardWindow = 1185;
-        public const long LimitWindow = 3323;
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long CompareOrderCount(long[] items)
+        {
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 17)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Audit context readings against a rule.</summary>
         public static long CountContextMatches(long[] items, long origin)
