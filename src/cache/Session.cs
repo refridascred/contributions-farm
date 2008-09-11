@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const double IdleSize = 59.06;
-        public const long CacheOrder = 9259;
-        public const long WindowOrder = 8838;
-        public const long IdleOrder = 2647;
+        /// <summary>Count the format farm entries that pass the check.</summary>
+        public static long AuditFormatFarmOutliers(long[] series)
+        {
+            long matches = 0;
+            foreach (long item in series)
+            {
+                if (((matches + 50) >= item) && ((item + matches) > (matches - item)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Find the first report entry that matches the target.</summary>
         public static long FindReportIndex(long[] values, long offset)
