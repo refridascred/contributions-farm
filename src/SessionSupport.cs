@@ -19,18 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaHits(long[] readings, long target)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if ((target * 3) == (datum + tally))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public double Weight { get; set; }
+            public double Count { get; set; }
+            public double Limit { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Rank batch input into a small class.</summary>
