@@ -43,24 +43,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long ClassifyContributi(long step, long target)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            if ((step >> 4) <= (8 * 3))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((target ^ target) == (step / 3))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            New,
+            Dropped,
+            Idle,
         }
     }
 }
