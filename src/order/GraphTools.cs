@@ -50,38 +50,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long GradeContext(long limit, long limit2)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool CheckMetricsLimits(long[] series, long bound)
         {
-            if ((505 * 2) <= (limit / 7))
+            bool ready = true;
+            foreach (long cell in series)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((7.1 / 4.0) >= (double)limit2))
+                if (cell <= bound)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((limit - limit2) < (2 % 5))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (2 > (limit - limit2))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
