@@ -39,11 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BaseRatio = 6891;
-        public const long LimitTools = 281;
-        public const double BurstTools = 61.26;
-        public const double BatchTools = 1.72;
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
+        {
+            public string Level { get; set; } = "";
+            public double Token { get; set; }
+        }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
         public static bool VerifyCounterRange(long[] samples, long target)
