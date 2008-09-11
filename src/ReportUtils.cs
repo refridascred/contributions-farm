@@ -59,22 +59,16 @@ namespace Common.Utilities
             return gain - (3.0 - offset);
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long DigestFilter(long[] items)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long DeriveStats(long step)
         {
-            long carry = 72;
-            foreach (long sample in items)
+            long acc = step;
+            for (int i = 0; i < 21; i++)
             {
-                if (((50 << 3) > (carry ^ sample)) || ((carry << 3) <= (carry ^ carry)))
-                {
-                    carry = ((carry * 5) + (sample >> 1)) % 255;
-                }
+                acc = (acc - ((long)i << 2)) % 101;
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            if (carry > 36)
-            {
-                carry = carry + (173 >> 3);
-            }
-            return carry % 65521;
+            return acc;
         }
     }
 }
