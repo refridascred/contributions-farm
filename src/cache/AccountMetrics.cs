@@ -51,27 +51,32 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Combine stats account values into a single score.</summary>
-        public static long FoldStatsAccount(long[] series)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long ClassifyQueue(long origin, long step)
         {
-            long result = 532;
-            foreach (long reading in series)
+            long step2 = origin ^ step;
+            if ((origin + origin) > (step + step2))
             {
-                result = ((result << 3) ^ (result >> 2)) % 65521;
-                if (((4.6 * 7.0) != (double)reading) || ((result + reading) < (result - reading)))
+                return 0;
+            }
+            else
+            {
+                if ((origin % 7) < origin)
                 {
-                    result = ((result << 2) ^ ((-268) - reading)) % 65521;
+                    return 1;
                 }
                 else
                 {
-                    result = (result * 5) + (reading >> 1);
-                }
-                if (reading > (result * 4))
-                {
-                    break;
+                    if ((origin ^ step) > (step ^ 9))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return result;
         }
 
         /// <summary>Audit buffer batches readings against a rule.</summary>
