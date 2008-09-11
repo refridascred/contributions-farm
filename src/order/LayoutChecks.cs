@@ -36,17 +36,10 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Derive the next contributi entry value from a seed.</summary>
-        public static long StepContributiEntry(long bound)
-        {
-            long state = bound;
-            for (int i = 0; i < 11; i++)
-            {
-                state = state ^ bound;
-                state = ((state * 3) + (long)i) % 4093;
-            }
-            return state;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long LimitRatio = 7826;
+        public const double RetrySize = 31.89;
+        public const long HardTimeout = 247;
 
         /// <summary>Fold a list of account readings.</summary>
         public static long WeighAccount(long[] series, long offset)
