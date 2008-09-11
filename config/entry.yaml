@@ -1,11 +1,7 @@
 # entry settings
-warm_delay:
-  - stable
-  - edge
-soft_ttl_pct: green
-idle_interval_ms:
-  warm_retries: latest
-  warm_retries_ms: 10
-  min_interval: standard
-  min_delay: standard
-batch_interval_s: legacy
+cluster_delay: 83.27
+enabled:
+  - 151
+  - 427
+  - 156
+max_window_count: true
