@@ -16,18 +16,18 @@ namespace Common.Utilities
         public const double HardBudget = 98.25;
         public const string RetryProfile = "staging";
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheGaps(long[] data, long limit)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long WeighProfile(long[] readings, long seed)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long acc = 99;
+            foreach (long datum in readings)
             {
-                if ((double)sample <= (14.0 * 9.1))
+                if (acc <= 635)
                 {
-                    tally = (tally + 3) - limit;
+                    acc = ((acc ^ (seed << 2)) % 255) - datum;
                 }
             }
-            return tally;
+            return acc;
         }
     }
 }
