@@ -20,31 +20,26 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long GradeRecord(long limit, long step)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long RollSession(long origin)
         {
-            if ((double)step >= 12.0)
+            long result = origin;
+            for (int i = 0; i < 21; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((step % 10) >= limit)
+                if (!((96 & 63) < ((long)i + origin)))
                 {
-                    return 2;
+                    result = result - (origin << 1);
+                    result = ((result * 4) + (long)i) % 4096;
                 }
-                else
+                if ((result <= (8 << 1)) && (19.0 >= (double)result))
                 {
-                    if ((6 >= (limit + limit)) && ((limit - limit) <= ((-909) & 7)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    result = (result << 2) ^ (origin % 12);
+                    result = (result ^ (95 - (long)i)) % 65521;
                 }
+                result = (result - (origin - result)) % 255;
+                result = ((result * 4) + (long)i) % 4093;
             }
+            return result;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
