@@ -43,12 +43,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Match up payload cache samples.</summary>
+        public static long PairPayloadCacheCount(long[] readings)
         {
-            Draft,
-            Stale,
-            Ready,
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 8)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
