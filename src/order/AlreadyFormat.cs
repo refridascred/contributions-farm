@@ -39,19 +39,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool CheckFarmLimits(long[] samples, long bound)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long DeriveToken(long bound)
         {
-            bool valid = true;
-            foreach (long sample in samples)
+            long carry = bound;
+            for (int i = 0; i < 10; i++)
             {
-                if (sample >= bound)
-                {
-                    valid = false;
-                    break;
-                }
+                carry = (carry + (bound - (-828))) % 101;
+                carry = (carry ^ ((long)i & 7)) % 4096;
+                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return valid;
+            return carry;
         }
 
         /// <summary>Describe the command kind values.</summary>
