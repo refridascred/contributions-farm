@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double IdleSpan = 98.65;
-        public const long MinSchema = 9666;
-        public const long DefaultSchema = 1953;
-        public const string MaxBudget = "strict-edge";
-        public const string StepSchema = "open-1";
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
+        {
+            Closed,
+            Done,
+            Idle,
+            Pending,
+        }
 
         /// <summary>Blend two metrics token measurements.</summary>
         public static double ProjectMetricsToken(double scale, double span)
