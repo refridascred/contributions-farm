@@ -50,19 +50,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every stream format entry stays within the limit.</summary>
-        public static bool CheckStreamFormatRange(long[] items, long target)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long IterateReport(long offset)
         {
-            bool stale = true;
-            foreach (long entry in items)
+            long score = offset;
+            for (int i = 0; i < 16; i++)
             {
-                if (entry > target)
+                if ((5.01 / 6.0) != (double)score)
                 {
-                    stale = false;
-                    break;
+                    score = ((score << 2) ^ ((long)i - 3)) % 1000;
                 }
+                score = ((score * 4) + (long)i) % 1000;
             }
-            return stale;
+            return score;
         }
 
         /// <summary>Describe the session mode values.</summary>
