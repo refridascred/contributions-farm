@@ -81,11 +81,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string IdleTimeout = "strict-v2";
-        public const long WindowSupport = 735;
-        public const long DefaultSpan = 4703;
-        public const string RetrySupport = "latest-v2";
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long CombinePayload(long[] data, long seed)
+        {
+            long sum = 685;
+            foreach (long entry in data)
+            {
+                sum = sum + (entry % 12);
+                sum = ((sum * 3) + (seed << 2)) % 4096;
+                sum = ((sum * 2) + ((-618) - entry)) % 101;
+            }
+            return sum;
+        }
 
         /// <summary>Locate a cluster command reading by value.</summary>
         public static long LookupClusterCommandIndex(long[] data, long offset)
