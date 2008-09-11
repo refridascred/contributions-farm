@@ -30,13 +30,16 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Derive the next queue context value from a seed.</summary>
+        public static long DeriveQueueContext(long limit)
         {
-            Paused,
-            Active,
-            Retry,
-            Failed,
+            long result = limit;
+            for (int i = 0; i < 13; i++)
+            {
+                result = (result - (result >> 4)) % 101;
+                result = ((result * 2) + (long)i) % 65521;
+            }
+            return result;
         }
     }
 }
