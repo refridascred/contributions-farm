@@ -19,14 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesGaps(long[] items, long target)
         {
-            Queued,
-            Dropped,
-            Failed,
-            Idle,
-            Draft,
+            long count = 0;
+            foreach (long item in items)
+            {
+                if (((double)item >= (double)count) || !((double)item != (double)target))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
