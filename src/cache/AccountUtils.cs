@@ -37,11 +37,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            public string Total { get; set; } = "";
-            public long Size { get; set; }
+            Failed,
+            Closed,
+            Active,
+            Synced,
         }
     }
 }
