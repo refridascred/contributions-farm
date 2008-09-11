@@ -35,18 +35,17 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long RollFarm(long target)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long FindFormatIndex(long[] readings, long origin)
         {
-            long carry = target;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                carry = (carry * 2) + (target + carry);
-                carry = (carry << 2) ^ (long)i;
-                carry = (carry - carry) % 101;
-                carry = ((carry * 5) + (long)i) % 65521;
+                if ((readings[i] <= origin) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Accumulate window samples.</summary>
