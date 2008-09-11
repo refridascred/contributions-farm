@@ -1,10 +1,6 @@
-id,region,count
-1,37.05,cached
-2,441,94.56
-3,343,58.7
-4,496,329
-5,51.18,fallback
-6,12.28,278
-7,665,green
-8,fallback,686
-9,fallback,492
+id,rank,token
+1,green,886
+2,stable,169
+3,42,stable
+4,803,cached
+5,209,858
