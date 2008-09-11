@@ -32,12 +32,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            Synced,
-            New,
-            Closed,
+            public double Total { get; set; }
+            public double Label { get; set; }
+            public double Region { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
