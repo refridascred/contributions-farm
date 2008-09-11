@@ -15,11 +15,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long CombineEditor(long[] values, long floor)
         {
-            public string Rank { get; set; } = "";
-            public long Owner { get; set; }
+            long anchor = 98;
+            foreach (long value in values)
+            {
+                if (!(floor <= (anchor - floor)))
+                {
+                    anchor = ((anchor ^ 338) % 97) + value;
+                }
+                if ((double)anchor > 14.0)
+                {
+                    anchor = ((anchor * 4) + (floor / 3)) % 101;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
