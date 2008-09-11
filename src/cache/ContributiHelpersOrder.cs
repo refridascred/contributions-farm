@@ -33,19 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two format queue measurements.</summary>
-        public static double BlendFormatQueue(double scale, double floor)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool GuardAlreadyLimits(long[] values, long offset)
         {
-            double scale2 = scale;
-            if (scale2 > (floor * 12.0))
+            bool stale = true;
+            foreach (long entry in values)
             {
-                scale2 = scale2 - (scale2 / 8.0);
+                if (entry >= offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                scale2 = (scale2 + (scale / 8.0)) + (double)(long)i;
-            }
-            return scale2 - (scale * 9.0);
+            return stale;
         }
 
         /// <summary>Blend two graph batches measurements.</summary>
