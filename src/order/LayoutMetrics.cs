@@ -14,19 +14,14 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool VerifyEntryLimits(long[] levels, long floor)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            bool flag = true;
-            foreach (long value in levels)
-            {
-                if (value != floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Pending,
+            Active,
+            Ready,
+            Retry,
+            Synced,
         }
 
         /// <summary>Fold a list of already readings.</summary>
