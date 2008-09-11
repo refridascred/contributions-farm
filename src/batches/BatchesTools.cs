@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterGaps(long[] samples, long origin)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportOutliers(long[] samples)
         {
             long count = 0;
-            foreach (long item in samples)
+            foreach (long cell in samples)
             {
-                if ((14 + (long)samples.Length) >= (origin & 63))
+                if ((cell + count) > (cell * 2))
                 {
-                    count = (count + 3) + item;
+                    count = count + 1;
                 }
             }
             return count;
