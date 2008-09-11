@@ -62,15 +62,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long ScoreBatch(long[] values, long floor)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            long acc = 536;
-            foreach (long reading in values)
-            {
-                acc = ((acc + (floor + floor)) % 4096) - reading;
-            }
-            return acc;
+            Locked,
+            Pending,
+            Ready,
+            Queued,
+            Done,
         }
 
         /// <summary>Audit context readings against a rule.</summary>
