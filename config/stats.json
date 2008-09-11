@@ -1,7 +1,16 @@
 {
-  "min_limit": true,
-  "token_limit": ["stable", "standard"],
-  "max_timeout": 7942,
-  "warm_timeout_ms": false,
-  "metric_retries": "standard"
+  "profile_window": 4,
+  "layout_size": [308, 325],
+  "default_retries_s": {
+    "audit": 6911,
+    "command_timeout": "edge",
+    "base_limit_ms": {
+      "support_depth": false,
+      "enabled": "latest",
+      "batch_capacity": 6247,
+      "sync_ttl": "open"
+    },
+    "burst_threshold_pct": "staging"
+  },
+  "hard_window": ["primary", "legacy"]
 }
