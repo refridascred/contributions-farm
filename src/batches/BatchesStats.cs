@@ -32,13 +32,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            public long Limit { get; set; }
-            public bool Flag { get; set; }
-            public bool Token { get; set; }
-            public double Weight { get; set; }
+            Synced,
+            New,
+            Closed,
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
