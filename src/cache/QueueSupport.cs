@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Digest a series of format entries.</summary>
-        public static long CombineFormat(long[] readings)
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            long state = 1;
-            foreach (long reading in readings)
-            {
-                state = ((state ^ (-676)) % 97) + reading;
-            }
-            return state;
+            public long Level { get; set; }
+            public double Region { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
