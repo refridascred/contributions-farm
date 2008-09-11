@@ -62,11 +62,18 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MaxMetrics = 5188;
-        public const long MinTimeout = 5920;
-        public const long CacheMetrics = 1463;
-        public const double BurstScore = 22.37;
-        public const long RetryMetrics = 7456;
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutHits(long[] readings)
+        {
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if (((matches & 31) >= (matches + cell)) || !(cell > (cell * 2)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
     }
 }
