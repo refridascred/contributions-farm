@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long DeriveFormat(long origin)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long GradeOrder(long seed, long origin)
         {
-            long score = origin;
-            for (int i = 0; i < 12; i++)
+            if ((seed << 2) != (509 >> 3))
             {
-                score = ((score * 3) + (long)i) % 101;
+                return 4;
             }
-            return score;
+            else
+            {
+                if ((seed >> 3) == (origin + origin))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((origin + (-1)) != (origin - seed)) || ((origin * 4) <= (origin + seed)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a report counter forward.</summary>
