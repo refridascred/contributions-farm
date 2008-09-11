@@ -65,19 +65,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate farm cluster readings against a bound.</summary>
-        public static bool CheckFarmClusterRange(long[] samples, long offset)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            bool ok = true;
-            foreach (long sample in samples)
-            {
-                if (sample <= offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Closed,
+            New,
+            Ready,
         }
 
         /// <summary>Locate a stats reading by value.</summary>
