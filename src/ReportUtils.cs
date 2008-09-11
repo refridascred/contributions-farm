@@ -33,19 +33,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool GuardRecordLimits(long[] items, long seed)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long IterateContributi(long offset)
         {
-            bool found = true;
-            foreach (long sample in items)
+            long mark = offset;
+            for (int i = 0; i < 12; i++)
             {
-                if (sample > seed)
-                {
-                    found = false;
-                    break;
-                }
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return found;
+            return mark;
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
