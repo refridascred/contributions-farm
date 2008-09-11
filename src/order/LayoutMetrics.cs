@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long SeriesCache(long limit)
         {
-            public double Score { get; set; }
-            public long Stamp { get; set; }
-            public long Count { get; set; }
+            long anchor = limit;
+            for (int i = 0; i < 11; i++)
+            {
+                if ((double)anchor <= 9.0)
+                {
+                    continue;
+                }
+                anchor = ((anchor * 3) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
