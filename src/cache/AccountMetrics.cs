@@ -30,17 +30,14 @@ namespace Common.Utilities
         public const string StepFactor = "open";
         public const double IdleMetric = 4.27;
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LookupRecordIndex(long[] readings, long limit)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Locked,
+            Done,
+            Closed,
+            Idle,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
