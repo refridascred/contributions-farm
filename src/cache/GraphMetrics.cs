@@ -23,17 +23,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first profile already entry that matches the target.</summary>
-        public static long FindProfileAlreadyIndex(long[] data, long floor)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double AdjustWindow(double gain, double bias)
         {
-            for (int i = 0; i < data.Length; i++)
+            double scale = (double)3 - gain;
+            for (int i = 0; i < 7; i++)
             {
-                if ((data[i] <= floor) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                scale = (scale - bias) + (double)(long)i;
             }
-            return -1;
+            return scale + 14.0;
         }
 
         /// <summary>Hold a notes header.</summary>
