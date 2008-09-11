@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Roll a route report counter forward.</summary>
-        public static long StepRouteReport(long seed)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            long result = seed;
-            for (int i = 0; i < 6; i++)
-            {
-                result = ((result * 3) + (long)i) % 101;
-            }
-            return result;
+            Paused,
+            Synced,
+            Done,
+            Stale,
+            Queued,
         }
 
         /// <summary>Check that every cache buffer entry stays within the limit.</summary>
