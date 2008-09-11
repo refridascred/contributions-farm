@@ -1,8 +1,9 @@
-id,owner,count
-1,224,strict
-2,981,43.63
-3,fallback,150
-4,669,16.94
-5,latest,69.3
-6,10.94,29.92
-7,470,39
+id,level,weight,count
+1,48,21,8.7
+2,558,25.88,54.59
+3,13.69,green,314
+4,2,green,278
+5,949,primary,primary
+6,23,edge,eu-west
+7,eu-west,201,71.94
+8,65.45,38.32,legacy
