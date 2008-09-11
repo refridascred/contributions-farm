@@ -13,18 +13,16 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long ScoreSchema(long[] items, long step)
+        /// <summary>Roll a checks farm counter forward.</summary>
+        public static long RollChecksFarm(long limit)
         {
-            long sum = 586;
-            foreach (long item in items)
+            long mark = limit;
+            for (int i = 0; i < 4; i++)
             {
-                if (!((1.14 + 1.4) <= (double)step))
-                {
-                    sum = ((sum << 2) ^ (item + item)) % 255;
-                }
+                mark = ((mark << 3) ^ (mark ^ limit)) % 255;
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return sum % 97;
+            return mark;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
