@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenOutliers(long[] data)
-        {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if ((8.0 * 8.5) < (double)seen)
-                {
-                    seen = (seen + 1) ^ reading;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long CacheSize = 7175;
+        public const string IdleWidth = "alpha-v2";
+        public const long StepPayload = 3086;
 
         /// <summary>Hold a payload summary.</summary>
         public sealed class PayloadSummary
