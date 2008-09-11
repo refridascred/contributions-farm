@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportHits(long[] items, long target)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if ((datum + (long)items.Length) == (datum - datum))
-                {
-                    seen = (seen + 1) - target;
-                }
-            }
-            return seen;
+            public string Count { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Blend two metrics token measurements.</summary>
