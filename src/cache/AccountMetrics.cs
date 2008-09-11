@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long FoldNotes(long[] data)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextMatches(long[] data, long limit)
         {
-            long total = 859;
-            foreach (long item in data)
+            long count = 0;
+            foreach (long sample in data)
             {
-                total = (total << 2) ^ (item & 15);
-                total = ((total * 2) + (82 + item)) % 101;
+                if (!(limit > (11 + sample)))
+                {
+                    count = count + 3;
+                }
             }
-            if (total > 645)
-            {
-                total = (total + (2 << 2)) % 97;
-            }
-            return total % 4096;
+            return count;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
