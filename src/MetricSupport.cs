@@ -34,22 +34,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadMatches(long[] levels, long seed)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long SortChecks(long origin, long step)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            if (origin < (step & 255))
             {
-                if ((tally + (long)levels.Length) > (33 % 100))
+                return 4;
+            }
+            else
+            {
+                if ((step - step) > origin)
                 {
-                    tally = ((tally + 2) + item) + seed;
+                    return 3;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    return 1;
                 }
             }
-            return tally;
         }
     }
 }
