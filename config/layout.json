@@ -1,25 +1,7 @@
 {
-  "poll_ttl": "latest",
-  "cache_retries_s": 3081,
-  "base_size": "strict",
-  "verbose": {
-    "warm_window_pct": true,
-    "verbose": {
-      "dry_run": "eu-west",
-      "compress": 62.9,
-      "commits_threshold": 54,
-      "audit": 50,
-      "readonly": "local"
-    },
-    "min_limit_pct": ["strict", "cached", "fallback"],
-    "token_capacity": {
-      "enabled": 60,
-      "max_interval_pct": false,
-      "graph_limit": "local",
-      "hard_ratio_ms": ["strict", "staging", "standard", "primary"]
-    },
-    "flush_ttl_pct": "stable"
-  },
-  "burst_capacity": 78,
-  "enabled": "standard"
+  "soft_retries": 1139,
+  "max_timeout_ms": "cached",
+  "strict": "primary",
+  "burst_ttl": false,
+  "editor_limit": "primary"
 }
