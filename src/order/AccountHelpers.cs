@@ -25,24 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long ScoreChecks(long[] values)
-        {
-            long carry = 599;
-            foreach (long sample in values)
-            {
-                carry = (carry + 0) % 1000;
-                if (((sample / 6) <= (sample << 1)) && ((carry + 97) < (carry + sample)))
-                {
-                    break;
-                }
-            }
-            if (carry > 7)
-            {
-                carry = ((carry * 4) + carry) % 97;
-            }
-            return carry % 65521;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MinDepth = 502;
+        public const string SoftEntry = "legacy-edge";
+        public const long IdleEntry = 4230;
+        public const double WindowEntry = 3.44;
 
         /// <summary>Derive the next window value from a seed.</summary>
         public static long StepWindow(long bound)
