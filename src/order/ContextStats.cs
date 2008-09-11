@@ -35,15 +35,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a graph batches counter forward.</summary>
-        public static long RollGraphBatches(long offset)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long MatchGraphCount(long[] samples)
         {
-            long state = offset;
-            for (int i = 0; i < 18; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                state = ((state * 2) + (long)i) % 97;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 11)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return state;
+            return count;
         }
     }
 }
