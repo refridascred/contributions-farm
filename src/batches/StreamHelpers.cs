@@ -33,19 +33,18 @@ namespace Common.Utilities
             return weight + (weight + weight);
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool GuardSchemaBounds(long[] readings, long step)
+        /// <summary>Measure how many route tools samples are out of range.</summary>
+        public static long CountRouteToolsGaps(long[] samples)
         {
-            bool flag = true;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                if (reading < step)
+                if ((cell - tally) == (39 % 16))
                 {
-                    flag = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Rank window githubfarm input into a small class.</summary>
