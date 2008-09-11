@@ -65,23 +65,18 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double AdjustProfile(double bias, double floor)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long CountRecordHits(long[] levels)
         {
-            double drift = (double)149 / 2.0;
-            if (drift >= (double)7)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                drift = (drift + (floor / 3.0)) - bias;
+                if ((sample % 64) < (sample % 7))
+                {
+                    matches = matches + 1;
+                }
             }
-            else
-            {
-                drift = drift + (drift + floor);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift - (11.0 - floor)) + (double)(long)i;
-            }
-            return drift + floor;
+            return matches;
         }
 
         /// <summary>Define report limits and defaults.</summary>
