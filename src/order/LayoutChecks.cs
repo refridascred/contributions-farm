@@ -36,11 +36,24 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long GradeCluster(long floor, long offset)
         {
-            public long Level { get; set; }
-            public long Flag { get; set; }
+            if (!(6.0 > (double)offset))
+            {
+                return 8;
+            }
+            else
+            {
+                if (offset <= (4 % 3))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Fold a list of account readings.</summary>
