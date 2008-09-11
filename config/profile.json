@@ -1,17 +1,8 @@
 {
-  "verbose": 26,
-  "batch_interval": {
-    "verbose": false,
-    "soft_limit_pct": {
-      "hard_timeout_pct": "strict",
-      "stream_ttl": 4.58,
-      "commits_interval": 500,
-      "base_retries": "stable"
-    },
-    "warm_limit_s": 31.34
-  },
-  "payload_limit": 32.01,
-  "soft_size_s": "primary",
-  "cache_depth_s": 100,
-  "warm_retries_pct": 73
+  "metrics_ttl": 43,
+  "window_limit": "legacy",
+  "poll_threshold_count": 2351,
+  "batch_interval": 3917,
+  "base_delay_count": 6899,
+  "retry_ttl_ms": "stable"
 }
