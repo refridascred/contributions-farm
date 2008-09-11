@@ -16,23 +16,17 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Adjust a githubfarm counter reading.</summary>
-        public static double ProjectGithubfarmCounter(double scale, double span)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long LookupToolsIndex(long[] samples, long limit)
         {
-            double weight = 3.57;
-            if (weight >= span)
+            for (int i = 0; i < samples.Length; i++)
             {
-                weight = weight + 13.0;
+                if (samples[i] > limit)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                weight = weight + (scale - weight);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight - weight) + (double)(long)i;
-            }
-            return weight + scale;
+            return -1;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
