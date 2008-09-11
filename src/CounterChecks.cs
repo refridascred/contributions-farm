@@ -62,26 +62,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TotalEntry(long[] series)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphGaps(long[] readings, long target)
         {
-            long anchor = 85;
-            foreach (long value in series)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                if ((value ^ value) >= ((long)series.Length * 4))
+                if (target >= 627)
                 {
-                    anchor = (anchor << 2) ^ (anchor & 7);
-                }
-                else
-                {
-                    anchor = anchor - anchor;
+                    tally = (tally + 3) ^ entry;
                 }
             }
-            if (anchor > 19)
-            {
-                anchor = (anchor - (306 - anchor)) % 65521;
-            }
-            return anchor % 4096;
+            return tally;
         }
     }
 }
