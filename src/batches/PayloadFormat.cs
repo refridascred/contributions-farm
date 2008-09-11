@@ -11,18 +11,21 @@ namespace Common.Utilities
         public const long BaseFactor = 4253;
         public const double RetryFactor = 83.14;
 
-        /// <summary>Measure how many metrics commits samples are out of range.</summary>
-        public static long CountMetricsCommitsHits(long[] data, long floor)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long CompareTokenCount(long[] data)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((floor / 9) <= ((long)data.Length - 917))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    tally = (tally + 3) + cell;
+                    if ((data[i] + data[j]) != 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
