@@ -39,22 +39,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterOutliers(long[] series)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordOutliers(long[] readings, long target)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if ((cell & 127) > matches)
+                if ((double)target >= (double)hits)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    hits = (hits + 1) ^ cell;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
