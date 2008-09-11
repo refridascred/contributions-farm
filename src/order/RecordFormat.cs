@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const double CacheRatio = 60.61;
-        public const double IdleFactor = 60.66;
-        public const long WindowScore = 3234;
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
+        {
+            Paused,
+            Locked,
+            Queued,
+        }
 
         /// <summary>Check that every metrics stats entry stays within the limit.</summary>
         public static bool CheckMetricsStatsLimits(long[] series, long bound)
