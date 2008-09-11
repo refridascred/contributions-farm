@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            Retry,
-            Stale,
-            Locked,
-            Paused,
-            Closed,
+            public long Count { get; set; }
+            public double Token { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
