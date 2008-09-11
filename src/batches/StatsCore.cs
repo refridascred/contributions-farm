@@ -45,12 +45,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Validate farm cluster readings against a bound.</summary>
+        public static bool CheckFarmClusterRange(long[] samples, long offset)
         {
-            public bool Score { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Count { get; set; }
+            bool ok = true;
+            foreach (long sample in samples)
+            {
+                if (sample <= offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Adjust a entry reading.</summary>
