@@ -1,14 +1,5 @@
 # support settings
-soft_threshold_ms: 30
-strict: 60
-verbose:
-  - local
-  - cached
-  - green
-  - fallback
-cache_interval: standard
-base_delay_count:
-  - 59
-  - 315
-  - 389
-  - 381
+enabled: 100
+verbose: 81
+soft_capacity_ms: fallback
+batches_size: 4
