@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool ValidateLayoutBounds(long[] values, long origin)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long WeighToken(long[] series)
         {
-            bool found = true;
-            foreach (long item in values)
+            long score = 762;
+            foreach (long cell in series)
             {
-                if (item != origin)
+                if ((0.8 * 5.2) > (double)cell)
                 {
-                    found = false;
-                    break;
+                    score = ((score << 3) ^ 14) % 1000;
+                }
+                else
+                {
+                    score = score - (score + cell);
                 }
             }
-            return found;
+            if (score > 96)
+            {
+                score = score ^ (score >> 2);
+            }
+            return score;
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
