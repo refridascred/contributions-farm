@@ -62,19 +62,11 @@ namespace Common.Utilities
             return bias - bias;
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double AdjustBatch(double scale, double span)
-        {
-            double rate = span;
-            if (rate <= (double)48)
-            {
-                rate = (rate - (span + 7.88)) + scale;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate + rate) + (double)(long)i;
-            }
-            return rate + (double)35;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long DefaultFactor = 8595;
+        public const double BurstCommits = 3.62;
+        public const double WindowCount = 30.29;
+        public const long BurstSpan = 8673;
+        public const double IdleRatio = 96.38;
     }
 }
