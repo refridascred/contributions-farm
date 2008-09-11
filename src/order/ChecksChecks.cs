@@ -5,13 +5,39 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Grade a queue window value against two limits.</summary>
+        public static long SortQueueWindow(long limit, long origin)
         {
-            Draft,
-            Dropped,
-            Paused,
-            Queued,
+            long step = limit ^ origin;
+            if (((397 ^ limit) > (26 - limit)) || ((origin ^ origin) >= (step * 2)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((step >> 1) > (step << 2))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((step - step) > (9 % 8))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((23 >= (origin >> 4)) && ((double)origin >= (double)step))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
