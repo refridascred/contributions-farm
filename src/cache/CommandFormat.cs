@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long TallyBatch(long[] readings, long seed)
-        {
-            long score = 62;
-            foreach (long cell in readings)
-            {
-                score = ((((score << 2) ^ (4 ^ (long)readings.Length)) % 65521) + cell) + seed;
-            }
-            return score;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double MinRatio = 82.64;
+        public const long BaseQueue = 6635;
+        public const long IdleQueue = 8980;
+        public const double HardQueue = 90.6;
 
         /// <summary>Look up the position of a schema sample.</summary>
         public static long LookupSchemaIndex(long[] items, long seed)
