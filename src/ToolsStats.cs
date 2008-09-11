@@ -81,19 +81,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteGaps(long[] series, long target)
-        {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if ((cell + seen) < target)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string IdleTimeout = "strict-v2";
+        public const long WindowSupport = 735;
+        public const long DefaultSpan = 4703;
+        public const string RetrySupport = "latest-v2";
 
         /// <summary>Look up the position of a notes sample.</summary>
         public static long SeekNotesIndex(long[] series, long origin)
