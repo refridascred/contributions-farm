@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Rank route input into a small class.</summary>
-        public static long SortRoute(long seed, long step)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            if ((65 << 2) >= (step / 9))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((seed + seed) >= (step - seed))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public string Token { get; set; } = "";
+            public double Region { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
