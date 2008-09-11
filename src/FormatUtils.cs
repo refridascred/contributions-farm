@@ -57,13 +57,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            Idle,
-            Locked,
-            Dropped,
-            Closed,
+            public long Region { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Define command limits and defaults.</summary>
