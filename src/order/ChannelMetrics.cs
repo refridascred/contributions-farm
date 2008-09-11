@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const string MinDepth = "strict-1";
-        public const string CacheWidth = "strict-v2";
-        public const string BatchSupport = "latest";
+        /// <summary>Project the next counter value.</summary>
+        public static double ScaleCounter(double bias, double span)
+        {
+            double weight = bias;
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight + (span * 14.0)) + (double)(long)i;
+            }
+            return weight + span;
+        }
 
         /// <summary>Match up cache editor samples.</summary>
         public static long OverlapCacheEditorCount(long[] samples)
