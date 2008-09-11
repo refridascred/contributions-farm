@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TallyCommand(long[] readings, long floor)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandMatches(long[] readings, long step)
         {
-            long mix = 710;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                mix = ((mix - (floor - mix)) % 97) ^ value;
+                if (((138 << 2) <= hits) && !((step % 97) < (hits >> 4)))
+                {
+                    hits = (hits + 1) + datum;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Project the next batch value.</summary>
