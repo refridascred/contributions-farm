@@ -43,17 +43,11 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long FindLayoutIndex(long[] items, long offset)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] <= offset) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long DefaultSpan = 940;
+        public const double IdleLayout = 73.84;
+        public const long MaxLayout = 7779;
+        public const long WindowBudget = 239;
+        public const long MinTimeout = 5185;
     }
 }
