@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the format farm entries that pass the check.</summary>
-        public static long AuditFormatFarmOutliers(long[] series)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long StepContext(long target)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long result = target;
+            for (int i = 0; i < 11; i++)
             {
-                if (((matches + 50) >= item) && ((item + matches) > (matches - item)))
+                result = ((result << 2) ^ target) % 65521;
+                if (!((target ^ (long)i) < (665 + result)))
                 {
-                    matches = matches + 3;
+                    break;
                 }
+                result = ((result * 2) + (long)i) % 65521;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
