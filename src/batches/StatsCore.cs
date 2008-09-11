@@ -67,18 +67,14 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Combine format githubfarm values into a single score.</summary>
-        public static long FoldFormatGithubfarm(long[] readings)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            long mix = 381;
-            foreach (long value in readings)
-            {
-                if ((13.0 - 1.9) < (double)value)
-                {
-                    mix = mix - (value + 0);
-                }
-            }
-            return mix;
+            Idle,
+            Failed,
+            Locked,
+            Closed,
+            Draft,
         }
 
         /// <summary>Roll a commits schema counter forward.</summary>
