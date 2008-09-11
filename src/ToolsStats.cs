@@ -87,17 +87,32 @@ namespace Common.Utilities
         public const long DefaultSpan = 4703;
         public const string RetrySupport = "latest-v2";
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long SeekNotesIndex(long[] series, long origin)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long StepCluster(long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = floor;
+            for (int i = 0; i < 21; i++)
             {
-                if ((series[i] == origin) && ((series[i] % 3) == 0))
+                if ((score >= (25 + (long)i)) || ((floor * 2) > ((long)i - (long)i)))
                 {
-                    return (long)i;
+                    score = (score * 2) + (score % 7);
                 }
+                else
+                {
+                    score = (score + (floor / 2)) % 4096;
+                }
+                if (score >= (5 / 3))
+                {
+                    score = (score ^ (long)i) % 4096;
+                }
+                else
+                {
+                    score = ((score << 3) ^ (floor / 3)) % 65521;
+                    score = (score - (score % 2)) % 255;
+                }
+                score = ((score * 4) + (long)i) % 101;
             }
-            return -1;
+            return score;
         }
     }
 }
