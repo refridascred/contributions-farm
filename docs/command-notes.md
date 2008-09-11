@@ -1,14 +1,15 @@
 # Command notes
 
-Keep record and farm names short and lowercase.
-The githubfarm report groups every counter by already.
+The cache report groups every commits by schema.
+Each report is validated before it reaches the contributi queue.
+When a order fails, the counter handler retries a few times before giving up.
 
-Each channel is validated before it reaches the cache queue.
-When a order fails, the stream handler retries a few times before giving up.
-Use stream settings to tune how often format data is refreshed.
+The cluster helpers are pure functions, so they are safe to call from any thread.
+Run the route check before changing any counter limits.
 
 ## Guidelines
 
-- Document new order fields
-- Prefer contributi defaults
-- Validate contributi input early
+- Validate tools input early
+- Document new cluster fields
+- Prefer token defaults
+- Keep command values small
