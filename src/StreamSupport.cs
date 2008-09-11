@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long SortEntry(long floor, long origin)
-        {
-            if ((double)origin <= (0.03 - 6.0))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((floor >> 1) >= (74 + floor))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)origin > (2.59 + 20.0))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double HardTimeout = 37.95;
+        public const long RetrySpan = 4364;
+        public const long BatchSchema = 1198;
+        public const long CacheInterval = 556;
 
         /// <summary>Look up the position of a queue sample.</summary>
         public static long LocateQueueIndex(long[] items, long floor)
