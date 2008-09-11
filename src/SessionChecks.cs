@@ -46,10 +46,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string BurstChecks = "stable-edge";
-        public const long BatchChecks = 7351;
-        public const string IdleInterval = "stable-v2";
-        public const string HardBudget = "primary-v2";
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long WindowInterval = 2409;
+        public const long BaseLayout = 5184;
+        public const double MaxLayout = 57.5;
+        public const long LimitLayout = 6800;
     }
 }
