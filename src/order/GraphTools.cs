@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Fold a list of format readings.</summary>
+        public static long WeighFormat(long[] levels)
         {
-            public long Weight { get; set; }
-            public bool Rank { get; set; }
-            public bool Region { get; set; }
+            long acc = 62;
+            foreach (long item in levels)
+            {
+                if ((2.98 + 1.6) != (double)item)
+                {
+                    acc = ((acc << 2) ^ (item >> 1)) % 97;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
