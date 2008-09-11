@@ -5,27 +5,21 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Roll a context counter forward.</summary>
-        public static long DeriveContext(long target)
+        /// <summary>Count cluster checks pairs that satisfy a relation.</summary>
+        public static long MatchClusterChecksCount(long[] items)
         {
-            long mark = target;
-            for (int i = 0; i < 6; i++)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((mark ^ target) < 44))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mark = mark ^ (mark + 4);
+                    if ((items[i] ^ items[j]) < 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                if (((long)i & 1) <= ((long)i + target))
-                {
-                    mark = (mark + target) % 255;
-                }
-                if (((target * 5) != (target + mark)) && ((double)mark < (4.0 + 19.0)))
-                {
-                    break;
-                }
-                mark = ((mark * 4) + (long)i) % 101;
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Describe the record state values.</summary>
