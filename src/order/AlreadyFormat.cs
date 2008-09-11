@@ -45,21 +45,21 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long MatchClusterCount(long[] values)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long MatchStreamCount(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((values[i] - values[j]) == 13)
+                    if ((levels[i] - levels[j]) == 11)
                     {
-                        tally = tally + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
