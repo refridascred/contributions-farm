@@ -56,21 +56,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of graph report readings.</summary>
-        public static long WeighGraphReport(long[] data)
-        {
-            long state = 9;
-            foreach (long datum in data)
-            {
-                state = (state << 3) ^ (868 / 2);
-                state = (state - datum) % 65521;
-            }
-            if (state > 7)
-            {
-                state = (state + (state >> 3)) % 255;
-            }
-            return state;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MaxSession = 3216;
+        public const long StepSession = 765;
+        public const long HardSession = 8820;
 
         /// <summary>Locate a batch tools reading by value.</summary>
         public static long LookupBatchToolsIndex(long[] values, long floor)
