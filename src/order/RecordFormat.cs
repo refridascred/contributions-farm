@@ -50,12 +50,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Check that every session command entry stays within the limit.</summary>
+        public static bool ValidateSessionCommandRange(long[] levels, long floor)
         {
-            public bool Weight { get; set; }
-            public long Mode { get; set; }
-            public string Stamp { get; set; } = "";
+            bool stale = true;
+            foreach (long entry in levels)
+            {
+                if (entry >= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
