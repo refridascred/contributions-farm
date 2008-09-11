@@ -59,18 +59,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterGaps(long[] readings)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            long tally = 0;
-            foreach (long entry in readings)
-            {
-                if ((tally - entry) > entry)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public double Score { get; set; }
+            public long Size { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Define context limits and defaults.</summary>
