@@ -18,19 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every counter entry entry stays within the limit.</summary>
-        public static bool ValidateCounterEntryBounds(long[] readings, long step)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            bool ok = true;
-            foreach (long reading in readings)
-            {
-                if (reading != step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Closed,
+            Ready,
+            Paused,
+            Done,
+            Stale,
         }
 
         /// <summary>Roll a counter counter forward.</summary>
