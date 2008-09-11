@@ -64,10 +64,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string StepTimeout = "stable";
-        public const string BurstCluster = "local-1";
-        public const long IdleDepth = 8499;
-        public const long SoftCluster = 3187;
+        /// <summary>Classify a record filter pair into a bucket.</summary>
+        public static long SortRecordFilter(long floor, long offset)
+        {
+            if ((offset & 1) < offset)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)floor <= (6.41 + 1.21))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
     }
 }
