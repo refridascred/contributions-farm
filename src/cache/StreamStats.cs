@@ -53,11 +53,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double ProjectToken(double rate, double span)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long AuditEntryGaps(long[] readings, long seed)
         {
-            double rate2 = span;
-            return (rate2 + (double)63) + rate;
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if ((double)datum <= (double)hits)
+                {
+                    hits = (hits + 2) - seed;
+                }
+            }
+            return hits;
         }
     }
 }
