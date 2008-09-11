@@ -72,15 +72,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate schema metric samples.</summary>
-        public static long FoldSchemaMetric(long[] levels)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TallyCluster(long[] samples)
         {
-            long mix = 4;
-            foreach (long cell in levels)
+            long sum = 7;
+            foreach (long cell in samples)
             {
-                mix = (mix * 3) + (cell >> 4);
+                sum = (sum + (sum ^ cell)) % 1000;
             }
-            return mix;
+            return sum % 97;
         }
     }
 }
