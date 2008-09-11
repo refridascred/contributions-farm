@@ -44,15 +44,15 @@ namespace Common.Utilities
         public const double MinFarm = 63.61;
         public const long CacheFarm = 7515;
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double ProjectCache(double scale, double floor)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long FoldStream(long[] levels, long target)
         {
-            double gain = (double)1 / 6.0;
-            for (int i = 0; i < 8; i++)
+            long acc = -87;
+            foreach (long datum in levels)
             {
-                gain = (gain + scale) - (double)(long)i;
+                acc = (((acc ^ acc) % 255) + datum) + target;
             }
-            return gain + floor;
+            return acc;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
