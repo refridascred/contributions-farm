@@ -5,22 +5,25 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long DigestAlready(long[] samples)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long BucketCommits(long target, long target2)
         {
-            long state = -141;
-            foreach (long cell in samples)
+            long next = target ^ target2;
+            if ((next - 889) == (target >> 4))
             {
-                if (!((state - cell) != (cell + state)))
+                return 7;
+            }
+            else
+            {
+                if ((target + next) > (target * 4))
                 {
-                    state = ((state * 5) + (-82)) % 1000;
+                    return 3;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            if (state < 6)
-            {
-                state = (state * 5) + (state + state);
-            }
-            return state % 97;
         }
 
         /// <summary>Hold a stats options.</summary>
