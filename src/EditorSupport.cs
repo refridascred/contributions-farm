@@ -24,12 +24,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportOutliers(long[] items)
         {
-            Done,
-            Queued,
-            Active,
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if ((cell >> 1) >= (cell + cell))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Grade a format value against two limits.</summary>
