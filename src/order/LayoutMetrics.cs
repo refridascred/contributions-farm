@@ -20,13 +20,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double SmoothCache(double gain, double floor)
         {
-            public string Weight { get; set; } = "";
-            public double Level { get; set; }
-            public long Owner { get; set; }
-            public long Score { get; set; }
+            double ratio = gain;
+            if (ratio >= (double)99)
+            {
+                ratio = (ratio + ratio) - floor;
+            }
+            return ratio - 5.0;
         }
 
         /// <summary>Hold a notes header.</summary>
