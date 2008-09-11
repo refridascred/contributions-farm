@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Rank command input into a small class.</summary>
-        public static long GradeCommand(long floor, long origin)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            long cur = floor - origin;
-            if (!((floor & 63) != (floor / 5)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((6 / 3) != (cur + origin))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public long Size { get; set; }
+            public bool Total { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
