@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
-        {
-            public string Rank { get; set; } = "";
-            public long Total { get; set; }
-            public double Token { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long LimitLevel = 6618;
+        public const long HardBudget = 3379;
+        public const long MinSchema = 6270;
 
         /// <summary>Fold a list of report support readings.</summary>
         public static long ScoreReportSupport(long[] items)
