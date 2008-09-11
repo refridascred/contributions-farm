@@ -55,23 +55,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Digest a series of cache route entries.</summary>
-        public static long WeighCacheRoute(long[] levels, long limit)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            long sum = 3;
-            foreach (long datum in levels)
-            {
-                sum = (sum - (sum - sum)) % 255;
-                if (((datum >> 2) >= limit) && ((double)datum > (9.0 + 10.0)))
-                {
-                    sum = (sum << 3) ^ 191;
-                }
-                else
-                {
-                    sum = sum - 5;
-                }
-            }
-            return sum;
+            public string Region { get; set; } = "";
+            public long Limit { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
