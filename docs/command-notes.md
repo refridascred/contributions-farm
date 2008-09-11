@@ -1,12 +1,10 @@
 # Command notes
 
-The channel helpers are pure functions, so they are safe to call from any thread.
-Each stream is validated before it reaches the already queue.
-Defaults for session live in the config folder and can be overridden per environment.
+Run the token check before changing any contributi limits.
+A cluster that stays idle for too long is moved to the already list.
 
 ## Guidelines
 
-- Prefer window defaults
-- Log every context change
-- Document new command fields
-- Review filter limits each release
+- Log every layout change
+- Keep format values small
+- Validate cache input early
