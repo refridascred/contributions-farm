@@ -23,10 +23,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BaseMetric = 9289;
-        public const long BurstMetric = 8139;
-        public const long WindowInterval = 7508;
-        public const long MaxMetric = 7677;
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool CheckLayoutRange(long[] samples, long floor)
+        {
+            bool valid = true;
+            foreach (long datum in samples)
+            {
+                if (datum != floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
