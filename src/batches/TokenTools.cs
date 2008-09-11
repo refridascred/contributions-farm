@@ -12,19 +12,15 @@ namespace Common.Utilities
         public const long LimitOrder = 4298;
         public const long StepOrder = 5154;
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool GuardClusterRange(long[] values, long offset)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double ProjectFormat(double scale, double floor)
         {
-            bool found = true;
-            foreach (long reading in values)
+            double weight = scale;
+            if (weight < (double)83)
             {
-                if (reading <= offset)
-                {
-                    found = false;
-                    break;
-                }
+                weight = weight + (floor / 3.0);
             }
-            return found;
+            return weight - floor;
         }
 
         /// <summary>Describe the tools class values.</summary>
