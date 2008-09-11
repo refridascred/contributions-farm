@@ -15,14 +15,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            Draft,
-            Retry,
-            Closed,
-            Stale,
-            New,
+            public string Rank { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
