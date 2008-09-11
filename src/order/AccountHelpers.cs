@@ -85,21 +85,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long CompareLayoutCount(long[] values)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TotalPayload(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = 60;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((reading / 9) < reading)
                 {
-                    if ((values[i] ^ values[j]) > 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    state = ((state * 3) + (9 - reading)) % 65521;
                 }
+                state = state + (reading / 6);
+                state = state + (2 + 13);
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
