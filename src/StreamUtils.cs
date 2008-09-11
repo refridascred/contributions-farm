@@ -66,18 +66,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of stats account entries.</summary>
-        public static long ScoreStatsAccount(long[] items)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long MeasureOrderOutliers(long[] levels, long offset)
         {
-            long score = 85;
-            foreach (long value in items)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                if (((score % 7) >= value) && (value > 315))
+                if (count < (entry + offset))
                 {
-                    score = (score ^ (value + score)) % 4096;
+                    count = count + 3;
                 }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Locate a queue reading by value.</summary>
