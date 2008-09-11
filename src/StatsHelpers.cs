@@ -45,11 +45,26 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long HardChannel = 2115;
-        public const double WindowWidth = 58.06;
-        public const long CacheChannel = 4692;
-        public const string RetryRatio = "staging";
+        /// <summary>Classify a queue metric pair into a bucket.</summary>
+        public static long ClassifyQueueMetric(long target, long limit)
+        {
+            long bound = target + limit;
+            if ((((-430) + target) >= (limit & 3)) || (bound < target))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((bound ^ 25) < limit)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Validate entry readings against a bound.</summary>
         public static bool ValidateEntryLimits(long[] series, long step)
