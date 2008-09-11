@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueOutliers(long[] items, long step)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutGaps(long[] values, long target)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                if ((step + cell) <= (seen ^ cell))
+                if (((2.62 - 5.5) == (double)target) || ((7.0 / 2.0) > (double)target))
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    matches = (matches + 2) ^ reading;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Rank tools input into a small class.</summary>
