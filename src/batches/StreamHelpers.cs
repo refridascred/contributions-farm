@@ -47,11 +47,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string BatchBuffer = "latest-edge";
-        public const long HardBuffer = 6626;
-        public const long BurstDepth = 4213;
-        public const long BurstBuffer = 4018;
+        /// <summary>Find the first entry record entry that matches the target.</summary>
+        public static long LocateEntryRecordIndex(long[] series, long target)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the support status values.</summary>
         public enum SupportStatus
