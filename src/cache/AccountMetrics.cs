@@ -21,22 +21,12 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long CompareEntryCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long StepSpan = 6740;
+        public const string LimitMetric = "staging";
+        public const double HardMetric = 93.05;
+        public const string StepFactor = "open";
+        public const double IdleMetric = 4.27;
 
         /// <summary>Validate buffer counter readings against a bound.</summary>
         public static bool CheckBufferCounterLimits(long[] series, long step)
