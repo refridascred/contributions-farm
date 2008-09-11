@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long RollEntry(long floor)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long DigestAlready(long[] samples)
         {
-            long score = floor;
-            for (int i = 0; i < 12; i++)
+            long state = -141;
+            foreach (long cell in samples)
             {
-                score = score ^ floor;
-                score = ((score * 5) + (long)i) % 1000;
+                if (!((state - cell) != (cell + state)))
+                {
+                    state = ((state * 5) + (-82)) % 1000;
+                }
             }
-            return score;
+            if (state < 6)
+            {
+                state = (state * 5) + (state + state);
+            }
+            return state % 97;
         }
 
         /// <summary>Hold a stats options.</summary>
