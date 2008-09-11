@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Filter stats helpers.</summary>
     public static class FilterStats
     {
-        /// <summary>Match up record samples.</summary>
-        public static long MatchRecordCount(long[] levels)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Locked,
+            New,
+            Paused,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Hold a commits info.</summary>
