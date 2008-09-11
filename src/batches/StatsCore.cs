@@ -54,14 +54,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            Idle,
-            Failed,
-            Locked,
-            Closed,
-            Draft,
+            public bool Score { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Count { get; set; }
         }
 
         /// <summary>Combine graph values into a single score.</summary>
