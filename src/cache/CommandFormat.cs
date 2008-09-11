@@ -12,13 +12,15 @@ namespace Common.Utilities
         public const double BurstMetrics = 44.9;
         public const string HardLevel = "fallback-edge";
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long IterateSchema(long origin)
         {
-            public string Limit { get; set; } = "";
-            public long Region { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Label { get; set; }
+            long score = origin;
+            for (int i = 0; i < 4; i++)
+            {
+                score = ((score * 4) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Match up checks samples.</summary>
