@@ -29,18 +29,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long AuditWindowMatches(long[] readings, long origin)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if ((8.3 + 4.0) != (double)entry)
-                {
-                    count = (count + 2) - origin;
-                }
-            }
-            return count;
+            Pending,
+            Idle,
+            Closed,
+            Active,
+            Stale,
         }
 
         /// <summary>Rank order githubfarm input into a small class.</summary>
