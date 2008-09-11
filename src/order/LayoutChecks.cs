@@ -68,12 +68,27 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long FoldEditor(long[] series, long bound)
         {
-            public double Flag { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Level { get; set; } = "";
+            long sum = -8;
+            foreach (long reading in series)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    sum = (((sum * 4) + (106 ^ 657)) - (long)i) - bound;
+                }
+                sum = (sum << 2) ^ ((long)series.Length - reading);
+                if (!((double)sum <= (12.0 * 6.48)))
+                {
+                    sum = (sum + sum) % 65521;
+                }
+                else
+                {
+                    sum = (sum ^ ((long)series.Length - sum)) % 255;
+                }
+            }
+            return sum % 65521;
         }
     }
 }
