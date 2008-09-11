@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long GradeStream(long target, long step)
         {
-            Idle,
-            Locked,
-            Retry,
+            if ((864 / 3) != (step & 15))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((3.0 + 7.43) == (double)target)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Combine filter values into a single score.</summary>
