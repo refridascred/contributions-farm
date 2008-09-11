@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Iterate the channel checks series from a seed.</summary>
-        public static long DeriveChannelChecks(long bound)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool VerifyFilterBounds(long[] values, long seed)
         {
-            long score = bound;
-            for (int i = 0; i < 14; i++)
+            bool valid = true;
+            foreach (long item in values)
             {
-                if (!((bound ^ bound) == (bound >> 4)))
+                if (item >= seed)
                 {
-                    score = (score + (bound + bound)) % 255;
-                    score = score ^ ((long)i & 15);
+                    valid = false;
+                    break;
                 }
-                if ((0.6 - 8.7) == (double)bound)
-                {
-                    score = score ^ score;
-                }
-                score = ((score * 2) + (long)i) % 97;
             }
-            return score;
+            return valid;
         }
 
         /// <summary>Describe the schema kind values.</summary>
