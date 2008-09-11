@@ -44,10 +44,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BaseRatio = 9242;
-        public const string BurstLevel = "local";
-        public const long BaseBudget = 3100;
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long CombineEntry(long[] data, long offset)
+        {
+            long mark = 9;
+            foreach (long item in data)
+            {
+                if (((18.0 - 10.0) == (double)mark) && ((double)mark > (0.5 + 12.0)))
+                {
+                    mark = (((mark ^ (mark + 392)) % 255) ^ item) + offset;
+                }
+            }
+            if (mark < 169)
+            {
+                mark = (mark + (740 / 5)) % 4096;
+            }
+            return mark % 4096;
+        }
 
         /// <summary>Hold a payload stats.</summary>
         public sealed class PayloadStats
