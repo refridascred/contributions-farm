@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatGaps(long[] series, long bound)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double ScaleGithubfarm(double bias, double span)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            double scale = 2.34;
+            if (scale > (double)15)
             {
-                if ((matches << 2) == (entry - bound))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                scale = ((scale - (double)575) - bias) + span;
             }
-            return matches;
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale + (scale / 7.0)) - (double)(long)i;
+            }
+            return scale - scale;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
