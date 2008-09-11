@@ -1,6 +1,5 @@
 {
-  "idle_timeout_s": 32.16,
-  "verbose": "fallback",
-  "batch_delay": "fallback",
-  "compress": "cached"
+  "hard_retries": 3477,
+  "githubfarm_retries": 31.4,
+  "default_capacity_ms": false
 }
