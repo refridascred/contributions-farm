@@ -27,11 +27,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string StepScore = "stable-v2";
-        public const long BaseFactor = 5552;
-        public const long SoftRecord = 2537;
-        public const long MaxRecord = 1927;
-        public const string CacheRecord = "legacy-1";
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
+        {
+            public long Level { get; set; }
+            public bool Owner { get; set; }
+            public bool Size { get; set; }
+        }
     }
 }
