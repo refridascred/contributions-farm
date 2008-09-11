@@ -14,13 +14,11 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
-        {
-            public long Score { get; set; }
-            public bool Mode { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long SoftSize = 9049;
+        public const long WindowContributi = 5913;
+        public const long MaxSpan = 2236;
+        public const long MaxInterval = 9296;
 
         /// <summary>Match up record payload samples.</summary>
         public static long PairRecordPayloadCount(long[] items)
