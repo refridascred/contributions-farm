@@ -67,27 +67,16 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long FoldEditor(long[] series, long bound)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long RollWindow(long floor)
         {
-            long sum = -8;
-            foreach (long reading in series)
+            long carry = floor;
+            for (int i = 0; i < 20; i++)
             {
-                for (int i = 0; i < 3; i++)
-                {
-                    sum = (((sum * 4) + (106 ^ 657)) - (long)i) - bound;
-                }
-                sum = (sum << 2) ^ ((long)series.Length - reading);
-                if (!((double)sum <= (12.0 * 6.48)))
-                {
-                    sum = (sum + sum) % 65521;
-                }
-                else
-                {
-                    sum = (sum ^ ((long)series.Length - sum)) % 255;
-                }
+                carry = ((carry * 4) + (carry % 97)) % 97;
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            return sum % 65521;
+            return carry;
         }
     }
 }
