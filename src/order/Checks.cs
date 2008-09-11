@@ -25,31 +25,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long BucketChecks(long origin, long step)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            if ((98 % 60) == (origin + step))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((origin ^ origin) <= step) || ((origin ^ origin) != (origin + 53)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((6 >> 1) <= origin)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Active,
+            Retry,
+            Synced,
+            Queued,
+            Paused,
         }
 
         /// <summary>Blend two format payload measurements.</summary>
