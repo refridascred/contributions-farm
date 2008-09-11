@@ -1,10 +1,12 @@
 # githubfarm settings
-flush_window: open
-compress: 58.04
-warm_retries_count:
-  batch_size_pct:
-    - 303
-    - 420
-  default_retries: eu-west
-  channel_interval: 500
-counter_size: 74
+persist: green
+sync_capacity_pct: standard
+flush_capacity_s:
+  burst_size: blue
+  poll_size_count: 100
+  account_timeout: 2446
+  idle_size_ms:
+    sync_depth_ms: primary
+    order_ttl: 6
+    compress: cached
+    commits_size: standard
