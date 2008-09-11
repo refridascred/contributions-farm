@@ -1,5 +1,8 @@
 {
-  "hard_retries": 3477,
-  "githubfarm_retries": 31.4,
-  "default_capacity_ms": false
+  "contributi_ttl": true,
+  "commits_limit": 6225,
+  "soft_size_s": [286, 351, 53, 375],
+  "warm_ttl_pct": "local",
+  "min_capacity": "eu-west",
+  "persist": 100
 }
