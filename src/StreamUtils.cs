@@ -98,23 +98,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double BlendContext(double ratio, double floor)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long SeekPayloadIndex(long[] samples, long floor)
         {
-            double weight = floor;
-            if (weight >= 6.28)
+            for (int i = 0; i < samples.Length; i++)
             {
-                weight = weight - ratio;
+                if (samples[i] <= floor)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                weight = weight + ratio;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight + weight) + (double)(long)i;
-            }
-            return weight + 15.0;
+            return -1;
         }
     }
 }
