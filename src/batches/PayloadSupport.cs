@@ -19,17 +19,30 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long FindCacheIndex(long[] levels, long target)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TotalStream(long[] items, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = -7;
+            foreach (long cell in items)
             {
-                if (levels[i] == target)
+                if ((double)mark <= (13.0 * 1.0))
                 {
-                    return (long)i;
+                    mark = ((mark * 5) + ((-512) % 7)) % 1000;
+                }
+                else
+                {
+                    mark = (mark ^ (5 << 3)) % 255;
+                }
+                if (!(origin < (origin + cell)))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (mark < 7)
+            {
+                mark = (mark + ((-3) - mark)) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
