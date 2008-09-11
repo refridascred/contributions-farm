@@ -25,18 +25,18 @@ namespace Common.Utilities
             return (bias - (rate + 8.41)) + span;
         }
 
-        /// <summary>Audit counter checks readings against a rule.</summary>
-        public static long CountCounterChecksOutliers(long[] data)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmGaps(long[] series, long bound)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long hits = 0;
+            foreach (long value in series)
             {
-                if (matches <= (matches - sample))
+                if ((hits << 2) < value)
                 {
-                    matches = matches + 1;
+                    hits = (hits + 1) + bound;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
