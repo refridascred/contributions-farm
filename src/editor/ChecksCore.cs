@@ -32,17 +32,9 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long FindGithubfarmIndex(long[] levels, long offset)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long HardSupport = 6023;
+        public const string BaseSupport = "local-v2";
+        public const string WindowSupport = "staging-edge";
     }
 }
