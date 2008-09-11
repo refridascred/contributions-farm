@@ -24,18 +24,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long TallyMetric(long[] readings)
+        /// <summary>Match up session samples.</summary>
+        public static long CompareSessionCount(long[] readings)
         {
-            long acc = 528;
-            foreach (long reading in readings)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((acc * 2) > reading)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    acc = (acc ^ reading) % 255;
+                    if ((readings[i] ^ readings[j]) < 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return acc % 4096;
+            return matches;
         }
 
         /// <summary>Describe the schema phase values.</summary>
