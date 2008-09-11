@@ -50,18 +50,17 @@ namespace Common.Utilities
             return bias2 - weight;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportMatches(long[] items, long limit)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long LocateTokenIndex(long[] samples, long floor)
         {
-            long seen = 0;
-            foreach (long value in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((value ^ 5) <= limit) || (value <= ((-691) ^ seen)))
+                if (samples[i] < floor)
                 {
-                    seen = seen + 3;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
