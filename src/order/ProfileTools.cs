@@ -58,19 +58,11 @@ namespace Common.Utilities
         public const string RetryTools = "legacy";
         public const string BatchTools = "staging";
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool VerifyCacheLimits(long[] readings, long origin)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            bool found = true;
-            foreach (long reading in readings)
-            {
-                if (reading <= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Rank { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Blend two account measurements.</summary>
