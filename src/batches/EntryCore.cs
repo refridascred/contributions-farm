@@ -59,18 +59,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordHits(long[] readings)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchGaps(long[] series, long step)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long cell in series)
             {
-                if ((0.28 + 0.79) >= (double)sample)
+                if ((double)count <= (5.69 - 11.0))
                 {
-                    tally = tally + 1;
+                    count = ((count + 3) + cell) - step;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
