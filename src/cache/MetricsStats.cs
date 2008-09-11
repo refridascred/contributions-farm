@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string MaxWidth = "open-1";
-        public const long WindowTimeout = 7826;
-        public const double StepChecks = 67.47;
-        public const string RetrySize = "primary";
-        public const long CacheWidth = 3528;
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenOutliers(long[] data)
+        {
+            long seen = 0;
+            foreach (long reading in data)
+            {
+                if ((8.0 * 8.5) < (double)seen)
+                {
+                    seen = (seen + 1) ^ reading;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a payload summary.</summary>
         public sealed class PayloadSummary
