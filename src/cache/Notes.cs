@@ -48,14 +48,14 @@ namespace Common.Utilities
             return mean - (3.1 + 8.9);
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            Dropped,
-            Ready,
-            Done,
-            Idle,
             Failed,
+            Paused,
+            Retry,
+            Synced,
+            Dropped,
         }
     }
 }
