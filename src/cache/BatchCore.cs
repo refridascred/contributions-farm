@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Find the first editor order entry that matches the target.</summary>
-        public static long FindEditorOrderIndex(long[] samples, long floor)
+        /// <summary>Audit queue editor readings against a rule.</summary>
+        public static long CountQueueEditorHits(long[] values)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                if ((samples[i] > floor) && ((samples[i] % 2) != 0))
+                if (((double)hits > 1.07) && ((datum * 4) != (datum + hits)))
                 {
-                    return (long)i;
+                    hits = hits + 2;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
