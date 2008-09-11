@@ -1,14 +1,11 @@
 # Command notes
 
-Run the record check before changing any queue limits.
-Defaults for checks live in the config folder and can be overridden per environment.
-
-Use batch settings to tune how often counter data is refreshed.
-Run the context check before changing any channel limits.
+Each contributi is validated before it reaches the counter queue.
+Use already settings to tune how often cluster data is refreshed.
+Run the payload check before changing any window limits.
 
 ## Guidelines
 
-- Validate token input early
-- Prefer layout defaults
-- Review tools limits each release
-- Log every format change
+- Review channel limits each release
+- Keep cluster values small
+- Document new profile fields
