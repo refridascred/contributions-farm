@@ -29,18 +29,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadMatches(long[] data)
+        /// <summary>Adjust a editor farm reading.</summary>
+        public static double ScaleEditorFarm(double bias, double span)
         {
-            long count = 0;
-            foreach (long sample in data)
+            double load = bias;
+            if (load < (bias / 6.0))
             {
-                if ((4 >> 1) >= sample)
-                {
-                    count = count + 1;
-                }
+                load = load - bias;
             }
-            return count;
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load - bias) + (double)(long)i;
+            }
+            return load + span;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
