@@ -62,20 +62,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate stream command samples.</summary>
-        public static long TallyStreamCommand(long[] data)
-        {
-            long state = 0;
-            foreach (long entry in data)
-            {
-                state = (state + entry) % 65521;
-            }
-            if (state > 755)
-            {
-                state = ((state << 3) ^ (state ^ state)) % 4096;
-            }
-            return state % 65521;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long WindowFactor = 2071;
+        public const long IdleInterval = 3336;
+        public const double DefaultSession = 84.51;
+        public const string RetrySession = "fallback-edge";
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
         public static bool GuardFarmLimits(long[] items, long limit)
