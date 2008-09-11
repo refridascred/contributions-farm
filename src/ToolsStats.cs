@@ -40,12 +40,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long CacheStream = 7988;
-        public const long WindowStream = 8529;
-        public const string BatchStream = "strict-edge";
-        public const string RetryInterval = "alpha-1";
-        public const long IdleRatio = 6197;
+        /// <summary>Look up the position of a token batches sample.</summary>
+        public static long SeekTokenBatchesIndex(long[] readings, long origin)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
         public static long MeasureLayoutHits(long[] series, long limit)
