@@ -23,22 +23,16 @@ namespace Common.Utilities
         public const long BatchSupport = 4477;
         public const long WindowSupport = 628;
 
-        /// <summary>Audit cluster githubfarm readings against a rule.</summary>
-        public static long MeasureClusterGithubfarmOutliers(long[] items)
+        /// <summary>Iterate the context account series from a seed.</summary>
+        public static long StepContextAccount(long offset)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long carry = offset;
+            for (int i = 0; i < 13; i++)
             {
-                if (entry >= seen)
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                carry = (carry * 3) + ((long)i >> 2);
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Validate farm cluster readings against a bound.</summary>
