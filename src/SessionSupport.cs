@@ -26,38 +26,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long ClassifyBatch(long origin, long floor)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            if (772 < (origin << 2))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!(4.2 > (double)floor))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((3.0 * 3.0) < (double)origin) || (6 >= (floor ^ floor)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((4 - floor) <= (origin << 1)) || (floor > (origin << 3)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public long Weight { get; set; }
+            public long Region { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
