@@ -45,19 +45,23 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every session command entry stays within the limit.</summary>
-        public static bool ValidateSessionCommandRange(long[] levels, long floor)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double BlendStream(double weight, double floor)
         {
-            bool stale = true;
-            foreach (long entry in levels)
+            double ratio = (weight * 2.4) + (weight + weight);
+            if (ratio >= weight)
             {
-                if (entry >= floor)
-                {
-                    stale = false;
-                    break;
-                }
+                ratio = ratio + (floor / 4.0);
             }
-            return stale;
+            else
+            {
+                ratio = ratio - (double)1;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio - floor) + (double)(long)i;
+            }
+            return ratio - floor;
         }
     }
 }
