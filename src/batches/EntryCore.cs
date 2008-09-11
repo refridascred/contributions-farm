@@ -40,18 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long AuditChannelOutliers(long[] levels, long limit)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double AdjustChecks(double bias, double floor)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            double load = bias;
+            if (load > load)
             {
-                if ((double)limit < (7.0 * 13.0))
-                {
-                    tally = (tally + 1) + entry;
-                }
+                load = load + floor;
             }
-            return tally;
+            return load + floor;
         }
 
         /// <summary>Describe the buffer level values.</summary>
