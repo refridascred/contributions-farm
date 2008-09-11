@@ -20,16 +20,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double SmoothCache(double gain, double floor)
-        {
-            double ratio = gain;
-            if (ratio >= (double)99)
-            {
-                ratio = (ratio + ratio) - floor;
-            }
-            return ratio - 5.0;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long StepWidth = 7700;
+        public const long BaseScore = 6329;
+        public const long LimitPayload = 2772;
+        public const long StepScore = 7920;
+        public const string StepSize = "open";
 
         /// <summary>Describe the tools kind values.</summary>
         public enum ToolsKind
