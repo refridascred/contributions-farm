@@ -40,12 +40,10 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
-        {
-            public long Count { get; set; }
-            public string Token { get; set; } = "";
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string DefaultBudget = "open-edge";
+        public const string RetryRoute = "open-1";
+        public const double LimitRoute = 90.31;
 
         /// <summary>Describe the token level values.</summary>
         public enum TokenLevel
