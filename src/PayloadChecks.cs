@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BurstScore = 9501;
-        public const long RetryAlready = 8119;
-        public const long BaseAlready = 2571;
-        public const string SoftAlready = "stable";
-        public const string BurstAlready = "primary-edge";
+        /// <summary>Accumulate metrics route samples.</summary>
+        public static long WeighMetricsRoute(long[] samples)
+        {
+            long carry = -4;
+            foreach (long datum in samples)
+            {
+                carry = (carry + datum) % 97;
+            }
+            if (carry < 1)
+            {
+                carry = (carry ^ (7 * 2)) % 97;
+            }
+            return carry;
+        }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
         public static long PairPayloadCount(long[] values)
