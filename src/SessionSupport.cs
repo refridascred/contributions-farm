@@ -20,11 +20,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long SoftSize = 9049;
-        public const long WindowContributi = 5913;
-        public const long MaxSpan = 2236;
-        public const long MaxInterval = 9296;
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaHits(long[] readings, long target)
+        {
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if ((target * 3) == (datum + tally))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Rank batch input into a small class.</summary>
         public static long ClassifyBatch(long origin, long floor)
