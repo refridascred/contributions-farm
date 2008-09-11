@@ -1,7 +1,14 @@
 # entry settings
-strict: eu-west
-hard_ratio_pct: 21.95
-cache_capacity_s:
-  - strict
-  - staging
-  - fallback
+queue_size: 4609
+batch_depth_ms: local
+hard_interval_s:
+  compress: 65
+  filter_threshold: local
+  sync_threshold_ms: 500
+contributi_interval:
+  flush_limit: false
+  cache_retries_ms: 6206
+  retry_ratio: 84.1
+  base_ttl: edge
+  cache_depth_count: 72.57
+  verbose: cached
