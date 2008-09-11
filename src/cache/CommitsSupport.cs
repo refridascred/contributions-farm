@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long SoftContext = 6486;
-        public const string IdleWidth = "primary-1";
-        public const double StepContext = 0.68;
-        public const long MaxContext = 9940;
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheHits(long[] readings)
+        {
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if ((double)item == (9.2 + 15.0))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a counter summary.</summary>
         public sealed class CounterSummary
