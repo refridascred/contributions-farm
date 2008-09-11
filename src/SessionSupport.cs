@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long WeighNotes(long[] values)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            long score = 20;
-            foreach (long reading in values)
-            {
-                score = ((score + (score + 5)) % 65521) ^ reading;
-            }
-            return score;
+            public long Region { get; set; }
+            public bool Owner { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Fold a list of support readings.</summary>
