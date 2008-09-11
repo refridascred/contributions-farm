@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long FindCommandIndex(long[] samples, long limit)
         {
-            public string Count { get; set; } = "";
-            public string Score { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public double Size { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
