@@ -76,19 +76,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double ProjectStats(double ratio, double span)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long FindQueueIndex(long[] data, long limit)
         {
-            double weight = span;
-            if (weight <= (ratio * 7.45))
+            for (int i = 0; i < data.Length; i++)
             {
-                weight = weight - (double)14;
+                if ((data[i] >= limit) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                weight = weight + ratio;
-            }
-            return weight - span;
+            return -1;
         }
     }
 }
