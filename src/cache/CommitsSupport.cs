@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatMatches(long[] series, long bound)
-        {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if (((reading * 4) < (bound & 15)) && (((double)reading >= (12.0 - 6.8)) || (seen <= (bound & 1))))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long SoftContext = 6486;
+        public const string IdleWidth = "primary-1";
+        public const double StepContext = 0.68;
+        public const long MaxContext = 9940;
 
         /// <summary>Describe the filter level values.</summary>
         public enum FilterLevel
