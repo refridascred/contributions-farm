@@ -13,18 +13,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many layout channel samples are out of range.</summary>
-        public static long MeasureLayoutChannelGaps(long[] readings, long origin)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long LocateBatchesIndex(long[] levels, long bound)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((matches + value) <= origin)
+                if (levels[i] == bound)
                 {
-                    matches = matches + 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Project the next report command value.</summary>
