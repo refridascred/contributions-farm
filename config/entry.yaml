@@ -1,18 +1,4 @@
 # entry settings
-metric_timeout: 8.11
-filter_threshold:
-  profile_timeout: 67.78
-  warm_size_s: 62.38
-  persist:
-    default_size_ms: 500
-    persist:
-      - 199
-      - 323
-      - 142
-    max_delay_s: 96.68
-  soft_delay_count: staging
-  default_timeout: 500
-retry_capacity_count: 15
-batch_timeout_s: fallback
-hard_window: legacy
-default_capacity_pct: 73.34
+buffer_timeout: 5167
+batch_threshold_ms: 5027
+default_limit_count: 6914
