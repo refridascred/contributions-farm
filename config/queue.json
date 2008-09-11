@@ -1,20 +1,25 @@
 {
-  "base_timeout_s": {
-    "cache_window": "open",
-    "retry_window": true,
-    "warm_threshold_ms": "fallback",
-    "payload_delay": "cached",
-    "soft_delay_ms": "primary",
-    "sync_capacity_ms": 3068
+  "notes_delay": 44.78,
+  "enabled": 2976,
+  "min_size_s": {
+    "min_retries_s": 6632,
+    "min_retries_ms": "latest",
+    "readonly": false
   },
-  "compress": "edge",
-  "warm_size_s": 608,
-  "command_retries": 250,
-  "metric_ratio": {
-    "audit": 60,
-    "account_ttl": 83.88,
-    "retry_ratio": "primary",
-    "profile_limit": [366, 290]
-  },
-  "warm_capacity": 59.56
+  "verbose": 0.49,
+  "cache_ratio": "legacy",
+  "schema_delay": {
+    "enabled": false,
+    "cache_capacity": ["local", "fallback"],
+    "soft_ratio_s": {
+      "idle_ttl": 100,
+      "burst_limit_count": "staging",
+      "base_timeout_s": 3314,
+      "commits_window": 43.44,
+      "metric_depth": "green",
+      "cache_ttl_count": 24.11
+    },
+    "sync_retries_ms": "eu-west",
+    "flush_timeout_count": [206, 31, 203]
+  }
 }
