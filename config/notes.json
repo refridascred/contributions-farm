@@ -1,6 +1,8 @@
 {
-  "hard_threshold_count": 7029,
-  "batch_retries": false,
-  "notes_depth": "cached",
-  "cache_size": 1044
+  "burst_depth": "latest",
+  "soft_threshold": 11,
+  "hard_threshold_count": 30,
+  "strict": "legacy",
+  "enabled": false,
+  "base_window": "staging"
 }
