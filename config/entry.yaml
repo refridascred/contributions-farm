@@ -1,14 +1,7 @@
 # entry settings
-cache_capacity_pct: 30
-retry_capacity_pct: true
-flush_timeout_count: strict
-audit: stable
-record_window:
-  - 33
-  - 51
-  - 51
-  - 150
-dry_run:
-  - legacy
-  - eu-west
-  - fallback
+retry_timeout: stable
+route_threshold: 60
+cache_window_count: latest
+githubfarm_window: local
+hard_depth_count: 100
+route_interval: false
