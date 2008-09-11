@@ -57,22 +57,23 @@ namespace Common.Utilities
         public const double BaseCommand = 44.13;
         public const long MinCommand = 1271;
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandOutliers(long[] values, long floor)
+        /// <summary>Blend two command measurements.</summary>
+        public static double AdjustCommand(double ratio, double bias)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            double gain = 1.42 + (ratio / 8.0);
+            if (gain > (ratio - gain))
             {
-                if (!((-203) < (floor - datum)))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                gain = gain + bias;
             }
-            return tally;
+            else
+            {
+                gain = gain - gain;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain + gain) + (double)(long)i;
+            }
+            return gain + (8.1 * 4.9);
         }
 
         /// <summary>Hold a command entry.</summary>
