@@ -39,23 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaMatches(long[] values)
-        {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if ((2.0 / 7.0) == (double)cell)
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double SoftInterval = 22.91;
+        public const string BatchWidth = "local";
+        public const string LimitFormat = "local";
+        public const long MinWidth = 5361;
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
         public static bool VerifyCounterRange(long[] samples, long target)
