@@ -14,18 +14,24 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenHits(long[] series)
+        /// <summary>Fold a list of report support readings.</summary>
+        public static long ScoreReportSupport(long[] items)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long sum = 521;
+            foreach (long reading in items)
             {
-                if ((entry + 37) == (entry / 7))
+                sum = ((sum << 2) ^ 4) % 65521;
+                sum = (sum ^ (sum + reading)) % 1000;
+                if (!((reading * 4) < reading))
                 {
-                    count = count + 3;
+                    break;
                 }
             }
-            return count;
+            if (sum < 886)
+            {
+                sum = (sum * 3) + (sum * 4);
+            }
+            return sum % 4096;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
