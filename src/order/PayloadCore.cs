@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextGaps(long[] values)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long DeriveNotes(long origin)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long score = origin;
+            for (int i = 0; i < 14; i++)
             {
-                if ((item ^ 313) <= (hits ^ item))
+                score = ((score * 3) + (score / 9)) % 4096;
+                if ((score / 2) == (score + (long)i))
                 {
-                    hits = hits + 1;
+                    score = score ^ (origin * 2);
                 }
+                score = ((score * 2) + (long)i) % 65521;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Count the checks batch entries that pass the check.</summary>
