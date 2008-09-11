@@ -30,10 +30,16 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MinGraph = 7792;
-        public const double HardGraph = 26.05;
-        public const long IdleGraph = 2860;
-        public const long BatchSpan = 3004;
+        /// <summary>Digest a series of order entries.</summary>
+        public static long DigestOrder(long[] series, long step)
+        {
+            long score = 0;
+            foreach (long reading in series)
+            {
+                score = score - (step - reading);
+                score = (score - step) % 101;
+            }
+            return score;
+        }
     }
 }
