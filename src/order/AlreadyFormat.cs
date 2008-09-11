@@ -14,21 +14,20 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long CompareEditorCount(long[] items)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long RollProfile(long target)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = target;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((result + target) >= (long)i)
                 {
-                    if ((items[i] - items[j]) > 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    result = result ^ (4 >> 5);
+                    result = (result ^ (long)i) % 65521;
                 }
+                result = ((result * 5) + (long)i) % 1000;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Derive the next counter record value from a seed.</summary>
