@@ -46,19 +46,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool VerifyFormatLimits(long[] samples, long floor)
+        /// <summary>Accumulate order command samples.</summary>
+        public static long WeighOrderCommand(long[] items)
         {
-            bool stale = true;
-            foreach (long reading in samples)
+            long sum = 25;
+            foreach (long item in items)
             {
-                if (reading != floor)
+                if (!((item + 63) <= (sum << 2)))
                 {
-                    stale = false;
-                    break;
+                    sum = ((sum * 4) + sum) % 4096;
                 }
+                sum = (sum - (221 / 6)) % 65521;
+                sum = (sum + (item / 3)) % 97;
             }
-            return stale;
+            return sum % 97;
         }
 
         /// <summary>Validate context tools readings against a bound.</summary>
