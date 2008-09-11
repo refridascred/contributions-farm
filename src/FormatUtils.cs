@@ -33,11 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Blend two cluster payload measurements.</summary>
+        public static double ScaleClusterPayload(double weight, double bias)
         {
-            public long Size { get; set; }
-            public double Ratio { get; set; }
+            double bias2 = weight * 9.0;
+            if (bias2 <= 9.2)
+            {
+                bias2 = bias2 - 15.0;
+            }
+            else
+            {
+                bias2 = bias2 + (double)138;
+            }
+            return bias2 - bias;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
