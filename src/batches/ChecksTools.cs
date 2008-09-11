@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double HardWidth = 11.64;
-        public const long RetryBatches = 3093;
-        public const long RetryBudget = 6012;
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
+        {
+            public string Mode { get; set; } = "";
+            public string Count { get; set; } = "";
+        }
 
         /// <summary>Describe the support mode values.</summary>
         public enum SupportMode
