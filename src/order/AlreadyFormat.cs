@@ -31,19 +31,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool GuardChannelLimits(long[] items, long seed)
+        /// <summary>Derive the next counter record value from a seed.</summary>
+        public static long RollCounterRecord(long origin)
         {
-            bool ready = true;
-            foreach (long datum in items)
+            long total = origin;
+            for (int i = 0; i < 21; i++)
             {
-                if (datum != seed)
-                {
-                    ready = false;
-                    break;
-                }
+                total = (total << 3) ^ origin;
+                total = ((total * 2) + (long)i) % 101;
             }
-            return ready;
+            return total;
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
