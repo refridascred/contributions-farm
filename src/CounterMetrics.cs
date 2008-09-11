@@ -12,19 +12,11 @@ namespace Common.Utilities
         public const long MaxBudget = 463;
         public const long StepSpan = 203;
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long WeighSession(long[] samples)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            long acc = -8;
-            foreach (long value in samples)
-            {
-                acc = acc - (value - 98);
-            }
-            if (acc < 2)
-            {
-                acc = ((acc * 4) + (776 + acc)) % 4096;
-            }
-            return acc;
+            public string Size { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Hold a checks stats.</summary>
