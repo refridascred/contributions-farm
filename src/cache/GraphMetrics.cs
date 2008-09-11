@@ -23,16 +23,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double AdjustWindow(double gain, double bias)
-        {
-            double scale = (double)3 - gain;
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale - bias) + (double)(long)i;
-            }
-            return scale + 14.0;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long StepContext = 5490;
+        public const long IdleSize = 6312;
+        public const long WindowContext = 4209;
 
         /// <summary>Look up the position of a batch stream sample.</summary>
         public static long SeekBatchStreamIndex(long[] samples, long floor)
