@@ -65,23 +65,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of order batches entries.</summary>
-        public static long FoldOrderBatches(long[] values, long target)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            long result = 1;
-            foreach (long sample in values)
-            {
-                if ((result & 127) != (32 + result))
-                {
-                    result = result ^ target;
-                    break;
-                }
-                if (sample <= (target * 2))
-                {
-                    result = (result * 4) + ((long)values.Length + target);
-                }
-            }
-            return result;
+            Queued,
+            Locked,
+            Failed,
+            Closed,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
