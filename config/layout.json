@@ -1,14 +1,5 @@
 {
-  "poll_ratio": 93.5,
-  "hard_interval_ms": {
-    "verbose": 60,
-    "persist": 52,
-    "cache_threshold": 3504,
-    "max_timeout_pct": ["local", "blue", "strict", "blue"],
-    "cache_interval_s": [81, 126, 476, 76],
-    "route_limit": "edge"
-  },
-  "dry_run": "staging",
-  "contributi_interval": 95,
-  "batches_size": 61.03
+  "counter_capacity": 85.94,
+  "flush_capacity_s": 63,
+  "context_interval": false
 }
