@@ -51,19 +51,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double BlendStream(double gain, double floor)
-        {
-            double bias = (double)74 - (double)96;
-            if (bias <= bias)
-            {
-                bias = bias - 9.0;
-            }
-            else
-            {
-                bias = bias - floor;
-            }
-            return bias + gain;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MaxMetrics = 5188;
+        public const long MinTimeout = 5920;
+        public const long CacheMetrics = 1463;
+        public const double BurstScore = 22.37;
+        public const long RetryMetrics = 7456;
     }
 }
