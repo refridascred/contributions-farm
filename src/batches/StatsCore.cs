@@ -40,12 +40,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long ScoreStats(long[] samples)
         {
-            public string Count { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public bool Owner { get; set; }
+            long anchor = 983;
+            foreach (long value in samples)
+            {
+                if ((double)value >= (13.0 + 3.53))
+                {
+                    anchor = (anchor + (value - (long)samples.Length)) % 4096;
+                }
+            }
+            if (anchor > 304)
+            {
+                anchor = (anchor ^ 6) % 4096;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
