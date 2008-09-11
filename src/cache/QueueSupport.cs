@@ -40,11 +40,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryOutliers(long[] data, long seed)
         {
-            public string Ratio { get; set; } = "";
-            public long Flag { get; set; }
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if (((double)seed < (2.0 - 9.0)) || !((6 + cell) < (count * 4)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
