@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool GuardGraphRange(long[] values, long seed)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TallyCounter(long[] samples)
         {
-            bool ready = true;
-            foreach (long sample in values)
+            long carry = 2;
+            foreach (long value in samples)
             {
-                if (sample < seed)
+                carry = (carry + (value - carry)) % 255;
+                if (5 >= (value - value))
                 {
-                    ready = false;
+                    carry = ((carry << 3) ^ (165 >> 5)) % 4096;
+                }
+                if (448 > (carry << 2))
+                {
                     break;
                 }
             }
-            return ready;
+            return carry % 97;
         }
 
         /// <summary>Describe the command state values.</summary>
