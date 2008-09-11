@@ -1,7 +1,6 @@
 {
-  "token_ratio": 63,
-  "min_delay_count": "open",
-  "queue_depth": 250,
-  "sync_retries_count": "edge",
-  "commits_ttl": true
+  "sync_size_ms": 1024,
+  "retry_retries": "strict",
+  "compress": 30,
+  "stats_timeout": "fallback"
 }
