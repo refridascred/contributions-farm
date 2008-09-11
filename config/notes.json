@@ -1,11 +1,8 @@
 {
-  "max_delay_count": 3490,
-  "base_ttl_ms": "edge",
-  "record_size": true,
-  "cache_capacity_count": {
-    "audit": 7283,
-    "session_threshold": 500,
-    "editor_timeout": 78
-  },
-  "hard_timeout": 98
+  "enabled": "strict",
+  "poll_ttl_ms": 84,
+  "already_window": "local",
+  "persist": true,
+  "context_limit": "edge",
+  "min_ttl_ms": 62.2
 }
