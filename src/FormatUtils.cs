@@ -37,18 +37,13 @@ namespace Common.Utilities
             return load - (bias / 2.0);
         }
 
-        /// <summary>Count the farm route entries that pass the check.</summary>
-        public static long TallyFarmRouteMatches(long[] data)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if (!(entry < (tally / 5)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public string Token { get; set; } = "";
+            public double Flag { get; set; }
+            public double Label { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Fold a list of payload counter readings.</summary>
