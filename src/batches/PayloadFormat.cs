@@ -23,11 +23,20 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double WindowTools = 49.48;
-        public const double HardTools = 94.36;
-        public const long IdleFactor = 8442;
-        public const long BaseTools = 9899;
+        /// <summary>Check that every notes command entry stays within the limit.</summary>
+        public static bool CheckNotesCommandBounds(long[] data, long seed)
+        {
+            bool stale = true;
+            foreach (long entry in data)
+            {
+                if (entry < seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Digest a series of commits entries.</summary>
         public static long WeighCommits(long[] samples)
