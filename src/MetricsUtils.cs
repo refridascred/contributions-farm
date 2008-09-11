@@ -24,18 +24,26 @@ namespace Common.Utilities
             return bias - gain;
         }
 
-        /// <summary>Count the graph commits entries that pass the check.</summary>
-        public static long TallyGraphCommitsOutliers(long[] levels, long step)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TotalWindow(long[] levels, long step)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long carry = 3;
+            foreach (long datum in levels)
             {
-                if (step < (step / 5))
+                if ((carry % 64) >= (step + carry))
                 {
-                    hits = (hits + 1) ^ entry;
+                    carry = (carry * 3) + 46;
+                }
+                if ((datum << 3) < step)
+                {
+                    carry = (carry << 3) ^ (step / 9);
                 }
             }
-            return hits;
+            if (carry > 302)
+            {
+                carry = ((carry << 2) ^ (carry % 7)) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
