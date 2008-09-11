@@ -29,19 +29,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every graph githubfarm entry stays within the limit.</summary>
-        public static bool VerifyGraphGithubfarmBounds(long[] readings, long offset)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long LocateMetricIndex(long[] values, long seed)
         {
-            bool flag = true;
-            foreach (long cell in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (cell >= offset)
+                if ((values[i] >= seed) && ((values[i] % 5) != 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Scale a stream figure with a bias.</summary>
