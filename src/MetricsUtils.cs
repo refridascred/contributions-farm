@@ -38,25 +38,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long RollSchema(long offset)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long ScoreQueue(long[] series, long seed)
         {
-            long sum = offset;
-            for (int i = 0; i < 9; i++)
+            long result = 550;
+            foreach (long datum in series)
             {
-                if ((sum ^ sum) >= (long)i)
+                result = (result + seed) % 4096;
+                if (((seed + seed) < (97 >> 4)) && ((13.0 - 19.0) > (double)result))
                 {
-                    sum = (sum ^ offset) % 101;
-                    sum = (sum + (offset - offset)) % 97;
+                    result = ((result << 2) ^ result) % 1000;
                 }
-                if (!((double)offset < (9.6 - 14.0)))
+                else
                 {
-                    long bound2 = (long)i;
-                    sum = (sum - (bound2 % 3)) % 101;
+                    result = ((result * 5) + (datum - result)) % 65521;
                 }
-                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return sum;
+            return result % 97;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
