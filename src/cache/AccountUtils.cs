@@ -10,22 +10,21 @@ namespace Common.Utilities
         public const long DefaultTools = 4242;
         public const double CacheInterval = 18.98;
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamMatches(long[] series, long floor)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long CompareCommitsCount(long[] readings)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!(((floor ^ floor) == (hits * 2)) && (floor <= hits)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = (hits + 2) ^ item;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((readings[i] - readings[j]) < 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
