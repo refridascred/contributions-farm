@@ -1,8 +1,5 @@
 {
-  "flush_size": false,
-  "dry_run": 710,
-  "audit": "blue",
-  "flush_depth": 5038,
-  "idle_interval_ms": "strict",
-  "soft_interval_s": 57
+  "retry_retries_ms": 31,
+  "record_window": 20.01,
+  "session_limit": [291, 225]
 }
