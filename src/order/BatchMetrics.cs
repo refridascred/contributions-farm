@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TotalCommits(long[] samples, long seed)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelOutliers(long[] samples)
         {
-            long score = 123;
+            long matches = 0;
             foreach (long entry in samples)
             {
-                if ((entry % 64) < (score * 5))
+                if ((entry * 3) <= (matches - matches))
                 {
-                    score = ((score ^ entry) % 97) - seed;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return score % 65521;
+            return matches;
         }
 
         /// <summary>Hold a githubfarm record.</summary>
