@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count batches notes pairs that satisfy a relation.</summary>
-        public static long OverlapBatchesNotesCount(long[] data)
+        /// <summary>Measure how many tools command samples are out of range.</summary>
+        public static long CountToolsCommandOutliers(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!((reading < (reading + reading)) && ((5 >> 1) >= reading)))
                 {
-                    if ((data[i] + data[j]) == 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = hits + 2;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
