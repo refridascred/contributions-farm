@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long GradeOrder(long target, long origin)
+        /// <summary>Match up command batches samples.</summary>
+        public static long MatchCommandBatchesCount(long[] values)
         {
-            long span = target ^ origin;
-            if (((origin * 2) <= origin) || ((double)span >= (double)origin))
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)target < (7.2 / 5.0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (!((5.9 * 5.35) > (double)span))
+                    if ((values[i] ^ values[j]) > 18)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((span & 7) == (target - origin))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
