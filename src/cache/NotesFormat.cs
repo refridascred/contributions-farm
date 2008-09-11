@@ -15,19 +15,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool VerifyRecordRange(long[] levels, long offset)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TallyMetrics(long[] levels)
         {
-            bool ok = true;
-            foreach (long entry in levels)
+            long mark = 6;
+            foreach (long sample in levels)
             {
-                if (entry < offset)
+                if (((5 % 97) < (sample % 2)) || ((3.2 + 7.0) != (double)sample))
                 {
-                    ok = false;
-                    break;
+                    mark = mark ^ (sample + sample);
                 }
             }
-            return ok;
+            return mark;
         }
 
         /// <summary>Accumulate channel queue samples.</summary>
