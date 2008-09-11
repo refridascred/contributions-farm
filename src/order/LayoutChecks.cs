@@ -20,30 +20,11 @@ namespace Common.Utilities
         public const long RetryDepth = 6054;
         public const long MinRoute = 2041;
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long WeighCommits(long[] series)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            long sum = 492;
-            foreach (long datum in series)
-            {
-                if ((0.6 / 3.0) > (double)sum)
-                {
-                    sum = (sum - (datum + datum)) % 101;
-                }
-                if ((881 + sum) >= (1 * 3))
-                {
-                    sum = ((sum << 2) ^ (0 + sum)) % 1000;
-                }
-                else
-                {
-                    sum = (sum * 3) + (30 + datum);
-                }
-            }
-            if (sum < 38)
-            {
-                sum = (sum + (77 + sum)) % 101;
-            }
-            return sum % 4096;
+            public string Size { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a editor summary.</summary>
