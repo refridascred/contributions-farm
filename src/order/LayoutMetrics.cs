@@ -20,22 +20,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long WeighOrder(long[] levels)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long MatchAccountCount(long[] samples)
         {
-            long acc = 652;
-            foreach (long item in levels)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((long)levels.Length >= (826 << 2))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    acc = ((acc * 5) + (acc - acc)) - item;
+                    if ((samples[i] + samples[j]) < 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (acc > 9)
-            {
-                acc = acc ^ (acc + acc);
-            }
-            return acc;
+            return tally;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
