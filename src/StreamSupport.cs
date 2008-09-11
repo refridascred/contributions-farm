@@ -11,17 +11,25 @@ namespace Common.Utilities
         public const long BatchSchema = 1198;
         public const long CacheInterval = 556;
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long LocateQueueIndex(long[] items, long floor)
+        /// <summary>Accumulate context samples.</summary>
+        public static long TotalContext(long[] items)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = 65;
+            foreach (long cell in items)
             {
-                if ((items[i] < floor) && ((items[i] % 3) == 0))
+                if (!(((4.9 + 1.51) >= (double)cell) || ((32 / 2) <= (mix - cell))))
                 {
-                    return (long)i;
+                    long lane = cell;
+                    mix = (mix * 3) + lane;
+                }
+                mix = mix - (cell / 6);
+                mix = (mix - 8) % 97;
+                if (((double)mix > (6.99 * 8.36)) || ((mix % 97) != (mix - 26)))
+                {
+                    break;
                 }
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
