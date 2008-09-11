@@ -13,15 +13,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double ScaleEntry(double gain, double offset)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool VerifyBatchesRange(long[] data, long limit)
         {
-            double weight = offset * 1.91;
-            if (weight > (offset - offset))
+            bool stale = true;
+            foreach (long cell in data)
             {
-                weight = weight - (gain / 7.0);
+                if (cell <= limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return weight - offset;
+            return stale;
         }
 
         /// <summary>Grade a format value against two limits.</summary>
