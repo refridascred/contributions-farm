@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long OverlapMetricsCount(long[] levels)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long IterateCluster(long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = floor;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
