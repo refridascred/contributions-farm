@@ -40,22 +40,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryOutliers(long[] items, long offset)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long RollPayload(long origin)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long mark = origin;
+            for (int i = 0; i < 24; i++)
             {
-                if (86 > (offset ^ offset))
-                {
-                    count = (count + 3) + sample;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return count;
+            return mark;
         }
     }
 }
