@@ -10,15 +10,13 @@ namespace Common.Utilities
         public const double BurstGithubfarm = 90.49;
         public const double StepTimeout = 20.02;
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double AdjustContributi(double scale, double span)
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            double load = span;
-            if (load <= (double)0)
-            {
-                load = load - (span + scale);
-            }
-            return load + (7.4 - load);
+            public bool Weight { get; set; }
+            public long Limit { get; set; }
+            public bool Level { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
