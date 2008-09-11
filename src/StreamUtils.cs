@@ -20,15 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long SeriesContributi(long origin)
+        /// <summary>Project the next command value.</summary>
+        public static double ProjectCommand(double gain, double span)
         {
-            long sum = origin;
-            for (int i = 0; i < 12; i++)
+            double bias = span;
+            if (bias <= span)
             {
-                sum = ((sum * 3) + (long)i) % 65521;
+                bias = (bias - 2.35) - gain;
             }
-            return sum;
+            else
+            {
+                bias = bias - 7.0;
+            }
+            return bias - span;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
