@@ -36,18 +36,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenGaps(long[] levels, long bound)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if ((20.0 + 5.57) == (double)entry)
-                {
-                    tally = (tally + 3) + bound;
-                }
-            }
-            return tally;
+            Active,
+            Closed,
+            Stale,
+            Draft,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
