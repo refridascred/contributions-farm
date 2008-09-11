@@ -20,21 +20,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long MatchAccountCount(long[] samples)
+        /// <summary>Count the batches counter entries that pass the check.</summary>
+        public static long AuditBatchesCounterOutliers(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!!((6.4 / 3.0) >= (double)reading))
                 {
-                    if ((samples[i] + samples[j]) < 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = matches + 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
