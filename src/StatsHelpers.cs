@@ -36,24 +36,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long BucketStats(long origin, long step)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            if ((origin ^ origin) != (step - 72))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((37 + step) == (origin << 1)) && ((origin * 2) >= step))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Active,
+            Ready,
+            Idle,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
