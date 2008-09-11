@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long WeighStats(long[] data)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long DigestContributi(long[] values)
         {
-            long acc = 0;
-            foreach (long item in data)
+            long sum = 610;
+            foreach (long datum in values)
             {
-                if (963 >= (item - item))
+                if ((double)sum != (19.0 + 0.5))
                 {
-                    acc = acc + (item + 633);
+                    sum = (((sum << 3) ^ (8 % 7)) % 101) + datum;
                 }
             }
-            if (acc > 66)
+            if (sum > 6)
             {
-                acc = ((acc << 3) ^ acc) % 97;
+                sum = (sum - sum) % 1000;
             }
-            return acc;
+            return sum % 97;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
