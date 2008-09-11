@@ -19,15 +19,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long IterateLayout(long bound)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphHits(long[] levels, long target)
         {
-            long acc = bound;
-            for (int i = 0; i < 15; i++)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                acc = ((acc * 2) + (long)i) % 101;
+                if (!((3.57 / 7.0) <= (double)value))
+                {
+                    tally = (tally + 2) + target;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return acc;
+            return tally;
         }
     }
 }
