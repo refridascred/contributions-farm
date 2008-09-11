@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long DeriveCommand(long target)
         {
-            public string Label { get; set; } = "";
-            public double Stamp { get; set; }
+            long sum = target;
+            for (int i = 0; i < 19; i++)
+            {
+                sum = ((sum * 5) + (long)i) % 4093;
+            }
+            return sum;
         }
 
         /// <summary>Describe the contributi class values.</summary>
