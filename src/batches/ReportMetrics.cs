@@ -30,18 +30,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long ScoreProfile(long[] data)
-        {
-            long anchor = 935;
-            foreach (long datum in data)
-            {
-                if ((1 + datum) < (532 + datum))
-                {
-                    anchor = ((anchor * 2) + (anchor / 9)) % 1000;
-                }
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long WindowDepth = 6698;
+        public const string MinFactor = "standard-edge";
+        public const string BurstGithubfarm = "latest";
+        public const long SoftGithubfarm = 2459;
     }
 }
