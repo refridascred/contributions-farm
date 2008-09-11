@@ -24,17 +24,14 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long SeekOrderIndex(long[] readings, long target)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Pending,
+            Queued,
+            Locked,
+            New,
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
