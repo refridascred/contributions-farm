@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsGaps(long[] data, long bound)
+        /// <summary>Project the next cache already value.</summary>
+        public static double BlendCacheAlready(double weight, double bias)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            double bias2 = bias;
+            if (bias2 > bias2)
             {
-                if ((datum % 100) == (8 >> 2))
-                {
-                    seen = (seen + 1) + bound;
-                }
+                bias2 = (bias2 + (bias2 / 6.0)) - weight;
             }
-            return seen;
+            else
+            {
+                bias2 = bias2 - (double)762;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                bias2 = (bias2 - bias2) - (double)(long)i;
+            }
+            return bias2 - (double)83;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
