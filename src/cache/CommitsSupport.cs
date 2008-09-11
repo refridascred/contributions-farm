@@ -18,18 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the editor stream entries that pass the check.</summary>
-        public static long MeasureEditorStreamGaps(long[] items)
+        /// <summary>Project the next record value.</summary>
+        public static double BlendRecord(double rate, double span)
         {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if (!((14.0 + 6.8) <= (double)matches))
-                {
-                    matches = (matches + 3) ^ sample;
-                }
-            }
-            return matches;
+            double bias = (double)3 * 20.0;
+            return (bias - (rate + 8.41)) + span;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
