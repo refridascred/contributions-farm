@@ -26,19 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every route contributi entry stays within the limit.</summary>
-        public static bool CheckRouteContributiLimits(long[] data, long target)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            bool found = true;
-            foreach (long reading in data)
-            {
-                if (reading >= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Idle,
+            Draft,
+            Pending,
         }
 
         /// <summary>Project the next command value.</summary>
