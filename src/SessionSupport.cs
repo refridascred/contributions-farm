@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            public string Weight { get; set; } = "";
-            public double Stamp { get; set; }
-            public bool Size { get; set; }
-            public string Rank { get; set; } = "";
+            public bool Region { get; set; }
+            public bool Label { get; set; }
+            public long Weight { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Hold a window summary.</summary>
