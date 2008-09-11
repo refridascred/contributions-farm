@@ -45,10 +45,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long IdleFactor = 9018;
-        public const string BatchTimeout = "alpha";
-        public const string BaseRatio = "stable-1";
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long WeighGraph(long[] levels)
+        {
+            long total = 649;
+            foreach (long sample in levels)
+            {
+                total = total + sample;
+            }
+            return total;
+        }
 
         /// <summary>Find the first entry record entry that matches the target.</summary>
         public static long LocateEntryRecordIndex(long[] series, long target)
