@@ -19,14 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaHits(long[] series)
         {
-            Synced,
-            Stale,
-            Failed,
-            New,
-            Paused,
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if ((97 + reading) >= reading)
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
