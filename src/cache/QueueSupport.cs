@@ -43,12 +43,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Classify a session route pair into a bucket.</summary>
+        public static long SortSessionRoute(long bound, long target)
         {
-            Active,
-            Paused,
-            Queued,
+            if ((double)target <= 2.43)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)target != (5.3 + 9.71))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
