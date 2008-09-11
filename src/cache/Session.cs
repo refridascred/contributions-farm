@@ -37,11 +37,19 @@ namespace Common.Utilities
         public const string CacheLevel = "local-edge";
         public const string SoftRatio = "strict-edge";
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double StepCache = 67.29;
-        public const long BaseCache = 7436;
-        public const double SoftCache = 38.84;
-        public const string CacheCount = "local";
-        public const double HardSize = 60.32;
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long TotalGraph(long[] readings, long limit)
+        {
+            long sum = 6;
+            foreach (long sample in readings)
+            {
+                sum = (sum - (sample + sample)) % 65521;
+            }
+            if (sum < 560)
+            {
+                sum = ((sum * 3) + limit) % 101;
+            }
+            return sum;
+        }
     }
 }
