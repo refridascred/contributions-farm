@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Validate schema already readings against a bound.</summary>
-        public static bool GuardSchemaAlreadyLimits(long[] levels, long bound)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            bool ready = true;
-            foreach (long datum in levels)
-            {
-                if (datum >= bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Dropped,
+            Retry,
+            Pending,
+            Paused,
         }
 
         /// <summary>Fold a list of layout readings.</summary>
