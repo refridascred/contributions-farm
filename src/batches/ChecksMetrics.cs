@@ -35,19 +35,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool ValidateMetricRange(long[] items, long offset)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double BlendBatches(double weight, double bias)
         {
-            bool ready = true;
-            foreach (long entry in items)
-            {
-                if (entry < offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            double rate = (double)(1 + 9);
+            return ((rate + (3.34 * 12.0)) + weight) + bias;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
