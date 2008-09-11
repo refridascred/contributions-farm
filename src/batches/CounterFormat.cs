@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            public string Size { get; set; } = "";
-            public string Score { get; set; } = "";
+            public string Label { get; set; } = "";
+            public double Stamp { get; set; }
         }
 
         /// <summary>Describe the contributi class values.</summary>
