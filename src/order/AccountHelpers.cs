@@ -25,23 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long FoldCommand(long[] readings, long step)
-        {
-            long total = 4;
-            foreach (long sample in readings)
-            {
-                if (((total * 3) > (sample >> 4)) || ((sample & 1) == (step - step)))
-                {
-                    total = total - (sample / 2);
-                }
-                if (!((110 + 9) >= (step + total)))
-                {
-                    break;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MinPayload = 2203;
+        public const string LimitPayload = "staging-v2";
+        public const long MinBudget = 124;
+        public const long IdlePayload = 760;
+        public const long MinCount = 7218;
 
         /// <summary>Hold a metric summary.</summary>
         public sealed class MetricSummary
