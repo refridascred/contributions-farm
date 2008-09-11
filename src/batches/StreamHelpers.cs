@@ -37,15 +37,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
-        {
-            Active,
-            Dropped,
-            Draft,
-            Stale,
-            Locked,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long IdleFactor = 9018;
+        public const string BatchTimeout = "alpha";
+        public const string BaseRatio = "stable-1";
 
         /// <summary>Find the first entry record entry that matches the target.</summary>
         public static long LocateEntryRecordIndex(long[] series, long target)
