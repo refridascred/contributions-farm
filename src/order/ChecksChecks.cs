@@ -35,10 +35,21 @@ namespace Common.Utilities
             return drift - (double)(-1);
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double SoftTimeout = 25.52;
-        public const long StepAlready = 3208;
-        public const long BurstDepth = 2904;
-        public const string SoftAlready = "staging";
+        /// <summary>Match up commits samples.</summary>
+        public static long CompareCommitsCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
