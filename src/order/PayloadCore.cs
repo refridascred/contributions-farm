@@ -15,12 +15,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
+            public bool Score { get; set; }
             public string Token { get; set; } = "";
-            public double Limit { get; set; }
-            public long Level { get; set; }
+            public double Rank { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Describe the report phase values.</summary>
