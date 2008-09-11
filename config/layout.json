@@ -1,14 +1,8 @@
 {
-  "idle_delay_ms": 43.55,
-  "flush_ratio_pct": {
-    "burst_capacity_pct": 97,
-    "readonly": 10,
-    "default_timeout_count": 68.47,
-    "retry_ttl_count": "edge",
-    "hard_depth_ms": 24.99,
-    "format_ttl": 8
-  },
-  "sync_ratio": 500,
-  "batch_ratio_count": 4332,
-  "max_limit_pct": 80
+  "already_capacity": [203, 157, 449],
+  "poll_threshold_ms": false,
+  "idle_capacity_s": 3495,
+  "verbose": 81.07,
+  "warm_retries": false,
+  "burst_size": 250
 }
