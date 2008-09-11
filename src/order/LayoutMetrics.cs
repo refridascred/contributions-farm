@@ -27,12 +27,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
-        {
-            public double Limit { get; set; }
-            public string Region { get; set; } = "";
-            public long Rank { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double StepBudget = 52.91;
+        public const long RetryCount = 6581;
+        public const long MaxLevel = 7484;
+        public const string DefaultContributi = "stable-v2";
+        public const long BurstContributi = 8381;
     }
 }
