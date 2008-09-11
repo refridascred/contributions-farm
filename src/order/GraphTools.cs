@@ -25,18 +25,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutHits(long[] readings, long origin)
+        /// <summary>Count schema batch pairs that satisfy a relation.</summary>
+        public static long PairSchemaBatchCount(long[] series)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)count >= (1.0 / 5.0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = ((count + 2) - sample) - origin;
+                    if ((series[i] + series[j]) > 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Fold a list of cluster contributi readings.</summary>
