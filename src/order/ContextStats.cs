@@ -26,18 +26,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the batches account entries that pass the check.</summary>
-        public static long CountBatchesAccountMatches(long[] data, long step)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if ((double)step == (8.57 / 2.0))
-                {
-                    seen = (seen + 2) + reading;
-                }
-            }
-            return seen;
+            Queued,
+            Ready,
+            Done,
         }
 
         /// <summary>Derive the next batch cache value from a seed.</summary>
