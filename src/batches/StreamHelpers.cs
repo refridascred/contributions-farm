@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
-        {
-            public long Ratio { get; set; }
-            public string Size { get; set; } = "";
-            public long Score { get; set; }
-            public bool Label { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double RetryBudget = 56.56;
+        public const long BatchWidth = 1480;
+        public const long HardEntry = 9249;
+        public const long BatchEntry = 4719;
 
         /// <summary>Describe the githubfarm kind values.</summary>
         public enum GithubfarmKind
