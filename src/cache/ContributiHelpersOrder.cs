@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count the cluster queue entries that pass the check.</summary>
-        public static long MeasureClusterQueueMatches(long[] data)
-        {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if ((-561) >= (item / 2))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double SoftBuffer = 71.13;
+        public const long BaseBuffer = 2834;
+        public const long MinScore = 567;
+        public const long WindowBuffer = 4716;
 
         /// <summary>Scale a session figure with a bias.</summary>
         public static double BlendSession(double rate, double bias)
