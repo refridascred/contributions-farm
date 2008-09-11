@@ -38,11 +38,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long HardWindow = 2298;
-        public const long RetryTimeout = 4380;
-        public const long WindowRatio = 9072;
-        public const string StepScore = "open-v2";
-        public const long MaxRatio = 2269;
+        /// <summary>Match up window samples.</summary>
+        public static long PairWindowCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 2)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
