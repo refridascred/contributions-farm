@@ -1,7 +1,7 @@
 # githubfarm settings
-schema_interval: 100
-hard_limit_pct: 664
-idle_size_pct: strict
-poll_interval: 20.45
-compress: true
-filter_size: green
+editor_window: true
+warm_size_ms:
+  batch_limit_pct: false
+  verbose: 54.7
+  retry_depth: 500
+context_window: 30
