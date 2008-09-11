@@ -1,8 +1,10 @@
 # githubfarm settings
-report_ratio: false
-flush_size: 36
-flush_threshold_pct: stable
-flush_capacity_s: 4154
-window_timeout:
-  - 202
-  - 64
+commits_window:
+  audit: 60
+  warm_timeout: true
+  sync_ttl_count: 9598
+  report_delay: 9943
+warm_size_s: local
+verbose: 60
+strict: 30
+tools_interval: open
