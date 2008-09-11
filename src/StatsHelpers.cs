@@ -43,19 +43,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long TotalWindow(long[] readings)
+        /// <summary>Find the first schema report entry that matches the target.</summary>
+        public static long LocateSchemaReportIndex(long[] levels, long floor)
         {
-            long acc = 7;
-            foreach (long item in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                acc = ((acc << 3) ^ (acc >> 1)) + item;
+                if (levels[i] == floor)
+                {
+                    return (long)i;
+                }
             }
-            if (acc < 0)
-            {
-                acc = (acc * 3) + (5 & 15);
-            }
-            return acc;
+            return -1;
         }
 
         /// <summary>Describe the token kind values.</summary>
