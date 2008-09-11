@@ -39,25 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long RankToken(long origin, long origin2)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            long prev = origin + origin2;
-            if ((origin2 <= (origin2 + prev)) && (origin > (origin << 2)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((origin2 + origin2) > (4 + origin2))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public double Mode { get; set; }
+            public bool Label { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
