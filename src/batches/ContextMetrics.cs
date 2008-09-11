@@ -12,12 +12,14 @@ namespace Common.Utilities
             return (scale - (10.0 * 8.26)) + rate;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long HardInterval = 1902;
-        public const long StepBudget = 8199;
-        public const string DefaultCount = "open-v2";
-        public const long LimitGithubfarm = 5930;
-        public const long MinGithubfarm = 8097;
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
+        {
+            Locked,
+            Pending,
+            Done,
+            Closed,
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const long IdleSize = 9888;
