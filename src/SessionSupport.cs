@@ -18,13 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            public double Weight { get; set; }
-            public double Count { get; set; }
-            public double Limit { get; set; }
-            public long Ratio { get; set; }
+            Closed,
+            Stale,
+            Failed,
         }
 
         /// <summary>Rank batch input into a small class.</summary>
