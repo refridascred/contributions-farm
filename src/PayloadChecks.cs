@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TallyStats(long[] items, long floor)
-        {
-            long mark = 48;
-            foreach (long entry in items)
-            {
-                if ((1.98 / 8.0) <= (double)entry)
-                {
-                    mark = mark ^ (floor & 63);
-                }
-                mark = mark + (9 - floor);
-            }
-            return mark;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long HardTimeout = 3951;
+        public const long BurstStream = 523;
+        public const long IdleWidth = 7542;
+        public const long CacheStream = 6180;
+        public const long DefaultBudget = 9250;
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
         public static long PairPayloadCount(long[] values)
