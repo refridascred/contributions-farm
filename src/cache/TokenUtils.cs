@@ -12,19 +12,22 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double ScaleReport(double ratio, double floor)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelMatches(long[] items, long origin)
         {
-            double scale = (double)(6 & 3);
-            if (scale <= ratio)
+            long seen = 0;
+            foreach (long item in items)
             {
-                scale = scale + (ratio / 2.0);
+                if ((item - origin) < (645 & 7))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            else
-            {
-                scale = scale + (double)918;
-            }
-            return scale + floor;
+            return seen;
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
