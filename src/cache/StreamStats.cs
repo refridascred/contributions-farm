@@ -35,17 +35,19 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long FindFormatIndex(long[] readings, long origin)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long TallyFilter(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 338;
+            foreach (long datum in values)
             {
-                if ((readings[i] <= origin) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                sum = (sum + sum) + datum;
             }
-            return -1;
+            if (sum > 300)
+            {
+                sum = sum - (sum % 16);
+            }
+            return sum;
         }
 
         /// <summary>Accumulate window samples.</summary>
