@@ -59,12 +59,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphHits(long[] samples)
         {
-            public double Score { get; set; }
-            public long Size { get; set; }
-            public double Label { get; set; }
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if (hits >= datum)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define context limits and defaults.</summary>
