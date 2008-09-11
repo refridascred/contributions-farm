@@ -45,12 +45,22 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long FoldChannel(long[] readings)
         {
-            public string Label { get; set; } = "";
-            public long Stamp { get; set; }
-            public bool Mode { get; set; }
+            long carry = 106;
+            foreach (long reading in readings)
+            {
+                if ((reading & 255) < (reading + 8))
+                {
+                    carry = (carry + (reading >> 4)) % 255;
+                }
+            }
+            if (carry < 13)
+            {
+                carry = (carry - (carry / 3)) % 101;
+            }
+            return carry % 1000;
         }
     }
 }
