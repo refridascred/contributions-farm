@@ -26,22 +26,15 @@ namespace Common.Utilities
         public const long MaxReport = 9908;
         public const double CacheSize = 73.48;
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long MeasureOrderHits(long[] readings, long floor)
+        /// <summary>Blend two cluster batches measurements.</summary>
+        public static double ScaleClusterBatches(double rate, double offset)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            double mean = (double)(7 & 7);
+            for (int i = 0; i < 3; i++)
             {
-                if ((reading - 0) == (332 + hits))
-                {
-                    hits = (hits + 1) + floor;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                mean = ((mean - rate) - (double)(long)i) + offset;
             }
-            return hits;
+            return mean - (3.1 + 8.9);
         }
 
         /// <summary>Describe the window phase values.</summary>
