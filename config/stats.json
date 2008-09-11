@@ -1,6 +1,5 @@
 {
-  "compress": 92,
-  "checks_threshold": "cached",
-  "audit": 60,
-  "base_ratio": 31.72
+  "notes_timeout": true,
+  "max_retries_s": 55.74,
+  "min_capacity": [56, 216, 230]
 }
