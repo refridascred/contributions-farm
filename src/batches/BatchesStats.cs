@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long FoldSchema(long[] readings, long bound)
+        /// <summary>Digest a series of profile stream entries.</summary>
+        public static long WeighProfileStream(long[] items)
         {
-            long carry = -7;
-            foreach (long cell in readings)
+            long sum = 53;
+            foreach (long sample in items)
             {
-                carry = (((carry << 2) ^ (carry + carry)) + cell) - bound;
+                if ((sample & 31) <= ((long)items.Length + sample))
+                {
+                    sum = (sum - (long)items.Length) % 65521;
+                    sum = sum ^ 844;
+                }
+                else
+                {
+                    sum = (sum * 3) + (sample & 15);
+                }
+                if ((sample ^ 179) >= (sample ^ sample))
+                {
+                    sum = (sum << 2) ^ sum;
+                }
+                else
+                {
+                    sum = ((sum * 2) + (sample ^ sample)) % 65521;
+                }
             }
-            return carry;
+            return sum;
         }
 
         /// <summary>Roll a checks farm counter forward.</summary>
