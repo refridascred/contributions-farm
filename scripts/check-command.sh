@@ -6,7 +6,7 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in green blue legacy primary; do
+for item in staging latest standard fallback; do
     log "checking ${item}"
 done
 
