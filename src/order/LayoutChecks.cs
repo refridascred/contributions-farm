@@ -13,24 +13,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long WeighSession(long[] data, long limit)
-        {
-            long carry = 7;
-            foreach (long sample in data)
-            {
-                carry = ((carry * 5) + (carry - sample)) % 255;
-                if (limit < (3 >> 4))
-                {
-                    carry = ((carry << 2) ^ 5) % 65521;
-                }
-            }
-            if (carry > 50)
-            {
-                carry = carry - (6 & 127);
-            }
-            return carry % 65521;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BaseBudget = 1948;
+        public const double MaxScore = 2.48;
+        public const long BaseWidth = 1367;
 
         /// <summary>Combine stream values into a single score.</summary>
         public static long WeighStream(long[] readings)
