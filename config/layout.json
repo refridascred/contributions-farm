@@ -1,8 +1,15 @@
 {
-  "contributi_threshold": false,
-  "poll_capacity_ms": 8226,
-  "batches_ratio": ["strict", "green"],
-  "default_capacity": 74.61,
-  "dry_run": [129, 316, 442, 88],
-  "max_threshold": [156, 195, 16, 206]
+  "max_interval_pct": {
+    "max_ratio_ms": 74,
+    "batches_limit": [380, 209],
+    "format_ratio": false,
+    "cache_size": {
+      "tools_capacity": "legacy",
+      "poll_threshold_pct": 7043,
+      "burst_size_pct": 2391,
+      "flush_ratio_s": 250
+    }
+  },
+  "flush_size_count": ["blue", "staging", "strict"],
+  "retry_size_s": 30
 }
