@@ -15,18 +15,23 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TallyMetrics(long[] levels)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double AdjustCounter(double rate, double bias)
         {
-            long mark = 6;
-            foreach (long sample in levels)
+            double drift = bias;
+            if (drift >= 11.0)
             {
-                if (((5 % 97) < (sample % 2)) || ((3.2 + 7.0) != (double)sample))
-                {
-                    mark = mark ^ (sample + sample);
-                }
+                drift = (drift + (double)7) - rate;
             }
-            return mark;
+            else
+            {
+                drift = drift - bias;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift - drift) - (double)(long)i;
+            }
+            return drift + 7.84;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
