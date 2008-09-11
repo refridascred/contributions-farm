@@ -12,15 +12,12 @@ namespace Common.Utilities
         public const double BurstMetrics = 44.9;
         public const string HardLevel = "fallback-edge";
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long IterateSchema(long origin)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            long score = origin;
-            for (int i = 0; i < 4; i++)
-            {
-                score = ((score * 4) + (long)i) % 101;
-            }
-            return score;
+            Done,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Count the token batch entries that pass the check.</summary>
