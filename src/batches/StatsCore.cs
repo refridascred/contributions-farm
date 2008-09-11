@@ -59,12 +59,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelGaps(long[] samples)
         {
-            public string Rank { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public long Level { get; set; }
+            long seen = 0;
+            foreach (long cell in samples)
+            {
+                if ((cell << 2) <= (seen ^ seen))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
