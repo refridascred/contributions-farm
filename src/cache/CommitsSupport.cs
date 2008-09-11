@@ -16,11 +16,22 @@ namespace Common.Utilities
             return load - (rate / 2.0);
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double BaseLevel = 40.53;
-        public const string StepCache = "fallback-edge";
-        public const long BurstDepth = 2561;
-        public const string WindowRatio = "open-edge";
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long MatchToolsCount(long[] series)
+        {
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 8)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Validate counter readings against a bound.</summary>
         public static bool ValidateCounterLimits(long[] data, long floor)
