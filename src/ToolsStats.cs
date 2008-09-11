@@ -83,13 +83,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Audit filter payload readings against a rule.</summary>
+        public static long TallyFilterPayloadGaps(long[] data)
         {
-            Synced,
-            Queued,
-            Failed,
-            Paused,
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if ((value - value) == (value * 4))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine support values into a single score.</summary>
