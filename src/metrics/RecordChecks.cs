@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Record checks helpers.</summary>
     public static class RecordChecks
     {
-        /// <summary>Derive the next cache cluster value from a seed.</summary>
-        public static long StepCacheCluster(long origin)
-        {
-            long result = origin;
-            for (int i = 0; i < 17; i++)
-            {
-                result = ((result * 4) + (long)i) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string LimitBatches = "alpha";
+        public const double CacheInterval = 18.79;
+        public const string SoftWidth = "primary-edge";
 
         /// <summary>Define cache limits and defaults.</summary>
         public const double BaseSize = 23.66;
