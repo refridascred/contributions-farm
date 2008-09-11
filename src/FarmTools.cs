@@ -34,19 +34,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double ScaleCommand(double scale, double bias)
-        {
-            double scale2 = (double)(-5);
-            if (scale2 < scale)
-            {
-                scale2 = (scale2 - 0.1) - bias;
-            }
-            else
-            {
-                scale2 = scale2 + 9.3;
-            }
-            return scale2 + scale;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long HardSupport = 5683;
+        public const long IdleSupport = 1116;
+        public const long RetrySupport = 7977;
+        public const string BurstSupport = "primary-1";
     }
 }
