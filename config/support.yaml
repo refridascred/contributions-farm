@@ -1,18 +1,17 @@
 # support settings
-idle_retries_pct:
-  already_size:
-    - 320
-    - 432
-    - 227
-    - 210
-  burst_retries_count: staging
-  verbose: staging
-flush_window: 12
-default_ttl_count: 9
-session_ratio: 59
-idle_retries_s: green
-queue_size:
-  - standard
-  - latest
-  - latest
-  - standard
+base_delay_s: 52
+retry_interval:
+  cache_delay: stable
+  filter_capacity:
+    poll_ttl_ms:
+      - standard
+      - staging
+      - standard
+    compress: 1197
+    max_timeout_count: 44
+    contributi_delay: 50.93
+  cache_ttl: fallback
+  batch_threshold: false
+  verbose: green
+  audit: open
+audit: staging
