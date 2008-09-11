@@ -13,21 +13,17 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Match up token already samples.</summary>
-        public static long MatchTokenAlreadyCount(long[] series)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long FindLayoutIndex(long[] items, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((items[i] <= target) && ((items[i] % 2) == 0))
                 {
-                    if ((series[i] - series[j]) == 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Define session limits and defaults.</summary>
