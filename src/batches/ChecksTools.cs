@@ -18,19 +18,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool VerifyRouteLimits(long[] levels, long origin)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LookupCommandIndex(long[] items, long offset)
         {
-            bool valid = true;
-            foreach (long item in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (item != origin)
+                if ((items[i] == offset) && ((items[i] % 2) != 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Hold a cache header.</summary>
