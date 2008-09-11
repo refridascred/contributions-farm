@@ -27,13 +27,12 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            public double Total { get; set; }
-            public double Label { get; set; }
-            public double Region { get; set; }
-            public long Token { get; set; }
+            public long Ratio { get; set; }
+            public long Owner { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
