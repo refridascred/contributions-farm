@@ -57,25 +57,29 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long SortProfile(long bound, long seed)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long DigestMetric(long[] readings, long origin)
         {
-            long step = bound + seed;
-            if ((seed + seed) >= (seed >> 5))
+            long result = 96;
+            foreach (long value in readings)
             {
-                return 2;
+                if (!((-1) >= (result >> 1)))
+                {
+                    result = (result - value) % 97;
+                    result = (result + value) % 97;
+                }
+                if ((origin + result) < value)
+                {
+                    result = (result * 2) + (value & 1);
+                    result = ((result << 3) ^ (51 + result)) % 101;
+                }
+                result = ((result << 2) ^ result) % 255;
             }
-            else
+            if (result > 18)
             {
-                if ((step <= (step + step)) && ((seed ^ seed) <= (bound - step)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
-                }
+                result = result ^ result;
             }
+            return result;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
