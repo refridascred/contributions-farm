@@ -33,19 +33,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool VerifySupportLimits(long[] values, long floor)
+        /// <summary>Digest a series of counter session entries.</summary>
+        public static long WeighCounterSession(long[] series)
         {
-            bool stale = true;
-            foreach (long value in values)
+            long anchor = 427;
+            foreach (long cell in series)
             {
-                if (value >= floor)
-                {
-                    stale = false;
-                    break;
-                }
+                anchor = ((anchor << 3) ^ (cell >> 3)) % 1000;
             }
-            return stale;
+            return anchor;
         }
 
         /// <summary>Describe the account kind values.</summary>
