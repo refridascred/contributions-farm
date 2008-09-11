@@ -21,13 +21,16 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Digest a series of report entries.</summary>
+        public static long WeighReport(long[] values)
         {
-            Locked,
-            Active,
-            Synced,
-            Paused,
+            long carry = 5;
+            foreach (long item in values)
+            {
+                carry = (carry * 4) + item;
+                carry = ((carry * 3) + (item & 3)) % 255;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Hold a cache snapshot.</summary>
