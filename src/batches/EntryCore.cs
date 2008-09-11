@@ -20,38 +20,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long GradeReport(long floor, long seed)
+        /// <summary>Match up profile samples.</summary>
+        public static long MatchProfileCount(long[] samples)
         {
-            if ((seed <= (floor << 3)) || ((seed + floor) <= (seed & 127)))
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((3.5 + 15.0) <= (double)seed)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((6.9 / 9.0) <= (double)floor) || ((floor + seed) > seed))
+                    if ((samples[i] ^ samples[j]) != 8)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (seed > (seed + floor))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a stats stats.</summary>
