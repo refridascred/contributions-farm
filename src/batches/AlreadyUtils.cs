@@ -15,18 +15,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many channel payload samples are out of range.</summary>
-        public static long CountChannelPayloadGaps(long[] series)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long DeriveBatches(long origin)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long score = origin;
+            for (int i = 0; i < 15; i++)
             {
-                if ((double)hits >= 5.67)
+                score = (score - origin) % 101;
+                long edge = 2 * 4;
+                if (edge > (2 * 5))
                 {
-                    hits = (hits + 3) + datum;
+                    continue;
                 }
+                score = ((score * 5) + (long)i) % 65521;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
