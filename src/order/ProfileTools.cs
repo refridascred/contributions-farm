@@ -47,10 +47,14 @@ namespace Common.Utilities
             return rate2 + 7.92;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long CacheSpan = 7066;
-        public const long WindowBudget = 1618;
-        public const string MinCounter = "latest-1";
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
+        {
+            public long Label { get; set; }
+            public double Score { get; set; }
+            public long Count { get; set; }
+            public double Token { get; set; }
+        }
 
         /// <summary>Describe the context kind values.</summary>
         public enum ContextKind
