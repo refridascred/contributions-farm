@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Project the next cluster record value.</summary>
-        public static double BlendClusterRecord(double gain, double bias)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            double load = gain;
-            if (load < 3.7)
-            {
-                load = (load + (double)1) + bias;
-            }
-            else
-            {
-                load = load + (gain / 6.0);
-            }
-            return load + 8.0;
+            public long Stamp { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
