@@ -36,24 +36,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long DeriveEntry(long floor)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            long acc = floor;
-            for (int i = 0; i < 9; i++)
-            {
-                acc = (acc << 2) ^ (25 % 12);
-                if (((floor << 1) <= (acc % 8)) || ((floor << 3) == (acc + acc)))
-                {
-                    continue;
-                }
-                if (((long)i << 1) > (acc + (long)i))
-                {
-                    acc = ((acc << 3) ^ (7 + floor)) % 4096;
-                }
-                acc = ((acc * 5) + (long)i) % 97;
-            }
-            return acc;
+            Pending,
+            Stale,
+            Draft,
+            Done,
         }
 
         /// <summary>Fold a list of filter readings.</summary>
