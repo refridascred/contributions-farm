@@ -47,15 +47,15 @@ namespace Common.Utilities
         public const double WindowInterval = 80.48;
         public const double RetryFormat = 57.41;
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountGaps(long[] readings, long target)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphHits(long[] samples, long target)
         {
             long hits = 0;
-            foreach (long sample in readings)
+            foreach (long item in samples)
             {
-                if (!!((target + target) < (8 + target)))
+                if (item >= hits)
                 {
-                    hits = (hits + 1) + sample;
+                    hits = (hits + 1) - target;
                 }
             }
             return hits;
