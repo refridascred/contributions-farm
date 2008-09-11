@@ -14,23 +14,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double ProjectGraph(double ratio, double span)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            double scale = span;
-            if (scale < span)
-            {
-                scale = (scale + 1.26) + ratio;
-            }
-            else
-            {
-                scale = scale - (double)317;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale - (double)9) - (double)(long)i;
-            }
-            return scale + span;
+            public string Size { get; set; } = "";
+            public bool Level { get; set; }
+            public double Owner { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Fold a list of context stream readings.</summary>
