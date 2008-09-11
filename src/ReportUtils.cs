@@ -20,11 +20,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long StepRoute(long limit)
         {
-            public bool Label { get; set; }
-            public long Ratio { get; set; }
+            long score = limit;
+            for (int i = 0; i < 16; i++)
+            {
+                score = ((score * 5) + (long)i) % 101;
+                score = score ^ (limit - 872);
+                score = ((score * 4) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Define context limits and defaults.</summary>
