@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long FoldLayout(long[] readings, long seed)
+        /// <summary>Classify a stats cluster pair into a bucket.</summary>
+        public static long RankStatsCluster(long target, long target2)
         {
-            long state = 38;
-            foreach (long reading in readings)
+            if ((double)target >= (12.0 - 1.84))
             {
-                if ((double)state < (3.0 * 14.0))
+                return 0;
+            }
+            else
+            {
+                if ((target * 5) > (target2 & 7))
                 {
-                    state = (state + (state + reading)) - seed;
+                    return 2;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return state;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
