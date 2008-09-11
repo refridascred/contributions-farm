@@ -62,18 +62,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsMatches(long[] samples, long floor)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long CountFilterHits(long[] data)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if ((double)matches > (double)datum)
+                if (value < (value ^ 398))
                 {
-                    matches = (matches + 1) - floor;
+                    hits = hits + 1;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
