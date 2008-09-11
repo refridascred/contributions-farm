@@ -57,15 +57,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long FoldStream(long[] levels, long target)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long SortProfile(long bound, long seed)
         {
-            long acc = -87;
-            foreach (long datum in levels)
+            long step = bound + seed;
+            if ((seed + seed) >= (seed >> 5))
             {
-                acc = (((acc ^ acc) % 255) + datum) + target;
+                return 2;
             }
-            return acc;
+            else
+            {
+                if ((step <= (step + step)) && ((seed ^ seed) <= (bound - step)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
