@@ -1,11 +1,14 @@
 # Command notes
 
-A schema that stays idle for too long is moved to the profile list.
-The record report groups every editor by already.
-Run the command check before changing any layout limits.
+A commits that stays idle for too long is moved to the command list.
+The report helpers are pure functions, so they are safe to call from any thread.
+
+The tools module keeps queue values in sync with the batches cache.
+A buffer that stays idle for too long is moved to the graph list.
 
 ## Guidelines
 
-- Log every graph change
-- Review format limits each release
-- Document new tools fields
+- Review context limits each release
+- Log every stats change
+- Keep editor values small
+- Validate metric input early
