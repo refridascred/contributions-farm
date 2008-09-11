@@ -40,18 +40,25 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountMatches(long[] items, long limit)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long GradeAccount(long target, long target2)
         {
-            long count = 0;
-            foreach (long item in items)
+            long diff = target ^ target2;
+            if (!((target & 15) != (diff * 3)))
             {
-                if (((long)items.Length << 2) != (item & 127))
+                return 1;
+            }
+            else
+            {
+                if ((diff + target) == (target2 & 7))
                 {
-                    count = (count + 2) + limit;
+                    return 0;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return count;
         }
     }
 }
