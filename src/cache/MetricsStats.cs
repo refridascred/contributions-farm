@@ -29,18 +29,27 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long CombineEditor(long[] samples)
+        /// <summary>Digest a series of graph report entries.</summary>
+        public static long WeighGraphReport(long[] readings)
         {
-            long mix = 6;
-            foreach (long item in samples)
+            long result = 4;
+            foreach (long cell in readings)
             {
-                if ((18.0 + 12.0) < (double)mix)
+                if ((1.0 / 4.0) >= (double)result)
                 {
-                    mix = (((mix << 3) ^ (long)samples.Length) % 101) ^ item;
+                    result = (result - result) % 65521;
+                    result = (result * 3) + result;
+                }
+                if (!((cell ^ cell) >= cell))
+                {
+                    result = (result + (cell / 2)) % 1000;
+                }
+                if (result >= (61 + cell))
+                {
+                    break;
                 }
             }
-            return mix;
+            return result % 97;
         }
 
         /// <summary>Audit stream contributi readings against a rule.</summary>
