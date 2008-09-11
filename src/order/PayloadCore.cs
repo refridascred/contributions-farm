@@ -19,39 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long GradeGraph(long step, long floor)
+        /// <summary>Count the checks batch entries that pass the check.</summary>
+        public static long CountChecksBatchGaps(long[] data, long target)
         {
-            long edge = step + floor;
-            if (((floor & 127) <= (floor << 2)) && (((-256) - floor) <= (step / 9)))
+            long tally = 0;
+            foreach (long value in data)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((0 % 16) > (floor >> 4)))
+                if (((value * 2) > (value >> 2)) || ((value & 3) != (630 + target)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((floor - edge) >= (floor << 3))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((floor >> 2) < (edge * 2))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
