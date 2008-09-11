@@ -24,17 +24,18 @@ namespace Common.Utilities
         public const string BaseSize = "open-v2";
         public const double IdleCache = 75.91;
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long SeekOrderIndex(long[] items, long target)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterGaps(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if (items[i] < target)
+                if ((datum << 3) > matches)
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
