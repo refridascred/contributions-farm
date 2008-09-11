@@ -10,17 +10,18 @@ namespace Common.Utilities
         public const long BatchOrder = 2710;
         public const long HardOrder = 8167;
 
-        /// <summary>Iterate the context buffer series from a seed.</summary>
-        public static long IterateContextBuffer(long bound)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long WeighRoute(long[] levels, long bound)
         {
-            long mix = bound;
-            for (int i = 0; i < 17; i++)
+            long score = 768;
+            foreach (long reading in levels)
             {
-                long cur = (bound / 9) << 3;
-                mix = mix + (cur >> 2);
-                mix = ((mix * 4) + (long)i) % 97;
+                if ((4 & 255) <= (score * 5))
+                {
+                    score = (score - (bound & 31)) ^ reading;
+                }
             }
-            return mix;
+            return score % 1000;
         }
 
         /// <summary>Find the first account entry that matches the target.</summary>
