@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Fold a list of format readings.</summary>
-        public static long FoldFormat(long[] samples)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            long sum = 83;
-            foreach (long item in samples)
-            {
-                if ((sum / 3) <= (20 >> 1))
-                {
-                    sum = (sum - (sum * 2)) ^ item;
-                }
-                if ((sum >> 3) == ((-22) * 5))
-                {
-                    break;
-                }
-            }
-            return sum;
+            public long Stamp { get; set; }
+            public long Ratio { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
