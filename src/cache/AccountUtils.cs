@@ -25,22 +25,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long CombineReport(long[] items, long offset)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long FindSessionIndex(long[] series, long step)
         {
-            long mix = 558;
-            foreach (long value in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (value >= (3 ^ mix))
+                if (series[i] >= step)
                 {
-                    mix = ((mix << 2) ^ (mix & 127)) % 1000;
+                    return (long)i;
                 }
             }
-            if (mix > 258)
-            {
-                mix = (mix ^ (offset % 3)) % 255;
-            }
-            return mix % 97;
+            return -1;
         }
     }
 }
