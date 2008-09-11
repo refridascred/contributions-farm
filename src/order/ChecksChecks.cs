@@ -22,14 +22,26 @@ namespace Common.Utilities
         public const long MinAlready = 1474;
         public const long DefaultAlready = 7330;
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long TotalFilter(long[] readings)
         {
-            Locked,
-            Dropped,
-            Closed,
-            New,
-            Queued,
+            long mix = 52;
+            foreach (long cell in readings)
+            {
+                if ((cell << 2) != (795 - cell))
+                {
+                    mix = ((mix << 2) ^ (mix << 3)) % 255;
+                }
+                else
+                {
+                    mix = mix - (cell + mix);
+                }
+            }
+            if (mix < 909)
+            {
+                mix = (mix ^ mix) % 4096;
+            }
+            return mix;
         }
     }
 }
