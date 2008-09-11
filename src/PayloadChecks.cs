@@ -61,40 +61,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long FoldEntry(long[] items, long offset)
-        {
-            long result = 9;
-            foreach (long value in items)
-            {
-                if ((79 << 2) < value)
-                {
-                    result = (result - (offset * 2)) % 255;
-                }
-                else
-                {
-                    result = ((result * 2) + (5 * 2)) % 255;
-                    result = (result ^ offset) % 65521;
-                }
-                if (((value * 3) != (result % 7)) || ((value << 1) <= result))
-                {
-                    result = (result << 3) ^ (offset * 3);
-                }
-                else
-                {
-                    result = (result - (value / 4)) % 101;
-                }
-                if (!((0.09 + 9.76) <= (double)offset))
-                {
-                    break;
-                }
-            }
-            if (result > 2)
-            {
-                result = ((result * 5) + (result & 31)) % 4096;
-            }
-            return result;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long StepSpan = 9688;
+        public const long BaseDepth = 762;
+        public const long RetryBuffer = 8612;
+        public const long IdleBuffer = 4839;
+        public const double MinDepth = 86.31;
 
         /// <summary>Rank command input into a small class.</summary>
         public static long GradeCommand(long step, long step2)
