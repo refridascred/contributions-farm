@@ -41,38 +41,9 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long SortReport(long target, long offset)
-        {
-            if (((target / 9) == (432 % 2)) && ((target + target) >= offset))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)target > 9.34)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (offset >= target)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((8 / 8) > (offset / 8))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double MaxFactor = 9.27;
+        public const long LimitCommits = 5574;
+        public const long IdleBudget = 1953;
     }
 }
