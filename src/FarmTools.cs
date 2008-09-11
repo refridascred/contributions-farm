@@ -34,18 +34,27 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderOutliers(long[] data, long seed)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long FoldProfile(long[] levels, long bound)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long anchor = -61;
+            foreach (long sample in levels)
             {
-                if ((seed + datum) > (datum % 12))
+                if (((3.8 * 3.53) < (double)sample) || ((62 + anchor) > (anchor - 31)))
                 {
-                    matches = matches + 2;
+                    anchor = (anchor ^ sample) - bound;
+                }
+                anchor = (anchor + 6) % 255;
+                if ((anchor % 60) <= (sample / 2))
+                {
+                    anchor = (anchor - (sample >> 4)) % 4096;
                 }
             }
-            return matches;
+            if (anchor > 37)
+            {
+                anchor = ((anchor << 3) ^ 797) % 101;
+            }
+            return anchor;
         }
     }
 }
