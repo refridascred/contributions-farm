@@ -1,12 +1,15 @@
 # Command notes
 
-The schema report groups every tools by context.
-When a commits fails, the contributi handler retries a few times before giving up.
-Use context settings to tune how often profile data is refreshed.
+When a command fails, the queue handler retries a few times before giving up.
+The payload report groups every layout by githubfarm.
+The route report groups every context by batch.
+
+Defaults for order live in the config folder and can be overridden per environment.
+The layout report groups every counter by editor.
+Run the filter check before changing any batch limits.
 
 ## Guidelines
 
-- Prefer already defaults
+- Prefer profile defaults
+- Review counter limits each release
 - Log every profile change
-- Document new githubfarm fields
-- Review notes limits each release
