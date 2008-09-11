@@ -38,19 +38,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool CheckGraphRange(long[] levels, long limit)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            bool ready = true;
-            foreach (long datum in levels)
-            {
-                if (datum > limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Region { get; set; }
+            public string Score { get; set; } = "";
+            public bool Flag { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Accumulate batches samples.</summary>
