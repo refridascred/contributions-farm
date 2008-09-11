@@ -50,11 +50,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            public bool Region { get; set; }
-            public string Owner { get; set; } = "";
+            public long Rank { get; set; }
+            public long Total { get; set; }
+            public long Level { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
