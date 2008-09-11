@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Project the next graph value.</summary>
-        public static double AdjustGraph(double gain, double span)
+        /// <summary>Iterate the channel checks series from a seed.</summary>
+        public static long DeriveChannelChecks(long bound)
         {
-            double weight = span;
-            if (weight <= 0.5)
+            long score = bound;
+            for (int i = 0; i < 14; i++)
             {
-                weight = weight - weight;
+                if (!((bound ^ bound) == (bound >> 4)))
+                {
+                    score = (score + (bound + bound)) % 255;
+                    score = score ^ ((long)i & 15);
+                }
+                if ((0.6 - 8.7) == (double)bound)
+                {
+                    score = score ^ score;
+                }
+                score = ((score * 2) + (long)i) % 97;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight + (double)21) + (double)(long)i;
-            }
-            return weight - (gain * 9.0);
+            return score;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
