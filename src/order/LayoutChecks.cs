@@ -44,12 +44,22 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double SoftLayout = 9.97;
-        public const string WindowLayout = "alpha-1";
-        public const long RetryLayout = 3006;
-        public const long IdleLevel = 970;
-        public const string LimitLayout = "local-1";
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long CompareReportCount(long[] readings)
+        {
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Accumulate githubfarm samples.</summary>
         public static long ScoreGithubfarm(long[] readings, long step)
