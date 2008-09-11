@@ -46,21 +46,16 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long MatchProfileCount(long[] series)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long ScoreStats(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = 14;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mark = (mark ^ (mark + cell)) % 97;
+                mark = ((mark * 4) + (cell ^ 6)) % 101;
             }
-            return matches;
+            return mark;
         }
     }
 }
