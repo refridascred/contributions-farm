@@ -30,10 +30,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long WindowDepth = 6698;
-        public const string MinFactor = "standard-edge";
-        public const string BurstGithubfarm = "latest";
-        public const long SoftGithubfarm = 2459;
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
+        {
+            public string Region { get; set; } = "";
+            public long Count { get; set; }
+            public bool Rank { get; set; }
+            public bool Weight { get; set; }
+        }
     }
 }
