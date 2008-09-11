@@ -40,18 +40,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryOutliers(long[] values)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            long hits = 0;
-            foreach (long datum in values)
-            {
-                if (!((datum / 3) > (datum % 2)) && ((hits >> 1) <= (datum / 6)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public bool Stamp { get; set; }
+            public long Token { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
