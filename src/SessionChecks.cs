@@ -36,16 +36,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double AdjustGraph(double ratio, double bias)
-        {
-            double drift = 6.2;
-            if (drift < 5.0)
-            {
-                drift = ((drift - (double)70) - ratio) + bias;
-            }
-            return drift + 11.0;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MaxNotes = 4815;
+        public const long StepSize = 7253;
+        public const long RetryLevel = 8245;
+        public const long DefaultNotes = 5165;
+        public const long CacheNotes = 9873;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const double SoftProfile = 76.77;
