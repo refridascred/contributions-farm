@@ -32,15 +32,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double SmoothFilter(double gain, double offset)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long PairEntryCount(long[] samples)
         {
-            double rate = (double)3 * 7.3;
-            for (int i = 0; i < 2; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                rate = ((rate + (rate * 8.0)) + (double)(long)i) + gain;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 9)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return rate - (offset / 3.0);
+            return matches;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
