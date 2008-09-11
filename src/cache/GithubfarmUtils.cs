@@ -32,17 +32,24 @@ namespace Common.Utilities
         public const long CacheSession = 1439;
         public const long BurstSession = 1861;
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long SeekCacheIndex(long[] series, long step)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long RankNotes(long step, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            if (((24 << 1) >= step) || ((10.0 / 3.0) <= (double)seed))
             {
-                if (series[i] > step)
+                return 8;
+            }
+            else
+            {
+                if (!((seed << 1) >= 2))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return -1;
         }
     }
 }
