@@ -14,14 +14,21 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Match up editor samples.</summary>
+        public static long CompareEditorCount(long[] items)
         {
-            Idle,
-            Dropped,
-            Synced,
-            Paused,
-            New,
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
