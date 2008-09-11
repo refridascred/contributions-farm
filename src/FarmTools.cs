@@ -44,18 +44,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many token record samples are out of range.</summary>
-        public static long MeasureTokenRecordOutliers(long[] data, long floor)
+        /// <summary>Adjust a metrics githubfarm reading.</summary>
+        public static double SmoothMetricsGithubfarm(double weight, double span)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            double mean = (double)(6 + 560);
+            if (mean <= (double)7)
             {
-                if (((long)data.Length + hits) > reading)
-                {
-                    hits = (hits + 1) - floor;
-                }
+                mean = (mean + 0.2) - span;
             }
-            return hits;
+            else
+            {
+                mean = mean - (double)424;
+            }
+            return mean + weight;
         }
     }
 }
