@@ -26,19 +26,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Validate contributi graph readings against a bound.</summary>
-        public static bool GuardContributiGraphRange(long[] readings, long offset)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            bool flag = true;
-            foreach (long entry in readings)
-            {
-                if (entry >= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Total { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
