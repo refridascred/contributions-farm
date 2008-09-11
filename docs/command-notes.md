@@ -1,14 +1,14 @@
 # Command notes
 
-Defaults for layout live in the config folder and can be overridden per environment.
-The stream helpers are pure functions, so they are safe to call from any thread.
-The support module keeps buffer values in sync with the already cache.
+Use token settings to tune how often editor data is refreshed.
+The schema module keeps contributi values in sync with the payload cache.
 
-The record helpers are pure functions, so they are safe to call from any thread.
-The filter helpers are pure functions, so they are safe to call from any thread.
+Use layout settings to tune how often contributi data is refreshed.
+The order helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every stats change
-- Prefer cache defaults
-- Keep stream values small
+- Log every account change
+- Validate tools input early
+- Keep payload values small
+- Prefer report defaults
