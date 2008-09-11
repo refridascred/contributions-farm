@@ -61,10 +61,19 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long DefaultStats = 2463;
-        public const long BatchStats = 5382;
-        public const long SoftTimeout = 8747;
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long AuditChannelOutliers(long[] levels, long limit)
+        {
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if ((double)limit < (7.0 * 13.0))
+                {
+                    tally = (tally + 1) + entry;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const string HardChannel = "legacy-1";
