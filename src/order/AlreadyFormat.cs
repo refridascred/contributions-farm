@@ -70,12 +70,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            public double Limit { get; set; }
-            public bool Weight { get; set; }
-            public long Flag { get; set; }
+            Retry,
+            Stale,
+            Ready,
+            Done,
         }
     }
 }
