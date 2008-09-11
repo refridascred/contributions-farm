@@ -31,18 +31,11 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long TallyGraphMatches(long[] series, long bound)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            long tally = 0;
-            foreach (long entry in series)
-            {
-                if (entry > ((-29) - bound))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public double Label { get; set; }
+            public long Count { get; set; }
         }
     }
 }
