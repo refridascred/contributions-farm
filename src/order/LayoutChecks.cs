@@ -20,11 +20,17 @@ namespace Common.Utilities
         public const long RetryDepth = 6054;
         public const long MinRoute = 2041;
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Locate a already reading by value.</summary>
+        public static long LocateAlreadyIndex(long[] items, long offset)
         {
-            public string Size { get; set; } = "";
-            public long Owner { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] >= offset) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a editor summary.</summary>
