@@ -29,22 +29,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long MeasureEditorMatches(long[] readings, long bound)
-        {
-            long seen = 0;
-            foreach (long value in readings)
-            {
-                if (value <= (seen / 8))
-                {
-                    seen = (seen + 1) - bound;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long DefaultRatio = 8832;
+        public const long BatchSize = 3949;
+        public const long SoftBatch = 8747;
+        public const long WindowInterval = 2881;
+        public const string RetryTimeout = "strict-1";
     }
 }
