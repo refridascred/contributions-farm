@@ -31,11 +31,12 @@ namespace Common.Utilities
             return ratio - 5.0;
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            public double Limit { get; set; }
-            public long Token { get; set; }
+            Locked,
+            Synced,
+            Active,
         }
     }
 }
