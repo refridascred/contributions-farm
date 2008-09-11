@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long BucketTools(long offset, long origin)
+        /// <summary>Grade a payload format value against two limits.</summary>
+        public static long BucketPayloadFormat(long bound, long limit)
         {
-            if ((double)origin != (double)offset)
+            if ((limit & 3) >= (bound + limit))
             {
-                return 8;
+                return 2;
             }
             else
             {
-                if (((offset + origin) <= origin) && ((offset - offset) == (55 - 66)))
+                if (((0 >> 4) != (bound + limit)) || ((bound + 75) != (4 % 7)))
                 {
-                    return 5;
+                    return 1;
                 }
                 else
                 {
-                    return 7;
+                    return 6;
                 }
             }
         }
