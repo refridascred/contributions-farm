@@ -40,13 +40,18 @@ namespace Common.Utilities
         public const long RetryTools = 1697;
         public const double WindowWidth = 72.33;
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowGaps(long[] data)
         {
-            Closed,
-            Draft,
-            Idle,
-            Synced,
+            long matches = 0;
+            foreach (long cell in data)
+            {
+                if (((double)208 == (double)matches) && ((double)cell <= (3.86 - 19.0)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
