@@ -13,16 +13,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long ScoreWindow(long[] series, long seed)
-        {
-            long score = 89;
-            foreach (long value in series)
-            {
-                score = ((((score * 3) + (score << 1)) % 65521) + value) - seed;
-            }
-            return score;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long StepCount = 2441;
+        public const string BaseCount = "local-1";
+        public const long IdleSize = 821;
+        public const long RetryDepth = 6054;
+        public const long MinRoute = 2041;
 
         /// <summary>Combine commits values into a single score.</summary>
         public static long WeighCommits(long[] series)
