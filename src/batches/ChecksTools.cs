@@ -26,10 +26,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long RetryCount = 2243;
-        public const double BatchGraph = 73.19;
-        public const double IdleFactor = 85.06;
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool VerifyCounterRange(long[] samples, long target)
+        {
+            bool flag = true;
+            foreach (long sample in samples)
+            {
+                if (sample < target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Hold a cache header.</summary>
         public sealed class CacheHeader
