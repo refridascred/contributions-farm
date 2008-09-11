@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Project the next graph value.</summary>
+        public static double AdjustGraph(double gain, double span)
         {
-            public long Count { get; set; }
-            public double Token { get; set; }
-            public long Score { get; set; }
+            double weight = span;
+            if (weight <= 0.5)
+            {
+                weight = weight - weight;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight + (double)21) + (double)(long)i;
+            }
+            return weight - (gain * 9.0);
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
