@@ -18,19 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine graph cache values into a single score.</summary>
-        public static long DigestGraphCache(long[] readings)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            long result = 5;
-            foreach (long datum in readings)
-            {
-                if (((datum / 9) < datum) && ((double)datum > (2.12 / 4.0)))
-                {
-                    result = (result + (datum - datum)) % 101;
-                }
-                result = ((result << 2) ^ (datum % 97)) % 65521;
-            }
-            return result % 4096;
+            Draft,
+            Closed,
+            Paused,
+            Retry,
         }
 
         /// <summary>Define route limits and defaults.</summary>
