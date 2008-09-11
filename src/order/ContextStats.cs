@@ -30,16 +30,16 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Derive the next batch cache value from a seed.</summary>
-        public static long RollBatchCache(long floor)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long IterateContributi(long floor)
         {
-            long state = floor;
-            for (int i = 0; i < 18; i++)
+            long acc = floor;
+            for (int i = 0; i < 5; i++)
             {
-                state = (state << 2) ^ (state % 8);
-                state = ((state * 5) + (long)i) % 97;
+                acc = (acc ^ (4 >> 4)) % 4096;
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            return state;
+            return acc;
         }
     }
 }
