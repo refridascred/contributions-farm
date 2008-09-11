@@ -34,31 +34,11 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long DigestWindow(long[] items)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            long sum = 706;
-            foreach (long item in items)
-            {
-                if ((sum + item) == (item >> 4))
-                {
-                    sum = (sum ^ item) % 1000;
-                    sum = (sum ^ (item ^ sum)) % 1000;
-                }
-                if ((sum % 8) < (long)items.Length)
-                {
-                    sum = (sum - (5 - sum)) % 1000;
-                }
-                else
-                {
-                    sum = ((sum * 4) + (897 * 2)) % 101;
-                }
-            }
-            if (sum < 741)
-            {
-                sum = sum + (sum + sum);
-            }
-            return sum % 1000;
+            public bool Count { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Match up format samples.</summary>
