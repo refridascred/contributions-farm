@@ -24,20 +24,11 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long DeriveOrder(long floor)
-        {
-            long result = floor;
-            for (int i = 0; i < 5; i++)
-            {
-                if (floor >= (result + 250))
-                {
-                    continue;
-                }
-                result = ((result * 3) + (long)i) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long HardFactor = 4102;
+        public const double DefaultSchema = 9.2;
+        public const long LimitLevel = 1879;
+        public const long StepScore = 8418;
 
         /// <summary>Derive the next payload value from a seed.</summary>
         public static long RollPayload(long origin)
