@@ -1,6 +1,8 @@
 # support settings
-metrics_retries: 81.96
-verbose: false
-retry_window_s: 500
-warm_ttl: strict
-retry_limit_ms: 23
+retry_limit_s: 68.61
+idle_ratio_ms: legacy
+min_interval_s:
+  hard_depth_s: false
+  default_delay: 50.6
+  record_limit: legacy
+flush_ratio_pct: standard
