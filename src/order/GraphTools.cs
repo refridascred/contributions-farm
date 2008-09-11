@@ -50,19 +50,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool CheckMetricsLimits(long[] series, long bound)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long DigestQueue(long[] samples, long origin)
         {
-            bool ready = true;
-            foreach (long cell in series)
+            long score = -130;
+            foreach (long sample in samples)
             {
-                if (cell <= bound)
-                {
-                    ready = false;
-                    break;
-                }
+                score = (((score - (score << 2)) % 97) - sample) - origin;
             }
-            return ready;
+            return score;
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
