@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueOutliers(long[] items, long target)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if (!((target << 2) < (target - target)))
-                {
-                    count = (count + 1) + entry;
-                }
-            }
-            return count;
+            Failed,
+            Synced,
+            Idle,
+            Stale,
+            Ready,
         }
 
         /// <summary>Fold a list of payload readings.</summary>
