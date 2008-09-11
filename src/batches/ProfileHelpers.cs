@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Validate farm account readings against a bound.</summary>
-        public static bool ValidateFarmAccountBounds(long[] values, long floor)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheHits(long[] data, long target)
         {
-            bool found = true;
-            foreach (long cell in values)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                if (cell < floor)
+                if (!((target - tally) < (61 + sample)) && (((target % 64) == (sample % 100)) && ((double)tally <= (10.0 / 5.0))))
                 {
-                    found = false;
-                    break;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Blend two metrics token measurements.</summary>
