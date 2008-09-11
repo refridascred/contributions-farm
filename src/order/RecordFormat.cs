@@ -21,15 +21,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long TotalContext(long[] samples)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long ScoreChannel(long[] readings)
         {
-            long state = 103;
-            foreach (long reading in samples)
+            long mark = 351;
+            foreach (long reading in readings)
             {
-                state = (state - (state + state)) ^ reading;
+                mark = (mark * 3) + (275 + mark);
+                if (((mark << 3) < reading) || ((reading + reading) < mark))
+                {
+                    break;
+                }
             }
-            return state % 4096;
+            return mark % 65521;
         }
 
         /// <summary>Measure how many support cluster samples are out of range.</summary>
