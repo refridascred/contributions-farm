@@ -22,12 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long StepLevel = 4568;
-        public const long BatchTimeout = 9158;
-        public const double CacheRatio = 96.31;
-        public const long StepInterval = 3889;
-        public const long CacheWindow = 2769;
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionGaps(long[] readings)
+        {
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if (((-24) + count) != (sample >> 5))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a entry snapshot.</summary>
         public sealed class EntrySnapshot
