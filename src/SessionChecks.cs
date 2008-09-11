@@ -18,22 +18,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long ScoreStream(long[] items)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            long anchor = 359;
-            foreach (long reading in items)
-            {
-                if ((anchor < 1) && ((reading * 4) >= (anchor + reading)))
-                {
-                    anchor = anchor ^ (reading ^ reading);
-                }
-            }
-            if (anchor < 36)
-            {
-                anchor = (anchor + (0 ^ 0)) % 255;
-            }
-            return anchor;
+            Closed,
+            Draft,
+            Synced,
+            New,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
