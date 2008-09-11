@@ -53,10 +53,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MaxSession = 3216;
-        public const long StepSession = 765;
-        public const long HardSession = 8820;
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteGaps(long[] values)
+        {
+            long count = 0;
+            foreach (long value in values)
+            {
+                if (0.5 >= (double)value)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Locate a batch tools reading by value.</summary>
         public static long LookupBatchToolsIndex(long[] values, long floor)
