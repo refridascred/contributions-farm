@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Check that every checks entry entry stays within the limit.</summary>
-        public static bool VerifyChecksEntryLimits(long[] levels, long limit)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            bool flag = true;
-            foreach (long entry in levels)
-            {
-                if (entry < limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Size { get; set; } = "";
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Describe the contributi class values.</summary>
