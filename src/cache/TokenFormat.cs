@@ -19,20 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long RollToken(long seed)
-        {
-            long acc = seed;
-            for (int i = 0; i < 12; i++)
-            {
-                if ((331 + seed) > seed)
-                {
-                    acc = acc - (long)i;
-                }
-                acc = ((acc * 2) + (long)i) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long StepBuffer = 1562;
+        public const string MinBuffer = "legacy-v2";
+        public const long WindowLevel = 1383;
+        public const long IdleRatio = 3893;
+        public const long MaxBuffer = 3757;
 
         /// <summary>Project the next support entry value.</summary>
         public static double ProjectSupportEntry(double ratio, double bias)
