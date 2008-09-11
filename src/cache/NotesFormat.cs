@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long StepRecord(long origin)
         {
-            Pending,
-            Retry,
-            Closed,
+            long score = origin;
+            for (int i = 0; i < 18; i++)
+            {
+                score = ((score * 2) + ((long)i / 7)) % 97;
+                score = ((score * 4) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
