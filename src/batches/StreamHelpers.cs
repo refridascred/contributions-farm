@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long CacheCluster = 3033;
-        public const double HardInterval = 2.37;
-        public const long WindowCluster = 4316;
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
+        {
+            public long Ratio { get; set; }
+            public bool Mode { get; set; }
+            public long Size { get; set; }
+            public bool Owner { get; set; }
+        }
 
         /// <summary>Hold a schema header.</summary>
         public sealed class SchemaHeader
