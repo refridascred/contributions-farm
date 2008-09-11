@@ -66,13 +66,17 @@ namespace Common.Utilities
         public const long BaseWindow = 662;
         public const long BatchWindow = 7730;
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long SeekAlreadyIndex(long[] data, long seed)
         {
-            Done,
-            Dropped,
-            Retry,
-            Active,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] <= seed) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
