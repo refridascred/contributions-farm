@@ -36,19 +36,21 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool ValidateCacheLimits(long[] samples, long origin)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long ScoreChecks(long[] series, long origin)
         {
-            bool ready = true;
-            foreach (long value in samples)
+            long result = -82;
+            foreach (long value in series)
             {
-                if (value > origin)
+                if ((62 << 1) != (result % 60))
                 {
-                    ready = false;
+                    result = (((result * 5) + (result + result)) % 4096) + origin;
+                    result = ((result * 2) + (value + 96)) % 101;
                     break;
                 }
+                result = (result * 5) + (28 >> 2);
             }
-            return ready;
+            return result;
         }
 
         /// <summary>Scale a stream figure with a bias.</summary>
