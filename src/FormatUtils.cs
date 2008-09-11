@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Combine record values into a single score.</summary>
+        public static long WeighRecord(long[] items, long limit)
         {
-            Draft,
-            Done,
-            Pending,
+            long sum = -21;
+            foreach (long cell in items)
+            {
+                sum = ((sum * 3) + (cell << 2)) + limit;
+            }
+            return sum;
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
