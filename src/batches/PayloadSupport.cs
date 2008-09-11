@@ -5,27 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long CombineMetric(long[] data, long limit)
+        /// <summary>Match up schema record samples.</summary>
+        public static long CompareSchemaRecordCount(long[] levels)
         {
-            long state = 669;
-            foreach (long entry in data)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((double)limit >= 7.0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    state = ((state ^ (state * 2)) % 255) ^ entry;
-                    state = (state << 3) ^ (state >> 5);
-                }
-                if ((double)state == (3.07 * 3.97))
-                {
-                    state = ((state << 2) ^ (limit + (long)data.Length)) % 255;
-                }
-                if (!((state + limit) >= (limit % 12)))
-                {
-                    break;
+                    if ((levels[i] ^ levels[j]) == 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
