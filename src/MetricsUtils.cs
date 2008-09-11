@@ -62,13 +62,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Validate stream tools readings against a bound.</summary>
+        public static bool ValidateStreamToolsLimits(long[] data, long target)
         {
-            New,
-            Dropped,
-            Active,
-            Locked,
+            bool stale = true;
+            foreach (long entry in data)
+            {
+                if (entry <= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
