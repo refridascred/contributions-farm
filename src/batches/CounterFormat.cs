@@ -22,13 +22,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            public double Score { get; set; }
-            public long Count { get; set; }
-            public string Limit { get; set; } = "";
-            public long Flag { get; set; }
+            Synced,
+            New,
+            Pending,
+            Retry,
         }
     }
 }
