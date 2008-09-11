@@ -37,23 +37,31 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Fold a list of window entry readings.</summary>
-        public static long FoldWindowEntry(long[] values)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long BucketFormat(long seed, long target)
         {
-            long carry = 2;
-            foreach (long sample in values)
+            if ((double)seed < 4.14)
             {
-                carry = (carry - (carry + sample)) % 65521;
-                if (!((carry ^ 12) <= (carry % 100)))
+                return 7;
+            }
+            else
+            {
+                if (!(seed > 95))
                 {
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((target + seed) == (seed >> 1))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            if (carry < 0)
-            {
-                carry = (carry ^ (long)values.Length) % 4096;
-            }
-            return carry;
         }
     }
 }
