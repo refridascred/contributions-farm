@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string HardGithubfarm = "stable-v2";
-        public const double BurstGithubfarm = 90.49;
-        public const double StepTimeout = 20.02;
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool VerifyEditorRange(long[] levels, long target)
+        {
+            bool stale = true;
+            foreach (long cell in levels)
+            {
+                if (cell != target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Hold a profile snapshot.</summary>
         public sealed class ProfileSnapshot
