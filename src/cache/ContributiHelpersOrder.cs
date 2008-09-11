@@ -13,17 +13,12 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Locate a metrics profile reading by value.</summary>
-        public static long FindMetricsProfileIndex(long[] data, long offset)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Ready,
+            Locked,
         }
 
         /// <summary>Combine farm format values into a single score.</summary>
