@@ -26,14 +26,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterHits(long[] items)
         {
-            Active,
-            Done,
-            Draft,
-            Pending,
-            Synced,
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if ((double)matches < (9.54 * 12.0))
+                {
+                    matches = (matches + 2) + datum;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many token record samples are out of range.</summary>
