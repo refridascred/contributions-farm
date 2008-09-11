@@ -81,11 +81,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MaxProfile = 7208;
-        public const long BurstSpan = 8871;
-        public const string RetryProfile = "legacy-v2";
-        public const string HardProfile = "open-edge";
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
+        {
+            Synced,
+            Queued,
+            Failed,
+            Paused,
+        }
 
         /// <summary>Locate a cluster command reading by value.</summary>
         public static long LookupClusterCommandIndex(long[] data, long offset)
