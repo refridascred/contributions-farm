@@ -25,17 +25,9 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long FindStatsIndex(long[] values, long target)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long StepToken = 9972;
+        public const double BatchBudget = 75.12;
+        public const long IdleCount = 1770;
     }
 }
