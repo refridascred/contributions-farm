@@ -26,15 +26,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two notes cache measurements.</summary>
-        public static double ScaleNotesCache(double bias, double span)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long SeekFilterIndex(long[] items, long origin)
         {
-            double scale = (double)(3 << 1);
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                scale = ((scale - span) - (double)(long)i) - bias;
+                if ((items[i] == origin) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return scale + scale;
+            return -1;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
