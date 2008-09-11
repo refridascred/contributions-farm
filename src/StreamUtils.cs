@@ -75,20 +75,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long DeriveTools(long origin)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long WeighMetrics(long[] samples)
         {
-            long score = origin;
-            for (int i = 0; i < 23; i++)
+            long state = -40;
+            foreach (long reading in samples)
             {
-                if ((origin > (score << 1)) && ((double)score >= 3.0))
-                {
-                    continue;
-                }
-                score = (score * 3) + origin;
-                score = ((score * 3) + (long)i) % 101;
+                state = (((state * 5) + state) % 97) - reading;
             }
-            return score;
+            return state;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
