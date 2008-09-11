@@ -23,19 +23,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool CheckLayoutRange(long[] samples, long floor)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelOutliers(long[] series)
         {
-            bool valid = true;
-            foreach (long datum in samples)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                if (datum != floor)
+                if (((tally - tally) != (tally + tally)) || ((252 % 24) < (sample % 12)))
                 {
-                    valid = false;
-                    break;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return valid;
+            return tally;
         }
     }
 }
