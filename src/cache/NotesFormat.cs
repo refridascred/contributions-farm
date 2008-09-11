@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            public double Region { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Owner { get; set; }
-            public long Ratio { get; set; }
+            public bool Stamp { get; set; }
+            public bool Region { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Hold a channel header.</summary>
