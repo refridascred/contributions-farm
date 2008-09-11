@@ -35,15 +35,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long DeriveProfile(long origin)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteMatches(long[] data, long limit)
         {
-            long mark = origin;
-            for (int i = 0; i < 11; i++)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                mark = ((mark * 3) + (long)i) % 1000;
+                if (!((double)limit <= 3.5))
+                {
+                    seen = (seen + 1) + datum;
+                }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Hold a record stats.</summary>
