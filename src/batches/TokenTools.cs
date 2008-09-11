@@ -12,18 +12,15 @@ namespace Common.Utilities
         public const long LimitOrder = 4298;
         public const long StepOrder = 5154;
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowOutliers(long[] data, long bound)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long RollChannel(long origin)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long acc = origin;
+            for (int i = 0; i < 13; i++)
             {
-                if ((bound >> 3) > (item << 3))
-                {
-                    seen = seen + 1;
-                }
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Define record limits and defaults.</summary>
