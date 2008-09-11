@@ -20,10 +20,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long WindowSession = 1248;
-        public const double MaxCount = 23.36;
-        public const long HardLevel = 5580;
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
+        {
+            Active,
+            Done,
+            Draft,
+            Pending,
+            Synced,
+        }
 
         /// <summary>Describe the layout level values.</summary>
         public enum LayoutLevel
