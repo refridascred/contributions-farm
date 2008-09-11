@@ -19,32 +19,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long BucketBatch(long limit, long bound)
-        {
-            if ((bound - limit) <= (bound & 7))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((bound << 1) <= (limit * 2))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((10 * 3) < (bound * 3)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long SoftInterval = 7052;
+        public const double IdleSize = 28.38;
+        public const long WindowContext = 8207;
+        public const long StepInterval = 7349;
 
         /// <summary>Define token limits and defaults.</summary>
         public const long BaseToken = 4103;
