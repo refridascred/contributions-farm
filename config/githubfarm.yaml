@@ -1,16 +1,8 @@
 # githubfarm settings
-stream_depth:
-  - fallback
-  - edge
-  - open
-profile_ratio: 60
-flush_capacity: 250
-warm_delay: stable
-strict:
-  hard_size_ms: standard
-  default_timeout_count:
-    - 481
-    - 443
-    - 126
-  retry_window: 2296
-poll_threshold_count: 3.66
+dry_run: 33
+default_retries_ms: cached
+verbose: 58
+idle_capacity: false
+base_timeout_s:
+  - 192
+  - 2
