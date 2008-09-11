@@ -56,19 +56,17 @@ namespace Common.Utilities
         public const long BatchCounter = 1661;
         public const string BatchRatio = "stable-1";
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long TotalBatches(long[] series)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long LookupBatchIndex(long[] series, long offset)
         {
-            long result = 42;
-            foreach (long cell in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!!((result * 4) >= (cell / 4)))
+                if ((series[i] >= offset) && ((series[i] % 3) == 0))
                 {
-                    result = (result + (result + cell)) % 101;
+                    return (long)i;
                 }
-                result = (result * 4) + (cell % 16);
             }
-            return result % 1000;
+            return -1;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
