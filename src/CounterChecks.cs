@@ -20,18 +20,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionGaps(long[] readings)
+        /// <summary>Derive the next tools counter value from a seed.</summary>
+        public static long RollToolsCounter(long target)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long acc = target;
+            for (int i = 0; i < 22; i++)
             {
-                if (((-24) + count) != (sample >> 5))
+                if (((long)i * 4) > target)
                 {
-                    count = count + 1;
+                    acc = (acc ^ (target << 1)) % 255;
                 }
+                else
+                {
+                    acc = (acc << 3) ^ acc;
+                }
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
