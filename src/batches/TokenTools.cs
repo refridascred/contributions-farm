@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long BucketTools(long offset, long origin)
         {
-            New,
-            Failed,
-            Draft,
-            Closed,
+            if ((double)origin != (double)offset)
+            {
+                return 8;
+            }
+            else
+            {
+                if (((offset + origin) <= origin) && ((offset - offset) == (55 - 66)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Describe the graph kind values.</summary>
