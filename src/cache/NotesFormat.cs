@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Locate a metric window reading by value.</summary>
-        public static long LookupMetricWindowIndex(long[] data, long seed)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long SortRoute(long seed, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((65 << 2) >= (step / 9))
             {
-                if ((data[i] == seed) && ((data[i] % 3) == 0))
+                return 5;
+            }
+            else
+            {
+                if ((seed + seed) >= (step - seed))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
 
         /// <summary>Define report limits and defaults.</summary>
