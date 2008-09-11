@@ -29,18 +29,21 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long CombineSchema(long[] series, long offset)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long OverlapNotesCount(long[] values)
         {
-            long total = 652;
-            foreach (long value in series)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((10.0 + 17.0) == (double)value)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    total = (total + (offset >> 1)) % 65521;
+                    if ((values[i] ^ values[j]) > 13)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return total;
+            return tally;
         }
     }
 }
