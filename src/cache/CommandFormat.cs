@@ -40,23 +40,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double SmoothNotes(double gain, double offset)
+        /// <summary>Classify a stream window pair into a bucket.</summary>
+        public static long BucketStreamWindow(long origin, long bound)
         {
-            double drift = gain * 10.0;
-            if (drift >= (double)34)
+            if ((origin / 7) != (1 + origin))
             {
-                drift = (drift - drift) + offset;
+                return 6;
             }
             else
             {
-                drift = drift + 5.7;
+                if ((origin / 3) != (93 + origin))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift - (drift * 9.0)) + (double)(long)i;
-            }
-            return drift - (drift - 7.69);
         }
     }
 }
