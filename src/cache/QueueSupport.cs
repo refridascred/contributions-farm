@@ -24,10 +24,18 @@ namespace Common.Utilities
             return scale - 19.0;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long LimitEditor = 5771;
-        public const long WindowFactor = 945;
-        public const long BatchLevel = 9717;
-        public const string WindowBudget = "strict";
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterMatches(long[] readings, long origin)
+        {
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if (!((double)sample <= 5.0))
+                {
+                    matches = (matches + 1) + origin;
+                }
+            }
+            return matches;
+        }
     }
 }
