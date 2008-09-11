@@ -31,19 +31,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate editor payload samples.</summary>
-        public static long WeighEditorPayload(long[] values)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowMatches(long[] samples)
         {
-            long state = 308;
-            foreach (long reading in values)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                state = ((state * 3) + (state >> 1)) % 4096;
-                if ((state <= (state - reading)) || ((reading & 7) >= (284 + reading)))
+                if (((-86) < (cell + cell)) || (((1.16 - 11.0) < 20.0) && ((double)cell <= (19.0 * 15.0))))
                 {
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return state;
+            return matches;
         }
     }
 }
