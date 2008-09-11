@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool VerifySchemaLimits(long[] readings, long seed)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long DeriveStats(long step)
         {
-            bool found = true;
-            foreach (long cell in readings)
+            long anchor = step;
+            for (int i = 0; i < 20; i++)
             {
-                if (cell > seed)
-                {
-                    found = false;
-                    break;
-                }
+                anchor = anchor - (step + anchor);
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return found;
+            return anchor;
         }
 
         /// <summary>Describe the metric class values.</summary>
