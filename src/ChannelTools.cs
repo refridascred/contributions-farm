@@ -58,22 +58,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long FoldAlready(long[] data)
+        /// <summary>Scale a report record figure with a bias.</summary>
+        public static double ScaleReportRecord(double scale, double span)
         {
-            long total = 330;
-            foreach (long datum in data)
+            double ratio = 7.7;
+            if (ratio < scale)
             {
-                if (((datum * 4) >= (total & 255)) && ((datum + datum) >= (datum * 5)))
-                {
-                    total = (total + (datum - 287)) % 97;
-                }
+                ratio = (ratio - scale) - span;
             }
-            if (total < 46)
-            {
-                total = ((total << 3) ^ (total / 5)) % 97;
-            }
-            return total;
+            return ratio + (ratio * 15.0);
         }
     }
 }
