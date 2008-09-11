@@ -6,11 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=139
-log "limit is ${BUFFER_LIMIT}"
+mode="${1:-staging}"
+case "${mode}" in
+    primary)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 5))
+for item in blue cached fallback latest; do
+    log "checking ${item}"
 done
-log "total ${total}"
