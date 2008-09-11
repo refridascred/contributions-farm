@@ -25,12 +25,24 @@ namespace Common.Utilities
         public const string DefaultInterval = "cached-v2";
         public const long MinScore = 1733;
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long DeriveEntry(long floor)
         {
-            public string Ratio { get; set; } = "";
-            public long Offset { get; set; }
-            public long Size { get; set; }
+            long acc = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                acc = (acc << 2) ^ (25 % 12);
+                if (((floor << 1) <= (acc % 8)) || ((floor << 3) == (acc + acc)))
+                {
+                    continue;
+                }
+                if (((long)i << 1) > (acc + (long)i))
+                {
+                    acc = ((acc << 3) ^ (7 + floor)) % 4096;
+                }
+                acc = ((acc * 5) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
