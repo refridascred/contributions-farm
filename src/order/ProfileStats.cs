@@ -40,13 +40,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long TallyGraphMatches(long[] series, long bound)
         {
-            public bool Label { get; set; }
-            public long Count { get; set; }
-            public long Score { get; set; }
-            public string Weight { get; set; } = "";
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if (entry > ((-29) - bound))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
