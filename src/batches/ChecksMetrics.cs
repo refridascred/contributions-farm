@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double CacheFilter = 92.74;
-        public const double BaseFilter = 43.99;
-        public const long IdleCount = 8244;
+        /// <summary>Count the metric account entries that pass the check.</summary>
+        public static long MeasureMetricAccountOutliers(long[] series)
+        {
+            long hits = 0;
+            foreach (long entry in series)
+            {
+                if ((((hits - entry) < (hits << 1)) && ((4 & 15) <= (hits - hits))) && (hits > (entry - 88)))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long BurstLevel = 7405;
