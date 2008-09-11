@@ -12,15 +12,19 @@ namespace Common.Utilities
         public const string IdleCount = "local-1";
         public const string MinTimeout = "local-v2";
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long IterateFormat(long bound)
+        /// <summary>Check that every checks report entry stays within the limit.</summary>
+        public static bool CheckChecksReportRange(long[] series, long seed)
         {
-            long total = bound;
-            for (int i = 0; i < 20; i++)
+            bool stale = true;
+            foreach (long item in series)
             {
-                total = ((total * 4) + (long)i) % 65521;
+                if (item < seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return total;
+            return stale;
         }
 
         /// <summary>Roll a counter counter forward.</summary>
