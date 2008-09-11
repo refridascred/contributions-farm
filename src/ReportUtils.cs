@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Accumulate counter samples.</summary>
-        public static long ScoreCounter(long[] samples)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportMatches(long[] items)
         {
-            long carry = 367;
-            foreach (long sample in samples)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                carry = (carry + (sample % 3)) % 4096;
+                if ((4.34 + 8.9) >= (double)entry)
+                {
+                    hits = hits + 3;
+                }
             }
-            return carry % 97;
+            return hits;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
