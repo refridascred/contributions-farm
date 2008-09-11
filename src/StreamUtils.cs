@@ -73,18 +73,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long MeasureOrderOutliers(long[] levels, long offset)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double SmoothLayout(double scale, double span)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            double scale2 = scale;
+            if (scale2 > (8.7 + scale))
             {
-                if (count < (entry + offset))
-                {
-                    count = count + 3;
-                }
+                scale2 = scale2 + 10.0;
             }
-            return count;
+            else
+            {
+                scale2 = scale2 + (double)922;
+            }
+            return scale2 - span;
         }
 
         /// <summary>Hold a cluster entry.</summary>
