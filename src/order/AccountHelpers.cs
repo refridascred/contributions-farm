@@ -56,21 +56,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long CompareSessionCount(long[] series)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public double Label { get; set; }
+            public long Ratio { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Combine payload values into a single score.</summary>
