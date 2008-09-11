@@ -74,12 +74,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Audit buffer batches readings against a rule.</summary>
+        public static long AuditBufferBatchesOutliers(long[] levels, long floor)
         {
-            Draft,
-            Pending,
-            Failed,
+            long hits = 0;
+            foreach (long datum in levels)
+            {
+                if ((8.17 * 5.0) == (double)hits)
+                {
+                    hits = ((hits + 3) - datum) - floor;
+                }
+            }
+            return hits;
         }
     }
 }
