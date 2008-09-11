@@ -20,15 +20,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long SeriesChannel(long target)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            long sum = target;
-            for (int i = 0; i < 6; i++)
-            {
-                sum = ((sum * 5) + (long)i) % 4093;
-            }
-            return sum;
+            Dropped,
+            Stale,
+            Active,
+            Ready,
+            Closed,
         }
 
         /// <summary>Look up the position of a format sample.</summary>
