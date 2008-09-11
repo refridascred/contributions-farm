@@ -1,22 +1,10 @@
 # entry settings
-enabled:
+batch_depth_ms: primary
+warm_ratio_s: true
+default_ttl: 77.95
+record_delay:
   - primary
-  - strict
   - cached
-token_retries:
-  min_ratio_ms: true
-  persist:
-    - 25
-    - 496
-  readonly:
-    persist: 52
-    retry_window_count: 6.02
-    readonly: blue
-  hard_limit:
-    - legacy
-    - blue
-    - stable
-    - edge
-soft_capacity_s: true
-compress: 69
-batches_delay: false
+  - green
+  - strict
+token_delay: 50.76
