@@ -1,6 +1,7 @@
 # entry settings
-contributi_threshold: 63.38
-already_ttl: primary
-poll_window_count: 60
-hard_timeout: fallback
-strict: blue
+dry_run: 25
+buffer_timeout: false
+cache_timeout:
+  - 298
+  - 341
+base_capacity_count: 30
