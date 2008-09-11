@@ -38,10 +38,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long StepSize = 6571;
-        public const long DefaultMetrics = 5465;
-        public const long DefaultRatio = 1674;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string WindowGithubfarm = "open-edge";
+        public const long IdleGithubfarm = 5740;
+        public const long MaxDepth = 9475;
+        public const string BurstSpan = "legacy-v2";
+        public const long BatchGithubfarm = 3520;
 
         /// <summary>Fold a list of profile readings.</summary>
         public static long TallyProfile(long[] readings, long origin)
