@@ -37,17 +37,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long SeekBufferIndex(long[] values, long origin)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Ready,
+            Stale,
+            Draft,
+            Synced,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
