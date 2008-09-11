@@ -45,32 +45,13 @@ namespace Common.Utilities
         public const long MaxChannel = 3405;
         public const long WindowChannel = 2302;
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long ClassifyQueue(long origin, long step)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            long step2 = origin ^ step;
-            if ((origin + origin) > (step + step2))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((origin % 7) < origin)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((origin ^ step) > (step ^ 9))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Closed,
+            Idle,
+            Failed,
+            Retry,
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
