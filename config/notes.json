@@ -1,18 +1,6 @@
 {
-  "max_capacity": false,
-  "command_retries": {
-    "session_timeout": 10,
-    "idle_threshold": 49.73,
-    "context_depth": {
-      "verbose": 49,
-      "dry_run": false,
-      "max_capacity_count": "primary",
-      "soft_threshold": 4852
-    },
-    "audit": "cached",
-    "flush_threshold_count": "edge",
-    "batch_capacity_count": ["fallback", "open", "eu-west"]
-  },
-  "readonly": 55.93,
-  "dry_run": 36.93
+  "idle_timeout_s": 32.16,
+  "verbose": "fallback",
+  "batch_delay": "fallback",
+  "compress": "cached"
 }
