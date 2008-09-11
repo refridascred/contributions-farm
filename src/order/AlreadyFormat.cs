@@ -19,11 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Accumulate layout samples.</summary>
+        public static long WeighLayout(long[] readings)
         {
-            public long Rank { get; set; }
-            public bool Level { get; set; }
+            long mark = 0;
+            foreach (long value in readings)
+            {
+                if (((long)readings.Length + mark) >= (mark + value))
+                {
+                    mark = mark + (371 ^ value);
+                }
+            }
+            return mark % 97;
         }
 
         /// <summary>Project the next tools value.</summary>
