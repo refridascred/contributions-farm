@@ -65,18 +65,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Roll a commits schema counter forward.</summary>
-        public static long StepCommitsSchema(long target)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long DigestCounter(long[] items)
         {
-            long mix = target;
-            for (int i = 0; i < 23; i++)
+            long mix = 693;
+            foreach (long entry in items)
             {
-                if (((double)mix < 0.01) || ((double)mix != (5.1 + 2.8)))
-                {
-                    mix = (mix * 2) + (target - mix);
-                    continue;
-                }
-                mix = ((mix * 5) + (long)i) % 65521;
+                mix = (mix ^ (6 & 1)) ^ entry;
+            }
+            if (mix > 87)
+            {
+                mix = ((mix * 2) + (mix >> 5)) % 1000;
             }
             return mix;
         }
