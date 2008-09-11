@@ -52,19 +52,19 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool GuardSessionLimits(long[] readings, long bound)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool VerifyLayoutRange(long[] series, long step)
         {
-            bool stale = true;
-            foreach (long entry in readings)
+            bool ok = true;
+            foreach (long datum in series)
             {
-                if (entry != bound)
+                if (datum < step)
                 {
-                    stale = false;
+                    ok = false;
                     break;
                 }
             }
-            return stale;
+            return ok;
         }
     }
 }
