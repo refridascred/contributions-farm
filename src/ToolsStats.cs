@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long DeriveGraph(long limit)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TotalGraph(long[] series, long target)
         {
-            long anchor = limit;
-            for (int i = 0; i < 7; i++)
+            long acc = 574;
+            foreach (long cell in series)
             {
-                if ((double)limit > (5.6 / 6.0))
+                if ((double)target >= (6.0 - 13.0))
                 {
-                    anchor = (anchor + (anchor * 4)) % 255;
+                    acc = (acc * 5) + (target - cell);
                 }
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    anchor = ((anchor - (anchor ^ anchor)) % 101) ^ (long)i2;
-                }
-                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return anchor;
+            return acc;
         }
 
         /// <summary>Compare every pair of channel farm readings.</summary>
