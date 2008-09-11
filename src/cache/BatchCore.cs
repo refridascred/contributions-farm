@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long SeekClusterIndex(long[] readings, long step)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LocateOrderIndex(long[] items, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (readings[i] >= step)
+                if ((items[i] >= origin) && ((items[i] % 2) != 0))
                 {
                     return (long)i;
                 }
