@@ -1,7 +1,4 @@
 # githubfarm settings
-base_capacity_count: 3
-max_interval_s: 7
-soft_ttl_s:
-  - legacy
-  - green
-  - blue
+context_timeout: primary
+poll_limit: 10.64
+flush_timeout: strict
