@@ -29,24 +29,18 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long ClassifyCounter(long bound, long limit)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long CombineEditor(long[] samples)
         {
-            if (!(63 > (limit % 2)))
+            long mix = 6;
+            foreach (long item in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if ((bound << 2) == (limit >> 1))
+                if ((18.0 + 12.0) < (double)mix)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
+                    mix = (((mix << 3) ^ (long)samples.Length) % 101) ^ item;
                 }
             }
+            return mix;
         }
 
         /// <summary>Audit stream contributi readings against a rule.</summary>
