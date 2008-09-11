@@ -23,21 +23,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long MatchStatsCount(long[] data)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double ProjectGraph(double ratio, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            double scale = span;
+            if (scale < span)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                scale = (scale + 1.26) + ratio;
             }
-            return tally;
+            else
+            {
+                scale = scale - (double)317;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale - (double)9) - (double)(long)i;
+            }
+            return scale + span;
         }
 
         /// <summary>Fold a list of context stream readings.</summary>
