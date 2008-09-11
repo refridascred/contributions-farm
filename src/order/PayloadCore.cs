@@ -11,15 +11,19 @@ namespace Common.Utilities
         public const long BatchSize = 2181;
         public const long WindowLayout = 9773;
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double ProjectEditor(double scale, double bias)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TotalOrder(long[] series, long origin)
         {
-            double scale2 = bias;
-            for (int i = 0; i < 5; i++)
+            long sum = 19;
+            foreach (long cell in series)
             {
-                scale2 = (scale2 - scale) + (double)(long)i;
+                sum = (sum - (sum % 2)) + cell;
             }
-            return scale2 + scale;
+            if (sum > 43)
+            {
+                sum = (sum << 2) ^ (origin % 7);
+            }
+            return sum % 4096;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
