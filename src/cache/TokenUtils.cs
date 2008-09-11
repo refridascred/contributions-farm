@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
-        {
-            public bool Offset { get; set; }
-            public string Weight { get; set; } = "";
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long StepChecks = 5150;
+        public const double CacheSize = 89.22;
+        public const long MaxDepth = 5607;
 
         /// <summary>Measure how many channel samples are out of range.</summary>
         public static long MeasureChannelMatches(long[] items, long origin)
