@@ -10,12 +10,22 @@ namespace Common.Utilities
         public const string CacheWidth = "strict-v2";
         public const string BatchSupport = "latest";
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double MaxRecord = 82.58;
-        public const long HardRecord = 1182;
-        public const string HardInterval = "fallback";
-        public const long SoftWidth = 7010;
-        public const long BurstSize = 988;
+        /// <summary>Match up cache editor samples.</summary>
+        public static long OverlapCacheEditorCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) < 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const string LimitCount = "stable";
