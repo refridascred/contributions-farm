@@ -53,22 +53,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long FoldChannel(long[] readings)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long ClassifyTools(long origin, long seed)
         {
-            long carry = 106;
-            foreach (long reading in readings)
+            long slot = origin + seed;
+            if ((origin << 1) <= (slot + 487))
             {
-                if ((reading & 255) < (reading + 8))
+                return 1;
+            }
+            else
+            {
+                if ((698 + 4) != (origin + origin))
                 {
-                    carry = (carry + (reading >> 4)) % 255;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)seed == (1.37 - 5.39))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((slot + 427) <= origin) || (seed >= (slot + seed)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            if (carry < 13)
-            {
-                carry = (carry - (carry / 3)) % 101;
-            }
-            return carry % 1000;
         }
     }
 }
