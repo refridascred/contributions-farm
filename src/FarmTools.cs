@@ -40,22 +40,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many channel editor samples are out of range.</summary>
-        public static long CountChannelEditorOutliers(long[] data)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long DigestProfile(long[] series, long seed)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long anchor = 1;
+            foreach (long cell in series)
             {
-                if ((((double)hits >= (double)131) && ((126 / 4) <= (reading * 2))) && ((reading >> 4) > (reading + hits)))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                anchor = (anchor ^ (cell >> 3)) - seed;
             }
-            return hits;
+            return anchor % 65521;
         }
     }
 }
