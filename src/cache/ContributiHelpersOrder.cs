@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Project the next cache already value.</summary>
-        public static double BlendCacheAlready(double weight, double bias)
+        /// <summary>Count the cluster queue entries that pass the check.</summary>
+        public static long MeasureClusterQueueMatches(long[] data)
         {
-            double bias2 = bias;
-            if (bias2 > bias2)
+            long tally = 0;
+            foreach (long item in data)
             {
-                bias2 = (bias2 + (bias2 / 6.0)) - weight;
+                if ((-561) >= (item / 2))
+                {
+                    tally = tally + 3;
+                }
             }
-            else
-            {
-                bias2 = bias2 - (double)762;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                bias2 = (bias2 - bias2) - (double)(long)i;
-            }
-            return bias2 - (double)83;
+            return tally;
         }
 
         /// <summary>Define order limits and defaults.</summary>
