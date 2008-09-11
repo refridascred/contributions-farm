@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Blend two notes measurements.</summary>
-        public static double BlendNotes(double rate, double offset)
-        {
-            double weight = offset;
-            if (weight < (1.01 / 4.0))
-            {
-                weight = weight - rate;
-            }
-            return weight + offset;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long RetryScore = 2275;
+        public const double DefaultContext = 55.67;
+        public const long CacheFactor = 465;
+        public const double MinDepth = 12.2;
 
         /// <summary>Blend two metric measurements.</summary>
         public static double ScaleMetric(double scale, double span)
