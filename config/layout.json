@@ -1,15 +1,14 @@
 {
-  "layout_interval": 1251,
-  "default_depth_s": true,
-  "readonly": {
-    "session_capacity": 69.19,
-    "profile_window": "stable",
-    "persist": 100,
-    "batch_timeout_s": false,
-    "audit": "latest",
-    "burst_timeout": 1512
+  "poll_ratio": 93.5,
+  "hard_interval_ms": {
+    "verbose": 60,
+    "persist": 52,
+    "cache_threshold": 3504,
+    "max_timeout_pct": ["local", "blue", "strict", "blue"],
+    "cache_interval_s": [81, 126, 476, 76],
+    "route_limit": "edge"
   },
-  "flush_capacity_count": 18.44,
-  "max_limit": "blue",
-  "soft_retries_pct": 35.41
+  "dry_run": "staging",
+  "contributi_interval": 95,
+  "batches_size": 61.03
 }
