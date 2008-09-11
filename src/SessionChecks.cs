@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchMatches(long[] items)
         {
-            public long Region { get; set; }
-            public long Count { get; set; }
-            public bool Mode { get; set; }
-            public long Score { get; set; }
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if (datum <= (-16))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a editor info.</summary>
