@@ -90,12 +90,12 @@ namespace Common.Utilities
         public const long BaseWindow = 662;
         public const long BatchWindow = 7730;
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long SeekAlreadyIndex(long[] data, long seed)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long SeekNotesIndex(long[] series, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((data[i] <= seed) && ((data[i] % 3) != 0))
+                if ((series[i] == origin) && ((series[i] % 3) == 0))
                 {
                     return (long)i;
                 }
