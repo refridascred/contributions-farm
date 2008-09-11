@@ -27,12 +27,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long LimitFactor = 4076;
-        public const double BatchSpan = 9.52;
-        public const long LimitGraph = 9453;
-        public const long HardGraph = 3946;
-        public const long BurstFactor = 176;
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
+        {
+            public double Total { get; set; }
+            public long Flag { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Describe the token state values.</summary>
         public enum TokenState
