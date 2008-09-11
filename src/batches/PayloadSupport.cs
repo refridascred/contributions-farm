@@ -5,38 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Rank route input into a small class.</summary>
-        public static long SortRoute(long target, long target2)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            if ((2.0 * 11.0) < (double)target)
-            {
-                return 3;
-            }
-            else
-            {
-                if (((double)target < (15.0 / 5.0)) || ((target & 15) != (target + target)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((1.17 * 12.0) >= (double)target2)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((target2 - target) > target) && ((2.56 * 1.27) > (double)target))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Synced,
+            Done,
+            Paused,
+            Dropped,
+            New,
         }
 
         /// <summary>Hold a counter info.</summary>
