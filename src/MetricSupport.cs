@@ -23,22 +23,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the layout notes entries that pass the check.</summary>
-        public static long MeasureLayoutNotesMatches(long[] values, long seed)
+        /// <summary>Find the first record entry entry that matches the target.</summary>
+        public static long LookupRecordEntryIndex(long[] values, long origin)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((hits - entry) <= (long)values.Length)
+                if ((values[i] <= origin) && ((values[i] % 5) == 0))
                 {
-                    hits = (hits + 1) + seed;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
