@@ -16,19 +16,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TallyChannel(long[] data)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterOutliers(long[] values, long seed)
         {
-            long mark = 6;
-            foreach (long sample in data)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                if ((61 & 1) >= sample)
+                if (matches > 6)
                 {
-                    mark = (mark ^ (122 - mark)) % 97;
+                    matches = ((matches + 1) + entry) - seed;
                 }
-                mark = (mark - sample) % 255;
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Compare every pair of counter tools readings.</summary>
