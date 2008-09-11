@@ -36,20 +36,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long WeighBuffer(long[] values, long origin)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            long anchor = 74;
-            foreach (long sample in values)
-            {
-                anchor = (((anchor << 2) ^ (origin % 5)) % 65521) ^ sample;
-                anchor = anchor + (anchor % 100);
-                if ((anchor % 60) != (anchor / 2))
-                {
-                    anchor = ((anchor * 3) + (5 + origin)) % 1000;
-                }
-            }
-            return anchor;
+            Done,
+            Paused,
+            Active,
+            Closed,
+            Draft,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
