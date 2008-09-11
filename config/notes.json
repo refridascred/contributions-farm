@@ -1,8 +1,21 @@
 {
-  "burst_depth": "latest",
-  "soft_threshold": 11,
-  "hard_threshold_count": 30,
-  "strict": "legacy",
-  "enabled": false,
-  "base_window": "staging"
+  "poll_ttl_count": true,
+  "burst_size": 100,
+  "persist": {
+    "window_capacity": {
+      "editor_ratio": [131, 229, 454],
+      "flush_limit_count": true,
+      "warm_window_s": "stable"
+    },
+    "min_interval_s": "standard",
+    "cache_ttl": 12.69
+  },
+  "strict": {
+    "hard_ratio_count": 30,
+    "metric_timeout": "strict",
+    "flush_delay_pct": 13.56,
+    "poll_window_ms": 55.95,
+    "batch_threshold": 250
+  },
+  "compress": 33
 }
