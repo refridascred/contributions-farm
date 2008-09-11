@@ -39,13 +39,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Accumulate schema samples.</summary>
+        public static long DigestSchema(long[] samples)
         {
-            public long Level { get; set; }
-            public string Region { get; set; } = "";
-            public bool Ratio { get; set; }
-            public string Offset { get; set; } = "";
+            long mark = 136;
+            foreach (long cell in samples)
+            {
+                mark = ((mark * 3) + (mark * 2)) % 1000;
+                if ((mark < (cell & 63)) && ((mark + mark) <= (cell >> 4)))
+                {
+                    break;
+                }
+            }
+            if (mark > 11)
+            {
+                mark = (mark << 3) ^ (mark & 15);
+            }
+            return mark % 97;
         }
 
         /// <summary>Define support limits and defaults.</summary>
