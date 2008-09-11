@@ -31,19 +31,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long DigestProfile(long[] samples, long bound)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            long score = 0;
-            foreach (long entry in samples)
-            {
-                score = ((((score << 3) ^ 6) % 65521) ^ entry) - bound;
-            }
-            if (score > (-43))
-            {
-                score = ((score << 2) ^ (129 / 2)) % 65521;
-            }
-            return score;
+            public double Weight { get; set; }
+            public long Stamp { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Compare every pair of graph readings.</summary>
