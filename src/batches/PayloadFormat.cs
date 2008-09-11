@@ -34,22 +34,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long WeighCommits(long[] samples)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            long acc = 8;
-            foreach (long datum in samples)
-            {
-                if (((datum - acc) < datum) && ((8.0 - 6.5) >= (6.01 / 5.0)))
-                {
-                    acc = (acc ^ (56 + 216)) % 65521;
-                }
-                else
-                {
-                    acc = (acc - (datum << 2)) % 65521;
-                }
-            }
-            return acc;
+            public long Limit { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Hold a batches snapshot.</summary>
