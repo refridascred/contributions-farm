@@ -22,18 +22,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long MeasureSchemaOutliers(long[] levels, long floor)
+        /// <summary>Compare every pair of payload buffer readings.</summary>
+        public static long MatchPayloadBufferCount(long[] data)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((seen ^ floor) != (sample >> 5)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((data[i] + data[j]) == 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Hold a order entry.</summary>
