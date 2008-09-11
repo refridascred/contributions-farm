@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long OverlapCommandCount(long[] readings)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long TotalPayload(long[] data, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 303;
+            foreach (long item in data)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                anchor = (anchor - (step - item)) % 255;
+                anchor = (anchor << 3) ^ (step + anchor);
             }
-            return tally;
+            if (anchor < 8)
+            {
+                anchor = anchor + (anchor * 2);
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
