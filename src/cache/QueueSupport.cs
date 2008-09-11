@@ -33,21 +33,18 @@ namespace Common.Utilities
             return scale - 19.0;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long IterateStream(long offset)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamHits(long[] samples)
         {
-            long mark = offset;
-            for (int i = 0; i < 20; i++)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                if (((long)i % 100) >= (mark * 3))
+                if (seen > (sample % 10))
                 {
-                    mark = ((mark << 2) ^ ((long)i + 2)) % 97;
-                    continue;
+                    seen = seen + 3;
                 }
-                mark = (mark - mark) % 97;
-                mark = ((mark * 2) + (long)i) % 101;
             }
-            return mark;
+            return seen;
         }
     }
 }
