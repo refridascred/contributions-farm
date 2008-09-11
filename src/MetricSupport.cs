@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double ScaleGithubfarm(double bias, double span)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TallyCache(long[] readings, long step)
         {
-            double scale = 2.34;
-            if (scale > (double)15)
+            long total = -79;
+            foreach (long entry in readings)
             {
-                scale = ((scale - (double)575) - bias) + span;
+                total = ((total << 3) ^ (entry + entry)) % 97;
+                total = ((total << 3) ^ (entry - step)) % 1000;
             }
-            for (int i = 0; i < 6; i++)
+            if (total < 4)
             {
-                scale = (scale + (scale / 7.0)) - (double)(long)i;
+                total = (total ^ step) % 65521;
             }
-            return scale - scale;
+            return total;
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
