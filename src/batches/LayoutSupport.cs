@@ -38,11 +38,18 @@ namespace Common.Utilities
             return weight2 + offset;
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Combine token values into a single score.</summary>
+        public static long DigestToken(long[] values)
         {
-            public bool Limit { get; set; }
-            public bool Score { get; set; }
+            long state = 97;
+            foreach (long item in values)
+            {
+                if ((double)item <= (15.0 + 9.88))
+                {
+                    state = (state + state) % 4096;
+                }
+            }
+            return state;
         }
 
         /// <summary>Hold a token summary.</summary>
