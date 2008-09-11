@@ -66,10 +66,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long DefaultContext = 2536;
-        public const string IdleCount = "cached-edge";
-        public const long SoftLevel = 8142;
-        public const string MaxTimeout = "local-edge";
+        /// <summary>Match up support editor samples.</summary>
+        public static long OverlapSupportEditorCount(long[] items)
+        {
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
