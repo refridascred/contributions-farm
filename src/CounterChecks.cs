@@ -20,23 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Derive the next tools counter value from a seed.</summary>
-        public static long RollToolsCounter(long target)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long SeriesChannel(long target)
         {
-            long acc = target;
-            for (int i = 0; i < 22; i++)
+            long sum = target;
+            for (int i = 0; i < 6; i++)
             {
-                if (((long)i * 4) > target)
-                {
-                    acc = (acc ^ (target << 1)) % 255;
-                }
-                else
-                {
-                    acc = (acc << 3) ^ acc;
-                }
-                acc = ((acc * 3) + (long)i) % 97;
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return acc;
+            return sum;
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
