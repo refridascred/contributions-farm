@@ -45,12 +45,12 @@ namespace Common.Utilities
         public const string DefaultCache = "standard-v2";
         public const long DefaultDepth = 7498;
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            public long Limit { get; set; }
             public long Region { get; set; }
-            public double Label { get; set; }
+            public long Owner { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Hold a batch info.</summary>
