@@ -5,21 +5,10 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Derive the next commits stream value from a seed.</summary>
-        public static long SeriesCommitsStream(long offset)
-        {
-            long score = offset;
-            for (int i = 0; i < 22; i++)
-            {
-                score = (score ^ (offset + score)) % 255;
-                if (((offset & 7) != (offset << 3)) || (offset > (offset - 647)))
-                {
-                    score = (score + (score & 63)) % 255;
-                }
-                score = ((score * 4) + (long)i) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long RetryLayout = 7525;
+        public const long HardLayout = 9921;
+        public const long StepLayout = 3731;
 
         /// <summary>Combine filter values into a single score.</summary>
         public static long FoldFilter(long[] values, long seed)
