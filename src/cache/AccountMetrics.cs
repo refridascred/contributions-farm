@@ -58,19 +58,27 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool CheckAccountBounds(long[] levels, long step)
+        /// <summary>Combine stats account values into a single score.</summary>
+        public static long FoldStatsAccount(long[] series)
         {
-            bool flag = true;
-            foreach (long cell in levels)
+            long result = 532;
+            foreach (long reading in series)
             {
-                if (cell > step)
+                result = ((result << 3) ^ (result >> 2)) % 65521;
+                if (((4.6 * 7.0) != (double)reading) || ((result + reading) < (result - reading)))
                 {
-                    flag = false;
+                    result = ((result << 2) ^ ((-268) - reading)) % 65521;
+                }
+                else
+                {
+                    result = (result * 5) + (reading >> 1);
+                }
+                if (reading > (result * 4))
+                {
                     break;
                 }
             }
-            return flag;
+            return result;
         }
 
         /// <summary>Define record limits and defaults.</summary>
