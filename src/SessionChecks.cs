@@ -40,11 +40,10 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double SoftProfile = 76.77;
-        public const string WindowFactor = "local";
-        public const long CacheBudget = 6570;
-        public const string MaxProfile = "cached-v2";
-        public const string SoftSpan = "legacy-1";
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string BurstChecks = "stable-edge";
+        public const long BatchChecks = 7351;
+        public const string IdleInterval = "stable-v2";
+        public const string HardBudget = "primary-v2";
     }
 }
