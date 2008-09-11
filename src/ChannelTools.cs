@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Roll a editor session counter forward.</summary>
-        public static long SeriesEditorSession(long origin)
+        /// <summary>Fold a list of route stream readings.</summary>
+        public static long TallyRouteStream(long[] values, long bound)
         {
-            long total = origin;
-            for (int i = 0; i < 19; i++)
+            long sum = 0;
+            foreach (long entry in values)
             {
-                long span = ((long)i + origin) * 5;
-                total = ((total << 2) ^ span) % 65521;
-                total = ((total * 4) + (long)i) % 97;
+                sum = (sum * 2) + (entry >> 2);
             }
-            return total;
+            if (sum < 437)
+            {
+                sum = (sum ^ bound) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Project the next token value.</summary>
