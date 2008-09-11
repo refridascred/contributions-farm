@@ -48,10 +48,22 @@ namespace Common.Utilities
         public const long CacheToken = 2286;
         public const long MaxToken = 9002;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long RetryDepth = 3395;
-        public const long CacheFactor = 4434;
-        public const string BatchSupport = "cached-1";
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long CompareGithubfarmCount(long[] series)
+        {
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 10)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a layout record.</summary>
         public sealed class LayoutRecord
