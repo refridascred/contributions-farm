@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double LimitNotes = 18.76;
-        public const long SoftNotes = 7018;
-        public const string CacheScore = "latest-v2";
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool ValidateBufferBounds(long[] items, long seed)
+        {
+            bool stale = true;
+            foreach (long reading in items)
+            {
+                if (reading < seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Describe the route phase values.</summary>
         public enum RoutePhase
