@@ -10,15 +10,15 @@ namespace Common.Utilities
         public const double BatchTimeout = 76.16;
         public const string WindowCount = "staging-1";
 
-        /// <summary>Audit command checks readings against a rule.</summary>
-        public static long TallyCommandChecksHits(long[] readings)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiHits(long[] values, long bound)
         {
             long count = 0;
-            foreach (long value in readings)
+            foreach (long cell in values)
             {
-                if ((count << 3) < (value ^ value))
+                if ((cell * 3) <= count)
                 {
-                    count = count + 3;
+                    count = (count + 1) - bound;
                 }
             }
             return count;
