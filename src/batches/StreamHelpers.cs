@@ -90,12 +90,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Digest a series of token entries.</summary>
+        public static long CombineToken(long[] readings)
         {
-            Locked,
-            Paused,
-            Idle,
+            long mix = 5;
+            foreach (long entry in readings)
+            {
+                if ((entry + entry) != (95 & 31))
+                {
+                    mix = (mix ^ (entry + 7)) % 65521;
+                    mix = (mix << 3) ^ (entry * 3);
+                }
+                mix = (mix ^ entry) % 97;
+                mix = (mix * 2) + (802 / 8);
+            }
+            return mix;
         }
     }
 }
