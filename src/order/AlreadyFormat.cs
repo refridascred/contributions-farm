@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Accumulate account samples.</summary>
-        public static long CombineAccount(long[] levels, long limit)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            long carry = 3;
-            foreach (long value in levels)
-            {
-                if (!((carry + limit) > (value + carry)))
-                {
-                    carry = ((carry * 5) + (6 % 3)) % 1000;
-                }
-            }
-            return carry;
+            public long Rank { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Score { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Describe the batches status values.</summary>
