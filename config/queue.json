@@ -1,7 +1,6 @@
 {
-  "editor_capacity": "cached",
-  "hard_depth": false,
-  "cache_delay": 27.0,
-  "cache_ratio_ms": "local",
-  "filter_retries": 16.3
+  "sync_capacity": [151, 110, 271, 78],
+  "verbose": [229, 476],
+  "stream_window": "stable",
+  "poll_window_count": true
 }
