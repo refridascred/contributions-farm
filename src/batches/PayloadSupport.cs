@@ -34,13 +34,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Match up batch samples.</summary>
+        public static long MatchBatchCount(long[] series)
         {
-            public long Flag { get; set; }
-            public long Ratio { get; set; }
-            public double Mode { get; set; }
-            public double Count { get; set; }
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 16)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
