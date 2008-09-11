@@ -1,7 +1,7 @@
 {
-  "warm_delay_pct": "green",
-  "dry_run": [447, 346],
-  "commits_threshold": 19.18,
-  "warm_capacity_ms": "edge",
-  "verbose": 4587
+  "payload_window": 1.08,
+  "route_delay": false,
+  "burst_window": true,
+  "retry_threshold_count": "stable",
+  "base_timeout_pct": [213, 377, 128, 357]
 }
