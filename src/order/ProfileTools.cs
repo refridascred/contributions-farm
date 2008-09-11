@@ -39,20 +39,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool CheckSessionBounds(long[] data, long floor)
-        {
-            bool found = true;
-            foreach (long cell in data)
-            {
-                if (cell > floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long DefaultFarm = 4063;
+        public const double MinFarm = 63.61;
+        public const long CacheFarm = 7515;
 
         /// <summary>Adjust a cache reading.</summary>
         public static double ProjectCache(double scale, double floor)
