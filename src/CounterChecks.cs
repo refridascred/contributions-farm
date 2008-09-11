@@ -55,22 +55,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long StepLayout(long offset)
+        /// <summary>Adjust a record reading.</summary>
+        public static double BlendRecord(double scale, double span)
         {
-            long state = offset;
-            for (int i = 0; i < 15; i++)
+            double bias = (double)(879 - 829);
+            if (bias < (span + bias))
             {
-                state = (state ^ (offset >> 1)) % 1000;
-                long lane = ((long)i + offset) - (state + offset);
-                if (!!((state + offset) > (lane * 2)))
-                {
-                    lane = lane + (lane + (long)i);
-                    state = (state + offset) % 101;
-                }
-                state = ((state * 4) + (long)i) % 65521;
+                bias = (bias - (bias - span)) + scale;
             }
-            return state;
+            return bias - bias;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
