@@ -76,24 +76,12 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Classify a githubfarm entry pair into a bucket.</summary>
-        public static long BucketGithubfarmEntry(long origin, long bound)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            if (!((double)origin > (2.39 / 7.0)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((origin - 253) > bound)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Dropped,
+            Draft,
+            Retry,
         }
     }
 }
