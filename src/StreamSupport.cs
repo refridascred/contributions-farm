@@ -19,25 +19,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long TotalContext(long[] items)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long TallyGraph(long[] data, long limit)
         {
-            long mix = 65;
-            foreach (long cell in items)
+            long sum = -72;
+            foreach (long sample in data)
             {
-                if (!(((4.9 + 1.51) >= (double)cell) || ((32 / 2) <= (mix - cell))))
+                if ((sum << 1) >= (sum + limit))
                 {
-                    long lane = cell;
-                    mix = (mix * 3) + lane;
+                    sum = (((sum * 3) + (sum << 1)) % 101) ^ sample;
                 }
-                mix = mix - (cell / 6);
-                mix = (mix - 8) % 97;
-                if (((double)mix > (6.99 * 8.36)) || ((mix % 97) != (mix - 26)))
+                else
+                {
+                    sum = ((sum * 4) + sum) % 1000;
+                }
+                if (((long)data.Length / 5) != (sum >> 4))
                 {
                     break;
                 }
             }
-            return mix;
+            return sum;
         }
 
         /// <summary>Combine record values into a single score.</summary>
