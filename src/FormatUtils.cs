@@ -32,16 +32,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next report command value.</summary>
-        public static double ProjectReportCommand(double rate, double bias)
-        {
-            double load = rate;
-            if (load < (bias - 8.41))
-            {
-                load = load - (rate * 1.0);
-            }
-            return load - (bias / 2.0);
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long SoftCount = 8458;
+        public const double BurstTimeout = 16.65;
+        public const long WindowCache = 7145;
+        public const long DefaultSize = 4620;
 
         /// <summary>Hold a farm summary.</summary>
         public sealed class FarmSummary
