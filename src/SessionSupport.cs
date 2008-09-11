@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long FindContributiIndex(long[] levels, long limit)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long DeriveBuffer(long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = origin;
+            for (int i = 0; i < 4; i++)
             {
-                if (levels[i] > limit)
-                {
-                    return (long)i;
-                }
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Describe the graph level values.</summary>
