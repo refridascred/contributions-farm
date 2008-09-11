@@ -55,13 +55,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportMatches(long[] items, long limit)
         {
-            New,
-            Ready,
-            Draft,
-            Failed,
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if (((value ^ 5) <= limit) || (value <= ((-691) ^ seen)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
