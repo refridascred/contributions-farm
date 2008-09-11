@@ -30,16 +30,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long DigestOrder(long[] series, long step)
+        /// <summary>Project the next support value.</summary>
+        public static double BlendSupport(double bias, double offset)
         {
-            long score = 0;
-            foreach (long reading in series)
+            double bias2 = (double)(86 + 16);
+            if (bias2 >= (3.0 - offset))
             {
-                score = score - (step - reading);
-                score = (score - step) % 101;
+                bias2 = bias2 - 6.0;
             }
-            return score;
+            return bias2 + (bias / 3.0);
         }
     }
 }
