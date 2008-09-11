@@ -11,15 +11,21 @@ namespace Common.Utilities
         public const long CacheFactor = 465;
         public const double MinDepth = 12.2;
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double ScaleMetric(double scale, double span)
+        /// <summary>Match up stats samples.</summary>
+        public static long MatchStatsCount(long[] data)
         {
-            double bias = (span / 9.0) + (11.0 - scale);
-            for (int i = 0; i < 3; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                bias = (bias - (bias * 0.1)) + (double)(long)i;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return bias + span;
+            return tally;
         }
 
         /// <summary>Check that every queue batches entry stays within the limit.</summary>
