@@ -27,10 +27,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long StepBudget = 6841;
-        public const long SoftOrder = 5870;
-        public const long RetryInterval = 5056;
-        public const long SoftCount = 8533;
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
+        {
+            public double Mode { get; set; }
+            public long Total { get; set; }
+            public string Token { get; set; } = "";
+        }
     }
 }
