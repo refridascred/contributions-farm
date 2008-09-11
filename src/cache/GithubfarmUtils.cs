@@ -12,12 +12,20 @@ namespace Common.Utilities
         public const long MaxFactor = 1492;
         public const long IdleDepth = 9674;
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long StepPayload(long offset)
         {
-            public double Score { get; set; }
-            public long Stamp { get; set; }
-            public double Offset { get; set; }
+            long result = offset;
+            for (int i = 0; i < 16; i++)
+            {
+                if (!!((9.0 + 3.19) >= (double)result))
+                {
+                    result = (result ^ (result * 4)) % 97;
+                    result = (result - ((long)i >> 1)) % 255;
+                }
+                result = ((result * 2) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Describe the buffer class values.</summary>
