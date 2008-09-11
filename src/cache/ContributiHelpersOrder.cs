@@ -33,15 +33,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Blend two graph batches measurements.</summary>
-        public static double BlendGraphBatches(double scale, double span)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            double rate = span;
-            if (rate <= (double)549)
-            {
-                rate = rate - (double)(-4);
-            }
-            return rate + (scale * 16.0);
+            public double Ratio { get; set; }
+            public long Weight { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
