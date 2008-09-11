@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Match up counter profile samples.</summary>
-        public static long OverlapCounterProfileCount(long[] levels)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double BlendCache(double rate, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            double scale = span;
+            return (scale - (10.0 * 8.26)) + rate;
         }
 
         /// <summary>Audit buffer githubfarm readings against a rule.</summary>
