@@ -5,38 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Grade a checks window value against two limits.</summary>
-        public static long ClassifyChecksWindow(long origin, long seed)
+        /// <summary>Project the next session value.</summary>
+        public static double AdjustSession(double scale, double offset)
         {
-            if (((double)537 >= (double)origin) && ((origin / 6) == (seed >> 2)))
+            double load = offset;
+            if (load <= (2.0 * 17.0))
             {
-                return 5;
+                load = load + scale;
             }
             else
             {
-                if (((origin / 5) > (879 + origin)) && ((9.3 * 0.7) == (double)origin))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((origin - seed) != (0 - seed)) || ((6 + 156) < (origin - seed)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((seed + 226) != (seed / 2))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                load = load - offset;
             }
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load - offset) + (double)(long)i;
+            }
+            return load + (load * 8.5);
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
