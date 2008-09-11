@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Blend two format queue measurements.</summary>
+        public static double BlendFormatQueue(double scale, double floor)
         {
-            Paused,
-            Ready,
-            Locked,
+            double scale2 = scale;
+            if (scale2 > (floor * 12.0))
+            {
+                scale2 = scale2 - (scale2 / 8.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                scale2 = (scale2 + (scale / 8.0)) + (double)(long)i;
+            }
+            return scale2 - (scale * 9.0);
         }
 
         /// <summary>Compare every pair of already readings.</summary>
