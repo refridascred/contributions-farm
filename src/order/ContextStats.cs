@@ -19,13 +19,11 @@ namespace Common.Utilities
             return (bias2 + bias) + span;
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
-        {
-            Queued,
-            Ready,
-            Done,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string RetryCommand = "legacy-v2";
+        public const long StepCommand = 7164;
+        public const long LimitCommand = 1558;
+        public const long MaxCommand = 9566;
 
         /// <summary>Describe the account status values.</summary>
         public enum AccountStatus
