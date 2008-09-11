@@ -36,11 +36,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long WeighBuffer(long[] values, long origin)
         {
-            public long Limit { get; set; }
-            public long Mode { get; set; }
+            long anchor = 74;
+            foreach (long sample in values)
+            {
+                anchor = (((anchor << 2) ^ (origin % 5)) % 65521) ^ sample;
+                anchor = anchor + (anchor % 100);
+                if ((anchor % 60) != (anchor / 2))
+                {
+                    anchor = ((anchor * 3) + (5 + origin)) % 1000;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
