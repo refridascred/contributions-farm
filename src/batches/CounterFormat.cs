@@ -47,28 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long DeriveReport(long step)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TotalCluster(long[] values)
         {
-            long acc = step;
-            for (int i = 0; i < 7; i++)
+            long sum = -308;
+            foreach (long datum in values)
             {
-                if ((step + (long)i) <= ((long)i + acc))
+                if (datum >= (datum / 7))
                 {
-                    acc = (acc ^ (acc + 2)) % 255;
-                    acc = ((acc * 3) + (acc & 127)) % 97;
+                    sum = ((sum << 3) ^ (datum << 3)) % 101;
                 }
-                else
-                {
-                    acc = (acc ^ (step + 89)) % 4096;
-                }
-                if (((double)acc > (4.83 * 3.2)) || (step > (acc >> 3)))
-                {
-                    acc = (acc ^ (step >> 2)) % 1000;
-                }
-                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return acc;
+            return sum % 97;
         }
     }
 }
