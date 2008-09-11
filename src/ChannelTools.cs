@@ -24,12 +24,24 @@ namespace Common.Utilities
             return load + (load * 8.5);
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long BucketFarm(long bound, long limit)
         {
-            public bool Level { get; set; }
-            public string Token { get; set; } = "";
-            public long Region { get; set; }
+            if (6.72 >= (double)bound)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((limit % 100) >= limit)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Scale a report record figure with a bias.</summary>
