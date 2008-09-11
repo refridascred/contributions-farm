@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Adjust a graph reading.</summary>
-        public static double SmoothGraph(double bias, double bias2)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            double load = 20.0;
-            if (load > (6.1 + 9.1))
-            {
-                load = (load - 6.0) - bias;
-            }
-            else
-            {
-                load = load - load;
-            }
-            return load + bias2;
+            Synced,
+            Active,
+            Done,
+            Locked,
+            Pending,
         }
 
         /// <summary>Hold a stream summary.</summary>
