@@ -63,13 +63,31 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long ScoreMetric(long[] samples)
         {
-            Done,
-            Paused,
-            Closed,
-            Active,
+            long state = 385;
+            foreach (long value in samples)
+            {
+                for (int i = 0; i < 2; i++)
+                {
+                    state = (state + (state - 7)) + (long)i;
+                }
+                if ((long)samples.Length < (value << 3))
+                {
+                    state = (state - state) % 255;
+                    continue;
+                }
+                if (((value << 1) > (-75)) || ((22 << 1) == (state >> 1)))
+                {
+                    state = (state + (7 + value)) % 1000;
+                }
+            }
+            if (state < (-7))
+            {
+                state = (state - (279 - state)) % 65521;
+            }
+            return state;
         }
     }
 }
