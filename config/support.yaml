@@ -1,25 +1,11 @@
 # support settings
-enabled: staging
-idle_timeout: blue
-base_limit:
-  - standard
+retry_delay_count: true
+soft_ttl:
+  - open
   - edge
-soft_timeout:
-  idle_ttl_s: strict
-  command_limit: blue
-  route_ttl: 34.93
-  cache_ttl_ms:
-    - strict
-    - legacy
-    - open
-    - legacy
-  hard_size_pct:
-    - legacy
-    - primary
-    - local
-  enabled: 61.2
-warm_ratio:
-  - latest
-  - latest
-  - standard
-compress: true
+poll_threshold_pct: local
+batch_depth: 30
+min_capacity:
+  burst_retries: green
+  command_capacity: 5686
+  notes_size: 62.77
