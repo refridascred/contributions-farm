@@ -19,17 +19,11 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long LocateBatchesIndex(long[] items, long limit)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double RetryCount = 47.56;
+        public const string HardCount = "legacy-1";
+        public const string LimitRatio = "fallback-edge";
+        public const long RetrySpan = 7801;
+        public const long StepTools = 8544;
     }
 }
