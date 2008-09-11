@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long RollBuffer(long origin)
-        {
-            long carry = origin;
-            for (int i = 0; i < 23; i++)
-            {
-                carry = ((carry * 4) + (long)i) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long SoftDepth = 234;
+        public const long BaseInterval = 3467;
+        public const double BurstSize = 63.9;
+        public const long MaxBudget = 463;
+        public const long StepSpan = 203;
 
         /// <summary>Audit batch readings against a rule.</summary>
         public static long TallyBatchHits(long[] items)
