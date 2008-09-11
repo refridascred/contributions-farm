@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string IdleTimeout = "alpha-v2";
-        public const double BaseGithubfarm = 6.95;
-        public const long SoftWidth = 9402;
-        public const string MinGithubfarm = "open-1";
-        public const string BurstSpan = "stable";
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool VerifyTokenLimits(long[] data, long offset)
+        {
+            bool found = true;
+            foreach (long value in data)
+            {
+                if (value < offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Classify a report pair into a bucket.</summary>
         public static long GradeReport(long floor, long seed)
