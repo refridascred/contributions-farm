@@ -27,9 +27,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string WindowFactor = "primary";
-        public const long HardBatches = 4827;
-        public const long MinBatches = 3706;
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
+        {
+            public double Score { get; set; }
+            public long Flag { get; set; }
+            public double Offset { get; set; }
+            public bool Weight { get; set; }
+        }
     }
 }
