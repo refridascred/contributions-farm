@@ -71,19 +71,12 @@ namespace Common.Utilities
             return scale - (double)(-15);
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool GuardFarmLimits(long[] items, long limit)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            bool stale = true;
-            foreach (long entry in items)
-            {
-                if (entry != limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Rank { get; set; }
+            public bool Stamp { get; set; }
+            public double Size { get; set; }
         }
     }
 }
