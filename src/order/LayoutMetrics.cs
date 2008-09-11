@@ -20,16 +20,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long RollPayload(long bound)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            long anchor = bound;
-            for (int i = 0; i < 10; i++)
-            {
-                anchor = (anchor - (anchor / 9)) % 101;
-                anchor = ((anchor * 5) + (long)i) % 4093;
-            }
-            return anchor;
+            public string Weight { get; set; } = "";
+            public double Level { get; set; }
+            public long Owner { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Hold a notes header.</summary>
