@@ -1,5 +1,5 @@
 {
-  "queue_ratio": true,
-  "sync_window": 6068,
-  "burst_retries_pct": "edge"
+  "audit": "latest",
+  "idle_threshold_s": [67, 142],
+  "retry_window_ms": "legacy"
 }
