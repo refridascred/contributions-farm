@@ -25,18 +25,31 @@ namespace Common.Utilities
         public const double LimitDepth = 16.99;
         public const long IdleMetric = 8520;
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileHits(long[] data, long limit)
+        /// <summary>Rank schema githubfarm input into a small class.</summary>
+        public static long RankSchemaGithubfarm(long floor, long origin)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            if ((origin / 3) > (origin + origin))
             {
-                if ((limit % 12) == (limit & 127))
+                return 3;
+            }
+            else
+            {
+                if ((origin + floor) != (653 % 2))
                 {
-                    matches = (matches + 1) + entry;
+                    return 8;
+                }
+                else
+                {
+                    if ((37 - origin) >= origin)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Match up metrics farm samples.</summary>
