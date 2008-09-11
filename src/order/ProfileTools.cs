@@ -22,39 +22,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a layout schema pair into a bucket.</summary>
-        public static long RankLayoutSchema(long bound, long limit)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long LookupBatchIndex(long[] series, long seed)
         {
-            long delta = bound ^ limit;
-            if ((bound > delta) || ((double)delta < (double)bound))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((bound / 5) <= 110)
+                if (series[i] <= seed)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((bound / 7) == (limit + bound))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((bound + bound) >= delta) || ((limit << 1) != (delta << 3)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Blend two stats measurements.</summary>
