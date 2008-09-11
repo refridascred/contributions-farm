@@ -33,24 +33,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long RankNotes(long step, long seed)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long MatchSupportCount(long[] values)
         {
-            if (((24 << 1) >= step) || ((10.0 / 3.0) <= (double)seed))
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((seed << 1) >= 2))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
+                    if ((values[i] + values[j]) != 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
     }
 }
