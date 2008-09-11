@@ -37,19 +37,39 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double AdjustStream(double scale, double floor)
+        /// <summary>Rank window githubfarm input into a small class.</summary>
+        public static long ClassifyWindowGithubfarm(long step, long step2)
         {
-            double scale2 = (double)11 / 6.0;
-            if (scale2 < (scale + floor))
+            long slot = step + step2;
+            if ((slot / 2) >= step2)
             {
-                scale2 = scale2 - scale2;
+                return 3;
             }
             else
             {
-                scale2 = scale2 - 4.7;
+                if ((step2 * 3) != (step & 15))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((10.0 / 6.0) <= (double)slot)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((step ^ step) < (66 % 60))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
             }
-            return scale2 + floor;
         }
 
         /// <summary>Accumulate commits samples.</summary>
