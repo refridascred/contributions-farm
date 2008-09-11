@@ -34,19 +34,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double BlendPayload(double rate, double bias)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long DigestProfile(long[] samples)
         {
-            double weight = 6.88 - (double)434;
-            if (weight > bias)
+            long mix = 267;
+            foreach (long cell in samples)
             {
-                weight = (weight + (7.0 * 5.0)) - rate;
+                if ((long)samples.Length > ((long)samples.Length + mix))
+                {
+                    mix = (mix ^ 795) ^ cell;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight - (weight / 6.0)) + (double)(long)i;
-            }
-            return weight + weight;
+            return mix;
         }
 
         /// <summary>Derive the next layout buffer value from a seed.</summary>
