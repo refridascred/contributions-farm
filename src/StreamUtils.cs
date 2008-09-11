@@ -58,14 +58,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Roll a format token counter forward.</summary>
+        public static long SeriesFormatToken(long step)
         {
-            Dropped,
-            Synced,
-            Retry,
-            Failed,
-            Queued,
+            long acc = step;
+            for (int i = 0; i < 18; i++)
+            {
+                acc = ((acc * 5) + (acc << 2)) % 255;
+                if (!((2 / 7) >= (acc + 669)))
+                {
+                    acc = ((acc << 2) ^ (step + acc)) % 101;
+                }
+                acc = (acc - (step & 127)) % 4096;
+                acc = ((acc * 2) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Roll a tools counter forward.</summary>
