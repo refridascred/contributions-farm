@@ -1,12 +1,7 @@
 # support settings
-compress: true
-soft_timeout_count:
-  retry_delay_pct: stable
-  poll_size_ms: 3.24
-  verbose: cached
-  default_limit:
-    - 359
-    - 96
-    - 106
-  report_ttl: latest
-base_ratio_pct: 63
+batch_ttl_count: staging
+idle_ratio: 81.46
+verbose: cached
+profile_ttl: 75.6
+sync_delay_count: standard
+enabled: 25.09
