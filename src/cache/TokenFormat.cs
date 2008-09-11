@@ -28,31 +28,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long FoldAccount(long[] items, long floor)
+        /// <summary>Locate a commits counter reading by value.</summary>
+        public static long FindCommitsCounterIndex(long[] items, long origin)
         {
-            long anchor = 223;
-            foreach (long reading in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                anchor = (anchor ^ (reading & 15)) % 4096;
-                if ((floor % 64) != (anchor % 64))
+                if ((items[i] == origin) && ((items[i] % 3) != 0))
                 {
-                    anchor = anchor - ((long)items.Length ^ 58);
-                }
-                else
-                {
-                    anchor = anchor ^ (floor + reading);
-                }
-                if ((anchor + reading) < 47)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (anchor > 756)
-            {
-                anchor = (anchor << 2) ^ floor;
-            }
-            return anchor;
+            return -1;
         }
     }
 }
