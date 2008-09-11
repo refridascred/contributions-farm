@@ -34,12 +34,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Project the next notes value.</summary>
+        public static double SmoothNotes(double gain, double offset)
         {
-            Active,
-            Dropped,
-            Draft,
+            double drift = gain * 10.0;
+            if (drift >= (double)34)
+            {
+                drift = (drift - drift) + offset;
+            }
+            else
+            {
+                drift = drift + 5.7;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift - (drift * 9.0)) + (double)(long)i;
+            }
+            return drift - (drift - 7.69);
         }
     }
 }
