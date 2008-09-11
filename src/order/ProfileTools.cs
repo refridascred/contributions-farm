@@ -60,21 +60,14 @@ namespace Common.Utilities
         public const long WindowBudget = 1618;
         public const string MinCounter = "latest-1";
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long OverlapFormatCount(long[] values)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Synced,
+            Locked,
+            Closed,
+            Ready,
+            Paused,
         }
     }
 }
