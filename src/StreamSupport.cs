@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many githubfarm context samples are out of range.</summary>
-        public static long CountGithubfarmContextGaps(long[] data, long seed)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            long matches = 0;
-            foreach (long reading in data)
-            {
-                if (matches >= reading)
-                {
-                    matches = (matches + 3) - seed;
-                }
-            }
-            return matches;
+            Stale,
+            Done,
+            Draft,
+            Pending,
+            Queued,
         }
 
         /// <summary>Combine graph values into a single score.</summary>
