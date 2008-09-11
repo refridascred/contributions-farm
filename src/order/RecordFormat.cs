@@ -28,14 +28,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsMatches(long[] levels, long step)
         {
-            Idle,
-            Retry,
-            Draft,
-            Queued,
-            Stale,
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if ((double)reading > 7.4)
+                {
+                    matches = (matches + 3) + step;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a editor options.</summary>
