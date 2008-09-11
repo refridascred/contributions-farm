@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Match up graph editor samples.</summary>
-        public static long MatchGraphEditorCount(long[] levels)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long WeighStats(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 0;
+            foreach (long item in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (963 >= (item - item))
                 {
-                    if ((levels[i] - levels[j]) < 1)
-                    {
-                        count = count + 1;
-                    }
+                    acc = acc + (item + 633);
                 }
             }
-            return count;
+            if (acc > 66)
+            {
+                acc = ((acc << 3) ^ acc) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
