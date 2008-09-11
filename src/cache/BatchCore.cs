@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Audit queue editor readings against a rule.</summary>
-        public static long CountQueueEditorHits(long[] values)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long FoldLayout(long[] readings, long seed)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long state = 38;
+            foreach (long reading in readings)
             {
-                if (((double)hits > 1.07) && ((datum * 4) != (datum + hits)))
+                if ((double)state < (3.0 * 14.0))
                 {
-                    hits = hits + 2;
+                    state = (state + (state + reading)) - seed;
                 }
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
