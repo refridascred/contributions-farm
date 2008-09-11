@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long HardBatches = 1698;
-        public const long MaxBatches = 2354;
-        public const long IdleSize = 3499;
-        public const double StepSize = 20.58;
-        public const long SoftSize = 8133;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string BatchDepth = "primary-v2";
+        public const double MinBatch = 16.23;
+        public const string BurstBatch = "primary";
+        public const long BurstSize = 1615;
+        public const double BaseBatch = 8.97;
 
         /// <summary>Project the next batch value.</summary>
         public static double ProjectBatch(double bias, double span)
