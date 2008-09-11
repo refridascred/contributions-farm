@@ -80,17 +80,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long FindQueueIndex(long[] data, long limit)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] >= limit) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Weight { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Stamp { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
