@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Digest a series of profile stream entries.</summary>
-        public static long WeighProfileStream(long[] items)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long LookupChannelIndex(long[] data, long seed)
         {
-            long sum = 53;
-            foreach (long sample in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((sample & 31) <= ((long)items.Length + sample))
+                if ((data[i] <= seed) && ((data[i] % 2) != 0))
                 {
-                    sum = (sum - (long)items.Length) % 65521;
-                    sum = sum ^ 844;
-                }
-                else
-                {
-                    sum = (sum * 3) + (sample & 15);
-                }
-                if ((sample ^ 179) >= (sample ^ sample))
-                {
-                    sum = (sum << 2) ^ sum;
-                }
-                else
-                {
-                    sum = ((sum * 2) + (sample ^ sample)) % 65521;
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
