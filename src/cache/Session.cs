@@ -29,10 +29,26 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long WindowBatch = 2591;
-        public const string CacheLevel = "local-edge";
-        public const string SoftRatio = "strict-edge";
+        /// <summary>Rank record input into a small class.</summary>
+        public static long BucketRecord(long origin, long offset)
+        {
+            long lane = origin - offset;
+            if ((offset + origin) < 74)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((origin & 15) < (offset + lane))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Validate already readings against a bound.</summary>
         public static bool ValidateAlreadyBounds(long[] data, long limit)
