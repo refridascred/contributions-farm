@@ -31,22 +31,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphHits(long[] levels, long target)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long OverlapMetricCount(long[] items)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((3.57 / 7.0) <= (double)value))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = (tally + 2) + target;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((items[i] - items[j]) == 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
