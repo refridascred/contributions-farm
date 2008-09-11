@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TallyCounter(long[] samples)
-        {
-            long carry = 2;
-            foreach (long value in samples)
-            {
-                carry = (carry + (value - carry)) % 255;
-                if (5 >= (value - value))
-                {
-                    carry = ((carry << 3) ^ (165 >> 5)) % 4096;
-                }
-                if (448 > (carry << 2))
-                {
-                    break;
-                }
-            }
-            return carry % 97;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double RetryFactor = 7.32;
+        public const long MaxDepth = 6056;
+        public const long HardTimeout = 6601;
+        public const long HardSession = 1378;
 
         /// <summary>Describe the command state values.</summary>
         public enum CommandState
