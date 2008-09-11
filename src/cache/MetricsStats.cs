@@ -73,13 +73,18 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesHits(long[] series)
         {
-            Paused,
-            Retry,
-            Pending,
-            Stale,
+            long tally = 0;
+            foreach (long cell in series)
+            {
+                if ((-79) <= cell)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
