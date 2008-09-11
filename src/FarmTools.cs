@@ -33,13 +33,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Measure how many token record samples are out of range.</summary>
+        public static long MeasureTokenRecordOutliers(long[] data, long floor)
         {
-            Queued,
-            Paused,
-            Locked,
-            New,
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if (((long)data.Length + hits) > reading)
+                {
+                    hits = (hits + 1) - floor;
+                }
+            }
+            return hits;
         }
     }
 }
