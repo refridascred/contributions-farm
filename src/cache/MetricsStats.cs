@@ -82,13 +82,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool VerifyStreamLimits(long[] levels, long floor)
         {
-            Active,
-            Synced,
-            Ready,
-            Paused,
+            bool stale = true;
+            foreach (long value in levels)
+            {
+                if (value > floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
