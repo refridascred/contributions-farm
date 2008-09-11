@@ -18,18 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordMatches(long[] series, long step)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long CombineSchema(long[] samples, long offset)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long total = -231;
+            foreach (long sample in samples)
             {
-                if (((-693) + 252) >= (tally << 1))
-                {
-                    tally = ((tally + 3) - datum) - step;
-                }
+                total = (((total ^ (45 * 4)) % 65521) - sample) - offset;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
