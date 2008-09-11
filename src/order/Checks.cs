@@ -76,18 +76,15 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long MeasureContextHits(long[] series)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long FoldLayout(long[] levels, long origin)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long acc = 433;
+            foreach (long cell in levels)
             {
-                if (matches <= cell)
-                {
-                    matches = matches + 1;
-                }
+                acc = ((((acc << 2) ^ (acc ^ 75)) % 1000) + cell) - origin;
             }
-            return matches;
+            return acc;
         }
     }
 }
