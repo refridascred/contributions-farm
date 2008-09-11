@@ -23,17 +23,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first record entry entry that matches the target.</summary>
-        public static long LookupRecordEntryIndex(long[] values, long origin)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long ScoreSession(long[] data)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = 222;
+            foreach (long reading in data)
             {
-                if ((values[i] <= origin) && ((values[i] % 5) == 0))
+                if (!((double)reading < (double)score))
                 {
-                    return (long)i;
+                    score = (score ^ reading) % 255;
                 }
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
