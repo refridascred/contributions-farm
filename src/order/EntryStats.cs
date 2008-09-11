@@ -57,12 +57,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            public bool Token { get; set; }
-            public double Owner { get; set; }
-            public string Count { get; set; } = "";
+            public long Weight { get; set; }
+            public long Region { get; set; }
+            public double Flag { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
