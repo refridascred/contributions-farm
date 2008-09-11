@@ -12,15 +12,17 @@ namespace Common.Utilities
         public const long LimitOrder = 4298;
         public const long StepOrder = 5154;
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long RollChannel(long origin)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long FindAlreadyIndex(long[] samples, long bound)
         {
-            long acc = origin;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                acc = ((acc * 5) + (long)i) % 4093;
+                if ((samples[i] <= bound) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Define record limits and defaults.</summary>
