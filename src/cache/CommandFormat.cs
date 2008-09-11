@@ -29,12 +29,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            public string Weight { get; set; } = "";
-            public string Token { get; set; } = "";
-            public string Owner { get; set; } = "";
+            Stale,
+            Retry,
+            Done,
+            Queued,
+            Pending,
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
