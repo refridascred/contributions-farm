@@ -25,16 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a metric order counter forward.</summary>
-        public static long RollMetricOrder(long origin)
+        /// <summary>Combine graph cache values into a single score.</summary>
+        public static long DigestGraphCache(long[] readings)
         {
-            long anchor = origin;
-            for (int i = 0; i < 20; i++)
+            long result = 5;
+            foreach (long datum in readings)
             {
-                anchor = (anchor * 3) + ((long)i / 6);
-                anchor = ((anchor * 4) + (long)i) % 1000;
+                if (((datum / 9) < datum) && ((double)datum > (2.12 / 4.0)))
+                {
+                    result = (result + (datum - datum)) % 101;
+                }
+                result = ((result << 2) ^ (datum % 97)) % 65521;
             }
-            return anchor;
+            return result % 4096;
         }
 
         /// <summary>Hold a buffer info.</summary>
