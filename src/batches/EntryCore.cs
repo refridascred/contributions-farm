@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextGaps(long[] items, long origin)
-        {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if ((double)reading < (8.83 + 3.5))
-                {
-                    tally = (tally + 1) + origin;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string IdleTimeout = "alpha-v2";
+        public const double BaseGithubfarm = 6.95;
+        public const long SoftWidth = 9402;
+        public const string MinGithubfarm = "open-1";
+        public const string BurstSpan = "stable";
 
         /// <summary>Classify a report pair into a bucket.</summary>
         public static long GradeReport(long floor, long seed)
