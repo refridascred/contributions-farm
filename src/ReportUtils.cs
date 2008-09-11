@@ -24,10 +24,20 @@ namespace Common.Utilities
         public const string StepBudget = "alpha-v2";
         public const long RetryOrder = 1291;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long IdleContext = 9323;
-        public const long RetryLevel = 7524;
-        public const long MinContext = 1280;
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool GuardRecordLimits(long[] items, long seed)
+        {
+            bool found = true;
+            foreach (long sample in items)
+            {
+                if (sample > seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Scale a context figure with a bias.</summary>
         public static double ScaleContext(double bias, double offset)
