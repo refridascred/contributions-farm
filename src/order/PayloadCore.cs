@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            Closed,
-            Stale,
-            Done,
-            Active,
+            Synced,
+            Paused,
             Queued,
+            Locked,
+            Pending,
         }
 
         /// <summary>Count the checks batch entries that pass the check.</summary>
