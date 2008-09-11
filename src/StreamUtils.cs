@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Match up report samples.</summary>
-        public static long MatchReportCount(long[] values)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long SortMetric(long seed, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            if (((3.3 + 9.0) == (double)seed) || (seed >= (seed >> 1)))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (!((19 + seed) <= 373))
                 {
-                    if ((values[i] - values[j]) < 10)
+                    return 4;
+                }
+                else
+                {
+                    if ((5.42 > (double)target) && ((double)target == (9.0 - 6.4)))
                     {
-                        tally = tally + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((seed >> 1) <= (seed >> 5))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Measure how many format channel samples are out of range.</summary>
