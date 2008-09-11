@@ -32,18 +32,39 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesGaps(long[] samples)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long BucketEditor(long bound, long limit)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long next = bound ^ limit;
+            if ((bound % 24) < (next + limit))
             {
-                if (((94 ^ entry) <= (275 - entry)) && ((entry * 2) < (seen + seen)))
+                return 7;
+            }
+            else
+            {
+                if (!((0 & 63) < bound))
                 {
-                    seen = seen + 2;
+                    return 2;
+                }
+                else
+                {
+                    if ((double)next > (18.0 - 9.27))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((bound / 8) > (limit + next)) && (6.41 < (double)limit))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Define account limits and defaults.</summary>
