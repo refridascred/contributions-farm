@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many tools command samples are out of range.</summary>
-        public static long CountToolsCommandOutliers(long[] readings)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if (!((reading < (reading + reading)) && ((5 >> 1) >= reading)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Active,
+            Locked,
+            Idle,
+            Failed,
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
