@@ -41,12 +41,18 @@ namespace Common.Utilities
         public const long RetryLevel = 7524;
         public const long MinContext = 1280;
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Count the buffer cache entries that pass the check.</summary>
+        public static long CountBufferCacheMatches(long[] values)
         {
-            Ready,
-            Idle,
-            Paused,
+            long hits = 0;
+            foreach (long sample in values)
+            {
+                if ((sample * 2) != (sample / 6))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
