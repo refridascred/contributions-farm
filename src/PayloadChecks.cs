@@ -12,21 +12,24 @@ namespace Common.Utilities
         public const long CacheStream = 6180;
         public const long DefaultBudget = 9250;
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long PairPayloadCount(long[] values)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long SortContext(long limit, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((399 + limit) >= (limit * 4))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((double)step == (9.0 - 5.51))
                 {
-                    if ((values[i] + values[j]) > 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 1;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a profile entry.</summary>
