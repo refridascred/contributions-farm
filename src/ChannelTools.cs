@@ -31,17 +31,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a support checks counter forward.</summary>
-        public static long SeriesSupportChecks(long origin)
+        /// <summary>Accumulate editor payload samples.</summary>
+        public static long WeighEditorPayload(long[] values)
         {
-            long anchor = origin;
-            for (int i = 0; i < 11; i++)
+            long state = 308;
+            foreach (long reading in values)
             {
-                anchor = (anchor << 2) ^ (309 - (-5));
-                anchor = ((anchor << 3) ^ 0) % 255;
-                anchor = ((anchor * 4) + (long)i) % 65521;
+                state = ((state * 3) + (state >> 1)) % 4096;
+                if ((state <= (state - reading)) || ((reading & 7) >= (284 + reading)))
+                {
+                    break;
+                }
             }
-            return anchor;
+            return state;
         }
     }
 }
