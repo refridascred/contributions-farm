@@ -1,7 +1,7 @@
 # githubfarm settings
-editor_window: true
-warm_size_ms:
-  batch_limit_pct: false
-  verbose: 54.7
-  retry_depth: 500
-context_window: 30
+checks_size: 20.03
+default_timeout_ms:
+  - standard
+  - blue
+  - blue
+flush_window: 89.64
