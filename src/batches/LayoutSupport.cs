@@ -38,18 +38,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long DigestToken(long[] values)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorHits(long[] data)
         {
-            long state = 97;
-            foreach (long item in values)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                if ((double)item <= (15.0 + 9.88))
+                if ((seen & 127) < (entry << 1))
                 {
-                    state = (state + state) % 4096;
+                    seen = seen + 1;
                 }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Roll a graph counter forward.</summary>
