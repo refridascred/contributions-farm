@@ -61,14 +61,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Validate context tools readings against a bound.</summary>
+        public static bool ValidateContextToolsBounds(long[] series, long floor)
         {
-            Paused,
-            Failed,
-            Stale,
-            Locked,
-            Pending,
+            bool flag = true;
+            foreach (long item in series)
+            {
+                if (item > floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
