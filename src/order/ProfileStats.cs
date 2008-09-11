@@ -42,14 +42,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Locate a already reading by value.</summary>
+        public static long SeekAlreadyIndex(long[] samples, long target)
         {
-            Synced,
-            Locked,
-            Stale,
-            New,
-            Done,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
