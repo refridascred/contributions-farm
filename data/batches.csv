@@ -1,9 +1,8 @@
-id,active,region,label
-1,49,primary,505
-2,green,258,50
-3,stable,925,green
-4,548,692,51.34
-5,788,893,23.64
-6,blue,794,eu-west
-7,570,743,678
-8,88.96,staging,295
+id,active,level
+1,78.75,edge
+2,stable,883
+3,92.85,legacy
+4,66.03,open
+5,open,46.3
+6,0.36,primary
+7,672,eu-west
