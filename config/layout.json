@@ -1,6 +1,20 @@
 {
-  "burst_ratio": 1024,
-  "base_ratio_s": 3910,
-  "poll_size_pct": "eu-west",
-  "audit": "eu-west"
+  "support_depth": 6788,
+  "report_timeout": "blue",
+  "readonly": "standard",
+  "metric_window": 53.93,
+  "base_depth": "standard",
+  "token_retries": {
+    "soft_timeout_count": {
+      "entry_ratio": false,
+      "idle_size_s": 322,
+      "retry_capacity_count": [303, 183],
+      "batch_capacity": 11.17,
+      "cache_timeout_pct": [483, 305, 329, 2],
+      "cache_timeout_count": 60
+    },
+    "enabled": "cached",
+    "audit": "stable",
+    "hard_threshold_count": [138, 46, 481, 278]
+  }
 }
