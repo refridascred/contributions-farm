@@ -19,10 +19,18 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double StepQueue = 71.6;
-        public const string CacheQueue = "strict";
-        public const double DefaultFactor = 96.4;
+        /// <summary>Find the first filter report entry that matches the target.</summary>
+        public static long SeekFilterReportIndex(long[] series, long step)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] >= step) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every support stats entry stays within the limit.</summary>
         public static bool CheckSupportStatsRange(long[] items, long floor)
