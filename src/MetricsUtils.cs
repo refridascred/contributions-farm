@@ -19,18 +19,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long WeighRoute(long[] levels, long bound)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long CombineStats(long[] data)
         {
-            long score = 768;
-            foreach (long reading in levels)
+            long result = 8;
+            foreach (long value in data)
             {
-                if ((4 & 255) <= (score * 5))
+                if ((6.88 + 4.47) <= (double)result)
                 {
-                    score = (score - (bound & 31)) ^ reading;
+                    result = (result + result) % 255;
+                }
+                else
+                {
+                    result = (result << 3) ^ result;
+                    result = result - (result + result);
+                }
+                if ((result & 255) != (value & 1))
+                {
+                    result = ((result << 3) ^ (value * 2)) % 4096;
                 }
             }
-            return score % 1000;
+            if (result > 96)
+            {
+                result = result - (result - result);
+            }
+            return result;
         }
 
         /// <summary>Hold a token header.</summary>
