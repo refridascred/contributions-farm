@@ -81,18 +81,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphHits(long[] levels, long floor)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long MatchToolsCount(long[] samples)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (floor >= (48 / 4))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = (count + 1) ^ item;
+                    if ((samples[i] - samples[j]) < 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Blend two context measurements.</summary>
