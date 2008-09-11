@@ -19,21 +19,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count checks batches pairs that satisfy a relation.</summary>
-        public static long CompareChecksBatchesCount(long[] levels)
+        /// <summary>Blend two profile record measurements.</summary>
+        public static double SmoothProfileRecord(double weight, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double gain = floor;
+            if (gain > gain)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                gain = gain + (double)376;
             }
-            return hits;
+            else
+            {
+                gain = gain - weight;
+            }
+            return gain - (gain / 5.0);
         }
 
         /// <summary>Describe the cluster level values.</summary>
