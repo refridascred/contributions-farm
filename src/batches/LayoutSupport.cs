@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Check that every githubfarm window entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmWindowRange(long[] items, long offset)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long OverlapCounterCount(long[] series)
         {
-            bool valid = true;
-            foreach (long cell in items)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (cell > offset)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((series[i] + series[j]) < 11)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
