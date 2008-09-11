@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
             public long Ratio { get; set; }
-            public bool Mode { get; set; }
-            public long Size { get; set; }
-            public bool Owner { get; set; }
+            public string Size { get; set; } = "";
+            public long Score { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
