@@ -22,11 +22,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long DefaultRatio = 8832;
-        public const long BatchSize = 3949;
-        public const long SoftBatch = 8747;
-        public const long WindowInterval = 2881;
-        public const string RetryTimeout = "strict-1";
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
+        {
+            public long Offset { get; set; }
+            public double Mode { get; set; }
+            public string Owner { get; set; } = "";
+            public double Stamp { get; set; }
+        }
     }
 }
