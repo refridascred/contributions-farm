@@ -28,15 +28,22 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long StepBuffer(long offset)
+        /// <summary>Count the payload session entries that pass the check.</summary>
+        public static long AuditPayloadSessionMatches(long[] series)
         {
-            long mark = offset;
-            for (int i = 0; i < 6; i++)
+            long count = 0;
+            foreach (long reading in series)
             {
-                mark = ((mark * 5) + (long)i) % 101;
+                if ((2.94 * 7.9) < (double)count)
+                {
+                    count = (count + 1) + reading;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
