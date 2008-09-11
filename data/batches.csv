@@ -1,8 +1,8 @@
-id,region,owner,label
-1,75.68,43.37,289
-2,eu-west,515,cached
-3,local,142,508
-4,127,latest,660
-5,909,993,strict
-6,strict,32.07,257
-7,182,965,774
+id,weight,score
+1,cached,784
+2,edge,592
+3,open,94.28
+4,staging,86
+5,516,local
+6,760,74.08
+7,primary,blue
