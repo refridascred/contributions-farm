@@ -37,13 +37,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long SeriesRoute(long floor)
         {
-            Failed,
-            Closed,
-            Active,
-            Synced,
+            long carry = floor;
+            for (int i = 0; i < 7; i++)
+            {
+                carry = ((carry * 5) + (long)i) % 1000;
+            }
+            return carry;
         }
     }
 }
