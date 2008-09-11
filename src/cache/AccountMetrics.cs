@@ -50,18 +50,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowHits(long[] items, long seed)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if (!((18.0 / 8.0) <= (double)item))
-                {
-                    seen = (seen + 1) - seed;
-                }
-            }
-            return seen;
+            public double Region { get; set; }
+            public double Offset { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Validate account readings against a bound.</summary>
