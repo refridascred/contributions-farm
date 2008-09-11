@@ -1,7 +1,8 @@
-id,active,rank,owner
-1,green,375,298
-2,58,25.42,stable
-3,blue,eu-west,strict
-4,46.07,82.99,0.23
-5,35.99,172,stable
-6,602,59.35,155
+id,region,active
+1,legacy,601
+2,43.02,edge
+3,fallback,660
+4,984,16.76
+5,open,812
+6,808,85.23
+7,875,484
