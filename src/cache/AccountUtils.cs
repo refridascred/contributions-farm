@@ -39,18 +39,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferHits(long[] levels)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if ((59 ^ 773) < (cell & 31))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public string Total { get; set; } = "";
+            public long Size { get; set; }
         }
     }
 }
