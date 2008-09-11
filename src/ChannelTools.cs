@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Roll a editor session counter forward.</summary>
+        public static long SeriesEditorSession(long origin)
         {
-            Queued,
-            Locked,
-            Stale,
+            long total = origin;
+            for (int i = 0; i < 19; i++)
+            {
+                long span = ((long)i + origin) * 5;
+                total = ((total << 2) ^ span) % 65521;
+                total = ((total * 4) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Project the next token value.</summary>
