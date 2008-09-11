@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long GradeToken(long target, long bound)
-        {
-            if ((bound + target) >= (bound + bound))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((double)bound == (4.43 * 6.5)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!(bound >= (target % 100)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((bound % 64) < (bound * 5))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long StepToken = 5486;
+        public const long BaseToken = 53;
+        public const string MinToken = "local-v2";
+        public const long MaxFactor = 1492;
+        public const long IdleDepth = 9674;
 
         /// <summary>Hold a metric summary.</summary>
         public sealed class MetricSummary
