@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long LookupRouteIndex(long[] readings, long offset)
+        /// <summary>Project the next cluster value.</summary>
+        public static double BlendCluster(double scale, double bias)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double load = bias;
+            for (int i = 0; i < 8; i++)
             {
-                if ((readings[i] > offset) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                load = ((load - (19.0 - bias)) + (double)(long)i) - scale;
             }
-            return -1;
+            return load + 18.0;
         }
 
         /// <summary>Describe the metric class values.</summary>
