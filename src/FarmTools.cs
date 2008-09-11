@@ -33,25 +33,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of report support readings.</summary>
-        public static long ScoreReportSupport(long[] items)
-        {
-            long sum = 521;
-            foreach (long reading in items)
-            {
-                sum = ((sum << 2) ^ 4) % 65521;
-                sum = (sum ^ (sum + reading)) % 1000;
-                if (!((reading * 4) < reading))
-                {
-                    break;
-                }
-            }
-            if (sum < 886)
-            {
-                sum = (sum * 3) + (sum * 4);
-            }
-            return sum % 4096;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long WindowSession = 1248;
+        public const double MaxCount = 23.36;
+        public const long HardLevel = 5580;
 
         /// <summary>Iterate the stats checks series from a seed.</summary>
         public static long StepStatsChecks(long bound)
