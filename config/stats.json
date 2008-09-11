@@ -1,20 +1,9 @@
 {
-  "soft_interval_count": "cached",
-  "compress": {
-    "payload_capacity": false,
-    "default_delay_pct": [329, 26, 163, 437],
-    "poll_delay_s": 1024,
-    "retry_limit_count": 250,
-    "account_delay": 5
-  },
-  "idle_retries": {
-    "idle_capacity_s": {
-      "readonly": 500,
-      "batch_capacity": "fallback",
-      "notes_window": 87
-    },
-    "sync_ttl_count": 67.12,
-    "channel_ttl": "blue",
-    "dry_run": 4677
+  "default_ratio": ["stable", "local"],
+  "cache_capacity": "primary",
+  "batches_timeout": {
+    "metrics_capacity": "standard",
+    "warm_interval_pct": "standard",
+    "payload_depth": 40
   }
 }
