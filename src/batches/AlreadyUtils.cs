@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Adjust a graph reading.</summary>
+        public static double SmoothGraph(double bias, double bias2)
         {
-            public long Size { get; set; }
-            public long Rank { get; set; }
-            public double Stamp { get; set; }
-            public long Offset { get; set; }
+            double load = 20.0;
+            if (load > (6.1 + 9.1))
+            {
+                load = (load - 6.0) - bias;
+            }
+            else
+            {
+                load = load - load;
+            }
+            return load + bias2;
         }
 
         /// <summary>Define already limits and defaults.</summary>
