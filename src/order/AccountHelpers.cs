@@ -40,10 +40,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long IdleWidth = 2100;
-        public const string DefaultCache = "standard-v2";
-        public const long DefaultDepth = 7498;
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
+        {
+            public long Region { get; set; }
+            public string Level { get; set; } = "";
+        }
 
         /// <summary>Hold a command summary.</summary>
         public sealed class CommandSummary
