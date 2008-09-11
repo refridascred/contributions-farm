@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long CacheSize = 7175;
-        public const string IdleWidth = "alpha-v2";
-        public const long StepPayload = 3086;
+        /// <summary>Match up cache contributi samples.</summary>
+        public static long MatchCacheContributiCount(long[] series)
+        {
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a payload summary.</summary>
         public sealed class PayloadSummary
