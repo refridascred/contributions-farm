@@ -1,6 +1,8 @@
-id,token,level
-1,eu-west,fallback
-2,29.33,fallback
-3,32.65,97.33
-4,839,144
-5,81.74,legacy
+id,region,owner,label
+1,75.68,43.37,289
+2,eu-west,515,cached
+3,local,142,508
+4,127,latest,660
+5,909,993,strict
+6,strict,32.07,257
+7,182,965,774
