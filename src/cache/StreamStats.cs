@@ -22,11 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double ScaleGithubfarm(double rate, double span)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmMatches(long[] samples)
         {
-            double mean = (rate - 17.0) + span;
-            return mean + (double)(-32);
+            long tally = 0;
+            foreach (long value in samples)
+            {
+                if ((tally + value) < (value + value))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
