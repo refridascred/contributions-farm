@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueGaps(long[] levels)
+        /// <summary>Project the next command value.</summary>
+        public static double SmoothCommand(double ratio, double floor)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            double mean = floor / 2.0;
+            if (mean > (floor * 17.0))
             {
-                if (((double)datum > (8.93 * 6.1)) && ((4.07 - 4.67) < (double)datum))
-                {
-                    hits = hits + 2;
-                }
+                mean = mean + (1.1 * 3.7);
             }
-            return hits;
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean - ratio) + (double)(long)i;
+            }
+            return mean - mean;
         }
 
         /// <summary>Describe the command level values.</summary>
