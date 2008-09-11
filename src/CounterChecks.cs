@@ -28,12 +28,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferOutliers(long[] items, long origin)
         {
-            public double Region { get; set; }
-            public bool Count { get; set; }
-            public string Flag { get; set; } = "";
+            long seen = 0;
+            foreach (long sample in items)
+            {
+                if (!(sample >= origin))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the editor class values.</summary>
