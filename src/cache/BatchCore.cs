@@ -19,15 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a order cluster reading.</summary>
-        public static double AdjustOrderCluster(double bias, double floor)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long LookupNotesIndex(long[] values, long step)
         {
-            double gain = bias;
-            if (gain >= 13.0)
+            for (int i = 0; i < values.Length; i++)
             {
-                gain = (gain + (double)8) + floor;
+                if (values[i] > step)
+                {
+                    return (long)i;
+                }
             }
-            return gain - (gain / 3.0);
+            return -1;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
