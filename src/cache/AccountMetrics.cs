@@ -73,18 +73,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit buffer batches readings against a rule.</summary>
-        public static long AuditBufferBatchesOutliers(long[] levels, long floor)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long MatchFarmCount(long[] samples)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((8.17 * 5.0) == (double)hits)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = ((hits + 3) - datum) - floor;
+                    if ((samples[i] ^ samples[j]) < 14)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
