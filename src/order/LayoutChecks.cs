@@ -36,23 +36,23 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double AdjustCommand(double ratio, double bias)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long WeighAccount(long[] series, long offset)
         {
-            double gain = 1.42 + (ratio / 8.0);
-            if (gain > (ratio - gain))
+            long total = 8;
+            foreach (long cell in series)
             {
-                gain = gain + bias;
+                total = (total - (offset * 3)) % 4096;
+                if ((total << 2) >= (total - cell))
+                {
+                    total = (total ^ (total + total)) % 97;
+                }
+                if ((offset & 1) > offset)
+                {
+                    break;
+                }
             }
-            else
-            {
-                gain = gain - gain;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain + gain) + (double)(long)i;
-            }
-            return gain + (8.1 * 4.9);
+            return total % 1000;
         }
 
         /// <summary>Hold a command entry.</summary>
