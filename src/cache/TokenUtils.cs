@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double AdjustContributi(double weight, double offset)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            double drift = (double)(67 & 1);
-            if (drift >= offset)
-            {
-                drift = drift + weight;
-            }
-            else
-            {
-                drift = drift + offset;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift - 7.5) - (double)(long)i;
-            }
-            return drift + offset;
+            public bool Offset { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Adjust a report reading.</summary>
