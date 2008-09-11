@@ -10,18 +10,12 @@ namespace Common.Utilities
         public const long RetryBatches = 3093;
         public const long RetryBudget = 6012;
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordOutliers(long[] series)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if (((double)seen <= (double)datum) || (datum >= (datum - 9)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Retry,
+            Pending,
+            Draft,
         }
 
         /// <summary>Validate route readings against a bound.</summary>
