@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandHits(long[] data)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long FindReportIndex(long[] values, long target)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((matches + matches) < (73 * 2)) || ((sample & 15) <= (968 / 9)))
+                if (values[i] > target)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
