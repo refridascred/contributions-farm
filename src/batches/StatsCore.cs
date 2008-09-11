@@ -55,15 +55,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double BlendEntry(double weight, double bias)
+        /// <summary>Match up editor checks samples.</summary>
+        public static long OverlapEditorChecksCount(long[] series)
         {
-            double load = (bias + 4.22) + 10.0;
-            if (load < load)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                load = (load + (bias + bias)) - weight;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 11)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return load - load;
+            return count;
         }
     }
 }
