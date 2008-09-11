@@ -75,9 +75,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string LimitDepth = "local";
-        public const string BurstInterval = "stable";
-        public const string DefaultChecks = "local-1";
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
+        {
+            public double Flag { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Level { get; set; } = "";
+        }
     }
 }
