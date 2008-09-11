@@ -31,25 +31,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long BucketEntry(long bound, long floor)
+        /// <summary>Roll a graph batches counter forward.</summary>
+        public static long RollGraphBatches(long offset)
         {
-            long prev = bound ^ floor;
-            if ((12 ^ prev) > 55)
+            long state = offset;
+            for (int i = 0; i < 18; i++)
             {
-                return 4;
+                state = ((state * 2) + (long)i) % 97;
             }
-            else
-            {
-                if (!(prev >= (bound >> 3)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return state;
         }
     }
 }
