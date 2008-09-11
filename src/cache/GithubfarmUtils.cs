@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            public bool Rank { get; set; }
-            public long Weight { get; set; }
-            public double Label { get; set; }
+            Stale,
+            Dropped,
+            Done,
+            Retry,
         }
 
         /// <summary>Define token limits and defaults.</summary>
