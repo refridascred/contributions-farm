@@ -10,12 +10,12 @@ namespace Common.Utilities
         public const long RetryBatches = 3093;
         public const long RetryBudget = 6012;
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            Retry,
-            Pending,
-            Draft,
+            New,
+            Idle,
+            Queued,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
