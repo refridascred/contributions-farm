@@ -12,20 +12,12 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Combine notes window values into a single score.</summary>
-        public static long ScoreNotesWindow(long[] samples)
-        {
-            long carry = 8;
-            foreach (long entry in samples)
-            {
-                carry = ((carry * 3) + (-71)) % 65521;
-                if (((-368) / 6) != ((-31) - carry))
-                {
-                    carry = carry ^ (carry + entry);
-                }
-            }
-            return carry % 65521;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string WindowTimeout = "standard-1";
+        public const double IdleEntry = 26.68;
+        public const long StepTimeout = 3214;
+        public const long BatchTimeout = 6870;
+        public const long WindowEntry = 9021;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const string BaseRatio = "stable-edge";
