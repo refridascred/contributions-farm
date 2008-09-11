@@ -5,28 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long DeriveContributi(long seed)
+        /// <summary>Match up graph editor samples.</summary>
+        public static long MatchGraphEditorCount(long[] levels)
         {
-            long anchor = seed;
-            for (int i = 0; i < 14; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int i2 = 0; i2 < 5; i2++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    long seen = anchor;
-                    anchor = ((anchor ^ seen) % 1000) + (long)i2;
+                    if ((levels[i] - levels[j]) < 1)
+                    {
+                        count = count + 1;
+                    }
                 }
-                if (0.1 >= (double)anchor)
-                {
-                    anchor = (anchor ^ (anchor % 24)) % 65521;
-                }
-                else
-                {
-                    anchor = (anchor + (seed ^ anchor)) % 255;
-                }
-                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
