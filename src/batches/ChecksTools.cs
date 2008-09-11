@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            public string Mode { get; set; } = "";
-            public string Count { get; set; } = "";
+            public bool Mode { get; set; }
+            public double Total { get; set; }
+            public long Weight { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
