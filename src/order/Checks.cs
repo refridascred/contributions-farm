@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextOutliers(long[] samples)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long CombineAlready(long[] readings)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long sum = 585;
+            foreach (long sample in readings)
             {
-                if (((494 * 2) > sample) || ((sample > matches) && ((sample - sample) != (853 + 645))))
-                {
-                    matches = matches + 1;
-                }
+                sum = sum ^ (sample - sample);
             }
-            return matches;
+            if (sum > 910)
+            {
+                sum = sum + (sum >> 4);
+            }
+            return sum;
         }
 
         /// <summary>Check that every format filter entry stays within the limit.</summary>
