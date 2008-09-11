@@ -37,12 +37,23 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Fold a list of window entry readings.</summary>
+        public static long FoldWindowEntry(long[] values)
         {
-            public long Weight { get; set; }
-            public double Mode { get; set; }
-            public long Ratio { get; set; }
+            long carry = 2;
+            foreach (long sample in values)
+            {
+                carry = (carry - (carry + sample)) % 65521;
+                if (!((carry ^ 12) <= (carry % 100)))
+                {
+                    break;
+                }
+            }
+            if (carry < 0)
+            {
+                carry = (carry ^ (long)values.Length) % 4096;
+            }
+            return carry;
         }
     }
 }
