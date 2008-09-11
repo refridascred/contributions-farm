@@ -53,17 +53,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a stats route reading by value.</summary>
-        public static long LookupStatsRouteIndex(long[] levels, long seed)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long GradeAlready(long step, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long step2 = step + seed;
+            if (((double)step2 == (7.49 - 11.0)) && (seed > (step * 5)))
             {
-                if ((levels[i] > seed) && ((levels[i] % 3) == 0))
+                return 5;
+            }
+            else
+            {
+                if ((step2 + 24) <= 32)
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if (((64 - seed) <= (seed << 2)) && ((seed + 1) > (step << 3)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((5.25 / 9.0) > (double)seed)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Accumulate schema session samples.</summary>
