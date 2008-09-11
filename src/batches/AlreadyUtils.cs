@@ -72,11 +72,9 @@ namespace Common.Utilities
         public const string WindowDepth = "strict-edge";
         public const double IdleSpan = 5.44;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long LimitInterval = 2222;
-        public const string BatchSession = "local";
-        public const long CacheSession = 8351;
-        public const string RetryInterval = "primary-1";
-        public const string IdleDepth = "cached-v2";
+        /// <summary>Define order limits and defaults.</summary>
+        public const string RetryRatio = "strict";
+        public const long CacheRatio = 5302;
+        public const long WindowOrder = 9266;
     }
 }
