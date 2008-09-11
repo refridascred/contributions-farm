@@ -20,13 +20,10 @@ namespace Common.Utilities
             return weight + (weight * 2.6);
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
-        {
-            public double Total { get; set; }
-            public long Flag { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BurstScore = 6083;
+        public const long BatchContext = 9308;
+        public const string StepInterval = "strict-1";
 
         /// <summary>Measure how many tools samples are out of range.</summary>
         public static long MeasureToolsMatches(long[] levels, long step)
