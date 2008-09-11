@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long WeighChecks(long[] levels, long seed)
         {
-            Closed,
-            Pending,
-            Queued,
+            long mix = 0;
+            foreach (long sample in levels)
+            {
+                if (((double)seed == (9.27 / 3.0)) || ((double)mix <= (7.0 + 10.0)))
+                {
+                    mix = ((mix * 3) + (sample * 2)) % 4096;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
