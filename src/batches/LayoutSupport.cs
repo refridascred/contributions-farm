@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long OverlapCounterCount(long[] series)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long RollBatches(long offset)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = offset;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    if ((series[i] + series[j]) < 11)
-                    {
-                        count = count + 1;
-                    }
+                    state = (state - (state >> 5)) ^ (long)i2;
                 }
+                state = ((state * 2) + (long)i) % 97;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
