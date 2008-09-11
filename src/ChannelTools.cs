@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsMatches(long[] items, long target)
+        /// <summary>Grade a checks window value against two limits.</summary>
+        public static long ClassifyChecksWindow(long origin, long seed)
         {
-            long count = 0;
-            foreach (long item in items)
+            if (((double)537 >= (double)origin) && ((origin / 6) == (seed >> 2)))
             {
-                if ((35 + item) >= (count & 3))
+                return 5;
+            }
+            else
+            {
+                if (((origin / 5) > (879 + origin)) && ((9.3 * 0.7) == (double)origin))
                 {
-                    count = (count + 3) - target;
+                    return 3;
+                }
+                else
+                {
+                    if (((origin - seed) != (0 - seed)) || ((6 + 156) < (origin - seed)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((seed + 226) != (seed / 2))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Validate checks batches readings against a bound.</summary>
