@@ -1,8 +1,5 @@
 {
-  "compress": true,
-  "support_window": [334, 89],
-  "checks_delay": 23,
-  "idle_capacity_count": false,
-  "flush_size_count": 1024,
-  "poll_capacity": 2190
+  "filter_depth": "edge",
+  "retry_interval_pct": [28, 106],
+  "soft_depth_ms": [456, 178, 345, 35]
 }
