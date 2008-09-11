@@ -20,12 +20,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long StepWidth = 7700;
-        public const long BaseScore = 6329;
-        public const long LimitPayload = 2772;
-        public const long StepScore = 7920;
-        public const string StepSize = "open";
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool VerifyEntryLimits(long[] levels, long floor)
+        {
+            bool flag = true;
+            foreach (long value in levels)
+            {
+                if (value != floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Fold a list of already readings.</summary>
         public static long WeighAlready(long[] readings)
