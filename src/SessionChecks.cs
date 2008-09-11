@@ -32,12 +32,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            Paused,
-            Done,
-            Closed,
+            public string Limit { get; set; } = "";
+            public double Size { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
