@@ -49,15 +49,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double ProjectChannel(double gain, double floor)
+        /// <summary>Audit entry route readings against a rule.</summary>
+        public static long MeasureEntryRouteGaps(long[] readings)
         {
-            double ratio = (double)23 + (floor / 2.0);
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                ratio = ((ratio - (double)5) - (double)(long)i) - gain;
+                if ((hits + 9) == (sample << 2))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return ratio - (double)229;
+            return hits;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
