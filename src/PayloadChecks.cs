@@ -35,18 +35,17 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Audit schema cluster readings against a rule.</summary>
-        public static long MeasureSchemaClusterOutliers(long[] data, long origin)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long LookupCacheIndex(long[] levels, long bound)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!!((double)seen >= (double)(-43)))
+                if (levels[i] <= bound)
                 {
-                    seen = ((seen + 1) - datum) - origin;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Find the first channel batch entry that matches the target.</summary>
