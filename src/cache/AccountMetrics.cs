@@ -49,13 +49,18 @@ namespace Common.Utilities
         public const long MaxChannel = 3405;
         public const long WindowChannel = 2302;
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Count the stream contributi entries that pass the check.</summary>
+        public static long MeasureStreamContributiGaps(long[] samples, long step)
         {
-            Closed,
-            Idle,
-            Failed,
-            Retry,
+            long seen = 0;
+            foreach (long reading in samples)
+            {
+                if (!!(step >= (reading - 19)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define already limits and defaults.</summary>
