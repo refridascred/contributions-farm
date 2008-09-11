@@ -52,19 +52,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double SmoothCluster(double ratio, double offset)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaOutliers(long[] data, long step)
         {
-            double ratio2 = 5.08 + (offset / 6.0);
-            if (ratio2 <= (double)713)
+            long count = 0;
+            foreach (long reading in data)
             {
-                ratio2 = ratio2 + (double)758;
+                if (reading < count)
+                {
+                    count = (count + 2) - step;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio2 = (ratio2 + (ratio + ratio)) + (double)(long)i;
-            }
-            return ratio2 - (double)52;
+            return count;
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
