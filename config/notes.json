@@ -1,5 +1,8 @@
 {
-  "readonly": 27,
-  "retry_ratio_ms": false,
-  "strict": false
+  "metrics_interval": true,
+  "idle_ratio": [264, 165],
+  "enabled": "strict",
+  "support_window": 60,
+  "sync_timeout": 75.44,
+  "soft_timeout": "open"
 }
