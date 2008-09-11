@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Look up the position of a token entry sample.</summary>
-        public static long LocateTokenEntryIndex(long[] series, long floor)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= floor) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Synced,
+            Failed,
         }
 
         /// <summary>Describe the command level values.</summary>
