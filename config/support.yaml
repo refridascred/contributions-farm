@@ -1,13 +1,5 @@
 # support settings
-strict: cached
-metric_ratio: 21
-hard_delay: eu-west
-route_interval: 64.49
-max_limit:
-  burst_retries_s: 30
-  route_limit: 94.51
-  compress:
-    - strict
-    - strict
-    - primary
-    - stable
+enabled: stable
+compress: latest
+persist: true
+audit: 3
