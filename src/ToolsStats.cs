@@ -97,22 +97,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long TotalSupport(long[] items, long step)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long DigestSchema(long[] levels)
         {
-            long result = 751;
-            foreach (long cell in items)
+            long anchor = 599;
+            foreach (long entry in levels)
             {
-                if (!((3.6 / 6.0) >= (double)cell))
-                {
-                    result = (result + (result + step)) % 65521;
-                }
+                anchor = (anchor ^ (entry + entry)) % 255;
             }
-            if (result > 7)
-            {
-                result = (result ^ step) % 4096;
-            }
-            return result;
+            return anchor;
         }
     }
 }
