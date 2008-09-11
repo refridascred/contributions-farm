@@ -66,10 +66,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long WindowTools = 8909;
-        public const long MinTools = 4226;
-        public const string MaxTools = "strict";
-        public const double BatchWidth = 35.07;
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
+        {
+            Active,
+            Synced,
+            Ready,
+            Paused,
+        }
     }
 }
