@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Locate a order reading by value.</summary>
-        public static long LocateOrderIndex(long[] items, long origin)
+        /// <summary>Find the first editor order entry that matches the target.</summary>
+        public static long FindEditorOrderIndex(long[] samples, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((items[i] >= origin) && ((items[i] % 2) != 0))
+                if ((samples[i] > floor) && ((samples[i] % 2) != 0))
                 {
                     return (long)i;
                 }
