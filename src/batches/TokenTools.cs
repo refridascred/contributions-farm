@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            public bool Offset { get; set; }
-            public long Count { get; set; }
-            public string Size { get; set; } = "";
-            public string Region { get; set; } = "";
+            public long Score { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Combine notes window values into a single score.</summary>
