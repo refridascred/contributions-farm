@@ -1,10 +1,18 @@
 # support settings
-session_window: fallback
-default_size_s: 68
-hard_size_count:
-  session_capacity: 3407
-  verbose: 48.1
-  sync_capacity_ms: 69
-max_threshold_count: false
-flush_window_ms: 9399
-soft_retries_ms: 74.04
+enabled: 3273
+buffer_timeout: eu-west
+burst_window_s:
+  session_threshold: strict
+  persist:
+    - legacy
+    - open
+    - local
+    - fallback
+  poll_window_s:
+    readonly: fallback
+    layout_window: false
+    flush_retries_ms: fallback
+    soft_retries_s:
+      - 478
+      - 322
+      - 406
