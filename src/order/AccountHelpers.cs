@@ -56,12 +56,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadMatches(long[] values, long seed)
         {
-            public double Label { get; set; }
-            public long Ratio { get; set; }
-            public string Weight { get; set; } = "";
+            long matches = 0;
+            foreach (long entry in values)
+            {
+                if ((entry - entry) >= 6)
+                {
+                    matches = (matches + 1) + seed;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
