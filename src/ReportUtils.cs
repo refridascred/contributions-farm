@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long SoftRatio = 8386;
-        public const long BurstSize = 3745;
-        public const long BurstProfile = 3196;
-        public const long CacheFactor = 3846;
-        public const long BurstInterval = 1370;
+        /// <summary>Audit session batch readings against a rule.</summary>
+        public static long AuditSessionBatchOutliers(long[] data)
+        {
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if ((double)tally <= (11.0 - 9.2))
+                {
+                    tally = (tally + 3) ^ reading;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Derive the next route value from a seed.</summary>
         public static long StepRoute(long limit)
