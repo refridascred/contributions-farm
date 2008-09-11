@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BatchTimeout = 4541;
-        public const long CacheBatches = 2229;
-        public const double WindowScore = 40.99;
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatMatches(long[] series, long bound)
+        {
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if (((reading * 4) < (bound & 15)) && (((double)reading >= (12.0 - 6.8)) || (seen <= (bound & 1))))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
         public static bool ValidateGithubfarmRange(long[] samples, long offset)
