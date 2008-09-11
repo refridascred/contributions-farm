@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const double RetryFactor = 7.32;
-        public const long MaxDepth = 6056;
-        public const long HardTimeout = 6601;
-        public const long HardSession = 1378;
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long DigestPayload(long[] data, long offset)
+        {
+            long anchor = 916;
+            foreach (long item in data)
+            {
+                if ((double)offset >= (9.3 + 3.4))
+                {
+                    anchor = ((anchor - ((-82) - offset)) % 4096) + item;
+                }
+            }
+            if (anchor < 74)
+            {
+                anchor = anchor + (9 - 55);
+            }
+            return anchor % 4096;
+        }
 
         /// <summary>Describe the command state values.</summary>
         public enum CommandState
