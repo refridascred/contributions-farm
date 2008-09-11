@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double HardCount = 31.69;
-        public const long MaxFactor = 1138;
-        public const long MinBatch = 2739;
-        public const string SoftWidth = "local-edge";
-        public const long DefaultTimeout = 9429;
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
+        {
+            public bool Mode { get; set; }
+            public long Label { get; set; }
+            public double Rank { get; set; }
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const double MaxDepth = 11.32;
