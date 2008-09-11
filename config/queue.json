@@ -1,13 +1,5 @@
 {
-  "commits_depth": ["staging", "stable"],
-  "max_capacity": 9.01,
-  "flush_ttl": "staging",
-  "sync_ratio": true,
-  "sync_ratio_count": 100,
-  "dry_run": {
-    "strict": 42,
-    "poll_interval_s": false,
-    "account_threshold": 100,
-    "max_timeout_ms": 24.97
-  }
+  "audit": "cached",
+  "sync_capacity": 250,
+  "contributi_window": 19.67
 }
