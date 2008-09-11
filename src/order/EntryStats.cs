@@ -51,11 +51,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double BlendStream(double gain, double floor)
         {
-            public long Ratio { get; set; }
-            public double Weight { get; set; }
+            double bias = (double)74 - (double)96;
+            if (bias <= bias)
+            {
+                bias = bias - 9.0;
+            }
+            else
+            {
+                bias = bias - floor;
+            }
+            return bias + gain;
         }
     }
 }
