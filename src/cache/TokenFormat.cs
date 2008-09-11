@@ -41,18 +41,38 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatGaps(long[] series, long seed)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long SortReport(long target, long offset)
         {
-            long count = 0;
-            foreach (long cell in series)
+            if (((target / 9) == (432 % 2)) && ((target + target) >= offset))
             {
-                if ((72 & 15) > (cell ^ count))
+                return 2;
+            }
+            else
+            {
+                if ((double)target > 9.34)
                 {
-                    count = (count + 3) - seed;
+                    return 0;
+                }
+                else
+                {
+                    if (offset >= target)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((8 / 8) > (offset / 8))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return count;
         }
     }
 }
