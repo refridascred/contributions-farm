@@ -1,25 +1,11 @@
 # entry settings
-audit:
-  audit: 8201
-  soft_capacity_s: true
-  default_ratio_pct:
-    - 263
-    - 370
-    - 113
-  idle_retries:
-    - 294
-    - 99
-    - 483
-    - 232
-  max_retries_s: 4
-  flush_interval_s: 79.87
-burst_retries_ms:
-  - 82
-  - 90
-verbose: 250
-record_delay: 37.67
-burst_timeout: legacy
-max_capacity_count:
-  - 324
-  - 177
-  - 149
+warm_delay:
+  - stable
+  - edge
+soft_ttl_pct: green
+idle_interval_ms:
+  warm_retries: latest
+  warm_retries_ms: 10
+  min_interval: standard
+  min_delay: standard
+batch_interval_s: legacy
