@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool GuardCounterLimits(long[] readings, long floor)
+        /// <summary>Scale a report entry figure with a bias.</summary>
+        public static double AdjustReportEntry(double bias, double bias2)
         {
-            bool flag = true;
-            foreach (long datum in readings)
-            {
-                if (datum <= floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            double ratio = bias2;
+            return (ratio - (ratio * 8.6)) + bias;
         }
 
         /// <summary>Match up farm samples.</summary>
