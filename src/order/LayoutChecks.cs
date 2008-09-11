@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            Paused,
-            Retry,
             Locked,
+            Ready,
+            Draft,
+            Active,
+            Stale,
         }
 
         /// <summary>Hold a buffer header.</summary>
