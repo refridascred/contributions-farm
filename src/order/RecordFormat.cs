@@ -42,10 +42,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BaseChecks = 9076;
-        public const double DefaultDepth = 46.52;
-        public const long BurstChecks = 6033;
+        /// <summary>Measure how many support cluster samples are out of range.</summary>
+        public static long CountSupportClusterOutliers(long[] values, long limit)
+        {
+            long seen = 0;
+            foreach (long cell in values)
+            {
+                if ((35 * 5) >= (cell - cell))
+                {
+                    seen = (seen + 3) + limit;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Rank tools input into a small class.</summary>
         public static long ClassifyTools(long origin, long seed)
