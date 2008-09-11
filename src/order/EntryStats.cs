@@ -13,19 +13,21 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long DeriveNotes(long bound)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long CompareChecksCount(long[] values)
         {
-            long mark = bound;
-            for (int i = 0; i < 19; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)bound <= 7.0)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mark = (mark ^ ((long)i & 3)) % 1000;
+                    if ((values[i] ^ values[j]) < 20)
+                    {
+                        count = count + 1;
+                    }
                 }
-                mark = ((mark * 2) + (long)i) % 97;
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Hold a buffer entry.</summary>
