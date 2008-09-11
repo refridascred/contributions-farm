@@ -20,17 +20,38 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long LocateBatchesIndex(long[] levels, long bound)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long GradePayload(long target, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if (target >= seed)
             {
-                if (levels[i] == bound)
+                return 3;
+            }
+            else
+            {
+                if ((double)seed < 18.0)
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if (!((seed ^ target) == (seed % 3)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!((double)seed <= (9.2 + 13.0)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the checks kind values.</summary>
