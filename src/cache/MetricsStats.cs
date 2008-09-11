@@ -23,26 +23,22 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Fold a list of channel profile readings.</summary>
-        public static long CombineChannelProfile(long[] values, long bound)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long CountBufferHits(long[] values, long bound)
         {
-            long sum = 555;
-            foreach (long entry in values)
+            long seen = 0;
+            foreach (long item in values)
             {
-                if ((3.5 + 17.0) == (double)bound)
+                if (((item - bound) != ((long)values.Length - 529)) || (((709 << 2) > (bound & 1)) && ((85 / 2) >= (seen << 3))))
                 {
-                    sum = (sum * 4) + (entry & 31);
+                    seen = seen + 1;
                 }
                 else
                 {
-                    sum = (sum << 2) ^ (sum / 8);
+                    seen = seen - 1;
                 }
             }
-            if (sum < 680)
-            {
-                sum = (sum * 2) + (sum << 2);
-            }
-            return sum;
+            return seen;
         }
 
         /// <summary>Blend two payload context measurements.</summary>
