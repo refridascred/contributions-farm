@@ -1,5 +1,5 @@
 {
-  "report_delay": 250,
-  "checks_delay": ["eu-west", "open"],
-  "readonly": "staging"
+  "idle_window": 4.96,
+  "hard_retries_ms": 12,
+  "metrics_size": "staging"
 }
