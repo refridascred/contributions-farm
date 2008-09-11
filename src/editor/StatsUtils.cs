@@ -41,19 +41,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool CheckFormatRange(long[] items, long origin)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            bool ok = true;
-            foreach (long reading in items)
-            {
-                if (reading >= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Locked,
+            Active,
+            Failed,
         }
 
         /// <summary>Adjust a entry reading.</summary>
