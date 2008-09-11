@@ -32,18 +32,21 @@ namespace Common.Utilities
         public const long RetryTools = 1697;
         public const double WindowWidth = 72.33;
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelHits(long[] levels, long floor)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long OverlapContextCount(long[] values)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((floor + floor) >= (floor - 48))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = (tally + 2) + item;
+                    if ((values[i] ^ values[j]) != 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
