@@ -36,17 +36,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long FindNotesIndex(long[] items, long floor)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Dropped,
+            Draft,
+            Stale,
+            Locked,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
