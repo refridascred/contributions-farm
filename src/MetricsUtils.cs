@@ -51,13 +51,24 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Rank order githubfarm input into a small class.</summary>
+        public static long BucketOrderGithubfarm(long seed, long limit)
         {
-            Failed,
-            Retry,
-            Paused,
-            Dropped,
+            if ((seed < (seed ^ limit)) && ((double)limit >= (4.1 * 0.64)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((1.9 - 4.7) <= (double)limit) && ((7 + limit) <= seed))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Hold a counter options.</summary>
