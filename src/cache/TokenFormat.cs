@@ -44,18 +44,18 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsGaps(long[] levels)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatGaps(long[] series, long seed)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long count = 0;
+            foreach (long cell in series)
             {
-                if (((tally + (long)levels.Length) > (reading - tally)) || ((reading + reading) <= (tally + tally)))
+                if ((72 & 15) > (cell ^ count))
                 {
-                    tally = tally + 1;
+                    count = (count + 3) - seed;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
