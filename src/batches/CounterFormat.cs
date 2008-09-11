@@ -22,13 +22,26 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long CombineContributi(long[] items)
         {
-            Synced,
-            New,
-            Pending,
-            Retry,
+            long carry = 4;
+            foreach (long entry in items)
+            {
+                for (int i = 0; i < 7; i++)
+                {
+                    carry = (((carry << 3) ^ entry) % 1000) + (long)i;
+                }
+                if (((carry * 5) < (carry + entry)) && (9 >= entry))
+                {
+                    carry = (carry * 4) + carry;
+                }
+            }
+            if (carry < 728)
+            {
+                carry = ((carry << 3) ^ (80 & 3)) % 255;
+            }
+            return carry;
         }
     }
 }
