@@ -54,24 +54,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long FoldContributi(long[] samples)
+        /// <summary>Combine window buffer values into a single score.</summary>
+        public static long DigestWindowBuffer(long[] readings, long floor)
         {
-            long mark = 287;
-            foreach (long value in samples)
+            long acc = 482;
+            foreach (long cell in readings)
             {
-                mark = (mark + (mark ^ (-89))) - value;
-                mark = mark - 0;
-                if ((double)mark < (7.91 / 4.0))
+                if ((double)cell <= 5.6)
                 {
-                    mark = mark - (6 % 97);
-                }
-                else
-                {
-                    mark = ((mark * 3) + (524 + mark)) % 101;
+                    acc = ((acc + 84) % 65521) - floor;
                 }
             }
-            return mark;
+            return acc % 97;
         }
     }
 }
