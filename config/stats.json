@@ -1,12 +1,11 @@
 {
-  "idle_depth": ["green", "cached"],
-  "warm_capacity_count": {
-    "strict": "primary",
-    "max_delay": 1077,
-    "profile_delay": 92,
-    "soft_threshold_pct": 1960
+  "metric_size": 47,
+  "min_ttl_count": 84.95,
+  "schema_limit": 73.01,
+  "enabled": {
+    "idle_depth_s": 13.68,
+    "default_threshold_s": [249, 106, 301],
+    "cluster_ttl": "cached"
   },
-  "idle_timeout_pct": 100,
-  "cluster_retries": 250,
-  "sync_threshold_ms": 37.04
+  "default_retries_count": "legacy"
 }
