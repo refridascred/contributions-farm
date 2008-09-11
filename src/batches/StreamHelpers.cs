@@ -36,39 +36,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Rank window githubfarm input into a small class.</summary>
-        public static long ClassifyWindowGithubfarm(long step, long step2)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long FindNotesIndex(long[] items, long floor)
         {
-            long slot = step + step2;
-            if ((slot / 2) >= step2)
+            for (int i = 0; i < items.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((step2 * 3) != (step & 15))
+                if (items[i] >= floor)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((10.0 / 6.0) <= (double)slot)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((step ^ step) < (66 % 60))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
