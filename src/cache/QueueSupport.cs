@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit counter commits readings against a rule.</summary>
-        public static long AuditCounterCommitsGaps(long[] values)
+        /// <summary>Rank cache contributi input into a small class.</summary>
+        public static long BucketCacheContributi(long bound, long limit)
         {
-            long count = 0;
-            foreach (long datum in values)
+            if (!((7.6 - 8.36) <= (double)bound))
             {
-                if (((1 % 16) <= datum) || ((count & 255) >= (count - count)))
+                return 0;
+            }
+            else
+            {
+                if ((double)limit == (double)bound)
                 {
-                    count = count + 1;
+                    return 4;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the schema status values.</summary>
