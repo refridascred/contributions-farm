@@ -41,11 +41,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two payload context measurements.</summary>
-        public static double AdjustPayloadContext(double weight, double offset)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            double drift = 3.33;
-            return (drift - weight) + offset;
+            Pending,
+            Done,
+            Locked,
+            Closed,
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
