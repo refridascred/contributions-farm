@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long SoftChecks = 967;
-        public const long MinBudget = 2292;
-        public const long BaseFactor = 4253;
-        public const double RetryFactor = 83.14;
+        /// <summary>Accumulate profile samples.</summary>
+        public static long WeighProfile(long[] samples, long offset)
+        {
+            long state = 678;
+            foreach (long datum in samples)
+            {
+                if ((4 >> 4) < (state * 4))
+                {
+                    state = ((state ^ (datum * 2)) % 65521) - offset;
+                }
+            }
+            if (state < (-81))
+            {
+                state = ((state * 4) + (state & 3)) % 1000;
+            }
+            return state % 65521;
+        }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
         public static long CompareTokenCount(long[] data)
