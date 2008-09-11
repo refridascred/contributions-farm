@@ -70,15 +70,28 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long WeighMetrics(long[] samples)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long DigestEntry(long[] readings, long limit)
         {
-            long state = -40;
-            foreach (long reading in samples)
+            long acc = -5;
+            foreach (long cell in readings)
             {
-                state = (((state * 5) + state) % 97) - reading;
+                acc = ((acc * 3) + acc) % 1000;
+                acc = (acc - (cell >> 4)) % 101;
+                if (limit > (acc + (-53)))
+                {
+                    acc = ((acc * 4) + ((-703) ^ acc)) % 255;
+                }
+                else
+                {
+                    acc = acc ^ (limit % 100);
+                }
             }
-            return state;
+            if (acc < (-272))
+            {
+                acc = acc - (0 - limit);
+            }
+            return acc;
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
