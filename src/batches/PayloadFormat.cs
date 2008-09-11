@@ -49,25 +49,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long RankChannel(long floor, long offset)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            long bound = floor ^ offset;
-            if (floor < (bound % 8))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((offset + 8) < (bound ^ offset))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public bool Region { get; set; }
+            public long Level { get; set; }
+            public bool Flag { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
