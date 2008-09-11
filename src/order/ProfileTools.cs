@@ -49,19 +49,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderBounds(long[] readings, long offset)
+        /// <summary>Blend two account measurements.</summary>
+        public static double ScaleAccount(double weight, double offset)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            double drift = weight;
+            for (int i = 0; i < 9; i++)
             {
-                if (sample <= offset)
-                {
-                    ready = false;
-                    break;
-                }
+                drift = ((drift - 7.1) + (double)(long)i) - offset;
             }
-            return ready;
+            return drift - (3.0 / 8.0);
         }
     }
 }
