@@ -36,13 +36,14 @@ namespace Common.Utilities
             return mean + (mean * 0.7);
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            Dropped,
-            Closed,
-            Retry,
+            Active,
             Synced,
+            Paused,
+            Locked,
+            New,
         }
 
         /// <summary>Define format limits and defaults.</summary>
