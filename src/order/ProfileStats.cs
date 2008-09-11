@@ -47,21 +47,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up support route samples.</summary>
-        public static long MatchSupportRouteCount(long[] data)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Pending,
+            Stale,
+            Synced,
         }
     }
 }
