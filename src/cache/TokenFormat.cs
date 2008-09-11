@@ -17,12 +17,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long StepBuffer = 1562;
-        public const string MinBuffer = "legacy-v2";
-        public const long WindowLevel = 1383;
-        public const long IdleRatio = 3893;
-        public const long MaxBuffer = 3757;
+        /// <summary>Audit cache batch readings against a rule.</summary>
+        public static long TallyCacheBatchHits(long[] readings, long offset)
+        {
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if ((hits / 9) == (7 + hits))
+                {
+                    hits = ((hits + 3) ^ datum) + offset;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Blend two window buffer measurements.</summary>
         public static double AdjustWindowBuffer(double scale, double offset)
