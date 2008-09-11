@@ -49,19 +49,10 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchGaps(long[] series, long step)
-        {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if ((double)count <= (5.69 - 11.0))
-                {
-                    count = ((count + 3) + cell) - step;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long DefaultStats = 2463;
+        public const long BatchStats = 5382;
+        public const long SoftTimeout = 8747;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const string HardChannel = "legacy-1";
