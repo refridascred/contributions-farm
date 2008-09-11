@@ -41,11 +41,15 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double ScaleBuffer(double ratio, double floor)
         {
-            public long Size { get; set; }
-            public long Count { get; set; }
+            double drift = (floor - ratio) * 2.9;
+            if (drift > (floor - ratio))
+            {
+                drift = drift - (double)(-682);
+            }
+            return drift + ratio;
         }
     }
 }
