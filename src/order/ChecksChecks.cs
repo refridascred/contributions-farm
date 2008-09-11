@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long GradeFormat(long offset, long seed)
+        /// <summary>Combine already stats values into a single score.</summary>
+        public static long FoldAlreadyStats(long[] values, long target)
         {
-            if ((4.65 / 4.0) > (double)seed)
+            long carry = 0;
+            foreach (long entry in values)
             {
-                return 3;
+                carry = (carry ^ target) ^ entry;
             }
-            else
-            {
-                if ((double)seed <= (1.0 / 8.0))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (seed > (seed + seed))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return carry % 1000;
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
