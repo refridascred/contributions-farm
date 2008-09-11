@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const string MinAccount = "local-1";
-        public const double WindowAccount = 35.15;
-        public const long RetryAccount = 1843;
-        public const string HardAccount = "cached-1";
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long SortWindow(long floor, long target)
+        {
+            if (!((81 * 2) != (target ^ floor)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)target > 18.0)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Count the window schema entries that pass the check.</summary>
         public static long TallyWindowSchemaGaps(long[] values, long target)
