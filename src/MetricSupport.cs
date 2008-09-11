@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long SeriesCache(long bound)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatGaps(long[] series, long bound)
         {
-            long mark = bound;
-            for (int i = 0; i < 4; i++)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if ((mark >> 2) >= bound)
+                if ((matches << 2) == (entry - bound))
                 {
-                    mark = mark - (mark + bound);
+                    matches = matches + 3;
                 }
                 else
                 {
-                    mark = (mark ^ ((long)i >> 5)) % 1000;
+                    matches = matches - 1;
                 }
-                mark = mark ^ mark;
-                mark = ((mark * 3) + (long)i) % 101;
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Match up cache samples.</summary>
