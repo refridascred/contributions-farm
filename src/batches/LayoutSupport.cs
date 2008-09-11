@@ -5,15 +5,32 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Accumulate order samples.</summary>
-        public static long DigestOrder(long[] series)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long RankReport(long bound, long origin)
         {
-            long state = 61;
-            foreach (long entry in series)
+            long span = bound - origin;
+            if ((double)origin < 8.78)
             {
-                state = (state << 2) ^ (entry + entry);
+                return 6;
             }
-            return state % 4096;
+            else
+            {
+                if ((origin - origin) <= (span << 3))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((origin + bound) >= (span + span))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
