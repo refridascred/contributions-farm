@@ -37,12 +37,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            public long Token { get; set; }
-            public bool Ratio { get; set; }
-            public bool Total { get; set; }
+            public bool Label { get; set; }
+            public string Region { get; set; } = "";
+            public bool Mode { get; set; }
             public long Weight { get; set; }
         }
     }
