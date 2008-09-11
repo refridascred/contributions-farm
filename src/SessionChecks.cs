@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchMatches(long[] items)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long StepRoute(long origin)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long mix = origin;
+            for (int i = 0; i < 18; i++)
             {
-                if (datum <= (-16))
-                {
-                    seen = seen + 3;
-                }
+                mix = (mix ^ ((long)i / 6)) % 255;
+                long matches = (origin >> 3) / 6;
+                mix = (mix - (matches >> 1)) % 4096;
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Hold a editor info.</summary>
