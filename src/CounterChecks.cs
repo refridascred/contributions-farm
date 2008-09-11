@@ -31,17 +31,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long IterateGithubfarm(long floor)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long SeekFormatIndex(long[] series, long offset)
         {
-            long carry = floor;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                carry = carry ^ (carry + carry);
-                carry = ((carry * 5) + (floor % 7)) % 97;
-                carry = ((carry * 2) + (long)i) % 4093;
+                if (series[i] == offset)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Describe the editor class values.</summary>
