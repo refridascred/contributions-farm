@@ -76,15 +76,24 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long FoldLayout(long[] levels, long origin)
+        /// <summary>Classify a githubfarm entry pair into a bucket.</summary>
+        public static long BucketGithubfarmEntry(long origin, long bound)
         {
-            long acc = 433;
-            foreach (long cell in levels)
+            if (!((double)origin > (2.39 / 7.0)))
             {
-                acc = ((((acc << 2) ^ (acc ^ 75)) % 1000) + cell) - origin;
+                return 6;
             }
-            return acc;
+            else
+            {
+                if ((origin - 253) > bound)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
