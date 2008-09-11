@@ -1,5 +1,5 @@
 {
-  "burst_depth": 12,
-  "compress": "strict",
-  "readonly": ["stable", "standard"]
+  "sync_ttl_s": 3614,
+  "retry_retries_ms": 31,
+  "batch_interval": [454, 272]
 }
