@@ -1,5 +1,15 @@
 # entry settings
-channel_depth: edge
-strict: 30
-warm_ttl_ms: 50.48
-editor_limit: open
+strict:
+  poll_capacity: 56
+  min_ratio_count:
+    flush_size_pct: 64
+    schema_retries: 40
+    flush_capacity_s: green
+  dry_run: open
+  hard_size_pct: 500
+  schema_ratio:
+    batch_interval_ms: 65
+    audit: edge
+    schema_ratio: 41.88
+metrics_depth: eu-west
+default_retries_count: 62.43
