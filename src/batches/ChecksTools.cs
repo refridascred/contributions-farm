@@ -12,12 +12,18 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesHits(long[] levels)
         {
-            New,
-            Idle,
-            Queued,
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if ((double)reading != (1.0 + 3.1))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
