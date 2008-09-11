@@ -64,19 +64,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate stream tools readings against a bound.</summary>
-        public static bool ValidateStreamToolsLimits(long[] data, long target)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long FindFormatIndex(long[] levels, long offset)
         {
-            bool stale = true;
-            foreach (long entry in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (entry <= target)
+                if (levels[i] > offset)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
     }
 }
