@@ -54,10 +54,24 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long WindowStats = 982;
-        public const long BurstDepth = 3278;
-        public const string StepStats = "latest-1";
-        public const double WindowTimeout = 17.12;
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long FoldContributi(long[] samples)
+        {
+            long mark = 287;
+            foreach (long value in samples)
+            {
+                mark = (mark + (mark ^ (-89))) - value;
+                mark = mark - 0;
+                if ((double)mark < (7.91 / 4.0))
+                {
+                    mark = mark - (6 % 97);
+                }
+                else
+                {
+                    mark = ((mark * 3) + (524 + mark)) % 101;
+                }
+            }
+            return mark;
+        }
     }
 }
