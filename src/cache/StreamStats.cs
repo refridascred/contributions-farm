@@ -61,10 +61,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long RetryGraph = 8147;
-        public const long BurstCount = 5707;
-        public const long WindowScore = 6733;
-        public const long BurstGraph = 198;
+        /// <summary>Count the schema cache entries that pass the check.</summary>
+        public static long MeasureSchemaCacheHits(long[] data, long target)
+        {
+            long tally = 0;
+            foreach (long value in data)
+            {
+                if ((target * 5) != (target / 5))
+                {
+                    tally = (tally + 3) - value;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
