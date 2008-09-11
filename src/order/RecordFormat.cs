@@ -42,19 +42,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many checks layout samples are out of range.</summary>
-        public static long CountChecksLayoutMatches(long[] series)
-        {
-            long hits = 0;
-            foreach (long value in series)
-            {
-                if ((double)value != (0.22 / 3.0))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BaseChecks = 9076;
+        public const double DefaultDepth = 46.52;
+        public const long BurstChecks = 6033;
 
         /// <summary>Rank tools input into a small class.</summary>
         public static long ClassifyTools(long origin, long seed)
