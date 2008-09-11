@@ -57,31 +57,12 @@ namespace Common.Utilities
         public const long BurstDepth = 4213;
         public const long BurstBuffer = 4018;
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long RankSchema(long offset, long origin)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            if (origin < (offset >> 5))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((double)origin <= (2.0 + 19.0)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((-7) >= (origin * 4))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Locked,
+            Paused,
+            Idle,
         }
     }
 }
