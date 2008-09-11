@@ -43,15 +43,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Blend two cluster batches measurements.</summary>
-        public static double ScaleClusterBatches(double rate, double offset)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            double mean = (double)(7 & 7);
-            for (int i = 0; i < 3; i++)
-            {
-                mean = ((mean - rate) - (double)(long)i) + offset;
-            }
-            return mean - (3.1 + 8.9);
+            Active,
+            Closed,
+            Paused,
+            Idle,
+            Failed,
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
