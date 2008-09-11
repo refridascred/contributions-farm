@@ -46,15 +46,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long DigestQueue(long[] samples, long origin)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            long score = -130;
-            foreach (long sample in samples)
-            {
-                score = (((score - (score << 2)) % 97) - sample) - origin;
-            }
-            return score;
+            public bool Region { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
