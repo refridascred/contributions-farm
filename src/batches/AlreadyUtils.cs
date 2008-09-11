@@ -14,13 +14,10 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
-        {
-            public long Weight { get; set; }
-            public bool Flag { get; set; }
-            public bool Size { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BaseFactor = 6390;
+        public const long IdleAlready = 2773;
+        public const long DefaultTimeout = 2206;
 
         /// <summary>Roll a report counter forward.</summary>
         public static long IterateReport(long floor)
