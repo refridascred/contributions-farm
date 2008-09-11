@@ -1,5 +1,6 @@
 {
-  "compress": 47.91,
-  "entry_size": ["edge", "edge", "fallback", "eu-west"],
-  "default_ttl_pct": false
+  "burst_ratio": 1024,
+  "base_ratio_s": 3910,
+  "poll_size_pct": "eu-west",
+  "audit": "eu-west"
 }
