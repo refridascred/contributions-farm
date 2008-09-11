@@ -19,22 +19,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long WeighAlready(long[] readings, long bound)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            long mix = 3;
-            foreach (long entry in readings)
-            {
-                if (entry < (entry << 3))
-                {
-                    mix = (mix - 85) % 65521;
-                }
-            }
-            if (mix > 28)
-            {
-                mix = ((mix << 2) ^ (bound + bound)) % 4096;
-            }
-            return mix % 65521;
+            Paused,
+            Queued,
+            Closed,
+            Done,
         }
 
         /// <summary>Define context limits and defaults.</summary>
