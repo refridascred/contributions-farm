@@ -12,12 +12,17 @@ namespace Common.Utilities
         public const long CacheStream = 6180;
         public const long DefaultBudget = 9250;
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long SeekEditorIndex(long[] readings, long target)
         {
-            public long Size { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Owner { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
