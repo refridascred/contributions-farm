@@ -1,4 +1,5 @@
 # support settings
-already_delay: 30
-poll_size_pct: green
-context_limit: 21.88
+retry_delay_s: true
+contributi_depth: true
+strict: 100
+retry_size_s: 30
