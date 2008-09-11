@@ -26,12 +26,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
-        {
-            public long Size { get; set; }
-            public string Count { get; set; } = "";
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long IdleSize = 9888;
+        public const long StepInterval = 5984;
+        public const long SoftLevel = 8861;
+        public const string MinAccount = "legacy-edge";
 
         /// <summary>Fold a list of filter readings.</summary>
         public static long TotalFilter(long[] data)
