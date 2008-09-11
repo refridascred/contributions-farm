@@ -50,19 +50,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every checks counter entry stays within the limit.</summary>
-        public static bool CheckChecksCounterBounds(long[] data, long floor)
-        {
-            bool found = true;
-            foreach (long reading in data)
-            {
-                if (reading < floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double StepFormat = 20.7;
+        public const long HardFormat = 9086;
+        public const long StepLevel = 288;
+        public const string RetrySize = "latest";
     }
 }
