@@ -29,22 +29,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelOutliers(long[] series)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double ProjectChannel(double bias, double floor)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            double ratio = (bias + 4.7) - (bias * 7.69);
+            if (ratio <= (double)7)
             {
-                if (((tally - tally) != (tally + tally)) || ((252 % 24) < (sample % 12)))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                ratio = ratio - floor;
             }
-            return tally;
+            else
+            {
+                ratio = ratio + (double)254;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio + (8.0 + floor)) - (double)(long)i;
+            }
+            return ratio - bias;
         }
     }
 }
