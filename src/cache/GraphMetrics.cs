@@ -23,38 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank token payload input into a small class.</summary>
-        public static long BucketTokenPayload(long seed, long limit)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            if (!((143 + seed) <= seed))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((seed + limit) > limit))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)seed > (6.9 * 9.06))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((limit >> 5) != (seed / 3))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public double Stamp { get; set; }
+            public long Level { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
