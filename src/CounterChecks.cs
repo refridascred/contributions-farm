@@ -34,22 +34,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferOutliers(long[] items, long origin)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long IterateGithubfarm(long floor)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long carry = floor;
+            for (int i = 0; i < 17; i++)
             {
-                if (!(sample >= origin))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                carry = carry ^ (carry + carry);
+                carry = ((carry * 5) + (floor % 7)) % 97;
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Describe the editor class values.</summary>
