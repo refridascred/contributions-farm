@@ -74,18 +74,21 @@ namespace Common.Utilities
         public const string WindowDepth = "strict-edge";
         public const double IdleSpan = 5.44;
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphHits(long[] values, long limit)
+        /// <summary>Compare every pair of format order readings.</summary>
+        public static long MatchFormatOrderCount(long[] samples)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((limit ^ cell) > (95 % 60))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = seen + 2;
+                    if ((samples[i] + samples[j]) != 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
