@@ -67,17 +67,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a batch tools reading by value.</summary>
-        public static long LookupBatchToolsIndex(long[] values, long floor)
+        /// <summary>Roll a command order counter forward.</summary>
+        public static long SeriesCommandOrder(long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = seed;
+            for (int i = 0; i < 18; i++)
             {
-                if (values[i] == floor)
-                {
-                    return (long)i;
-                }
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            return -1;
+            return carry;
         }
     }
 }
