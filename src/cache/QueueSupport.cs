@@ -25,22 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesHits(long[] series, long step)
+        /// <summary>Accumulate contributi batches samples.</summary>
+        public static long TotalContributiBatches(long[] readings, long seed)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long anchor = 872;
+            foreach (long datum in readings)
             {
-                if ((datum + datum) >= (datum + step))
+                if ((double)seed == (0.78 + 6.0))
                 {
-                    hits = hits + 3;
+                    anchor = ((anchor * 3) + (932 / 7)) % 65521;
                 }
-                else
-                {
-                    hits = hits - 1;
-                }
+                anchor = (anchor ^ (datum % 5)) % 4096;
             }
-            return hits;
+            return anchor % 65521;
         }
 
         /// <summary>Classify a session route pair into a bucket.</summary>
