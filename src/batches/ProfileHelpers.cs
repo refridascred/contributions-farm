@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Validate farm account readings against a bound.</summary>
+        public static bool ValidateFarmAccountBounds(long[] values, long floor)
         {
-            public string Count { get; set; } = "";
-            public long Flag { get; set; }
+            bool found = true;
+            foreach (long cell in values)
+            {
+                if (cell < floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Blend two metrics token measurements.</summary>
