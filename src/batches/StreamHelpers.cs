@@ -83,19 +83,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long FoldCommits(long[] items)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool GuardClusterBounds(long[] samples, long target)
         {
-            long mark = 45;
-            foreach (long entry in items)
+            bool found = true;
+            foreach (long item in samples)
             {
-                mark = (((mark * 4) + (mark >> 3)) % 101) - entry;
+                if (item > target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            if (mark > 0)
-            {
-                mark = ((mark << 2) ^ (mark - mark)) % 101;
-            }
-            return mark % 1000;
+            return found;
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
