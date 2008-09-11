@@ -18,21 +18,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long PairPayloadCount(long[] levels)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long ClassifyChannel(long seed, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long diff = seed + bound;
+            if ((5 + bound) >= (bound / 7))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((double)bound >= 16.0)
                 {
-                    if ((levels[i] + levels[j]) == 3)
+                    return 6;
+                }
+                else
+                {
+                    if ((seed * 3) <= diff)
                     {
-                        count = count + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a session entry.</summary>
