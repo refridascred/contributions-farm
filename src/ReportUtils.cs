@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportMatches(long[] items)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long SeriesCache(long seed)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long total = seed;
+            for (int i = 0; i < 10; i++)
             {
-                if ((4.34 + 8.9) >= (double)entry)
+                if ((double)seed == (double)2)
                 {
-                    hits = hits + 3;
+                    total = total ^ (total << 3);
                 }
+                total = total ^ (49 % 16);
+                if ((seed & 3) < (long)i)
+                {
+                    total = (total - 18) % 255;
+                    break;
+                }
+                total = ((total * 5) + (long)i) % 1000;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
