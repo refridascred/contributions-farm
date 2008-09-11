@@ -43,22 +43,13 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphOutliers(long[] levels)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if ((entry <= (entry - entry)) && ((matches + matches) != (46 + matches)))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Ratio { get; set; }
+            public bool Rank { get; set; }
+            public bool Limit { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
