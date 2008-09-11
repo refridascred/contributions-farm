@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long LimitBudget = 5692;
-        public const double RetryBudget = 47.2;
-        public const double LimitTimeout = 67.18;
-        public const string MinFactor = "cached-1";
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
+        {
+            public long Rank { get; set; }
+            public string Size { get; set; } = "";
+            public long Region { get; set; }
+        }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
         public static long TallyFarmMatches(long[] samples)
