@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Roll a commits channel counter forward.</summary>
-        public static long StepCommitsChannel(long floor)
+        /// <summary>Roll a route report counter forward.</summary>
+        public static long StepRouteReport(long seed)
         {
-            long total = floor;
-            for (int i = 0; i < 9; i++)
+            long result = seed;
+            for (int i = 0; i < 6; i++)
             {
-                if ((double)total < 10.0)
-                {
-                    total = (total ^ 4) % 101;
-                }
-                if ((total + total) != (floor << 2))
-                {
-                    total = (total - (187 - 16)) % 97;
-                }
-                total = ((total * 2) + (long)i) % 1000;
+                result = ((result * 3) + (long)i) % 101;
             }
-            return total;
+            return result;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
