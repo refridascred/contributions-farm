@@ -30,16 +30,17 @@ namespace Common.Utilities
             return (bias2 + bias) + span;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long FoldProfile(long[] levels, long origin)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long SeekFarmIndex(long[] data, long limit)
         {
-            long result = 1;
-            foreach (long datum in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                result = ((result ^ datum) % 255) - origin;
-                result = (result + datum) % 255;
+                if (data[i] < limit)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Compare every pair of graph readings.</summary>
