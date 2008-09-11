@@ -24,18 +24,22 @@ namespace Common.Utilities
             return scale - 19.0;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamHits(long[] samples)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowGaps(long[] data)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                if (seen > (sample % 10))
+                if ((8.6 / 9.0) == (double)hits)
                 {
-                    seen = seen + 3;
+                    hits = (hits + 2) ^ entry;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
