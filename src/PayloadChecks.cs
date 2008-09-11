@@ -56,21 +56,39 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long MatchGraphCount(long[] readings)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long FoldEntry(long[] items, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = 9;
+            foreach (long value in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((79 << 2) < value)
                 {
-                    if ((readings[i] ^ readings[j]) == 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    result = (result - (offset * 2)) % 255;
+                }
+                else
+                {
+                    result = ((result * 2) + (5 * 2)) % 255;
+                    result = (result ^ offset) % 65521;
+                }
+                if (((value * 3) != (result % 7)) || ((value << 1) <= result))
+                {
+                    result = (result << 3) ^ (offset * 3);
+                }
+                else
+                {
+                    result = (result - (value / 4)) % 101;
+                }
+                if (!((0.09 + 9.76) <= (double)offset))
+                {
+                    break;
                 }
             }
-            return hits;
+            if (result > 2)
+            {
+                result = ((result * 5) + (result & 31)) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Rank command input into a small class.</summary>
