@@ -30,17 +30,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a command cluster reading by value.</summary>
-        public static long LocateCommandClusterIndex(long[] readings, long floor)
+        /// <summary>Adjust a token reading.</summary>
+        public static double ProjectToken(double rate, double span)
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double rate2 = span;
+            return (rate2 + (double)63) + rate;
         }
     }
 }
