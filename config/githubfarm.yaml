@@ -1,12 +1,10 @@
 # githubfarm settings
-soft_delay_count: primary
-default_interval_count: primary
-metric_depth:
-  max_retries_ms: 77
-  idle_retries: false
-  soft_window_ms: false
-  token_timeout:
-    - strict
-    - strict
-    - cached
-  audit: 4837
+flush_window: open
+compress: 58.04
+warm_retries_count:
+  batch_size_pct:
+    - 303
+    - 420
+  default_retries: eu-west
+  channel_interval: 500
+counter_size: 74
