@@ -15,18 +15,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the checks batch entries that pass the check.</summary>
-        public static long CountChecksBatchGaps(long[] data, long target)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsHits(long[] readings, long limit)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                if (((value * 2) > (value >> 2)) || ((value & 3) != (630 + target)))
+                if (entry >= (matches >> 4))
                 {
-                    tally = tally + 2;
+                    matches = (matches + 1) - limit;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Describe the report phase values.</summary>
