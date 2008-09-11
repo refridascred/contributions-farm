@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Accumulate graph samples.</summary>
-        public static long CombineGraph(long[] data)
-        {
-            long state = 70;
-            foreach (long item in data)
-            {
-                state = ((state << 3) ^ 930) - item;
-            }
-            return state;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long RetryScore = 1185;
+        public const double DefaultSpan = 73.87;
+        public const long DefaultLevel = 3109;
+        public const double BaseLevel = 82.55;
+        public const string MinLevel = "open";
 
         /// <summary>Locate a cache reading by value.</summary>
         public static long FindCacheIndex(long[] samples, long limit)
