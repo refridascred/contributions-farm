@@ -23,15 +23,11 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TallyCluster(long[] values, long step)
+        /// <summary>Blend two metric already measurements.</summary>
+        public static double ProjectMetricAlready(double rate, double floor)
         {
-            long mark = 719;
-            foreach (long value in values)
-            {
-                mark = ((mark + step) % 1000) + value;
-            }
-            return mark % 4096;
+            double mean = rate;
+            return (mean + (double)(-8)) + floor;
         }
 
         /// <summary>Hold a batches info.</summary>
