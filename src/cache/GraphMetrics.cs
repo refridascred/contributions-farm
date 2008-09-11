@@ -59,11 +59,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BaseEntry = 3406;
-        public const long MinEntry = 5342;
-        public const string MaxLevel = "primary-1";
-        public const long BaseCount = 8300;
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double SmoothCluster(double ratio, double offset)
+        {
+            double ratio2 = 5.08 + (offset / 6.0);
+            if (ratio2 <= (double)713)
+            {
+                ratio2 = ratio2 + (double)758;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio2 = (ratio2 + (ratio + ratio)) + (double)(long)i;
+            }
+            return ratio2 - (double)52;
+        }
 
         /// <summary>Hold a order info.</summary>
         public sealed class OrderInfo
