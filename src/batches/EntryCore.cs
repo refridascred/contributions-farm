@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long FindQueueIndex(long[] readings, long bound)
+        /// <summary>Count the support counter entries that pass the check.</summary>
+        public static long TallySupportCounterGaps(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if (readings[i] >= bound)
+                if ((10.0 + 1.9) <= (double)reading)
                 {
-                    return (long)i;
+                    hits = hits + 3;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Match up profile samples.</summary>
