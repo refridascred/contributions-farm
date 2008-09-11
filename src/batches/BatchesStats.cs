@@ -13,21 +13,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long PairEntryCount(long[] items)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long ScoreSchema(long[] items, long step)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = 586;
+            foreach (long item in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!((1.14 + 1.4) <= (double)step))
                 {
-                    if ((items[i] ^ items[j]) != 7)
-                    {
-                        count = count + 1;
-                    }
+                    sum = ((sum << 2) ^ (item + item)) % 255;
                 }
             }
-            return count;
+            return sum % 97;
         }
 
         /// <summary>Hold a order info.</summary>
