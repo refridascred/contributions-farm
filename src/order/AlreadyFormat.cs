@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Count the contributi commits entries that pass the check.</summary>
+        public static long AuditContributiCommitsHits(long[] values)
         {
-            New,
-            Failed,
-            Closed,
-            Retry,
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if (!(((tally % 12) != (reading << 2)) && ((double)tally < (3.5 + 9.4))))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
