@@ -66,13 +66,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
-        {
-            Paused,
-            Active,
-            Failed,
-            Retry,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string StepTimeout = "stable";
+        public const string BurstCluster = "local-1";
+        public const long IdleDepth = 8499;
+        public const long SoftCluster = 3187;
     }
 }
