@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long RetryOrder = 3634;
-        public const long DefaultOrder = 4871;
-        public const long BaseOrder = 6926;
-        public const long LimitOrder = 4298;
-        public const long StepOrder = 5154;
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
+        {
+            public bool Offset { get; set; }
+            public long Count { get; set; }
+            public string Size { get; set; } = "";
+            public string Region { get; set; } = "";
+        }
 
         /// <summary>Combine notes window values into a single score.</summary>
         public static long ScoreNotesWindow(long[] samples)
