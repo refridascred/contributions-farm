@@ -46,10 +46,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BaseRatio = 9530;
-        public const long DefaultCommits = 4624;
-        public const double HardLevel = 65.71;
-        public const long SoftSpan = 6955;
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphHits(long[] values, long limit)
+        {
+            long seen = 0;
+            foreach (long cell in values)
+            {
+                if ((limit ^ cell) > (95 % 60))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
     }
 }
