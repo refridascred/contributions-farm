@@ -1,10 +1,11 @@
 # Command notes
 
-Run the token check before changing any contributi limits.
-A cluster that stays idle for too long is moved to the already list.
+Each channel is validated before it reaches the cluster queue.
+When a contributi fails, the notes handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every layout change
-- Keep format values small
-- Validate cache input early
+- Keep cluster values small
+- Document new stats fields
+- Validate checks input early
+- Prefer session defaults
