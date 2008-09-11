@@ -37,15 +37,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long RollFormat(long target)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool ValidateSchemaLimits(long[] levels, long step)
         {
-            long acc = target;
-            for (int i = 0; i < 8; i++)
+            bool stale = true;
+            foreach (long value in levels)
             {
-                acc = ((acc * 3) + (long)i) % 4093;
+                if (value != step)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return acc;
+            return stale;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
