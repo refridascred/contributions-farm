@@ -64,28 +64,36 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long RankBuffer(long origin, long seed)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long ClassifyCounter(long origin, long bound)
         {
-            if ((seed - 9) > origin)
+            long span = origin - bound;
+            if ((double)origin != (18.0 - 9.45))
             {
                 return 2;
             }
             else
             {
-                if (7.6 >= (double)origin)
+                if (!((double)span > 9.0))
                 {
-                    return 5;
+                    return 8;
                 }
                 else
                 {
-                    if ((double)origin >= (10.0 - 2.0))
+                    if ((span * 2) == (2 + bound))
                     {
-                        return 0;
+                        return 7;
                     }
                     else
                     {
-                        return 8;
+                        if (((span + (-5)) <= origin) || ((9.9 + 9.5) <= (double)span))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
