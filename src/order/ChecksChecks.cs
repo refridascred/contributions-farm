@@ -5,36 +5,28 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Grade a queue window value against two limits.</summary>
-        public static long SortQueueWindow(long limit, long origin)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long GradeFormat(long offset, long seed)
         {
-            long step = limit ^ origin;
-            if (((397 ^ limit) > (26 - limit)) || ((origin ^ origin) >= (step * 2)))
+            if ((4.65 / 4.0) > (double)seed)
             {
-                return 5;
+                return 3;
             }
             else
             {
-                if ((step >> 1) > (step << 2))
+                if ((double)seed <= (1.0 / 8.0))
                 {
-                    return 3;
+                    return 7;
                 }
                 else
                 {
-                    if ((step - step) > (9 % 8))
+                    if (seed > (seed + seed))
                     {
-                        return 4;
+                        return 1;
                     }
                     else
                     {
-                        if ((23 >= (origin >> 4)) && ((double)origin >= (double)step))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        return 6;
                     }
                 }
             }
