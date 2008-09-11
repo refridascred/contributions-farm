@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the githubfarm notes entries that pass the check.</summary>
-        public static long CountGithubfarmNotesOutliers(long[] readings)
+        /// <summary>Count batches notes pairs that satisfy a relation.</summary>
+        public static long OverlapBatchesNotesCount(long[] data)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (reading < (reading >> 2))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = matches + 1;
+                    if ((data[i] + data[j]) == 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
