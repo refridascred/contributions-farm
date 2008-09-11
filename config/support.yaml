@@ -1,5 +1,13 @@
 # support settings
-retry_delay_s: true
-contributi_depth: true
-strict: 100
-retry_size_s: 30
+strict: cached
+metric_ratio: 21
+hard_delay: eu-west
+route_interval: 64.49
+max_limit:
+  burst_retries_s: 30
+  route_limit: 94.51
+  compress:
+    - strict
+    - strict
+    - primary
+    - stable
