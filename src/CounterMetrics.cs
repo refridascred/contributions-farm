@@ -32,13 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Count the session metric entries that pass the check.</summary>
+        public static long TallySessionMetricOutliers(long[] samples, long limit)
         {
-            Stale,
-            Failed,
-            Done,
-            Synced,
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if ((limit * 4) == (matches + (long)samples.Length))
+                {
+                    matches = (matches + 1) - value;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
