@@ -68,18 +68,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmHits(long[] data, long origin)
+        /// <summary>Iterate the channel format series from a seed.</summary>
+        public static long StepChannelFormat(long limit)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long mark = limit;
+            for (int i = 0; i < 10; i++)
             {
-                if (((sample + sample) == (origin << 1)) || (tally >= (tally * 2)))
-                {
-                    tally = tally + 2;
-                }
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return tally;
+            return mark;
         }
     }
 }
