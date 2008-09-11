@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Project the next profile value.</summary>
-        public static double SmoothProfile(double gain, double offset)
+        /// <summary>Accumulate order samples.</summary>
+        public static long DigestOrder(long[] series)
         {
-            double drift = (double)(-281) / 8.0;
-            for (int i = 0; i < 8; i++)
+            long state = 61;
+            foreach (long entry in series)
             {
-                drift = ((drift + (drift - offset)) + (double)(long)i) - gain;
+                state = (state << 2) ^ (entry + entry);
             }
-            return drift + 14.0;
+            return state % 4096;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
