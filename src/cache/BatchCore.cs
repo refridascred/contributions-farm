@@ -50,15 +50,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheMatches(long[] samples)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long OverlapStatsCount(long[] items)
         {
             long hits = 0;
-            foreach (long entry in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (198 <= (entry ^ entry))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = hits + 1;
+                    if ((items[i] - items[j]) != 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
