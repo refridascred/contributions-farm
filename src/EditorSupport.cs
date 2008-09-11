@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            Paused,
-            Synced,
-            Done,
-            Stale,
-            Queued,
+            Pending,
+            Retry,
+            Ready,
+            Closed,
         }
 
         /// <summary>Check that every cache buffer entry stays within the limit.</summary>
