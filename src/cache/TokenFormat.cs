@@ -5,16 +5,39 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Iterate the commits context series from a seed.</summary>
-        public static long DeriveCommitsContext(long floor)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long GradeOrder(long target, long origin)
         {
-            long result = floor;
-            for (int i = 0; i < 9; i++)
+            long span = target ^ origin;
+            if (((origin * 2) <= origin) || ((double)span >= (double)origin))
             {
-                result = (result ^ ((long)i / 4)) % 1000;
-                result = ((result * 4) + (long)i) % 101;
+                return 5;
             }
-            return result;
+            else
+            {
+                if ((double)target < (7.2 / 5.0))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((5.9 * 5.35) > (double)span))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((span & 7) == (target - origin))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
