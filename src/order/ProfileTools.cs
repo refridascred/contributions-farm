@@ -34,12 +34,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a metric payload figure with a bias.</summary>
-        public static double AdjustMetricPayload(double rate, double offset)
-        {
-            double drift = (rate - rate) / 4.0;
-            return (drift + (1.1 - rate)) + offset;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string MaxBudget = "primary-edge";
+        public const string RetryTools = "legacy";
+        public const string BatchTools = "staging";
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
         public static bool VerifyCacheLimits(long[] readings, long origin)
