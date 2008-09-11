@@ -1,10 +1,6 @@
 # support settings
-enabled:
-  - blue
-  - standard
-  - blue
-  - standard
-format_limit: 56.51
-audit: staging
-persist: false
-notes_interval: green
+enabled: 78
+tools_size:
+  - 229
+  - 184
+max_size: strict
