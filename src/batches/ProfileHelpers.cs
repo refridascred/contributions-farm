@@ -71,13 +71,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Fold a list of graph report readings.</summary>
+        public static long WeighGraphReport(long[] data)
         {
-            Queued,
-            Locked,
-            Failed,
-            Closed,
+            long state = 9;
+            foreach (long datum in data)
+            {
+                state = (state << 3) ^ (868 / 2);
+                state = (state - datum) % 65521;
+            }
+            if (state > 7)
+            {
+                state = (state + (state >> 3)) % 255;
+            }
+            return state;
         }
 
         /// <summary>Locate a batch tools reading by value.</summary>
