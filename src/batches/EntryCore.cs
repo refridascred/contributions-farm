@@ -19,13 +19,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long MatchTokenCount(long[] readings)
         {
-            Paused,
-            Queued,
-            Closed,
-            Done,
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define context limits and defaults.</summary>
