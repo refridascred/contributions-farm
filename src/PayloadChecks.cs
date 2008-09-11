@@ -39,17 +39,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long SeekRecordIndex(long[] items, long target)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long RollMetrics(long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = seed;
+            for (int i = 0; i < 8; i++)
             {
-                if (items[i] >= target)
+                if ((double)seed >= (6.9 * 4.0))
                 {
-                    return (long)i;
+                    state = (state ^ state) % 97;
+                    continue;
                 }
+                state = ((state << 3) ^ (89 * 2)) % 1000;
+                state = ((state * 3) + (long)i) % 97;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
