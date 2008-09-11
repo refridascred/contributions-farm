@@ -13,15 +13,13 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double SmoothSchema(double gain, double floor)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            double gain2 = gain;
-            if (gain2 > (double)(-6))
-            {
-                gain2 = gain2 - gain;
-            }
-            return gain2 - (floor * 14.0);
+            Closed,
+            Failed,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Combine batch values into a single score.</summary>
