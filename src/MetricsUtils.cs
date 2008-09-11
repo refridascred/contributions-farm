@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long LookupChannelIndex(long[] levels, long origin)
+        /// <summary>Project the next cluster record value.</summary>
+        public static double BlendClusterRecord(double gain, double bias)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double load = gain;
+            if (load < 3.7)
             {
-                if ((levels[i] > origin) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                load = (load + (double)1) + bias;
             }
-            return -1;
+            else
+            {
+                load = load + (gain / 6.0);
+            }
+            return load + 8.0;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
