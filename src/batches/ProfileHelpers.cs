@@ -57,15 +57,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Roll a command order counter forward.</summary>
-        public static long SeriesCommandOrder(long seed)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TotalCache(long[] samples)
         {
-            long carry = seed;
-            for (int i = 0; i < 18; i++)
+            long sum = 41;
+            foreach (long entry in samples)
             {
-                carry = ((carry * 3) + (long)i) % 97;
+                sum = ((sum + (sum >> 2)) % 65521) ^ entry;
             }
-            return carry;
+            if (sum < (-5))
+            {
+                sum = sum ^ sum;
+            }
+            return sum;
         }
     }
 }
