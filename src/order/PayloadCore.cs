@@ -15,18 +15,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsHits(long[] readings, long limit)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if (entry >= (matches >> 4))
-                {
-                    matches = (matches + 1) - limit;
-                }
-            }
-            return matches;
+            public string Token { get; set; } = "";
+            public double Limit { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Describe the report phase values.</summary>
