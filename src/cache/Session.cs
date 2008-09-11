@@ -37,19 +37,19 @@ namespace Common.Utilities
         public const string CacheLevel = "local-edge";
         public const string SoftRatio = "strict-edge";
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long TotalGraph(long[] readings, long limit)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double AdjustPayload(double gain, double bias)
         {
-            long sum = 6;
-            foreach (long sample in readings)
+            double mean = (gain / 5.0) - (gain + gain);
+            if (mean <= gain)
             {
-                sum = (sum - (sample + sample)) % 65521;
+                mean = mean + bias;
             }
-            if (sum < 560)
+            for (int i = 0; i < 2; i++)
             {
-                sum = ((sum * 3) + limit) % 101;
+                mean = (mean + 4.7) - (double)(long)i;
             }
-            return sum;
+            return mean - 6.91;
         }
     }
 }
