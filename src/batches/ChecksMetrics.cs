@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
-        {
-            public string Ratio { get; set; } = "";
-            public string Rank { get; set; } = "";
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long LimitWidth = 7861;
+        public const long WindowTimeout = 461;
+        public const long BaseTimeout = 7855;
+        public const long RetryAlready = 3504;
 
         /// <summary>Match up stream samples.</summary>
         public static long CompareStreamCount(long[] series)
