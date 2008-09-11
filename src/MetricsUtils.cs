@@ -32,19 +32,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate entry record readings against a bound.</summary>
-        public static bool ValidateEntryRecordRange(long[] samples, long limit)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowMatches(long[] readings, long origin)
         {
-            bool ready = true;
-            foreach (long sample in samples)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if (sample <= limit)
+                if ((8.3 + 4.0) != (double)entry)
                 {
-                    ready = false;
-                    break;
+                    count = (count + 2) - origin;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Rank order githubfarm input into a small class.</summary>
