@@ -45,11 +45,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long HardTimeout = 5801;
-        public const long HardAccount = 379;
-        public const string LimitFactor = "legacy-v2";
-        public const long CacheAccount = 920;
-        public const double BatchAccount = 6.56;
+        /// <summary>Check that every support schema entry stays within the limit.</summary>
+        public static bool GuardSupportSchemaRange(long[] data, long limit)
+        {
+            bool ok = true;
+            foreach (long cell in data)
+            {
+                if (cell < limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
