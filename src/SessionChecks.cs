@@ -40,21 +40,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long CompareBatchCount(long[] data)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 10)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Retry,
+            Active,
+            Draft,
+            Synced,
+            Locked,
         }
     }
 }
