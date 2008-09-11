@@ -1,5 +1,22 @@
 {
-  "soft_ratio_count": 8606,
-  "verbose": 250,
-  "window_depth": "legacy"
+  "compress": {
+    "order_retries": true,
+    "retry_interval": [23, 490, 454, 60],
+    "min_depth_ms": "primary",
+    "dry_run": 17,
+    "hard_capacity_count": 51
+  },
+  "sync_capacity": 93.41,
+  "warm_ttl_s": 7554,
+  "entry_limit": {
+    "burst_delay_pct": ["strict", "fallback"],
+    "channel_depth": {
+      "notes_ratio": 4,
+      "compress": 71.79,
+      "min_limit_pct": 3
+    },
+    "sync_limit_count": "stable",
+    "min_size": ["local", "fallback"],
+    "persist": "fallback"
+  }
 }
