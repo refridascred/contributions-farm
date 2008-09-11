@@ -55,19 +55,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next layout buffer value from a seed.</summary>
-        public static long RollLayoutBuffer(long origin)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            long acc = origin;
-            for (int i = 0; i < 18; i++)
-            {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    acc = (acc - (3 + (long)i2)) % 4096;
-                }
-                acc = ((acc * 3) + (long)i) % 1000;
-            }
-            return acc;
+            public string Level { get; set; } = "";
+            public long Label { get; set; }
+            public double Owner { get; set; }
+            public long Token { get; set; }
         }
     }
 }
