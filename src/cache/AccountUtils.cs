@@ -25,12 +25,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long FindSessionIndex(long[] series, long step)
+        /// <summary>Look up the position of a metric command sample.</summary>
+        public static long LookupMetricCommandIndex(long[] readings, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (series[i] >= step)
+                if (readings[i] >= offset)
                 {
                     return (long)i;
                 }
