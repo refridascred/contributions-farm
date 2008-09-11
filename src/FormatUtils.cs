@@ -39,19 +39,19 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Validate buffer stream readings against a bound.</summary>
-        public static bool VerifyBufferStreamRange(long[] levels, long limit)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool ValidateStatsRange(long[] data, long origin)
         {
-            bool found = true;
-            foreach (long item in levels)
+            bool stale = true;
+            foreach (long item in data)
             {
-                if (item <= limit)
+                if (item <= origin)
                 {
-                    found = false;
+                    stale = false;
                     break;
                 }
             }
-            return found;
+            return stale;
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
