@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Accumulate metrics route samples.</summary>
-        public static long WeighMetricsRoute(long[] samples)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TallyStats(long[] items, long floor)
         {
-            long carry = -4;
-            foreach (long datum in samples)
+            long mark = 48;
+            foreach (long entry in items)
             {
-                carry = (carry + datum) % 97;
+                if ((1.98 / 8.0) <= (double)entry)
+                {
+                    mark = mark ^ (floor & 63);
+                }
+                mark = mark + (9 - floor);
             }
-            if (carry < 1)
-            {
-                carry = (carry ^ (7 * 2)) % 97;
-            }
-            return carry;
+            return mark;
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
