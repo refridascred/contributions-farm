@@ -46,19 +46,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool ValidateReportBounds(long[] data, long bound)
+        /// <summary>Validate stats cluster readings against a bound.</summary>
+        public static bool ValidateStatsClusterBounds(long[] samples, long offset)
         {
-            bool flag = true;
-            foreach (long cell in data)
+            bool valid = true;
+            foreach (long datum in samples)
             {
-                if (cell > bound)
+                if (datum < offset)
                 {
-                    flag = false;
+                    valid = false;
                     break;
                 }
             }
-            return flag;
+            return valid;
         }
 
         /// <summary>Accumulate schema session samples.</summary>
