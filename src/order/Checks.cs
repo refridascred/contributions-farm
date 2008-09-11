@@ -5,24 +5,38 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long FoldPayload(long[] levels, long seed)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long SortLayout(long offset, long floor)
         {
-            long mix = 86;
-            foreach (long datum in levels)
+            if (floor <= (floor + 0))
             {
-                if (5.7 <= (double)datum)
+                return 0;
+            }
+            else
+            {
+                if ((double)7 > (double)offset)
                 {
-                    mix = (mix - (mix >> 5)) % 65521;
-                    mix = (mix + (392 ^ seed)) % 65521;
-                    continue;
+                    return 8;
                 }
-                if ((double)mix == (7.0 + 12.0))
+                else
                 {
-                    mix = (mix ^ (9 - seed)) % 97;
+                    if (((19.0 + 10.0) != (double)offset) && ((7.28 * 6.2) <= (double)offset))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((floor / 6) != (floor & 63))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return mix % 97;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
