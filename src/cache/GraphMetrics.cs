@@ -23,18 +23,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit cache layout readings against a rule.</summary>
-        public static long CountCacheLayoutMatches(long[] items, long seed)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long WeighGraph(long[] values, long floor)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long result = -3;
+            foreach (long datum in values)
             {
-                if (((long)items.Length + cell) <= (cell >> 5))
+                result = (result * 3) + (result + 544);
+                if (((floor / 3) >= (result + result)) || ((result << 1) != (floor & 31)))
                 {
-                    hits = (hits + 2) + seed;
+                    result = (result - datum) % 1000;
+                }
+                else
+                {
+                    result = (result + (result << 1)) % 255;
                 }
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Describe the filter state values.</summary>
