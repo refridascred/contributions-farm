@@ -1,8 +1,10 @@
 {
-  "counter_retries": 100,
-  "compress": ["primary", "latest", "eu-west"],
-  "githubfarm_limit": false,
-  "burst_timeout_ms": "open",
-  "stream_window": 250,
-  "layout_limit": 31.65
+  "burst_window": 60,
+  "enabled": 100,
+  "hard_limit_count": {
+    "burst_retries_ms": "primary",
+    "audit": 100,
+    "poll_size": 16
+  },
+  "hard_size_count": "fallback"
 }
