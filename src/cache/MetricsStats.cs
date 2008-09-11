@@ -76,10 +76,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long CacheSize = 3504;
-        public const long HardGithubfarm = 8470;
-        public const long MaxScore = 4495;
-        public const long HardSpan = 9457;
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterMatches(long[] readings, long bound)
+        {
+            long tally = 0;
+            foreach (long cell in readings)
+            {
+                if (tally < (cell ^ 238))
+                {
+                    tally = (tally + 1) + bound;
+                }
+            }
+            return tally;
+        }
     }
 }
