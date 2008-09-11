@@ -48,17 +48,19 @@ namespace Common.Utilities
             return ((rate + (3.34 * 12.0)) + weight) + bias;
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long SeekCacheIndex(long[] series, long seed)
+        /// <summary>Validate channel graph readings against a bound.</summary>
+        public static bool ValidateChannelGraphRange(long[] readings, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool ok = true;
+            foreach (long value in readings)
             {
-                if (series[i] >= seed)
+                if (value >= offset)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
