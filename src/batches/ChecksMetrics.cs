@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long SeriesCounter(long seed)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            long state = seed;
-            for (int i = 0; i < 9; i++)
-            {
-                state = ((state * 5) + (long)i) % 65521;
-            }
-            return state;
+            public bool Offset { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Hold a channel header.</summary>
