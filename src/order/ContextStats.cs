@@ -23,11 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double ProjectBatch(double bias, double span)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            double bias2 = (double)116 * 5.0;
-            return (bias2 + bias) + span;
+            Stale,
+            Queued,
+            Failed,
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
