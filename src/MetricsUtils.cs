@@ -24,26 +24,18 @@ namespace Common.Utilities
             return bias - gain;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TotalWindow(long[] levels, long step)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordMatches(long[] series, long step)
         {
-            long carry = 3;
-            foreach (long datum in levels)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                if ((carry % 64) >= (step + carry))
+                if (((-693) + 252) >= (tally << 1))
                 {
-                    carry = (carry * 3) + 46;
-                }
-                if ((datum << 3) < step)
-                {
-                    carry = (carry << 3) ^ (step / 9);
+                    tally = ((tally + 3) - datum) - step;
                 }
             }
-            if (carry > 302)
-            {
-                carry = ((carry << 2) ^ (carry % 7)) % 101;
-            }
-            return carry;
+            return tally;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
