@@ -1,8 +1,5 @@
 {
-  "entry_retries": 100,
-  "retry_threshold_ms": ["green", "eu-west", "edge", "legacy"],
-  "persist": "latest",
-  "default_delay_pct": true,
-  "queue_size": ["eu-west", "legacy", "fallback"],
-  "dry_run": "legacy"
+  "warm_window": 100,
+  "token_retries": ["edge", "fallback"],
+  "batch_limit": true
 }
