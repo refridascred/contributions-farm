@@ -41,20 +41,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double AdjustSupport(double bias, double floor)
-        {
-            double bias2 = (floor + bias) - bias;
-            if (bias2 <= (floor - bias2))
-            {
-                bias2 = bias2 + (bias / 7.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                bias2 = (bias2 - (bias - 6.0)) + (double)(long)i;
-            }
-            return bias2 + (bias2 - bias2);
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long CacheStream = 7988;
+        public const long WindowStream = 8529;
+        public const string BatchStream = "strict-edge";
+        public const string RetryInterval = "alpha-1";
+        public const long IdleRatio = 6197;
 
         /// <summary>Measure how many layout samples are out of range.</summary>
         public static long MeasureLayoutHits(long[] series, long limit)
