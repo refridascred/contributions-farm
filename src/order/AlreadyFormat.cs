@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count the contributi commits entries that pass the check.</summary>
-        public static long AuditContributiCommitsHits(long[] values)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if (!(((tally % 12) != (reading << 2)) && ((double)tally < (3.5 + 9.4))))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public long Total { get; set; }
+            public long Count { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Accumulate layout samples.</summary>
