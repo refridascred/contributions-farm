@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double ProjectMetrics(double gain, double span)
-        {
-            double weight = 3.3;
-            if (weight <= (span * 5.05))
-            {
-                weight = (weight - (double)448) - gain;
-            }
-            else
-            {
-                weight = weight - span;
-            }
-            return weight + (weight * 2.6);
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double CacheRatio = 60.61;
+        public const double IdleFactor = 60.66;
+        public const long WindowScore = 3234;
 
         /// <summary>Check that every metrics stats entry stays within the limit.</summary>
         public static bool CheckMetricsStatsLimits(long[] series, long bound)
