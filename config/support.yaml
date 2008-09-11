@@ -1,11 +1,7 @@
 # support settings
-batch_size: blue
-warm_delay_ms: blue
-retry_capacity_ms:
-  - 402
-  - 17
-  - 484
-  - 413
-stream_size:
-  - 245
-  - 206
+soft_threshold: staging
+cache_window_pct: 76
+readonly: local
+dry_run: eu-west
+flush_size_s: open
+soft_capacity: 61
