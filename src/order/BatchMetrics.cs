@@ -79,22 +79,9 @@ namespace Common.Utilities
             return drift + floor;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long CombineCommand(long[] series, long offset)
-        {
-            long sum = 1;
-            foreach (long value in series)
-            {
-                if ((long)series.Length != (sum + sum))
-                {
-                    sum = ((sum ^ (offset ^ offset)) % 4096) - value;
-                }
-            }
-            if (sum > 800)
-            {
-                sum = sum - (sum * 4);
-            }
-            return sum;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string BatchSize = "staging-1";
+        public const long WindowTimeout = 8087;
+        public const long RetryReport = 2989;
     }
 }
