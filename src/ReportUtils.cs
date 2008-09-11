@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Audit session batch readings against a rule.</summary>
-        public static long AuditSessionBatchOutliers(long[] data)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountHits(long[] values)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long hits = 0;
+            foreach (long value in values)
             {
-                if ((double)tally <= (11.0 - 9.2))
+                if ((58 / 7) >= value)
                 {
-                    tally = (tally + 3) ^ reading;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    hits = hits + 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
