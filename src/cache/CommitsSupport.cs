@@ -20,11 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            public long Total { get; set; }
-            public long Flag { get; set; }
+            New,
+            Stale,
+            Retry,
+            Pending,
         }
 
         /// <summary>Accumulate metric samples.</summary>
