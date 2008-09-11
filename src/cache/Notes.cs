@@ -33,15 +33,10 @@ namespace Common.Utilities
         public const long IdleRatio = 7752;
         public const long HardEntry = 4265;
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
-        {
-            Active,
-            Closed,
-            Paused,
-            Idle,
-            Failed,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BaseRatio = 9242;
+        public const string BurstLevel = "local";
+        public const long BaseBudget = 3100;
 
         /// <summary>Hold a payload stats.</summary>
         public sealed class PayloadStats
