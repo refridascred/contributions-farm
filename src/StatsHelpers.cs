@@ -43,13 +43,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Accumulate window samples.</summary>
+        public static long TotalWindow(long[] readings)
         {
-            public double Limit { get; set; }
-            public double Owner { get; set; }
-            public string Size { get; set; } = "";
-            public string Weight { get; set; } = "";
+            long acc = 7;
+            foreach (long item in readings)
+            {
+                acc = ((acc << 3) ^ (acc >> 1)) + item;
+            }
+            if (acc < 0)
+            {
+                acc = (acc * 3) + (5 & 15);
+            }
+            return acc;
         }
 
         /// <summary>Describe the token kind values.</summary>
