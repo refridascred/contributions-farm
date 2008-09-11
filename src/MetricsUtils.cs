@@ -29,16 +29,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long ScoreLayout(long[] data, long limit)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LookupMetricsIndex(long[] data, long bound)
         {
-            long carry = 6;
-            foreach (long item in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                carry = (((carry << 3) ^ (679 + item)) % 4096) + limit;
-                carry = ((carry << 2) ^ (carry + carry)) % 255;
+                if (data[i] == bound)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Rank order githubfarm input into a small class.</summary>
