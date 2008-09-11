@@ -42,11 +42,11 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            public long Label { get; set; }
-            public long Size { get; set; }
+            public bool Region { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Describe the report status values.</summary>
