@@ -20,32 +20,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long ClassifyCommits(long limit, long origin)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordOutliers(long[] data)
         {
-            long next = limit ^ origin;
-            if (((double)next >= 5.7) && ((66 * 4) <= (origin * 2)))
+            long seen = 0;
+            foreach (long item in data)
             {
-                return 8;
-            }
-            else
-            {
-                if (((double)limit >= (double)origin) && ((double)limit < (double)next))
+                if ((((seen & 15) == (seen + seen)) || (7 < (3 + seen))) || ((double)item == (4.0 / 3.0)))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)origin < (0.4 - 9.26))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
