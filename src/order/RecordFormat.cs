@@ -34,11 +34,14 @@ namespace Common.Utilities
         public const long HardGraph = 3946;
         public const long BurstFactor = 176;
 
-        /// <summary>Project the next context value.</summary>
-        public static double SmoothContext(double scale, double offset)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            double rate = 3.31 - (0.9 * 9.02);
-            return (rate + (rate + scale)) + offset;
+            Idle,
+            Retry,
+            Draft,
+            Queued,
+            Stale,
         }
 
         /// <summary>Hold a editor options.</summary>
