@@ -85,18 +85,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelGaps(long[] samples)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long LocateStatsIndex(long[] series, long floor)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((cell << 2) <= (seen ^ seen))
+                if ((series[i] < floor) && ((series[i] % 5) == 0))
                 {
-                    seen = seen + 2;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
