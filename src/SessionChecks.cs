@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
-        {
-            public double Weight { get; set; }
-            public string Total { get; set; } = "";
-            public bool Level { get; set; }
-            public double Rank { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double CacheSize = 8.14;
+        public const long DefaultPayload = 1827;
+        public const long BatchBudget = 2009;
+        public const long SoftPayload = 3739;
 
         /// <summary>Audit account readings against a rule.</summary>
         public static long AuditAccountGaps(long[] data)
