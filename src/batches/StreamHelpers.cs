@@ -14,11 +14,11 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            public string Score { get; set; } = "";
-            public bool Owner { get; set; }
+            public double Stamp { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
