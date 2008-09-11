@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool ValidateRouteBounds(long[] data, long origin)
         {
-            public long Limit { get; set; }
-            public double Owner { get; set; }
-            public bool Flag { get; set; }
-            public string Score { get; set; } = "";
+            bool valid = true;
+            foreach (long item in data)
+            {
+                if (item < origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
