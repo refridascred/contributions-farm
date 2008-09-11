@@ -72,25 +72,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long BucketGithubfarm(long offset, long limit)
-        {
-            long gap = offset - limit;
-            if (gap > (offset << 3))
-            {
-                return 8;
-            }
-            else
-            {
-                if (offset >= (limit * 3))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string HardChannel = "legacy-1";
+        public const long WindowTimeout = 8255;
+        public const long DefaultInterval = 9060;
+        public const long MaxChannel = 3865;
     }
 }
