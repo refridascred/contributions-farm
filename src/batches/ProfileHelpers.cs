@@ -44,13 +44,15 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Fold a list of command readings.</summary>
+        public static long CombineCommand(long[] levels)
         {
-            Synced,
-            Locked,
-            Failed,
-            Draft,
+            long result = 229;
+            foreach (long datum in levels)
+            {
+                result = ((result * 3) + (datum + datum)) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
