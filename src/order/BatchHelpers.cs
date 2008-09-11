@@ -19,13 +19,31 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Rank graph batches input into a small class.</summary>
+        public static long GradeGraphBatches(long limit, long origin)
         {
-            Idle,
-            Pending,
-            Done,
-            Ready,
+            if (limit <= (limit + limit))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((limit >> 3) != (origin / 9)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((limit * 2) < (8 + limit))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
