@@ -1,12 +1,7 @@
 # entry settings
-batch_delay_count: 2
-buffer_delay:
-  verbose: 60
-  compress: 84.99
-  retry_retries_ms: 55.46
-notes_capacity:
-  warm_timeout: 500
-  min_interval_ms:
-    - staging
-    - legacy
-  max_interval_count: staging
+strict: false
+default_interval: 9.42
+session_window: eu-west
+min_window: 55.6
+soft_ratio_pct: 30
+counter_retries: 71.81
