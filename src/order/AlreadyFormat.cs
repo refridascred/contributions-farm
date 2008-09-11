@@ -19,23 +19,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double ScaleWindow(double weight, double span)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            double scale = weight;
-            if (scale <= (scale * 4.3))
-            {
-                scale = (scale + (weight + scale)) + span;
-            }
-            else
-            {
-                scale = scale + weight;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale - (weight * 9.0)) + (double)(long)i;
-            }
-            return scale - (scale * 3.35);
+            Paused,
+            Pending,
+            Failed,
         }
 
         /// <summary>Roll a window checks counter forward.</summary>
