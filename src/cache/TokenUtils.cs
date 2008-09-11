@@ -5,14 +5,23 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Project the next counter value.</summary>
+        public static double ProjectCounter(double bias, double bias2)
         {
-            Failed,
-            Paused,
-            New,
-            Dropped,
-            Synced,
+            double load = 3.14;
+            if (load > 1.09)
+            {
+                load = (load - bias) - bias2;
+            }
+            else
+            {
+                load = load + (1.8 + 3.82);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load - (double)779) + (double)(long)i;
+            }
+            return load + 8.66;
         }
 
         /// <summary>Rank account input into a small class.</summary>
