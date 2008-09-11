@@ -1,10 +1,11 @@
 # entry settings
-sync_interval_count: 37
-counter_timeout: 87.55
-sync_timeout_s: true
-readonly: 8697
-batch_interval_pct:
-  - eu-west
-  - legacy
-  - primary
-  - edge
+command_timeout:
+  already_ttl: strict
+  queue_timeout: false
+  default_capacity_count: false
+  base_capacity_s: 79.13
+  compress: legacy
+  payload_depth: true
+warm_ttl: 15.85
+compress: edge
+graph_size: eu-west
