@@ -13,16 +13,13 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long FoldChannel(long[] items)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            long mix = 21;
-            foreach (long reading in items)
-            {
-                mix = (((mix * 3) + (88 - mix)) % 97) + reading;
-                mix = (mix + (6 ^ mix)) % 255;
-            }
-            return mix;
+            public long Total { get; set; }
+            public string Offset { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Rank farm input into a small class.</summary>
