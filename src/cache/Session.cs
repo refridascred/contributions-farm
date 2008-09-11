@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Roll a context counter forward.</summary>
-        public static long StepContext(long target)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long IterateChecks(long floor)
         {
-            long result = target;
-            for (int i = 0; i < 11; i++)
+            long carry = floor;
+            for (int i = 0; i < 9; i++)
             {
-                result = ((result << 2) ^ target) % 65521;
-                if (!((target ^ (long)i) < (665 + result)))
-                {
-                    break;
-                }
-                result = ((result * 2) + (long)i) % 65521;
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return result;
+            return carry;
         }
 
         /// <summary>Describe the record state values.</summary>
