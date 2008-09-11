@@ -18,21 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long MatchToolsCount(long[] series)
+        /// <summary>Count the editor stream entries that pass the check.</summary>
+        public static long MeasureEditorStreamGaps(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!((14.0 + 6.8) <= (double)matches))
                 {
-                    if ((series[i] + series[j]) < 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = (matches + 3) ^ sample;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
