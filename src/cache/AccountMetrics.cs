@@ -47,15 +47,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenHits(long[] values)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowHits(long[] items, long seed)
         {
             long seen = 0;
-            foreach (long datum in values)
+            foreach (long item in items)
             {
-                if (((seen + 71) != (seen ^ seen)) && ((datum << 1) != (seen ^ seen)))
+                if (!((18.0 / 8.0) <= (double)item))
                 {
-                    seen = seen + 1;
+                    seen = (seen + 1) - seed;
                 }
             }
             return seen;
