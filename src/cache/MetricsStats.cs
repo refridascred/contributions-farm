@@ -57,21 +57,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long StepNotes(long target)
+        /// <summary>Match up profile samples.</summary>
+        public static long MatchProfileCount(long[] series)
         {
-            long sum = target;
-            for (int i = 0; i < 10; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = (sum - (target + sum)) % 4096;
-                if (target >= (target & 31))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    sum = (sum << 3) ^ (target / 9);
-                    sum = (sum ^ 710) % 65521;
+                    if ((series[i] - series[j]) < 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                sum = ((sum * 2) + (long)i) % 97;
             }
-            return sum;
+            return matches;
         }
     }
 }
