@@ -36,19 +36,14 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long TotalCluster(long[] series, long bound)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            long sum = 613;
-            foreach (long datum in series)
-            {
-                sum = ((sum + (bound << 3)) % 1000) ^ datum;
-            }
-            if (sum < 39)
-            {
-                sum = ((sum << 3) ^ (925 & 15)) % 4096;
-            }
-            return sum;
+            Idle,
+            Done,
+            Failed,
+            Stale,
+            New,
         }
     }
 }
