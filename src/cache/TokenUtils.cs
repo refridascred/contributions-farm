@@ -10,12 +10,17 @@ namespace Common.Utilities
         public const long HardRatio = 625;
         public const long RetrySize = 7527;
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long SeekLayoutIndex(long[] values, long step)
         {
-            public double Mode { get; set; }
-            public bool Label { get; set; }
-            public double Limit { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
