@@ -25,22 +25,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TallyCommits(long[] series)
+        /// <summary>Match up cache samples.</summary>
+        public static long OverlapCacheCount(long[] data)
         {
-            long total = -4;
-            foreach (long value in series)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)total > (8.62 * 3.77))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    total = total + total;
-                }
-                else
-                {
-                    total = (total + value) % 101;
+                    if ((data[i] + data[j]) != 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return total % 1000;
+            return tally;
         }
 
         /// <summary>Describe the entry class values.</summary>
