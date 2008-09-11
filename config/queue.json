@@ -1,6 +1,8 @@
 {
-  "soft_interval_s": ["latest", "primary", "open"],
-  "hard_size": 38.82,
-  "min_retries": true,
-  "burst_interval_count": "cached"
+  "compress": true,
+  "support_window": [334, 89],
+  "checks_delay": 23,
+  "idle_capacity_count": false,
+  "flush_size_count": 1024,
+  "poll_capacity": 2190
 }
