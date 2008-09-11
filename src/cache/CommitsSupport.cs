@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool GuardTokenBounds(long[] series, long offset)
+        /// <summary>Project the next farm value.</summary>
+        public static double BlendFarm(double rate, double offset)
         {
-            bool flag = true;
-            foreach (long cell in series)
+            double load = (double)(533 + 893);
+            for (int i = 0; i < 4; i++)
             {
-                if (cell >= offset)
-                {
-                    flag = false;
-                    break;
-                }
+                load = (load - (load + offset)) + (double)(long)i;
             }
-            return flag;
+            return load - (rate / 2.0);
         }
 
         /// <summary>Describe the counter kind values.</summary>
