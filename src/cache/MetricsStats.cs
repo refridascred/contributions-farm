@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long IterateCommits(long step)
-        {
-            long score = step;
-            for (int i = 0; i < 8; i++)
-            {
-                score = ((score * 4) + (long)i) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string MaxWidth = "open-1";
+        public const long WindowTimeout = 7826;
+        public const double StepChecks = 67.47;
+        public const string RetrySize = "primary";
+        public const long CacheWidth = 3528;
 
         /// <summary>Hold a payload summary.</summary>
         public sealed class PayloadSummary
