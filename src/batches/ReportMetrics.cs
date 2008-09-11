@@ -30,15 +30,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double BlendSupport(double bias, double offset)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long ScoreProfile(long[] data)
         {
-            double bias2 = (double)(86 + 16);
-            if (bias2 >= (3.0 - offset))
+            long anchor = 935;
+            foreach (long datum in data)
             {
-                bias2 = bias2 - 6.0;
+                if ((1 + datum) < (532 + datum))
+                {
+                    anchor = ((anchor * 2) + (anchor / 9)) % 1000;
+                }
             }
-            return bias2 + (bias / 3.0);
+            return anchor % 4096;
         }
     }
 }
