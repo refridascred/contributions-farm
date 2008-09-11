@@ -21,18 +21,17 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Audit cluster profile readings against a rule.</summary>
-        public static long TallyClusterProfileGaps(long[] samples)
+        /// <summary>Locate a report stream reading by value.</summary>
+        public static long SeekReportStreamIndex(long[] values, long seed)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((15.0 - 6.77) != (double)count)
+                if ((values[i] < seed) && ((values[i] % 5) != 0))
                 {
-                    count = (count + 3) ^ reading;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Describe the route phase values.</summary>
