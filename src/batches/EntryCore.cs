@@ -59,17 +59,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next format stats value from a seed.</summary>
-        public static long SeriesFormatStats(long bound)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long CountRecordHits(long[] readings)
         {
-            long anchor = bound;
-            for (int i = 0; i < 19; i++)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                anchor = (anchor ^ bound) % 1000;
-                anchor = anchor + (618 >> 2);
-                anchor = ((anchor * 5) + (long)i) % 101;
+                if ((0.28 + 0.79) >= (double)sample)
+                {
+                    tally = tally + 1;
+                }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
