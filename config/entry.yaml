@@ -1,6 +1,12 @@
 # entry settings
-profile_ttl: true
-min_timeout_pct: 66
-hard_size_ms: latest
-burst_size_pct: 37
-default_window: false
+batch_delay_count: 2
+buffer_delay:
+  verbose: 60
+  compress: 84.99
+  retry_retries_ms: 55.46
+notes_capacity:
+  warm_timeout: 500
+  min_interval_ms:
+    - staging
+    - legacy
+  max_interval_count: staging
