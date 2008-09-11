@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long CombineAlready(long[] readings)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long FoldFilter(long[] values)
         {
-            long sum = 585;
-            foreach (long sample in readings)
+            long sum = 596;
+            foreach (long item in values)
             {
-                sum = sum ^ (sample - sample);
-            }
-            if (sum > 910)
-            {
-                sum = sum + (sum >> 4);
+                sum = sum + (sum * 3);
+                sum = (sum * 2) + sum;
+                if ((7.0 + 0.55) <= (3.3 * 3.46))
+                {
+                    sum = (sum - (sum % 16)) % 255;
+                }
+                else
+                {
+                    sum = sum - (item + sum);
+                }
             }
             return sum;
         }
