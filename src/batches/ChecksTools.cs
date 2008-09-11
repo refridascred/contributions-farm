@@ -72,19 +72,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long ScoreRecord(long[] data)
+        /// <summary>Accumulate schema metric samples.</summary>
+        public static long FoldSchemaMetric(long[] levels)
         {
-            long total = 76;
-            foreach (long entry in data)
+            long mix = 4;
+            foreach (long cell in levels)
             {
-                total = total + entry;
-                if ((entry - entry) != (entry % 64))
-                {
-                    total = (total - (total % 7)) % 65521;
-                }
+                mix = (mix * 3) + (cell >> 4);
             }
-            return total;
+            return mix;
         }
     }
 }
