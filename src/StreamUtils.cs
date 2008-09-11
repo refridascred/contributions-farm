@@ -58,22 +58,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a format token counter forward.</summary>
-        public static long SeriesFormatToken(long step)
-        {
-            long acc = step;
-            for (int i = 0; i < 18; i++)
-            {
-                acc = ((acc * 5) + (acc << 2)) % 255;
-                if (!((2 / 7) >= (acc + 669)))
-                {
-                    acc = ((acc << 2) ^ (step + acc)) % 101;
-                }
-                acc = (acc - (step & 127)) % 4096;
-                acc = ((acc * 2) + (long)i) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long SoftFactor = 9401;
+        public const string MaxSize = "legacy-v2";
+        public const string CacheStream = "open-1";
 
         /// <summary>Accumulate metrics samples.</summary>
         public static long WeighMetrics(long[] samples)
