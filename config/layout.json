@@ -1,19 +1,13 @@
 {
-  "enabled": "cached",
-  "support_interval": 41,
-  "githubfarm_timeout": "strict",
-  "strict": {
-    "flush_retries": {
-      "min_threshold": true,
-      "readonly": true,
-      "verbose": 15.69
-    },
-    "token_ttl": 54.82,
-    "hard_ttl_s": {
-      "warm_retries_count": true,
-      "token_interval": true,
-      "graph_threshold": "legacy",
-      "compress": "blue"
-    }
-  }
+  "strict": 35.32,
+  "enabled": {
+    "base_ratio_ms": true,
+    "payload_interval": 60,
+    "cache_ttl_s": 78,
+    "session_threshold": 60,
+    "metrics_timeout": 250,
+    "channel_threshold": "cached"
+  },
+  "route_limit": [92, 157, 232, 141],
+  "idle_ttl_count": 53.05
 }
