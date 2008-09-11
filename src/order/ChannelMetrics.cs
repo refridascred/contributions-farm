@@ -16,21 +16,18 @@ namespace Common.Utilities
             return weight + span;
         }
 
-        /// <summary>Match up cache editor samples.</summary>
-        public static long OverlapCacheEditorCount(long[] samples)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterOutliers(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((datum + datum) > (tally >> 1)) && !((double)datum < 8.4))
                 {
-                    if ((samples[i] + samples[j]) < 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = tally + 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Accumulate checks command samples.</summary>
