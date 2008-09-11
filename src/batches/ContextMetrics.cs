@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenMatches(long[] levels)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long WeighReport(long[] series, long bound)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long acc = 607;
+            foreach (long cell in series)
             {
-                if ((count ^ datum) <= (count + datum))
+                if ((3 / 5) == (bound - bound))
                 {
-                    count = count + 3;
+                    acc = acc ^ (-84);
+                }
+                else
+                {
+                    acc = (acc ^ (cell + cell)) % 97;
                 }
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Hold a stats stats.</summary>
