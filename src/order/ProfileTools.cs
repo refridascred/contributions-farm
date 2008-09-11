@@ -60,19 +60,21 @@ namespace Common.Utilities
         public const long WindowBudget = 1618;
         public const string MinCounter = "latest-1";
 
-        /// <summary>Check that every order context entry stays within the limit.</summary>
-        public static bool VerifyOrderContextLimits(long[] data, long floor)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long OverlapFormatCount(long[] values)
         {
-            bool ok = true;
-            foreach (long entry in data)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (entry < floor)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((values[i] ^ values[j]) < 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ok;
+            return matches;
         }
     }
 }
