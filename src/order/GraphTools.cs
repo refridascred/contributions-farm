@@ -65,16 +65,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long DeriveNotes(long step)
-        {
-            long anchor = step;
-            for (int i = 0; i < 18; i++)
-            {
-                anchor = ((anchor * 3) + (long)i) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long DefaultTimeout = 111;
+        public const long BurstTimeout = 9108;
+        public const long MaxBudget = 8572;
+        public const long HardWindow = 1185;
+        public const long LimitWindow = 3323;
 
         /// <summary>Audit context readings against a rule.</summary>
         public static long CountContextMatches(long[] items, long origin)
