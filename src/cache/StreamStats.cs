@@ -24,19 +24,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long TallyFilter(long[] values)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long StepFormat(long offset)
         {
-            long sum = 338;
-            foreach (long datum in values)
+            long anchor = offset;
+            for (int i = 0; i < 7; i++)
             {
-                sum = (sum + sum) + datum;
+                anchor = ((anchor << 2) ^ offset) % 65521;
+                anchor = (anchor + anchor) % 4096;
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            if (sum > 300)
-            {
-                sum = sum - (sum % 16);
-            }
-            return sum;
+            return anchor;
         }
 
         /// <summary>Accumulate window samples.</summary>
