@@ -20,26 +20,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long RollSession(long origin)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long CompareTokenCount(long[] readings)
         {
-            long result = origin;
-            for (int i = 0; i < 21; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((96 & 63) < ((long)i + origin)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    result = result - (origin << 1);
-                    result = ((result * 4) + (long)i) % 4096;
+                    if ((readings[i] ^ readings[j]) != 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                if ((result <= (8 << 1)) && (19.0 >= (double)result))
-                {
-                    result = (result << 2) ^ (origin % 12);
-                    result = (result ^ (95 - (long)i)) % 65521;
-                }
-                result = (result - (origin - result)) % 255;
-                result = ((result * 4) + (long)i) % 4093;
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
