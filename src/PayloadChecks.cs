@@ -33,13 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Measure how many notes profile samples are out of range.</summary>
+        public static long TallyNotesProfileOutliers(long[] samples, long step)
         {
-            public long Count { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Rank { get; set; }
-            public long Limit { get; set; }
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if ((count ^ 23) <= (value - value))
+                {
+                    count = (count + 1) + step;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a commits snapshot.</summary>
