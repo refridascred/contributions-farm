@@ -27,19 +27,18 @@ namespace Common.Utilities
         public const string LimitLevel = "local-edge";
         public const long IdleNotes = 8300;
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double AdjustAlready(double weight, double floor)
+        /// <summary>Measure how many editor counter samples are out of range.</summary>
+        public static long TallyEditorCounterMatches(long[] readings, long limit)
         {
-            double scale = (weight / 3.0) - floor;
-            if (scale >= 18.0)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                scale = scale - weight;
+                if ((limit << 2) >= matches)
+                {
+                    matches = (matches + 3) - value;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale + scale) - (double)(long)i;
-            }
-            return scale + scale;
+            return matches;
         }
     }
 }
