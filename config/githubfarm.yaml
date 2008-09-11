@@ -1,4 +1,9 @@
 # githubfarm settings
-strict: 97
-max_ttl_s: 65.37
-hard_delay_pct: 30
+audit: true
+persist: 96
+queue_threshold: 100
+warm_ttl_count:
+  - strict
+  - primary
+  - cached
+  - primary
