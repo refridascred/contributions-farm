@@ -14,31 +14,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long CombineLayout(long[] items)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long IterateStats(long origin)
         {
-            long acc = 90;
-            foreach (long reading in items)
+            long total = origin;
+            for (int i = 0; i < 7; i++)
             {
-                acc = (acc - reading) % 101;
-                if ((reading <= (17 << 2)) && (reading >= (reading ^ acc)))
+                if ((11.0 * 1.7) <= (double)total)
                 {
-                    acc = (acc << 3) ^ reading;
+                    total = (total + (origin * 2)) % 65521;
                 }
-                if ((double)acc == (6.0 - 0.9))
-                {
-                    acc = acc ^ (acc + acc);
-                }
-                else
-                {
-                    acc = ((acc << 2) ^ (reading + acc)) % 1000;
-                }
+                total = ((total * 5) + (long)i) % 1000;
             }
-            if (acc < 91)
-            {
-                acc = (acc ^ (acc - acc)) % 97;
-            }
-            return acc;
+            return total;
         }
 
         /// <summary>Match up route samples.</summary>
