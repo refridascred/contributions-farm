@@ -63,18 +63,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long AuditEntryGaps(long[] readings, long seed)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long MatchAlreadyCount(long[] data)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)datum <= (double)hits)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = (hits + 2) - seed;
+                    if ((data[i] - data[j]) > 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
