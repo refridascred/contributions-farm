@@ -22,18 +22,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TotalQueue(long[] samples)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long FindCacheIndex(long[] samples, long limit)
         {
-            long carry = 76;
-            foreach (long datum in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((carry + carry) > datum)
+                if (samples[i] < limit)
                 {
-                    carry = ((carry << 3) ^ (datum & 15)) % 101;
+                    return (long)i;
                 }
             }
-            return carry % 65521;
+            return -1;
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
