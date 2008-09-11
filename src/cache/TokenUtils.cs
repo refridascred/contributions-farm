@@ -39,15 +39,19 @@ namespace Common.Utilities
             return scale + floor;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long FoldCommits(long[] items)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool GuardFarmBounds(long[] levels, long limit)
         {
-            long score = 59;
-            foreach (long cell in items)
+            bool valid = true;
+            foreach (long value in levels)
             {
-                score = (score + (score + cell)) % 97;
+                if (value >= limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return score % 65521;
+            return valid;
         }
     }
 }
