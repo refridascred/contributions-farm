@@ -39,13 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            Paused,
-            Locked,
-            Done,
-            Queued,
+            Failed,
+            Retry,
+            Stale,
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
