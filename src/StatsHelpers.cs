@@ -50,12 +50,13 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            Dropped,
-            Locked,
-            New,
+            public string Count { get; set; } = "";
+            public double Score { get; set; }
+            public long Size { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
