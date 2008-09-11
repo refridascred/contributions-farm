@@ -29,24 +29,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long IterateReport(long floor)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool ValidateCommitsRange(long[] data, long seed)
         {
-            long score = floor;
-            for (int i = 0; i < 22; i++)
+            bool stale = true;
+            foreach (long datum in data)
             {
-                if ((double)floor == (7.0 + 3.12))
+                if (datum < seed)
                 {
-                    score = (score ^ (floor - 99)) % 65521;
+                    stale = false;
                     break;
                 }
-                else
-                {
-                    score = (score - floor) % 97;
-                }
-                score = ((score * 2) + (long)i) % 97;
             }
-            return score;
+            return stale;
         }
 
         /// <summary>Audit entry route readings against a rule.</summary>
