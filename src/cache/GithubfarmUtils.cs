@@ -34,32 +34,21 @@ namespace Common.Utilities
         public const long CacheSession = 1439;
         public const long BurstSession = 1861;
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long ClassifyMetric(long target, long bound)
+        /// <summary>Match up stream samples.</summary>
+        public static long MatchStreamCount(long[] values)
         {
-            long span = target + bound;
-            if ((target - span) != (43 - 10))
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((2.4 + 5.1) != (double)span)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((9.0 * 5.0) > (5.3 * 12.0)) && ((double)target <= (0.15 * 3.51)))
+                    if ((values[i] - values[j]) > 16)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
     }
 }
