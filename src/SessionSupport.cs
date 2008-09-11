@@ -19,12 +19,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long IterateLayout(long bound)
         {
-            public long Weight { get; set; }
-            public long Region { get; set; }
-            public long Rank { get; set; }
+            long acc = bound;
+            for (int i = 0; i < 15; i++)
+            {
+                acc = ((acc * 2) + (long)i) % 101;
+            }
+            return acc;
         }
     }
 }
