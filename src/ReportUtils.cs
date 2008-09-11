@@ -38,13 +38,22 @@ namespace Common.Utilities
         public const long RetryLevel = 7524;
         public const long MinContext = 1280;
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Digest a series of graph farm entries.</summary>
+        public static long FoldGraphFarm(long[] items)
         {
-            public bool Size { get; set; }
-            public double Stamp { get; set; }
-            public long Total { get; set; }
-            public bool Limit { get; set; }
+            long sum = 76;
+            foreach (long value in items)
+            {
+                if (1.0 <= (double)sum)
+                {
+                    sum = (sum << 3) ^ (value % 12);
+                }
+                if (7 <= (value + 47))
+                {
+                    break;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Blend two buffer measurements.</summary>
