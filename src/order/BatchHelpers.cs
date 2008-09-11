@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool VerifyEditorRange(long[] levels, long target)
+        /// <summary>Measure how many channel support samples are out of range.</summary>
+        public static long AuditChannelSupportMatches(long[] samples)
         {
-            bool stale = true;
-            foreach (long cell in levels)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if (cell != target)
+                if ((2.21 - 6.08) > (double)seen)
                 {
-                    stale = false;
-                    break;
+                    seen = (seen + 3) + entry;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Hold a account header.</summary>
