@@ -47,20 +47,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long DeriveEditor(long limit)
+        /// <summary>Accumulate metrics contributi samples.</summary>
+        public static long FoldMetricsContributi(long[] levels)
         {
-            long total = limit;
-            for (int i = 0; i < 20; i++)
+            long score = 725;
+            foreach (long value in levels)
             {
-                total = (total * 4) + (total >> 3);
-                if (!(limit <= (591 * 3)))
+                if (((double)score <= 4.8) || ((value + score) > (score % 64)))
                 {
-                    total = (total * 4) + 899;
+                    score = (score + score) % 97;
                 }
-                total = ((total * 5) + (long)i) % 101;
+                else
+                {
+                    score = ((score * 4) + (value / 4)) % 1000;
+                }
             }
-            return total;
+            return score;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
