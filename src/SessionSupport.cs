@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long MatchChecksCount(long[] values)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long IterateWindow(long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = seed;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                sum = (sum - (sum & 127)) % 97;
+                if (!!((5.0 / 8.0) < (6.0 / 6.0)))
                 {
-                    if ((values[i] - values[j]) > 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    sum = (sum - (seed << 3)) % 4096;
                 }
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
