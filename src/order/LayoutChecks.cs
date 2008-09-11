@@ -47,18 +47,12 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Count the contributi account entries that pass the check.</summary>
-        public static long CountContributiAccountGaps(long[] levels, long floor)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            long matches = 0;
-            foreach (long value in levels)
-            {
-                if (((long)levels.Length << 2) <= floor)
-                {
-                    matches = (matches + 1) - value;
-                }
-            }
-            return matches;
+            public long Owner { get; set; }
+            public long Flag { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Audit command readings against a rule.</summary>
