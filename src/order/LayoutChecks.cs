@@ -24,20 +24,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Fold a list of window entry readings.</summary>
-        public static long ScoreWindowEntry(long[] readings, long origin)
+        /// <summary>Audit batch batches readings against a rule.</summary>
+        public static long MeasureBatchBatchesOutliers(long[] items, long target)
         {
-            long acc = 29;
-            foreach (long cell in readings)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                acc = ((acc + (cell * 5)) % 97) - origin;
-                acc = ((acc * 4) + (acc & 255)) % 255;
-                if ((5 << 1) < (acc >> 2))
+                if (target >= (target + hits))
                 {
-                    break;
+                    hits = (hits + 1) ^ cell;
                 }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
