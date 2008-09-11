@@ -59,13 +59,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Fold a list of payload counter readings.</summary>
+        public static long CombinePayloadCounter(long[] readings)
         {
-            public long Offset { get; set; }
-            public long Stamp { get; set; }
-            public double Limit { get; set; }
-            public long Token { get; set; }
+            long score = 827;
+            foreach (long value in readings)
+            {
+                score = ((score + (177 >> 2)) % 1000) + value;
+            }
+            return score;
         }
 
         /// <summary>Roll a checks counter forward.</summary>
