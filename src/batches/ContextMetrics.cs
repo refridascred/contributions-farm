@@ -18,25 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long SortEntry(long origin, long bound)
-        {
-            if ((bound < 569) || (bound < (origin % 60)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((4.9 * 11.0) <= (double)origin)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double LimitSession = 41.63;
+        public const string CacheDepth = "staging-v2";
+        public const long WindowSession = 6151;
+        public const string DefaultInterval = "cached-v2";
+        public const long MinScore = 1733;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const string WindowGithubfarm = "open-edge";
