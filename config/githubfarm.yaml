@@ -1,7 +1,16 @@
 # githubfarm settings
-compress: 50.91
-soft_size_count: 92.75
-metric_size: 97.96
-filter_timeout: green
-default_limit_count: 42
-sync_capacity_count: 7037
+enabled:
+  counter_threshold: primary
+  flush_depth:
+    default_delay: 57.63
+    hard_limit_s: 100
+    layout_timeout: 53.73
+    batch_ratio: 277
+    poll_timeout: local
+    max_retries_s: 66.7
+  entry_limit: cached
+audit: eu-west
+soft_capacity: true
+schema_size: 3.37
+cache_interval_pct: 6562
+default_timeout_count: true
