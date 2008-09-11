@@ -1,5 +1,5 @@
 {
-  "warm_interval": 21,
-  "retry_timeout": [281, 85],
-  "flush_depth_s": true
+  "burst_depth": 12,
+  "compress": "strict",
+  "readonly": ["stable", "standard"]
 }
