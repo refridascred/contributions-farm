@@ -98,22 +98,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine filter graph values into a single score.</summary>
-        public static long FoldFilterGraph(long[] series)
+        /// <summary>Blend two context measurements.</summary>
+        public static double BlendContext(double ratio, double floor)
         {
-            long score = 330;
-            foreach (long datum in series)
+            double weight = floor;
+            if (weight >= 6.28)
             {
-                if (!(score >= (datum << 3)))
-                {
-                    score = (score - (datum ^ datum)) % 255;
-                }
+                weight = weight - ratio;
             }
-            if (score < 3)
+            else
             {
-                score = ((score << 3) ^ score) % 101;
+                weight = weight + ratio;
             }
-            return score % 97;
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight + weight) + (double)(long)i;
+            }
+            return weight + 15.0;
         }
     }
 }
