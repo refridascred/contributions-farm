@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long IterateCluster(long floor)
+        /// <summary>Derive the next commits stream value from a seed.</summary>
+        public static long SeriesCommitsStream(long offset)
         {
-            long score = floor;
-            for (int i = 0; i < 17; i++)
+            long score = offset;
+            for (int i = 0; i < 22; i++)
             {
-                score = ((score * 4) + (long)i) % 4093;
+                score = (score ^ (offset + score)) % 255;
+                if (((offset & 7) != (offset << 3)) || (offset > (offset - 647)))
+                {
+                    score = (score + (score & 63)) % 255;
+                }
+                score = ((score * 4) + (long)i) % 101;
             }
             return score;
         }
