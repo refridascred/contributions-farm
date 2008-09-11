@@ -28,16 +28,13 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Accumulate tools profile samples.</summary>
-        public static long TallyToolsProfile(long[] readings, long target)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            long carry = -9;
-            foreach (long cell in readings)
-            {
-                carry = (carry + 4) + target;
-                carry = carry ^ (cell ^ cell);
-            }
-            return carry;
+            public long Offset { get; set; }
+            public long Score { get; set; }
+            public double Stamp { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Describe the commits class values.</summary>
