@@ -80,12 +80,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Locate a batch tools reading by value.</summary>
+        public static long LookupBatchToolsIndex(long[] values, long floor)
         {
-            public long Offset { get; set; }
-            public bool Region { get; set; }
-            public long Mode { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
