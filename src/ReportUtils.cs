@@ -29,18 +29,15 @@ namespace Common.Utilities
         public const long RetryLevel = 7524;
         public const long MinContext = 1280;
 
-        /// <summary>Count the buffer cache entries that pass the check.</summary>
-        public static long CountBufferCacheMatches(long[] values)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double ScaleContext(double bias, double offset)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            double gain = (bias - bias) + (double)7;
+            if (gain > 18.0)
             {
-                if ((sample * 2) != (sample / 6))
-                {
-                    hits = hits + 1;
-                }
+                gain = gain + (5.0 - bias);
             }
-            return hits;
+            return gain - (3.0 - offset);
         }
 
         /// <summary>Accumulate filter samples.</summary>
