@@ -16,12 +16,11 @@ namespace Common.Utilities
             return load - (rate / 2.0);
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
-        {
-            public double Count { get; set; }
-            public double Token { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double BaseLevel = 40.53;
+        public const string StepCache = "fallback-edge";
+        public const long BurstDepth = 2561;
+        public const string WindowRatio = "open-edge";
 
         /// <summary>Validate batch readings against a bound.</summary>
         public static bool ValidateBatchBounds(long[] series, long bound)
