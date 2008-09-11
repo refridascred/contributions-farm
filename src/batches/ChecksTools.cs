@@ -72,21 +72,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Compare every pair of report editor readings.</summary>
-        public static long MatchReportEditorCount(long[] samples)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionOutliers(long[] readings, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (limit <= (limit ^ cell))
                 {
-                    if ((samples[i] ^ samples[j]) < 10)
-                    {
-                        count = count + 1;
-                    }
+                    tally = tally + 2;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
