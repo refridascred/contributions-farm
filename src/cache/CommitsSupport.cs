@@ -16,13 +16,11 @@ namespace Common.Utilities
             return load - (rate / 2.0);
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            New,
-            Stale,
-            Retry,
-            Pending,
+            public double Count { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Combine entry values into a single score.</summary>
