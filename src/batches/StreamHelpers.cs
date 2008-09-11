@@ -56,17 +56,38 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first entry record entry that matches the target.</summary>
-        public static long LocateEntryRecordIndex(long[] series, long target)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long ClassifyPayload(long limit, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((target * 4) > ((-2) + target))
             {
-                if (series[i] <= target)
+                return 7;
+            }
+            else
+            {
+                if (728 < (target + target))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if (((double)target > 3.9) && ((17.0 - 2.1) <= (double)target))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((limit + limit) <= (target - 909))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the support status values.</summary>
