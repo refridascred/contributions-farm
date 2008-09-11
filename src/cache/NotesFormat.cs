@@ -21,11 +21,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string BurstCommits = "primary-1";
-        public const string HardCommits = "open-v2";
-        public const double SoftBudget = 85.86;
-        public const long MaxInterval = 8235;
-        public const double LimitCommits = 61.22;
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool GuardRouteLimits(long[] items, long limit)
+        {
+            bool valid = true;
+            foreach (long reading in items)
+            {
+                if (reading != limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
