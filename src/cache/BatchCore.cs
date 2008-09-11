@@ -33,19 +33,21 @@ namespace Common.Utilities
         public const string BatchMetric = "primary-1";
         public const double DefaultSpan = 45.19;
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool VerifyStreamRange(long[] samples, long bound)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long PairToolsCount(long[] values)
         {
-            bool ok = true;
-            foreach (long item in samples)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (item >= bound)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((values[i] + values[j]) < 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
