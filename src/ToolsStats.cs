@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long SortStats(long step, long offset)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LocateAccountIndex(long[] levels, long limit)
         {
-            if ((1.39 + 5.6) >= (double)step)
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((24 - step) >= (8 - offset))
+                if (levels[i] < limit)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((6.21 * 15.0) >= (double)step)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Rank tools input into a small class.</summary>
