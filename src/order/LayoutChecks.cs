@@ -13,12 +13,24 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long StepCount = 2441;
-        public const string BaseCount = "local-1";
-        public const long IdleSize = 821;
-        public const long RetryDepth = 6054;
-        public const long MinRoute = 2041;
+        /// <summary>Accumulate session samples.</summary>
+        public static long WeighSession(long[] data, long limit)
+        {
+            long carry = 7;
+            foreach (long sample in data)
+            {
+                carry = ((carry * 5) + (carry - sample)) % 255;
+                if (limit < (3 >> 4))
+                {
+                    carry = ((carry << 2) ^ 5) % 65521;
+                }
+            }
+            if (carry > 50)
+            {
+                carry = carry - (6 & 127);
+            }
+            return carry % 65521;
+        }
 
         /// <summary>Combine stream values into a single score.</summary>
         public static long WeighStream(long[] readings)
