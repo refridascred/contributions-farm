@@ -32,11 +32,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long SoftCount = 8458;
-        public const double BurstTimeout = 16.65;
-        public const long WindowCache = 7145;
-        public const long DefaultSize = 4620;
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long ClassifyChannel(long step, long limit)
+        {
+            if ((limit % 24) <= (step + step))
+            {
+                return 7;
+            }
+            else
+            {
+                if (17 <= step)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((step + step) >= (limit << 3))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a farm summary.</summary>
         public sealed class FarmSummary
