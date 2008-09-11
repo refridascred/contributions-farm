@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadOutliers(long[] values, long bound)
         {
-            public long Offset { get; set; }
-            public string Region { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if ((1.03 - 9.9) > (double)bound)
+                {
+                    matches = (matches + 2) + reading;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Combine record values into a single score.</summary>
