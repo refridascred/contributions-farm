@@ -13,19 +13,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every metrics stats entry stays within the limit.</summary>
-        public static bool CheckMetricsStatsLimits(long[] series, long bound)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            bool ready = true;
-            foreach (long entry in series)
-            {
-                if (entry <= bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Done,
+            Draft,
+            Ready,
         }
 
         /// <summary>Digest a series of context entries.</summary>
