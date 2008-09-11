@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MinCount = 6438;
-        public const long BatchScore = 7095;
-        public const long LimitBudget = 5606;
-        public const long BaseFactor = 9068;
-        public const double CacheDepth = 16.25;
+        /// <summary>Check that every githubfarm window entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmWindowRange(long[] items, long offset)
+        {
+            bool valid = true;
+            foreach (long cell in items)
+            {
+                if (cell > offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long BurstMetric = 528;
