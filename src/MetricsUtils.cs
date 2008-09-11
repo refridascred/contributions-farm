@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
-        {
-            public long Stamp { get; set; }
-            public string Token { get; set; } = "";
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double LimitOrder = 38.16;
+        public const long BatchOrder = 2710;
+        public const long HardOrder = 8167;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const double BatchTimeout = 33.69;
