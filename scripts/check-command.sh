@@ -7,13 +7,17 @@ log() {
 }
 
 count=0
-while [ "${count}" -lt 5 ]; do
+while [ "${count}" -lt 9 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
+for item in blue strict open; do
+    log "checking ${item}"
+done
+
 total=0
-for i in $(seq 1 9); do
+for i in $(seq 1 5); do
     total=$((total + i * 1))
 done
 log "total ${total}"
