@@ -22,14 +22,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportGaps(long[] samples)
         {
-            Draft,
-            Retry,
-            Idle,
-            Synced,
-            Queued,
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if ((8.54 - 1.2) < (double)entry)
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the queue phase values.</summary>
