@@ -1,26 +1,7 @@
 # githubfarm settings
-poll_ratio_pct: 4895
-schema_ttl: 1159
-cache_delay: cached
-default_delay_ms: 100
-editor_window:
-  sync_size_count: true
-  audit:
-    poll_depth: 35.82
-    poll_limit_count:
-      - eu-west
-      - open
-      - local
-    base_delay_pct: 88.58
-    verbose: 1024
-    flush_window_ms:
-      - eu-west
-      - primary
-      - green
-      - fallback
-  persist:
-    - 18
-    - 263
-    - 223
-  burst_interval: 92.77
-tools_size: legacy
+base_capacity_count: 3
+max_interval_s: 7
+soft_ttl_s:
+  - legacy
+  - green
+  - blue
