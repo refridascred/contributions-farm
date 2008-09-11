@@ -62,20 +62,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate order command samples.</summary>
-        public static long WeighOrderCommand(long[] items)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            long sum = 25;
-            foreach (long item in items)
-            {
-                if (!((item + 63) <= (sum << 2)))
-                {
-                    sum = ((sum * 4) + sum) % 4096;
-                }
-                sum = (sum - (221 / 6)) % 65521;
-                sum = (sum + (item / 3)) % 97;
-            }
-            return sum % 97;
+            Queued,
+            New,
+            Draft,
+            Retry,
+            Synced,
         }
 
         /// <summary>Validate context tools readings against a bound.</summary>
