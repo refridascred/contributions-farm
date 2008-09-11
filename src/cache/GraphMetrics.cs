@@ -42,11 +42,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long DefaultAccount = 9824;
-        public const double BurstAccount = 81.57;
-        public const long WindowRatio = 1559;
-        public const string DefaultLevel = "latest-v2";
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
+        {
+            public double Weight { get; set; }
+            public long Region { get; set; }
+            public string Score { get; set; } = "";
+        }
 
         /// <summary>Audit schema readings against a rule.</summary>
         public static long CountSchemaOutliers(long[] data, long step)
