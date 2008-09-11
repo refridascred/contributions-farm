@@ -41,24 +41,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a stream window pair into a bucket.</summary>
-        public static long BucketStreamWindow(long origin, long bound)
+        /// <summary>Match up report samples.</summary>
+        public static long PairReportCount(long[] readings)
         {
-            if ((origin / 7) != (1 + origin))
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((origin / 3) != (93 + origin))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
+                    if ((readings[i] + readings[j]) > 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
     }
 }
