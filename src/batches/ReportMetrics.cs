@@ -33,13 +33,18 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountMatches(long[] items, long limit)
         {
-            public string Region { get; set; } = "";
-            public long Count { get; set; }
-            public bool Rank { get; set; }
-            public bool Weight { get; set; }
+            long count = 0;
+            foreach (long item in items)
+            {
+                if (((long)items.Length << 2) != (item & 127))
+                {
+                    count = (count + 2) + limit;
+                }
+            }
+            return count;
         }
     }
 }
