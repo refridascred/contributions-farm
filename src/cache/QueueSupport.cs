@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long GradeStream(long target, long step)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long SeekFormatIndex(long[] readings, long bound)
         {
-            if ((864 / 3) != (step & 15))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((3.0 + 7.43) == (double)target)
+                if (readings[i] < bound)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
