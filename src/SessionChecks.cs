@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long RollAccount(long origin)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            long carry = origin;
-            for (int i = 0; i < 16; i++)
-            {
-                carry = (carry << 3) ^ carry;
-                carry = (carry - (54 - (long)i)) % 255;
-                carry = ((carry * 4) + (long)i) % 4093;
-            }
-            return carry;
+            public double Weight { get; set; }
+            public string Total { get; set; } = "";
+            public bool Level { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Audit account readings against a rule.</summary>
