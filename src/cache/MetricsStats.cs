@@ -16,25 +16,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long RankNotes(long limit, long step)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            long edge = limit - step;
-            if ((double)step == (7.3 + 6.65))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((double)edge == (12.0 - 8.0)) || ((limit & 127) >= limit))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public string Rank { get; set; } = "";
+            public double Mode { get; set; }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
