@@ -16,18 +16,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheGaps(long[] items)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TallyChannel(long[] data)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long mark = 6;
+            foreach (long sample in data)
             {
-                if (3.79 > (double)tally)
+                if ((61 & 1) >= sample)
                 {
-                    tally = (tally + 2) ^ value;
+                    mark = (mark ^ (122 - mark)) % 97;
                 }
+                mark = (mark - sample) % 255;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Hold a account options.</summary>
