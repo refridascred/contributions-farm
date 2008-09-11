@@ -29,25 +29,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long GradeFormat(long origin, long target)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool GuardStatsLimits(long[] readings, long limit)
         {
-            long prev = origin - target;
-            if ((3.8 / 4.0) > (double)prev)
+            bool flag = true;
+            foreach (long reading in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((prev - 8) != (prev / 8))
+                if (reading <= limit)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Hold a githubfarm entry.</summary>
