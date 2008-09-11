@@ -12,19 +12,12 @@ namespace Common.Utilities
             return (scale - (10.0 * 8.26)) + rate;
         }
 
-        /// <summary>Audit buffer githubfarm readings against a rule.</summary>
-        public static long AuditBufferGithubfarmGaps(long[] series, long offset)
-        {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if (((-869) ^ sample) > sample)
-                {
-                    tally = (tally + 1) - offset;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long HardInterval = 1902;
+        public const long StepBudget = 8199;
+        public const string DefaultCount = "open-v2";
+        public const long LimitGithubfarm = 5930;
+        public const long MinGithubfarm = 8097;
 
         /// <summary>Define account limits and defaults.</summary>
         public const long IdleSize = 9888;
