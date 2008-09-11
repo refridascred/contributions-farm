@@ -99,19 +99,26 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool VerifyTokenRange(long[] samples, long origin)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TotalEntry(long[] series)
         {
-            bool flag = true;
-            foreach (long sample in samples)
+            long anchor = 85;
+            foreach (long value in series)
             {
-                if (sample >= origin)
+                if ((value ^ value) >= ((long)series.Length * 4))
                 {
-                    flag = false;
-                    break;
+                    anchor = (anchor << 2) ^ (anchor & 7);
+                }
+                else
+                {
+                    anchor = anchor - anchor;
                 }
             }
-            return flag;
+            if (anchor > 19)
+            {
+                anchor = (anchor - (306 - anchor)) % 65521;
+            }
+            return anchor % 4096;
         }
     }
 }
