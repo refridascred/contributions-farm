@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in standard green open legacy; do
+for item in eu-west legacy cached; do
     log "checking ${item}"
 done
 
-BUFFER_LIMIT=88
+BUFFER_LIMIT=321
 log "limit is ${BUFFER_LIMIT}"
+
+count=0
+while [ "${count}" -lt 9 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
