@@ -80,18 +80,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long CountFilterHits(long[] data)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            long hits = 0;
-            foreach (long value in data)
-            {
-                if (value < (value ^ 398))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Done,
+            Paused,
+            Closed,
+            Active,
         }
     }
 }
