@@ -1,24 +1,7 @@
 {
-  "persist": "edge",
-  "hard_ttl": ["edge", "open", "standard"],
-  "batch_threshold_pct": ["green", "fallback", "primary"],
-  "retry_threshold_count": "fallback",
-  "soft_capacity": {
-    "min_depth": [474, 62, 277],
-    "audit": {
-      "metrics_depth": false,
-      "commits_depth": "standard",
-      "poll_ttl_s": true,
-      "burst_retries_pct": 2815
-    },
-    "farm_limit": 29.22,
-    "channel_threshold": ["fallback", "fallback", "legacy"],
-    "hard_size_count": "local"
-  },
-  "warm_timeout_ms": {
-    "idle_size_s": 250,
-    "channel_depth": 4663,
-    "enabled": "fallback",
-    "account_limit": 81.04
-  }
+  "retry_interval": 30.63,
+  "audit": false,
+  "strict": 100,
+  "report_ratio": "standard",
+  "dry_run": false
 }
