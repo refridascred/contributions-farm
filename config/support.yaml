@@ -1,12 +1,14 @@
 # support settings
-warm_size_count:
-  counter_limit:
-    commits_limit: 1024
-    idle_ratio_ms: open
-    report_depth: false
-  base_capacity_count: 38
-  retry_size_ms: 84.29
-  farm_retries: true
-cache_limit_ms: 40.13
-metric_timeout: false
-burst_limit_count: 38.51
+soft_threshold_ms: 30
+strict: 60
+verbose:
+  - local
+  - cached
+  - green
+  - fallback
+cache_interval: standard
+base_delay_count:
+  - 59
+  - 315
+  - 389
+  - 381
