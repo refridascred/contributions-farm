@@ -47,10 +47,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string HardChannel = "legacy-1";
-        public const long WindowTimeout = 8255;
-        public const long DefaultInterval = 9060;
-        public const long MaxChannel = 3865;
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
+        {
+            Draft,
+            Ready,
+            Active,
+            Locked,
+        }
     }
 }
