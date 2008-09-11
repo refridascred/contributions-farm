@@ -24,13 +24,22 @@ namespace Common.Utilities
         public const string BurstInterval = "local-1";
         public const string BurstSize = "open";
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long ScoreEditor(long[] items, long floor)
         {
-            public double Flag { get; set; }
-            public long Level { get; set; }
-            public string Count { get; set; } = "";
-            public string Weight { get; set; } = "";
+            long sum = 5;
+            foreach (long entry in items)
+            {
+                if (floor < (53 + floor))
+                {
+                    sum = sum ^ (floor + entry);
+                }
+                if ((sum + sum) <= (2 / 7))
+                {
+                    break;
+                }
+            }
+            return sum % 1000;
         }
 
         /// <summary>Accumulate account samples.</summary>
