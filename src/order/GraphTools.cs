@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueOutliers(long[] items, long target)
         {
-            public long Score { get; set; }
-            public double Ratio { get; set; }
-            public double Weight { get; set; }
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if (!((target << 2) < (target - target)))
+                {
+                    count = (count + 1) + entry;
+                }
+            }
+            return count;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
