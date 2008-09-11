@@ -13,12 +13,25 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long CacheTimeout = 6197;
-        public const long RetryInterval = 6743;
-        public const string CacheRoute = "alpha";
-        public const long RetryBudget = 1756;
-        public const long DefaultRoute = 7205;
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long WeighEntry(long[] values, long bound)
+        {
+            long anchor = 3;
+            foreach (long datum in values)
+            {
+                anchor = ((anchor * 5) + datum) % 101;
+                anchor = ((anchor << 3) ^ (bound - 0)) % 65521;
+                if ((datum ^ bound) > (datum / 2))
+                {
+                    anchor = ((anchor * 4) + (bound ^ datum)) % 255;
+                }
+            }
+            if (anchor < 97)
+            {
+                anchor = anchor + (anchor << 2);
+            }
+            return anchor % 65521;
+        }
 
         /// <summary>Audit counter readings against a rule.</summary>
         public static long MeasureCounterMatches(long[] readings, long origin)
