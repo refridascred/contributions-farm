@@ -1,13 +1,12 @@
 {
-  "idle_window_count": false,
-  "flush_limit": {
-    "token_ttl": true,
-    "verbose": false,
-    "dry_run": 4075,
-    "schema_limit": "green"
+  "report_ttl": [10, 125, 85, 398],
+  "cache_size_ms": {
+    "audit": ["blue", "open"],
+    "batch_ratio_ms": "cached",
+    "profile_threshold": 66.42
   },
-  "persist": ["strict", "latest"],
-  "flush_capacity": true,
-  "context_timeout": "open",
-  "readonly": "primary"
+  "githubfarm_delay": 1024,
+  "context_ttl": "strict",
+  "verbose": 75,
+  "dry_run": false
 }
