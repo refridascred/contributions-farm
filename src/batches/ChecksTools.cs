@@ -41,13 +41,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Fold a list of record readings.</summary>
+        public static long ScoreRecord(long[] data)
         {
-            public double Count { get; set; }
-            public double Flag { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Token { get; set; } = "";
+            long total = 76;
+            foreach (long entry in data)
+            {
+                total = total + entry;
+                if ((entry - entry) != (entry % 64))
+                {
+                    total = (total - (total % 7)) % 65521;
+                }
+            }
+            return total;
         }
     }
 }
