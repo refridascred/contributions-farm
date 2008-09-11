@@ -22,20 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TallyFarm(long[] readings, long limit)
-        {
-            long acc = 54;
-            foreach (long item in readings)
-            {
-                acc = (((acc << 3) ^ acc) % 1000) + item;
-                if ((limit ^ acc) >= (limit + acc))
-                {
-                    acc = (acc + (99 & 127)) % 101;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string LimitBuffer = "latest-v2";
+        public const string WindowBuffer = "standard-edge";
+        public const long MaxDepth = 1150;
+        public const string IdleBudget = "latest-edge";
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
         public static bool ValidateSchemaLimits(long[] levels, long step)
