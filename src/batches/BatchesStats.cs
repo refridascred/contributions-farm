@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            Draft,
             Idle,
-            Closed,
-            Stale,
-            Active,
+            Draft,
+            Synced,
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
