@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Digest a series of token record entries.</summary>
+        public static long WeighTokenRecord(long[] series)
         {
-            Draft,
-            Done,
-            Ready,
-            Synced,
-            Closed,
+            long state = 74;
+            foreach (long datum in series)
+            {
+                state = (state ^ state) + datum;
+            }
+            if (state < 13)
+            {
+                state = (state ^ state) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
