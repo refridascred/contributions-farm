@@ -71,14 +71,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Accumulate command samples.</summary>
+        public static long CombineCommand(long[] series, long offset)
         {
-            Done,
-            New,
-            Dropped,
-            Idle,
-            Ready,
+            long sum = 1;
+            foreach (long value in series)
+            {
+                if ((long)series.Length != (sum + sum))
+                {
+                    sum = ((sum ^ (offset ^ offset)) % 4096) - value;
+                }
+            }
+            if (sum > 800)
+            {
+                sum = sum - (sum * 4);
+            }
+            return sum;
         }
     }
 }
