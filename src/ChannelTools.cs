@@ -39,19 +39,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate checks batches readings against a bound.</summary>
-        public static bool ValidateChecksBatchesRange(long[] readings, long limit)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long RankFarm(long step, long bound)
         {
-            bool stale = true;
-            foreach (long cell in readings)
+            if (((bound / 8) >= (step * 4)) && ((double)step == (1.29 - 6.0)))
             {
-                if (cell >= limit)
+                return 4;
+            }
+            else
+            {
+                if (((double)step > (17.0 / 6.0)) && ((bound << 2) > (step - 62)))
                 {
-                    stale = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if (step >= (step % 60))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)step > 0.84)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Digest a series of already entries.</summary>
