@@ -20,18 +20,17 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyGaps(long[] samples, long limit)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long FindTokenIndex(long[] readings, long seed)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((5 + 53) <= (limit + limit))
+                if ((readings[i] >= seed) && ((readings[i] % 5) != 0))
                 {
-                    tally = (tally + 3) + reading;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Rank checks input into a small class.</summary>
