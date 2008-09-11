@@ -32,16 +32,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a checks farm counter forward.</summary>
-        public static long RollChecksFarm(long limit)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool ValidateRouteBounds(long[] series, long floor)
         {
-            long mark = limit;
-            for (int i = 0; i < 4; i++)
+            bool valid = true;
+            foreach (long datum in series)
             {
-                mark = ((mark << 3) ^ (mark ^ limit)) % 255;
-                mark = ((mark * 5) + (long)i) % 4093;
+                if (datum < floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return mark;
+            return valid;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
