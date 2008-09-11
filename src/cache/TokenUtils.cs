@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long StepChecks = 5150;
-        public const double CacheSize = 89.22;
-        public const long MaxDepth = 5607;
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
+        {
+            Retry,
+            Ready,
+            Failed,
+        }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
         public static long MatchGraphCount(long[] samples)
