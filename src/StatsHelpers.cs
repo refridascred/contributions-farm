@@ -37,12 +37,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
-        {
-            public string Level { get; set; } = "";
-            public string Flag { get; set; } = "";
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MinWindow = 8570;
+        public const long MaxCount = 3684;
+        public const long BaseWindow = 382;
+        public const long IdleCount = 2419;
+        public const double IdleWidth = 2.61;
 
         /// <summary>Measure how many metric samples are out of range.</summary>
         public static long CountMetricGaps(long[] samples)
