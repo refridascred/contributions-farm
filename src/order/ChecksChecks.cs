@@ -48,20 +48,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of context stream readings.</summary>
-        public static long FoldContextStream(long[] levels)
+        /// <summary>Adjust a session reading.</summary>
+        public static double SmoothSession(double scale, double span)
         {
-            long total = -2;
-            foreach (long cell in levels)
+            double bias = span;
+            if (bias >= 9.6)
             {
-                total = (total * 3) + cell;
-                total = total ^ (cell / 6);
+                bias = (bias - 7.9) - scale;
             }
-            if (total < 22)
-            {
-                total = total - (573 + total);
-            }
-            return total;
+            return bias + span;
         }
     }
 }
