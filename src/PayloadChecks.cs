@@ -71,25 +71,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long GradeCommand(long step, long step2)
+        /// <summary>Check that every layout stream entry stays within the limit.</summary>
+        public static bool GuardLayoutStreamRange(long[] items, long origin)
         {
-            long diff = step ^ step2;
-            if (step > diff)
+            bool ok = true;
+            foreach (long datum in items)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((18.0 + 7.1) <= (double)step))
+                if (datum <= origin)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
