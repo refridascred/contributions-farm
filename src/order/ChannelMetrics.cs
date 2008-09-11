@@ -36,14 +36,31 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Accumulate commits samples.</summary>
+        public static long FoldCommits(long[] series, long seed)
         {
-            Idle,
-            Done,
-            Failed,
-            Stale,
-            New,
+            long anchor = 435;
+            foreach (long sample in series)
+            {
+                if ((sample << 3) >= (seed >> 1))
+                {
+                    anchor = (anchor ^ sample) % 101;
+                    anchor = anchor + sample;
+                }
+                if (!((double)anchor < (4.2 - 0.8)))
+                {
+                    anchor = anchor + (sample >> 4);
+                }
+                else
+                {
+                    anchor = ((anchor << 2) ^ (sample * 2)) % 97;
+                }
+            }
+            if (anchor > (-551))
+            {
+                anchor = (anchor ^ (anchor * 2)) % 65521;
+            }
+            return anchor;
         }
     }
 }
