@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Find the first editor notes entry that matches the target.</summary>
-        public static long LookupEditorNotesIndex(long[] series, long seed)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool ValidateFarmBounds(long[] readings, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool ready = true;
+            foreach (long item in readings)
             {
-                if ((series[i] > seed) && ((series[i] % 3) != 0))
+                if (item >= origin)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
