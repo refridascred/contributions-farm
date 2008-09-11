@@ -1,8 +1,7 @@
-id,weight,score
-1,cached,784
-2,edge,592
-3,open,94.28
-4,staging,86
-5,516,local
-6,760,74.08
-7,primary,blue
+id,region,owner,level,score
+1,338,125,legacy,open
+2,74.41,447,67.97,local
+3,local,48.84,blue,green
+4,82.26,865,4.29,250
+5,60.97,134,61.88,89.27
+6,173,60.05,35.86,510
