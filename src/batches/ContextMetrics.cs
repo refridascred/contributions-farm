@@ -39,24 +39,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long TotalFilter(long[] data)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool VerifyFormatLimits(long[] samples, long floor)
         {
-            long anchor = 531;
-            foreach (long datum in data)
+            bool stale = true;
+            foreach (long reading in samples)
             {
-                if (!((datum * 4) >= (datum << 3)))
+                if (reading != floor)
                 {
-                    anchor = anchor - (anchor / 7);
+                    stale = false;
+                    break;
                 }
-                anchor = (anchor * 4) + (anchor * 4);
-                anchor = (anchor + (anchor + anchor)) % 97;
             }
-            if (anchor > 8)
-            {
-                anchor = (anchor * 4) + anchor;
-            }
-            return anchor;
+            return stale;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
