@@ -19,13 +19,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            Locked,
-            Pending,
-            Done,
-            Closed,
+            public string Score { get; set; } = "";
+            public long Token { get; set; }
+            public long Rank { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
