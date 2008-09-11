@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountHits(long[] values)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long ScoreCounter(long[] samples)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long carry = 367;
+            foreach (long sample in samples)
             {
-                if ((58 / 7) >= value)
-                {
-                    hits = hits + 1;
-                }
+                carry = (carry + (sample % 3)) % 4096;
             }
-            return hits;
+            return carry % 97;
         }
 
         /// <summary>Define order limits and defaults.</summary>
