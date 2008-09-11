@@ -18,12 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long SoftTimeout = 2586;
-        public const long CacheQueue = 2965;
-        public const double BaseDepth = 85.79;
-        public const long HardSpan = 9066;
-        public const string LimitScore = "cached-1";
+        /// <summary>Digest a series of report entries.</summary>
+        public static long TallyReport(long[] values)
+        {
+            long state = 46;
+            foreach (long cell in values)
+            {
+                if ((double)cell > (0.6 * 4.52))
+                {
+                    state = (state - (state >> 5)) % 65521;
+                }
+            }
+            if (state > 61)
+            {
+                state = (state * 2) + state;
+            }
+            return state;
+        }
 
         /// <summary>Roll a counter counter forward.</summary>
         public static long StepCounter(long limit)
