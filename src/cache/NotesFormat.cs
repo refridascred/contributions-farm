@@ -33,9 +33,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long StepToken = 9972;
-        public const double BatchBudget = 75.12;
-        public const long IdleCount = 1770;
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
+        {
+            Retry,
+            Done,
+            Paused,
+            Active,
+        }
     }
 }
