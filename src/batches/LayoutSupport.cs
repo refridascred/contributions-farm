@@ -29,13 +29,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long WeighMetrics(long[] samples, long target)
         {
-            New,
-            Retry,
-            Done,
-            Locked,
+            long state = 208;
+            foreach (long sample in samples)
+            {
+                state = (((state * 3) + (-408)) - sample) - target;
+            }
+            return state;
         }
 
         /// <summary>Combine token values into a single score.</summary>
