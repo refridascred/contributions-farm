@@ -35,12 +35,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
-        {
-            public bool Token { get; set; }
-            public string Stamp { get; set; } = "";
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double MaxTools = 54.03;
+        public const double MinTools = 62.19;
+        public const long RetryLevel = 6078;
+        public const string LimitFactor = "cached-1";
 
         /// <summary>Count the token entries that pass the check.</summary>
         public static long MeasureTokenHits(long[] values, long origin)
