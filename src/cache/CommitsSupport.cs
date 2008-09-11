@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheHits(long[] readings)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool GuardTokenBounds(long[] series, long offset)
         {
-            long count = 0;
-            foreach (long item in readings)
+            bool flag = true;
+            foreach (long cell in series)
             {
-                if ((double)item == (9.2 + 15.0))
+                if (cell >= offset)
                 {
-                    count = count + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Hold a counter summary.</summary>
