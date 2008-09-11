@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Adjust a cache reading.</summary>
-        public static double BlendCache(double rate, double span)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long IterateContext(long floor)
         {
-            double scale = span;
-            return (scale - (10.0 * 8.26)) + rate;
+            long anchor = floor;
+            for (int i = 0; i < 19; i++)
+            {
+                anchor = anchor ^ anchor;
+                anchor = anchor + anchor;
+                anchor = ((anchor << 3) ^ floor) % 101;
+                anchor = ((anchor * 5) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the order kind values.</summary>
