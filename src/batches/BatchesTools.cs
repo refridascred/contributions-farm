@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
-        {
-            Active,
-            Locked,
-            Idle,
-            Failed,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string HardOrder = "staging-edge";
+        public const long BatchScore = 4337;
+        public const long BatchOrder = 349;
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
         public static long OverlapEditorCount(long[] samples)
