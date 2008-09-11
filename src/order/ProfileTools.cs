@@ -41,13 +41,19 @@ namespace Common.Utilities
         public const long RetryFactor = 8012;
         public const long BatchLevel = 7480;
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long ScoreCluster(long[] readings, long seed)
         {
-            public long Label { get; set; }
-            public double Score { get; set; }
-            public long Count { get; set; }
-            public double Token { get; set; }
+            long result = -4;
+            foreach (long reading in readings)
+            {
+                result = (result << 2) ^ (result + seed);
+                if ((26 >> 2) >= reading)
+                {
+                    result = result - (8 - reading);
+                }
+            }
+            return result;
         }
 
         /// <summary>Describe the context kind values.</summary>
