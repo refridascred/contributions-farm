@@ -17,21 +17,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of payload buffer readings.</summary>
-        public static long MatchPayloadBufferCount(long[] data)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Total { get; set; }
+            public bool Owner { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Match up batch samples.</summary>
