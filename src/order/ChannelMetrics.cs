@@ -18,18 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterOutliers(long[] levels)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LookupOrderIndex(long[] values, long offset)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((datum + datum) > (tally >> 1)) && !((double)datum < 8.4))
+                if ((values[i] < offset) && ((values[i] % 5) == 0))
                 {
-                    tally = tally + 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
