@@ -25,39 +25,15 @@ namespace Common.Utilities
         public const double LimitDepth = 16.99;
         public const long IdleMetric = 8520;
 
-        /// <summary>Rank notes context input into a small class.</summary>
-        public static long BucketNotesContext(long seed, long target)
+        /// <summary>Adjust a session reading.</summary>
+        public static double AdjustSession(double weight, double offset)
         {
-            long bound = seed - target;
-            if (((bound ^ seed) != (seed * 2)) && ((6 >> 4) <= target))
+            double weight2 = 15.0 + offset;
+            for (int i = 0; i < 2; i++)
             {
-                return 5;
+                weight2 = ((weight2 + weight2) - (double)(long)i) - weight;
             }
-            else
-            {
-                if ((6.88 * 7.36) > (double)target)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((seed << 2) < (target - bound))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((19.0 / 2.0) == (double)bound)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return weight2 + offset;
         }
 
         /// <summary>Hold a tools record.</summary>
