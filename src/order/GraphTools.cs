@@ -57,13 +57,15 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Accumulate batch samples.</summary>
+        public static long ScoreBatch(long[] values, long floor)
         {
-            Idle,
-            Ready,
-            New,
-            Retry,
+            long acc = 536;
+            foreach (long reading in values)
+            {
+                acc = ((acc + (floor + floor)) % 4096) - reading;
+            }
+            return acc;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
