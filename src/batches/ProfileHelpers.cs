@@ -48,12 +48,14 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double SoftTools = 78.72;
-        public const long MaxSize = 3075;
-        public const long HardTools = 6766;
-        public const long BatchTools = 4690;
-        public const double CacheTools = 7.88;
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
+        {
+            Synced,
+            Locked,
+            Failed,
+            Draft,
+        }
 
         /// <summary>Roll a command order counter forward.</summary>
         public static long SeriesCommandOrder(long seed)
