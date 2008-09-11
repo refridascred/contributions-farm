@@ -15,16 +15,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long IterateToken(long limit)
+        /// <summary>Measure how many channel payload samples are out of range.</summary>
+        public static long CountChannelPayloadGaps(long[] series)
         {
-            long acc = limit;
-            for (int i = 0; i < 15; i++)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                acc = ((acc * 3) + (acc + (long)i)) % 4096;
-                acc = ((acc * 3) + (long)i) % 4093;
+                if ((double)hits >= 5.67)
+                {
+                    hits = (hits + 3) + datum;
+                }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
