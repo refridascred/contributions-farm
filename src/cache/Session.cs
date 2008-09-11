@@ -20,19 +20,31 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every layout checks entry stays within the limit.</summary>
-        public static bool GuardLayoutChecksBounds(long[] values, long offset)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long SortMetric(long seed, long origin)
         {
-            bool ready = true;
-            foreach (long datum in values)
+            if (!((origin + seed) < origin))
             {
-                if (datum > offset)
+                return 7;
+            }
+            else
+            {
+                if ((0.5 * 6.4) < (double)origin)
                 {
-                    ready = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if (((seed % 2) > seed) && (seed <= (origin << 3)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
