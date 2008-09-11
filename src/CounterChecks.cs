@@ -43,21 +43,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up payload cache samples.</summary>
-        public static long PairPayloadCacheCount(long[] readings)
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public string Mode { get; set; } = "";
+            public double Level { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
