@@ -38,22 +38,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long ScoreStats(long[] samples)
+        /// <summary>Classify a record cluster pair into a bucket.</summary>
+        public static long ClassifyRecordCluster(long origin, long step)
         {
-            long anchor = 983;
-            foreach (long value in samples)
+            long lane = origin + step;
+            if (lane >= origin)
             {
-                if ((double)value >= (13.0 + 3.53))
+                return 4;
+            }
+            else
+            {
+                if (lane <= origin)
                 {
-                    anchor = (anchor + (value - (long)samples.Length)) % 4096;
+                    return 0;
+                }
+                else
+                {
+                    if ((double)step <= 3.98)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            if (anchor > 304)
-            {
-                anchor = (anchor ^ 6) % 4096;
-            }
-            return anchor % 97;
         }
 
         /// <summary>Describe the route state values.</summary>
