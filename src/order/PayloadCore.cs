@@ -24,15 +24,17 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Accumulate already checks samples.</summary>
-        public static long ScoreAlreadyChecks(long[] items, long floor)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long SeekOrderIndex(long[] readings, long target)
         {
-            long score = 607;
-            foreach (long value in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                score = ((score - value) % 255) - floor;
+                if (readings[i] < target)
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
