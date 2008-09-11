@@ -84,11 +84,19 @@ namespace Common.Utilities
             return load + bias;
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Check that every order context entry stays within the limit.</summary>
+        public static bool VerifyOrderContextLimits(long[] data, long floor)
         {
-            public long Flag { get; set; }
-            public long Count { get; set; }
+            bool ok = true;
+            foreach (long entry in data)
+            {
+                if (entry < floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
