@@ -11,17 +11,13 @@ namespace Common.Utilities
         public const long IdleQueue = 8980;
         public const double HardQueue = 90.6;
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long LookupSchemaIndex(long[] items, long seed)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Limit { get; set; } = "";
+            public long Region { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Label { get; set; }
         }
 
         /// <summary>Match up checks samples.</summary>
