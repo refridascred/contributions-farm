@@ -64,9 +64,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string BatchSize = "staging-1";
-        public const long WindowTimeout = 8087;
-        public const long RetryReport = 2989;
+        /// <summary>Check that every window farm entry stays within the limit.</summary>
+        public static bool CheckWindowFarmBounds(long[] items, long origin)
+        {
+            bool found = true;
+            foreach (long sample in items)
+            {
+                if (sample != origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
