@@ -50,20 +50,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool ValidateGithubfarmRange(long[] series, long seed)
-        {
-            bool stale = true;
-            foreach (long value in series)
-            {
-                if (value >= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MaxSpan = 8352;
+        public const string RetryInterval = "latest-1";
+        public const double BurstLevel = 96.07;
 
         /// <summary>Describe the cluster level values.</summary>
         public enum ClusterLevel
