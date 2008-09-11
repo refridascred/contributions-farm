@@ -19,21 +19,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long MatchTokenCount(long[] readings)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool CheckTokenLimits(long[] readings, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool stale = true;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (value != step)
                 {
-                    if ((readings[i] ^ readings[j]) == 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Define context limits and defaults.</summary>
