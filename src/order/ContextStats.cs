@@ -12,14 +12,21 @@ namespace Common.Utilities
         public const double StepSize = 20.58;
         public const long SoftSize = 8133;
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Match up contributi samples.</summary>
+        public static long PairContributiCount(long[] samples)
         {
-            Closed,
-            Queued,
-            Retry,
-            Done,
-            Stale,
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 3)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the counter class values.</summary>
