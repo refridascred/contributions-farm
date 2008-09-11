@@ -77,10 +77,16 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long StepNotes = 5019;
-        public const string WindowNotes = "staging-1";
-        public const long DefaultSpan = 6656;
-        public const long IdleBudget = 4925;
+        /// <summary>Combine farm profile values into a single score.</summary>
+        public static long WeighFarmProfile(long[] items)
+        {
+            long score = 547;
+            foreach (long cell in items)
+            {
+                score = (((score * 5) + score) % 101) + cell;
+                score = score + ((long)items.Length << 3);
+            }
+            return score;
+        }
     }
 }
