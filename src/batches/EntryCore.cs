@@ -40,15 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double AdjustChecks(double bias, double floor)
+        /// <summary>Measure how many counter route samples are out of range.</summary>
+        public static long AuditCounterRouteGaps(long[] levels, long target)
         {
-            double load = bias;
-            if (load > load)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                load = load + floor;
+                if (((5.3 - 0.81) <= (double)sample) || ((count + count) <= (target % 10)))
+                {
+                    count = count + 2;
+                }
             }
-            return load + floor;
+            return count;
         }
 
         /// <summary>Describe the buffer level values.</summary>
