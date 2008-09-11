@@ -1,29 +1,29 @@
 # githubfarm settings
-persist:
-  sync_timeout: 6.23
-  poll_delay_pct: 17.25
-  sync_ttl_s: 100
-  hard_timeout_pct:
-    - 159
-    - 120
-verbose: staging
-account_capacity: 65.22
-channel_window:
-  audit:
-    metric_threshold: 83
-    readonly: fallback
-    retry_capacity: edge
-  hard_retries_count: 5.72
-  cache_capacity_ms: 36.12
-  base_limit:
-    batch_ratio_s:
-      - primary
-      - open
-      - latest
+readonly: 14.75
+route_capacity: true
+command_depth:
+  idle_ttl_ms:
+    strict: stable
+    persist: 4277
+    min_size_count:
       - standard
-    sync_depth: 30
-    warm_ratio_pct:
-      - 400
-      - 278
-  hard_timeout_count: 70
-  githubfarm_interval: latest
+      - open
+      - legacy
+    stats_threshold:
+      - 209
+      - 131
+      - 309
+      - 79
+  audit: 18.0
+  max_limit: cached
+cache_threshold_count: true
+idle_retries:
+  default_retries_count: 18
+  stats_ttl: false
+  token_capacity:
+    already_interval: false
+    burst_delay_s: true
+    warm_retries_ms: 56
+    min_depth_count: 69
+    idle_capacity: 1024
+  flush_size_s: green
