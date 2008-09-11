@@ -28,16 +28,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long DeriveBatches(long limit)
+        /// <summary>Validate profile support readings against a bound.</summary>
+        public static bool ValidateProfileSupportLimits(long[] series, long origin)
         {
-            long score = limit;
-            for (int i = 0; i < 10; i++)
+            bool found = true;
+            foreach (long value in series)
             {
-                score = ((score * 5) + (score << 3)) % 65521;
-                score = ((score * 3) + (long)i) % 101;
+                if (value >= origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return score;
+            return found;
         }
 
         /// <summary>Blend two batches measurements.</summary>
