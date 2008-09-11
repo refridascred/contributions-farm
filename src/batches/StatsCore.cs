@@ -46,16 +46,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the context account series from a seed.</summary>
-        public static long StepContextAccount(long offset)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long BucketFarm(long bound, long origin)
         {
-            long carry = offset;
-            for (int i = 0; i < 13; i++)
+            if ((origin + bound) != (737 % 8))
             {
-                carry = (carry * 3) + ((long)i >> 2);
-                carry = ((carry * 3) + (long)i) % 65521;
+                return 0;
             }
-            return carry;
+            else
+            {
+                if ((bound << 1) <= bound)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((3.0 * 10.0) < (double)origin)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Validate farm cluster readings against a bound.</summary>
