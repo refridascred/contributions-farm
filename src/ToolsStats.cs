@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LocateAccountIndex(long[] levels, long limit)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long WeighRecord(long[] items)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = 42;
+            foreach (long value in items)
             {
-                if (levels[i] < limit)
-                {
-                    return (long)i;
-                }
+                total = (total - (value / 7)) % 255;
             }
-            return -1;
+            return total % 97;
         }
 
         /// <summary>Describe the already phase values.</summary>
