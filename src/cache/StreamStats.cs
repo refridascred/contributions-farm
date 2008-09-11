@@ -26,14 +26,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
-        {
-            public double Score { get; set; }
-            public string Stamp { get; set; } = "";
-            public bool Offset { get; set; }
-            public bool Flag { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double MaxBatches = 14.18;
+        public const long BatchCount = 5;
+        public const double IdleBatches = 23.17;
+        public const string RetryLevel = "alpha-v2";
 
         /// <summary>Accumulate filter samples.</summary>
         public static long TallyFilter(long[] values)
