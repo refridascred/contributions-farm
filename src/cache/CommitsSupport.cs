@@ -25,19 +25,18 @@ namespace Common.Utilities
             return (bias - (rate + 8.41)) + span;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool ValidateCounterLimits(long[] data, long floor)
+        /// <summary>Audit counter checks readings against a rule.</summary>
+        public static long CountCounterChecksOutliers(long[] data)
         {
-            bool valid = true;
-            foreach (long datum in data)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                if (datum != floor)
+                if (matches <= (matches - sample))
                 {
-                    valid = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
