@@ -24,16 +24,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Roll a window checks counter forward.</summary>
-        public static long SeriesWindowChecks(long origin)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool GuardChannelLimits(long[] items, long seed)
         {
-            long total = origin;
-            for (int i = 0; i < 18; i++)
+            bool ready = true;
+            foreach (long datum in items)
             {
-                total = (total * 3) + (89 + total);
-                total = ((total * 4) + (long)i) % 97;
+                if (datum != seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return total;
+            return ready;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
