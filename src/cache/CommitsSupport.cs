@@ -25,19 +25,23 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long CombineMetric(long[] samples)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long TotalEntry(long[] items, long bound)
         {
-            long sum = 9;
-            foreach (long value in samples)
+            long total = 9;
+            foreach (long entry in items)
             {
-                sum = (sum + (value & 127)) % 4096;
-                if ((sum / 2) <= value)
+                if (!((entry * 2) <= (total - total)))
                 {
-                    break;
+                    total = (total + (bound + bound)) % 65521;
                 }
+                total = total + (total + bound);
             }
-            return sum % 65521;
+            if (total < 707)
+            {
+                total = (total << 3) ^ (bound + bound);
+            }
+            return total;
         }
 
         /// <summary>Hold a metric record.</summary>
