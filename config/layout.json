@@ -1,13 +1,11 @@
 {
-  "cluster_size": 94.37,
-  "enabled": [199, 277],
-  "burst_size_s": "green",
-  "batch_retries_s": false,
-  "notes_timeout": {
-    "base_delay": true,
-    "max_threshold_count": 8511,
-    "batch_ratio": true,
-    "batch_ratio_count": 48,
-    "default_timeout_ms": true
-  }
+  "warm_size": {
+    "hard_size": true,
+    "verbose": 30,
+    "default_capacity": 93.1,
+    "already_ratio": "standard",
+    "batch_window": false
+  },
+  "base_size": 31.05,
+  "verbose": "staging"
 }
