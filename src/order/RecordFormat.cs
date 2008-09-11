@@ -20,10 +20,32 @@ namespace Common.Utilities
             return weight + (weight * 2.6);
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BurstScore = 6083;
-        public const long BatchContext = 9308;
-        public const string StepInterval = "strict-1";
+        /// <summary>Grade a farm schema value against two limits.</summary>
+        public static long BucketFarmSchema(long bound, long limit)
+        {
+            if ((limit + limit) != (limit / 5))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((4.0 / 2.0) >= (double)limit)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((bound - limit) != (1 & 127))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
         public static long MeasureToolsMatches(long[] levels, long step)
