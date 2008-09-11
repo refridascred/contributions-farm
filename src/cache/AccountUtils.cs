@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long LocateBatchesIndex(long[] data, long bound)
+        /// <summary>Adjust a window reading.</summary>
+        public static double AdjustWindow(double bias, double floor)
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] <= bound) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double bias2 = bias;
+            return (bias2 + bias) + floor;
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
