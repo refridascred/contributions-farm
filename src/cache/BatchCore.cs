@@ -47,22 +47,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long ScoreAccount(long[] values, long limit)
-        {
-            long sum = 602;
-            foreach (long item in values)
-            {
-                if (!((limit & 255) <= sum))
-                {
-                    sum = (sum + item) % 101;
-                }
-                else
-                {
-                    sum = (sum - (item * 5)) % 4096;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BurstFactor = 7935;
+        public const double BaseBatches = 23.14;
+        public const long MinDepth = 3949;
+        public const double WindowRatio = 84.12;
+        public const long RetryBatches = 8544;
     }
 }
