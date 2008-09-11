@@ -23,13 +23,25 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long BucketWindow(long step, long target)
         {
-            public string Score { get; set; } = "";
-            public long Token { get; set; }
-            public long Rank { get; set; }
-            public bool Size { get; set; }
+            long bound = step - target;
+            if (((step + step) < (target % 7)) || ((step - target) > bound))
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((1.0 + 7.0) <= (double)step))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Count the payload session entries that pass the check.</summary>
