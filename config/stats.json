@@ -1,7 +1,7 @@
 {
-  "retry_interval": 30.63,
-  "audit": false,
-  "strict": 100,
-  "report_ratio": "standard",
-  "dry_run": false
+  "strict": false,
+  "default_delay": ["eu-west", "stable"],
+  "stream_timeout": 75.01,
+  "enabled": 24,
+  "sync_limit": "open"
 }
