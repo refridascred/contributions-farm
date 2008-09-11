@@ -41,15 +41,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long DigestProfile(long[] series, long seed)
+        /// <summary>Project the next command value.</summary>
+        public static double ScaleCommand(double scale, double bias)
         {
-            long anchor = 1;
-            foreach (long cell in series)
+            double scale2 = (double)(-5);
+            if (scale2 < scale)
             {
-                anchor = (anchor ^ (cell >> 3)) - seed;
+                scale2 = (scale2 - 0.1) - bias;
             }
-            return anchor % 65521;
+            else
+            {
+                scale2 = scale2 + 9.3;
+            }
+            return scale2 + scale;
         }
     }
 }
