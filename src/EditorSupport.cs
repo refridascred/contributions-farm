@@ -16,18 +16,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsGaps(long[] items)
+        /// <summary>Check that every cache buffer entry stays within the limit.</summary>
+        public static bool ValidateCacheBufferBounds(long[] readings, long step)
         {
-            long seen = 0;
-            foreach (long value in items)
+            bool stale = true;
+            foreach (long reading in readings)
             {
-                if (6 >= (value << 1))
+                if (reading != step)
                 {
-                    seen = seen + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Grade a format value against two limits.</summary>
