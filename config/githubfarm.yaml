@@ -1,12 +1,15 @@
 # githubfarm settings
-cache_timeout: primary
-dry_run: 3998
-idle_timeout_s: 27
-sync_threshold_ms: 52
-idle_threshold_count:
-  hard_threshold: 79
-  base_interval:
-    - 314
-    - 109
-    - 331
-  flush_depth: blue
+verbose:
+  soft_window: false
+  tools_capacity: 9317
+  default_threshold_pct:
+    max_timeout: true
+    persist: true
+    channel_retries: false
+    max_window_count: 56.63
+    schema_size: stable
+  verbose: true
+  enabled: 9
+  batches_retries: 33
+warm_size: 60
+enabled: 7447
