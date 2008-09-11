@@ -1,12 +1,10 @@
 # support settings
-cache_ratio: false
-min_ttl: strict
-editor_retries:
-  batch_delay: 2172
-  audit: 939
-  compress: false
-  enabled: 100
-  dry_run: fallback
-flush_size_s: 97.06
-format_depth: edge
-batch_ttl: legacy
+enabled:
+  - blue
+  - standard
+  - blue
+  - standard
+format_limit: 56.51
+audit: staging
+persist: false
+notes_interval: green
