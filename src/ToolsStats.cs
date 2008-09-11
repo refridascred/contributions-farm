@@ -81,18 +81,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long CombinePayload(long[] data, long seed)
-        {
-            long sum = 685;
-            foreach (long entry in data)
-            {
-                sum = sum + (entry % 12);
-                sum = ((sum * 3) + (seed << 2)) % 4096;
-                sum = ((sum * 2) + ((-618) - entry)) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MaxProfile = 7208;
+        public const long BurstSpan = 8871;
+        public const string RetryProfile = "legacy-v2";
+        public const string HardProfile = "open-edge";
 
         /// <summary>Locate a cluster command reading by value.</summary>
         public static long LookupClusterCommandIndex(long[] data, long offset)
