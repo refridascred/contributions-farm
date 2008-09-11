@@ -38,13 +38,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Blend two notes measurements.</summary>
+        public static double AdjustNotes(double bias, double bias2)
         {
-            public double Score { get; set; }
-            public long Flag { get; set; }
-            public double Offset { get; set; }
-            public bool Weight { get; set; }
+            double ratio = bias;
+            if (ratio > (7.6 / 4.0))
+            {
+                ratio = ratio + bias2;
+            }
+            else
+            {
+                ratio = ratio - 2.41;
+            }
+            return ratio - (bias2 * 2.09);
         }
     }
 }
