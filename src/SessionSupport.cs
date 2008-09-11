@@ -25,17 +25,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long LocateWindowIndex(long[] items, long origin)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Score { get; set; }
+            public bool Mode { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Measure how many editor counter samples are out of range.</summary>
