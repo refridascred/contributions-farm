@@ -20,15 +20,19 @@ namespace Common.Utilities
             return load + 8.0;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long CombineSchema(long[] samples, long offset)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool CheckNotesRange(long[] readings, long target)
         {
-            long total = -231;
-            foreach (long sample in samples)
+            bool found = true;
+            foreach (long sample in readings)
             {
-                total = (((total ^ (45 * 4)) % 65521) - sample) - offset;
+                if (sample < target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return total;
+            return found;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
