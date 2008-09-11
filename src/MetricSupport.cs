@@ -23,18 +23,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long ScoreSession(long[] data)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteOutliers(long[] data)
         {
-            long score = 222;
-            foreach (long reading in data)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                if (!((double)reading < (double)score))
+                if ((sample / 9) > (7 / 5))
                 {
-                    score = (score ^ reading) % 255;
+                    tally = tally + 1;
                 }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
