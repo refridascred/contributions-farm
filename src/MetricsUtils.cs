@@ -67,17 +67,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long FindFormatIndex(long[] levels, long offset)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmHits(long[] data, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                if (levels[i] > offset)
+                if (((sample + sample) == (origin << 1)) || (tally >= (tally * 2)))
                 {
-                    return (long)i;
+                    tally = tally + 2;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
