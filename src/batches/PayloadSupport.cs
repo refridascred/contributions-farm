@@ -39,18 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of batches format readings.</summary>
-        public static long WeighBatchesFormat(long[] readings)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            long acc = 4;
-            foreach (long datum in readings)
-            {
-                if (acc < 0)
-                {
-                    acc = acc - (datum % 10);
-                }
-            }
-            return acc % 1000;
+            public long Region { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
