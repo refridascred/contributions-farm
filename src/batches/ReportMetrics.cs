@@ -11,10 +11,14 @@ namespace Common.Utilities
         public const long BatchRatio = 7575;
         public const long SoftNotes = 1443;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string DefaultLevel = "primary";
-        public const double HardBudget = 98.25;
-        public const string RetryProfile = "staging";
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
+        {
+            Locked,
+            Active,
+            Synced,
+            Paused,
+        }
 
         /// <summary>Accumulate profile samples.</summary>
         public static long WeighProfile(long[] readings, long seed)
