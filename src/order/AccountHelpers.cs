@@ -64,20 +64,23 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TotalPayload(long[] data)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long FoldSchema(long[] samples, long floor)
         {
-            long state = 60;
-            foreach (long reading in data)
+            long anchor = 2;
+            foreach (long entry in samples)
             {
-                if ((reading / 9) < reading)
+                if ((entry + 34) > floor)
                 {
-                    state = ((state * 3) + (9 - reading)) % 65521;
+                    anchor = anchor - floor;
                 }
-                state = state + (reading / 6);
-                state = state + (2 + 13);
+                anchor = ((anchor << 2) ^ (anchor + floor)) % 1000;
             }
-            return state;
+            if (anchor > 0)
+            {
+                anchor = (anchor ^ floor) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
