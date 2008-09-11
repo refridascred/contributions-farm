@@ -40,17 +40,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a token batches sample.</summary>
-        public static long SeekTokenBatchesIndex(long[] readings, long origin)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long DeriveEditor(long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long total = limit;
+            for (int i = 0; i < 20; i++)
             {
-                if (readings[i] < origin)
+                total = (total * 4) + (total >> 3);
+                if (!(limit <= (591 * 3)))
                 {
-                    return (long)i;
+                    total = (total * 4) + 899;
                 }
+                total = ((total * 5) + (long)i) % 101;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
