@@ -21,32 +21,20 @@ namespace Common.Utilities
         public const long HardSpan = 9066;
         public const string LimitScore = "cached-1";
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long GradeNotes(long target, long step)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long StepCounter(long limit)
         {
-            long next = target + step;
-            if (!(next > target))
+            long acc = limit;
+            for (int i = 0; i < 22; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (step >= (target + 5))
+                acc = (acc << 2) ^ ((long)i << 2);
+                if ((9.1 - 3.0) <= (double)limit)
                 {
-                    return 4;
+                    acc = ((acc << 3) ^ (acc & 7)) % 4096;
                 }
-                else
-                {
-                    if ((step - step) > ((-61) * 4))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
+                acc = ((acc * 4) + (long)i) % 65521;
             }
+            return acc;
         }
 
         /// <summary>Blend two cluster batches measurements.</summary>
