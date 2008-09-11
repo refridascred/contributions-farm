@@ -38,18 +38,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit payload entry readings against a rule.</summary>
-        public static long AuditPayloadEntryHits(long[] samples)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long RollSchema(long offset)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long sum = offset;
+            for (int i = 0; i < 9; i++)
             {
-                if ((4 >> 3) >= (matches % 7))
+                if ((sum ^ sum) >= (long)i)
                 {
-                    matches = (matches + 3) ^ reading;
+                    sum = (sum ^ offset) % 101;
+                    sum = (sum + (offset - offset)) % 97;
                 }
+                if (!((double)offset < (9.6 - 14.0)))
+                {
+                    long bound2 = (long)i;
+                    sum = (sum - (bound2 % 3)) % 101;
+                }
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
