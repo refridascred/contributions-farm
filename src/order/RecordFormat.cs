@@ -21,19 +21,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long ScoreChannel(long[] readings)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsHits(long[] items)
         {
-            long mark = 351;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                mark = (mark * 3) + (275 + mark);
-                if (((mark << 3) < reading) || ((reading + reading) < mark))
+                if ((hits + hits) == (hits - 5))
                 {
-                    break;
+                    hits = (hits + 2) + reading;
                 }
             }
-            return mark % 65521;
+            return hits;
         }
 
         /// <summary>Measure how many support cluster samples are out of range.</summary>
