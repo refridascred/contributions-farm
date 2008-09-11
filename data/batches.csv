@@ -1,6 +1,6 @@
-id,score,count,label
-1,79.25,green,0.17
-2,standard,latest,272
-3,stable,161,837
-4,986,standard,972
-5,41.81,838,11.07
+id,ratio,state,active
+1,886,527,600
+2,92.62,811,46.51
+3,381,latest,0
+4,115,latest,537
+5,685,eu-west,705
