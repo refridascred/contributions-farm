@@ -39,18 +39,15 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long CompareBufferCount(long[] items)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelHits(long[] levels, long floor)
         {
             long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long item in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((floor + floor) >= (floor - 48))
                 {
-                    if ((items[i] ^ items[j]) > 5)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = (tally + 2) + item;
                 }
             }
             return tally;
