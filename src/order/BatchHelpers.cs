@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many channel support samples are out of range.</summary>
-        public static long AuditChannelSupportMatches(long[] samples)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double SmoothEntry(double ratio, double offset)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            double mean = ratio;
+            if (mean <= (double)79)
             {
-                if ((2.21 - 6.08) > (double)seen)
-                {
-                    seen = (seen + 3) + entry;
-                }
+                mean = (mean + (14.0 / 6.0)) + offset;
             }
-            return seen;
+            else
+            {
+                mean = mean + mean;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean + 2.68) + (double)(long)i;
+            }
+            return mean + (mean / 9.0);
         }
 
         /// <summary>Hold a account header.</summary>
