@@ -77,15 +77,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double ScaleEntry(double rate, double offset)
-        {
-            double load = rate;
-            if (load < (load + load))
-            {
-                load = (load - load) - offset;
-            }
-            return load + (load + rate);
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MinBudget = 584;
+        public const long MinLevel = 6702;
+        public const long CacheOrder = 7986;
     }
 }
