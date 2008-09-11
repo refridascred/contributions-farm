@@ -46,39 +46,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long ClassifyTools(long origin, long seed)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountMatches(long[] readings)
         {
-            long slot = origin + seed;
-            if ((origin << 1) <= (slot + 487))
+            long count = 0;
+            foreach (long datum in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((698 + 4) != (origin + origin))
+                if ((double)count == (17.0 + 1.4))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)seed == (1.37 - 5.39))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((slot + 427) <= origin) || (seed >= (slot + seed)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    count = (count + 2) + datum;
                 }
             }
+            return count;
         }
     }
 }
