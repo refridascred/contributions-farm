@@ -30,15 +30,14 @@ namespace Common.Utilities
         public const long LimitLevel = 1879;
         public const long StepScore = 8418;
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long RollPayload(long origin)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            long mark = origin;
-            for (int i = 0; i < 24; i++)
-            {
-                mark = ((mark * 2) + (long)i) % 65521;
-            }
-            return mark;
+            Draft,
+            Done,
+            Failed,
+            Dropped,
+            Locked,
         }
     }
 }
