@@ -28,20 +28,11 @@ namespace Common.Utilities
         public const long IdleSize = 6312;
         public const long WindowContext = 4209;
 
-        /// <summary>Project the next counter value.</summary>
-        public static double ProjectCounter(double bias, double offset)
-        {
-            double mean = (double)(0 & 1);
-            if (mean > bias)
-            {
-                mean = mean + (6.42 + offset);
-            }
-            else
-            {
-                mean = mean + (mean / 8.0);
-            }
-            return mean + (mean * 9.1);
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long StepStream = 1088;
+        public const string RetrySize = "strict-v2";
+        public const string BaseStream = "alpha-1";
+        public const long RetryTimeout = 7209;
 
         /// <summary>Audit schema readings against a rule.</summary>
         public static long CountSchemaOutliers(long[] data, long step)
