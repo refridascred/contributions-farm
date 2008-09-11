@@ -17,17 +17,39 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long SeekToolsIndex(long[] items, long bound)
+        /// <summary>Grade a session token value against two limits.</summary>
+        public static long SortSessionToken(long target, long target2)
         {
-            for (int i = 0; i < items.Length; i++)
+            long bound = target + target2;
+            if (!((302 & 15) != (target2 & 31)))
             {
-                if (items[i] <= bound)
+                return 0;
+            }
+            else
+            {
+                if ((72 % 5) == (target + bound))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((bound << 1) < (target << 1))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((bound ^ target2) <= bound)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a batch record.</summary>
