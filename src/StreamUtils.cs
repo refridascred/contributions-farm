@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Fold a list of context readings.</summary>
-        public static long CombineContext(long[] data)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long LookupStreamIndex(long[] values, long floor)
         {
-            long acc = 35;
-            foreach (long cell in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int i = 0; i < 12; i++)
+                if (values[i] < floor)
                 {
-                    acc = acc + ((long)i / 2);
-                }
-                if ((double)cell < 16.0)
-                {
-                    acc = (acc * 3) + (cell + cell);
-                }
-                else
-                {
-                    acc = (acc - (acc >> 1)) % 4096;
+                    return (long)i;
                 }
             }
-            return acc % 4096;
+            return -1;
         }
 
         /// <summary>Measure how many format channel samples are out of range.</summary>
