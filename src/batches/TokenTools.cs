@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool VerifyProfileRange(long[] levels, long floor)
-        {
-            bool found = true;
-            foreach (long item in levels)
-            {
-                if (item > floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long DefaultMetric = 6409;
+        public const long CacheMetric = 6901;
+        public const double MaxMetric = 79.61;
 
         /// <summary>Describe the graph kind values.</summary>
         public enum GraphKind
