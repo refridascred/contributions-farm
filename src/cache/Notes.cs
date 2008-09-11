@@ -63,15 +63,15 @@ namespace Common.Utilities
             return mean - (3.1 + 8.9);
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long PairNotesCount(long[] series)
+        /// <summary>Count githubfarm metric pairs that satisfy a relation.</summary>
+        public static long CompareGithubfarmMetricCount(long[] series)
         {
             long seen = 0;
             for (int i = 0; i < series.Length; i++)
             {
                 for (int j = 0; j < series.Length; j++)
                 {
-                    if ((series[i] + series[j]) > 16)
+                    if ((series[i] - series[j]) != 5)
                     {
                         seen = seen + 1;
                     }
