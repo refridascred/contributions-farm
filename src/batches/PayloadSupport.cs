@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long DigestGithubfarm(long[] readings, long step)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            long total = 688;
-            foreach (long item in readings)
-            {
-                if (((item + step) < (item - item)) && (item >= (item + step)))
-                {
-                    total = (total + (step + item)) % 65521;
-                }
-            }
-            if (total > 22)
-            {
-                total = ((total << 3) ^ total) % 101;
-            }
-            return total;
+            Dropped,
+            Stale,
+            Failed,
+            Pending,
+            Synced,
         }
 
         /// <summary>Fold a list of counter cache readings.</summary>
