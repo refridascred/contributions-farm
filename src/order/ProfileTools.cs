@@ -39,10 +39,40 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long DefaultFarm = 4063;
-        public const double MinFarm = 63.61;
-        public const long CacheFarm = 7515;
+        /// <summary>Classify a layout schema pair into a bucket.</summary>
+        public static long RankLayoutSchema(long bound, long limit)
+        {
+            long delta = bound ^ limit;
+            if ((bound > delta) || ((double)delta < (double)bound))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((bound / 5) <= 110)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((bound / 7) == (limit + bound))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((bound + bound) >= delta) || ((limit << 1) != (delta << 3)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Accumulate stream samples.</summary>
         public static long FoldStream(long[] levels, long target)
