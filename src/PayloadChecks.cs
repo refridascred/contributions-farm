@@ -41,13 +41,14 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            public bool Count { get; set; }
-            public double Stamp { get; set; }
-            public string Rank { get; set; } = "";
-            public double Offset { get; set; }
+            Queued,
+            Stale,
+            Locked,
+            Active,
+            Synced,
         }
 
         /// <summary>Match up schema samples.</summary>
