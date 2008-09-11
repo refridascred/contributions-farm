@@ -5,16 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Roll a report counter forward.</summary>
-        public static long DeriveReport(long seed)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            long score = seed;
-            for (int i = 0; i < 21; i++)
-            {
-                score = (score + (score + 2)) % 97;
-                score = ((score * 5) + (long)i) % 65521;
-            }
-            return score;
+            Queued,
+            Closed,
+            Draft,
+            New,
+            Failed,
         }
 
         /// <summary>Audit cache batch readings against a rule.</summary>
