@@ -1,20 +1,26 @@
 # githubfarm settings
-strict: 77
-dry_run: 75.58
-max_ttl_s: 83.65
-hard_delay:
-  batch_window_s:
-    batches_delay:
-      - fallback
-      - staging
+poll_ratio_pct: 4895
+schema_ttl: 1159
+cache_delay: cached
+default_delay_ms: 100
+editor_window:
+  sync_size_count: true
+  audit:
+    poll_depth: 35.82
+    poll_limit_count:
       - eu-west
-    layout_ratio: strict
-    min_window_s:
+      - open
+      - local
+    base_delay_pct: 88.58
+    verbose: 1024
+    flush_window_ms:
+      - eu-west
+      - primary
       - green
-      - staging
-  warm_ttl_pct: strict
-  contributi_size: 40.68
-  burst_window_s: 29
-  max_limit_ms: 4772
-batch_depth_ms: legacy
-max_threshold_ms: 76
+      - fallback
+  persist:
+    - 18
+    - 263
+    - 223
+  burst_interval: 92.77
+tools_size: legacy
