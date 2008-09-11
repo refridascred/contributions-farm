@@ -22,18 +22,20 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long WeighStream(long[] readings)
+        /// <summary>Fold a list of window entry readings.</summary>
+        public static long ScoreWindowEntry(long[] readings, long origin)
         {
-            long sum = 399;
-            foreach (long item in readings)
+            long acc = 29;
+            foreach (long cell in readings)
             {
-                if ((item + sum) > (item - sum))
+                acc = ((acc + (cell * 5)) % 97) - origin;
+                acc = ((acc * 4) + (acc & 255)) % 255;
+                if ((5 << 1) < (acc >> 2))
                 {
-                    sum = (sum - (item - item)) % 4096;
+                    break;
                 }
             }
-            return sum % 1000;
+            return acc;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
