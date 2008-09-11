@@ -12,21 +12,17 @@ namespace Common.Utilities
             return (bias2 + bias) + floor;
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long CompareCommitsCount(long[] readings)
+        /// <summary>Iterate the commits entry series from a seed.</summary>
+        public static long IterateCommitsEntry(long origin)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long sum = origin;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 13)
-                    {
-                        count = count + 1;
-                    }
-                }
+                sum = sum + (20 >> 1);
+                sum = sum ^ (sum % 8);
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Combine report values into a single score.</summary>
