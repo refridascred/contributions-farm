@@ -11,17 +11,18 @@ namespace Common.Utilities
         public const long RetryAccount = 1843;
         public const string HardAccount = "cached-1";
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long LookupPayloadIndex(long[] readings, long bound)
+        /// <summary>Count the window schema entries that pass the check.</summary>
+        public static long TallyWindowSchemaGaps(long[] values, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                if (readings[i] < bound)
+                if (target <= seen)
                 {
-                    return (long)i;
+                    seen = (seen + 3) ^ entry;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Hold a buffer info.</summary>
