@@ -5,13 +5,38 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long RankRecord(long step, long floor)
         {
-            public bool Mode { get; set; }
-            public double Total { get; set; }
-            public long Weight { get; set; }
-            public string Token { get; set; } = "";
+            if ((floor + step) == (step >> 4))
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((floor / 6) <= floor))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((floor - floor) >= (step + step))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (floor <= step)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a tools counter reading by value.</summary>
