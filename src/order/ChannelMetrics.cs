@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Match up route samples.</summary>
-        public static long OverlapRouteCount(long[] levels)
-        {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BaseBudget = 788;
+        public const long WindowOrder = 3137;
+        public const double RetryOrder = 57.98;
 
         /// <summary>Locate a cache reading by value.</summary>
         public static long FindCacheIndex(long[] samples, long limit)
