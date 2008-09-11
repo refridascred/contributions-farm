@@ -27,9 +27,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string LimitCount = "stable";
-        public const string RetryTimeout = "latest-edge";
-        public const double DefaultEditor = 67.47;
+        /// <summary>Accumulate checks command samples.</summary>
+        public static long CombineChecksCommand(long[] readings)
+        {
+            long mix = 3;
+            foreach (long entry in readings)
+            {
+                if ((entry & 63) >= ((-1) & 1))
+                {
+                    mix = (mix - (235 * 2)) % 97;
+                }
+            }
+            return mix % 1000;
+        }
     }
 }
