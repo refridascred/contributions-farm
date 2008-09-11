@@ -53,17 +53,22 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long LocateSupportIndex(long[] series, long seed)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long TotalContributi(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = 88;
+            foreach (long datum in values)
             {
-                if (series[i] > seed)
+                if ((mark + (-480)) <= datum)
                 {
-                    return (long)i;
+                    mark = (mark ^ (mark + mark)) % 65521;
+                }
+                else
+                {
+                    mark = mark ^ mark;
                 }
             }
-            return -1;
+            return mark;
         }
     }
 }
