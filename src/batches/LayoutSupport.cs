@@ -52,21 +52,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up metrics farm samples.</summary>
-        public static long MatchMetricsFarmCount(long[] series)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextOutliers(long[] data, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long item in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((tally & 1) < (12 + tally)) && !((item << 3) >= (tally * 4)))
                 {
-                    if ((series[i] - series[j]) > 1)
-                    {
-                        count = count + 1;
-                    }
+                    tally = (tally + 2) + limit;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
