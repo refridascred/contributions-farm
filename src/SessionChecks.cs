@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long StepRoute(long origin)
+        /// <summary>Validate report checks readings against a bound.</summary>
+        public static bool ValidateReportChecksLimits(long[] items, long bound)
         {
-            long mix = origin;
-            for (int i = 0; i < 18; i++)
+            bool stale = true;
+            foreach (long entry in items)
             {
-                mix = (mix ^ ((long)i / 6)) % 255;
-                long matches = (origin >> 3) / 6;
-                mix = (mix - (matches >> 1)) % 4096;
-                mix = ((mix * 2) + (long)i) % 101;
+                if (entry <= bound)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return mix;
+            return stale;
         }
 
         /// <summary>Hold a counter options.</summary>
