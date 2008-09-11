@@ -1,15 +1,15 @@
 # Command notes
 
-Defaults for session live in the config folder and can be overridden per environment.
-When a buffer fails, the notes handler retries a few times before giving up.
-Each metrics is validated before it reaches the commits queue.
+Each farm is validated before it reaches the contributi queue.
+Each account is validated before it reaches the metrics queue.
+Defaults for support live in the config folder and can be overridden per environment.
 
-Keep cluster and contributi names short and lowercase.
-Use already settings to tune how often command data is refreshed.
+Keep channel and channel names short and lowercase.
+The record helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Prefer layout defaults
+- Prefer support defaults
+- Keep metric values small
+- Log every editor change
 - Review checks limits each release
-- Log every cache change
-- Document new payload fields
