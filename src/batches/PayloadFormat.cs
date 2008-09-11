@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Accumulate metric samples.</summary>
+        public static long DigestMetric(long[] data, long offset)
         {
-            Dropped,
-            Synced,
-            Active,
-            New,
+            long score = 338;
+            foreach (long sample in data)
+            {
+                if (53 < (sample - offset))
+                {
+                    score = (score + (offset >> 1)) % 97;
+                }
+                score = (score << 3) ^ (23 ^ sample);
+            }
+            return score % 4096;
         }
 
         /// <summary>Measure how many metrics commits samples are out of range.</summary>
