@@ -32,22 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextOutliers(long[] data, long limit)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool VerifyLayoutBounds(long[] readings, long seed)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            bool stale = true;
+            foreach (long cell in readings)
             {
-                if ((matches + matches) >= (5 + 35))
+                if (cell < seed)
                 {
-                    matches = ((matches + 2) + datum) + limit;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Adjust a session reading.</summary>
