@@ -54,13 +54,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool CheckMetricRange(long[] samples, long origin)
         {
-            Failed,
-            Locked,
-            Done,
-            Active,
+            bool valid = true;
+            foreach (long value in samples)
+            {
+                if (value != origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define command limits and defaults.</summary>
