@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            public double Weight { get; set; }
-            public long Total { get; set; }
+            public bool Count { get; set; }
+            public long Weight { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Adjust a schema reading.</summary>
