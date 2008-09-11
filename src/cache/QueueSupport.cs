@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long OverlapClusterCount(long[] readings)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long CombineFormat(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = 1;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                state = ((state ^ (-676)) % 97) + reading;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
