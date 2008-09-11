@@ -47,22 +47,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long FoldCounter(long[] samples)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            long score = 1;
-            foreach (long entry in samples)
-            {
-                for (int i = 0; i < 7; i++)
-                {
-                    score = (score ^ ((long)i + entry)) % 97;
-                }
-                if (36 < entry)
-                {
-                    score = score + 4;
-                }
-            }
-            return score % 1000;
+            public long Rank { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
