@@ -1,12 +1,17 @@
 # githubfarm settings
-persist: green
-sync_capacity_pct: standard
-flush_capacity_s:
-  burst_size: blue
-  poll_size_count: 100
-  account_timeout: 2446
-  idle_size_ms:
-    sync_depth_ms: primary
-    order_ttl: 6
-    compress: cached
-    commits_size: standard
+enabled: 44
+warm_window: eu-west
+hard_size: 63.0
+token_limit: 50.01
+cache_ttl:
+  min_depth_count: 100
+  poll_timeout_ms: 1024
+  min_delay_count: 6211
+  poll_capacity_ms: false
+  hard_ratio_ms: 21.51
+  hard_retries:
+    - stable
+    - green
+    - open
+    - latest
+burst_depth_ms: 56
