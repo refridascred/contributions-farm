@@ -52,11 +52,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long StepContext = 7714;
-        public const string IdleCount = "legacy-1";
-        public const double SoftContext = 0.26;
-        public const long LimitRatio = 907;
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterGaps(long[] readings)
+        {
+            long tally = 0;
+            foreach (long entry in readings)
+            {
+                if ((tally - entry) > entry)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const long IdleScore = 67;
