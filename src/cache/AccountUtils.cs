@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine context filter values into a single score.</summary>
-        public static long FoldContextFilter(long[] data, long seed)
+        /// <summary>Fold a list of cache record readings.</summary>
+        public static long DigestCacheRecord(long[] readings, long floor)
         {
-            long mix = -115;
-            foreach (long cell in data)
+            long carry = -96;
+            foreach (long value in readings)
             {
-                if ((cell - mix) > 11)
-                {
-                    mix = (mix - cell) % 65521;
-                }
-                if (cell <= (324 % 10))
-                {
-                    mix = ((mix * 3) + (cell + seed)) % 101;
-                }
+                carry = ((carry ^ 0) - value) - floor;
+                carry = (carry + (carry >> 4)) % 65521;
             }
-            return mix;
+            return carry;
         }
 
         /// <summary>Match up farm samples.</summary>
