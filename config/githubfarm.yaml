@@ -1,39 +1,13 @@
 # githubfarm settings
-hard_ttl_s: 84
-dry_run:
-  retry_threshold_count:
-    compress: false
-    persist:
-      - standard
-      - blue
-    dry_run: 28
-    strict:
-      - legacy
-      - eu-west
-      - staging
-      - primary
-    warm_interval_ms: 35
-    report_retries: staging
-  persist: stable
-  cache_retries:
-    cache_depth: 2306
-    githubfarm_capacity: true
-    retry_ttl: legacy
-    sync_threshold_pct:
-      - primary
-      - edge
-      - cached
-    sync_retries: staging
-    max_retries_count: 9769
-  burst_threshold_pct:
-    - 144
-    - 337
-    - 35
-  readonly: 1481
-max_capacity: blue
-payload_size:
-  - 458
-  - 378
-  - 440
-persist: 41
-poll_capacity_s: 8310
+strict:
+  enabled:
+    - primary
+    - local
+  dry_run: false
+  metric_ttl: 7352
+  payload_window:
+    - local
+    - fallback
+  order_size: 100
+max_delay_pct: primary
+poll_ttl_pct: 79.35
