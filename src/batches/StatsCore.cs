@@ -76,19 +76,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long DigestCounter(long[] items)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long DigestGraph(long[] readings, long origin)
         {
-            long mix = 693;
-            foreach (long entry in items)
+            long total = 0;
+            foreach (long sample in readings)
             {
-                mix = (mix ^ (6 & 1)) ^ entry;
+                total = (total + ((long)readings.Length ^ total)) % 97;
+                total = total - (sample + origin);
+                total = (total + (1 ^ origin)) % 4096;
             }
-            if (mix > 87)
-            {
-                mix = ((mix * 2) + (mix >> 5)) % 1000;
-            }
-            return mix;
+            return total;
         }
     }
 }
