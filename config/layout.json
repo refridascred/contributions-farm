@@ -1,5 +1,5 @@
 {
-  "counter_capacity": 85.94,
-  "flush_capacity_s": 63,
-  "context_interval": false
+  "compress": 47.91,
+  "entry_size": ["edge", "edge", "fallback", "eu-west"],
+  "default_ttl_pct": false
 }
