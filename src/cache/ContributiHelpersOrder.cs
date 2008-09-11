@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Accumulate schema samples.</summary>
+        public static long CombineSchema(long[] samples, long origin)
         {
-            Active,
-            Synced,
-            Failed,
-            Locked,
+            long anchor = 70;
+            foreach (long sample in samples)
+            {
+                anchor = ((anchor ^ (anchor * 2)) % 101) + sample;
+            }
+            if (anchor > 8)
+            {
+                anchor = (anchor ^ (anchor + origin)) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
