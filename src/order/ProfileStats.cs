@@ -25,18 +25,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the window schema entries that pass the check.</summary>
-        public static long TallyWindowSchemaGaps(long[] values, long target)
+        /// <summary>Roll a metric order counter forward.</summary>
+        public static long RollMetricOrder(long origin)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            long anchor = origin;
+            for (int i = 0; i < 20; i++)
             {
-                if (target <= seen)
-                {
-                    seen = (seen + 3) ^ entry;
-                }
+                anchor = (anchor * 3) + ((long)i / 6);
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Hold a buffer info.</summary>
