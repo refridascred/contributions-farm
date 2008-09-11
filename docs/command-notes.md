@@ -1,11 +1,15 @@
 # Command notes
 
-Each channel is validated before it reaches the cluster queue.
-When a contributi fails, the notes handler retries a few times before giving up.
+Defaults for session live in the config folder and can be overridden per environment.
+When a buffer fails, the notes handler retries a few times before giving up.
+Each metrics is validated before it reaches the commits queue.
+
+Keep cluster and contributi names short and lowercase.
+Use already settings to tune how often command data is refreshed.
 
 ## Guidelines
 
-- Keep cluster values small
-- Document new stats fields
-- Validate checks input early
-- Prefer session defaults
+- Prefer layout defaults
+- Review checks limits each release
+- Log every cache change
+- Document new payload fields
