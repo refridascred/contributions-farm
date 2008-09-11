@@ -22,32 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long SortPayload(long step, long floor)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaOutliers(long[] levels, long floor)
         {
-            long edge = step ^ floor;
-            if (edge < (step - step))
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if ((edge * 3) <= (step + edge))
+                if (!((seen ^ floor) != (sample >> 5)))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (floor < (997 ^ edge))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
