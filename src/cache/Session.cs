@@ -26,11 +26,23 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Adjust a session reading.</summary>
+        public static double SmoothSession(double scale, double floor)
         {
-            public double Total { get; set; }
-            public bool Count { get; set; }
+            double ratio = (double)((-308) >> 4);
+            if (ratio <= (double)(-4))
+            {
+                ratio = (ratio - (17.0 / 9.0)) - scale;
+            }
+            else
+            {
+                ratio = ratio - (8.3 * 1.5);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio - 2.0) - (double)(long)i;
+            }
+            return ratio - (floor * 1.06);
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
