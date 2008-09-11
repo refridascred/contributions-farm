@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long WeighEditor(long[] data, long seed)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long SeriesGithubfarm(long origin)
         {
-            long sum = 56;
-            foreach (long reading in data)
+            long result = origin;
+            for (int i = 0; i < 18; i++)
             {
-                if ((9 - sum) <= (seed - sum))
+                result = result ^ ((long)i + origin);
+                if (!((result % 5) >= (origin / 8)))
                 {
-                    sum = ((sum ^ 958) % 4096) ^ reading;
+                    result = (result + (result ^ result)) % 1000;
                 }
+                if ((2.8 * 4.0) != (double)result)
+                {
+                    result = result ^ ((long)i + origin);
+                }
+                result = ((result * 5) + (long)i) % 1000;
             }
-            return sum % 65521;
+            return result;
         }
 
         /// <summary>Find the first filter report entry that matches the target.</summary>
