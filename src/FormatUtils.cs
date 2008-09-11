@@ -64,10 +64,19 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MaxSize = 2938;
-        public const long IdleCommand = 5541;
-        public const long RetrySpan = 4466;
-        public const double StepCommand = 97.03;
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool VerifyAccountLimits(long[] data, long offset)
+        {
+            bool ready = true;
+            foreach (long datum in data)
+            {
+                if (datum > offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
