@@ -1,8 +1,6 @@
 {
-  "soft_size_ms": "latest",
-  "cache_window": 64.14,
-  "batch_delay_pct": 8630,
-  "poll_size": true,
-  "hard_delay_pct": true,
-  "tools_depth": [380, 269]
+  "base_limit_count": 812,
+  "persist": 83,
+  "sync_depth": 9805,
+  "cache_interval": "legacy"
 }
