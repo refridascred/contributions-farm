@@ -65,39 +65,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long ClassifyCounter(long origin, long bound)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            long span = origin - bound;
-            if ((double)origin != (18.0 - 9.45))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((double)span > 9.0))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((span * 2) == (2 + bound))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((span + (-5)) <= origin) || ((9.9 + 9.5) <= (double)span))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public long Limit { get; set; }
+            public long Offset { get; set; }
+            public long Size { get; set; }
+            public long Label { get; set; }
         }
     }
 }
