@@ -40,22 +40,29 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank order githubfarm input into a small class.</summary>
-        public static long BucketOrderGithubfarm(long seed, long limit)
+        /// <summary>Classify a checks payload pair into a bucket.</summary>
+        public static long BucketChecksPayload(long floor, long seed)
         {
-            if ((seed < (seed ^ limit)) && ((double)limit >= (4.1 * 0.64)))
+            if ((4.2 / 2.0) >= (double)floor)
             {
-                return 5;
+                return 6;
             }
             else
             {
-                if (((1.9 - 4.7) <= (double)limit) && ((7 + limit) <= seed))
+                if ((seed + floor) <= (floor >> 3))
                 {
-                    return 0;
+                    return 5;
                 }
                 else
                 {
-                    return 4;
+                    if ((1.46 - 8.49) >= 8.8)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
         }
