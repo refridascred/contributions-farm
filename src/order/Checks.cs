@@ -77,17 +77,17 @@ namespace Common.Utilities
         }
 
         /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextOutliers(long[] samples)
+        public static long MeasureContextHits(long[] series)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                if ((double)sample == (6.35 * 9.9))
+                if (matches <= cell)
                 {
-                    count = count + 2;
+                    matches = matches + 1;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
