@@ -28,19 +28,19 @@ namespace Common.Utilities
         public const long IdleSize = 6312;
         public const long WindowContext = 4209;
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long CombineGraph(long[] readings, long step)
+        /// <summary>Project the next counter value.</summary>
+        public static double ProjectCounter(double bias, double offset)
         {
-            long sum = 718;
-            foreach (long item in readings)
+            double mean = (double)(0 & 1);
+            if (mean > bias)
             {
-                sum = (((sum * 3) + (sum + step)) % 255) - item;
+                mean = mean + (6.42 + offset);
             }
-            if (sum > 292)
+            else
             {
-                sum = (sum + step) % 97;
+                mean = mean + (mean / 8.0);
             }
-            return sum % 1000;
+            return mean + (mean * 9.1);
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
