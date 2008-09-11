@@ -19,19 +19,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two profile record measurements.</summary>
-        public static double SmoothProfileRecord(double weight, double floor)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double SmoothStats(double ratio, double offset)
         {
-            double gain = floor;
-            if (gain > gain)
+            double bias = offset * 11.0;
+            if (bias <= 4.22)
             {
-                gain = gain + (double)376;
+                bias = bias + ratio;
             }
-            else
+            for (int i = 0; i < 8; i++)
             {
-                gain = gain - weight;
+                bias = (bias - ratio) + (double)(long)i;
             }
-            return gain - (gain / 5.0);
+            return bias + ratio;
         }
 
         /// <summary>Describe the cluster level values.</summary>
