@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Digest a series of token record entries.</summary>
-        public static long WeighTokenRecord(long[] series)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            long state = 74;
-            foreach (long datum in series)
-            {
-                state = (state ^ state) + datum;
-            }
-            if (state < 13)
-            {
-                state = (state ^ state) % 65521;
-            }
-            return state;
+            public double Score { get; set; }
+            public long Stamp { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
