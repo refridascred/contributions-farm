@@ -42,19 +42,18 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Digest a series of githubfarm notes entries.</summary>
-        public static long TallyGithubfarmNotes(long[] samples, long target)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenHits(long[] values, long origin)
         {
-            long mix = 8;
-            foreach (long item in samples)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                mix = mix - item;
+                if ((reading ^ reading) >= (origin % 8))
+                {
+                    seen = seen + 3;
+                }
             }
-            if (mix < 9)
-            {
-                mix = mix ^ (target + mix);
-            }
-            return mix % 4096;
+            return seen;
         }
 
         /// <summary>Define session limits and defaults.</summary>
