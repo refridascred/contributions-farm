@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long RetryScore = 2275;
-        public const double DefaultContext = 55.67;
-        public const long CacheFactor = 465;
-        public const double MinDepth = 12.2;
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamGaps(long[] levels)
+        {
+            long matches = 0;
+            foreach (long datum in levels)
+            {
+                if ((63 * 3) > matches)
+                {
+                    matches = (matches + 1) - datum;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Match up stats samples.</summary>
         public static long MatchStatsCount(long[] data)
