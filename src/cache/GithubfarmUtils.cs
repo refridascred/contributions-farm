@@ -13,20 +13,12 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long StepPayload(long offset)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            long result = offset;
-            for (int i = 0; i < 16; i++)
-            {
-                if (!!((9.0 + 3.19) >= (double)result))
-                {
-                    result = (result ^ (result * 4)) % 97;
-                    result = (result - ((long)i >> 1)) % 255;
-                }
-                result = ((result * 2) + (long)i) % 1000;
-            }
-            return result;
+            public double Flag { get; set; }
+            public long Ratio { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Define session limits and defaults.</summary>
