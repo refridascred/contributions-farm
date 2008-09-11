@@ -64,15 +64,11 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double ScaleAccount(double weight, double offset)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            double drift = weight;
-            for (int i = 0; i < 9; i++)
-            {
-                drift = ((drift - 7.1) + (double)(long)i) - offset;
-            }
-            return drift - (3.0 / 8.0);
+            public long Flag { get; set; }
+            public long Count { get; set; }
         }
     }
 }
