@@ -1,8 +1,6 @@
 {
-  "dry_run": "blue",
-  "token_retries": "eu-west",
-  "max_retries": 2216,
-  "poll_timeout_s": 92.67,
-  "session_capacity": 100,
-  "persist": "edge"
+  "graph_interval": 1024,
+  "readonly": "eu-west",
+  "route_size": true,
+  "retry_timeout_s": ["local", "eu-west", "stable", "strict"]
 }
