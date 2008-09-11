@@ -29,21 +29,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Derive the next command support value from a seed.</summary>
-        public static long SeriesCommandSupport(long floor)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorMatches(long[] readings, long bound)
         {
-            long acc = floor;
-            for (int i = 0; i < 10; i++)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                long prev = floor;
-                if ((prev - acc) != (floor >> 1))
+                if (value <= (seen / 8))
                 {
-                    prev = ((prev << 3) ^ (prev & 255)) % 4096;
+                    seen = (seen + 1) - bound;
                 }
-                prev = (prev - ((-3) + (long)i)) % 65521;
-                acc = ((acc * 3) + (long)i) % 101;
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return acc;
+            return seen;
         }
     }
 }
