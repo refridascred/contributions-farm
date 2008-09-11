@@ -1,15 +1,14 @@
 # entry settings
-strict:
-  poll_capacity: 56
-  min_ratio_count:
-    flush_size_pct: 64
-    schema_retries: 40
-    flush_capacity_s: green
-  dry_run: open
-  hard_size_pct: 500
-  schema_ratio:
-    batch_interval_ms: 65
-    audit: edge
-    schema_ratio: 41.88
-metrics_depth: eu-west
-default_retries_count: 62.43
+cache_capacity_pct: 30
+retry_capacity_pct: true
+flush_timeout_count: strict
+audit: stable
+record_window:
+  - 33
+  - 51
+  - 51
+  - 150
+dry_run:
+  - legacy
+  - eu-west
+  - fallback
