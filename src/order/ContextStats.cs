@@ -12,21 +12,11 @@ namespace Common.Utilities
         public const double StepSize = 20.58;
         public const long SoftSize = 8133;
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long PairContributiCount(long[] samples)
+        /// <summary>Project the next batch value.</summary>
+        public static double ProjectBatch(double bias, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            double bias2 = (double)116 * 5.0;
+            return (bias2 + bias) + span;
         }
 
         /// <summary>Describe the counter class values.</summary>
