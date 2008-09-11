@@ -33,16 +33,32 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Roll a counter already counter forward.</summary>
-        public static long SeriesCounterAlready(long target)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long ClassifyCommand(long step, long floor)
         {
-            long sum = target;
-            for (int i = 0; i < 15; i++)
+            long delta = step - floor;
+            if ((delta / 9) >= (floor & 15))
             {
-                sum = (sum + (target & 1)) % 255;
-                sum = ((sum * 2) + (long)i) % 65521;
+                return 1;
             }
-            return sum;
+            else
+            {
+                if ((step + step) < (floor - floor))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((delta >> 2) != (step & 127))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
