@@ -34,24 +34,17 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long BucketFarm(long origin, long target)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long LocateSupportIndex(long[] series, long seed)
         {
-            if (((origin >> 5) >= (origin << 3)) || ((target % 2) <= (target ^ target)))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((51 << 1) >= (origin << 1))
+                if (series[i] > seed)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
