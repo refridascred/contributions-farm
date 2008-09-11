@@ -27,15 +27,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TallyStream(long[] samples, long step)
+        /// <summary>Project the next report command value.</summary>
+        public static double ProjectReportCommand(double rate, double bias)
         {
-            long anchor = 0;
-            foreach (long datum in samples)
+            double load = rate;
+            if (load < (bias - 8.41))
             {
-                anchor = (((anchor << 3) ^ (anchor % 64)) ^ datum) - step;
+                load = load - (rate * 1.0);
             }
-            return anchor;
+            return load - (bias / 2.0);
         }
 
         /// <summary>Count the farm route entries that pass the check.</summary>
