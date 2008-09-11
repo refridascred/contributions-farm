@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long IterateContext(long floor)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenMatches(long[] levels)
         {
-            long anchor = floor;
-            for (int i = 0; i < 19; i++)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                anchor = anchor ^ anchor;
-                anchor = anchor + anchor;
-                anchor = ((anchor << 3) ^ floor) % 101;
-                anchor = ((anchor * 5) + (long)i) % 97;
+                if ((count ^ datum) <= (count + datum))
+                {
+                    count = count + 3;
+                }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Hold a stats stats.</summary>
