@@ -38,18 +38,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorHits(long[] data)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyHits(long[] values)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if ((seen & 127) < (entry << 1))
+                if ((double)sample < (double)862)
                 {
-                    seen = seen + 1;
+                    matches = matches + 2;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Roll a graph counter forward.</summary>
