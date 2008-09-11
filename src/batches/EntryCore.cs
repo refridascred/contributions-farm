@@ -10,10 +10,14 @@ namespace Common.Utilities
         public const long DefaultDepth = 3808;
         public const double BatchTools = 82.88;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long SoftGithubfarm = 8800;
-        public const double DefaultGithubfarm = 85.78;
-        public const long RetryGithubfarm = 2543;
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
+        {
+            Dropped,
+            New,
+            Failed,
+            Done,
+        }
 
         /// <summary>Count the channel farm entries that pass the check.</summary>
         public static long CountChannelFarmHits(long[] values)
