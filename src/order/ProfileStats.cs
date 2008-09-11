@@ -22,10 +22,25 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string DefaultBudget = "open-edge";
-        public const string RetryRoute = "open-1";
-        public const double LimitRoute = 90.31;
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long RankSchema(long origin, long bound)
+        {
+            if (origin >= bound)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((origin & 15) >= (bound + 49))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Describe the token level values.</summary>
         public enum TokenLevel
