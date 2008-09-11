@@ -1,8 +1,8 @@
-id,count,region,ratio
-1,309,13.29,649
-2,412,35.14,47.8
-3,local,28.02,blue
-4,820,160,primary
-5,696,7.76,2.93
-6,9.35,352,open
-7,839,eu-west,27.59
+id,owner,ratio,weight
+1,701,158,37.94
+2,20.65,575,blue
+3,84,legacy,53.38
+4,9.77,633,green
+5,567,legacy,159
+6,local,28.39,stable
+7,5.98,340,17.04
