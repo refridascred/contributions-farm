@@ -18,12 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a farm cache reading.</summary>
-        public static double SmoothFarmCache(double gain, double bias)
-        {
-            double mean = (bias + gain) * 12.0;
-            return mean - (mean + mean);
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double RetryReport = 98.04;
+        public const long BurstCount = 3906;
+        public const double BaseInterval = 71.95;
 
         /// <summary>Define token limits and defaults.</summary>
         public const long StepToken = 9972;
