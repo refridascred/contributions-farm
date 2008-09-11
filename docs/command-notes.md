@@ -1,12 +1,12 @@
 # Command notes
 
-A editor that stays idle for too long is moved to the already list.
-Keep layout and buffer names short and lowercase.
-The profile module keeps queue values in sync with the batches cache.
+Each session is validated before it reaches the profile queue.
+A context that stays idle for too long is moved to the token list.
+Use profile settings to tune how often githubfarm data is refreshed.
 
 ## Guidelines
 
-- Prefer cluster defaults
-- Document new layout fields
-- Log every window change
-- Keep window values small
+- Prefer stream defaults
+- Keep buffer values small
+- Review batches limits each release
+- Validate githubfarm input early
