@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
-        {
-            Ready,
-            Locked,
-            Failed,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long HardScore = 4808;
+        public const long IdleGraph = 9280;
+        public const string BatchGraph = "latest";
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long MeasureMetricOutliers(long[] readings, long origin)
