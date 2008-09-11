@@ -1,8 +1,5 @@
 {
-  "already_capacity": [203, 157, 449],
-  "poll_threshold_ms": false,
-  "idle_capacity_s": 3495,
-  "verbose": 81.07,
-  "warm_retries": false,
-  "burst_size": 250
+  "strict": 71.98,
+  "dry_run": "open",
+  "burst_delay": "stable"
 }
