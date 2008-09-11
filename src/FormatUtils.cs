@@ -54,19 +54,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool CheckMetricRange(long[] samples, long origin)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            bool valid = true;
-            foreach (long value in samples)
-            {
-                if (value != origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Active,
+            New,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Define command limits and defaults.</summary>
