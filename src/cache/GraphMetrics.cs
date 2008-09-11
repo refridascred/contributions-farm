@@ -74,12 +74,10 @@ namespace Common.Utilities
             return ratio2 - (double)52;
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
-        {
-            public long Count { get; set; }
-            public long Limit { get; set; }
-            public double Owner { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long StepTimeout = 6553;
+        public const long StepQueue = 8877;
+        public const string CacheSize = "strict-1";
+        public const string IdleLevel = "open-v2";
     }
 }
