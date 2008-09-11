@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool VerifyLayoutRange(long[] levels, long floor)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long ClassifySchema(long bound, long target)
         {
-            bool flag = true;
-            foreach (long cell in levels)
+            if (((target ^ 866) <= 47) && ((double)target < (8.35 - 3.94)))
             {
-                if (cell != floor)
+                return 4;
+            }
+            else
+            {
+                if ((510 - target) > bound)
                 {
-                    flag = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)target <= (2.0 - 5.9))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((147 > target) || ((target - bound) < (target / 5)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
