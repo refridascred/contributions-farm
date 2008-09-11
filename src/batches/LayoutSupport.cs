@@ -20,10 +20,40 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BurstMetric = 528;
-        public const double LimitDepth = 16.99;
-        public const long IdleMetric = 8520;
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long SortLayout(long limit, long target)
+        {
+            long next = limit + target;
+            if (((0.4 * 4.44) <= (double)target) && ((limit << 3) > (29 + next)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((target + next) > (limit / 6))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((8.83 / 7.0) >= (double)next))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((next + target) <= limit)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Adjust a session reading.</summary>
         public static double AdjustSession(double weight, double offset)
