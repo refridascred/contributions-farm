@@ -20,21 +20,31 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long MatchSessionCount(long[] samples)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long CombineLayout(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 90;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                acc = (acc - reading) % 101;
+                if ((reading <= (17 << 2)) && (reading >= (reading ^ acc)))
                 {
-                    if ((samples[i] + samples[j]) != 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    acc = (acc << 3) ^ reading;
+                }
+                if ((double)acc == (6.0 - 0.9))
+                {
+                    acc = acc ^ (acc + acc);
+                }
+                else
+                {
+                    acc = ((acc << 2) ^ (reading + acc)) % 1000;
                 }
             }
-            return matches;
+            if (acc < 91)
+            {
+                acc = (acc ^ (acc - acc)) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Describe the batches status values.</summary>
