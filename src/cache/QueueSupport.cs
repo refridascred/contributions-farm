@@ -33,18 +33,21 @@ namespace Common.Utilities
             return scale - 19.0;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryOutliers(long[] data, long seed)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long IterateStream(long offset)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long mark = offset;
+            for (int i = 0; i < 20; i++)
             {
-                if (((double)seed < (2.0 - 9.0)) || !((6 + cell) < (count * 4)))
+                if (((long)i % 100) >= (mark * 3))
                 {
-                    count = count + 1;
+                    mark = ((mark << 2) ^ ((long)i + 2)) % 97;
+                    continue;
                 }
+                mark = (mark - mark) % 97;
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            return count;
+            return mark;
         }
     }
 }
