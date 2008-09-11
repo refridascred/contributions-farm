@@ -35,18 +35,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueMatches(long[] levels)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long DeriveProfile(long origin)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long mark = origin;
+            for (int i = 0; i < 11; i++)
             {
-                if (!(reading < ((-40) / 3)))
-                {
-                    tally = tally + 1;
-                }
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Hold a record stats.</summary>
