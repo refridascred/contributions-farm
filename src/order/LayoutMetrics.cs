@@ -20,18 +20,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueOutliers(long[] items)
+        /// <summary>Accumulate order samples.</summary>
+        public static long WeighOrder(long[] levels)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long acc = 652;
+            foreach (long item in levels)
             {
-                if ((item ^ matches) < item)
+                if ((long)levels.Length >= (826 << 2))
                 {
-                    matches = matches + 2;
+                    acc = ((acc * 5) + (acc - acc)) - item;
                 }
             }
-            return matches;
+            if (acc > 9)
+            {
+                acc = acc ^ (acc + acc);
+            }
+            return acc;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
