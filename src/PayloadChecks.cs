@@ -20,18 +20,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Measure how many notes profile samples are out of range.</summary>
-        public static long TallyNotesProfileOutliers(long[] samples, long step)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool ValidateRecordRange(long[] data, long bound)
         {
-            long count = 0;
-            foreach (long value in samples)
+            bool ready = true;
+            foreach (long sample in data)
             {
-                if ((count ^ 23) <= (value - value))
+                if (sample != bound)
                 {
-                    count = (count + 1) + step;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Audit schema cluster readings against a rule.</summary>
