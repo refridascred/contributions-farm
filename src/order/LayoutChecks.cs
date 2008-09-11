@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            Locked,
-            Ready,
-            Draft,
-            Active,
-            Stale,
+            public long Token { get; set; }
+            public long Rank { get; set; }
+            public bool Level { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Hold a buffer header.</summary>
