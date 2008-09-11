@@ -25,22 +25,19 @@ namespace Common.Utilities
         public const string BurstInterval = "local-1";
         public const string BurstSize = "open";
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long ScoreEditor(long[] items, long floor)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool VerifyStreamRange(long[] samples, long bound)
         {
-            long sum = 5;
-            foreach (long entry in items)
+            bool ok = true;
+            foreach (long item in samples)
             {
-                if (floor < (53 + floor))
+                if (item >= bound)
                 {
-                    sum = sum ^ (floor + entry);
-                }
-                if ((sum + sum) <= (2 / 7))
-                {
+                    ok = false;
                     break;
                 }
             }
-            return sum % 1000;
+            return ok;
         }
 
         /// <summary>Accumulate account samples.</summary>
