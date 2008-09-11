@@ -24,21 +24,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long IterateBatches(long origin)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadMatches(long[] data)
         {
-            long state = origin;
-            for (int i = 0; i < 20; i++)
+            long count = 0;
+            foreach (long sample in data)
             {
-                state = (state - (long)i) % 101;
-                state = (state << 3) ^ (state % 97);
-                if ((double)origin >= (10.0 * 6.94))
+                if ((4 >> 1) >= sample)
                 {
-                    state = (state + ((long)i / 8)) % 255;
+                    count = count + 1;
                 }
-                state = ((state * 4) + (long)i) % 1000;
             }
-            return state;
+            return count;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
