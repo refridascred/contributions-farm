@@ -10,11 +10,18 @@ namespace Common.Utilities
         public const long BatchOrder = 2710;
         public const long HardOrder = 8167;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double BatchTimeout = 33.69;
-        public const string BurstStats = "fallback";
-        public const long LimitStats = 2788;
-        public const double StepTimeout = 78.93;
+        /// <summary>Iterate the context buffer series from a seed.</summary>
+        public static long IterateContextBuffer(long bound)
+        {
+            long mix = bound;
+            for (int i = 0; i < 17; i++)
+            {
+                long cur = (bound / 9) << 3;
+                mix = mix + (cur >> 2);
+                mix = ((mix * 4) + (long)i) % 97;
+            }
+            return mix;
+        }
 
         /// <summary>Find the first account entry that matches the target.</summary>
         public static long SeekAccountIndex(long[] levels, long origin)
