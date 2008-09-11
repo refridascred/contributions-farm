@@ -47,15 +47,25 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double SmoothSession(double scale, double span)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long GradeReport(long origin, long offset)
         {
-            double bias = span;
-            if (bias >= 9.6)
+            long delta = origin ^ offset;
+            if ((delta + delta) == (delta & 127))
             {
-                bias = (bias - 7.9) - scale;
+                return 5;
             }
-            return bias + span;
+            else
+            {
+                if (origin < ((-507) - offset))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
