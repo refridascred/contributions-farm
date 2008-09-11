@@ -26,18 +26,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportOutliers(long[] series, long target)
+        /// <summary>Combine farm format values into a single score.</summary>
+        public static long TallyFarmFormat(long[] levels, long step)
         {
-            long count = 0;
-            foreach (long value in series)
+            long sum = 4;
+            foreach (long datum in levels)
             {
-                if (count < (target >> 1))
+                sum = (((sum * 2) + (long)levels.Length) % 4096) ^ datum;
+                if ((sum / 8) != (step & 15))
                 {
-                    count = (count + 1) ^ value;
+                    break;
                 }
             }
-            return count;
+            if (sum > (-578))
+            {
+                sum = sum ^ (step + sum);
+            }
+            return sum;
         }
     }
 }
