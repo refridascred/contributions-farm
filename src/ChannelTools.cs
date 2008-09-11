@@ -24,38 +24,12 @@ namespace Common.Utilities
             return load + (load * 8.5);
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long RankFarm(long step, long bound)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            if (((bound / 8) >= (step * 4)) && ((double)step == (1.29 - 6.0)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((double)step > (17.0 / 6.0)) && ((bound << 2) > (step - 62)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (step >= (step % 60))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)step > 0.84)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public bool Level { get; set; }
+            public string Token { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Scale a report record figure with a bias.</summary>
