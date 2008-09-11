@@ -12,14 +12,18 @@ namespace Common.Utilities
         public const string IdleCount = "local-1";
         public const string MinTimeout = "local-v2";
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountHits(long[] levels)
         {
-            Closed,
-            Ready,
-            Paused,
-            Done,
-            Stale,
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if (((247 ^ entry) <= 9) || ((984 <= entry) || ((entry / 6) >= (entry * 5))))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Roll a counter counter forward.</summary>
