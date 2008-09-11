@@ -23,18 +23,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long StepRoute(long limit)
-        {
-            long score = limit;
-            for (int i = 0; i < 16; i++)
-            {
-                score = ((score * 5) + (long)i) % 101;
-                score = score ^ (limit - 872);
-                score = ((score * 4) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string IdleEditor = "cached-v2";
+        public const double BaseWidth = 49.48;
+        public const long MinSize = 2376;
 
         /// <summary>Define context limits and defaults.</summary>
         public const long IdleContext = 9323;
