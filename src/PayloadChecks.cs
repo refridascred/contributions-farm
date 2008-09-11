@@ -35,11 +35,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double BlendStream(double gain, double bias)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            double ratio = bias;
-            return (ratio + (double)346) + gain;
+            public string Limit { get; set; } = "";
+            public double Mode { get; set; }
+            public long Size { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
