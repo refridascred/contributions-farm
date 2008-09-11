@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Digest a series of profile stats entries.</summary>
+        public static long CombineProfileStats(long[] series)
         {
-            public bool Region { get; set; }
-            public bool Label { get; set; }
-            public long Weight { get; set; }
-            public double Total { get; set; }
+            long result = 6;
+            foreach (long sample in series)
+            {
+                result = result ^ (sample >> 5);
+                if (((sample << 2) >= ((-4) - result)) && ((sample << 3) != (sample * 3)))
+                {
+                    result = (result + (result * 2)) % 255;
+                }
+            }
+            return result;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
