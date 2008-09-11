@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Accumulate account samples.</summary>
+        public static long CombineAccount(long[] levels, long limit)
         {
-            Closed,
-            Active,
-            Pending,
-            Locked,
+            long carry = 3;
+            foreach (long value in levels)
+            {
+                if (!((carry + limit) > (value + carry)))
+                {
+                    carry = ((carry * 5) + (6 % 3)) % 1000;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Grade a batch value against two limits.</summary>
