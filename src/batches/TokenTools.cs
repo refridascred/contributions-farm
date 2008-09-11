@@ -26,18 +26,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandHits(long[] items)
-        {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if (162 > (matches - 603))
-                {
-                    matches = (matches + 3) + datum;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string StepScore = "stable-v2";
+        public const long BaseFactor = 5552;
+        public const long SoftRecord = 2537;
+        public const long MaxRecord = 1927;
+        public const string CacheRecord = "legacy-1";
     }
 }
