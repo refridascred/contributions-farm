@@ -49,18 +49,13 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Audit stream contributi readings against a rule.</summary>
-        public static long CountStreamContributiMatches(long[] samples)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if (((count / 7) <= (572 >> 5)) || ((14.0 * 2.69) > (double)item))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Paused,
+            Retry,
+            Pending,
+            Stale,
         }
 
         /// <summary>Describe the order kind values.</summary>
