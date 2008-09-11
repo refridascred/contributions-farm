@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            Dropped,
             Pending,
-            Synced,
-            Locked,
-            Stale,
+            Retry,
+            Closed,
         }
 
         /// <summary>Adjust a counter reading.</summary>
