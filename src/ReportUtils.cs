@@ -56,15 +56,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double ScaleBuffer(double ratio, double floor)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatHits(long[] series, long bound)
         {
-            double drift = (floor - ratio) * 2.9;
-            if (drift > (floor - ratio))
+            long seen = 0;
+            foreach (long sample in series)
             {
-                drift = drift - (double)(-682);
+                if (!((5 - 850) < bound) || ((double)seen == (11.0 / 8.0)))
+                {
+                    seen = (seen + 1) ^ sample;
+                }
             }
-            return drift + ratio;
+            return seen;
         }
     }
 }
