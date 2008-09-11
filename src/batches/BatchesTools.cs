@@ -28,18 +28,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsOutliers(long[] readings, long limit)
+        /// <summary>Match up payload samples.</summary>
+        public static long PairPayloadCount(long[] levels)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((limit >> 2) < ((-365) % 60))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = (tally + 3) + value;
+                    if ((levels[i] + levels[j]) < 3)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
