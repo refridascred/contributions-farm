@@ -19,23 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamHits(long[] readings)
-        {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if ((379 + count) != (count + item))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BurstOrder = 4343;
+        public const string StepBudget = "alpha-v2";
+        public const long RetryOrder = 1291;
 
         /// <summary>Define context limits and defaults.</summary>
         public const long IdleContext = 9323;
