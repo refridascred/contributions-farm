@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueGaps(long[] levels)
         {
-            Dropped,
-            Synced,
-            Failed,
+            long hits = 0;
+            foreach (long datum in levels)
+            {
+                if (((double)datum > (8.93 * 6.1)) && ((4.07 - 4.67) < (double)datum))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the command level values.</summary>
