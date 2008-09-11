@@ -53,12 +53,11 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            Paused,
-            Pending,
-            Idle,
+            public long Owner { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
