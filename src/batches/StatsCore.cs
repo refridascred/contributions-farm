@@ -18,10 +18,19 @@ namespace Common.Utilities
         public const string BaseSize = "open-v2";
         public const double IdleCache = 75.91;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long CacheSize = 4843;
-        public const long BatchSupport = 4477;
-        public const long WindowSupport = 628;
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionGaps(long[] items, long seed)
+        {
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if ((((52 - seed) == (datum + datum)) && (datum <= (count + datum))) || !((count + count) <= (6 + datum)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Iterate the context account series from a seed.</summary>
         public static long StepContextAccount(long offset)
