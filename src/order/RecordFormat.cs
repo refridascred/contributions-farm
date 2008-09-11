@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
-        {
-            Paused,
-            Locked,
-            Queued,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string IdleMetric = "open-v2";
+        public const double SoftInterval = 72.17;
+        public const long MaxMetric = 9107;
 
         /// <summary>Describe the metric class values.</summary>
         public enum MetricClass
