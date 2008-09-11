@@ -1,23 +1,8 @@
 {
-  "enabled": {
-    "cache_retries": {
-      "hard_interval_s": 27.8,
-      "poll_capacity_count": false,
-      "max_delay_pct": 1024,
-      "warm_limit_count": false,
-      "queue_ratio": 30
-    },
-    "enabled": "stable",
-    "report_window": 8646,
-    "default_window": 97.56,
-    "profile_threshold": {
-      "batch_ratio": "eu-west",
-      "idle_ttl_s": "legacy",
-      "readonly": 54.12
-    }
-  },
-  "max_limit": "strict",
-  "dry_run": 35,
-  "sync_ratio_count": true,
-  "filter_ratio": ["latest", "eu-west"]
+  "idle_size_ms": "open",
+  "flush_threshold_ms": "blue",
+  "max_depth": 45,
+  "dry_run": "eu-west",
+  "metric_capacity": 24.43,
+  "burst_capacity_count": [131, 75]
 }
