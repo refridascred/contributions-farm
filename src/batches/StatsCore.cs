@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Count the contributi buffer entries that pass the check.</summary>
-        public static long TallyContributiBufferGaps(long[] items)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long IterateContext(long limit)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long sum = limit;
+            for (int i = 0; i < 21; i++)
             {
-                if (1 > (entry + entry))
-                {
-                    matches = matches + 2;
-                }
+                sum = (sum * 3) + limit;
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
