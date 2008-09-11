@@ -5,13 +5,25 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Rank metrics order input into a small class.</summary>
+        public static long SortMetricsOrder(long target, long floor)
         {
-            public long Level { get; set; }
-            public double Token { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Ratio { get; set; }
+            long cur = target + floor;
+            if (((cur - cur) <= (floor / 2)) || ((8.7 / 6.0) >= (double)target))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((cur % 8) >= floor) || ((double)cur <= (5.0 - 3.0)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Fold a list of support readings.</summary>
