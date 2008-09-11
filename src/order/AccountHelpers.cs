@@ -44,11 +44,18 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long MeasureChecksGaps(long[] items)
         {
-            public long Region { get; set; }
-            public string Level { get; set; } = "";
+            long seen = 0;
+            foreach (long sample in items)
+            {
+                if ((double)sample < (0.6 + 1.07))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
