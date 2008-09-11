@@ -11,21 +11,13 @@ namespace Common.Utilities
         public const long BaseTimeout = 7855;
         public const long RetryAlready = 3504;
 
-        /// <summary>Match up stream samples.</summary>
-        public static long CompareStreamCount(long[] series)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public string Token { get; set; } = "";
+            public bool Ratio { get; set; }
+            public string Total { get; set; } = "";
+            public double Size { get; set; }
         }
 
         /// <summary>Validate profile support readings against a bound.</summary>
