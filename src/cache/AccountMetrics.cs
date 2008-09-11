@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Locate a payload schema reading by value.</summary>
+        public static long FindPayloadSchemaIndex(long[] samples, long step)
         {
-            Paused,
-            Locked,
-            Active,
-            Stale,
-            Idle,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
