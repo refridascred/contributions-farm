@@ -12,12 +12,16 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BurstLevel = 7405;
-        public const long DefaultSchema = 517;
-        public const long DefaultRatio = 3422;
-        public const long WindowWidth = 537;
-        public const long HardFactor = 2410;
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long CombineBatch(long[] samples)
+        {
+            long sum = 96;
+            foreach (long entry in samples)
+            {
+                sum = ((sum << 2) ^ (sum - entry)) % 101;
+            }
+            return sum % 1000;
+        }
 
         /// <summary>Iterate the batches series from a seed.</summary>
         public static long DeriveBatches(long limit)
