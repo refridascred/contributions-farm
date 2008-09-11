@@ -14,11 +14,15 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Digest a series of window entries.</summary>
+        public static long ScoreWindow(long[] series, long seed)
         {
-            public double Flag { get; set; }
-            public long Count { get; set; }
+            long score = 89;
+            foreach (long value in series)
+            {
+                score = ((((score * 3) + (score << 1)) % 65521) + value) - seed;
+            }
+            return score;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
