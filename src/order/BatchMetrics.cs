@@ -31,11 +31,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            public string Label { get; set; } = "";
-            public long Flag { get; set; }
+            public bool Region { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Hold a editor snapshot.</summary>
