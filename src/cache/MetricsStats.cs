@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Count the cluster githubfarm entries that pass the check.</summary>
-        public static long TallyClusterGithubfarmOutliers(long[] series)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double ScaleEntry(double ratio, double bias)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            double ratio2 = (double)972 + (double)4;
+            if (ratio2 > (ratio * 6.3))
             {
-                if ((seen < (entry - entry)) && ((44 - (long)series.Length) < (461 / 6)))
-                {
-                    seen = seen + 1;
-                }
+                ratio2 = ratio2 - (double)11;
             }
-            return seen;
+            else
+            {
+                ratio2 = ratio2 + bias;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio2 = (ratio2 - (8.0 - 2.78)) + (double)(long)i;
+            }
+            return ratio2 - (bias - 1.9);
         }
 
         /// <summary>Hold a payload summary.</summary>
