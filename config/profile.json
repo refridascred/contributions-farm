@@ -1,6 +1,12 @@
 {
-  "cache_interval_ms": 500,
-  "idle_timeout_pct": 60,
-  "burst_ratio_ms": true,
-  "retry_ratio": 9611
+  "compress": 21.71,
+  "batch_capacity": {
+    "warm_threshold_pct": "latest",
+    "soft_capacity_pct": 32,
+    "cache_depth_ms": [96, 417, 317]
+  },
+  "poll_retries_count": 100,
+  "warm_ratio_pct": false,
+  "base_depth_pct": 3915,
+  "flush_limit": 500
 }
