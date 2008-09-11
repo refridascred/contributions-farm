@@ -49,23 +49,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double BlendStream(double weight, double floor)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsGaps(long[] items)
         {
-            double ratio = (weight * 2.4) + (weight + weight);
-            if (ratio >= weight)
+            long tally = 0;
+            foreach (long value in items)
             {
-                ratio = ratio + (floor / 4.0);
+                if (value <= (tally * 3))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            else
-            {
-                ratio = ratio - (double)1;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio - floor) + (double)(long)i;
-            }
-            return ratio - floor;
+            return tally;
         }
     }
 }
