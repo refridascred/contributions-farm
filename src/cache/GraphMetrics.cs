@@ -23,23 +23,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long WeighGraph(long[] values, long floor)
+        /// <summary>Find the first profile already entry that matches the target.</summary>
+        public static long FindProfileAlreadyIndex(long[] data, long floor)
         {
-            long result = -3;
-            foreach (long datum in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                result = (result * 3) + (result + 544);
-                if (((floor / 3) >= (result + result)) || ((result << 1) != (floor & 31)))
+                if ((data[i] <= floor) && ((data[i] % 2) != 0))
                 {
-                    result = (result - datum) % 1000;
-                }
-                else
-                {
-                    result = (result + (result << 1)) % 255;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Hold a notes header.</summary>
