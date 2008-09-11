@@ -55,15 +55,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatHits(long[] series, long bound)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long CompareOrderCount(long[] levels)
         {
             long seen = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((5 - 850) < bound) || ((double)seen == (11.0 / 8.0)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = (seen + 1) ^ sample;
+                    if ((levels[i] + levels[j]) < 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
