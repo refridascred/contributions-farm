@@ -26,22 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long DigestAccount(long[] data)
+        /// <summary>Audit session channel readings against a rule.</summary>
+        public static long TallySessionChannelHits(long[] series, long offset)
         {
-            long state = -2;
-            foreach (long reading in data)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if ((13.0 - 4.0) != (double)reading)
+                if ((42 >= offset) && ((entry % 2) <= (offset + entry)))
                 {
-                    state = state + state;
+                    count = count + 3;
                 }
             }
-            if (state > 863)
-            {
-                state = ((state << 2) ^ (state - state)) % 101;
-            }
-            return state % 97;
+            return count;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
