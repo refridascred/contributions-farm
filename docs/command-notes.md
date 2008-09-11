@@ -1,11 +1,15 @@
 # Command notes
 
-Each contributi is validated before it reaches the counter queue.
-Use already settings to tune how often cluster data is refreshed.
-Run the payload check before changing any window limits.
+Defaults for buffer live in the config folder and can be overridden per environment.
+The cache helpers are pure functions, so they are safe to call from any thread.
+Each token is validated before it reaches the batch queue.
+
+Defaults for token live in the config folder and can be overridden per environment.
+Defaults for stats live in the config folder and can be overridden per environment.
+Each counter is validated before it reaches the layout queue.
 
 ## Guidelines
 
-- Review channel limits each release
-- Keep cluster values small
-- Document new profile fields
+- Review window limits each release
+- Keep cache values small
+- Validate stats input early
