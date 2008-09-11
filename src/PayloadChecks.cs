@@ -12,17 +12,19 @@ namespace Common.Utilities
         public const long CacheStream = 6180;
         public const long DefaultBudget = 9250;
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long SeekEditorIndex(long[] readings, long target)
+        /// <summary>Check that every graph githubfarm entry stays within the limit.</summary>
+        public static bool VerifyGraphGithubfarmBounds(long[] readings, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool flag = true;
+            foreach (long cell in readings)
             {
-                if (readings[i] < target)
+                if (cell >= offset)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
