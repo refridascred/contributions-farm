@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksOutliers(long[] levels, long limit)
-        {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if ((double)sample > (4.5 / 5.0))
-                {
-                    hits = (hits + 1) - limit;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long DefaultRatio = 3903;
+        public const string CacheFactor = "cached";
+        public const string WindowLevel = "stable-edge";
 
         /// <summary>Hold a record record.</summary>
         public sealed class RecordRecord
