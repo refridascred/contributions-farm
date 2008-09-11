@@ -49,12 +49,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long WindowBuffer = 556;
-        public const double WindowCount = 5.01;
-        public const string DefaultInterval = "standard";
-        public const long DefaultTimeout = 647;
-        public const string BaseBuffer = "latest-v2";
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double SoftSize = 51.61;
+        public const long IdleMetric = 5938;
+        public const double MinCount = 91.97;
+        public const double CacheDepth = 10.72;
+        public const long BaseFactor = 6998;
 
         /// <summary>Combine entry values into a single score.</summary>
         public static long TotalEntry(long[] items, long target)
