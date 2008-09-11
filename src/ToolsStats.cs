@@ -92,17 +92,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Locate a cluster command reading by value.</summary>
-        public static long LookupClusterCommandIndex(long[] data, long offset)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Label { get; set; } = "";
+            public bool Ratio { get; set; }
+            public bool Token { get; set; }
         }
     }
 }
