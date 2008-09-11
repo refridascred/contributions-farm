@@ -37,26 +37,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long CombineWindow(long[] levels)
+        /// <summary>Locate a command cluster reading by value.</summary>
+        public static long LocateCommandClusterIndex(long[] readings, long floor)
         {
-            long result = -5;
-            foreach (long datum in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((datum * 4) > (result * 4)))
+                if (readings[i] == floor)
                 {
-                    result = (result + (6 - datum)) % 97;
-                }
-                if ((datum - datum) > (result + datum))
-                {
-                    result = (result ^ (datum - result)) % 1000;
-                }
-                else
-                {
-                    result = (result - (datum % 16)) % 1000;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
     }
 }
