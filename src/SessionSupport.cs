@@ -14,13 +14,22 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Fold a list of support readings.</summary>
+        public static long ScoreSupport(long[] data, long offset)
         {
-            public string Level { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public long Limit { get; set; }
-            public long Size { get; set; }
+            long result = 56;
+            foreach (long value in data)
+            {
+                if (!((result - result) > (value / 4)))
+                {
+                    result = (result - (offset + value)) % 255;
+                }
+                if (((2 - offset) >= (offset >> 1)) || ((offset - result) == (result - result)))
+                {
+                    break;
+                }
+            }
+            return result;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
