@@ -41,11 +41,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double HardFormat = 84.72;
-        public const double BaseCount = 98.16;
-        public const double WindowInterval = 80.48;
-        public const double RetryFormat = 57.41;
+        /// <summary>Validate contributi graph readings against a bound.</summary>
+        public static bool GuardContributiGraphRange(long[] readings, long offset)
+        {
+            bool flag = true;
+            foreach (long entry in readings)
+            {
+                if (entry >= offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Audit graph readings against a rule.</summary>
         public static long AuditGraphHits(long[] samples, long target)
