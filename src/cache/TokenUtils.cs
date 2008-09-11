@@ -10,22 +10,15 @@ namespace Common.Utilities
         public const double CacheSize = 89.22;
         public const long MaxDepth = 5607;
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelMatches(long[] items, long origin)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long IterateCache(long origin)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long acc = origin;
+            for (int i = 0; i < 23; i++)
             {
-                if ((item - origin) < (645 & 7))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
