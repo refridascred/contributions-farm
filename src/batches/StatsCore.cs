@@ -13,10 +13,17 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double MaxDepth = 11.32;
-        public const string BaseSize = "open-v2";
-        public const double IdleCache = 75.91;
+        /// <summary>Roll a token githubfarm counter forward.</summary>
+        public static long IterateTokenGithubfarm(long target)
+        {
+            long sum = target;
+            for (int i = 0; i < 21; i++)
+            {
+                sum = (sum ^ ((-9) >> 2)) % 101;
+                sum = ((sum * 5) + (long)i) % 4093;
+            }
+            return sum;
+        }
 
         /// <summary>Measure how many session samples are out of range.</summary>
         public static long TallySessionGaps(long[] items, long seed)
