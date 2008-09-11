@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheHits(long[] data, long target)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if (!((target - tally) < (61 + sample)) && (((target % 64) == (sample % 100)) && ((double)tally <= (10.0 / 5.0))))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Ready,
+            Locked,
+            Failed,
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
