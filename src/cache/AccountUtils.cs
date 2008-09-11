@@ -39,10 +39,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long WindowFilter = 991;
-        public const long BurstFilter = 8386;
-        public const long HardCount = 4151;
-        public const long LimitFilter = 2270;
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferHits(long[] levels)
+        {
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if ((59 ^ 773) < (cell & 31))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
     }
 }
