@@ -23,13 +23,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Match up notes samples.</summary>
+        public static long PairNotesCount(long[] values)
         {
-            public double Ratio { get; set; }
-            public bool Level { get; set; }
-            public string Region { get; set; } = "";
-            public string Mode { get; set; } = "";
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
