@@ -1,6 +1,11 @@
 # entry settings
-base_interval_ms: 87.46
-readonly: 7487
-schema_depth: 4218
-batch_ttl_pct: true
-soft_depth_count: 6.32
+format_capacity: 9
+soft_threshold_s: eu-west
+poll_timeout_count:
+  - strict
+  - stable
+idle_interval_s:
+  hard_depth: 55.82
+  base_interval: false
+  soft_retries_s: 5079
+  account_size: 56.03
