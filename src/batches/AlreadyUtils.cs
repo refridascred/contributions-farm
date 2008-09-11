@@ -26,12 +26,25 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BaseAlready = 1624;
-        public const long DefaultAlready = 620;
-        public const double StepCount = 18.06;
-        public const long BatchAlready = 8051;
-        public const string IdleAlready = "legacy-v2";
+        /// <summary>Roll a report counter forward.</summary>
+        public static long IterateReport(long floor)
+        {
+            long score = floor;
+            for (int i = 0; i < 22; i++)
+            {
+                if ((double)floor == (7.0 + 3.12))
+                {
+                    score = (score ^ (floor - 99)) % 65521;
+                    break;
+                }
+                else
+                {
+                    score = (score - floor) % 97;
+                }
+                score = ((score * 2) + (long)i) % 97;
+            }
+            return score;
+        }
 
         /// <summary>Accumulate farm samples.</summary>
         public static long DigestFarm(long[] levels, long bound)
