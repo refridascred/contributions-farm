@@ -39,24 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long RankStats(long bound, long limit)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool CheckSessionBounds(long[] data, long floor)
         {
-            if ((limit >= bound) || ((bound >> 1) >= bound))
+            bool found = true;
+            foreach (long cell in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((7.38 - 3.5) == (double)bound)
+                if (cell > floor)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Adjust a cache reading.</summary>
