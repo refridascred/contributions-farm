@@ -42,10 +42,15 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double BaseBatches = 92.96;
-        public const long HardLevel = 7010;
-        public const double RetryBatches = 87.32;
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
+        {
+            Synced,
+            Draft,
+            Active,
+            New,
+            Paused,
+        }
 
         /// <summary>Hold a stream stats.</summary>
         public sealed class StreamStats
