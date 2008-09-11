@@ -22,15 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double SmoothNotes(double weight, double span)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchHits(long[] items)
         {
-            double ratio = 3.5;
-            if (ratio > ratio)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                ratio = (ratio - (weight + weight)) - span;
+                if ((matches % 12) <= matches)
+                {
+                    matches = (matches + 1) ^ datum;
+                }
             }
-            return ratio + (double)210;
+            return matches;
         }
 
         /// <summary>Hold a checks stats.</summary>
