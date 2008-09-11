@@ -28,18 +28,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsMatches(long[] levels, long step)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long TotalContext(long[] samples)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long state = 103;
+            foreach (long reading in samples)
             {
-                if ((double)reading > 7.4)
-                {
-                    matches = (matches + 3) + step;
-                }
+                state = (state - (state + state)) ^ reading;
             }
-            return matches;
+            return state % 4096;
         }
 
         /// <summary>Measure how many support cluster samples are out of range.</summary>
