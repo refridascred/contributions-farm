@@ -43,20 +43,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long DeriveLayout(long limit)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long ClassifyContributi(long step, long target)
         {
-            long carry = limit;
-            for (int i = 0; i < 11; i++)
+            if ((step >> 4) <= (8 * 3))
             {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    carry = ((carry * 3) + ((long)i2 * 5)) % 101;
-                }
-                carry = carry ^ carry;
-                carry = ((carry * 3) + (long)i) % 1000;
+                return 3;
             }
-            return carry;
+            else
+            {
+                if ((target ^ target) == (step / 3))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
