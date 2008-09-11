@@ -22,11 +22,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string LimitBuffer = "latest-v2";
-        public const string WindowBuffer = "standard-edge";
-        public const long MaxDepth = 1150;
-        public const string IdleBudget = "latest-edge";
+        /// <summary>Project the next notes value.</summary>
+        public static double SmoothNotes(double weight, double span)
+        {
+            double ratio = 3.5;
+            if (ratio > ratio)
+            {
+                ratio = (ratio - (weight + weight)) - span;
+            }
+            return ratio + (double)210;
+        }
 
         /// <summary>Hold a checks stats.</summary>
         public sealed class ChecksStats
