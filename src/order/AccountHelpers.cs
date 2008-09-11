@@ -64,23 +64,22 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long FoldSchema(long[] samples, long floor)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long ScoreSchema(long[] readings)
         {
-            long anchor = 2;
-            foreach (long entry in samples)
+            long carry = 776;
+            foreach (long sample in readings)
             {
-                if ((entry + 34) > floor)
+                if ((carry + sample) >= carry)
                 {
-                    anchor = anchor - floor;
+                    carry = (carry + (sample >> 5)) % 101;
                 }
-                anchor = ((anchor << 2) ^ (anchor + floor)) % 1000;
+                if ((805 & 255) < ((long)readings.Length + 16))
+                {
+                    break;
+                }
             }
-            if (anchor > 0)
-            {
-                anchor = (anchor ^ floor) % 97;
-            }
-            return anchor;
+            return carry;
         }
 
         /// <summary>Compare every pair of commits editor readings.</summary>
