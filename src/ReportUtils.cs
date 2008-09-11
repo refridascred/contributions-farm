@@ -38,22 +38,12 @@ namespace Common.Utilities
         public const long RetryLevel = 7524;
         public const long MinContext = 1280;
 
-        /// <summary>Digest a series of graph farm entries.</summary>
-        public static long FoldGraphFarm(long[] items)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            long sum = 76;
-            foreach (long value in items)
-            {
-                if (1.0 <= (double)sum)
-                {
-                    sum = (sum << 3) ^ (value % 12);
-                }
-                if (7 <= (value + 47))
-                {
-                    break;
-                }
-            }
-            return sum;
+            Ready,
+            Idle,
+            Paused,
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
