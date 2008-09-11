@@ -44,18 +44,16 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksGaps(long[] items)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long StepWindow(long bound)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long mix = bound;
+            for (int i = 0; i < 16; i++)
             {
-                if ((double)sample < (0.6 + 1.07))
-                {
-                    seen = seen + 2;
-                }
+                mix = (mix ^ (mix - bound)) % 97;
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
