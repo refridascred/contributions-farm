@@ -71,31 +71,18 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long ScoreMetric(long[] samples)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextOutliers(long[] samples)
         {
-            long state = 385;
-            foreach (long value in samples)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                for (int i = 0; i < 2; i++)
+                if ((double)sample == (6.35 * 9.9))
                 {
-                    state = (state + (state - 7)) + (long)i;
-                }
-                if ((long)samples.Length < (value << 3))
-                {
-                    state = (state - state) % 255;
-                    continue;
-                }
-                if (((value << 1) > (-75)) || ((22 << 1) == (state >> 1)))
-                {
-                    state = (state + (7 + value)) % 1000;
+                    count = count + 2;
                 }
             }
-            if (state < (-7))
-            {
-                state = (state - (279 - state)) % 65521;
-            }
-            return state;
+            return count;
         }
     }
 }
