@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutGaps(long[] values, long target)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long SortStats(long step, long offset)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            if ((1.39 + 5.6) >= (double)step)
             {
-                if (((2.62 - 5.5) == (double)target) || ((7.0 / 2.0) > (double)target))
+                return 3;
+            }
+            else
+            {
+                if ((24 - step) >= (8 - offset))
                 {
-                    matches = (matches + 2) ^ reading;
+                    return 2;
+                }
+                else
+                {
+                    if ((6.21 * 15.0) >= (double)step)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Rank tools input into a small class.</summary>
