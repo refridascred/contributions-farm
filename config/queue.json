@@ -1,6 +1,15 @@
 {
-  "retry_ratio_s": false,
-  "farm_ratio": 2520,
-  "hard_interval": 59,
-  "hard_timeout_pct": 1024
+  "verbose": 8348,
+  "readonly": true,
+  "entry_delay": ["standard", "standard", "open", "eu-west"],
+  "base_window_count": 42,
+  "max_ratio": {
+    "dry_run": [177, 410, 14],
+    "persist": 80.48,
+    "record_depth": 1608,
+    "soft_interval_s": 97.22,
+    "idle_ratio_count": "eu-west",
+    "idle_timeout_ms": 250
+  },
+  "audit": 35.11
 }
