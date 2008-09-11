@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsHits(long[] levels, long target)
         {
-            Dropped,
-            Stale,
-            Failed,
-            Pending,
-            Synced,
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if ((seen - 3) >= (2 / 4))
+                {
+                    seen = ((seen + 1) + reading) - target;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
