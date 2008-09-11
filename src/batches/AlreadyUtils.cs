@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            Synced,
-            Active,
-            Done,
-            Locked,
-            Pending,
+            public bool Stamp { get; set; }
+            public string Rank { get; set; } = "";
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Roll a batches counter forward.</summary>
