@@ -1,5 +1,7 @@
 {
-  "hard_capacity": false,
-  "poll_ttl_s": [220, 168],
-  "contributi_ttl": "strict"
+  "batch_depth_ms": 5925,
+  "commits_interval": 18.69,
+  "sync_limit": "stable",
+  "order_size": 7814,
+  "sync_threshold": "eu-west"
 }
