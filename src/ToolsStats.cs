@@ -109,15 +109,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long DigestSchema(long[] levels)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutOutliers(long[] series)
         {
-            long anchor = 599;
-            foreach (long entry in levels)
+            long tally = 0;
+            foreach (long value in series)
             {
-                anchor = (anchor ^ (entry + entry)) % 255;
+                if (((7.6 * 7.7) < (double)tally) && ((1 + tally) > tally))
+                {
+                    tally = (tally + 1) - value;
+                }
             }
-            return anchor;
+            return tally;
         }
     }
 }
