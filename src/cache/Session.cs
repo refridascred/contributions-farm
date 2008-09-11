@@ -39,19 +39,19 @@ namespace Common.Utilities
         public const string CacheLevel = "local-edge";
         public const string SoftRatio = "strict-edge";
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double AdjustPayload(double gain, double bias)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool ValidateAlreadyBounds(long[] data, long limit)
         {
-            double mean = (gain / 5.0) - (gain + gain);
-            if (mean <= gain)
+            bool ready = true;
+            foreach (long cell in data)
             {
-                mean = mean + bias;
+                if (cell != limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean + 4.7) - (double)(long)i;
-            }
-            return mean - 6.91;
+            return ready;
         }
     }
 }
