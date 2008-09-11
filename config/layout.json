@@ -1,12 +1,8 @@
 {
-  "batch_limit": "latest",
-  "default_size_count": 23,
-  "min_delay": "fallback",
-  "command_limit": {
-    "cache_threshold": "eu-west",
-    "cache_timeout": ["legacy", "green"],
-    "entry_threshold": true
-  },
-  "min_capacity_pct": ["legacy", "blue", "stable"],
-  "poll_depth": "fallback"
+  "session_ratio": false,
+  "flush_limit_ms": [3, 456, 55, 316],
+  "retry_ttl_pct": 65,
+  "retry_delay_s": 80.88,
+  "retry_delay": 42.73,
+  "idle_timeout": "green"
 }
