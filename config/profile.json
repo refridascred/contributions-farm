@@ -1,16 +1,12 @@
 {
-  "compress": true,
-  "burst_interval_count": {
-    "contributi_window": 1024,
-    "base_ttl_s": 20.41,
-    "flush_ttl": {
-      "session_delay": 98.25,
-      "verbose": [235, 194],
-      "compress": 1024,
-      "hard_ratio_ms": 4,
-      "soft_ratio_ms": 57.93
-    },
-    "sync_threshold_s": 61
+  "batch_threshold_s": {
+    "account_timeout": true,
+    "flush_interval_count": ["fallback", "eu-west"],
+    "cache_size": 500
   },
-  "poll_size_count": ["fallback", "fallback", "edge"]
+  "hard_limit": 34,
+  "sync_delay": "edge",
+  "stream_retries": 500,
+  "batch_depth": "cached",
+  "readonly": true
 }
