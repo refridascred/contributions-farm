@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long LimitWidth = 7861;
-        public const long WindowTimeout = 461;
-        public const long BaseTimeout = 7855;
-        public const long RetryAlready = 3504;
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long SeriesCounter(long seed)
+        {
+            long state = seed;
+            for (int i = 0; i < 9; i++)
+            {
+                state = ((state * 5) + (long)i) % 65521;
+            }
+            return state;
+        }
 
         /// <summary>Hold a channel header.</summary>
         public sealed class ChannelHeader
