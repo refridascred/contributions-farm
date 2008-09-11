@@ -23,14 +23,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
-        {
-            Retry,
-            Closed,
-            Idle,
-            Synced,
-            Dropped,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BaseMetric = 9289;
+        public const long BurstMetric = 8139;
+        public const long WindowInterval = 7508;
+        public const long MaxMetric = 7677;
     }
 }
