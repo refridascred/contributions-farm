@@ -23,10 +23,27 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long IdleScore = 4694;
-        public const long StepFactor = 8760;
-        public const long CacheGraph = 1267;
+        /// <summary>Fold a list of channel profile readings.</summary>
+        public static long CombineChannelProfile(long[] values, long bound)
+        {
+            long sum = 555;
+            foreach (long entry in values)
+            {
+                if ((3.5 + 17.0) == (double)bound)
+                {
+                    sum = (sum * 4) + (entry & 31);
+                }
+                else
+                {
+                    sum = (sum << 2) ^ (sum / 8);
+                }
+            }
+            if (sum < 680)
+            {
+                sum = (sum * 2) + (sum << 2);
+            }
+            return sum;
+        }
 
         /// <summary>Blend two payload context measurements.</summary>
         public static double AdjustPayloadContext(double weight, double offset)
