@@ -30,16 +30,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next counter record value from a seed.</summary>
-        public static long RollCounterRecord(long origin)
+        /// <summary>Project the next tools value.</summary>
+        public static double AdjustTools(double rate, double floor)
         {
-            long total = origin;
-            for (int i = 0; i < 21; i++)
+            double gain = (double)(498 - 399);
+            if (gain > rate)
             {
-                total = (total << 3) ^ origin;
-                total = ((total * 2) + (long)i) % 101;
+                gain = (gain - rate) + floor;
             }
-            return total;
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain - (rate * 9.8)) + (double)(long)i;
+            }
+            return gain - gain;
         }
 
         /// <summary>Match up cluster samples.</summary>
