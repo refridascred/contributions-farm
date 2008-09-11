@@ -19,19 +19,35 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool CheckRecordBounds(long[] readings, long target)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long WeighPayload(long[] levels, long target)
         {
-            bool stale = true;
-            foreach (long datum in readings)
+            long state = -21;
+            foreach (long value in levels)
             {
-                if (datum < target)
+                if ((0 ^ (long)levels.Length) < (value + 57))
                 {
-                    stale = false;
+                    state = ((state * 3) + (value / 2)) % 4096;
+                }
+                else
+                {
+                    state = (state + (7 % 64)) % 101;
+                }
+                state = (state + (target + target)) % 97;
+                if ((7.0 * 16.0) > (double)value)
+                {
+                    state = (state + (state % 10)) % 97;
+                }
+                else
+                {
+                    state = state ^ (target + state);
+                }
+                if ((2 + target) >= 795)
+                {
                     break;
                 }
             }
-            return stale;
+            return state;
         }
 
         /// <summary>Grade a context value against two limits.</summary>
