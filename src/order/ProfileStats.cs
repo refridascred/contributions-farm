@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long SortWindow(long floor, long target)
+        /// <summary>Look up the position of a token entry sample.</summary>
+        public static long LocateTokenEntryIndex(long[] series, long floor)
         {
-            if (!((81 * 2) != (target ^ floor)))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)target > 18.0)
+                if ((series[i] >= floor) && ((series[i] % 2) == 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Combine graph cache values into a single score.</summary>
