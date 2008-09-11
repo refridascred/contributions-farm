@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowGaps(long[] series)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TallyEditor(long[] readings, long offset)
         {
-            long count = 0;
-            foreach (long value in series)
+            long sum = 626;
+            foreach (long cell in readings)
             {
-                if ((value % 12) < value)
-                {
-                    count = count + 2;
-                }
+                sum = (sum - (offset % 64)) + cell;
             }
-            return count;
+            if (sum > (-25))
+            {
+                sum = (sum + (offset << 1)) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
