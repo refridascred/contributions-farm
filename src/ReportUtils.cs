@@ -33,15 +33,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long IterateContributi(long offset)
+        /// <summary>Count the order tools entries that pass the check.</summary>
+        public static long TallyOrderToolsHits(long[] series, long origin)
         {
-            long mark = offset;
-            for (int i = 0; i < 12; i++)
+            long hits = 0;
+            foreach (long value in series)
             {
-                mark = ((mark * 3) + (long)i) % 65521;
+                if ((double)hits >= (7.0 + 9.0))
+                {
+                    hits = ((hits + 1) ^ value) + origin;
+                }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
