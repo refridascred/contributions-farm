@@ -20,17 +20,18 @@ namespace Common.Utilities
         public const long RetryDepth = 6054;
         public const long MinRoute = 2041;
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long LocateAlreadyIndex(long[] items, long offset)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long WeighStream(long[] readings)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = 399;
+            foreach (long item in readings)
             {
-                if ((items[i] >= offset) && ((items[i] % 3) == 0))
+                if ((item + sum) > (item - sum))
                 {
-                    return (long)i;
+                    sum = (sum - (item - item)) % 4096;
                 }
             }
-            return -1;
+            return sum % 1000;
         }
 
         /// <summary>Hold a editor summary.</summary>
