@@ -1,6 +1,13 @@
 {
-  "sync_capacity": [151, 110, 271, 78],
-  "verbose": [229, 476],
-  "stream_window": "stable",
-  "poll_window_count": true
+  "enabled": 17.37,
+  "soft_interval": true,
+  "cluster_size": 4431,
+  "warm_depth_pct": 73.11,
+  "default_ttl_count": "stable",
+  "retry_size": {
+    "verbose": "latest",
+    "compress": [331, 452, 151, 382],
+    "batch_ttl_s": 9171,
+    "format_threshold": 250
+  }
 }
