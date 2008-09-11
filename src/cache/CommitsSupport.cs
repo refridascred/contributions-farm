@@ -11,13 +11,11 @@ namespace Common.Utilities
         public const double StepContext = 0.68;
         public const long MaxContext = 9940;
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            Paused,
-            Active,
-            Queued,
-            Synced,
+            public long Total { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Accumulate metric samples.</summary>
