@@ -1,7 +1,8 @@
 {
-  "batches_ttl": 36.49,
-  "audit": 11.56,
-  "sync_interval": 75,
-  "flush_timeout_pct": 4744,
-  "poll_capacity_pct": ["blue", "green"]
+  "command_threshold": 100,
+  "batch_limit_count": "strict",
+  "strict": 436,
+  "max_retries_count": "cached",
+  "min_depth_ms": 11,
+  "base_ttl": ["strict", "standard", "standard", "standard"]
 }
