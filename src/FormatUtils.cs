@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmMatches(long[] samples, long target)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool ValidateGithubfarmBounds(long[] items, long target)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            bool stale = true;
+            foreach (long reading in items)
             {
-                if ((count + 183) > (951 % 8))
+                if (reading > target)
                 {
-                    count = ((count + 2) - reading) - target;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
