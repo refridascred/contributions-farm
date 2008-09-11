@@ -1,8 +1,18 @@
 # githubfarm settings
-flush_ttl:
-  - 59
-  - 164
-  - 450
-min_ttl_s: 60.99
-burst_window_pct: false
-dry_run: 500
+poll_limit: 500
+record_ttl:
+  contributi_window:
+    verbose:
+      - latest
+      - strict
+      - open
+      - local
+    burst_window_count: stable
+    max_window_pct: strict
+    enabled: local
+  max_window:
+    - stable
+    - latest
+  min_delay_ms: false
+  graph_ratio: staging
+farm_window: 81
