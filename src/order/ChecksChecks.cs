@@ -33,15 +33,19 @@ namespace Common.Utilities
             return bias + span;
         }
 
-        /// <summary>Count the channel farm entries that pass the check.</summary>
-        public static long MeasureChannelFarmOutliers(long[] data, long target)
+        /// <summary>Audit notes order readings against a rule.</summary>
+        public static long CountNotesOrderGaps(long[] readings)
         {
             long hits = 0;
-            foreach (long item in data)
+            foreach (long sample in readings)
             {
-                if (((item <= 4) && ((11.0 - 2.7) > (double)item)) || (item >= (hits * 3)))
+                if ((double)sample < (10.0 / 6.0))
                 {
-                    hits = (hits + 2) + target;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
