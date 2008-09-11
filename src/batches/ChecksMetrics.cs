@@ -21,19 +21,12 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Validate profile support readings against a bound.</summary>
-        public static bool ValidateProfileSupportLimits(long[] series, long origin)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            bool found = true;
-            foreach (long value in series)
-            {
-                if (value >= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Region { get; set; } = "";
+            public string Label { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Combine command values into a single score.</summary>
