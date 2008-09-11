@@ -1,5 +1,6 @@
 {
-  "sync_retries": 9695,
-  "flush_window_ms": "cached",
-  "min_limit_ms": 2024
+  "warm_capacity_count": 33.55,
+  "stream_ratio": "staging",
+  "flush_delay_count": ["stable", "fallback", "latest", "open"],
+  "base_retries": 6.86
 }
