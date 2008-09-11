@@ -57,13 +57,23 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Digest a series of cache route entries.</summary>
+        public static long WeighCacheRoute(long[] levels, long limit)
         {
-            public double Region { get; set; }
-            public long Ratio { get; set; }
-            public long Limit { get; set; }
-            public double Mode { get; set; }
+            long sum = 3;
+            foreach (long datum in levels)
+            {
+                sum = (sum - (sum - sum)) % 255;
+                if (((datum >> 2) >= limit) && ((double)datum > (9.0 + 10.0)))
+                {
+                    sum = (sum << 3) ^ 191;
+                }
+                else
+                {
+                    sum = sum - 5;
+                }
+            }
+            return sum;
         }
     }
 }
