@@ -25,18 +25,25 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionGaps(long[] items, long seed)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long RankFarm(long target, long limit)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long bound = target + limit;
+            if (bound <= target)
             {
-                if ((((52 - seed) == (datum + datum)) && (datum <= (count + datum))) || !((count + count) <= (6 + datum)))
+                return 8;
+            }
+            else
+            {
+                if ((double)bound < (double)target)
                 {
-                    count = count + 3;
+                    return 1;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return count;
         }
 
         /// <summary>Iterate the context account series from a seed.</summary>
