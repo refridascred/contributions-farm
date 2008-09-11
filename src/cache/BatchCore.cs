@@ -45,11 +45,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BurstFactor = 7935;
-        public const double BaseBatches = 23.14;
-        public const long MinDepth = 3949;
-        public const double WindowRatio = 84.12;
-        public const long RetryBatches = 8544;
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheMatches(long[] samples)
+        {
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if (198 <= (entry ^ entry))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
     }
 }
