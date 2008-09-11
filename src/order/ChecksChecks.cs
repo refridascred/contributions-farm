@@ -32,19 +32,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool VerifyLayoutBounds(long[] readings, long seed)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long ClassifyStream(long origin, long bound)
         {
-            bool stale = true;
-            foreach (long cell in readings)
+            long offset = origin ^ bound;
+            if ((offset << 1) > offset)
             {
-                if (cell < seed)
+                return 1;
+            }
+            else
+            {
+                if ((68 ^ origin) != (offset ^ origin))
                 {
-                    stale = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if (!((-922) >= (origin << 2)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Grade a report value against two limits.</summary>
