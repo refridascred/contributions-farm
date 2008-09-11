@@ -15,15 +15,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of counter cache readings.</summary>
-        public static long TotalCounterCache(long[] series)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long CompareToolsCount(long[] items)
         {
-            long total = 693;
-            foreach (long item in series)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                total = (total + (item % 12)) % 65521;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 7)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return total % 65521;
+            return count;
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
