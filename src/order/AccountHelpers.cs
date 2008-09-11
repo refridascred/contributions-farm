@@ -82,21 +82,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Compare every pair of commits editor readings.</summary>
-        public static long MatchCommitsEditorCount(long[] samples)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 18)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Active,
+            Locked,
+            Pending,
+            Paused,
         }
     }
 }
