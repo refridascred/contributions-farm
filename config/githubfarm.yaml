@@ -1,7 +1,4 @@
 # githubfarm settings
-checks_size: 20.03
-default_timeout_ms:
-  - standard
-  - blue
-  - blue
-flush_window: 89.64
+persist: 2144
+poll_capacity_s: 16.19
+verbose: 9283
