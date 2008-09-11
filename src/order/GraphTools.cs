@@ -25,18 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryHits(long[] data, long offset)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordMatches(long[] series, long step)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                if (!((double)offset < (17.0 / 4.0)))
+                if (3 < (step & 7))
                 {
-                    count = (count + 1) + cell;
+                    hits = (hits + 2) - datum;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Fold a list of cluster contributi readings.</summary>
