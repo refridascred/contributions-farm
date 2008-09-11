@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool ValidateFarmBounds(long[] readings, long origin)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long SortRoute(long target, long target2)
         {
-            bool ready = true;
-            foreach (long item in readings)
+            if ((2.0 * 11.0) < (double)target)
             {
-                if (item >= origin)
+                return 3;
+            }
+            else
+            {
+                if (((double)target < (15.0 / 5.0)) || ((target & 15) != (target + target)))
                 {
-                    ready = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((1.17 * 12.0) >= (double)target2)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((target2 - target) > target) && ((2.56 * 1.27) > (double)target))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Fold a list of batches format readings.</summary>
