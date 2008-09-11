@@ -14,19 +14,11 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long IterateStats(long origin)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            long total = origin;
-            for (int i = 0; i < 7; i++)
-            {
-                if ((11.0 * 1.7) <= (double)total)
-                {
-                    total = (total + (origin * 2)) % 65521;
-                }
-                total = ((total * 5) + (long)i) % 1000;
-            }
-            return total;
+            public double Size { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Describe the context status values.</summary>
