@@ -5,26 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long BucketTools(long offset, long limit)
-        {
-            long edge = offset + limit;
-            if (((edge + edge) != (limit - edge)) || (edge >= (offset * 2)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((-9) >= (offset - offset))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long WindowCache = 9276;
+        public const double BatchTimeout = 76.16;
+        public const string WindowCount = "staging-1";
 
         /// <summary>Define batches limits and defaults.</summary>
         public const double MaxBatches = 14.18;
