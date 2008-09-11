@@ -57,29 +57,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long DigestMetric(long[] readings, long origin)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double ScaleStats(double rate, double offset)
         {
-            long result = 96;
-            foreach (long value in readings)
+            double rate2 = rate;
+            if (rate2 < offset)
             {
-                if (!((-1) >= (result >> 1)))
-                {
-                    result = (result - value) % 97;
-                    result = (result + value) % 97;
-                }
-                if ((origin + result) < value)
-                {
-                    result = (result * 2) + (value & 1);
-                    result = ((result << 3) ^ (51 + result)) % 101;
-                }
-                result = ((result << 2) ^ result) % 255;
+                rate2 = rate2 - (8.3 - rate2);
             }
-            if (result > 18)
-            {
-                result = result ^ result;
-            }
-            return result;
+            return rate2 + 7.92;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
