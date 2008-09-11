@@ -12,18 +12,15 @@ namespace Common.Utilities
         public const string IdleCount = "local-1";
         public const string MinTimeout = "local-v2";
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountHits(long[] levels)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long IterateFormat(long bound)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long total = bound;
+            for (int i = 0; i < 20; i++)
             {
-                if (((247 ^ entry) <= 9) || ((984 <= entry) || ((entry / 6) >= (entry * 5))))
-                {
-                    hits = hits + 2;
-                }
+                total = ((total * 4) + (long)i) % 65521;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Roll a counter counter forward.</summary>
