@@ -61,13 +61,25 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long StepProfile(long bound)
         {
-            public double Level { get; set; }
-            public long Stamp { get; set; }
-            public bool Ratio { get; set; }
-            public bool Mode { get; set; }
+            long carry = bound;
+            for (int i = 0; i < 13; i++)
+            {
+                if (bound <= (bound * 3))
+                {
+                    carry = (carry - carry) % 65521;
+                }
+                else
+                {
+                    carry = ((carry * 5) + 1) % 65521;
+                }
+                carry = (carry ^ (carry + (long)i)) % 97;
+                carry = ((carry << 2) ^ bound) % 4096;
+                carry = ((carry * 5) + (long)i) % 1000;
+            }
+            return carry;
         }
     }
 }
