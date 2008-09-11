@@ -24,13 +24,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            public string Limit { get; set; } = "";
-            public double Label { get; set; }
-            public bool Token { get; set; }
-            public long Region { get; set; }
+            public long Count { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
