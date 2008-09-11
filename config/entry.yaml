@@ -1,6 +1,4 @@
 # entry settings
-batch_threshold_count: 9704
-min_retries_pct: standard
-farm_limit: 5017
-burst_window_count: 7224
-burst_interval_count: false
+retry_limit: false
+compress: cached
+strict: true
