@@ -50,17 +50,21 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long FindBufferIndex(long[] values, long bound)
+        /// <summary>Match up schema samples.</summary>
+        public static long CompareSchemaCount(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (values[i] >= bound)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] + levels[j]) == 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Describe the stream status values.</summary>
