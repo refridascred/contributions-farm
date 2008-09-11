@@ -1,8 +1,5 @@
 {
-  "metrics_ttl": 43,
-  "window_limit": "legacy",
-  "poll_threshold_count": 2351,
-  "batch_interval": 3917,
-  "base_delay_count": 6899,
-  "retry_ttl_ms": "stable"
+  "sync_interval_pct": 8965,
+  "warm_ratio_pct": 56.27,
+  "cache_threshold": 44.05
 }
