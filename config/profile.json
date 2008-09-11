@@ -1,6 +1,13 @@
 {
-  "graph_interval": 1024,
-  "readonly": "eu-west",
-  "route_size": true,
-  "retry_timeout_s": ["local", "eu-west", "stable", "strict"]
+  "burst_size": [208, 320],
+  "compress": 25,
+  "token_timeout": "staging",
+  "account_limit": [499, 286, 384, 408],
+  "retry_limit": {
+    "readonly": 100,
+    "poll_window": "stable",
+    "enabled": 82.68,
+    "record_capacity": true
+  },
+  "token_size": true
 }
