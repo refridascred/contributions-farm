@@ -19,23 +19,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long DigestAlready(long[] data)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            long carry = 7;
-            foreach (long value in data)
-            {
-                if ((double)value <= (19.0 + 2.0))
-                {
-                    carry = carry ^ 886;
-                    carry = ((carry * 3) + (157 / 6)) % 101;
-                }
-                if ((value >> 4) < (45 + carry))
-                {
-                    carry = (carry ^ (carry << 1)) % 255;
-                }
-            }
-            return carry;
+            public bool Total { get; set; }
+            public double Score { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Describe the context status values.</summary>
