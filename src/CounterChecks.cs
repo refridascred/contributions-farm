@@ -79,24 +79,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of buffer token entries.</summary>
-        public static long FoldBufferToken(long[] items, long floor)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long StepLayout(long offset)
         {
-            long carry = 358;
-            foreach (long entry in items)
+            long state = offset;
+            for (int i = 0; i < 15; i++)
             {
-                carry = carry ^ carry;
-                carry = (carry * 3) + (carry - carry);
-                if ((floor << 3) <= (entry - 50))
+                state = (state ^ (offset >> 1)) % 1000;
+                long lane = ((long)i + offset) - (state + offset);
+                if (!!((state + offset) > (lane * 2)))
                 {
-                    carry = ((carry << 2) ^ carry) % 65521;
+                    lane = lane + (lane + (long)i);
+                    state = (state + offset) % 101;
                 }
-                else
-                {
-                    carry = ((carry << 2) ^ floor) % 255;
-                }
+                state = ((state * 4) + (long)i) % 65521;
             }
-            return carry % 65521;
+            return state;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
