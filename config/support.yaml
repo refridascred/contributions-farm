@@ -1,6 +1,19 @@
 # support settings
-base_retries_count: legacy
-idle_depth: staging
-min_timeout_count: green
-poll_delay: edge
-warm_delay_s: true
+sync_retries:
+  cache_limit_pct: green
+  soft_size_pct: latest
+  context_threshold: 786
+  max_capacity_count: 2
+audit:
+  - 2
+  - 4
+  - 283
+profile_capacity:
+  command_limit: 2045
+  persist: 65
+  cache_timeout_pct:
+    default_size_pct: fallback
+    strict: eu-west
+    enabled: 500
+    burst_size_pct: stable
+    warm_depth: strict
