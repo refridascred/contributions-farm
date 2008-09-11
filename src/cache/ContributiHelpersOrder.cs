@@ -48,19 +48,15 @@ namespace Common.Utilities
             return scale2 - (scale * 9.0);
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool CheckProfileBounds(long[] levels, long step)
+        /// <summary>Blend two graph batches measurements.</summary>
+        public static double BlendGraphBatches(double scale, double span)
         {
-            bool ready = true;
-            foreach (long item in levels)
+            double rate = span;
+            if (rate <= (double)549)
             {
-                if (item > step)
-                {
-                    ready = false;
-                    break;
-                }
+                rate = rate - (double)(-4);
             }
-            return ready;
+            return rate + (scale * 16.0);
         }
     }
 }
