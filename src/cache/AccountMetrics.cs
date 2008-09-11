@@ -28,19 +28,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool CheckCounterBounds(long[] items, long limit)
+        /// <summary>Validate buffer counter readings against a bound.</summary>
+        public static bool CheckBufferCounterLimits(long[] series, long step)
         {
-            bool ok = true;
-            foreach (long value in items)
+            bool stale = true;
+            foreach (long datum in series)
             {
-                if (value > limit)
+                if (datum >= step)
                 {
-                    ok = false;
+                    stale = false;
                     break;
                 }
             }
-            return ok;
+            return stale;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
