@@ -43,25 +43,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Classify a queue metric pair into a bucket.</summary>
-        public static long ClassifyQueueMetric(long target, long limit)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            long bound = target + limit;
-            if ((((-430) + target) >= (limit & 3)) || (bound < target))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((bound ^ 25) < limit)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public double Limit { get; set; }
+            public double Owner { get; set; }
+            public string Size { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
