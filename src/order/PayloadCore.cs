@@ -5,20 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long DeriveNotes(long origin)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            long score = origin;
-            for (int i = 0; i < 14; i++)
-            {
-                score = ((score * 3) + (score / 9)) % 4096;
-                if ((score / 2) == (score + (long)i))
-                {
-                    score = score ^ (origin * 2);
-                }
-                score = ((score * 2) + (long)i) % 65521;
-            }
-            return score;
+            Closed,
+            Stale,
+            Done,
+            Active,
+            Queued,
         }
 
         /// <summary>Count the checks batch entries that pass the check.</summary>
