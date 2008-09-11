@@ -10,17 +10,32 @@ namespace Common.Utilities
         public const long HardRatio = 625;
         public const long RetrySize = 7527;
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long SeekLayoutIndex(long[] values, long step)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long GradePayload(long offset, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long lane = offset ^ bound;
+            if (((-5) >> 1) > (offset ^ offset))
             {
-                if (values[i] <= step)
+                return 2;
+            }
+            else
+            {
+                if ((878 >> 1) <= lane)
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if (((lane >> 5) < (bound ^ 54)) || ((lane ^ offset) > (bound * 5)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
