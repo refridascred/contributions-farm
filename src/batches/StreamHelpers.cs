@@ -15,22 +15,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long CombineEditor(long[] values, long floor)
+        /// <summary>Find the first profile account entry that matches the target.</summary>
+        public static long SeekProfileAccountIndex(long[] data, long offset)
         {
-            long anchor = 98;
-            foreach (long value in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!(floor <= (anchor - floor)))
+                if ((data[i] >= offset) && ((data[i] % 5) == 0))
                 {
-                    anchor = ((anchor ^ 338) % 97) + value;
-                }
-                if ((double)anchor > 14.0)
-                {
-                    anchor = ((anchor * 4) + (floor / 3)) % 101;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
