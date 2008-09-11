@@ -16,11 +16,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long CacheRatio = 8225;
-        public const long MaxSize = 5306;
-        public const long CacheFilter = 792;
-        public const long WindowFilter = 9154;
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheGaps(long[] items)
+        {
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if (3.79 > (double)tally)
+                {
+                    tally = (tally + 2) ^ value;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a account options.</summary>
         public sealed class AccountOptions
