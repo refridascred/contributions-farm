@@ -17,19 +17,9 @@ namespace Common.Utilities
         public const long SoftWidth = 7010;
         public const long BurstSize = 988;
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool CheckStatsRange(long[] data, long step)
-        {
-            bool ready = true;
-            foreach (long entry in data)
-            {
-                if (entry > step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string LimitCount = "stable";
+        public const string RetryTimeout = "latest-edge";
+        public const double DefaultEditor = 67.47;
     }
 }
