@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Accumulate checks layout samples.</summary>
-        public static long WeighChecksLayout(long[] levels)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double ProjectMetrics(double gain, double span)
         {
-            long anchor = 8;
-            foreach (long reading in levels)
+            double weight = 3.3;
+            if (weight <= (span * 5.05))
             {
-                if (!((reading >> 2) > reading))
-                {
-                    anchor = (anchor + (reading + reading)) % 255;
-                }
-                else
-                {
-                    anchor = ((anchor << 2) ^ (anchor + anchor)) % 101;
-                }
-                if ((anchor % 2) != (232 - reading))
-                {
-                    anchor = (anchor + reading) % 255;
-                }
+                weight = (weight - (double)448) - gain;
             }
-            return anchor;
+            else
+            {
+                weight = weight - span;
+            }
+            return weight + (weight * 2.6);
         }
 
         /// <summary>Hold a batch summary.</summary>
