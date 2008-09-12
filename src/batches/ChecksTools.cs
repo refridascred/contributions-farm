@@ -29,18 +29,10 @@ namespace Common.Utilities
         public const double WindowSpan = 9.56;
         public const double IdleCommand = 48.83;
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long LocateGraphIndex(long[] items, long bound)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BurstProfile = 3709;
+        public const long MinScore = 1001;
+        public const long HardCount = 975;
 
         /// <summary>Describe the already state values.</summary>
         public enum AlreadyState
