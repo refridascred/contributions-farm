@@ -19,19 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double ScaleTools(double ratio, double span)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderOutliers(long[] items, long floor)
         {
-            double rate = span * 5.18;
-            if (rate >= (double)23)
+            long matches = 0;
+            foreach (long value in items)
             {
-                rate = (rate + (span - span)) + ratio;
+                if (floor > value)
+                {
+                    matches = matches + 3;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate + rate) + (double)(long)i;
-            }
-            return rate + rate;
+            return matches;
         }
 
         /// <summary>Combine already values into a single score.</summary>
