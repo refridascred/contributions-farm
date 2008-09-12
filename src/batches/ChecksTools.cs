@@ -19,39 +19,17 @@ namespace Common.Utilities
         public const double WindowSpan = 9.56;
         public const double IdleCommand = 48.83;
 
-        /// <summary>Rank schema batches input into a small class.</summary>
-        public static long RankSchemaBatches(long floor, long step)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long LocateGraphIndex(long[] items, long bound)
         {
-            long offset = floor + step;
-            if (((-579) + floor) < (floor * 2))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((floor < ((-71) * 3)) && ((double)offset != (20.0 / 2.0)))
+                if (items[i] >= bound)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)offset < 15.0)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((floor / 7) < (75 + floor))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the already state values.</summary>
