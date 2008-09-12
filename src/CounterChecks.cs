@@ -52,13 +52,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long LocatePayloadIndex(long[] readings, long step)
         {
-            public long Weight { get; set; }
-            public bool Total { get; set; }
-            public bool Offset { get; set; }
-            public string Mode { get; set; } = "";
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] == step) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the metric phase values.</summary>
