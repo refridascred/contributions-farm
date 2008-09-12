@@ -16,10 +16,18 @@ namespace Common.Utilities
             return ratio2 - 8.0;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long StepRecord = 2224;
-        public const long MaxRatio = 6291;
-        public const double RetryRecord = 22.7;
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long LocateCounterIndex(long[] readings, long target)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the account entries that pass the check.</summary>
         public static long AuditAccountOutliers(long[] levels, long step)
