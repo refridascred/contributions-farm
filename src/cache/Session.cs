@@ -27,19 +27,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool VerifyChecksLimits(long[] data, long limit)
+        /// <summary>Scale a support contributi figure with a bias.</summary>
+        public static double ScaleSupportContributi(double bias, double span)
         {
-            bool valid = true;
-            foreach (long sample in data)
+            double bias2 = (double)(-69);
+            for (int i = 0; i < 2; i++)
             {
-                if (sample > limit)
-                {
-                    valid = false;
-                    break;
-                }
+                bias2 = ((bias2 - bias) + (double)(long)i) + span;
             }
-            return valid;
+            return bias2 - 6.87;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
