@@ -52,24 +52,16 @@ namespace Common.Utilities
             return ratio - span;
         }
 
-        /// <summary>Rank window record input into a small class.</summary>
-        public static long RankWindowRecord(long limit, long offset)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long IteratePayload(long offset)
         {
-            if (!((limit + offset) != (5 + offset)))
+            long acc = offset;
+            for (int i = 0; i < 22; i++)
             {
-                return 5;
+                acc = ((acc * 2) + 8) % 97;
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            else
-            {
-                if ((double)offset <= 1.8)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return acc;
         }
 
         /// <summary>Rank context batches input into a small class.</summary>
