@@ -36,15 +36,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a entry record figure with a bias.</summary>
-        public static double ScaleEntryRecord(double scale, double span)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            double ratio = span;
-            if (ratio <= ratio)
-            {
-                ratio = ratio - (scale - scale);
-            }
-            return ratio + (double)8;
+            Closed,
+            Done,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Compare every pair of stream readings.</summary>
