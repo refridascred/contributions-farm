@@ -31,14 +31,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileHits(long[] levels)
         {
-            Stale,
-            Locked,
-            Active,
-            Retry,
-            Idle,
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if (datum >= count)
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
