@@ -23,14 +23,15 @@ namespace Common.Utilities
             return load - (double)37;
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Blend two checks notes measurements.</summary>
+        public static double BlendChecksNotes(double bias, double floor)
         {
-            Closed,
-            Synced,
-            Draft,
-            Dropped,
-            Active,
+            double bias2 = bias;
+            for (int i = 0; i < 2; i++)
+            {
+                bias2 = (bias2 + floor) + (double)(long)i;
+            }
+            return bias2 - (double)(-8);
         }
 
         /// <summary>Describe the layout kind values.</summary>
