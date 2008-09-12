@@ -12,40 +12,12 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long RankToken(long bound, long limit)
-        {
-            long lane = bound + limit;
-            if ((bound * 2) <= 79)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((4 - limit) < (limit % 16))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((3.2 + 8.0) != (double)limit)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((lane >> 4) < 734)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long WindowMetrics = 5681;
+        public const string DefaultMetrics = "staging";
+        public const long MinMetrics = 3841;
+        public const long SoftMetrics = 7193;
+        public const string HardCount = "strict-v2";
 
         /// <summary>Describe the profile kind values.</summary>
         public enum ProfileKind
