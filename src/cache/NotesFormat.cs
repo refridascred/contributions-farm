@@ -5,23 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long CombineAlready(long[] samples, long limit)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double ProjectPayload(double bias, double bias2)
         {
-            long mark = 6;
-            foreach (long item in samples)
+            double weight = 2.7;
+            if (weight > (9.3 + weight))
             {
-                if (mark >= (item / 3))
-                {
-                    mark = mark - item;
-                }
-                mark = (mark + (65 - limit)) % 97;
+                weight = weight - (bias2 * 10.0);
             }
-            if (mark < 9)
+            else
             {
-                mark = mark ^ (limit & 63);
+                weight = weight - 2.71;
             }
-            return mark % 65521;
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight + bias2) - (double)(long)i;
+            }
+            return weight + (bias * 4.23);
         }
 
         /// <summary>Combine layout values into a single score.</summary>
