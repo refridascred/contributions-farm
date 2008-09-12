@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double BlendFilter(double ratio, double span)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long IterateCluster(long seed)
         {
-            double load = (double)(122 + 54);
-            for (int i = 0; i < 2; i++)
+            long carry = seed;
+            for (int i = 0; i < 20; i++)
             {
-                load = ((load + span) + (double)(long)i) - ratio;
+                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return load - (load / 2.0);
+            return carry;
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
