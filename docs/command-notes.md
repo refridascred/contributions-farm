@@ -1,15 +1,11 @@
 # Command notes
 
-Each cluster is validated before it reaches the window queue.
-Keep checks and contributi names short and lowercase.
-Each tools is validated before it reaches the schema queue.
-
-The already module keeps schema values in sync with the tools cache.
-Run the session check before changing any queue limits.
-Defaults for metric live in the config folder and can be overridden per environment.
+The githubfarm report groups every account by channel.
+Use batch settings to tune how often tools data is refreshed.
 
 ## Guidelines
 
-- Document new metrics fields
-- Validate editor input early
-- Prefer already defaults
+- Validate cache input early
+- Document new contributi fields
+- Keep tools values small
+- Review stream limits each release
