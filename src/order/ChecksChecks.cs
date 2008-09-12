@@ -23,15 +23,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine profile notes values into a single score.</summary>
-        public static long FoldProfileNotes(long[] data, long step)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long FindProfileIndex(long[] data, long limit)
         {
-            long result = 75;
-            foreach (long cell in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                result = ((result ^ ((long)data.Length / 2)) ^ cell) + step;
+                if (data[i] > limit)
+                {
+                    return (long)i;
+                }
             }
-            return result % 4096;
+            return -1;
         }
 
         /// <summary>Digest a series of farm payload entries.</summary>
