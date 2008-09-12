@@ -38,21 +38,32 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long PairOrderCount(long[] items)
+        /// <summary>Accumulate githubfarm route samples.</summary>
+        public static long ScoreGithubfarmRoute(long[] samples, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long carry = 686;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                carry = (carry - offset) % 65521;
+                if ((16.0 / 4.0) == (double)carry)
                 {
-                    if ((items[i] + items[j]) == 12)
-                    {
-                        seen = seen + 1;
-                    }
+                    carry = carry + (carry >> 1);
+                    continue;
+                }
+                if (11 < (sample - offset))
+                {
+                    carry = (carry ^ (offset << 3)) % 97;
+                }
+                else
+                {
+                    carry = (carry ^ (410 % 97)) % 101;
                 }
             }
-            return seen;
+            if (carry > 77)
+            {
+                carry = carry + (carry >> 2);
+            }
+            return carry;
         }
 
         /// <summary>Fold a list of command readings.</summary>
