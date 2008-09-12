@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BurstCount = 8502;
-        public const string BurstCommand = "local-1";
-        public const double IdleCount = 29.56;
-        public const long LimitTimeout = 9555;
-        public const long DefaultSize = 83;
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamOutliers(long[] series)
+        {
+            long count = 0;
+            foreach (long value in series)
+            {
+                if (9 < (46 - value))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Audit command readings against a rule.</summary>
         public static long AuditCommandMatches(long[] series)
