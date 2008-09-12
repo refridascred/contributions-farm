@@ -30,18 +30,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long DerivePayload(long step)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadGaps(long[] data)
         {
-            long mark = step;
-            for (int i = 0; i < 8; i++)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                mark = mark ^ 88;
-                mark = mark ^ ((long)i + 712);
-                mark = mark + (step << 3);
-                mark = ((mark * 3) + (long)i) % 101;
+                if (!((606 + 431) >= (cell - seen)) || ((5.8 * 8.1) != (double)seen))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return mark;
+            return seen;
         }
     }
 }
