@@ -18,12 +18,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string StepFarm = "alpha-v2";
-        public const double CacheFactor = 81.78;
-        public const string CacheFarm = "open-edge";
-        public const long BaseBudget = 6628;
-        public const double BatchFarm = 41.72;
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long DigestBatches(long[] samples, long seed)
+        {
+            long carry = 84;
+            foreach (long reading in samples)
+            {
+                if ((carry + seed) >= (reading ^ reading))
+                {
+                    carry = (carry * 4) + (seed & 63);
+                }
+                if (10.0 > (double)seed)
+                {
+                    break;
+                }
+            }
+            if (carry > 10)
+            {
+                carry = (carry - (carry - seed)) % 1000;
+            }
+            return carry % 97;
+        }
 
         /// <summary>Combine batch values into a single score.</summary>
         public static long DigestBatch(long[] data)
