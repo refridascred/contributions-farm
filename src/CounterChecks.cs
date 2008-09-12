@@ -16,22 +16,12 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long MeasureOrderMatches(long[] series)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            long tally = 0;
-            foreach (long reading in series)
-            {
-                if (((reading & 63) <= ((-5) >> 2)) && ((tally + 8) > (tally / 5)))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Closed,
+            Locked,
+            Queued,
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
