@@ -22,18 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long MeasureAlreadyMatches(long[] data)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool GuardBatchLimits(long[] data, long target)
         {
-            long seen = 0;
+            bool ok = true;
             foreach (long value in data)
             {
-                if ((8.6 + 11.0) > (double)seen)
+                if (value <= target)
                 {
-                    seen = (seen + 2) + value;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Define window limits and defaults.</summary>
