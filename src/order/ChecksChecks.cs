@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Fold a list of notes channel readings.</summary>
+        public static long CombineNotesChannel(long[] data, long floor)
         {
-            public long Weight { get; set; }
-            public long Total { get; set; }
+            long mix = 8;
+            foreach (long entry in data)
+            {
+                mix = (((mix + (mix - mix)) % 255) + entry) - floor;
+            }
+            return mix;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
