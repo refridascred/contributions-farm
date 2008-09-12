@@ -20,15 +20,18 @@ namespace Common.Utilities
             return drift + 16.0;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long RollGraph(long seed)
+        /// <summary>Audit farm format readings against a rule.</summary>
+        public static long AuditFarmFormatGaps(long[] series, long origin)
         {
-            long sum = seed;
-            for (int i = 0; i < 19; i++)
+            long tally = 0;
+            foreach (long value in series)
             {
-                sum = ((sum * 2) + (long)i) % 101;
+                if (((origin * 5) == (tally % 12)) && (tally >= (tally * 5)))
+                {
+                    tally = (tally + 2) ^ value;
+                }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Describe the report phase values.</summary>
