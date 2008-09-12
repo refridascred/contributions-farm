@@ -20,17 +20,15 @@ namespace Common.Utilities
             return drift + 16.0;
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long FindCacheIndex(long[] samples, long limit)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long RollGraph(long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = seed;
+            for (int i = 0; i < 19; i++)
             {
-                if (samples[i] < limit)
-                {
-                    return (long)i;
-                }
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Describe the report phase values.</summary>
