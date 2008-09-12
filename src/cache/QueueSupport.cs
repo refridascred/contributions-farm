@@ -12,19 +12,39 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Check that every account commits entry stays within the limit.</summary>
-        public static bool GuardAccountCommitsRange(long[] series, long target)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long RankToken(long bound, long limit)
         {
-            bool flag = true;
-            foreach (long reading in series)
+            long lane = bound + limit;
+            if ((bound * 2) <= 79)
             {
-                if (reading > target)
+                return 2;
+            }
+            else
+            {
+                if ((4 - limit) < (limit % 16))
                 {
-                    flag = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((3.2 + 8.0) != (double)limit)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((lane >> 4) < 734)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Describe the profile kind values.</summary>
