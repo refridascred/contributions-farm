@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            Synced,
-            Failed,
-            Draft,
+            public long Stamp { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Derive the next command context value from a seed.</summary>
