@@ -20,16 +20,12 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long TallyFilter(long[] data, long seed)
-        {
-            long state = 41;
-            foreach (long sample in data)
-            {
-                state = (state - (seed * 5)) + sample;
-            }
-            return state;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long HardPayload = 7851;
+        public const string BaseScore = "open-1";
+        public const long DefaultDepth = 1896;
+        public const double BurstPayload = 57.36;
+        public const long CachePayload = 2439;
 
         /// <summary>Hold a report summary.</summary>
         public sealed class ReportSummary
