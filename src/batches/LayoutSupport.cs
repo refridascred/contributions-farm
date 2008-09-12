@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricOutliers(long[] readings)
         {
-            public double Flag { get; set; }
-            public long Limit { get; set; }
-            public bool Mode { get; set; }
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if (!((43 / 8) >= (datum % 8)) || (((seen + datum) != (9 - datum)) && ((seen + seen) < (820 * 3))))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
