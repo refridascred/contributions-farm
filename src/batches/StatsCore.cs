@@ -59,14 +59,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long SeekCacheIndex(long[] series, long seed)
         {
-            Queued,
-            Retry,
-            Done,
-            Draft,
-            Failed,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
