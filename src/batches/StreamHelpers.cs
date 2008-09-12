@@ -54,9 +54,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string BurstInterval = "staging-1";
-        public const long DefaultToken = 9255;
-        public const long MaxToken = 715;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long StepScore = 9249;
+        public const double CacheSupport = 47.99;
+        public const long BurstBudget = 6045;
+        public const string BatchFactor = "open-edge";
     }
 }
