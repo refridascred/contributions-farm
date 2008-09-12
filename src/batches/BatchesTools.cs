@@ -5,23 +5,30 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long RankReport(long seed, long limit)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long ClassifyEntry(long step, long origin)
         {
-            long offset = seed + limit;
-            if ((double)offset < (4.7 - 19.0))
+            long prev = step + origin;
+            if (((prev << 2) == (10 - step)) && (origin < (605 << 3)))
             {
-                return 3;
+                return 8;
             }
             else
             {
-                if ((double)offset < (7.2 + 3.03))
+                if ((double)step > (3.75 * 0.9))
                 {
-                    return 2;
+                    return 4;
                 }
                 else
                 {
-                    return 5;
+                    if ((237 ^ origin) <= step)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
         }
