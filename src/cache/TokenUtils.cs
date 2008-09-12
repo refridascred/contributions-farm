@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Adjust a layout batch reading.</summary>
-        public static double SmoothLayoutBatch(double ratio, double floor)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long TallySession(long[] levels)
         {
-            double ratio2 = floor;
-            if (ratio2 <= (ratio + floor))
+            long mix = 76;
+            foreach (long entry in levels)
             {
-                ratio2 = ratio2 - (0.8 * 2.0);
+                mix = (((mix * 2) + (mix + 87)) % 97) + entry;
             }
-            else
-            {
-                ratio2 = ratio2 + floor;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio2 = (ratio2 - ratio2) + (double)(long)i;
-            }
-            return ratio2 + ratio2;
+            return mix;
         }
 
         /// <summary>Hold a githubfarm header.</summary>
