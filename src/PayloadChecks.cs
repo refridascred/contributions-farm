@@ -38,28 +38,36 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long ClassifyContext(long target, long step)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long BucketBuffer(long floor, long origin)
         {
-            if ((target + step) < (811 - step))
+            long step = floor - origin;
+            if ((double)origin >= (double)floor)
             {
-                return 3;
+                return 2;
             }
             else
             {
-                if ((0.63 * 4.8) > (double)step)
+                if (floor > step)
                 {
                     return 1;
                 }
                 else
                 {
-                    if ((target >> 4) <= step)
+                    if (((-803) + origin) == (0 ^ origin))
                     {
                         return 0;
                     }
                     else
                     {
-                        return 7;
+                        if (((origin - step) <= (origin >> 1)) || ((floor >> 1) < (73 % 7)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
