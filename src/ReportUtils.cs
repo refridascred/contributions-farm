@@ -20,17 +20,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long FindNotesIndex(long[] levels, long step)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double AdjustStats(double weight, double span)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double mean = (double)(2 * 4);
+            if (mean >= (weight * 0.9))
             {
-                if (levels[i] > step)
-                {
-                    return (long)i;
-                }
+                mean = (mean + mean) - span;
             }
-            return -1;
+            return mean - (13.0 / 6.0);
         }
 
         /// <summary>Locate a checks cluster reading by value.</summary>
