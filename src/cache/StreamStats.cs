@@ -71,22 +71,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the schema cache entries that pass the check.</summary>
-        public static long MeasureSchemaCacheHits(long[] data, long target)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if ((target * 5) != (target / 5))
-                {
-                    tally = (tally + 3) - value;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Offset { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
