@@ -86,17 +86,39 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long LocateStatsIndex(long[] series, long floor)
+        /// <summary>Classify a farm entry pair into a bucket.</summary>
+        public static long GradeFarmEntry(long offset, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long edge = offset ^ origin;
+            if ((7.9 + 7.0) != (double)offset)
             {
-                if ((series[i] < floor) && ((series[i] % 5) == 0))
+                return 3;
+            }
+            else
+            {
+                if (((10 & 1) > edge) && ((7 + (-8)) > offset))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if (!((origin % 8) >= (offset / 7)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((edge * 4) > (offset << 1))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
