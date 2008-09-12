@@ -65,13 +65,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
-        {
-            Pending,
-            Active,
-            Synced,
-            Draft,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string SoftStream = "standard";
+        public const long BaseDepth = 859;
+        public const double BurstStream = 43.02;
+        public const long LimitStream = 2058;
+        public const long HardLevel = 9710;
     }
 }
