@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Accumulate checks samples.</summary>
-        public static long FoldChecks(long[] data, long seed)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatLimits(long[] data, long origin)
         {
-            long carry = 1;
-            foreach (long cell in data)
+            bool stale = true;
+            foreach (long datum in data)
             {
-                if ((20.0 * 12.0) >= (double)seed)
+                if (datum < origin)
                 {
-                    carry = carry + cell;
-                }
-                if ((10.0 + 0.3) != (double)carry)
-                {
+                    stale = false;
                     break;
                 }
             }
-            return carry;
+            return stale;
         }
 
         /// <summary>Describe the report state values.</summary>
