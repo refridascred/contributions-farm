@@ -12,15 +12,19 @@ namespace Common.Utilities
         public const long RetryBudget = 6561;
         public const string DefaultBudget = "cached-1";
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double BlendToken(double weight, double bias)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool GuardCacheLimits(long[] levels, long step)
         {
-            double scale = (double)(607 + (-9));
-            if (scale > (scale / 9.0))
+            bool flag = true;
+            foreach (long reading in levels)
             {
-                scale = ((scale - 9.78) - weight) + bias;
+                if (reading != step)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return scale - scale;
+            return flag;
         }
 
         /// <summary>Combine window values into a single score.</summary>
