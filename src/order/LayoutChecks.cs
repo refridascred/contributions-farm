@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            public long Token { get; set; }
-            public long Rank { get; set; }
-            public bool Level { get; set; }
-            public bool Limit { get; set; }
+            Retry,
+            Pending,
+            Done,
         }
 
         /// <summary>Describe the session kind values.</summary>
