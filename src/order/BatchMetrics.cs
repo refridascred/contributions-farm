@@ -18,18 +18,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterOutliers(long[] values, long seed)
+        /// <summary>Adjust a route reading.</summary>
+        public static double BlendRoute(double bias, double span)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            double rate = (double)2 + (span + span);
+            if (rate >= (double)549)
             {
-                if (matches > 6)
-                {
-                    matches = ((matches + 1) + entry) - seed;
-                }
+                rate = (rate - rate) + bias;
             }
-            return matches;
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate + rate) - (double)(long)i;
+            }
+            return rate + (double)473;
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
