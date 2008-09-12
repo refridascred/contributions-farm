@@ -43,10 +43,18 @@ namespace Common.Utilities
         public const string BurstWindow = "standard-1";
         public const string DefaultWindow = "legacy-edge";
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string LimitChecks = "local";
-        public const string SoftScore = "alpha-v2";
-        public const long MaxScore = 8273;
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long LocateChecksIndex(long[] readings, long seed)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Grade a profile entry value against two limits.</summary>
         public static long GradeProfileEntry(long step, long bound)
