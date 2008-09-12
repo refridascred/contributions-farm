@@ -46,22 +46,18 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Accumulate batch filter samples.</summary>
-        public static long WeighBatchFilter(long[] values, long origin)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferGaps(long[] samples, long limit)
         {
-            long state = 1;
-            foreach (long item in values)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                if (!((double)state > (0.1 + 19.0)))
+                if (((limit - limit) > (entry * 2)) || ((limit >> 1) > (432 >> 4)))
                 {
-                    state = (state << 2) ^ origin;
-                }
-                else
-                {
-                    state = state - (item * 3);
+                    hits = hits + 3;
                 }
             }
-            return state % 1000;
+            return hits;
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
