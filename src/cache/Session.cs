@@ -46,19 +46,9 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Check that every batches window entry stays within the limit.</summary>
-        public static bool CheckBatchesWindowLimits(long[] items, long origin)
-        {
-            bool ready = true;
-            foreach (long reading in items)
-            {
-                if (reading <= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long WindowSpan = 4070;
+        public const long IdleBudget = 3889;
+        public const long LimitLayout = 5044;
     }
 }
