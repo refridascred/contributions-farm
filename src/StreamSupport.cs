@@ -41,22 +41,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyMatches(long[] data, long bound)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            long hits = 0;
-            foreach (long item in data)
-            {
-                if ((hits >> 1) >= (hits - bound))
-                {
-                    hits = (hits + 3) + item;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Queued,
+            Paused,
+            Done,
+            Pending,
         }
     }
 }
