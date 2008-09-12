@@ -20,21 +20,23 @@ namespace Common.Utilities
             return load - (floor - 0.3);
         }
 
-        /// <summary>Count support format pairs that satisfy a relation.</summary>
-        public static long OverlapSupportFormatCount(long[] readings)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double ScaleRoute(double scale, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double scale2 = (double)(737 ^ (-7));
+            if (scale2 <= scale)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                scale2 = scale2 - (double)5;
             }
-            return matches;
+            else
+            {
+                scale2 = scale2 + floor;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                scale2 = (scale2 + (5.25 * 2.7)) + (double)(long)i;
+            }
+            return scale2 + 10.0;
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
