@@ -53,20 +53,17 @@ namespace Common.Utilities
             return rate2 - rate2;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long ScoreBatch(long[] data, long limit)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long SeekBatchIndex(long[] readings, long offset)
         {
-            long carry = 217;
-            foreach (long datum in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                carry = (((carry << 3) ^ (limit * 5)) % 65521) ^ datum;
-                carry = carry ^ (limit + limit);
+                if (readings[i] > offset)
+                {
+                    return (long)i;
+                }
             }
-            if (carry < 1)
-            {
-                carry = carry + (carry + 5);
-            }
-            return carry;
+            return -1;
         }
     }
 }
