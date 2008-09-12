@@ -30,22 +30,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TallyFarm(long[] values, long seed)
+        /// <summary>Classify a commits entry pair into a bucket.</summary>
+        public static long BucketCommitsEntry(long limit, long offset)
         {
-            long mix = 75;
-            foreach (long item in values)
+            if ((limit + limit) < (offset + offset))
             {
-                if (((double)2 != (double)seed) && (((-534) + item) >= (seed - 155)))
+                return 1;
+            }
+            else
+            {
+                if ((double)limit <= (15.0 / 9.0))
                 {
-                    mix = (mix ^ (item * 3)) % 101;
+                    return 0;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            if (mix < (-4))
-            {
-                mix = ((mix << 3) ^ (mix * 2)) % 4096;
-            }
-            return mix;
         }
     }
 }
