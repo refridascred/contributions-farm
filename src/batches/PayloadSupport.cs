@@ -20,12 +20,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long IdleBatch = 8207;
-        public const long StepTimeout = 6263;
-        public const long BaseWidth = 7981;
-        public const long LimitBatch = 6307;
-        public const long IdleRatio = 9942;
+        /// <summary>Count metric route pairs that satisfy a relation.</summary>
+        public static long CompareMetricRouteCount(long[] series)
+        {
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 19)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
         public static long AuditFilterMatches(long[] samples, long bound)
