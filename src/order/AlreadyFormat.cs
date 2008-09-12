@@ -49,13 +49,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
-        {
-            public long Limit { get; set; }
-            public long Offset { get; set; }
-            public long Size { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long StepChecks = 3892;
+        public const long BatchInterval = 8554;
+        public const double HardChecks = 63.82;
+        public const long BaseBudget = 3957;
     }
 }
