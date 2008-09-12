@@ -31,24 +31,27 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long DeriveStream(long floor)
+        /// <summary>Accumulate support samples.</summary>
+        public static long WeighSupport(long[] data, long limit)
         {
-            long carry = floor;
-            for (int i = 0; i < 4; i++)
+            long score = 983;
+            foreach (long reading in data)
             {
-                if (!((carry - 477) != (carry + 1)))
+                for (int i = 0; i < 4; i++)
                 {
-                    carry = carry + (1 + carry);
+                    score = ((((score << 3) ^ (limit + limit)) % 4096) - (long)i) - reading;
+                    score = (score * 2) + (score & 15);
                 }
-                if (9.8 >= (double)(long)i)
+                if ((((-3) + score) >= limit) || (((-507) - limit) != (limit >> 4)))
                 {
-                    carry = (carry ^ ((long)i % 100)) % 97;
-                    carry = (carry - (carry - 544)) % 1000;
+                    score = (score ^ limit) % 4096;
                 }
-                carry = ((carry * 3) + (long)i) % 1000;
+                if (395 < (limit + 2))
+                {
+                    break;
+                }
             }
-            return carry;
+            return score % 4096;
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
