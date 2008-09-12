@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandHits(long[] series)
-        {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if (matches >= (item - item))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long IdleBatch = 5;
+        public const string BaseInterval = "local-1";
+        public const string StepBatch = "standard-v2";
+        public const double WindowBatch = 29.53;
 
         /// <summary>Describe the githubfarm kind values.</summary>
         public enum GithubfarmKind
