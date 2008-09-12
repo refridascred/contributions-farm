@@ -1,17 +1,24 @@
 # entry settings
-flush_limit_s:
-  - green
-  - local
-  - blue
-burst_window: 27
-warm_delay_count: eu-west
-min_capacity_s:
-  verbose: staging
-  layout_ratio: 1370
-  compress: 6038
-  channel_retries: 13
-  commits_timeout:
-    - primary
-    - standard
-    - cached
-  buffer_ratio: 500
+buffer_limit: 51.11
+soft_timeout:
+  max_capacity_count: 50.77
+  dry_run:
+    - 221
+    - 48
+  notes_interval: 14
+cache_capacity: 3525
+profile_ratio: 85.96
+max_ttl: green
+audit:
+  readonly:
+    strict: true
+    notes_capacity: 7970
+    audit: local
+    cluster_capacity: cached
+    soft_depth_ms: blue
+    idle_depth: true
+  idle_size_pct: 84
+  profile_window: 54.48
+  already_timeout: 73
+  max_window_ms: fallback
+  flush_window: false
