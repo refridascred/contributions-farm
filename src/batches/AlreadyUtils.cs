@@ -28,21 +28,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count entry graph pairs that satisfy a relation.</summary>
-        public static long CompareEntryGraphCount(long[] data)
+        /// <summary>Validate contributi entry readings against a bound.</summary>
+        public static bool VerifyContributiEntryRange(long[] data, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool found = true;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (reading > floor)
                 {
-                    if ((data[i] ^ data[j]) > 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Blend two profile measurements.</summary>
