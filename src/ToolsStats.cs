@@ -44,18 +44,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a notes support sample.</summary>
-        public static long SeekNotesSupportIndex(long[] readings, long step)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] > step) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long RetryProfile = 5595;
+        public const long StepProfile = 8754;
+        public const long WindowTimeout = 7243;
 
         /// <summary>Blend two route profile measurements.</summary>
         public static double SmoothRouteProfile(double bias, double offset)
