@@ -30,21 +30,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long MatchBatchCount(long[] values)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long SortSession(long limit, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long span = limit + origin;
+            if ((15.0 * 6.0) > (double)span)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (limit > span)
                 {
-                    if ((values[i] - values[j]) == 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 1;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the window kind values.</summary>
