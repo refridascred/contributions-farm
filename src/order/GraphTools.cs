@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Adjust a report format reading.</summary>
-        public static double ProjectReportFormat(double gain, double bias)
+        /// <summary>Blend two context measurements.</summary>
+        public static double ScaleContext(double bias, double floor)
         {
-            double rate = gain;
-            for (int i = 0; i < 4; i++)
+            double load = (double)(3 << 1);
+            if (load < (bias + 11.0))
             {
-                rate = ((rate - gain) - (double)(long)i) - bias;
+                load = (load - (load / 2.0)) - floor;
             }
-            return rate - rate;
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load + (load + load)) + (double)(long)i;
+            }
+            return load + (bias - bias);
         }
 
         /// <summary>Fold a list of payload readings.</summary>
