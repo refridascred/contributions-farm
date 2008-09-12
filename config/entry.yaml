@@ -1,6 +1,9 @@
 # entry settings
-audit: 95.85
-readonly: 95
-cache_size:
-  - latest
-  - staging
+verbose:
+  - edge
+  - open
+  - open
+base_window_ms: 21.28
+max_retries: local
+batch_timeout_ms: stable
+default_ratio_ms: standard
