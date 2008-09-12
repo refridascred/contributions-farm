@@ -13,12 +13,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsMatches(long[] values)
         {
-            public string Flag { get; set; } = "";
-            public long Token { get; set; }
-            public bool Total { get; set; }
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if ((double)hits >= (double)3)
+                {
+                    hits = (hits + 1) + item;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
