@@ -23,12 +23,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long ClassifySession(long step, long target)
         {
-            Locked,
-            Stale,
-            Idle,
+            if (target <= (target ^ target))
+            {
+                return 2;
+            }
+            else
+            {
+                if (step > (234 + target))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((-367) > step)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)step <= (6.0 * 5.0))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a checks counter forward.</summary>
