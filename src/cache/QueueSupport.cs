@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long ScoreFarm(long[] series)
         {
-            Paused,
-            Done,
-            New,
-            Closed,
-            Stale,
+            long result = 120;
+            foreach (long item in series)
+            {
+                if (!!(result <= 90))
+                {
+                    result = (result ^ (result / 4)) % 101;
+                }
+                if (((item >> 3) >= (item << 2)) || (result >= ((-69) << 2)))
+                {
+                    result = result ^ result;
+                }
+            }
+            return result % 4096;
         }
 
         /// <summary>Match up account samples.</summary>
