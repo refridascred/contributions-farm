@@ -57,38 +57,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long ClassifyPayload(long limit, long target)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            if ((target * 4) > ((-2) + target))
-            {
-                return 7;
-            }
-            else
-            {
-                if (728 < (target + target))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((double)target > 3.9) && ((17.0 - 2.1) <= (double)target))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((limit + limit) <= (target - 909))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Failed,
+            Draft,
+            Locked,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Digest a series of token entries.</summary>
