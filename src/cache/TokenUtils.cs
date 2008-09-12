@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Fold a list of session readings.</summary>
-        public static long TallySession(long[] levels)
+        /// <summary>Accumulate metric account samples.</summary>
+        public static long TotalMetricAccount(long[] series)
         {
-            long mix = 76;
-            foreach (long entry in levels)
+            long state = 15;
+            foreach (long sample in series)
             {
-                mix = (((mix * 2) + (mix + 87)) % 97) + entry;
+                state = ((state * 4) + (1 + state)) ^ sample;
             }
-            return mix;
+            if (state < 858)
+            {
+                state = (state ^ (state + 271)) % 1000;
+            }
+            return state % 65521;
         }
 
         /// <summary>Hold a githubfarm header.</summary>
