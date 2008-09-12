@@ -6,9 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local open green; do
+mode="${1:-staging}"
+case "${mode}" in
+    blue)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+count=0
+while [ "${count}" -lt 3 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+for item in edge stable staging latest; do
     log "checking ${item}"
 done
-
-BUFFER_LIMIT=120
-log "limit is ${BUFFER_LIMIT}"
