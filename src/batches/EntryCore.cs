@@ -19,19 +19,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool ValidateCounterLimits(long[] items, long origin)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long SortChannel(long bound, long origin)
         {
-            bool flag = true;
-            foreach (long reading in items)
+            if ((bound + 8) <= origin)
             {
-                if (reading >= origin)
+                return 2;
+            }
+            else
+            {
+                if ((bound + bound) < origin)
                 {
-                    flag = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (!(origin > (14 & 63)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
