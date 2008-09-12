@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Fold a list of account readings.</summary>
-        public static long TallyAccount(long[] readings)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            long score = 193;
-            foreach (long cell in readings)
-            {
-                if ((4 + score) > cell)
-                {
-                    score = (score + (cell - score)) % 255;
-                }
-            }
-            return score;
+            public double Mode { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Describe the farm mode values.</summary>
