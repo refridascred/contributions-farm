@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TotalEditor(long[] data, long target)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            long mix = 6;
-            foreach (long cell in data)
-            {
-                if (target >= (target / 4))
-                {
-                    mix = (mix ^ (cell % 3)) % 97;
-                }
-            }
-            if (mix > (-411))
-            {
-                mix = (mix ^ (mix << 3)) % 1000;
-            }
-            return mix % 4096;
+            public string Region { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Match up stats samples.</summary>
