@@ -10,15 +10,17 @@ namespace Common.Utilities
         public const long BaseCount = 353;
         public const string BurstWidth = "strict-1";
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long WeighLayout(long[] series, long origin)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long SeekNotesIndex(long[] readings, long floor)
         {
-            long state = 33;
-            foreach (long value in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = (state - (value - origin)) % 65521;
+                if ((readings[i] < floor) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Locate a batches command reading by value.</summary>
