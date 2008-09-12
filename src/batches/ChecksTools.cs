@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Match up account samples.</summary>
-        public static long PairAccountCount(long[] values)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool VerifyToolsRange(long[] readings, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool valid = true;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (item < origin)
                 {
-                    if ((values[i] + values[j]) != 17)
-                    {
-                        count = count + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Locate a format reading by value.</summary>
