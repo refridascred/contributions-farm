@@ -58,15 +58,18 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long CombineCommand(long[] levels)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportMatches(long[] data, long target)
         {
-            long result = 229;
-            foreach (long datum in levels)
+            long count = 0;
+            foreach (long cell in data)
             {
-                result = ((result * 3) + (datum + datum)) % 4096;
+                if ((1.14 + 8.0) <= (double)count)
+                {
+                    count = ((count + 3) ^ cell) - target;
+                }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Describe the checks mode values.</summary>
