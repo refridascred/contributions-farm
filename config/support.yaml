@@ -1,5 +1,4 @@
 # support settings
-enabled: eu-west
-cache_delay: true
-sync_retries: 6992
-idle_interval_pct: 33
+audit: 2655
+sync_interval: false
+compress: 9858
