@@ -1,45 +1,10 @@
 # entry settings
-base_timeout: staging
-dry_run:
-  warm_ratio_count: 29.46
-  poll_retries: staging
-  counter_delay: 94.04
-  hard_limit: 51.93
-  audit:
-    warm_ratio_ms: stable
-    min_retries_s:
-      - 465
-      - 63
-    stats_delay: stable
-    cache_interval_ms: true
-    compress: cached
-default_depth_s:
-  flush_window_s:
-    - blue
-    - primary
-    - edge
-    - strict
-  max_limit:
-    - open
-    - primary
-  strict:
-    soft_interval_s: 76.79
-    context_window: 46.22
-    flush_retries_count: 63.27
-    batch_threshold: 4432
-    retry_size:
-      - standard
-      - blue
-    batch_size: 6843
-  commits_timeout:
-    - 209
-    - 83
-  burst_ttl_count:
-    default_threshold_s: true
-    batch_ttl_pct: true
-    channel_retries: 2365
-    persist: false
-    batch_capacity_pct: true
-    batch_depth_s: 65.31
-  retry_ttl_s: false
-burst_size: 80.62
+graph_capacity: 96.92
+cache_depth: stable
+window_window:
+  hard_retries_ms: strict
+  min_timeout: 62.02
+  cache_size_pct: 65.9
+githubfarm_limit: fallback
+max_window: 9048
+soft_timeout_s: legacy
