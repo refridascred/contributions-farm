@@ -31,9 +31,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string StepNotes = "open-1";
-        public const double HardFactor = 85.03;
-        public const long HardScore = 7232;
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
+        {
+            Pending,
+            Synced,
+            Dropped,
+        }
     }
 }
