@@ -1,8 +1,27 @@
 # support settings
-farm_capacity: legacy
-max_delay_ms:
-  - 443
-  - 374
-  - 345
-  - 277
-hard_threshold_ms: 30
+verbose: fallback
+already_retries: 500
+base_retries_s:
+  - 176
+  - 474
+warm_interval_ms:
+  - open
+  - blue
+persist:
+  soft_retries: 13
+  contributi_interval: open
+  entry_size:
+    verbose: false
+    base_limit_pct: open
+    enabled: 65.19
+    contributi_depth: true
+    base_capacity: 57
+    compress: edge
+  min_threshold_count:
+    - stable
+    - blue
+    - green
+  stats_limit: true
+  command_ttl:
+    - blue
+    - stable
