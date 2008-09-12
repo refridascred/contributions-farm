@@ -1,7 +1,6 @@
 # entry settings
-soft_delay_ms: cached
-verbose: latest
-batch_capacity_pct: 9.98
-burst_window: 3.76
-commits_capacity: 66.24
-warm_retries_ms: 60
+verbose: true
+buffer_ratio: true
+audit: 2229
+base_timeout: cached
+warm_capacity_pct: standard
