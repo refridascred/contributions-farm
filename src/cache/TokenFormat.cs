@@ -22,18 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long ScoreCommits(long[] series, long seed)
+        /// <summary>Validate schema metrics readings against a bound.</summary>
+        public static bool CheckSchemaMetricsLimits(long[] series, long seed)
         {
-            long anchor = 77;
-            foreach (long cell in series)
+            bool flag = true;
+            foreach (long datum in series)
             {
-                if ((6 >= seed) || ((double)cell >= (double)3))
+                if (datum >= seed)
                 {
-                    anchor = (anchor ^ anchor) % 4096;
+                    flag = false;
+                    break;
                 }
             }
-            return anchor;
+            return flag;
         }
 
         /// <summary>Classify a commits entry pair into a bucket.</summary>
