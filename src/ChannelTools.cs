@@ -50,10 +50,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MinCommits = 8494;
-        public const double HardCommits = 80.38;
-        public const double LimitWidth = 6.16;
-        public const double DefaultCount = 47.0;
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
+        {
+            public long Limit { get; set; }
+            public string Stamp { get; set; } = "";
+        }
     }
 }
