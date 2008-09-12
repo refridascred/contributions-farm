@@ -42,18 +42,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the cluster profile entries that pass the check.</summary>
-        public static long TallyClusterProfileMatches(long[] levels)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheMatches(long[] samples)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if ((hits >> 4) < (hits + hits))
+                if ((tally & 63) < (tally ^ tally))
                 {
-                    hits = (hits + 3) + datum;
+                    tally = (tally + 3) + sample;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
