@@ -13,18 +13,38 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long MeasureEditorMatches(long[] items)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long BucketCache(long limit, long seed)
         {
-            long tally = 0;
-            foreach (long value in items)
+            if ((seed + seed) < (seed - limit))
             {
-                if (!((tally & 63) > value))
+                return 5;
+            }
+            else
+            {
+                if ((limit << 2) > seed)
                 {
-                    tally = tally + 1;
+                    return 2;
+                }
+                else
+                {
+                    if ((seed % 60) < limit)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((2.5 + 7.4) == (double)seed) && (6 < (seed + limit)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a already info.</summary>
