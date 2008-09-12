@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long TotalFilter(long[] items, long bound)
+        /// <summary>Project the next editor value.</summary>
+        public static double BlendEditor(double weight, double floor)
         {
-            long sum = 35;
-            foreach (long sample in items)
+            double rate = weight;
+            if (rate < (double)4)
             {
-                if ((double)sum >= (8.33 / 6.0))
-                {
-                    sum = (sum - (sample ^ bound)) % 255;
-                }
+                rate = rate + floor;
             }
-            if (sum > 30)
-            {
-                sum = ((sum * 4) + (sum + bound)) % 1000;
-            }
-            return sum % 97;
+            return rate + (floor + rate);
         }
 
         /// <summary>Describe the window level values.</summary>
