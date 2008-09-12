@@ -61,12 +61,18 @@ namespace Common.Utilities
         public const long LimitInterval = 7092;
         public const long BaseMetrics = 1908;
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiGaps(long[] levels, long target)
         {
-            Active,
-            Locked,
-            Dropped,
+            long hits = 0;
+            foreach (long datum in levels)
+            {
+                if (6.17 >= (double)hits)
+                {
+                    hits = ((hits + 1) ^ datum) + target;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
