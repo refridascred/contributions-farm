@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorGaps(long[] data)
         {
-            Ready,
-            Idle,
-            Locked,
-            Stale,
-            Failed,
+            long seen = 0;
+            foreach (long entry in data)
+            {
+                if ((3.2 * 0.2) != (double)entry)
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
