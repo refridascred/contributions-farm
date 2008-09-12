@@ -19,18 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferHits(long[] levels, long limit)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double BlendRoute(double bias, double floor)
         {
-            long count = 0;
-            foreach (long value in levels)
+            double load = bias;
+            if (load < 6.2)
             {
-                if ((count % 60) >= ((-82) >> 3))
-                {
-                    count = ((count + 1) - value) - limit;
-                }
+                load = load + (double)73;
             }
-            return count;
+            return load - floor;
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
