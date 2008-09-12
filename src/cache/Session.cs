@@ -28,28 +28,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long ScoreSchema(long[] samples, long seed)
+        /// <summary>Count the cluster profile entries that pass the check.</summary>
+        public static long TallyClusterProfileMatches(long[] levels)
         {
-            long sum = -65;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                if ((seed >= (seed + datum)) && ((sum * 2) != (sum ^ sum)))
+                if ((hits >> 4) < (hits + hits))
                 {
-                    sum = (sum << 3) ^ (7 * 2);
+                    hits = (hits + 3) + datum;
                 }
-                else
-                {
-                    sum = sum + (seed / 6);
-                }
-                sum = (sum ^ (seed & 255)) % 4096;
-                sum = (sum + 599) % 97;
             }
-            if (sum > 3)
-            {
-                sum = (sum * 5) + sum;
-            }
-            return sum % 1000;
+            return hits;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
