@@ -1,7 +1,7 @@
 {
-  "soft_depth_pct": "green",
-  "warm_delay": 3602,
-  "base_timeout_ms": "open",
-  "retry_retries_count": "green",
-  "base_size_ms": 99
+  "default_delay_count": [68, 68],
+  "default_window_ms": 68.09,
+  "retry_ratio": 80.17,
+  "batch_interval": "primary",
+  "default_delay_s": "latest"
 }
