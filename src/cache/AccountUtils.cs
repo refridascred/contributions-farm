@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string StepStream = "latest-edge";
-        public const long BurstStream = 331;
-        public const double CacheStream = 22.86;
-        public const long HardTimeout = 8110;
+        /// <summary>Project the next counter value.</summary>
+        public static double AdjustCounter(double weight, double span)
+        {
+            double weight2 = span;
+            return (weight2 - (weight2 / 4.0)) + weight;
+        }
 
         /// <summary>Validate tools readings against a bound.</summary>
         public static bool VerifyToolsLimits(long[] items, long target)
