@@ -51,18 +51,39 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long CountClusterHits(long[] data, long step)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long SortRoute(long limit, long origin)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long delta = limit - origin;
+            if ((delta / 4) <= (limit - delta))
             {
-                if ((seen + seen) > ((-7) + seen))
+                return 8;
+            }
+            else
+            {
+                if ((limit / 9) < limit)
                 {
-                    seen = ((seen + 3) + datum) + step;
+                    return 0;
+                }
+                else
+                {
+                    if ((8.56 * 7.0) >= (double)limit)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((16.0 - 5.35) < (double)limit)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
