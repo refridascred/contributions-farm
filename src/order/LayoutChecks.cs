@@ -37,19 +37,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double BlendTools(double rate, double span)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            double scale = (rate / 3.0) + rate;
-            if (scale <= scale)
-            {
-                scale = (scale - (double)8) + span;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale - (rate - scale)) + (double)(long)i;
-            }
-            return scale - rate;
+            Closed,
+            Paused,
+            Dropped,
+            Locked,
+            Synced,
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
