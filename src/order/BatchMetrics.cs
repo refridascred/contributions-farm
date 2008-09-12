@@ -75,18 +75,25 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaHits(long[] values)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long SortAlready(long step, long origin)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            long edge = step + origin;
+            if ((step + origin) == (841 & 63))
             {
-                if (cell >= (seen << 3))
+                return 0;
+            }
+            else
+            {
+                if ((edge & 15) > (step + step))
                 {
-                    seen = seen + 2;
+                    return 6;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return seen;
         }
     }
 }
