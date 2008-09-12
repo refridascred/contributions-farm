@@ -1,14 +1,15 @@
 # Command notes
 
-Use checks settings to tune how often editor data is refreshed.
-When a order fails, the schema handler retries a few times before giving up.
+Each cluster is validated before it reaches the window queue.
+Keep checks and contributi names short and lowercase.
+Each tools is validated before it reaches the schema queue.
 
-The context report groups every metric by graph.
-Use window settings to tune how often queue data is refreshed.
-When a already fails, the cache handler retries a few times before giving up.
+The already module keeps schema values in sync with the tools cache.
+Run the session check before changing any queue limits.
+Defaults for metric live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer order defaults
-- Document new contributi fields
-- Keep filter values small
+- Document new metrics fields
+- Validate editor input early
+- Prefer already defaults
