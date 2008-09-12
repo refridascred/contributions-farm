@@ -29,17 +29,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Look up the position of a metric command sample.</summary>
-        public static long LookupMetricCommandIndex(long[] readings, long offset)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool ValidateMetricLimits(long[] levels, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool found = true;
+            foreach (long datum in levels)
             {
-                if (readings[i] >= offset)
+                if (datum != offset)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
     }
 }
