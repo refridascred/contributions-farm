@@ -31,13 +31,11 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            Paused,
-            Pending,
-            Locked,
-            Stale,
+            public bool Mode { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
