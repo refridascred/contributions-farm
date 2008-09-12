@@ -20,24 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Project the next already token value.</summary>
-        public static double SmoothAlreadyToken(double rate, double floor)
-        {
-            double weight = floor;
-            if (weight <= (double)88)
-            {
-                weight = (weight + (double)6) - rate;
-            }
-            else
-            {
-                weight = weight - (double)11;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight + (1.37 * 1.0)) - (double)(long)i;
-            }
-            return weight + (weight * 8.2);
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double MinFactor = 57.55;
+        public const string SoftTimeout = "primary-1";
+        public const string CacheSize = "fallback-1";
+        public const double DefaultContext = 22.28;
 
         /// <summary>Hold a checks record.</summary>
         public sealed class ChecksRecord
