@@ -1,6 +1,8 @@
 {
-  "poll_limit": 6608,
-  "command_retries": 20.19,
-  "support_limit": "cached",
-  "idle_depth_pct": 68.96
+  "hard_window_ms": 500,
+  "retry_depth_ms": 116,
+  "flush_interval_ms": 500,
+  "cache_ttl": "staging",
+  "dry_run": ["blue", "fallback", "staging", "open"],
+  "sync_window_pct": true
 }
