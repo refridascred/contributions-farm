@@ -1,5 +1,8 @@
 {
-  "flush_interval_s": true,
-  "max_window": "open",
-  "warm_depth": 1024
+  "cache_window_pct": 17,
+  "sync_window": 23.39,
+  "dry_run": "primary",
+  "readonly": true,
+  "verbose": 4,
+  "compress": 8101
 }
