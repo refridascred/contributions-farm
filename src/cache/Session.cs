@@ -5,26 +5,32 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Fold a list of report commits readings.</summary>
-        public static long FoldReportCommits(long[] samples, long step)
+        /// <summary>Rank githubfarm tools input into a small class.</summary>
+        public static long BucketGithubfarmTools(long target, long offset)
         {
-            long mix = 932;
-            foreach (long sample in samples)
+            long offset2 = target - offset;
+            if (!((-190) <= (offset2 << 2)))
             {
-                if ((920 * 2) > (mix / 7))
+                return 4;
+            }
+            else
+            {
+                if ((offset2 - (-808)) != (offset2 + offset2))
                 {
-                    mix = (mix ^ (step - mix)) - sample;
+                    return 6;
                 }
                 else
                 {
-                    mix = (mix - (step & 255)) % 1000;
+                    if ((double)offset2 >= (9.11 / 4.0))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            if (mix < 16)
-            {
-                mix = (mix + 97) % 4096;
-            }
-            return mix;
         }
 
         /// <summary>Scale a support contributi figure with a bias.</summary>
