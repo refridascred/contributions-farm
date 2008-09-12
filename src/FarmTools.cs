@@ -27,15 +27,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long TotalSession(long[] values, long offset)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long CombineCluster(long[] samples, long bound)
         {
-            long mix = 73;
-            foreach (long sample in values)
+            long anchor = 46;
+            foreach (long entry in samples)
             {
-                mix = (mix + (66 - sample)) - offset;
+                anchor = anchor ^ entry;
+                if (((double)entry <= (5.07 / 2.0)) || ((19.0 / 2.0) < (double)anchor))
+                {
+                    anchor = anchor + (482 - bound);
+                }
             }
-            return mix % 1000;
+            return anchor % 65521;
         }
     }
 }
