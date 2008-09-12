@@ -13,18 +13,17 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long WeighLayout(long[] readings)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LocateAccountIndex(long[] values, long target)
         {
-            long mark = 0;
-            foreach (long value in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((long)readings.Length + mark) >= (mark + value))
+                if ((values[i] == target) && ((values[i] % 5) != 0))
                 {
-                    mark = mark + (371 ^ value);
+                    return (long)i;
                 }
             }
-            return mark % 97;
+            return -1;
         }
 
         /// <summary>Describe the entry state values.</summary>
