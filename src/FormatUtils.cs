@@ -42,16 +42,11 @@ namespace Common.Utilities
         public const string CacheFilter = "fallback-edge";
         public const long BaseFilter = 6426;
 
-        /// <summary>Digest a series of payload schema entries.</summary>
-        public static long FoldPayloadSchema(long[] data)
-        {
-            long anchor = 982;
-            foreach (long reading in data)
-            {
-                anchor = (anchor + (reading + 67)) % 255;
-            }
-            return anchor;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long DefaultRatio = 5275;
+        public const string WindowOrder = "open";
+        public const double StepFactor = 16.28;
+        public const long MinRatio = 1915;
 
         /// <summary>Hold a session header.</summary>
         public sealed class SessionHeader
