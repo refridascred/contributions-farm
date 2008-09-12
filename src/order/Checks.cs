@@ -42,13 +42,13 @@ namespace Common.Utilities
             return bias2 - weight;
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            public bool Score { get; set; }
-            public double Ratio { get; set; }
-            public string Total { get; set; } = "";
+            public long Total { get; set; }
             public bool Weight { get; set; }
+            public long Size { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Describe the counter kind values.</summary>
