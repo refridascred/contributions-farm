@@ -29,11 +29,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Look up the position of a channel support sample.</summary>
+        public static long FindChannelSupportIndex(long[] series, long limit)
         {
-            public bool Mode { get; set; }
-            public bool Size { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
