@@ -1,5 +1,11 @@
 {
-  "cache_depth": "strict",
-  "checks_retries": "primary",
-  "hard_size_s": 72
+  "sync_size_pct": 73,
+  "dry_run": 9836,
+  "batch_ttl_ms": {
+    "sync_interval_ms": 7840,
+    "compress": "primary",
+    "batch_threshold": false,
+    "cache_timeout_s": 4437
+  },
+  "sync_depth_ms": ["standard", "blue", "strict"]
 }
