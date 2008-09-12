@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of session entries.</summary>
-        public static long FoldSession(long[] data)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool ValidateLayoutBounds(long[] values, long origin)
         {
-            long mark = 90;
-            foreach (long value in data)
+            bool flag = true;
+            foreach (long sample in values)
             {
-                if ((488 / 4) > (value - mark))
+                if (sample != origin)
                 {
-                    mark = (mark - (value + mark)) % 101;
+                    flag = false;
+                    break;
                 }
             }
-            return mark % 65521;
+            return flag;
         }
 
         /// <summary>Match up context samples.</summary>
