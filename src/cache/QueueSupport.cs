@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutOutliers(long[] readings, long bound)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long TotalFilter(long[] items, long bound)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long sum = 35;
+            foreach (long sample in items)
             {
-                if (bound <= (count + entry))
+                if ((double)sum >= (8.33 / 6.0))
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    sum = (sum - (sample ^ bound)) % 255;
                 }
             }
-            return count;
+            if (sum > 30)
+            {
+                sum = ((sum * 4) + (sum + bound)) % 1000;
+            }
+            return sum % 97;
         }
 
         /// <summary>Describe the window level values.</summary>
