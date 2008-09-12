@@ -25,18 +25,9 @@ namespace Common.Utilities
         public const long SoftLevel = 8;
         public const long BatchStats = 9982;
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsGaps(long[] samples, long floor)
-        {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if ((hits % 100) > value)
-                {
-                    hits = (hits + 3) + floor;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BatchGithubfarm = 3887;
+        public const string IdleGithubfarm = "local-edge";
+        public const long SoftWidth = 6033;
     }
 }
