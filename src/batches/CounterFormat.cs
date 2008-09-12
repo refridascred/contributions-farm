@@ -23,21 +23,23 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long MatchQueueCount(long[] readings)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double ProjectTools(double rate, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double scale = (double)(6 - 716);
+            if (scale > (double)735)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                scale = ((scale + scale) + rate) + span;
             }
-            return seen;
+            else
+            {
+                scale = scale + (double)0;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale + scale) + (double)(long)i;
+            }
+            return scale - 15.0;
         }
 
         /// <summary>Adjust a support reading.</summary>
