@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool VerifyCommandLimits(long[] data, long limit)
-        {
-            bool found = true;
-            foreach (long cell in data)
-            {
-                if (cell <= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string WindowWidth = "primary-edge";
+        public const long RetryProfile = 4150;
+        public const long DefaultBudget = 5272;
+        public const double WindowProfile = 54.53;
+        public const long CacheProfile = 3673;
 
         /// <summary>Describe the counter class values.</summary>
         public enum CounterClass
