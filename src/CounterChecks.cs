@@ -49,23 +49,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long IterateToken(long floor)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphGaps(long[] items)
         {
-            long mark = floor;
-            for (int i = 0; i < 23; i++)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                if ((floor + 5) > ((long)i ^ mark))
+                if ((hits % 16) == ((-7) ^ hits))
                 {
-                    mark = mark - (floor * 3);
+                    hits = (hits + 1) ^ datum;
                 }
-                if ((floor & 7) <= mark)
-                {
-                    mark = ((mark << 3) ^ mark) % 97;
-                }
-                mark = ((mark * 2) + (long)i) % 101;
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Find the first account entry that matches the target.</summary>
