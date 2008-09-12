@@ -65,14 +65,12 @@ namespace Common.Utilities
             return load + (bias / 4.0);
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            Stale,
-            Draft,
-            Done,
-            Paused,
-            New,
+            public long Total { get; set; }
+            public long Ratio { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
