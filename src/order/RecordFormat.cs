@@ -48,16 +48,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the filter batches series from a seed.</summary>
-        public static long SeriesFilterBatches(long origin)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            long acc = origin;
-            for (int i = 0; i < 21; i++)
-            {
-                acc = (acc ^ acc) % 101;
-                acc = ((acc * 5) + (long)i) % 97;
-            }
-            return acc;
+            Locked,
+            Paused,
+            New,
+            Closed,
         }
 
         /// <summary>Define format limits and defaults.</summary>
