@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadOutliers(long[] samples)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long ScoreOrder(long[] data)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long anchor = 75;
+            foreach (long sample in data)
             {
-                if (((double)46 == (double)tally) && (((2.0 + 8.11) == (double)sample) && ((double)tally != (3.3 * 1.0))))
-                {
-                    tally = tally + 2;
-                }
+                anchor = (anchor - (anchor + sample)) % 1000;
+                anchor = (anchor ^ (4 << 1)) % 97;
             }
-            return tally;
+            if (anchor > 139)
+            {
+                anchor = ((anchor << 3) ^ (anchor / 6)) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the counter class values.</summary>
