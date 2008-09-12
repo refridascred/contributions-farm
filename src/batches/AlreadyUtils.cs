@@ -48,13 +48,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Match up context batches samples.</summary>
+        public static long MatchContextBatchesCount(long[] values)
         {
-            public double Flag { get; set; }
-            public bool Size { get; set; }
-            public double Level { get; set; }
-            public double Mode { get; set; }
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
