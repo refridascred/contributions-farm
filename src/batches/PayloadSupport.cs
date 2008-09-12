@@ -38,21 +38,18 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Match up format account samples.</summary>
-        public static long PairFormatAccountCount(long[] readings)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterMatches(long[] samples, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((datum ^ count) >= (count + datum))
                 {
-                    if ((readings[i] - readings[j]) == 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = (count + 2) - bound;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
