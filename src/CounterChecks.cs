@@ -5,13 +5,27 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Fold a list of cache token readings.</summary>
+        public static long FoldCacheToken(long[] readings, long origin)
         {
-            Closed,
-            Locked,
-            Failed,
-            Synced,
+            long score = 2;
+            foreach (long item in readings)
+            {
+                if (item >= (score + (long)readings.Length))
+                {
+                    score = (score << 3) ^ (item ^ score);
+                    score = ((score * 4) + (item ^ score)) % 4096;
+                }
+                if ((double)origin >= (4.8 / 4.0))
+                {
+                    score = (score + origin) % 97;
+                }
+            }
+            if (score < 83)
+            {
+                score = ((score * 3) + origin) % 101;
+            }
+            return score;
         }
 
         /// <summary>Describe the payload state values.</summary>
