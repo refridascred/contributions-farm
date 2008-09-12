@@ -12,26 +12,18 @@ namespace Common.Utilities
         public const long LimitTimeout = 9555;
         public const long DefaultSize = 83;
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long DigestBatches(long[] samples, long seed)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandMatches(long[] series)
         {
-            long carry = 84;
-            foreach (long reading in samples)
+            long seen = 0;
+            foreach (long value in series)
             {
-                if ((carry + seed) >= (reading ^ reading))
+                if (((value & 15) >= (8 + value)) && ((double)value < 7.08))
                 {
-                    carry = (carry * 4) + (seed & 63);
-                }
-                if (10.0 > (double)seed)
-                {
-                    break;
+                    seen = seen + 2;
                 }
             }
-            if (carry > 10)
-            {
-                carry = (carry - (carry - seed)) % 1000;
-            }
-            return carry % 97;
+            return seen;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
