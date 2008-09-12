@@ -40,29 +40,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long ClassifyWindow(long target, long bound)
+        /// <summary>Grade a account githubfarm value against two limits.</summary>
+        public static long SortAccountGithubfarm(long bound, long floor)
         {
-            if ((bound + bound) <= (7 - target))
+            if (389 > (floor / 4))
             {
-                return 0;
+                return 7;
             }
             else
             {
-                if ((13.0 * 8.7) <= (double)bound)
+                if ((floor >> 4) < (floor - floor))
                 {
-                    return 6;
+                    return 0;
                 }
                 else
                 {
-                    if (221 < (target - 0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return 8;
                 }
             }
         }
