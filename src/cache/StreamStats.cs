@@ -28,36 +28,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long RankCounter(long offset, long seed)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long ClassifyGithubfarm(long target, long bound)
         {
-            if (((seed / 3) < offset) && ((double)offset == (1.11 / 2.0)))
+            if ((78 ^ bound) > (target + target))
             {
-                return 0;
+                return 8;
             }
             else
             {
-                if (13.0 > (double)offset)
+                if (((target + target) < 51) && ((bound & 255) > bound))
                 {
-                    return 7;
+                    return 4;
                 }
                 else
                 {
-                    if ((seed >> 1) >= (129 + 151))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((4.27 - 12.0) < (double)seed) || ((seed >> 2) >= offset))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return 5;
                 }
             }
         }
