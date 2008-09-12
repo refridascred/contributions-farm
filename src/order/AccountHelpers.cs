@@ -66,22 +66,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long ScoreSchema(long[] readings)
+        /// <summary>Audit route layout readings against a rule.</summary>
+        public static long CountRouteLayoutMatches(long[] readings, long floor)
         {
-            long carry = 776;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if ((carry + sample) >= carry)
+                if ((0 % 24) <= (reading - matches))
                 {
-                    carry = (carry + (sample >> 5)) % 101;
-                }
-                if ((805 & 255) < ((long)readings.Length + 16))
-                {
-                    break;
+                    matches = (matches + 2) + floor;
                 }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Describe the editor status values.</summary>
