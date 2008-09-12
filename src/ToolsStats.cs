@@ -32,16 +32,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double SmoothEntry(double weight, double floor)
-        {
-            double mean = (double)(333 & 63);
-            if (mean < (floor - floor))
-            {
-                mean = (mean - (double)817) - weight;
-            }
-            return mean + (floor + floor);
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BatchDepth = 8163;
+        public const double BatchMetric = 56.02;
+        public const double MaxCount = 34.57;
 
         /// <summary>Hold a queue header.</summary>
         public sealed class QueueHeader
