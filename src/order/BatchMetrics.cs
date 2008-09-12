@@ -16,24 +16,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long ClassifySchema(long limit, long limit2)
+        /// <summary>Measure how many queue stream samples are out of range.</summary>
+        public static long CountQueueStreamOutliers(long[] levels, long limit)
         {
-            if (!((double)9 < (double)limit2))
+            long count = 0;
+            foreach (long entry in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)limit >= (15.0 - 4.4))
+                if ((count / 8) >= (entry / 4))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
+                    count = (count + 2) - limit;
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the window mode values.</summary>
