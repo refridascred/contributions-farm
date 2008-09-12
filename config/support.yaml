@@ -1,4 +1,10 @@
 # support settings
-min_depth_ms: blue
-base_interval_pct: false
-token_threshold: 13.67
+queue_timeout: 5369
+poll_ttl_ms: standard
+strict: 100
+soft_retries: 45.18
+burst_timeout_s: eu-west
+idle_ratio_pct:
+  - green
+  - blue
+  - latest
