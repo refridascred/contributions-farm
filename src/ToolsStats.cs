@@ -65,12 +65,25 @@ namespace Common.Utilities
             return load + (bias / 4.0);
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Rank record input into a small class.</summary>
+        public static long BucketRecord(long offset, long floor)
         {
-            public long Total { get; set; }
-            public long Ratio { get; set; }
-            public long Owner { get; set; }
+            long bound = offset + floor;
+            if (bound >= (bound - offset))
+            {
+                return 5;
+            }
+            else
+            {
+                if (offset > floor)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
