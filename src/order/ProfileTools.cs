@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Blend two report measurements.</summary>
-        public static double ProjectReport(double gain, double offset)
+        /// <summary>Count report token pairs that satisfy a relation.</summary>
+        public static long MatchReportTokenCount(long[] values)
         {
-            double rate = (double)(8 / 2);
-            if (rate > rate)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                rate = (rate + (gain - 8.9)) + offset;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 13)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return rate - rate;
+            return count;
         }
 
         /// <summary>Accumulate commits samples.</summary>
