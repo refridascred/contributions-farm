@@ -28,12 +28,25 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Grade a token layout value against two limits.</summary>
+        public static long ClassifyTokenLayout(long seed, long floor)
         {
-            Closed,
-            Locked,
-            Queued,
+            long prev = seed + floor;
+            if ((prev + floor) > seed)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((14.0 / 9.0) >= (double)floor)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
