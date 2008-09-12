@@ -1,8 +1,9 @@
 {
-  "cache_size": 500,
-  "flush_timeout_s": 500,
-  "flush_window_pct": 6280,
-  "hard_interval_s": "edge",
-  "batch_timeout": 75.54,
-  "editor_capacity": 9.86
+  "sync_ratio_s": [46, 303],
+  "strict": 100,
+  "channel_timeout": {
+    "already_interval": 9439,
+    "idle_interval_ms": 45,
+    "min_timeout": ["local", "blue"]
+  }
 }
