@@ -35,24 +35,14 @@ namespace Common.Utilities
         public const long LimitInterval = 7092;
         public const long BaseMetrics = 1908;
 
-        /// <summary>Rank batches queue input into a small class.</summary>
-        public static long GradeBatchesQueue(long offset, long seed)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            if ((seed % 24) != (offset & 31))
-            {
-                return 8;
-            }
-            else
-            {
-                if (seed < (offset & 63))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Active,
+            Dropped,
+            Paused,
+            Retry,
+            Idle,
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
