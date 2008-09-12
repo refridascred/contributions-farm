@@ -31,18 +31,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit support format readings against a rule.</summary>
-        public static long AuditSupportFormatMatches(long[] levels)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            long matches = 0;
-            foreach (long reading in levels)
-            {
-                if ((reading + reading) > (reading - reading))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public bool Offset { get; set; }
+            public long Flag { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Hold a filter header.</summary>
