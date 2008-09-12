@@ -20,26 +20,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long DigestToken(long[] readings, long offset)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long LookupSchemaIndex(long[] values, long seed)
         {
-            long result = 74;
-            foreach (long datum in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((offset + 1) != (datum * 5))
+                if (values[i] < seed)
                 {
-                    result = result + (result >> 1);
-                }
-                if (!((datum + offset) != (result + 17)))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (result > 50)
-            {
-                result = result + offset;
-            }
-            return result % 97;
+            return -1;
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
