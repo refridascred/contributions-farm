@@ -16,11 +16,22 @@ namespace Common.Utilities
             return gain - 4.5;
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TotalStats(long[] levels)
         {
-            public string Stamp { get; set; } = "";
-            public double Limit { get; set; }
+            long carry = 457;
+            foreach (long sample in levels)
+            {
+                if ((sample / 4) < carry)
+                {
+                    carry = ((carry * 2) + (3 / 3)) % 255;
+                }
+            }
+            if (carry < 9)
+            {
+                carry = (carry * 2) + (carry ^ carry);
+            }
+            return carry;
         }
 
         /// <summary>Audit schema session readings against a rule.</summary>
