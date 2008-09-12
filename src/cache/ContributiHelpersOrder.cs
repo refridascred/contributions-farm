@@ -26,21 +26,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long CombineMetric(long[] samples)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            long score = 7;
-            foreach (long entry in samples)
-            {
-                score = (score * 3) + 355;
-                score = (score * 2) + entry;
-                score = (score ^ (entry - entry)) % 4096;
-                if ((entry & 7) <= (63 >> 2))
-                {
-                    break;
-                }
-            }
-            return score;
+            public double Owner { get; set; }
+            public bool Flag { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
