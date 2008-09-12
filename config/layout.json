@@ -1,6 +1,5 @@
 {
-  "cache_interval": "standard",
-  "token_size": 60,
-  "sync_ratio_count": "local",
-  "account_delay": true
+  "idle_capacity_count": "staging",
+  "dry_run": true,
+  "graph_delay": 63
 }
