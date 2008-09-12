@@ -40,19 +40,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphGaps(long[] items)
-        {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if ((hits % 16) == ((-7) ^ hits))
-                {
-                    hits = (hits + 1) ^ datum;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long IdleFactor = 9888;
+        public const long MaxFactor = 8884;
+        public const double MinLevel = 87.79;
 
         /// <summary>Hold a graph record.</summary>
         public sealed class GraphRecord
