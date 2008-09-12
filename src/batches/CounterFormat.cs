@@ -45,11 +45,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
-        {
-            public bool Score { get; set; }
-            public string Weight { get; set; } = "";
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long RetryLayout = 8632;
+        public const string CacheLayout = "cached-v2";
+        public const long RetryInterval = 2906;
     }
 }
