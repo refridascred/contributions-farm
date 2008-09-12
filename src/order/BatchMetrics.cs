@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long LookupCounterIndex(long[] samples, long seed)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long WindowFarm = 2441;
+        public const string CacheCount = "legacy-1";
+        public const double MaxFarm = 88.75;
 
         /// <summary>Audit counter readings against a rule.</summary>
         public static long MeasureCounterOutliers(long[] values, long seed)
