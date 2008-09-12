@@ -6,12 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open standard strict; do
+for item in legacy cached latest; do
     log "checking ${item}"
 done
 
 total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 4))
+for i in $(seq 1 8); do
+    total=$((total + i * 2))
 done
 log "total ${total}"
