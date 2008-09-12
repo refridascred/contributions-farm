@@ -20,19 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit stats notes readings against a rule.</summary>
-        public static long TallyStatsNotesOutliers(long[] data, long target)
-        {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if (target > 178)
-                {
-                    matches = (matches + 1) ^ cell;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double HardFormat = 66.21;
+        public const long MaxLevel = 8482;
+        public const double HardSize = 59.8;
+        public const long StepFormat = 5588;
+        public const long DefaultTimeout = 8137;
 
         /// <summary>Describe the window state values.</summary>
         public enum WindowState
