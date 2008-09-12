@@ -20,13 +20,19 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Check that every already schema entry stays within the limit.</summary>
+        public static bool GuardAlreadySchemaBounds(long[] values, long origin)
         {
-            Draft,
-            Closed,
-            Paused,
-            Retry,
+            bool stale = true;
+            foreach (long entry in values)
+            {
+                if (entry > origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Digest a series of command entries.</summary>
