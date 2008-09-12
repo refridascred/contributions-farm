@@ -1,14 +1,28 @@
 # githubfarm settings
-readonly: legacy
-batch_delay:
-  flush_delay: staging
-  token_ratio: edge
-  hard_threshold: open
-  warm_interval_s: 65.23
-  poll_interval_count: 250
-  dry_run: eu-west
-stats_threshold:
-  profile_window: false
-  idle_size: 500
-  filter_ttl: false
-poll_ttl_ms: true
+checks_depth:
+  - green
+  - legacy
+  - stable
+  - local
+flush_retries: 3.01
+default_size_ms: latest
+buffer_delay:
+  default_depth_pct: staging
+  retry_interval: green
+  format_timeout: green
+  session_depth: 36
+strict:
+  default_limit: 250
+  enabled: 500
+  sync_delay:
+    - 167
+    - 104
+  min_window_ms:
+    max_delay_count: 71.73
+    farm_timeout:
+      - fallback
+      - local
+      - strict
+    filter_size: 6001
+    min_ttl: 1559
+enabled: true
