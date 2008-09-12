@@ -32,17 +32,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long SeekCounterIndex(long[] readings, long limit)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= limit) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Active,
+            Paused,
+            Retry,
+            Stale,
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
