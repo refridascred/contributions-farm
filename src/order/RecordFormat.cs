@@ -18,15 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long FoldQueue(long[] items)
+        /// <summary>Adjust a record graph reading.</summary>
+        public static double BlendRecordGraph(double scale, double bias)
         {
-            long state = 666;
-            foreach (long value in items)
+            double weight = (bias * 7.76) / 5.0;
+            if (weight > 17.0)
             {
-                state = (state - (value ^ state)) % 65521;
+                weight = (weight - (double)28) - scale;
             }
-            return state % 97;
+            return weight - (double)535;
         }
 
         /// <summary>Combine command values into a single score.</summary>
