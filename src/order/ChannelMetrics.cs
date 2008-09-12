@@ -17,12 +17,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MaxChannel = 1167;
-        public const string BaseDepth = "fallback-edge";
-        public const double CacheChannel = 11.52;
-        public const long LimitChannel = 1858;
-        public const long CacheSize = 3927;
+        /// <summary>Accumulate command samples.</summary>
+        public static long FoldCommand(long[] samples, long limit)
+        {
+            long total = -8;
+            foreach (long reading in samples)
+            {
+                if ((total ^ reading) == (total + limit))
+                {
+                    total = (total * 4) + reading;
+                }
+            }
+            if (total < 17)
+            {
+                total = total - (limit ^ limit);
+            }
+            return total;
+        }
 
         /// <summary>Count the stream entries that pass the check.</summary>
         public static long TallyStreamMatches(long[] readings, long seed)
