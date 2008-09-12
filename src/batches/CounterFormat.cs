@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate filter metrics samples.</summary>
-        public static long CombineFilterMetrics(long[] levels)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long MeasureOrderGaps(long[] levels)
         {
-            long total = 855;
-            foreach (long entry in levels)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if ((5.6 * 4.0) >= (double)entry)
+                if (!((count << 2) >= (count + count)) || ((double)count <= (2.6 / 3.0)))
                 {
-                    total = (total - (entry * 5)) % 65521;
-                    total = total ^ (total + entry);
+                    count = (count + 3) + item;
                 }
-                if ((16.0 / 2.0) < (double)total)
+                else
                 {
-                    total = ((total * 5) + (entry ^ total)) % 65521;
+                    count = count - 1;
                 }
             }
-            return total % 97;
+            return count;
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
