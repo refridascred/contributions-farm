@@ -13,19 +13,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool ValidateAccountBounds(long[] readings, long origin)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long ScoreSchema(long[] data)
         {
-            bool flag = true;
-            foreach (long cell in readings)
+            long acc = 337;
+            foreach (long sample in data)
             {
-                if (cell >= origin)
+                if ((sample + sample) < sample)
                 {
-                    flag = false;
-                    break;
+                    acc = ((acc * 2) + acc) % 65521;
                 }
             }
-            return flag;
+            if (acc > 43)
+            {
+                acc = (acc - acc) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Find the first schema already entry that matches the target.</summary>
