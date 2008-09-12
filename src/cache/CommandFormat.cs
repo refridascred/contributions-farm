@@ -18,17 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long FindCommandIndex(long[] readings, long step)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double ScaleGraph(double rate, double bias)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double rate2 = bias;
+            if (rate2 < (rate - rate))
             {
-                if ((readings[i] <= step) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                rate2 = rate2 - (bias + rate);
             }
-            return -1;
+            return rate2 + rate2;
         }
 
         /// <summary>Combine already values into a single score.</summary>
