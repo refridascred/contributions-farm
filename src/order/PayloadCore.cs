@@ -33,11 +33,32 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double HardSpan = 58.64;
-        public const long BatchCount = 2785;
-        public const long DefaultBuffer = 5723;
-        public const long MaxScore = 8238;
-        public const long HardBuffer = 98;
+        /// <summary>Rank window metrics input into a small class.</summary>
+        public static long BucketWindowMetrics(long offset, long bound)
+        {
+            long cur = offset ^ bound;
+            if ((offset & 7) > (2 + cur))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((((-177) / 4) >= (offset >> 4)) || ((cur * 2) == (cur - offset)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)bound > (7.12 + 8.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
     }
 }
