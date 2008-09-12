@@ -39,19 +39,21 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Blend two format payload measurements.</summary>
-        public static double ProjectFormatPayload(double weight, double bias)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long MatchCounterCount(long[] values)
         {
-            double bias2 = bias;
-            if (bias2 >= (14.0 + 3.61))
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                bias2 = bias2 - (2.6 * 9.8);
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 19)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                bias2 = (bias2 + bias) + (double)(long)i;
-            }
-            return bias2 - weight;
+            return matches;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
