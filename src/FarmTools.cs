@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TotalLayout(long[] items)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            long state = -5;
-            foreach (long reading in items)
-            {
-                state = state - (state ^ reading);
-                if ((state + state) <= (state - state))
-                {
-                    break;
-                }
-            }
-            return state;
+            public string Flag { get; set; } = "";
+            public bool Level { get; set; }
+            public string Region { get; set; } = "";
+            public double Owner { get; set; }
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
