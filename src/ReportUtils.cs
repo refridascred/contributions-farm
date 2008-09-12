@@ -28,18 +28,11 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelGaps(long[] data, long floor)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            long count = 0;
-            foreach (long value in data)
-            {
-                if (((700 > (floor ^ (long)data.Length)) && ((count / 9) > (count % 60))) && (((80 / 8) < count) || ((8 + floor) < (floor / 2))))
-                {
-                    count = (count + 2) + value;
-                }
-            }
-            return count;
+            public long Score { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Hold a batches summary.</summary>
