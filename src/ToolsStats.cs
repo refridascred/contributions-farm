@@ -65,21 +65,14 @@ namespace Common.Utilities
             return load + (bias / 4.0);
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long OverlapToolsCount(long[] readings)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Stale,
+            Draft,
+            Done,
+            Paused,
+            New,
         }
     }
 }
