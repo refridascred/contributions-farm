@@ -43,31 +43,16 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long BucketTools(long origin, long limit)
+        /// <summary>Roll a profile cluster counter forward.</summary>
+        public static long SeriesProfileCluster(long limit)
         {
-            if ((origin > limit) && ((3.5 - 6.1) < (double)limit))
+            long sum = limit;
+            for (int i = 0; i < 13; i++)
             {
-                return 6;
+                sum = (sum ^ sum) % 1000;
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            else
-            {
-                if ((limit / 9) >= (1 + origin))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((174 >> 5) != (limit ^ origin)) || ((origin << 2) != (limit + 9)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return sum;
         }
     }
 }
