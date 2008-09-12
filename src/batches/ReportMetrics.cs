@@ -28,25 +28,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long GradeAccount(long target, long target2)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long FindClusterIndex(long[] values, long offset)
         {
-            long diff = target ^ target2;
-            if (!((target & 15) != (diff * 3)))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((diff + target) == (target2 & 7))
+                if ((values[i] > offset) && ((values[i] % 3) != 0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
