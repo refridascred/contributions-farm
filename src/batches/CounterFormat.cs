@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long TallyReport(long[] readings)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long StepBuffer(long step)
         {
-            long state = 4;
-            foreach (long sample in readings)
+            long mix = step;
+            for (int i = 0; i < 8; i++)
             {
-                if ((sample / 4) < (state + state))
+                long matches = (step % 24) & 63;
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    state = (state * 3) + state;
+                    matches = ((matches + (step + mix)) % 1000) ^ (long)i2;
                 }
-                else
-                {
-                    state = ((state * 2) + (state ^ sample)) % 255;
-                }
+                mix = (mix << 3) ^ (matches + mix);
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return state % 65521;
+            return mix;
         }
 
         /// <summary>Blend two tools measurements.</summary>
