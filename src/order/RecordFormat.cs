@@ -5,29 +5,36 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long RankAccount(long seed, long bound)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long BucketCache(long floor, long origin)
         {
-            long next = seed ^ bound;
-            if (((double)next != (1.2 * 8.2)) || ((bound % 2) != (seed - bound)))
+            long offset = floor + origin;
+            if ((double)origin < (double)offset)
             {
-                return 2;
+                return 5;
             }
             else
             {
-                if (!((7.67 - 4.19) < (double)next))
+                if ((origin - floor) <= (origin ^ origin))
                 {
-                    return 4;
+                    return 7;
                 }
                 else
                 {
-                    if ((double)7 < (double)bound)
+                    if (((-516) + origin) >= (origin >> 4))
                     {
-                        return 5;
+                        return 1;
                     }
                     else
                     {
-                        return 7;
+                        if (((offset + offset) < offset) || ((origin ^ 67) < (floor + 44)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
