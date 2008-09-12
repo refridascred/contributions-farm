@@ -42,12 +42,14 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double BaseWidth = 91.84;
-        public const string HardInterval = "latest";
-        public const long MinScore = 9457;
-        public const long MinInterval = 4724;
-        public const long IdleEditor = 5147;
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
+        {
+            public long Limit { get; set; }
+            public long Label { get; set; }
+            public bool Offset { get; set; }
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Compare every pair of support readings.</summary>
         public static long MatchSupportCount(long[] data)
