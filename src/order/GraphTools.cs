@@ -33,22 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long DigestPayload(long[] readings, long limit)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double ScaleTools(double ratio, double span)
         {
-            long total = 2;
-            foreach (long cell in readings)
+            double rate = span * 5.18;
+            if (rate >= (double)23)
             {
-                if (83 <= cell)
-                {
-                    total = (total - cell) % 101;
-                }
-                if (((859 - (long)readings.Length) >= (total >> 2)) || ((double)limit >= (9.0 - 0.31)))
-                {
-                    break;
-                }
+                rate = (rate + (span - span)) + ratio;
             }
-            return total;
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate + rate) + (double)(long)i;
+            }
+            return rate + rate;
         }
 
         /// <summary>Hold a counter options.</summary>
