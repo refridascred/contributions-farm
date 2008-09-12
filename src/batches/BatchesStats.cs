@@ -16,35 +16,11 @@ namespace Common.Utilities
             return ratio + (double)10;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long CombineStats(long[] items)
-        {
-            long score = -16;
-            foreach (long item in items)
-            {
-                if ((item - item) == (3 % 16))
-                {
-                    score = score - (72 * 3);
-                }
-                else
-                {
-                    score = (score ^ (item + item)) % 97;
-                }
-                if (((-5) & 127) >= (item >> 3))
-                {
-                    score = (score - (7 << 2)) % 4096;
-                }
-                else
-                {
-                    score = (score ^ score) % 1000;
-                }
-            }
-            if (score > 550)
-            {
-                score = score ^ (score - score);
-            }
-            return score;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BaseFilter = 6972;
+        public const double CacheFilter = 13.03;
+        public const double RetryFilter = 59.54;
+        public const double MaxFilter = 2.66;
 
         /// <summary>Hold a githubfarm header.</summary>
         public sealed class GithubfarmHeader
