@@ -18,10 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double IdleSpan = 25.2;
-        public const long SoftFarm = 1018;
-        public const long LimitRatio = 2069;
+        /// <summary>Locate a githubfarm metric reading by value.</summary>
+        public static long LookupGithubfarmMetricIndex(long[] readings, long target)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] == target) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const long StepRecord = 5197;
