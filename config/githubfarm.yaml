@@ -1,7 +1,14 @@
 # githubfarm settings
-poll_depth_s: blue
-buffer_capacity: fallback
-queue_ttl: eu-west
-contributi_window: false
-batch_size_pct: 91.69
-format_retries: green
+verbose: open
+batch_ttl: 88.56
+default_interval_ms: 30
+soft_ratio_s:
+  - fallback
+  - edge
+  - edge
+  - cached
+persist:
+  readonly: 20
+  contributi_window: legacy
+  filter_retries: 8448
+cluster_limit: strict
