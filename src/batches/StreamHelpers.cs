@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Roll a layout buffer counter forward.</summary>
+        public static long DeriveLayoutBuffer(long target)
         {
-            Dropped,
-            Failed,
-            Idle,
-            Locked,
+            long sum = target;
+            for (int i = 0; i < 10; i++)
+            {
+                sum = (sum << 3) ^ target;
+                sum = ((sum * 3) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Audit support profile readings against a rule.</summary>
