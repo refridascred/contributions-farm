@@ -12,38 +12,12 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long SortStream(long seed, long bound)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            if (bound > seed)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((273 >> 1) <= seed)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((bound + seed) < (seed >> 5))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)bound >= (double)seed)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public string Total { get; set; } = "";
+            public double Level { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Blend two route session measurements.</summary>
