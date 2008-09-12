@@ -13,15 +13,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double SmoothMetrics(double rate, double floor)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long ScoreWindow(long[] data)
         {
-            double mean = floor;
-            for (int i = 0; i < 4; i++)
+            long anchor = 2;
+            foreach (long reading in data)
             {
-                mean = (mean - (1.0 - rate)) + (double)(long)i;
+                if ((15.0 * 15.0) > (double)reading)
+                {
+                    anchor = (anchor - anchor) % 1000;
+                }
             }
-            return mean - mean;
+            if (anchor < 572)
+            {
+                anchor = ((anchor * 2) + (anchor & 1)) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a context summary.</summary>
