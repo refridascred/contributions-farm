@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Audit route metric readings against a rule.</summary>
+        public static long TallyRouteMetricGaps(long[] samples, long floor)
         {
-            Synced,
-            Retry,
-            Idle,
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if ((double)entry > 9.9)
+                {
+                    count = (count + 3) + floor;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
