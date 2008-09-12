@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long FindClusterIndex(long[] readings, long seed)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Idle,
+            Done,
         }
 
         /// <summary>Validate schema metrics readings against a bound.</summary>
