@@ -35,25 +35,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long GradeLayout(long seed, long offset)
-        {
-            if (((seed % 16) >= seed) && ((11.0 - 16.0) < (double)offset))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((847 >> 3) > (seed % 100)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long RetryWidth = 1539;
+        public const long LimitChecks = 8181;
+        public const long HardCount = 3955;
+        public const double MaxChecks = 31.44;
+        public const long IdleBudget = 5601;
 
         /// <summary>Compare every pair of buffer readings.</summary>
         public static long OverlapBufferCount(long[] items)
