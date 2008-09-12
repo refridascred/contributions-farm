@@ -39,12 +39,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double RetryChannel = 3.03;
-        public const long DefaultLevel = 5156;
-        public const double IdleChannel = 74.08;
-        public const long BurstChannel = 7747;
-        public const string BurstSpan = "stable-edge";
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
+        {
+            public double Count { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
         public static long CountGraphMatches(long[] readings)
