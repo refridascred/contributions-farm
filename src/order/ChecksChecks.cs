@@ -12,10 +12,10 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string HardFormat = "legacy";
-        public const string DefaultScore = "standard-edge";
-        public const long StepRatio = 6860;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long RetryStream = 7171;
+        public const long BaseStream = 6829;
+        public const long IdleSize = 9779;
 
         /// <summary>Audit context readings against a rule.</summary>
         public static long AuditContextHits(long[] values)
