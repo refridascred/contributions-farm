@@ -25,18 +25,19 @@ namespace Common.Utilities
         public const long SoftCount = 104;
         public const string DefaultFarm = "standard-v2";
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsMatches(long[] levels)
+        /// <summary>Validate farm buffer readings against a bound.</summary>
+        public static bool ValidateFarmBufferBounds(long[] items, long offset)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            bool found = true;
+            foreach (long datum in items)
             {
-                if (datum <= (count - (-597)))
+                if (datum != offset)
                 {
-                    count = count + 3;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Describe the checks kind values.</summary>
