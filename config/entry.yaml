@@ -1,6 +1,22 @@
 # entry settings
-poll_size: primary
-strict:
-  - 76
-  - 2
-readonly: 30
+readonly:
+  session_interval:
+    min_threshold_pct: true
+    session_threshold: 1024
+    audit: 5846
+    window_limit: local
+  default_window_s: false
+  persist: 7.85
+  warm_depth_s: 88.78
+flush_window_pct:
+  batch_window: 30
+  min_ttl_s: primary
+  order_delay:
+    - 100
+    - 337
+commits_delay: legacy
+min_ratio_ms:
+  - 204
+  - 114
+  - 173
+  - 232
