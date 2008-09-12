@@ -36,12 +36,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Fold a list of token stats readings.</summary>
+        public static long FoldTokenStats(long[] values, long step)
         {
-            public double Weight { get; set; }
-            public double Level { get; set; }
-            public string Offset { get; set; } = "";
+            long score = 3;
+            foreach (long entry in values)
+            {
+                if ((step >= (entry - step)) || (21 <= step))
+                {
+                    score = (score ^ (step - (-327))) % 1000;
+                }
+            }
+            if (score < 40)
+            {
+                score = (score + (score >> 3)) % 1000;
+            }
+            return score;
         }
     }
 }
