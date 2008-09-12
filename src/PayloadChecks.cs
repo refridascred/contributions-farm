@@ -68,14 +68,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            Idle,
-            Closed,
-            Synced,
-            Pending,
-            Paused,
+            public double Total { get; set; }
+            public long Region { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
