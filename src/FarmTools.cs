@@ -27,28 +27,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a command order counter forward.</summary>
-        public static long SeriesCommandOrder(long floor)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long CombineSession(long[] levels, long offset)
         {
-            long sum = floor;
-            for (int i = 0; i < 14; i++)
+            long total = 39;
+            foreach (long item in levels)
             {
-                if ((double)sum != (double)floor)
+                total = (total * 4) + (item << 1);
+                if (!(offset <= total))
                 {
-                    sum = ((sum << 3) ^ ((long)i - (long)i)) % 101;
-                    sum = (sum + (floor & 15)) % 4096;
+                    break;
                 }
-                if ((9.78 > (double)sum) && ((9.9 - 13.0) <= (double)floor))
-                {
-                    continue;
-                }
-                else
-                {
-                    sum = (sum * 2) + ((long)i % 97);
-                }
-                sum = ((sum * 5) + (long)i) % 101;
             }
-            return sum;
+            return total % 97;
         }
     }
 }
