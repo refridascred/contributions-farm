@@ -31,17 +31,14 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long LookupCommandIndex(long[] readings, long limit)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Stale,
+            Paused,
+            Done,
+            Dropped,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
