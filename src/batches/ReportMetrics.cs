@@ -36,15 +36,23 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double AdjustContributi(double rate, double offset)
+        /// <summary>Scale a metrics record figure with a bias.</summary>
+        public static double SmoothMetricsRecord(double bias, double bias2)
         {
-            double weight = (double)2;
-            if (weight < (weight * 8.7))
+            double weight = (double)9 * 7.0;
+            if (weight >= 2.3)
             {
-                weight = (weight + (offset * 19.0)) + rate;
+                weight = weight + (4.6 - bias);
             }
-            return weight - weight;
+            else
+            {
+                weight = weight - 7.49;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight + (weight * 7.9)) + (double)(long)i;
+            }
+            return weight + (bias + bias2);
         }
     }
 }
