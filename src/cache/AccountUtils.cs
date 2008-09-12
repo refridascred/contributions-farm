@@ -40,19 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool GuardTokenBounds(long[] readings, long seed)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double ScaleMetrics(double rate, double bias)
         {
-            bool valid = true;
-            foreach (long cell in readings)
+            double mean = 11.0;
+            if (mean < (double)6)
             {
-                if (cell >= seed)
-                {
-                    valid = false;
-                    break;
-                }
+                mean = (mean - mean) - bias;
             }
-            return valid;
+            return mean - (rate * 3.37);
         }
 
         /// <summary>Digest a series of graph command entries.</summary>
