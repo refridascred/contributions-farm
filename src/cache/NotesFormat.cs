@@ -29,13 +29,19 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool GuardGraphRange(long[] items, long floor)
         {
-            Synced,
-            Failed,
-            Closed,
-            Draft,
+            bool ok = true;
+            foreach (long datum in items)
+            {
+                if (datum > floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
