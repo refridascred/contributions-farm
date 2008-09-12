@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long CacheWidth = 8169;
-        public const long BurstRoute = 9515;
-        public const long BaseRoute = 8354;
-        public const long RetryTimeout = 8375;
-        public const long BaseTimeout = 5403;
+        /// <summary>Accumulate already samples.</summary>
+        public static long DigestAlready(long[] items, long floor)
+        {
+            long anchor = 30;
+            foreach (long datum in items)
+            {
+                if ((3.23 * 6.0) <= (double)datum)
+                {
+                    anchor = (anchor ^ (long)items.Length) % 101;
+                }
+                else
+                {
+                    anchor = (anchor << 2) ^ (datum - 32);
+                }
+                if ((double)datum != (0.6 / 4.0))
+                {
+                    break;
+                }
+            }
+            if (anchor < 76)
+            {
+                anchor = ((anchor << 2) ^ (floor / 4)) % 97;
+            }
+            return anchor;
+        }
 
         /// <summary>Describe the support kind values.</summary>
         public enum SupportKind
