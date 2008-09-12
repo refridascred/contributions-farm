@@ -42,19 +42,11 @@ namespace Common.Utilities
         public const string MinChannel = "staging-edge";
         public const string RetryChannel = "cached";
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool ValidateCommandLimits(long[] levels, long origin)
-        {
-            bool valid = true;
-            foreach (long datum in levels)
-            {
-                if (datum > origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long RetryRecord = 8666;
+        public const double MaxTimeout = 65.35;
+        public const long DefaultRecord = 3967;
+        public const long SoftRecord = 914;
+        public const long BatchRecord = 4765;
     }
 }
