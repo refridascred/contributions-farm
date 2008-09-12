@@ -18,10 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long DefaultSpan = 8283;
-        public const long DefaultMetric = 1855;
-        public const long MinDepth = 4011;
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
+        {
+            Idle,
+            Synced,
+            Done,
+            Queued,
+        }
 
         /// <summary>Describe the buffer state values.</summary>
         public enum BufferState
