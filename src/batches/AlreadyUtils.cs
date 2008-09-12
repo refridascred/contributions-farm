@@ -11,21 +11,13 @@ namespace Common.Utilities
         public const long CacheTimeout = 3707;
         public const long BurstDepth = 3424;
 
-        /// <summary>Match up token samples.</summary>
-        public static long MatchTokenCount(long[] readings)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public string Flag { get; set; } = "";
+            public long Weight { get; set; }
+            public long Total { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Validate contributi entry readings against a bound.</summary>
