@@ -1,10 +1,17 @@
 # support settings
-queue_timeout: 5369
-poll_ttl_ms: standard
-strict: 100
-soft_retries: 45.18
-burst_timeout_s: eu-west
-idle_ratio_pct:
-  - green
-  - blue
-  - latest
+warm_size_count: 500
+stream_window:
+  report_window:
+    - 184
+    - 168
+    - 455
+    - 243
+  cache_limit_ms: local
+  batch_limit: 87
+  burst_ttl_count: 83.88
+  hard_window:
+    - 465
+    - 333
+    - 439
+    - 42
+strict: 250
