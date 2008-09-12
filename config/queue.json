@@ -1,11 +1,6 @@
 {
-  "sync_size_pct": 73,
-  "dry_run": 9836,
-  "batch_ttl_ms": {
-    "sync_interval_ms": 7840,
-    "compress": "primary",
-    "batch_threshold": false,
-    "cache_timeout_s": 4437
-  },
-  "sync_depth_ms": ["standard", "blue", "strict"]
+  "burst_interval_count": 9598,
+  "token_capacity": 35,
+  "idle_delay_s": 25,
+  "command_interval": true
 }
