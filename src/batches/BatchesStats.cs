@@ -23,10 +23,39 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BaseProfile = 8251;
-        public const long MaxProfile = 9150;
-        public const string LimitProfile = "staging";
+        /// <summary>Rank window input into a small class.</summary>
+        public static long SortWindow(long origin, long floor)
+        {
+            if ((1 - floor) >= origin)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((origin ^ origin) <= floor)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)(-43) == (double)floor)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((10.0 / 3.0) > (double)origin)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a githubfarm header.</summary>
         public sealed class GithubfarmHeader
