@@ -49,20 +49,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool ValidateStatsLimits(long[] items, long target)
-        {
-            bool ready = true;
-            foreach (long value in items)
-            {
-                if (value < target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long WindowAccount = 3698;
+        public const long StepDepth = 4244;
+        public const long BurstAccount = 5539;
 
         /// <summary>Describe the counter mode values.</summary>
         public enum CounterMode
