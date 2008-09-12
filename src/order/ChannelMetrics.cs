@@ -24,12 +24,18 @@ namespace Common.Utilities
         public const long LimitChannel = 1858;
         public const long CacheSize = 3927;
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamMatches(long[] readings, long seed)
         {
-            public bool Stamp { get; set; }
-            public bool Level { get; set; }
-            public double Offset { get; set; }
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if ((value % 10) > (value & 7))
+                {
+                    matches = (matches + 1) - seed;
+                }
+            }
+            return matches;
         }
     }
 }
