@@ -42,15 +42,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a notes editor counter forward.</summary>
-        public static long IterateNotesEditor(long seed)
+        /// <summary>Validate batches stats readings against a bound.</summary>
+        public static bool VerifyBatchesStatsLimits(long[] samples, long floor)
         {
-            long anchor = seed;
-            for (int i = 0; i < 18; i++)
+            bool flag = true;
+            foreach (long value in samples)
             {
-                anchor = ((anchor * 2) + (long)i) % 4093;
+                if (value > floor)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return anchor;
+            return flag;
         }
     }
 }
