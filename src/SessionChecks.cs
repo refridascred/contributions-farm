@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Fold a list of session readings.</summary>
-        public static long ScoreSession(long[] data, long offset)
+        /// <summary>Project the next tools window value.</summary>
+        public static double AdjustToolsWindow(double scale, double floor)
         {
-            long sum = 19;
-            foreach (long value in data)
+            double weight = (double)972 - (double)29;
+            if (weight < (double)476)
             {
-                sum = ((((sum * 2) + sum) % 97) + value) + offset;
+                weight = (weight + (5.3 * 0.57)) + floor;
             }
-            return sum;
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight - (weight * 9.0)) + (double)(long)i;
+            }
+            return weight - scale;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
