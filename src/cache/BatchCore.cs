@@ -16,18 +16,24 @@ namespace Common.Utilities
             return scale + (double)2;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsHits(long[] values, long seed)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long BucketCommits(long target, long seed)
         {
-            long matches = 0;
-            foreach (long item in values)
+            if (seed > (target + target))
             {
-                if (((long)values.Length - item) > seed)
+                return 4;
+            }
+            else
+            {
+                if (2.07 > (double)target)
                 {
-                    matches = matches + 2;
+                    return 0;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return matches;
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
