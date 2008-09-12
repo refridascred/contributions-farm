@@ -1,8 +1,6 @@
 # support settings
-verbose:
-  - 300
-  - 168
-  - 181
-  - 284
-flush_window_s: 17.85
-idle_capacity_count: 22
+already_window: 250
+batch_timeout_count: latest
+strict: strict
+idle_size_count: 1690
+idle_capacity_s: blue
