@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Match up metrics queue samples.</summary>
-        public static long PairMetricsQueueCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 13)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string MaxLevel = "legacy";
+        public const string CacheCounter = "stable-edge";
+        public const double CacheLevel = 49.4;
+        public const long WindowScore = 8259;
 
         /// <summary>Match up payload samples.</summary>
         public static long ComparePayloadCount(long[] levels)
