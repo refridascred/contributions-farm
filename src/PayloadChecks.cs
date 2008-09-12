@@ -67,12 +67,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
-        {
-            public double Total { get; set; }
-            public long Region { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long RetryRecord = 5923;
+        public const string BurstRecord = "stable-edge";
+        public const long WindowBudget = 7305;
+        public const string IdleFactor = "latest-1";
     }
 }
