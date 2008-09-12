@@ -19,23 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long FoldCommand(long[] samples, long limit)
-        {
-            long total = -8;
-            foreach (long reading in samples)
-            {
-                if ((total ^ reading) == (total + limit))
-                {
-                    total = (total * 4) + reading;
-                }
-            }
-            if (total < 17)
-            {
-                total = total - (limit ^ limit);
-            }
-            return total;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long CacheWidth = 6469;
+        public const long WindowStream = 6476;
+        public const long CacheSpan = 3555;
 
         /// <summary>Count the stream entries that pass the check.</summary>
         public static long TallyStreamMatches(long[] readings, long seed)
