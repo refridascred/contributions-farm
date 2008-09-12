@@ -57,10 +57,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double StepFormat = 20.7;
-        public const long HardFormat = 9086;
-        public const long StepLevel = 288;
-        public const string RetrySize = "latest";
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double MaxStream = 29.16;
+        public const long BatchBudget = 1944;
+        public const string BaseRatio = "legacy";
+        public const string LimitFactor = "cached";
     }
 }
