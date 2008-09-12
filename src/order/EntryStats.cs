@@ -64,18 +64,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the checks window entries that pass the check.</summary>
-        public static long MeasureChecksWindowMatches(long[] readings)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long LocateContextIndex(long[] readings, long bound)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((item << 3) >= (item & 1))
+                if (readings[i] == bound)
                 {
-                    seen = seen + 3;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
