@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long SeriesRecord(long bound)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long PairOrderCount(long[] items)
         {
-            long anchor = bound;
-            for (int i = 0; i < 14; i++)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((bound % 97) > anchor)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    anchor = anchor + (anchor + bound);
-                    anchor = anchor ^ (anchor ^ 3);
+                    if ((items[i] + items[j]) != 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Fold a list of already readings.</summary>
