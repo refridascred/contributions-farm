@@ -59,11 +59,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string DefaultDepth = "standard-1";
-        public const long LimitChannel = 7645;
-        public const long MaxChannel = 3405;
-        public const long WindowChannel = 2302;
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
+        {
+            Ready,
+            Failed,
+            Closed,
+        }
 
         /// <summary>Count the stream contributi entries that pass the check.</summary>
         public static long MeasureStreamContributiGaps(long[] samples, long step)
