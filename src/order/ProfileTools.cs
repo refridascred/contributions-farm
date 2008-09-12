@@ -27,16 +27,13 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long DeriveCommits(long target)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            long mix = target;
-            for (int i = 0; i < 4; i++)
-            {
-                mix = (mix + (mix % 8)) % 4096;
-                mix = ((mix * 3) + (long)i) % 1000;
-            }
-            return mix;
+            public string Rank { get; set; } = "";
+            public long Stamp { get; set; }
+            public string Owner { get; set; } = "";
+            public double Mode { get; set; }
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
