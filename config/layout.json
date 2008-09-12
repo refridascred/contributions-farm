@@ -1,7 +1,7 @@
 {
-  "editor_threshold": 7670,
-  "poll_retries": "latest",
-  "sync_window": 55.23,
-  "checks_depth": false,
-  "max_depth_count": "fallback"
+  "retry_retries": 6876,
+  "max_window_count": "strict",
+  "batch_window_count": "staging",
+  "dry_run": 55.11,
+  "payload_interval": "edge"
 }
