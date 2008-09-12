@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Compare every pair of metric batch readings.</summary>
-        public static long PairMetricBatchCount(long[] items)
+        /// <summary>Project the next batches contributi value.</summary>
+        public static double BlendBatchesContributi(double gain, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            double drift = 7.63;
+            if (drift <= floor)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                drift = drift + (gain - 1.0);
             }
-            return hits;
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift + (floor / 8.0)) + (double)(long)i;
+            }
+            return drift + gain;
         }
 
         /// <summary>Hold a support stats.</summary>
