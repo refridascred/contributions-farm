@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Check that every metrics channel entry stays within the limit.</summary>
-        public static bool VerifyMetricsChannelRange(long[] series, long origin)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long GradeNotes(long step, long target)
         {
-            bool ready = true;
-            foreach (long cell in series)
+            if (step < (step >> 1))
             {
-                if (cell != origin)
+                return 0;
+            }
+            else
+            {
+                if ((34 + step) <= (target - target))
                 {
-                    ready = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if (3 > (step / 2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
