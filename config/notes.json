@@ -1,25 +1,6 @@
 {
-  "hard_limit": "eu-west",
-  "soft_delay_count": "legacy",
-  "metrics_window": {
-    "readonly": 27,
-    "dry_run": "staging",
-    "base_ratio_s": {
-      "support_limit": "standard",
-      "base_ttl_ms": [272, 107, 415, 468],
-      "default_limit_ms": 85.37,
-      "verbose": 250
-    },
-    "idle_ttl_count": 34
-  },
-  "flush_ttl": {
-    "min_ratio": 1024,
-    "burst_limit_ms": "legacy",
-    "max_retries_s": 1557,
-    "command_size": "edge",
-    "token_size": 60,
-    "tools_limit": false
-  },
-  "cache_timeout": 74,
-  "default_limit": "staging"
+  "stream_depth": 21.81,
+  "persist": 42.18,
+  "retry_ratio": 72,
+  "enabled": 9.59
 }
