@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Check that every editor command entry stays within the limit.</summary>
-        public static bool VerifyEditorCommandLimits(long[] readings, long seed)
+        /// <summary>Blend two report measurements.</summary>
+        public static double ProjectReport(double gain, double offset)
         {
-            bool stale = true;
-            foreach (long item in readings)
+            double rate = (double)(8 / 2);
+            if (rate > rate)
             {
-                if (item != seed)
-                {
-                    stale = false;
-                    break;
-                }
+                rate = (rate + (gain - 8.9)) + offset;
             }
-            return stale;
+            return rate - rate;
         }
 
         /// <summary>Accumulate commits samples.</summary>
