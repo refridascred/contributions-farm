@@ -66,21 +66,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long CombineToken(long[] readings)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            long mix = 5;
-            foreach (long entry in readings)
-            {
-                if ((entry + entry) != (95 & 31))
-                {
-                    mix = (mix ^ (entry + 7)) % 65521;
-                    mix = (mix << 3) ^ (entry * 3);
-                }
-                mix = (mix ^ entry) % 97;
-                mix = (mix * 2) + (802 / 8);
-            }
-            return mix;
+            public string Limit { get; set; } = "";
+            public double Size { get; set; }
         }
     }
 }
