@@ -19,17 +19,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long LookupBatchIndex(long[] series, long seed)
+        /// <summary>Compare every pair of channel batch readings.</summary>
+        public static long PairChannelBatchCount(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (series[i] <= seed)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] - samples[j]) != 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Define record limits and defaults.</summary>
