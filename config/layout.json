@@ -1,5 +1,5 @@
 {
-  "poll_retries_s": 74,
-  "compress": "eu-west",
-  "burst_depth_count": true
+  "strict": 7136,
+  "batch_timeout_pct": 10.02,
+  "readonly": 9.43
 }
