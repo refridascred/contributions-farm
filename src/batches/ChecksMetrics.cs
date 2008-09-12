@@ -46,13 +46,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Audit schema session readings against a rule.</summary>
+        public static long TallySchemaSessionOutliers(long[] levels, long target)
         {
-            public bool Stamp { get; set; }
-            public long Limit { get; set; }
-            public string Owner { get; set; } = "";
-            public long Weight { get; set; }
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if (!!((target << 3) == (target - 9)))
+                {
+                    matches = (matches + 3) - reading;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
