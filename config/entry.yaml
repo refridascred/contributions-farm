@@ -1,16 +1,18 @@
 # entry settings
-command_ttl: strict
-persist:
-  compress: false
-  flush_threshold: primary
-  persist: 60
-batch_interval_ms:
-  idle_size_ms:
-    - blue
-    - open
-    - blue
-  soft_retries_count: 63
-  enabled: 8570
-  max_ratio_count: strict
-min_limit_s: 250
-retry_ratio_s: 92.94
+cache_ttl_s: 5660
+sync_capacity: open
+warm_ttl_count:
+  soft_ratio_pct: 7789
+  hard_timeout_pct:
+    - cached
+    - fallback
+    - stable
+  profile_threshold: false
+  sync_ttl_s: edge
+  checks_interval: open
+  retry_window_ms: strict
+tools_size:
+  max_limit: 60
+  support_limit: false
+  flush_retries_s: 100
+poll_timeout: legacy
