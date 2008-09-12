@@ -1,9 +1,6 @@
-id,ratio,owner,level
-1,legacy,eu-west,strict
-2,7.04,40.6,58.68
-3,626,95.63,249
-4,blue,114,blue
-5,standard,860,7.53
-6,primary,891,64.6
-7,318,17.24,stable
-8,eu-west,27.58,843
+id,ratio,level
+1,526,cached
+2,53,strict
+3,18.76,59
+4,62.8,98.81
+5,449,572
