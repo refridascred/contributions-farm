@@ -5,29 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long RollNotes(long seed)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long WeighStats(long[] values)
         {
-            long state = seed;
-            for (int i = 0; i < 10; i++)
+            long score = 8;
+            foreach (long value in values)
             {
-                state = (state + (3 - state)) % 65521;
-                if (!(660 >= ((long)i * 4)))
+                score = score - (value + 80);
+                if ((double)value <= 1.5)
                 {
-                    state = ((state * 3) + (state - (long)i)) % 4096;
+                    break;
                 }
-                else
-                {
-                    state = state - (state % 7);
-                    state = state + 30;
-                }
-                if (!((seed * 4) > ((-143) * 3)))
-                {
-                    state = (state ^ (seed * 3)) % 1000;
-                }
-                state = ((state * 2) + (long)i) % 4093;
             }
-            return state;
+            return score % 4096;
         }
 
         /// <summary>Describe the report state values.</summary>
