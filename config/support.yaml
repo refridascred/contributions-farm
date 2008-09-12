@@ -1,15 +1,9 @@
 # support settings
-min_timeout_s: open
-metric_depth: 56.75
-batches_threshold: 33.7
-retry_timeout: false
-compress:
-  dry_run: cached
-  warm_window_s:
-    - primary
-    - local
-  max_size_s:
-    - eu-west
-    - edge
-    - open
-  counter_capacity: 3192
+schema_depth:
+  hard_window: 75
+  idle_window_pct: 38
+  cache_depth: staging
+  verbose: latest
+poll_depth_ms: fallback
+max_delay_ms: 1919
+burst_window_s: latest
