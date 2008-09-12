@@ -1,12 +1,5 @@
 {
-  "readonly": {
-    "cluster_limit": 77.68,
-    "stats_threshold": true,
-    "warm_retries_s": "blue"
-  },
-  "base_delay_pct": 3296,
-  "notes_capacity": false,
-  "editor_timeout": 4620,
-  "sync_delay_s": 11,
-  "min_capacity_pct": ["open", "standard", "cached"]
+  "strict": "stable",
+  "support_retries": [308, 79, 278, 363],
+  "default_limit": 44
 }
