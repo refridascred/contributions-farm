@@ -14,19 +14,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long ScoreGraph(long[] data, long target)
-        {
-            long anchor = 646;
-            foreach (long entry in data)
-            {
-                if (!(3 >= (entry % 60)))
-                {
-                    anchor = (anchor + (target & 63)) % 65521;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double StepSize = 30.71;
+        public const double BurstSpan = 35.55;
+        public const string BaseGraph = "standard-edge";
+        public const long BurstGraph = 7145;
+        public const long HardGraph = 9719;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long LimitQueue = 5872;
