@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Digest a series of session entries.</summary>
+        public static long FoldSession(long[] data)
         {
-            public long Weight { get; set; }
-            public bool Size { get; set; }
-            public double Owner { get; set; }
-            public double Stamp { get; set; }
+            long mark = 90;
+            foreach (long value in data)
+            {
+                if ((488 / 4) > (value - mark))
+                {
+                    mark = (mark - (value + mark)) % 101;
+                }
+            }
+            return mark % 65521;
         }
 
         /// <summary>Match up context samples.</summary>
