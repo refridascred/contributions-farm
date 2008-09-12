@@ -60,14 +60,39 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long GradeCache(long step, long floor)
         {
-            Synced,
-            Locked,
-            Closed,
-            Ready,
-            Paused,
+            long cur = step + floor;
+            if ((step / 5) >= cur)
+            {
+                return 0;
+            }
+            else
+            {
+                if (!((cur + step) <= (step % 8)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((222 - step) < (step + floor))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((cur >> 4) < (floor % 3))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
     }
 }
