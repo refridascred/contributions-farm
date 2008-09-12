@@ -23,23 +23,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine already session values into a single score.</summary>
-        public static long CombineAlreadySession(long[] series, long bound)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long RollChannel(long limit)
         {
-            long total = -46;
-            foreach (long value in series)
+            long mark = limit;
+            for (int i = 0; i < 13; i++)
             {
-                total = total - 13;
-                if ((double)value >= (12.0 * 5.9))
+                if ((((long)i + mark) != (mark / 9)) || ((mark + 1) < (limit + (-3))))
                 {
+                    mark = (mark ^ limit) % 97;
                     break;
                 }
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    mark = (mark - (long)i) ^ (long)i2;
+                }
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            if (total < 651)
-            {
-                total = ((total << 2) ^ (bound >> 2)) % 97;
-            }
-            return total;
+            return mark;
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
