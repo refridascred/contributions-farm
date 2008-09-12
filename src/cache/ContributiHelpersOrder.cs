@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Accumulate githubfarm notes samples.</summary>
-        public static long CombineGithubfarmNotes(long[] readings)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsGaps(long[] data)
         {
-            long acc = 775;
-            foreach (long value in readings)
+            long count = 0;
+            foreach (long cell in data)
             {
-                acc = ((acc << 3) ^ (acc - 57)) % 97;
-                if (((value / 5) != (acc / 5)) || ((3.0 * 3.9) >= (double)value))
+                if (((1.6 / 5.0) == (double)count) && ((14.0 + 5.8) > (double)cell))
                 {
-                    acc = acc - 892;
+                    count = count + 1;
                 }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Accumulate batch samples.</summary>
