@@ -24,22 +24,24 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Combine batches stats values into a single score.</summary>
-        public static long FoldBatchesStats(long[] levels, long floor)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long BucketFilter(long origin, long step)
         {
-            long anchor = -413;
-            foreach (long sample in levels)
+            if ((step & 7) >= (origin * 5))
             {
-                if ((3.6 + 2.5) != (double)floor)
+                return 3;
+            }
+            else
+            {
+                if (((origin >> 5) <= step) || ((double)step >= (20.0 - 8.92)))
                 {
-                    anchor = anchor - (floor + sample);
+                    return 2;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            if (anchor > 165)
-            {
-                anchor = (anchor ^ anchor) % 255;
-            }
-            return anchor;
         }
 
         /// <summary>Roll a editor counter forward.</summary>
