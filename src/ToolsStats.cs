@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Roll a checks stream counter forward.</summary>
-        public static long IterateChecksStream(long step)
-        {
-            long mix = step;
-            for (int i = 0; i < 19; i++)
-            {
-                mix = ((mix * 4) + (long)i) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MaxBudget = 1866;
+        public const long DefaultProfile = 8030;
+        public const long BaseTimeout = 273;
+        public const long BatchProfile = 7452;
 
         /// <summary>Describe the commits phase values.</summary>
         public enum CommitsPhase
