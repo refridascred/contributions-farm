@@ -1,17 +1,8 @@
 {
-  "warm_limit_count": ["green", "latest", "open"],
-  "audit": {
-    "support_interval": {
-      "cache_size_ms": "fallback",
-      "readonly": false,
-      "persist": "open",
-      "min_delay": 7847,
-      "soft_capacity": "strict",
-      "default_size_count": 758
-    },
-    "graph_interval": "stable",
-    "enabled": 1024,
-    "token_timeout": 3217
-  },
-  "sync_timeout_s": 500
+  "idle_threshold": "cached",
+  "min_interval_pct": true,
+  "burst_window": false,
+  "flush_interval_count": 60,
+  "retry_window_pct": "latest",
+  "editor_interval": 9434
 }
