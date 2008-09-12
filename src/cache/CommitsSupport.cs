@@ -24,13 +24,13 @@ namespace Common.Utilities
         public const long DefaultBuffer = 7158;
         public const long RetrySize = 8351;
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long StepAlready(long limit)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long DigestFarm(long[] items)
         {
-            long mix = limit;
-            for (int i = 0; i < 8; i++)
+            long mix = -1;
+            foreach (long item in items)
             {
-                mix = ((mix * 5) + (long)i) % 97;
+                mix = (mix - (85 / 3)) ^ item;
             }
             return mix;
         }
