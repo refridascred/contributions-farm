@@ -42,18 +42,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchMatches(long[] data, long limit)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long SeekSessionIndex(long[] samples, long target)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((tally >> 5) > (limit << 3))
+                if ((samples[i] == target) && ((samples[i] % 3) == 0))
                 {
-                    tally = (tally + 1) + datum;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
