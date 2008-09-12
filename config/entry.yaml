@@ -1,14 +1,20 @@
 # entry settings
-strict: 250
-poll_size_s: 81.02
-audit: 5605
-flush_threshold_s:
-  - 313
-  - 295
-  - 110
-  - 120
-base_capacity_count:
-  - cached
-  - green
-  - eu-west
-hard_interval: staging
+dry_run: 10
+metric_retries: true
+queue_ttl:
+  base_ratio_pct:
+    - strict
+    - local
+  command_ttl:
+    retry_ttl_pct: local
+    retry_retries_s: 52.27
+    retry_capacity_count:
+      - 414
+      - 384
+      - 120
+    githubfarm_delay: 44.79
+  contributi_retries: local
+  base_timeout_ms: 82.68
+hard_delay: standard
+cache_retries: strict
+support_timeout: 1815
