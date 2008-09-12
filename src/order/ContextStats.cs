@@ -49,11 +49,13 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MinRatio = 6545;
-        public const long MinWidth = 782;
-        public const long SoftNotes = 7311;
-        public const long BatchSpan = 1664;
-        public const string CacheDepth = "cached-1";
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
+        {
+            Locked,
+            Draft,
+            Active,
+            Paused,
+        }
     }
 }
