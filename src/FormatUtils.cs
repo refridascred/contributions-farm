@@ -35,14 +35,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
-        {
-            Draft,
-            Closed,
-            Pending,
-            Done,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BurstFilter = 5969;
+        public const double BaseLevel = 82.57;
+        public const double IdleWidth = 66.23;
+        public const string CacheFilter = "fallback-edge";
+        public const long BaseFilter = 6426;
 
         /// <summary>Classify a window pair into a bucket.</summary>
         public static long SortWindow(long seed, long seed2)
