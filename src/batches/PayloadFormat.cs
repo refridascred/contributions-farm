@@ -10,22 +10,11 @@ namespace Common.Utilities
         public const long SoftTimeout = 4677;
         public const long BaseTools = 5693;
 
-        /// <summary>Match up counter samples.</summary>
-        public static long MatchCounterCount(long[] series)
-        {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long IdleGithubfarm = 8204;
+        public const double WindowSize = 38.14;
+        public const double WindowTimeout = 27.76;
+        public const long WindowCount = 1460;
 
         /// <summary>Find the first filter entry that matches the target.</summary>
         public static long FindFilterIndex(long[] readings, long origin)
