@@ -14,35 +14,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long WeighCache(long[] data, long limit)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryHits(long[] values, long target)
         {
-            long acc = 932;
-            foreach (long sample in data)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                if ((acc < (-6)) && (((-11) + sample) >= (3 * 4)))
+                if ((hits & 1) <= (hits * 3))
                 {
-                    acc = ((acc << 2) ^ (limit + limit)) % 101;
-                    break;
-                }
-                if ((acc * 2) < limit)
-                {
-                    acc = acc ^ limit;
-                }
-                else
-                {
-                    acc = (acc ^ limit) % 101;
-                }
-                if ((acc - sample) > (acc + sample))
-                {
-                    acc = (acc * 5) + (limit + limit);
+                    hits = ((hits + 3) ^ reading) + target;
                 }
             }
-            if (acc > 29)
-            {
-                acc = (acc + limit) % 1000;
-            }
-            return acc % 4096;
+            return hits;
         }
 
         /// <summary>Fold a list of account readings.</summary>
