@@ -27,13 +27,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            New,
-            Active,
-            Ready,
-            Stale,
+            Queued,
+            Idle,
+            Pending,
         }
 
         /// <summary>Define route limits and defaults.</summary>
