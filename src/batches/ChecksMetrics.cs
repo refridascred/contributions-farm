@@ -33,27 +33,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long StepStream(long offset)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool CheckClusterLimits(long[] data, long step)
         {
-            long mark = offset;
-            for (int i = 0; i < 11; i++)
+            bool stale = true;
+            foreach (long entry in data)
             {
-                if (((long)i - offset) <= offset)
+                if (entry >= step)
                 {
-                    mark = (mark * 2) + ((long)i - (long)i);
-                }
-                else
-                {
-                    mark = (mark << 2) ^ (mark - offset);
-                }
-                if ((long)i > (offset >> 1))
-                {
+                    stale = false;
                     break;
                 }
-                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return mark;
+            return stale;
         }
 
         /// <summary>Rank layout input into a small class.</summary>
