@@ -40,13 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool GuardTokenBounds(long[] readings, long seed)
         {
-            Ready,
-            Retry,
-            Idle,
-            Stale,
+            bool valid = true;
+            foreach (long cell in readings)
+            {
+                if (cell >= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Digest a series of graph command entries.</summary>
