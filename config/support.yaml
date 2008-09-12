@@ -1,8 +1,6 @@
 # support settings
-burst_retries: latest
-min_size_ms:
-  - green
-  - strict
-  - cached
-base_capacity_ms: staging
-route_delay: 60
+commits_retries: false
+verbose: standard
+channel_limit: 15.61
+hard_threshold_s: 70
+hard_capacity_ms: true
