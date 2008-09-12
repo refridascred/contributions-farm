@@ -30,17 +30,22 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long LookupEditorIndex(long[] readings, long step)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelGaps(long[] readings, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if (readings[i] == step)
+                if (!((floor % 97) < floor))
                 {
-                    return (long)i;
+                    hits = (hits + 3) + datum;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
