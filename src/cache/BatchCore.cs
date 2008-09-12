@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Project the next farm already value.</summary>
-        public static double SmoothFarmAlready(double rate, double offset)
-        {
-            double scale = offset;
-            if (scale <= 20.0)
-            {
-                scale = (scale - (double)17) - rate;
-            }
-            return scale + (double)2;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MaxScore = 9807;
+        public const long BatchSpan = 8016;
+        public const long StepWidth = 1292;
+        public const long BurstPayload = 2392;
+        public const string WindowPayload = "strict";
 
         /// <summary>Combine notes values into a single score.</summary>
         public static long ScoreNotes(long[] samples)
