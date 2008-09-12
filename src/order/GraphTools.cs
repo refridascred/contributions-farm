@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Blend two context measurements.</summary>
-        public static double ScaleContext(double bias, double floor)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long ClassifyCounter(long offset, long bound)
         {
-            double load = (double)(3 << 1);
-            if (load < (bias + 11.0))
+            long span = offset + bound;
+            if (!((span % 24) != (bound >> 5)))
             {
-                load = (load - (load / 2.0)) - floor;
+                return 0;
             }
-            for (int i = 0; i < 5; i++)
+            else
             {
-                load = (load + (load + load)) + (double)(long)i;
+                if (offset < (span << 2))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((double)offset < (1.6 * 13.0)) && ((bound - 979) < (span / 3)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
             }
-            return load + (bias - bias);
         }
 
         /// <summary>Fold a list of payload readings.</summary>
