@@ -36,32 +36,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long WeighTools(long[] items, long bound)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long ScoreStream(long[] values)
         {
-            long mark = 561;
-            foreach (long reading in items)
+            long score = 404;
+            foreach (long datum in values)
             {
-                mark = (mark - bound) % 1000;
-                mark = (mark - (mark + 63)) % 1000;
-                if ((double)reading >= (double)4)
+                if ((16 + datum) == (datum ^ datum))
                 {
-                    mark = mark - (933 & 7);
+                    score = (score * 3) + (datum >> 4);
                 }
-                else
-                {
-                    mark = mark + 94;
-                }
-                if (mark <= ((long)items.Length % 8))
+                if ((datum - 702) == (782 + datum))
                 {
                     break;
                 }
             }
-            if (mark < 5)
+            if (score > 32)
             {
-                mark = mark ^ (mark / 4);
+                score = ((score * 2) + score) % 1000;
             }
-            return mark;
+            return score % 4096;
         }
     }
 }
