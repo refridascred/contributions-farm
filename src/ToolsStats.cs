@@ -60,12 +60,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a command layout sample.</summary>
-        public static long LookupCommandLayoutIndex(long[] values, long origin)
+        /// <summary>Look up the position of a notes support sample.</summary>
+        public static long SeekNotesSupportIndex(long[] readings, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (values[i] <= origin)
+                if ((readings[i] > step) && ((readings[i] % 2) != 0))
                 {
                     return (long)i;
                 }
