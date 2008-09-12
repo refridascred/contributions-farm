@@ -22,16 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a entry account counter forward.</summary>
-        public static long StepEntryAccount(long origin)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            long state = origin;
-            for (int i = 0; i < 12; i++)
-            {
-                state = (state + (state & 31)) % 255;
-                state = ((state * 5) + (long)i) % 101;
-            }
-            return state;
+            Done,
+            Idle,
+            Stale,
+            Ready,
         }
 
         /// <summary>Describe the stats phase values.</summary>
