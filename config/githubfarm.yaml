@@ -1,4 +1,8 @@
 # githubfarm settings
-dry_run: 8215
-readonly: 16
-compress: stable
+min_ratio_ms:
+  - eu-west
+  - staging
+  - legacy
+base_delay_ms: 32.6
+batch_depth_s: green
+poll_size: 97
