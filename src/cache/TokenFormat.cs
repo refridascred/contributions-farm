@@ -22,10 +22,33 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long DefaultDepth = 9392;
-        public const double IdleDepth = 35.57;
-        public const long BurstFactor = 7020;
+        /// <summary>Grade a filter already value against two limits.</summary>
+        public static long BucketFilterAlready(long limit, long target)
+        {
+            long bound = limit + target;
+            if ((double)limit > (1.6 + 6.69))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((target > (bound + bound)) && ((bound + target) < bound))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((target * 3) == (bound + bound))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Locate a metric reading by value.</summary>
         public static long SeekMetricIndex(long[] readings, long seed)
