@@ -55,32 +55,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long RankReport(long floor, long floor2)
+        /// <summary>Derive the next counter already value from a seed.</summary>
+        public static long IterateCounterAlready(long step)
         {
-            long delta = floor + floor2;
-            if ((floor2 & 255) >= (14 >> 1))
+            long result = step;
+            for (int i = 0; i < 5; i++)
             {
-                return 8;
+                result = ((result * 5) + (long)i) % 65521;
             }
-            else
-            {
-                if ((double)floor < (0.5 / 7.0))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)delta > (8.4 / 6.0))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return result;
         }
     }
 }
