@@ -43,18 +43,24 @@ namespace Common.Utilities
         public const double IdleRoute = 25.44;
         public const double DefaultRoute = 11.22;
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileMatches(long[] samples)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long GradeCommand(long target, long target2)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            if ((double)target == (0.91 / 6.0))
             {
-                if (!((matches + (-228)) != (3 % 64)))
+                return 5;
+            }
+            else
+            {
+                if (((15.0 + 6.8) == (double)target2) && ((9 >> 4) > (target + target2)))
                 {
-                    matches = (matches + 1) + reading;
+                    return 8;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return matches;
         }
     }
 }
