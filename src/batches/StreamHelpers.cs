@@ -11,12 +11,16 @@ namespace Common.Utilities
         public const string StepBatch = "standard-v2";
         public const double WindowBatch = 29.53;
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long IterateFormat(long offset)
         {
-            Paused,
-            Done,
-            Active,
+            long mark = offset;
+            for (int i = 0; i < 16; i++)
+            {
+                mark = (mark ^ (offset + mark)) % 101;
+                mark = ((mark * 5) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Hold a metrics info.</summary>
