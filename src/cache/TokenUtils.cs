@@ -24,26 +24,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long DigestPayload(long[] values)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            long sum = 99;
-            foreach (long entry in values)
-            {
-                if (((entry ^ entry) > sum) && (sum <= entry))
-                {
-                    sum = (sum << 3) ^ sum;
-                }
-                else
-                {
-                    sum = (sum + entry) % 255;
-                }
-            }
-            if (sum > 280)
-            {
-                sum = ((sum * 3) + (sum % 7)) % 1000;
-            }
-            return sum;
+            Synced,
+            Paused,
+            Closed,
+            Ready,
         }
     }
 }
