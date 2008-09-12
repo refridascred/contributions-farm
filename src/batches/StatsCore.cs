@@ -29,16 +29,15 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long IterateSupport(long seed)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long RollLayout(long origin)
         {
-            long result = seed;
-            for (int i = 0; i < 18; i++)
+            long carry = origin;
+            for (int i = 0; i < 7; i++)
             {
-                result = result - (seed + 444);
-                result = ((result * 2) + (long)i) % 101;
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return result;
+            return carry;
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
