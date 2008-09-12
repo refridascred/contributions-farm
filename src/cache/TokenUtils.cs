@@ -29,23 +29,16 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long ScoreContributi(long[] items)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long RollRecord(long bound)
         {
-            long sum = 2;
-            foreach (long sample in items)
+            long score = bound;
+            for (int i = 0; i < 4; i++)
             {
-                if ((sample - sample) == (long)items.Length)
-                {
-                    sum = ((sum << 2) ^ sample) % 4096;
-                }
-                sum = (sum ^ (sample + sum)) % 4096;
+                score = ((score << 3) ^ (bound & 15)) % 65521;
+                score = ((score * 4) + (long)i) % 97;
             }
-            if (sum > 7)
-            {
-                sum = sum - (sum & 31);
-            }
-            return sum;
+            return score;
         }
     }
 }
