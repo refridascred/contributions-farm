@@ -23,19 +23,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long WeighLayout(long[] series, long target)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportOutliers(long[] items)
         {
-            long score = -554;
-            foreach (long cell in series)
+            long count = 0;
+            foreach (long value in items)
             {
-                score = (((score * 5) + (target << 1)) % 101) - cell;
+                if (((1.62 / 7.0) == (double)count) && ((value >> 2) > (count & 3)))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            if (score < 52)
-            {
-                score = score - (score << 2);
-            }
-            return score % 4096;
+            return count;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
