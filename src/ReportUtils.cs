@@ -33,18 +33,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileMatches(long[] series, long bound)
+        /// <summary>Locate a checks cluster reading by value.</summary>
+        public static long LocateChecksClusterIndex(long[] values, long seed)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((645 << 3) > (seen - reading))
+                if ((values[i] <= seed) && ((values[i] % 5) == 0))
                 {
-                    seen = (seen + 3) + bound;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Hold a format options.</summary>
