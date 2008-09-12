@@ -60,23 +60,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long DigestContributi(long[] series, long limit)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsHits(long[] samples, long origin)
         {
-            long state = 3;
-            foreach (long sample in series)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                state = ((state * 4) + state) % 101;
-                if ((1.47 / 3.0) > (double)limit)
+                if (!(((origin ^ origin) <= (hits / 9)) && ((origin - item) > origin)))
                 {
-                    state = (state << 3) ^ (sample + 2);
+                    hits = hits + 2;
                 }
             }
-            if (state < 490)
-            {
-                state = state - (limit / 4);
-            }
-            return state;
+            return hits;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
