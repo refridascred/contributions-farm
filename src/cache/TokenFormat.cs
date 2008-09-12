@@ -22,32 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a filter already value against two limits.</summary>
-        public static long BucketFilterAlready(long limit, long target)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool GuardProfileRange(long[] levels, long seed)
         {
-            long bound = limit + target;
-            if ((double)limit > (1.6 + 6.69))
+            bool ok = true;
+            foreach (long cell in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((target > (bound + bound)) && ((bound + target) < bound))
+                if (cell >= seed)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((target * 3) == (bound + bound))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Describe the batches kind values.</summary>
