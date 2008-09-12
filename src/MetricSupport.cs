@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Match up stats route samples.</summary>
-        public static long PairStatsRouteCount(long[] values)
-        {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 12)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long CacheCommits = 9220;
+        public const long BatchCommits = 1975;
+        public const string MaxFactor = "latest-1";
+        public const double BurstLevel = 59.46;
 
         /// <summary>Roll a channel counter forward.</summary>
         public static long RollChannel(long limit)
