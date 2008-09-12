@@ -27,31 +27,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long SortMetric(long seed, long origin)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double AdjustTools(double rate, double bias)
         {
-            if (!((origin + seed) < origin))
+            double gain = bias;
+            if (gain > bias)
             {
-                return 7;
+                gain = gain - bias;
             }
             else
             {
-                if ((0.5 * 6.4) < (double)origin)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((seed % 2) > seed) && (seed <= (origin << 3)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                gain = gain - rate;
             }
+            return gain + 2.0;
         }
 
         /// <summary>Hold a metric record.</summary>
