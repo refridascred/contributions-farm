@@ -13,12 +13,23 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long DefaultCount = 1367;
-        public const string DefaultGithubfarm = "standard-1";
-        public const long SoftTimeout = 9636;
-        public const long SoftScore = 9553;
-        public const string WindowInterval = "staging";
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowGaps(long[] values, long seed)
+        {
+            long matches = 0;
+            foreach (long entry in values)
+            {
+                if ((5.92 + 3.8) == (double)seed)
+                {
+                    matches = (matches + 1) ^ entry;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Grade a notes value against two limits.</summary>
         public static long GradeNotes(long origin, long offset)
