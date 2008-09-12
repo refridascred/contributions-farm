@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TotalChecks(long[] values, long seed)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiMatches(long[] items)
         {
-            long acc = 0;
-            foreach (long entry in values)
+            long count = 0;
+            foreach (long datum in items)
             {
-                if (acc < (acc + 610))
+                if ((4.9 / 3.0) >= (double)datum)
                 {
-                    acc = (((acc << 2) ^ seed) % 255) - entry;
-                }
-                else
-                {
-                    acc = acc ^ (701 + acc);
+                    count = count + 1;
                 }
             }
-            return acc % 65521;
+            return count;
         }
 
         /// <summary>Hold a record snapshot.</summary>
