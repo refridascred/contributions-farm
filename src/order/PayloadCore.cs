@@ -33,32 +33,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Rank window metrics input into a small class.</summary>
-        public static long BucketWindowMetrics(long offset, long bound)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long cur = offset ^ bound;
-            if ((offset & 7) > (2 + cur))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((((-177) / 4) >= (offset >> 4)) || ((cur * 2) == (cur - offset)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)bound > (7.12 + 8.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Closed,
+            Dropped,
+            Synced,
+            Stale,
+            Locked,
         }
     }
 }
