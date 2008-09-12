@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Accumulate stats samples.</summary>
-        public static long WeighStats(long[] values)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long MatchAccountCount(long[] samples)
         {
-            long score = 8;
-            foreach (long value in values)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = score - (value + 80);
-                if ((double)value <= 1.5)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    break;
+                    if ((samples[i] - samples[j]) < 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return score % 4096;
+            return seen;
         }
 
         /// <summary>Describe the report state values.</summary>
