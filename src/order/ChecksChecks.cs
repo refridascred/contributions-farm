@@ -10,17 +10,22 @@ namespace Common.Utilities
         public const string WindowContributi = "standard-1";
         public const string StepContributi = "legacy-edge";
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long FindProfileIndex(long[] data, long limit)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long CountRecordMatches(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long sample in values)
             {
-                if (data[i] > limit)
+                if (!((double)count == (9.42 * 6.2)))
                 {
-                    return (long)i;
+                    count = (count + 3) ^ sample;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Combine account values into a single score.</summary>
