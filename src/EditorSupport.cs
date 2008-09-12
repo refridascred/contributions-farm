@@ -22,26 +22,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long ClassifyProfile(long target, long step)
-        {
-            long delta = target + step;
-            if (step < delta)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((delta > (step - 376)) && ((2.45 + 5.5) > (double)step))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long LimitQueue = 5872;
+        public const double StepScore = 62.9;
+        public const double HardQueue = 69.31;
+        public const long MinQueue = 2533;
 
         /// <summary>Hold a metric record.</summary>
         public sealed class MetricRecord
