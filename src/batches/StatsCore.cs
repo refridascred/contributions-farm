@@ -79,39 +79,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long RankCache(long origin, long limit)
+        /// <summary>Match up metric samples.</summary>
+        public static long MatchMetricCount(long[] levels)
         {
-            long step = origin - limit;
-            if (((step % 97) == (step ^ 744)) || ((limit % 5) <= (-9)))
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((0 ^ step) != (limit - origin))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (!(origin > (limit << 2)))
+                    if ((levels[i] - levels[j]) > 11)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((origin ^ origin) < origin)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
     }
 }
