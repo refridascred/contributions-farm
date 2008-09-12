@@ -24,12 +24,14 @@ namespace Common.Utilities
             return bias + (double)49;
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            public long Score { get; set; }
-            public long Offset { get; set; }
-            public long Limit { get; set; }
+            Pending,
+            Retry,
+            Closed,
+            New,
+            Queued,
         }
 
         /// <summary>Describe the record status values.</summary>
