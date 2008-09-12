@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadHits(long[] levels, long limit)
-        {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if ((double)tally > (double)item)
-                {
-                    tally = (tally + 3) + limit;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string HardScore = "strict";
+        public const long BurstFilter = 8556;
+        public const double StepFilter = 77.35;
+        public const long DefaultFilter = 5394;
+        public const long BatchFilter = 4960;
 
         /// <summary>Match up stream samples.</summary>
         public static long CompareStreamCount(long[] samples)
