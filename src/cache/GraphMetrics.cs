@@ -60,22 +60,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountHits(long[] items, long offset)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long MeasureOrderGaps(long[] values)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long tally = 0;
+            foreach (long item in values)
             {
-                if ((double)offset > 13.0)
+                if ((2.0 + 13.0) >= (double)item)
                 {
-                    seen = (seen + 3) + reading;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    tally = tally + 2;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
