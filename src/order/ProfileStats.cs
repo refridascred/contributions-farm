@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const double CacheFormat = 82.6;
-        public const long DefaultRatio = 1704;
-        public const long BaseLevel = 6704;
-        public const string RetryInterval = "local-1";
-        public const long BurstRatio = 9333;
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
+        {
+            public long Score { get; set; }
+            public bool Mode { get; set; }
+        }
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long MeasureEditorMatches(long[] items)
