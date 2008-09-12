@@ -47,13 +47,31 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long BucketTools(long origin, long limit)
         {
-            public long Flag { get; set; }
-            public long Mode { get; set; }
-            public double Rank { get; set; }
-            public bool Size { get; set; }
+            if ((origin > limit) && ((3.5 - 6.1) < (double)limit))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((limit / 9) >= (1 + origin))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((174 >> 5) != (limit ^ origin)) || ((origin << 2) != (limit + 9)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
