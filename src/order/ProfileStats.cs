@@ -27,15 +27,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportGaps(long[] levels, long bound)
+        /// <summary>Match up record samples.</summary>
+        public static long PairRecordCount(long[] items)
         {
             long hits = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (hits < bound)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = (hits + 3) + entry;
+                    if ((items[i] - items[j]) > 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
