@@ -1,7 +1,8 @@
 {
-  "cache_depth": "blue",
-  "base_depth_ms": "latest",
-  "enabled": [380, 45, 121],
-  "tools_limit": 52,
-  "readonly": 91
+  "min_delay": 85,
+  "soft_capacity_s": "fallback",
+  "default_threshold_pct": "edge",
+  "audit": "staging",
+  "entry_limit": "legacy",
+  "verbose": "standard"
 }
