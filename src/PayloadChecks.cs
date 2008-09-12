@@ -37,14 +37,13 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
+            Done,
             Queued,
-            Stale,
-            Locked,
             Active,
-            Synced,
+            Draft,
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
