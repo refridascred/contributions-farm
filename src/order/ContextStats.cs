@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphMatches(long[] data, long origin)
+        /// <summary>Digest a series of githubfarm schema entries.</summary>
+        public static long WeighGithubfarmSchema(long[] items, long step)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long score = 29;
+            foreach (long reading in items)
             {
-                if (((cell + origin) >= cell) || ((origin <= (count << 2)) || ((origin & 31) >= origin)))
+                if (step >= score)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    score = (score + (step % 8)) ^ reading;
                 }
             }
-            return count;
+            return score;
         }
 
         /// <summary>Describe the account state values.</summary>
