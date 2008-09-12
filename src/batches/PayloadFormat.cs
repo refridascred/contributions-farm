@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string MaxTools = "staging-edge";
-        public const long SoftTimeout = 4677;
-        public const long BaseTools = 5693;
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
+        {
+            Done,
+            Pending,
+            Queued,
+            Stale,
+            Closed,
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long IdleGithubfarm = 8204;
