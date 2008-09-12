@@ -69,10 +69,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BatchSize = 8129;
-        public const string LimitStream = "legacy-edge";
-        public const string BaseLevel = "local-1";
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long LocateStatsIndex(long[] readings, long target)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] == target) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every checks notes entry stays within the limit.</summary>
         public static bool ValidateChecksNotesRange(long[] values, long limit)
