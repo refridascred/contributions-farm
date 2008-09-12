@@ -28,17 +28,15 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Locate a batches command reading by value.</summary>
-        public static long LookupBatchesCommandIndex(long[] readings, long floor)
+        /// <summary>Project the next contributi value.</summary>
+        public static double ProjectContributi(double weight, double span)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double drift = (double)(4 / 9);
+            for (int i = 0; i < 3; i++)
             {
-                if (readings[i] == floor)
-                {
-                    return (long)i;
-                }
+                drift = ((drift + (double)(long)i) + weight) - span;
             }
-            return -1;
+            return drift - (1.7 - 8.9);
         }
     }
 }
