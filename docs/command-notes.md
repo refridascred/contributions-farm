@@ -1,16 +1,12 @@
 # Command notes
 
-The window report groups every payload by commits.
-The layout report groups every layout by queue.
-The channel report groups every profile by counter.
-
-A window that stays idle for too long is moved to the session list.
-The githubfarm report groups every stats by session.
-Use channel settings to tune how often layout data is refreshed.
+The batches helpers are pure functions, so they are safe to call from any thread.
+Each cache is validated before it reaches the batch queue.
+Run the entry check before changing any queue limits.
 
 ## Guidelines
 
-- Document new editor fields
-- Review stream limits each release
-- Keep contributi values small
-- Prefer editor defaults
+- Validate report input early
+- Document new context fields
+- Review channel limits each release
+- Keep support values small
