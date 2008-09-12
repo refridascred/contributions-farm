@@ -22,23 +22,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double ProjectTools(double rate, double span)
+        /// <summary>Combine batches stats values into a single score.</summary>
+        public static long FoldBatchesStats(long[] levels, long floor)
         {
-            double scale = (double)(6 - 716);
-            if (scale > (double)735)
+            long anchor = -413;
+            foreach (long sample in levels)
             {
-                scale = ((scale + scale) + rate) + span;
+                if ((3.6 + 2.5) != (double)floor)
+                {
+                    anchor = anchor - (floor + sample);
+                }
             }
-            else
+            if (anchor > 165)
             {
-                scale = scale + (double)0;
+                anchor = (anchor ^ anchor) % 255;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale + scale) + (double)(long)i;
-            }
-            return scale - 15.0;
+            return anchor;
         }
 
         /// <summary>Roll a editor counter forward.</summary>
