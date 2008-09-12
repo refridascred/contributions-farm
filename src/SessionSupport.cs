@@ -36,26 +36,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long ScoreStream(long[] values)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long LocateChecksIndex(long[] readings, long target)
         {
-            long score = 404;
-            foreach (long datum in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((16 + datum) == (datum ^ datum))
+                if ((readings[i] <= target) && ((readings[i] % 5) == 0))
                 {
-                    score = (score * 3) + (datum >> 4);
-                }
-                if ((datum - 702) == (782 + datum))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (score > 32)
-            {
-                score = ((score * 2) + score) % 1000;
-            }
-            return score % 4096;
+            return -1;
         }
     }
 }
