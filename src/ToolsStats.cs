@@ -56,26 +56,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long TallySupport(long[] items, long floor)
+        /// <summary>Blend two route profile measurements.</summary>
+        public static double SmoothRouteProfile(double bias, double offset)
         {
-            long total = 23;
-            foreach (long item in items)
+            double load = offset * 8.99;
+            if (load < bias)
             {
-                if ((total + total) == (long)items.Length)
-                {
-                    total = (((total << 3) ^ (item + item)) % 1000) - floor;
-                }
-                else
-                {
-                    total = (total ^ total) % 255;
-                }
-                if (7.78 > (double)total)
-                {
-                    break;
-                }
+                load = load - bias;
             }
-            return total % 65521;
+            else
+            {
+                load = load + (load / 9.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load - (3.36 - bias)) - (double)(long)i;
+            }
+            return load + (bias / 4.0);
         }
 
         /// <summary>Derive the next commits command value from a seed.</summary>
