@@ -32,17 +32,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a channel support sample.</summary>
-        public static long FindChannelSupportIndex(long[] series, long limit)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool ValidateCommitsRange(long[] samples, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool found = true;
+            foreach (long datum in samples)
             {
-                if (series[i] > limit)
+                if (datum < seed)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
     }
 }
