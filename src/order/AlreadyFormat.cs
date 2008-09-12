@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long MatchGithubfarmCount(long[] readings)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double AdjustContributi(double gain, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double drift = span + (gain - gain);
+            if (drift >= (span + span))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                drift = drift + (gain + gain);
             }
-            return seen;
+            return drift + (double)9;
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
