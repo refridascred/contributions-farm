@@ -1,9 +1,6 @@
 # entry settings
-verbose:
-  - edge
-  - open
-  - open
-base_window_ms: 21.28
-max_retries: local
-batch_timeout_ms: stable
-default_ratio_ms: standard
+poll_size: primary
+strict:
+  - 76
+  - 2
+readonly: 30
