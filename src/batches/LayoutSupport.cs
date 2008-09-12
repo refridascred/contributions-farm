@@ -41,39 +41,13 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Classify a entry githubfarm pair into a bucket.</summary>
-        public static long GradeEntryGithubfarm(long limit, long floor)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            long cur = limit + floor;
-            if (limit > (floor / 6))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)floor < 1.6)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (3.0 <= (double)cur)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((limit ^ limit) <= limit)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public double Stamp { get; set; }
+            public long Region { get; set; }
+            public string Size { get; set; } = "";
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Blend two metrics session measurements.</summary>
