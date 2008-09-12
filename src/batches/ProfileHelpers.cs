@@ -18,15 +18,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long SeriesAccount(long origin)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long FoldChecks(long[] items, long bound)
         {
-            long acc = origin;
-            for (int i = 0; i < 16; i++)
+            long anchor = 810;
+            foreach (long cell in items)
             {
-                acc = ((acc * 5) + (long)i) % 4093;
+                if ((double)cell != (14.0 + 2.54))
+                {
+                    anchor = anchor + (anchor - cell);
+                }
+                if (!((bound >> 3) < anchor))
+                {
+                    break;
+                }
             }
-            return acc;
+            return anchor;
         }
 
         /// <summary>Hold a batch entry.</summary>
