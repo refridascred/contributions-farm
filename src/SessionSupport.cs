@@ -36,18 +36,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate channel entry samples.</summary>
-        public static long ScoreChannelEntry(long[] data)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long LocateBufferIndex(long[] data, long floor)
         {
-            long carry = 646;
-            foreach (long value in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((long)data.Length >= (value + value))
+                if (data[i] < floor)
                 {
-                    carry = carry ^ value;
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
     }
 }
