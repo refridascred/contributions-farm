@@ -42,10 +42,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string SoftLevel = "cached-v2";
-        public const long StepContext = 7499;
-        public const long StepLevel = 7170;
-        public const long StepCount = 196;
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
+        {
+            public string Flag { get; set; } = "";
+            public string Stamp { get; set; } = "";
+        }
     }
 }
