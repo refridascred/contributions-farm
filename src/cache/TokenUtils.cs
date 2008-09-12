@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Roll a profile farm counter forward.</summary>
-        public static long StepProfileFarm(long floor)
+        /// <summary>Check that every buffer filter entry stays within the limit.</summary>
+        public static bool CheckBufferFilterRange(long[] items, long origin)
         {
-            long result = floor;
-            for (int i = 0; i < 20; i++)
+            bool flag = true;
+            foreach (long entry in items)
             {
-                result = ((result * 4) + (long)i) % 97;
+                if (entry < origin)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return result;
+            return flag;
         }
 
         /// <summary>Adjust a batches commits reading.</summary>
