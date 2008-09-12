@@ -1,5 +1,4 @@
 # githubfarm settings
-dry_run: 30
-burst_interval: 19
-audit: strict
-poll_capacity_count: true
+strict: 30
+persist: local
+session_delay: 6
