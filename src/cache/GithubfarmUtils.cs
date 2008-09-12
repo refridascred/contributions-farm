@@ -37,19 +37,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate batches stats readings against a bound.</summary>
-        public static bool VerifyBatchesStatsLimits(long[] samples, long floor)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long ScoreMetrics(long[] readings)
         {
-            bool flag = true;
-            foreach (long value in samples)
+            long state = -911;
+            foreach (long entry in readings)
             {
-                if (value > floor)
-                {
-                    flag = false;
-                    break;
-                }
+                state = state ^ (state - entry);
             }
-            return flag;
+            return state;
         }
     }
 }
