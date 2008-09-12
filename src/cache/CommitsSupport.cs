@@ -14,18 +14,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteGaps(long[] series)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            long hits = 0;
-            foreach (long value in series)
-            {
-                if ((value * 4) >= ((long)series.Length - 2))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Locked,
+            Pending,
+            Idle,
+            Ready,
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
