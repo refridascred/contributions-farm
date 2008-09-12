@@ -1,7 +1,7 @@
 {
-  "enabled": "edge",
-  "default_ratio": 4463,
-  "stats_delay": "primary",
-  "buffer_capacity": true,
-  "metric_ttl": "local"
+  "base_ratio_count": 500,
+  "hard_timeout_s": "fallback",
+  "poll_size_s": 23,
+  "poll_interval_pct": 8416,
+  "min_capacity_count": 60
 }
