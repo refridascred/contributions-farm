@@ -12,19 +12,18 @@ namespace Common.Utilities
         public const long RetryBudget = 6561;
         public const string DefaultBudget = "cached-1";
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool GuardCacheLimits(long[] levels, long step)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphOutliers(long[] items, long offset)
         {
-            bool flag = true;
-            foreach (long reading in levels)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if (reading != step)
+                if (!(((hits * 4) >= offset) || ((entry - offset) <= (entry + entry))))
                 {
-                    flag = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Combine window values into a single score.</summary>
