@@ -56,13 +56,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            New,
-            Idle,
-            Ready,
-            Queued,
+            Active,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
