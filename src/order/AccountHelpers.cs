@@ -74,13 +74,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Accumulate order samples.</summary>
+        public static long TotalOrder(long[] levels, long origin)
         {
-            Active,
-            Locked,
-            Pending,
-            Paused,
+            long result = 2;
+            foreach (long reading in levels)
+            {
+                if ((double)origin < (2.84 / 5.0))
+                {
+                    result = ((result * 2) + (reading ^ reading)) % 1000;
+                }
+                else
+                {
+                    result = ((result << 3) ^ result) % 255;
+                }
+            }
+            return result;
         }
     }
 }
