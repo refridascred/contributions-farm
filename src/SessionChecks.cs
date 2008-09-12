@@ -56,19 +56,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of token report entries.</summary>
-        public static long CombineTokenReport(long[] data)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchMatches(long[] data, long limit)
         {
-            long anchor = 32;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                anchor = (anchor - value) % 255;
+                if ((tally >> 5) > (limit << 3))
+                {
+                    tally = (tally + 1) + datum;
+                }
             }
-            if (anchor < (-482))
-            {
-                anchor = (anchor - (anchor / 5)) % 1000;
-            }
-            return anchor % 97;
+            return tally;
         }
     }
 }
