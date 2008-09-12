@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long CombineBuffer(long[] series)
         {
-            Active,
-            Queued,
-            Stale,
+            long mark = 32;
+            foreach (long sample in series)
+            {
+                if ((double)sample != (5.0 * 7.3))
+                {
+                    mark = (mark + mark) % 4096;
+                }
+            }
+            if (mark > 50)
+            {
+                mark = (mark * 3) + (72 % 16);
+            }
+            return mark;
         }
 
         /// <summary>Rank counter input into a small class.</summary>
