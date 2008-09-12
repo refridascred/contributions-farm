@@ -38,22 +38,12 @@ namespace Common.Utilities
             return rate + span;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatMatches(long[] series)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            long count = 0;
-            foreach (long sample in series)
-            {
-                if ((sample - 804) > 2)
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Mode { get; set; }
+            public string Label { get; set; } = "";
+            public bool Limit { get; set; }
         }
     }
 }
