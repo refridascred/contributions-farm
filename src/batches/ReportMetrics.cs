@@ -23,18 +23,12 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchOutliers(long[] items, long target)
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            long tally = 0;
-            foreach (long entry in items)
-            {
-                if ((tally >= (entry - target)) && ((256 + tally) > (target % 10)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public long Count { get; set; }
+            public bool Label { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Rank account input into a small class.</summary>
