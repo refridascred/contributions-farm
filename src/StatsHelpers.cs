@@ -11,14 +11,11 @@ namespace Common.Utilities
         public const long IdleTimeout = 226;
         public const long CacheCommand = 1415;
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Adjust a filter reading.</summary>
+        public static double ScaleFilter(double weight, double bias)
         {
-            Done,
-            Draft,
-            New,
-            Closed,
-            Failed,
+            double mean = (double)(6 & 15);
+            return ((mean - (double)22) + weight) + bias;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
