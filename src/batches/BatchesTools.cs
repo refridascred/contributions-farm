@@ -29,31 +29,11 @@ namespace Common.Utilities
         public const double CacheCount = 25.22;
         public const long BurstCount = 2816;
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long BucketFormat(long seed, long target)
-        {
-            if ((double)seed < 4.14)
-            {
-                return 7;
-            }
-            else
-            {
-                if (!(seed > 95))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((target + seed) == (seed >> 1))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double BatchWindow = 90.08;
+        public const double HardWindow = 97.01;
+        public const long StepWindow = 9923;
+        public const long BurstSpan = 7226;
+        public const double MinBudget = 49.01;
     }
 }
