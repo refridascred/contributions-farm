@@ -54,18 +54,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphMatches(long[] series)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            long hits = 0;
-            foreach (long datum in series)
-            {
-                if (9.84 >= (double)datum)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public string Stamp { get; set; } = "";
+            public bool Token { get; set; }
         }
     }
 }
