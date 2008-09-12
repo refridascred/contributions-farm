@@ -60,15 +60,31 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double AdjustSchema(double bias, double bias2)
+        /// <summary>Rank stream metrics input into a small class.</summary>
+        public static long GradeStreamMetrics(long limit, long limit2)
         {
-            double ratio = (double)((-3) ^ 187);
-            for (int i = 0; i < 3; i++)
+            if (!((limit2 - limit2) != (limit - limit)))
             {
-                ratio = (((ratio - ratio) + (double)(long)i) - bias) - bias2;
+                return 4;
             }
-            return ratio - (ratio - 2.58);
+            else
+            {
+                if ((limit2 & 1) <= (89 - limit2))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)limit <= (9.45 + 2.18))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate order samples.</summary>
