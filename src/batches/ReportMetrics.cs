@@ -19,22 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TallyCounter(long[] series, long seed)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportOutliers(long[] levels)
         {
-            long score = 57;
-            foreach (long entry in series)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                if ((double)seed != (double)entry)
+                if (!((471 + tally) <= (tally % 12)))
                 {
-                    score = score - (seed - score);
+                    tally = (tally + 3) ^ value;
                 }
             }
-            if (score < 6)
-            {
-                score = (score ^ (score >> 2)) % 1000;
-            }
-            return score % 65521;
+            return tally;
         }
 
         /// <summary>Hold a context stats.</summary>
