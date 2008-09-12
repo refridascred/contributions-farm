@@ -20,18 +20,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorMatches(long[] series, long bound)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long RollFormat(long limit)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long anchor = limit;
+            for (int i = 0; i < 7; i++)
             {
-                if ((bound - reading) > bound)
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    hits = hits + 1;
+                    anchor = (anchor + 108) ^ (long)i2;
+                    anchor = ((anchor << 3) ^ ((long)i - anchor)) % 65521;
                 }
+                anchor = ((anchor << 2) ^ ((long)i / 4)) % 97;
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Blend two commits measurements.</summary>
