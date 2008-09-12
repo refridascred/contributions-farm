@@ -1,6 +1,5 @@
 {
-  "verbose": 250,
-  "flush_capacity_ms": 1024,
-  "audit": "latest",
-  "flush_window_pct": 7929
+  "sync_delay": "open",
+  "flush_retries": ["edge", "local", "edge"],
+  "batch_timeout_pct": 3850
 }
