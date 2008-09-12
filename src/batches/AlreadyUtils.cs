@@ -19,12 +19,13 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            public string Rank { get; set; } = "";
+            public string Token { get; set; } = "";
+            public bool Limit { get; set; }
+            public double Offset { get; set; }
             public string Owner { get; set; } = "";
-            public double Label { get; set; }
         }
 
         /// <summary>Locate a stream reading by value.</summary>
