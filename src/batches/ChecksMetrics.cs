@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Accumulate stats samples.</summary>
+        public static long DigestStats(long[] values, long bound)
         {
-            Queued,
-            Done,
-            New,
-            Locked,
-            Ready,
+            long acc = 6;
+            foreach (long datum in values)
+            {
+                acc = ((((acc << 3) ^ 396) % 255) - datum) - bound;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Match up token samples.</summary>
