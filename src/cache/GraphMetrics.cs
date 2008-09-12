@@ -43,21 +43,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count support account pairs that satisfy a relation.</summary>
-        public static long PairSupportAccountCount(long[] readings)
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public bool Count { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
