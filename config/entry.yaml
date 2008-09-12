@@ -1,13 +1,4 @@
 # entry settings
-poll_threshold_pct: 9393
-hard_delay_ms: 250
-base_size_pct: 60
-soft_interval_s:
-  max_ratio_ms:
-    - 31
-    - 227
-    - 240
-    - 112
-  hard_ttl_ms: true
-  min_timeout_count: 47.08
-  max_retries_pct: 10.92
+window_ttl: blue
+idle_depth_pct: 1024
+idle_size: 250
