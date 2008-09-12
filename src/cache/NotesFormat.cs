@@ -38,19 +38,22 @@ namespace Common.Utilities
             return rate + span;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool GuardGraphRange(long[] items, long floor)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatMatches(long[] series)
         {
-            bool ok = true;
-            foreach (long datum in items)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if (datum > floor)
+                if ((sample - 804) > 2)
                 {
-                    ok = false;
-                    break;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return ok;
+            return count;
         }
     }
 }
