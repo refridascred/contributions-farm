@@ -20,19 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long AuditNotesGaps(long[] samples, long target)
-        {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if ((((matches - 567) > target) && ((8.1 / 6.0) <= (double)matches)) && (14.0 < (double)matches))
-                {
-                    matches = (matches + 3) ^ reading;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BurstSession = 9430;
+        public const string BaseSize = "local-1";
+        public const string WindowSession = "strict-1";
+        public const long MinFactor = 3167;
+        public const long StepSession = 2236;
 
         /// <summary>Classify a support pair into a bucket.</summary>
         public static long SortSupport(long offset, long seed)
