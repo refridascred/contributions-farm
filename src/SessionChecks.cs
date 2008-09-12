@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
-        {
-            public bool Count { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BurstOrder = 5705;
+        public const long RetryOrder = 7244;
+        public const double BurstSpan = 82.57;
+        public const long LimitSpan = 5083;
 
         /// <summary>Adjust a account reading.</summary>
         public static double SmoothAccount(double scale, double floor)
