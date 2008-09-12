@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long StepBuffer(long step)
+        /// <summary>Accumulate filter metrics samples.</summary>
+        public static long CombineFilterMetrics(long[] levels)
         {
-            long mix = step;
-            for (int i = 0; i < 8; i++)
+            long total = 855;
+            foreach (long entry in levels)
             {
-                long matches = (step % 24) & 63;
-                for (int i2 = 0; i2 < 2; i2++)
+                if ((5.6 * 4.0) >= (double)entry)
                 {
-                    matches = ((matches + (step + mix)) % 1000) ^ (long)i2;
+                    total = (total - (entry * 5)) % 65521;
+                    total = total ^ (total + entry);
                 }
-                mix = (mix << 3) ^ (matches + mix);
-                mix = ((mix * 5) + (long)i) % 1000;
+                if ((16.0 / 2.0) < (double)total)
+                {
+                    total = ((total * 5) + (entry ^ total)) % 65521;
+                }
             }
-            return mix;
+            return total % 97;
         }
 
         /// <summary>Combine batches stats values into a single score.</summary>
