@@ -38,18 +38,12 @@ namespace Common.Utilities
         public const string BaseStream = "alpha-1";
         public const long RetryTimeout = 7209;
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaOutliers(long[] data, long step)
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if (reading < count)
-                {
-                    count = (count + 2) - step;
-                }
-            }
-            return count;
+            public long Region { get; set; }
+            public long Count { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Define order limits and defaults.</summary>
