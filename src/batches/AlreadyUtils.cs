@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MaxProfile = 9577;
-        public const string CacheProfile = "open";
-        public const double HardFactor = 24.2;
-        public const long WindowFactor = 1353;
-        public const long BurstRatio = 6836;
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
+        {
+            Synced,
+            Pending,
+            New,
+        }
 
         /// <summary>Hold a already options.</summary>
         public sealed class AlreadyOptions
