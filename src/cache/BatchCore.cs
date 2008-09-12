@@ -43,19 +43,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate schema channel readings against a bound.</summary>
-        public static bool VerifySchemaChannelBounds(long[] data, long offset)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatOutliers(long[] levels, long limit)
         {
-            bool valid = true;
-            foreach (long value in data)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                if (value > offset)
+                if ((450 + 8) <= (value + 888))
                 {
-                    valid = false;
-                    break;
+                    matches = (matches + 2) - limit;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
