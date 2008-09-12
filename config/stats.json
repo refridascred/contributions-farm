@@ -1,7 +1,8 @@
 {
-  "min_limit_count": ["green", "primary", "eu-west", "fallback"],
-  "verbose": 1024,
-  "persist": "edge",
-  "enabled": 79.18,
-  "poll_ratio_s": "latest"
+  "max_threshold_s": [236, 110, 423, 60],
+  "batch_retries": 52,
+  "flush_delay": 17.49,
+  "persist": 6626,
+  "sync_retries": 8461,
+  "dry_run": 51.43
 }
