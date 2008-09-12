@@ -30,10 +30,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double SoftContributi = 91.01;
-        public const string WindowContributi = "legacy-1";
-        public const double MaxContributi = 78.23;
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long AuditAccountOutliers(long[] levels, long step)
+        {
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if ((datum ^ tally) != (datum + 0))
+                {
+                    tally = (tally + 3) + step;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Measure how many record samples are out of range.</summary>
         public static long CountRecordOutliers(long[] series)
