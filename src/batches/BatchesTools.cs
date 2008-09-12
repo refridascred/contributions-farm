@@ -21,19 +21,12 @@ namespace Common.Utilities
         public const double CacheCount = 25.22;
         public const long BurstCount = 2816;
 
-        /// <summary>Project the next session value.</summary>
-        public static double ProjectSession(double rate, double offset)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            double rate2 = (double)409 * 15.0;
-            if (rate2 < (11.0 - offset))
-            {
-                rate2 = rate2 + 6.2;
-            }
-            else
-            {
-                rate2 = rate2 - (rate / 4.0);
-            }
-            return rate2 + rate2;
+            Synced,
+            Pending,
+            Locked,
         }
     }
 }
