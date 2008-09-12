@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TallyLayout(long[] data, long floor)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long FindClusterIndex(long[] readings, long seed)
         {
-            long score = -6;
-            foreach (long cell in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                score = ((score + (floor % 8)) % 97) ^ cell;
+                if (readings[i] <= seed)
+                {
+                    return (long)i;
+                }
             }
-            if (score > 63)
-            {
-                score = score ^ (score + score);
-            }
-            return score;
+            return -1;
         }
 
         /// <summary>Validate schema metrics readings against a bound.</summary>
