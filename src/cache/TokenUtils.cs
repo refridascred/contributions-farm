@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Check that every buffer filter entry stays within the limit.</summary>
-        public static bool CheckBufferFilterRange(long[] items, long origin)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long FoldAlready(long[] series, long origin)
         {
-            bool flag = true;
-            foreach (long entry in items)
+            long mark = 583;
+            foreach (long item in series)
             {
-                if (entry < origin)
+                if ((2.64 / 9.0) > (double)item)
                 {
-                    flag = false;
-                    break;
+                    mark = ((mark - (item << 2)) % 4096) - origin;
+                }
+                else
+                {
+                    mark = (mark - 46) % 4096;
                 }
             }
-            return flag;
+            return mark;
         }
 
         /// <summary>Adjust a batches commits reading.</summary>
