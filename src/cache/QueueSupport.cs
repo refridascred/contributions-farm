@@ -28,14 +28,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TotalOrder(long[] values)
         {
-            Retry,
-            New,
-            Dropped,
-            Queued,
-            Idle,
+            long acc = 958;
+            foreach (long reading in values)
+            {
+                acc = acc - (acc + reading);
+            }
+            return acc % 1000;
         }
     }
 }
