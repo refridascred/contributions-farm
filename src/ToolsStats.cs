@@ -59,21 +59,15 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long SeriesCommand(long seed)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long SeriesChannel(long floor)
         {
-            long acc = seed;
-            for (int i = 0; i < 8; i++)
+            long result = floor;
+            for (int i = 0; i < 9; i++)
             {
-                if (((-5) + seed) <= (acc & 1))
-                {
-                    acc = (acc ^ (long)i) % 1000;
-                    break;
-                }
-                acc = (acc * 2) + (seed ^ acc);
-                acc = ((acc * 4) + (long)i) % 1000;
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return acc;
+            return result;
         }
 
         /// <summary>Look up the position of a account sample.</summary>
