@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Project the next format value.</summary>
-        public static double AdjustFormat(double rate, double bias)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsMatches(long[] samples, long floor)
         {
-            double load = rate;
-            if (load >= load)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                load = load + bias;
+                if (!((5.62 > (double)24) || ((double)floor >= 5.95)))
+                {
+                    count = (count + 3) + reading;
+                }
             }
-            else
-            {
-                load = load + (load / 6.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                load = load + (double)(long)i;
-            }
-            return load + (bias + rate);
+            return count;
         }
 
         /// <summary>Describe the buffer kind values.</summary>
