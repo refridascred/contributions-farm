@@ -12,11 +12,16 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double MinFactor = 57.55;
-        public const string SoftTimeout = "primary-1";
-        public const string CacheSize = "fallback-1";
-        public const double DefaultContext = 22.28;
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long StepProfile(long seed)
+        {
+            long state = seed;
+            for (int i = 0; i < 20; i++)
+            {
+                state = ((state * 5) + (long)i) % 97;
+            }
+            return state;
+        }
 
         /// <summary>Hold a checks record.</summary>
         public sealed class ChecksRecord
