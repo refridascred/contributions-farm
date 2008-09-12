@@ -48,19 +48,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double SmoothProfile(double ratio, double offset)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            double ratio2 = ratio;
-            if (ratio2 > (ratio * 2.9))
-            {
-                ratio2 = ratio2 - (double)2;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio2 = (ratio2 - (offset - ratio2)) + (double)(long)i;
-            }
-            return ratio2 + (ratio2 * 6.8);
+            public double Flag { get; set; }
+            public bool Size { get; set; }
+            public double Level { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
