@@ -31,12 +31,18 @@ namespace Common.Utilities
             return ratio + (weight - ratio);
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderOutliers(long[] values)
         {
-            Ready,
-            Failed,
-            Closed,
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if ((hits & 63) <= (hits % 16))
+                {
+                    hits = (hits + 1) ^ value;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Iterate the metric cluster series from a seed.</summary>
