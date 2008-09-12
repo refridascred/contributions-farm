@@ -1,13 +1,5 @@
 {
-  "retry_retries": true,
-  "verbose": "blue",
-  "batch_timeout_count": 30.5,
-  "burst_window": false,
-  "batch_threshold_pct": "stable",
-  "idle_size_count": {
-    "account_interval": 1425,
-    "command_size": ["legacy", "local", "staging", "stable"],
-    "farm_timeout": "latest",
-    "contributi_ratio": "latest"
-  }
+  "cache_depth": "strict",
+  "checks_retries": "primary",
+  "hard_size_s": 72
 }
