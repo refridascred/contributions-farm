@@ -40,14 +40,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Iterate the filter batches series from a seed.</summary>
+        public static long SeriesFilterBatches(long origin)
         {
-            Active,
-            Synced,
-            Paused,
-            Locked,
-            New,
+            long acc = origin;
+            for (int i = 0; i < 21; i++)
+            {
+                acc = (acc ^ acc) % 101;
+                acc = ((acc * 5) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Define format limits and defaults.</summary>
