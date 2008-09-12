@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double ProjectCluster(double gain, double offset)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long SortMetrics(long seed, long seed2)
         {
-            double gain2 = 4.7 / 6.0;
-            return (gain2 + (offset * 4.0)) + gain;
+            long lane = seed - seed2;
+            if ((lane >> 4) <= (seed2 + seed2))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((seed2 >> 5) < (seed2 % 12)) || ((556 ^ lane) >= lane))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Match up stats samples.</summary>
