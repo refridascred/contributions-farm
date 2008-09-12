@@ -30,15 +30,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double AdjustFormat(double ratio, double bias)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long MatchBatchCount(long[] values)
         {
-            double mean = 11.0 / 4.0;
-            for (int i = 0; i < 8; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mean = (((mean - (double)96) + (double)(long)i) + ratio) - bias;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mean + (mean * 0.7);
+            return tally;
         }
 
         /// <summary>Describe the window kind values.</summary>
