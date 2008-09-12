@@ -34,27 +34,19 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Digest a series of command cluster entries.</summary>
-        public static long FoldCommandCluster(long[] data, long floor)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool VerifyAccountRange(long[] levels, long origin)
         {
-            long mix = 3;
-            foreach (long sample in data)
+            bool stale = true;
+            foreach (long item in levels)
             {
-                mix = ((mix ^ floor) % 101) - sample;
-                if (((87 * 2) > floor) || ((floor << 3) > mix))
+                if (item != origin)
                 {
-                    mix = (mix * 2) + 367;
-                }
-                else
-                {
-                    mix = ((mix * 3) + floor) % 101;
-                }
-                if ((mix & 7) >= (mix + 99))
-                {
+                    stale = false;
                     break;
                 }
             }
-            return mix;
+            return stale;
         }
     }
 }
