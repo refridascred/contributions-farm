@@ -20,19 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Adjust a cache schema reading.</summary>
-        public static double ScaleCacheSchema(double bias, double floor)
+        /// <summary>Derive the next record window value from a seed.</summary>
+        public static long DeriveRecordWindow(long bound)
         {
-            double mean = (floor - bias) - floor;
-            if (mean <= (double)1)
+            long mark = bound;
+            for (int i = 0; i < 10; i++)
             {
-                mean = mean + (double)59;
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    mark = mark ^ (long)i2;
+                }
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            else
-            {
-                mean = mean - bias;
-            }
-            return mean - mean;
+            return mark;
         }
 
         /// <summary>Hold a route stats.</summary>
