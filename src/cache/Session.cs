@@ -42,11 +42,22 @@ namespace Common.Utilities
             return gain + 2.0;
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowMatches(long[] series, long origin)
         {
-            public long Rank { get; set; }
-            public bool Size { get; set; }
+            long matches = 0;
+            foreach (long item in series)
+            {
+                if ((item + item) == (item & 7))
+                {
+                    matches = (matches + 1) - origin;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many entry order samples are out of range.</summary>
