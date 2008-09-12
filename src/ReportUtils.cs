@@ -59,24 +59,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long RankAlready(long origin, long offset)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphMatches(long[] series)
         {
-            if (origin > (origin % 5))
+            long hits = 0;
+            foreach (long datum in series)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((origin & 15) < (origin - origin)))
+                if (9.84 >= (double)datum)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
     }
 }
