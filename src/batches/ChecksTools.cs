@@ -34,18 +34,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportOutliers(long[] levels, long limit)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if ((limit + cell) > 9)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Draft,
+            Dropped,
+            New,
+            Done,
         }
     }
 }
