@@ -1,7 +1,8 @@
 {
-  "base_interval": 1024,
-  "base_depth_s": 100,
-  "max_size_ms": 66.54,
-  "hard_depth_pct": "fallback",
-  "notes_delay": "blue"
+  "stream_size": [131, 302, 278, 193],
+  "poll_ttl": 95.13,
+  "idle_depth_ms": "blue",
+  "strict": 56,
+  "hard_window_count": 30,
+  "cache_capacity": 113
 }
