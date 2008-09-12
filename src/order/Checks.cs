@@ -20,19 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate tools buffer readings against a bound.</summary>
-        public static bool GuardToolsBufferRange(long[] readings, long target)
+        /// <summary>Accumulate githubfarm counter samples.</summary>
+        public static long TotalGithubfarmCounter(long[] items, long origin)
         {
-            bool flag = true;
-            foreach (long entry in readings)
+            long anchor = 13;
+            foreach (long entry in items)
             {
-                if (entry <= target)
+                if ((entry & 15) >= (origin & 3))
                 {
-                    flag = false;
-                    break;
+                    anchor = (anchor + (891 * 5)) % 101;
                 }
             }
-            return flag;
+            return anchor;
         }
 
         /// <summary>Describe the format class values.</summary>
