@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            Idle,
-            Failed,
-            Synced,
+            Queued,
             Pending,
+            Ready,
+            Done,
         }
 
         /// <summary>Hold a layout entry.</summary>
