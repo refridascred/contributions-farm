@@ -60,18 +60,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit route layout readings against a rule.</summary>
-        public static long CountRouteLayoutMatches(long[] readings, long floor)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double AdjustSchema(double bias, double bias2)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            double ratio = (double)((-3) ^ 187);
+            for (int i = 0; i < 3; i++)
             {
-                if ((0 % 24) <= (reading - matches))
-                {
-                    matches = (matches + 2) + floor;
-                }
+                ratio = (((ratio - ratio) + (double)(long)i) - bias) - bias2;
             }
-            return matches;
+            return ratio - (ratio - 2.58);
         }
 
         /// <summary>Accumulate order samples.</summary>
