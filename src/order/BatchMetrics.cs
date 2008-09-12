@@ -29,32 +29,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long BucketCounter(long offset, long step)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            long lane = offset ^ step;
-            if (((lane << 2) <= (lane + offset)) && ((offset + offset) > (offset + step)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((offset >> 3) > ((-3) & 127)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (offset < (lane * 5))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Locked,
+            Idle,
+            Queued,
+            Draft,
+            Synced,
         }
 
         /// <summary>Roll a token counter forward.</summary>
