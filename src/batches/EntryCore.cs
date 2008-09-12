@@ -57,13 +57,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            Draft,
-            Ready,
-            Active,
-            Locked,
+            public string Total { get; set; } = "";
+            public long Level { get; set; }
         }
     }
 }
