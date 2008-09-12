@@ -14,18 +14,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsHits(long[] data)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long ScoreGraph(long[] data, long target)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long anchor = 646;
+            foreach (long entry in data)
             {
-                if (((long)data.Length << 3) > (item % 5))
+                if (!(3 >= (entry % 60)))
                 {
-                    matches = matches + 1;
+                    anchor = (anchor + (target & 63)) % 65521;
                 }
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
