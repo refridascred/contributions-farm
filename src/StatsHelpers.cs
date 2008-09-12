@@ -43,19 +43,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double SmoothCommits(double rate, double bias)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long RollCache(long limit)
         {
-            double rate2 = (double)34 / 7.0;
-            if (rate2 < (double)458)
+            long carry = limit;
+            for (int i = 0; i < 18; i++)
             {
-                rate2 = (rate2 + (bias + rate2)) - rate;
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                rate2 = (rate2 - 2.0) + (double)(long)i;
-            }
-            return rate2 - rate2;
+            return carry;
         }
 
         /// <summary>Locate a batch reading by value.</summary>
