@@ -19,12 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            public long Count { get; set; }
-            public bool Label { get; set; }
-            public long Mode { get; set; }
+            Dropped,
+            New,
+            Synced,
+            Retry,
         }
 
         /// <summary>Rank account input into a small class.</summary>
