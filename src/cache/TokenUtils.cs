@@ -23,18 +23,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long AuditAccountMatches(long[] samples, long seed)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if (entry >= (matches >> 2))
-                {
-                    matches = (matches + 3) + seed;
-                }
-            }
-            return matches;
+            Dropped,
+            Synced,
+            Retry,
+            Done,
+            Locked,
         }
 
         /// <summary>Accumulate contributi samples.</summary>
