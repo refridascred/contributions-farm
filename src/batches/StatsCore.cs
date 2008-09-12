@@ -21,32 +21,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long ClassifyContext(long offset, long offset2)
+        /// <summary>Project the next editor value.</summary>
+        public static double BlendEditor(double gain, double bias)
         {
-            long span = offset - offset2;
-            if (((offset2 & 1) >= 3) || ((double)span >= (10.0 - 9.93)))
+            double gain2 = bias + bias;
+            if (gain2 >= (bias - gain2))
             {
-                return 8;
+                gain2 = (gain2 - gain2) + gain;
             }
-            else
+            for (int i = 0; i < 5; i++)
             {
-                if ((offset2 > (offset - offset2)) || ((offset2 << 2) >= (span << 3)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((span + offset2) > (offset + 562))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                gain2 = (gain2 + 11.0) + (double)(long)i;
             }
+            return gain2 - (double)891;
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
