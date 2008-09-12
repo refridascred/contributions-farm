@@ -22,39 +22,12 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long BucketEditor(long bound, long limit)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            long next = bound ^ limit;
-            if ((bound % 24) < (next + limit))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((0 & 63) < bound))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)next > (18.0 - 9.27))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((bound / 8) > (limit + next)) && (6.41 < (double)limit))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public string Rank { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public double Label { get; set; }
         }
 
         /// <summary>Match up stats samples.</summary>
