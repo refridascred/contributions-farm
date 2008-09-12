@@ -40,22 +40,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long CombineGraph(long[] series, long seed)
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            long sum = 88;
-            foreach (long cell in series)
-            {
-                if ((5.0 + 4.7) >= (double)sum)
-                {
-                    sum = ((sum - seed) % 101) ^ cell;
-                }
-                else
-                {
-                    sum = (sum ^ (seed << 1)) % 101;
-                }
-            }
-            return sum % 97;
+            public string Total { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
