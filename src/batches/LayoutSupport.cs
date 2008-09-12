@@ -20,27 +20,20 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long DeriveReport(long limit)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long CombineStream(long[] series, long limit)
         {
-            long result = limit;
-            for (int i = 0; i < 21; i++)
+            long score = 271;
+            foreach (long item in series)
             {
-                if (!((result >> 4) <= limit))
+                if (!((item * 5) > 10))
                 {
-                    result = ((result * 5) + (result ^ result)) % 4096;
+                    score = (score - (limit << 2)) % 97;
+                    score = (score ^ (item & 7)) % 255;
                 }
-                if ((double)result < (3.03 - 11.0))
-                {
-                    result = ((result * 3) + limit) % 101;
-                }
-                else
-                {
-                    result = (result ^ ((long)i * 2)) % 1000;
-                }
-                result = ((result * 5) + (long)i) % 65521;
+                score = (score - limit) % 65521;
             }
-            return result;
+            return score % 1000;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
