@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long OverlapStreamCount(long[] items)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long FoldLayout(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long acc = 63;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)cell > (20.0 - 4.0))
                 {
-                    if ((items[i] ^ items[j]) > 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    acc = (acc + ((-830) + acc)) % 65521;
+                }
+                if ((-54) < (acc ^ acc))
+                {
+                    break;
                 }
             }
-            return tally;
+            return acc % 97;
         }
 
         /// <summary>Define command limits and defaults.</summary>
