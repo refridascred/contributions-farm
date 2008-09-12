@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long SoftLevel = 540;
-        public const long WindowScore = 8877;
-        public const long RetryBudget = 2208;
-        public const long LimitMetric = 3375;
+        /// <summary>Compare every pair of profile schema readings.</summary>
+        public static long OverlapProfileSchemaCount(long[] series)
+        {
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a contributi stats.</summary>
         public sealed class ContributiStats
