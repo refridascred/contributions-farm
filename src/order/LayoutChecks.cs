@@ -52,18 +52,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit batch route readings against a rule.</summary>
-        public static long TallyBatchRouteHits(long[] values)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatMatches(long[] samples)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if ((seen >> 3) <= value)
+                if ((0 << 3) >= (hits - datum))
                 {
-                    seen = seen + 3;
+                    hits = hits + 3;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
