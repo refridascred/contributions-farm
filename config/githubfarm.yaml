@@ -1,11 +1,25 @@
 # githubfarm settings
-compress: edge
-batch_capacity_count:
-  base_size: false
-  max_depth: stable
-  support_delay: 20.35
-persist:
-  - strict
-  - blue
-  - local
-  - primary
+warm_capacity_count:
+  soft_delay_count:
+    sync_ttl_ms: strict
+    burst_depth: 12.87
+    burst_retries_ms: standard
+    compress: 8395
+    base_retries_ms: 1849
+  audit:
+    audit:
+      - blue
+      - edge
+      - fallback
+      - standard
+    hard_ratio_ms: 8.56
+    flush_ratio: 35.51
+  support_retries: stable
+  default_window: true
+cache_capacity_s: primary
+sync_ttl_count: false
+metric_ratio: 38
+max_depth_s:
+  - stable
+  - green
+  - fallback
