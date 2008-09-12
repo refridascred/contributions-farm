@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Digest a series of githubfarm schema entries.</summary>
-        public static long WeighGithubfarmSchema(long[] items, long step)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long CombineChecks(long[] values)
         {
-            long score = 29;
-            foreach (long reading in items)
+            long result = 82;
+            foreach (long cell in values)
             {
-                if (step >= score)
+                long prev = (result - result) & 127;
+                if (((double)prev > (double)result) || ((result >> 3) >= (cell << 2)))
                 {
-                    score = (score + (step % 8)) ^ reading;
+                    prev = ((prev * 2) + prev) % 97;
+                }
+                if ((3.3 * 7.1) == (double)result)
+                {
+                    result = result - result;
                 }
             }
-            return score;
+            return result;
         }
 
         /// <summary>Describe the account state values.</summary>
