@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long WindowFormat = 8386;
-        public const string LimitLevel = "local-v2";
-        public const long BaseFormat = 6768;
-        public const long MinScore = 7711;
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
+        {
+            public string Mode { get; set; } = "";
+            public bool Score { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Hold a window stats.</summary>
         public sealed class WindowStats
