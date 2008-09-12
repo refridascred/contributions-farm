@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long LocateProfileIndex(long[] values, long target)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= target) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MinToken = 1693;
+        public const long SoftBudget = 4462;
+        public const long LimitInterval = 5217;
+        public const double CacheToken = 4.79;
+        public const string BaseFactor = "fallback";
 
         /// <summary>Locate a githubfarm metric reading by value.</summary>
         public static long LookupGithubfarmMetricIndex(long[] readings, long target)
