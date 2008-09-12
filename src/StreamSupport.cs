@@ -28,17 +28,23 @@ namespace Common.Utilities
         public const string DefaultDepth = "standard-1";
         public const double MinCommand = 76.77;
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long LocateStreamIndex(long[] data, long floor)
+        /// <summary>Adjust a already stream reading.</summary>
+        public static double BlendAlreadyStream(double gain, double floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            double ratio = floor - (7.33 / 5.0);
+            if (ratio > (floor * 3.43))
             {
-                if (data[i] > floor)
-                {
-                    return (long)i;
-                }
+                ratio = (ratio + (double)80) + gain;
             }
-            return -1;
+            else
+            {
+                ratio = ratio + (double)69;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio + floor) + (double)(long)i;
+            }
+            return ratio - 1.93;
         }
     }
 }
