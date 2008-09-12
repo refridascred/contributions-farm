@@ -35,23 +35,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long FoldChannel(long[] series, long floor)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            long mark = 988;
-            foreach (long value in series)
-            {
-                if (!(8 >= (mark >> 3)))
-                {
-                    mark = ((mark << 3) ^ (mark / 6)) % 101;
-                }
-                mark = ((mark * 5) + value) % 97;
-            }
-            if (mark < 697)
-            {
-                mark = mark + (floor * 4);
-            }
-            return mark;
+            public long Weight { get; set; }
+            public string Total { get; set; } = "";
+            public double Label { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Match up commits profile samples.</summary>
