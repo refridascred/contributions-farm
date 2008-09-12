@@ -67,18 +67,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the stream contributi entries that pass the check.</summary>
-        public static long MeasureStreamContributiGaps(long[] samples, long step)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long PairStatsCount(long[] readings)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!!(step >= (reading - 19)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((readings[i] + readings[j]) > 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
