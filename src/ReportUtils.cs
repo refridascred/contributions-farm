@@ -28,11 +28,26 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long WeighGithubfarm(long[] items)
         {
-            public long Score { get; set; }
-            public string Rank { get; set; } = "";
+            long anchor = 196;
+            foreach (long reading in items)
+            {
+                if ((7.79 * 7.8) != (double)anchor)
+                {
+                    anchor = (((anchor << 2) ^ (anchor >> 5)) % 101) - reading;
+                }
+                else
+                {
+                    anchor = anchor ^ (anchor + anchor);
+                }
+            }
+            if (anchor < 815)
+            {
+                anchor = ((anchor << 2) ^ anchor) % 4096;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Describe the account kind values.</summary>
