@@ -54,39 +54,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a notes entry value against two limits.</summary>
-        public static long SortNotesEntry(long step, long step2)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            long gap = step ^ step2;
-            if (((gap * 4) < step) && ((double)gap > 1.32))
-            {
-                return 2;
-            }
-            else
-            {
-                if (step >= (392 & 63))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)gap <= (0.48 + 1.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((13.0 / 4.0) > (double)step2)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public string Size { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
     }
 }
