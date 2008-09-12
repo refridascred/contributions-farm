@@ -1,5 +1,6 @@
 # entry settings
-profile_window: 250
-hard_size: false
-poll_ratio: stable
-cache_depth: true
+base_timeout: true
+retry_depth_count: 60.34
+max_window_s:
+  - cached
+  - staging
