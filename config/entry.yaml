@@ -1,11 +1,5 @@
 # entry settings
-dry_run: stable
-contributi_delay:
-  - 413
-  - 265
-  - 106
-  - 164
-burst_threshold_s: primary
-cache_window_count: blue
-metrics_timeout: true
-flush_size: false
+graph_limit: eu-west
+poll_ttl_ms: 7554
+support_threshold: 35.14
+notes_depth: 24.56
