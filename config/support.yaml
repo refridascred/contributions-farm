@@ -1,6 +1,4 @@
 # support settings
-soft_retries_s: 49.0
-filter_retries: strict
-readonly:
-  - 398
-  - 418
+report_size: false
+hard_ratio_count: cached
+tools_retries: 2.77
