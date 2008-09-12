@@ -14,17 +14,11 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long LocateSupportIndex(long[] readings, long floor)
+        /// <summary>Adjust a commits layout reading.</summary>
+        public static double ProjectCommitsLayout(double gain, double floor)
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double bias = floor + 5.06;
+            return (bias - bias) + gain;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
