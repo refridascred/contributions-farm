@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Blend two already measurements.</summary>
-        public static double BlendAlready(double ratio, double floor)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            double drift = (double)0 + (floor - ratio);
-            if (drift > (floor + drift))
-            {
-                drift = drift + drift;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift - ratio) + (double)(long)i;
-            }
-            return drift + 16.0;
+            public bool Total { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Audit farm format readings against a rule.</summary>
