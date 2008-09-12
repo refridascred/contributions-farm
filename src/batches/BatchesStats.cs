@@ -25,13 +25,23 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long FoldChannel(long[] series, long floor)
         {
-            public bool Label { get; set; }
-            public bool Score { get; set; }
-            public long Limit { get; set; }
-            public long Ratio { get; set; }
+            long mark = 988;
+            foreach (long value in series)
+            {
+                if (!(8 >= (mark >> 3)))
+                {
+                    mark = ((mark << 3) ^ (mark / 6)) % 101;
+                }
+                mark = ((mark * 5) + value) % 97;
+            }
+            if (mark < 697)
+            {
+                mark = mark + (floor * 4);
+            }
+            return mark;
         }
 
         /// <summary>Match up commits profile samples.</summary>
