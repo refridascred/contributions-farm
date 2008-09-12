@@ -51,21 +51,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next route commits value from a seed.</summary>
-        public static long SeriesRouteCommits(long seed)
+        /// <summary>Locate a payload buffer reading by value.</summary>
+        public static long LocatePayloadBufferIndex(long[] levels, long target)
         {
-            long carry = seed;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                long gap = (36 - carry) - (carry >> 1);
-                long count = (gap << 1) + (seed >> 1);
-                if ((count & 63) < (seed % 24))
+                if (levels[i] >= target)
                 {
-                    carry = ((carry * 5) + (long)i) % 65521;
+                    return (long)i;
                 }
-                carry = ((carry * 2) + (long)i) % 97;
             }
-            return carry;
+            return -1;
         }
     }
 }
