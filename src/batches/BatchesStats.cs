@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Adjust a schema reading.</summary>
-        public static double AdjustSchema(double ratio, double bias)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            double mean = (double)55 + bias;
-            if (mean <= (ratio / 9.0))
-            {
-                mean = mean + 3.0;
-            }
-            else
-            {
-                mean = mean - mean;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean + (double)24) + (double)(long)i;
-            }
-            return mean + (mean * 7.2);
+            public bool Region { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
