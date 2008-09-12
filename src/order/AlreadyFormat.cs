@@ -28,19 +28,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double AdjustBatches(double rate, double offset)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            double scale = (double)7 / 7.0;
-            if (scale >= (4.87 / 5.0))
-            {
-                scale = (scale - (rate - 7.78)) - offset;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale + (rate - rate)) + (double)(long)i;
-            }
-            return scale + (7.3 * 0.29);
+            New,
+            Active,
+            Ready,
+            Stale,
         }
 
         /// <summary>Hold a channel summary.</summary>
