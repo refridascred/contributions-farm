@@ -30,12 +30,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            public string Rank { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public long Score { get; set; }
+            public double Total { get; set; }
+            public long Label { get; set; }
+            public long Rank { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Blend two profile measurements.</summary>
