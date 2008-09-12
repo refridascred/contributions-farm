@@ -1,5 +1,7 @@
 {
-  "strict": 7136,
-  "batch_timeout_pct": 10.02,
-  "readonly": 9.43
+  "cache_depth": "blue",
+  "base_depth_ms": "latest",
+  "enabled": [380, 45, 121],
+  "tools_limit": 52,
+  "readonly": 91
 }
