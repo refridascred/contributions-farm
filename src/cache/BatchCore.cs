@@ -64,12 +64,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
+            public bool Weight { get; set; }
+            public bool Rank { get; set; }
             public long Mode { get; set; }
-            public long Count { get; set; }
-            public long Token { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
