@@ -22,13 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long MeasurePayloadGaps(long[] series, long bound)
         {
-            public double Offset { get; set; }
-            public string Limit { get; set; } = "";
-            public string Label { get; set; } = "";
-            public long Region { get; set; }
+            long seen = 0;
+            foreach (long datum in series)
+            {
+                if (((datum ^ seen) < datum) || ((bound / 9) > (419 - (long)series.Length)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
