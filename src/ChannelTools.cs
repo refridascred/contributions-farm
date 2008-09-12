@@ -50,13 +50,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
-        {
-            public long Size { get; set; }
-            public bool Token { get; set; }
-            public bool Weight { get; set; }
-            public bool Limit { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long SoftFactor = 2665;
+        public const string BatchDepth = "cached-1";
+        public const long MinFactor = 4931;
+        public const long LimitRoute = 5483;
+        public const double MaxLevel = 58.21;
     }
 }
