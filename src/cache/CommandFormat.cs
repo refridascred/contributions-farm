@@ -27,21 +27,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of buffer metrics readings.</summary>
-        public static long PairBufferMetricsCount(long[] items)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Locked,
+            Stale,
+            Idle,
         }
 
         /// <summary>Match up report samples.</summary>
