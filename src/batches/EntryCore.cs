@@ -80,11 +80,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            public string Total { get; set; } = "";
-            public long Level { get; set; }
+            public long Weight { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
