@@ -23,12 +23,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            public double Stamp { get; set; }
-            public long Level { get; set; }
-            public long Offset { get; set; }
+            Paused,
+            Queued,
+            Stale,
+            Idle,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
