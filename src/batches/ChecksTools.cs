@@ -42,12 +42,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportOutliers(long[] levels, long limit)
         {
-            Active,
-            Idle,
-            Pending,
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if ((limit + cell) > 9)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
