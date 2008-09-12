@@ -22,16 +22,24 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long RollRecord(long bound)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long BucketStats(long limit, long limit2)
         {
-            long score = bound;
-            for (int i = 0; i < 4; i++)
+            if ((limit2 << 1) <= limit2)
             {
-                score = ((score << 3) ^ (bound & 15)) % 65521;
-                score = ((score * 4) + (long)i) % 97;
+                return 1;
             }
-            return score;
+            else
+            {
+                if ((2 ^ limit2) > 3)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
