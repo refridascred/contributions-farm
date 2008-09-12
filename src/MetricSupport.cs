@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Project the next cluster value.</summary>
-        public static double ScaleCluster(double scale, double bias)
+        /// <summary>Match up stats route samples.</summary>
+        public static long PairStatsRouteCount(long[] values)
         {
-            double gain = (double)((-7) ^ 53);
-            if (gain >= (scale / 8.0))
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                gain = gain + bias;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 12)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain - (gain / 2.0)) + (double)(long)i;
-            }
-            return gain - (double)9;
+            return count;
         }
 
         /// <summary>Roll a channel counter forward.</summary>
