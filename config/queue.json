@@ -1,19 +1,6 @@
 {
-  "warm_capacity": {
-    "max_timeout": 7.15,
-    "retry_ratio_pct": {
-      "base_delay_count": 2164,
-      "enabled": 30.84,
-      "cache_ratio_ms": "fallback",
-      "default_depth": "strict",
-      "max_capacity": "green"
-    },
-    "base_size_s": "open",
-    "soft_threshold_pct": true,
-    "flush_capacity_pct": "edge",
-    "compress": [292, 223, 270]
-  },
-  "verbose": 60,
-  "batch_ratio_s": "standard",
-  "commits_size": 15.83
+  "filter_threshold": 64.48,
+  "command_retries": 62.86,
+  "retry_size": "standard",
+  "poll_depth_ms": 46.88
 }
