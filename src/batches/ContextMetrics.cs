@@ -39,13 +39,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            public string Level { get; set; } = "";
-            public string Count { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public long Token { get; set; }
+            Locked,
+            Failed,
+            Closed,
+            Synced,
+            Idle,
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
