@@ -31,12 +31,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            public bool Offset { get; set; }
-            public long Flag { get; set; }
-            public long Score { get; set; }
+            public bool Region { get; set; }
+            public long Ratio { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
