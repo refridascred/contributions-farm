@@ -52,11 +52,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            public string Size { get; set; } = "";
-            public string Mode { get; set; } = "";
+            Pending,
+            Locked,
+            Stale,
+            Queued,
+            Active,
         }
     }
 }
