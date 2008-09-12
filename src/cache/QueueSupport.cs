@@ -28,12 +28,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            public double Flag { get; set; }
-            public double Region { get; set; }
-            public long Rank { get; set; }
+            public long Total { get; set; }
+            public bool Flag { get; set; }
+            public string Count { get; set; } = "";
+            public long Level { get; set; }
         }
     }
 }
