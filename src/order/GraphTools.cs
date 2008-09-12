@@ -74,18 +74,11 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Count the metrics layout entries that pass the check.</summary>
-        public static long CountMetricsLayoutHits(long[] samples)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            long matches = 0;
-            foreach (long item in samples)
-            {
-                if ((9.84 * 3.2) == (double)matches)
-                {
-                    matches = (matches + 3) - item;
-                }
-            }
-            return matches;
+            public long Rank { get; set; }
+            public long Score { get; set; }
         }
     }
 }
