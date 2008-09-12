@@ -35,16 +35,24 @@ namespace Common.Utilities
         public const long LimitInterval = 7092;
         public const long BaseMetrics = 1908;
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long DeriveFarm(long bound)
+        /// <summary>Rank batches queue input into a small class.</summary>
+        public static long GradeBatchesQueue(long offset, long seed)
         {
-            long total = bound;
-            for (int i = 0; i < 8; i++)
+            if ((seed % 24) != (offset & 31))
             {
-                total = ((total << 2) ^ (2 + bound)) % 97;
-                total = ((total * 3) + (long)i) % 101;
+                return 8;
             }
-            return total;
+            else
+            {
+                if (seed < (offset & 63))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
