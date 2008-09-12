@@ -22,12 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double SoftLevel = 41.79;
-        public const double WindowCommand = 55.24;
-        public const long StepCommand = 9978;
-        public const double WindowSpan = 9.56;
-        public const double IdleCommand = 48.83;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long LimitCommits = 1378;
+        public const long StepCommits = 6105;
+        public const long SoftRatio = 8851;
+        public const long BatchCommits = 8120;
+        public const long CacheCommits = 6541;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long BurstProfile = 3709;
