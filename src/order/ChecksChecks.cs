@@ -36,15 +36,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate command tools samples.</summary>
-        public static long CombineCommandTools(long[] data, long seed)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long DigestAccount(long[] levels)
         {
-            long mix = -25;
-            foreach (long sample in data)
+            long anchor = 321;
+            foreach (long datum in levels)
             {
-                mix = ((mix * 3) + (seed * 3)) - sample;
+                if (5 > (anchor + anchor))
+                {
+                    anchor = (anchor << 3) ^ ((long)levels.Length + 363);
+                }
+                else
+                {
+                    anchor = (anchor << 3) ^ (datum + anchor);
+                }
             }
-            return mix % 97;
+            return anchor % 1000;
         }
     }
 }
