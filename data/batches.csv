@@ -1,9 +1,8 @@
-id,ratio,state
-1,staging,522
-2,3.37,staging
-3,33,green
-4,586,37.47
-5,green,281
-6,74.49,951
-7,local,993
-8,39.2,741
+id,rank,state,region,label
+1,776,31.48,521,25
+2,317,81.04,primary,475
+3,482,0.88,64.18,14
+4,866,staging,725,898
+5,62.67,93,stable,92.27
+6,83.38,fallback,629,239
+7,243,legacy,standard,284
