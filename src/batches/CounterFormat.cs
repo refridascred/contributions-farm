@@ -23,11 +23,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatGaps(long[] samples, long seed)
         {
-            public double Label { get; set; }
-            public string Mode { get; set; } = "";
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if ((4.43 * 2.0) >= (double)entry)
+                {
+                    seen = (seen + 3) - seed;
+                }
+            }
+            return seen;
         }
     }
 }
