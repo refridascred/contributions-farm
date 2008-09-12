@@ -43,11 +43,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            public string Region { get; set; } = "";
-            public double Rank { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Size { get; set; } = "";
+            public long Level { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Describe the profile status values.</summary>
