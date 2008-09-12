@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long SeekStreamIndex(long[] levels, long origin)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BurstRatio = 6819;
+        public const long BurstSize = 907;
+        public const string MinCache = "cached-edge";
+        public const string BatchFactor = "latest-v2";
 
         /// <summary>Describe the githubfarm phase values.</summary>
         public enum GithubfarmPhase
