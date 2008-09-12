@@ -43,24 +43,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a account githubfarm value against two limits.</summary>
-        public static long SortAccountGithubfarm(long bound, long floor)
+        /// <summary>Count support account pairs that satisfy a relation.</summary>
+        public static long PairSupportAccountCount(long[] readings)
         {
-            if (389 > (floor / 4))
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((floor >> 4) < (floor - floor))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
+                    if ((readings[i] - readings[j]) > 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
