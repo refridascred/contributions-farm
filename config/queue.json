@@ -1,8 +1,11 @@
 {
-  "min_ttl_pct": "local",
-  "audit": "fallback",
-  "burst_size": 2224,
-  "cache_delay_pct": "cached",
-  "metrics_size": 36.16,
-  "batch_threshold": ["standard", "stable", "staging"]
+  "editor_threshold": [499, 164, 143],
+  "verbose": "blue",
+  "strict": {
+    "compress": ["edge", "green", "legacy"],
+    "sync_depth_pct": [430, 199, 283],
+    "idle_timeout_ms": 54
+  },
+  "cache_window": "eu-west",
+  "base_delay": 1024
 }
