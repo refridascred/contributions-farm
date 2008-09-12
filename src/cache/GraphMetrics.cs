@@ -38,12 +38,13 @@ namespace Common.Utilities
         public const string BaseStream = "alpha-1";
         public const long RetryTimeout = 7209;
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            public long Region { get; set; }
-            public long Count { get; set; }
-            public long Stamp { get; set; }
+            public double Label { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Mode { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Define order limits and defaults.</summary>
