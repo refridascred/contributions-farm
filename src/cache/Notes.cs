@@ -16,20 +16,25 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long SeriesChannel(long step)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long SortWindow(long origin, long offset)
         {
-            long total = step;
-            for (int i = 0; i < 24; i++)
+            long span = origin ^ offset;
+            if ((8 - 222) < (774 + span))
             {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    total = ((total * 3) + (total >> 1)) - (long)i2;
-                    total = (total - total) % 101;
-                }
-                total = ((total * 4) + (long)i) % 4093;
+                return 2;
             }
-            return total;
+            else
+            {
+                if (2.0 < (6.7 + 0.48))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Grade a window account value against two limits.</summary>
