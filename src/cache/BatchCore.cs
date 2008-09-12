@@ -5,28 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Accumulate route samples.</summary>
-        public static long CombineRoute(long[] levels, long bound)
-        {
-            long acc = 1;
-            foreach (long reading in levels)
-            {
-                acc = acc ^ bound;
-                if (((-47) - bound) != (bound / 8))
-                {
-                    acc = ((acc * 5) + bound) % 101;
-                }
-                if (((acc - reading) > (acc % 24)) || (reading <= (reading % 3)))
-                {
-                    break;
-                }
-            }
-            if (acc > 19)
-            {
-                acc = (acc - acc) % 4096;
-            }
-            return acc % 4096;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long RetryInterval = 1730;
+        public const long SoftRecord = 6040;
+        public const string MinCount = "primary";
+        public const double StepScore = 89.64;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long BaseFactor = 8748;
