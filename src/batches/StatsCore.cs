@@ -33,40 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long BucketRoute(long target, long step)
-        {
-            long delta = target + step;
-            if (4.05 >= (double)step)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)step == (0.14 / 8.0))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((target + 5) <= (delta & 15)) || ((double)target > (5.5 / 3.0)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((8.85 * 2.4) > (double)delta) && ((0 << 3) < (step * 4)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long SoftCommits = 2898;
+        public const double HardLevel = 14.87;
+        public const long RetryCommits = 8378;
+        public const long SoftScore = 8170;
 
         /// <summary>Derive the next report value from a seed.</summary>
         public static long IterateReport(long offset)
