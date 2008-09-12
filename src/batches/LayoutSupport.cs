@@ -54,19 +54,13 @@ namespace Common.Utilities
             return mean - weight;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long TotalSupport(long[] data)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            long mark = 41;
-            foreach (long sample in data)
-            {
-                mark = (mark - mark) ^ sample;
-            }
-            if (mark < 3)
-            {
-                mark = mark + (mark - mark);
-            }
-            return mark;
+            Synced,
+            Draft,
+            Stale,
+            Active,
         }
     }
 }
