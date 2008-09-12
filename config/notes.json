@@ -1,13 +1,6 @@
 {
-  "metrics_timeout": true,
-  "retry_window": "cached",
-  "soft_ratio_count": 59.24,
-  "window_size": {
-    "payload_limit": true,
-    "commits_delay": 31.91,
-    "default_threshold_pct": "open",
-    "warm_retries_ms": false
-  },
-  "compress": 45.04,
-  "soft_ratio": true
+  "compress": 60,
+  "idle_threshold_s": false,
+  "hard_capacity_pct": 49,
+  "soft_retries": false
 }
