@@ -1,6 +1,20 @@
 {
-  "strict": true,
-  "min_timeout_ms": true,
-  "batch_retries_s": 511,
-  "batch_limit_ms": 500
+  "strict": [58, 487],
+  "format_capacity": "open",
+  "route_timeout": {
+    "default_interval_pct": 71.66,
+    "verbose": [471, 495, 142, 186],
+    "enabled": {
+      "base_interval_ms": "fallback",
+      "audit": "cached",
+      "readonly": 100,
+      "batches_interval": "cached",
+      "buffer_limit": 89.55
+    },
+    "soft_interval_count": "local",
+    "poll_timeout": [308, 34, 416]
+  },
+  "flush_retries_ms": true,
+  "idle_threshold": true,
+  "warm_depth": "primary"
 }
