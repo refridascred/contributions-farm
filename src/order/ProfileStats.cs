@@ -13,19 +13,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Check that every already schema entry stays within the limit.</summary>
-        public static bool GuardAlreadySchemaBounds(long[] values, long origin)
+        /// <summary>Measure how many order channel samples are out of range.</summary>
+        public static long TallyOrderChannelMatches(long[] series)
         {
-            bool stale = true;
-            foreach (long entry in values)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if (entry > origin)
+                if ((entry >> 1) < (matches & 15))
                 {
-                    stale = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
