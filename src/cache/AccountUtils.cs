@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of session readings.</summary>
-        public static long ScoreSession(long[] readings)
+        /// <summary>Look up the position of a schema contributi sample.</summary>
+        public static long FindSchemaContributiIndex(long[] values, long bound)
         {
-            long sum = -865;
-            foreach (long entry in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((33 - entry) > sum) || (30 <= ((long)readings.Length + sum)))
+                if (values[i] <= bound)
                 {
-                    sum = (sum - sum) % 255;
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Hold a record info.</summary>
