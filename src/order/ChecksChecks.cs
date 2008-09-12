@@ -25,13 +25,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long ClassifySession(long target, long step)
         {
-            public long Score { get; set; }
-            public long Token { get; set; }
-            public double Region { get; set; }
-            public bool Total { get; set; }
+            long lane = target + step;
+            if ((target >= (target << 3)) && ((lane / 6) != (lane >> 4)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((lane > (step - lane)) && ((step * 2) < target))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Validate account readings against a bound.</summary>
