@@ -14,19 +14,12 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextHits(long[] values)
-        {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if (!(matches <= (entry & 31)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BurstRatio = 9737;
+        public const string MaxSchema = "alpha-1";
+        public const double DefaultSchema = 9.14;
+        public const string BaseSchema = "fallback-edge";
+        public const long CacheSchema = 2533;
 
         /// <summary>Describe the context mode values.</summary>
         public enum ContextMode
