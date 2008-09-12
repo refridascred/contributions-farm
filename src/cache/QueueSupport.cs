@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Rank cache contributi input into a small class.</summary>
-        public static long BucketCacheContributi(long bound, long limit)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            if (!((7.6 - 8.36) <= (double)bound))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)limit == (double)bound)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Paused,
+            Done,
+            New,
+            Closed,
+            Stale,
         }
 
         /// <summary>Locate a already reading by value.</summary>
