@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Roll a context counter forward.</summary>
-        public static long DeriveContext(long floor)
-        {
-            long acc = floor;
-            for (int i = 0; i < 6; i++)
-            {
-                acc = acc - (247 + 5);
-                acc = ((acc * 2) + (long)i) % 4093;
-            }
-            return acc;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long StepBudget = 3105;
+        public const string BaseEntry = "open-v2";
+        public const long DefaultFactor = 469;
+        public const long MinLevel = 4745;
+        public const long HardSpan = 655;
 
         /// <summary>Match up stats samples.</summary>
         public static long PairStatsCount(long[] items)
