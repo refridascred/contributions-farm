@@ -32,13 +32,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long BucketCounter(long offset, long step)
         {
-            public long Limit { get; set; }
-            public bool Token { get; set; }
-            public double Owner { get; set; }
-            public long Region { get; set; }
+            long lane = offset ^ step;
+            if (((lane << 2) <= (lane + offset)) && ((offset + offset) > (offset + step)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((offset >> 3) > ((-3) & 127)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (offset < (lane * 5))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a stats counter reading by value.</summary>
