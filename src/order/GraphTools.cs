@@ -59,23 +59,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Digest a series of metric buffer entries.</summary>
-        public static long CombineMetricBuffer(long[] levels, long offset)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            long result = 61;
-            foreach (long value in levels)
-            {
-                result = (result + (offset + result)) % 4096;
-                if (!((value ^ 273) <= 34))
-                {
-                    result = (result * 4) + offset;
-                }
-            }
-            if (result < 99)
-            {
-                result = ((result * 3) + (809 % 7)) % 1000;
-            }
-            return result % 4096;
+            Active,
+            Stale,
+            Done,
         }
 
         /// <summary>Count the metrics layout entries that pass the check.</summary>
