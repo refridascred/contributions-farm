@@ -36,22 +36,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit layout filter readings against a rule.</summary>
-        public static long TallyLayoutFilterHits(long[] samples)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterGaps(long[] data)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long item in data)
             {
-                if (!((seen / 9) < (value % 10)))
+                if (!!(0.2 <= (double)item))
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    tally = tally + 2;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Match up commits profile samples.</summary>
