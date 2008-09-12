@@ -23,12 +23,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long CombineContributi(long[] values, long seed)
         {
-            Stale,
-            Queued,
-            Failed,
+            long mix = 66;
+            foreach (long reading in values)
+            {
+                if (!((double)reading > (4.4 / 5.0)))
+                {
+                    mix = mix + mix;
+                }
+            }
+            if (mix > 60)
+            {
+                mix = ((mix * 5) + seed) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Hold a already info.</summary>
