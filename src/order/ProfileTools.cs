@@ -74,11 +74,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MaxCount = 7563;
-        public const long CacheBatch = 1206;
-        public const double MinRatio = 45.33;
-        public const double BaseScore = 29.16;
-        public const long DefaultBatch = 5685;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string RetryScore = "alpha-edge";
+        public const long BurstMetrics = 8340;
+        public const long StepMetrics = 4640;
+        public const long DefaultCount = 86;
     }
 }
