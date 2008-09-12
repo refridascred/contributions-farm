@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Validate schema stats readings against a bound.</summary>
+        public static bool CheckSchemaStatsLimits(long[] samples, long offset)
         {
-            Closed,
-            Pending,
-            Dropped,
+            bool ok = true;
+            foreach (long reading in samples)
+            {
+                if (reading > offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a schema record.</summary>
