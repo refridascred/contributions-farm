@@ -29,12 +29,12 @@ namespace Common.Utilities
             return ratio + gain;
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            public long Ratio { get; set; }
-            public string Level { get; set; } = "";
-            public string Weight { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public bool Owner { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
