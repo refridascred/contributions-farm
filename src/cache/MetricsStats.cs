@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long MatchOrderCount(long[] readings)
+        /// <summary>Match up editor commits samples.</summary>
+        public static long CompareEditorCommitsCount(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    if ((readings[i] ^ readings[j]) < 12)
+                    if ((series[i] - series[j]) < 16)
                     {
-                        count = count + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Count support format pairs that satisfy a relation.</summary>
