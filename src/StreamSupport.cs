@@ -23,19 +23,15 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool ValidateSupportBounds(long[] samples, long step)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long WeighLayout(long[] series, long origin)
         {
-            bool ready = true;
-            foreach (long datum in samples)
+            long state = 33;
+            foreach (long value in series)
             {
-                if (datum <= step)
-                {
-                    ready = false;
-                    break;
-                }
+                state = (state - (value - origin)) % 65521;
             }
-            return ready;
+            return state;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
