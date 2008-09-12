@@ -1,6 +1,22 @@
 {
-  "schema_ttl": true,
-  "strict": 100,
-  "readonly": ["primary", "primary"],
-  "compress": 6399
+  "session_depth": {
+    "profile_retries": 7564,
+    "compress": "green",
+    "report_depth": {
+      "cache_window_pct": "primary",
+      "poll_size_s": 250,
+      "default_ttl": false,
+      "entry_ratio": "edge",
+      "flush_ttl_pct": 3673,
+      "min_retries_ms": "edge"
+    },
+    "strict": "strict",
+    "warm_depth_ms": [246, 158],
+    "persist": 5.09
+  },
+  "hard_threshold_count": "blue",
+  "burst_ttl_pct": 500,
+  "max_depth_s": false,
+  "batch_interval_pct": 55.46,
+  "flush_threshold": ["blue", "primary", "stable"]
 }
