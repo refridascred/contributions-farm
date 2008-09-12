@@ -14,15 +14,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Blend two editor metric measurements.</summary>
-        public static double ProjectEditorMetric(double rate, double bias)
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            double weight = bias;
-            if (weight < weight)
-            {
-                weight = weight + 3.8;
-            }
-            return weight - (rate - weight);
+            public long Mode { get; set; }
+            public string Size { get; set; } = "";
+            public bool Region { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
