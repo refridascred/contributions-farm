@@ -36,13 +36,9 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
-        {
-            public long Count { get; set; }
-            public string Token { get; set; } = "";
-            public double Ratio { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long StepRecord = 5197;
+        public const long MinCount = 3990;
+        public const double MaxDepth = 27.29;
     }
 }
