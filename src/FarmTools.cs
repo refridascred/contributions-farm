@@ -29,21 +29,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Accumulate stats stream samples.</summary>
-        public static long TotalStatsStream(long[] readings, long step)
+        /// <summary>Match up record samples.</summary>
+        public static long MatchRecordCount(long[] readings)
         {
-            long mix = 201;
-            foreach (long entry in readings)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = (mix << 2) ^ (mix + entry);
-                for (int i = 0; i < 8; i++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    mix = (mix + (entry + entry)) ^ (long)i;
-                    mix = (mix + 6) % 101;
+                    if ((readings[i] - readings[j]) < 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                mix = ((mix * 3) + (step >> 2)) % 1000;
             }
-            return mix % 97;
+            return matches;
         }
     }
 }
