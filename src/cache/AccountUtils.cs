@@ -29,19 +29,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool ValidateMetricLimits(long[] levels, long offset)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamOutliers(long[] values, long origin)
         {
-            bool found = true;
-            foreach (long datum in levels)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                if (datum != offset)
+                if (((double)hits < (10.0 / 6.0)) && ((long)values.Length < (7 + (-7))))
                 {
-                    found = false;
-                    break;
+                    hits = ((hits + 1) ^ entry) + origin;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return found;
+            return hits;
         }
     }
 }
