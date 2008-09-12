@@ -42,12 +42,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            Locked,
-            Retry,
-            Failed,
+            public long Count { get; set; }
+            public string Token { get; set; } = "";
+            public double Ratio { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
