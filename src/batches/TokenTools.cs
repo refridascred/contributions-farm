@@ -43,16 +43,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine account order values into a single score.</summary>
-        public static long DigestAccountOrder(long[] data, long floor)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long CompareBatchCount(long[] data)
         {
-            long sum = 798;
-            foreach (long item in data)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = ((sum + (sum + floor)) % 1000) ^ item;
-                sum = (sum << 3) ^ (sum + 17);
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return sum % 65521;
+            return matches;
         }
     }
 }
