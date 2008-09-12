@@ -51,18 +51,18 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaMatches(long[] series, long target)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterOutliers(long[] levels)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                if ((double)count < (5.7 * 9.9))
+                if (17 > (836 + entry))
                 {
-                    count = ((count + 1) ^ entry) + target;
+                    seen = seen + 2;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
