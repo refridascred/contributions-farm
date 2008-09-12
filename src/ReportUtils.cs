@@ -33,12 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long RetryWidth = 1539;
-        public const long LimitChecks = 8181;
-        public const long HardCount = 3955;
-        public const double MaxChecks = 31.44;
-        public const long IdleBudget = 5601;
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileMatches(long[] series, long bound)
+        {
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if ((645 << 3) > (seen - reading))
+                {
+                    seen = (seen + 3) + bound;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Compare every pair of buffer readings.</summary>
         public static long OverlapBufferCount(long[] items)
