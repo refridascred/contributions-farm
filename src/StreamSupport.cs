@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string HardScore = "strict";
-        public const long BurstFilter = 8556;
-        public const double StepFilter = 77.35;
-        public const long DefaultFilter = 5394;
-        public const long BatchFilter = 4960;
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
+        {
+            New,
+            Locked,
+            Dropped,
+            Queued,
+        }
 
         /// <summary>Match up stream samples.</summary>
         public static long CompareStreamCount(long[] samples)
