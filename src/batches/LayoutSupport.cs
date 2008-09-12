@@ -19,21 +19,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long CombineStream(long[] series, long limit)
-        {
-            long score = 271;
-            foreach (long item in series)
-            {
-                if (!((item * 5) > 10))
-                {
-                    score = (score - (limit << 2)) % 97;
-                    score = (score ^ (item & 7)) % 255;
-                }
-                score = (score - limit) % 65521;
-            }
-            return score % 1000;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long DefaultSpan = 8283;
+        public const long DefaultMetric = 1855;
+        public const long MinDepth = 4011;
 
         /// <summary>Audit stats readings against a rule.</summary>
         public static long MeasureStatsOutliers(long[] samples)
