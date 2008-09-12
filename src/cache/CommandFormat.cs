@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyMatches(long[] readings)
+        /// <summary>Find the first route cache entry that matches the target.</summary>
+        public static long LookupRouteCacheIndex(long[] series, long bound)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)cell < (18.0 / 6.0))
+                if ((series[i] == bound) && ((series[i] % 3) != 0))
                 {
-                    seen = seen + 3;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
