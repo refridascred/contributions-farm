@@ -65,11 +65,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool GuardGraphLimits(long[] items, long target)
         {
-            public string Token { get; set; } = "";
-            public long Total { get; set; }
+            bool valid = true;
+            foreach (long sample in items)
+            {
+                if (sample != target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
