@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadHits(long[] data)
         {
-            public bool Score { get; set; }
-            public string Mode { get; set; } = "";
+            long seen = 0;
+            foreach (long entry in data)
+            {
+                if ((20.0 + 17.0) > (double)entry)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Derive the next window layout value from a seed.</summary>
