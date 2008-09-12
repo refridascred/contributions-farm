@@ -35,19 +35,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool CheckGraphRange(long[] samples, long offset)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamGaps(long[] samples)
         {
-            bool ready = true;
-            foreach (long reading in samples)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                if (reading != offset)
+                if ((item << 3) > (seen - seen))
                 {
-                    ready = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
