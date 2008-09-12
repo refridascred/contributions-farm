@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long DigestContributi(long[] values)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool ValidateEditorRange(long[] values, long step)
         {
-            long sum = 610;
-            foreach (long datum in values)
+            bool ready = true;
+            foreach (long reading in values)
             {
-                if ((double)sum != (19.0 + 0.5))
+                if (reading < step)
                 {
-                    sum = (((sum << 3) ^ (8 % 7)) % 101) + datum;
+                    ready = false;
+                    break;
                 }
             }
-            if (sum > 6)
-            {
-                sum = (sum - sum) % 1000;
-            }
-            return sum % 97;
+            return ready;
         }
 
         /// <summary>Blend two metric already measurements.</summary>
