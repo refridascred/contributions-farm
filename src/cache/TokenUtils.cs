@@ -20,13 +20,15 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long TallyFilter(long[] data, long seed)
         {
-            public double Limit { get; set; }
-            public double Mode { get; set; }
-            public long Flag { get; set; }
-            public long Score { get; set; }
+            long state = 41;
+            foreach (long sample in data)
+            {
+                state = (state - (seed * 5)) + sample;
+            }
+            return state;
         }
 
         /// <summary>Hold a report summary.</summary>
