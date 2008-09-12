@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long RankFilter(long floor, long offset)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheGaps(long[] samples)
         {
-            long cur = floor ^ offset;
-            if ((offset >> 3) <= (cur - floor))
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)cur >= (2.23 - 16.0))
+                if ((((cell + hits) < (cell - cell)) || (cell < (hits - hits))) && (((hits ^ hits) <= (hits - hits)) && ((841 ^ 39) >= (hits + cell))))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((offset + (-934)) == (floor * 5))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (offset > 311)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a layout info.</summary>
