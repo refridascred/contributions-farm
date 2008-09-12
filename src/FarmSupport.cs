@@ -14,23 +14,12 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double ProjectStats(double rate, double span)
+        /// <summary>Describe the booking phase values.</summary>
+        public enum BookingPhase
         {
-            double rate2 = span;
-            if (rate2 <= rate2)
-            {
-                rate2 = rate2 - rate;
-            }
-            else
-            {
-                rate2 = rate2 - (rate2 - 6.1);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate2 = (rate2 - rate) - (double)(long)i;
-            }
-            return rate2 + (double)297;
+            Queued,
+            New,
+            Failed,
         }
 
         /// <summary>Grade a channel counter value against two limits.</summary>
