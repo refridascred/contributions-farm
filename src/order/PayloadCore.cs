@@ -19,17 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long LookupRecordIndex(long[] data, long limit)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Retry,
+            Queued,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Digest a series of graph entries.</summary>
