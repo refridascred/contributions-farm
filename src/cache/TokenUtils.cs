@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Roll a profile farm counter forward.</summary>
+        public static long StepProfileFarm(long floor)
         {
-            public string Rank { get; set; } = "";
-            public bool Count { get; set; }
-            public bool Region { get; set; }
-            public string Mode { get; set; } = "";
+            long result = floor;
+            for (int i = 0; i < 20; i++)
+            {
+                result = ((result * 4) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Adjust a batches commits reading.</summary>
