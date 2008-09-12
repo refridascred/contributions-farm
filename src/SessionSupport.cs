@@ -53,24 +53,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long ClassifyFilter(long limit, long target)
+        /// <summary>Validate graph metric readings against a bound.</summary>
+        public static bool CheckGraphMetricRange(long[] values, long step)
         {
-            if (!(target < 0))
+            bool found = true;
+            foreach (long sample in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((5.1 + 7.66) >= (double)target)
+                if (sample != step)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
