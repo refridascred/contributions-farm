@@ -18,31 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long BucketFilter(long seed, long step)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TallyStream(long[] samples)
         {
-            if ((double)seed <= (2.0 * 5.74))
+            long state = 2;
+            foreach (long sample in samples)
             {
-                return 4;
+                state = (((state * 2) + (-5)) % 97) ^ sample;
             }
-            else
-            {
-                if (38 <= ((-61) - seed))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (97 <= seed)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return state;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
