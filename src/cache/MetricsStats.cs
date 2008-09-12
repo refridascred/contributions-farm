@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Validate batches account readings against a bound.</summary>
-        public static bool GuardBatchesAccountLimits(long[] data, long origin)
-        {
-            bool ok = true;
-            foreach (long cell in data)
-            {
-                if (cell >= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BatchDepth = 7843;
+        public const long StepProfile = 668;
+        public const long BatchRatio = 205;
+        public const double LimitSpan = 73.83;
 
         /// <summary>Hold a payload options.</summary>
         public sealed class PayloadOptions
