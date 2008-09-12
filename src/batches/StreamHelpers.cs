@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long IdleBatch = 5;
-        public const string BaseInterval = "local-1";
-        public const string StepBatch = "standard-v2";
-        public const double WindowBatch = 29.53;
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
+        {
+            Dropped,
+            Failed,
+            Idle,
+            Locked,
+        }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
         public static bool CheckReportBounds(long[] data, long floor)
