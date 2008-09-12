@@ -51,17 +51,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a payload buffer reading by value.</summary>
-        public static long LocatePayloadBufferIndex(long[] levels, long target)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Closed,
+            Ready,
         }
     }
 }
