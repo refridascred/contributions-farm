@@ -14,13 +14,11 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
-        {
-            Queued,
-            Closed,
-            Failed,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string DefaultTimeout = "latest-1";
+        public const long WindowContext = 880;
+        public const long BurstContext = 3817;
+        public const long IdleContext = 8604;
 
         /// <summary>Scale a payload figure with a bias.</summary>
         public static double ScalePayload(double weight, double span)
