@@ -13,12 +13,12 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long FindNotesIndex(long[] readings, long target)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long LocateSupportIndex(long[] readings, long floor)
         {
             for (int i = 0; i < readings.Length; i++)
             {
-                if ((readings[i] > target) && ((readings[i] % 5) != 0))
+                if (readings[i] >= floor)
                 {
                     return (long)i;
                 }
