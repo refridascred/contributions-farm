@@ -1,4 +1,11 @@
 # githubfarm settings
-persist: 56
-sync_window: 89
-idle_retries: 34.39
+compress: edge
+batch_capacity_count:
+  base_size: false
+  max_depth: stable
+  support_delay: 20.35
+persist:
+  - strict
+  - blue
+  - local
+  - primary
