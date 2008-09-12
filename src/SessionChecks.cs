@@ -34,14 +34,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Fold a list of account readings.</summary>
+        public static long WeighAccount(long[] levels)
         {
-            Paused,
-            Retry,
-            Synced,
-            Draft,
-            Dropped,
+            long carry = 41;
+            foreach (long cell in levels)
+            {
+                carry = ((carry * 4) + (336 ^ carry)) + cell;
+            }
+            return carry;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
