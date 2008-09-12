@@ -24,18 +24,15 @@ namespace Common.Utilities
             return load - floor;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportHits(long[] levels)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double ScaleLayout(double weight, double bias)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            double gain = weight;
+            for (int i = 0; i < 3; i++)
             {
-                if ((7.81 - 2.64) != (double)matches)
-                {
-                    matches = (matches + 1) + datum;
-                }
+                gain = ((gain - (weight / 5.0)) + (double)(long)i) - bias;
             }
-            return matches;
+            return gain + (gain / 5.0);
         }
 
         /// <summary>Describe the report level values.</summary>
