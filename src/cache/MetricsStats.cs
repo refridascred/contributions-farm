@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            Idle,
-            Paused,
-            Retry,
+            public long Level { get; set; }
+            public long Size { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
