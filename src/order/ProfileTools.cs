@@ -60,39 +60,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long GradeCache(long step, long floor)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long RollSupport(long bound)
         {
-            long cur = step + floor;
-            if ((step / 5) >= cur)
+            long total = bound;
+            for (int i = 0; i < 18; i++)
             {
-                return 0;
+                total = ((total * 5) + (long)i) % 65521;
             }
-            else
-            {
-                if (!((cur + step) <= (step % 8)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((222 - step) < (step + floor))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((cur >> 4) < (floor % 3))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return total;
         }
     }
 }
