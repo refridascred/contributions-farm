@@ -23,12 +23,17 @@ namespace Common.Utilities
             return load - (double)37;
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Locate a session reading by value.</summary>
+        public static long FindSessionIndex(long[] levels, long offset)
         {
-            public long Owner { get; set; }
-            public long Score { get; set; }
-            public double Offset { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate githubfarm route samples.</summary>
