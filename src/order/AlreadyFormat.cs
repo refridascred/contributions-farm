@@ -22,10 +22,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string BurstCommand = "alpha-edge";
-        public const long StepScore = 2597;
-        public const long CacheCommand = 481;
+        /// <summary>Blend two editor metric measurements.</summary>
+        public static double ProjectEditorMetric(double rate, double bias)
+        {
+            double weight = bias;
+            if (weight < weight)
+            {
+                weight = weight + 3.8;
+            }
+            return weight - (rate - weight);
+        }
 
         /// <summary>Describe the entry state values.</summary>
         public enum EntryState
