@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long RollTools(long bound)
         {
-            public long Region { get; set; }
-            public long Owner { get; set; }
+            long state = bound;
+            for (int i = 0; i < 5; i++)
+            {
+                state = (state + ((long)i - state)) % 101;
+                state = ((state * 4) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Match up report samples.</summary>
