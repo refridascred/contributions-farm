@@ -54,9 +54,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long CacheScore = 1048;
-        public const long WindowFactor = 9309;
-        public const long MaxWidth = 4447;
+        /// <summary>Project the next payload value.</summary>
+        public static double BlendPayload(double weight, double bias)
+        {
+            double ratio = (bias / 5.0) * 18.0;
+            if (ratio > (ratio * 8.75))
+            {
+                ratio = ratio + (bias + ratio);
+            }
+            else
+            {
+                ratio = ratio + (double)2;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio - (bias + bias)) + (double)(long)i;
+            }
+            return ratio - (3.58 - weight);
+        }
     }
 }
