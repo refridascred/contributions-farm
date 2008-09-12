@@ -28,21 +28,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long MatchMetricCount(long[] levels)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double AdjustBatches(double rate, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double scale = (double)7 / 7.0;
+            if (scale >= (4.87 / 5.0))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                scale = (scale - (rate - 7.78)) - offset;
             }
-            return hits;
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale + (rate - rate)) + (double)(long)i;
+            }
+            return scale + (7.3 * 0.29);
         }
 
         /// <summary>Hold a channel summary.</summary>
