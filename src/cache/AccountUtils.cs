@@ -11,19 +11,26 @@ namespace Common.Utilities
         public const long HardSize = 9299;
         public const string IdleCommits = "staging";
 
-        /// <summary>Validate batch buffer readings against a bound.</summary>
-        public static bool GuardBatchBufferLimits(long[] readings, long origin)
+        /// <summary>Accumulate buffer already samples.</summary>
+        public static long ScoreBufferAlready(long[] series, long limit)
         {
-            bool valid = true;
-            foreach (long value in readings)
+            long acc = 86;
+            foreach (long datum in series)
             {
-                if (value < origin)
+                if ((datum + datum) <= datum)
                 {
-                    valid = false;
+                    acc = (acc ^ (datum + acc)) - limit;
+                }
+                else
+                {
+                    acc = ((acc * 5) + (acc + 743)) % 4096;
+                }
+                if ((datum - acc) != (datum >> 5))
+                {
                     break;
                 }
             }
-            return valid;
+            return acc;
         }
 
         /// <summary>Describe the order kind values.</summary>
