@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsMatches(long[] samples, long floor)
-        {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if (!((5.62 > (double)24) || ((double)floor >= 5.95)))
-                {
-                    count = (count + 3) + reading;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BurstRecord = 1185;
+        public const string BatchRecord = "local-edge";
+        public const string MinRecord = "cached";
+        public const double StepRecord = 14.3;
+        public const long LimitScore = 8278;
 
         /// <summary>Describe the buffer kind values.</summary>
         public enum BufferKind
