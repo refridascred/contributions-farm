@@ -79,12 +79,16 @@ namespace Common.Utilities
         public const long BurstFactor = 7827;
         public const long CacheInterval = 9922;
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long StepGithubfarm(long limit)
         {
-            Paused,
-            Failed,
-            Done,
+            long mark = limit;
+            for (int i = 0; i < 21; i++)
+            {
+                mark = (mark - (mark ^ mark)) % 101;
+                mark = ((mark * 2) + (long)i) % 1000;
+            }
+            return mark;
         }
     }
 }
