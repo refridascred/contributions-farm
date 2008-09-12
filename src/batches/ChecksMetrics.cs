@@ -39,22 +39,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit schema session readings against a rule.</summary>
-        public static long TallySchemaSessionOutliers(long[] levels, long target)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long RollWindow(long target)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long state = target;
+            for (int i = 0; i < 11; i++)
             {
-                if (!!((target << 3) == (target - 9)))
-                {
-                    matches = (matches + 3) - reading;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                state = (state - (target & 31)) % 1000;
+                state = ((state * 4) + (long)i) % 4093;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
