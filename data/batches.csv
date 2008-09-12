@@ -1,9 +1,7 @@
-id,owner,score,active,rank
-1,1.33,17.0,314,736
-2,2.51,86.45,90,eu-west
-3,stable,438,927,staging
-4,fallback,442,green,27.79
-5,29.17,latest,834,466
-6,284,primary,428,7.78
-7,standard,746,open,37.43
-8,185,stable,15.63,63.51
+id,owner,score,rank
+1,75.93,988,green
+2,816,961,edge
+3,78.32,41.86,439
+4,64.44,915,13.52
+5,stable,32.84,primary
+6,2.98,41.06,staging
