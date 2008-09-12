@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long FindMetricIndex(long[] series, long seed)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long FindGraphIndex(long[] samples, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (series[i] < seed)
+                if (samples[i] < origin)
                 {
                     return (long)i;
                 }
