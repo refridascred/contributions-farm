@@ -15,20 +15,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Validate schema metrics readings against a bound.</summary>
-        public static bool CheckSchemaMetricsLimits(long[] series, long seed)
-        {
-            bool flag = true;
-            foreach (long datum in series)
-            {
-                if (datum >= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long SoftTimeout = 2923;
+        public const double LimitNotes = 77.56;
+        public const long DefaultNotes = 3380;
 
         /// <summary>Roll a schema counter forward.</summary>
         public static long RollSchema(long origin)
