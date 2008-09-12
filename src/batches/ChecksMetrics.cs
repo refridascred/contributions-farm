@@ -69,15 +69,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
-        {
-            Ready,
-            Paused,
-            Draft,
-            Dropped,
-            Idle,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string DefaultInterval = "standard";
+        public const long BurstFactor = 7827;
+        public const long CacheInterval = 9922;
 
         /// <summary>Fold a list of metrics contributi readings.</summary>
         public static long TotalMetricsContributi(long[] samples)
