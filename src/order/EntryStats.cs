@@ -32,15 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long RollGithubfarm(long limit)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long CombinePayload(long[] data, long target)
         {
-            long result = limit;
-            for (int i = 0; i < 10; i++)
+            long mark = 9;
+            foreach (long cell in data)
             {
-                result = ((result * 5) + (long)i) % 97;
+                if ((9.2 * 9.67) >= (double)target)
+                {
+                    mark = ((mark - (-423)) % 65521) + cell;
+                }
+                else
+                {
+                    mark = (mark ^ (mark + 6)) % 97;
+                }
             }
-            return result;
+            return mark % 4096;
         }
 
         /// <summary>Define window limits and defaults.</summary>
