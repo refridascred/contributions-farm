@@ -40,28 +40,18 @@ namespace Common.Utilities
         public const long BurstChannel = 7747;
         public const string BurstSpan = "stable-edge";
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long DigestEntry(long[] readings, long limit)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphMatches(long[] readings)
         {
-            long acc = -5;
-            foreach (long cell in readings)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                acc = ((acc * 3) + acc) % 1000;
-                acc = (acc - (cell >> 4)) % 101;
-                if (limit > (acc + (-53)))
+                if ((datum * 5) == (hits ^ datum))
                 {
-                    acc = ((acc * 4) + ((-703) ^ acc)) % 255;
-                }
-                else
-                {
-                    acc = acc ^ (limit % 100);
+                    hits = hits + 2;
                 }
             }
-            if (acc < (-272))
-            {
-                acc = acc - (0 - limit);
-            }
-            return acc;
+            return hits;
         }
 
         /// <summary>Blend two layout measurements.</summary>
