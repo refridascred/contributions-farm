@@ -28,17 +28,14 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Find the first schema already entry that matches the target.</summary>
-        public static long LocateSchemaAlreadyIndex(long[] levels, long target)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Failed,
+            Pending,
+            Paused,
+            Ready,
         }
     }
 }
