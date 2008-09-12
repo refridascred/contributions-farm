@@ -36,14 +36,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
-        {
-            public double Stamp { get; set; }
-            public long Region { get; set; }
-            public string Size { get; set; } = "";
-            public bool Ratio { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long LimitSpan = 9256;
+        public const long SoftOrder = 6231;
+        public const long StepFactor = 8905;
+        public const double RetryOrder = 74.78;
 
         /// <summary>Classify a stats pair into a bucket.</summary>
         public static long BucketStats(long bound, long step)
