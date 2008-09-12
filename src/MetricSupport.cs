@@ -33,10 +33,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long CacheFactor = 9059;
-        public const string IdleScore = "legacy";
-        public const long BurstAccount = 6210;
-        public const long RetryWidth = 861;
+        /// <summary>Find the first channel metric entry that matches the target.</summary>
+        public static long LocateChannelMetricIndex(long[] values, long origin)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
