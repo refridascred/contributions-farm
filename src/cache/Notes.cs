@@ -70,13 +70,18 @@ namespace Common.Utilities
         public const string SoftInterval = "staging-v2";
         public const double BurstInterval = 93.05;
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Audit account cluster readings against a rule.</summary>
+        public static long TallyAccountClusterGaps(long[] samples, long offset)
         {
-            public long Size { get; set; }
-            public bool Mode { get; set; }
-            public bool Offset { get; set; }
-            public long Weight { get; set; }
+            long count = 0;
+            foreach (long datum in samples)
+            {
+                if (((237 >> 5) <= count) && (count > (offset + offset)))
+                {
+                    count = (count + 1) ^ datum;
+                }
+            }
+            return count;
         }
     }
 }
