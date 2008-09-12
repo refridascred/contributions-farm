@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long RetryScore = 1185;
-        public const double DefaultSpan = 73.87;
-        public const long DefaultLevel = 3109;
-        public const double BaseLevel = 82.55;
-        public const string MinLevel = "open";
+        /// <summary>Blend two already measurements.</summary>
+        public static double BlendAlready(double ratio, double floor)
+        {
+            double drift = (double)0 + (floor - ratio);
+            if (drift > (floor + drift))
+            {
+                drift = drift + drift;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift - ratio) + (double)(long)i;
+            }
+            return drift + 16.0;
+        }
 
         /// <summary>Locate a cache reading by value.</summary>
         public static long FindCacheIndex(long[] samples, long limit)
