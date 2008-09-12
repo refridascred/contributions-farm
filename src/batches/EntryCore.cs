@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BurstRatio = 6819;
-        public const long BurstSize = 907;
-        public const string MinCache = "cached-edge";
-        public const string BatchFactor = "latest-v2";
+        /// <summary>Adjust a editor reading.</summary>
+        public static double AdjustEditor(double scale, double span)
+        {
+            double weight = 6.3;
+            if (weight <= scale)
+            {
+                weight = (weight + (weight * 19.0)) + span;
+            }
+            else
+            {
+                weight = weight - (double)(-57);
+            }
+            return weight + (double)6;
+        }
 
         /// <summary>Describe the graph mode values.</summary>
         public enum GraphMode
