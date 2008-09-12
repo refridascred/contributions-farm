@@ -1,8 +1,13 @@
 {
-  "warm_ratio": 88,
-  "audit": 60,
-  "poll_timeout": 40,
-  "enabled": 9,
-  "tools_timeout": "cached",
-  "burst_ratio_pct": false
+  "burst_retries_ms": 500,
+  "warm_threshold_ms": {
+    "dry_run": [282, 36, 395],
+    "soft_interval_count": ["blue", "green"],
+    "hard_threshold": "green",
+    "base_window_s": 64,
+    "verbose": 9740
+  },
+  "min_interval": "legacy",
+  "notes_window": [497, 353, 302],
+  "min_delay_ms": false
 }
