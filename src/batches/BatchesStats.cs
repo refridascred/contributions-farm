@@ -41,12 +41,13 @@ namespace Common.Utilities
         public const long DefaultCount = 8013;
         public const long MaxContext = 444;
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
             public bool Rank { get; set; }
-            public long Region { get; set; }
-            public double Weight { get; set; }
+            public double Size { get; set; }
+            public long Mode { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
