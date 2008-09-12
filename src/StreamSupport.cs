@@ -34,18 +34,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long CountAlreadyHits(long[] data)
+        /// <summary>Locate a batches command reading by value.</summary>
+        public static long LookupBatchesCommandIndex(long[] readings, long floor)
         {
-            long tally = 0;
-            foreach (long value in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (tally < (value + 0))
+                if (readings[i] == floor)
                 {
-                    tally = tally + 2;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
