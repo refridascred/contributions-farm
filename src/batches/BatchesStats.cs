@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchHits(long[] levels, long limit)
+        /// <summary>Rank metric graph input into a small class.</summary>
+        public static long RankMetricGraph(long origin, long bound)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long diff = origin - bound;
+            if (((bound ^ 8) > bound) && ((double)origin == (3.3 / 9.0)))
             {
-                if ((-44) < (cell & 1))
+                return 0;
+            }
+            else
+            {
+                if (diff < bound)
                 {
-                    hits = (hits + 2) - limit;
+                    return 7;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return hits;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
