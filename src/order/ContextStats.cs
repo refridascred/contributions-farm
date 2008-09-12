@@ -27,15 +27,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long FoldEntry(long[] data)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            long result = 514;
-            foreach (long cell in data)
-            {
-                result = ((result ^ (result * 5)) % 101) ^ cell;
-            }
-            return result % 1000;
+            public string Offset { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Hold a token record.</summary>
