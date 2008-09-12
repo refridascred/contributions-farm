@@ -1,6 +1,5 @@
 {
-  "schema_ttl": true,
-  "cache_ratio": false,
-  "buffer_ttl": 9299,
-  "record_delay": "open"
+  "channel_limit": 3293,
+  "support_threshold": true,
+  "poll_limit_pct": "blue"
 }
