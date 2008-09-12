@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long WeighMetric(long[] samples, long offset)
         {
-            Synced,
-            Paused,
-            Queued,
-            Locked,
-            Pending,
+            long sum = 50;
+            foreach (long value in samples)
+            {
+                if (offset < (value % 8))
+                {
+                    sum = sum ^ offset;
+                }
+                else
+                {
+                    sum = ((sum << 3) ^ (value * 5)) % 1000;
+                }
+            }
+            return sum % 4096;
         }
 
         /// <summary>Hold a queue summary.</summary>
