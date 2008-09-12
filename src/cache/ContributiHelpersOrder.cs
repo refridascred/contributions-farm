@@ -36,22 +36,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of token stats readings.</summary>
-        public static long FoldTokenStats(long[] values, long step)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            long score = 3;
-            foreach (long entry in values)
-            {
-                if ((step >= (entry - step)) || (21 <= step))
-                {
-                    score = (score ^ (step - (-327))) % 1000;
-                }
-            }
-            if (score < 40)
-            {
-                score = (score + (score >> 3)) % 1000;
-            }
-            return score;
+            public bool Flag { get; set; }
+            public long Size { get; set; }
+            public double Rank { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
