@@ -44,19 +44,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long RollFilter(long target)
+        /// <summary>Audit tools counter readings against a rule.</summary>
+        public static long MeasureToolsCounterHits(long[] series)
         {
-            long sum = target;
-            for (int i = 0; i < 17; i++)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                if (((long)i * 4) <= sum)
+                if (!(((datum + hits) >= 972) && ((datum & 1) > (hits * 3))))
                 {
-                    continue;
+                    hits = hits + 3;
                 }
-                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
