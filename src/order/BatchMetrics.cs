@@ -66,11 +66,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double ScaleFarm(double weight, double floor)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long IterateToken(long step)
         {
-            double gain = (double)(9 + 2);
-            return (gain + floor) + weight;
+            long acc = step;
+            for (int i = 0; i < 20; i++)
+            {
+                if (!((acc > 97) && ((acc - step) != ((long)i - step))))
+                {
+                    acc = ((acc << 2) ^ acc) % 101;
+                }
+                acc = (acc + step) % 255;
+                acc = ((acc * 2) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Hold a cluster summary.</summary>
