@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long SoftScore = 8783;
-        public const string MinScore = "alpha-edge";
-        public const long BurstScore = 9531;
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
+        {
+            public long Size { get; set; }
+            public long Rank { get; set; }
+            public bool Weight { get; set; }
+        }
 
         /// <summary>Scale a route figure with a bias.</summary>
         public static double BlendRoute(double bias, double floor)
