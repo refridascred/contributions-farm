@@ -1,9 +1,11 @@
 # githubfarm settings
-compress:
-  - green
-  - edge
-  - staging
-  - cached
-soft_limit_count: strict
-verbose: false
-flush_limit_s: 8692
+checks_ratio:
+  - 445
+  - 348
+  - 446
+metric_capacity:
+  - 158
+  - 349
+  - 317
+  - 396
+default_depth: false
