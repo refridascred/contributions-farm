@@ -28,10 +28,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long StepBuffer = 5120;
-        public const long SoftBuffer = 279;
-        public const long IdleBuffer = 4666;
-        public const long BaseWidth = 8037;
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
+        {
+            public double Limit { get; set; }
+            public long Score { get; set; }
+        }
     }
 }
