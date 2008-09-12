@@ -27,15 +27,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TotalBuffer(long[] data, long limit)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportHits(long[] samples, long offset)
         {
-            long mark = 9;
-            foreach (long cell in data)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                mark = (((mark * 5) + (limit - mark)) % 4096) + cell;
+                if ((item * 4) <= (offset + 1))
+                {
+                    seen = seen + 2;
+                }
             }
-            return mark % 65521;
+            return seen;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
