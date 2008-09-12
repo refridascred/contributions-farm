@@ -12,15 +12,12 @@ namespace Common.Utilities
         public const long IdleCommits = 734;
         public const long BurstRatio = 2698;
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double ProjectBatches(double bias, double floor)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            double rate = bias;
-            if (rate < (double)299)
-            {
-                rate = (rate - (bias - bias)) - floor;
-            }
-            return rate - (rate - 9.2);
+            public long Ratio { get; set; }
+            public string Flag { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Rank schema batches input into a small class.</summary>
