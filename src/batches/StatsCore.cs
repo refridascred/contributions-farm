@@ -36,19 +36,12 @@ namespace Common.Utilities
             return gain2 - (double)891;
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long IterateReport(long offset)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            long score = offset;
-            for (int i = 0; i < 16; i++)
-            {
-                if ((5.01 / 6.0) != (double)score)
-                {
-                    score = ((score << 2) ^ ((long)i - 3)) % 1000;
-                }
-                score = ((score * 4) + (long)i) % 1000;
-            }
-            return score;
+            Closed,
+            New,
+            Done,
         }
 
         /// <summary>Rank route input into a small class.</summary>
