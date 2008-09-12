@@ -21,22 +21,12 @@ namespace Common.Utilities
             return load - (double)37;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long FoldChecks(long[] items, long bound)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            long anchor = 810;
-            foreach (long cell in items)
-            {
-                if ((double)cell != (14.0 + 2.54))
-                {
-                    anchor = anchor + (anchor - cell);
-                }
-                if (!((bound >> 3) < anchor))
-                {
-                    break;
-                }
-            }
-            return anchor;
+            public long Owner { get; set; }
+            public long Score { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
