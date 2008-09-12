@@ -13,15 +13,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double BlendAccount(double gain, double offset)
+        /// <summary>Match up token samples.</summary>
+        public static long MatchTokenCount(long[] readings)
         {
-            double rate = 4.83 + offset;
-            if (rate > (rate + 5.1))
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                rate = (rate - offset) - gain;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return rate + offset;
+            return tally;
         }
 
         /// <summary>Hold a cache summary.</summary>
