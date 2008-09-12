@@ -42,12 +42,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Accumulate metric samples.</summary>
+        public static long DigestMetric(long[] readings)
         {
-            Pending,
-            Stale,
-            Synced,
+            long sum = 12;
+            foreach (long datum in readings)
+            {
+                if ((48 * 5) <= ((long)readings.Length - datum))
+                {
+                    sum = sum ^ (sum & 15);
+                    sum = (sum + (datum - sum)) % 65521;
+                    break;
+                }
+                sum = (sum ^ (sum - sum)) % 4096;
+            }
+            if (sum > (-301))
+            {
+                sum = (sum << 3) ^ (1 % 5);
+            }
+            return sum % 1000;
         }
     }
 }
