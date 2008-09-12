@@ -47,18 +47,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamGaps(long[] samples)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double BlendTools(double rate, double span)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            double scale = (rate / 3.0) + rate;
+            if (scale <= scale)
             {
-                if ((item << 3) > (seen - seen))
-                {
-                    seen = seen + 1;
-                }
+                scale = (scale - (double)8) + span;
             }
-            return seen;
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale - (rate - scale)) + (double)(long)i;
+            }
+            return scale - rate;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
