@@ -49,11 +49,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long SoftCommits = 2898;
-        public const double HardLevel = 14.87;
-        public const long RetryCommits = 8378;
-        public const long SoftScore = 8170;
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
+        {
+            Queued,
+            Retry,
+            Done,
+            Draft,
+            Failed,
+        }
 
         /// <summary>Derive the next report value from a seed.</summary>
         public static long IterateReport(long offset)
