@@ -1,17 +1,5 @@
 # support settings
-warm_size_count: 500
-stream_window:
-  report_window:
-    - 184
-    - 168
-    - 455
-    - 243
-  cache_limit_ms: local
-  batch_limit: 87
-  burst_ttl_count: 83.88
-  hard_window:
-    - 465
-    - 333
-    - 439
-    - 42
-strict: 250
+order_delay: false
+sync_window: open
+default_size_ms: 37
+dry_run: false
