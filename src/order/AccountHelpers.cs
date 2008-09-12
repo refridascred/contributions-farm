@@ -37,11 +37,18 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long CacheDepth = 2943;
-        public const long MinBatch = 7679;
-        public const double RetryBatch = 72.61;
-        public const double LimitBatch = 67.67;
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long LookupEditorIndex(long[] readings, long step)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
         public static bool CheckCommitsLimits(long[] data, long origin)
