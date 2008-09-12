@@ -44,18 +44,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many entry order samples are out of range.</summary>
-        public static long TallyEntryOrderOutliers(long[] samples, long offset)
+        /// <summary>Check that every batches window entry stays within the limit.</summary>
+        public static bool CheckBatchesWindowLimits(long[] items, long origin)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            bool ready = true;
+            foreach (long reading in items)
             {
-                if ((offset * 5) > (hits - 171))
+                if (reading <= origin)
                 {
-                    hits = (hits + 2) + reading;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
     }
 }
