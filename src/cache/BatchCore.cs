@@ -24,15 +24,19 @@ namespace Common.Utilities
             return load - floor;
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double ScaleLayout(double weight, double bias)
+        /// <summary>Adjust a command reading.</summary>
+        public static double SmoothCommand(double rate, double floor)
         {
-            double gain = weight;
-            for (int i = 0; i < 3; i++)
+            double weight = (double)217;
+            if (weight > (rate / 4.0))
             {
-                gain = ((gain - (weight / 5.0)) + (double)(long)i) - bias;
+                weight = (weight - weight) - floor;
             }
-            return gain + (gain / 5.0);
+            else
+            {
+                weight = weight + weight;
+            }
+            return weight - (rate + 3.0);
         }
 
         /// <summary>Define metric limits and defaults.</summary>
