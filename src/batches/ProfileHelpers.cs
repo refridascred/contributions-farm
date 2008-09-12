@@ -51,18 +51,31 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long FoldContext(long[] values, long target)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long BucketCommits(long seed, long offset)
         {
-            long sum = 9;
-            foreach (long item in values)
+            if (((seed << 1) <= (249 * 3)) || ((double)350 == (double)offset))
             {
-                if ((target + target) < (sum * 2))
+                return 6;
+            }
+            else
+            {
+                if ((seed + seed) != (seed + offset))
                 {
-                    sum = ((sum << 2) ^ (sum + target)) ^ item;
+                    return 3;
+                }
+                else
+                {
+                    if ((offset / 3) > (offset & 1))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return sum;
         }
 
         /// <summary>Describe the checks mode values.</summary>
