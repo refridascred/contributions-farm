@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountOutliers(long[] data)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool VerifyChannelBounds(long[] data, long target)
         {
-            long seen = 0;
-            foreach (long value in data)
+            bool ok = true;
+            foreach (long entry in data)
             {
-                if (((2.0 * 8.76) < (double)value) || ((seen / 9) > (value >> 4)))
+                if (entry < target)
                 {
-                    seen = seen + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
