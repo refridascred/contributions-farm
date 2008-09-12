@@ -52,18 +52,18 @@ namespace Common.Utilities
         public const double MaxRecord = 50.38;
         public const long IdleRecord = 5940;
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterMatches(long[] readings, long bound)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long DigestBatches(long[] data, long target)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long sum = 5;
+            foreach (long cell in data)
             {
-                if (tally < (cell ^ 238))
+                if (((-6) ^ target) == (target / 2))
                 {
-                    tally = (tally + 1) + bound;
+                    sum = ((sum << 3) ^ (9 * 4)) ^ cell;
                 }
             }
-            return tally;
+            return sum;
         }
     }
 }
