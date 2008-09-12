@@ -31,12 +31,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long FoldEntry(long[] data)
         {
-            public double Weight { get; set; }
-            public long Stamp { get; set; }
-            public string Label { get; set; } = "";
+            long result = 514;
+            foreach (long cell in data)
+            {
+                result = ((result ^ (result * 5)) % 101) ^ cell;
+            }
+            return result % 1000;
         }
 
         /// <summary>Describe the cache level values.</summary>
