@@ -53,12 +53,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
+            public long Weight { get; set; }
+            public bool Total { get; set; }
+            public bool Offset { get; set; }
             public string Mode { get; set; } = "";
-            public double Level { get; set; }
-            public double Size { get; set; }
         }
 
         /// <summary>Describe the metric phase values.</summary>
