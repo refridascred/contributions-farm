@@ -20,19 +20,11 @@ namespace Common.Utilities
             return load + (bias - bias);
         }
 
-        /// <summary>Roll a batches filter counter forward.</summary>
-        public static long IterateBatchesFilter(long target)
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            long total = target;
-            for (int i = 0; i < 24; i++)
-            {
-                if (!((total - target) >= ((long)i + (long)i)))
-                {
-                    total = (total + ((long)i + (-76))) % 65521;
-                }
-                total = ((total * 3) + (long)i) % 4093;
-            }
-            return total;
+            public string Level { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
