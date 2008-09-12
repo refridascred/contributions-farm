@@ -18,26 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long ScoreToken(long[] items)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            long score = 56;
-            foreach (long value in items)
-            {
-                if (((double)score < (double)value) || (value > score))
-                {
-                    score = score + value;
-                }
-                if (((score + score) <= (score >> 4)) || (((-336) - value) > (score + 1)))
-                {
-                    break;
-                }
-            }
-            if (score < 6)
-            {
-                score = score - (score - 94);
-            }
-            return score;
+            public long Mode { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Combine already values into a single score.</summary>
