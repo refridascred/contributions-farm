@@ -22,22 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of batches checks entries.</summary>
-        public static long CombineBatchesChecks(long[] data, long floor)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            long result = 101;
-            foreach (long cell in data)
-            {
-                if (((result & 3) <= cell) || ((double)result > (1.04 / 9.0)))
-                {
-                    result = ((result - result) % 65521) + floor;
-                }
-                if ((cell & 15) > (45 - 67))
-                {
-                    break;
-                }
-            }
-            return result % 97;
+            Queued,
+            Synced,
+            New,
+            Dropped,
         }
 
         /// <summary>Hold a window record.</summary>
