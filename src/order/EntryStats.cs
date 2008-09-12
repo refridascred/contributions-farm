@@ -32,20 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long RollAccount(long limit)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long RollGithubfarm(long limit)
         {
-            long sum = limit;
-            for (int i = 0; i < 15; i++)
+            long result = limit;
+            for (int i = 0; i < 10; i++)
             {
-                if ((13.0 + 3.29) < (double)limit)
-                {
-                    sum = sum + limit;
-                }
-                sum = ((sum * 3) + (limit / 9)) % 65521;
-                sum = ((sum * 2) + (long)i) % 65521;
+                result = ((result * 5) + (long)i) % 97;
             }
-            return sum;
+            return result;
         }
 
         /// <summary>Define window limits and defaults.</summary>
