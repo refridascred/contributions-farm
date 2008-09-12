@@ -1,10 +1,16 @@
 # entry settings
-graph_capacity: 96.92
-cache_depth: stable
-window_window:
-  hard_retries_ms: strict
-  min_timeout: 62.02
-  cache_size_pct: 65.9
-githubfarm_limit: fallback
-max_window: 9048
-soft_timeout_s: legacy
+command_ttl: strict
+persist:
+  compress: false
+  flush_threshold: primary
+  persist: 60
+batch_interval_ms:
+  idle_size_ms:
+    - blue
+    - open
+    - blue
+  soft_retries_count: 63
+  enabled: 8570
+  max_ratio_count: strict
+min_limit_s: 250
+retry_ratio_s: 92.94
