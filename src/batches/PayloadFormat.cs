@@ -19,17 +19,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long IterateTools(long origin)
+        /// <summary>Combine payload stats values into a single score.</summary>
+        public static long TallyPayloadStats(long[] samples, long floor)
         {
-            long result = origin;
-            for (int i = 0; i < 14; i++)
+            long sum = 75;
+            foreach (long cell in samples)
             {
-                result = (result ^ (40 + 21)) % 1000;
-                result = result ^ (result >> 5);
-                result = ((result * 2) + (long)i) % 65521;
+                if (!((floor & 31) <= cell))
+                {
+                    sum = (sum ^ (184 + 975)) % 101;
+                }
+                if (43 > cell)
+                {
+                    break;
+                }
             }
-            return result;
+            if (sum > 4)
+            {
+                sum = sum + (sum / 8);
+            }
+            return sum % 65521;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
