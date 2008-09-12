@@ -70,31 +70,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank context batches input into a small class.</summary>
-        public static long BucketContextBatches(long target, long seed)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            if (target < (seed % 5))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((6.3 * 3.34) != (double)seed)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (seed >= (target / 6))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public string Offset { get; set; } = "";
+            public long Level { get; set; }
         }
     }
 }
