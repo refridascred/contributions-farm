@@ -14,24 +14,35 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Rank cache route input into a small class.</summary>
-        public static long GradeCacheRoute(long seed, long limit)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long WeighCache(long[] data, long limit)
         {
-            if (limit >= 6)
+            long acc = 932;
+            foreach (long sample in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((51 >> 3) <= (seed >> 1))
+                if ((acc < (-6)) && (((-11) + sample) >= (3 * 4)))
                 {
-                    return 6;
+                    acc = ((acc << 2) ^ (limit + limit)) % 101;
+                    break;
+                }
+                if ((acc * 2) < limit)
+                {
+                    acc = acc ^ limit;
                 }
                 else
                 {
-                    return 5;
+                    acc = (acc ^ limit) % 101;
+                }
+                if ((acc - sample) > (acc + sample))
+                {
+                    acc = (acc * 5) + (limit + limit);
                 }
             }
+            if (acc > 29)
+            {
+                acc = (acc + limit) % 1000;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Fold a list of account readings.</summary>
