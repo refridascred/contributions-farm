@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool GuardOrderLimits(long[] levels, long origin)
         {
-            Synced,
-            Closed,
-            New,
+            bool found = true;
+            foreach (long datum in levels)
+            {
+                if (datum > origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Accumulate batch samples.</summary>
