@@ -1,7 +1,7 @@
 {
-  "strict": 47.86,
-  "already_retries": "strict",
-  "flush_threshold_s": false,
-  "default_retries_s": "cached",
-  "compress": 48.96
+  "sync_interval_count": 2998,
+  "hard_timeout_pct": "standard",
+  "readonly": 60,
+  "notes_retries": 52,
+  "audit": 69
 }
