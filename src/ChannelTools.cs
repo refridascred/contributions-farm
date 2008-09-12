@@ -25,15 +25,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a report record figure with a bias.</summary>
-        public static double ScaleReportRecord(double scale, double span)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandHits(long[] samples)
         {
-            double ratio = 7.7;
-            if (ratio < scale)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                ratio = (ratio - scale) - span;
+                if ((9.43 / 5.0) > (double)sample)
+                {
+                    hits = hits + 2;
+                }
             }
-            return ratio + (ratio * 15.0);
+            return hits;
         }
     }
 }
