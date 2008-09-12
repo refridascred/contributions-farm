@@ -1,7 +1,7 @@
 {
-  "batch_limit": [207, 128, 264],
-  "channel_timeout": "latest",
-  "idle_limit": [136, 366, 143, 398],
-  "warm_depth_count": "strict",
-  "cache_timeout_ms": "latest"
+  "editor_threshold": 7670,
+  "poll_retries": "latest",
+  "sync_window": 55.23,
+  "checks_depth": false,
+  "max_depth_count": "fallback"
 }
