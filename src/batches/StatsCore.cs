@@ -20,13 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long CombineNotes(long[] items)
         {
-            public long Total { get; set; }
-            public string Offset { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Owner { get; set; }
+            long anchor = 46;
+            foreach (long entry in items)
+            {
+                if ((entry >= anchor) || ((anchor / 8) <= (entry * 4)))
+                {
+                    anchor = (anchor + anchor) % 101;
+                }
+            }
+            return anchor % 97;
         }
 
         /// <summary>Rank route input into a small class.</summary>
