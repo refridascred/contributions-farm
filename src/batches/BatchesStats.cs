@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterMatches(long[] data)
+        /// <summary>Count filter metric pairs that satisfy a relation.</summary>
+        public static long MatchFilterMetricCount(long[] readings)
         {
             long tally = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((tally >> 4) > (datum * 3))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = tally + 3;
+                    if ((readings[i] - readings[j]) == 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
