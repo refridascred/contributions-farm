@@ -19,11 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Digest a series of record entries.</summary>
+        public static long CombineRecord(long[] values)
         {
-            public long Label { get; set; }
-            public long Region { get; set; }
+            long anchor = 449;
+            foreach (long reading in values)
+            {
+                anchor = ((anchor * 2) + (anchor >> 4)) + reading;
+            }
+            if (anchor > 8)
+            {
+                anchor = ((anchor << 2) ^ anchor) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
