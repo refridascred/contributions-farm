@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long BucketCommits(long target, long target2)
-        {
-            long next = target ^ target2;
-            if ((next - 889) == (target >> 4))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((target + next) > (target * 4))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BaseCluster = 6420;
+        public const string SoftSpan = "stable-v2";
+        public const long StepScore = 107;
+        public const long BurstBudget = 1713;
+        public const string LimitCluster = "open-edge";
 
         /// <summary>Hold a token stats.</summary>
         public sealed class TokenStats
