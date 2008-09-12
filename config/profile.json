@@ -1,12 +1,11 @@
 {
-  "idle_limit_s": 30,
-  "max_ratio": "open",
-  "idle_interval_s": "local",
-  "editor_threshold": {
-    "editor_ttl": "latest",
-    "audit": 69,
-    "base_depth_pct": "cached",
-    "dry_run": "primary"
-  },
-  "cache_depth_pct": "green"
+  "schema_limit": 71.24,
+  "audit": false,
+  "sync_threshold_count": {
+    "compress": "strict",
+    "verbose": "legacy",
+    "record_delay": "strict",
+    "githubfarm_capacity": true,
+    "strict": 9599
+  }
 }
