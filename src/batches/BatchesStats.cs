@@ -17,19 +17,13 @@ namespace Common.Utilities
         public const long MaxProfile = 9150;
         public const string LimitProfile = "staging";
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long DeriveFilter(long bound)
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            long acc = bound;
-            for (int i = 0; i < 23; i++)
-            {
-                if ((acc + 650) < (48 - bound))
-                {
-                    acc = (acc + bound) % 97;
-                }
-                acc = ((acc * 4) + (long)i) % 101;
-            }
-            return acc;
+            public bool Label { get; set; }
+            public bool Score { get; set; }
+            public long Limit { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
