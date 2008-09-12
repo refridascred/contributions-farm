@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long OverlapCounterCount(long[] data)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 3)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Mode { get; set; }
+            public string Total { get; set; } = "";
+            public bool Region { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Define notes limits and defaults.</summary>
