@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowGaps(long[] data)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            long tally = 0;
-            foreach (long reading in data)
-            {
-                if ((reading << 3) >= tally)
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Failed,
+            Done,
+            Stale,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
