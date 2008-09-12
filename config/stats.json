@@ -1,5 +1,8 @@
 {
-  "batch_capacity": true,
-  "min_size_ms": "cached",
-  "session_timeout": "staging"
+  "warm_ratio": 88,
+  "audit": 60,
+  "poll_timeout": 40,
+  "enabled": 9,
+  "tools_timeout": "cached",
+  "burst_ratio_pct": false
 }
