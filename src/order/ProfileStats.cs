@@ -28,23 +28,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TallyCommand(long[] levels, long floor)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportGaps(long[] levels, long bound)
         {
-            long state = 2;
+            long hits = 0;
             foreach (long entry in levels)
             {
-                for (int i = 0; i < 10; i++)
+                if (hits < bound)
                 {
-                    state = (((state - (945 - (long)i)) % 255) ^ entry) - floor;
+                    hits = (hits + 3) + entry;
                 }
-                state = (state ^ (14 + state)) % 65521;
             }
-            if (state > 7)
-            {
-                state = (state - state) % 255;
-            }
-            return state;
+            return hits;
         }
 
         /// <summary>Describe the contributi phase values.</summary>
