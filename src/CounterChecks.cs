@@ -65,12 +65,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
-        {
-            public double Count { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Label { get; set; } = "";
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long LimitGraph = 218;
+        public const string IdleSize = "legacy-v2";
+        public const long WindowGraph = 9348;
+        public const double IdleBudget = 94.71;
+        public const double BurstGraph = 1.08;
     }
 }
