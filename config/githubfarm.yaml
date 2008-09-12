@@ -1,10 +1,4 @@
 # githubfarm settings
-batch_interval_pct: true
-base_delay_ms:
-  - 213
-  - 116
-  - 494
-retry_window_ms: 1608
-min_limit_s: 30
-burst_ttl_count: 365
-githubfarm_size: false
+persist: 56
+sync_window: 89
+idle_retries: 34.39
