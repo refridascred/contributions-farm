@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers.</summary>
     public static class Account
     {
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            Closed,
-            Pending,
-            Paused,
+            Active,
+            Locked,
+            New,
         }
 
         /// <summary>Accumulate graph queue samples.</summary>
