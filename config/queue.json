@@ -1,7 +1,5 @@
 {
-  "dry_run": true,
-  "readonly": 7.42,
-  "retry_depth_count": 7,
-  "filter_size": 52,
-  "default_threshold": 100
+  "poll_limit_count": "blue",
+  "base_timeout": "strict",
+  "retry_retries": 250
 }
