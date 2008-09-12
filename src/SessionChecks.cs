@@ -22,13 +22,12 @@ namespace Common.Utilities
             return ratio + (double)477;
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            public long Offset { get; set; }
-            public long Score { get; set; }
-            public double Stamp { get; set; }
-            public long Limit { get; set; }
+            public long Flag { get; set; }
+            public long Owner { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Define session limits and defaults.</summary>
