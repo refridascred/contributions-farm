@@ -1,5 +1,8 @@
 {
-  "persist": false,
-  "window_capacity": 4.05,
-  "min_retries_count": false
+  "sync_threshold_s": 30,
+  "tools_window": 60,
+  "route_timeout": "open",
+  "batch_delay_s": [349, 291],
+  "session_size": false,
+  "cache_ttl": 52.49
 }
