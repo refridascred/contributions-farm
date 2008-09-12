@@ -20,20 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Derive the next record window value from a seed.</summary>
-        public static long DeriveRecordWindow(long bound)
-        {
-            long mark = bound;
-            for (int i = 0; i < 10; i++)
-            {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    mark = mark ^ (long)i2;
-                }
-                mark = ((mark * 4) + (long)i) % 4093;
-            }
-            return mark;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long WindowRoute = 4126;
+        public const string StepRoute = "primary-v2";
+        public const long WindowSize = 3110;
+        public const double WindowFactor = 12.35;
 
         /// <summary>Hold a route stats.</summary>
         public sealed class RouteStats
