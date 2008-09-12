@@ -37,19 +37,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool VerifyLayoutLimits(long[] series, long offset)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool VerifyCommitsRange(long[] data, long bound)
         {
-            bool ok = true;
-            foreach (long cell in series)
+            bool flag = true;
+            foreach (long value in data)
             {
-                if (cell > offset)
+                if (value > bound)
                 {
-                    ok = false;
+                    flag = false;
                     break;
                 }
             }
-            return ok;
+            return flag;
         }
 
         /// <summary>Describe the stats state values.</summary>
