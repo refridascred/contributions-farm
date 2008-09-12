@@ -62,21 +62,22 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long CompareCounterCount(long[] readings)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long TallyRoute(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 62;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!(((mark >> 3) <= (mark << 3)) && (sample <= (mark + 8))))
                 {
-                    if ((readings[i] + readings[j]) > 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    mark = (mark + (sample ^ mark)) % 1000;
+                }
+                if ((mark - sample) <= (4 * 2))
+                {
+                    mark = mark - sample;
                 }
             }
-            return matches;
+            return mark;
         }
     }
 }
