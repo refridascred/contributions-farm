@@ -68,11 +68,13 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long IdleLevel = 810;
-        public const long WindowSpan = 7462;
-        public const long BaseSpan = 6452;
-        public const long IdleSession = 9689;
-        public const long DefaultSession = 1445;
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
+        {
+            Queued,
+            Synced,
+            Idle,
+            Dropped,
+        }
     }
 }
