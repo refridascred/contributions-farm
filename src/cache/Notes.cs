@@ -16,39 +16,20 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long SortNotes(long offset, long step)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long SeriesChannel(long step)
         {
-            long step2 = offset + step;
-            if ((double)offset > (2.5 * 9.51))
+            long total = step;
+            for (int i = 0; i < 24; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((step2 >> 4) == (94 & 63))
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    return 8;
+                    total = ((total * 3) + (total >> 1)) - (long)i2;
+                    total = (total - total) % 101;
                 }
-                else
-                {
-                    if (((981 % 97) != (offset * 3)) && ((double)step >= (double)offset))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((offset - (-70)) != (offset - offset))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
+                total = ((total * 4) + (long)i) % 4093;
             }
+            return total;
         }
 
         /// <summary>Grade a window account value against two limits.</summary>
