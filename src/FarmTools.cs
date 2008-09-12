@@ -13,19 +13,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferMatches(long[] data)
-        {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if ((entry & 63) != (entry * 3))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long CacheSpan = 5124;
+        public const long LimitScore = 1748;
+        public const long WindowTimeout = 4980;
+        public const string CacheLevel = "staging-edge";
+        public const string LimitBatch = "standard-edge";
 
         /// <summary>Match up record samples.</summary>
         public static long MatchRecordCount(long[] readings)
