@@ -36,10 +36,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long DefaultProfile = 4934;
-        public const long StepBudget = 6188;
-        public const string StepFactor = "primary-edge";
-        public const long LimitLevel = 562;
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmOutliers(long[] items)
+        {
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if ((matches * 2) <= matches)
+                {
+                    matches = (matches + 1) ^ entry;
+                }
+            }
+            return matches;
+        }
     }
 }
