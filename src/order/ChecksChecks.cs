@@ -20,19 +20,31 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool ValidateToolsLimits(long[] samples, long floor)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long RankWindow(long seed, long seed2)
         {
-            bool found = true;
-            foreach (long item in samples)
+            if (!((seed2 % 24) <= (seed - seed2)))
             {
-                if (item != floor)
+                return 3;
+            }
+            else
+            {
+                if (seed2 >= (seed2 + seed2))
                 {
-                    found = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((seed2 / 3) > 620)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
