@@ -23,20 +23,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the account entry series from a seed.</summary>
-        public static long DeriveAccountEntry(long limit)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            long score = limit;
-            for (int i = 0; i < 16; i++)
-            {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    score = score + (score % 16);
-                    score = (score ^ ((long)i2 - limit)) % 65521;
-                }
-                score = ((score * 5) + (long)i) % 101;
-            }
-            return score;
+            Ready,
+            Closed,
+            Done,
+            Idle,
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
