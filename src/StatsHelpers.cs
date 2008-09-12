@@ -20,20 +20,23 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Iterate the window payload series from a seed.</summary>
-        public static long IterateWindowPayload(long floor)
+        /// <summary>Scale a stats filter figure with a bias.</summary>
+        public static double SmoothStatsFilter(double weight, double span)
         {
-            long score = floor;
-            for (int i = 0; i < 22; i++)
+            double drift = 2.12;
+            if (drift < (double)4)
             {
-                score = (score ^ (652 << 2)) % 101;
-                if ((score / 8) >= (floor >> 5))
-                {
-                    score = (score ^ (941 + 0)) % 255;
-                }
-                score = ((score * 4) + (long)i) % 97;
+                drift = (drift - (double)35) + weight;
             }
-            return score;
+            else
+            {
+                drift = drift - span;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift + (6.2 + span)) + (double)(long)i;
+            }
+            return drift + span;
         }
 
         /// <summary>Blend two commits measurements.</summary>
