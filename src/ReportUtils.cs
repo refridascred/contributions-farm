@@ -72,11 +72,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TotalChannel(long[] readings)
         {
-            public string Stamp { get; set; } = "";
-            public bool Token { get; set; }
+            long mark = 59;
+            foreach (long item in readings)
+            {
+                if ((mark * 4) == (item & 31))
+                {
+                    mark = (mark + mark) % 1000;
+                }
+            }
+            if (mark > 17)
+            {
+                mark = (mark * 5) + (mark >> 4);
+            }
+            return mark;
         }
     }
 }
