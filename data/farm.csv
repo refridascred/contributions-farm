@@ -1,8 +1,7 @@
-id,region,token,owner
-1,primary,82.85,15.54
-2,latest,staging,860
-3,14.48,cached,45
-4,739,253,32.67
-5,staging,65.36,522
-6,912,edge,green
-7,stable,latest,695
+id,owner,weight
+1,37,882
+2,74.3,235
+3,551,open
+4,73.76,523
+5,5.0,320
+6,485,93.24
