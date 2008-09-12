@@ -1,6 +1,15 @@
 # support settings
-already_window: 250
-batch_timeout_count: latest
-strict: strict
-idle_size_count: 1690
-idle_capacity_s: blue
+min_timeout_s: open
+metric_depth: 56.75
+batches_threshold: 33.7
+retry_timeout: false
+compress:
+  dry_run: cached
+  warm_window_s:
+    - primary
+    - local
+  max_size_s:
+    - eu-west
+    - edge
+    - open
+  counter_capacity: 3192
