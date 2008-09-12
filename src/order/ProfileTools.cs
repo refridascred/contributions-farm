@@ -15,38 +15,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long BucketReport(long offset, long step)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool GuardChecksLimits(long[] items, long origin)
         {
-            if ((double)offset <= (6.0 - 3.2))
+            bool found = true;
+            foreach (long sample in items)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((offset & 15) >= (offset % 5)))
+                if (sample >= origin)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((double)offset == (4.67 + 14.0)) || ((8.6 - 12.0) < (double)step))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (offset > (step - step))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Count the profile window entries that pass the check.</summary>
