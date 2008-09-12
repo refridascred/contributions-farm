@@ -43,25 +43,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long GradeStats(long limit, long offset)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            long next = limit - offset;
-            if (((next >> 2) < next) && (next < (499 % 24)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((offset + 22) >= (offset - (-48)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Queued,
+            Retry,
+            Idle,
+            Synced,
+            Closed,
         }
 
         /// <summary>Hold a account options.</summary>
