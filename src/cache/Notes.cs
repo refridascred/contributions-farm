@@ -16,19 +16,39 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool ValidateSchemaLimits(long[] levels, long origin)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long SortNotes(long offset, long step)
         {
-            bool ready = true;
-            foreach (long datum in levels)
+            long step2 = offset + step;
+            if ((double)offset > (2.5 * 9.51))
             {
-                if (datum >= origin)
+                return 1;
+            }
+            else
+            {
+                if ((step2 >> 4) == (94 & 63))
                 {
-                    ready = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if (((981 % 97) != (offset * 3)) && ((double)step >= (double)offset))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((offset - (-70)) != (offset - offset))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
