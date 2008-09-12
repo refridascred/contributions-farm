@@ -1,10 +1,7 @@
-id,count,active
-1,694,263
-2,228,open
-3,685,staging
-4,5.67,eu-west
-5,54.37,32.93
-6,edge,local
-7,16.96,93
-8,local,standard
-9,edge,98
+id,level,active,ratio,score
+1,41.39,fallback,47,647
+2,edge,staging,0.11,835
+3,889,895,233,349
+4,48.55,692,91.07,8.34
+5,80.04,eu-west,25.22,971
+6,458,983,local,37
