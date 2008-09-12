@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Project the next channel value.</summary>
-        public static double ProjectChannel(double rate, double span)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long ScoreStream(long[] levels, long floor)
         {
-            double gain = (double)((-3) % 100);
-            if (gain > (gain * 2.0))
+            long total = 234;
+            foreach (long reading in levels)
             {
-                gain = gain - (span - rate);
+                if ((floor + reading) <= reading)
+                {
+                    total = total + (floor / 6);
+                }
             }
-            return gain - gain;
+            if (total < (-69))
+            {
+                total = (total + (floor & 255)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
