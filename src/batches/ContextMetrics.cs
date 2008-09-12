@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Adjust a support reading.</summary>
-        public static double ProjectSupport(double ratio, double offset)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            double bias = 7.9;
-            if (bias <= offset)
-            {
-                bias = bias - (bias + bias);
-            }
-            return bias + (ratio - offset);
+            New,
+            Paused,
+            Retry,
         }
 
         /// <summary>Describe the notes status values.</summary>
