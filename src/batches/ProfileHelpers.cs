@@ -43,18 +43,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportMatches(long[] data, long target)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long FoldContext(long[] values, long target)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long sum = 9;
+            foreach (long item in values)
             {
-                if ((1.14 + 8.0) <= (double)count)
+                if ((target + target) < (sum * 2))
                 {
-                    count = ((count + 3) ^ cell) - target;
+                    sum = ((sum << 2) ^ (sum + target)) ^ item;
                 }
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Describe the checks mode values.</summary>
