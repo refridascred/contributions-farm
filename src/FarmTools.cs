@@ -15,12 +15,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheHits(long[] samples)
         {
-            Retry,
-            Pending,
-            Synced,
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if ((2.4 + 18.0) < (double)matches)
+                {
+                    matches = (matches + 3) + sample;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Match up record samples.</summary>
