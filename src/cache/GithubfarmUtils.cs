@@ -14,18 +14,18 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandMatches(long[] series)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long WeighBuffer(long[] data, long bound)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long mark = -38;
+            foreach (long value in data)
             {
-                if (((value & 15) >= (8 + value)) && ((double)value < 7.08))
+                if (((mark % 60) > (mark + (-26))) || (value > 4))
                 {
-                    seen = seen + 2;
+                    mark = ((mark + (value % 2)) % 97) - bound;
                 }
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
