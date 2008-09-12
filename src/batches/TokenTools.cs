@@ -36,9 +36,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long LimitWidth = 3557;
-        public const long RetryChannel = 8080;
-        public const long BatchChannel = 9930;
+        /// <summary>Combine metric command values into a single score.</summary>
+        public static long WeighMetricCommand(long[] samples)
+        {
+            long state = 0;
+            foreach (long entry in samples)
+            {
+                if (!((6.7 * 2.0) > (6.0 * 7.36)))
+                {
+                    state = (state - entry) % 65521;
+                    continue;
+                }
+                if (((state >> 4) < (entry / 5)) || ((entry / 9) >= (entry + state)))
+                {
+                    state = state - state;
+                }
+                else
+                {
+                    state = (state << 2) ^ state;
+                }
+            }
+            if (state > 2)
+            {
+                state = (state << 2) ^ 9;
+            }
+            return state % 65521;
+        }
     }
 }
