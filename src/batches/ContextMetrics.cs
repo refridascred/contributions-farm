@@ -40,24 +40,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long ClassifyGithubfarm(long bound, long target)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long FoldCommits(long[] series, long offset)
         {
-            if ((double)target < (20.0 * 9.52))
+            long mark = 351;
+            foreach (long entry in series)
             {
-                return 5;
+                mark = (((mark - (mark << 3)) % 101) ^ entry) + offset;
             }
-            else
-            {
-                if ((double)target <= (9.0 * 5.64))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return mark;
         }
 
         /// <summary>Hold a account summary.</summary>
