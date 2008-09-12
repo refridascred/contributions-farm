@@ -20,17 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long LookupSchemaIndex(long[] values, long seed)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool ValidateBufferLimits(long[] values, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool stale = true;
+            foreach (long reading in values)
             {
-                if (values[i] < seed)
+                if (reading < origin)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
