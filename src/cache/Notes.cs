@@ -16,20 +16,10 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Iterate the cluster counter series from a seed.</summary>
-        public static long SeriesClusterCounter(long floor)
-        {
-            long carry = floor;
-            for (int i = 0; i < 11; i++)
-            {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    carry = (((carry * 5) + (floor + 304)) % 97) ^ (long)i2;
-                }
-                carry = ((carry * 3) + (long)i) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string HardSpan = "open-1";
+        public const long BatchGithubfarm = 8584;
+        public const long DefaultFactor = 4350;
 
         /// <summary>Describe the buffer kind values.</summary>
         public enum BufferKind
