@@ -33,17 +33,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long SeekMetricIndex(long[] values, long bound)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > bound) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double HardSpan = 58.64;
+        public const long BatchCount = 2785;
+        public const long DefaultBuffer = 5723;
+        public const long MaxScore = 8238;
+        public const long HardBuffer = 98;
     }
 }
