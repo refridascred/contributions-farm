@@ -47,19 +47,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the booking entries that pass the check.</summary>
-        public static long MeasureBookingOutliers(long[] items, long limit)
-        {
-            long count = 0;
-            foreach (long cell in items)
-            {
-                if (((long)items.Length & 31) != (68 + cell))
-                {
-                    count = (count + 3) + limit;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string BatchDepth = "staging-v2";
+        public const double IdleInterval = 43.76;
+        public const double SoftMetrics = 49.19;
+        public const long RetryMetrics = 7632;
+        public const long StepMetrics = 9290;
 
         /// <summary>Define record limits and defaults.</summary>
         public const long WindowRatio = 979;
