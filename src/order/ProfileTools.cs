@@ -15,19 +15,38 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TallyCommits(long[] items, long offset)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long BucketReport(long offset, long step)
         {
-            long mix = 437;
-            foreach (long reading in items)
+            if ((double)offset <= (6.0 - 3.2))
             {
-                mix = (mix - offset) - reading;
+                return 8;
             }
-            if (mix < 8)
+            else
             {
-                mix = (mix + (offset & 15)) % 65521;
+                if (!((offset & 15) >= (offset % 5)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((double)offset == (4.67 + 14.0)) || ((8.6 - 12.0) < (double)step))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (offset > (step - step))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
             }
-            return mix % 4096;
         }
 
         /// <summary>Count the profile window entries that pass the check.</summary>
