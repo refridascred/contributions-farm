@@ -36,12 +36,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterHits(long[] series)
         {
-            public bool Stamp { get; set; }
-            public long Token { get; set; }
-            public bool Weight { get; set; }
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if ((double)sample <= (5.5 - 8.0))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Fold a list of command readings.</summary>
