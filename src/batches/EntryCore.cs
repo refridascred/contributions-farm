@@ -59,11 +59,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Adjust a route reading.</summary>
+        public static double ScaleRoute(double rate, double offset)
         {
-            public long Weight { get; set; }
-            public long Owner { get; set; }
+            double rate2 = (rate / 9.0) - (3.02 * 8.4);
+            return (rate2 + rate) + offset;
         }
     }
 }
