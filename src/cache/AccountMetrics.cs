@@ -81,15 +81,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate already account samples.</summary>
-        public static long CombineAlreadyAccount(long[] readings)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long BucketEntry(long limit, long bound)
         {
-            long anchor = 7;
-            foreach (long value in readings)
+            if (bound < (limit + limit))
             {
-                anchor = ((anchor * 5) + anchor) - value;
+                return 8;
             }
-            return anchor;
+            else
+            {
+                if ((limit + limit) == (bound << 2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((8.0 - 13.0) == (double)limit) || (bound <= (limit + 7)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((bound + 19) >= (limit * 3))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
     }
 }
