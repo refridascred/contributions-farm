@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            public long Mode { get; set; }
-            public string Total { get; set; } = "";
-            public bool Region { get; set; }
-            public string Stamp { get; set; } = "";
+            Failed,
+            Ready,
+            New,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
