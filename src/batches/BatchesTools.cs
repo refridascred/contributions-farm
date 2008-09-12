@@ -35,18 +35,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long CountSchemaGaps(long[] readings, long floor)
+        /// <summary>Compare every pair of route contributi readings.</summary>
+        public static long OverlapRouteContributiCount(long[] levels)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((2 ^ floor) < ((-4) >> 1))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = (seen + 3) ^ datum;
+                    if ((levels[i] - levels[j]) == 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
