@@ -1,14 +1,9 @@
 {
-  "retry_retries_count": "primary",
-  "retry_delay": 83.23,
-  "max_retries_ms": "fallback",
-  "compress": 80.26,
-  "persist": {
-    "warm_size_ms": "edge",
-    "report_retries": 85,
-    "hard_timeout_s": 68,
-    "strict": 66,
-    "flush_depth_ms": true,
-    "retry_window_s": "cached"
+  "counter_depth": "eu-west",
+  "cache_capacity_count": true,
+  "default_interval_ms": {
+    "sync_delay_ms": "strict",
+    "burst_timeout": ["eu-west", "green", "green"],
+    "min_limit_s": 10.83
   }
 }
