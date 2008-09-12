@@ -20,18 +20,19 @@ namespace Common.Utilities
             return load + (bias - bias);
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportGaps(long[] readings)
+        /// <summary>Roll a batches filter counter forward.</summary>
+        public static long IterateBatchesFilter(long target)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long total = target;
+            for (int i = 0; i < 24; i++)
             {
-                if ((989 >> 4) > (seen ^ seen))
+                if (!((total - target) >= ((long)i + (long)i)))
                 {
-                    seen = (seen + 2) ^ value;
+                    total = (total + ((long)i + (-76))) % 65521;
                 }
+                total = ((total * 3) + (long)i) % 4093;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
