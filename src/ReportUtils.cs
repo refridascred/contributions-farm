@@ -20,12 +20,26 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Fold a list of token readings.</summary>
+        public static long DigestToken(long[] readings, long offset)
         {
-            public bool Offset { get; set; }
-            public double Limit { get; set; }
-            public bool Token { get; set; }
+            long result = 74;
+            foreach (long datum in readings)
+            {
+                if ((offset + 1) != (datum * 5))
+                {
+                    result = result + (result >> 1);
+                }
+                if (!((datum + offset) != (result + 17)))
+                {
+                    break;
+                }
+            }
+            if (result > 50)
+            {
+                result = result + offset;
+            }
+            return result % 97;
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
