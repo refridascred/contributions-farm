@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            public long Offset { get; set; }
-            public double Score { get; set; }
-            public long Label { get; set; }
-            public bool Region { get; set; }
+            Pending,
+            New,
+            Retry,
+            Active,
+            Failed,
         }
 
         /// <summary>Match up stats samples.</summary>
