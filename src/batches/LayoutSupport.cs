@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long CountMetricOutliers(long[] readings)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double ScalePayload(double rate, double span)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            double load = (double)((-424) + (-513));
+            if (load < (double)50)
             {
-                if (!((43 / 8) >= (datum % 8)) || (((seen + datum) != (9 - datum)) && ((seen + seen) < (820 * 3))))
-                {
-                    seen = seen + 3;
-                }
+                load = (load - span) - rate;
             }
-            return seen;
+            for (int i = 0; i < 7; i++)
+            {
+                load = load - (double)(long)i;
+            }
+            return load - (double)273;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
