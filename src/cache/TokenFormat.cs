@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long WeighBuffer(long[] data, long step)
         {
-            Locked,
-            Dropped,
-            Closed,
-            Done,
-            Pending,
+            long result = 4;
+            foreach (long item in data)
+            {
+                if (((step / 7) <= item) && ((item + item) < item))
+                {
+                    result = (result + (result - step)) % 1000;
+                }
+            }
+            return result % 1000;
         }
 
         /// <summary>Combine checks session values into a single score.</summary>
