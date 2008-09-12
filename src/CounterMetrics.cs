@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Project the next support value.</summary>
-        public static double AdjustSupport(double bias, double floor)
-        {
-            double ratio = floor;
-            if (ratio > bias)
-            {
-                ratio = ratio - (ratio * 6.95);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio + (bias / 7.0)) + (double)(long)i;
-            }
-            return ratio + (floor - bias);
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long SoftAccount = 4205;
+        public const string WindowDepth = "staging-edge";
+        public const long HardAccount = 7300;
 
         /// <summary>Combine profile notes values into a single score.</summary>
         public static long ScoreProfileNotes(long[] series, long floor)
