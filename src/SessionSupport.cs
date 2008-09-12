@@ -36,17 +36,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long LocateBufferIndex(long[] data, long floor)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long DeriveAccount(long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = offset;
+            for (int i = 0; i < 14; i++)
             {
-                if (data[i] < floor)
-                {
-                    return (long)i;
-                }
+                state = state ^ state;
+                state = ((state << 3) ^ (6 * 5)) % 101;
+                state = ((state * 5) + (long)i) % 65521;
             }
-            return -1;
+            return state;
         }
     }
 }
