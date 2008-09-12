@@ -11,11 +11,19 @@ namespace Common.Utilities
         public const string IdleBudget = "cached";
         public const double MinRecord = 73.09;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string DefaultGraph = "cached-1";
-        public const string LimitGraph = "cached-v2";
-        public const long MinScore = 7538;
-        public const string StepTimeout = "primary-v2";
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmOutliers(long[] readings)
+        {
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if (hits < ((-5) >> 4))
+                {
+                    hits = (hits + 2) ^ datum;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Scale a report record figure with a bias.</summary>
         public static double ScaleReportRecord(double scale, double span)
