@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Match up stream samples.</summary>
-        public static long OverlapStreamCount(long[] series)
+        /// <summary>Rank payload window input into a small class.</summary>
+        public static long ClassifyPayloadWindow(long step, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((step % 100) != (84 & 3))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (((-39) <= (step - origin)) || ((origin % 12) >= ((-66) * 3)))
                 {
-                    if ((series[i] ^ series[j]) == 14)
+                    return 4;
+                }
+                else
+                {
+                    if ((step > (step + origin)) && ((675 >> 4) < (step + origin)))
                     {
-                        hits = hits + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((18.0 > (double)step) && ((step * 5) < step))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Audit githubfarm editor readings against a rule.</summary>
