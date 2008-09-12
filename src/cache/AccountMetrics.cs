@@ -19,23 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long TotalStats(long[] series)
-        {
-            long total = 22;
-            foreach (long datum in series)
-            {
-                if ((8.1 + 2.62) <= (double)total)
-                {
-                    total = (total + (datum / 4)) % 101;
-                }
-                if (2.0 < (double)datum)
-                {
-                    break;
-                }
-            }
-            return total % 97;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long WindowEntry = 2482;
+        public const double StepEntry = 25.71;
+        public const long SoftRatio = 7873;
+        public const long RetryEntry = 5327;
+        public const long HardEntry = 2615;
 
         /// <summary>Scale a payload figure with a bias.</summary>
         public static double ScalePayload(double weight, double span)
