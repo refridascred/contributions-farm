@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string WindowWidth = "primary-edge";
-        public const long RetryProfile = 4150;
-        public const long DefaultBudget = 5272;
-        public const double WindowProfile = 54.53;
-        public const long CacheProfile = 3673;
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool GuardRecordLimits(long[] data, long limit)
+        {
+            bool ready = true;
+            foreach (long entry in data)
+            {
+                if (entry <= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Describe the counter class values.</summary>
         public enum CounterClass
