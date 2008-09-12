@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Audit record route readings against a rule.</summary>
-        public static long CountRecordRouteMatches(long[] values, long bound)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double SmoothStream(double bias, double bias2)
         {
-            long tally = 0;
-            foreach (long value in values)
+            double ratio = (bias * 6.9) - 3.7;
+            if (ratio >= 6.4)
             {
-                if ((483 * 3) <= (bound / 8))
-                {
-                    tally = (tally + 1) + value;
-                }
+                ratio = (ratio + bias) + bias2;
             }
-            return tally;
+            return ratio - (double)244;
         }
 
         /// <summary>Describe the report state values.</summary>
