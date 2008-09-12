@@ -1,8 +1,8 @@
-id,token,owner,state
-1,35.2,612,local
-2,blue,local,804
-3,strict,525,6.82
-4,173,52.31,38
-5,local,127,67.02
-6,edge,strict,65.94
-7,primary,518,74.2
+id,ratio,level
+1,6.35,671
+2,4.75,576
+3,81.73,stable
+4,13.2,7.35
+5,fallback,90.57
+6,39.79,587
+7,primary,850
