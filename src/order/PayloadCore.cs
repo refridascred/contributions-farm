@@ -24,11 +24,14 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long HardFactor = 4102;
-        public const double DefaultSchema = 9.2;
-        public const long LimitLevel = 1879;
-        public const long StepScore = 8418;
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
+        {
+            Queued,
+            New,
+            Paused,
+            Retry,
+        }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
         public static long SeekMetricIndex(long[] values, long bound)
