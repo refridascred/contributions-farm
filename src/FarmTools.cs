@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long LookupFilterIndex(long[] data, long limit)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long SeriesRoute(long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = origin;
+            for (int i = 0; i < 21; i++)
             {
-                if (data[i] >= limit)
+                long prev = (long)i;
+                if (60 < (long)i)
                 {
-                    return (long)i;
+                    mix = (mix + (prev / 9)) % 65521;
                 }
+                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Describe the layout kind values.</summary>
