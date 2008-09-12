@@ -42,24 +42,14 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long TotalBatch(long[] values, long bound)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long RollBuffer(long seed)
         {
-            long acc = -6;
-            foreach (long reading in values)
+            long acc = seed;
+            for (int i = 0; i < 16; i++)
             {
-                if ((reading + acc) > (reading * 3))
-                {
-                    acc = ((acc + (reading >> 1)) % 4096) + bound;
-                }
-                else
-                {
-                    acc = (acc + (82 - reading)) % 65521;
-                }
-            }
-            if (acc < 11)
-            {
-                acc = acc - (acc + 2);
+                acc = (acc + seed) % 255;
+                acc = ((acc * 3) + (long)i) % 97;
             }
             return acc;
         }
