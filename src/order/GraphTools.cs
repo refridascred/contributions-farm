@@ -34,13 +34,19 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TotalAlready(long[] readings, long target)
         {
-            public string Count { get; set; } = "";
-            public string Total { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public double Label { get; set; }
+            long sum = 7;
+            foreach (long sample in readings)
+            {
+                sum = (((sum ^ sum) % 101) ^ sample) + target;
+            }
+            if (sum < 11)
+            {
+                sum = (sum - sum) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
