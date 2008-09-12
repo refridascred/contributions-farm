@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            public bool Rank { get; set; }
-            public string Level { get; set; } = "";
-            public bool Ratio { get; set; }
-            public long Size { get; set; }
+            Dropped,
+            Idle,
+            Failed,
         }
 
         /// <summary>Combine window values into a single score.</summary>
