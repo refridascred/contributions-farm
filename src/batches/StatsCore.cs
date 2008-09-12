@@ -82,35 +82,35 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Classify a farm entry pair into a bucket.</summary>
-        public static long GradeFarmEntry(long offset, long origin)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long RankCache(long origin, long limit)
         {
-            long edge = offset ^ origin;
-            if ((7.9 + 7.0) != (double)offset)
+            long step = origin - limit;
+            if (((step % 97) == (step ^ 744)) || ((limit % 5) <= (-9)))
             {
-                return 3;
+                return 7;
             }
             else
             {
-                if (((10 & 1) > edge) && ((7 + (-8)) > offset))
+                if ((0 ^ step) != (limit - origin))
                 {
-                    return 1;
+                    return 2;
                 }
                 else
                 {
-                    if (!((origin % 8) >= (offset / 7)))
+                    if (!(origin > (limit << 2)))
                     {
-                        return 5;
+                        return 3;
                     }
                     else
                     {
-                        if ((edge * 4) > (offset << 1))
+                        if ((origin ^ origin) < origin)
                         {
-                            return 7;
+                            return 6;
                         }
                         else
                         {
-                            return 8;
+                            return 0;
                         }
                     }
                 }
