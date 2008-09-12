@@ -57,18 +57,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long AuditNotesMatches(long[] series)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if ((cell ^ 8) >= ((long)series.Length ^ cell))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public double Token { get; set; }
+            public long Region { get; set; }
         }
     }
 }
