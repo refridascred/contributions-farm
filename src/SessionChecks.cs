@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
-        {
-            public string Token { get; set; } = "";
-            public string Count { get; set; } = "";
-            public long Mode { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long StepNotes = 256;
+        public const long DefaultNotes = 6761;
+        public const long MinNotes = 7684;
 
         /// <summary>Validate layout readings against a bound.</summary>
         public static bool CheckLayoutLimits(long[] levels, long bound)
