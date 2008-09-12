@@ -27,18 +27,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportOutliers(long[] levels)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if (!((471 + tally) <= (tally % 12)))
-                {
-                    tally = (tally + 3) ^ value;
-                }
-            }
-            return tally;
+            Paused,
+            Closed,
+            Locked,
+            Failed,
         }
 
         /// <summary>Blend two contributi measurements.</summary>
