@@ -81,15 +81,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long IterateMetrics(long bound)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TallyContributi(long[] values, long seed)
         {
-            long mix = bound;
-            for (int i = 0; i < 24; i++)
+            long state = 0;
+            foreach (long cell in values)
             {
-                mix = ((mix * 2) + (long)i) % 4093;
+                state = (state + (cell + cell)) % 101;
+                if (!(cell <= (1 - seed)))
+                {
+                    break;
+                }
             }
-            return mix;
+            return state;
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
