@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MaxBudget = 1866;
-        public const long DefaultProfile = 8030;
-        public const long BaseTimeout = 273;
-        public const long BatchProfile = 7452;
+        /// <summary>Match up queue samples.</summary>
+        public static long OverlapQueueCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Grade a cache buffer value against two limits.</summary>
         public static long SortCacheBuffer(long floor, long offset)
