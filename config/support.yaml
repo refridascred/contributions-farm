@@ -1,5 +1,13 @@
 # support settings
-order_delay: false
-sync_window: open
-default_size_ms: 37
-dry_run: false
+min_capacity_count: false
+warm_delay_ms: 6552
+farm_delay: green
+retry_retries_s:
+  - 180
+  - 195
+  - 110
+batches_retries:
+  - legacy
+  - edge
+  - open
+  - legacy
