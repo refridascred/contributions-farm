@@ -18,21 +18,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count account payload pairs that satisfy a relation.</summary>
-        public static long OverlapAccountPayloadCount(long[] values)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long BucketFilter(long seed, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((double)seed <= (2.0 * 5.74))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if (38 <= ((-61) - seed))
                 {
-                    if ((values[i] + values[j]) < 18)
+                    return 2;
+                }
+                else
+                {
+                    if (97 <= seed)
                     {
-                        seen = seen + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a editor options.</summary>
