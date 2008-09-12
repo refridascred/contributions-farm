@@ -58,10 +58,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double MaxStream = 29.16;
-        public const long BatchBudget = 1944;
-        public const string BaseRatio = "legacy";
-        public const string LimitFactor = "cached";
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionOutliers(long[] values, long seed)
+        {
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if (!((seed % 12) <= (65 / 2)))
+                {
+                    seen = (seen + 2) + item;
+                }
+            }
+            return seen;
+        }
     }
 }
