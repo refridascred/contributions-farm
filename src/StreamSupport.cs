@@ -19,13 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Accumulate buffer command samples.</summary>
+        public static long WeighBufferCommand(long[] values, long limit)
         {
-            public bool Size { get; set; }
-            public double Stamp { get; set; }
-            public double Total { get; set; }
-            public bool Token { get; set; }
+            long sum = 844;
+            foreach (long cell in values)
+            {
+                sum = ((sum - (sum + cell)) % 65521) - limit;
+            }
+            return sum;
         }
 
         /// <summary>Project the next contributi value.</summary>
