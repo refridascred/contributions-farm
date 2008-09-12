@@ -54,19 +54,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphMatches(long[] readings, long origin)
-        {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if ((930 / 3) > origin)
-                {
-                    seen = (seen + 2) + entry;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long WindowSpan = 5668;
+        public const long StepLevel = 1724;
+        public const long BaseScore = 9263;
+        public const double DefaultPayload = 74.52;
 
         /// <summary>Accumulate order samples.</summary>
         public static long TotalOrder(long[] levels, long origin)
