@@ -44,39 +44,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long SortRoute(long limit, long origin)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long RollFilter(long target)
         {
-            long delta = limit - origin;
-            if ((delta / 4) <= (limit - delta))
+            long sum = target;
+            for (int i = 0; i < 17; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((limit / 9) < limit)
+                if (((long)i * 4) <= sum)
                 {
-                    return 0;
+                    continue;
                 }
-                else
-                {
-                    if ((8.56 * 7.0) >= (double)limit)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((16.0 - 5.35) < (double)limit)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                sum = ((sum * 4) + (long)i) % 65521;
             }
+            return sum;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
