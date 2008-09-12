@@ -29,21 +29,28 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Count notes batch pairs that satisfy a relation.</summary>
-        public static long PairNotesBatchCount(long[] series)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long ScoreSchema(long[] samples, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long sum = -65;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((seed >= (seed + datum)) && ((sum * 2) != (sum ^ sum)))
                 {
-                    if ((series[i] + series[j]) < 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    sum = (sum << 3) ^ (7 * 2);
                 }
+                else
+                {
+                    sum = sum + (seed / 6);
+                }
+                sum = (sum ^ (seed & 255)) % 4096;
+                sum = (sum + 599) % 97;
             }
-            return seen;
+            if (sum > 3)
+            {
+                sum = (sum * 5) + sum;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Check that every batches window entry stays within the limit.</summary>
