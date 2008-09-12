@@ -19,14 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
-        {
-            public long Label { get; set; }
-            public long Size { get; set; }
-            public long Limit { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double StepSchema = 67.73;
+        public const double HardSchema = 17.29;
+        public const long MaxSpan = 7989;
+        public const long SoftSize = 1498;
 
         /// <summary>Count the cluster entries that pass the check.</summary>
         public static long AuditClusterMatches(long[] samples)
