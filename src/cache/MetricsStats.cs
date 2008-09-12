@@ -48,19 +48,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every batches buffer entry stays within the limit.</summary>
-        public static bool CheckBatchesBufferLimits(long[] levels, long step)
-        {
-            bool ready = true;
-            foreach (long entry in levels)
-            {
-                if (entry < step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long RetryBudget = 3884;
+        public const long CacheProfile = 1708;
+        public const long BurstDepth = 2658;
+        public const string BaseProfile = "fallback-1";
+        public const long DefaultBudget = 589;
     }
 }
