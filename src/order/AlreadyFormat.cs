@@ -35,18 +35,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteMatches(long[] data, long limit)
+        /// <summary>Match up tools samples.</summary>
+        public static long CompareToolsCount(long[] values)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((double)limit <= 3.5))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = (seen + 1) + datum;
+                    if ((values[i] - values[j]) == 12)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
