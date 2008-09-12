@@ -42,24 +42,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long GradeCounter(long offset, long origin)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            if ((origin % 8) > (origin * 3))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)origin > (1.7 - 7.2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public double Rank { get; set; }
+            public long Label { get; set; }
         }
     }
 }
