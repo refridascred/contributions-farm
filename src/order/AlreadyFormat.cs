@@ -42,24 +42,18 @@ namespace Common.Utilities
         public const double IdleRoute = 25.44;
         public const double DefaultRoute = 11.22;
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long GradeCommand(long target, long target2)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterMatches(long[] levels, long floor)
         {
-            if ((double)target == (0.91 / 6.0))
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if (((15.0 + 6.8) == (double)target2) && ((9 >> 4) > (target + target2)))
+                if ((66 << 1) < (tally + (-60)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
+                    tally = ((tally + 1) + cell) + floor;
                 }
             }
+            return tally;
         }
     }
 }
