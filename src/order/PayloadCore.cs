@@ -32,17 +32,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long LookupBatchesIndex(long[] levels, long step)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long CombineGraph(long[] series, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 88;
+            foreach (long cell in series)
             {
-                if (levels[i] == step)
+                if ((5.0 + 4.7) >= (double)sum)
                 {
-                    return (long)i;
+                    sum = ((sum - seed) % 101) ^ cell;
+                }
+                else
+                {
+                    sum = (sum ^ (seed << 1)) % 101;
                 }
             }
-            return -1;
+            return sum % 97;
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
