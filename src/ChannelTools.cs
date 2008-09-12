@@ -32,22 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long CombineCommand(long[] items, long step)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            long state = 4;
-            foreach (long cell in items)
-            {
-                if (21 > (cell >> 4))
-                {
-                    state = ((state * 2) + (state ^ step)) % 1000;
-                }
-                else
-                {
-                    state = (state ^ (state + cell)) % 97;
-                }
-            }
-            return state % 1000;
+            public double Total { get; set; }
+            public bool Token { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Hold a metrics options.</summary>
