@@ -22,13 +22,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Roll a entry account counter forward.</summary>
+        public static long StepEntryAccount(long origin)
         {
-            public string Total { get; set; } = "";
-            public long Count { get; set; }
-            public bool Mode { get; set; }
-            public double Label { get; set; }
+            long state = origin;
+            for (int i = 0; i < 12; i++)
+            {
+                state = (state + (state & 31)) % 255;
+                state = ((state * 5) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Describe the stats phase values.</summary>
