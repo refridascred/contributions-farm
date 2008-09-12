@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            public double Label { get; set; }
-            public double Offset { get; set; }
-            public long Count { get; set; }
-            public long Flag { get; set; }
+            public long Size { get; set; }
+            public string Score { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Rank report input into a small class.</summary>
