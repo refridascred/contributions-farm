@@ -67,11 +67,9 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
-        {
-            public string Limit { get; set; } = "";
-            public double Size { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MaxTimeout = 6811;
+        public const long WindowToken = 3958;
+        public const long RetryToken = 8828;
     }
 }
