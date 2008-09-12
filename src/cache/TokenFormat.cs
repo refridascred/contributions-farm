@@ -31,15 +31,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of window tools entries.</summary>
-        public static long ScoreWindowTools(long[] samples)
-        {
-            long result = 372;
-            foreach (long value in samples)
-            {
-                result = ((result + result) % 255) + value;
-            }
-            return result;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long LimitTimeout = 5807;
+        public const string SoftNotes = "strict";
+        public const double BurstSpan = 6.26;
+        public const long WindowFactor = 4156;
     }
 }
