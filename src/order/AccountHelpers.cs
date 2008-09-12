@@ -30,13 +30,13 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            public string Level { get; set; } = "";
-            public long Size { get; set; }
-            public long Score { get; set; }
-            public long Flag { get; set; }
+            public double Mode { get; set; }
+            public long Count { get; set; }
+            public double Ratio { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
