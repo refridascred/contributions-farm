@@ -13,34 +13,38 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long ScoreNotes(long[] samples)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long SortEditor(long limit, long origin)
         {
-            long anchor = -5;
-            foreach (long value in samples)
+            if (((double)origin > (6.89 * 9.15)) && (limit < (limit * 3)))
             {
-                for (int i = 0; i < 9; i++)
+                return 3;
+            }
+            else
+            {
+                if ((origin + origin) >= (13 + limit))
                 {
-                    anchor = ((anchor + (value + value)) % 1000) ^ (long)i;
-                }
-                if ((anchor + anchor) != (value ^ (-501)))
-                {
-                    anchor = anchor + (767 * 4);
+                    return 8;
                 }
                 else
                 {
-                    anchor = (anchor + (38 % 2)) % 97;
-                }
-                if ((double)value < (7.7 + 5.2))
-                {
-                    break;
+                    if (!((double)origin <= 6.1))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (7 >= (limit & 255))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            if (anchor < 7)
-            {
-                anchor = (anchor - (anchor + anchor)) % 101;
-            }
-            return anchor;
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
