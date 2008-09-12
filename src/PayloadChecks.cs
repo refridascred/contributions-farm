@@ -26,37 +26,23 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long BucketBuffer(long floor, long origin)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long GradeLayout(long target, long bound)
         {
-            long step = floor - origin;
-            if ((double)origin >= (double)floor)
+            long span = target ^ bound;
+            if (((4.18 - 7.5) >= (double)span) || ((target >> 2) > bound))
             {
-                return 2;
+                return 6;
             }
             else
             {
-                if (floor > step)
+                if (((span >> 2) > target) && (target < (692 - target)))
                 {
-                    return 1;
+                    return 2;
                 }
                 else
                 {
-                    if (((-803) + origin) == (0 ^ origin))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((origin - step) <= (origin >> 1)) || ((floor >> 1) < (73 % 7)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return 8;
                 }
             }
         }
