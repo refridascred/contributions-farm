@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterMatches(long[] series)
+        /// <summary>Project the next layout order value.</summary>
+        public static double SmoothLayoutOrder(double gain, double floor)
         {
-            long seen = 0;
-            foreach (long item in series)
+            double scale = floor - (4.47 / 4.0);
+            if (scale > scale)
             {
-                if ((seen >> 4) <= seen)
-                {
-                    seen = (seen + 2) + item;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                scale = scale - gain;
             }
-            return seen;
+            return scale - (double)(-358);
         }
 
         /// <summary>Fold a list of record account readings.</summary>
