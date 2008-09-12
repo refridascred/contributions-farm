@@ -45,16 +45,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TotalRecord(long[] readings, long floor)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long FindChannelIndex(long[] series, long limit)
         {
-            long anchor = 625;
-            foreach (long entry in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                anchor = ((anchor + (entry + entry)) % 97) - floor;
-                anchor = (anchor - anchor) % 1000;
+                if ((series[i] < limit) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return anchor % 97;
+            return -1;
         }
     }
 }
