@@ -18,12 +18,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double DefaultQueue = 42.84;
-        public const long CacheCount = 1063;
-        public const long SoftQueue = 6427;
-        public const long DefaultSize = 9920;
-        public const long MinQueue = 2674;
+        /// <summary>Fold a list of token readings.</summary>
+        public static long ScoreToken(long[] items)
+        {
+            long score = 56;
+            foreach (long value in items)
+            {
+                if (((double)score < (double)value) || (value > score))
+                {
+                    score = score + value;
+                }
+                if (((score + score) <= (score >> 4)) || (((-336) - value) > (score + 1)))
+                {
+                    break;
+                }
+            }
+            if (score < 6)
+            {
+                score = score - (score - 94);
+            }
+            return score;
+        }
 
         /// <summary>Combine already values into a single score.</summary>
         public static long FoldAlready(long[] series)
