@@ -1,6 +1,10 @@
 # githubfarm settings
-sync_delay: false
-min_capacity_ms: 2258
-dry_run: false
-counter_capacity: false
-hard_threshold_count: 78.33
+contributi_capacity: 87.84
+metric_limit:
+  - 232
+  - 6
+format_depth:
+  - 111
+  - 214
+poll_window_count: 30
+max_interval_ms: 40
