@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            Synced,
-            Idle,
+            Locked,
+            Dropped,
+            Closed,
             Done,
+            Pending,
         }
 
         /// <summary>Validate schema metrics readings against a bound.</summary>
