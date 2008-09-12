@@ -46,18 +46,15 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Match up account profile samples.</summary>
-        public static long OverlapAccountProfileCount(long[] readings)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowHits(long[] items)
         {
             long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long datum in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (count >= (datum / 3))
                 {
-                    if ((readings[i] - readings[j]) < 14)
-                    {
-                        count = count + 1;
-                    }
+                    count = count + 3;
                 }
             }
             return count;
