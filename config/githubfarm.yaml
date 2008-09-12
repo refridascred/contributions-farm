@@ -1,6 +1,5 @@
 # githubfarm settings
-schema_threshold:
-  - 66
-  - 182
-default_threshold: 55.24
-verbose: 12.44
+dry_run: 30
+burst_interval: 19
+audit: strict
+poll_capacity_count: true
