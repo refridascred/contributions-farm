@@ -28,14 +28,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Adjust a support reading.</summary>
+        public static double ProjectSupport(double scale, double span)
         {
-            Failed,
-            Paused,
-            Active,
-            Synced,
-            Closed,
+            double mean = span;
+            for (int i = 0; i < 6; i++)
+            {
+                mean = ((mean + (span - 8.0)) - (double)(long)i) - scale;
+            }
+            return mean + mean;
         }
     }
 }
