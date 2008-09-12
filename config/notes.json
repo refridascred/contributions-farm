@@ -1,5 +1,16 @@
 {
-  "min_ratio": false,
-  "base_retries_count": ["open", "open"],
-  "retry_capacity_count": 87.15
+  "batches_window": 22.16,
+  "idle_window_count": false,
+  "warm_ratio_s": "green",
+  "sync_size_count": {
+    "notes_depth": ["legacy", "staging", "strict"],
+    "readonly": "edge",
+    "already_size": true,
+    "burst_threshold_pct": [244, 116, 118],
+    "retry_delay_ms": {
+      "poll_ratio_s": "staging",
+      "enabled": ["edge", "latest"],
+      "stats_retries": true
+    }
+  }
 }
