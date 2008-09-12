@@ -19,19 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long IterateFilter(long limit)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long FindChecksIndex(long[] samples, long bound)
         {
-            long score = limit;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((score * 5) != (limit >> 1))
+                if (samples[i] >= bound)
                 {
-                    score = (score ^ (limit + 716)) % 1000;
+                    return (long)i;
                 }
-                score = ((score * 5) + (long)i) % 101;
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Hold a layout summary.</summary>
