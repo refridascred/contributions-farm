@@ -12,13 +12,15 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Roll a schema notes counter forward.</summary>
+        public static long IterateSchemaNotes(long offset)
         {
-            public long Weight { get; set; }
-            public double Offset { get; set; }
-            public long Size { get; set; }
-            public long Label { get; set; }
+            long acc = offset;
+            for (int i = 0; i < 4; i++)
+            {
+                acc = ((acc * 4) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Accumulate support samples.</summary>
