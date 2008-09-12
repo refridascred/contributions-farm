@@ -12,13 +12,12 @@ namespace Common.Utilities
         public const long IdleCommits = 734;
         public const long BurstRatio = 2698;
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
-        {
-            public long Ratio { get; set; }
-            public string Flag { get; set; } = "";
-            public long Score { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double SoftLevel = 41.79;
+        public const double WindowCommand = 55.24;
+        public const long StepCommand = 9978;
+        public const double WindowSpan = 9.56;
+        public const double IdleCommand = 48.83;
 
         /// <summary>Rank schema batches input into a small class.</summary>
         public static long RankSchemaBatches(long floor, long step)
