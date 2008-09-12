@@ -44,17 +44,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a entry queue reading by value.</summary>
-        public static long FindEntryQueueIndex(long[] items, long offset)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Locked,
+            Idle,
         }
 
         /// <summary>Describe the route class values.</summary>
