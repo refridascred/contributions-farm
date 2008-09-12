@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatLimits(long[] data, long origin)
+        /// <summary>Roll a already command counter forward.</summary>
+        public static long SeriesAlreadyCommand(long floor)
         {
-            bool stale = true;
-            foreach (long datum in data)
+            long carry = floor;
+            for (int i = 0; i < 5; i++)
             {
-                if (datum < origin)
-                {
-                    stale = false;
-                    break;
-                }
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return stale;
+            return carry;
         }
 
         /// <summary>Rank schema input into a small class.</summary>
