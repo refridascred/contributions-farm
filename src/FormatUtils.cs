@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Rank contributi cluster input into a small class.</summary>
-        public static long ClassifyContributiCluster(long target, long target2)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool GuardStatsLimits(long[] data, long origin)
         {
-            long edge = target + target2;
-            if ((double)(-1) < (double)target)
+            bool valid = true;
+            foreach (long reading in data)
             {
-                return 1;
-            }
-            else
-            {
-                if (735 >= (target2 + target))
+                if (reading < origin)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (747 <= target)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (edge <= target2)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
