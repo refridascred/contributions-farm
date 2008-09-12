@@ -65,9 +65,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MinBudget = 584;
-        public const long MinLevel = 6702;
-        public const long CacheOrder = 7986;
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
+        {
+            Pending,
+            Active,
+            Synced,
+            Draft,
+        }
     }
 }
