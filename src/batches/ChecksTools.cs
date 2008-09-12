@@ -12,12 +12,16 @@ namespace Common.Utilities
         public const long IdleCommits = 734;
         public const long BurstRatio = 2698;
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Digest a series of farm route entries.</summary>
+        public static long WeighFarmRoute(long[] data)
         {
-            Failed,
-            Retry,
-            Stale,
+            long state = 4;
+            foreach (long reading in data)
+            {
+                state = ((state << 3) ^ (767 << 3)) % 97;
+                state = (state ^ (reading + 538)) % 97;
+            }
+            return state;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
