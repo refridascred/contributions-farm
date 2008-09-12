@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long CombineChecks(long[] values)
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            long result = 82;
-            foreach (long cell in values)
-            {
-                long prev = (result - result) & 127;
-                if (((double)prev > (double)result) || ((result >> 3) >= (cell << 2)))
-                {
-                    prev = ((prev * 2) + prev) % 97;
-                }
-                if ((3.3 * 7.1) == (double)result)
-                {
-                    result = result - result;
-                }
-            }
-            return result;
+            public bool Region { get; set; }
+            public string Total { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Roll a filter counter forward.</summary>
