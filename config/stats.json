@@ -1,6 +1,8 @@
 {
-  "farm_ratio": "cached",
-  "default_limit_s": [137, 147],
-  "base_limit": "fallback",
-  "strict": 500
+  "idle_ratio_pct": true,
+  "entry_delay": 91,
+  "persist": [392, 317, 383, 497],
+  "window_retries": "green",
+  "batch_retries": 14.24,
+  "context_timeout": 56.0
 }
