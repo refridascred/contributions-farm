@@ -31,21 +31,17 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long PairStatsCount(long[] samples)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long LocateStreamIndex(long[] data, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((data[i] > seed) && ((data[i] % 2) == 0))
                 {
-                    if ((samples[i] + samples[j]) == 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Digest a series of commits token entries.</summary>
