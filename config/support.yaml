@@ -1,16 +1,13 @@
 # support settings
-sync_delay_s: 27
-max_interval: 26
-burst_threshold_s: true
-default_size_count:
-  flush_ttl_s: false
-  idle_ttl_s: 5597
-  burst_ttl_pct: 83.21
-  base_ratio_count: edge
-  window_capacity: 34.03
-  readonly: fallback
-dry_run:
-  - 461
-  - 351
-  - 408
-  - 329
+sync_ttl_ms: eu-west
+poll_retries:
+  metric_ttl: 250
+  poll_threshold:
+    burst_capacity_pct:
+      - green
+      - primary
+      - legacy
+    dry_run: green
+    default_delay_ms: staging
+  max_capacity_ms: 34
+default_capacity_s: 100
