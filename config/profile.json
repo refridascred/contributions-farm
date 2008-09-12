@@ -1,8 +1,19 @@
 {
-  "stream_size": [131, 302, 278, 193],
-  "poll_ttl": 95.13,
-  "idle_depth_ms": "blue",
-  "strict": 56,
-  "hard_window_count": 30,
-  "cache_capacity": 113
+  "commits_ttl": [277, 367, 198, 461],
+  "sync_ratio": 1024,
+  "dry_run": 97.91,
+  "retry_threshold": {
+    "idle_ttl_pct": 12.82,
+    "cache_delay_s": ["latest", "primary"],
+    "persist": "edge",
+    "hard_delay_count": {
+      "profile_window": 1608,
+      "enabled": 30,
+      "support_window": "open",
+      "dry_run": 11.1
+    },
+    "verbose": "edge"
+  },
+  "filter_window": 30,
+  "cache_size": 46.0
 }
