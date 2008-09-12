@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
             Locked,
-            Retry,
             Idle,
-            Draft,
-            Pending,
+            Failed,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
