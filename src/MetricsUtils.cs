@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Rank order input into a small class.</summary>
-        public static long BucketOrder(long seed, long floor)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileGaps(long[] readings)
         {
-            long offset = seed ^ floor;
-            if ((floor % 16) > offset)
+            long count = 0;
+            foreach (long value in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if (((double)seed < (double)94) || (((-14) - 775) > (seed / 6)))
+                if ((-902) >= (value - value))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((631 + seed) >= offset) || (floor > offset))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a order info.</summary>
