@@ -43,18 +43,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of record queue readings.</summary>
-        public static long TotalRecordQueue(long[] levels, long origin)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            long mix = -2;
-            foreach (long entry in levels)
-            {
-                if (!((double)entry <= (double)mix))
-                {
-                    mix = mix + (mix - origin);
-                }
-            }
-            return mix;
+            public string Weight { get; set; } = "";
+            public double Rank { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Hold a buffer record.</summary>
