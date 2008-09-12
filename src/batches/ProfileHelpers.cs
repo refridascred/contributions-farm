@@ -44,19 +44,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a entry context reading.</summary>
-        public static double AdjustEntryContext(double gain, double span)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            double rate = span;
-            if (rate >= (7.2 + 3.43))
-            {
-                rate = (rate + (double)(-209)) + gain;
-            }
-            else
-            {
-                rate = rate + rate;
-            }
-            return rate + (span * 2.8);
+            public long Size { get; set; }
+            public long Region { get; set; }
+            public long Offset { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
