@@ -24,18 +24,24 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long ScoreWindow(long[] levels)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long RankWindow(long bound, long seed)
         {
-            long anchor = 8;
-            foreach (long entry in levels)
+            if ((double)seed < 3.0)
             {
-                if (!(498 >= anchor))
+                return 3;
+            }
+            else
+            {
+                if (((5.7 - 8.0) != (double)seed) && ((seed & 127) <= seed))
                 {
-                    anchor = (((anchor * 2) + 0) % 97) + entry;
+                    return 5;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return anchor;
         }
     }
 }
