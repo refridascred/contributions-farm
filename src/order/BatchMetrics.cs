@@ -39,10 +39,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long WindowSession = 9056;
-        public const string BaseSession = "local-edge";
-        public const string RetrySession = "alpha-1";
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
+        {
+            public long Limit { get; set; }
+            public bool Token { get; set; }
+            public double Owner { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Digest a series of report entries.</summary>
         public static long ScoreReport(long[] items)
