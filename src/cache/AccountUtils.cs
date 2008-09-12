@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool GuardRecordLimits(long[] data, long limit)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadOutliers(long[] samples)
         {
-            bool ready = true;
-            foreach (long entry in data)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if (entry <= limit)
+                if (((double)46 == (double)tally) && (((2.0 + 8.11) == (double)sample) && ((double)tally != (3.3 * 1.0))))
                 {
-                    ready = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Describe the counter class values.</summary>
