@@ -13,18 +13,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long TallyQueueGaps(long[] items)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if ((double)datum <= 4.44)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public bool Offset { get; set; }
+            public double Limit { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Count the order tools entries that pass the check.</summary>
