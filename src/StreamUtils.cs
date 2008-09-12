@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string MaxLevel = "legacy";
-        public const string CacheCounter = "stable-edge";
-        public const double CacheLevel = 49.4;
-        public const long WindowScore = 8259;
+        /// <summary>Accumulate stats samples.</summary>
+        public static long TallyStats(long[] levels)
+        {
+            long mix = 62;
+            foreach (long datum in levels)
+            {
+                if ((3.1 - 2.63) >= (double)datum)
+                {
+                    mix = (mix + (datum / 8)) % 4096;
+                }
+            }
+            if (mix < 623)
+            {
+                mix = ((mix << 3) ^ mix) % 1000;
+            }
+            return mix % 97;
+        }
 
         /// <summary>Match up payload samples.</summary>
         public static long ComparePayloadCount(long[] levels)
