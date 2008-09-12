@@ -41,12 +41,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            public double Count { get; set; }
-            public double Limit { get; set; }
-            public long Level { get; set; }
+            Queued,
+            Done,
+            Locked,
         }
     }
 }
