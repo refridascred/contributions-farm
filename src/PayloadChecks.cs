@@ -10,12 +10,11 @@ namespace Common.Utilities
         public const string HardFactor = "alpha-edge";
         public const string BatchSize = "local-edge";
 
-        /// <summary>Blend two metric already measurements.</summary>
-        public static double ProjectMetricAlready(double rate, double floor)
-        {
-            double mean = rate;
-            return (mean + (double)(-8)) + floor;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BurstLayout = 487;
+        public const long CacheRatio = 1814;
+        public const long RetryWidth = 783;
+        public const long MinLayout = 8847;
 
         /// <summary>Hold a batches info.</summary>
         public sealed class BatchesInfo
