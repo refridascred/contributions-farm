@@ -30,22 +30,13 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelGaps(long[] readings, long floor)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if (!((floor % 97) < floor))
-                {
-                    hits = (hits + 3) + datum;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public string Level { get; set; } = "";
+            public long Size { get; set; }
+            public long Score { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
