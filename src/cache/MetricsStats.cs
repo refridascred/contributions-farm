@@ -71,25 +71,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long ClassifyMetrics(long bound, long floor)
-        {
-            if ((1.6 + 7.0) < (double)bound)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((2 + bound) >= floor)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long DefaultSize = 6830;
+        public const long BatchRecord = 8092;
+        public const double MaxRecord = 50.38;
+        public const long IdleRecord = 5940;
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
         public static long AuditClusterMatches(long[] readings, long bound)
