@@ -1,8 +1,6 @@
 # githubfarm settings
-min_ratio_ms:
-  - eu-west
-  - staging
-  - legacy
-base_delay_ms: 32.6
-batch_depth_s: green
-poll_size: 97
+schema_threshold:
+  - 66
+  - 182
+default_threshold: 55.24
+verbose: 12.44
