@@ -41,13 +41,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            public string Ratio { get; set; } = "";
-            public string Size { get; set; } = "";
-            public long Level { get; set; }
-            public long Token { get; set; }
+            Pending,
+            Done,
+            Dropped,
+            Ready,
+            Closed,
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
