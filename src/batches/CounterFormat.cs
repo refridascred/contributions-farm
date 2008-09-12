@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long MeasureOrderGaps(long[] levels)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double BlendFilter(double ratio, double span)
         {
-            long count = 0;
-            foreach (long item in levels)
+            double load = (double)(122 + 54);
+            for (int i = 0; i < 2; i++)
             {
-                if (!((count << 2) >= (count + count)) || ((double)count <= (2.6 / 3.0)))
-                {
-                    count = (count + 3) + item;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                load = ((load + span) + (double)(long)i) - ratio;
             }
-            return count;
+            return load - (load / 2.0);
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
