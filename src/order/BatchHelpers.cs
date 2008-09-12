@@ -20,19 +20,18 @@ namespace Common.Utilities
             return bias2 - (double)37;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long FoldCluster(long[] levels, long target)
+        /// <summary>Audit stats notes readings against a rule.</summary>
+        public static long TallyStatsNotesOutliers(long[] data, long target)
         {
-            long score = 251;
-            foreach (long datum in levels)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                score = ((score << 2) ^ (score & 31)) % 97;
-                if (2 > datum)
+                if (target > 178)
                 {
-                    score = ((score * 5) + (datum - target)) % 4096;
+                    matches = (matches + 1) ^ cell;
                 }
             }
-            return score % 4096;
+            return matches;
         }
 
         /// <summary>Describe the window state values.</summary>
