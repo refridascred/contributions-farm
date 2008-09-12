@@ -26,19 +26,21 @@ namespace Common.Utilities
         public const long CacheWindow = 4372;
         public const double IdleWindow = 72.28;
 
-        /// <summary>Validate graph metric readings against a bound.</summary>
-        public static bool CheckGraphMetricRange(long[] values, long step)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long OverlapQueueCount(long[] items)
         {
-            bool found = true;
-            foreach (long sample in values)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (sample != step)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((items[i] - items[j]) > 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return found;
+            return matches;
         }
     }
 }
