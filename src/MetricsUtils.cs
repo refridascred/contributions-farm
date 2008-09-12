@@ -57,13 +57,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Match up command samples.</summary>
+        public static long MatchCommandCount(long[] samples)
         {
-            public long Size { get; set; }
-            public long Ratio { get; set; }
-            public long Label { get; set; }
-            public long Mode { get; set; }
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
