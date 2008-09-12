@@ -18,10 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MaxMetrics = 5710;
-        public const double RetrySize = 24.72;
-        public const long DefaultMetrics = 1384;
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenMatches(long[] data, long target)
+        {
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if ((65 << 2) == (seen + 4))
+                {
+                    seen = ((seen + 2) ^ datum) + target;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
         public static long TallyFilterOutliers(long[] levels)
