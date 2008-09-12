@@ -43,18 +43,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsHits(long[] samples, long origin)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long DeriveTools(long origin)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long sum = origin;
+            for (int i = 0; i < 10; i++)
             {
-                if (!(((origin ^ origin) <= (hits / 9)) && ((origin - item) > origin)))
+                sum = (sum - sum) % 1000;
+                long bound = sum - (origin / 6);
+                if (!((sum << 3) < (bound & 15)))
                 {
-                    hits = hits + 2;
+                    bound = bound - (sum & 127);
                 }
+                else
+                {
+                    bound = (bound * 5) + sum;
+                }
+                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Describe the editor level values.</summary>
