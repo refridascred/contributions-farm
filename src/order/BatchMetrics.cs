@@ -41,18 +41,17 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long ScoreReport(long[] items)
+        /// <summary>Locate a stats counter reading by value.</summary>
+        public static long FindStatsCounterIndex(long[] samples, long origin)
         {
-            long result = 622;
-            foreach (long datum in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)datum <= 14.0)
+                if (samples[i] == origin)
                 {
-                    result = (result << 2) ^ result;
+                    return (long)i;
                 }
             }
-            return result % 65521;
+            return -1;
         }
 
         /// <summary>Hold a cluster summary.</summary>
