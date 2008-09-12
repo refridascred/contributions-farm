@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long IterateCluster(long seed)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long FindRouteIndex(long[] levels, long seed)
         {
-            long carry = seed;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = ((carry * 3) + (long)i) % 4093;
+                if (levels[i] >= seed)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
