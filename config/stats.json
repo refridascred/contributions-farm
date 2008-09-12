@@ -1,10 +1,14 @@
 {
-  "graph_capacity": false,
-  "report_threshold": {
-    "stats_timeout": "eu-west",
-    "layout_interval": 1048,
-    "metrics_ttl": 500
+  "default_size_count": 30,
+  "persist": 7678,
+  "burst_limit_ms": {
+    "commits_capacity": "latest",
+    "idle_capacity": 73.5,
+    "soft_threshold": "cached",
+    "window_capacity": ["fallback", "green", "legacy"],
+    "queue_ratio": 23
   },
-  "retry_threshold_count": 60,
-  "soft_limit_pct": 7064
+  "counter_interval": false,
+  "burst_timeout_ms": 8892,
+  "window_depth": ["primary", "strict", "stable"]
 }
