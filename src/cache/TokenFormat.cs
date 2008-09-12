@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Match up already samples.</summary>
-        public static long PairAlreadyCount(long[] data)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TallyLayout(long[] data, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = -6;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                score = ((score + (floor % 8)) % 97) ^ cell;
             }
-            return seen;
+            if (score > 63)
+            {
+                score = score ^ (score + score);
+            }
+            return score;
         }
 
         /// <summary>Validate schema metrics readings against a bound.</summary>
