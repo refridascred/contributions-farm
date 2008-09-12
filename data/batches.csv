@@ -1,7 +1,7 @@
-id,level,active,ratio,score
-1,41.39,fallback,47,647
-2,edge,staging,0.11,835
-3,889,895,233,349
-4,48.55,692,91.07,8.34
-5,80.04,eu-west,25.22,971
-6,458,983,local,37
+id,score,label
+1,71.4,green
+2,54.04,634
+3,53.64,standard
+4,10.32,825
+5,local,25
+6,blue,325
