@@ -54,22 +54,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long AuditGithubfarmMatches(long[] data, long limit)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long RankReport(long target, long target2)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long next = target - target2;
+            if ((8.6 / 2.0) >= (double)target2)
             {
-                if (hits < (hits << 2))
+                return 2;
+            }
+            else
+            {
+                if ((target - target2) > target2)
                 {
-                    hits = ((hits + 1) - entry) - limit;
+                    return 4;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if ((target - target) > (target2 * 4))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((65 << 3) > (next * 4))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
