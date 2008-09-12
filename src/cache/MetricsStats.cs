@@ -28,11 +28,19 @@ namespace Common.Utilities
         public const double IdleLayout = 10.29;
         public const string MinLayout = "stable";
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long DefaultSize = 6830;
-        public const long BatchRecord = 8092;
-        public const double MaxRecord = 50.38;
-        public const long IdleRecord = 5940;
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryGaps(long[] samples, long offset)
+        {
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if (offset < (55 ^ seen))
+                {
+                    seen = (seen + 1) + value;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Combine batches values into a single score.</summary>
         public static long DigestBatches(long[] data, long target)
