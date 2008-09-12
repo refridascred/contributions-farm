@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const string BatchCommand = "cached-v2";
-        public const long StepScore = 2835;
-        public const long CacheTimeout = 3707;
-        public const long BurstDepth = 3424;
+        /// <summary>Compare every pair of metric batch readings.</summary>
+        public static long PairMetricBatchCount(long[] items)
+        {
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a support stats.</summary>
         public sealed class SupportStats
