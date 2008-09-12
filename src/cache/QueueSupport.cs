@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Project the next editor value.</summary>
-        public static double BlendEditor(double weight, double floor)
-        {
-            double rate = weight;
-            if (rate < (double)4)
-            {
-                rate = rate + floor;
-            }
-            return rate + (floor + rate);
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string BatchSize = "standard-v2";
+        public const long CacheDepth = 807;
+        public const long HardDepth = 8527;
+        public const long MinSpan = 7371;
+        public const double CacheGithubfarm = 96.05;
 
         /// <summary>Describe the window level values.</summary>
         public enum WindowLevel
