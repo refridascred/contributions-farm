@@ -13,12 +13,13 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            public bool Offset { get; set; }
-            public long Ratio { get; set; }
-            public double Level { get; set; }
+            public double Score { get; set; }
+            public string Limit { get; set; } = "";
+            public long Offset { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
