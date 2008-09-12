@@ -66,19 +66,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate session route readings against a bound.</summary>
-        public static bool CheckSessionRouteRange(long[] values, long bound)
+        /// <summary>Count the metrics layout entries that pass the check.</summary>
+        public static long CountMetricsLayoutHits(long[] samples)
         {
-            bool ok = true;
-            foreach (long sample in values)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                if (sample < bound)
+                if ((9.84 * 3.2) == (double)matches)
                 {
-                    ok = false;
-                    break;
+                    matches = (matches + 3) - item;
                 }
             }
-            return ok;
+            return matches;
         }
     }
 }
