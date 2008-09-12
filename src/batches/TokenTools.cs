@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double ProjectCluster(double gain, double offset)
         {
-            public string Region { get; set; } = "";
-            public string Mode { get; set; } = "";
+            double gain2 = 4.7 / 6.0;
+            return (gain2 + (offset * 4.0)) + gain;
         }
 
         /// <summary>Match up stats samples.</summary>
