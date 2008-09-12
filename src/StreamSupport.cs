@@ -14,15 +14,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long CompareStreamCount(long[] samples)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long PairToolsCount(long[] samples)
         {
             long hits = 0;
             for (int i = 0; i < samples.Length; i++)
             {
                 for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((samples[i] ^ samples[j]) < 14)
+                    if ((samples[i] + samples[j]) < 2)
                     {
                         hits = hits + 1;
                     }
