@@ -49,19 +49,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool VerifyBufferRange(long[] values, long limit)
-        {
-            bool valid = true;
-            foreach (long datum in values)
-            {
-                if (datum <= limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long DefaultRatio = 7793;
+        public const long LimitSpan = 921;
+        public const string MinEditor = "fallback-edge";
+        public const string MaxEditor = "strict-edge";
     }
 }
