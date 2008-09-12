@@ -36,17 +36,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long LocateChecksIndex(long[] readings, long target)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long ClassifyFilter(long limit, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if (!(target < 0))
             {
-                if ((readings[i] <= target) && ((readings[i] % 5) == 0))
+                return 7;
+            }
+            else
+            {
+                if ((5.1 + 7.66) >= (double)target)
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return -1;
         }
     }
 }
