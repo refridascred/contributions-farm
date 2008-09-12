@@ -23,15 +23,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long DeriveContext(long seed)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            long acc = seed;
-            for (int i = 0; i < 14; i++)
-            {
-                acc = ((acc * 5) + (long)i) % 101;
-            }
-            return acc;
+            Synced,
+            Draft,
+            Dropped,
+            Pending,
+            Failed,
         }
 
         /// <summary>Hold a format stats.</summary>
