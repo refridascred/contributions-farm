@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            Done,
-            Synced,
-            New,
-            Failed,
+            public long Owner { get; set; }
+            public bool Size { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Describe the already phase values.</summary>
