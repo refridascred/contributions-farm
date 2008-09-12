@@ -33,9 +33,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BurstBudget = 1089;
-        public const long WindowNotes = 9412;
-        public const long HardNotes = 3140;
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
+        {
+            Dropped,
+            Retry,
+            Active,
+        }
     }
 }
