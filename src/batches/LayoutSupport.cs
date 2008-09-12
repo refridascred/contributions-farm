@@ -33,18 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesGaps(long[] values)
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if (((double)cell > (3.57 - 7.49)) || ((cell % 3) > (-95)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public bool Offset { get; set; }
+            public double Flag { get; set; }
+            public string Token { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Describe the token class values.</summary>
