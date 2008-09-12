@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Project the next batches contributi value.</summary>
-        public static double BlendBatchesContributi(double gain, double floor)
-        {
-            double drift = 7.63;
-            if (drift <= floor)
-            {
-                drift = drift + (gain - 1.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift + (floor / 8.0)) + (double)(long)i;
-            }
-            return drift + gain;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long HardSize = 1936;
+        public const double BaseContext = 98.72;
+        public const double LimitContext = 56.88;
+        public const double StepContext = 46.59;
+        public const double BurstRatio = 85.75;
 
         /// <summary>Hold a support stats.</summary>
         public sealed class SupportStats
