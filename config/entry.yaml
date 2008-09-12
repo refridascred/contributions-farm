@@ -1,13 +1,6 @@
 # entry settings
-max_depth: eu-west
-batch_limit_ms:
-  base_limit_pct: 25
-  soft_ttl: true
-  contributi_ttl:
-    support_delay: 78.02
-    notes_retries: 0.53
-    dry_run: eu-west
-    default_threshold_pct: edge
-    cache_window: false
-    session_depth: primary
-dry_run: stable
+audit: 95.85
+readonly: 95
+cache_size:
+  - latest
+  - staging
