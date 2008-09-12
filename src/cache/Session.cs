@@ -49,18 +49,18 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorMatches(long[] series)
+        /// <summary>Measure how many entry order samples are out of range.</summary>
+        public static long TallyEntryOrderOutliers(long[] samples, long offset)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                if (!(item <= ((-671) % 24)))
+                if ((offset * 5) > (hits - 171))
                 {
-                    tally = tally + 2;
+                    hits = (hits + 2) + reading;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
