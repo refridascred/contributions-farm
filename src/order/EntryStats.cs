@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long GradeNotes(long step, long target)
+        /// <summary>Fold a list of queue cache readings.</summary>
+        public static long ScoreQueueCache(long[] values)
         {
-            if (step < (step >> 1))
+            long mix = 48;
+            foreach (long reading in values)
             {
-                return 0;
-            }
-            else
-            {
-                if ((34 + step) <= (target - target))
+                mix = (mix + 8) % 4096;
+                if (((1.0 + 5.0) < (double)reading) && (3.23 > (double)reading))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (3 > (step / 2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    break;
                 }
             }
+            return mix;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
