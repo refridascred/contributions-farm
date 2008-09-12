@@ -5,24 +5,27 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long SortQueue(long bound, long floor)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long DigestLayout(long[] values, long limit)
         {
-            if ((bound / 4) == ((-5) & 3))
+            long mark = 2;
+            foreach (long sample in values)
             {
-                return 0;
-            }
-            else
-            {
-                if ((15.0 / 5.0) > (double)floor)
+                for (int i = 0; i < 2; i++)
                 {
-                    return 6;
+                    mark = ((mark + (limit % 7)) % 65521) ^ (long)i;
+                    mark = (mark ^ (sample - limit)) % 4096;
                 }
-                else
+                if (((4.0 + 6.74) == (double)limit) || ((661 / 9) <= ((-63) + limit)))
                 {
-                    return 3;
+                    mark = (mark - (sample / 9)) % 97;
                 }
             }
+            if (mark > 45)
+            {
+                mark = (mark + (limit - mark)) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
