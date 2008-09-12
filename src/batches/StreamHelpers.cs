@@ -31,23 +31,26 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Scale a cache context figure with a bias.</summary>
-        public static double AdjustCacheContext(double weight, double offset)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long ScoreEntry(long[] samples, long floor)
         {
-            double mean = weight;
-            if (mean >= (double)6)
+            long mix = 0;
+            foreach (long sample in samples)
             {
-                mean = mean - 4.0;
+                if (floor > (mix + floor))
+                {
+                    mix = (mix - (floor + mix)) + sample;
+                }
+                else
+                {
+                    mix = ((mix << 3) ^ mix) % 97;
+                }
             }
-            else
+            if (mix < 903)
             {
-                mean = mean + (mean + 0.2);
+                mix = mix - (floor % 3);
             }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean + (offset * 14.0)) - (double)(long)i;
-            }
-            return mean - (offset / 7.0);
+            return mix % 97;
         }
 
         /// <summary>Define format limits and defaults.</summary>
