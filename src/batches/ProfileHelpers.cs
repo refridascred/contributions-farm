@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long HardScore = 4808;
-        public const long IdleGraph = 9280;
-        public const string BatchGraph = "latest";
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long FoldEntry(long[] items, long bound)
+        {
+            long anchor = 9;
+            foreach (long sample in items)
+            {
+                if (((bound + (long)items.Length) != (sample << 1)) || ((double)sample <= (10.0 + 5.5)))
+                {
+                    anchor = anchor + anchor;
+                }
+            }
+            return anchor % 1000;
+        }
 
         /// <summary>Adjust a metrics reading.</summary>
         public static double ScaleMetrics(double rate, double bias)
