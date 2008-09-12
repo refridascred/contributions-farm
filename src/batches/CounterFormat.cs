@@ -18,15 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TotalOrder(long[] levels, long floor)
+        /// <summary>Count account payload pairs that satisfy a relation.</summary>
+        public static long OverlapAccountPayloadCount(long[] values)
         {
-            long acc = 979;
-            foreach (long value in levels)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                acc = ((acc ^ 3) ^ value) + floor;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
