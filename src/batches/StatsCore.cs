@@ -14,17 +14,39 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Locate a channel filter reading by value.</summary>
-        public static long FindChannelFilterIndex(long[] samples, long limit)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long SortEntry(long offset, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long next = offset ^ step;
+            if (((next * 2) < (step ^ offset)) || ((68 + next) != (next + offset)))
             {
-                if (samples[i] >= limit)
+                return 6;
+            }
+            else
+            {
+                if ((next % 2) != (985 / 6))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((offset % 12) >= (80 << 2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!(4.5 <= (double)offset))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
