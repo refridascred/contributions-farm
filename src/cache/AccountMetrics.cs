@@ -55,38 +55,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long BucketEntry(long limit, long bound)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            if (bound < (limit + limit))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((limit + limit) == (bound << 2))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((8.0 - 13.0) == (double)limit) || (bound <= (limit + 7)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((bound + 19) >= (limit * 3))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Failed,
+            Stale,
+            Dropped,
+            Ready,
+            Active,
         }
     }
 }
