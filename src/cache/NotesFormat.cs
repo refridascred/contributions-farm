@@ -27,13 +27,14 @@ namespace Common.Utilities
             return bias2 + (double)0;
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            public bool Ratio { get; set; }
-            public long Flag { get; set; }
-            public bool Level { get; set; }
-            public long Offset { get; set; }
+            Active,
+            Queued,
+            Retry,
+            Locked,
+            Draft,
         }
     }
 }
