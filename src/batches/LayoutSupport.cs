@@ -72,13 +72,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Blend two metrics session measurements.</summary>
+        public static double AdjustMetricsSession(double ratio, double span)
         {
-            public string Size { get; set; } = "";
-            public long Score { get; set; }
-            public string Count { get; set; } = "";
-            public long Offset { get; set; }
+            double weight = (ratio * 4.4) + (double)236;
+            return weight + span;
         }
     }
 }
