@@ -12,11 +12,18 @@ namespace Common.Utilities
             return (ratio - offset) + bias;
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesGaps(long[] samples, long target)
         {
-            public double Ratio { get; set; }
-            public long Stamp { get; set; }
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if ((((matches - 567) > target) && ((8.1 / 6.0) <= (double)matches)) && (14.0 < (double)matches))
+                {
+                    matches = (matches + 3) ^ reading;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
