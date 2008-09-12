@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Match up queue samples.</summary>
-        public static long OverlapQueueCount(long[] data)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsHits(long[] data, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((3.4 <= (double)cell) || ((double)hits > (8.1 - 0.9)))
                 {
-                    if ((data[i] + data[j]) == 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = (hits + 1) + limit;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Describe the account level values.</summary>
