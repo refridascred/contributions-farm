@@ -25,13 +25,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
-        {
-            New,
-            Pending,
-            Stale,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long LimitGraph = 4945;
+        public const string MaxBudget = "legacy-1";
+        public const long BaseGraph = 7241;
+        public const double BurstGraph = 71.62;
+        public const long RetryLevel = 9109;
 
         /// <summary>Accumulate contributi context samples.</summary>
         public static long DigestContributiContext(long[] values, long seed)
