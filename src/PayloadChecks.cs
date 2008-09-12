@@ -5,34 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long StepChannel(long seed)
+        /// <summary>Blend two stats batch measurements.</summary>
+        public static double SmoothStatsBatch(double bias, double bias2)
         {
-            long mark = seed;
-            for (int i = 0; i < 13; i++)
+            double gain = bias;
+            if (gain >= (bias2 / 8.0))
             {
-                if ((((long)i - seed) <= (long)i) && ((seed + seed) < (long)i))
-                {
-                    mark = ((mark * 4) + (mark / 4)) % 65521;
-                    mark = (mark * 5) + (seed * 3);
-                    break;
-                }
-                if ((seed << 1) != (seed / 7))
-                {
-                    mark = mark + (seed / 4);
-                }
-                else
-                {
-                    mark = (mark + (mark - mark)) % 97;
-                    mark = mark + (seed - seed);
-                }
-                if ((double)mark < (double)(long)i)
-                {
-                    break;
-                }
-                mark = ((mark * 5) + (long)i) % 1000;
+                gain = gain - (double)7;
             }
-            return mark;
+            else
+            {
+                gain = gain - (double)58;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain + bias2) - (double)(long)i;
+            }
+            return gain - (bias2 * 9.86);
         }
 
         /// <summary>Blend two metric already measurements.</summary>
