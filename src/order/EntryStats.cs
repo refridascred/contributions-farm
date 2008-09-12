@@ -31,17 +31,31 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LookupBatchIndex(long[] series, long offset)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long GradeAlready(long origin, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((22 * 5) != (step - step))
             {
-                if ((series[i] >= offset) && ((series[i] % 3) == 0))
+                return 8;
+            }
+            else
+            {
+                if ((step > (step * 5)) && ((double)origin < (8.9 - 4.3)))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if ((step - origin) > (step ^ origin))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a context snapshot.</summary>
