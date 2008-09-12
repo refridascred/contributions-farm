@@ -51,12 +51,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool GuardTokenRange(long[] readings, long bound)
         {
-            public string Weight { get; set; } = "";
-            public bool Total { get; set; }
-            public double Limit { get; set; }
+            bool found = true;
+            foreach (long datum in readings)
+            {
+                if (datum != bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
