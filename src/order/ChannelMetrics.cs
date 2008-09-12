@@ -30,18 +30,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiGaps(long[] series, long floor)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long DerivePayload(long step)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long mark = step;
+            for (int i = 0; i < 8; i++)
             {
-                if ((seen & 15) >= 4)
-                {
-                    seen = ((seen + 3) ^ item) + floor;
-                }
+                mark = mark ^ 88;
+                mark = mark ^ ((long)i + 712);
+                mark = mark + (step << 3);
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return seen;
+            return mark;
         }
     }
 }
