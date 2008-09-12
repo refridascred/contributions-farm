@@ -1,11 +1,11 @@
 # entry settings
-format_capacity: 9
-soft_threshold_s: eu-west
-poll_timeout_count:
-  - strict
-  - stable
-idle_interval_s:
-  hard_depth: 55.82
-  base_interval: false
-  soft_retries_s: 5079
-  account_size: 56.03
+dry_run: stable
+contributi_delay:
+  - 413
+  - 265
+  - 106
+  - 164
+burst_threshold_s: primary
+cache_window_count: blue
+metrics_timeout: true
+flush_size: false
