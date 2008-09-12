@@ -1,9 +1,11 @@
 # support settings
-sync_limit_pct:
-  - 4
-  - 321
-session_window: latest
-burst_ratio: 27.96
-cache_retries_pct: blue
-flush_size_s: 250
-persist: cached
+soft_depth_count: fallback
+idle_size_count:
+  - 55
+  - 210
+  - 470
+  - 351
+command_depth: strict
+default_limit_pct:
+  - 264
+  - 41
