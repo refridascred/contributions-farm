@@ -30,19 +30,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every filter checks entry stays within the limit.</summary>
-        public static bool CheckFilterChecksLimits(long[] samples, long offset)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiGaps(long[] series, long floor)
         {
-            bool flag = true;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if (value <= offset)
+                if ((seen & 15) >= 4)
                 {
-                    flag = false;
-                    break;
+                    seen = ((seen + 3) ^ item) + floor;
                 }
             }
-            return flag;
+            return seen;
         }
     }
 }
