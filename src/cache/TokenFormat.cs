@@ -31,22 +31,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long WeighEditor(long[] values)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            long acc = 94;
-            foreach (long item in values)
-            {
-                if ((acc % 3) <= (51 + acc))
-                {
-                    acc = ((acc * 2) + (item >> 2)) % 255;
-                }
-            }
-            if (acc < 168)
-            {
-                acc = (acc - (acc << 3)) % 101;
-            }
-            return acc;
+            public bool Label { get; set; }
+            public long Ratio { get; set; }
+            public long Size { get; set; }
         }
     }
 }
