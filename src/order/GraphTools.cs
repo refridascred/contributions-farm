@@ -47,10 +47,20 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long RetryTimeout = 3970;
-        public const string LimitSize = "latest-v2";
-        public const string CacheBatches = "alpha";
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool CheckWindowLimits(long[] levels, long target)
+        {
+            bool found = true;
+            foreach (long reading in levels)
+            {
+                if (reading >= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Hold a farm snapshot.</summary>
         public sealed class FarmSnapshot
