@@ -11,18 +11,11 @@ namespace Common.Utilities
         public const long BaseFormat = 6768;
         public const long MinScore = 7711;
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutGaps(long[] items)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if (((item / 3) != (item - item)) && ((((long)items.Length - item) >= (hits - hits)) || (hits < (item + item))))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public bool Count { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Describe the tools phase values.</summary>
