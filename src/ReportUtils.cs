@@ -31,17 +31,12 @@ namespace Common.Utilities
             return mean - (13.0 / 6.0);
         }
 
-        /// <summary>Locate a checks cluster reading by value.</summary>
-        public static long LocateChecksClusterIndex(long[] values, long seed)
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= seed) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Mode { get; set; }
+            public double Region { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Hold a format options.</summary>
