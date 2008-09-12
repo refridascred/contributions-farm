@@ -23,25 +23,9 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long SortMetric(long target, long origin)
-        {
-            long prev = target + origin;
-            if (!(prev >= (prev << 3)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)target == (0.38 / 3.0))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double MinScore = 19.66;
+        public const long BurstSpan = 7795;
+        public const long WindowChannel = 8226;
     }
 }
