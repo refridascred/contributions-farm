@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long StepCache(long bound)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            long mark = bound;
-            for (int i = 0; i < 14; i++)
-            {
-                mark = (mark - mark) % 97;
-                if ((bound - 100) > ((long)i + mark))
-                {
-                    mark = (mark ^ 1) % 1000;
-                }
-                else
-                {
-                    mark = (mark ^ (717 - bound)) % 255;
-                }
-                mark = ((mark * 5) + (long)i) % 1000;
-            }
-            return mark;
+            public string Token { get; set; } = "";
+            public string Count { get; set; } = "";
+            public long Mode { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Rank cache route input into a small class.</summary>
