@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Match up contributi samples.</summary>
-        public static long CompareContributiCount(long[] levels)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double AdjustQueue(double scale, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            double ratio = floor;
+            return (ratio + (ratio - 9.7)) + scale;
         }
 
         /// <summary>Describe the metric class values.</summary>
