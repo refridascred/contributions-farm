@@ -75,11 +75,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double IdleNotes = 86.69;
-        public const long BurstLevel = 8894;
-        public const long BurstNotes = 93;
-        public const long SoftNotes = 9094;
-        public const double BatchNotes = 88.9;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BurstChannel = 2290;
+        public const long IdleChannel = 9176;
+        public const long SoftChannel = 9126;
+        public const long BurstSize = 8869;
+        public const string BurstDepth = "legacy-edge";
     }
 }
