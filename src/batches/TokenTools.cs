@@ -12,21 +12,17 @@ namespace Common.Utilities
         public const long MinLevel = 4745;
         public const long HardSpan = 655;
 
-        /// <summary>Match up stats samples.</summary>
-        public static long PairStatsCount(long[] items)
+        /// <summary>Locate a layout filter reading by value.</summary>
+        public static long SeekLayoutFilterIndex(long[] readings, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (readings[i] > floor)
                 {
-                    if ((items[i] + items[j]) == 12)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
