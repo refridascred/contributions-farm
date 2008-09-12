@@ -1,6 +1,5 @@
 {
-  "dry_run": "strict",
-  "default_size": "green",
-  "poll_delay_count": false,
-  "persist": 28.36
+  "warm_size_s": false,
+  "poll_limit_count": 100,
+  "idle_threshold_pct": 84.2
 }
