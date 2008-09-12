@@ -38,23 +38,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long DigestQueue(long[] series)
+        /// <summary>Adjust a queue session reading.</summary>
+        public static double ScaleQueueSession(double weight, double offset)
         {
-            long sum = 808;
-            foreach (long value in series)
+            double mean = offset + (1.0 * 8.2);
+            if (mean >= (double)87)
             {
-                sum = (sum + 591) % 1000;
-                if ((double)value >= (double)sum)
-                {
-                    break;
-                }
+                mean = mean - (offset - mean);
             }
-            if (sum > 128)
+            for (int i = 0; i < 4; i++)
             {
-                sum = ((sum * 5) + sum) % 65521;
+                mean = (mean - 9.0) - (double)(long)i;
             }
-            return sum % 65521;
+            return mean - weight;
         }
 
         /// <summary>Describe the metric level values.</summary>
