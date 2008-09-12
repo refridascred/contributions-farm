@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            public long Rank { get; set; }
-            public string Size { get; set; } = "";
-            public long Region { get; set; }
+            Ready,
+            Idle,
+            Locked,
+            Stale,
+            Failed,
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
