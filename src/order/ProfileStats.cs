@@ -33,21 +33,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long PairRecordCount(long[] items)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatMatches(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long value in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((941 * 5) > (value + matches))
                 {
-                    if ((items[i] - items[j]) > 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = matches + 2;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Describe the schema mode values.</summary>
