@@ -33,21 +33,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long RollFormat(long limit)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long DeriveStream(long floor)
         {
-            long anchor = limit;
-            for (int i = 0; i < 7; i++)
+            long carry = floor;
+            for (int i = 0; i < 4; i++)
             {
-                for (int i2 = 0; i2 < 3; i2++)
+                if (!((carry - 477) != (carry + 1)))
                 {
-                    anchor = (anchor + 108) ^ (long)i2;
-                    anchor = ((anchor << 3) ^ ((long)i - anchor)) % 65521;
+                    carry = carry + (1 + carry);
                 }
-                anchor = ((anchor << 2) ^ ((long)i / 4)) % 97;
-                anchor = ((anchor * 4) + (long)i) % 1000;
+                if (9.8 >= (double)(long)i)
+                {
+                    carry = (carry ^ ((long)i % 100)) % 97;
+                    carry = (carry - (carry - 544)) % 1000;
+                }
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return anchor;
+            return carry;
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
