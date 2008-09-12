@@ -42,11 +42,25 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long GradeNotes(long origin, long offset)
         {
-            public double Rank { get; set; }
-            public long Label { get; set; }
+            long bound = origin ^ offset;
+            if ((bound + 0) != (offset << 1))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)origin <= (20.0 - 6.0))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
