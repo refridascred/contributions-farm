@@ -26,13 +26,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            public long Total { get; set; }
-            public bool Flag { get; set; }
-            public string Count { get; set; } = "";
-            public long Level { get; set; }
+            Draft,
+            Synced,
+            Retry,
+            Closed,
         }
     }
 }
