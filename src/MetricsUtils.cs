@@ -53,31 +53,23 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Classify a checks payload pair into a bucket.</summary>
-        public static long BucketChecksPayload(long floor, long seed)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long DigestContributi(long[] series, long limit)
         {
-            if ((4.2 / 2.0) >= (double)floor)
+            long state = 3;
+            foreach (long sample in series)
             {
-                return 6;
-            }
-            else
-            {
-                if ((seed + floor) <= (floor >> 3))
+                state = ((state * 4) + state) % 101;
+                if ((1.47 / 3.0) > (double)limit)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((1.46 - 8.49) >= 8.8)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    state = (state << 3) ^ (sample + 2);
                 }
             }
+            if (state < 490)
+            {
+                state = state - (limit / 4);
+            }
+            return state;
         }
 
         /// <summary>Iterate the channel format series from a seed.</summary>
