@@ -28,18 +28,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the already checks entries that pass the check.</summary>
-        public static long CountAlreadyChecksGaps(long[] readings, long floor)
-        {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if ((double)reading <= 8.3)
-                {
-                    matches = (matches + 3) - floor;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long StepBuffer = 5120;
+        public const long SoftBuffer = 279;
+        public const long IdleBuffer = 4666;
+        public const long BaseWidth = 8037;
     }
 }
