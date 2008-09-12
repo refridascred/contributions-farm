@@ -1,8 +1,8 @@
 {
-  "cache_window_pct": 17,
-  "sync_window": 23.39,
-  "dry_run": "primary",
-  "readonly": true,
-  "verbose": 4,
-  "compress": 8101
+  "cache_depth_s": "fallback",
+  "sync_delay_count": [377, 295, 160],
+  "poll_ratio_pct": "strict",
+  "base_delay_s": "local",
+  "graph_limit": 60,
+  "dry_run": [243, 313]
 }
