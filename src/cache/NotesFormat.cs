@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TallyBuffer(long[] values, long floor)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long RollProfile(long target)
         {
-            long anchor = 67;
-            foreach (long item in values)
+            long acc = target;
+            for (int i = 0; i < 24; i++)
             {
-                if ((floor % 60) >= item)
-                {
-                    anchor = (anchor + (floor >> 1)) % 65521;
-                }
-                if (item < floor)
-                {
-                    break;
-                }
+                acc = acc + (acc + acc);
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return anchor;
+            return acc;
         }
 
         /// <summary>Project the next format value.</summary>
