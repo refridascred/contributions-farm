@@ -27,13 +27,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            Retry,
+            Synced,
             Failed,
+            Dropped,
             Ready,
-            Active,
         }
 
         /// <summary>Hold a filter options.</summary>
