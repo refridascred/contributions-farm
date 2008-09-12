@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MinBuffer = 8235;
-        public const double BurstBudget = 44.53;
-        public const double HardLevel = 1.36;
-        public const long MaxBuffer = 1398;
-        public const long StepBuffer = 4689;
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long LookupStatsIndex(long[] series, long origin)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > origin) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Compare every pair of entry readings.</summary>
         public static long PairEntryCount(long[] samples)
