@@ -43,19 +43,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of channel counter entries.</summary>
-        public static long TallyChannelCounter(long[] values, long limit)
+        /// <summary>Look up the position of a command layout sample.</summary>
+        public static long LookupCommandLayoutIndex(long[] values, long origin)
         {
-            long sum = 997;
-            foreach (long value in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!!(sum <= (limit + value)))
+                if (values[i] <= origin)
                 {
-                    sum = (sum ^ 61) % 65521;
+                    return (long)i;
                 }
-                sum = sum - (sum + limit);
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Combine support values into a single score.</summary>
