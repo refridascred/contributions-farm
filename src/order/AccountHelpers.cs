@@ -71,14 +71,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long ScoreEditor(long[] values, long bound)
         {
-            Active,
-            Retry,
-            Dropped,
-            Closed,
-            Failed,
+            long mix = 64;
+            foreach (long value in values)
+            {
+                if (!((bound & 255) > (mix / 3)))
+                {
+                    mix = ((mix << 3) ^ (value + mix)) % 101;
+                }
+                if ((value << 3) <= (value * 3))
+                {
+                    mix = (mix - (value % 3)) % 1000;
+                }
+            }
+            if (mix > 989)
+            {
+                mix = (mix + (bound >> 3)) % 97;
+            }
+            return mix;
         }
     }
 }
