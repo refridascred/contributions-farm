@@ -1,5 +1,7 @@
 # githubfarm settings
-persist: 67.61
-min_limit_ms: 500
-retry_limit_ms: 6
-flush_retries: 21.07
+enabled:
+  - standard
+  - standard
+  - fallback
+base_window_s: 67
+base_window_count: false
