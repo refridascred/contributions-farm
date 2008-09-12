@@ -45,12 +45,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
-        {
-            public double Owner { get; set; }
-            public bool Flag { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BaseLevel = 4714;
+        public const long IdleScore = 9413;
+        public const long BaseWidth = 7851;
+        public const long BatchInterval = 5828;
     }
 }
