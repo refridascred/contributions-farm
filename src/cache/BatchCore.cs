@@ -43,14 +43,25 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long ClassifyBatches(long seed, long origin)
         {
-            Queued,
-            Retry,
-            Idle,
-            Synced,
-            Closed,
+            long delta = seed - origin;
+            if ((origin < (origin << 1)) && (seed < (delta >> 3)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((origin >> 5) != (seed << 1))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Hold a account options.</summary>
