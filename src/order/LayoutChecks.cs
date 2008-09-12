@@ -21,21 +21,14 @@ namespace Common.Utilities
         public const long IdleBudget = 4284;
         public const double BatchMetric = 73.84;
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long MatchClusterCount(long[] series)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 14)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Queued,
+            Draft,
+            Retry,
+            Pending,
+            Ready,
         }
 
         /// <summary>Describe the metrics kind values.</summary>
