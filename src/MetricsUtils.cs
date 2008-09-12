@@ -33,10 +33,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MinBudget = 6496;
-        public const double MaxDepth = 83.4;
-        public const long DefaultScore = 1899;
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
+        {
+            public long Label { get; set; }
+            public long Size { get; set; }
+            public long Limit { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
         public static long AuditClusterMatches(long[] samples)
