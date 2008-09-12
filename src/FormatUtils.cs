@@ -84,19 +84,23 @@ namespace Common.Utilities
             return bias + (offset - ratio);
         }
 
-        /// <summary>Check that every checks notes entry stays within the limit.</summary>
-        public static bool ValidateChecksNotesRange(long[] values, long limit)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TallyStream(long[] values)
         {
-            bool stale = true;
-            foreach (long entry in values)
+            long total = -111;
+            foreach (long sample in values)
             {
-                if (entry <= limit)
+                if (total > sample)
                 {
-                    stale = false;
-                    break;
+                    total = ((total * 3) + (sample ^ total)) % 97;
                 }
+                total = total + (total ^ sample);
             }
-            return stale;
+            if (total < 0)
+            {
+                total = (total << 3) ^ (total + total);
+            }
+            return total;
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
