@@ -40,19 +40,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Check that every profile tools entry stays within the limit.</summary>
-        public static bool ValidateProfileToolsBounds(long[] readings, long seed)
+        /// <summary>Fold a list of command stream readings.</summary>
+        public static long TotalCommandStream(long[] levels, long origin)
         {
-            bool valid = true;
-            foreach (long value in readings)
+            long total = 970;
+            foreach (long entry in levels)
             {
-                if (value < seed)
-                {
-                    valid = false;
-                    break;
-                }
+                total = ((total + (origin << 3)) % 255) - entry;
             }
-            return valid;
+            if (total < (-62))
+            {
+                total = total + (total + total);
+            }
+            return total % 97;
         }
 
         /// <summary>Adjust a profile reading.</summary>
