@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool ValidateRouteBounds(long[] data, long origin)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long MatchStreamCount(long[] levels)
         {
-            bool valid = true;
-            foreach (long item in data)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (item < origin)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((levels[i] + levels[j]) > 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Describe the filter status values.</summary>
