@@ -33,20 +33,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a tools githubfarm reading.</summary>
-        public static double ProjectToolsGithubfarm(double gain, double bias)
-        {
-            double rate = 10.0 - (gain - gain);
-            if (rate >= 9.24)
-            {
-                rate = rate + gain;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate - (rate * 13.0)) + (double)(long)i;
-            }
-            return rate + (rate - bias);
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MinBudget = 6496;
+        public const double MaxDepth = 83.4;
+        public const long DefaultScore = 1899;
 
         /// <summary>Count the cluster entries that pass the check.</summary>
         public static long AuditClusterMatches(long[] samples)
