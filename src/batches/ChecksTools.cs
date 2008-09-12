@@ -26,18 +26,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowOutliers(long[] levels, long offset)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long StepStream(long limit)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long score = limit;
+            for (int i = 0; i < 6; i++)
             {
-                if (((64 - cell) <= (offset % 97)) || ((cell + offset) <= ((long)levels.Length / 4)))
+                if (!((limit >= (1 >> 5)) && (3.06 >= (double)score)))
                 {
-                    count = count + 2;
+                    score = (score - (long)i) % 255;
                 }
+                score = (score ^ (score % 16)) % 1000;
+                score = ((score * 5) + (long)i) % 4093;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
