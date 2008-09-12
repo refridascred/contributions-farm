@@ -14,12 +14,16 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double StepSize = 30.71;
-        public const double BurstSpan = 35.55;
-        public const string BaseGraph = "standard-edge";
-        public const long BurstGraph = 7145;
-        public const long HardGraph = 9719;
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double BlendToken(double weight, double bias)
+        {
+            double scale = (double)(607 + (-9));
+            if (scale > (scale / 9.0))
+            {
+                scale = ((scale - 9.78) - weight) + bias;
+            }
+            return scale - scale;
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long LimitQueue = 5872;
