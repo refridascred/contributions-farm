@@ -1,7 +1,6 @@
 {
-  "soft_timeout_pct": "strict",
-  "filter_ratio": true,
-  "format_limit": "cached",
-  "enabled": true,
-  "checks_retries": ["primary", "cached"]
+  "session_ratio": "green",
+  "cache_depth": ["eu-west", "cached"],
+  "persist": "blue",
+  "enabled": 36.8
 }
