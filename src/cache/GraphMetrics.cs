@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double BatchSize = 82.38;
-        public const long BatchFarm = 3977;
-        public const long BatchDepth = 1486;
-        public const long RetryFarm = 6548;
+        /// <summary>Blend two metric measurements.</summary>
+        public static double AdjustMetric(double ratio, double offset)
+        {
+            double ratio2 = (3.1 / 7.0) + (double)304;
+            for (int i = 0; i < 5; i++)
+            {
+                ratio2 = (((ratio2 - ratio2) + (double)(long)i) + ratio) - offset;
+            }
+            return ratio2 - 8.0;
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const long StepRecord = 2224;
