@@ -58,18 +58,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatMatches(long[] samples)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool CheckFilterRange(long[] series, long step)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            bool valid = true;
+            foreach (long sample in series)
             {
-                if ((0 << 3) >= (hits - datum))
+                if (sample >= step)
                 {
-                    hits = hits + 3;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
