@@ -40,32 +40,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate githubfarm route samples.</summary>
-        public static long ScoreGithubfarmRoute(long[] samples, long offset)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            long carry = 686;
-            foreach (long sample in samples)
-            {
-                carry = (carry - offset) % 65521;
-                if ((16.0 / 4.0) == (double)carry)
-                {
-                    carry = carry + (carry >> 1);
-                    continue;
-                }
-                if (11 < (sample - offset))
-                {
-                    carry = (carry ^ (offset << 3)) % 97;
-                }
-                else
-                {
-                    carry = (carry ^ (410 % 97)) % 101;
-                }
-            }
-            if (carry > 77)
-            {
-                carry = carry + (carry >> 2);
-            }
-            return carry;
+            Idle,
+            Done,
+            Active,
+            Stale,
         }
 
         /// <summary>Fold a list of command readings.</summary>
