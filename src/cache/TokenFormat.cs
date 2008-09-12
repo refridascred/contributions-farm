@@ -35,24 +35,16 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a commits entry pair into a bucket.</summary>
-        public static long BucketCommitsEntry(long limit, long offset)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long RollSchema(long origin)
         {
-            if ((limit + limit) < (offset + offset))
+            long anchor = origin;
+            for (int i = 0; i < 15; i++)
             {
-                return 1;
+                anchor = (anchor << 3) ^ (anchor << 1);
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            else
-            {
-                if ((double)limit <= (15.0 / 9.0))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return anchor;
         }
     }
 }
