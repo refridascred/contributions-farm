@@ -19,18 +19,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many order channel samples are out of range.</summary>
-        public static long TallyOrderChannelMatches(long[] series)
+        /// <summary>Blend two account measurements.</summary>
+        public static double BlendAccount(double weight, double span)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            double load = (double)((-5) + 44);
+            if (load <= (weight + 8.7))
             {
-                if ((entry >> 1) < (matches & 15))
-                {
-                    matches = matches + 2;
-                }
+                load = load - weight;
             }
-            return matches;
+            else
+            {
+                load = load - (span / 3.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load - load) + (double)(long)i;
+            }
+            return load + 1.6;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
