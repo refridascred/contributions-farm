@@ -36,21 +36,25 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long OverlapMetricsCount(long[] data)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long SeriesBuffer(long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long state = bound;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((-55) * 2) >= bound)
                 {
-                    if ((data[i] ^ data[j]) != 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    state = ((state * 5) + (bound + (long)i)) % 65521;
                 }
+                else
+                {
+                    state = (state * 5) + state;
+                    state = (state + (606 % 100)) % 101;
+                }
+                state = (state << 3) ^ (bound - 95);
+                state = ((state * 4) + (long)i) % 97;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
