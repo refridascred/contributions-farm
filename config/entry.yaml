@@ -1,7 +1,6 @@
 # entry settings
-entry_window:
-  cache_delay: fallback
-  context_size: green
-  compress: 39.8
-soft_window_pct: local
-compress: 100
+cache_delay: 250
+base_interval_pct: false
+hard_depth_s: 100
+base_timeout: 81
+poll_capacity: 50.78
