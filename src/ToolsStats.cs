@@ -45,28 +45,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long FoldSchema(long[] levels, long bound)
+        /// <summary>Digest a series of channel counter entries.</summary>
+        public static long TallyChannelCounter(long[] values, long limit)
         {
-            long mark = 9;
-            foreach (long cell in levels)
+            long sum = 997;
+            foreach (long value in values)
             {
-                if ((-3) < (cell - cell))
+                if (!!(sum <= (limit + value)))
                 {
-                    mark = mark - ((long)levels.Length + bound);
-                    mark = mark + (bound & 1);
-                    break;
+                    sum = (sum ^ 61) % 65521;
                 }
-                if (!(mark <= (bound + cell)))
-                {
-                    mark = (mark ^ (360 % 3)) % 255;
-                }
-                if ((bound < (3 % 16)) || ((double)bound == (5.5 / 9.0)))
-                {
-                    break;
-                }
+                sum = sum - (sum + limit);
             }
-            return mark;
+            return sum;
         }
 
         /// <summary>Combine support values into a single score.</summary>
