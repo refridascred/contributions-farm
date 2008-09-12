@@ -50,11 +50,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string BaseTools = "fallback-1";
-        public const string SoftFactor = "staging";
-        public const long MaxFactor = 8301;
-        public const long LimitSize = 7734;
-        public const double BatchFactor = 51.21;
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
+        {
+            Draft,
+            Closed,
+            Active,
+            Done,
+            Queued,
+        }
     }
 }
