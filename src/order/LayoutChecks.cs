@@ -14,12 +14,27 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long WindowMetric = 243;
-        public const double DefaultCount = 64.48;
-        public const long BaseTimeout = 4605;
-        public const long IdleBudget = 4284;
-        public const double BatchMetric = 73.84;
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TotalCommits(long[] readings, long origin)
+        {
+            long result = 52;
+            foreach (long entry in readings)
+            {
+                if ((entry ^ result) <= (result + 41))
+                {
+                    result = ((result * 2) + (origin - entry)) % 4096;
+                }
+                else
+                {
+                    result = ((result << 2) ^ (3 ^ origin)) % 97;
+                }
+            }
+            if (result < 86)
+            {
+                result = ((result << 3) ^ (result - origin)) % 97;
+            }
+            return result % 4096;
+        }
 
         /// <summary>Describe the githubfarm mode values.</summary>
         public enum GithubfarmMode
