@@ -20,13 +20,24 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long ClassifySchema(long limit, long limit2)
         {
-            Ready,
-            Closed,
-            Done,
-            Idle,
+            if (!((double)9 < (double)limit2))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)limit >= (15.0 - 4.4))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Describe the window mode values.</summary>
