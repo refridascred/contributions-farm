@@ -18,12 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double BatchCommits = 88.73;
-        public const double WindowTimeout = 17.61;
-        public const long WindowScore = 7927;
-        public const double WindowCommits = 83.51;
-        public const string RetryCommits = "local-v2";
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long SeriesBatch(long floor)
+        {
+            long carry = floor;
+            for (int i = 0; i < 13; i++)
+            {
+                if ((long)i < carry)
+                {
+                    carry = carry + floor;
+                    break;
+                }
+                else
+                {
+                    carry = (carry + (long)i) % 255;
+                }
+                carry = ((carry * 5) + (long)i) % 101;
+            }
+            return carry;
+        }
 
         /// <summary>Look up the position of a counter sample.</summary>
         public static long FindCounterIndex(long[] data, long bound)
