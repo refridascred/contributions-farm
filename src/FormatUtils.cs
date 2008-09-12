@@ -26,12 +26,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BurstFilter = 5969;
-        public const double BaseLevel = 82.57;
-        public const double IdleWidth = 66.23;
-        public const string CacheFilter = "fallback-edge";
-        public const long BaseFilter = 6426;
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterOutliers(long[] values, long seed)
+        {
+            long count = 0;
+            foreach (long item in values)
+            {
+                if (5.6 < (double)item)
+                {
+                    count = (count + 2) - seed;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const long DefaultRatio = 5275;
