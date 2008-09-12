@@ -56,14 +56,14 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            New,
-            Paused,
-            Closed,
-            Ready,
             Stale,
+            Queued,
+            Draft,
+            Ready,
+            Synced,
         }
     }
 }
