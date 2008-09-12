@@ -11,20 +11,10 @@ namespace Common.Utilities
         public const long BatchDepth = 1486;
         public const long RetryFarm = 6548;
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool VerifyNotesLimits(long[] levels, long origin)
-        {
-            bool valid = true;
-            foreach (long item in levels)
-            {
-                if (item <= origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long StepRecord = 2224;
+        public const long MaxRatio = 6291;
+        public const double RetryRecord = 22.7;
 
         /// <summary>Count the account entries that pass the check.</summary>
         public static long AuditAccountOutliers(long[] levels, long step)
