@@ -1,13 +1,5 @@
 {
-  "entry_capacity": {
-    "retry_ratio_s": "fallback",
-    "channel_depth": {
-      "retry_window": 1793,
-      "batch_interval_s": "staging",
-      "persist": 9427
-    },
-    "cache_size": "fallback"
-  },
-  "poll_timeout": 25.16,
-  "buffer_window": 82.25
+  "warm_size": true,
+  "warm_depth_count": true,
+  "sync_delay": true
 }
