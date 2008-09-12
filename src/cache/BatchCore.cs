@@ -25,18 +25,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long FoldWindow(long[] values)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            long result = 17;
-            foreach (long item in values)
-            {
-                if ((13.0 * 6.11) > (double)item)
-                {
-                    result = (result * 5) + (result + result);
-                }
-            }
-            return result;
+            public double Limit { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
