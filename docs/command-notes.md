@@ -1,11 +1,12 @@
 # Command notes
 
-Each batches is validated before it reaches the metric queue.
-Use metric settings to tune how often format data is refreshed.
-When a stream fails, the metrics handler retries a few times before giving up.
+Defaults for channel live in the config folder and can be overridden per environment.
+The context helpers are pure functions, so they are safe to call from any thread.
+The farm module keeps commits values in sync with the cache cache.
 
 ## Guidelines
 
-- Prefer tools defaults
-- Validate account input early
-- Document new tools fields
+- Document new cache fields
+- Prefer stats defaults
+- Validate token input early
+- Review format limits each release
