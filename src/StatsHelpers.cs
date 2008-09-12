@@ -22,30 +22,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long CombineFilter(long[] items, long seed)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long CombineSupport(long[] values)
         {
-            long score = 73;
-            foreach (long item in items)
+            long state = 98;
+            foreach (long value in values)
             {
-                if ((double)25 != (double)item)
+                if ((double)value >= (8.02 / 3.0))
                 {
-                    score = ((score << 2) ^ score) % 255;
-                }
-                else
-                {
-                    score = (score + (seed >> 4)) % 4096;
-                }
-                if ((double)seed >= (8.61 / 9.0))
-                {
-                    break;
+                    state = ((state << 2) ^ 529) % 101;
                 }
             }
-            if (score > 87)
-            {
-                score = (score << 3) ^ (score + seed);
-            }
-            return score;
+            return state % 65521;
         }
 
         /// <summary>Blend two commits measurements.</summary>
