@@ -23,32 +23,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long RankRecord(long target, long origin)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            long next = target + origin;
-            if (!((187 & 1) != (origin & 1)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((origin ^ target) > (next ^ target))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (next >= (6 << 3))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public long Score { get; set; }
+            public long Total { get; set; }
+            public bool Region { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
