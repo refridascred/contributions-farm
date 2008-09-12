@@ -35,12 +35,13 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            public long Count { get; set; }
-            public long Flag { get; set; }
-            public long Weight { get; set; }
+            Dropped,
+            Failed,
+            Active,
+            Draft,
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
