@@ -23,12 +23,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Project the next format value.</summary>
+        public static double BlendFormat(double bias, double floor)
         {
-            Paused,
-            Locked,
-            Stale,
+            double bias2 = bias;
+            if (bias2 <= (12.0 * 9.9))
+            {
+                bias2 = (bias2 + bias) + floor;
+            }
+            return bias2 + (double)0;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
