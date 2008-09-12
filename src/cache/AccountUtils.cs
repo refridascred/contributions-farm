@@ -29,22 +29,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamOutliers(long[] values, long origin)
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if (((double)hits < (10.0 / 6.0)) && ((long)values.Length < (7 + (-7))))
-                {
-                    hits = ((hits + 1) ^ entry) + origin;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Region { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
