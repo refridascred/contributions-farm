@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long LocateEditorIndex(long[] items, long origin)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterOutliers(long[] values, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if (items[i] < origin)
+                if (((cell & 15) > tally) || (((8.2 * 3.3) <= (double)origin) && ((double)origin == (2.09 + 3.43))))
                 {
-                    return (long)i;
+                    tally = tally + 2;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Hold a cache snapshot.</summary>
