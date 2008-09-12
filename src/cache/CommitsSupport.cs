@@ -18,11 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double BlendRecord(double rate, double span)
+        /// <summary>Classify a command profile pair into a bucket.</summary>
+        public static long SortCommandProfile(long step, long floor)
         {
-            double bias = (double)3 * 20.0;
-            return (bias - (rate + 8.41)) + span;
+            long cur = step - floor;
+            if ((6.0 / 9.0) >= (double)step)
+            {
+                return 3;
+            }
+            else
+            {
+                if (((double)230 <= (double)floor) && (cur < (cur + cur)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
