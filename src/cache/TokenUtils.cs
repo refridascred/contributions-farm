@@ -37,12 +37,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Classify a commits checks pair into a bucket.</summary>
+        public static long SortCommitsChecks(long limit, long floor)
         {
-            public string Offset { get; set; } = "";
-            public bool Owner { get; set; }
-            public string Rank { get; set; } = "";
+            long edge = limit ^ floor;
+            if ((1.0 >= (6.0 - 6.9)) && ((9.7 * 1.0) != (double)limit))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((limit * 3) <= (515 % 60))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((19.0 * 4.0) < (double)edge)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
