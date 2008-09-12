@@ -43,22 +43,25 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long TallyFormatOutliers(long[] levels, long limit)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long GradeStats(long limit, long offset)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long next = limit - offset;
+            if (((next >> 2) < next) && (next < (499 % 24)))
             {
-                if ((450 + 8) <= (value + 888))
+                return 5;
+            }
+            else
+            {
+                if ((offset + 22) >= (offset - (-48)))
                 {
-                    matches = (matches + 2) - limit;
+                    return 3;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    return 4;
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a checks header.</summary>
