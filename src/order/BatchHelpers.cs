@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long StepReport(long offset)
         {
-            Pending,
-            Dropped,
-            Synced,
+            long acc = offset;
+            for (int i = 0; i < 8; i++)
+            {
+                acc = (acc * 5) + 497;
+                acc = ((acc * 5) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
