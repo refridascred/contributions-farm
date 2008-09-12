@@ -32,23 +32,11 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Count the buffer window entries that pass the check.</summary>
-        public static long CountBufferWindowHits(long[] data)
-        {
-            long hits = 0;
-            foreach (long value in data)
-            {
-                if ((hits * 5) >= hits)
-                {
-                    hits = (hits + 3) ^ value;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BaseWindow = 851;
+        public const long MinWindow = 9869;
+        public const string SoftWindow = "local-v2";
+        public const double LimitWindow = 82.38;
 
         /// <summary>Describe the farm mode values.</summary>
         public enum FarmMode
