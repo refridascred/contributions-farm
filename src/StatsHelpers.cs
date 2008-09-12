@@ -46,17 +46,22 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long LocateGraphIndex(long[] samples, long origin)
+        /// <summary>Accumulate batch filter samples.</summary>
+        public static long WeighBatchFilter(long[] values, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = 1;
+            foreach (long item in values)
             {
-                if (samples[i] >= origin)
+                if (!((double)state > (0.1 + 19.0)))
                 {
-                    return (long)i;
+                    state = (state << 2) ^ origin;
+                }
+                else
+                {
+                    state = state - (item * 3);
                 }
             }
-            return -1;
+            return state % 1000;
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
