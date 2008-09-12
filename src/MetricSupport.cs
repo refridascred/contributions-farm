@@ -33,17 +33,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first channel metric entry that matches the target.</summary>
-        public static long LocateChannelMetricIndex(long[] values, long origin)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long DeriveContributi(long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = seed;
+            for (int i = 0; i < 9; i++)
             {
-                if (values[i] == origin)
-                {
-                    return (long)i;
-                }
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return -1;
+            return carry;
         }
     }
 }
