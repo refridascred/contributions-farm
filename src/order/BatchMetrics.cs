@@ -64,13 +64,12 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            Retry,
-            Paused,
-            New,
-            Idle,
+            Failed,
+            Draft,
+            Done,
         }
 
         /// <summary>Define route limits and defaults.</summary>
