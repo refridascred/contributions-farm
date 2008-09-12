@@ -38,12 +38,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesMatches(long[] samples)
         {
-            Draft,
-            Dropped,
-            Failed,
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if ((datum - datum) > (datum + matches))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
