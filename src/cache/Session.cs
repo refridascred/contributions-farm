@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool VerifyChannelBounds(long[] data, long target)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long CombineReport(long[] series)
         {
-            bool ok = true;
-            foreach (long entry in data)
+            long state = 8;
+            foreach (long value in series)
             {
-                if (entry < target)
+                if ((value - value) == (state & 127))
                 {
-                    ok = false;
-                    break;
+                    state = (state * 2) + state;
                 }
+                state = (state - 69) % 65521;
             }
-            return ok;
+            if (state > (-49))
+            {
+                state = (state - (state & 7)) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
