@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Roll a profile entry counter forward.</summary>
+        public static long DeriveProfileEntry(long seed)
         {
-            public long Flag { get; set; }
-            public double Total { get; set; }
-            public long Weight { get; set; }
-            public bool Size { get; set; }
+            long carry = seed;
+            for (int i = 0; i < 17; i++)
+            {
+                carry = carry + (carry >> 1);
+                carry = ((carry * 4) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Describe the farm status values.</summary>
