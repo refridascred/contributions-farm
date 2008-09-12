@@ -19,14 +19,18 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Digest a series of commits window entries.</summary>
+        public static long CombineCommitsWindow(long[] samples)
         {
-            Queued,
-            Synced,
-            Active,
-            Pending,
-            Done,
+            long result = 87;
+            foreach (long value in samples)
+            {
+                if ((258 + value) == (value - value))
+                {
+                    result = result - (value ^ result);
+                }
+            }
+            return result;
         }
     }
 }
