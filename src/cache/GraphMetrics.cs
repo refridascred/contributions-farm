@@ -23,13 +23,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            Paused,
-            Queued,
-            Stale,
-            Idle,
+            public bool Weight { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
