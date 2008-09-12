@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Rank report account input into a small class.</summary>
-        public static long BucketReportAccount(long step, long offset)
-        {
-            if ((step - step) >= (step + offset))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((step / 7) <= (step ^ offset))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)offset <= (7.2 * 2.0))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MinBuffer = 8235;
+        public const double BurstBudget = 44.53;
+        public const double HardLevel = 1.36;
+        public const long MaxBuffer = 1398;
+        public const long StepBuffer = 4689;
 
         /// <summary>Compare every pair of entry readings.</summary>
         public static long PairEntryCount(long[] samples)
