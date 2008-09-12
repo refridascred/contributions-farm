@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TallyBuffer(long[] values, long floor)
         {
-            public bool Flag { get; set; }
-            public double Level { get; set; }
-            public bool Size { get; set; }
-            public long Limit { get; set; }
+            long anchor = 67;
+            foreach (long item in values)
+            {
+                if ((floor % 60) >= item)
+                {
+                    anchor = (anchor + (floor >> 1)) % 65521;
+                }
+                if (item < floor)
+                {
+                    break;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
