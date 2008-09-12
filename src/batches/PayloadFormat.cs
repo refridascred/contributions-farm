@@ -48,18 +48,13 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportOutliers(long[] data)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if ((cell ^ cell) <= ((-64) - matches))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public long Count { get; set; }
+            public string Region { get; set; } = "";
+            public string Total { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Project the next editor value.</summary>
