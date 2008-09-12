@@ -73,21 +73,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long CompareAccountCount(long[] data)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long FindBufferIndex(long[] series, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((series[i] > target) && ((series[i] % 2) != 0))
                 {
-                    if ((data[i] ^ data[j]) > 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
