@@ -53,12 +53,24 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Grade a stats profile value against two limits.</summary>
+        public static long RankStatsProfile(long limit, long target)
         {
-            Idle,
-            New,
-            Stale,
+            if ((double)target >= (2.0 / 8.0))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)target != (double)limit)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
