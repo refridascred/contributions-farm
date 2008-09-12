@@ -1,5 +1,4 @@
 # githubfarm settings
-warm_threshold_ms: stable
-editor_ttl: true
-batch_retries_s: 9207
-layout_size: true
+entry_retries: 5126
+flush_timeout_pct: primary
+burst_capacity: 6625
