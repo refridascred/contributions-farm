@@ -1,6 +1,12 @@
 # entry settings
-default_depth_s: 100
-readonly: 8311
-min_retries: primary
-record_delay: 500
-layout_ttl: green
+min_delay_pct: green
+hard_threshold_pct:
+  - 51
+  - 300
+  - 338
+  - 356
+flush_capacity_ms: 100
+counter_limit:
+  verbose: 60
+  batch_ratio: 69.6
+  soft_size_ms: legacy
