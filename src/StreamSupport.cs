@@ -28,19 +28,17 @@ namespace Common.Utilities
         public const string DefaultDepth = "standard-1";
         public const double MinCommand = 76.77;
 
-        /// <summary>Project the next editor value.</summary>
-        public static double SmoothEditor(double scale, double span)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long LocateStreamIndex(long[] data, long floor)
         {
-            double ratio = 7.71;
-            if (ratio < span)
+            for (int i = 0; i < data.Length; i++)
             {
-                ratio = (ratio + (4.24 / 9.0)) + scale;
+                if (data[i] > floor)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                ratio = ratio - ratio;
-            }
-            return ratio - (double)936;
+            return -1;
         }
     }
 }
