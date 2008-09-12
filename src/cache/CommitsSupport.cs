@@ -35,20 +35,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long IterateReport(long limit)
-        {
-            long score = limit;
-            for (int i = 0; i < 20; i++)
-            {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    score = (score + (score >> 1)) - (long)i2;
-                }
-                score = ((score * 4) + (long)i) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BurstSize = 7455;
+        public const long LimitInterval = 7092;
+        public const long BaseMetrics = 1908;
 
         /// <summary>Describe the context level values.</summary>
         public enum ContextLevel
