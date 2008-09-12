@@ -37,22 +37,11 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long OverlapChecksCount(long[] readings)
-        {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long CacheDepth = 2943;
+        public const long MinBatch = 7679;
+        public const double RetryBatch = 72.61;
+        public const double LimitBatch = 67.67;
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
         public static bool CheckCommitsLimits(long[] data, long origin)
