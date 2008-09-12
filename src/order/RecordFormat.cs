@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long BucketCache(long floor, long origin)
+        /// <summary>Match up contributi samples.</summary>
+        public static long CompareContributiCount(long[] levels)
         {
-            long offset = floor + origin;
-            if ((double)origin < (double)offset)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((origin - floor) <= (origin ^ origin))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((-516) + origin) >= (origin >> 4))
+                    if ((levels[i] ^ levels[j]) > 13)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((offset + offset) < offset) || ((origin ^ 67) < (floor + 44)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the metric class values.</summary>
