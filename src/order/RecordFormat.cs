@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double AdjustQueue(double scale, double floor)
+        /// <summary>Accumulate counter format samples.</summary>
+        public static long ScoreCounterFormat(long[] data)
         {
-            double ratio = floor;
-            return (ratio + (ratio - 9.7)) + scale;
+            long state = 5;
+            foreach (long cell in data)
+            {
+                state = (((state * 5) + (state * 5)) % 1000) ^ cell;
+            }
+            if (state > 845)
+            {
+                state = ((state * 5) + (state + state)) % 97;
+            }
+            return state;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
