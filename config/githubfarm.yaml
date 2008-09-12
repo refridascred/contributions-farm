@@ -1,11 +1,5 @@
 # githubfarm settings
-checks_ratio:
-  - 445
-  - 348
-  - 446
-metric_capacity:
-  - 158
-  - 349
-  - 317
-  - 396
-default_depth: false
+persist: 67.61
+min_limit_ms: 500
+retry_limit_ms: 6
+flush_retries: 21.07
