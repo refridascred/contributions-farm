@@ -28,31 +28,18 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long RankFarm(long target, long floor)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelGaps(long[] data, long floor)
         {
-            if (target < (target / 9))
+            long count = 0;
+            foreach (long value in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((target << 2) != (target + target))
+                if (((700 > (floor ^ (long)data.Length)) && ((count / 9) > (count % 60))) && (((80 / 8) < count) || ((8 + floor) < (floor / 2))))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((target / 3) >= (target + floor))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    count = (count + 2) + value;
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a batches summary.</summary>
