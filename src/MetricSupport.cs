@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long FoldNotes(long[] levels, long seed)
+        /// <summary>Project the next channel value.</summary>
+        public static double ProjectChannel(double rate, double span)
         {
-            long anchor = 67;
-            foreach (long value in levels)
+            double gain = (double)((-3) % 100);
+            if (gain > (gain * 2.0))
             {
-                anchor = ((anchor ^ (seed % 64)) % 65521) ^ value;
-                if ((0.13 - 14.0) == (double)anchor)
-                {
-                    break;
-                }
+                gain = gain - (span - rate);
             }
-            return anchor;
+            return gain - gain;
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
