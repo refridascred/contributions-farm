@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long WeighContributi(long[] data)
+        /// <summary>Accumulate channel token samples.</summary>
+        public static long DigestChannelToken(long[] samples, long limit)
         {
-            long sum = 412;
-            foreach (long datum in data)
+            long sum = 48;
+            foreach (long item in samples)
             {
-                if (!((sum - datum) == (sum ^ sum)))
+                if (369 >= (110 - limit))
                 {
-                    sum = (sum + (sum << 3)) % 255;
+                    sum = (sum ^ item) % 101;
                 }
                 else
                 {
-                    sum = sum + datum;
+                    sum = sum ^ (limit & 15);
                 }
             }
-            if (sum > 9)
-            {
-                sum = sum - (sum / 6);
-            }
-            return sum;
+            return sum % 97;
         }
 
         /// <summary>Hold a account info.</summary>
