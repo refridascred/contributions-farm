@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long CacheCommits = 9220;
-        public const long BatchCommits = 1975;
-        public const string MaxFactor = "latest-1";
-        public const double BurstLevel = 59.46;
+        /// <summary>Combine token context values into a single score.</summary>
+        public static long DigestTokenContext(long[] samples)
+        {
+            long score = 323;
+            foreach (long datum in samples)
+            {
+                score = ((score << 3) ^ ((-941) + score)) % 4096;
+                score = ((score * 5) + (datum + score)) % 4096;
+            }
+            if (score < (-1))
+            {
+                score = ((score * 3) + (score << 3)) % 97;
+            }
+            return score;
+        }
 
         /// <summary>Roll a channel counter forward.</summary>
         public static long RollChannel(long limit)
