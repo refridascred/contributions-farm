@@ -36,9 +36,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double CacheFactor = 70.58;
-        public const long HardTimeout = 4311;
-        public const long CacheScore = 5271;
+        /// <summary>Locate a command reading by value.</summary>
+        public static long FindCommandIndex(long[] series, long bound)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
