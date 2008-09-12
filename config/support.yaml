@@ -1,34 +1,6 @@
 # support settings
-min_interval_count: 30
-dry_run: true
-burst_ratio_count:
-  - 451
-  - 82
-  - 42
-warm_limit_count: 26.22
-default_timeout_s: 341
-poll_capacity:
-  strict: 1979
-  max_window: 21.89
-  sync_interval:
-    audit: cached
-    warm_window: false
-    sync_size_ms: false
-    record_depth: 9489
-    tools_retries:
-      - 434
-      - 60
-      - 36
-      - 315
-    cache_size_pct:
-      - open
-      - legacy
-      - open
-      - green
-  flush_retries_count:
-    default_limit_pct: open
-    counter_threshold: 8255
-    default_limit: blue
-    account_ttl: true
-    flush_window_pct: 100
-    warm_size_count: edge
+soft_retries_s: 49.0
+filter_retries: strict
+readonly:
+  - 398
+  - 418
