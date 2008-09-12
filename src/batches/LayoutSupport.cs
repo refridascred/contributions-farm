@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmOutliers(long[] samples, long seed)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if ((entry < seed) && ((seed << 2) > (matches ^ matches)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public double Flag { get; set; }
+            public long Limit { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
