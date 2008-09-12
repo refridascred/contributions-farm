@@ -13,15 +13,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double SmoothSupport(double ratio, double span)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool VerifyChecksLimits(long[] data, long limit)
         {
-            double gain = 17.0;
-            if (gain > (span + ratio))
+            bool valid = true;
+            foreach (long sample in data)
             {
-                gain = gain - ratio;
+                if (sample > limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return gain + gain;
+            return valid;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
