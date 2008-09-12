@@ -63,10 +63,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long StepScore = 9249;
-        public const double CacheSupport = 47.99;
-        public const long BurstBudget = 6045;
-        public const string BatchFactor = "open-edge";
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
+        {
+            Retry,
+            Queued,
+            Synced,
+            Pending,
+        }
     }
 }
