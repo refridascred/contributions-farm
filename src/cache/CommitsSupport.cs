@@ -52,19 +52,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TallyCommand(long[] samples, long offset)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            long mark = -1;
-            foreach (long datum in samples)
-            {
-                mark = (mark ^ (offset + offset)) ^ datum;
-            }
-            if (mark > 315)
-            {
-                mark = ((mark << 3) ^ (offset / 7)) % 255;
-            }
-            return mark;
+            public bool Label { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
