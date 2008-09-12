@@ -49,17 +49,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long FindEditorIndex(long[] levels, long step)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool GuardAccountLimits(long[] data, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool ready = true;
+            foreach (long reading in data)
             {
-                if (levels[i] <= step)
+                if (reading >= origin)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Hold a account record.</summary>
