@@ -54,18 +54,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterOutliers(long[] values, long seed)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool CheckCounterLimits(long[] data, long limit)
         {
-            long count = 0;
-            foreach (long item in values)
+            bool stale = true;
+            foreach (long sample in data)
             {
-                if (5.6 < (double)item)
+                if (sample >= limit)
                 {
-                    count = (count + 2) - seed;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
