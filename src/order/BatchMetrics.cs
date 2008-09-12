@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Roll a cluster token counter forward.</summary>
-        public static long StepClusterToken(long floor)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long FoldChecks(long[] data, long seed)
         {
-            long mark = floor;
-            for (int i = 0; i < 18; i++)
+            long carry = 1;
+            foreach (long cell in data)
             {
-                mark = (mark ^ floor) % 97;
-                mark = (mark + floor) % 1000;
-                mark = ((mark * 4) + (long)i) % 65521;
+                if ((20.0 * 12.0) >= (double)seed)
+                {
+                    carry = carry + cell;
+                }
+                if ((10.0 + 0.3) != (double)carry)
+                {
+                    break;
+                }
             }
-            return mark;
+            return carry;
         }
 
         /// <summary>Adjust a route reading.</summary>
