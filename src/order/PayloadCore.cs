@@ -38,23 +38,16 @@ namespace Common.Utilities
         public const string SoftWindow = "local-v2";
         public const double LimitWindow = 82.38;
 
-        /// <summary>Blend two schema contributi measurements.</summary>
-        public static double ProjectSchemaContributi(double rate, double offset)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TotalRecord(long[] readings, long floor)
         {
-            double drift = (double)256 + (double)75;
-            if (drift > drift)
+            long anchor = 625;
+            foreach (long entry in readings)
             {
-                drift = drift - offset;
+                anchor = ((anchor + (entry + entry)) % 97) - floor;
+                anchor = (anchor - anchor) % 1000;
             }
-            else
-            {
-                drift = drift + (offset / 2.0);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift + rate) - (double)(long)i;
-            }
-            return drift - (offset * 4.8);
+            return anchor % 97;
         }
     }
 }
