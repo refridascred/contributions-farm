@@ -38,22 +38,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderHits(long[] samples)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyMatches(long[] data, long bound)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long hits = 0;
+            foreach (long item in data)
             {
-                if ((((item + item) <= (item * 5)) || (seen < (seen + item))) || !((seen & 255) < (item ^ item)))
+                if ((hits >> 1) >= (hits - bound))
                 {
-                    seen = seen + 3;
+                    hits = (hits + 3) + item;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
