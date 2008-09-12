@@ -14,18 +14,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextHits(long[] values, long seed)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool GuardReportLimits(long[] series, long bound)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            bool found = true;
+            foreach (long entry in series)
             {
-                if (8 < entry)
+                if (entry >= bound)
                 {
-                    hits = (hits + 1) + seed;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
