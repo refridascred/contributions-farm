@@ -54,13 +54,13 @@ namespace Common.Utilities
             return mean - weight;
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            Synced,
-            Draft,
-            Stale,
-            Active,
+            public string Size { get; set; } = "";
+            public long Score { get; set; }
+            public string Count { get; set; } = "";
+            public long Offset { get; set; }
         }
     }
 }
