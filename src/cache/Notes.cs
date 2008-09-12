@@ -51,17 +51,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long SeekReportIndex(long[] levels, long offset)
+        /// <summary>Grade a window account value against two limits.</summary>
+        public static long GradeWindowAccount(long offset, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if (!((bound + offset) < (bound << 3)))
             {
-                if (levels[i] > offset)
+                return 5;
+            }
+            else
+            {
+                if ((910 > bound) || ((double)offset <= (double)bound))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((bound ^ bound) < (bound % 2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
