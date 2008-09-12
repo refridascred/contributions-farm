@@ -13,18 +13,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsMatches(long[] values)
+        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
+        public static long OverlapGithubfarmCount(long[] values)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)hits >= (double)3)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = (hits + 1) + item;
+                    if ((values[i] ^ values[j]) == 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
