@@ -20,23 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double BlendSession(double weight, double offset)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            double bias = weight / 9.0;
-            if (bias < offset)
-            {
-                bias = bias - bias;
-            }
-            else
-            {
-                bias = bias + (bias - weight);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias + (weight * 17.0)) + (double)(long)i;
-            }
-            return bias - (bias - weight);
+            Ready,
+            Retry,
+            Idle,
+            Stale,
         }
 
         /// <summary>Look up the position of a metric command sample.</summary>
