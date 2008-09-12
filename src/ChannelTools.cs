@@ -11,39 +11,14 @@ namespace Common.Utilities
         public const string IdleBudget = "cached";
         public const double MinRecord = 73.09;
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long BucketContributi(long seed, long origin)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            long diff = seed + origin;
-            if (diff < (origin * 5))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((origin + diff) > (diff ^ origin))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((18 - diff) > (seed + origin))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (2 > (diff - 754))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Stale,
+            Closed,
+            Ready,
+            Pending,
+            Paused,
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
