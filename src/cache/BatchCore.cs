@@ -27,17 +27,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long SeekLayoutIndex(long[] samples, long target)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long BucketSchema(long bound, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long diff = bound ^ limit;
+            if (diff > (bound ^ diff))
             {
-                if ((samples[i] > target) && ((samples[i] % 3) != 0))
+                return 4;
+            }
+            else
+            {
+                if ((diff - 660) == (limit >> 5))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((limit % 10) <= (limit % 24))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((bound >> 1) >= limit))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a account options.</summary>
