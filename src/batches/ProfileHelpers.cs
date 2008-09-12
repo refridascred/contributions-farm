@@ -44,11 +44,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Adjust a entry context reading.</summary>
+        public static double AdjustEntryContext(double gain, double span)
         {
-            public double Label { get; set; }
-            public double Owner { get; set; }
+            double rate = span;
+            if (rate >= (7.2 + 3.43))
+            {
+                rate = (rate + (double)(-209)) + gain;
+            }
+            else
+            {
+                rate = rate + rate;
+            }
+            return rate + (span * 2.8);
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
