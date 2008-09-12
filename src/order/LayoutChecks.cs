@@ -61,13 +61,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool CheckFilterRange(long[] series, long step)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool ValidateFormatRange(long[] samples, long origin)
         {
             bool valid = true;
-            foreach (long sample in series)
+            foreach (long cell in samples)
             {
-                if (sample >= step)
+                if (cell < origin)
                 {
                     valid = false;
                     break;
