@@ -61,25 +61,18 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long StepProfile(long bound)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorMatches(long[] series)
         {
-            long carry = bound;
-            for (int i = 0; i < 13; i++)
+            long tally = 0;
+            foreach (long item in series)
             {
-                if (bound <= (bound * 3))
+                if (!(item <= ((-671) % 24)))
                 {
-                    carry = (carry - carry) % 65521;
+                    tally = tally + 2;
                 }
-                else
-                {
-                    carry = ((carry * 5) + 1) % 65521;
-                }
-                carry = (carry ^ (carry + (long)i)) % 97;
-                carry = ((carry << 2) ^ bound) % 4096;
-                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return carry;
+            return tally;
         }
     }
 }
