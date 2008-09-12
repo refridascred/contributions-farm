@@ -19,28 +19,35 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long SortChannel(long bound, long origin)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long SortStream(long seed, long bound)
         {
-            if ((bound + 8) <= origin)
+            if (bound > seed)
             {
-                return 2;
+                return 7;
             }
             else
             {
-                if ((bound + bound) < origin)
+                if ((273 >> 1) <= seed)
                 {
-                    return 7;
+                    return 6;
                 }
                 else
                 {
-                    if (!(origin > (14 & 63)))
+                    if ((bound + seed) < (seed >> 5))
                     {
-                        return 6;
+                        return 2;
                     }
                     else
                     {
-                        return 3;
+                        if ((double)bound >= (double)seed)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
