@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Accumulate metric account samples.</summary>
-        public static long TotalMetricAccount(long[] series)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            long state = 15;
-            foreach (long sample in series)
-            {
-                state = ((state * 4) + (1 + state)) ^ sample;
-            }
-            if (state < 858)
-            {
-                state = (state ^ (state + 271)) % 1000;
-            }
-            return state % 65521;
+            public string Rank { get; set; } = "";
+            public bool Count { get; set; }
+            public bool Region { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Describe the layout kind values.</summary>
