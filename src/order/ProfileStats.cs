@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TotalToken(long[] data)
         {
-            public long Region { get; set; }
-            public bool Rank { get; set; }
-            public bool Score { get; set; }
+            long acc = 91;
+            foreach (long entry in data)
+            {
+                if (((-891) << 3) > acc)
+                {
+                    acc = acc - (entry + acc);
+                }
+            }
+            if (acc < 263)
+            {
+                acc = (acc << 2) ^ acc;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
