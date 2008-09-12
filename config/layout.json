@@ -1,8 +1,8 @@
 {
-  "min_delay": 85,
-  "soft_capacity_s": "fallback",
-  "default_threshold_pct": "edge",
-  "audit": "staging",
-  "entry_limit": "legacy",
-  "verbose": "standard"
+  "verbose": "blue",
+  "flush_window_ms": 1024,
+  "payload_limit": true,
+  "token_delay": "eu-west",
+  "cache_timeout": [282, 41, 331],
+  "retry_depth_ms": 388
 }
