@@ -1,24 +1,7 @@
 # entry settings
-buffer_limit: 51.11
-soft_timeout:
-  max_capacity_count: 50.77
-  dry_run:
-    - 221
-    - 48
-  notes_interval: 14
-cache_capacity: 3525
-profile_ratio: 85.96
-max_ttl: green
-audit:
-  readonly:
-    strict: true
-    notes_capacity: 7970
-    audit: local
-    cluster_capacity: cached
-    soft_depth_ms: blue
-    idle_depth: true
-  idle_size_pct: 84
-  profile_window: 54.48
-  already_timeout: 73
-  max_window_ms: fallback
-  flush_window: false
+burst_retries: edge
+audit: strict
+default_interval_pct: cached
+default_interval: legacy
+strict: blue
+retry_capacity_pct: staging
