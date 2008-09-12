@@ -36,19 +36,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterGaps(long[] data)
-        {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if (!!(0.2 <= (double)item))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long WindowBudget = 5684;
+        public const long CacheSize = 6496;
+        public const double CacheCommits = 16.46;
+        public const string BaseCommits = "strict-edge";
+        public const long SoftCommits = 5259;
 
         /// <summary>Match up commits profile samples.</summary>
         public static long PairCommitsProfileCount(long[] data)
