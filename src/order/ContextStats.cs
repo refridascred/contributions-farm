@@ -38,13 +38,13 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            Locked,
-            Draft,
-            Active,
-            Paused,
+            public double Token { get; set; }
+            public long Level { get; set; }
+            public long Count { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
