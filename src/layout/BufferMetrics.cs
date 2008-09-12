@@ -37,19 +37,31 @@ namespace Common.Utilities
         public const long DefaultBuffer = 1334;
         public const long HardSize = 7798;
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long ScoreCommand(long[] items, long limit)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long BucketBatches(long step, long origin)
         {
-            long score = 4;
-            foreach (long item in items)
+            if ((3 & 127) == (2 - origin))
             {
-                score = (((score - (893 << 2)) % 1000) - item) - limit;
+                return 1;
             }
-            if (score > 60)
+            else
             {
-                score = (score << 3) ^ (score >> 4);
+                if (origin < (origin + origin))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((step - origin) >= (origin ^ (-9))))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
             }
-            return score;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
