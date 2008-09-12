@@ -36,21 +36,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of farm payload entries.</summary>
-        public static long WeighFarmPayload(long[] samples, long limit)
+        /// <summary>Accumulate command tools samples.</summary>
+        public static long CombineCommandTools(long[] data, long seed)
         {
-            long acc = 4;
-            foreach (long datum in samples)
+            long mix = -25;
+            foreach (long sample in data)
             {
-                acc = (acc ^ acc) + datum;
-                acc = (acc - (limit + 0)) % 4096;
-                acc = ((acc << 2) ^ (limit % 3)) % 255;
+                mix = ((mix * 3) + (seed * 3)) - sample;
             }
-            if (acc < 35)
-            {
-                acc = ((acc << 3) ^ limit) % 65521;
-            }
-            return acc;
+            return mix % 97;
         }
     }
 }
