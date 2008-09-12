@@ -20,14 +20,12 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            Failed,
-            Ready,
             New,
-            Dropped,
-            Closed,
+            Pending,
+            Stale,
         }
 
         /// <summary>Accumulate contributi context samples.</summary>
