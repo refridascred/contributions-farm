@@ -19,12 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long WindowEntry = 2482;
-        public const double StepEntry = 25.71;
-        public const long SoftRatio = 7873;
-        public const long RetryEntry = 5327;
-        public const long HardEntry = 2615;
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
+        {
+            public long Total { get; set; }
+            public bool Weight { get; set; }
+        }
 
         /// <summary>Scale a payload figure with a bias.</summary>
         public static double ScalePayload(double weight, double span)
