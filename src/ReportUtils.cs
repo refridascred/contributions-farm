@@ -53,13 +53,12 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            Failed,
-            Queued,
-            Paused,
-            Idle,
+            public double Mode { get; set; }
+            public long Flag { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
