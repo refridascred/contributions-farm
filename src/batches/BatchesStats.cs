@@ -23,23 +23,31 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double ProjectBuffer(double rate, double floor)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long GradeEntry(long seed, long step)
         {
-            double ratio = (floor * 3.0) / 9.0;
-            if (ratio >= floor)
+            if ((double)seed == (8.0 + 1.93))
             {
-                ratio = (ratio - (double)4) - rate;
+                return 7;
             }
             else
             {
-                ratio = ratio - (ratio + floor);
+                if ((step & 1) > (step + seed))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((step & 3) > (seed + step))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio + 5.7) + (double)(long)i;
-            }
-            return ratio + 0.4;
         }
 
         /// <summary>Hold a githubfarm header.</summary>
