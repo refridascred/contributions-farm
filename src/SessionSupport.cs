@@ -17,11 +17,20 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BatchCounter = 4538;
-        public const string RetryCounter = "strict-1";
-        public const string MinBudget = "fallback-1";
-        public const long DefaultInterval = 166;
+        /// <summary>Adjust a commits reading.</summary>
+        public static double BlendCommits(double weight, double span)
+        {
+            double bias = weight;
+            if (bias > (7.0 / 5.0))
+            {
+                bias = bias + (span * 5.8);
+            }
+            else
+            {
+                bias = bias + (3.6 * 1.4);
+            }
+            return bias + (double)1;
+        }
 
         /// <summary>Validate graph metric readings against a bound.</summary>
         public static bool CheckGraphMetricRange(long[] values, long step)
