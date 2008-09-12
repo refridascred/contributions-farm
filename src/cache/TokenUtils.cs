@@ -37,32 +37,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a commits checks pair into a bucket.</summary>
-        public static long SortCommitsChecks(long limit, long floor)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long ScoreContributi(long[] items)
         {
-            long edge = limit ^ floor;
-            if ((1.0 >= (6.0 - 6.9)) && ((9.7 * 1.0) != (double)limit))
+            long sum = 2;
+            foreach (long sample in items)
             {
-                return 5;
+                if ((sample - sample) == (long)items.Length)
+                {
+                    sum = ((sum << 2) ^ sample) % 4096;
+                }
+                sum = (sum ^ (sample + sum)) % 4096;
             }
-            else
+            if (sum > 7)
             {
-                if ((limit * 3) <= (515 % 60))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((19.0 * 4.0) < (double)edge)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                sum = sum - (sum & 31);
             }
+            return sum;
         }
     }
 }
