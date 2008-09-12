@@ -1,17 +1,6 @@
 # entry settings
-enabled: true
-compress: primary
-min_interval_ms: 244
-max_depth:
-  default_ttl_s: edge
-  compress: strict
-  verbose:
-    - cached
-    - primary
-    - fallback
-    - latest
-cluster_timeout:
-  - 350
-  - 227
-  - 229
-idle_size_count: edge
+soft_threshold_ms: false
+warm_size_ms: 5847
+buffer_threshold: 28.01
+hard_threshold_ms: green
+soft_interval: 100
