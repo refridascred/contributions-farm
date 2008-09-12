@@ -22,14 +22,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
-        {
-            Paused,
-            Retry,
-            Active,
-            Ready,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long DefaultDepth = 9392;
+        public const double IdleDepth = 35.57;
+        public const long BurstFactor = 7020;
 
         /// <summary>Locate a metric reading by value.</summary>
         public static long SeekMetricIndex(long[] readings, long seed)
