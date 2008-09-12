@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Adjust a window reading.</summary>
-        public static double AdjustWindow(double bias, double floor)
-        {
-            double bias2 = bias;
-            return (bias2 + bias) + floor;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MaxCount = 6079;
+        public const long CacheSupport = 8093;
+        public const string StepSupport = "latest-1";
 
         /// <summary>Adjust a checks reading.</summary>
         public static double ScaleChecks(double scale, double offset)
