@@ -35,21 +35,24 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long MatchFarmCount(long[] data)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long GradeLayout(long seed, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            if (((seed % 16) >= seed) && ((11.0 - 16.0) < (double)offset))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if (!((847 >> 3) > (seed % 100)))
                 {
-                    if ((data[i] + data[j]) < 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 5;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return matches;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
