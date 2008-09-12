@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Iterate the route format series from a seed.</summary>
-        public static long DeriveRouteFormat(long floor)
+        /// <summary>Look up the position of a format cache sample.</summary>
+        public static long LocateFormatCacheIndex(long[] samples, long floor)
         {
-            long mark = floor;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                if (samples[i] < floor)
                 {
-                    mark = ((mark - (mark ^ (long)i)) % 97) + (long)i2;
+                    return (long)i;
                 }
-                mark = (mark - mark) % 1000;
-                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
