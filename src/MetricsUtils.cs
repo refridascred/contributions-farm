@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadGaps(long[] data)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            long seen = 0;
-            foreach (long item in data)
-            {
-                if ((item + item) > (seen + item))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Paused,
+            Pending,
+            Locked,
         }
 
         /// <summary>Adjust a tools githubfarm reading.</summary>
