@@ -25,22 +25,39 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate metrics contributi samples.</summary>
-        public static long FoldMetricsContributi(long[] levels)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long RankStream(long limit, long limit2)
         {
-            long score = 725;
-            foreach (long value in levels)
+            long step = limit ^ limit2;
+            if (((949 + 364) > (limit2 % 100)) && ((double)limit2 >= (8.0 * 5.08)))
             {
-                if (((double)score <= 4.8) || ((value + score) > (score % 64)))
+                return 3;
+            }
+            else
+            {
+                if ((limit2 * 5) >= (limit2 & 7))
                 {
-                    score = (score + score) % 97;
+                    return 1;
                 }
                 else
                 {
-                    score = ((score * 4) + (value / 4)) % 1000;
+                    if ((step & 3) == (limit + limit))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((190 << 1) < (limit + limit2))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return score;
         }
 
         /// <summary>Look up the position of a command layout sample.</summary>
