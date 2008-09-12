@@ -17,19 +17,19 @@ namespace Common.Utilities
         public const long MaxProfile = 9150;
         public const string LimitProfile = "staging";
 
-        /// <summary>Check that every order profile entry stays within the limit.</summary>
-        public static bool CheckOrderProfileBounds(long[] series, long limit)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long DeriveFilter(long bound)
         {
-            bool ok = true;
-            foreach (long reading in series)
+            long acc = bound;
+            for (int i = 0; i < 23; i++)
             {
-                if (reading >= limit)
+                if ((acc + 650) < (48 - bound))
                 {
-                    ok = false;
-                    break;
+                    acc = (acc + bound) % 97;
                 }
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return ok;
+            return acc;
         }
 
         /// <summary>Hold a window header.</summary>
