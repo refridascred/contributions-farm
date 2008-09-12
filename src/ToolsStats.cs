@@ -76,19 +76,21 @@ namespace Common.Utilities
             return load + (bias / 4.0);
         }
 
-        /// <summary>Check that every account farm entry stays within the limit.</summary>
-        public static bool GuardAccountFarmBounds(long[] levels, long seed)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long OverlapToolsCount(long[] readings)
         {
-            bool stale = true;
-            foreach (long reading in levels)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (reading != seed)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((readings[i] + readings[j]) < 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return stale;
+            return seen;
         }
     }
 }
