@@ -1,9 +1,6 @@
 # support settings
-schema_depth:
-  hard_window: 75
-  idle_window_pct: 38
-  cache_depth: staging
-  verbose: latest
-poll_depth_ms: fallback
-max_delay_ms: 1919
-burst_window_s: latest
+cache_retries: 69
+base_interval: local
+min_limit_pct: 93.9
+dry_run: 92.1
+soft_window_ms: 21
