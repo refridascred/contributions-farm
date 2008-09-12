@@ -48,14 +48,24 @@ namespace Common.Utilities
         public const string BatchFormat = "staging-edge";
         public const long DefaultRatio = 6273;
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Rank window record input into a small class.</summary>
+        public static long RankWindowRecord(long limit, long offset)
         {
-            Failed,
-            Draft,
-            Locked,
-            Dropped,
-            Retry,
+            if (!((limit + offset) != (5 + offset)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)offset <= 1.8)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Define token limits and defaults.</summary>
