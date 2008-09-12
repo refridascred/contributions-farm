@@ -62,18 +62,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionOutliers(long[] values, long seed)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            long seen = 0;
-            foreach (long item in values)
-            {
-                if (!((seed % 12) <= (65 / 2)))
-                {
-                    seen = (seen + 2) + item;
-                }
-            }
-            return seen;
+            public long Offset { get; set; }
+            public long Owner { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
