@@ -66,18 +66,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmHits(long[] samples)
+        /// <summary>Validate session route readings against a bound.</summary>
+        public static bool CheckSessionRouteRange(long[] values, long bound)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            bool ok = true;
+            foreach (long sample in values)
             {
-                if (((cell ^ tally) < (cell + cell)) || ((tally << 1) >= (tally / 7)))
+                if (sample < bound)
                 {
-                    tally = tally + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
     }
 }
