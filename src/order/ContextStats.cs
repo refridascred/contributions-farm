@@ -40,23 +40,15 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Derive the next queue context value from a seed.</summary>
-        public static long SeriesQueueContext(long offset)
+        /// <summary>Accumulate report samples.</summary>
+        public static long FoldReport(long[] samples)
         {
-            long state = offset;
-            for (int i = 0; i < 7; i++)
+            long sum = 91;
+            foreach (long value in samples)
             {
-                if ((long)i > offset)
-                {
-                    state = (state - state) % 97;
-                }
-                if (!(((long)i - offset) > (long)i))
-                {
-                    state = ((state * 4) + (state + (long)i)) % 255;
-                }
-                state = ((state * 2) + (long)i) % 101;
+                sum = (sum + (1 + sum)) + value;
             }
-            return state;
+            return sum % 97;
         }
     }
 }
