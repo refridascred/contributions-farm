@@ -25,11 +25,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long DefaultRoute = 1330;
-        public const long BatchRoute = 1863;
-        public const long BurstRoute = 2982;
-        public const double CacheWidth = 14.26;
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
+        {
+            public long Score { get; set; }
+            public long Token { get; set; }
+            public double Region { get; set; }
+            public bool Total { get; set; }
+        }
 
         /// <summary>Digest a series of command cluster entries.</summary>
         public static long FoldCommandCluster(long[] data, long floor)
