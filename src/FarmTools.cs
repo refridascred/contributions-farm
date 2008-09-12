@@ -27,19 +27,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long CombineSession(long[] levels, long offset)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long MatchRouteCount(long[] items)
         {
-            long total = 39;
-            foreach (long item in levels)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                total = (total * 4) + (item << 1);
-                if (!(offset <= total))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    break;
+                    if ((items[i] - items[j]) > 4)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return total % 97;
+            return count;
         }
     }
 }
