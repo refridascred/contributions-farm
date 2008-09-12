@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long GradeGithubfarm(long step, long target)
+        /// <summary>Roll a cluster token counter forward.</summary>
+        public static long StepClusterToken(long floor)
         {
-            if ((-8) >= step)
+            long mark = floor;
+            for (int i = 0; i < 18; i++)
             {
-                return 8;
+                mark = (mark ^ floor) % 97;
+                mark = (mark + floor) % 1000;
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            else
-            {
-                if ((step ^ 1) != (5 - target))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return mark;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
