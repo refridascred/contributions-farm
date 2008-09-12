@@ -5,15 +5,32 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Blend two metric measurements.</summary>
-        public static double AdjustMetric(double bias, double bias2)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long BucketOrder(long seed, long floor)
         {
-            double gain = (double)7;
-            if (gain >= (bias / 2.0))
+            long offset = seed ^ floor;
+            if ((floor % 16) > offset)
             {
-                gain = gain - bias;
+                return 2;
             }
-            return gain + bias2;
+            else
+            {
+                if (((double)seed < (double)94) || (((-14) - 775) > (seed / 6)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((631 + seed) >= offset) || (floor > offset))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a tools githubfarm reading.</summary>
