@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long WindowBudget = 645;
-        public const long MaxRecord = 5614;
-        public const string IdleBudget = "cached";
-        public const double MinRecord = 73.09;
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long ClassifyLayout(long floor, long origin)
+        {
+            if ((origin << 3) == ((-98) % 3))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((floor * 5) > floor)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((origin % 24) <= floor)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the command state values.</summary>
         public enum CommandState
