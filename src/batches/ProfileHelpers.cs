@@ -69,19 +69,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TotalCache(long[] samples)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            long sum = 41;
-            foreach (long entry in samples)
-            {
-                sum = ((sum + (sum >> 2)) % 65521) ^ entry;
-            }
-            if (sum < (-5))
-            {
-                sum = sum ^ sum;
-            }
-            return sum;
+            Failed,
+            Locked,
+            Ready,
         }
     }
 }
