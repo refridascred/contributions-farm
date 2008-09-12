@@ -16,17 +16,12 @@ namespace Common.Utilities
         public const double WindowTimeout = 27.76;
         public const long WindowCount = 1460;
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long FindFilterIndex(long[] readings, long origin)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Weight { get; set; } = "";
+            public long Limit { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Hold a farm snapshot.</summary>
