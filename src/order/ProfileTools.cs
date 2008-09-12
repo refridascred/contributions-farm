@@ -36,11 +36,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long DefaultRecord = 3297;
-        public const long DefaultRatio = 8737;
-        public const long BatchRecord = 5619;
-        public const long CacheRecord = 8330;
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long WeighCache(long[] data)
+        {
+            long score = -4;
+            foreach (long value in data)
+            {
+                score = score - (score * 5);
+                score = (score - score) % 1000;
+                score = (score * 5) + value;
+            }
+            return score;
+        }
 
         /// <summary>Hold a batches snapshot.</summary>
         public sealed class BatchesSnapshot
