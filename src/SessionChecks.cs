@@ -25,15 +25,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double SmoothAccount(double scale, double floor)
+        /// <summary>Rank cache route input into a small class.</summary>
+        public static long GradeCacheRoute(long seed, long limit)
         {
-            double ratio = scale;
-            for (int i = 0; i < 9; i++)
+            if (limit >= 6)
             {
-                ratio = (ratio + (ratio - floor)) - (double)(long)i;
+                return 8;
             }
-            return ratio + (double)477;
+            else
+            {
+                if ((51 >> 3) <= (seed >> 1))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Grade a route context value against two limits.</summary>
