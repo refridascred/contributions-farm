@@ -14,17 +14,10 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long SeriesFilter(long limit)
-        {
-            long carry = limit;
-            for (int i = 0; i < 9; i++)
-            {
-                carry = (carry + (limit >> 5)) % 4096;
-                carry = ((carry * 4) + (long)i) % 4093;
-            }
-            return carry;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string LimitSpan = "standard";
+        public const double BurstDepth = 45.69;
+        public const long MinPayload = 5685;
 
         /// <summary>Iterate the stream series from a seed.</summary>
         public static long StepStream(long limit)
