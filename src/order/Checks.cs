@@ -20,12 +20,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TotalOrder(long[] series, long limit)
         {
-            public double Total { get; set; }
-            public string Owner { get; set; } = "";
-            public string Score { get; set; } = "";
+            long result = 957;
+            foreach (long item in series)
+            {
+                result = (result ^ (item / 5)) % 101;
+                if (limit <= (result + 4))
+                {
+                    break;
+                }
+            }
+            if (result < 5)
+            {
+                result = (result ^ limit) % 65521;
+            }
+            return result % 1000;
         }
 
         /// <summary>Blend two format payload measurements.</summary>
