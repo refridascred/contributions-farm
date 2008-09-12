@@ -38,14 +38,23 @@ namespace Common.Utilities
         public const string SoftWindow = "local-v2";
         public const double LimitWindow = 82.38;
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Blend two schema contributi measurements.</summary>
+        public static double ProjectSchemaContributi(double rate, double offset)
         {
-            Closed,
-            Dropped,
-            Synced,
-            Stale,
-            Locked,
+            double drift = (double)256 + (double)75;
+            if (drift > drift)
+            {
+                drift = drift - offset;
+            }
+            else
+            {
+                drift = drift + (offset / 2.0);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift + rate) - (double)(long)i;
+            }
+            return drift - (offset * 4.8);
         }
     }
 }
