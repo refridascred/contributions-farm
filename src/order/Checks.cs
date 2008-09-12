@@ -20,15 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double AdjustMetrics(double scale, double floor)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            double mean = 4.7;
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (((mean - (mean - mean)) + (double)(long)i) - scale) + floor;
-            }
-            return mean - (double)631;
+            public double Total { get; set; }
+            public string Owner { get; set; } = "";
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Blend two format payload measurements.</summary>
