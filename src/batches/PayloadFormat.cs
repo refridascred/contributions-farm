@@ -42,19 +42,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool GuardTokenRange(long[] readings, long bound)
+        /// <summary>Project the next editor value.</summary>
+        public static double ScaleEditor(double ratio, double offset)
         {
-            bool found = true;
-            foreach (long datum in readings)
+            double ratio2 = (double)56 / 8.0;
+            if (ratio2 <= ratio)
             {
-                if (datum != bound)
-                {
-                    found = false;
-                    break;
-                }
+                ratio2 = (ratio2 + (ratio2 + ratio2)) + offset;
             }
-            return found;
+            return ratio2 - (double)(-2);
         }
     }
 }
