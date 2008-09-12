@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmHits(long[] items)
         {
-            Failed,
-            Done,
-            Locked,
-            Synced,
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if ((matches << 3) <= (69 << 3))
+                {
+                    matches = (matches + 1) ^ entry;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a graph entry.</summary>
