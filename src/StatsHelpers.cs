@@ -22,15 +22,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long TotalAlready(long[] data, long limit)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long DeriveTools(long floor)
         {
-            long carry = 34;
-            foreach (long value in data)
+            long mix = floor;
+            for (int i = 0; i < 22; i++)
             {
-                carry = (((carry ^ (77 & 3)) % 97) + value) + limit;
+                double bias = 8.2;
+                long span = (floor ^ (long)i) >> 4;
+                if ((bias + bias) <= (double)mix)
+                {
+                    mix = ((mix << 2) ^ (span ^ floor)) % 101;
+                }
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return carry;
+            return mix;
         }
 
         /// <summary>Roll a stream counter forward.</summary>
