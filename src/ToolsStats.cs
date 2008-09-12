@@ -90,13 +90,15 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Derive the next commits command value from a seed.</summary>
+        public static long SeriesCommitsCommand(long offset)
         {
-            Idle,
-            Active,
-            Done,
-            Paused,
+            long score = offset;
+            for (int i = 0; i < 10; i++)
+            {
+                score = ((score * 3) + (long)i) % 65521;
+            }
+            return score;
         }
     }
 }
