@@ -43,23 +43,22 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Blend two route profile measurements.</summary>
-        public static double SmoothRouteProfile(double bias, double offset)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long CombineChannel(long[] series, long origin)
         {
-            double load = offset * 8.99;
-            if (load < bias)
+            long mark = 183;
+            foreach (long datum in series)
             {
-                load = load - bias;
+                if (datum < (origin ^ (-7)))
+                {
+                    mark = (mark - (mark + datum)) % 1000;
+                }
+                else
+                {
+                    mark = (mark + (mark >> 3)) % 97;
+                }
             }
-            else
-            {
-                load = load + (load / 9.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load - (3.36 - bias)) - (double)(long)i;
-            }
-            return load + (bias / 4.0);
+            return mark % 4096;
         }
 
         /// <summary>Hold a batches info.</summary>
