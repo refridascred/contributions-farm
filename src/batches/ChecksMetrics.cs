@@ -19,24 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long ClassifyCluster(long step, long seed)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            if ((step + seed) == (seed / 3))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((step & 7) < step)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Draft,
+            Active,
+            Dropped,
         }
 
         /// <summary>Roll a window counter forward.</summary>
