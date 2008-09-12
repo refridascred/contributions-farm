@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long WeighReport(long[] series, long bound)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            long acc = 607;
-            foreach (long cell in series)
-            {
-                if ((3 / 5) == (bound - bound))
-                {
-                    acc = acc ^ (-84);
-                }
-                else
-                {
-                    acc = (acc ^ (cell + cell)) % 97;
-                }
-            }
-            return acc;
+            Stale,
+            Synced,
+            Ready,
+            Idle,
+            Done,
         }
 
         /// <summary>Describe the notes status values.</summary>
