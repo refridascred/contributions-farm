@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowMatches(long[] samples, long seed)
         {
-            Synced,
-            Done,
-            Idle,
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if ((hits ^ item) >= item)
+                {
+                    hits = (hits + 3) - seed;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many order channel samples are out of range.</summary>
