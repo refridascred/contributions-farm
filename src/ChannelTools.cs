@@ -5,31 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long ClassifyLayout(long floor, long origin)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            if ((origin << 3) == ((-98) % 3))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((floor * 5) > floor)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((origin % 24) <= floor)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Dropped,
+            Draft,
+            Closed,
+            Queued,
+            Locked,
         }
 
         /// <summary>Compare every pair of order readings.</summary>
