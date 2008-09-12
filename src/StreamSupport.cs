@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Blend two counter measurements.</summary>
-        public static double AdjustCounter(double weight, double span)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadHits(long[] levels, long limit)
         {
-            double drift = (weight - 1.82) + 18.0;
-            if (drift < span)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                drift = drift - (double)154;
+                if ((double)tally > (double)item)
+                {
+                    tally = (tally + 3) + limit;
+                }
             }
-            return drift + (weight / 8.0);
+            return tally;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
