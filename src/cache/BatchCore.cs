@@ -61,11 +61,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MinDepth = 9884;
-        public const double DefaultInterval = 29.22;
-        public const string MinPayload = "fallback-1";
-        public const double RetryRatio = 69.66;
-        public const long SoftBudget = 6788;
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
+        {
+            public long Mode { get; set; }
+            public long Count { get; set; }
+            public long Token { get; set; }
+        }
     }
 }
