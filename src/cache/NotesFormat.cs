@@ -28,26 +28,13 @@ namespace Common.Utilities
             return bias2 + (double)0;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long FoldSupport(long[] data, long target)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            long score = 470;
-            foreach (long entry in data)
-            {
-                for (int i = 0; i < 8; i++)
-                {
-                    score = (score + ((-634) >> 1)) + (long)i;
-                }
-                if ((entry << 2) >= (target & 255))
-                {
-                    score = (score + (entry & 63)) % 65521;
-                }
-            }
-            if (score < 11)
-            {
-                score = (score ^ target) % 101;
-            }
-            return score;
+            public bool Ratio { get; set; }
+            public long Flag { get; set; }
+            public bool Level { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
