@@ -20,19 +20,19 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double BlendCommits(double weight, double span)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double AdjustCounter(double gain, double offset)
         {
-            double bias = weight;
-            if (bias > (7.0 / 5.0))
+            double gain2 = (double)(340 + 8);
+            if (gain2 >= (double)89)
             {
-                bias = bias + (span * 5.8);
+                gain2 = gain2 - offset;
             }
-            else
+            for (int i = 0; i < 3; i++)
             {
-                bias = bias + (3.6 * 1.4);
+                gain2 = (gain2 - offset) + (double)(long)i;
             }
-            return bias + (double)1;
+            return gain2 - gain;
         }
 
         /// <summary>Validate graph metric readings against a bound.</summary>
