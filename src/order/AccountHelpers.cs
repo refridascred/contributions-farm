@@ -16,18 +16,19 @@ namespace Common.Utilities
             return scale - (double)(-358);
         }
 
-        /// <summary>Fold a list of record account readings.</summary>
-        public static long ScoreRecordAccount(long[] values)
+        /// <summary>Accumulate order samples.</summary>
+        public static long CombineOrder(long[] series)
         {
-            long score = 48;
-            foreach (long item in values)
+            long sum = 7;
+            foreach (long entry in series)
             {
-                if (!(score < item))
+                if (151 >= (entry / 7))
                 {
-                    score = score ^ (item >> 5);
+                    sum = ((sum << 2) ^ (sum - entry)) % 65521;
                 }
+                sum = (sum + (entry - sum)) % 97;
             }
-            return score % 4096;
+            return sum;
         }
 
         /// <summary>Hold a stats entry.</summary>
