@@ -1,5 +1,5 @@
 # entry settings
-graph_limit: eu-west
-poll_ttl_ms: 7554
-support_threshold: 35.14
-notes_depth: 24.56
+profile_window: 250
+hard_size: false
+poll_ratio: stable
+cache_depth: true
