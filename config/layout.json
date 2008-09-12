@@ -1,7 +1,24 @@
 {
-  "max_interval": false,
-  "readonly": "cached",
-  "dry_run": 28.23,
-  "sync_limit_count": false,
-  "sync_interval": 50.93
+  "dry_run": true,
+  "contributi_ratio": ["standard", "open", "standard"],
+  "max_ratio_ms": 85.09,
+  "stream_window": {
+    "strict": {
+      "burst_ratio": 9.52,
+      "cluster_size": 6,
+      "githubfarm_limit": 80.38,
+      "route_size": 30,
+      "cache_ratio_count": "cached"
+    },
+    "buffer_depth": {
+      "retry_ratio_count": 100,
+      "burst_size": "primary",
+      "compress": "blue"
+    },
+    "farm_ratio": 46.27,
+    "default_capacity_s": 16.49,
+    "idle_timeout_pct": 1024
+  },
+  "base_window_s": 79.91,
+  "entry_capacity": 51.32
 }
