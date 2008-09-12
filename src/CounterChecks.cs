@@ -45,11 +45,21 @@ namespace Common.Utilities
         public const long MaxFactor = 8884;
         public const double MinLevel = 87.79;
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long PairRecordCount(long[] readings)
         {
-            public long Token { get; set; }
-            public double Size { get; set; }
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
