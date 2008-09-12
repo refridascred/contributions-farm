@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long SortCounter(long floor, long limit)
-        {
-            if (773 >= (limit & 127))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((floor > (floor * 5)) && ((7.81 * 2.1) == (double)limit))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((double)limit >= (2.0 - 17.0)) && (1.0 > (double)limit))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double CacheFormat = 82.6;
+        public const long DefaultRatio = 1704;
+        public const long BaseLevel = 6704;
+        public const string RetryInterval = "local-1";
+        public const long BurstRatio = 9333;
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long MeasureEditorMatches(long[] items)
