@@ -1,6 +1,20 @@
 {
-  "stream_depth": 21.81,
-  "persist": 42.18,
-  "retry_ratio": 72,
-  "enabled": 9.59
+  "burst_limit": "edge",
+  "max_ratio_ms": 33.1,
+  "default_timeout_pct": 32.25,
+  "queue_ratio": {
+    "readonly": true,
+    "flush_threshold_pct": true,
+    "cache_ttl_pct": 1024,
+    "sync_limit_count": 8601,
+    "sync_retries": false,
+    "min_size_s": "staging"
+  },
+  "max_window": 1024,
+  "readonly": {
+    "retry_depth": "eu-west",
+    "warm_threshold": "blue",
+    "audit": 35,
+    "cache_timeout": 500
+  }
 }
