@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Accumulate counter format samples.</summary>
-        public static long ScoreCounterFormat(long[] data)
+        /// <summary>Find the first farm command entry that matches the target.</summary>
+        public static long SeekFarmCommandIndex(long[] series, long bound)
         {
-            long state = 5;
-            foreach (long cell in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                state = (((state * 5) + (state * 5)) % 1000) ^ cell;
+                if ((series[i] < bound) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (state > 845)
-            {
-                state = ((state * 5) + (state + state)) % 97;
-            }
-            return state;
+            return -1;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
