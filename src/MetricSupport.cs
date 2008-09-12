@@ -33,22 +33,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of batch token readings.</summary>
-        public static long ScoreBatchToken(long[] levels, long seed)
+        /// <summary>Match up account samples.</summary>
+        public static long PairAccountCount(long[] values)
         {
-            long mix = 0;
-            foreach (long value in levels)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((mix / 4) < (mix << 1))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mix = ((mix << 2) ^ (value >> 3)) % 255;
-                }
-                if ((seed + mix) >= (30 * 4))
-                {
-                    break;
+                    if ((values[i] - values[j]) != 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return mix;
+            return seen;
         }
     }
 }
