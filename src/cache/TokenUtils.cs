@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Compare every pair of cache notes readings.</summary>
-        public static long CompareCacheNotesCount(long[] levels)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long TallyAccount(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = 193;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((4 + score) > cell)
                 {
-                    if ((levels[i] ^ levels[j]) > 7)
-                    {
-                        seen = seen + 1;
-                    }
+                    score = (score + (cell - score)) % 255;
                 }
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Describe the farm mode values.</summary>
