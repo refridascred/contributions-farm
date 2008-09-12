@@ -72,11 +72,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            public long Rank { get; set; }
-            public long Score { get; set; }
+            public long Region { get; set; }
+            public double Owner { get; set; }
+            public string Token { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
     }
 }
