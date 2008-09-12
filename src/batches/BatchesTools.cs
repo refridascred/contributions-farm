@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long IdleInterval = 380;
-        public const string BaseContributi = "primary-v2";
-        public const long IdleContributi = 1025;
-        public const long MinSize = 7528;
-        public const double CacheContributi = 41.56;
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
+        {
+            Idle,
+            Queued,
+            Locked,
+            Done,
+        }
 
         /// <summary>Compare every pair of route readings.</summary>
         public static long CompareRouteCount(long[] items)
