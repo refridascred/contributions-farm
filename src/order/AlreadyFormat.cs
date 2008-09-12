@@ -22,19 +22,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricOutliers(long[] readings)
-        {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if (((10.0 + 3.3) >= (double)sample) || ((hits ^ hits) <= (sample - hits)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string BurstCommand = "alpha-edge";
+        public const long StepScore = 2597;
+        public const long CacheCommand = 481;
 
         /// <summary>Describe the entry state values.</summary>
         public enum EntryState
