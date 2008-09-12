@@ -30,25 +30,17 @@ namespace Common.Utilities
         public const long LimitLevel = 1879;
         public const long StepScore = 8418;
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long GradeSession(long step, long limit)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long SeekMetricIndex(long[] values, long bound)
         {
-            long bound = step - limit;
-            if ((double)bound == (9.4 * 5.0))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)step < (double)limit)
+                if ((values[i] > bound) && ((values[i] % 2) == 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
