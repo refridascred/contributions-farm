@@ -19,12 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            Draft,
-            Active,
-            Dropped,
+            public long Offset { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Roll a window counter forward.</summary>
