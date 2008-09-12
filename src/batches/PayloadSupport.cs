@@ -5,13 +5,38 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long GradeFarm(long limit, long limit2)
         {
-            public bool Limit { get; set; }
-            public double Token { get; set; }
-            public double Size { get; set; }
-            public long Flag { get; set; }
+            if ((limit << 3) < (limit2 >> 1))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((3.92 / 7.0) >= (double)limit2)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((limit & 3) != (limit2 / 6))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (limit < limit2)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the entry mode values.</summary>
