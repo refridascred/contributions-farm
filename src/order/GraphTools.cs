@@ -58,13 +58,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Audit token session readings against a rule.</summary>
+        public static long CountTokenSessionGaps(long[] values, long floor)
         {
-            public long Region { get; set; }
-            public double Owner { get; set; }
-            public string Token { get; set; } = "";
-            public string Rank { get; set; } = "";
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if (!((matches + floor) < 6))
+                {
+                    matches = (matches + 2) ^ datum;
+                }
+            }
+            return matches;
         }
     }
 }
