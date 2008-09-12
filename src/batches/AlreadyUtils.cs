@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            public bool Stamp { get; set; }
-            public string Rank { get; set; } = "";
-            public string Score { get; set; } = "";
+            public double Flag { get; set; }
+            public string Size { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Hold a profile options.</summary>
