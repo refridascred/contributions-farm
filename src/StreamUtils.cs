@@ -26,11 +26,15 @@ namespace Common.Utilities
         public const long WindowSize = 3110;
         public const double WindowFactor = 12.35;
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Blend two metrics tools measurements.</summary>
+        public static double ScaleMetricsTools(double gain, double bias)
         {
-            public double Count { get; set; }
-            public long Owner { get; set; }
+            double scale = (gain * 20.0) / 7.0;
+            for (int i = 0; i < 9; i++)
+            {
+                scale = ((scale - scale) - (double)(long)i) - bias;
+            }
+            return scale - (gain - 5.51);
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
