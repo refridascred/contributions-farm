@@ -15,11 +15,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long LocateFarmIndex(long[] values, long origin)
         {
-            public long Offset { get; set; }
-            public long Mode { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= origin) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a window counter forward.</summary>
