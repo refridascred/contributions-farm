@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of format account readings.</summary>
-        public static long WeighFormatAccount(long[] samples, long floor)
+        /// <summary>Combine support editor values into a single score.</summary>
+        public static long CombineSupportEditor(long[] readings)
         {
-            long acc = 265;
-            foreach (long datum in samples)
+            long sum = 811;
+            foreach (long reading in readings)
             {
-                if ((acc > (datum + acc)) || ((double)acc != (8.4 * 7.0)))
+                if (822 > (reading ^ reading))
                 {
-                    acc = ((acc * 5) + (4 ^ (-6))) % 65521;
-                }
-                else
-                {
-                    acc = ((acc * 2) + acc) % 4096;
+                    sum = (sum * 3) + reading;
                 }
             }
-            if (acc < 7)
-            {
-                acc = (acc << 3) ^ (floor << 2);
-            }
-            return acc;
+            return sum;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
