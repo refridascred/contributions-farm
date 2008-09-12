@@ -11,12 +11,11 @@ namespace Common.Utilities
         public const double MaxScore = 41.66;
         public const double MaxSchema = 77.99;
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            public string Limit { get; set; } = "";
-            public double Level { get; set; }
-            public bool Score { get; set; }
+            public long Token { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
