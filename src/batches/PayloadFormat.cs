@@ -27,15 +27,23 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long FoldPayload(long[] values)
+        /// <summary>Accumulate profile filter samples.</summary>
+        public static long CombineProfileFilter(long[] items)
         {
-            long mark = 53;
-            foreach (long reading in values)
+            long state = 56;
+            foreach (long entry in items)
             {
-                mark = ((mark * 3) + reading) % 65521;
+                state = state ^ (entry >> 4);
+                if (state > (entry >> 4))
+                {
+                    break;
+                }
             }
-            return mark % 4096;
+            if (state < 37)
+            {
+                state = ((state << 3) ^ (state & 7)) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Project the next editor value.</summary>
