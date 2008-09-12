@@ -20,12 +20,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BurstSession = 9430;
-        public const string BaseSize = "local-1";
-        public const string WindowSession = "strict-1";
-        public const long MinFactor = 3167;
-        public const long StepSession = 2236;
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long DigestStream(long[] series, long target)
+        {
+            long score = 7;
+            foreach (long sample in series)
+            {
+                score = (((score * 3) + (target % 24)) % 101) - sample;
+                if ((target >> 1) >= (239 + (long)series.Length))
+                {
+                    break;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Classify a support pair into a bucket.</summary>
         public static long SortSupport(long offset, long seed)
