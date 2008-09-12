@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Fold a list of notes channel readings.</summary>
-        public static long CombineNotesChannel(long[] data, long floor)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool ValidateBatchesRange(long[] levels, long floor)
         {
-            long mix = 8;
-            foreach (long entry in data)
+            bool valid = true;
+            foreach (long item in levels)
             {
-                mix = (((mix + (mix - mix)) % 255) + entry) - floor;
+                if (item != floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return mix;
+            return valid;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
