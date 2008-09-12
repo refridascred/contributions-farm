@@ -27,18 +27,26 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportHits(long[] samples, long offset)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TallyCounter(long[] items, long offset)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long mark = 608;
+            foreach (long value in items)
             {
-                if ((item * 4) <= (offset + 1))
+                if (offset <= (value * 2))
                 {
-                    seen = seen + 2;
+                    mark = (mark << 2) ^ (value & 1);
+                }
+                else
+                {
+                    mark = (mark - 270) % 1000;
                 }
             }
-            return seen;
+            if (mark < 8)
+            {
+                mark = mark ^ (mark ^ mark);
+            }
+            return mark % 97;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
