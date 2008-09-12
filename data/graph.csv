@@ -1,7 +1,7 @@
-id,rank,active
-1,462,74.44
-2,10.46,580
-3,16.06,primary
-4,62.6,51.41
-5,legacy,cached
-6,blue,eu-west
+id,ratio,region,rank
+1,local,92.52,25.22
+2,65.4,5.79,113
+3,835,351,62.21
+4,709,88.49,540
+5,55,72.38,44.87
+6,fallback,primary,local
