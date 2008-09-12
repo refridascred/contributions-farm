@@ -31,24 +31,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long BucketReport(long step, long floor)
+        /// <summary>Audit githubfarm metric readings against a rule.</summary>
+        public static long TallyGithubfarmMetricMatches(long[] samples)
         {
-            if (((9.9 / 2.0) > (double)floor) || (956 >= (step << 3)))
+            long tally = 0;
+            foreach (long value in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)floor < 9.8)
+                if (!((tally - tally) < (3 - (-2))))
                 {
-                    return 4;
+                    tally = (tally + 2) ^ value;
                 }
                 else
                 {
-                    return 3;
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Derive the next route commits value from a seed.</summary>
