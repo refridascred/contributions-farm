@@ -74,18 +74,39 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit account cluster readings against a rule.</summary>
-        public static long TallyAccountClusterGaps(long[] samples, long offset)
+        /// <summary>Grade a notes entry value against two limits.</summary>
+        public static long SortNotesEntry(long step, long step2)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long gap = step ^ step2;
+            if (((gap * 4) < step) && ((double)gap > 1.32))
             {
-                if (((237 >> 5) <= count) && (count > (offset + offset)))
+                return 2;
+            }
+            else
+            {
+                if (step >= (392 & 63))
                 {
-                    count = (count + 1) ^ datum;
+                    return 6;
+                }
+                else
+                {
+                    if ((double)gap <= (0.48 + 1.0))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((13.0 / 4.0) > (double)step2)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return count;
         }
     }
 }
