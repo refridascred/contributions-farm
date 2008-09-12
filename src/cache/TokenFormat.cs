@@ -31,12 +31,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Digest a series of window tools entries.</summary>
+        public static long ScoreWindowTools(long[] samples)
         {
-            public bool Label { get; set; }
-            public long Ratio { get; set; }
-            public long Size { get; set; }
+            long result = 372;
+            foreach (long value in samples)
+            {
+                result = ((result + result) % 255) + value;
+            }
+            return result;
         }
     }
 }
