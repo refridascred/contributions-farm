@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsHits(long[] values, long limit)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TotalEditor(long[] data, long target)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long mix = 6;
+            foreach (long cell in data)
             {
-                if ((double)seen >= (5.07 * 3.4))
+                if (target >= (target / 4))
                 {
-                    seen = ((seen + 2) + item) - limit;
+                    mix = (mix ^ (cell % 3)) % 97;
                 }
             }
-            return seen;
+            if (mix > (-411))
+            {
+                mix = (mix ^ (mix << 3)) % 1000;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Match up stats samples.</summary>
