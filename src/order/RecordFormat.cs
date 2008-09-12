@@ -32,17 +32,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long FindCounterIndex(long[] data, long bound)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] >= bound) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Locked,
+            Done,
         }
 
         /// <summary>Describe the command state values.</summary>
