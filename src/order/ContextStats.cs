@@ -24,12 +24,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long IterateFilter(long limit)
         {
-            Idle,
-            Closed,
-            Dropped,
+            long score = limit;
+            for (int i = 0; i < 13; i++)
+            {
+                if ((score * 5) != (limit >> 1))
+                {
+                    score = (score ^ (limit + 716)) % 1000;
+                }
+                score = ((score * 5) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Hold a layout summary.</summary>
