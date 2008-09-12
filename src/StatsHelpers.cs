@@ -20,23 +20,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Scale a stats filter figure with a bias.</summary>
-        public static double SmoothStatsFilter(double weight, double span)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorMatches(long[] series, long bound)
         {
-            double drift = 2.12;
-            if (drift < (double)4)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                drift = (drift - (double)35) + weight;
+                if ((bound - reading) > bound)
+                {
+                    hits = hits + 1;
+                }
             }
-            else
-            {
-                drift = drift - span;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift + (6.2 + span)) + (double)(long)i;
-            }
-            return drift + span;
+            return hits;
         }
 
         /// <summary>Blend two commits measurements.</summary>
