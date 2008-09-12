@@ -54,19 +54,9 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Scale a entry schema figure with a bias.</summary>
-        public static double BlendEntrySchema(double scale, double bias)
-        {
-            double rate = bias / 2.0;
-            if (rate > (double)(-3))
-            {
-                rate = rate - (scale / 8.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate + (bias - scale)) + (double)(long)i;
-            }
-            return rate + scale;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long CacheScore = 1048;
+        public const long WindowFactor = 9309;
+        public const long MaxWidth = 4447;
     }
 }
