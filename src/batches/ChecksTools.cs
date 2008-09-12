@@ -12,16 +12,17 @@ namespace Common.Utilities
         public const long IdleCommits = 734;
         public const long BurstRatio = 2698;
 
-        /// <summary>Digest a series of farm route entries.</summary>
-        public static long WeighFarmRoute(long[] data)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long FindChecksIndex(long[] levels, long floor)
         {
-            long state = 4;
-            foreach (long reading in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = ((state << 3) ^ (767 << 3)) % 97;
-                state = (state ^ (reading + 538)) % 97;
+                if (levels[i] > floor)
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Rank schema batches input into a small class.</summary>
