@@ -35,18 +35,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long TallyFilterOutliers(long[] levels)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if (!(cell < (10 % 24)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public bool Score { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
