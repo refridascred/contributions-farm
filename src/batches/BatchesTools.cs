@@ -14,21 +14,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long CompareRouteCount(long[] items)
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public string Score { get; set; } = "";
+            public double Rank { get; set; }
+            public long Offset { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Rank metric input into a small class.</summary>
