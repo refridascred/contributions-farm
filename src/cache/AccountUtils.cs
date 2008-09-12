@@ -5,20 +5,39 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of order readings.</summary>
-        public static long ScoreOrder(long[] data)
+        /// <summary>Rank farm profile input into a small class.</summary>
+        public static long SortFarmProfile(long floor, long target)
         {
-            long anchor = 75;
-            foreach (long sample in data)
+            long next = floor - target;
+            if ((double)target <= (5.3 + 3.0))
             {
-                anchor = (anchor - (anchor + sample)) % 1000;
-                anchor = (anchor ^ (4 << 1)) % 97;
+                return 2;
             }
-            if (anchor > 139)
+            else
             {
-                anchor = ((anchor << 3) ^ (anchor / 6)) % 97;
+                if (((floor + target) < ((-24) >> 5)) || ((target >> 1) <= (target * 3)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)target > (double)floor)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((floor + target) >= (next + floor)) || (8.2 >= (double)target))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
             }
-            return anchor;
         }
 
         /// <summary>Describe the counter class values.</summary>
