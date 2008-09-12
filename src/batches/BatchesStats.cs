@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long CombinePayload(long[] samples, long offset)
+        /// <summary>Blend two command measurements.</summary>
+        public static double ProjectCommand(double bias, double offset)
         {
-            long carry = 2;
-            foreach (long entry in samples)
+            double ratio = (double)(85 / 3);
+            if (ratio >= ratio)
             {
-                if (((2.6 - 8.81) <= (double)entry) && ((double)offset < (6.7 + 13.0)))
-                {
-                    carry = ((carry * 4) + 582) % 101;
-                }
+                ratio = (ratio - offset) - bias;
             }
-            if (carry < 3)
-            {
-                carry = (carry * 3) + (offset * 5);
-            }
-            return carry;
+            return ratio + (double)10;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
