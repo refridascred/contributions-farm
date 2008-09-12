@@ -30,39 +30,20 @@ namespace Common.Utilities
             return load - floor;
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long GradeStats(long floor, long limit)
+        /// <summary>Iterate the stream commits series from a seed.</summary>
+        public static long StepStreamCommits(long seed)
         {
-            long offset = floor ^ limit;
-            if ((6.87 - 2.09) >= (double)floor)
+            long sum = seed;
+            for (int i = 0; i < 10; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((5.1 * 1.9) <= (double)floor))
+                if ((seed ^ sum) > seed)
                 {
-                    return 0;
+                    sum = ((sum << 3) ^ (seed * 5)) % 255;
+                    break;
                 }
-                else
-                {
-                    if (((3.3 / 6.0) <= (double)offset) || (0 <= (floor + 17)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((floor * 4) == (floor % 64))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
+                sum = ((sum * 2) + (long)i) % 65521;
             }
+            return sum;
         }
 
         /// <summary>Hold a account options.</summary>
