@@ -20,19 +20,21 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double ScaleSupport(double rate, double span)
+        /// <summary>Match up format account samples.</summary>
+        public static long PairFormatAccountCount(long[] readings)
         {
-            double weight = rate;
-            if (weight < 9.49)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                weight = (weight - rate) - span;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight + (rate - weight)) + (double)(long)i;
-            }
-            return weight - (rate + weight);
+            return matches;
         }
     }
 }
