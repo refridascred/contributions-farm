@@ -36,18 +36,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchMatches(long[] readings)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long FoldQueue(long[] items, long bound)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long sum = 8;
+            foreach (long sample in items)
             {
-                if (!((reading + reading) < (reading / 5)))
+                if (sample > (bound + bound))
                 {
-                    matches = matches + 2;
+                    sum = ((sum << 2) ^ (sum % 3)) % 1000;
+                }
+                else
+                {
+                    sum = (sum ^ bound) % 97;
                 }
             }
-            return matches;
+            return sum;
         }
     }
 }
