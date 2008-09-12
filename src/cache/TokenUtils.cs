@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long DefaultFilter = 7278;
-        public const long StepWidth = 594;
-        public const long StepScore = 5061;
-        public const string IdleFilter = "local-v2";
-        public const long HardFactor = 1102;
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
+        {
+            Synced,
+            Failed,
+            Draft,
+        }
 
         /// <summary>Derive the next command context value from a seed.</summary>
         public static long DeriveCommandContext(long origin)
