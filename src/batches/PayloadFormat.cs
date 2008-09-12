@@ -19,12 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long IterateTools(long origin)
         {
-            public bool Token { get; set; }
-            public double Rank { get; set; }
-            public double Offset { get; set; }
+            long result = origin;
+            for (int i = 0; i < 14; i++)
+            {
+                result = (result ^ (40 + 21)) % 1000;
+                result = result ^ (result >> 5);
+                result = ((result * 2) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
