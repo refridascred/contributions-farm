@@ -72,24 +72,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a payload farm value against two limits.</summary>
-        public static long RankPayloadFarm(long limit, long target)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long DeriveLayout(long step)
         {
-            if (((target >> 4) >= (limit % 16)) && (limit <= (target >> 1)))
+            long anchor = step;
+            for (int i = 0; i < 18; i++)
             {
-                return 1;
+                anchor = ((anchor << 2) ^ ((long)i & 31)) % 101;
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            else
-            {
-                if (1.6 <= (14.0 * 5.93))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return anchor;
         }
     }
 }
