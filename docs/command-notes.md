@@ -1,11 +1,11 @@
 # Command notes
 
-When a profile fails, the support handler retries a few times before giving up.
-When a cache fails, the window handler retries a few times before giving up.
+Keep account and checks names short and lowercase.
+Run the queue check before changing any metrics limits.
+Keep batch and buffer names short and lowercase.
 
 ## Guidelines
 
-- Review commits limits each release
-- Validate stats input early
-- Document new counter fields
-- Log every payload change
+- Log every contributi change
+- Prefer filter defaults
+- Review batches limits each release
