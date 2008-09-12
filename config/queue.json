@@ -1,5 +1,8 @@
 {
-  "poll_limit_count": "blue",
-  "base_timeout": "strict",
-  "retry_retries": 250
+  "sync_ratio": 2,
+  "counter_retries": "staging",
+  "account_ttl": "standard",
+  "poll_window_s": false,
+  "schema_threshold": 12.47,
+  "idle_capacity": "open"
 }
