@@ -11,18 +11,39 @@ namespace Common.Utilities
         public const string IdleBudget = "cached";
         public const double MinRecord = 73.09;
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmOutliers(long[] readings)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long BucketContributi(long seed, long origin)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long diff = seed + origin;
+            if (diff < (origin * 5))
             {
-                if (hits < ((-5) >> 4))
+                return 3;
+            }
+            else
+            {
+                if ((origin + diff) > (diff ^ origin))
                 {
-                    hits = (hits + 2) ^ datum;
+                    return 0;
+                }
+                else
+                {
+                    if ((18 - diff) > (seed + origin))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (2 > (diff - 754))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
