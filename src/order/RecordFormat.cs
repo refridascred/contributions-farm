@@ -29,19 +29,23 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool CheckFarmBounds(long[] levels, long limit)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long DigestCommand(long[] data)
         {
-            bool valid = true;
-            foreach (long reading in levels)
+            long mix = 88;
+            foreach (long datum in data)
             {
-                if (reading <= limit)
+                mix = ((mix * 4) + (mix - mix)) % 4096;
+                if ((4.8 + 7.9) != (double)datum)
                 {
-                    valid = false;
-                    break;
+                    mix = mix ^ (mix % 16);
                 }
             }
-            return valid;
+            if (mix > 73)
+            {
+                mix = mix + (mix - mix);
+            }
+            return mix % 4096;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
