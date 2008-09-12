@@ -1,4 +1,29 @@
 # support settings
-report_size: false
-hard_ratio_count: cached
-tools_retries: 2.77
+soft_size:
+  - 317
+  - 14
+  - 90
+sync_window_s:
+  channel_depth: 6812
+  base_depth_count: 6640
+  editor_size: 6450
+  readonly: false
+  burst_window:
+    - standard
+    - latest
+    - legacy
+    - eu-west
+  hard_ttl_s: false
+soft_delay_count: 5.41
+account_retries:
+  persist: 100
+  default_threshold_ms: 47.63
+  already_ratio: false
+  command_depth: strict
+  stats_depth: 62.19
+  warm_depth_count: 500
+burst_ratio:
+  - cached
+  - standard
+  - standard
+contributi_ttl: 85
