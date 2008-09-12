@@ -20,21 +20,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count metric route pairs that satisfy a relation.</summary>
-        public static long CompareMetricRouteCount(long[] series)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 19)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Stale,
+            Draft,
+            Locked,
+            Idle,
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
