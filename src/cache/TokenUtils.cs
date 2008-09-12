@@ -25,13 +25,12 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            Synced,
-            Paused,
-            Closed,
-            Ready,
+            public long Ratio { get; set; }
+            public string Level { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
     }
 }
