@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
-        {
-            Dropped,
-            Idle,
-            Failed,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string BurstRecord = "cached-1";
+        public const long BurstInterval = 5341;
+        public const double HardScore = 94.73;
+        public const long MaxRecord = 3258;
 
         /// <summary>Combine window values into a single score.</summary>
         public static long ScoreWindow(long[] data)
