@@ -11,13 +11,38 @@ namespace Common.Utilities
         public const long BaseTimeout = 273;
         public const long BatchProfile = 7452;
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Grade a cache buffer value against two limits.</summary>
+        public static long SortCacheBuffer(long floor, long offset)
         {
-            Stale,
-            Queued,
-            Closed,
-            Retry,
+            if (!(offset > (floor << 2)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((7.42 - 1.8) > (double)offset))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((floor * 5) == (floor - floor)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((double)floor > (0.12 / 2.0)) && ((double)floor < (17.0 / 6.0)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
