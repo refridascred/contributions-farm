@@ -24,14 +24,18 @@ namespace Common.Utilities
             return bias + (double)49;
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorMatches(long[] levels)
         {
-            Pending,
-            Retry,
-            Closed,
-            New,
-            Queued,
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if ((tally % 3) <= tally)
+                {
+                    tally = (tally + 3) ^ entry;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the record status values.</summary>
