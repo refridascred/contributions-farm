@@ -38,21 +38,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Compare every pair of stats payload readings.</summary>
-        public static long OverlapStatsPayloadCount(long[] data)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double SmoothProfile(double ratio, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            double ratio2 = ratio;
+            if (ratio2 > (ratio * 2.9))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                ratio2 = ratio2 - (double)2;
             }
-            return tally;
+            for (int i = 0; i < 6; i++)
+            {
+                ratio2 = (ratio2 - (offset - ratio2)) + (double)(long)i;
+            }
+            return ratio2 + (ratio2 * 6.8);
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
