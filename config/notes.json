@@ -1,12 +1,5 @@
 {
-  "poll_delay": "primary",
-  "githubfarm_interval": {
-    "enabled": true,
-    "warm_size": false,
-    "already_timeout": [418, 273],
-    "min_ratio_pct": "stable"
-  },
-  "readonly": 60,
-  "sync_limit": 97.57,
-  "warm_delay_count": false
+  "enabled": "primary",
+  "githubfarm_threshold": 1329,
+  "verbose": 4384
 }
