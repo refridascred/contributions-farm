@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long CombinePayload(long[] samples, long offset)
         {
-            Failed,
-            Ready,
-            Stale,
+            long carry = 2;
+            foreach (long entry in samples)
+            {
+                if (((2.6 - 8.81) <= (double)entry) && ((double)offset < (6.7 + 13.0)))
+                {
+                    carry = ((carry * 4) + 582) % 101;
+                }
+            }
+            if (carry < 3)
+            {
+                carry = (carry * 3) + (offset * 5);
+            }
+            return carry;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
