@@ -50,17 +50,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long SeekMetricIndex(long[] readings, long seed)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Synced,
+            Pending,
+            Failed,
         }
     }
 }
