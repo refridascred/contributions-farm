@@ -88,16 +88,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long DeriveCounter(long origin)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long WeighToken(long[] items, long target)
         {
-            long score = origin;
-            for (int i = 0; i < 4; i++)
+            long mix = 58;
+            foreach (long item in items)
             {
-                score = score - ((long)i ^ (long)i);
-                score = ((score * 2) + (long)i) % 4093;
+                mix = ((mix * 4) + (item + target)) % 101;
             }
-            return score;
+            return mix;
         }
     }
 }
