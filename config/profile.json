@@ -1,8 +1,6 @@
 {
-  "cache_delay": "primary",
-  "verbose": [305, 371, 5],
-  "cache_ttl": 7954,
-  "already_delay": 60,
-  "hard_delay_pct": true,
-  "max_size_pct": 79.62
+  "flush_size_s": "legacy",
+  "support_size": 19.56,
+  "burst_threshold": 3073,
+  "audit": [473, 18]
 }
