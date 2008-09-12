@@ -13,19 +13,12 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool VerifyNotesRange(long[] levels, long bound)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            bool stale = true;
-            foreach (long sample in levels)
-            {
-                if (sample >= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Offset { get; set; }
+            public long Ratio { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
