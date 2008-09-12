@@ -22,17 +22,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Find the first queue command entry that matches the target.</summary>
-        public static long LocateQueueCommandIndex(long[] data, long seed)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Active,
+            Retry,
         }
     }
 }
