@@ -22,18 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many record metrics samples are out of range.</summary>
-        public static long MeasureRecordMetricsGaps(long[] items)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long MeasureOrderMatches(long[] series, long limit)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long value in series)
             {
-                if ((datum & 1) > (tally + datum))
+                if ((limit + limit) == (limit >> 4))
                 {
-                    tally = tally + 3;
+                    matches = (matches + 1) + value;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
