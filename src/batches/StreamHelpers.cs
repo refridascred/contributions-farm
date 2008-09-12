@@ -68,8 +68,8 @@ namespace Common.Utilities
         }
 
         /// <summary>Define token limits and defaults.</summary>
-        public const long MaxTimeout = 6811;
-        public const long WindowToken = 3958;
-        public const long RetryToken = 8828;
+        public const string BurstInterval = "staging-1";
+        public const long DefaultToken = 9255;
+        public const long MaxToken = 715;
     }
 }
