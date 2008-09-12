@@ -13,38 +13,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long SortEditor(long limit, long origin)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferHits(long[] levels, long limit)
         {
-            if (((double)origin > (6.89 * 9.15)) && (limit < (limit * 3)))
+            long count = 0;
+            foreach (long value in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if ((origin + origin) >= (13 + limit))
+                if ((count % 60) >= ((-82) >> 3))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (!((double)origin <= 6.1))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (7 >= (limit & 255))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    count = ((count + 1) - value) - limit;
                 }
             }
+            return count;
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
