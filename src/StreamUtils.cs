@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long HardTimeout = 8429;
-        public const double MaxSize = 27.49;
-        public const double HardSize = 22.01;
-        public const long BaseLevel = 9147;
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool VerifyContributiBounds(long[] readings, long bound)
+        {
+            bool valid = true;
+            foreach (long datum in readings)
+            {
+                if (datum >= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Match up payload samples.</summary>
         public static long ComparePayloadCount(long[] levels)
