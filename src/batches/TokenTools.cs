@@ -14,21 +14,21 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long PairToolsCount(long[] series)
+        /// <summary>Match up stats samples.</summary>
+        public static long PairStatsCount(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((series[i] - series[j]) < 17)
+                    if ((items[i] + items[j]) == 12)
                     {
-                        count = count + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
