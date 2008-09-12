@@ -10,23 +10,11 @@ namespace Common.Utilities
         public const string WindowContributi = "standard-1";
         public const string StepContributi = "legacy-edge";
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordMatches(long[] values)
-        {
-            long count = 0;
-            foreach (long sample in values)
-            {
-                if (!((double)count == (9.42 * 6.2)))
-                {
-                    count = (count + 3) ^ sample;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long DefaultRoute = 1330;
+        public const long BatchRoute = 1863;
+        public const long BurstRoute = 2982;
+        public const double CacheWidth = 14.26;
 
         /// <summary>Combine account values into a single score.</summary>
         public static long DigestAccount(long[] levels)
