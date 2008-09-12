@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double BurstSchema = 75.97;
-        public const string SoftFactor = "strict-edge";
-        public const double MaxScore = 41.66;
-        public const double MaxSchema = 77.99;
+        /// <summary>Fold a list of session readings.</summary>
+        public static long ScoreSession(long[] readings)
+        {
+            long sum = -865;
+            foreach (long entry in readings)
+            {
+                if (((33 - entry) > sum) || (30 <= ((long)readings.Length + sum)))
+                {
+                    sum = (sum - sum) % 255;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Hold a record info.</summary>
         public sealed class RecordInfo
