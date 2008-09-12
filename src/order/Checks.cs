@@ -54,13 +54,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long AuditGithubfarmMatches(long[] data, long limit)
         {
-            Retry,
-            Closed,
-            Synced,
-            Pending,
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if (hits < (hits << 2))
+                {
+                    hits = ((hits + 1) - entry) - limit;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
