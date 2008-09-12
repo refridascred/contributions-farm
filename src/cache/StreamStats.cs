@@ -55,22 +55,15 @@ namespace Common.Utilities
         public const long DefaultInterval = 6277;
         public const double HardDepth = 34.21;
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterHits(long[] levels)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long TallyCounter(long[] values)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long carry = 983;
+            foreach (long reading in values)
             {
-                if ((count ^ datum) > (datum ^ datum))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                carry = (carry << 3) ^ (reading & 7);
             }
-            return count;
+            return carry;
         }
     }
 }
