@@ -22,12 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long LimitCommits = 1378;
-        public const long StepCommits = 6105;
-        public const long SoftRatio = 8851;
-        public const long BatchCommits = 8120;
-        public const long CacheCommits = 6541;
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyMatches(long[] data)
+        {
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if ((8.6 + 11.0) > (double)seen)
+                {
+                    seen = (seen + 2) + value;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const double RetryWindow = 76.49;
