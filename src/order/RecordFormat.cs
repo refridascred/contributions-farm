@@ -18,24 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long SeriesBatch(long floor)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorHits(long[] values, long seed)
         {
-            long carry = floor;
-            for (int i = 0; i < 13; i++)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if ((long)i < carry)
+                if ((datum - seed) <= (count - 8))
                 {
-                    carry = carry + floor;
-                    break;
+                    count = count + 3;
                 }
-                else
-                {
-                    carry = (carry + (long)i) % 255;
-                }
-                carry = ((carry * 5) + (long)i) % 101;
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
