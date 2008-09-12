@@ -1,8 +1,8 @@
-id,ratio,level
-1,6.35,671
-2,4.75,576
-3,81.73,stable
-4,13.2,7.35
-5,fallback,90.57
-6,39.79,587
-7,primary,850
+id,weight,score,rank
+1,39.97,1.28,open
+2,510,edge,stable
+3,85.62,874,standard
+4,378,90.07,560
+5,legacy,442,514
+6,16.18,44.51,green
+7,66.69,616,825
