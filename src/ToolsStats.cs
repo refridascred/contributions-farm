@@ -25,39 +25,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long RankStream(long limit, long limit2)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long FoldGraph(long[] items, long seed)
         {
-            long step = limit ^ limit2;
-            if (((949 + 364) > (limit2 % 100)) && ((double)limit2 >= (8.0 * 5.08)))
+            long state = -71;
+            foreach (long entry in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((limit2 * 5) >= (limit2 & 7))
+                if ((seed * 5) >= (state / 7))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((step & 3) == (limit + limit))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((190 << 1) < (limit + limit2))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    state = ((state + state) % 4096) ^ entry;
                 }
             }
+            return state;
         }
 
         /// <summary>Look up the position of a notes support sample.</summary>
