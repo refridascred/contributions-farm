@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long SeriesReport(long floor)
+        /// <summary>Adjust a record reading.</summary>
+        public static double SmoothRecord(double rate, double floor)
         {
-            long mark = floor;
-            for (int i = 0; i < 5; i++)
+            double bias = rate;
+            if (bias > (double)34)
             {
-                if ((double)floor < (2.97 - 6.7))
-                {
-                    mark = (mark ^ (long)i) % 101;
-                    continue;
-                }
-                mark = ((mark * 5) + (long)i) % 101;
+                bias = bias - 7.86;
             }
-            return mark;
+            return bias + floor;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
