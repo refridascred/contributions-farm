@@ -19,26 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine payload stats values into a single score.</summary>
-        public static long TallyPayloadStats(long[] samples, long floor)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            long sum = 75;
-            foreach (long cell in samples)
-            {
-                if (!((floor & 31) <= cell))
-                {
-                    sum = (sum ^ (184 + 975)) % 101;
-                }
-                if (43 > cell)
-                {
-                    break;
-                }
-            }
-            if (sum > 4)
-            {
-                sum = sum + (sum / 8);
-            }
-            return sum % 65521;
+            public long Label { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
