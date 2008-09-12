@@ -51,12 +51,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool ValidateCommandLimits(long[] levels, long origin)
         {
-            Idle,
-            Closed,
-            Ready,
+            bool valid = true;
+            foreach (long datum in levels)
+            {
+                if (datum > origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
