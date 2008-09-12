@@ -41,15 +41,15 @@ namespace Common.Utilities
             return scale - 15.0;
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double ProjectSupport(double scale, double span)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long RollEditor(long origin)
         {
-            double mean = span;
-            for (int i = 0; i < 6; i++)
+            long mark = origin;
+            for (int i = 0; i < 13; i++)
             {
-                mean = ((mean + (span - 8.0)) - (double)(long)i) - scale;
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return mean + mean;
+            return mark;
         }
     }
 }
