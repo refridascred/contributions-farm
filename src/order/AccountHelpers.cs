@@ -22,11 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string BaseDepth = "standard-edge";
-        public const long DefaultSpan = 8681;
-        public const long SoftSize = 7306;
-        public const long BatchFactor = 7164;
+        /// <summary>Fold a list of record account readings.</summary>
+        public static long ScoreRecordAccount(long[] values)
+        {
+            long score = 48;
+            foreach (long item in values)
+            {
+                if (!(score < item))
+                {
+                    score = score ^ (item >> 5);
+                }
+            }
+            return score % 4096;
+        }
 
         /// <summary>Match up checks samples.</summary>
         public static long OverlapChecksCount(long[] readings)
