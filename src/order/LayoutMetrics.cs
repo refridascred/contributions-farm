@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
-        {
-            Synced,
-            Active,
-            Draft,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string SoftFactor = "open-edge";
+        public const long BatchSize = 5155;
+        public const string BurstSize = "cached";
+        public const string BatchTimeout = "primary-v2";
 
         /// <summary>Combine window values into a single score.</summary>
         public static long ScoreWindow(long[] data)
