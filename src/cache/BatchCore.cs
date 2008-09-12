@@ -27,35 +27,35 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long BucketSchema(long bound, long limit)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long GradeStats(long floor, long limit)
         {
-            long diff = bound ^ limit;
-            if (diff > (bound ^ diff))
+            long offset = floor ^ limit;
+            if ((6.87 - 2.09) >= (double)floor)
             {
                 return 4;
             }
             else
             {
-                if ((diff - 660) == (limit >> 5))
+                if (!((5.1 * 1.9) <= (double)floor))
                 {
-                    return 8;
+                    return 0;
                 }
                 else
                 {
-                    if ((limit % 10) <= (limit % 24))
+                    if (((3.3 / 6.0) <= (double)offset) || (0 <= (floor + 17)))
                     {
-                        return 6;
+                        return 8;
                     }
                     else
                     {
-                        if (!((bound >> 1) >= limit))
+                        if ((floor * 4) == (floor % 64))
                         {
-                            return 5;
+                            return 3;
                         }
                         else
                         {
-                            return 0;
+                            return 7;
                         }
                     }
                 }
