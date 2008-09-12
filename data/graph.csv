@@ -1,9 +1,8 @@
-id,owner,score
-1,809,30.73
-2,fallback,172
-3,strict,37.27
-4,cached,strict
-5,201,810
-6,staging,cached
-7,staging,773
-8,43.09,175
+id,token,owner,state
+1,35.2,612,local
+2,blue,local,804
+3,strict,525,6.82
+4,173,52.31,38
+5,local,127,67.02
+6,edge,strict,65.94
+7,primary,518,74.2
