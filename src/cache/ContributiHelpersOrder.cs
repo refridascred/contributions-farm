@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Locate a support reading by value.</summary>
-        public static long SeekSupportIndex(long[] readings, long seed)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Retry,
+            Idle,
+            Draft,
+            Pending,
         }
 
         /// <summary>Combine farm values into a single score.</summary>
