@@ -6,9 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=132
-log "limit is ${RECORD_LIMIT}"
-
-for item in latest fallback standard primary; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 4 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
+
+RECORD_LIMIT=448
+log "limit is ${RECORD_LIMIT}"
