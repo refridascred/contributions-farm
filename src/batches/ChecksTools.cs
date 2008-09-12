@@ -12,17 +12,18 @@ namespace Common.Utilities
         public const long IdleCommits = 734;
         public const long BurstRatio = 2698;
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long FindChecksIndex(long[] levels, long floor)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderGaps(long[] items)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if (levels[i] > floor)
+                if ((double)item < 13.0)
                 {
-                    return (long)i;
+                    tally = tally + 2;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Rank schema batches input into a small class.</summary>
