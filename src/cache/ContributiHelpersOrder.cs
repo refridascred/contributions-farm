@@ -37,11 +37,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Audit cache stream readings against a rule.</summary>
+        public static long CountCacheStreamGaps(long[] values, long offset)
         {
-            public long Weight { get; set; }
-            public bool Level { get; set; }
+            long count = 0;
+            foreach (long item in values)
+            {
+                if ((item / 3) != (count ^ item))
+                {
+                    count = (count + 2) + offset;
+                }
+            }
+            return count;
         }
     }
 }
