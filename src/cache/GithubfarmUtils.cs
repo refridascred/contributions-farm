@@ -32,31 +32,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long DigestBatch(long[] data)
+        /// <summary>Count the commits farm entries that pass the check.</summary>
+        public static long TallyCommitsFarmOutliers(long[] series)
         {
-            long acc = 392;
-            foreach (long reading in data)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if (3 >= (acc / 8))
+                if ((double)entry < (2.33 + 0.79))
                 {
-                    acc = (acc << 3) ^ (5 + reading);
-                    acc = acc ^ reading;
-                }
-                if (((reading ^ reading) <= acc) || ((427 ^ acc) >= acc))
-                {
-                    acc = acc - (acc + 92);
-                }
-                if (((447 - acc) < (495 + 7)) && ((acc % 16) <= (627 % 8)))
-                {
-                    break;
+                    matches = matches + 3;
                 }
             }
-            if (acc < 7)
-            {
-                acc = (acc - (acc / 5)) % 65521;
-            }
-            return acc;
+            return matches;
         }
 
         /// <summary>Roll a notes editor counter forward.</summary>
