@@ -14,10 +14,22 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long SoftPayload = 6775;
-        public const string WindowPayload = "cached-v2";
-        public const long SoftBudget = 173;
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long PairToolsCount(long[] series)
+        {
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 17)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long LimitWidth = 3557;
