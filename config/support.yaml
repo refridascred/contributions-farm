@@ -1,9 +1,8 @@
 # support settings
-batch_window_ms: 88.6
-poll_delay:
-  - 310
-  - 474
-  - 72
-  - 178
-cluster_threshold: true
-batch_capacity: 10.22
+soft_delay_s: edge
+sync_depth_count: 47
+filter_threshold:
+  - standard
+  - green
+  - cached
+hard_threshold: standard
