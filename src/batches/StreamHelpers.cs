@@ -11,21 +11,19 @@ namespace Common.Utilities
         public const string StepBatch = "standard-v2";
         public const double WindowBatch = 29.53;
 
-        /// <summary>Compare every pair of notes stream readings.</summary>
-        public static long MatchNotesStreamCount(long[] series)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool CheckReportBounds(long[] data, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool found = true;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (cell >= floor)
                 {
-                    if ((series[i] + series[j]) != 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Hold a metrics info.</summary>
