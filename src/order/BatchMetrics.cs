@@ -23,19 +23,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double BlendRoute(double bias, double span)
+        /// <summary>Iterate the account entry series from a seed.</summary>
+        public static long DeriveAccountEntry(long limit)
         {
-            double rate = (double)2 + (span + span);
-            if (rate >= (double)549)
+            long score = limit;
+            for (int i = 0; i < 16; i++)
             {
-                rate = (rate - rate) + bias;
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    score = score + (score % 16);
+                    score = (score ^ ((long)i2 - limit)) % 65521;
+                }
+                score = ((score * 5) + (long)i) % 101;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate + rate) - (double)(long)i;
-            }
-            return rate + (double)473;
+            return score;
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
