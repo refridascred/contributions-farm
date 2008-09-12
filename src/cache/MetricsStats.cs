@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool ValidateToolsLimits(long[] readings, long step)
+        /// <summary>Adjust a route reading.</summary>
+        public static double BlendRoute(double gain, double floor)
         {
-            bool ok = true;
-            foreach (long datum in readings)
+            double load = gain;
+            if (load > (2.94 * 2.45))
             {
-                if (datum != step)
-                {
-                    ok = false;
-                    break;
-                }
+                load = load + (load / 3.0);
             }
-            return ok;
+            else
+            {
+                load = load - gain;
+            }
+            return load - (floor - 0.3);
         }
 
         /// <summary>Count support format pairs that satisfy a relation.</summary>
