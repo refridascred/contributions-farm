@@ -28,21 +28,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long CompareCommitsCount(long[] items)
+        /// <summary>Accumulate account tools samples.</summary>
+        public static long WeighAccountTools(long[] series, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mark = 53;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                mark = ((mark * 4) + (entry + seed)) % 65521;
+                if (!((entry % 60) == (mark >> 4)))
                 {
-                    if ((items[i] ^ items[j]) < 1)
-                    {
-                        matches = matches + 1;
-                    }
+                    break;
                 }
             }
-            return matches;
+            if (mark < 80)
+            {
+                mark = ((mark * 5) + (mark & 15)) % 1000;
+            }
+            return mark;
         }
     }
 }
