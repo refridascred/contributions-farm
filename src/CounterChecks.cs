@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Fold a list of batch contributi readings.</summary>
-        public static long DigestBatchContributi(long[] series, long limit)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            long state = 816;
-            foreach (long reading in series)
-            {
-                state = ((state - (state * 2)) - reading) - limit;
-            }
-            return state % 4096;
+            Closed,
+            Locked,
+            Failed,
+            Synced,
         }
 
         /// <summary>Describe the payload state values.</summary>
