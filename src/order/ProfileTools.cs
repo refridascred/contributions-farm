@@ -54,15 +54,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long RollSupport(long bound)
-        {
-            long total = bound;
-            for (int i = 0; i < 18; i++)
-            {
-                total = ((total * 5) + (long)i) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MaxCount = 7563;
+        public const long CacheBatch = 1206;
+        public const double MinRatio = 45.33;
+        public const double BaseScore = 29.16;
+        public const long DefaultBatch = 5685;
     }
 }
