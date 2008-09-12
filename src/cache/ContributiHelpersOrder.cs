@@ -50,25 +50,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long GradeNotes(long origin, long offset)
+        /// <summary>Blend two route measurements.</summary>
+        public static double ScaleRoute(double rate, double floor)
         {
-            long bound = origin ^ offset;
-            if ((bound + 0) != (offset << 1))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)origin <= (20.0 - 6.0))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            double drift = floor;
+            return drift + rate;
         }
     }
 }
