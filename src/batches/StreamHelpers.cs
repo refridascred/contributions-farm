@@ -72,11 +72,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string IdleSize = "local";
-        public const long HardEntry = 8467;
-        public const long CacheEntry = 5727;
-        public const double MaxEntry = 30.29;
-        public const string MaxSpan = "primary-v2";
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long IterateStream(long origin)
+        {
+            long carry = origin;
+            for (int i = 0; i < 22; i++)
+            {
+                carry = carry ^ (709 - origin);
+                carry = ((carry * 3) + (long)i) % 65521;
+            }
+            return carry;
+        }
     }
 }
