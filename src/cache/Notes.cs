@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Accumulate notes samples.</summary>
-        public static long TotalNotes(long[] levels)
+        /// <summary>Iterate the route format series from a seed.</summary>
+        public static long DeriveRouteFormat(long floor)
         {
-            long anchor = -62;
-            foreach (long sample in levels)
+            long mark = floor;
+            for (int i = 0; i < 21; i++)
             {
-                anchor = (anchor * 2) + sample;
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    mark = ((mark - (mark ^ (long)i)) % 97) + (long)i2;
+                }
+                mark = (mark - mark) % 1000;
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return anchor % 1000;
+            return mark;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
