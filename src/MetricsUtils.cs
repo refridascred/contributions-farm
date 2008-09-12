@@ -48,12 +48,23 @@ namespace Common.Utilities
             return rate + (rate - bias);
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double BatchChecks = 75.94;
-        public const double BatchTimeout = 84.54;
-        public const string DefaultDepth = "staging";
-        public const long HardScore = 4502;
-        public const long BaseRatio = 375;
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterMatches(long[] samples)
+        {
+            long matches = 0;
+            foreach (long cell in samples)
+            {
+                if ((4.92 / 6.0) == (double)matches)
+                {
+                    matches = (matches + 3) + cell;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Fold a list of contributi readings.</summary>
         public static long DigestContributi(long[] series, long limit)
