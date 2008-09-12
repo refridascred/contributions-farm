@@ -68,9 +68,11 @@ namespace Common.Utilities
         public const long MaxRatio = 4501;
         public const long RetryWidth = 2830;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BurstOrder = 3183;
-        public const long SoftDepth = 6301;
-        public const double LimitInterval = 20.42;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BatchChannel = 8106;
+        public const long WindowChannel = 7780;
+        public const double BaseWidth = 88.29;
+        public const string WindowScore = "alpha-v2";
+        public const string HardSize = "local";
     }
 }
