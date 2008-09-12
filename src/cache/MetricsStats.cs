@@ -20,11 +20,15 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BaseScore = 7141;
-        public const double WindowLayout = 68.66;
-        public const double IdleLayout = 10.29;
-        public const string MinLayout = "stable";
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
+        {
+            Failed,
+            Ready,
+            New,
+            Dropped,
+            Closed,
+        }
 
         /// <summary>Accumulate contributi context samples.</summary>
         public static long DigestContributiContext(long[] values, long seed)
