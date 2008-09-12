@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            public double Mode { get; set; }
-            public long Flag { get; set; }
+            public string Count { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Describe the farm mode values.</summary>
