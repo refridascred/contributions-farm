@@ -27,9 +27,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long RetryRatio = 7468;
-        public const long DefaultScore = 8637;
-        public const double StepFarm = 54.44;
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricOutliers(long[] items)
+        {
+            long count = 0;
+            foreach (long value in items)
+            {
+                if (9.87 < (double)count)
+                {
+                    count = (count + 3) - value;
+                }
+            }
+            return count;
+        }
     }
 }
