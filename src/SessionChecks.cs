@@ -16,19 +16,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool CheckLayoutLimits(long[] levels, long bound)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountGaps(long[] levels, long floor)
         {
-            bool valid = true;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                if (reading != bound)
+                if ((0.4 * 9.57) >= (double)cell)
                 {
-                    valid = false;
-                    break;
+                    seen = (seen + 1) + floor;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Fold a list of account readings.</summary>
