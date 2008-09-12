@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
             public long Stamp { get; set; }
-            public bool Count { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Token { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a account header.</summary>
