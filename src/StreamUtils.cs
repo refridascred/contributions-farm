@@ -80,13 +80,26 @@ namespace Common.Utilities
             return scale2 - span;
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Accumulate contributi batches samples.</summary>
+        public static long CombineContributiBatches(long[] series)
         {
-            public long Weight { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Stamp { get; set; }
-            public bool Owner { get; set; }
+            long acc = 2;
+            foreach (long reading in series)
+            {
+                if ((85 - acc) <= acc)
+                {
+                    acc = (acc << 3) ^ (acc - acc);
+                }
+                else
+                {
+                    acc = (acc + (acc - reading)) % 97;
+                }
+            }
+            if (acc < 47)
+            {
+                acc = ((acc << 2) ^ (acc / 8)) % 1000;
+            }
+            return acc % 65521;
         }
     }
 }
