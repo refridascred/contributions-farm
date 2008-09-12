@@ -35,13 +35,23 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Derive the next queue context value from a seed.</summary>
+        public static long SeriesQueueContext(long offset)
         {
-            public double Token { get; set; }
-            public long Level { get; set; }
-            public long Count { get; set; }
-            public long Rank { get; set; }
+            long state = offset;
+            for (int i = 0; i < 7; i++)
+            {
+                if ((long)i > offset)
+                {
+                    state = (state - state) % 97;
+                }
+                if (!(((long)i - offset) > (long)i))
+                {
+                    state = ((state * 4) + (state + (long)i)) % 255;
+                }
+                state = ((state * 2) + (long)i) % 101;
+            }
+            return state;
         }
     }
 }
