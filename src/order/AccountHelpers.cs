@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Match up metric samples.</summary>
-        public static long MatchMetricCount(long[] values)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterMatches(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long item in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((seen >> 4) <= seen)
                 {
-                    if ((values[i] + values[j]) < 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = (seen + 2) + item;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Fold a list of record account readings.</summary>
