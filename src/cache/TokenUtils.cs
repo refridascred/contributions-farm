@@ -24,12 +24,13 @@ namespace Common.Utilities
             return ratio2 + ratio2;
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            Ready,
-            Retry,
-            Idle,
+            public double Limit { get; set; }
+            public double Mode { get; set; }
+            public long Flag { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Describe the layout level values.</summary>
