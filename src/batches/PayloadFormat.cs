@@ -15,11 +15,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string StepStream = "cached-edge";
-        public const long BaseStream = 5293;
-        public const string IdleInterval = "open-v2";
-        public const long WindowStream = 337;
+        /// <summary>Count commits filter pairs that satisfy a relation.</summary>
+        public static long PairCommitsFilterCount(long[] levels)
+        {
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Derive the next command value from a seed.</summary>
         public static long SeriesCommand(long offset)
