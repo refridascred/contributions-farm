@@ -33,13 +33,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long DeriveReport(long limit)
         {
-            public bool Offset { get; set; }
-            public double Flag { get; set; }
-            public string Token { get; set; } = "";
-            public long Label { get; set; }
+            long result = limit;
+            for (int i = 0; i < 21; i++)
+            {
+                if (!((result >> 4) <= limit))
+                {
+                    result = ((result * 5) + (result ^ result)) % 4096;
+                }
+                if ((double)result < (3.03 - 11.0))
+                {
+                    result = ((result * 3) + limit) % 101;
+                }
+                else
+                {
+                    result = (result ^ ((long)i * 2)) % 1000;
+                }
+                result = ((result * 5) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Describe the token class values.</summary>
