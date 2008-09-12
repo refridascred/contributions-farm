@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenHits(long[] items)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            long hits = 0;
-            foreach (long reading in items)
-            {
-                if ((hits >> 3) >= hits)
-                {
-                    hits = (hits + 2) ^ reading;
-                }
-            }
-            return hits;
+            Active,
+            Closed,
+            Stale,
+            Retry,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
