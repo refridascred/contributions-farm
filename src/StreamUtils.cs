@@ -73,11 +73,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Measure how many window profile samples are out of range.</summary>
+        public static long AuditWindowProfileOutliers(long[] values)
         {
-            public long Level { get; set; }
-            public long Rank { get; set; }
+            long count = 0;
+            foreach (long entry in values)
+            {
+                if ((entry / 9) <= entry)
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
