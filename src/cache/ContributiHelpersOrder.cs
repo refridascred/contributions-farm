@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double WindowRatio = 67.38;
-        public const long MaxCount = 7118;
-        public const long HardCommits = 1747;
-        public const long BaseCommits = 2345;
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
+        {
+            Draft,
+            Locked,
+            Stale,
+            Active,
+        }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
         public static bool GuardAlreadyLimits(long[] values, long offset)
