@@ -19,22 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of layout already entries.</summary>
-        public static long DigestLayoutAlready(long[] samples)
+        /// <summary>Adjust a tools githubfarm reading.</summary>
+        public static double ProjectToolsGithubfarm(double gain, double bias)
         {
-            long state = 38;
-            foreach (long entry in samples)
+            double rate = 10.0 - (gain - gain);
+            if (rate >= 9.24)
             {
-                if (state > (state * 4))
-                {
-                    state = (state - entry) % 101;
-                }
-                if ((entry + (-3)) != (entry >> 3))
-                {
-                    break;
-                }
+                rate = rate + gain;
             }
-            return state;
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate - (rate * 13.0)) + (double)(long)i;
+            }
+            return rate + (rate - bias);
         }
 
         /// <summary>Describe the format class values.</summary>
