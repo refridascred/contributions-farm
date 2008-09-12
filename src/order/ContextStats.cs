@@ -16,15 +16,19 @@ namespace Common.Utilities
             return rate + (weight / 5.0);
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterHits(long[] levels, long floor)
+        /// <summary>Count the window buffer entries that pass the check.</summary>
+        public static long MeasureWindowBufferOutliers(long[] samples)
         {
             long count = 0;
-            foreach (long reading in levels)
+            foreach (long value in samples)
             {
-                if (reading < (reading * 5))
+                if ((double)count <= (double)value)
                 {
-                    count = (count + 2) + floor;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
