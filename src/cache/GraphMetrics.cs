@@ -44,18 +44,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordOutliers(long[] series)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelGaps(long[] values, long limit)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                if ((double)entry <= (5.98 / 2.0))
+                if ((tally * 5) <= (limit * 3))
                 {
-                    matches = matches + 1;
+                    tally = (tally + 2) + datum;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Define order limits and defaults.</summary>
