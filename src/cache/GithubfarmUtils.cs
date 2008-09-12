@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountHits(long[] items)
         {
-            public double Label { get; set; }
-            public long Level { get; set; }
-            public bool Rank { get; set; }
-            public double Ratio { get; set; }
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if ((double)matches > (3.89 + 8.93))
+                {
+                    matches = (matches + 3) + datum;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
