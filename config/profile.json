@@ -1,11 +1,5 @@
 {
-  "schema_limit": 71.24,
-  "audit": false,
-  "sync_threshold_count": {
-    "compress": "strict",
-    "verbose": "legacy",
-    "record_delay": "strict",
-    "githubfarm_capacity": true,
-    "strict": 9599
-  }
+  "stats_interval": "staging",
+  "audit": 28,
+  "enabled": true
 }
