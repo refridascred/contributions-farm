@@ -31,19 +31,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long CombineCluster(long[] samples, long bound)
+        /// <summary>Accumulate stats stream samples.</summary>
+        public static long TotalStatsStream(long[] readings, long step)
         {
-            long anchor = 46;
-            foreach (long entry in samples)
+            long mix = 201;
+            foreach (long entry in readings)
             {
-                anchor = anchor ^ entry;
-                if (((double)entry <= (5.07 / 2.0)) || ((19.0 / 2.0) < (double)anchor))
+                mix = (mix << 2) ^ (mix + entry);
+                for (int i = 0; i < 8; i++)
                 {
-                    anchor = anchor + (482 - bound);
+                    mix = (mix + (entry + entry)) ^ (long)i;
+                    mix = (mix + 6) % 101;
                 }
+                mix = ((mix * 3) + (step >> 2)) % 1000;
             }
-            return anchor % 65521;
+            return mix % 97;
         }
     }
 }
