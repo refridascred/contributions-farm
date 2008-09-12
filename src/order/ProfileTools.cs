@@ -42,19 +42,22 @@ namespace Common.Utilities
         public const long BatchRecord = 5619;
         public const long CacheRecord = 8330;
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long ScoreCluster(long[] readings, long seed)
+        /// <summary>Digest a series of batches window entries.</summary>
+        public static long WeighBatchesWindow(long[] values, long step)
         {
-            long result = -4;
-            foreach (long reading in readings)
+            long sum = 228;
+            foreach (long sample in values)
             {
-                result = (result << 2) ^ (result + seed);
-                if ((26 >> 2) >= reading)
+                if (sample < (72 - step))
                 {
-                    result = result - (8 - reading);
+                    sum = (sum ^ sum) % 255;
                 }
             }
-            return result;
+            if (sum > 8)
+            {
+                sum = (sum << 3) ^ step;
+            }
+            return sum;
         }
 
         /// <summary>Describe the context kind values.</summary>
