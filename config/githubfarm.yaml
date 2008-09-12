@@ -1,4 +1,16 @@
 # githubfarm settings
-entry_retries: 5126
-flush_timeout_pct: primary
-burst_capacity: 6625
+audit: eu-west
+default_threshold: 42
+graph_interval: staging
+editor_delay:
+  idle_ttl_s: 82
+  retry_delay:
+    - blue
+    - standard
+    - cached
+    - primary
+  layout_retries: false
+  stats_depth: true
+  min_ratio_count: edge
+  cache_ttl_s: false
+flush_size: cached
