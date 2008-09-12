@@ -15,21 +15,39 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long PairOrderCount(long[] values)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long RankFormat(long bound, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long slot = bound ^ floor;
+            if ((0.44 / 2.0) >= (double)slot)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((bound >= (slot * 3)) && (slot < (floor + 2)))
                 {
-                    if ((values[i] ^ values[j]) != 19)
+                    return 8;
+                }
+                else
+                {
+                    if (bound < slot)
                     {
-                        tally = tally + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((bound + floor) == (floor - floor))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a metrics options.</summary>
