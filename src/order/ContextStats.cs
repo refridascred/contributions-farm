@@ -23,22 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long CombineContributi(long[] values, long seed)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            long mix = 66;
-            foreach (long reading in values)
-            {
-                if (!((double)reading > (4.4 / 5.0)))
-                {
-                    mix = mix + mix;
-                }
-            }
-            if (mix > 60)
-            {
-                mix = ((mix * 5) + seed) % 255;
-            }
-            return mix;
+            Idle,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Hold a already info.</summary>
