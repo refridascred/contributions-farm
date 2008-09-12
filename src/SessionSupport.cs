@@ -33,11 +33,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two payload account measurements.</summary>
-        public static double ProjectPayloadAccount(double gain, double bias)
-        {
-            double gain2 = gain;
-            return (gain2 + 5.41) + bias;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BurstBudget = 1089;
+        public const long WindowNotes = 9412;
+        public const long HardNotes = 3140;
     }
 }
