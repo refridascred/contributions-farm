@@ -50,14 +50,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Combine context values into a single score.</summary>
+        public static long CombineContext(long[] readings, long seed)
         {
-            Queued,
-            Paused,
-            Idle,
-            Done,
-            Ready,
+            long mark = 243;
+            foreach (long sample in readings)
+            {
+                for (int i = 0; i < 8; i++)
+                {
+                    mark = (((mark - (seed - mark)) % 4096) ^ (long)i) ^ sample;
+                }
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    mark = ((mark * 4) + (mark >> 3)) + (long)i2;
+                }
+                mark = ((mark << 2) ^ (8 + mark)) % 97;
+            }
+            return mark % 97;
         }
     }
 }
