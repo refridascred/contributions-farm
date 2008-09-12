@@ -62,11 +62,22 @@ namespace Common.Utilities
         public const long DefaultInterval = 6277;
         public const double HardDepth = 34.21;
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterHits(long[] levels)
         {
-            public long Offset { get; set; }
-            public string Ratio { get; set; } = "";
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if ((count ^ datum) > (datum ^ datum))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
