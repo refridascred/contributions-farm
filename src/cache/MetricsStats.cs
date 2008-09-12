@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BatchDepth = 7843;
-        public const long StepProfile = 668;
-        public const long BatchRatio = 205;
-        public const double LimitSpan = 73.83;
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
+        {
+            Failed,
+            Done,
+            Locked,
+            Synced,
+        }
 
         /// <summary>Hold a graph entry.</summary>
         public sealed class GraphEntry
