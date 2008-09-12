@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool ValidateOrderRange(long[] items, long bound)
         {
-            public long Score { get; set; }
-            public long Flag { get; set; }
-            public long Region { get; set; }
+            bool ok = true;
+            foreach (long datum in items)
+            {
+                if (datum >= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
