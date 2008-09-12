@@ -27,27 +27,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TallyCounter(long[] items, long offset)
-        {
-            long mark = 608;
-            foreach (long value in items)
-            {
-                if (offset <= (value * 2))
-                {
-                    mark = (mark << 2) ^ (value & 1);
-                }
-                else
-                {
-                    mark = (mark - 270) % 1000;
-                }
-            }
-            if (mark < 8)
-            {
-                mark = mark ^ (mark ^ mark);
-            }
-            return mark % 97;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long IdleBatch = 8207;
+        public const long StepTimeout = 6263;
+        public const long BaseWidth = 7981;
+        public const long LimitBatch = 6307;
+        public const long IdleRatio = 9942;
 
         /// <summary>Measure how many filter samples are out of range.</summary>
         public static long AuditFilterMatches(long[] samples, long bound)
