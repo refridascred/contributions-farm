@@ -19,26 +19,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long ScoreEntry(long[] samples, long floor)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            long mix = 0;
-            foreach (long sample in samples)
-            {
-                if (floor > (mix + floor))
-                {
-                    mix = (mix - (floor + mix)) + sample;
-                }
-                else
-                {
-                    mix = ((mix << 3) ^ mix) % 97;
-                }
-            }
-            if (mix < 903)
-            {
-                mix = mix - (floor % 3);
-            }
-            return mix % 97;
+            public bool Score { get; set; }
+            public bool Stamp { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Define format limits and defaults.</summary>
