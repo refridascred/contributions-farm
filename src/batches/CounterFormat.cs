@@ -37,9 +37,11 @@ namespace Common.Utilities
             return weight + (weight * 8.2);
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long RetryLayout = 8632;
-        public const string CacheLayout = "cached-v2";
-        public const long RetryInterval = 2906;
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
+        {
+            public double Label { get; set; }
+            public string Mode { get; set; } = "";
+        }
     }
 }
