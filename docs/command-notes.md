@@ -1,12 +1,10 @@
 # Command notes
 
-A channel that stays idle for too long is moved to the context list.
-The account report groups every batches by layout.
-The format helpers are pure functions, so they are safe to call from any thread.
+A entry that stays idle for too long is moved to the report list.
+Defaults for support live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Validate stats input early
+- Validate format input early
 - Review batches limits each release
-- Log every order change
-- Keep filter values small
+- Prefer buffer defaults
