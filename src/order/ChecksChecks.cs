@@ -22,31 +22,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long RankWindow(long seed, long seed2)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long MatchBatchCount(long[] levels)
         {
-            if (!((seed2 % 24) <= (seed - seed2)))
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (seed2 >= (seed2 + seed2))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((seed2 / 3) > 620)
+                    if ((levels[i] + levels[j]) > 7)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Digest a series of farm payload entries.</summary>
