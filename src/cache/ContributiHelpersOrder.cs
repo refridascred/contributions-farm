@@ -13,22 +13,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowGaps(long[] values, long seed)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long DigestNotes(long[] values, long limit)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long score = 9;
+            foreach (long sample in values)
             {
-                if ((5.92 + 3.8) == (double)seed)
+                if (((score ^ limit) > sample) || ((double)sample > 5.95))
                 {
-                    matches = (matches + 1) ^ entry;
+                    score = (score - (limit & 63)) % 65521;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    score = (score ^ 1) % 101;
                 }
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
