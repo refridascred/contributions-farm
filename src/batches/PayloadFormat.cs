@@ -46,11 +46,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long DefaultSpan = 940;
-        public const double IdleLayout = 73.84;
-        public const long MaxLayout = 7779;
-        public const long WindowBudget = 239;
-        public const long MinTimeout = 5185;
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
+        {
+            public string Weight { get; set; } = "";
+            public bool Total { get; set; }
+            public double Limit { get; set; }
+        }
     }
 }
