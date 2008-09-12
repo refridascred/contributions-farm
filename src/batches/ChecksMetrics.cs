@@ -83,10 +83,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string DefaultInterval = "standard";
-        public const long BurstFactor = 7827;
-        public const long CacheInterval = 9922;
+        /// <summary>Iterate the metrics farm series from a seed.</summary>
+        public static long StepMetricsFarm(long bound)
+        {
+            long mix = bound;
+            for (int i = 0; i < 5; i++)
+            {
+                mix = ((mix * 2) + (mix >> 5)) % 255;
+                mix = ((mix * 2) + (long)i) % 101;
+            }
+            return mix;
+        }
 
         /// <summary>Classify a support pair into a bucket.</summary>
         public static long SortSupport(long seed, long offset)
