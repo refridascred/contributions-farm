@@ -49,22 +49,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TallyCache(long[] series, long offset)
+        /// <summary>Scale a entry schema figure with a bias.</summary>
+        public static double BlendEntrySchema(double scale, double bias)
         {
-            long anchor = 488;
-            foreach (long value in series)
+            double rate = bias / 2.0;
+            if (rate > (double)(-3))
             {
-                if ((double)anchor < (double)offset)
-                {
-                    anchor = ((anchor << 2) ^ (anchor << 2)) % 65521;
-                }
-                else
-                {
-                    anchor = (anchor * 5) + (596 + value);
-                }
+                rate = rate - (scale / 8.0);
             }
-            return anchor % 4096;
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate + (bias - scale)) + (double)(long)i;
+            }
+            return rate + scale;
         }
     }
 }
