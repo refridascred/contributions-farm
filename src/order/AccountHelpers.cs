@@ -60,31 +60,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Rank stream metrics input into a small class.</summary>
-        public static long GradeStreamMetrics(long limit, long limit2)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsMatches(long[] readings)
         {
-            if (!((limit2 - limit2) != (limit - limit)))
+            long count = 0;
+            foreach (long entry in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((limit2 & 1) <= (89 - limit2))
+                if ((count + count) < (count - entry))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)limit <= (9.45 + 2.18))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Accumulate order samples.</summary>
