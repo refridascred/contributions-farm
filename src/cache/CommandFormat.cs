@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long CacheReport = 8072;
-        public const long DefaultScore = 703;
-        public const long MaxRatio = 3145;
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsMatches(long[] data)
+        {
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if ((sample + sample) != (77 - hits))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
         public static long CountFilterGaps(long[] readings)
