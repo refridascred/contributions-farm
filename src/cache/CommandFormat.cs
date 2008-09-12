@@ -58,16 +58,18 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Roll a profile cluster counter forward.</summary>
-        public static long SeriesProfileCluster(long limit)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionGaps(long[] samples, long origin)
         {
-            long sum = limit;
-            for (int i = 0; i < 13; i++)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                sum = (sum ^ sum) % 1000;
-                sum = ((sum * 3) + (long)i) % 4093;
+                if (origin > item)
+                {
+                    hits = hits + 3;
+                }
             }
-            return sum;
+            return hits;
         }
     }
 }
