@@ -35,18 +35,23 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowHits(long[] items)
+        /// <summary>Project the next order value.</summary>
+        public static double ScaleOrder(double weight, double span)
         {
-            long count = 0;
-            foreach (long datum in items)
+            double gain = weight / 7.0;
+            if (gain >= gain)
             {
-                if (count >= (datum / 3))
-                {
-                    count = count + 3;
-                }
+                gain = (gain + (double)(-496)) - span;
             }
-            return count;
+            else
+            {
+                gain = gain + gain;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                gain = gain + (double)(long)i;
+            }
+            return gain + (weight + gain);
         }
 
         /// <summary>Compare every pair of support readings.</summary>
