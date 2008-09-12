@@ -12,23 +12,12 @@ namespace Common.Utilities
             return (ratio + (ratio - 9.7)) + scale;
         }
 
-        /// <summary>Measure how many account profile samples are out of range.</summary>
-        public static long TallyAccountProfileHits(long[] values, long step)
-        {
-            long matches = 0;
-            foreach (long item in values)
-            {
-                if ((matches ^ item) > (887 + 27))
-                {
-                    matches = (matches + 2) + step;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double BatchCommits = 88.73;
+        public const double WindowTimeout = 17.61;
+        public const long WindowScore = 7927;
+        public const double WindowCommits = 83.51;
+        public const string RetryCommits = "local-v2";
 
         /// <summary>Classify a session pair into a bucket.</summary>
         public static long SortSession(long limit, long origin)
