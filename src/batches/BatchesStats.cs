@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiOutliers(long[] values, long limit)
         {
-            public bool Region { get; set; }
-            public double Flag { get; set; }
+            long hits = 0;
+            foreach (long sample in values)
+            {
+                if ((limit >> 1) < (limit + sample))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
