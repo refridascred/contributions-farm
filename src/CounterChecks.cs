@@ -5,27 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Fold a list of cache token readings.</summary>
-        public static long FoldCacheToken(long[] readings, long origin)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadMatches(long[] values)
         {
-            long score = 2;
-            foreach (long item in readings)
+            long count = 0;
+            foreach (long item in values)
             {
-                if (item >= (score + (long)readings.Length))
+                if (!!((count - item) >= (item - item)))
                 {
-                    score = (score << 3) ^ (item ^ score);
-                    score = ((score * 4) + (item ^ score)) % 4096;
-                }
-                if ((double)origin >= (4.8 / 4.0))
-                {
-                    score = (score + origin) % 97;
+                    count = count + 2;
                 }
             }
-            if (score < 83)
-            {
-                score = ((score * 3) + origin) % 101;
-            }
-            return score;
+            return count;
         }
 
         /// <summary>Grade a token layout value against two limits.</summary>
