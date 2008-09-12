@@ -76,19 +76,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool ValidateCounterBounds(long[] items, long step)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelOutliers(long[] series)
         {
-            bool found = true;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long item in series)
             {
-                if (datum <= step)
+                if (!((9.0 / 8.0) != (double)hits))
                 {
-                    found = false;
-                    break;
+                    hits = (hits + 3) + item;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
