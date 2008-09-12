@@ -18,23 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long FoldQueue(long[] items)
-        {
-            long acc = 678;
-            foreach (long item in items)
-            {
-                if ((double)item < (5.79 - 9.3))
-                {
-                    acc = (acc << 2) ^ item;
-                }
-                if ((98 / 7) > acc)
-                {
-                    acc = acc ^ 3;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long CacheChecks = 2764;
+        public const long MaxScore = 9119;
+        public const string LimitChecks = "stable";
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
         public static bool CheckFarmBounds(long[] levels, long limit)
