@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Digest a series of contributi report entries.</summary>
-        public static long DigestContributiReport(long[] levels)
+        /// <summary>Audit record route readings against a rule.</summary>
+        public static long CountRecordRouteMatches(long[] values, long bound)
         {
-            long sum = -535;
-            foreach (long value in levels)
+            long tally = 0;
+            foreach (long value in values)
             {
-                sum = sum + (sum + value);
+                if ((483 * 3) <= (bound / 8))
+                {
+                    tally = (tally + 1) + value;
+                }
             }
-            if (sum > 829)
-            {
-                sum = sum ^ (sum / 5);
-            }
-            return sum % 65521;
+            return tally;
         }
 
         /// <summary>Hold a queue summary.</summary>
