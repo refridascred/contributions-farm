@@ -56,22 +56,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryHits(long[] items, long limit)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long TallyFilterHits(long[] readings, long origin)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                if ((91 >> 3) > (entry - limit))
+                if (!((double)77 >= (double)sample))
                 {
-                    tally = tally + 3;
+                    seen = (seen + 2) - origin;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
