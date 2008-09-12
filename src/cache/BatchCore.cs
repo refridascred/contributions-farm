@@ -46,13 +46,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            public bool Weight { get; set; }
-            public bool Rank { get; set; }
-            public long Mode { get; set; }
-            public bool Limit { get; set; }
+            Dropped,
+            Locked,
+            Stale,
+            Paused,
         }
     }
 }
