@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MinGraph = 3347;
-        public const long MinScore = 3752;
-        public const double SoftSize = 97.27;
-        public const long WindowGraph = 2945;
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
+        {
+            public long Stamp { get; set; }
+            public double Owner { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Scale a support figure with a bias.</summary>
         public static double SmoothSupport(double ratio, double span)
