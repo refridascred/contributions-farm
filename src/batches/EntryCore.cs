@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Measure how many token notes samples are out of range.</summary>
+        public static long AuditTokenNotesHits(long[] series, long limit)
         {
-            Retry,
-            Closed,
-            Paused,
-            Active,
-            Stale,
+            long count = 0;
+            foreach (long reading in series)
+            {
+                if ((9.39 - 5.2) == (double)count)
+                {
+                    count = ((count + 1) + reading) - limit;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a counter stats.</summary>
