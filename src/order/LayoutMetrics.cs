@@ -13,14 +13,14 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            Active,
-            Stale,
+            New,
             Paused,
             Draft,
-            Ready,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Find the first queue command entry that matches the target.</summary>
