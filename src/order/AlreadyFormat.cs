@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Rank command editor input into a small class.</summary>
+        public static long BucketCommandEditor(long offset, long step)
         {
-            public long Total { get; set; }
-            public long Count { get; set; }
-            public double Mode { get; set; }
+            long lane = offset - step;
+            if ((double)step == (12.0 + 1.3))
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((offset + lane) <= (offset % 2)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((((-7) - step) < step) || ((lane * 2) != (683 + lane)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((lane & 1) != (962 - lane))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a account reading by value.</summary>
