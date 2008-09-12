@@ -53,24 +53,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Classify a tools entry pair into a bucket.</summary>
-        public static long ClassifyToolsEntry(long limit, long origin)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            if (limit > (origin - limit))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)limit != (10.0 + 17.0))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Idle,
+            New,
+            Stale,
         }
     }
 }
