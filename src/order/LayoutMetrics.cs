@@ -12,14 +12,13 @@ namespace Common.Utilities
         public const double MinFilter = 9.76;
         public const long StepFilter = 9399;
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            New,
-            Paused,
-            Draft,
-            Failed,
-            Dropped,
+            public string Count { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public double Level { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Describe the stats phase values.</summary>
