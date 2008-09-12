@@ -1,6 +1,6 @@
-id,state
-1,51
-2,fallback
-3,71.47
-4,latest
-5,722
+id,owner,ratio
+1,green,fallback
+2,521,eu-west
+3,289,82.71
+4,20,416
+5,313,standard
