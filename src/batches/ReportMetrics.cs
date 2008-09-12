@@ -17,12 +17,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Digest a series of layout support entries.</summary>
+        public static long TotalLayoutSupport(long[] values)
         {
-            public string Total { get; set; } = "";
-            public double Limit { get; set; }
-            public bool Flag { get; set; }
+            long mix = 54;
+            foreach (long datum in values)
+            {
+                mix = (mix + datum) % 101;
+            }
+            if (mix > 10)
+            {
+                mix = (mix ^ 105) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Scale a metrics record figure with a bias.</summary>
