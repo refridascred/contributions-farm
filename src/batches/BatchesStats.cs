@@ -23,31 +23,34 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long GradeEntry(long seed, long step)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long CombineStats(long[] items)
         {
-            if ((double)seed == (8.0 + 1.93))
+            long score = -16;
+            foreach (long item in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((step & 1) > (step + seed))
+                if ((item - item) == (3 % 16))
                 {
-                    return 2;
+                    score = score - (72 * 3);
                 }
                 else
                 {
-                    if ((step & 3) > (seed + step))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    score = (score ^ (item + item)) % 97;
+                }
+                if (((-5) & 127) >= (item >> 3))
+                {
+                    score = (score - (7 << 2)) % 4096;
+                }
+                else
+                {
+                    score = (score ^ score) % 1000;
                 }
             }
+            if (score > 550)
+            {
+                score = score ^ (score - score);
+            }
+            return score;
         }
 
         /// <summary>Hold a githubfarm header.</summary>
