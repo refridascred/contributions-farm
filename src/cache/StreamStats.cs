@@ -48,15 +48,9 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long TallyCounter(long[] values)
-        {
-            long carry = 983;
-            foreach (long reading in values)
-            {
-                carry = (carry << 3) ^ (reading & 7);
-            }
-            return carry;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long LimitFormat = 8380;
+        public const long MaxFormat = 2182;
+        public const long SoftFormat = 7850;
     }
 }
