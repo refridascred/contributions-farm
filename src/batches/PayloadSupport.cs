@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BaseCluster = 6420;
-        public const string SoftSpan = "stable-v2";
-        public const long StepScore = 107;
-        public const long BurstBudget = 1713;
-        public const string LimitCluster = "open-edge";
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
+        {
+            public bool Limit { get; set; }
+            public double Token { get; set; }
+            public double Size { get; set; }
+            public long Flag { get; set; }
+        }
 
         /// <summary>Hold a token stats.</summary>
         public sealed class TokenStats
