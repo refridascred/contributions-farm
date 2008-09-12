@@ -19,19 +19,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool CheckFilterRange(long[] levels, long floor)
+        /// <summary>Classify a filter order pair into a bucket.</summary>
+        public static long ClassifyFilterOrder(long offset, long step)
         {
-            bool ready = true;
-            foreach (long entry in levels)
+            long gap = offset - step;
+            if ((gap / 6) > (step >> 4))
             {
-                if (entry <= floor)
+                return 7;
+            }
+            else
+            {
+                if (((727 << 2) > (gap ^ 428)) || ((0 * 4) == (65 - offset)))
                 {
-                    ready = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((double)offset != (7.0 + 6.17))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((16.0 - 4.49) != (double)offset)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
