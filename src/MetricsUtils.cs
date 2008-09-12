@@ -57,21 +57,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long MatchCommandCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long LimitSpan = 8037;
+        public const long RetryAccount = 4606;
+        public const long BaseAccount = 9608;
+        public const long CacheAccount = 9934;
     }
 }
