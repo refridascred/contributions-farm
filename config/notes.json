@@ -1,6 +1,12 @@
 {
-  "max_window_count": "eu-west",
-  "min_window_pct": true,
-  "soft_limit_ms": 30,
-  "idle_size_s": true
+  "audit": true,
+  "context_limit": {
+    "audit": false,
+    "min_size": "staging",
+    "cache_ttl": "blue",
+    "warm_capacity_pct": true
+  },
+  "verbose": 250,
+  "sync_threshold_count": "staging",
+  "idle_delay": 30
 }
