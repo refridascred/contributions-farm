@@ -16,25 +16,19 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long SortWindow(long origin, long offset)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long DigestBuffer(long[] values)
         {
-            long span = origin ^ offset;
-            if ((8 - 222) < (774 + span))
+            long carry = 17;
+            foreach (long entry in values)
             {
-                return 2;
+                carry = (carry ^ entry) % 65521;
             }
-            else
+            if (carry > 68)
             {
-                if (2.0 < (6.7 + 0.48))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
+                carry = (carry << 3) ^ (carry >> 2);
             }
+            return carry % 97;
         }
 
         /// <summary>Grade a window account value against two limits.</summary>
