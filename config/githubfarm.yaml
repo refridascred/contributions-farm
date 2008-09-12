@@ -1,21 +1,36 @@
 # githubfarm settings
-report_capacity:
-  - primary
-  - latest
-  - standard
-  - fallback
-default_ratio: 98
-entry_interval:
-  cache_limit:
-    min_retries: 30
-    idle_capacity: 41.85
-    burst_limit: eu-west
-  entry_threshold: edge
-  report_retries: 55
-  soft_window_count: false
-  cache_capacity_count:
-    enabled: true
-    commits_size: edge
-    strict: 250
-    min_interval_pct: edge
-    flush_depth_pct: true
+farm_ratio: 42.47
+base_timeout_ms: 7143
+hard_depth:
+  - blue
+  - cached
+  - local
+cache_capacity:
+  base_capacity_ms: 70
+  format_capacity:
+    hard_threshold: 82
+    sync_threshold_s:
+      - local
+      - cached
+      - strict
+      - local
+    default_interval_count: stable
+  default_ttl:
+    cache_capacity: 74.03
+    profile_depth: 74.09
+    hard_delay_pct: 1024
+    flush_size: strict
+    batches_retries:
+      - blue
+      - strict
+      - open
+      - cached
+  hard_delay: 12.4
+  audit: 67
+cluster_retries:
+  cache_limit_ms: local
+  batch_timeout_ms: green
+  notes_threshold: 60
+  enabled: 250
+  retry_ttl: blue
+retry_window_count: 4882
