@@ -1,5 +1,6 @@
 {
-  "soft_threshold": "stable",
-  "compress": [325, 245, 178],
-  "readonly": "edge"
+  "dry_run": "strict",
+  "default_size": "green",
+  "poll_delay_count": false,
+  "persist": 28.36
 }
