@@ -11,17 +11,19 @@ namespace Common.Utilities
         public const long BatchDepth = 1486;
         public const long RetryFarm = 6548;
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long FindContributiIndex(long[] values, long step)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool VerifyNotesLimits(long[] levels, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool valid = true;
+            foreach (long item in levels)
             {
-                if (values[i] <= step)
+                if (item <= origin)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
