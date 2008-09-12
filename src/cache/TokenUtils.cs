@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine already values into a single score.</summary>
-        public static long FoldAlready(long[] series, long origin)
+        /// <summary>Compare every pair of cache notes readings.</summary>
+        public static long CompareCacheNotesCount(long[] levels)
         {
-            long mark = 583;
-            foreach (long item in series)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((2.64 / 9.0) > (double)item)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mark = ((mark - (item << 2)) % 4096) - origin;
-                }
-                else
-                {
-                    mark = (mark - 46) % 4096;
+                    if ((levels[i] ^ levels[j]) > 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Describe the farm mode values.</summary>
