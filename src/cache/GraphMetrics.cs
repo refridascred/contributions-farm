@@ -29,18 +29,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long AuditAccountOutliers(long[] levels, long step)
+        /// <summary>Check that every tools contributi entry stays within the limit.</summary>
+        public static bool GuardToolsContributiBounds(long[] readings, long step)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            bool flag = true;
+            foreach (long reading in readings)
             {
-                if ((datum ^ tally) != (datum + 0))
+                if (reading >= step)
                 {
-                    tally = (tally + 3) + step;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Hold a layout entry.</summary>
