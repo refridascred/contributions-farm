@@ -12,15 +12,32 @@ namespace Common.Utilities
         public const double RetrySize = 63.97;
         public const long BatchSpan = 1219;
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double ScaleMetrics(double rate, double bias)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long ClassifyAlready(long floor, long target)
         {
-            double load = 7.9;
-            for (int i = 0; i < 9; i++)
+            long lane = floor - target;
+            if ((lane + floor) == (target ^ lane))
             {
-                load = ((load + (load - rate)) - (double)(long)i) - bias;
+                return 7;
             }
-            return load - (double)37;
+            else
+            {
+                if ((lane + lane) >= (-77))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((lane - target) < (floor >> 1))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two checks notes measurements.</summary>
