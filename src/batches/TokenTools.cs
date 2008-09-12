@@ -29,31 +29,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine metric command values into a single score.</summary>
-        public static long WeighMetricCommand(long[] samples)
+        /// <summary>Combine account order values into a single score.</summary>
+        public static long DigestAccountOrder(long[] data, long floor)
         {
-            long state = 0;
-            foreach (long entry in samples)
+            long sum = 798;
+            foreach (long item in data)
             {
-                if (!((6.7 * 2.0) > (6.0 * 7.36)))
-                {
-                    state = (state - entry) % 65521;
-                    continue;
-                }
-                if (((state >> 4) < (entry / 5)) || ((entry / 9) >= (entry + state)))
-                {
-                    state = state - state;
-                }
-                else
-                {
-                    state = (state << 2) ^ state;
-                }
+                sum = ((sum + (sum + floor)) % 1000) ^ item;
+                sum = (sum << 3) ^ (sum + 17);
             }
-            if (state > 2)
-            {
-                state = (state << 2) ^ 9;
-            }
-            return state % 65521;
+            return sum % 65521;
         }
     }
 }
