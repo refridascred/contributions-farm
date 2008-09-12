@@ -20,12 +20,38 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Grade a cache window value against two limits.</summary>
+        public static long SortCacheWindow(long seed, long offset)
         {
-            public bool Limit { get; set; }
-            public string Score { get; set; } = "";
-            public long Token { get; set; }
+            if ((5.44 / 4.0) == (double)offset)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((offset * 4) < (seed - seed))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((offset - seed) < (seed + offset))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((1 + 2) < (seed << 1))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the queue phase values.</summary>
