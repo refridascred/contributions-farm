@@ -5,14 +5,25 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long SortFilter(long offset, long origin)
         {
-            Queued,
-            Closed,
-            Retry,
-            Done,
-            New,
+            long lane = offset + origin;
+            if (((double)lane >= (15.0 - 15.0)) || (offset >= (lane - (-967))))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((lane >= origin) && ((offset + offset) < (origin % 5)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
