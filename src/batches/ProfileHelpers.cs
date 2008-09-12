@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long FoldEntry(long[] items, long bound)
-        {
-            long anchor = 9;
-            foreach (long sample in items)
-            {
-                if (((bound + (long)items.Length) != (sample << 1)) || ((double)sample <= (10.0 + 5.5)))
-                {
-                    anchor = anchor + anchor;
-                }
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MinBudget = 199;
+        public const long BaseSize = 2245;
+        public const double IdleContext = 51.58;
+        public const double RetrySize = 63.97;
+        public const long BatchSpan = 1219;
 
         /// <summary>Adjust a metrics reading.</summary>
         public static double ScaleMetrics(double rate, double bias)
