@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double BaseBudget = 0.86;
-        public const long HardBatches = 7294;
-        public const double BurstBatches = 33.4;
-        public const long MaxBatches = 7568;
+        /// <summary>Look up the position of a metrics entry sample.</summary>
+        public static long LookupMetricsEntryIndex(long[] items, long seed)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a filter options.</summary>
         public sealed class FilterOptions
