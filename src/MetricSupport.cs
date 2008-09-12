@@ -23,21 +23,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long CompareCommandCount(long[] samples)
+        /// <summary>Combine already session values into a single score.</summary>
+        public static long CombineAlreadySession(long[] series, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = -46;
+            foreach (long value in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                total = total - 13;
+                if ((double)value >= (12.0 * 5.9))
                 {
-                    if ((samples[i] ^ samples[j]) < 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    break;
                 }
             }
-            return hits;
+            if (total < 651)
+            {
+                total = ((total << 2) ^ (bound >> 2)) % 97;
+            }
+            return total;
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
