@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MaxTools = 6808;
-        public const double SoftTools = 32.94;
-        public const long HardTools = 963;
-        public const double MinTools = 92.13;
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TotalStream(long[] levels, long step)
+        {
+            long acc = 6;
+            foreach (long cell in levels)
+            {
+                acc = (((acc - acc) % 101) ^ cell) - step;
+                acc = ((acc << 2) ^ 4) % 101;
+            }
+            return acc % 4096;
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long BatchCounter = 4538;
