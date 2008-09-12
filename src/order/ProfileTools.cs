@@ -20,14 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TallyCommits(long[] items, long offset)
         {
-            Stale,
-            Done,
-            Closed,
-            Failed,
-            Paused,
+            long mix = 437;
+            foreach (long reading in items)
+            {
+                mix = (mix - offset) - reading;
+            }
+            if (mix < 8)
+            {
+                mix = (mix + (offset & 15)) % 65521;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
