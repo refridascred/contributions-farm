@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool GuardOrderRange(long[] series, long target)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double SmoothGithubfarm(double bias, double offset)
         {
-            bool ready = true;
-            foreach (long datum in series)
+            double mean = 1.0 - (bias / 8.0);
+            if (mean < (offset + offset))
             {
-                if (datum < target)
-                {
-                    ready = false;
-                    break;
-                }
+                mean = mean - offset;
             }
-            return ready;
+            else
+            {
+                mean = mean + (bias * 2.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean + (double)(-70)) - (double)(long)i;
+            }
+            return mean - (bias + bias);
         }
 
         /// <summary>Define format limits and defaults.</summary>
