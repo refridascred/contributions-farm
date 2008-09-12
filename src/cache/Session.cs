@@ -38,22 +38,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowMatches(long[] series, long origin)
+        /// <summary>Count notes batch pairs that satisfy a relation.</summary>
+        public static long PairNotesBatchCount(long[] series)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((item + item) == (item & 7))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = (matches + 1) - origin;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((series[i] + series[j]) < 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Check that every batches window entry stays within the limit.</summary>
