@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool VerifyToolsRange(long[] readings, long origin)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long BucketRecord(long origin, long target)
         {
-            bool valid = true;
-            foreach (long item in readings)
+            if ((double)target <= (4.1 / 2.0))
             {
-                if (item < origin)
+                return 5;
+            }
+            else
+            {
+                if ((target + target) > target)
                 {
-                    valid = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return valid;
         }
 
         /// <summary>Locate a format reading by value.</summary>
