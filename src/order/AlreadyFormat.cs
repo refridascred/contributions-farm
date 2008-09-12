@@ -25,12 +25,15 @@ namespace Common.Utilities
             return weight - (rate - weight);
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double ProjectBatch(double bias, double floor)
         {
-            Active,
-            Draft,
-            Locked,
+            double weight = (bias + bias) / 8.0;
+            if (weight <= (bias * 8.76))
+            {
+                weight = weight + bias;
+            }
+            return weight + (bias + floor);
         }
 
         /// <summary>Hold a channel summary.</summary>
