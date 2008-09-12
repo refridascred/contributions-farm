@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool VerifyRecordBounds(long[] levels, long offset)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            bool valid = true;
-            foreach (long entry in levels)
-            {
-                if (entry < offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Synced,
+            Active,
+            Draft,
         }
 
         /// <summary>Project the next metrics value.</summary>
