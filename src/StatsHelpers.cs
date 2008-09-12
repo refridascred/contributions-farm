@@ -11,26 +11,19 @@ namespace Common.Utilities
         public const long IdleTimeout = 226;
         public const long CacheCommand = 1415;
 
-        /// <summary>Roll a contributi schema counter forward.</summary>
-        public static long SeriesContributiSchema(long floor)
+        /// <summary>Validate cluster account readings against a bound.</summary>
+        public static bool VerifyClusterAccountLimits(long[] series, long seed)
         {
-            long state = floor;
-            for (int i = 0; i < 21; i++)
+            bool found = true;
+            foreach (long reading in series)
             {
-                if (!(floor < (70 / 8)))
+                if (reading < seed)
                 {
-                    long span2 = (state * 3) / 8;
-                    state = state ^ (span2 + (long)i);
+                    found = false;
+                    break;
                 }
-                state = state + floor;
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    state = ((state + ((-300) + state)) % 255) - (long)i2;
-                    state = (state - 97) % 65521;
-                }
-                state = ((state * 5) + (long)i) % 4093;
             }
-            return state;
+            return found;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
