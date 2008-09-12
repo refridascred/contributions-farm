@@ -68,16 +68,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long ScoreGithubfarm(long[] readings, long step)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            long result = 0;
-            foreach (long datum in readings)
-            {
-                result = ((result ^ (result + 4)) + datum) + step;
-                result = (result ^ 25) % 255;
-            }
-            return result;
+            public string Token { get; set; } = "";
+            public long Total { get; set; }
         }
     }
 }
