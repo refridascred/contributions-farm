@@ -18,22 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long AuditPayloadHits(long[] values)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksHits(long[] levels)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                if ((double)tally < (4.2 - 1.23))
+                if ((double)entry > (4.0 + 5.6))
                 {
-                    tally = (tally + 3) + cell;
+                    hits = hits + 1;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
