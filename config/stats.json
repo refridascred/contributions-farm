@@ -1,8 +1,6 @@
 {
-  "max_threshold_s": [236, 110, 423, 60],
-  "batch_retries": 52,
-  "flush_delay": 17.49,
-  "persist": 6626,
-  "sync_retries": 8461,
-  "dry_run": 51.43
+  "farm_ratio": "cached",
+  "default_limit_s": [137, 147],
+  "base_limit": "fallback",
+  "strict": 500
 }
