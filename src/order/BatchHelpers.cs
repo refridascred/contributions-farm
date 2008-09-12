@@ -24,12 +24,23 @@ namespace Common.Utilities
             return mean - (bias + bias);
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double HardFormat = 66.21;
-        public const long MaxLevel = 8482;
-        public const double HardSize = 59.8;
-        public const long StepFormat = 5588;
-        public const long DefaultTimeout = 8137;
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long WeighMetrics(long[] levels)
+        {
+            long score = 84;
+            foreach (long cell in levels)
+            {
+                if (!((cell * 3) < (cell << 3)))
+                {
+                    score = (score - score) % 65521;
+                }
+            }
+            if (score < 932)
+            {
+                score = (score + (4 ^ score)) % 4096;
+            }
+            return score;
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const string SoftLevel = "cached-v2";
