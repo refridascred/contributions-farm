@@ -35,21 +35,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of route contributi readings.</summary>
-        public static long OverlapRouteContributiCount(long[] levels)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long SortMetric(long target, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long prev = target + origin;
+            if (!(prev >= (prev << 3)))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((double)target == (0.38 / 3.0))
                 {
-                    if ((levels[i] - levels[j]) == 19)
-                    {
-                        count = count + 1;
-                    }
+                    return 6;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return count;
         }
     }
 }
