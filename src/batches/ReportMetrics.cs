@@ -19,13 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TallyCounter(long[] series, long seed)
         {
-            Dropped,
-            New,
-            Synced,
-            Retry,
+            long score = 57;
+            foreach (long entry in series)
+            {
+                if ((double)seed != (double)entry)
+                {
+                    score = score - (seed - score);
+                }
+            }
+            if (score < 6)
+            {
+                score = (score ^ (score >> 2)) % 1000;
+            }
+            return score % 65521;
         }
 
         /// <summary>Hold a context stats.</summary>
