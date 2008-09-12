@@ -28,18 +28,31 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Count the order tools entries that pass the check.</summary>
-        public static long TallyOrderToolsHits(long[] series, long origin)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long RankFarm(long target, long floor)
         {
-            long hits = 0;
-            foreach (long value in series)
+            if (target < (target / 9))
             {
-                if ((double)hits >= (7.0 + 9.0))
+                return 3;
+            }
+            else
+            {
+                if ((target << 2) != (target + target))
                 {
-                    hits = ((hits + 1) ^ value) + origin;
+                    return 7;
+                }
+                else
+                {
+                    if ((target / 3) >= (target + floor))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a batches summary.</summary>
