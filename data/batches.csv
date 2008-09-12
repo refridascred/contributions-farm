@@ -1,6 +1,10 @@
-id,state,owner
-1,1.39,821
-2,605,91.24
-3,blue,739
-4,45.05,latest
-5,primary,edge
+id,label,state
+1,5.48,240
+2,70.31,strict
+3,8.5,strict
+4,stable,66.27
+5,edge,417
+6,cached,40.16
+7,601,62.9
+8,14.77,453
+9,703,blue
