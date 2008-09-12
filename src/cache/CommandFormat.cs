@@ -35,21 +35,20 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long PairReportCount(long[] readings)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long StepChecks(long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = seed;
+            for (int i = 0; i < 24; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((score / 3) >= (long)i)
                 {
-                    if ((readings[i] + readings[j]) > 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    continue;
                 }
+                score = score - seed;
+                score = ((score * 4) + (long)i) % 101;
             }
-            return matches;
+            return score;
         }
     }
 }
