@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
-        {
-            Failed,
-            Done,
-            Stale,
-            Pending,
-            Dropped,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double BatchSize = 82.38;
+        public const long BatchFarm = 3977;
+        public const long BatchDepth = 1486;
+        public const long RetryFarm = 6548;
 
         /// <summary>Locate a contributi reading by value.</summary>
         public static long FindContributiIndex(long[] values, long step)
