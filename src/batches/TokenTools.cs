@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const string BurstDepth = "cached-1";
-        public const long DefaultDepth = 8650;
-        public const string SoftFormat = "legacy";
-        public const long WindowFormat = 1721;
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsHits(long[] values, long limit)
+        {
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if ((double)seen >= (5.07 * 3.4))
+                {
+                    seen = ((seen + 2) + item) - limit;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Match up stats samples.</summary>
         public static long PairStatsCount(long[] items)
