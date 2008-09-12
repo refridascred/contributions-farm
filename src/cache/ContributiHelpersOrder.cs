@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsGaps(long[] data)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if (((1.6 / 5.0) == (double)count) && ((14.0 + 5.8) > (double)cell))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Synced,
+            Closed,
+            New,
         }
 
         /// <summary>Accumulate batch samples.</summary>
