@@ -1,16 +1,7 @@
 {
-  "schema_retries": 13,
-  "audit": 4.88,
-  "cache_timeout": {
-    "tools_size": 46.22,
-    "verbose": false,
-    "cache_ttl_count": {
-      "dry_run": 14,
-      "strict": ["cached", "primary", "blue"],
-      "route_threshold": "latest",
-      "idle_interval": true,
-      "cache_ttl": "eu-west",
-      "sync_limit": true
-    }
-  }
+  "dry_run": true,
+  "readonly": 7.42,
+  "retry_depth_count": 7,
+  "filter_size": 52,
+  "default_threshold": 100
 }
