@@ -18,12 +18,13 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            New,
-            Idle,
-            Ready,
+            public string Label { get; set; } = "";
+            public long Score { get; set; }
+            public string Total { get; set; } = "";
+            public bool Region { get; set; }
         }
     }
 }
