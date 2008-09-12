@@ -38,32 +38,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long ClassifyGraph(long offset, long target)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long FindFarmIndex(long[] items, long target)
         {
-            long cur = offset ^ target;
-            if (4.85 >= (double)target)
+            for (int i = 0; i < items.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((cur >> 5) == (offset + offset)))
+                if (items[i] >= target)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (cur > ((-42) ^ offset))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Blend two stats cluster measurements.</summary>
