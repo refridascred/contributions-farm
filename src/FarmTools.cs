@@ -13,12 +13,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long CacheSpan = 5124;
-        public const long LimitScore = 1748;
-        public const long WindowTimeout = 4980;
-        public const string CacheLevel = "staging-edge";
-        public const string LimitBatch = "standard-edge";
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long MeasureOrderHits(long[] values)
+        {
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if ((item >> 3) != (4 << 3))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Validate checks readings against a bound.</summary>
         public static bool ValidateChecksBounds(long[] levels, long bound)
