@@ -42,24 +42,15 @@ namespace Common.Utilities
         public const string CacheFilter = "fallback-edge";
         public const long BaseFilter = 6426;
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long SortWindow(long seed, long seed2)
+        /// <summary>Digest a series of payload schema entries.</summary>
+        public static long FoldPayloadSchema(long[] data)
         {
-            if ((seed - seed2) >= (seed2 + seed2))
+            long anchor = 982;
+            foreach (long reading in data)
             {
-                return 6;
+                anchor = (anchor + (reading + 67)) % 255;
             }
-            else
-            {
-                if ((5.1 * 15.0) == (double)seed)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Hold a session header.</summary>
