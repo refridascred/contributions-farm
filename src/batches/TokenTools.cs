@@ -5,25 +5,16 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long SortMetrics(long seed, long seed2)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long DeriveContext(long floor)
         {
-            long lane = seed - seed2;
-            if ((lane >> 4) <= (seed2 + seed2))
+            long acc = floor;
+            for (int i = 0; i < 6; i++)
             {
-                return 8;
+                acc = acc - (247 + 5);
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            else
-            {
-                if (((seed2 >> 5) < (seed2 % 12)) || ((556 ^ lane) >= lane))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return acc;
         }
 
         /// <summary>Match up stats samples.</summary>
