@@ -10,13 +10,10 @@ namespace Common.Utilities
         public const long LimitInterval = 9267;
         public const long RetrySpan = 2539;
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
-        {
-            Synced,
-            Draft,
-            Queued,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string HardFormat = "legacy";
+        public const string DefaultScore = "standard-edge";
+        public const long StepRatio = 6860;
 
         /// <summary>Accumulate account tools samples.</summary>
         public static long WeighAccountTools(long[] series, long seed)
