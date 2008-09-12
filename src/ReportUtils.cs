@@ -20,19 +20,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool ValidateBufferLimits(long[] values, long origin)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long FindNotesIndex(long[] levels, long step)
         {
-            bool stale = true;
-            foreach (long reading in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (reading < origin)
+                if (levels[i] > step)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
