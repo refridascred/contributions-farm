@@ -14,18 +14,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryHits(long[] values, long target)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool CheckLayoutLimits(long[] levels, long bound)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            bool valid = true;
+            foreach (long reading in levels)
             {
-                if ((hits & 1) <= (hits * 3))
+                if (reading != bound)
                 {
-                    hits = ((hits + 3) ^ reading) + target;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Fold a list of account readings.</summary>
