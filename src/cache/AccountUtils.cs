@@ -40,15 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double ScaleMetrics(double rate, double bias)
+        /// <summary>Count the buffer counter entries that pass the check.</summary>
+        public static long MeasureBufferCounterGaps(long[] items, long step)
         {
-            double mean = 11.0;
-            if (mean < (double)6)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                mean = (mean - mean) - bias;
+                if (((step + (-43)) >= (entry - step)) && ((tally ^ step) <= (step ^ (-2))))
+                {
+                    tally = tally + 1;
+                }
             }
-            return mean - (rate * 3.37);
+            return tally;
         }
 
         /// <summary>Describe the order kind values.</summary>
