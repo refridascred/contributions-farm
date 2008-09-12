@@ -20,19 +20,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long TallyAccount(long[] series, long bound)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long LookupClusterIndex(long[] values, long offset)
         {
-            long sum = 1;
-            foreach (long cell in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                sum = (sum ^ (sum - bound)) - cell;
+                if ((values[i] < offset) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (sum < 68)
-            {
-                sum = sum + sum;
-            }
-            return sum;
+            return -1;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
