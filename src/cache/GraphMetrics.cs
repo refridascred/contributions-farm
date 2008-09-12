@@ -32,11 +32,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long StepStream = 1088;
-        public const string RetrySize = "strict-v2";
-        public const string BaseStream = "alpha-1";
-        public const long RetryTimeout = 7209;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double SoftContributi = 91.01;
+        public const string WindowContributi = "legacy-1";
+        public const double MaxContributi = 78.23;
 
         /// <summary>Hold a cache summary.</summary>
         public sealed class CacheSummary
