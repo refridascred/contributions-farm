@@ -1,6 +1,13 @@
 # entry settings
-base_timeout: true
-retry_depth_count: 60.34
-max_window_s:
-  - cached
-  - staging
+sync_ttl: latest
+min_ttl_pct: stable
+retry_ttl:
+  - 424
+  - 384
+  - 207
+enabled: 1.62
+graph_capacity:
+  strict: staging
+  sync_threshold: 82.68
+  default_capacity_ms: standard
+  readonly: 1024
