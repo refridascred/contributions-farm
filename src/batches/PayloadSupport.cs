@@ -16,12 +16,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string HardStats = "open-1";
-        public const long BaseStats = 268;
-        public const double SoftLevel = 10.57;
-        public const long LimitBudget = 3306;
-        public const long SoftSize = 4335;
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TotalBuffer(long[] data, long limit)
+        {
+            long mark = 9;
+            foreach (long cell in data)
+            {
+                mark = (((mark * 5) + (limit - mark)) % 4096) + cell;
+            }
+            return mark % 65521;
+        }
 
         /// <summary>Match up format account samples.</summary>
         public static long PairFormatAccountCount(long[] readings)
