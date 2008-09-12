@@ -44,19 +44,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelMatches(long[] levels)
-        {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if ((((item * 2) != (seen ^ 278)) || (seen < (item >> 3))) && ((long)levels.Length > item))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double StepInterval = 70.7;
+        public const long SoftContributi = 2906;
+        public const string SoftInterval = "staging-v2";
+        public const double BurstInterval = 93.05;
 
         /// <summary>Describe the schema kind values.</summary>
         public enum SchemaKind
