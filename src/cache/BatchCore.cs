@@ -58,24 +58,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long RankCommits(long floor, long limit)
-        {
-            if (!((double)floor != (3.0 * 1.5)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((27 - limit) != (floor << 3))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MinDepth = 9884;
+        public const double DefaultInterval = 29.22;
+        public const string MinPayload = "fallback-1";
+        public const double RetryRatio = 69.66;
+        public const long SoftBudget = 6788;
     }
 }
