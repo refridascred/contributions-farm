@@ -54,17 +54,21 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Find the first checks tools entry that matches the target.</summary>
-        public static long LookupChecksToolsIndex(long[] series, long floor)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long MatchSupportCount(long[] data)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((series[i] < floor) && ((series[i] % 5) == 0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] ^ data[j]) > 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Measure how many window profile samples are out of range.</summary>
