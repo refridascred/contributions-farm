@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool CheckMetricsBounds(long[] data, long origin)
-        {
-            bool found = true;
-            foreach (long entry in data)
-            {
-                if (entry < origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double SoftSize = 22.22;
+        public const long SoftLayout = 480;
+        public const double BatchDepth = 67.15;
+        public const long BurstLayout = 1684;
+        public const double RetryLayout = 1.09;
 
         /// <summary>Look up the position of a tools stats sample.</summary>
         public static long SeekToolsStatsIndex(long[] samples, long limit)
