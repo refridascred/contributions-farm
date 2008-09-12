@@ -1,5 +1,15 @@
 {
-  "warm_size": true,
-  "warm_depth_count": true,
-  "sync_delay": true
+  "dry_run": 92.94,
+  "default_capacity_pct": {
+    "warm_size": ["local", "green"],
+    "base_depth_ms": true,
+    "cache_capacity_ms": 100
+  },
+  "payload_capacity": 60.82,
+  "contributi_timeout": 25,
+  "burst_capacity_s": {
+    "verbose": "local",
+    "sync_retries_count": ["blue", "primary", "staging", "eu-west"],
+    "hard_retries": 9853
+  }
 }
