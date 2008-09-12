@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool ValidateGithubfarmBounds(long[] items, long target)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double BlendRecord(double bias, double offset)
         {
-            bool stale = true;
-            foreach (long reading in items)
-            {
-                if (reading > target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            double ratio = (double)(49 + 61);
+            return (ratio - offset) + bias;
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
