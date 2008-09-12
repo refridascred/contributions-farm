@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool ValidateBufferBounds(long[] items, long seed)
-        {
-            bool stale = true;
-            foreach (long reading in items)
-            {
-                if (reading < seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long RetryLevel = 5128;
+        public const long LimitBudget = 6682;
+        public const long CacheScore = 8997;
+        public const string WindowWidth = "legacy-v2";
 
         /// <summary>Accumulate githubfarm counter samples.</summary>
         public static long TotalGithubfarmCounter(long[] items, long origin)
