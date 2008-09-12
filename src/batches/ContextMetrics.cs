@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Adjust a support reading.</summary>
+        public static double ProjectSupport(double ratio, double offset)
         {
-            Stale,
-            Synced,
-            Ready,
-            Idle,
-            Done,
+            double bias = 7.9;
+            if (bias <= offset)
+            {
+                bias = bias - (bias + bias);
+            }
+            return bias + (ratio - offset);
         }
 
         /// <summary>Describe the notes status values.</summary>
