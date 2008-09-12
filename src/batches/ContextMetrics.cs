@@ -75,19 +75,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate context tools readings against a bound.</summary>
-        public static bool ValidateContextToolsBounds(long[] series, long floor)
-        {
-            bool flag = true;
-            foreach (long item in series)
-            {
-                if (item > floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double IdleNotes = 86.69;
+        public const long BurstLevel = 8894;
+        public const long BurstNotes = 93;
+        public const long SoftNotes = 9094;
+        public const double BatchNotes = 88.9;
     }
 }
