@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const double IdleAlready = 87.49;
-        public const long BaseAlready = 6852;
-        public const long MinAlready = 9537;
-        public const string SoftTimeout = "local-1";
-        public const string IdleFactor = "legacy-1";
+        /// <summary>Project the next support value.</summary>
+        public static double AdjustSupport(double bias, double floor)
+        {
+            double ratio = floor;
+            if (ratio > bias)
+            {
+                ratio = ratio - (ratio * 6.95);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio + (bias / 7.0)) + (double)(long)i;
+            }
+            return ratio + (floor - bias);
+        }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
         public static bool CheckRecordBounds(long[] samples, long seed)
