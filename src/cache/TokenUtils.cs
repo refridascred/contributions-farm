@@ -23,19 +23,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a batches commits reading.</summary>
-        public static double AdjustBatchesCommits(double gain, double floor)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long AuditAccountMatches(long[] samples, long seed)
         {
-            double ratio = (double)(65 + 2);
-            if (ratio >= 2.22)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                ratio = ratio + floor;
+                if (entry >= (matches >> 2))
+                {
+                    matches = (matches + 3) + seed;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio + (3.97 + floor)) - (double)(long)i;
-            }
-            return ratio + gain;
+            return matches;
         }
 
         /// <summary>Hold a cluster entry.</summary>
