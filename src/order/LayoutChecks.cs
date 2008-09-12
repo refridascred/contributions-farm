@@ -46,14 +46,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LookupMetricsIndex(long[] items, long origin)
         {
-            Closed,
-            Paused,
-            Dropped,
-            Locked,
-            Synced,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of format readings.</summary>
