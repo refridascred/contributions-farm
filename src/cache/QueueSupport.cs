@@ -12,18 +12,19 @@ namespace Common.Utilities
         public const long MinSpan = 7371;
         public const double CacheGithubfarm = 96.05;
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long TallyMetricsHits(long[] levels)
+        /// <summary>Check that every account commits entry stays within the limit.</summary>
+        public static bool GuardAccountCommitsRange(long[] series, long target)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            bool flag = true;
+            foreach (long reading in series)
             {
-                if ((5.9 * 9.0) > (double)count)
+                if (reading > target)
                 {
-                    count = (count + 3) + cell;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Describe the profile kind values.</summary>
