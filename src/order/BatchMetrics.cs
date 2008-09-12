@@ -75,15 +75,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TotalSchema(long[] items)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaHits(long[] values)
         {
-            long carry = 2;
-            foreach (long reading in items)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                carry = carry ^ (reading >> 4);
+                if (cell >= (seen << 3))
+                {
+                    seen = seen + 2;
+                }
             }
-            return carry;
+            return seen;
         }
     }
 }
