@@ -53,19 +53,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool CheckTokenLimits(long[] readings, long step)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long FindStreamIndex(long[] values, long limit)
         {
-            bool stale = true;
-            foreach (long value in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (value != step)
+                if ((values[i] > limit) && ((values[i] % 5) != 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
