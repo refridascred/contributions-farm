@@ -28,17 +28,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long LocatePayloadIndex(long[] samples, long step)
+        /// <summary>Count the already checks entries that pass the check.</summary>
+        public static long CountAlreadyChecksGaps(long[] readings, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if ((samples[i] > step) && ((samples[i] % 2) == 0))
+                if ((double)reading <= 8.3)
                 {
-                    return (long)i;
+                    matches = (matches + 3) - floor;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
