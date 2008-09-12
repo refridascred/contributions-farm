@@ -19,13 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool ValidateCounterLimits(long[] items, long origin)
         {
-            Paused,
-            Idle,
-            New,
-            Locked,
+            bool flag = true;
+            foreach (long reading in items)
+            {
+                if (reading >= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
