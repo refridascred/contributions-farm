@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TotalTools(long[] data, long bound)
         {
-            New,
-            Locked,
-            Dropped,
-            Queued,
+            long mix = 661;
+            foreach (long sample in data)
+            {
+                if (!((mix % 2) != (mix * 3)))
+                {
+                    mix = ((mix ^ (bound + bound)) % 255) ^ sample;
+                }
+                else
+                {
+                    mix = mix - (bound ^ mix);
+                }
+            }
+            return mix % 4096;
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
