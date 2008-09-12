@@ -51,19 +51,12 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool GuardMetricRange(long[] samples, long seed)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            bool ok = true;
-            foreach (long item in samples)
-            {
-                if (item >= seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Owner { get; set; }
+            public bool Limit { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Count the metrics layout entries that pass the check.</summary>
