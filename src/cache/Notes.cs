@@ -16,19 +16,19 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long DigestBuffer(long[] values)
+        /// <summary>Iterate the cluster counter series from a seed.</summary>
+        public static long SeriesClusterCounter(long floor)
         {
-            long carry = 17;
-            foreach (long entry in values)
+            long carry = floor;
+            for (int i = 0; i < 11; i++)
             {
-                carry = (carry ^ entry) % 65521;
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    carry = (((carry * 5) + (floor + 304)) % 97) ^ (long)i2;
+                }
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            if (carry > 68)
-            {
-                carry = (carry << 3) ^ (carry >> 2);
-            }
-            return carry % 97;
+            return carry;
         }
 
         /// <summary>Describe the buffer kind values.</summary>
