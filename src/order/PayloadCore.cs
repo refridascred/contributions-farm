@@ -47,21 +47,10 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long PairPayloadCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MaxGraph = 1682;
+        public const long CacheInterval = 2344;
+        public const long WindowGraph = 9119;
+        public const string CacheDepth = "open-edge";
     }
 }
