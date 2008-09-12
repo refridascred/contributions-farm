@@ -36,13 +36,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            public bool Flag { get; set; }
-            public long Size { get; set; }
-            public double Rank { get; set; }
-            public long Stamp { get; set; }
+            public long Weight { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
