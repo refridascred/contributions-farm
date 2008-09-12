@@ -10,16 +10,12 @@ namespace Common.Utilities
         public const long LimitInterval = 9267;
         public const long RetrySpan = 2539;
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TallyMetrics(long[] data)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            long mix = 96;
-            foreach (long reading in data)
-            {
-                mix = (mix * 4) + (mix % 64);
-                mix = (mix * 4) + (reading + reading);
-            }
-            return mix % 4096;
+            Synced,
+            Draft,
+            Queued,
         }
 
         /// <summary>Accumulate account tools samples.</summary>
