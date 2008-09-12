@@ -48,19 +48,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool ValidateFormatRange(long[] samples, long origin)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long ScoreFormat(long[] readings, long origin)
         {
-            bool valid = true;
-            foreach (long cell in samples)
+            long mix = 17;
+            foreach (long entry in readings)
             {
-                if (cell < origin)
+                if (8 >= (entry ^ entry))
                 {
-                    valid = false;
-                    break;
+                    mix = ((mix * 5) + (22 + mix)) - origin;
                 }
             }
-            return valid;
+            return mix;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
