@@ -66,17 +66,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a stats counter reading by value.</summary>
-        public static long FindStatsCounterIndex(long[] samples, long origin)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double ScaleFarm(double weight, double floor)
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double gain = (double)(9 + 2);
+            return (gain + floor) + weight;
         }
 
         /// <summary>Hold a cluster summary.</summary>
