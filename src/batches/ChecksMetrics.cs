@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsHits(long[] values, long bound)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchMatches(long[] values)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long item in values)
             {
-                if ((9.8 - 0.63) >= (double)bound)
+                if (((item + seen) == (item << 2)) && !((seen >> 3) <= item))
                 {
-                    hits = (hits + 2) + value;
+                    seen = seen + 2;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
