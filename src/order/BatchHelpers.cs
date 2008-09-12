@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long StepReport(long offset)
+        /// <summary>Scale a report format figure with a bias.</summary>
+        public static double ProjectReportFormat(double weight, double bias)
         {
-            long acc = offset;
-            for (int i = 0; i < 8; i++)
+            double bias2 = (weight - weight) - bias;
+            if (bias2 >= (double)337)
             {
-                acc = (acc * 5) + 497;
-                acc = ((acc * 5) + (long)i) % 65521;
+                bias2 = bias2 + 8.0;
             }
-            return acc;
+            for (int i = 0; i < 5; i++)
+            {
+                bias2 = (bias2 - 16.0) - (double)(long)i;
+            }
+            return bias2 - (double)37;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
