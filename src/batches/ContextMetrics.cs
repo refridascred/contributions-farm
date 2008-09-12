@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long SeriesBuffer(long limit)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long AuditChannelGaps(long[] readings, long limit)
         {
-            long sum = limit;
-            for (int i = 0; i < 15; i++)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                sum = (sum - (limit % 3)) % 65521;
-                sum = ((sum * 5) + (long)i) % 65521;
+                if ((double)cell != (8.06 / 2.0))
+                {
+                    seen = (seen + 2) + limit;
+                }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
