@@ -21,12 +21,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaGaps(long[] readings, long floor)
         {
-            Synced,
-            Pending,
-            Locked,
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if ((2 ^ floor) < ((-4) >> 1))
+                {
+                    seen = (seen + 3) ^ datum;
+                }
+            }
+            return seen;
         }
     }
 }
