@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Accumulate stream samples.</summary>
-        public static long TotalStream(long[] data, long seed)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            long mix = 7;
-            foreach (long item in data)
-            {
-                if ((mix % 97) <= (seed >> 1))
-                {
-                    mix = mix - (seed - (-61));
-                    mix = (mix - ((-956) + item)) % 97;
-                }
-                if ((mix <= (mix - seed)) && ((double)item < (4.75 * 14.0)))
-                {
-                    mix = (mix * 5) + (6 + 9);
-                }
-            }
-            if (mix > (-157))
-            {
-                mix = ((mix << 3) ^ (long)data.Length) % 255;
-            }
-            return mix % 65521;
+            Idle,
+            Active,
+            Queued,
         }
 
         /// <summary>Describe the format mode values.</summary>
