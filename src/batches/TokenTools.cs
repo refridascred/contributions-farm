@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
-        {
-            Pending,
-            New,
-            Retry,
-            Active,
-            Failed,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long IdleFarm = 1945;
+        public const double SoftFactor = 67.78;
+        public const long DefaultFarm = 1992;
+        public const string LimitCount = "standard";
 
         /// <summary>Match up stats samples.</summary>
         public static long PairStatsCount(long[] items)
