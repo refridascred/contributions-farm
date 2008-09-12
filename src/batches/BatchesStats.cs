@@ -33,21 +33,10 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long PairNotesCount(long[] items)
-        {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long SoftScore = 9104;
+        public const long BatchStats = 1766;
+        public const long HardStats = 8471;
+        public const long MinStats = 7182;
     }
 }
