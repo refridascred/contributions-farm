@@ -1,6 +1,12 @@
 {
-  "route_timeout": "stable",
-  "poll_threshold": "strict",
-  "enabled": ["legacy", "legacy"],
-  "format_size": 7944
+  "githubfarm_ttl": 15,
+  "verbose": {
+    "cluster_retries": "stable",
+    "strict": true,
+    "max_ttl_ms": 294
+  },
+  "retry_timeout_s": true,
+  "counter_retries": "standard",
+  "hard_retries_pct": true,
+  "layout_ttl": ["edge", "eu-west", "eu-west"]
 }
