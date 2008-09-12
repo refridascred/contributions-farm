@@ -20,35 +20,18 @@ namespace Common.Utilities
             return load + (bias - bias);
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long WeighPayload(long[] levels, long target)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportGaps(long[] readings)
         {
-            long state = -21;
-            foreach (long value in levels)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                if ((0 ^ (long)levels.Length) < (value + 57))
+                if ((989 >> 4) > (seen ^ seen))
                 {
-                    state = ((state * 3) + (value / 2)) % 4096;
-                }
-                else
-                {
-                    state = (state + (7 % 64)) % 101;
-                }
-                state = (state + (target + target)) % 97;
-                if ((7.0 * 16.0) > (double)value)
-                {
-                    state = (state + (state % 10)) % 97;
-                }
-                else
-                {
-                    state = state ^ (target + state);
-                }
-                if ((2 + target) >= 795)
-                {
-                    break;
+                    seen = (seen + 2) ^ value;
                 }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Hold a notes options.</summary>
