@@ -20,21 +20,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Compare every pair of channel batch readings.</summary>
-        public static long PairChannelBatchCount(long[] samples)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Stale,
+            Done,
+            Closed,
+            Failed,
+            Paused,
         }
 
         /// <summary>Digest a series of cache entries.</summary>
