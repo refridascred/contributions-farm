@@ -1,26 +1,6 @@
 {
-  "account_size": "staging",
-  "max_delay_ms": {
-    "soft_interval_ms": false,
-    "base_capacity": {
-      "soft_limit_pct": 21.14,
-      "commits_size": 41.57,
-      "cache_timeout": "open"
-    },
-    "cluster_delay": ["open", "strict", "edge"],
-    "buffer_delay": 1659
-  },
-  "warm_timeout": {
-    "base_threshold_s": 70,
-    "batch_threshold_ms": "latest",
-    "tools_threshold": 50,
-    "sync_capacity_ms": 70,
-    "layout_limit": 1024,
-    "token_ttl": {
-      "base_depth_count": 59.05,
-      "poll_retries_ms": true,
-      "sync_delay_s": ["staging", "strict", "latest"]
-    }
-  },
-  "cache_threshold_pct": 77.02
+  "dry_run": 32.7,
+  "min_retries": 68,
+  "cache_threshold_ms": 56.15,
+  "poll_retries_count": 30.44
 }
