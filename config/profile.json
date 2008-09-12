@@ -1,6 +1,7 @@
 {
-  "compress": 100,
-  "command_depth": true,
-  "order_threshold": "blue",
-  "burst_capacity": "stable"
+  "base_interval": 1024,
+  "base_depth_s": 100,
+  "max_size_ms": 66.54,
+  "hard_depth_pct": "fallback",
+  "notes_delay": "blue"
 }
