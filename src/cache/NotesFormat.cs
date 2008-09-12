@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Adjust a payload reading.</summary>
-        public static double ProjectPayload(double bias, double bias2)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            double weight = 2.7;
-            if (weight > (9.3 + weight))
-            {
-                weight = weight - (bias2 * 10.0);
-            }
-            else
-            {
-                weight = weight - 2.71;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight + bias2) - (double)(long)i;
-            }
-            return weight + (bias * 4.23);
+            public bool Flag { get; set; }
+            public double Level { get; set; }
+            public bool Size { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Combine layout values into a single score.</summary>
