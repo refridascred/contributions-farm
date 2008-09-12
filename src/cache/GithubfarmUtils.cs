@@ -14,22 +14,18 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterGaps(long[] values)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextHits(long[] values)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                if (!(((count / 7) >= (438 & 7)) && ((datum ^ 701) <= (541 - count))))
+                if (!(matches <= (entry & 31)))
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    matches = matches + 3;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Count the commits farm entries that pass the check.</summary>
