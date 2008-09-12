@@ -23,21 +23,13 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long OverlapAccountCount(long[] items)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Done,
+            Paused,
+            Queued,
+            Ready,
         }
 
         /// <summary>Hold a session info.</summary>
