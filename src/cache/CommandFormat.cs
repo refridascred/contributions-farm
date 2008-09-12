@@ -24,22 +24,14 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long FoldAlready(long[] series)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            long carry = -997;
-            foreach (long reading in series)
-            {
-                if ((double)carry < (3.91 - 9.0))
-                {
-                    carry = ((carry * 5) + carry) ^ reading;
-                }
-            }
-            if (carry < (-260))
-            {
-                carry = carry - 212;
-            }
-            return carry % 97;
+            Stale,
+            Synced,
+            Ready,
+            Done,
+            Active,
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
