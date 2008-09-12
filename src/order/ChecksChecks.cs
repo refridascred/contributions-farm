@@ -31,22 +31,27 @@ namespace Common.Utilities
         public const long BurstRoute = 2982;
         public const double CacheWidth = 14.26;
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long DigestAccount(long[] levels)
+        /// <summary>Digest a series of command cluster entries.</summary>
+        public static long FoldCommandCluster(long[] data, long floor)
         {
-            long anchor = 321;
-            foreach (long datum in levels)
+            long mix = 3;
+            foreach (long sample in data)
             {
-                if (5 > (anchor + anchor))
+                mix = ((mix ^ floor) % 101) - sample;
+                if (((87 * 2) > floor) || ((floor << 3) > mix))
                 {
-                    anchor = (anchor << 3) ^ ((long)levels.Length + 363);
+                    mix = (mix * 2) + 367;
                 }
                 else
                 {
-                    anchor = (anchor << 3) ^ (datum + anchor);
+                    mix = ((mix * 3) + floor) % 101;
+                }
+                if ((mix & 7) >= (mix + 99))
+                {
+                    break;
                 }
             }
-            return anchor % 1000;
+            return mix;
         }
     }
 }
