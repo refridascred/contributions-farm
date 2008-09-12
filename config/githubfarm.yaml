@@ -1,25 +1,14 @@
 # githubfarm settings
-warm_capacity_count:
-  soft_delay_count:
-    sync_ttl_ms: strict
-    burst_depth: 12.87
-    burst_retries_ms: standard
-    compress: 8395
-    base_retries_ms: 1849
-  audit:
-    audit:
-      - blue
-      - edge
-      - fallback
-      - standard
-    hard_ratio_ms: 8.56
-    flush_ratio: 35.51
-  support_retries: stable
-  default_window: true
-cache_capacity_s: primary
-sync_ttl_count: false
-metric_ratio: 38
-max_depth_s:
-  - stable
-  - green
-  - fallback
+min_ttl_ms: local
+readonly:
+  batch_retries: false
+  max_capacity: stable
+  layout_depth: standard
+  flush_limit:
+    - cached
+    - primary
+    - primary
+    - edge
+cluster_interval: 98.67
+retry_size_s: 28
+githubfarm_limit: false
