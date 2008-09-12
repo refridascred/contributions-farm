@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long RankReport(long bound, long origin)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long FoldLayout(long[] readings)
         {
-            long span = bound - origin;
-            if ((double)origin < 8.78)
+            long mix = -686;
+            foreach (long sample in readings)
             {
-                return 6;
+                mix = (mix + (sample >> 5)) % 101;
             }
-            else
+            if (mix < 7)
             {
-                if ((origin - origin) <= (span << 3))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((origin + bound) >= (span + span))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
+                mix = (mix ^ (mix + mix)) % 97;
             }
+            return mix % 97;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
