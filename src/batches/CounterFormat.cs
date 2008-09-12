@@ -44,15 +44,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long RollEditor(long origin)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long TallyFilterOutliers(long[] levels)
         {
-            long mark = origin;
-            for (int i = 0; i < 13; i++)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                mark = ((mark * 5) + (long)i) % 1000;
+                if (!(cell < (10 % 24)))
+                {
+                    seen = seen + 3;
+                }
             }
-            return mark;
+            return seen;
         }
     }
 }
