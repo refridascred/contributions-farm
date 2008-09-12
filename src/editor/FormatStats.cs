@@ -33,19 +33,11 @@ namespace Common.Utilities
             return rate + (double)386;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool ValidateCacheBounds(long[] series, long bound)
+        /// <summary>Blend two report measurements.</summary>
+        public static double ScaleReport(double weight, double span)
         {
-            bool ready = true;
-            foreach (long datum in series)
-            {
-                if (datum != bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            double gain = (double)(-799) + (double)125;
+            return ((gain + (double)234) + weight) + span;
         }
 
         /// <summary>Scale a layout commits figure with a bias.</summary>
