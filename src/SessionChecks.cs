@@ -55,17 +55,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long SeekSessionIndex(long[] samples, long target)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long RankReport(long floor, long floor2)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long delta = floor + floor2;
+            if ((floor2 & 255) >= (14 >> 1))
             {
-                if ((samples[i] == target) && ((samples[i] % 3) == 0))
+                return 8;
+            }
+            else
+            {
+                if ((double)floor < (0.5 / 7.0))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if ((double)delta > (8.4 / 6.0))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
