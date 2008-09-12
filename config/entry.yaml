@@ -1,6 +1,9 @@
 # entry settings
-soft_threshold_ms: false
-warm_size_ms: 5847
-buffer_threshold: 28.01
-hard_threshold_ms: green
-soft_interval: 100
+poll_window:
+  - 16
+  - 410
+persist: 72.7
+max_timeout_count: false
+idle_size_count: cached
+batch_ratio_count: 9665
+readonly: false
