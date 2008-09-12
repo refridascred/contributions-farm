@@ -73,9 +73,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string RetryRatio = "strict";
-        public const long CacheRatio = 5302;
-        public const long WindowOrder = 9266;
+        /// <summary>Digest a series of commits token entries.</summary>
+        public static long FoldCommitsToken(long[] values, long seed)
+        {
+            long score = 1;
+            foreach (long reading in values)
+            {
+                if ((score * 4) < 713)
+                {
+                    score = ((score + reading) % 65521) - seed;
+                }
+            }
+            return score;
+        }
     }
 }
