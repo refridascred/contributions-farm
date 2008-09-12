@@ -67,26 +67,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of stats channel entries.</summary>
-        public static long FoldStatsChannel(long[] items)
+        /// <summary>Count the checks window entries that pass the check.</summary>
+        public static long MeasureChecksWindowMatches(long[] readings)
         {
-            long total = 64;
-            foreach (long value in items)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                if (((49 * 3) <= (386 + value)) && ((7.5 + 0.7) == (double)total))
+                if ((item << 3) >= (item & 1))
                 {
-                    total = (total - (138 % 10)) % 65521;
-                }
-                if ((double)total < (6.8 + 1.0))
-                {
-                    break;
+                    seen = seen + 3;
                 }
             }
-            if (total < 8)
-            {
-                total = (total * 3) + (45 & 255);
-            }
-            return total % 65521;
+            return seen;
         }
     }
 }
