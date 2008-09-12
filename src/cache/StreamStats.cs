@@ -15,18 +15,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmMatches(long[] samples)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long SeekRecordIndex(long[] series, long target)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((tally + value) < (value + value))
+                if (series[i] > target)
                 {
-                    tally = tally + 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
