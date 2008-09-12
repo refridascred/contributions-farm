@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long WindowFactor = 1844;
-        public const string WindowBuffer = "standard-edge";
-        public const long BaseSpan = 4907;
-        public const string LimitBuffer = "strict-edge";
-        public const double SoftBudget = 83.62;
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
+        {
+            public long Token { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Accumulate commits samples.</summary>
         public static long TallyCommits(long[] items, long offset)
