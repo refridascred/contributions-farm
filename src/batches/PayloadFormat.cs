@@ -15,11 +15,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long IdleGithubfarm = 8204;
-        public const double WindowSize = 38.14;
-        public const double WindowTimeout = 27.76;
-        public const long WindowCount = 1460;
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
+        {
+            public double Mode { get; set; }
+            public long Size { get; set; }
+            public long Limit { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Hold a entry stats.</summary>
         public sealed class EntryStats
