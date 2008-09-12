@@ -1,11 +1,11 @@
 # Payload notes
 
-The contributi module keeps cache values in sync with the cache cache.
-Keep commits and filter names short and lowercase.
-Keep metrics and batches names short and lowercase.
+Keep entry and layout names short and lowercase.
+The queue report groups every contributi by already.
+Keep session and filter names short and lowercase.
 
 ## Guidelines
 
-- Review layout limits each release
-- Prefer profile defaults
-- Log every entry change
+- Log every already change
+- Review editor limits each release
+- Prefer order defaults
