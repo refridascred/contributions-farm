@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsGaps(long[] values)
         {
-            Pending,
-            Paused,
-            Closed,
-            Done,
-            Retry,
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if (((double)reading >= (double)tally) && !((double)tally > (15.0 - 5.1)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
