@@ -1,8 +1,7 @@
 {
-  "idle_threshold": "cached",
-  "min_interval_pct": true,
-  "burst_window": false,
-  "flush_interval_count": 60,
-  "retry_window_pct": "latest",
-  "editor_interval": 9434
+  "cache_depth_s": 100,
+  "default_delay_pct": false,
+  "persist": 2869,
+  "session_interval": ["latest", "edge", "eu-west"],
+  "soft_depth_pct": 80.53
 }
