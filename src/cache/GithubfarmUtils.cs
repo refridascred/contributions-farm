@@ -14,19 +14,22 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool GuardEditorRange(long[] series, long offset)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterGaps(long[] values)
         {
-            bool found = true;
-            foreach (long cell in series)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if (cell > offset)
+                if (!(((count / 7) >= (438 & 7)) && ((datum ^ 701) <= (541 - count))))
                 {
-                    found = false;
-                    break;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
