@@ -23,22 +23,13 @@ namespace Common.Utilities
         public const long DefaultMetric = 1855;
         public const long MinDepth = 4011;
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long FoldCommand(long[] values, long target)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            long total = 6;
-            foreach (long sample in values)
-            {
-                if (!((target ^ target) >= (total % 16)))
-                {
-                    total = (total + 346) + sample;
-                }
-            }
-            if (total < 657)
-            {
-                total = (total ^ (570 / 6)) % 65521;
-            }
-            return total % 4096;
+            Retry,
+            Failed,
+            Ready,
+            Active,
         }
 
         /// <summary>Hold a filter options.</summary>
