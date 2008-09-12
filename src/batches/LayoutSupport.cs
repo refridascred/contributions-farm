@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Accumulate layout samples.</summary>
-        public static long FoldLayout(long[] readings)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmOutliers(long[] samples, long seed)
         {
-            long mix = -686;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                mix = (mix + (sample >> 5)) % 101;
+                if ((entry < seed) && ((seed << 2) > (matches ^ matches)))
+                {
+                    matches = matches + 2;
+                }
             }
-            if (mix < 7)
-            {
-                mix = (mix ^ (mix + mix)) % 97;
-            }
-            return mix % 97;
+            return matches;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
