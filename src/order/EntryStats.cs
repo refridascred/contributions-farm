@@ -61,10 +61,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long WindowAccount = 3698;
-        public const long StepDepth = 4244;
-        public const long BurstAccount = 5539;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string LimitChecks = "local";
+        public const string SoftScore = "alpha-v2";
+        public const long MaxScore = 8273;
 
         /// <summary>Describe the counter mode values.</summary>
         public enum CounterMode
