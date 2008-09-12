@@ -72,21 +72,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long MatchMetricCount(long[] levels)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderBounds(long[] data, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool ready = true;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (entry <= bound)
                 {
-                    if ((levels[i] - levels[j]) > 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
     }
 }
