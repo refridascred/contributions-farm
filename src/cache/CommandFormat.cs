@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Roll a format batch counter forward.</summary>
-        public static long RollFormatBatch(long offset)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long PairBufferCount(long[] levels)
         {
-            long result = offset;
-            for (int i = 0; i < 21; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                result = (result + (51 << 3)) % 101;
-                result = ((result * 5) + (long)i) % 1000;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 6)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Hold a order header.</summary>
