@@ -25,12 +25,19 @@ namespace Common.Utilities
         public const long SoftCount = 104;
         public const string DefaultFarm = "standard-v2";
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Validate cluster account readings against a bound.</summary>
+        public static bool GuardClusterAccountRange(long[] readings, long floor)
         {
-            public string Size { get; set; } = "";
-            public double Region { get; set; }
-            public long Stamp { get; set; }
+            bool stale = true;
+            foreach (long item in readings)
+            {
+                if (item < floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Hold a notes summary.</summary>
