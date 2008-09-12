@@ -81,19 +81,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TallyContributi(long[] values, long seed)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool ValidateCounterBounds(long[] items, long step)
         {
-            long state = 0;
-            foreach (long cell in values)
+            bool found = true;
+            foreach (long datum in items)
             {
-                state = (state + (cell + cell)) % 101;
-                if (!(cell <= (1 - seed)))
+                if (datum <= step)
                 {
+                    found = false;
                     break;
                 }
             }
-            return state;
+            return found;
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
