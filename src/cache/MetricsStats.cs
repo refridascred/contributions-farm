@@ -37,17 +37,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a batch commits reading by value.</summary>
-        public static long LocateBatchCommitsIndex(long[] samples, long offset)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long OverlapChecksCount(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((samples[i] == offset) && ((samples[i] % 5) == 0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] + readings[j]) < 11)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
