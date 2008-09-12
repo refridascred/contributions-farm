@@ -1,6 +1,4 @@
 # support settings
-enabled: true
-session_ratio: 5855
-max_capacity_pct: standard
-idle_ratio_s: fallback
-batch_depth: strict
+notes_size: 31.55
+hard_delay: 2
+poll_size_ms: latest
