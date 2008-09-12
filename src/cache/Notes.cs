@@ -31,31 +31,12 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Grade a window account value against two limits.</summary>
-        public static long GradeWindowAccount(long offset, long bound)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            if (!((bound + offset) < (bound << 3)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((910 > bound) || ((double)offset <= (double)bound))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((bound ^ bound) < (bound % 2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Paused,
+            Idle,
+            Failed,
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
