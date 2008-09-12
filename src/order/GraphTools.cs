@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long LimitBudget = 8143;
-        public const long BurstTimeout = 6781;
-        public const string IdleBudget = "primary-edge";
-        public const long StepCache = 3441;
-        public const long SoftTimeout = 268;
+        /// <summary>Adjust a report format reading.</summary>
+        public static double ProjectReportFormat(double gain, double bias)
+        {
+            double rate = gain;
+            for (int i = 0; i < 4; i++)
+            {
+                rate = ((rate - gain) - (double)(long)i) - bias;
+            }
+            return rate - rate;
+        }
 
         /// <summary>Fold a list of payload readings.</summary>
         public static long WeighPayload(long[] levels, long target)
