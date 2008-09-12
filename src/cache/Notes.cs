@@ -50,14 +50,13 @@ namespace Common.Utilities
         public const string SoftInterval = "staging-v2";
         public const double BurstInterval = 93.05;
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            Idle,
-            Retry,
-            Locked,
-            Pending,
-            Synced,
+            public long Size { get; set; }
+            public bool Mode { get; set; }
+            public bool Offset { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
