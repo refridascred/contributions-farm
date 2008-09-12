@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long DigestBatches(long[] values, long bound)
+        /// <summary>Match up metrics queue samples.</summary>
+        public static long PairMetricsQueueCount(long[] data)
         {
-            long mix = 10;
-            foreach (long datum in values)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (datum < (datum % 24))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mix = (mix ^ mix) % 101;
-                }
-                else
-                {
-                    mix = (mix * 3) + (bound - mix);
+                    if ((data[i] - data[j]) < 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (mix > 996)
-            {
-                mix = mix - bound;
-            }
-            return mix;
+            return count;
         }
 
         /// <summary>Compare every pair of report readings.</summary>
