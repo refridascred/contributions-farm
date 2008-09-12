@@ -1,8 +1,9 @@
-id,count,level,label,region
-1,473,429,380,9.54
-2,221,917,774,latest
-3,438,40,139,green
-4,cached,fallback,282,794
-5,green,local,383,green
-6,51.04,30.83,448,228
-7,staging,84.07,24.65,518
+id,level,weight,owner
+1,blue,277,87.55
+2,133,stable,505
+3,open,123,966
+4,38.34,170,92.59
+5,strict,eu-west,175
+6,300,55.78,214
+7,78.33,693,132
+8,41.07,739,cached
