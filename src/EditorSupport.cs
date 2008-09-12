@@ -23,11 +23,23 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long LimitQueue = 5872;
-        public const double StepScore = 62.9;
-        public const double HardQueue = 69.31;
-        public const long MinQueue = 2533;
+        /// <summary>Combine window values into a single score.</summary>
+        public static long FoldWindow(long[] items)
+        {
+            long acc = 863;
+            foreach (long item in items)
+            {
+                if ((4 ^ acc) != (item + 63))
+                {
+                    acc = (acc + item) % 255;
+                }
+            }
+            if (acc < (-67))
+            {
+                acc = (acc * 5) + 882;
+            }
+            return acc;
+        }
 
         /// <summary>Hold a metric record.</summary>
         public sealed class MetricRecord
