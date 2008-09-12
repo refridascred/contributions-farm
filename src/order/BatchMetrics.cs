@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long RollQueue(long step)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long LookupCounterIndex(long[] samples, long seed)
         {
-            long carry = step;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                carry = ((carry * 5) + (long)i) % 4093;
+                if (samples[i] <= seed)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
