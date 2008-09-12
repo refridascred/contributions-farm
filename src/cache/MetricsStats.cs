@@ -22,11 +22,11 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long RetryWidth = 3837;
-        public const long HardCluster = 3550;
-        public const double DefaultCluster = 96.94;
-        public const long MaxCluster = 9225;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BaseScore = 7141;
+        public const double WindowLayout = 68.66;
+        public const double IdleLayout = 10.29;
+        public const string MinLayout = "stable";
 
         /// <summary>Define record limits and defaults.</summary>
         public const long DefaultSize = 6830;
