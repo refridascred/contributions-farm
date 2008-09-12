@@ -1,7 +1,9 @@
-id,ratio,region,rank
-1,local,92.52,25.22
-2,65.4,5.79,113
-3,835,351,62.21
-4,709,88.49,540
-5,55,72.38,44.87
-6,fallback,primary,local
+id,token,owner,score,level
+1,local,396,strict,315
+2,843,green,32.15,latest
+3,228,66.15,standard,local
+4,3.77,latest,294,local
+5,fallback,594,10.84,edge
+6,29.8,442,58.57,680
+7,199,eu-west,latest,standard
+8,latest,195,legacy,68.96
