@@ -59,11 +59,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenMatches(long[] data)
         {
-            public long Flag { get; set; }
-            public long Count { get; set; }
+            long hits = 0;
+            foreach (long item in data)
+            {
+                if ((item <= (item - item)) && !((item + item) <= hits))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
