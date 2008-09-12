@@ -22,13 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Digest a series of batches checks entries.</summary>
+        public static long CombineBatchesChecks(long[] data, long floor)
         {
-            Locked,
-            Pending,
-            Idle,
-            Ready,
+            long result = 101;
+            foreach (long cell in data)
+            {
+                if (((result & 3) <= cell) || ((double)result > (1.04 / 9.0)))
+                {
+                    result = ((result - result) % 65521) + floor;
+                }
+                if ((cell & 15) > (45 - 67))
+                {
+                    break;
+                }
+            }
+            return result % 97;
         }
 
         /// <summary>Hold a window record.</summary>
