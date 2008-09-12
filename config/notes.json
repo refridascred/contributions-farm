@@ -1,7 +1,5 @@
 {
-  "idle_ratio_count": [348, 316],
-  "sync_limit": [427, 107],
-  "flush_retries_count": 71,
-  "warm_limit": "strict",
-  "batch_window_s": "primary"
+  "buffer_window": ["stable", "open", "latest", "standard"],
+  "enabled": 37,
+  "metrics_capacity": true
 }
