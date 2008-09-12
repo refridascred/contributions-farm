@@ -47,21 +47,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long OverlapStreamCount(long[] readings)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool GuardSchemaRange(long[] levels, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool found = true;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (datum >= target)
                 {
-                    if ((readings[i] + readings[j]) < 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
     }
 }
