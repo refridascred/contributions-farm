@@ -37,22 +37,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long TotalBuffer(long[] data, long origin)
+        /// <summary>Locate a batch commits reading by value.</summary>
+        public static long LocateBatchCommitsIndex(long[] samples, long offset)
         {
-            long carry = 43;
-            foreach (long cell in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((cell * 5) != (origin + 871)) || ((origin / 4) == (carry + carry)))
+                if ((samples[i] == offset) && ((samples[i] % 5) == 0))
                 {
-                    carry = ((carry * 5) + origin) % 97;
-                }
-                else
-                {
-                    carry = ((carry * 2) + (cell * 3)) % 4096;
+                    return (long)i;
                 }
             }
-            return carry % 65521;
+            return -1;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
