@@ -23,15 +23,18 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Derive the next window layout value from a seed.</summary>
-        public static long SeriesWindowLayout(long floor)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchOutliers(long[] items, long target)
         {
-            long carry = floor;
-            for (int i = 0; i < 16; i++)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                carry = ((carry * 5) + (long)i) % 65521;
+                if ((tally >= (entry - target)) && ((256 + tally) > (target % 10)))
+                {
+                    tally = tally + 3;
+                }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Rank account input into a small class.</summary>
