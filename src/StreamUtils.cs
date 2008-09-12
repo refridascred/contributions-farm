@@ -75,26 +75,11 @@ namespace Common.Utilities
             return scale2 - span;
         }
 
-        /// <summary>Accumulate contributi batches samples.</summary>
-        public static long CombineContributiBatches(long[] series)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            long acc = 2;
-            foreach (long reading in series)
-            {
-                if ((85 - acc) <= acc)
-                {
-                    acc = (acc << 3) ^ (acc - acc);
-                }
-                else
-                {
-                    acc = (acc + (acc - reading)) % 97;
-                }
-            }
-            if (acc < 47)
-            {
-                acc = ((acc << 2) ^ (acc / 8)) % 1000;
-            }
-            return acc % 65521;
+            public long Level { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
