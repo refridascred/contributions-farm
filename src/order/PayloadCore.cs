@@ -32,13 +32,11 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            Queued,
-            New,
-            Paused,
-            Retry,
+            public double Stamp { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the farm mode values.</summary>
