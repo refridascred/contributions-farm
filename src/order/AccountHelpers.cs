@@ -51,18 +51,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsGaps(long[] samples)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool CheckCommitsLimits(long[] data, long origin)
         {
-            long count = 0;
-            foreach (long value in samples)
+            bool ready = true;
+            foreach (long item in data)
             {
-                if ((51 / 7) == (value ^ value))
+                if (item < origin)
                 {
-                    count = count + 3;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
