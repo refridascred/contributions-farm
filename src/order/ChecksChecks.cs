@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Match up profile samples.</summary>
-        public static long PairProfileCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double DefaultCount = 86.8;
+        public const string RetryBatch = "fallback-edge";
+        public const long HardBatch = 3596;
 
         /// <summary>Combine profile notes values into a single score.</summary>
         public static long FoldProfileNotes(long[] data, long step)
