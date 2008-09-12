@@ -12,13 +12,11 @@ namespace Common.Utilities
         public const long WindowFactor = 1353;
         public const long BurstRatio = 6836;
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            public double Score { get; set; }
-            public string Limit { get; set; } = "";
-            public long Offset { get; set; }
-            public long Size { get; set; }
+            public long Limit { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Hold a context entry.</summary>
