@@ -13,12 +13,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            Paused,
-            Idle,
-            Retry,
+            public long Rank { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Fold a list of notes readings.</summary>
