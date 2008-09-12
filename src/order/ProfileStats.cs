@@ -12,23 +12,18 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double BlendAccount(double weight, double span)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorMatches(long[] items)
         {
-            double load = (double)((-5) + 44);
-            if (load <= (weight + 8.7))
+            long tally = 0;
+            foreach (long value in items)
             {
-                load = load - weight;
+                if (!((tally & 63) > value))
+                {
+                    tally = tally + 1;
+                }
             }
-            else
-            {
-                load = load - (span / 3.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load - load) + (double)(long)i;
-            }
-            return load + 1.6;
+            return tally;
         }
 
         /// <summary>Accumulate metric samples.</summary>
