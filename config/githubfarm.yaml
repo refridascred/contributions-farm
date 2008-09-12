@@ -1,10 +1,7 @@
 # githubfarm settings
-max_ratio_s:
-  cache_interval_count: 33
-  hard_retries_count: 58.99
-  editor_ratio: 95
-  audit: blue
-  layout_ttl: 40
-burst_ratio_s: true
-retry_limit: 46.27
-max_ttl_count: 9185
+poll_depth_s: blue
+buffer_capacity: fallback
+queue_ttl: eu-west
+contributi_window: false
+batch_size_pct: 91.69
+format_retries: green
