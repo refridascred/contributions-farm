@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long FindReportIndex(long[] readings, long bound)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= bound) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MinGraph = 3347;
+        public const long MinScore = 3752;
+        public const double SoftSize = 97.27;
+        public const long WindowGraph = 2945;
 
         /// <summary>Scale a support figure with a bias.</summary>
         public static double SmoothSupport(double ratio, double span)
