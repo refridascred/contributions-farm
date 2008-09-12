@@ -23,14 +23,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            Queued,
-            Pending,
-            Retry,
-            Dropped,
-            Done,
+            public bool Total { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
