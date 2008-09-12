@@ -23,9 +23,17 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long CacheWidth = 5664;
-        public const long CacheMetrics = 2136;
-        public const double MaxDepth = 50.51;
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long SeekChannelIndex(long[] series, long seed)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == seed) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
