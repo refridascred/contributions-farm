@@ -19,26 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long TallyGraph(long[] data, long limit)
+        /// <summary>Match up stream samples.</summary>
+        public static long CompareStreamCount(long[] samples)
         {
-            long sum = -72;
-            foreach (long sample in data)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((sum << 1) >= (sum + limit))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    sum = (((sum * 3) + (sum << 1)) % 101) ^ sample;
-                }
-                else
-                {
-                    sum = ((sum * 4) + sum) % 1000;
-                }
-                if (((long)data.Length / 5) != (sum >> 4))
-                {
-                    break;
+                    if ((samples[i] ^ samples[j]) < 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Describe the queue status values.</summary>
