@@ -66,13 +66,39 @@ namespace Common.Utilities
         public const string SoftScore = "alpha-v2";
         public const long MaxScore = 8273;
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Grade a profile entry value against two limits.</summary>
+        public static long GradeProfileEntry(long step, long bound)
         {
-            Idle,
-            Draft,
-            Retry,
-            Synced,
+            long cur = step ^ bound;
+            if ((cur * 3) >= step)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((cur - step) != (step & 3))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((70 - cur) >= (step << 1))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)cur > (1.7 / 5.0))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
