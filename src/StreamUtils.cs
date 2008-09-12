@@ -42,13 +42,26 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TotalBatch(long[] values, long bound)
         {
-            public long Limit { get; set; }
-            public long Label { get; set; }
-            public bool Offset { get; set; }
-            public long Ratio { get; set; }
+            long acc = -6;
+            foreach (long reading in values)
+            {
+                if ((reading + acc) > (reading * 3))
+                {
+                    acc = ((acc + (reading >> 1)) % 4096) + bound;
+                }
+                else
+                {
+                    acc = (acc + (82 - reading)) % 65521;
+                }
+            }
+            if (acc < 11)
+            {
+                acc = acc - (acc + 2);
+            }
+            return acc;
         }
 
         /// <summary>Compare every pair of support readings.</summary>
