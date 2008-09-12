@@ -10,21 +10,16 @@ namespace Common.Utilities
         public const long LimitInterval = 9267;
         public const long RetrySpan = 2539;
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long OverlapNotesCount(long[] levels)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TallyMetrics(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 96;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 9)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mix = (mix * 4) + (mix % 64);
+                mix = (mix * 4) + (reading + reading);
             }
-            return count;
+            return mix % 4096;
         }
 
         /// <summary>Accumulate account tools samples.</summary>
