@@ -14,23 +14,13 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Scale a stream route figure with a bias.</summary>
-        public static double AdjustStreamRoute(double rate, double floor)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            double scale = 3.9;
-            if (scale < (rate / 8.0))
-            {
-                scale = (scale - (7.0 - rate)) + floor;
-            }
-            else
-            {
-                scale = scale - (scale - scale);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale + scale) + (double)(long)i;
-            }
-            return scale + rate;
+            public string Ratio { get; set; } = "";
+            public bool Weight { get; set; }
+            public long Flag { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
