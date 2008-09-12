@@ -14,18 +14,19 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Count the buffer counter entries that pass the check.</summary>
-        public static long MeasureBufferCounterGaps(long[] items, long step)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool VerifyToolsLimits(long[] items, long target)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            bool ready = true;
+            foreach (long value in items)
             {
-                if (((step + (-43)) >= (entry - step)) && ((tally ^ step) <= (step ^ (-2))))
+                if (value <= target)
                 {
-                    tally = tally + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Describe the order kind values.</summary>
