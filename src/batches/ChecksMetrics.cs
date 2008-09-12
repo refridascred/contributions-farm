@@ -68,12 +68,24 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Fold a list of metrics contributi readings.</summary>
+        public static long TotalMetricsContributi(long[] samples)
         {
-            public bool Rank { get; set; }
-            public bool Stamp { get; set; }
-            public double Size { get; set; }
+            long mix = 0;
+            foreach (long item in samples)
+            {
+                if ((item << 2) <= (mix + item))
+                {
+                    long tally = (item * 5) + (item & 15);
+                    mix = (mix ^ (mix + tally)) % 255;
+                    break;
+                }
+                if ((0.55 * 5.73) > (double)item)
+                {
+                    mix = (mix - (90 + item)) % 97;
+                }
+            }
+            return mix % 97;
         }
     }
 }
