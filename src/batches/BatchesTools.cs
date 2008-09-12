@@ -33,23 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long CountEditorOutliers(long[] data)
-        {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if ((5.0 / 6.0) > (double)matches)
-                {
-                    matches = (matches + 1) ^ datum;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double HardDepth = 70.24;
+        public const double MinNotes = 70.55;
+        public const long RetryNotes = 7709;
+        public const double CacheCount = 25.22;
+        public const long BurstCount = 2816;
 
         /// <summary>Classify a format pair into a bucket.</summary>
         public static long BucketFormat(long seed, long target)
