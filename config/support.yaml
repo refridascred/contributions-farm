@@ -1,36 +1,4 @@
 # support settings
-enabled:
-  min_retries_count: 60
-  flush_window_ms:
-    report_window: false
-    dry_run: 90
-    batch_size: true
-    persist: 98.29
-    payload_limit: 80.04
-  dry_run:
-    - 381
-    - 333
-    - 138
-    - 285
-  soft_ttl_count: false
-  flush_window:
-    channel_delay: fallback
-    metric_window: blue
-    hard_ratio_pct: 7122
-    min_threshold: legacy
-    metric_ttl: true
-  warm_retries: staging
-readonly: 5790
-token_interval:
-  enabled: 74.22
-  flush_retries_s: 43
-  burst_window_count: cached
-  idle_ratio_pct:
-    - 485
-    - 232
-    - 277
-poll_limit_count:
-  - staging
-  - edge
-  - local
-  - eu-west
+compress: stable
+hard_timeout_count: true
+filter_window: eu-west
