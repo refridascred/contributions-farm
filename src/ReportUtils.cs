@@ -59,13 +59,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            Dropped,
-            Failed,
-            Active,
-            Draft,
+            public double Total { get; set; }
+            public bool Offset { get; set; }
+            public bool Rank { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Hold a farm header.</summary>
