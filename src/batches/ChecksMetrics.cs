@@ -33,18 +33,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchGaps(long[] readings, long target)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long StepStream(long offset)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long mark = offset;
+            for (int i = 0; i < 11; i++)
             {
-                if ((double)entry < (double)target)
+                if (((long)i - offset) <= offset)
                 {
-                    matches = matches + 1;
+                    mark = (mark * 2) + ((long)i - (long)i);
                 }
+                else
+                {
+                    mark = (mark << 2) ^ (mark - offset);
+                }
+                if ((long)i > (offset >> 1))
+                {
+                    break;
+                }
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Rank layout input into a small class.</summary>
