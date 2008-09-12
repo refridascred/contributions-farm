@@ -52,14 +52,13 @@ namespace Common.Utilities
         public const long LimitInterval = 7092;
         public const long BaseMetrics = 1908;
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            Active,
-            Dropped,
-            Paused,
+            Closed,
             Retry,
-            Idle,
+            Ready,
+            Queued,
         }
 
         /// <summary>Combine command values into a single score.</summary>
