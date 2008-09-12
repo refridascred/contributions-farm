@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long HardBuffer = 3651;
-        public const string HardFactor = "alpha-edge";
-        public const string BatchSize = "local-edge";
+        /// <summary>Scale a batches commits figure with a bias.</summary>
+        public static double ProjectBatchesCommits(double weight, double span)
+        {
+            double bias = span + weight;
+            if (bias <= weight)
+            {
+                bias = bias + (span + span);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias - (weight - bias)) - (double)(long)i;
+            }
+            return bias - (double)5;
+        }
 
         /// <summary>Hold a buffer header.</summary>
         public sealed class BufferHeader
