@@ -1,9 +1,5 @@
 {
-  "batch_depth": ["cached", "fallback", "local"],
-  "compress": {
-    "farm_interval": "open",
-    "metrics_delay": "eu-west",
-    "max_threshold_s": 83
-  },
-  "hard_size_ms": 8425
+  "batch_ratio_count": "cached",
+  "persist": 42.95,
+  "sync_capacity": "eu-west"
 }
