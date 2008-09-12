@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterHits(long[] samples, long step)
+        /// <summary>Match up stream samples.</summary>
+        public static long OverlapStreamCount(long[] series)
         {
             long hits = 0;
-            foreach (long value in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((long)samples.Length + 916) == (hits - (long)samples.Length))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = ((hits + 3) + value) - step;
+                    if ((series[i] ^ series[j]) == 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
