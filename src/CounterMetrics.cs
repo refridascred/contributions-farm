@@ -20,19 +20,17 @@ namespace Common.Utilities
             return ratio + (floor - bias);
         }
 
-        /// <summary>Check that every window filter entry stays within the limit.</summary>
-        public static bool VerifyWindowFilterRange(long[] items, long floor)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long FindContextIndex(long[] levels, long limit)
         {
-            bool stale = true;
-            foreach (long datum in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (datum <= floor)
+                if ((levels[i] <= limit) && ((levels[i] % 5) == 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Audit githubfarm metric readings against a rule.</summary>
