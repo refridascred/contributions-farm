@@ -63,23 +63,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double BlendLayout(double scale, double floor)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long LookupMetricsIndex(long[] data, long seed)
         {
-            double weight = floor;
-            if (weight > (double)8)
+            for (int i = 0; i < data.Length; i++)
             {
-                weight = weight + (double)8;
+                if (data[i] == seed)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                weight = weight - scale;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight - (double)6) + (double)(long)i;
-            }
-            return weight - 5.0;
+            return -1;
         }
     }
 }
