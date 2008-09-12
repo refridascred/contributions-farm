@@ -44,13 +44,24 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Rank already input into a small class.</summary>
+        public static long RankAlready(long origin, long offset)
         {
-            Done,
-            Synced,
-            Idle,
-            Paused,
+            if (origin > (origin % 5))
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((origin & 15) < (origin - origin)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
