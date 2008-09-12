@@ -41,10 +41,14 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long RetryProfile = 5595;
-        public const long StepProfile = 8754;
-        public const long WindowTimeout = 7243;
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
+        {
+            public double Offset { get; set; }
+            public long Region { get; set; }
+            public bool Token { get; set; }
+            public string Rank { get; set; } = "";
+        }
 
         /// <summary>Blend two route profile measurements.</summary>
         public static double SmoothRouteProfile(double bias, double offset)
