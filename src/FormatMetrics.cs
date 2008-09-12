@@ -47,15 +47,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double BlendProfile(double scale, double span)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            double drift = (double)(2 & 31);
-            if (drift > (8.0 / 7.0))
-            {
-                drift = (drift + (double)(-95)) - scale;
-            }
-            return drift - (span - drift);
+            public long Mode { get; set; }
+            public long Count { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
