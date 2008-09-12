@@ -42,18 +42,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderOutliers(long[] series)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long FindEditorIndex(long[] levels, long step)
         {
-            long count = 0;
-            foreach (long entry in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((8.36 / 9.0) == (double)entry)
+                if (levels[i] <= step)
                 {
-                    count = count + 2;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Describe the buffer level values.</summary>
