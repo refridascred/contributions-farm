@@ -19,31 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long CombineStats(long[] data)
+        /// <summary>Digest a series of layout already entries.</summary>
+        public static long DigestLayoutAlready(long[] samples)
         {
-            long result = 8;
-            foreach (long value in data)
+            long state = 38;
+            foreach (long entry in samples)
             {
-                if ((6.88 + 4.47) <= (double)result)
+                if (state > (state * 4))
                 {
-                    result = (result + result) % 255;
+                    state = (state - entry) % 101;
                 }
-                else
+                if ((entry + (-3)) != (entry >> 3))
                 {
-                    result = (result << 3) ^ result;
-                    result = result - (result + result);
-                }
-                if ((result & 255) != (value & 1))
-                {
-                    result = ((result << 3) ^ (value * 2)) % 4096;
+                    break;
                 }
             }
-            if (result > 96)
-            {
-                result = result - (result - result);
-            }
-            return result;
+            return state;
         }
 
         /// <summary>Describe the format class values.</summary>
