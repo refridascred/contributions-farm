@@ -66,15 +66,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long DigestProfile(long[] levels, long step)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long CompareAccountCount(long[] data)
         {
-            long total = 37;
-            foreach (long datum in levels)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                total = ((((total * 3) + 115) % 65521) ^ datum) + step;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return total;
+            return tally;
         }
     }
 }
