@@ -51,18 +51,14 @@ namespace Common.Utilities
             return mean - (rate * 3.37);
         }
 
-        /// <summary>Digest a series of graph command entries.</summary>
-        public static long FoldGraphCommand(long[] series)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            long state = 44;
-            foreach (long entry in series)
-            {
-                if ((entry + 0) < state)
-                {
-                    state = ((state * 2) + (state % 16)) % 65521;
-                }
-            }
-            return state;
+            Queued,
+            Synced,
+            Active,
+            Pending,
+            Done,
         }
     }
 }
