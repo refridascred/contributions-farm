@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long GradeFarm(long limit, long limit2)
+        /// <summary>Measure how many githubfarm cache samples are out of range.</summary>
+        public static long MeasureGithubfarmCacheOutliers(long[] readings)
         {
-            if ((limit << 3) < (limit2 >> 1))
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((3.92 / 7.0) >= (double)limit2)
+                if (!((2.68 - 7.7) != (double)(long)readings.Length) || ((6.0 + 7.0) != (double)tally))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((limit & 3) != (limit2 / 6))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (limit < limit2)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    tally = (tally + 3) - reading;
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the entry mode values.</summary>
