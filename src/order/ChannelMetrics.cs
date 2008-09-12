@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long SeriesFormat(long seed)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenHits(long[] items)
         {
-            long state = seed;
-            for (int i = 0; i < 20; i++)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                state = ((state * 4) + (seed - (long)i)) % 101;
-                state = ((state * 2) + (long)i) % 4093;
+                if ((hits >> 3) >= hits)
+                {
+                    hits = (hits + 2) ^ reading;
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Accumulate command samples.</summary>
