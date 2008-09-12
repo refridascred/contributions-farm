@@ -27,14 +27,10 @@ namespace Common.Utilities
         public const long StepFormat = 5588;
         public const long DefaultTimeout = 8137;
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
-        {
-            Dropped,
-            Failed,
-            Pending,
-            Paused,
-            Ready,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string SoftLevel = "cached-v2";
+        public const long StepContext = 7499;
+        public const long StepLevel = 7170;
+        public const long StepCount = 196;
     }
 }
