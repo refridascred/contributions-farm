@@ -1,16 +1,14 @@
 # githubfarm settings
-audit: eu-west
-default_threshold: 42
-graph_interval: staging
-editor_delay:
-  idle_ttl_s: 82
-  retry_delay:
-    - blue
-    - standard
-    - cached
-    - primary
-  layout_retries: false
-  stats_depth: true
-  min_ratio_count: edge
-  cache_ttl_s: false
-flush_size: cached
+audit: 55.68
+warm_limit: false
+base_limit: false
+persist:
+  - open
+  - local
+  - cached
+  - strict
+report_threshold:
+  metrics_retries: 78.49
+  default_depth_ms: standard
+  enabled: stable
+  editor_size: blue
