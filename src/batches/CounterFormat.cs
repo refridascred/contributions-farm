@@ -18,25 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long BucketFilter(long origin, long step)
-        {
-            if ((step & 7) >= (origin * 5))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((origin >> 5) <= step) || ((double)step >= (20.0 - 8.92)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MaxMetrics = 5710;
+        public const double RetrySize = 24.72;
+        public const long DefaultMetrics = 1384;
 
         /// <summary>Measure how many filter samples are out of range.</summary>
         public static long TallyFilterOutliers(long[] levels)
