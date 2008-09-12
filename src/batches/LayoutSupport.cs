@@ -37,19 +37,24 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Adjust a queue session reading.</summary>
-        public static double ScaleQueueSession(double weight, double offset)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long RankToken(long seed, long origin)
         {
-            double mean = offset + (1.0 * 8.2);
-            if (mean >= (double)87)
+            if ((origin + origin) >= origin)
             {
-                mean = mean - (offset - mean);
+                return 1;
             }
-            for (int i = 0; i < 4; i++)
+            else
             {
-                mean = (mean - 9.0) - (double)(long)i;
+                if (((origin + 278) != (origin - seed)) && ((191 & 63) != (seed / 7)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 7;
+                }
             }
-            return mean - weight;
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
