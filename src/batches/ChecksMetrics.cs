@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double BlendAlready(double rate, double bias)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsHits(long[] values, long bound)
         {
-            double gain = (double)(2 - 51);
-            for (int i = 0; i < 9; i++)
+            long hits = 0;
+            foreach (long value in values)
             {
-                gain = (((gain - (double)84) + (double)(long)i) - rate) + bias;
+                if ((9.8 - 0.63) >= (double)bound)
+                {
+                    hits = (hits + 2) + value;
+                }
             }
-            return gain - 4.5;
+            return hits;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
