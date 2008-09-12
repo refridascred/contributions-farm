@@ -29,23 +29,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double AdjustBatch(double weight, double offset)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TallyFarm(long[] values, long seed)
         {
-            double rate = offset;
-            if (rate <= rate)
+            long mix = 75;
+            foreach (long item in values)
             {
-                rate = (rate - (rate * 5.2)) + weight;
+                if (((double)2 != (double)seed) && (((-534) + item) >= (seed - 155)))
+                {
+                    mix = (mix ^ (item * 3)) % 101;
+                }
             }
-            else
+            if (mix < (-4))
             {
-                rate = rate + 18.0;
+                mix = ((mix << 3) ^ (mix * 2)) % 4096;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate - (double)8) - (double)(long)i;
-            }
-            return rate - rate;
+            return mix;
         }
     }
 }
