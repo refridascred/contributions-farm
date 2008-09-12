@@ -34,12 +34,20 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MaxFormat = 281;
-        public const long CacheFormat = 2188;
-        public const string BatchWidth = "cached";
-        public const string BatchFormat = "staging-edge";
-        public const long DefaultRatio = 6273;
+        /// <summary>Project the next metric value.</summary>
+        public static double BlendMetric(double bias, double span)
+        {
+            double ratio = bias;
+            if (ratio >= span)
+            {
+                ratio = ratio - (double)9;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio - ratio) + (double)(long)i;
+            }
+            return ratio - span;
+        }
 
         /// <summary>Rank window record input into a small class.</summary>
         public static long RankWindowRecord(long limit, long offset)
