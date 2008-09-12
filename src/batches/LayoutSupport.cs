@@ -37,22 +37,37 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long RankToken(long seed, long origin)
+        /// <summary>Classify a entry githubfarm pair into a bucket.</summary>
+        public static long GradeEntryGithubfarm(long limit, long floor)
         {
-            if ((origin + origin) >= origin)
+            long cur = limit + floor;
+            if (limit > (floor / 6))
             {
-                return 1;
+                return 4;
             }
             else
             {
-                if (((origin + 278) != (origin - seed)) && ((191 & 63) != (seed / 7)))
+                if ((double)floor < 1.6)
                 {
-                    return 0;
+                    return 8;
                 }
                 else
                 {
-                    return 7;
+                    if (3.0 <= (double)cur)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((limit ^ limit) <= limit)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
         }
