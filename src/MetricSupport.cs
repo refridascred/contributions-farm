@@ -41,12 +41,9 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
-        {
-            Queued,
-            Done,
-            Locked,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long CacheWidth = 5664;
+        public const long CacheMetrics = 2136;
+        public const double MaxDepth = 50.51;
     }
 }
