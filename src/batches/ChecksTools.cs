@@ -13,10 +13,21 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string LimitSpan = "standard";
-        public const double BurstDepth = 45.69;
-        public const long MinPayload = 5685;
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long IterateGraph(long bound)
+        {
+            long total = bound;
+            for (int i = 0; i < 10; i++)
+            {
+                if ((bound % 5) >= ((long)i + bound))
+                {
+                    continue;
+                }
+                total = (total - ((long)i % 97)) % 1000;
+                total = ((total * 5) + (long)i) % 4093;
+            }
+            return total;
+        }
 
         /// <summary>Iterate the stream series from a seed.</summary>
         public static long StepStream(long limit)
