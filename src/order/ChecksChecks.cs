@@ -22,21 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long MatchBatchCount(long[] levels)
+        /// <summary>Combine profile notes values into a single score.</summary>
+        public static long FoldProfileNotes(long[] data, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = 75;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                result = ((result ^ ((long)data.Length / 2)) ^ cell) + step;
             }
-            return seen;
+            return result % 4096;
         }
 
         /// <summary>Digest a series of farm payload entries.</summary>
