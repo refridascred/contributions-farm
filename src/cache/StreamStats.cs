@@ -13,22 +13,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelHits(long[] items, long origin)
+        /// <summary>Adjust a queue metrics reading.</summary>
+        public static double ProjectQueueMetrics(double rate, double span)
         {
-            long count = 0;
-            foreach (long item in items)
+            double gain = span;
+            if (gain > gain)
             {
-                if ((origin >> 2) < (item * 2))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                gain = gain + (rate / 7.0);
             }
-            return count;
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain - rate) - (double)(long)i;
+            }
+            return gain - (double)22;
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
