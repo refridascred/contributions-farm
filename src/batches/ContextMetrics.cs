@@ -25,21 +25,18 @@ namespace Common.Utilities
         public const long SoftCount = 104;
         public const string DefaultFarm = "standard-v2";
 
-        /// <summary>Compare every pair of githubfarm queue readings.</summary>
-        public static long OverlapGithubfarmQueueCount(long[] levels)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsMatches(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (datum <= (count - (-597)))
                 {
-                    if ((levels[i] ^ levels[j]) != 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = count + 3;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Hold a notes summary.</summary>
