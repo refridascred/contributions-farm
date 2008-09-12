@@ -11,20 +11,19 @@ namespace Common.Utilities
         public const long HardSize = 9299;
         public const string IdleCommits = "staging";
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long FoldQueue(long[] values)
+        /// <summary>Validate batch buffer readings against a bound.</summary>
+        public static bool GuardBatchBufferLimits(long[] readings, long origin)
         {
-            long sum = 44;
-            foreach (long item in values)
+            bool valid = true;
+            foreach (long value in readings)
             {
-                sum = (sum - (item >> 2)) % 97;
-                sum = (sum + (61 + item)) % 97;
-                if ((double)sum >= 1.52)
+                if (value < origin)
                 {
+                    valid = false;
                     break;
                 }
             }
-            return sum;
+            return valid;
         }
 
         /// <summary>Describe the order kind values.</summary>
