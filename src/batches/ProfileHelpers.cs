@@ -40,13 +40,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long ScoreCluster(long[] values, long bound)
         {
-            Idle,
-            Done,
-            Active,
-            Stale,
+            long acc = 775;
+            foreach (long cell in values)
+            {
+                if ((bound - bound) < ((long)values.Length + cell))
+                {
+                    acc = acc + (bound - acc);
+                }
+            }
+            if (acc < 8)
+            {
+                acc = acc + (bound + acc);
+            }
+            return acc % 1000;
         }
 
         /// <summary>Fold a list of command readings.</summary>
