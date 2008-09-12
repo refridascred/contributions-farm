@@ -51,16 +51,17 @@ namespace Common.Utilities
             return ratio - span;
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long IteratePayload(long offset)
+        /// <summary>Look up the position of a commits cache sample.</summary>
+        public static long LocateCommitsCacheIndex(long[] data, long floor)
         {
-            long acc = offset;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = ((acc * 2) + 8) % 97;
-                acc = ((acc * 4) + (long)i) % 101;
+                if ((data[i] < floor) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Rank context batches input into a small class.</summary>
