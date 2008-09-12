@@ -27,25 +27,17 @@ namespace Common.Utilities
         public const double WindowCommits = 83.51;
         public const string RetryCommits = "local-v2";
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long SortSession(long limit, long origin)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long FindCounterIndex(long[] data, long bound)
         {
-            long span = limit + origin;
-            if ((15.0 * 6.0) > (double)span)
+            for (int i = 0; i < data.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (limit > span)
+                if ((data[i] >= bound) && ((data[i] % 2) == 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the command state values.</summary>
