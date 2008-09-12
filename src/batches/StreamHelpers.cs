@@ -28,21 +28,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long OverlapBatchesCount(long[] series)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long ScoreCounter(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = 722;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((2 * 2) >= (cell / 3))
                 {
-                    if ((series[i] - series[j]) > 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    acc = (acc * 3) + ((-95) << 2);
                 }
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Project the next metric value.</summary>
