@@ -38,18 +38,16 @@ namespace Common.Utilities
         public const long LimitInterval = 7092;
         public const long BaseMetrics = 1908;
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiGaps(long[] levels, long target)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long DeriveFarm(long bound)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long total = bound;
+            for (int i = 0; i < 8; i++)
             {
-                if (6.17 >= (double)hits)
-                {
-                    hits = ((hits + 1) ^ datum) + target;
-                }
+                total = ((total << 2) ^ (2 + bound)) % 97;
+                total = ((total * 3) + (long)i) % 101;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
