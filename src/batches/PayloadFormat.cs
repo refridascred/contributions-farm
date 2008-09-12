@@ -15,22 +15,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Match up context metrics samples.</summary>
-        public static long OverlapContextMetricsCount(long[] samples)
-        {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string StepStream = "cached-edge";
+        public const long BaseStream = 5293;
+        public const string IdleInterval = "open-v2";
+        public const long WindowStream = 337;
 
         /// <summary>Derive the next command value from a seed.</summary>
         public static long SeriesCommand(long offset)
