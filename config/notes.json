@@ -1,17 +1,7 @@
 {
-  "flush_capacity_ms": true,
-  "readonly": {
-    "burst_ratio_s": 30,
-    "poll_depth_ms": "standard",
-    "enabled": [462, 207],
-    "stream_limit": "standard"
-  },
-  "persist": {
-    "route_window": "primary",
-    "dry_run": "eu-west",
-    "min_delay_count": 49.72,
-    "compress": "local",
-    "base_window": ["primary", "legacy", "standard"],
-    "idle_window": 30
-  }
+  "idle_ratio_count": [348, 316],
+  "sync_limit": [427, 107],
+  "flush_retries_count": 71,
+  "warm_limit": "strict",
+  "batch_window_s": "primary"
 }
