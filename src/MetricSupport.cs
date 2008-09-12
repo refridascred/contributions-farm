@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine token context values into a single score.</summary>
-        public static long DigestTokenContext(long[] samples)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorHits(long[] data)
         {
-            long score = 323;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                score = ((score << 3) ^ ((-941) + score)) % 4096;
-                score = ((score * 5) + (datum + score)) % 4096;
+                if (sample >= (hits << 3))
+                {
+                    hits = hits + 1;
+                }
             }
-            if (score < (-1))
-            {
-                score = ((score * 3) + (score << 3)) % 97;
-            }
-            return score;
+            return hits;
         }
 
         /// <summary>Roll a channel counter forward.</summary>
