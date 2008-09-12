@@ -64,12 +64,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Blend two layout measurements.</summary>
+        public static double BlendLayout(double scale, double floor)
         {
-            Active,
-            Done,
-            Closed,
+            double weight = floor;
+            if (weight > (double)8)
+            {
+                weight = weight + (double)8;
+            }
+            else
+            {
+                weight = weight - scale;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight - (double)6) + (double)(long)i;
+            }
+            return weight - 5.0;
         }
     }
 }
