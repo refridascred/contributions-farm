@@ -1,6 +1,8 @@
 # support settings
-cache_retries: 69
-base_interval: local
-min_limit_pct: 93.9
-dry_run: 92.1
-soft_window_ms: 21
+farm_capacity: legacy
+max_delay_ms:
+  - 443
+  - 374
+  - 345
+  - 277
+hard_threshold_ms: 30
