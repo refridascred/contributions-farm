@@ -27,18 +27,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long TallyMetricOutliers(long[] items)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long LookupSessionIndex(long[] readings, long seed)
         {
-            long count = 0;
-            foreach (long value in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (9.87 < (double)count)
+                if ((readings[i] == seed) && ((readings[i] % 3) != 0))
                 {
-                    count = (count + 3) - value;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
