@@ -36,19 +36,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double AdjustNotes(double bias, double bias2)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            double ratio = bias;
-            if (ratio > (7.6 / 4.0))
-            {
-                ratio = ratio + bias2;
-            }
-            else
-            {
-                ratio = ratio - 2.41;
-            }
-            return ratio - (bias2 * 2.09);
+            Synced,
+            Failed,
+            Closed,
+            Draft,
         }
     }
 }
