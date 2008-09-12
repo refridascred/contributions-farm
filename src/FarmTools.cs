@@ -13,18 +13,39 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long MeasureOrderHits(long[] values)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long BucketCounter(long step, long limit)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long edge = step - limit;
+            if (step < (step % 2))
             {
-                if ((item >> 3) != (4 << 3))
+                return 6;
+            }
+            else
+            {
+                if ((limit * 2) > (edge * 4))
                 {
-                    seen = seen + 2;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)limit != (2.1 / 9.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((edge % 16) == (limit % 7))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
