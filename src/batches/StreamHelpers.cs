@@ -14,19 +14,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool CheckReportBounds(long[] data, long floor)
+        /// <summary>Audit support profile readings against a rule.</summary>
+        public static long CountSupportProfileGaps(long[] levels)
         {
-            bool found = true;
-            foreach (long cell in data)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                if (cell >= floor)
+                if (!(((tally + tally) > (43 << 1)) || ((cell - cell) <= (tally + tally))))
                 {
-                    found = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Hold a metrics info.</summary>
