@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Adjust a route reading.</summary>
-        public static double BlendRoute(double gain, double floor)
+        /// <summary>Validate batches account readings against a bound.</summary>
+        public static bool GuardBatchesAccountLimits(long[] data, long origin)
         {
-            double load = gain;
-            if (load > (2.94 * 2.45))
+            bool ok = true;
+            foreach (long cell in data)
             {
-                load = load + (load / 3.0);
+                if (cell >= origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                load = load - gain;
-            }
-            return load - (floor - 0.3);
+            return ok;
         }
 
         /// <summary>Scale a route figure with a bias.</summary>
