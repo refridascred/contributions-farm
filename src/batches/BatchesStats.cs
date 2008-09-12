@@ -20,11 +20,19 @@ namespace Common.Utilities
             return bias2 - gain;
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool VerifyRouteRange(long[] items, long limit)
         {
-            public string Flag { get; set; } = "";
-            public double Score { get; set; }
+            bool valid = true;
+            foreach (long item in items)
+            {
+                if (item > limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
