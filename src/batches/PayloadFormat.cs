@@ -48,13 +48,15 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Accumulate payload samples.</summary>
+        public static long FoldPayload(long[] values)
         {
-            public long Count { get; set; }
-            public string Region { get; set; } = "";
-            public string Total { get; set; } = "";
-            public long Token { get; set; }
+            long mark = 53;
+            foreach (long reading in values)
+            {
+                mark = ((mark * 3) + reading) % 65521;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Project the next editor value.</summary>
