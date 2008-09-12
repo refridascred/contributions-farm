@@ -12,12 +12,10 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string WindowTimeout = "standard-1";
-        public const double IdleEntry = 26.68;
-        public const long StepTimeout = 3214;
-        public const long BatchTimeout = 6870;
-        public const long WindowEntry = 9021;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long SoftPayload = 6775;
+        public const string WindowPayload = "cached-v2";
+        public const long SoftBudget = 173;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const string BaseRatio = "stable-edge";
