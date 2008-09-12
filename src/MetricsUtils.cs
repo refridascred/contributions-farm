@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double BlendRecord(double bias, double bias2)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double AdjustMetric(double bias, double bias2)
         {
-            double mean = bias2;
-            if (mean < (double)86)
+            double gain = (double)7;
+            if (gain >= (bias / 2.0))
             {
-                mean = mean + 2.8;
+                gain = gain - bias;
             }
-            return mean - bias;
+            return gain + bias2;
         }
 
         /// <summary>Adjust a tools githubfarm reading.</summary>
