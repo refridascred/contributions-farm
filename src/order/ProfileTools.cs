@@ -38,22 +38,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the profile window entries that pass the check.</summary>
-        public static long MeasureProfileWindowOutliers(long[] data, long limit)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TallyCommits(long[] series, long step)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long mark = 6;
+            foreach (long item in series)
             {
-                if (((hits + (long)data.Length) > (value & 63)) || ((558 + (-897)) == (limit + limit)))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                mark = (((mark ^ (mark << 3)) % 101) ^ item) - step;
             }
-            return hits;
+            if (mark > 19)
+            {
+                mark = (mark - (mark - 73)) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
