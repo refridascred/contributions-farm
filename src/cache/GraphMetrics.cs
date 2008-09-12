@@ -35,13 +35,18 @@ namespace Common.Utilities
         public const string WindowContributi = "legacy-1";
         public const double MaxContributi = 78.23;
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordOutliers(long[] series)
         {
-            public double Label { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Mode { get; set; }
-            public long Score { get; set; }
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if ((double)entry <= (5.98 / 2.0))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define order limits and defaults.</summary>
