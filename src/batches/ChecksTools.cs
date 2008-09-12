@@ -24,19 +24,39 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool VerifyCounterRange(long[] samples, long target)
+        /// <summary>Rank schema batches input into a small class.</summary>
+        public static long RankSchemaBatches(long floor, long step)
         {
-            bool flag = true;
-            foreach (long sample in samples)
+            long offset = floor + step;
+            if (((-579) + floor) < (floor * 2))
             {
-                if (sample < target)
+                return 6;
+            }
+            else
+            {
+                if ((floor < ((-71) * 3)) && ((double)offset != (20.0 / 2.0)))
                 {
-                    flag = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((double)offset < 15.0)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((floor / 7) < (75 + floor))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Describe the already state values.</summary>
