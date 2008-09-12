@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsMatches(long[] readings, long floor)
+        /// <summary>Fold a list of metric session readings.</summary>
+        public static long CombineMetricSession(long[] readings)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long carry = 4;
+            foreach (long datum in readings)
             {
-                if ((535 % 8) == (tally + floor))
+                if ((datum - datum) < (9 * 3))
                 {
-                    tally = (tally + 1) + sample;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    carry = carry - datum;
                 }
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
