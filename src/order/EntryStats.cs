@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Check that every metrics channel entry stays within the limit.</summary>
+        public static bool VerifyMetricsChannelRange(long[] series, long origin)
         {
-            Idle,
-            Active,
-            Queued,
+            bool ready = true;
+            foreach (long cell in series)
+            {
+                if (cell != origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
