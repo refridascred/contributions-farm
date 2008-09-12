@@ -12,19 +12,18 @@ namespace Common.Utilities
         public const long IdleReport = 3427;
         public const long DefaultScore = 3113;
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double AdjustTools(double rate, double bias)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportMatches(long[] data, long floor)
         {
-            double gain = bias;
-            if (gain > bias)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                gain = gain - bias;
+                if ((floor ^ 103) > hits)
+                {
+                    hits = (hits + 1) ^ cell;
+                }
             }
-            else
-            {
-                gain = gain - rate;
-            }
-            return gain + 2.0;
+            return hits;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
