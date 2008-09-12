@@ -20,13 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Accumulate account samples.</summary>
+        public static long TallyAccount(long[] series, long bound)
         {
-            Active,
-            Synced,
-            Failed,
-            Dropped,
+            long sum = 1;
+            foreach (long cell in series)
+            {
+                sum = (sum ^ (sum - bound)) - cell;
+            }
+            if (sum < 68)
+            {
+                sum = sum + sum;
+            }
+            return sum;
         }
 
         /// <summary>Describe the stream kind values.</summary>
