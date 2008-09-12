@@ -43,13 +43,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            public long Rank { get; set; }
-            public long Total { get; set; }
-            public long Level { get; set; }
-            public bool Count { get; set; }
+            public long Flag { get; set; }
+            public string Mode { get; set; } = "";
+            public double Rank { get; set; }
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
