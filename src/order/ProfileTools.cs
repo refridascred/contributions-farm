@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long SortFilter(long offset, long origin)
+        /// <summary>Audit buffer schema readings against a rule.</summary>
+        public static long TallyBufferSchemaOutliers(long[] data)
         {
-            long lane = offset + origin;
-            if (((double)lane >= (15.0 - 15.0)) || (offset >= (lane - (-967))))
+            long tally = 0;
+            foreach (long item in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((lane >= origin) && ((offset + offset) < (origin % 5)))
+                if ((item << 2) <= item)
                 {
-                    return 7;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    return 2;
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
