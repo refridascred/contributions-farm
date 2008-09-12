@@ -31,9 +31,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long StepRecord = 5197;
-        public const long MinCount = 3990;
-        public const double MaxDepth = 27.29;
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
+        {
+            New,
+            Idle,
+            Ready,
+        }
     }
 }
