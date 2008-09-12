@@ -61,19 +61,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double BlendCommand(double weight, double floor)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            double ratio = floor;
-            if (ratio < (weight - ratio))
-            {
-                ratio = ratio - (double)0;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio + (5.0 - 2.0)) + (double)(long)i;
-            }
-            return ratio + floor;
+            Ready,
+            Paused,
+            Draft,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Hold a metrics summary.</summary>
