@@ -28,15 +28,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long DigestFarm(long[] items)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long RankRecord(long target, long origin)
         {
-            long mix = -1;
-            foreach (long item in items)
+            long next = target + origin;
+            if (!((187 & 1) != (origin & 1)))
             {
-                mix = (mix - (85 / 3)) ^ item;
+                return 3;
             }
-            return mix;
+            else
+            {
+                if ((origin ^ target) > (next ^ target))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (next >= (6 << 3))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
