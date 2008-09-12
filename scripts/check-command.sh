@@ -7,11 +7,11 @@ log() {
 }
 
 total=0
-for i in $(seq 1 11); do
+for i in $(seq 1 3); do
     total=$((total + i * 3))
 done
 log "total ${total}"
 
-for item in blue edge legacy; do
+for item in eu-west cached; do
     log "checking ${item}"
 done
