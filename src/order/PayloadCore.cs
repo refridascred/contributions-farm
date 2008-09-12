@@ -39,10 +39,13 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MaxGraph = 1682;
-        public const long CacheInterval = 2344;
-        public const long WindowGraph = 9119;
-        public const string CacheDepth = "open-edge";
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
+        {
+            Failed,
+            New,
+            Dropped,
+            Pending,
+        }
     }
 }
