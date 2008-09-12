@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Rank farm schema input into a small class.</summary>
+        public static long ClassifyFarmSchema(long floor, long offset)
         {
-            Failed,
-            Dropped,
-            New,
+            long cur = floor ^ offset;
+            if (((floor << 1) == (floor ^ 0)) && ((cur % 100) <= (offset * 4)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((offset * 5) > (floor >> 3))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((-263) + offset) > (62 * 5))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (offset <= (26 / 8))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a queue metrics reading.</summary>
