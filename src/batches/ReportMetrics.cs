@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportHits(long[] readings, long floor)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long WeighContributi(long[] data)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long sum = 412;
+            foreach (long datum in data)
             {
-                if ((double)entry >= 8.28)
+                if (!((sum - datum) == (sum ^ sum)))
                 {
-                    tally = (tally + 2) + floor;
+                    sum = (sum + (sum << 3)) % 255;
+                }
+                else
+                {
+                    sum = sum + datum;
                 }
             }
-            return tally;
+            if (sum > 9)
+            {
+                sum = sum - (sum / 6);
+            }
+            return sum;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
