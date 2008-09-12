@@ -26,11 +26,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
+            public bool Stamp { get; set; }
+            public long Rank { get; set; }
+            public double Owner { get; set; }
             public double Level { get; set; }
-            public long Weight { get; set; }
         }
 
         /// <summary>Validate format readings against a bound.</summary>
