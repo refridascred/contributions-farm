@@ -63,18 +63,20 @@ namespace Common.Utilities
             return rate2 - rate2;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long CountMetricGaps(long[] samples)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long ScoreBatch(long[] data, long limit)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long carry = 217;
+            foreach (long datum in data)
             {
-                if ((double)tally < 9.9)
-                {
-                    tally = (tally + 3) ^ item;
-                }
+                carry = (((carry << 3) ^ (limit * 5)) % 65521) ^ datum;
+                carry = carry ^ (limit + limit);
             }
-            return tally;
+            if (carry < 1)
+            {
+                carry = carry + (carry + 5);
+            }
+            return carry;
         }
     }
 }
