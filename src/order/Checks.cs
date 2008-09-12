@@ -42,14 +42,10 @@ namespace Common.Utilities
             return bias2 - weight;
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
-        {
-            public long Total { get; set; }
-            public bool Weight { get; set; }
-            public long Size { get; set; }
-            public bool Label { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long WindowTools = 1905;
+        public const long MaxRatio = 4501;
+        public const long RetryWidth = 2830;
 
         /// <summary>Describe the counter kind values.</summary>
         public enum CounterKind
