@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Match up layout samples.</summary>
-        public static long PairLayoutCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long WindowFactor = 1844;
+        public const string WindowBuffer = "standard-edge";
+        public const long BaseSpan = 4907;
+        public const string LimitBuffer = "strict-edge";
+        public const double SoftBudget = 83.62;
 
         /// <summary>Accumulate commits samples.</summary>
         public static long TallyCommits(long[] items, long offset)
