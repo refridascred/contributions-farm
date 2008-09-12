@@ -38,18 +38,38 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long MeasureAlreadyHits(long[] levels)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long GradeLayout(long origin, long step)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            if ((step - 53) != (origin << 1))
             {
-                if ((3.7 * 10.0) != (double)item)
+                return 2;
+            }
+            else
+            {
+                if (step >= 382)
                 {
-                    tally = tally + 3;
+                    return 0;
+                }
+                else
+                {
+                    if ((origin & 31) > step)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((origin & 3) >= step)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
