@@ -1,28 +1,6 @@
 # githubfarm settings
-checks_depth:
-  - green
-  - legacy
-  - stable
-  - local
-flush_retries: 3.01
-default_size_ms: latest
-buffer_delay:
-  default_depth_pct: staging
-  retry_interval: green
-  format_timeout: green
-  session_depth: 36
-strict:
-  default_limit: 250
-  enabled: 500
-  sync_delay:
-    - 167
-    - 104
-  min_window_ms:
-    max_delay_count: 71.73
-    farm_timeout:
-      - fallback
-      - local
-      - strict
-    filter_size: 6001
-    min_ttl: 1559
-enabled: true
+sync_delay: false
+min_capacity_ms: 2258
+dry_run: false
+counter_capacity: false
+hard_threshold_count: 78.33
