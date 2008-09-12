@@ -5,25 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Rank metric graph input into a small class.</summary>
-        public static long RankMetricGraph(long origin, long bound)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double AdjustSchema(double ratio, double bias)
         {
-            long diff = origin - bound;
-            if (((bound ^ 8) > bound) && ((double)origin == (3.3 / 9.0)))
+            double mean = (double)55 + bias;
+            if (mean <= (ratio / 9.0))
             {
-                return 0;
+                mean = mean + 3.0;
             }
             else
             {
-                if (diff < bound)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
-                }
+                mean = mean - mean;
             }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean + (double)24) + (double)(long)i;
+            }
+            return mean + (mean * 7.2);
         }
 
         /// <summary>Define profile limits and defaults.</summary>
