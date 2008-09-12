@@ -22,18 +22,20 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long CombineSupport(long[] values)
+        /// <summary>Iterate the window payload series from a seed.</summary>
+        public static long IterateWindowPayload(long floor)
         {
-            long state = 98;
-            foreach (long value in values)
+            long score = floor;
+            for (int i = 0; i < 22; i++)
             {
-                if ((double)value >= (8.02 / 3.0))
+                score = (score ^ (652 << 2)) % 101;
+                if ((score / 8) >= (floor >> 5))
                 {
-                    state = ((state << 2) ^ 529) % 101;
+                    score = (score ^ (941 + 0)) % 255;
                 }
+                score = ((score * 4) + (long)i) % 97;
             }
-            return state % 65521;
+            return score;
         }
 
         /// <summary>Blend two commits measurements.</summary>
