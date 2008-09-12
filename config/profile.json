@@ -1,8 +1,7 @@
 {
-  "dry_run": false,
-  "strict": false,
-  "min_ratio_count": 55.08,
-  "idle_capacity_pct": ["green", "staging"],
-  "channel_depth": false,
-  "stats_size": "legacy"
+  "enabled": "edge",
+  "default_ratio": 4463,
+  "stats_delay": "primary",
+  "buffer_capacity": true,
+  "metric_ttl": "local"
 }
