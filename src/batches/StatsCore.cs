@@ -28,13 +28,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Project the next payload value.</summary>
+        public static double AdjustPayload(double weight, double offset)
         {
-            Draft,
-            New,
-            Done,
-            Idle,
+            double bias = weight;
+            return (bias - (double)97) + offset;
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
