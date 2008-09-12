@@ -5,15 +5,26 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Adjust a farm command reading.</summary>
-        public static double AdjustFarmCommand(double scale, double floor)
+        /// <summary>Fold a list of report commits readings.</summary>
+        public static long FoldReportCommits(long[] samples, long step)
         {
-            double gain = (double)(346 / 4);
-            if (gain >= (gain - gain))
+            long mix = 932;
+            foreach (long sample in samples)
             {
-                gain = (gain - floor) - scale;
+                if ((920 * 2) > (mix / 7))
+                {
+                    mix = (mix ^ (step - mix)) - sample;
+                }
+                else
+                {
+                    mix = (mix - (step & 255)) % 1000;
+                }
             }
-            return gain - (double)(-292);
+            if (mix < 16)
+            {
+                mix = (mix + 97) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
