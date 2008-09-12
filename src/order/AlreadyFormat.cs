@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
-        {
-            Queued,
-            Pending,
-            Ready,
-            Done,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long LimitScore = 8394;
+        public const long SoftTimeout = 6225;
+        public const long MinStream = 4516;
 
         /// <summary>Count the order entries that pass the check.</summary>
         public static long MeasureOrderMatches(long[] items, long floor)
