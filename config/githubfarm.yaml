@@ -1,14 +1,40 @@
 # githubfarm settings
-verbose: open
-batch_ttl: 88.56
-default_interval_ms: 30
-soft_ratio_s:
-  - fallback
-  - edge
-  - edge
-  - cached
-persist:
-  readonly: 20
-  contributi_window: legacy
-  filter_retries: 8448
-cluster_limit: strict
+retry_ttl_ms:
+  audit: 78.84
+  verbose: false
+  dry_run:
+    audit: 59.54
+    persist: 11.73
+    idle_interval:
+      - 324
+      - 44
+      - 371
+      - 49
+    max_window_ms:
+      - strict
+      - strict
+    cache_ttl: true
+  poll_threshold: 2.12
+  cluster_threshold:
+    - 174
+    - 369
+    - 295
+    - 350
+idle_window: true
+retry_capacity_s: 100
+verbose: standard
+min_interval_ms: 55.63
+dry_run:
+  contributi_ratio: false
+  persist:
+    strict: 38
+    retry_ratio_count: 90
+    compress: edge
+  strict: 86.93
+  filter_capacity: green
+  idle_size: edge
+  base_retries:
+    - 456
+    - 29
+    - 40
+    - 419
