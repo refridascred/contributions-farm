@@ -1,8 +1,8 @@
-id,count,rank
-1,16.73,58.69
-2,local,501
-3,675,43.86
-4,19.77,latest
-5,9.2,33.87
-6,46.99,47.19
-7,cached,23.21
+id,label,score
+1,52,40.41
+2,standard,latest
+3,stable,69
+4,605,91.28
+5,latest,20.0
+6,699,53.7
+7,stable,legacy
