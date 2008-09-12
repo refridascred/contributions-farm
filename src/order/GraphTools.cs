@@ -34,12 +34,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long ClassifyGraph(long offset, long target)
         {
-            public string Weight { get; set; } = "";
-            public double Rank { get; set; }
-            public long Ratio { get; set; }
+            long cur = offset ^ target;
+            if (4.85 >= (double)target)
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((cur >> 5) == (offset + offset)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (cur > ((-42) ^ offset))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two stats cluster measurements.</summary>
