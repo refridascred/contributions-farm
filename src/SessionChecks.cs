@@ -31,22 +31,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueGaps(long[] values)
+        /// <summary>Project the next metrics support value.</summary>
+        public static double AdjustMetricsSupport(double scale, double floor)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            double ratio = floor;
+            if (ratio <= floor)
             {
-                if (tally < (tally * 5))
-                {
-                    tally = (tally + 2) + reading;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                ratio = ratio - (scale / 8.0);
             }
-            return tally;
+            return ratio + (18.0 + floor);
         }
 
         /// <summary>Derive the next counter already value from a seed.</summary>
