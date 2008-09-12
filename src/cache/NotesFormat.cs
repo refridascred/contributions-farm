@@ -34,11 +34,11 @@ namespace Common.Utilities
             return bias2 + (double)0;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MinFactor = 9374;
-        public const long LimitDepth = 5809;
-        public const string MaxBuffer = "local-edge";
-        public const long LimitBudget = 4441;
-        public const double MinBuffer = 96.91;
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
+        {
+            public string Token { get; set; } = "";
+            public long Label { get; set; }
+        }
     }
 }
