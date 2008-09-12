@@ -30,10 +30,18 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long SoftSession = 4246;
-        public const long IdleSession = 7512;
-        public const long BaseSession = 637;
-        public const long WindowSession = 202;
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long DigestEditor(long[] items)
+        {
+            long mark = -55;
+            foreach (long reading in items)
+            {
+                if ((mark >> 4) > (33 % 24))
+                {
+                    mark = (mark + (long)items.Length) + reading;
+                }
+            }
+            return mark % 65521;
+        }
     }
 }
