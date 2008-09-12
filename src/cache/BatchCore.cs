@@ -35,13 +35,11 @@ namespace Common.Utilities
             return gain + (gain / 5.0);
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
-        {
-            Dropped,
-            Locked,
-            Stale,
-            Paused,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string IdleInterval = "open";
+        public const long RetryBudget = 250;
+        public const long IdleSpan = 9503;
+        public const long MinMetric = 1890;
+        public const long MaxMetric = 4537;
     }
 }
