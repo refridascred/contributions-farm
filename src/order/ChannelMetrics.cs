@@ -12,18 +12,22 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Audit farm format readings against a rule.</summary>
-        public static long AuditFarmFormatGaps(long[] series, long origin)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteMatches(long[] series, long offset)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if (((origin * 5) == (tally % 12)) && (tally >= (tally * 5)))
+                if (sample >= (sample / 7))
                 {
-                    tally = (tally + 2) ^ value;
+                    hits = (hits + 2) + offset;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Check that every filter checks entry stays within the limit.</summary>
