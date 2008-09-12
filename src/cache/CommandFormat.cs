@@ -10,17 +10,18 @@ namespace Common.Utilities
         public const long DefaultScore = 703;
         public const long MaxRatio = 3145;
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long FindGraphIndex(long[] samples, long origin)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterGaps(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                if (samples[i] < origin)
+                if (((entry + entry) > (matches % 24)) || (entry >= (817 + matches)))
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
