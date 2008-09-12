@@ -54,11 +54,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long WindowSpan = 5668;
-        public const long StepLevel = 1724;
-        public const long BaseScore = 9263;
-        public const double DefaultPayload = 74.52;
+        /// <summary>Match up cluster samples.</summary>
+        public static long CompareClusterCount(long[] samples)
+        {
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Accumulate order samples.</summary>
         public static long TotalOrder(long[] levels, long origin)
