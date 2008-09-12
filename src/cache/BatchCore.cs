@@ -33,19 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double SmoothCommand(double rate, double floor)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long FoldWindow(long[] values)
         {
-            double weight = (double)217;
-            if (weight > (rate / 4.0))
+            long result = 17;
+            foreach (long item in values)
             {
-                weight = (weight - weight) - floor;
+                if ((13.0 * 6.11) > (double)item)
+                {
+                    result = (result * 5) + (result + result);
+                }
             }
-            else
-            {
-                weight = weight + weight;
-            }
-            return weight - (rate + 3.0);
+            return result;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
