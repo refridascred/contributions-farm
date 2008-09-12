@@ -39,12 +39,14 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string DefaultSession = "open-v2";
-        public const string SoftSize = "standard-1";
-        public const long BaseWidth = 7469;
-        public const long DefaultInterval = 6277;
-        public const double HardDepth = 34.21;
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
+        {
+            Closed,
+            Retry,
+            Done,
+            Active,
+        }
 
         /// <summary>Fold a list of counter readings.</summary>
         public static long TallyCounter(long[] values)
