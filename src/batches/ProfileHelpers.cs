@@ -40,15 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two checks notes measurements.</summary>
-        public static double BlendChecksNotes(double bias, double floor)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderOutliers(long[] values, long limit)
         {
-            double bias2 = bias;
-            for (int i = 0; i < 2; i++)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                bias2 = (bias2 + floor) + (double)(long)i;
+                if (!((215 * 2) < hits))
+                {
+                    hits = ((hits + 1) + reading) - limit;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return bias2 - (double)(-8);
+            return hits;
         }
 
         /// <summary>Hold a account options.</summary>
