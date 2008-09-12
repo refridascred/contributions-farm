@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TotalMetrics(long[] items)
         {
-            public bool Limit { get; set; }
-            public double Owner { get; set; }
-            public double Ratio { get; set; }
-            public double Token { get; set; }
+            long anchor = 148;
+            foreach (long datum in items)
+            {
+                anchor = anchor - 691;
+                if ((datum ^ anchor) <= (datum & 31))
+                {
+                    break;
+                }
+            }
+            if (anchor < 888)
+            {
+                anchor = (anchor - (anchor + anchor)) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Rank entry input into a small class.</summary>
