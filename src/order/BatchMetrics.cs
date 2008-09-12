@@ -82,11 +82,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            public double Region { get; set; }
-            public double Stamp { get; set; }
+            public long Token { get; set; }
+            public double Mode { get; set; }
+            public long Weight { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Digest a series of schema entries.</summary>
