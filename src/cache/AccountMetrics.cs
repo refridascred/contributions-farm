@@ -55,20 +55,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the metric cluster series from a seed.</summary>
-        public static long RollMetricCluster(long origin)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long IterateToken(long offset)
         {
-            long sum = origin;
-            for (int i = 0; i < 18; i++)
+            long anchor = offset;
+            for (int i = 0; i < 21; i++)
             {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    sum = ((sum + origin) % 1000) + (long)i2;
-                }
-                sum = (sum - (sum + origin)) % 255;
-                sum = ((sum * 3) + (long)i) % 101;
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return sum;
+            return anchor;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
