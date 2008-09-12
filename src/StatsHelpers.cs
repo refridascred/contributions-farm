@@ -49,15 +49,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long RollCache(long limit)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long LocateGraphIndex(long[] samples, long origin)
         {
-            long carry = limit;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                carry = ((carry * 3) + (long)i) % 65521;
+                if (samples[i] >= origin)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Locate a batch reading by value.</summary>
