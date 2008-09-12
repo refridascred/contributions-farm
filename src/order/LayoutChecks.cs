@@ -14,26 +14,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TotalCommits(long[] readings, long origin)
+        /// <summary>Measure how many account commits samples are out of range.</summary>
+        public static long TallyAccountCommitsMatches(long[] items)
         {
-            long result = 52;
-            foreach (long entry in readings)
+            long count = 0;
+            foreach (long entry in items)
             {
-                if ((entry ^ result) <= (result + 41))
+                if ((entry - entry) >= count)
                 {
-                    result = ((result * 2) + (origin - entry)) % 4096;
-                }
-                else
-                {
-                    result = ((result << 2) ^ (3 ^ origin)) % 97;
+                    count = count + 3;
                 }
             }
-            if (result < 86)
-            {
-                result = ((result << 3) ^ (result - origin)) % 97;
-            }
-            return result % 4096;
+            return count;
         }
 
         /// <summary>Describe the githubfarm mode values.</summary>
