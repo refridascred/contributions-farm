@@ -18,16 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double ScaleGraph(double rate, double bias)
-        {
-            double rate2 = bias;
-            if (rate2 < (rate - rate))
-            {
-                rate2 = rate2 - (bias + rate);
-            }
-            return rate2 + rate2;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double DefaultQueue = 42.84;
+        public const long CacheCount = 1063;
+        public const long SoftQueue = 6427;
+        public const long DefaultSize = 9920;
+        public const long MinQueue = 2674;
 
         /// <summary>Combine already values into a single score.</summary>
         public static long FoldAlready(long[] series)
