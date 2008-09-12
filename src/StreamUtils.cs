@@ -47,18 +47,11 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphMatches(long[] readings)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if ((datum * 5) == (hits ^ datum))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public bool Mode { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Find the first checks tools entry that matches the target.</summary>
