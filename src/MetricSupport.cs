@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long RollChecks(long bound)
         {
-            public long Stamp { get; set; }
-            public long Owner { get; set; }
+            long score = bound;
+            for (int i = 0; i < 20; i++)
+            {
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    score = ((score + score) % 255) - (long)i2;
+                }
+                score = ((score * 3) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Hold a account header.</summary>
