@@ -56,12 +56,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsOutliers(long[] samples)
         {
-            Ready,
-            Closed,
-            Stale,
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if ((seen * 5) < (338 + seen))
+                {
+                    seen = (seen + 3) ^ item;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
