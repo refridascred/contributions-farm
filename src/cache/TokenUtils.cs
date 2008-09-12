@@ -12,16 +12,12 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Derive the next command context value from a seed.</summary>
-        public static long DeriveCommandContext(long origin)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            long score = origin;
-            for (int i = 0; i < 19; i++)
-            {
-                score = (score ^ (score + (long)i)) % 1000;
-                score = ((score * 5) + (long)i) % 101;
-            }
-            return score;
+            Ready,
+            Retry,
+            Idle,
         }
 
         /// <summary>Describe the layout level values.</summary>
