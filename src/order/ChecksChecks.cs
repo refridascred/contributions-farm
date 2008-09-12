@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long CacheContributi = 195;
-        public const string WindowContributi = "standard-1";
-        public const string StepContributi = "legacy-edge";
+        /// <summary>Classify a commits schema pair into a bucket.</summary>
+        public static long ClassifyCommitsSchema(long limit, long offset)
+        {
+            if ((0.2 * 6.9) > (double)limit)
+            {
+                return 0;
+            }
+            else
+            {
+                if (limit > (offset >> 4))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const long DefaultRoute = 1330;
