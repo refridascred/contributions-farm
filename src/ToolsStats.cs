@@ -22,38 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a cache buffer value against two limits.</summary>
-        public static long SortCacheBuffer(long floor, long offset)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            if (!(offset > (floor << 2)))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((7.42 - 1.8) > (double)offset))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((floor * 5) == (floor - floor)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((double)floor > (0.12 / 2.0)) && ((double)floor < (17.0 / 6.0)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public string Total { get; set; } = "";
+            public long Count { get; set; }
+            public bool Mode { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
