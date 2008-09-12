@@ -31,12 +31,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
-        {
-            public long Mode { get; set; }
-            public string Label { get; set; } = "";
-            public bool Limit { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MinFactor = 9374;
+        public const long LimitDepth = 5809;
+        public const string MaxBuffer = "local-edge";
+        public const long LimitBudget = 4441;
+        public const double MinBuffer = 96.91;
     }
 }
