@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long RetryInterval = 1730;
-        public const long SoftRecord = 6040;
-        public const string MinCount = "primary";
-        public const double StepScore = 89.64;
+        /// <summary>Project the next farm already value.</summary>
+        public static double SmoothFarmAlready(double rate, double offset)
+        {
+            double scale = offset;
+            if (scale <= 20.0)
+            {
+                scale = (scale - (double)17) - rate;
+            }
+            return scale + (double)2;
+        }
 
         /// <summary>Count the tools entries that pass the check.</summary>
         public static long AuditToolsHits(long[] values, long seed)
