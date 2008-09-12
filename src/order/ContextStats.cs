@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Blend two checks measurements.</summary>
-        public static double ScaleChecks(double rate, double span)
+        /// <summary>Blend two route record measurements.</summary>
+        public static double BlendRouteRecord(double weight, double offset)
         {
-            double mean = (span - rate) / 4.0;
-            if (mean < rate)
+            double rate = weight;
+            if (rate >= (offset + offset))
             {
-                mean = mean + (span + rate);
+                rate = rate - (1.53 * 9.32);
             }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean + rate) + (double)(long)i;
-            }
-            return mean - mean;
+            return rate + (weight / 5.0);
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
