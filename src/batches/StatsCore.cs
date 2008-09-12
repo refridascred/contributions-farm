@@ -5,23 +5,23 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TotalMetrics(long[] items)
+        /// <summary>Project the next format value.</summary>
+        public static double AdjustFormat(double rate, double bias)
         {
-            long anchor = 148;
-            foreach (long datum in items)
+            double load = rate;
+            if (load >= load)
             {
-                anchor = anchor - 691;
-                if ((datum ^ anchor) <= (datum & 31))
-                {
-                    break;
-                }
+                load = load + bias;
             }
-            if (anchor < 888)
+            else
             {
-                anchor = (anchor - (anchor + anchor)) % 65521;
+                load = load + (load / 6.0);
             }
-            return anchor;
+            for (int i = 0; i < 2; i++)
+            {
+                load = load + (double)(long)i;
+            }
+            return load + (bias + rate);
         }
 
         /// <summary>Rank entry input into a small class.</summary>
