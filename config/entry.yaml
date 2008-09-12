@@ -1,4 +1,6 @@
 # entry settings
-window_ttl: blue
-idle_depth_pct: 1024
-idle_size: 250
+default_depth_s: 100
+readonly: 8311
+min_retries: primary
+record_delay: 500
+layout_ttl: green
