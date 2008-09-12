@@ -22,22 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long MatchContextCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MaxChannel = 1167;
+        public const string BaseDepth = "fallback-edge";
+        public const double CacheChannel = 11.52;
+        public const long LimitChannel = 1858;
+        public const long CacheSize = 3927;
 
         /// <summary>Rank support editor input into a small class.</summary>
         public static long BucketSupportEditor(long step, long floor)
