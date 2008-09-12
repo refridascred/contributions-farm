@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            public bool Ratio { get; set; }
-            public double Mode { get; set; }
-            public long Rank { get; set; }
-            public long Stamp { get; set; }
+            Stale,
+            Done,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Locate a report stream reading by value.</summary>
