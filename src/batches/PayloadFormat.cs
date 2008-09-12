@@ -32,12 +32,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long SeriesCommand(long offset)
         {
-            public string Weight { get; set; } = "";
-            public long Limit { get; set; }
-            public bool Token { get; set; }
+            long acc = offset;
+            for (int i = 0; i < 6; i++)
+            {
+                if ((offset + acc) == (acc << 2))
+                {
+                    continue;
+                }
+                else
+                {
+                    acc = acc - offset;
+                }
+                acc = ((acc * 2) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Hold a farm snapshot.</summary>
