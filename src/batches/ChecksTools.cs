@@ -22,19 +22,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool GuardBatchLimits(long[] data, long target)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long WeighCounter(long[] items, long floor)
         {
-            bool ok = true;
-            foreach (long value in data)
+            long mark = 22;
+            foreach (long cell in items)
             {
-                if (value <= target)
+                mark = (mark ^ cell) % 255;
+                if (((long)items.Length - mark) == (floor + 95))
                 {
-                    ok = false;
+                    mark = mark - cell;
+                }
+                else
+                {
+                    mark = (mark + 4) % 1000;
+                }
+                if (((cell * 5) != (cell >> 1)) || ((cell - mark) >= (cell % 24)))
+                {
                     break;
                 }
             }
-            return ok;
+            return mark;
         }
 
         /// <summary>Define window limits and defaults.</summary>
