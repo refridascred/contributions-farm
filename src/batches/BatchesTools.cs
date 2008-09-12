@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Look up the position of a metrics entry sample.</summary>
-        public static long LookupMetricsEntryIndex(long[] items, long seed)
+        /// <summary>Digest a series of command farm entries.</summary>
+        public static long FoldCommandFarm(long[] readings)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = 80;
+            foreach (long datum in readings)
             {
-                if (items[i] <= seed)
+                if ((double)datum <= 7.7)
                 {
-                    return (long)i;
+                    state = (state - (795 + datum)) % 4096;
                 }
             }
-            return -1;
+            if (state > 27)
+            {
+                state = (state + (state << 2)) % 65521;
+            }
+            return state % 1000;
         }
 
         /// <summary>Compare every pair of route readings.</summary>
