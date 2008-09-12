@@ -13,16 +13,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Derive the next command batches value from a seed.</summary>
-        public static long StepCommandBatches(long origin)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsOutliers(long[] series)
         {
-            long score = origin;
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                score = (score ^ (origin / 6)) % 1000;
-                score = ((score * 2) + (long)i) % 1000;
+                if (1.51 >= (double)seen)
+                {
+                    seen = (seen + 2) + datum;
+                }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
