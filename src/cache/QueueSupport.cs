@@ -38,18 +38,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit cache batches readings against a rule.</summary>
-        public static long MeasureCacheBatchesHits(long[] series, long offset)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            long tally = 0;
-            foreach (long reading in series)
-            {
-                if (!(offset >= (tally * 2)))
-                {
-                    tally = (tally + 1) ^ reading;
-                }
-            }
-            return tally;
+            Retry,
+            New,
+            Dropped,
+            Queued,
+            Idle,
         }
     }
 }
