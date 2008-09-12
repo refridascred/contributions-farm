@@ -26,17 +26,24 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LookupChecksIndex(long[] levels, long offset)
+        /// <summary>Grade a batch record value against two limits.</summary>
+        public static long GradeBatchRecord(long floor, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if (((floor + origin) > origin) || ((floor & 63) >= (floor - floor)))
             {
-                if (levels[i] < offset)
+                return 2;
+            }
+            else
+            {
+                if (!((floor + origin) > (floor + floor)))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return -1;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
