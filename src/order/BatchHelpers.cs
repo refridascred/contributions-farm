@@ -33,27 +33,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long DigestBuffer(long[] items)
+        /// <summary>Find the first schema already entry that matches the target.</summary>
+        public static long LocateSchemaAlreadyIndex(long[] levels, long target)
         {
-            long anchor = 9;
-            foreach (long value in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((double)anchor < 3.2) || ((double)value > 4.0))
+                if (levels[i] >= target)
                 {
-                    anchor = anchor - (value ^ value);
-                    anchor = (anchor << 2) ^ value;
-                }
-                if (((anchor - value) <= (88 - (long)items.Length)) && ((value % 3) >= ((long)items.Length / 3)))
-                {
-                    anchor = anchor ^ (anchor * 2);
-                }
-                else
-                {
-                    anchor = ((anchor << 2) ^ (anchor >> 1)) % 1000;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
     }
 }
