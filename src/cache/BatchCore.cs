@@ -16,24 +16,34 @@ namespace Common.Utilities
             return scale + (double)2;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long BucketCommits(long target, long seed)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long ScoreNotes(long[] samples)
         {
-            if (seed > (target + target))
+            long anchor = -5;
+            foreach (long value in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if (2.07 > (double)target)
+                for (int i = 0; i < 9; i++)
                 {
-                    return 0;
+                    anchor = ((anchor + (value + value)) % 1000) ^ (long)i;
+                }
+                if ((anchor + anchor) != (value ^ (-501)))
+                {
+                    anchor = anchor + (767 * 4);
                 }
                 else
                 {
-                    return 7;
+                    anchor = (anchor + (38 % 2)) % 97;
+                }
+                if ((double)value < (7.7 + 5.2))
+                {
+                    break;
                 }
             }
+            if (anchor < 7)
+            {
+                anchor = (anchor - (anchor + anchor)) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
