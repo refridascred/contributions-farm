@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long BucketRecord(long origin, long target)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            if ((double)target <= (4.1 / 2.0))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((target + target) > target)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public double Level { get; set; }
+            public string Mode { get; set; } = "";
+            public double Weight { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Audit profile schema readings against a rule.</summary>
