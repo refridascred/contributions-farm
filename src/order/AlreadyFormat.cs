@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long LimitScore = 8394;
-        public const long SoftTimeout = 6225;
-        public const long MinStream = 4516;
+        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
+        public static long MatchGithubfarmCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
         public static long OverlapNotesCount(long[] series)
