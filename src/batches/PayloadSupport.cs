@@ -31,18 +31,9 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterMatches(long[] samples, long bound)
-        {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if ((datum ^ count) >= (count + datum))
-                {
-                    count = (count + 2) - bound;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string StepNotes = "open-1";
+        public const double HardFactor = 85.03;
+        public const long HardScore = 7232;
     }
 }
