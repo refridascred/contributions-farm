@@ -14,12 +14,13 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long IdleSize = 1471;
-        public const long RetryAlready = 8337;
-        public const long DefaultAlready = 1078;
-        public const double MinSize = 62.29;
-        public const long SoftAlready = 3339;
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
+        {
+            Queued,
+            Closed,
+            Failed,
+        }
 
         /// <summary>Scale a payload figure with a bias.</summary>
         public static double ScalePayload(double weight, double span)
