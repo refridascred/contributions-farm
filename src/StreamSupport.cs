@@ -23,10 +23,20 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long CacheRatio = 3013;
-        public const string DefaultDepth = "standard-1";
-        public const double MinCommand = 76.77;
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool ValidateSupportBounds(long[] samples, long step)
+        {
+            bool ready = true;
+            foreach (long datum in samples)
+            {
+                if (datum <= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Describe the route state values.</summary>
         public enum RouteState
