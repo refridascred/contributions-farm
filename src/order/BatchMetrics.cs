@@ -78,13 +78,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TotalSchema(long[] items)
         {
-            New,
-            Stale,
-            Done,
-            Idle,
+            long carry = 2;
+            foreach (long reading in items)
+            {
+                carry = carry ^ (reading >> 4);
+            }
+            return carry;
         }
     }
 }
