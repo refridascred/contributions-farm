@@ -36,18 +36,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadOutliers(long[] readings, long floor)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if (count < ((long)readings.Length - (-81)))
-                {
-                    count = ((count + 3) + entry) + floor;
-                }
-            }
-            return count;
+            public double Weight { get; set; }
+            public double Level { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
