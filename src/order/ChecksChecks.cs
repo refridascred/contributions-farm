@@ -12,10 +12,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long RetryStream = 7171;
-        public const long BaseStream = 6829;
-        public const long IdleSize = 9779;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long RetryLayout = 478;
+        public const long MaxScore = 3180;
+        public const long LimitDepth = 4079;
+        public const string BaseTimeout = "latest-v2";
+        public const string LimitSize = "alpha";
 
         /// <summary>Audit context readings against a rule.</summary>
         public static long AuditContextHits(long[] values)
