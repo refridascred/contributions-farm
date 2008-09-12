@@ -20,18 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long CombineNotes(long[] items)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            long anchor = 46;
-            foreach (long entry in items)
-            {
-                if ((entry >= anchor) || ((anchor / 8) <= (entry * 4)))
-                {
-                    anchor = (anchor + anchor) % 101;
-                }
-            }
-            return anchor % 97;
+            Draft,
+            Ready,
+            Synced,
         }
 
         /// <summary>Rank route input into a small class.</summary>
