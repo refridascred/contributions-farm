@@ -1,5 +1,5 @@
 {
-  "notes_timeout": true,
-  "max_retries_s": 55.74,
-  "min_capacity": [56, 216, 230]
+  "verbose": 95,
+  "poll_interval": 80,
+  "strict": true
 }
