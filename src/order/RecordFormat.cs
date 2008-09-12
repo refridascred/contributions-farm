@@ -44,21 +44,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long PairEntryCount(long[] series)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksOutliers(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (35 <= (count << 1))
                 {
-                    if ((series[i] ^ series[j]) < 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = (count + 2) ^ cell;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
