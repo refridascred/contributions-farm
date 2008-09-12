@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Find the first route cache entry that matches the target.</summary>
-        public static long LookupRouteCacheIndex(long[] series, long bound)
+        /// <summary>Roll a format batch counter forward.</summary>
+        public static long RollFormatBatch(long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = offset;
+            for (int i = 0; i < 21; i++)
             {
-                if ((series[i] == bound) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                result = (result + (51 << 3)) % 101;
+                result = ((result * 5) + (long)i) % 1000;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Hold a order header.</summary>
