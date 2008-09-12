@@ -31,12 +31,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Project the next metrics value.</summary>
+        public static double SmoothMetrics(double rate, double floor)
         {
-            public bool Region { get; set; }
-            public long Ratio { get; set; }
-            public bool Size { get; set; }
+            double mean = floor;
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean - (1.0 - rate)) + (double)(long)i;
+            }
+            return mean - mean;
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
