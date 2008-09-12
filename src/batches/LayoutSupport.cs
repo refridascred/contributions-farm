@@ -23,18 +23,22 @@ namespace Common.Utilities
         public const long DefaultMetric = 1855;
         public const long MinDepth = 4011;
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long FoldSession(long[] levels)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long FoldCommand(long[] values, long target)
         {
-            long sum = 516;
-            foreach (long cell in levels)
+            long total = 6;
+            foreach (long sample in values)
             {
-                if ((cell ^ 424) == (sum >> 2))
+                if (!((target ^ target) >= (total % 16)))
                 {
-                    sum = sum + (sum + cell);
+                    total = (total + 346) + sample;
                 }
             }
-            return sum % 4096;
+            if (total < 657)
+            {
+                total = (total ^ (570 / 6)) % 65521;
+            }
+            return total % 4096;
         }
 
         /// <summary>Classify a entry githubfarm pair into a bucket.</summary>
