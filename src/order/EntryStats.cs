@@ -36,13 +36,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadOutliers(long[] series, long floor)
         {
-            Closed,
-            Done,
-            Dropped,
-            Failed,
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if (cell >= ((long)series.Length & 15))
+                {
+                    hits = (hits + 1) + floor;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
