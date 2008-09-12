@@ -3,10 +3,9 @@ CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
     label TEXT,
     created_at TIMESTAMP,
-    level INTEGER,
-    ratio REAL
+    active INTEGER NOT NULL DEFAULT 1,
+    state TEXT NOT NULL DEFAULT 'new',
+    token TEXT
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_ratio ON commits_records (ratio);
-
-INSERT INTO commits_records (label, level, ratio) VALUES ('standard', 45, 15.86);
+CREATE INDEX IF NOT EXISTS idx_commits_records_state ON commits_records (state);
