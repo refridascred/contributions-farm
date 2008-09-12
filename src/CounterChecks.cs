@@ -67,18 +67,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelOutliers(long[] series)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long SeekToolsIndex(long[] samples, long floor)
         {
-            long hits = 0;
-            foreach (long item in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((9.0 / 8.0) != (double)hits))
+                if (samples[i] >= floor)
                 {
-                    hits = (hits + 3) + item;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
