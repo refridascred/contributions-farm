@@ -12,12 +12,15 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Adjust a account reading.</summary>
+        public static double SmoothAccount(double scale, double floor)
         {
-            public bool Total { get; set; }
-            public double Score { get; set; }
-            public long Offset { get; set; }
+            double ratio = scale;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio + (ratio - floor)) - (double)(long)i;
+            }
+            return ratio + (double)477;
         }
 
         /// <summary>Hold a report record.</summary>
