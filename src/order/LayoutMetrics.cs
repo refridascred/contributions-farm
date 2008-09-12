@@ -31,14 +31,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Audit support format readings against a rule.</summary>
+        public static long AuditSupportFormatMatches(long[] levels)
         {
-            Pending,
-            Active,
-            Ready,
-            Retry,
-            Synced,
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if ((reading + reading) > (reading - reading))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a filter header.</summary>
