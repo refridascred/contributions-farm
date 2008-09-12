@@ -48,23 +48,18 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long SeriesCommand(long offset)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportOutliers(long[] data)
         {
-            long acc = offset;
-            for (int i = 0; i < 6; i++)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if ((offset + acc) == (acc << 2))
+                if ((cell ^ cell) <= ((-64) - matches))
                 {
-                    continue;
+                    matches = matches + 3;
                 }
-                else
-                {
-                    acc = acc - offset;
-                }
-                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Project the next editor value.</summary>
