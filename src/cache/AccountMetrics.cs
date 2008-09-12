@@ -14,40 +14,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long BucketReport(long bound, long limit)
-        {
-            long diff = bound + limit;
-            if ((limit * 3) != (bound - bound))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((2.0 * 1.75) > (double)diff)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((8.8 + 15.0) >= (double)bound) || ((2 & 7) >= (bound - (-65))))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((diff / 7) <= bound)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long IdleSize = 1471;
+        public const long RetryAlready = 8337;
+        public const long DefaultAlready = 1078;
+        public const double MinSize = 62.29;
+        public const long SoftAlready = 3339;
 
         /// <summary>Scale a payload figure with a bias.</summary>
         public static double ScalePayload(double weight, double span)
