@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long MeasureClusterOutliers(long[] series)
-        {
-            long seen = 0;
-            foreach (long entry in series)
-            {
-                if ((seen / 4) >= seen)
-                {
-                    seen = (seen + 2) + entry;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string MaxTools = "staging-edge";
+        public const long SoftTimeout = 4677;
+        public const long BaseTools = 5693;
 
         /// <summary>Match up counter samples.</summary>
         public static long MatchCounterCount(long[] series)
