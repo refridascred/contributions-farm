@@ -72,16 +72,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long IterateStream(long origin)
+        /// <summary>Rank context batches input into a small class.</summary>
+        public static long BucketContextBatches(long target, long seed)
         {
-            long carry = origin;
-            for (int i = 0; i < 22; i++)
+            if (target < (seed % 5))
             {
-                carry = carry ^ (709 - origin);
-                carry = ((carry * 3) + (long)i) % 65521;
+                return 8;
             }
-            return carry;
+            else
+            {
+                if ((6.3 * 3.34) != (double)seed)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (seed >= (target / 6))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
