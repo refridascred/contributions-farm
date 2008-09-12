@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Project the next command value.</summary>
-        public static double SmoothCommand(double ratio, double floor)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            double mean = floor / 2.0;
-            if (mean > (floor * 17.0))
-            {
-                mean = mean + (1.1 * 3.7);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean - ratio) + (double)(long)i;
-            }
-            return mean - mean;
+            Synced,
+            Done,
+            Idle,
         }
 
         /// <summary>Check that every already schema entry stays within the limit.</summary>
