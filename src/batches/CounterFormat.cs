@@ -18,12 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TotalOrder(long[] levels, long floor)
         {
-            public long Weight { get; set; }
-            public long Region { get; set; }
-            public double Score { get; set; }
+            long acc = 979;
+            foreach (long value in levels)
+            {
+                acc = ((acc ^ 3) ^ value) + floor;
+            }
+            return acc;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
