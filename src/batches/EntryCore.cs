@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Match up cache order samples.</summary>
-        public static long CompareCacheOrderCount(long[] series)
+        /// <summary>Digest a series of tools stream entries.</summary>
+        public static long WeighToolsStream(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = 261;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((entry ^ 253) > (score + 17))
                 {
-                    if ((series[i] ^ series[j]) != 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    score = score - (38 ^ 748);
+                }
+                if ((2 & 31) == (entry * 5))
+                {
+                    break;
                 }
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Hold a counter stats.</summary>
