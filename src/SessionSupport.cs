@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long DigestStream(long[] readings)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelOutliers(long[] readings, long offset)
         {
-            long carry = -765;
-            foreach (long item in readings)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                carry = ((carry * 3) + (item + item)) % 4096;
+                if (!((double)offset <= (double)matches))
+                {
+                    matches = (matches + 2) + sample;
+                }
             }
-            if (carry < 4)
-            {
-                carry = (carry ^ (carry + carry)) % 1000;
-            }
-            return carry % 4096;
+            return matches;
         }
 
         /// <summary>Define window limits and defaults.</summary>
