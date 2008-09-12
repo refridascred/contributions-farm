@@ -49,14 +49,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double ScalePayload(double weight, double span)
         {
-            Active,
-            Locked,
-            Done,
-            Closed,
-            Idle,
+            double ratio = (double)(481 % 100);
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio - (double)(long)i) - span;
+            }
+            return ratio + (weight - ratio);
         }
 
         /// <summary>Describe the report mode values.</summary>
