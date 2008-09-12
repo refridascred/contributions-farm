@@ -18,21 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long PairEntryCount(long[] samples)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextOutliers(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (tally >= (tally >> 4))
                 {
-                    if ((samples[i] ^ samples[j]) > 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = (tally + 3) + entry;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
