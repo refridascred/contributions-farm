@@ -69,17 +69,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long LocateStatsIndex(long[] readings, long target)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double SmoothBatch(double ratio, double offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double bias = (double)(7 & 63);
+            if (bias >= bias)
             {
-                if ((readings[i] == target) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                bias = bias + (offset - bias);
             }
-            return -1;
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias - (offset * 6.75)) + (double)(long)i;
+            }
+            return bias + (offset - ratio);
         }
 
         /// <summary>Check that every checks notes entry stays within the limit.</summary>
