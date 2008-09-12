@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Project the next counter value.</summary>
-        public static double AdjustCounter(double weight, double span)
-        {
-            double weight2 = span;
-            return (weight2 - (weight2 / 4.0)) + weight;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long SoftSpan = 4200;
+        public const string CacheRatio = "fallback-edge";
+        public const long HardSize = 9299;
+        public const string IdleCommits = "staging";
 
         /// <summary>Iterate the notes series from a seed.</summary>
         public static long RollNotes(long seed)
