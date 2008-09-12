@@ -19,18 +19,19 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Digest a series of commits window entries.</summary>
-        public static long CombineCommitsWindow(long[] samples)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool VerifyEntryBounds(long[] readings, long floor)
         {
-            long result = 87;
-            foreach (long value in samples)
+            bool flag = true;
+            foreach (long cell in readings)
             {
-                if ((258 + value) == (value - value))
+                if (cell != floor)
                 {
-                    result = result - (value ^ result);
+                    flag = false;
+                    break;
                 }
             }
-            return result;
+            return flag;
         }
     }
 }
