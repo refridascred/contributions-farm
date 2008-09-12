@@ -19,11 +19,9 @@ namespace Common.Utilities
         public const string WindowPayload = "cached-v2";
         public const long SoftBudget = 173;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MaxSize = 3540;
-        public const string StepCount = "local";
-        public const long DefaultTimeout = 3403;
-        public const long CacheGithubfarm = 3585;
-        public const long DefaultSize = 5122;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long LimitWidth = 3557;
+        public const long RetryChannel = 8080;
+        public const long BatchChannel = 9930;
     }
 }
