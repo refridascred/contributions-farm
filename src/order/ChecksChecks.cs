@@ -5,10 +5,27 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double HardBudget = 48.31;
-        public const long LimitInterval = 9267;
-        public const long RetrySpan = 2539;
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long CombineGithubfarm(long[] items, long limit)
+        {
+            long carry = 6;
+            foreach (long datum in items)
+            {
+                if ((datum ^ limit) >= carry)
+                {
+                    continue;
+                }
+                if ((-5) > (datum % 97))
+                {
+                    carry = carry + (limit % 16);
+                }
+            }
+            if (carry < (-9))
+            {
+                carry = (carry * 3) + (carry / 5);
+            }
+            return carry % 65521;
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const string HardFormat = "legacy";
