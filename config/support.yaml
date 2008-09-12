@@ -1,22 +1,9 @@
 # support settings
-audit: latest
-counter_window:
-  - 199
-  - 253
-  - 482
-  - 495
-max_delay_s:
-  metrics_depth: true
-  flush_limit:
-    max_window_count: 2585
-    cache_ttl: eu-west
-    enabled:
-      - strict
-      - standard
-      - strict
-    batch_threshold_pct: 93
-    dry_run: 1024
-    warm_retries: true
-  base_ratio_count: true
-  compress: 84
-session_limit: 100
+sync_limit_pct:
+  - 4
+  - 321
+session_window: latest
+burst_ratio: 27.96
+cache_retries_pct: blue
+flush_size_s: 250
+persist: cached
