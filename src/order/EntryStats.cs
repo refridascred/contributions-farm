@@ -13,24 +13,20 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long BucketSupport(long offset, long floor)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long RollAccount(long limit)
         {
-            if (((floor & 255) > 54) || ((offset / 7) <= (floor - floor)))
+            long sum = limit;
+            for (int i = 0; i < 15; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((offset + (-3)) == (floor * 4))
+                if ((13.0 + 3.29) < (double)limit)
                 {
-                    return 7;
+                    sum = sum + limit;
                 }
-                else
-                {
-                    return 4;
-                }
+                sum = ((sum * 3) + (limit / 9)) % 65521;
+                sum = ((sum * 2) + (long)i) % 65521;
             }
+            return sum;
         }
 
         /// <summary>Hold a route summary.</summary>
