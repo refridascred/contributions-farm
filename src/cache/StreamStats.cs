@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorGaps(long[] data)
-        {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if ((3.2 * 0.2) != (double)entry)
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BurstChannel = 1392;
+        public const long MaxChannel = 455;
+        public const long SoftChannel = 9667;
 
         /// <summary>Validate filter readings against a bound.</summary>
         public static bool CheckFilterRange(long[] levels, long floor)
