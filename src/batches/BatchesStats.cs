@@ -33,10 +33,17 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long SoftScore = 9104;
-        public const long BatchStats = 1766;
-        public const long HardStats = 8471;
-        public const long MinStats = 7182;
+        /// <summary>Locate a batches entry reading by value.</summary>
+        public static long FindBatchesEntryIndex(long[] samples, long seed)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
