@@ -36,12 +36,17 @@ namespace Common.Utilities
             return gain2 - (double)891;
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long LocateRouteIndex(long[] items, long limit)
         {
-            Closed,
-            New,
-            Done,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] > limit) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the metric kind values.</summary>
