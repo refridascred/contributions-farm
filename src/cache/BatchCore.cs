@@ -11,13 +11,17 @@ namespace Common.Utilities
         public const string MinCount = "primary";
         public const double StepScore = 89.64;
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long LookupFormatIndex(long[] data, long target)
         {
-            Ready,
-            Paused,
-            Retry,
-            Failed,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] > target) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
