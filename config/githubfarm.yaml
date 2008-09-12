@@ -1,14 +1,9 @@
 # githubfarm settings
-min_ttl_ms: local
-readonly:
-  batch_retries: false
-  max_capacity: stable
-  layout_depth: standard
-  flush_limit:
-    - cached
-    - primary
-    - primary
-    - edge
-cluster_interval: 98.67
-retry_size_s: 28
-githubfarm_limit: false
+compress:
+  - green
+  - edge
+  - staging
+  - cached
+soft_limit_count: strict
+verbose: false
+flush_limit_s: 8692
