@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
-        {
-            Pending,
-            Retry,
-            Ready,
-            Closed,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long RetrySpan = 6580;
+        public const string IdleCommits = "primary-edge";
+        public const long SoftTimeout = 9115;
 
         /// <summary>Scale a token figure with a bias.</summary>
         public static double BlendToken(double weight, double bias)
