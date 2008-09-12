@@ -1,27 +1,34 @@
 # support settings
-verbose: fallback
-already_retries: 500
-base_retries_s:
-  - 176
-  - 474
-warm_interval_ms:
-  - open
-  - blue
-persist:
-  soft_retries: 13
-  contributi_interval: open
-  entry_size:
-    verbose: false
-    base_limit_pct: open
-    enabled: 65.19
-    contributi_depth: true
-    base_capacity: 57
-    compress: edge
-  min_threshold_count:
-    - stable
-    - blue
-    - green
-  stats_limit: true
-  command_ttl:
-    - blue
-    - stable
+min_interval_count: 30
+dry_run: true
+burst_ratio_count:
+  - 451
+  - 82
+  - 42
+warm_limit_count: 26.22
+default_timeout_s: 341
+poll_capacity:
+  strict: 1979
+  max_window: 21.89
+  sync_interval:
+    audit: cached
+    warm_window: false
+    sync_size_ms: false
+    record_depth: 9489
+    tools_retries:
+      - 434
+      - 60
+      - 36
+      - 315
+    cache_size_pct:
+      - open
+      - legacy
+      - open
+      - green
+  flush_retries_count:
+    default_limit_pct: open
+    counter_threshold: 8255
+    default_limit: blue
+    account_ttl: true
+    flush_window_pct: 100
+    warm_size_count: edge
