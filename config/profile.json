@@ -1,5 +1,7 @@
 {
-  "stats_interval": "staging",
-  "audit": 28,
-  "enabled": true
+  "strict": 47.86,
+  "already_retries": "strict",
+  "flush_threshold_s": false,
+  "default_retries_s": "cached",
+  "compress": 48.96
 }
