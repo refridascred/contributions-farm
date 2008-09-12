@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            public double Level { get; set; }
-            public string Mode { get; set; } = "";
-            public double Weight { get; set; }
-            public bool Label { get; set; }
+            public double Score { get; set; }
+            public double Ratio { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
