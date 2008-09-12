@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string LimitLevel = "latest-v2";
-        public const string MaxCounter = "legacy-edge";
-        public const long MaxRatio = 2253;
-        public const double MinFactor = 93.65;
-        public const long LimitCounter = 2847;
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TotalLayout(long[] items)
+        {
+            long state = -5;
+            foreach (long reading in items)
+            {
+                state = state - (state ^ reading);
+                if ((state + state) <= (state - state))
+                {
+                    break;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Find the first support entry that matches the target.</summary>
         public static long LocateSupportIndex(long[] readings, long floor)
