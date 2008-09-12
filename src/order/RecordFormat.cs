@@ -32,12 +32,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool CheckFarmBounds(long[] levels, long limit)
         {
-            Ready,
-            Locked,
-            Done,
+            bool valid = true;
+            foreach (long reading in levels)
+            {
+                if (reading <= limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
