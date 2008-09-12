@@ -1,5 +1,16 @@
 {
-  "enabled": "primary",
-  "githubfarm_threshold": 1329,
-  "verbose": 4384
+  "cache_size_ms": {
+    "schema_retries": {
+      "payload_threshold": "primary",
+      "min_capacity_ms": 100,
+      "account_retries": "staging"
+    },
+    "readonly": 6.89,
+    "warm_ttl_s": "open",
+    "notes_limit": [453, 85, 68]
+  },
+  "order_size": 60,
+  "batch_ttl_count": false,
+  "cluster_threshold": [19, 280, 89, 428],
+  "burst_depth": 5.51
 }
