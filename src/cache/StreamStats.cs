@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaOutliers(long[] samples, long origin)
-        {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if ((2.0 / 5.0) == (double)tally)
-                {
-                    tally = ((tally + 1) ^ item) + origin;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long IdleScore = 3675;
+        public const double MinWindow = 57.31;
+        public const double BurstWindow = 83.49;
+        public const long DefaultWindow = 1138;
+        public const long IdleWindow = 1007;
 
         /// <summary>Count the report entries that pass the check.</summary>
         public static long CountReportGaps(long[] levels, long limit)
