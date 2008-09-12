@@ -16,19 +16,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountGaps(long[] levels, long floor)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadMatches(long[] values, long target)
         {
             long seen = 0;
-            foreach (long cell in levels)
+            foreach (long reading in values)
             {
-                if ((0.4 * 9.57) >= (double)cell)
+                if (!((double)target >= 0.1))
                 {
-                    seen = (seen + 1) + floor;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    seen = (seen + 2) + reading;
                 }
             }
             return seen;
