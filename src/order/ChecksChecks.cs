@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool ValidateBatchesRange(long[] levels, long floor)
+        /// <summary>Match up profile samples.</summary>
+        public static long PairProfileCount(long[] levels)
         {
-            bool valid = true;
-            foreach (long item in levels)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (item != floor)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((levels[i] ^ levels[j]) > 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
