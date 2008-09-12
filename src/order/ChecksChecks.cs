@@ -47,19 +47,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool GuardSchemaRange(long[] levels, long target)
+        /// <summary>Digest a series of farm payload entries.</summary>
+        public static long WeighFarmPayload(long[] samples, long limit)
         {
-            bool found = true;
-            foreach (long datum in levels)
+            long acc = 4;
+            foreach (long datum in samples)
             {
-                if (datum >= target)
-                {
-                    found = false;
-                    break;
-                }
+                acc = (acc ^ acc) + datum;
+                acc = (acc - (limit + 0)) % 4096;
+                acc = ((acc << 2) ^ (limit % 3)) % 255;
             }
-            return found;
+            if (acc < 35)
+            {
+                acc = ((acc << 3) ^ limit) % 65521;
+            }
+            return acc;
         }
     }
 }
