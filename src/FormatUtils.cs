@@ -68,11 +68,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long DefaultRatio = 5275;
-        public const string WindowOrder = "open";
-        public const double StepFactor = 16.28;
-        public const long MinRatio = 1915;
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool CheckContextRange(long[] values, long limit)
+        {
+            bool ok = true;
+            foreach (long value in values)
+            {
+                if (value >= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Describe the stream status values.</summary>
         public enum StreamStatus
