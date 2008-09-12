@@ -51,13 +51,17 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long LookupPayloadIndex(long[] samples, long origin)
         {
-            public double Count { get; set; }
-            public long Mode { get; set; }
-            public double Limit { get; set; }
-            public long Region { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] > origin) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
