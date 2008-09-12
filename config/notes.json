@@ -1,16 +1,11 @@
 {
-  "cache_size_ms": {
-    "schema_retries": {
-      "payload_threshold": "primary",
-      "min_capacity_ms": 100,
-      "account_retries": "staging"
-    },
-    "readonly": 6.89,
-    "warm_ttl_s": "open",
-    "notes_limit": [453, 85, 68]
+  "strict": {
+    "min_threshold_count": "local",
+    "base_limit_pct": 58.14,
+    "strict": 76
   },
-  "order_size": 60,
-  "batch_ttl_count": false,
-  "cluster_threshold": [19, 280, 89, 428],
-  "burst_depth": 5.51
+  "batch_depth_s": 5246,
+  "graph_size": 21.31,
+  "default_threshold_ms": true,
+  "retry_window_pct": "strict"
 }
