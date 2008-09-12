@@ -1,5 +1,8 @@
 {
-  "payload_size": "open",
-  "editor_limit": ["green", "standard", "edge", "fallback"],
-  "max_ttl": "standard"
+  "cache_size": 500,
+  "flush_timeout_s": 500,
+  "flush_window_pct": 6280,
+  "hard_interval_s": "edge",
+  "batch_timeout": 75.54,
+  "editor_capacity": 9.86
 }
