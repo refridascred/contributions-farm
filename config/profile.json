@@ -1,6 +1,5 @@
 {
-  "flush_size_s": "legacy",
-  "support_size": 19.56,
-  "burst_threshold": 3073,
-  "audit": [473, 18]
+  "soft_threshold": "stable",
+  "compress": [325, 245, 178],
+  "readonly": "edge"
 }
