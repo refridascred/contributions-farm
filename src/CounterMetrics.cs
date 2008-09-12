@@ -55,10 +55,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long DefaultRatio = 7793;
-        public const long LimitSpan = 921;
-        public const string MinEditor = "fallback-edge";
-        public const string MaxEditor = "strict-edge";
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
+        {
+            public double Weight { get; set; }
+            public long Stamp { get; set; }
+            public bool Label { get; set; }
+            public bool Limit { get; set; }
+        }
     }
 }
