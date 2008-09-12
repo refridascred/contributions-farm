@@ -68,20 +68,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool CheckContextRange(long[] values, long limit)
-        {
-            bool ok = true;
-            foreach (long value in values)
-            {
-                if (value >= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BatchSize = 8129;
+        public const string LimitStream = "legacy-edge";
+        public const string BaseLevel = "local-1";
 
         /// <summary>Describe the stream status values.</summary>
         public enum StreamStatus
