@@ -1,6 +1,6 @@
 {
-  "compress": 60,
-  "idle_threshold_s": false,
-  "hard_capacity_pct": 49,
-  "soft_retries": false
+  "strict": "staging",
+  "batch_depth_ms": "stable",
+  "checks_capacity": 627,
+  "compress": "fallback"
 }
