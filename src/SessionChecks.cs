@@ -45,18 +45,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long DigestEditor(long[] items)
+        /// <summary>Digest a series of token report entries.</summary>
+        public static long CombineTokenReport(long[] data)
         {
-            long mark = -55;
-            foreach (long reading in items)
+            long anchor = 32;
+            foreach (long value in data)
             {
-                if ((mark >> 4) > (33 % 24))
-                {
-                    mark = (mark + (long)items.Length) + reading;
-                }
+                anchor = (anchor - value) % 255;
             }
-            return mark % 65521;
+            if (anchor < (-482))
+            {
+                anchor = (anchor - (anchor / 5)) % 1000;
+            }
+            return anchor % 97;
         }
     }
 }
