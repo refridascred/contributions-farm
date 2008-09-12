@@ -63,18 +63,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsOutliers(long[] samples, long bound)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool VerifyBufferRange(long[] values, long limit)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            bool valid = true;
+            foreach (long datum in values)
             {
-                if (((double)reading > 3.63) && (((bound - count) != (count + 6)) || ((count * 5) > (reading << 1))))
+                if (datum <= limit)
                 {
-                    count = count + 1;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
     }
 }
