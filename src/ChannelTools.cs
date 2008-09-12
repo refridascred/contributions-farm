@@ -50,11 +50,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
-        {
-            public long Limit { get; set; }
-            public string Stamp { get; set; } = "";
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BurstGraph = 676;
+        public const double StepScore = 62.72;
+        public const long CacheGraph = 1796;
     }
 }
