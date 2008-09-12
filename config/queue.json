@@ -1,8 +1,8 @@
 {
-  "idle_limit_ms": "cached",
-  "account_limit": "cached",
-  "batch_retries_ms": 42,
-  "token_threshold": 3,
-  "strict": false,
-  "context_retries": true
+  "min_ttl_pct": "local",
+  "audit": "fallback",
+  "burst_size": 2224,
+  "cache_delay_pct": "cached",
+  "metrics_size": 36.16,
+  "batch_threshold": ["standard", "stable", "staging"]
 }
