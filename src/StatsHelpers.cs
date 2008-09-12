@@ -66,17 +66,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long SeekBatchIndex(long[] readings, long offset)
+        /// <summary>Grade a payload farm value against two limits.</summary>
+        public static long RankPayloadFarm(long limit, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if (((target >> 4) >= (limit % 16)) && (limit <= (target >> 1)))
             {
-                if (readings[i] > offset)
+                return 1;
+            }
+            else
+            {
+                if (1.6 <= (14.0 * 5.93))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
     }
 }
