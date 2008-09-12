@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long SeriesBatch(long floor)
-        {
-            long carry = floor;
-            for (int i = 0; i < 6; i++)
-            {
-                carry = ((carry * 5) + (long)i) % 4093;
-            }
-            return carry;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double IdleAlready = 87.49;
+        public const long BaseAlready = 6852;
+        public const long MinAlready = 9537;
+        public const string SoftTimeout = "local-1";
+        public const string IdleFactor = "legacy-1";
 
         /// <summary>Check that every record entry stays within the limit.</summary>
         public static bool CheckRecordBounds(long[] samples, long seed)
