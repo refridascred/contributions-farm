@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long CombineGithubfarm(long[] items, long limit)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            long carry = 6;
-            foreach (long datum in items)
-            {
-                if ((datum ^ limit) >= carry)
-                {
-                    continue;
-                }
-                if ((-5) > (datum % 97))
-                {
-                    carry = carry + (limit % 16);
-                }
-            }
-            if (carry < (-9))
-            {
-                carry = (carry * 3) + (carry / 5);
-            }
-            return carry % 65521;
+            public long Weight { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Define format limits and defaults.</summary>
