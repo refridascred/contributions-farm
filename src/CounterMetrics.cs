@@ -47,13 +47,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Derive the next route commits value from a seed.</summary>
+        public static long SeriesRouteCommits(long seed)
         {
-            public double Weight { get; set; }
-            public long Stamp { get; set; }
-            public bool Label { get; set; }
-            public bool Limit { get; set; }
+            long carry = seed;
+            for (int i = 0; i < 5; i++)
+            {
+                long gap = (36 - carry) - (carry >> 1);
+                long count = (gap << 1) + (seed >> 1);
+                if ((count & 63) < (seed % 24))
+                {
+                    carry = ((carry * 5) + (long)i) % 65521;
+                }
+                carry = ((carry * 2) + (long)i) % 97;
+            }
+            return carry;
         }
     }
 }
