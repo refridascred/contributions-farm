@@ -26,15 +26,19 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double ScalePayload(double weight, double span)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool VerifyFilterLimits(long[] readings, long step)
         {
-            double ratio = (double)(481 % 100);
-            for (int i = 0; i < 9; i++)
+            bool valid = true;
+            foreach (long reading in readings)
             {
-                ratio = (ratio - (double)(long)i) - span;
+                if (reading < step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return ratio + (weight - ratio);
+            return valid;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
