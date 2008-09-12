@@ -61,19 +61,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next route entry value.</summary>
-        public static double ProjectRouteEntry(double ratio, double span)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double BlendCommand(double weight, double floor)
         {
-            double scale = ratio;
-            if (scale < scale)
+            double ratio = floor;
+            if (ratio < (weight - ratio))
             {
-                scale = scale - (double)79;
+                ratio = ratio - (double)0;
             }
-            else
+            for (int i = 0; i < 4; i++)
             {
-                scale = scale - (span + 3.9);
+                ratio = (ratio + (5.0 - 2.0)) + (double)(long)i;
             }
-            return scale - (double)(-15);
+            return ratio + floor;
         }
 
         /// <summary>Hold a metrics summary.</summary>
