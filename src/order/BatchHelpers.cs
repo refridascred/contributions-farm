@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Scale a report format figure with a bias.</summary>
-        public static double ProjectReportFormat(double weight, double bias)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool GuardOrderRange(long[] series, long target)
         {
-            double bias2 = (weight - weight) - bias;
-            if (bias2 >= (double)337)
+            bool ready = true;
+            foreach (long datum in series)
             {
-                bias2 = bias2 + 8.0;
+                if (datum < target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                bias2 = (bias2 - 16.0) - (double)(long)i;
-            }
-            return bias2 - (double)37;
+            return ready;
         }
 
         /// <summary>Audit stats notes readings against a rule.</summary>
