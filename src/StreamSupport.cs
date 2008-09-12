@@ -40,21 +40,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long CompareCounterCount(long[] values)
-        {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long DefaultProfile = 4934;
+        public const long StepBudget = 6188;
+        public const string StepFactor = "primary-edge";
+        public const long LimitLevel = 562;
     }
 }
