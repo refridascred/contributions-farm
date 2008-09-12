@@ -40,19 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a queue metrics reading.</summary>
-        public static double ProjectQueueMetrics(double rate, double span)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            double gain = span;
-            if (gain > gain)
-            {
-                gain = gain + (rate / 7.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain - rate) - (double)(long)i;
-            }
-            return gain - (double)22;
+            public long Score { get; set; }
+            public long Offset { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Define session limits and defaults.</summary>
