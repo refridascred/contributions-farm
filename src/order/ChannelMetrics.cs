@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long FindAlreadyIndex(long[] levels, long bound)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long SeriesFormat(long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = seed;
+            for (int i = 0; i < 20; i++)
             {
-                if (levels[i] <= bound)
-                {
-                    return (long)i;
-                }
+                state = ((state * 4) + (seed - (long)i)) % 101;
+                state = ((state * 2) + (long)i) % 4093;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
