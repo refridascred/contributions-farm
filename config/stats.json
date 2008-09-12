@@ -1,5 +1,6 @@
 {
-  "sync_depth_ms": ["local", "green", "strict"],
-  "metric_size": false,
-  "channel_window": 90
+  "idle_ratio": true,
+  "flush_ttl_pct": ["green", "legacy", "blue", "staging"],
+  "warm_ratio_count": 84,
+  "burst_window_s": ["legacy", "local", "blue"]
 }
