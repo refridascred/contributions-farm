@@ -20,23 +20,38 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double ScaleRoute(double scale, double floor)
+        /// <summary>Rank graph cluster input into a small class.</summary>
+        public static long ClassifyGraphCluster(long offset, long limit)
         {
-            double scale2 = (double)(737 ^ (-7));
-            if (scale2 <= scale)
+            if ((limit - offset) != (offset + offset))
             {
-                scale2 = scale2 - (double)5;
+                return 3;
             }
             else
             {
-                scale2 = scale2 + floor;
+                if ((9.0 / 2.0) == (double)limit)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((583 / 6) > offset) || ((double)offset == (double)limit))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (7 >= limit)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                scale2 = (scale2 + (5.25 * 2.7)) + (double)(long)i;
-            }
-            return scale2 + 10.0;
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
