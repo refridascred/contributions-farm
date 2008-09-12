@@ -14,18 +14,23 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long TallyFilterOutliers(long[] readings)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long DigestQueue(long[] values)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long mix = 570;
+            foreach (long sample in values)
             {
-                if (4.0 < (double)entry)
+                mix = mix + (mix ^ mix);
+                if ((sample + mix) >= mix)
                 {
-                    seen = seen + 3;
+                    mix = mix + (36 * 4);
+                }
+                else
+                {
+                    mix = mix ^ (sample / 2);
                 }
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
