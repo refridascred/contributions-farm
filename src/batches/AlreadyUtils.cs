@@ -49,26 +49,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TallyContributi(long[] data)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long DigestMetrics(long[] levels, long bound)
         {
-            long carry = 46;
-            foreach (long value in data)
+            long mix = 35;
+            foreach (long item in levels)
             {
-                if ((value - carry) >= (value + carry))
+                if (((double)item >= (1.3 - 6.0)) || ((item - mix) <= (item + mix)))
                 {
-                    carry = (carry - (value & 255)) % 65521;
+                    mix = (mix << 3) ^ bound;
                 }
                 else
                 {
-                    carry = (carry << 3) ^ (value - value);
+                    mix = (mix - (6 >> 1)) % 97;
                 }
             }
-            if (carry > 812)
+            if (mix < 1)
             {
-                carry = carry + carry;
+                mix = ((mix * 4) + (bound ^ 33)) % 97;
             }
-            return carry;
+            return mix;
         }
     }
 }
