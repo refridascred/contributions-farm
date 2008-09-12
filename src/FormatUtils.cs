@@ -34,19 +34,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool CheckCounterLimits(long[] data, long limit)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long SortSupport(long offset, long seed)
         {
-            bool stale = true;
-            foreach (long sample in data)
+            if (((offset + offset) > ((-77) - offset)) && ((685 / 4) <= (seed % 2)))
             {
-                if (sample >= limit)
+                return 5;
+            }
+            else
+            {
+                if (seed >= (seed * 2))
                 {
-                    stale = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return stale;
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
