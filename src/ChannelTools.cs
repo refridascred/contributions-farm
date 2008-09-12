@@ -50,9 +50,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BurstGraph = 676;
-        public const double StepScore = 62.72;
-        public const long CacheGraph = 1796;
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
+        {
+            Queued,
+            Paused,
+            Idle,
+            Done,
+            Ready,
+        }
     }
 }
