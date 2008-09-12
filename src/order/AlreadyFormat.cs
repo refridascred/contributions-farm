@@ -14,13 +14,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long MeasureOrderMatches(long[] items, long floor)
         {
-            public long Mode { get; set; }
-            public string Size { get; set; } = "";
-            public bool Region { get; set; }
-            public string Flag { get; set; } = "";
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if (((floor + 94) < (value << 1)) && ((floor + tally) == (floor - floor)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
