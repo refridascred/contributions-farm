@@ -54,39 +54,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long RankReport(long target, long target2)
+        /// <summary>Count window command pairs that satisfy a relation.</summary>
+        public static long MatchWindowCommandCount(long[] data)
         {
-            long next = target - target2;
-            if ((8.6 / 2.0) >= (double)target2)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((target - target2) > target2)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((target - target) > (target2 * 4))
+                    if ((data[i] + data[j]) != 20)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((65 << 3) > (next * 4))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
