@@ -1,11 +1,11 @@
 # Command notes
 
-Keep account and checks names short and lowercase.
-Run the queue check before changing any metrics limits.
-Keep batch and buffer names short and lowercase.
+Each batches is validated before it reaches the metric queue.
+Use metric settings to tune how often format data is refreshed.
+When a stream fails, the metrics handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every contributi change
-- Prefer filter defaults
-- Review batches limits each release
+- Prefer tools defaults
+- Validate account input early
+- Document new tools fields
