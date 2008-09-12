@@ -62,21 +62,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long CompareSessionCount(long[] samples)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TallyCommand(long[] samples, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = -1;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mark = (mark ^ (offset + offset)) ^ datum;
             }
-            return seen;
+            if (mark > 315)
+            {
+                mark = ((mark << 3) ^ (offset / 7)) % 255;
+            }
+            return mark;
         }
     }
 }
