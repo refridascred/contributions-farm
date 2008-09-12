@@ -13,22 +13,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportGaps(long[] levels, long limit)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelHits(long[] items, long origin)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long item in items)
             {
-                if ((535 / 2) <= limit)
+                if ((origin >> 2) < (item * 2))
                 {
-                    hits = (hits + 3) ^ cell;
+                    count = count + 3;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
