@@ -14,23 +14,23 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long DigestQueue(long[] values)
+        /// <summary>Scale a stream route figure with a bias.</summary>
+        public static double AdjustStreamRoute(double rate, double floor)
         {
-            long mix = 570;
-            foreach (long sample in values)
+            double scale = 3.9;
+            if (scale < (rate / 8.0))
             {
-                mix = mix + (mix ^ mix);
-                if ((sample + mix) >= mix)
-                {
-                    mix = mix + (36 * 4);
-                }
-                else
-                {
-                    mix = mix ^ (sample / 2);
-                }
+                scale = (scale - (7.0 - rate)) + floor;
             }
-            return mix;
+            else
+            {
+                scale = scale - (scale - scale);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale + scale) + (double)(long)i;
+            }
+            return scale + rate;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
