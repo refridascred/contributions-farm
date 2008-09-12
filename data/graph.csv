@@ -1,6 +1,11 @@
-id,ratio,level
-1,526,cached
-2,53,strict
-3,18.76,59
-4,62.8,98.81
-5,449,572
+id,state,count,ratio
+1,strict,543,658
+2,348,514,edge
+3,791,258,467
+4,858,859,eu-west
+5,primary,standard,80
+6,edge,260,955
+7,677,66.78,989
+8,869,585,staging
+9,open,737,344
+10,local,0.09,61.01
