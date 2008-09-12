@@ -1,6 +1,9 @@
-id,level
-1,green
-2,stable
-3,20.35
-4,27
-5,558
+id,weight,score,label
+1,18,853,725
+2,standard,standard,eu-west
+3,64.77,249,edge
+4,646,green,709
+5,62.66,54,102
+6,green,strict,local
+7,810,645,303
+8,720,45.49,726
