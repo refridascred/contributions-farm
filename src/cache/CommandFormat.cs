@@ -32,38 +32,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long ClassifySession(long step, long target)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long FoldAlready(long[] series)
         {
-            if (target <= (target ^ target))
+            long carry = -997;
+            foreach (long reading in series)
             {
-                return 2;
-            }
-            else
-            {
-                if (step > (234 + target))
+                if ((double)carry < (3.91 - 9.0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((-367) > step)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)step <= (6.0 * 5.0))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    carry = ((carry * 5) + carry) ^ reading;
                 }
             }
+            if (carry < (-260))
+            {
+                carry = carry - 212;
+            }
+            return carry % 97;
         }
 
         /// <summary>Hold a cache entry.</summary>
