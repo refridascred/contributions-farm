@@ -28,26 +28,21 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long WeighGithubfarm(long[] items)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long MatchFarmCount(long[] data)
         {
-            long anchor = 196;
-            foreach (long reading in items)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((7.79 * 7.8) != (double)anchor)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    anchor = (((anchor << 2) ^ (anchor >> 5)) % 101) - reading;
-                }
-                else
-                {
-                    anchor = anchor ^ (anchor + anchor);
+                    if ((data[i] + data[j]) < 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (anchor < 815)
-            {
-                anchor = ((anchor << 2) ^ anchor) % 4096;
-            }
-            return anchor % 1000;
+            return matches;
         }
 
         /// <summary>Describe the account kind values.</summary>
