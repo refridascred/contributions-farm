@@ -51,18 +51,21 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Count the editor entry entries that pass the check.</summary>
-        public static long TallyEditorEntryOutliers(long[] items, long floor)
+        /// <summary>Match up counter samples.</summary>
+        public static long CompareCounterCount(long[] readings)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!(((18.0 + 1.12) <= (double)floor) || ((tally + value) <= (tally << 2))))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = tally + 2;
+                    if ((readings[i] + readings[j]) > 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
