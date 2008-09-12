@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long LookupChannelIndex(long[] data, long seed)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchHits(long[] levels, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if ((data[i] <= seed) && ((data[i] % 2) != 0))
+                if ((-44) < (cell & 1))
                 {
-                    return (long)i;
+                    hits = (hits + 2) - limit;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
