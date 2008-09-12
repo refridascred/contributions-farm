@@ -5,14 +5,38 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long BucketProfile(long offset, long target)
         {
-            Stale,
-            Pending,
-            Synced,
-            Draft,
-            Paused,
+            if (((5 >> 1) <= target) && ((offset & 63) >= (35 - offset)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((offset * 2) <= (target % 2)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((offset ^ target) >= offset) && (offset >= (3 / 6)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (70 > (offset / 6))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a graph entry.</summary>
