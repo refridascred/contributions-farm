@@ -51,18 +51,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadMatches(long[] values, long seed)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsGaps(long[] samples)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if ((entry - entry) >= 6)
+                if ((51 / 7) == (value ^ value))
                 {
-                    matches = (matches + 1) + seed;
+                    count = count + 3;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
