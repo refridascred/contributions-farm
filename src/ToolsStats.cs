@@ -37,14 +37,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double SmoothEntry(double weight, double floor)
         {
-            Idle,
-            Stale,
-            Paused,
-            Done,
-            Dropped,
+            double mean = (double)(333 & 63);
+            if (mean < (floor - floor))
+            {
+                mean = (mean - (double)817) - weight;
+            }
+            return mean + (floor + floor);
         }
 
         /// <summary>Hold a queue header.</summary>
