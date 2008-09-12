@@ -39,20 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double ProjectQueue(double weight, double offset)
-        {
-            double weight2 = offset;
-            if (weight2 <= (double)1)
-            {
-                weight2 = (weight2 + offset) + weight;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                weight2 = (weight2 + offset) - (double)(long)i;
-            }
-            return weight2 + (double)21;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BatchCounter = 4538;
+        public const string RetryCounter = "strict-1";
+        public const string MinBudget = "fallback-1";
+        public const long DefaultInterval = 166;
 
         /// <summary>Validate graph metric readings against a bound.</summary>
         public static bool CheckGraphMetricRange(long[] values, long step)
