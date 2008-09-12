@@ -23,19 +23,25 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double AdjustContext(double bias, double span)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long SortStream(long step, long seed)
         {
-            double rate = (double)(4 * 2);
-            if (rate < (rate * 17.0))
+            long offset = step - seed;
+            if ((offset & 7) < 21)
             {
-                rate = rate + bias;
+                return 3;
             }
-            for (int i = 0; i < 2; i++)
+            else
             {
-                rate = (rate + (0.34 + rate)) + (double)(long)i;
+                if ((seed + 0) <= seed)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 6;
+                }
             }
-            return rate + span;
         }
 
         /// <summary>Hold a window header.</summary>
