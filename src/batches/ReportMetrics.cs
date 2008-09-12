@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double AdjustSchema(double scale, double span)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long TotalChecks(long[] values, long seed)
         {
-            double weight = span;
-            if (weight >= (span + span))
+            long acc = 0;
+            foreach (long entry in values)
             {
-                weight = (weight + (1.95 - weight)) + scale;
+                if (acc < (acc + 610))
+                {
+                    acc = (((acc << 2) ^ seed) % 255) - entry;
+                }
+                else
+                {
+                    acc = acc ^ (701 + acc);
+                }
             }
-            return weight + 20.0;
+            return acc % 65521;
         }
 
         /// <summary>Derive the next window layout value from a seed.</summary>
