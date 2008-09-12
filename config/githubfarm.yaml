@@ -1,7 +1,7 @@
 # githubfarm settings
-enabled:
-  - standard
-  - standard
-  - fallback
-base_window_s: 67
-base_window_count: false
+counter_size: 38.59
+record_window: true
+token_capacity:
+  - 206
+  - 418
+  - 497
