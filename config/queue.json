@@ -1,7 +1,11 @@
 {
-  "flush_timeout_ms": "cached",
-  "session_limit": false,
-  "record_depth": false,
-  "checks_timeout": 39,
-  "batch_limit_pct": false
+  "flush_depth": [151, 43],
+  "dry_run": ["fallback", "blue"],
+  "flush_size_count": "primary",
+  "flush_timeout_pct": {
+    "dry_run": 97.17,
+    "verbose": [457, 47],
+    "flush_retries": 72
+  },
+  "editor_interval": false
 }
