@@ -12,24 +12,18 @@ namespace Common.Utilities
         public const long MinSpan = 7371;
         public const double CacheGithubfarm = 96.05;
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long ClassifyChecks(long target, long offset)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long TallyMetricsHits(long[] levels)
         {
-            if ((target * 2) <= target)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if (7.08 <= (double)offset)
+                if ((5.9 * 9.0) > (double)count)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
+                    count = (count + 3) + cell;
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a format stats.</summary>
