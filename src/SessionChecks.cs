@@ -34,32 +34,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a route context value against two limits.</summary>
-        public static long RankRouteContext(long seed, long offset)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            long slot = seed + offset;
-            if (((double)seed != (6.99 * 20.0)) || ((seed - offset) == (seed / 7)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((seed + seed) >= offset)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (offset <= (slot >> 5))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Paused,
+            Retry,
+            Synced,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Digest a series of editor entries.</summary>
