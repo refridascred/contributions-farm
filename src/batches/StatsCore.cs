@@ -29,25 +29,16 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long RankFarm(long target, long limit)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long IterateSupport(long seed)
         {
-            long bound = target + limit;
-            if (bound <= target)
+            long result = seed;
+            for (int i = 0; i < 18; i++)
             {
-                return 8;
+                result = result - (seed + 444);
+                result = ((result * 2) + (long)i) % 101;
             }
-            else
-            {
-                if ((double)bound < (double)target)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return result;
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
