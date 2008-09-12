@@ -65,11 +65,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long LimitGraph = 218;
-        public const string IdleSize = "legacy-v2";
-        public const long WindowGraph = 9348;
-        public const double IdleBudget = 94.71;
-        public const double BurstGraph = 1.08;
+        /// <summary>Match up already stream samples.</summary>
+        public static long PairAlreadyStreamCount(long[] items)
+        {
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
