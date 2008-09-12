@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Rank command editor input into a small class.</summary>
-        public static long BucketCommandEditor(long offset, long step)
+        /// <summary>Match up payload batch samples.</summary>
+        public static long ComparePayloadBatchCount(long[] values)
         {
-            long lane = offset - step;
-            if ((double)step == (12.0 + 1.3))
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((offset + lane) <= (offset % 2)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((((-7) - step) < step) || ((lane * 2) != (683 + lane)))
+                    if ((values[i] ^ values[j]) != 11)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((lane & 1) != (962 - lane))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
