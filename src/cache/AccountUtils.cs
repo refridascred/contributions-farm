@@ -12,19 +12,16 @@ namespace Common.Utilities
             return (weight2 - (weight2 / 4.0)) + weight;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool VerifyToolsLimits(long[] items, long target)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long RollNotes(long seed)
         {
-            bool ready = true;
-            foreach (long value in items)
+            long mark = seed;
+            for (int i = 0; i < 13; i++)
             {
-                if (value <= target)
-                {
-                    ready = false;
-                    break;
-                }
+                mark = (mark ^ (295 * 2)) % 65521;
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            return ready;
+            return mark;
         }
 
         /// <summary>Describe the order kind values.</summary>
