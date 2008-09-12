@@ -20,20 +20,12 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double AdjustCounter(double gain, double offset)
-        {
-            double gain2 = (double)(340 + 8);
-            if (gain2 >= (double)89)
-            {
-                gain2 = gain2 - offset;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain2 = (gain2 - offset) + (double)(long)i;
-            }
-            return gain2 - gain;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MaxFactor = 2407;
+        public const long SoftInterval = 322;
+        public const long HardInterval = 9938;
+        public const long CacheWindow = 4372;
+        public const double IdleWindow = 72.28;
 
         /// <summary>Validate graph metric readings against a bound.</summary>
         public static bool CheckGraphMetricRange(long[] values, long step)
