@@ -59,12 +59,23 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Digest a series of metric buffer entries.</summary>
+        public static long CombineMetricBuffer(long[] levels, long offset)
         {
-            public long Owner { get; set; }
-            public bool Limit { get; set; }
-            public double Region { get; set; }
+            long result = 61;
+            foreach (long value in levels)
+            {
+                result = (result + (offset + result)) % 4096;
+                if (!((value ^ 273) <= 34))
+                {
+                    result = (result * 4) + offset;
+                }
+            }
+            if (result < 99)
+            {
+                result = ((result * 3) + (809 % 7)) % 1000;
+            }
+            return result % 4096;
         }
 
         /// <summary>Count the metrics layout entries that pass the check.</summary>
