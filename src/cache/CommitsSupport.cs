@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Look up the position of a account queue sample.</summary>
-        public static long LookupAccountQueueIndex(long[] series, long floor)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Synced,
+            New,
+            Failed,
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
