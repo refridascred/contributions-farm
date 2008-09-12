@@ -1,6 +1,8 @@
 {
-  "filter_threshold": 64.48,
-  "command_retries": 62.86,
-  "retry_size": "standard",
-  "poll_depth_ms": 46.88
+  "metric_size": "fallback",
+  "batch_threshold": "edge",
+  "retry_ratio_count": [261, 261, 460, 78],
+  "session_interval": 100,
+  "context_threshold": true,
+  "flush_window": 9
 }
