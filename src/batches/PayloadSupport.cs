@@ -19,22 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long OverlapFormatCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string HardStats = "open-1";
+        public const long BaseStats = 268;
+        public const double SoftLevel = 10.57;
+        public const long LimitBudget = 3306;
+        public const long SoftSize = 4335;
 
         /// <summary>Match up format account samples.</summary>
         public static long PairFormatAccountCount(long[] readings)
