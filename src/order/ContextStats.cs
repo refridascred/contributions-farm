@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            public bool Region { get; set; }
-            public string Total { get; set; } = "";
-            public long Mode { get; set; }
+            public long Count { get; set; }
+            public double Offset { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Roll a filter counter forward.</summary>
