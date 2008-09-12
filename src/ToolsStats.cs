@@ -22,13 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool GuardContextLimits(long[] samples, long target)
         {
-            Done,
-            Idle,
-            Stale,
-            Ready,
+            bool found = true;
+            foreach (long entry in samples)
+            {
+                if (entry != target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Describe the stats phase values.</summary>
