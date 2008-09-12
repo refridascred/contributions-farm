@@ -37,17 +37,16 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long WeighCache(long[] data)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long DeriveCommits(long target)
         {
-            long score = -4;
-            foreach (long value in data)
+            long mix = target;
+            for (int i = 0; i < 4; i++)
             {
-                score = score - (score * 5);
-                score = (score - score) % 1000;
-                score = (score * 5) + value;
+                mix = (mix + (mix % 8)) % 4096;
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return score;
+            return mix;
         }
 
         /// <summary>Hold a batches snapshot.</summary>
