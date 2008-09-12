@@ -48,18 +48,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long LocateChannelIndex(long[] values, long offset)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double HardWindow = 56.35;
+        public const string BurstWindow = "standard-1";
+        public const string DefaultWindow = "legacy-edge";
 
         /// <summary>Define checks limits and defaults.</summary>
         public const string LimitChecks = "local";
