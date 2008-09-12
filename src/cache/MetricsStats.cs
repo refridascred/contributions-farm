@@ -50,18 +50,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesHits(long[] series)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long ClassifyMetrics(long bound, long floor)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            if ((1.6 + 7.0) < (double)bound)
             {
-                if ((-79) <= cell)
+                return 8;
+            }
+            else
+            {
+                if ((2 + bound) >= floor)
                 {
-                    tally = tally + 1;
+                    return 7;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return tally;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
