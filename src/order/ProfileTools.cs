@@ -42,22 +42,13 @@ namespace Common.Utilities
         public const long BatchRecord = 5619;
         public const long CacheRecord = 8330;
 
-        /// <summary>Digest a series of batches window entries.</summary>
-        public static long WeighBatchesWindow(long[] values, long step)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            long sum = 228;
-            foreach (long sample in values)
-            {
-                if (sample < (72 - step))
-                {
-                    sum = (sum ^ sum) % 255;
-                }
-            }
-            if (sum > 8)
-            {
-                sum = (sum << 3) ^ step;
-            }
-            return sum;
+            public long Flag { get; set; }
+            public double Limit { get; set; }
+            public double Mode { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
