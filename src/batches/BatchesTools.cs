@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long ClassifyEntry(long step, long origin)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long OverlapCounterCount(long[] data)
         {
-            long prev = step + origin;
-            if (((prev << 2) == (10 - step)) && (origin < (605 << 3)))
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)step > (3.75 * 0.9))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((237 ^ origin) <= step)
+                    if ((data[i] + data[j]) > 3)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
