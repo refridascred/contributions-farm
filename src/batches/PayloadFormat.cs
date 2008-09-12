@@ -5,14 +5,39 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long RankFilter(long floor, long offset)
         {
-            Done,
-            Pending,
-            Queued,
-            Stale,
-            Closed,
+            long cur = floor ^ offset;
+            if ((offset >> 3) <= (cur - floor))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)cur >= (2.23 - 16.0))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((offset + (-934)) == (floor * 5))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (offset > 311)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a layout info.</summary>
