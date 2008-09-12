@@ -18,10 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long CacheChecks = 2764;
-        public const long MaxScore = 9119;
-        public const string LimitChecks = "stable";
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long FoldQueue(long[] items)
+        {
+            long state = 666;
+            foreach (long value in items)
+            {
+                state = (state - (value ^ state)) % 65521;
+            }
+            return state % 97;
+        }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
         public static bool CheckFarmBounds(long[] levels, long limit)
