@@ -23,25 +23,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long BucketWindow(long step, long target)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            long bound = step - target;
-            if (((step + step) < (target % 7)) || ((step - target) > bound))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((1.0 + 7.0) <= (double)step))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Failed,
+            Closed,
+            Queued,
+            Retry,
         }
 
         /// <summary>Count the payload session entries that pass the check.</summary>
