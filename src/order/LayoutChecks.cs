@@ -51,21 +51,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long CompareReportCount(long[] readings)
+        /// <summary>Audit batch route readings against a rule.</summary>
+        public static long TallyBatchRouteHits(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long value in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((seen >> 3) <= value)
                 {
-                    if ((readings[i] + readings[j]) < 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = seen + 3;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Hold a commits info.</summary>
