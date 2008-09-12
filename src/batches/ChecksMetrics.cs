@@ -44,18 +44,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenHits(long[] values, long origin)
+        /// <summary>Count layout queue pairs that satisfy a relation.</summary>
+        public static long OverlapLayoutQueueCount(long[] readings)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((reading ^ reading) >= (origin % 8))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((readings[i] ^ readings[j]) > 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Project the next route entry value.</summary>
