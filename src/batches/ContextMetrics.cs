@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long AuditChannelGaps(long[] readings, long limit)
+        /// <summary>Digest a series of token contributi entries.</summary>
+        public static long DigestTokenContributi(long[] values, long floor)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long total = 103;
+            foreach (long item in values)
             {
-                if ((double)cell != (8.06 / 2.0))
+                if (floor < (item + item))
                 {
-                    seen = (seen + 2) + limit;
+                    total = (total * 2) + (total << 3);
+                }
+                else
+                {
+                    total = ((total << 2) ^ (floor % 7)) % 4096;
                 }
             }
-            return seen;
+            if (total < 872)
+            {
+                total = (total + (floor ^ total)) % 101;
+            }
+            return total % 65521;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
