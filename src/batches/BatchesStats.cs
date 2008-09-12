@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiOutliers(long[] values, long limit)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            long hits = 0;
-            foreach (long sample in values)
-            {
-                if ((limit >> 1) < (limit + sample))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Failed,
+            Ready,
+            Stale,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
