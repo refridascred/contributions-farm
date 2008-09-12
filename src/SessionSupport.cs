@@ -32,21 +32,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long OverlapMetricCount(long[] items)
+        /// <summary>Blend two payload account measurements.</summary>
+        public static double ProjectPayloadAccount(double gain, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            double gain2 = gain;
+            return (gain2 + 5.41) + bias;
         }
     }
 }
