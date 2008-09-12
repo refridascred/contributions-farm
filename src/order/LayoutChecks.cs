@@ -14,13 +14,12 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            public double Offset { get; set; }
-            public double Ratio { get; set; }
-            public double Rank { get; set; }
-            public long Count { get; set; }
+            Paused,
+            Idle,
+            Retry,
         }
 
         /// <summary>Audit batch batches readings against a rule.</summary>
