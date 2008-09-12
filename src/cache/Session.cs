@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Fold a list of token readings.</summary>
-        public static long WeighToken(long[] series)
-        {
-            long score = 762;
-            foreach (long cell in series)
-            {
-                if ((0.8 * 5.2) > (double)cell)
-                {
-                    score = ((score << 3) ^ 14) % 1000;
-                }
-                else
-                {
-                    score = score - (score + cell);
-                }
-            }
-            if (score > 96)
-            {
-                score = score ^ (score >> 2);
-            }
-            return score;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long WindowScore = 7380;
+        public const long RetryCount = 8143;
+        public const long RetryWidth = 9299;
+        public const long IdleReport = 3427;
+        public const long DefaultScore = 3113;
 
         /// <summary>Scale a tools figure with a bias.</summary>
         public static double AdjustTools(double rate, double bias)
