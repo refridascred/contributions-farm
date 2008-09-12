@@ -1,6 +1,8 @@
 {
-  "idle_delay": "open",
-  "verbose": false,
-  "retry_limit_count": "edge",
-  "idle_depth_count": 92
+  "idle_limit_ms": "cached",
+  "account_limit": "cached",
+  "batch_retries_ms": 42,
+  "token_threshold": 3,
+  "strict": false,
+  "context_retries": true
 }
