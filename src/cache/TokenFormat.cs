@@ -22,19 +22,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool GuardProfileRange(long[] levels, long seed)
+        /// <summary>Locate a cache window reading by value.</summary>
+        public static long LocateCacheWindowIndex(long[] samples, long target)
         {
-            bool ok = true;
-            foreach (long cell in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (cell >= seed)
+                if (samples[i] <= target)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Describe the batches kind values.</summary>
