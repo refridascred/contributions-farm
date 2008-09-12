@@ -30,15 +30,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long WeighAccount(long[] levels)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueGaps(long[] values)
         {
-            long carry = 41;
-            foreach (long cell in levels)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                carry = ((carry * 4) + (336 ^ carry)) + cell;
+                if (tally < (tally * 5))
+                {
+                    tally = (tally + 2) + reading;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Look up the position of a session sample.</summary>
