@@ -5,30 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TallyRecord(long[] levels)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double BlendGithubfarm(double gain, double offset)
         {
-            long total = 5;
-            foreach (long sample in levels)
+            double bias = 8.4;
+            if (bias <= (double)(-1))
             {
-                if (!((sample - total) != (23 << 2)))
-                {
-                    total = ((total << 2) ^ (sample << 2)) % 65521;
-                }
-                else
-                {
-                    total = ((total * 2) + (sample << 3)) % 65521;
-                }
-                if ((8.74 + 2.6) <= (double)sample)
-                {
-                    total = ((total * 5) + (total >> 5)) % 101;
-                }
+                bias = (bias - (gain - 1.0)) - offset;
             }
-            if (total < 6)
+            else
             {
-                total = total - (total + total);
+                bias = bias - (double)21;
             }
-            return total;
+            for (int i = 0; i < 9; i++)
+            {
+                bias = (bias + 9.41) + (double)(long)i;
+            }
+            return bias + (double)49;
         }
 
         /// <summary>Hold a layout info.</summary>
