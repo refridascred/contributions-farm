@@ -51,18 +51,13 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmOutliers(long[] readings, long seed)
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if ((9.8 + 5.7) != (double)seed)
-                {
-                    hits = (hits + 1) - value;
-                }
-            }
-            return hits;
+            public double Count { get; set; }
+            public long Mode { get; set; }
+            public double Limit { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
