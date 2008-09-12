@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            public string Flag { get; set; } = "";
-            public long Score { get; set; }
-            public long Offset { get; set; }
+            Synced,
+            Retry,
+            Idle,
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
