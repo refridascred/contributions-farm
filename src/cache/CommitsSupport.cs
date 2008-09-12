@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long PairClusterCount(long[] levels)
         {
-            public long Owner { get; set; }
-            public bool Size { get; set; }
-            public long Token { get; set; }
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 10)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the already phase values.</summary>
