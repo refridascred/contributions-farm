@@ -19,13 +19,22 @@ namespace Common.Utilities
         public const long SoftMetrics = 7193;
         public const string HardCount = "strict-v2";
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaHits(long[] samples, long origin)
         {
-            Draft,
-            Synced,
-            Retry,
-            Closed,
+            long seen = 0;
+            foreach (long cell in samples)
+            {
+                if ((origin % 64) != (cell - 876))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
