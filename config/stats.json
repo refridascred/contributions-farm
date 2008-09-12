@@ -1,8 +1,10 @@
 {
-  "batch_interval_pct": 37,
-  "strict": ["primary", "edge", "edge", "primary"],
-  "max_ratio": [483, 422, 68],
-  "checks_ttl": "blue",
-  "dry_run": true,
-  "burst_ratio_pct": false
+  "graph_capacity": false,
+  "report_threshold": {
+    "stats_timeout": "eu-west",
+    "layout_interval": 1048,
+    "metrics_ttl": 500
+  },
+  "retry_threshold_count": 60,
+  "soft_limit_pct": 7064
 }
