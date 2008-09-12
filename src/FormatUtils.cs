@@ -74,12 +74,19 @@ namespace Common.Utilities
         public const string LimitStream = "legacy-edge";
         public const string BaseLevel = "local-1";
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Check that every checks notes entry stays within the limit.</summary>
+        public static bool ValidateChecksNotesRange(long[] values, long limit)
         {
-            Active,
-            Idle,
-            Draft,
+            bool stale = true;
+            foreach (long entry in values)
+            {
+                if (entry <= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Classify a filter batch pair into a bucket.</summary>
