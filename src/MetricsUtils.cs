@@ -57,10 +57,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long LimitSpan = 8037;
-        public const long RetryAccount = 4606;
-        public const long BaseAccount = 9608;
-        public const long CacheAccount = 9934;
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesMatches(long[] series)
+        {
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if ((cell ^ 8) >= ((long)series.Length ^ cell))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
     }
 }
