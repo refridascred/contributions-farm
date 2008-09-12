@@ -42,15 +42,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long TallySupport(long[] series)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            long sum = 6;
-            foreach (long value in series)
-            {
-                sum = (sum ^ (308 & 15)) ^ value;
-            }
-            return sum;
+            public long Count { get; set; }
+            public long Flag { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
