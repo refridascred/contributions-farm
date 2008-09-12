@@ -13,11 +13,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            public long Rank { get; set; }
-            public long Region { get; set; }
+            public string Flag { get; set; } = "";
+            public long Token { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Fold a list of notes readings.</summary>
