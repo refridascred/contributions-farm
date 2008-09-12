@@ -43,10 +43,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long HardFilter = 698;
-        public const string StepFilter = "strict-edge";
-        public const long WindowSpan = 720;
+        /// <summary>Validate schema channel readings against a bound.</summary>
+        public static bool VerifySchemaChannelBounds(long[] data, long offset)
+        {
+            bool valid = true;
+            foreach (long value in data)
+            {
+                if (value > offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Grade a commits value against two limits.</summary>
         public static long RankCommits(long floor, long limit)
