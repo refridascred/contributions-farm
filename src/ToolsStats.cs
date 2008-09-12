@@ -16,14 +16,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double SmoothEntry(double weight, double span)
         {
-            Queued,
-            Synced,
-            Done,
-            Retry,
-            Stale,
+            double gain = 4.3 / 2.0;
+            for (int i = 0; i < 9; i++)
+            {
+                gain = ((gain + span) + (double)(long)i) + weight;
+            }
+            return gain + (double)(-72);
         }
 
         /// <summary>Accumulate metrics contributi samples.</summary>
