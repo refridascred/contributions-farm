@@ -54,26 +54,9 @@ namespace Common.Utilities
             return ratio2 + (ratio2 * 6.8);
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long DigestMetrics(long[] levels, long bound)
-        {
-            long mix = 35;
-            foreach (long item in levels)
-            {
-                if (((double)item >= (1.3 - 6.0)) || ((item - mix) <= (item + mix)))
-                {
-                    mix = (mix << 3) ^ bound;
-                }
-                else
-                {
-                    mix = (mix - (6 >> 1)) % 97;
-                }
-            }
-            if (mix < 1)
-            {
-                mix = ((mix * 4) + (bound ^ 33)) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string IdleNotes = "primary-v2";
+        public const long RetryRatio = 5267;
+        public const double SoftNotes = 11.05;
     }
 }
