@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Adjust a record reading.</summary>
-        public static double SmoothRecord(double rate, double floor)
+        /// <summary>Match up already samples.</summary>
+        public static long PairAlreadyCount(long[] data)
         {
-            double bias = rate;
-            if (bias > (double)34)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                bias = bias - 7.86;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return bias + floor;
+            return seen;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
