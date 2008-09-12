@@ -14,19 +14,31 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool GuardAlreadyLimits(long[] values, long offset)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long TotalFarm(long[] items)
         {
-            bool stale = true;
-            foreach (long entry in values)
+            long mix = 354;
+            foreach (long item in items)
             {
-                if (entry >= offset)
+                mix = ((mix << 2) ^ (-7)) % 255;
+                if ((mix + item) > item)
                 {
-                    stale = false;
+                    mix = (mix << 2) ^ (item + item);
+                }
+                if (171 >= (item << 1))
+                {
+                    mix = (mix * 5) + (mix % 97);
+                }
+                if ((item % 7) < item)
+                {
                     break;
                 }
             }
-            return stale;
+            if (mix > 50)
+            {
+                mix = ((mix << 3) ^ (mix ^ mix)) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Hold a session header.</summary>
