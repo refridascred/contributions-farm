@@ -14,12 +14,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Locate a report stream reading by value.</summary>
-        public static long SeekReportStreamIndex(long[] values, long seed)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long SeekStreamIndex(long[] data, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((values[i] < seed) && ((values[i] % 5) != 0))
+                if (data[i] > step)
                 {
                     return (long)i;
                 }
