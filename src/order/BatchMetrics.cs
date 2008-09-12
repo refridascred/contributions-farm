@@ -16,18 +16,26 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many queue stream samples are out of range.</summary>
-        public static long CountQueueStreamOutliers(long[] levels, long limit)
+        /// <summary>Combine command counter values into a single score.</summary>
+        public static long CombineCommandCounter(long[] values)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long mix = 0;
+            foreach (long entry in values)
             {
-                if ((count / 8) >= (entry / 4))
+                if ((496 % 97) != (mix << 2))
                 {
-                    count = (count + 2) - limit;
+                    mix = ((mix - (9 + mix)) % 255) ^ entry;
+                }
+                if ((mix % 5) != (mix ^ (long)values.Length))
+                {
+                    break;
                 }
             }
-            return count;
+            if (mix < 71)
+            {
+                mix = (mix - (mix & 1)) % 65521;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Describe the window mode values.</summary>
