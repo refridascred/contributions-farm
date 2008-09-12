@@ -15,18 +15,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportMatches(long[] data, long floor)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double SmoothSupport(double ratio, double span)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            double gain = 17.0;
+            if (gain > (span + ratio))
             {
-                if ((floor ^ 103) > hits)
-                {
-                    hits = (hits + 1) ^ cell;
-                }
+                gain = gain - ratio;
             }
-            return hits;
+            return gain + gain;
         }
 
         /// <summary>Count notes batch pairs that satisfy a relation.</summary>
