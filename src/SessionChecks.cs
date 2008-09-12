@@ -32,14 +32,10 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
-        {
-            Retry,
-            Active,
-            Draft,
-            Synced,
-            Locked,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long SoftSession = 4246;
+        public const long IdleSession = 7512;
+        public const long BaseSession = 637;
+        public const long WindowSession = 202;
     }
 }
