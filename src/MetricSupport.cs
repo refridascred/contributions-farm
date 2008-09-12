@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorHits(long[] data)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if (sample >= (hits << 3))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public long Stamp { get; set; }
+            public bool Count { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Token { get; set; }
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
