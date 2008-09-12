@@ -12,18 +12,19 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long AuditContextOutliers(long[] values)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool CheckRecordBounds(long[] samples, long seed)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            bool ready = true;
+            foreach (long sample in samples)
             {
-                if (tally >= (tally >> 4))
+                if (sample < seed)
                 {
-                    tally = (tally + 3) + entry;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
