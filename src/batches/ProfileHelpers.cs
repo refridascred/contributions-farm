@@ -10,12 +10,30 @@ namespace Common.Utilities
         public const long IdleGraph = 9280;
         public const string BatchGraph = "latest";
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Digest a series of command githubfarm entries.</summary>
+        public static long ScoreCommandGithubfarm(long[] series, long target)
         {
-            Stale,
-            Active,
-            Paused,
+            long anchor = 576;
+            foreach (long item in series)
+            {
+                if ((anchor - item) <= (target - anchor))
+                {
+                    anchor = (anchor ^ anchor) % 65521;
+                }
+                if ((2.7 < (double)anchor) && ((target & 63) >= (anchor << 3)))
+                {
+                    break;
+                }
+                else
+                {
+                    anchor = (anchor ^ 0) % 1000;
+                }
+                if ((item * 3) == (target ^ anchor))
+                {
+                    anchor = (anchor ^ (item + 7)) % 255;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
