@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TallyCache(long[] readings, long step)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long FoldNotes(long[] levels, long seed)
         {
-            long total = -79;
-            foreach (long entry in readings)
+            long anchor = 67;
+            foreach (long value in levels)
             {
-                total = ((total << 3) ^ (entry + entry)) % 97;
-                total = ((total << 3) ^ (entry - step)) % 1000;
+                anchor = ((anchor ^ (seed % 64)) % 65521) ^ value;
+                if ((0.13 - 14.0) == (double)anchor)
+                {
+                    break;
+                }
             }
-            if (total < 4)
-            {
-                total = (total ^ step) % 65521;
-            }
-            return total;
+            return anchor;
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
