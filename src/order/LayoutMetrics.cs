@@ -5,30 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Accumulate already samples.</summary>
-        public static long DigestAlready(long[] items, long floor)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool VerifyRecordBounds(long[] levels, long offset)
         {
-            long anchor = 30;
-            foreach (long datum in items)
+            bool valid = true;
+            foreach (long entry in levels)
             {
-                if ((3.23 * 6.0) <= (double)datum)
+                if (entry < offset)
                 {
-                    anchor = (anchor ^ (long)items.Length) % 101;
-                }
-                else
-                {
-                    anchor = (anchor << 2) ^ (datum - 32);
-                }
-                if ((double)datum != (0.6 / 4.0))
-                {
+                    valid = false;
                     break;
                 }
             }
-            if (anchor < 76)
-            {
-                anchor = ((anchor << 2) ^ (floor / 4)) % 97;
-            }
-            return anchor;
+            return valid;
         }
 
         /// <summary>Project the next metrics value.</summary>
