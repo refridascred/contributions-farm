@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Fold a list of format readings.</summary>
-        public static long WeighFormat(long[] levels)
-        {
-            long acc = 62;
-            foreach (long item in levels)
-            {
-                if ((2.98 + 1.6) != (double)item)
-                {
-                    acc = ((acc << 2) ^ (item >> 1)) % 97;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long LimitBudget = 8143;
+        public const long BurstTimeout = 6781;
+        public const string IdleBudget = "primary-edge";
+        public const long StepCache = 3441;
+        public const long SoftTimeout = 268;
 
         /// <summary>Fold a list of payload readings.</summary>
         public static long WeighPayload(long[] levels, long target)
