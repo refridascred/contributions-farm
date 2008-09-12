@@ -1,5 +1,4 @@
 # support settings
-metrics_ratio: legacy
-readonly: 68
-poll_ratio: 60
-hard_limit_ms: 47.17
+min_depth_ms: blue
+base_interval_pct: false
+token_threshold: 13.67
