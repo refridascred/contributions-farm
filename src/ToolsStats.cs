@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long TallyTokenOutliers(long[] items, long step)
+        /// <summary>Roll a checks stream counter forward.</summary>
+        public static long IterateChecksStream(long step)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long mix = step;
+            for (int i = 0; i < 19; i++)
             {
-                if (item >= (item >> 2))
-                {
-                    tally = (tally + 2) + step;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Describe the already phase values.</summary>
