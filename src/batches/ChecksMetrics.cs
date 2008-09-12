@@ -18,32 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long ClassifyChannel(long seed, long bound)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            long diff = seed + bound;
-            if ((5 + bound) >= (bound / 7))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)bound >= 16.0)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((seed * 3) <= diff)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public string Stamp { get; set; } = "";
+            public double Limit { get; set; }
         }
 
         /// <summary>Audit schema session readings against a rule.</summary>
