@@ -19,19 +19,13 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Combine checks session values into a single score.</summary>
-        public static long WeighChecksSession(long[] samples)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            long mark = 82;
-            foreach (long datum in samples)
-            {
-                mark = (mark + datum) % 101;
-                if (((20.0 / 3.0) <= (double)mark) || ((mark + mark) == (datum + datum)))
-                {
-                    break;
-                }
-            }
-            return mark % 1000;
+            Paused,
+            Retry,
+            Active,
+            Ready,
         }
 
         /// <summary>Describe the cache phase values.</summary>
