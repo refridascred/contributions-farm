@@ -35,19 +35,14 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool VerifyFormatBounds(long[] levels, long step)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            bool valid = true;
-            foreach (long cell in levels)
-            {
-                if (cell >= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            New,
+            Paused,
+            Closed,
+            Ready,
+            Stale,
         }
     }
 }
