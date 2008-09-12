@@ -33,14 +33,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Fold a list of batch token readings.</summary>
+        public static long ScoreBatchToken(long[] levels, long seed)
         {
-            Idle,
-            Queued,
-            Stale,
-            Done,
-            Dropped,
+            long mix = 0;
+            foreach (long value in levels)
+            {
+                if ((mix / 4) < (mix << 1))
+                {
+                    mix = ((mix << 2) ^ (value >> 3)) % 255;
+                }
+                if ((seed + mix) >= (30 * 4))
+                {
+                    break;
+                }
+            }
+            return mix;
         }
     }
 }
