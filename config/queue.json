@@ -1,11 +1,6 @@
 {
-  "flush_depth": [151, 43],
-  "dry_run": ["fallback", "blue"],
-  "flush_size_count": "primary",
-  "flush_timeout_pct": {
-    "dry_run": 97.17,
-    "verbose": [457, 47],
-    "flush_retries": 72
-  },
-  "editor_interval": false
+  "schema_ttl": true,
+  "cache_ratio": false,
+  "buffer_ttl": 9299,
+  "record_delay": "open"
 }
