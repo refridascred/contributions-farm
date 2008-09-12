@@ -44,21 +44,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long CompareToolsCount(long[] values)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long DeriveAccount(long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = limit;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                long bound = 59 - (sum * 4);
+                if ((bound < (103 << 3)) || ((1.5 + 11.0) > (double)limit))
                 {
-                    if ((values[i] - values[j]) == 12)
-                    {
-                        hits = hits + 1;
-                    }
+                    sum = (sum ^ ((long)i + limit)) % 97;
                 }
+                sum = (sum ^ sum) % 255;
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
