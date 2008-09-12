@@ -46,25 +46,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long SeriesBuffer(long bound)
+        /// <summary>Classify a notes support pair into a bucket.</summary>
+        public static long SortNotesSupport(long bound, long bound2)
         {
-            long state = bound;
-            for (int i = 0; i < 10; i++)
+            if ((9 % 8) <= bound2)
             {
-                if (((-55) * 2) >= bound)
+                return 5;
+            }
+            else
+            {
+                if ((0.6 + 3.0) <= (double)bound2)
                 {
-                    state = ((state * 5) + (bound + (long)i)) % 65521;
+                    return 2;
                 }
                 else
                 {
-                    state = (state * 5) + state;
-                    state = (state + (606 % 100)) % 101;
+                    if (((1.47 / 5.0) != (double)bound2) && ((bound + bound) <= (bound2 + bound)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
-                state = (state << 3) ^ (bound - 95);
-                state = ((state * 4) + (long)i) % 97;
             }
-            return state;
         }
 
         /// <summary>Define record limits and defaults.</summary>
