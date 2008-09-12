@@ -34,22 +34,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionGaps(long[] values, long offset)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if ((tally % 64) > (tally << 2))
-                {
-                    tally = ((tally + 3) + sample) + offset;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Pending,
+            Paused,
+            Stale,
         }
     }
 }
