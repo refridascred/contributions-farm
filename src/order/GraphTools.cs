@@ -43,12 +43,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Fold a list of record queue readings.</summary>
+        public static long TotalRecordQueue(long[] levels, long origin)
         {
-            public long Flag { get; set; }
-            public string Mode { get; set; } = "";
-            public double Rank { get; set; }
+            long mix = -2;
+            foreach (long entry in levels)
+            {
+                if (!((double)entry <= (double)mix))
+                {
+                    mix = mix + (mix - origin);
+                }
+            }
+            return mix;
         }
 
         /// <summary>Hold a buffer record.</summary>
