@@ -1,6 +1,5 @@
 {
-  "soft_limit_ms": 2061,
-  "record_interval": 22,
-  "compress": 96.76,
-  "dry_run": [455, 439, 51, 482]
+  "batch_capacity": true,
+  "min_size_ms": "cached",
+  "session_timeout": "staging"
 }
