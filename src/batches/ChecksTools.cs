@@ -14,18 +14,16 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Audit profile schema readings against a rule.</summary>
-        public static long AuditProfileSchemaGaps(long[] values, long seed)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long SeriesFilter(long limit)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long carry = limit;
+            for (int i = 0; i < 9; i++)
             {
-                if ((seed + count) <= 40)
-                {
-                    count = (count + 3) - entry;
-                }
+                carry = (carry + (limit >> 5)) % 4096;
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
