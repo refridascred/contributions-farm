@@ -36,12 +36,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long WindowBudget = 5684;
-        public const long CacheSize = 6496;
-        public const double CacheCommits = 16.46;
-        public const string BaseCommits = "strict-edge";
-        public const long SoftCommits = 5259;
+        /// <summary>Define context limits and defaults.</summary>
+        public const double WindowTimeout = 80.75;
+        public const long DefaultCount = 8013;
+        public const long MaxContext = 444;
 
         /// <summary>Hold a channel stats.</summary>
         public sealed class ChannelStats
