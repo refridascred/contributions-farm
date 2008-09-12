@@ -1,6 +1,7 @@
 {
-  "idle_ratio": true,
-  "flush_ttl_pct": ["green", "legacy", "blue", "staging"],
-  "warm_ratio_count": 84,
-  "burst_window_s": ["legacy", "local", "blue"]
+  "min_limit_count": ["green", "primary", "eu-west", "fallback"],
+  "verbose": 1024,
+  "persist": "edge",
+  "enabled": 79.18,
+  "poll_ratio_s": "latest"
 }
