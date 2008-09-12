@@ -64,11 +64,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double StepInterval = 70.7;
-        public const long SoftContributi = 2906;
-        public const string SoftInterval = "staging-v2";
-        public const double BurstInterval = 93.05;
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool VerifyLayoutLimits(long[] series, long offset)
+        {
+            bool ok = true;
+            foreach (long cell in series)
+            {
+                if (cell > offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Audit account cluster readings against a rule.</summary>
         public static long TallyAccountClusterGaps(long[] samples, long offset)
