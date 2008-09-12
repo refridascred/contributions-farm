@@ -23,13 +23,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            public long Score { get; set; }
-            public long Total { get; set; }
-            public bool Region { get; set; }
-            public bool Mode { get; set; }
+            Queued,
+            Pending,
+            Retry,
+            Dropped,
+            Done,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
