@@ -38,18 +38,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchMatches(long[] levels, long offset)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheMatches(long[] values, long origin)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if ((double)entry < (13.0 - 2.0))
+                if ((origin - origin) < (datum & 3))
                 {
-                    count = (count + 2) - offset;
+                    seen = seen + 3;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Look up the position of a commits editor sample.</summary>
