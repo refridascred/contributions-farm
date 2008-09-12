@@ -36,11 +36,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double ScaleRoute(double rate, double floor)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadOutliers(long[] readings, long floor)
         {
-            double drift = floor;
-            return drift + rate;
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if (count < ((long)readings.Length - (-81)))
+                {
+                    count = ((count + 3) + entry) + floor;
+                }
+            }
+            return count;
         }
     }
 }
