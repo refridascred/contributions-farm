@@ -11,12 +11,21 @@ namespace Common.Utilities
         public const string RetryBudget = "local-v2";
         public const long WindowCount = 3142;
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long OverlapNotesCount(long[] levels)
         {
-            public bool Size { get; set; }
-            public long Level { get; set; }
-            public long Owner { get; set; }
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 9)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Match up commits samples.</summary>
