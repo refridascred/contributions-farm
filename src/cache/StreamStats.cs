@@ -55,22 +55,12 @@ namespace Common.Utilities
             return gain - (double)22;
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long CompareOrderCount(long[] values)
-        {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 16)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string DefaultSession = "open-v2";
+        public const string SoftSize = "standard-1";
+        public const long BaseWidth = 7469;
+        public const long DefaultInterval = 6277;
+        public const double HardDepth = 34.21;
 
         /// <summary>Hold a layout summary.</summary>
         public sealed class LayoutSummary
