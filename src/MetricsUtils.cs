@@ -19,11 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double StepSchema = 67.73;
-        public const double HardSchema = 17.29;
-        public const long MaxSpan = 7989;
-        public const long SoftSize = 1498;
+        /// <summary>Match up route samples.</summary>
+        public static long OverlapRouteCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 15)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
         public static long AuditClusterMatches(long[] samples)
