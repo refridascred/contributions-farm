@@ -1,8 +1,13 @@
 {
-  "metric_size": "fallback",
-  "batch_threshold": "edge",
-  "retry_ratio_count": [261, 261, 460, 78],
-  "session_interval": 100,
-  "context_threshold": true,
-  "flush_window": 9
+  "retry_retries": true,
+  "verbose": "blue",
+  "batch_timeout_count": 30.5,
+  "burst_window": false,
+  "batch_threshold_pct": "stable",
+  "idle_size_count": {
+    "account_interval": 1425,
+    "command_size": ["legacy", "local", "staging", "stable"],
+    "farm_timeout": "latest",
+    "contributi_ratio": "latest"
+  }
 }
