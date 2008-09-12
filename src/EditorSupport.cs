@@ -53,24 +53,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Grade a stats profile value against two limits.</summary>
-        public static long RankStatsProfile(long limit, long target)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double AdjustProfile(double weight, double bias)
         {
-            if ((double)target >= (2.0 / 8.0))
+            double weight2 = (bias / 9.0) + (bias + weight);
+            if (weight2 < weight2)
             {
-                return 4;
+                weight2 = weight2 - weight2;
             }
-            else
-            {
-                if ((double)target != (double)limit)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return weight2 + (weight + 11.0);
         }
     }
 }
