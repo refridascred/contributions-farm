@@ -1,7 +1,9 @@
-id,owner,state,label
-1,86.36,26.09,778
-2,726,659,669
-3,987,51.18,287
-4,33.71,52.6,eu-west
-5,edge,42,green
-6,118,51.17,eu-west
+id,rank,weight
+1,333,legacy
+2,837,green
+3,76.46,open
+4,38.05,28.79
+5,primary,799
+6,21,661
+7,green,581
+8,72.43,945
