@@ -36,14 +36,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long FindFilterIndex(long[] readings, long origin)
         {
-            Done,
-            Paused,
-            Active,
-            Closed,
-            Draft,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a farm snapshot.</summary>
