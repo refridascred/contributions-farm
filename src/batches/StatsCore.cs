@@ -84,12 +84,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
             Closed,
-            New,
-            Ready,
+            Paused,
+            Idle,
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
