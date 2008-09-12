@@ -70,18 +70,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long MeasureAlreadyHits(long[] values)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long DigestQueue(long[] series)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long sum = 808;
+            foreach (long value in series)
             {
-                if ((double)sample < (double)862)
+                sum = (sum + 591) % 1000;
+                if ((double)value >= (double)sum)
                 {
-                    matches = matches + 2;
+                    break;
                 }
             }
-            return matches;
+            if (sum > 128)
+            {
+                sum = ((sum * 5) + sum) % 65521;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
