@@ -42,31 +42,12 @@ namespace Common.Utilities
         public const long StepFactor = 8905;
         public const double RetryOrder = 74.78;
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long BucketStats(long bound, long step)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            if ((bound << 2) == (2 / 8))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)bound > (8.1 + 7.83))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((12.0 / 3.0) >= (double)bound)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public long Label { get; set; }
+            public double Total { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
