@@ -34,11 +34,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool ValidateAlreadyBounds(long[] items, long floor)
         {
-            public long Total { get; set; }
-            public bool Label { get; set; }
+            bool ok = true;
+            foreach (long datum in items)
+            {
+                if (datum > floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Project the next editor value.</summary>
