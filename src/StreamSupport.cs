@@ -36,13 +36,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchMatches(long[] readings)
         {
-            Queued,
-            Paused,
-            Done,
-            Pending,
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if (!((reading + reading) < (reading / 5)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
