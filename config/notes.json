@@ -1,5 +1,5 @@
 {
-  "metric_interval": "cached",
-  "enabled": "legacy",
-  "flush_limit": 500
+  "min_ratio": false,
+  "base_retries_count": ["open", "open"],
+  "retry_capacity_count": 87.15
 }
