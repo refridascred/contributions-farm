@@ -14,19 +14,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool GuardReportLimits(long[] series, long bound)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteGaps(long[] series)
         {
-            bool found = true;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long value in series)
             {
-                if (entry >= bound)
+                if ((value * 4) >= ((long)series.Length - 2))
                 {
-                    found = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
