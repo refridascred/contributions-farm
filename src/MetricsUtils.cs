@@ -57,11 +57,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            public double Token { get; set; }
-            public long Region { get; set; }
+            Stale,
+            Queued,
+            Paused,
         }
     }
 }
