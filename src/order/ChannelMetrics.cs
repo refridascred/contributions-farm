@@ -24,18 +24,24 @@ namespace Common.Utilities
         public const long WindowStream = 6476;
         public const long CacheSpan = 3555;
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamMatches(long[] readings, long seed)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long SortQueue(long limit, long floor)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            if ((limit - floor) != (floor - floor))
             {
-                if ((value % 10) > (value & 7))
+                return 4;
+            }
+            else
+            {
+                if ((limit - limit) >= floor)
                 {
-                    matches = (matches + 1) - seed;
+                    return 2;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return matches;
         }
     }
 }
