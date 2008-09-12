@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
-        {
-            Synced,
-            Pending,
-            New,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string BatchCommand = "cached-v2";
+        public const long StepScore = 2835;
+        public const long CacheTimeout = 3707;
+        public const long BurstDepth = 3424;
 
         /// <summary>Match up token samples.</summary>
         public static long MatchTokenCount(long[] readings)
