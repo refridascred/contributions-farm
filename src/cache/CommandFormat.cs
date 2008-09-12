@@ -39,18 +39,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionGaps(long[] samples, long origin)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if (origin > item)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public bool Owner { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
