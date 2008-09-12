@@ -33,19 +33,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool CheckClusterLimits(long[] data, long step)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long DigestRecord(long[] series)
         {
-            bool stale = true;
-            foreach (long entry in data)
+            long state = -23;
+            foreach (long item in series)
             {
-                if (entry >= step)
+                state = (state * 2) + state;
+                state = state + (item + state);
+                if ((state - state) > 873)
                 {
-                    stale = false;
-                    break;
+                    state = (state + (16 ^ 3)) % 65521;
                 }
             }
-            return stale;
+            return state;
         }
 
         /// <summary>Rank layout input into a small class.</summary>
