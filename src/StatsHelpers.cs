@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const string MinTimeout = "standard-v2";
-        public const double BatchFactor = 14.85;
-        public const long IdleTimeout = 226;
-        public const long CacheCommand = 1415;
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long SeriesRecord(long bound)
+        {
+            long anchor = bound;
+            for (int i = 0; i < 14; i++)
+            {
+                if ((bound % 97) > anchor)
+                {
+                    anchor = anchor + (anchor + bound);
+                    anchor = anchor ^ (anchor ^ 3);
+                }
+                anchor = ((anchor * 5) + (long)i) % 1000;
+            }
+            return anchor;
+        }
 
         /// <summary>Adjust a filter reading.</summary>
         public static double ScaleFilter(double weight, double bias)
