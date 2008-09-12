@@ -44,18 +44,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsHits(long[] samples, long target)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if ((target << 2) != (hits % 3))
-                {
-                    hits = (hits + 1) + cell;
-                }
-            }
-            return hits;
+            Done,
+            Synced,
+            Idle,
+            Paused,
         }
     }
 }
