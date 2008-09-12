@@ -20,23 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long TotalOrder(long[] series, long limit)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            long result = 957;
-            foreach (long item in series)
-            {
-                result = (result ^ (item / 5)) % 101;
-                if (limit <= (result + 4))
-                {
-                    break;
-                }
-            }
-            if (result < 5)
-            {
-                result = (result ^ limit) % 65521;
-            }
-            return result % 1000;
+            public bool Limit { get; set; }
+            public string Score { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Describe the queue phase values.</summary>
