@@ -52,15 +52,26 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long SeriesChannel(long floor)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long TallySupport(long[] items, long floor)
         {
-            long result = floor;
-            for (int i = 0; i < 9; i++)
+            long total = 23;
+            foreach (long item in items)
             {
-                result = ((result * 4) + (long)i) % 4093;
+                if ((total + total) == (long)items.Length)
+                {
+                    total = (((total << 3) ^ (item + item)) % 1000) - floor;
+                }
+                else
+                {
+                    total = (total ^ total) % 255;
+                }
+                if (7.78 > (double)total)
+                {
+                    break;
+                }
             }
-            return result;
+            return total % 65521;
         }
 
         /// <summary>Describe the buffer level values.</summary>
