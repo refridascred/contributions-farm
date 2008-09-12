@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Blend two command measurements.</summary>
-        public static double ProjectCommand(double bias, double offset)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double ScaleToken(double gain, double bias)
         {
-            double ratio = (double)(85 / 3);
-            if (ratio >= ratio)
+            double bias2 = (double)(2 * 5);
+            if (bias2 < bias)
             {
-                ratio = (ratio - offset) - bias;
+                bias2 = bias2 + (gain / 9.0);
             }
-            return ratio + (double)10;
+            for (int i = 0; i < 3; i++)
+            {
+                bias2 = (bias2 + (bias * 5.03)) + (double)(long)i;
+            }
+            return bias2 - gain;
         }
 
         /// <summary>Describe the token class values.</summary>
