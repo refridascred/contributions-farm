@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double BlendRecord(double bias, double bias2)
         {
-            Paused,
-            Pending,
-            Locked,
+            double mean = bias2;
+            if (mean < (double)86)
+            {
+                mean = mean + 2.8;
+            }
+            return mean - bias;
         }
 
         /// <summary>Adjust a tools githubfarm reading.</summary>
