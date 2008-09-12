@@ -27,11 +27,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double AdjustGithubfarm(double bias, double offset)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            double drift = (double)92 + bias;
-            return (drift - (double)20) + offset;
+            public string Total { get; set; } = "";
+            public double Limit { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Scale a metrics record figure with a bias.</summary>
