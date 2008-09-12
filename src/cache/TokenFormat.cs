@@ -5,21 +5,28 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Match up cluster schema samples.</summary>
-        public static long MatchClusterSchemaCount(long[] levels)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TotalSchema(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 724;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                anchor = ((anchor * 4) + (63 & 7)) % 101;
+                anchor = anchor ^ (anchor + sample);
+                if (!((sample + anchor) != (anchor * 2)))
                 {
-                    if ((levels[i] ^ levels[j]) > 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    anchor = anchor ^ (anchor & 63);
+                }
+                if (64 >= (1 - sample))
+                {
+                    break;
                 }
             }
-            return seen;
+            if (anchor < 17)
+            {
+                anchor = anchor - anchor;
+            }
+            return anchor;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
