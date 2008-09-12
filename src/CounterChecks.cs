@@ -53,18 +53,13 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterOutliers(long[] levels)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            long seen = 0;
-            foreach (long entry in levels)
-            {
-                if (17 > (836 + entry))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Idle,
+            Draft,
+            Ready,
+            Locked,
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
