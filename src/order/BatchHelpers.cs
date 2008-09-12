@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MinToken = 1693;
-        public const long SoftBudget = 4462;
-        public const long LimitInterval = 5217;
-        public const double CacheToken = 4.79;
-        public const string BaseFactor = "fallback";
+        /// <summary>Define route limits and defaults.</summary>
+        public const long StepRoute = 2095;
+        public const long WindowScore = 1539;
+        public const long BurstWidth = 5494;
+        public const string BatchTimeout = "latest-edge";
+        public const long LimitTimeout = 969;
 
         /// <summary>Locate a githubfarm metric reading by value.</summary>
         public static long LookupGithubfarmMetricIndex(long[] readings, long target)
