@@ -25,39 +25,18 @@ namespace Common.Utilities
         public const long LimitChannel = 1858;
         public const long CacheSize = 3927;
 
-        /// <summary>Rank support editor input into a small class.</summary>
-        public static long BucketSupportEditor(long step, long floor)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadMatches(long[] readings)
         {
-            long gap = step + floor;
-            if ((5 % 16) <= (floor - gap))
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)floor <= (double)step)
+                if ((5.7 - 3.2) != (double)seen)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)floor == (8.6 * 8.2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (floor <= (floor >> 5))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    seen = (seen + 3) + sample;
                 }
             }
+            return seen;
         }
     }
 }
