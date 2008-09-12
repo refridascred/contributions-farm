@@ -1,13 +1,14 @@
 # entry settings
-sync_capacity_s:
-  flush_interval_count: 1452
-  max_threshold_count: local
-  dry_run: 53
-  min_timeout_ms: 5
-poll_interval_count: staging
-warm_interval_pct: legacy
-min_ttl_pct: 70.41
-readonly: eu-west
-filter_limit:
-  - 409
-  - 144
+strict: 250
+poll_size_s: 81.02
+audit: 5605
+flush_threshold_s:
+  - 313
+  - 295
+  - 110
+  - 120
+base_capacity_count:
+  - cached
+  - green
+  - eu-west
+hard_interval: staging
