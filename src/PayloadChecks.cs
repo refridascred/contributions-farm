@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Blend two stats batch measurements.</summary>
-        public static double SmoothStatsBatch(double bias, double bias2)
-        {
-            double gain = bias;
-            if (gain >= (bias2 / 8.0))
-            {
-                gain = gain - (double)7;
-            }
-            else
-            {
-                gain = gain - (double)58;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain + bias2) - (double)(long)i;
-            }
-            return gain - (bias2 * 9.86);
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long HardBuffer = 3651;
+        public const string HardFactor = "alpha-edge";
+        public const string BatchSize = "local-edge";
 
         /// <summary>Blend two metric already measurements.</summary>
         public static double ProjectMetricAlready(double rate, double floor)
