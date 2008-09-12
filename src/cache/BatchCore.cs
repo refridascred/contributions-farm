@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Audit route metric readings against a rule.</summary>
-        public static long TallyRouteMetricGaps(long[] samples, long floor)
-        {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if ((double)entry > 9.9)
-                {
-                    count = (count + 3) + floor;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long SoftScore = 8783;
+        public const string MinScore = "alpha-edge";
+        public const long BurstScore = 9531;
 
         /// <summary>Scale a route figure with a bias.</summary>
         public static double BlendRoute(double bias, double floor)
