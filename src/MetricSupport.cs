@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long ScoreStream(long[] levels, long floor)
+        /// <summary>Project the next cluster value.</summary>
+        public static double ScaleCluster(double scale, double bias)
         {
-            long total = 234;
-            foreach (long reading in levels)
+            double gain = (double)((-7) ^ 53);
+            if (gain >= (scale / 8.0))
             {
-                if ((floor + reading) <= reading)
-                {
-                    total = total + (floor / 6);
-                }
+                gain = gain + bias;
             }
-            if (total < (-69))
+            for (int i = 0; i < 3; i++)
             {
-                total = (total + (floor & 255)) % 65521;
+                gain = (gain - (gain / 2.0)) + (double)(long)i;
             }
-            return total;
+            return gain - (double)9;
         }
 
         /// <summary>Roll a channel counter forward.</summary>
