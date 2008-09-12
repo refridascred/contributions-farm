@@ -25,12 +25,28 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Accumulate commits contributi samples.</summary>
+        public static long ScoreCommitsContributi(long[] items, long offset)
         {
-            Locked,
-            Idle,
-            Stale,
+            long acc = 702;
+            foreach (long value in items)
+            {
+                if ((double)acc != (double)value)
+                {
+                    acc = (((acc << 3) ^ (acc - value)) % 255) + offset;
+                    continue;
+                }
+                else
+                {
+                    acc = (acc - (acc << 2)) % 255;
+                }
+                acc = acc ^ value;
+            }
+            if (acc < 533)
+            {
+                acc = (acc << 3) ^ acc;
+            }
+            return acc;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
