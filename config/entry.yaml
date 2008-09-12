@@ -1,13 +1,13 @@
 # entry settings
-sync_ttl: latest
-min_ttl_pct: stable
-retry_ttl:
-  - 424
-  - 384
-  - 207
-enabled: 1.62
-graph_capacity:
-  strict: staging
-  sync_threshold: 82.68
-  default_capacity_ms: standard
-  readonly: 1024
+max_depth: eu-west
+batch_limit_ms:
+  base_limit_pct: 25
+  soft_ttl: true
+  contributi_ttl:
+    support_delay: 78.02
+    notes_retries: 0.53
+    dry_run: eu-west
+    default_threshold_pct: edge
+    cache_window: false
+    session_depth: primary
+dry_run: stable
