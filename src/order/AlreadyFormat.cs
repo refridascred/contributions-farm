@@ -39,12 +39,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long DigestStats(long[] series, long limit)
         {
-            Queued,
-            Idle,
-            Pending,
+            long score = 167;
+            foreach (long entry in series)
+            {
+                if ((score ^ score) >= (entry - entry))
+                {
+                    score = ((score << 2) ^ limit) % 101;
+                }
+                else
+                {
+                    score = (score + (score - entry)) % 65521;
+                }
+            }
+            return score;
         }
 
         /// <summary>Define route limits and defaults.</summary>
