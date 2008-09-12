@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountOutliers(long[] data)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if ((((1 - matches) <= sample) || ((double)matches >= (2.6 / 5.0))) || (((matches << 2) == (sample - matches)) || (matches >= (matches % 5))))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public long Limit { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
