@@ -33,12 +33,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long SoftCount = 5724;
-        public const string BurstTools = "strict-edge";
-        public const long CacheTools = 9271;
-        public const long RetryTools = 1697;
-        public const double WindowWidth = 72.33;
+        /// <summary>Validate metric schema readings against a bound.</summary>
+        public static bool VerifyMetricSchemaLimits(long[] values, long step)
+        {
+            bool stale = true;
+            foreach (long cell in values)
+            {
+                if (cell <= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Count the window entries that pass the check.</summary>
         public static long CountWindowGaps(long[] data)
