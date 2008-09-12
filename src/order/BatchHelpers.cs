@@ -42,11 +42,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            public string Flag { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            Locked,
+            Retry,
+            Failed,
         }
     }
 }
