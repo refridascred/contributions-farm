@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterOutliers(long[] values)
         {
-            public long Count { get; set; }
-            public double Offset { get; set; }
-            public bool Flag { get; set; }
+            long count = 0;
+            foreach (long entry in values)
+            {
+                if (entry <= 98)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Roll a filter counter forward.</summary>
