@@ -24,38 +24,19 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long BucketProfile(long bound, long bound2)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long WeighLayout(long[] series, long target)
         {
-            if (((bound2 / 9) < (bound2 << 1)) && ((double)bound2 <= (2.99 / 2.0)))
+            long score = -554;
+            foreach (long cell in series)
             {
-                return 3;
+                score = (((score * 5) + (target << 1)) % 101) - cell;
             }
-            else
+            if (score < 52)
             {
-                if (!((bound2 ^ bound2) < 24))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((double)bound == (double)237))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((bound2 / 2) > bound2) && ((bound2 * 3) == (bound2 << 2)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                score = score - (score << 2);
             }
+            return score % 4096;
         }
 
         /// <summary>Describe the contributi status values.</summary>
