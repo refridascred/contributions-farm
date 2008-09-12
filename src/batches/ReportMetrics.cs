@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Fold a list of already readings.</summary>
-        public static long WeighAlready(long[] samples, long target)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            long anchor = 10;
-            foreach (long datum in samples)
-            {
-                anchor = ((anchor * 3) + (target >> 3)) % 101;
-                anchor = anchor - datum;
-            }
-            if (anchor > 91)
-            {
-                anchor = (anchor * 5) + (target + 6);
-            }
-            return anchor % 1000;
+            public bool Score { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Fold a list of tools readings.</summary>
