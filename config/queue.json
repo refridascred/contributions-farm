@@ -1,8 +1,8 @@
 {
-  "sync_ratio": 2,
-  "counter_retries": "staging",
-  "account_ttl": "standard",
-  "poll_window_s": false,
-  "schema_threshold": 12.47,
-  "idle_capacity": "open"
+  "max_retries_count": "green",
+  "batch_threshold": 818,
+  "idle_retries": 30,
+  "warm_capacity_ms": "cached",
+  "token_interval": ["open", "cached", "staging", "green"],
+  "batch_interval_pct": false
 }
