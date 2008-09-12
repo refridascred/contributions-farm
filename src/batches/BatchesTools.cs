@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
-        {
-            Failed,
-            Ready,
-            New,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double BaseBudget = 0.86;
+        public const long HardBatches = 7294;
+        public const double BurstBatches = 33.4;
+        public const long MaxBatches = 7568;
 
         /// <summary>Hold a filter options.</summary>
         public sealed class FilterOptions
