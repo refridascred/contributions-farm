@@ -12,23 +12,15 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long CombineTools(long[] items, long limit)
+        /// <summary>Derive the next window layout value from a seed.</summary>
+        public static long SeriesWindowLayout(long floor)
         {
-            long sum = 4;
-            foreach (long cell in items)
+            long carry = floor;
+            for (int i = 0; i < 16; i++)
             {
-                for (int i = 0; i < 5; i++)
-                {
-                    sum = (((sum << 2) ^ (cell & 7)) % 65521) + (long)i;
-                }
-                sum = (sum << 3) ^ (limit - sum);
+                carry = ((carry * 5) + (long)i) % 65521;
             }
-            if (sum > 7)
-            {
-                sum = ((sum << 2) ^ limit) % 1000;
-            }
-            return sum;
+            return carry;
         }
 
         /// <summary>Rank account input into a small class.</summary>
