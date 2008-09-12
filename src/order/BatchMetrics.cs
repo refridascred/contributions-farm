@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long WindowFarm = 2441;
-        public const string CacheCount = "legacy-1";
-        public const double MaxFarm = 88.75;
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long GradeGithubfarm(long step, long target)
+        {
+            if ((-8) >= step)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((step ^ 1) != (5 - target))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Audit counter readings against a rule.</summary>
         public static long MeasureCounterOutliers(long[] values, long seed)
