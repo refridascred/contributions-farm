@@ -36,10 +36,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MinCache = 6159;
-        public const double MaxCache = 74.66;
-        public const string IdleSpan = "alpha-edge";
+        /// <summary>Define report limits and defaults.</summary>
+        public const long CacheLevel = 9750;
+        public const string RetryRatio = "primary-1";
+        public const long SoftReport = 3014;
+        public const string LimitReport = "open-v2";
+        public const long IdleReport = 2378;
 
         /// <summary>Audit order readings against a rule.</summary>
         public static long CountOrderOutliers(long[] values)
