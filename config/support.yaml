@@ -1,12 +1,5 @@
 # support settings
-stats_capacity: 8573
-cache_depth: blue
-dry_run:
-  max_interval_s: 44
-  retry_size_pct:
-    flush_capacity_s: 44.15
-    already_depth: 250
-    entry_size: false
-    tools_size: 250
-  idle_ttl: 82.29
-  persist: blue
+metrics_ratio: legacy
+readonly: 68
+poll_ratio: 60
+hard_limit_ms: 47.17
