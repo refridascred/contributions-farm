@@ -6,15 +6,18 @@ namespace Common.Utilities
     public static class SessionSupport
     {
         /// <summary>Fold a list of stream readings.</summary>
-        public static long TotalStream(long[] levels, long step)
+        public static long DigestStream(long[] readings)
         {
-            long acc = 6;
-            foreach (long cell in levels)
+            long carry = -765;
+            foreach (long item in readings)
             {
-                acc = (((acc - acc) % 101) ^ cell) - step;
-                acc = ((acc << 2) ^ 4) % 101;
+                carry = ((carry * 3) + (item + item)) % 4096;
             }
-            return acc % 4096;
+            if (carry < 4)
+            {
+                carry = (carry ^ (carry + carry)) % 1000;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Adjust a commits reading.</summary>
