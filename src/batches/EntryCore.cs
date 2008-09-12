@@ -23,18 +23,21 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferMatches(long[] series, long seed)
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long MatchStreamCount(long[] levels)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((double)hits <= (double)seed))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = (hits + 1) - value;
+                    if ((levels[i] - levels[j]) > 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Rank stats input into a small class.</summary>
