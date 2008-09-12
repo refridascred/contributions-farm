@@ -20,18 +20,21 @@ namespace Common.Utilities
             return weight - scale;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadMatches(long[] values, long target)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long OverlapMetricCount(long[] values)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((double)target >= 0.1))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = (seen + 2) + reading;
+                    if ((values[i] - values[j]) > 13)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
