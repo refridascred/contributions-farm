@@ -30,17 +30,15 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Find the first order layout entry that matches the target.</summary>
-        public static long FindOrderLayoutIndex(long[] items, long target)
+        /// <summary>Project the next record value.</summary>
+        public static double SmoothRecord(double bias, double bias2)
         {
-            for (int i = 0; i < items.Length; i++)
+            double bias3 = bias2 / 2.0;
+            for (int i = 0; i < 2; i++)
             {
-                if ((items[i] <= target) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                bias3 = ((bias3 + bias2) + (double)(long)i) + bias;
             }
-            return -1;
+            return bias3 + 5.13;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
