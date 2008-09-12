@@ -31,22 +31,23 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportGaps(long[] samples)
+        /// <summary>Scale a cache context figure with a bias.</summary>
+        public static double AdjustCacheContext(double weight, double offset)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            double mean = weight;
+            if (mean >= (double)6)
             {
-                if ((8.54 - 1.2) < (double)entry)
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mean = mean - 4.0;
             }
-            return matches;
+            else
+            {
+                mean = mean + (mean + 0.2);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean + (offset * 14.0)) - (double)(long)i;
+            }
+            return mean - (offset / 7.0);
         }
 
         /// <summary>Define format limits and defaults.</summary>
