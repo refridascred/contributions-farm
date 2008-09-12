@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double ScaleToken(double gain, double bias)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterMatches(long[] data)
         {
-            double bias2 = (double)(2 * 5);
-            if (bias2 < bias)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                bias2 = bias2 + (gain / 9.0);
+                if ((tally >> 4) > (datum * 3))
+                {
+                    tally = tally + 3;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                bias2 = (bias2 + (bias * 5.03)) + (double)(long)i;
-            }
-            return bias2 - gain;
+            return tally;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
