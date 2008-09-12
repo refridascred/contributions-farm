@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long StepCommits(long origin)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long MatchQueueCount(long[] levels)
         {
-            long total = origin;
-            for (int i = 0; i < 5; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((origin / 9) >= (total + origin)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    total = ((total * 4) + (origin & 1)) % 101;
+                    if ((levels[i] ^ levels[j]) == 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                total = ((total * 5) + (long)i) % 97;
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Describe the order level values.</summary>
