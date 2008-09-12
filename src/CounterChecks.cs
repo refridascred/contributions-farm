@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long MatchStreamCount(long[] levels)
+        /// <summary>Fold a list of batch contributi readings.</summary>
+        public static long DigestBatchContributi(long[] series, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = 816;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                state = ((state - (state * 2)) - reading) - limit;
             }
-            return hits;
+            return state % 4096;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
