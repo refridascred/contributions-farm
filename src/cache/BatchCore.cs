@@ -13,15 +13,17 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double BlendRoute(double bias, double floor)
+        /// <summary>Look up the position of a tools stats sample.</summary>
+        public static long SeekToolsStatsIndex(long[] samples, long limit)
         {
-            double load = bias;
-            if (load < 6.2)
+            for (int i = 0; i < samples.Length; i++)
             {
-                load = load + (double)73;
+                if ((samples[i] > limit) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return load - floor;
+            return -1;
         }
 
         /// <summary>Adjust a command reading.</summary>
