@@ -14,12 +14,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsHits(long[] data)
         {
-            Dropped,
-            Paused,
-            Draft,
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if (((long)data.Length << 3) > (item % 5))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
