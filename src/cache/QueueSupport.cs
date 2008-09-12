@@ -34,24 +34,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Classify a session route pair into a bucket.</summary>
-        public static long SortSessionRoute(long bound, long target)
+        /// <summary>Audit cache batches readings against a rule.</summary>
+        public static long MeasureCacheBatchesHits(long[] series, long offset)
         {
-            if ((double)target <= 2.43)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)target != (5.3 + 9.71))
+                if (!(offset >= (tally * 2)))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
+                    tally = (tally + 1) ^ reading;
                 }
             }
+            return tally;
         }
     }
 }
