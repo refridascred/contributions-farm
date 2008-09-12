@@ -1,12 +1,17 @@
 # entry settings
-min_delay_pct: green
-hard_threshold_pct:
-  - 51
-  - 300
-  - 338
-  - 356
-flush_capacity_ms: 100
-counter_limit:
-  verbose: 60
-  batch_ratio: 69.6
-  soft_size_ms: legacy
+enabled: true
+compress: primary
+min_interval_ms: 244
+max_depth:
+  default_ttl_s: edge
+  compress: strict
+  verbose:
+    - cached
+    - primary
+    - fallback
+    - latest
+cluster_timeout:
+  - 350
+  - 227
+  - 229
+idle_size_count: edge
