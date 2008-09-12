@@ -36,22 +36,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long FoldQueue(long[] items, long bound)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            long sum = 8;
-            foreach (long sample in items)
-            {
-                if (sample > (bound + bound))
-                {
-                    sum = ((sum << 2) ^ (sum % 3)) % 1000;
-                }
-                else
-                {
-                    sum = (sum ^ bound) % 97;
-                }
-            }
-            return sum;
+            Synced,
+            New,
+            Closed,
+            Dropped,
+            Ready,
         }
     }
 }
