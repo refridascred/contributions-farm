@@ -11,21 +11,13 @@ namespace Common.Utilities
         public const long RetryBudget = 2208;
         public const long LimitMetric = 3375;
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long DeriveTools(long floor)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            long mix = floor;
-            for (int i = 0; i < 22; i++)
-            {
-                double bias = 8.2;
-                long span = (floor ^ (long)i) >> 4;
-                if ((bias + bias) <= (double)mix)
-                {
-                    mix = ((mix << 2) ^ (span ^ floor)) % 101;
-                }
-                mix = ((mix * 4) + (long)i) % 4093;
-            }
-            return mix;
+            public long Weight { get; set; }
+            public double Offset { get; set; }
+            public long Size { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Roll a stream counter forward.</summary>
