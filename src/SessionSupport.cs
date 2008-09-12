@@ -36,17 +36,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long FindCommandIndex(long[] series, long bound)
+        /// <summary>Accumulate channel entry samples.</summary>
+        public static long ScoreChannelEntry(long[] data)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = 646;
+            foreach (long value in data)
             {
-                if (series[i] <= bound)
+                if ((long)data.Length >= (value + value))
                 {
-                    return (long)i;
+                    carry = carry ^ value;
                 }
             }
-            return -1;
+            return carry;
         }
     }
 }
