@@ -38,14 +38,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderHits(long[] samples)
         {
-            Synced,
-            Failed,
-            Active,
-            Stale,
-            Locked,
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if ((((item + item) <= (item * 5)) || (seen < (seen + item))) || !((seen & 255) < (item ^ item)))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
