@@ -12,17 +12,11 @@ namespace Common.Utilities
             return (ratio - offset) + bias;
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long LookupClusterIndex(long[] values, long offset)
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] < offset) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Ratio { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
