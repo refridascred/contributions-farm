@@ -49,13 +49,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
-        {
-            Active,
-            Locked,
-            Idle,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MaxFormat = 281;
+        public const long CacheFormat = 2188;
+        public const string BatchWidth = "cached";
+        public const string BatchFormat = "staging-edge";
+        public const long DefaultRatio = 6273;
 
         /// <summary>Describe the route class values.</summary>
         public enum RouteClass
