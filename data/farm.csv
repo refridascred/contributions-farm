@@ -1,8 +1,8 @@
-id,ratio,rank,token,region
-1,12.52,36.12,492,standard
-2,eu-west,49.72,723,eu-west
-3,405,62.01,strict,210
-4,474,521,38.53,161
-5,40,445,legacy,955
-6,519,cached,strict,430
-7,legacy,51.51,81.32,blue
+id,region,token,owner
+1,primary,82.85,15.54
+2,latest,staging,860
+3,14.48,cached,45
+4,739,253,32.67
+5,staging,65.36,522
+6,912,edge,green
+7,stable,latest,695
