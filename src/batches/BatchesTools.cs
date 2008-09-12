@@ -18,19 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool ValidateOrderRange(long[] items, long bound)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long CompareRouteCount(long[] items)
         {
-            bool ok = true;
-            foreach (long datum in items)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (datum >= bound)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((items[i] ^ items[j]) > 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
