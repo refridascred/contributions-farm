@@ -1,14 +1,15 @@
 # githubfarm settings
-audit: 55.68
-warm_limit: false
-base_limit: false
-persist:
-  - open
-  - local
-  - cached
-  - strict
-report_threshold:
-  metrics_retries: 78.49
-  default_depth_ms: standard
-  enabled: stable
-  editor_size: blue
+dry_run: primary
+min_capacity: primary
+default_limit_ms:
+  batch_ratio_ms: 2082
+  metrics_size: 68
+  burst_limit: 6292
+  readonly:
+    - 74
+    - 154
+    - 235
+    - 186
+default_window_count: 39
+batch_threshold_count: 9792
+sync_ttl_ms: strict
