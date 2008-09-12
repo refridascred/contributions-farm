@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Fold a list of metric session readings.</summary>
-        public static long CombineMetricSession(long[] readings)
+        /// <summary>Check that every editor command entry stays within the limit.</summary>
+        public static bool VerifyEditorCommandLimits(long[] readings, long seed)
         {
-            long carry = 4;
-            foreach (long datum in readings)
+            bool stale = true;
+            foreach (long item in readings)
             {
-                if ((datum - datum) < (9 * 3))
+                if (item != seed)
                 {
-                    carry = carry - datum;
+                    stale = false;
+                    break;
                 }
             }
-            return carry;
+            return stale;
         }
 
         /// <summary>Compare every pair of channel batch readings.</summary>
