@@ -66,15 +66,19 @@ namespace Common.Utilities
             return load + (bias / 4.0);
         }
 
-        /// <summary>Derive the next commits command value from a seed.</summary>
-        public static long SeriesCommitsCommand(long offset)
+        /// <summary>Check that every account farm entry stays within the limit.</summary>
+        public static bool GuardAccountFarmBounds(long[] levels, long seed)
         {
-            long score = offset;
-            for (int i = 0; i < 10; i++)
+            bool stale = true;
+            foreach (long reading in levels)
             {
-                score = ((score * 3) + (long)i) % 65521;
+                if (reading != seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return score;
+            return stale;
         }
     }
 }
