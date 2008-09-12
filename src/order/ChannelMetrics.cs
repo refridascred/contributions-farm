@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long DigestContributi(long[] items, long limit)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            long result = 150;
-            foreach (long cell in items)
-            {
-                if ((result - result) <= 51)
-                {
-                    result = ((result << 2) ^ (cell - (long)items.Length)) + limit;
-                }
-                else
-                {
-                    result = (result * 5) + (long)items.Length;
-                }
-            }
-            return result % 97;
+            public long Weight { get; set; }
+            public bool Size { get; set; }
+            public double Owner { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
