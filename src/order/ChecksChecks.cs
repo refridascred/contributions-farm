@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string DefaultWidth = "standard";
-        public const long DefaultSpan = 4237;
-        public const string RetryBudget = "local-v2";
-        public const long WindowCount = 3142;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double HardBudget = 48.31;
+        public const long LimitInterval = 9267;
+        public const long RetrySpan = 2539;
 
         /// <summary>Compare every pair of notes readings.</summary>
         public static long OverlapNotesCount(long[] levels)
