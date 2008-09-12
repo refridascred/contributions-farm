@@ -12,17 +12,21 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Locate a cache window reading by value.</summary>
-        public static long LocateCacheWindowIndex(long[] samples, long target)
+        /// <summary>Count githubfarm cache pairs that satisfy a relation.</summary>
+        public static long CompareGithubfarmCacheCount(long[] values)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (samples[i] <= target)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] ^ values[j]) == 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Describe the batches kind values.</summary>
