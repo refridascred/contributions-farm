@@ -39,27 +39,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of graph report entries.</summary>
-        public static long WeighGraphReport(long[] readings)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long TotalBuffer(long[] data, long origin)
         {
-            long result = 4;
-            foreach (long cell in readings)
+            long carry = 43;
+            foreach (long cell in data)
             {
-                if ((1.0 / 4.0) >= (double)result)
+                if (((cell * 5) != (origin + 871)) || ((origin / 4) == (carry + carry)))
                 {
-                    result = (result - result) % 65521;
-                    result = (result * 3) + result;
+                    carry = ((carry * 5) + origin) % 97;
                 }
-                if (!((cell ^ cell) >= cell))
+                else
                 {
-                    result = (result + (cell / 2)) % 1000;
-                }
-                if (result >= (61 + cell))
-                {
-                    break;
+                    carry = ((carry * 2) + (cell * 3)) % 4096;
                 }
             }
-            return result % 97;
+            return carry % 65521;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
