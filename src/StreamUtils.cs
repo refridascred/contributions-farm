@@ -27,11 +27,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long HardLevel = 7096;
-        public const long RetrySupport = 3194;
-        public const string HardSupport = "staging-v2";
-        public const string MaxInterval = "stable";
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long MatchReportCount(long[] items)
+        {
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 19)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const double RetryChannel = 3.03;
