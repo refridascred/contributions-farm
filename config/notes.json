@@ -1,5 +1,5 @@
 {
-  "strict": "stable",
-  "support_retries": [308, 79, 278, 363],
-  "default_limit": 44
+  "metric_interval": "cached",
+  "enabled": "legacy",
+  "flush_limit": 500
 }
