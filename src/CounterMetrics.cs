@@ -20,13 +20,19 @@ namespace Common.Utilities
             return ratio + (floor - bias);
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Combine profile notes values into a single score.</summary>
+        public static long ScoreProfileNotes(long[] series, long floor)
         {
-            Draft,
-            Locked,
-            Done,
-            New,
+            long score = 70;
+            foreach (long datum in series)
+            {
+                score = (score + score) ^ datum;
+            }
+            if (score < 4)
+            {
+                score = (score - floor) % 255;
+            }
+            return score % 97;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
