@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long WindowScore = 7380;
-        public const long RetryCount = 8143;
-        public const long RetryWidth = 9299;
-        public const long IdleReport = 3427;
-        public const long DefaultScore = 3113;
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountOutliers(long[] data)
+        {
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if (((2.0 * 8.76) < (double)value) || ((seen / 9) > (value >> 4)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count the report entries that pass the check.</summary>
         public static long CountReportMatches(long[] data, long floor)
