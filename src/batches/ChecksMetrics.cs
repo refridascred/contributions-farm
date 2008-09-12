@@ -32,16 +32,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long RollWindow(long target)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchGaps(long[] readings, long target)
         {
-            long state = target;
-            for (int i = 0; i < 11; i++)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                state = (state - (target & 31)) % 1000;
-                state = ((state * 4) + (long)i) % 4093;
+                if ((double)entry < (double)target)
+                {
+                    matches = matches + 1;
+                }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Rank layout input into a small class.</summary>
