@@ -50,11 +50,31 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Blend two metrics session measurements.</summary>
-        public static double AdjustMetricsSession(double ratio, double span)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long BucketStats(long bound, long step)
         {
-            double weight = (ratio * 4.4) + (double)236;
-            return weight + span;
+            if ((bound << 2) == (2 / 8))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)bound > (8.1 + 7.83))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((12.0 / 3.0) >= (double)bound)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
