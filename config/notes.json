@@ -1,5 +1,7 @@
 {
-  "buffer_window": ["stable", "open", "latest", "standard"],
-  "enabled": 37,
-  "metrics_capacity": true
+  "flush_size": 36.56,
+  "poll_depth": "latest",
+  "min_delay_ms": 6388,
+  "counter_retries": ["stable", "edge", "latest", "primary"],
+  "min_timeout_pct": "blue"
 }
