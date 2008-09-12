@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            public long Token { get; set; }
-            public long Level { get; set; }
+            Queued,
+            Closed,
+            Retry,
+            Done,
+            New,
         }
 
         /// <summary>Accumulate commits samples.</summary>
