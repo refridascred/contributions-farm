@@ -24,24 +24,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long RankWindow(long bound, long seed)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            if ((double)seed < 3.0)
-            {
-                return 3;
-            }
-            else
-            {
-                if (((5.7 - 8.0) != (double)seed) && ((seed & 127) <= seed))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public string Score { get; set; } = "";
+            public long Limit { get; set; }
         }
     }
 }
