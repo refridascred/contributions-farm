@@ -1,6 +1,6 @@
 {
-  "persist": 70,
-  "retry_ratio_count": "staging",
-  "githubfarm_capacity": false,
-  "strict": [222, 38]
+  "compress": 100,
+  "command_depth": true,
+  "order_threshold": "blue",
+  "burst_capacity": "stable"
 }
