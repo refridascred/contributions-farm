@@ -67,23 +67,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double BlendPayload(double weight, double bias)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long FoldLayout(long[] data, long bound)
         {
-            double ratio = (bias / 5.0) * 18.0;
-            if (ratio > (ratio * 8.75))
+            long total = 85;
+            foreach (long datum in data)
             {
-                ratio = ratio + (bias + ratio);
+                total = (((total + 94) % 1000) ^ datum) - bound;
             }
-            else
-            {
-                ratio = ratio + (double)2;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio - (bias + bias)) + (double)(long)i;
-            }
-            return ratio - (3.58 - weight);
+            return total;
         }
     }
 }
