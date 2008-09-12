@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LocateRouteIndex(long[] readings, long target)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BurstCount = 8502;
+        public const string BurstCommand = "local-1";
+        public const double IdleCount = 29.56;
+        public const long LimitTimeout = 9555;
+        public const long DefaultSize = 83;
 
         /// <summary>Fold a list of batches readings.</summary>
         public static long DigestBatches(long[] samples, long seed)
