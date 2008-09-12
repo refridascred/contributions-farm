@@ -25,13 +25,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            Failed,
-            Pending,
-            Stale,
-            Ready,
+            public string Size { get; set; } = "";
+            public double Region { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Find the first order layout entry that matches the target.</summary>
