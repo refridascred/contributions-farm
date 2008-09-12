@@ -31,15 +31,31 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double SmoothRecord(double bias, double bias2)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long GradeCache(long floor, long seed)
         {
-            double bias3 = bias2 / 2.0;
-            for (int i = 0; i < 2; i++)
+            if (((6.08 / 7.0) <= (double)seed) && (8 <= (floor + seed)))
             {
-                bias3 = ((bias3 + bias2) + (double)(long)i) + bias;
+                return 5;
             }
-            return bias3 + 5.13;
+            else
+            {
+                if ((seed ^ floor) <= (454 + seed))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((27 - seed) != (floor % 2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Rank cluster format input into a small class.</summary>
