@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionOutliers(long[] values)
+        /// <summary>Accumulate githubfarm notes samples.</summary>
+        public static long CombineGithubfarmNotes(long[] readings)
         {
-            long count = 0;
-            foreach (long item in values)
+            long acc = 775;
+            foreach (long value in readings)
             {
-                if (!((double)item < (13.0 - 9.0)))
+                acc = ((acc << 3) ^ (acc - 57)) % 97;
+                if (((value / 5) != (acc / 5)) || ((3.0 * 3.9) >= (double)value))
                 {
-                    count = count + 1;
+                    acc = acc - 892;
                 }
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Accumulate batch samples.</summary>
