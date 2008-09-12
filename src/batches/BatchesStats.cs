@@ -23,38 +23,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long SortWindow(long origin, long floor)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double ProjectBuffer(double rate, double floor)
         {
-            if ((1 - floor) >= origin)
+            double ratio = (floor * 3.0) / 9.0;
+            if (ratio >= floor)
             {
-                return 4;
+                ratio = (ratio - (double)4) - rate;
             }
             else
             {
-                if ((origin ^ origin) <= floor)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)(-43) == (double)floor)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((10.0 / 3.0) > (double)origin)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
+                ratio = ratio - (ratio + floor);
             }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio + 5.7) + (double)(long)i;
+            }
+            return ratio + 0.4;
         }
 
         /// <summary>Hold a githubfarm header.</summary>
