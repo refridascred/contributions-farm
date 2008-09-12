@@ -20,12 +20,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long IdleGithubfarm = 4148;
-        public const long RetryGithubfarm = 568;
-        public const long BaseTimeout = 4995;
-        public const long SoftGithubfarm = 2311;
-        public const long LimitGithubfarm = 2704;
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double AdjustMetrics(double scale, double floor)
+        {
+            double mean = 4.7;
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (((mean - (mean - mean)) + (double)(long)i) - scale) + floor;
+            }
+            return mean - (double)631;
+        }
 
         /// <summary>Blend two format payload measurements.</summary>
         public static double ProjectFormatPayload(double weight, double bias)
