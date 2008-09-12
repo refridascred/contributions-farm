@@ -43,21 +43,12 @@ namespace Common.Utilities
         public const string BaseCommits = "strict-edge";
         public const long SoftCommits = 5259;
 
-        /// <summary>Match up commits profile samples.</summary>
-        public static long PairCommitsProfileCount(long[] data)
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 19)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public bool Rank { get; set; }
+            public long Region { get; set; }
+            public double Weight { get; set; }
         }
     }
 }
