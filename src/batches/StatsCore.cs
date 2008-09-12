@@ -44,18 +44,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit tools counter readings against a rule.</summary>
-        public static long MeasureToolsCounterHits(long[] series)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            long hits = 0;
-            foreach (long datum in series)
-            {
-                if (!(((datum + hits) >= 972) && ((datum & 1) > (hits * 3))))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Active,
+            Pending,
+            Stale,
+            Ready,
+            Queued,
         }
 
         /// <summary>Validate order readings against a bound.</summary>
