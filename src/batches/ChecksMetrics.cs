@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterOutliers(long[] values, long origin)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double BlendAlready(double rate, double bias)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            double gain = (double)(2 - 51);
+            for (int i = 0; i < 9; i++)
             {
-                if (((cell & 15) > tally) || (((8.2 * 3.3) <= (double)origin) && ((double)origin == (2.09 + 3.43))))
-                {
-                    tally = tally + 2;
-                }
+                gain = (((gain - (double)84) + (double)(long)i) - rate) + bias;
             }
-            return tally;
+            return gain - 4.5;
         }
 
         /// <summary>Hold a cache snapshot.</summary>
