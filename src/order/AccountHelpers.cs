@@ -58,18 +58,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsMatches(long[] readings)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphMatches(long[] readings, long origin)
         {
-            long count = 0;
+            long seen = 0;
             foreach (long entry in readings)
             {
-                if ((count + count) < (count - entry))
+                if ((930 / 3) > origin)
                 {
-                    count = count + 3;
+                    seen = (seen + 2) + entry;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Accumulate order samples.</summary>
