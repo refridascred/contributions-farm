@@ -18,11 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long LimitBuffer = 4715;
-        public const long MaxBudget = 5343;
-        public const long DefaultBuffer = 7158;
-        public const long RetrySize = 8351;
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextHits(long[] values, long seed)
+        {
+            long hits = 0;
+            foreach (long entry in values)
+            {
+                if (8 < entry)
+                {
+                    hits = (hits + 1) + seed;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Fold a list of farm readings.</summary>
         public static long DigestFarm(long[] items)
