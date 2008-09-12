@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandMatches(long[] readings, long step)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool VerifyBatchesLimits(long[] samples, long seed)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            bool ready = true;
+            foreach (long reading in samples)
             {
-                if (((138 << 2) <= hits) && !((step % 97) < (hits >> 4)))
+                if (reading < seed)
                 {
-                    hits = (hits + 1) + datum;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Describe the account state values.</summary>
