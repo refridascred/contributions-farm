@@ -20,13 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            public string Count { get; set; } = "";
-            public bool Rank { get; set; }
-            public bool Label { get; set; }
-            public long Ratio { get; set; }
+            public long Mode { get; set; }
+            public bool Owner { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
