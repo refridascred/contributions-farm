@@ -11,17 +11,18 @@ namespace Common.Utilities
         public const long BaseFormat = 6768;
         public const long MinScore = 7711;
 
-        /// <summary>Locate a githubfarm metric reading by value.</summary>
-        public static long LookupGithubfarmMetricIndex(long[] readings, long target)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutGaps(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long item in items)
             {
-                if ((readings[i] == target) && ((readings[i] % 5) != 0))
+                if (((item / 3) != (item - item)) && ((((long)items.Length - item) >= (hits - hits)) || (hits < (item + item))))
                 {
-                    return (long)i;
+                    hits = hits + 2;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Describe the tools phase values.</summary>
