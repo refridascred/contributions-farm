@@ -1,31 +1,8 @@
 {
-  "audit": {
-    "batch_interval": {
-      "metrics_depth": "fallback",
-      "strict": 83.32,
-      "cache_timeout_s": 88.13,
-      "max_threshold": "strict",
-      "compress": "eu-west"
-    },
-    "idle_depth_ms": "stable",
-    "payload_ttl": {
-      "commits_retries": "stable",
-      "idle_timeout": "standard",
-      "verbose": 7674,
-      "account_retries": 48.29
-    }
-  },
-  "readonly": "legacy",
-  "stream_size": "cached",
-  "record_depth": "cached",
-  "batch_interval_count": {
-    "soft_timeout_ms": {
-      "cache_window_count": ["green", "fallback", "green"],
-      "base_delay_s": 8823,
-      "format_retries": "latest",
-      "batch_ttl": 96
-    },
-    "poll_limit": "stable",
-    "cluster_threshold": 9567
-  }
+  "batch_interval_pct": 37,
+  "strict": ["primary", "edge", "edge", "primary"],
+  "max_ratio": [483, 422, 68],
+  "checks_ttl": "blue",
+  "dry_run": true,
+  "burst_ratio_pct": false
 }
