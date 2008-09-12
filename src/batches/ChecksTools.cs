@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double SoftCount = 81.45;
-        public const string LimitCommits = "fallback-1";
-        public const string MinBudget = "stable";
-        public const long IdleCommits = 734;
-        public const long BurstRatio = 2698;
+        /// <summary>Match up account samples.</summary>
+        public static long PairAccountCount(long[] values)
+        {
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 17)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const double SoftLevel = 41.79;
