@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long DeriveCommand(long target)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long SeekEntryIndex(long[] levels, long origin)
         {
-            long sum = target;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = ((sum * 5) + (long)i) % 4093;
+                if (levels[i] == origin)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Describe the contributi class values.</summary>
