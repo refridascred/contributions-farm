@@ -11,17 +11,18 @@ namespace Common.Utilities
         public const string MinCount = "primary";
         public const double StepScore = 89.64;
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long LookupFormatIndex(long[] data, long target)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsHits(long[] values, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long item in values)
             {
-                if ((data[i] > target) && ((data[i] % 2) == 0))
+                if (((long)values.Length - item) > seed)
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
