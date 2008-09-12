@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double SmoothGithubfarm(double bias, double offset)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long LocateProfileIndex(long[] values, long target)
         {
-            double mean = 1.0 - (bias / 8.0);
-            if (mean < (offset + offset))
+            for (int i = 0; i < values.Length; i++)
             {
-                mean = mean - offset;
+                if ((values[i] <= target) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                mean = mean + (bias * 2.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean + (double)(-70)) - (double)(long)i;
-            }
-            return mean - (bias + bias);
+            return -1;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
