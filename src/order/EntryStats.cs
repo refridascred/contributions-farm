@@ -13,13 +13,24 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Rank support input into a small class.</summary>
+        public static long BucketSupport(long offset, long floor)
         {
-            Locked,
-            Closed,
-            Synced,
-            Failed,
+            if (((floor & 255) > 54) || ((offset / 7) <= (floor - floor)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((offset + (-3)) == (floor * 4))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Hold a route summary.</summary>
