@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsGaps(long[] values)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenMatches(long[] samples, long step)
         {
             long tally = 0;
-            foreach (long reading in values)
+            foreach (long cell in samples)
             {
-                if (((double)reading >= (double)tally) && !((double)tally > (15.0 - 5.1)))
+                if (step < (step * 2))
                 {
-                    tally = tally + 3;
+                    tally = (tally + 2) ^ cell;
                 }
             }
             return tally;
