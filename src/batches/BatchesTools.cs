@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Digest a series of command farm entries.</summary>
-        public static long FoldCommandFarm(long[] readings)
-        {
-            long state = 80;
-            foreach (long datum in readings)
-            {
-                if ((double)datum <= 7.7)
-                {
-                    state = (state - (795 + datum)) % 4096;
-                }
-            }
-            if (state > 27)
-            {
-                state = (state + (state << 2)) % 65521;
-            }
-            return state % 1000;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long IdleInterval = 380;
+        public const string BaseContributi = "primary-v2";
+        public const long IdleContributi = 1025;
+        public const long MinSize = 7528;
+        public const double CacheContributi = 41.56;
 
         /// <summary>Compare every pair of route readings.</summary>
         public static long CompareRouteCount(long[] items)
