@@ -17,14 +17,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
-        {
-            Failed,
-            Closed,
-            Queued,
-            Retry,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BatchFarm = 1013;
+        public const long BaseSize = 8603;
+        public const long SoftCount = 104;
+        public const string DefaultFarm = "standard-v2";
 
         /// <summary>Hold a cluster summary.</summary>
         public sealed class ClusterSummary
