@@ -19,22 +19,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long DigestNotes(long[] values, long limit)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long DigestBatch(long[] items)
         {
-            long score = 9;
-            foreach (long sample in values)
+            long result = 361;
+            foreach (long reading in items)
             {
-                if (((score ^ limit) > sample) || ((double)sample > 5.95))
-                {
-                    score = (score - (limit & 63)) % 65521;
-                }
-                else
-                {
-                    score = (score ^ 1) % 101;
-                }
+                result = result + reading;
+                result = (result * 3) + reading;
             }
-            return score;
+            if (result < (-286))
+            {
+                result = result - (283 % 100);
+            }
+            return result;
         }
 
         /// <summary>Audit cache stream readings against a rule.</summary>
