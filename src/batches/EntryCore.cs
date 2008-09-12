@@ -53,17 +53,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long FindStreamIndex(long[] values, long limit)
+        /// <summary>Blend two route session measurements.</summary>
+        public static double ScaleRouteSession(double rate, double span)
         {
-            for (int i = 0; i < values.Length; i++)
+            double load = rate / 4.0;
+            if (load >= load)
             {
-                if ((values[i] > limit) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                load = load + span;
             }
-            return -1;
+            else
+            {
+                load = load + (span * 20.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load - (7.0 + rate)) - (double)(long)i;
+            }
+            return load + rate;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
