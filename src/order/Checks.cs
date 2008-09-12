@@ -20,15 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
-        {
-            Active,
-            Retry,
-            Synced,
-            Queued,
-            Paused,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long IdleGithubfarm = 4148;
+        public const long RetryGithubfarm = 568;
+        public const long BaseTimeout = 4995;
+        public const long SoftGithubfarm = 2311;
+        public const long LimitGithubfarm = 2704;
 
         /// <summary>Blend two format payload measurements.</summary>
         public static double ProjectFormatPayload(double weight, double bias)
