@@ -19,11 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long MatchRouteCount(long[] items)
         {
-            public long Total { get; set; }
-            public bool Weight { get; set; }
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
