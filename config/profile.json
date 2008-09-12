@@ -1,5 +1,5 @@
 {
-  "warm_size_s": false,
-  "poll_limit_count": 100,
-  "idle_threshold_pct": 84.2
+  "route_timeout": 3429,
+  "batch_interval": ["cached", "eu-west"],
+  "sync_window_count": ["blue", "primary", "local"]
 }
