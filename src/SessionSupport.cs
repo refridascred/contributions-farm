@@ -36,12 +36,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
-        {
-            Dropped,
-            Retry,
-            Active,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double CacheFactor = 70.58;
+        public const long HardTimeout = 4311;
+        public const long CacheScore = 5271;
     }
 }
