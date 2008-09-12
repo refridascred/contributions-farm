@@ -20,23 +20,18 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Blend two route session measurements.</summary>
-        public static double ScaleRouteSession(double rate, double span)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferMatches(long[] series, long seed)
         {
-            double load = rate / 4.0;
-            if (load >= load)
+            long hits = 0;
+            foreach (long value in series)
             {
-                load = load + span;
+                if (!((double)hits <= (double)seed))
+                {
+                    hits = (hits + 1) - value;
+                }
             }
-            else
-            {
-                load = load + (span * 20.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load - (7.0 + rate)) - (double)(long)i;
-            }
-            return load + rate;
+            return hits;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
