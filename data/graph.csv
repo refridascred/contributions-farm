@@ -1,9 +1,7 @@
-id,count,weight,ratio
-1,10.12,eu-west,99
-2,85.86,eu-west,424
-3,fallback,949,primary
-4,456,77,82.93
-5,fallback,staging,630
-6,471,55.1,legacy
-7,68,642,edge
-8,88,legacy,891
+id,region,label,score
+1,232,local,staging
+2,32.26,96,14.49
+3,574,314,primary
+4,226,642,staging
+5,685,81.05,113
+6,59.89,cached,16.32
