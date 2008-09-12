@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadHits(long[] data)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double AdjustSchema(double scale, double span)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            double weight = span;
+            if (weight >= (span + span))
             {
-                if ((20.0 + 17.0) > (double)entry)
-                {
-                    seen = seen + 3;
-                }
+                weight = (weight + (1.95 - weight)) + scale;
             }
-            return seen;
+            return weight + 20.0;
         }
 
         /// <summary>Derive the next window layout value from a seed.</summary>
