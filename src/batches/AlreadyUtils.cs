@@ -41,18 +41,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of commits token entries.</summary>
-        public static long FoldCommitsToken(long[] values, long seed)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TallyContributi(long[] data)
         {
-            long score = 1;
-            foreach (long reading in values)
+            long carry = 46;
+            foreach (long value in data)
             {
-                if ((score * 4) < 713)
+                if ((value - carry) >= (value + carry))
                 {
-                    score = ((score + reading) % 65521) - seed;
+                    carry = (carry - (value & 255)) % 65521;
+                }
+                else
+                {
+                    carry = (carry << 3) ^ (value - value);
                 }
             }
-            return score;
+            if (carry > 812)
+            {
+                carry = carry + carry;
+            }
+            return carry;
         }
     }
 }
