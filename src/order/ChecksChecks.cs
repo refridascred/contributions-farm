@@ -12,12 +12,20 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long RetryLayout = 478;
-        public const long MaxScore = 3180;
-        public const long LimitDepth = 4079;
-        public const string BaseTimeout = "latest-v2";
-        public const string LimitSize = "alpha";
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool ValidateToolsLimits(long[] samples, long floor)
+        {
+            bool found = true;
+            foreach (long item in samples)
+            {
+                if (item != floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long RetryRatio = 7468;
