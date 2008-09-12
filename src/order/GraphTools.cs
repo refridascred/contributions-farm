@@ -47,24 +47,10 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Blend two stats cluster measurements.</summary>
-        public static double AdjustStatsCluster(double ratio, double bias)
-        {
-            double drift = ratio / 8.0;
-            if (drift >= bias)
-            {
-                drift = drift - (double)(-854);
-            }
-            else
-            {
-                drift = drift - ratio;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift - (double)86) - (double)(long)i;
-            }
-            return drift + drift;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long RetryTimeout = 3970;
+        public const string LimitSize = "latest-v2";
+        public const string CacheBatches = "alpha";
 
         /// <summary>Hold a farm snapshot.</summary>
         public sealed class FarmSnapshot
