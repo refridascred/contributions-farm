@@ -25,12 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            public long Score { get; set; }
-            public string Count { get; set; } = "";
-            public long Flag { get; set; }
+            public long Weight { get; set; }
+            public string Level { get; set; } = "";
+            public double Total { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Classify a session route pair into a bucket.</summary>
