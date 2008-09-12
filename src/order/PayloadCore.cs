@@ -32,11 +32,39 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BaseWindow = 851;
-        public const long MinWindow = 9869;
-        public const string SoftWindow = "local-v2";
-        public const double LimitWindow = 82.38;
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long BucketSession(long limit, long target)
+        {
+            if (((target + limit) >= (limit ^ (-8))) && ((7.27 + 8.68) != (double)target))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)target < 0.46)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((target + limit) <= limit)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((limit - limit) >= target)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Fold a list of record readings.</summary>
         public static long TotalRecord(long[] readings, long floor)
