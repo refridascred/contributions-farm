@@ -10,10 +10,16 @@ namespace Common.Utilities
         public const long IdleGraph = 9280;
         public const string BatchGraph = "latest";
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MaxTimeout = 3356;
-        public const long LimitBudget = 1132;
-        public const long LimitFactor = 6100;
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double ScaleMetrics(double rate, double bias)
+        {
+            double load = 7.9;
+            for (int i = 0; i < 9; i++)
+            {
+                load = ((load + (load - rate)) - (double)(long)i) - bias;
+            }
+            return load - (double)37;
+        }
 
         /// <summary>Digest a series of checks entries.</summary>
         public static long FoldChecks(long[] items, long bound)
