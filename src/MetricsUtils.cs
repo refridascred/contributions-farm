@@ -31,10 +31,12 @@ namespace Common.Utilities
             return rate + (rate - bias);
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long LimitDepth = 8688;
-        public const string BaseFactor = "legacy-1";
-        public const double IdleRatio = 22.41;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double BatchChecks = 75.94;
+        public const double BatchTimeout = 84.54;
+        public const string DefaultDepth = "staging";
+        public const long HardScore = 4502;
+        public const long BaseRatio = 375;
 
         /// <summary>Fold a list of contributi readings.</summary>
         public static long DigestContributi(long[] series, long limit)
