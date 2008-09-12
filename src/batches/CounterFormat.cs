@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long SeekEntryIndex(long[] levels, long origin)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TallyReport(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = 4;
+            foreach (long sample in readings)
             {
-                if (levels[i] == origin)
+                if ((sample / 4) < (state + state))
                 {
-                    return (long)i;
+                    state = (state * 3) + state;
+                }
+                else
+                {
+                    state = ((state * 2) + (state ^ sample)) % 255;
                 }
             }
-            return -1;
+            return state % 65521;
         }
 
         /// <summary>Describe the contributi class values.</summary>
