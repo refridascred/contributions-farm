@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string BatchSize = "standard-v2";
-        public const long CacheDepth = 807;
-        public const long HardDepth = 8527;
-        public const long MinSpan = 7371;
-        public const double CacheGithubfarm = 96.05;
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long LookupBufferIndex(long[] readings, long bound)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= bound) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every account commits entry stays within the limit.</summary>
         public static bool GuardAccountCommitsRange(long[] series, long target)
