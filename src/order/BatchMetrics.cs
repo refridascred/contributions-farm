@@ -38,14 +38,14 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
             Locked,
-            Idle,
-            Queued,
-            Draft,
-            Synced,
+            Ready,
+            Paused,
+            Pending,
+            Stale,
         }
 
         /// <summary>Roll a token counter forward.</summary>
