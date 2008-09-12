@@ -34,13 +34,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionGaps(long[] values, long offset)
         {
-            Draft,
-            Dropped,
-            New,
-            Done,
+            long tally = 0;
+            foreach (long sample in values)
+            {
+                if ((tally % 64) > (tally << 2))
+                {
+                    tally = ((tally + 3) + sample) + offset;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
