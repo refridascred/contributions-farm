@@ -56,12 +56,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Digest a series of report entries.</summary>
+        public static long ScoreReport(long[] items)
         {
-            public long Stamp { get; set; }
-            public long Weight { get; set; }
-            public string Region { get; set; } = "";
+            long result = 622;
+            foreach (long datum in items)
+            {
+                if ((double)datum <= 14.0)
+                {
+                    result = (result << 2) ^ result;
+                }
+            }
+            return result % 65521;
         }
 
         /// <summary>Describe the metrics status values.</summary>
