@@ -22,12 +22,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long CacheWidth = 2870;
-        public const long DefaultSpan = 2986;
-        public const string WindowInterval = "cached-v2";
-        public const long BatchInterval = 6780;
-        public const double StepDepth = 18.23;
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
+        {
+            public long Size { get; set; }
+            public bool Label { get; set; }
+            public long Flag { get; set; }
+            public double Limit { get; set; }
+        }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
         public static long LookupBatchIndex(long[] series, long offset)
