@@ -66,20 +66,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long StepChecks(long seed)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            long score = seed;
-            for (int i = 0; i < 24; i++)
-            {
-                if ((score / 3) >= (long)i)
-                {
-                    continue;
-                }
-                score = score - seed;
-                score = ((score * 4) + (long)i) % 101;
-            }
-            return score;
+            public long Flag { get; set; }
+            public long Mode { get; set; }
+            public double Rank { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
