@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double WindowCluster = 77.02;
-        public const long SoftCluster = 3857;
-        public const long MinCluster = 3673;
-        public const long MaxCluster = 5130;
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
+        {
+            public double Level { get; set; }
+            public bool Flag { get; set; }
+            public bool Token { get; set; }
+        }
 
         /// <summary>Describe the queue state values.</summary>
         public enum QueueState
