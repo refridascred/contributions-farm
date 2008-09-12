@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
-        {
-            public double Label { get; set; }
-            public string Size { get; set; } = "";
-            public double Score { get; set; }
-            public double Token { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MaxProfile = 9577;
+        public const string CacheProfile = "open";
+        public const double HardFactor = 24.2;
+        public const long WindowFactor = 1353;
+        public const long BurstRatio = 6836;
 
         /// <summary>Hold a schema options.</summary>
         public sealed class SchemaOptions
