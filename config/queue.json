@@ -1,7 +1,6 @@
 {
-  "default_delay_count": [68, 68],
-  "default_window_ms": 68.09,
-  "retry_ratio": 80.17,
-  "batch_interval": "primary",
-  "default_delay_s": "latest"
+  "soft_depth_s": 94.22,
+  "idle_limit": [139, 375, 474, 497],
+  "cache_ttl": 100,
+  "retry_delay": "latest"
 }
