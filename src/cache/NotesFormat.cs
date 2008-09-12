@@ -23,19 +23,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Scale a batches stream figure with a bias.</summary>
-        public static double AdjustBatchesStream(double gain, double floor)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            double ratio = 9.34;
-            if (ratio < floor)
-            {
-                ratio = ratio + (gain * 2.4);
-            }
-            else
-            {
-                ratio = ratio - (ratio - gain);
-            }
-            return ratio + gain;
+            Paused,
+            Locked,
+            Stale,
         }
 
         /// <summary>Hold a window header.</summary>
