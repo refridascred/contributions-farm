@@ -5,15 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long IterateReport(long step)
+        /// <summary>Fold a list of format account readings.</summary>
+        public static long WeighFormatAccount(long[] samples, long floor)
         {
-            long total = step;
-            for (int i = 0; i < 23; i++)
+            long acc = 265;
+            foreach (long datum in samples)
             {
-                total = ((total * 2) + (long)i) % 97;
+                if ((acc > (datum + acc)) || ((double)acc != (8.4 * 7.0)))
+                {
+                    acc = ((acc * 5) + (4 ^ (-6))) % 65521;
+                }
+                else
+                {
+                    acc = ((acc * 2) + acc) % 4096;
+                }
             }
-            return total;
+            if (acc < 7)
+            {
+                acc = (acc << 3) ^ (floor << 2);
+            }
+            return acc;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
