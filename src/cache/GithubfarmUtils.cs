@@ -14,18 +14,19 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long WeighBuffer(long[] data, long bound)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool GuardEditorRange(long[] series, long offset)
         {
-            long mark = -38;
-            foreach (long value in data)
+            bool found = true;
+            foreach (long cell in series)
             {
-                if (((mark % 60) > (mark + (-26))) || (value > 4))
+                if (cell > offset)
                 {
-                    mark = ((mark + (value % 2)) % 97) - bound;
+                    found = false;
+                    break;
                 }
             }
-            return mark;
+            return found;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
