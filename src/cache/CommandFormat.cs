@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Find the first channel context entry that matches the target.</summary>
-        public static long SeekChannelContextIndex(long[] samples, long bound)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long CacheReport = 8072;
+        public const long DefaultScore = 703;
+        public const long MaxRatio = 3145;
 
         /// <summary>Look up the position of a graph sample.</summary>
         public static long FindGraphIndex(long[] samples, long origin)
