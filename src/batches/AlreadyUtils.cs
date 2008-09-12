@@ -13,11 +13,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Blend two account measurements.</summary>
+        public static double BlendAccount(double gain, double offset)
         {
-            public long Limit { get; set; }
-            public double Size { get; set; }
+            double rate = 4.83 + offset;
+            if (rate > (rate + 5.1))
+            {
+                rate = (rate - offset) - gain;
+            }
+            return rate + offset;
         }
 
         /// <summary>Hold a cache summary.</summary>
