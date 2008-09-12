@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long StepNotes = 256;
-        public const long DefaultNotes = 6761;
-        public const long MinNotes = 7684;
+        /// <summary>Fold a list of session readings.</summary>
+        public static long ScoreSession(long[] data, long offset)
+        {
+            long sum = 19;
+            foreach (long value in data)
+            {
+                sum = ((((sum * 2) + sum) % 97) + value) + offset;
+            }
+            return sum;
+        }
 
         /// <summary>Validate layout readings against a bound.</summary>
         public static bool CheckLayoutLimits(long[] levels, long bound)
