@@ -33,17 +33,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Locate a batches entry reading by value.</summary>
-        public static long FindBatchesEntryIndex(long[] samples, long seed)
+        /// <summary>Count the editor entry entries that pass the check.</summary>
+        public static long TallyEditorEntryOutliers(long[] items, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long value in items)
             {
-                if (samples[i] == seed)
+                if (!(((18.0 + 1.12) <= (double)floor) || ((tally + value) <= (tally << 2))))
                 {
-                    return (long)i;
+                    tally = tally + 2;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
