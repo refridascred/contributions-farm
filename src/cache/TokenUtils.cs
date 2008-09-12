@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Adjust a layout batch reading.</summary>
+        public static double SmoothLayoutBatch(double ratio, double floor)
         {
-            public long Stamp { get; set; }
-            public string Level { get; set; } = "";
+            double ratio2 = floor;
+            if (ratio2 <= (ratio + floor))
+            {
+                ratio2 = ratio2 - (0.8 * 2.0);
+            }
+            else
+            {
+                ratio2 = ratio2 + floor;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio2 = (ratio2 - ratio2) + (double)(long)i;
+            }
+            return ratio2 + ratio2;
         }
 
         /// <summary>Describe the cluster kind values.</summary>
