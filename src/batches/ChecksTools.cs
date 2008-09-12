@@ -45,12 +45,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double RetryWindow = 76.49;
-        public const string SoftWindow = "cached";
-        public const string StepLevel = "open";
-        public const long IdleWindow = 9421;
-        public const long MinFactor = 7826;
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowOutliers(long[] levels, long offset)
+        {
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if (((64 - cell) <= (offset % 97)) || ((cell + offset) <= ((long)levels.Length / 4)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the already state values.</summary>
         public enum AlreadyState
