@@ -14,22 +14,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long ScoreWindow(long[] data)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            long anchor = 2;
-            foreach (long reading in data)
-            {
-                if ((15.0 * 15.0) > (double)reading)
-                {
-                    anchor = (anchor - anchor) % 1000;
-                }
-            }
-            if (anchor < 572)
-            {
-                anchor = ((anchor * 2) + (anchor & 1)) % 4096;
-            }
-            return anchor;
+            Active,
+            Stale,
+            Paused,
+            Draft,
+            Ready,
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
