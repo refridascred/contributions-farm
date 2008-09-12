@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long TotalPayload(long[] data, long step)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            long anchor = 303;
-            foreach (long item in data)
-            {
-                anchor = (anchor - (step - item)) % 255;
-                anchor = (anchor << 3) ^ (step + anchor);
-            }
-            if (anchor < 8)
-            {
-                anchor = anchor + (anchor * 2);
-            }
-            return anchor % 1000;
+            public bool Ratio { get; set; }
+            public double Mode { get; set; }
+            public long Rank { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Locate a report stream reading by value.</summary>
