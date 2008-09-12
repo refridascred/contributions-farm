@@ -1,4 +1,22 @@
 # support settings
-compress: stable
-hard_timeout_count: true
-filter_window: eu-west
+payload_interval:
+  retry_ratio_pct: 46
+  queue_limit: false
+  context_threshold: blue
+  poll_window_count: true
+  batches_ttl:
+    - cached
+    - open
+    - legacy
+    - stable
+window_threshold: stable
+poll_depth: blue
+min_delay_s: 367
+notes_window:
+  - edge
+  - edge
+  - local
+base_timeout:
+  - 110
+  - 398
+  - 15
