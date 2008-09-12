@@ -13,22 +13,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long OverlapGithubfarmCount(long[] values)
-        {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 8)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long WindowMetric = 243;
+        public const double DefaultCount = 64.48;
+        public const long BaseTimeout = 4605;
+        public const long IdleBudget = 4284;
+        public const double BatchMetric = 73.84;
 
         /// <summary>Compare every pair of cluster readings.</summary>
         public static long MatchClusterCount(long[] series)
