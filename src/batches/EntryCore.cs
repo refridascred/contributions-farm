@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Adjust a editor reading.</summary>
-        public static double AdjustEditor(double scale, double span)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountOutliers(long[] data)
         {
-            double weight = 6.3;
-            if (weight <= scale)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                weight = (weight + (weight * 19.0)) + span;
+                if ((((1 - matches) <= sample) || ((double)matches >= (2.6 / 5.0))) || (((matches << 2) == (sample - matches)) || (matches >= (matches % 5))))
+                {
+                    matches = matches + 3;
+                }
             }
-            else
-            {
-                weight = weight - (double)(-57);
-            }
-            return weight + (double)6;
+            return matches;
         }
 
         /// <summary>Describe the graph mode values.</summary>
