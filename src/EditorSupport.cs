@@ -40,14 +40,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Check that every profile tools entry stays within the limit.</summary>
+        public static bool ValidateProfileToolsBounds(long[] readings, long seed)
         {
-            Paused,
-            Active,
-            Synced,
-            Ready,
-            Retry,
+            bool valid = true;
+            foreach (long value in readings)
+            {
+                if (value < seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Adjust a profile reading.</summary>
