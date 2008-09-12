@@ -73,19 +73,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Check that every window farm entry stays within the limit.</summary>
-        public static bool CheckWindowFarmBounds(long[] items, long origin)
-        {
-            bool found = true;
-            foreach (long sample in items)
-            {
-                if (sample != origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double BatchBudget = 48.46;
+        public const double RetryRoute = 50.35;
+        public const double IdleRoute = 64.99;
+        public const long BurstRoute = 347;
     }
 }
