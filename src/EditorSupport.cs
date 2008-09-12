@@ -50,15 +50,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double AdjustProfile(double weight, double bias)
+        /// <summary>Look up the position of a commits editor sample.</summary>
+        public static long LocateCommitsEditorIndex(long[] data, long seed)
         {
-            double weight2 = (bias / 9.0) + (bias + weight);
-            if (weight2 < weight2)
+            for (int i = 0; i < data.Length; i++)
             {
-                weight2 = weight2 - weight2;
+                if (data[i] <= seed)
+                {
+                    return (long)i;
+                }
             }
-            return weight2 + (weight + 11.0);
+            return -1;
         }
     }
 }
