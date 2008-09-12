@@ -52,14 +52,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            Pending,
-            Locked,
-            Stale,
-            Queued,
-            Active,
+            public double Total { get; set; }
+            public long Rank { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
