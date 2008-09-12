@@ -41,18 +41,19 @@ namespace Common.Utilities
             return load + 1.6;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatMatches(long[] items)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long DigestMetric(long[] samples, long bound)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long result = 114;
+            foreach (long item in samples)
             {
-                if ((941 * 5) > (value + matches))
-                {
-                    matches = matches + 2;
-                }
+                result = (((result << 2) ^ (result << 3)) % 1000) + item;
             }
-            return matches;
+            if (result > 99)
+            {
+                result = (result ^ (bound << 1)) % 1000;
+            }
+            return result % 65521;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
