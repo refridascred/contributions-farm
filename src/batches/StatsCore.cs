@@ -24,39 +24,13 @@ namespace Common.Utilities
             return load + (bias + rate);
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long SortEntry(long offset, long step)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            long next = offset ^ step;
-            if (((next * 2) < (step ^ offset)) || ((68 + next) != (next + offset)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((next % 2) != (985 / 6))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((offset % 12) >= (80 << 2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!(4.5 <= (double)offset))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Retry,
+            New,
+            Paused,
+            Closed,
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
