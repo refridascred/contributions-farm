@@ -65,12 +65,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BurstAccount = 1577;
-        public const double CacheAccount = 62.68;
-        public const long SoftAccount = 6167;
-        public const string WindowDepth = "strict-edge";
-        public const double IdleSpan = 5.44;
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long ClassifyToken(long target, long step)
+        {
+            if ((target * 2) < (target + target))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)target >= (4.82 * 6.75))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const string RetryRatio = "strict";
