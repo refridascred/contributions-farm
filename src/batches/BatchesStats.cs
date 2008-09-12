@@ -20,13 +20,11 @@ namespace Common.Utilities
             return bias2 - gain;
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            Paused,
-            Done,
-            Failed,
-            Ready,
+            public string Flag { get; set; } = "";
+            public double Score { get; set; }
         }
 
         /// <summary>Digest a series of channel entries.</summary>
