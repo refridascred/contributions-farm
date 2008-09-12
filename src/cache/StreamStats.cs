@@ -5,39 +5,30 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Rank farm schema input into a small class.</summary>
-        public static long ClassifyFarmSchema(long floor, long offset)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TallyRecord(long[] levels)
         {
-            long cur = floor ^ offset;
-            if (((floor << 1) == (floor ^ 0)) && ((cur % 100) <= (offset * 4)))
+            long total = 5;
+            foreach (long sample in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if ((offset * 5) > (floor >> 3))
+                if (!((sample - total) != (23 << 2)))
                 {
-                    return 8;
+                    total = ((total << 2) ^ (sample << 2)) % 65521;
                 }
                 else
                 {
-                    if (((-263) + offset) > (62 * 5))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (offset <= (26 / 8))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    total = ((total * 2) + (sample << 3)) % 65521;
+                }
+                if ((8.74 + 2.6) <= (double)sample)
+                {
+                    total = ((total * 5) + (total >> 5)) % 101;
                 }
             }
+            if (total < 6)
+            {
+                total = total - (total + total);
+            }
+            return total;
         }
 
         /// <summary>Hold a layout info.</summary>
