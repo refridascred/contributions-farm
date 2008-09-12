@@ -11,13 +11,13 @@ namespace Common.Utilities
         public const string MinCache = "cached-edge";
         public const string BatchFactor = "latest-v2";
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            Dropped,
+            Paused,
+            Idle,
             New,
-            Failed,
-            Done,
+            Locked,
         }
 
         /// <summary>Validate token readings against a bound.</summary>
