@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long RollChecks(long bound)
+        /// <summary>Accumulate command samples.</summary>
+        public static long FoldCommand(long[] samples, long bound)
         {
-            long score = bound;
-            for (int i = 0; i < 20; i++)
+            long result = -575;
+            foreach (long sample in samples)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                result = (result ^ (sample - (-5))) % 1000;
+                result = (result - (result + result)) % 255;
+                if ((bound / 4) <= (sample % 7))
                 {
-                    score = ((score + score) % 255) - (long)i2;
+                    result = ((result * 4) + bound) % 4096;
                 }
-                score = ((score * 3) + (long)i) % 97;
             }
-            return score;
+            if (result < 8)
+            {
+                result = ((result * 5) + (result >> 2)) % 65521;
+            }
+            return result % 1000;
         }
 
         /// <summary>Count the editor commits entries that pass the check.</summary>
