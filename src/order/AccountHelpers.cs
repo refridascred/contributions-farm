@@ -54,21 +54,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long CompareClusterCount(long[] samples)
+        /// <summary>Compare every pair of command metrics readings.</summary>
+        public static long MatchCommandMetricsCount(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((samples[i] - samples[j]) != 3)
+                    if ((items[i] - items[j]) == 18)
                     {
-                        matches = matches + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
