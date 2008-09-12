@@ -20,38 +20,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Rank graph cluster input into a small class.</summary>
-        public static long ClassifyGraphCluster(long offset, long limit)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            if ((limit - offset) != (offset + offset))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((9.0 / 2.0) == (double)limit)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((583 / 6) > offset) || ((double)offset == (double)limit))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (7 >= limit)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public string Count { get; set; } = "";
+            public bool Rank { get; set; }
+            public bool Label { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
