@@ -25,13 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            public long Weight { get; set; }
-            public string Level { get; set; } = "";
-            public double Total { get; set; }
             public long Rank { get; set; }
+            public long Offset { get; set; }
+            public double Owner { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Audit cache batches readings against a rule.</summary>
