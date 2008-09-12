@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double DefaultCount = 86.8;
-        public const string RetryBatch = "fallback-edge";
-        public const long HardBatch = 3596;
+        /// <summary>Digest a series of farm entry entries.</summary>
+        public static long FoldFarmEntry(long[] levels)
+        {
+            long score = 58;
+            foreach (long entry in levels)
+            {
+                if ((9 + 3) <= (score % 12))
+                {
+                    score = (score - score) % 1000;
+                }
+                if ((double)score > (7.1 / 2.0))
+                {
+                    score = (score ^ (2 + entry)) % 1000;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Combine profile notes values into a single score.</summary>
         public static long FoldProfileNotes(long[] data, long step)
