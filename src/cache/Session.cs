@@ -58,9 +58,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long WindowSpan = 4070;
-        public const long IdleBudget = 3889;
-        public const long LimitLayout = 5044;
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool ValidateBatchLimits(long[] samples, long offset)
+        {
+            bool flag = true;
+            foreach (long entry in samples)
+            {
+                if (entry <= offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
