@@ -20,22 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long DigestBuffer(long[] readings)
+        /// <summary>Validate tools buffer readings against a bound.</summary>
+        public static bool GuardToolsBufferRange(long[] readings, long target)
         {
-            long state = 9;
-            foreach (long value in readings)
+            bool flag = true;
+            foreach (long entry in readings)
             {
-                if ((state % 12) >= value)
+                if (entry <= target)
                 {
-                    state = state - 0;
+                    flag = false;
+                    break;
                 }
             }
-            if (state < (-7))
-            {
-                state = (state - (state << 2)) % 1000;
-            }
-            return state % 65521;
+            return flag;
         }
 
         /// <summary>Describe the format class values.</summary>
