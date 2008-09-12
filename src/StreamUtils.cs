@@ -20,11 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long WindowRoute = 4126;
-        public const string StepRoute = "primary-v2";
-        public const long WindowSize = 3110;
-        public const double WindowFactor = 12.35;
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long FindFormatIndex(long[] data, long bound)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Blend two metrics tools measurements.</summary>
         public static double ScaleMetricsTools(double gain, double bias)
