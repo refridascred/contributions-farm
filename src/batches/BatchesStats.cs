@@ -46,18 +46,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowGaps(long[] data)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if (((double)208 == (double)matches) && ((double)cell <= (3.86 - 19.0)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public bool Mode { get; set; }
+            public long Region { get; set; }
+            public long Owner { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
