@@ -33,23 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit githubfarm metric readings against a rule.</summary>
-        public static long TallyGithubfarmMetricMatches(long[] samples)
-        {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if (!((tally - tally) < (3 - (-2))))
-                {
-                    tally = (tally + 2) ^ value;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string CacheInterval = "legacy-v2";
+        public const double BaseDepth = 92.56;
+        public const string SoftSpan = "latest-edge";
+        public const string MinChannel = "staging-edge";
+        public const string RetryChannel = "cached";
 
         /// <summary>Check that every command entry stays within the limit.</summary>
         public static bool ValidateCommandLimits(long[] levels, long origin)
