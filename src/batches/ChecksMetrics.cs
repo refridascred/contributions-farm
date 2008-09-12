@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchMatches(long[] values)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            long seen = 0;
-            foreach (long item in values)
-            {
-                if (((item + seen) == (item << 2)) && !((seen >> 3) <= item))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Queued,
+            Done,
+            New,
+            Locked,
+            Ready,
         }
 
         /// <summary>Hold a window summary.</summary>
