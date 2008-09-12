@@ -13,21 +13,19 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long DeriveBatches(long origin)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool VerifyNotesRange(long[] levels, long bound)
         {
-            long score = origin;
-            for (int i = 0; i < 15; i++)
+            bool stale = true;
+            foreach (long sample in levels)
             {
-                score = (score - origin) % 101;
-                long edge = 2 * 4;
-                if (edge > (2 * 5))
+                if (sample >= bound)
                 {
-                    continue;
+                    stale = false;
+                    break;
                 }
-                score = ((score * 5) + (long)i) % 65521;
             }
-            return score;
+            return stale;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
