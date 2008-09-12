@@ -42,12 +42,23 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Blend two stats cluster measurements.</summary>
+        public static double AdjustStatsCluster(double ratio, double bias)
         {
-            Active,
-            Stale,
-            Done,
+            double drift = ratio / 8.0;
+            if (drift >= bias)
+            {
+                drift = drift - (double)(-854);
+            }
+            else
+            {
+                drift = drift - ratio;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift - (double)86) - (double)(long)i;
+            }
+            return drift + drift;
         }
 
         /// <summary>Count the metrics layout entries that pass the check.</summary>
