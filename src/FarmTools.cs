@@ -27,23 +27,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next contributi checks value.</summary>
-        public static double AdjustContributiChecks(double weight, double bias)
+        /// <summary>Accumulate session samples.</summary>
+        public static long TotalSession(long[] values, long offset)
         {
-            double scale = bias;
-            if (scale > (scale - scale))
+            long mix = 73;
+            foreach (long sample in values)
             {
-                scale = scale + (double)1;
+                mix = (mix + (66 - sample)) - offset;
             }
-            else
-            {
-                scale = scale - bias;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale - (double)4) - (double)(long)i;
-            }
-            return scale + (weight / 9.0);
+            return mix % 1000;
         }
     }
 }
