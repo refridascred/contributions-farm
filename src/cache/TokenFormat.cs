@@ -16,18 +16,18 @@ namespace Common.Utilities
             return bias + floor;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsOutliers(long[] levels)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long ScoreCommits(long[] series, long seed)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long anchor = 77;
+            foreach (long cell in series)
             {
-                if ((datum >> 4) > (hits << 1))
+                if ((6 >= seed) || ((double)cell >= (double)3))
                 {
-                    hits = hits + 3;
+                    anchor = (anchor ^ anchor) % 4096;
                 }
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Classify a commits entry pair into a bucket.</summary>
