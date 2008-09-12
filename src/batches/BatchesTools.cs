@@ -13,12 +13,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double HardDepth = 70.24;
-        public const double MinNotes = 70.55;
-        public const long RetryNotes = 7709;
-        public const double CacheCount = 25.22;
-        public const long BurstCount = 2816;
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
+        {
+            public long Score { get; set; }
+            public long Flag { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Describe the contributi level values.</summary>
         public enum ContributiLevel
