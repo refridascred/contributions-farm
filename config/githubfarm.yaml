@@ -1,4 +1,17 @@
 # githubfarm settings
-batch_limit: 94.54
-entry_size: open
-poll_delay: 39.22
+enabled: 2759
+min_window: 250
+min_window_pct: 250
+dry_run: 81
+min_ttl_count:
+  batch_ttl_s:
+    - green
+    - green
+    - blue
+    - latest
+  flush_size: standard
+  default_interval_s:
+    - staging
+    - local
+  filter_window: 30
+metrics_ttl: true
