@@ -41,21 +41,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long DeriveAccount(long limit)
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            long sum = limit;
-            for (int i = 0; i < 21; i++)
-            {
-                long bound = 59 - (sum * 4);
-                if ((bound < (103 << 3)) || ((1.5 + 11.0) > (double)limit))
-                {
-                    sum = (sum ^ ((long)i + limit)) % 97;
-                }
-                sum = (sum ^ sum) % 255;
-                sum = ((sum * 5) + (long)i) % 4093;
-            }
-            return sum;
+            public long Rank { get; set; }
+            public string Limit { get; set; } = "";
+            public long Owner { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
