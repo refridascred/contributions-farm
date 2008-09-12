@@ -1,11 +1,7 @@
 {
-  "editor_threshold": [499, 164, 143],
-  "verbose": "blue",
-  "strict": {
-    "compress": ["edge", "green", "legacy"],
-    "sync_depth_pct": [430, 199, 283],
-    "idle_timeout_ms": 54
-  },
-  "cache_window": "eu-west",
-  "base_delay": 1024
+  "cluster_window": [372, 39, 400, 353],
+  "burst_threshold": 37,
+  "idle_window_ms": 186,
+  "stream_timeout": ["stable", "staging"],
+  "poll_timeout": 100
 }
