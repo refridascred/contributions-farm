@@ -81,13 +81,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long IterateMetrics(long bound)
         {
-            Idle,
-            Draft,
-            Ready,
-            Locked,
+            long mix = bound;
+            for (int i = 0; i < 24; i++)
+            {
+                mix = ((mix * 2) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
