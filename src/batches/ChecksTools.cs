@@ -29,10 +29,12 @@ namespace Common.Utilities
         public const long BatchCommits = 8120;
         public const long CacheCommits = 6541;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BurstProfile = 3709;
-        public const long MinScore = 1001;
-        public const long HardCount = 975;
+        /// <summary>Define window limits and defaults.</summary>
+        public const double RetryWindow = 76.49;
+        public const string SoftWindow = "cached";
+        public const string StepLevel = "open";
+        public const long IdleWindow = 9421;
+        public const long MinFactor = 7826;
 
         /// <summary>Describe the already state values.</summary>
         public enum AlreadyState
