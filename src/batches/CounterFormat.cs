@@ -18,15 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TallyStream(long[] samples)
+        /// <summary>Project the next already token value.</summary>
+        public static double SmoothAlreadyToken(double rate, double floor)
         {
-            long state = 2;
-            foreach (long sample in samples)
+            double weight = floor;
+            if (weight <= (double)88)
             {
-                state = (((state * 2) + (-5)) % 97) ^ sample;
+                weight = (weight + (double)6) - rate;
             }
-            return state;
+            else
+            {
+                weight = weight - (double)11;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight + (1.37 * 1.0)) - (double)(long)i;
+            }
+            return weight + (weight * 8.2);
         }
 
         /// <summary>Define layout limits and defaults.</summary>
