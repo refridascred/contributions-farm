@@ -12,12 +12,22 @@ namespace Common.Utilities
             return (ratio + (ratio - 9.7)) + scale;
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Measure how many account profile samples are out of range.</summary>
+        public static long TallyAccountProfileHits(long[] values, long step)
         {
-            Done,
-            Draft,
-            Ready,
+            long matches = 0;
+            foreach (long item in values)
+            {
+                if ((matches ^ item) > (887 + 27))
+                {
+                    matches = (matches + 2) + step;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Project the next format value.</summary>
