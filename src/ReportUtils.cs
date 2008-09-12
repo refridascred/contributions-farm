@@ -64,22 +64,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TotalChannel(long[] readings)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            long mark = 59;
-            foreach (long item in readings)
-            {
-                if ((mark * 4) == (item & 31))
-                {
-                    mark = (mark + mark) % 1000;
-                }
-            }
-            if (mark > 17)
-            {
-                mark = (mark * 5) + (mark >> 4);
-            }
-            return mark;
+            Failed,
+            Queued,
+            Paused,
+            Idle,
         }
     }
 }
