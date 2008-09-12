@@ -22,14 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long MeasureOrderMatches(long[] series)
         {
-            Dropped,
-            Stale,
-            Active,
-            Ready,
-            Closed,
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if (((reading & 63) <= ((-5) >> 2)) && ((tally + 8) > (tally / 5)))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Look up the position of a format sample.</summary>
