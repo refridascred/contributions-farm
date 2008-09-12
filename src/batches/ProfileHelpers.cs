@@ -40,22 +40,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long ScoreCluster(long[] values, long bound)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            long acc = 775;
-            foreach (long cell in values)
-            {
-                if ((bound - bound) < ((long)values.Length + cell))
-                {
-                    acc = acc + (bound - acc);
-                }
-            }
-            if (acc < 8)
-            {
-                acc = acc + (bound + acc);
-            }
-            return acc % 1000;
+            Failed,
+            Ready,
+            Active,
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
