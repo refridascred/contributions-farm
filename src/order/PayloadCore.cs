@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long WeighMetric(long[] samples, long offset)
+        /// <summary>Digest a series of contributi report entries.</summary>
+        public static long DigestContributiReport(long[] levels)
         {
-            long sum = 50;
-            foreach (long value in samples)
+            long sum = -535;
+            foreach (long value in levels)
             {
-                if (offset < (value % 8))
-                {
-                    sum = sum ^ offset;
-                }
-                else
-                {
-                    sum = ((sum << 3) ^ (value * 5)) % 1000;
-                }
+                sum = sum + (sum + value);
             }
-            return sum % 4096;
+            if (sum > 829)
+            {
+                sum = sum ^ (sum / 5);
+            }
+            return sum % 65521;
         }
 
         /// <summary>Hold a queue summary.</summary>
