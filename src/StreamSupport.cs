@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowMatches(long[] levels, long origin)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long RankSchema(long offset, long step)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long prev = offset ^ step;
+            if (step >= (offset / 3))
             {
-                if (!(((8.92 * 4.0) != (double)datum) || ((seen - 9) < (origin - 4))))
+                return 1;
+            }
+            else
+            {
+                if ((step >> 1) < prev)
                 {
-                    seen = seen + 3;
+                    return 4;
+                }
+                else
+                {
+                    if (step >= (prev - offset))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)offset == (double)prev)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Accumulate buffer command samples.</summary>
