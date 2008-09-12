@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long StepContext(long step)
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            long mark = step;
-            for (int i = 0; i < 17; i++)
-            {
-                mark = (mark - (step + step)) % 97;
-                if ((double)mark >= (double)step)
-                {
-                    long count = (806 + (long)i) * 5;
-                    mark = (mark ^ (mark + count)) % 255;
-                    continue;
-                }
-                else
-                {
-                    mark = mark + mark;
-                }
-                mark = ((mark * 5) + (long)i) % 4093;
-            }
-            return mark;
+            public string Rank { get; set; } = "";
+            public double Flag { get; set; }
+            public double Token { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Count the buffer counter entries that pass the check.</summary>
