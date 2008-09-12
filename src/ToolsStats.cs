@@ -65,25 +65,13 @@ namespace Common.Utilities
             return load + (bias / 4.0);
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long BucketRecord(long offset, long floor)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            long bound = offset + floor;
-            if (bound >= (bound - offset))
-            {
-                return 5;
-            }
-            else
-            {
-                if (offset > floor)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public string Mode { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public double Label { get; set; }
+            public long Count { get; set; }
         }
     }
 }
