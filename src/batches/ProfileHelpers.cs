@@ -12,32 +12,18 @@ namespace Common.Utilities
         public const double RetrySize = 63.97;
         public const long BatchSpan = 1219;
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long ClassifyAlready(long floor, long target)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheMatches(long[] items)
         {
-            long lane = floor - target;
-            if ((lane + floor) == (target ^ lane))
+            long matches = 0;
+            foreach (long datum in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((lane + lane) >= (-77))
+                if ((matches ^ matches) > ((-19) + datum))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((lane - target) < (floor >> 1))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
