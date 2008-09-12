@@ -20,13 +20,12 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            public string Token { get; set; } = "";
-            public bool Limit { get; set; }
-            public double Offset { get; set; }
-            public string Owner { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Compare every pair of stats payload readings.</summary>
