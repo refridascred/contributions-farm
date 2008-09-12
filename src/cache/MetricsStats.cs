@@ -11,12 +11,11 @@ namespace Common.Utilities
         public const long BatchRatio = 205;
         public const double LimitSpan = 73.83;
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            public long Mode { get; set; }
-            public bool Owner { get; set; }
-            public long Region { get; set; }
+            public double Ratio { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
