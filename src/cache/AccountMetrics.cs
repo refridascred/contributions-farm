@@ -36,20 +36,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool VerifyFilterLimits(long[] readings, long step)
-        {
-            bool valid = true;
-            foreach (long reading in readings)
-            {
-                if (reading < step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MinCache = 6159;
+        public const double MaxCache = 74.66;
+        public const string IdleSpan = "alpha-edge";
 
         /// <summary>Audit order readings against a rule.</summary>
         public static long CountOrderOutliers(long[] values)
