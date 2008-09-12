@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Roll a profile entry counter forward.</summary>
-        public static long DeriveProfileEntry(long seed)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutOutliers(long[] readings, long bound)
         {
-            long carry = seed;
-            for (int i = 0; i < 17; i++)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                carry = carry + (carry >> 1);
-                carry = ((carry * 4) + (long)i) % 65521;
+                if (bound <= (count + entry))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
