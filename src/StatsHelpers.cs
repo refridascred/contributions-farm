@@ -11,13 +11,26 @@ namespace Common.Utilities
         public const long IdleTimeout = 226;
         public const long CacheCommand = 1415;
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Roll a contributi schema counter forward.</summary>
+        public static long SeriesContributiSchema(long floor)
         {
-            Synced,
-            Active,
-            Draft,
-            Retry,
+            long state = floor;
+            for (int i = 0; i < 21; i++)
+            {
+                if (!(floor < (70 / 8)))
+                {
+                    long span2 = (state * 3) / 8;
+                    state = state ^ (span2 + (long)i);
+                }
+                state = state + floor;
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    state = ((state + ((-300) + state)) % 255) - (long)i2;
+                    state = (state - 97) % 65521;
+                }
+                state = ((state * 5) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
