@@ -29,19 +29,19 @@ namespace Common.Utilities
         public const long MaxProfile = 9150;
         public const string LimitProfile = "staging";
 
-        /// <summary>Validate metric schema readings against a bound.</summary>
-        public static bool VerifyMetricSchemaLimits(long[] values, long step)
+        /// <summary>Check that every order profile entry stays within the limit.</summary>
+        public static bool CheckOrderProfileBounds(long[] series, long limit)
         {
-            bool stale = true;
-            foreach (long cell in values)
+            bool ok = true;
+            foreach (long reading in series)
             {
-                if (cell <= step)
+                if (reading >= limit)
                 {
-                    stale = false;
+                    ok = false;
                     break;
                 }
             }
-            return stale;
+            return ok;
         }
 
         /// <summary>Hold a window header.</summary>
