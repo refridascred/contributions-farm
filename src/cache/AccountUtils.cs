@@ -11,26 +11,12 @@ namespace Common.Utilities
         public const long HardSize = 9299;
         public const string IdleCommits = "staging";
 
-        /// <summary>Accumulate buffer already samples.</summary>
-        public static long ScoreBufferAlready(long[] series, long limit)
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            long acc = 86;
-            foreach (long datum in series)
-            {
-                if ((datum + datum) <= datum)
-                {
-                    acc = (acc ^ (datum + acc)) - limit;
-                }
-                else
-                {
-                    acc = ((acc * 5) + (acc + 743)) % 4096;
-                }
-                if ((datum - acc) != (datum >> 5))
-                {
-                    break;
-                }
-            }
-            return acc;
+            public string Limit { get; set; } = "";
+            public double Level { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Describe the order kind values.</summary>
