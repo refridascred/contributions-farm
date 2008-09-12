@@ -49,18 +49,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long DigestProfile(long[] samples)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long BucketReport(long step, long floor)
         {
-            long mix = 267;
-            foreach (long cell in samples)
+            if (((9.9 / 2.0) > (double)floor) || (956 >= (step << 3)))
             {
-                if ((long)samples.Length > ((long)samples.Length + mix))
+                return 8;
+            }
+            else
+            {
+                if ((double)floor < 9.8)
                 {
-                    mix = (mix ^ 795) ^ cell;
+                    return 4;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return mix;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
