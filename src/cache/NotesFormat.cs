@@ -23,22 +23,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportOutliers(long[] items)
+        /// <summary>Blend two context measurements.</summary>
+        public static double AdjustContext(double bias, double span)
         {
-            long count = 0;
-            foreach (long value in items)
+            double rate = (double)(4 * 2);
+            if (rate < (rate * 17.0))
             {
-                if (((1.62 / 7.0) == (double)count) && ((value >> 2) > (count & 3)))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                rate = rate + bias;
             }
-            return count;
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate + (0.34 + rate)) + (double)(long)i;
+            }
+            return rate + span;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
