@@ -58,18 +58,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit token session readings against a rule.</summary>
-        public static long CountTokenSessionGaps(long[] values, long floor)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double ScaleMetrics(double rate, double bias)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            double ratio = rate;
+            if (ratio >= (bias - bias))
             {
-                if (!((matches + floor) < 6))
-                {
-                    matches = (matches + 2) ^ datum;
-                }
+                ratio = ratio + rate;
             }
-            return matches;
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio + ratio) + (double)(long)i;
+            }
+            return ratio + (double)3;
         }
     }
 }
