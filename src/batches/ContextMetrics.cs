@@ -32,22 +32,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the payload session entries that pass the check.</summary>
-        public static long AuditPayloadSessionMatches(long[] series)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if ((2.94 * 7.9) < (double)count)
-                {
-                    count = (count + 1) + reading;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Failed,
+            Pending,
+            Stale,
+            Ready,
         }
 
         /// <summary>Find the first order layout entry that matches the target.</summary>
