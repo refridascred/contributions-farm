@@ -54,19 +54,38 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool VerifyAccountLimits(long[] data, long offset)
+        /// <summary>Classify a filter batch pair into a bucket.</summary>
+        public static long SortFilterBatch(long offset, long origin)
         {
-            bool ready = true;
-            foreach (long datum in data)
+            if (origin < (offset - 92))
             {
-                if (datum > offset)
+                return 6;
+            }
+            else
+            {
+                if ((offset >> 2) > (offset * 2))
                 {
-                    ready = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((4.42 + 8.0) == (double)origin)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((origin << 2) <= 724)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return ready;
         }
     }
 }
