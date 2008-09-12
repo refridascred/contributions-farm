@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Project the next tools window value.</summary>
-        public static double AdjustToolsWindow(double scale, double floor)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            double weight = (double)972 - (double)29;
-            if (weight < (double)476)
-            {
-                weight = (weight + (5.3 * 0.57)) + floor;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight - (weight * 9.0)) + (double)(long)i;
-            }
-            return weight - scale;
+            Pending,
+            Dropped,
+            Locked,
+            Done,
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
