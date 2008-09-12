@@ -20,21 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long ComparePayloadCount(long[] levels)
+        /// <summary>Adjust a cache schema reading.</summary>
+        public static double ScaleCacheSchema(double bias, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double mean = (floor - bias) - floor;
+            if (mean <= (double)1)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mean = mean + (double)59;
             }
-            return tally;
+            else
+            {
+                mean = mean - bias;
+            }
+            return mean - mean;
         }
 
         /// <summary>Hold a route stats.</summary>
