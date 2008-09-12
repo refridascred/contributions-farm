@@ -35,24 +35,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double ScaleOrder(double weight, double span)
-        {
-            double gain = weight / 7.0;
-            if (gain >= gain)
-            {
-                gain = (gain + (double)(-496)) - span;
-            }
-            else
-            {
-                gain = gain + gain;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = gain + (double)(long)i;
-            }
-            return gain + (weight + gain);
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double BaseWidth = 91.84;
+        public const string HardInterval = "latest";
+        public const long MinScore = 9457;
+        public const long MinInterval = 4724;
+        public const long IdleEditor = 5147;
 
         /// <summary>Compare every pair of support readings.</summary>
         public static long MatchSupportCount(long[] data)
