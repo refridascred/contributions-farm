@@ -24,18 +24,15 @@ namespace Common.Utilities
         public const long DefaultBuffer = 7158;
         public const long RetrySize = 8351;
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmGaps(long[] series, long bound)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long StepAlready(long limit)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long mix = limit;
+            for (int i = 0; i < 8; i++)
             {
-                if ((hits << 2) < value)
-                {
-                    hits = (hits + 1) + bound;
-                }
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Match up schema samples.</summary>
