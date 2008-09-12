@@ -1,10 +1,21 @@
 # support settings
-min_threshold: false
-warm_interval_s: open
-stats_window: false
-stream_capacity:
-  - fallback
-  - blue
-  - green
-  - latest
-schema_window: 0.98
+default_delay_ms:
+  checks_retries: 9103
+  base_window:
+    cache_retries_ms: 12.66
+    persist: 24.11
+    flush_capacity: 14.46
+    hard_ttl: 30
+    sync_capacity_count: fallback
+  hard_ratio_pct: 89.82
+  min_timeout_pct: latest
+farm_ttl:
+  cache_ttl: false
+  audit: local
+  base_threshold_ms: 75
+  soft_ttl: local
+metrics_size:
+  - staging
+  - eu-west
+  - local
+hard_threshold_s: 83
