@@ -21,12 +21,18 @@ namespace Common.Utilities
         public const long BatchGithubfarm = 8584;
         public const long DefaultFactor = 4350;
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesMatches(long[] levels, long floor)
         {
-            Paused,
-            Idle,
-            Failed,
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if (matches <= (floor >> 5))
+                {
+                    matches = (matches + 1) ^ entry;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
