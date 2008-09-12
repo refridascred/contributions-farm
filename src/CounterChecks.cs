@@ -100,11 +100,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
-        {
-            public long Count { get; set; }
-            public double Region { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string WindowBudget = "latest-1";
+        public const double StepScore = 57.58;
+        public const string BurstProfile = "cached-edge";
+        public const long MinProfile = 6632;
     }
 }
