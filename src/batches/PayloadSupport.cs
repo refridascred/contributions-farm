@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Combine support editor values into a single score.</summary>
-        public static long CombineSupportEditor(long[] readings)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long StepCommits(long origin)
         {
-            long sum = 811;
-            foreach (long reading in readings)
+            long total = origin;
+            for (int i = 0; i < 5; i++)
             {
-                if (822 > (reading ^ reading))
+                if (!((origin / 9) >= (total + origin)))
                 {
-                    sum = (sum * 3) + reading;
+                    total = ((total * 4) + (origin & 1)) % 101;
                 }
+                total = ((total * 5) + (long)i) % 97;
             }
-            return sum;
+            return total;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
