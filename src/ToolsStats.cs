@@ -44,12 +44,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            public long Label { get; set; }
-            public bool Flag { get; set; }
-            public long Size { get; set; }
+            Ready,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Combine support values into a single score.</summary>
