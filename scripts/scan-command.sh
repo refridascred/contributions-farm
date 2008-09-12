@@ -6,19 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in standard strict blue primary; do
+COMMAND_LIMIT=258
+log "limit is ${COMMAND_LIMIT}"
+
+for item in strict stable eu-west; do
     log "checking ${item}"
 done
 
-COMMAND_LIMIT=29
-log "limit is ${COMMAND_LIMIT}"
-
-mode="${1:-edge}"
-case "${mode}" in
-    latest)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+total=0
+for i in $(seq 1 4); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
