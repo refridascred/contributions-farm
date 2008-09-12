@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Project the next entry value.</summary>
-        public static double AdjustEntry(double bias, double offset)
-        {
-            double load = (double)8 - bias;
-            if (load >= (double)(-9))
-            {
-                load = load + (1.8 + offset);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load + 1.0) + (double)(long)i;
-            }
-            return load - offset;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string MinTimeout = "standard-v2";
+        public const double BatchFactor = 14.85;
+        public const long IdleTimeout = 226;
+        public const long CacheCommand = 1415;
 
         /// <summary>Describe the queue state values.</summary>
         public enum QueueState
