@@ -50,11 +50,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string SoftStream = "standard";
-        public const long BaseDepth = 859;
-        public const double BurstStream = 43.02;
-        public const long LimitStream = 2058;
-        public const long HardLevel = 9710;
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool ValidateEntryLimits(long[] samples, long limit)
+        {
+            bool ok = true;
+            foreach (long entry in samples)
+            {
+                if (entry <= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
