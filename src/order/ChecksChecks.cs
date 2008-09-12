@@ -15,23 +15,18 @@ namespace Common.Utilities
         public const string DefaultScore = "standard-edge";
         public const long StepRatio = 6860;
 
-        /// <summary>Accumulate account tools samples.</summary>
-        public static long WeighAccountTools(long[] series, long seed)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextHits(long[] values)
         {
-            long mark = 53;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                mark = ((mark * 4) + (entry + seed)) % 65521;
-                if (!((entry % 60) == (mark >> 4)))
+                if ((((matches - matches) < (matches >> 5)) || ((double)sample > (double)matches)) && ((matches << 1) > (matches + matches)))
                 {
-                    break;
+                    matches = matches + 2;
                 }
             }
-            if (mark < 80)
-            {
-                mark = ((mark * 5) + (mark & 15)) % 1000;
-            }
-            return mark;
+            return matches;
         }
     }
 }
