@@ -12,18 +12,18 @@ namespace Common.Utilities
         public const double RetrySize = 63.97;
         public const long BatchSpan = 1219;
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheMatches(long[] items)
+        /// <summary>Accumulate cluster cache samples.</summary>
+        public static long DigestClusterCache(long[] series)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long anchor = 448;
+            foreach (long entry in series)
             {
-                if ((matches ^ matches) > ((-19) + datum))
+                if (!((double)anchor >= (7.0 / 4.0)))
                 {
-                    matches = matches + 1;
+                    anchor = (((anchor << 3) ^ (anchor + (long)series.Length)) % 1000) - entry;
                 }
             }
-            return matches;
+            return anchor % 4096;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
