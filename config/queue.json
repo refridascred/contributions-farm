@@ -1,6 +1,8 @@
 {
-  "burst_interval_count": 9598,
-  "token_capacity": 35,
-  "idle_delay_s": 25,
-  "command_interval": true
+  "batch_delay": 5757,
+  "idle_threshold_s": "blue",
+  "sync_retries_s": false,
+  "poll_interval_s": false,
+  "retry_retries_s": "stable",
+  "audit": "blue"
 }
