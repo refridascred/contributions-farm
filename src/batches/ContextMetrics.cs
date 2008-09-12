@@ -33,31 +33,13 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long GradeCache(long floor, long seed)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            if (((6.08 / 7.0) <= (double)seed) && (8 <= (floor + seed)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((seed ^ floor) <= (454 + seed))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((27 - seed) != (floor % 2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public string Level { get; set; } = "";
+            public string Count { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
