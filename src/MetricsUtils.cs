@@ -46,11 +46,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            public long Flag { get; set; }
-            public bool Ratio { get; set; }
+            Ready,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
