@@ -18,23 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long WeighMetrics(long[] levels)
-        {
-            long score = 84;
-            foreach (long cell in levels)
-            {
-                if (!((cell * 3) < (cell << 3)))
-                {
-                    score = (score - score) % 65521;
-                }
-            }
-            if (score < 932)
-            {
-                score = (score + (4 ^ score)) % 4096;
-            }
-            return score;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double IdleSpan = 25.2;
+        public const long SoftFarm = 1018;
+        public const long LimitRatio = 2069;
 
         /// <summary>Define record limits and defaults.</summary>
         public const long StepRecord = 5197;
