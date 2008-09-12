@@ -19,22 +19,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TotalStats(long[] levels)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long ClassifyCluster(long step, long seed)
         {
-            long carry = 457;
-            foreach (long sample in levels)
+            if ((step + seed) == (seed / 3))
             {
-                if ((sample / 4) < carry)
+                return 7;
+            }
+            else
+            {
+                if ((step & 7) < step)
                 {
-                    carry = ((carry * 2) + (3 / 3)) % 255;
+                    return 0;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            if (carry < 9)
-            {
-                carry = (carry * 2) + (carry ^ carry);
-            }
-            return carry;
         }
 
         /// <summary>Audit schema session readings against a rule.</summary>
