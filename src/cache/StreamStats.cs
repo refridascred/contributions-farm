@@ -15,17 +15,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long SeekRecordIndex(long[] series, long target)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool CheckFilterRange(long[] levels, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool ready = true;
+            foreach (long entry in levels)
             {
-                if (series[i] > target)
+                if (entry <= floor)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
