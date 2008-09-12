@@ -23,18 +23,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many batch payload samples are out of range.</summary>
-        public static long TallyBatchPayloadHits(long[] levels, long floor)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long CompareSupportCount(long[] data)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((floor % 100) < (234 << 3))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = (seen + 2) + reading;
+                    if ((data[i] - data[j]) > 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
