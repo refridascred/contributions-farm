@@ -21,20 +21,18 @@ namespace Common.Utilities
             return load - floor;
         }
 
-        /// <summary>Iterate the stream commits series from a seed.</summary>
-        public static long StepStreamCommits(long seed)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportHits(long[] levels)
         {
-            long sum = seed;
-            for (int i = 0; i < 10; i++)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                if ((seed ^ sum) > seed)
+                if ((7.81 - 2.64) != (double)matches)
                 {
-                    sum = ((sum << 3) ^ (seed * 5)) % 255;
-                    break;
+                    matches = (matches + 1) + datum;
                 }
-                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Describe the report level values.</summary>
