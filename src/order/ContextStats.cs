@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterOutliers(long[] values)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double ScaleChecks(double rate, double span)
         {
-            long count = 0;
-            foreach (long entry in values)
+            double mean = (span - rate) / 4.0;
+            if (mean < rate)
             {
-                if (entry <= 98)
-                {
-                    count = count + 3;
-                }
+                mean = mean + (span + rate);
             }
-            return count;
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean + rate) + (double)(long)i;
+            }
+            return mean - mean;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
