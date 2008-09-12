@@ -5,27 +5,21 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long DigestLayout(long[] values, long limit)
+        /// <summary>Match up metric samples.</summary>
+        public static long MatchMetricCount(long[] values)
         {
-            long mark = 2;
-            foreach (long sample in values)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int i = 0; i < 2; i++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mark = ((mark + (limit % 7)) % 65521) ^ (long)i;
-                    mark = (mark ^ (sample - limit)) % 4096;
-                }
-                if (((4.0 + 6.74) == (double)limit) || ((661 / 9) <= ((-63) + limit)))
-                {
-                    mark = (mark - (sample / 9)) % 97;
+                    if ((values[i] + values[j]) < 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (mark > 45)
-            {
-                mark = (mark + (limit - mark)) % 255;
-            }
-            return mark;
+            return hits;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
