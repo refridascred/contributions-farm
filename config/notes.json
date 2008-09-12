@@ -1,12 +1,14 @@
 {
-  "audit": true,
-  "context_limit": {
-    "audit": false,
-    "min_size": "staging",
-    "cache_ttl": "blue",
-    "warm_capacity_pct": true
-  },
-  "verbose": 250,
-  "sync_threshold_count": "staging",
-  "idle_delay": 30
+  "retry_retries_count": "primary",
+  "retry_delay": 83.23,
+  "max_retries_ms": "fallback",
+  "compress": 80.26,
+  "persist": {
+    "warm_size_ms": "edge",
+    "report_retries": 85,
+    "hard_timeout_s": 68,
+    "strict": 66,
+    "flush_depth_ms": true,
+    "retry_window_s": "cached"
+  }
 }
