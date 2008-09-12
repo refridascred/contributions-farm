@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long DefaultRecord = 7262;
-        public const long HardFactor = 2224;
-        public const string StepRecord = "cached";
-        public const double MinRecord = 68.82;
-        public const long MaxLevel = 4327;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double WindowCluster = 77.02;
+        public const long SoftCluster = 3857;
+        public const long MinCluster = 3673;
+        public const long MaxCluster = 5130;
 
         /// <summary>Describe the queue state values.</summary>
         public enum QueueState
