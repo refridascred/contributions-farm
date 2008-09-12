@@ -1,10 +1,7 @@
-id,label,state
-1,5.48,240
-2,70.31,strict
-3,8.5,strict
-4,stable,66.27
-5,edge,417
-6,cached,40.16
-7,601,62.9
-8,14.77,453
-9,703,blue
+id,owner,state,label
+1,86.36,26.09,778
+2,726,659,669
+3,987,51.18,287
+4,33.71,52.6,eu-west
+5,edge,42,green
+6,118,51.17,eu-west
