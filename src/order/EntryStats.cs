@@ -47,31 +47,21 @@ namespace Common.Utilities
             return ratio + (double)8;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long GradeAlready(long origin, long step)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long PairStreamCount(long[] data)
         {
-            if ((22 * 5) != (step - step))
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((step > (step * 5)) && ((double)origin < (8.9 - 4.3)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((step - origin) > (step ^ origin))
+                    if ((data[i] + data[j]) == 18)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Count the checks window entries that pass the check.</summary>
