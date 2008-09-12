@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long PairOrderCount(long[] items)
-        {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long SoftLevel = 540;
+        public const long WindowScore = 8877;
+        public const long RetryBudget = 2208;
+        public const long LimitMetric = 3375;
 
         /// <summary>Roll a tools counter forward.</summary>
         public static long DeriveTools(long floor)
