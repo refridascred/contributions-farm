@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long RetrySpan = 6580;
-        public const string IdleCommits = "primary-edge";
-        public const long SoftTimeout = 9115;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MaxFactor = 9360;
+        public const double BaseFilter = 80.59;
+        public const string MinFilter = "legacy";
+        public const long RetryBudget = 6561;
+        public const string DefaultBudget = "cached-1";
 
         /// <summary>Scale a token figure with a bias.</summary>
         public static double BlendToken(double weight, double bias)
