@@ -16,11 +16,14 @@ namespace Common.Utilities
             return ratio + (double)10;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BaseFilter = 6972;
-        public const double CacheFilter = 13.03;
-        public const double RetryFilter = 59.54;
-        public const double MaxFilter = 2.66;
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
+        {
+            Paused,
+            Done,
+            Failed,
+            Ready,
+        }
 
         /// <summary>Hold a githubfarm header.</summary>
         public sealed class GithubfarmHeader
