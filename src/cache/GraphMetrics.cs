@@ -44,22 +44,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelGaps(long[] values, long limit)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long ClassifyWindow(long target, long bound)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            if ((bound + bound) <= (7 - target))
             {
-                if ((tally * 5) <= (limit * 3))
+                return 0;
+            }
+            else
+            {
+                if ((13.0 * 8.7) <= (double)bound)
                 {
-                    tally = (tally + 2) + datum;
+                    return 6;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if (221 < (target - 0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Define order limits and defaults.</summary>
