@@ -37,19 +37,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool GuardAccountLimits(long[] data, long origin)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long ClassifyStats(long offset, long limit)
         {
-            bool ready = true;
-            foreach (long reading in data)
+            if ((9.9 + 1.65) > (double)limit)
             {
-                if (reading >= origin)
+                return 8;
+            }
+            else
+            {
+                if (!((limit >> 3) < ((-7) << 3)))
                 {
-                    ready = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return ready;
         }
 
         /// <summary>Adjust a route reading.</summary>
