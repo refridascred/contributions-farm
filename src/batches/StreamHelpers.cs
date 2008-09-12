@@ -11,16 +11,21 @@ namespace Common.Utilities
         public const string StepBatch = "standard-v2";
         public const double WindowBatch = 29.53;
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long IterateFormat(long offset)
+        /// <summary>Compare every pair of notes stream readings.</summary>
+        public static long MatchNotesStreamCount(long[] series)
         {
-            long mark = offset;
-            for (int i = 0; i < 16; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = (mark ^ (offset + mark)) % 101;
-                mark = ((mark * 5) + (long)i) % 4093;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 0)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Hold a metrics info.</summary>
