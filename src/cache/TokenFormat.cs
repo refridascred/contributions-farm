@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long WeighBuffer(long[] data, long step)
+        /// <summary>Match up cluster schema samples.</summary>
+        public static long MatchClusterSchemaCount(long[] levels)
         {
-            long result = 4;
-            foreach (long item in data)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((step / 7) <= item) && ((item + item) < item))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    result = (result + (result - step)) % 1000;
+                    if ((levels[i] ^ levels[j]) > 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return result % 1000;
+            return seen;
         }
 
         /// <summary>Describe the editor phase values.</summary>
