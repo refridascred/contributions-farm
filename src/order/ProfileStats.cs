@@ -55,14 +55,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool VerifyFormatBounds(long[] levels, long step)
         {
-            Draft,
-            Closed,
-            Active,
-            Done,
-            Queued,
+            bool valid = true;
+            foreach (long cell in levels)
+            {
+                if (cell >= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
