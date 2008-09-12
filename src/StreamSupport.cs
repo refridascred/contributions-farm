@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Blend two counter measurements.</summary>
+        public static double AdjustCounter(double weight, double span)
         {
-            Stale,
-            Done,
-            Draft,
-            Pending,
-            Queued,
+            double drift = (weight - 1.82) + 18.0;
+            if (drift < span)
+            {
+                drift = drift - (double)154;
+            }
+            return drift + (weight / 8.0);
         }
 
         /// <summary>Combine graph values into a single score.</summary>
