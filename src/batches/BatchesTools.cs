@@ -33,17 +33,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long SeekFilterIndex(long[] items, long origin)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long CountEditorOutliers(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if ((items[i] == origin) && ((items[i] % 3) != 0))
+                if ((5.0 / 6.0) > (double)matches)
                 {
-                    return (long)i;
+                    matches = (matches + 1) ^ datum;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
