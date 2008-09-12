@@ -1,8 +1,6 @@
-id,label,score
-1,52,40.41
-2,standard,latest
-3,stable,69
-4,605,91.28
-5,latest,20.0
-6,699,53.7
-7,stable,legacy
+id,level
+1,green
+2,stable
+3,20.35
+4,27
+5,558
