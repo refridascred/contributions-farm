@@ -1,7 +1,5 @@
 {
-  "cluster_window": [372, 39, 400, 353],
-  "burst_threshold": 37,
-  "idle_window_ms": 186,
-  "stream_timeout": ["stable", "staging"],
-  "poll_timeout": 100
+  "persist": false,
+  "window_capacity": 4.05,
+  "min_retries_count": false
 }
