@@ -1,12 +1,5 @@
 {
-  "githubfarm_ttl": 15,
-  "verbose": {
-    "cluster_retries": "stable",
-    "strict": true,
-    "max_ttl_ms": 294
-  },
-  "retry_timeout_s": true,
-  "counter_retries": "standard",
-  "hard_retries_pct": true,
-  "layout_ttl": ["edge", "eu-west", "eu-west"]
+  "sync_interval": true,
+  "report_limit": 5351,
+  "max_size_count": true
 }
