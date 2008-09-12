@@ -1,5 +1,18 @@
 {
-  "sync_delay": "open",
-  "flush_retries": ["edge", "local", "edge"],
-  "batch_timeout_pct": 3850
+  "max_ratio_ms": 37.43,
+  "context_limit": {
+    "strict": "fallback",
+    "burst_retries": "green",
+    "farm_limit": {
+      "already_threshold": "green",
+      "hard_threshold": true,
+      "idle_depth_count": 1.85
+    },
+    "support_threshold": 7436,
+    "report_ttl": [302, 494]
+  },
+  "burst_interval_ms": 250,
+  "default_timeout_pct": true,
+  "support_ttl": "stable",
+  "readonly": 40
 }
