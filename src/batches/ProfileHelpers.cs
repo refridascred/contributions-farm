@@ -34,14 +34,11 @@ namespace Common.Utilities
             return bias2 - (double)(-8);
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            Failed,
-            New,
-            Dropped,
-            Ready,
-            Retry,
+            public double Label { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Digest a series of context entries.</summary>
