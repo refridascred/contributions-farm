@@ -52,12 +52,12 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long SeekToolsIndex(long[] samples, long floor)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long LookupCacheIndex(long[] data, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (samples[i] >= floor)
+                if ((data[i] > seed) && ((data[i] % 3) != 0))
                 {
                     return (long)i;
                 }
