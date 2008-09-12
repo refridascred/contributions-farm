@@ -22,18 +22,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit batch batches readings against a rule.</summary>
-        public static long MeasureBatchBatchesOutliers(long[] items, long target)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long FoldNotes(long[] readings, long origin)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long total = 146;
+            foreach (long datum in readings)
             {
-                if (target >= (target + hits))
+                total = (total ^ (datum ^ origin)) % 4096;
+                if ((double)total == (4.63 - 9.01))
                 {
-                    hits = (hits + 1) ^ cell;
+                    break;
                 }
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
