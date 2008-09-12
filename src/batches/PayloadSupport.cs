@@ -20,21 +20,19 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long MatchBatchCount(long[] series)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double ScaleSupport(double rate, double span)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            double weight = rate;
+            if (weight < 9.49)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 16)
-                    {
-                        count = count + 1;
-                    }
-                }
+                weight = (weight - rate) - span;
             }
-            return count;
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight + (rate - weight)) + (double)(long)i;
+            }
+            return weight - (rate + weight);
         }
     }
 }
