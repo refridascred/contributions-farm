@@ -48,18 +48,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long DigestBatches(long[] data, long target)
+        /// <summary>Check that every batches buffer entry stays within the limit.</summary>
+        public static bool CheckBatchesBufferLimits(long[] levels, long step)
         {
-            long sum = 5;
-            foreach (long cell in data)
+            bool ready = true;
+            foreach (long entry in levels)
             {
-                if (((-6) ^ target) == (target / 2))
+                if (entry < step)
                 {
-                    sum = ((sum << 3) ^ (9 * 4)) ^ cell;
+                    ready = false;
+                    break;
                 }
             }
-            return sum;
+            return ready;
         }
     }
 }
