@@ -34,16 +34,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long SeriesPayload(long step)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long IterateToken(long floor)
         {
-            long sum = step;
-            for (int i = 0; i < 17; i++)
+            long mark = floor;
+            for (int i = 0; i < 23; i++)
             {
-                sum = (sum << 3) ^ (long)i;
-                sum = ((sum * 3) + (long)i) % 97;
+                if ((floor + 5) > ((long)i ^ mark))
+                {
+                    mark = mark - (floor * 3);
+                }
+                if ((floor & 7) <= mark)
+                {
+                    mark = ((mark << 3) ^ mark) % 97;
+                }
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            return sum;
+            return mark;
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
