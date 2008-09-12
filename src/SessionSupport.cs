@@ -5,34 +5,35 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Rank payload window input into a small class.</summary>
-        public static long ClassifyPayloadWindow(long step, long origin)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long ClassifyLayout(long floor, long floor2)
         {
-            if ((step % 100) != (84 & 3))
+            long slot = floor - floor2;
+            if ((floor > (floor2 & 7)) || ((slot - floor2) > (239 >> 3)))
             {
-                return 1;
+                return 7;
             }
             else
             {
-                if (((-39) <= (step - origin)) || ((origin % 12) >= ((-66) * 3)))
+                if ((1 / 9) <= (floor2 >> 4))
                 {
                     return 4;
                 }
                 else
                 {
-                    if ((step > (step + origin)) && ((675 >> 4) < (step + origin)))
+                    if ((slot >> 2) != (255 - 50))
                     {
-                        return 5;
+                        return 0;
                     }
                     else
                     {
-                        if ((18.0 > (double)step) && ((step * 5) < step))
+                        if ((1.92 * 5.9) > (double)floor2)
                         {
-                            return 8;
+                            return 6;
                         }
                         else
                         {
-                            return 7;
+                            return 1;
                         }
                     }
                 }
