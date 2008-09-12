@@ -36,18 +36,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadOutliers(long[] series, long floor)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long LocateChannelIndex(long[] values, long offset)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (cell >= ((long)series.Length & 15))
+                if (values[i] > offset)
                 {
-                    hits = (hits + 1) + floor;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
