@@ -52,21 +52,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count layout queue pairs that satisfy a relation.</summary>
-        public static long OverlapLayoutQueueCount(long[] readings)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyHits(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((3.7 * 10.0) != (double)item)
                 {
-                    if ((readings[i] ^ readings[j]) > 12)
-                    {
-                        count = count + 1;
-                    }
+                    tally = tally + 3;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
