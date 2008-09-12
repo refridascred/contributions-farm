@@ -99,38 +99,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a filter batch pair into a bucket.</summary>
-        public static long SortFilterBatch(long offset, long origin)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long DeriveCounter(long origin)
         {
-            if (origin < (offset - 92))
+            long score = origin;
+            for (int i = 0; i < 4; i++)
             {
-                return 6;
+                score = score - ((long)i ^ (long)i);
+                score = ((score * 2) + (long)i) % 4093;
             }
-            else
-            {
-                if ((offset >> 2) > (offset * 2))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((4.42 + 8.0) == (double)origin)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((origin << 2) <= 724)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return score;
         }
     }
 }
