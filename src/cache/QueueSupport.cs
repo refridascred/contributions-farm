@@ -17,13 +17,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long DeriveContext(long seed)
         {
-            Done,
-            Paused,
-            Queued,
-            Ready,
+            long acc = seed;
+            for (int i = 0; i < 14; i++)
+            {
+                acc = ((acc * 5) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Hold a session info.</summary>
