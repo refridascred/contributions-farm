@@ -29,11 +29,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long HardRatio = 6356;
-        public const long SoftWidth = 5044;
-        public const long WindowSize = 9417;
-        public const long StepWidth = 9203;
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long SeekCounterIndex(long[] readings, long limit)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= limit) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of record readings.</summary>
         public static long TotalRecord(long[] readings, long floor)
