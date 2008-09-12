@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long StepAlready(long limit)
+        /// <summary>Find the first channel context entry that matches the target.</summary>
+        public static long SeekChannelContextIndex(long[] samples, long bound)
         {
-            long result = limit;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = ((result * 4) + (long)i) % 65521;
+                if (samples[i] <= bound)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Locate a metric reading by value.</summary>
