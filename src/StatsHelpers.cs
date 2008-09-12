@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Project the next entry value.</summary>
+        public static double AdjustEntry(double bias, double offset)
         {
-            public double Level { get; set; }
-            public bool Flag { get; set; }
-            public bool Token { get; set; }
+            double load = (double)8 - bias;
+            if (load >= (double)(-9))
+            {
+                load = load + (1.8 + offset);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load + 1.0) + (double)(long)i;
+            }
+            return load - offset;
         }
 
         /// <summary>Describe the queue state values.</summary>
