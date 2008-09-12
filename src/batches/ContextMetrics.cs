@@ -40,14 +40,24 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long ClassifyGithubfarm(long bound, long target)
         {
-            Locked,
-            Failed,
-            Closed,
-            Synced,
-            Idle,
+            if ((double)target < (20.0 * 9.52))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)target <= (9.0 * 5.64))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
