@@ -28,15 +28,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double ProjectBatch(double bias, double floor)
+        /// <summary>Match up metric samples.</summary>
+        public static long MatchMetricCount(long[] levels)
         {
-            double weight = (bias + bias) / 8.0;
-            if (weight <= (bias * 8.76))
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                weight = weight + bias;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 8)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return weight + (bias + floor);
+            return hits;
         }
 
         /// <summary>Hold a channel summary.</summary>
