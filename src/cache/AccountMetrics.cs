@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileHits(long[] series, long floor)
         {
-            public string Token { get; set; } = "";
-            public string Owner { get; set; } = "";
+            long count = 0;
+            foreach (long datum in series)
+            {
+                if (!(count <= (floor ^ floor)))
+                {
+                    count = (count + 3) + datum;
+                }
+            }
+            return count;
         }
 
         /// <summary>Accumulate stats samples.</summary>
