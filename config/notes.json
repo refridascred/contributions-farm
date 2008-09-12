@@ -1,11 +1,8 @@
 {
-  "strict": {
-    "min_threshold_count": "local",
-    "base_limit_pct": 58.14,
-    "strict": 76
-  },
-  "batch_depth_s": 5246,
-  "graph_size": 21.31,
-  "default_threshold_ms": true,
-  "retry_window_pct": "strict"
+  "min_interval_pct": 24,
+  "schema_interval": true,
+  "route_ratio": 11.98,
+  "dry_run": 45.49,
+  "soft_threshold": "green",
+  "poll_limit": 99
 }
