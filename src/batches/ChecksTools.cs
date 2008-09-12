@@ -22,27 +22,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long WeighCounter(long[] items, long floor)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long LocateFormatIndex(long[] items, long floor)
         {
-            long mark = 22;
-            foreach (long cell in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = (mark ^ cell) % 255;
-                if (((long)items.Length - mark) == (floor + 95))
+                if (items[i] == floor)
                 {
-                    mark = mark - cell;
-                }
-                else
-                {
-                    mark = (mark + 4) % 1000;
-                }
-                if (((cell * 5) != (cell >> 1)) || ((cell - mark) >= (cell % 24)))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
