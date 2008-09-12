@@ -1,5 +1,17 @@
 {
-  "channel_limit": 3293,
-  "support_threshold": true,
-  "poll_limit_pct": "blue"
+  "batches_timeout": "legacy",
+  "tools_retries": 35.39,
+  "queue_retries": "eu-west",
+  "window_interval": "open",
+  "retry_depth_pct": {
+    "batch_retries_count": 69,
+    "session_delay": {
+      "burst_delay_count": "green",
+      "poll_interval_ms": "latest",
+      "cache_threshold": 66.1,
+      "batch_delay": true
+    },
+    "filter_size": ["latest", "primary"]
+  },
+  "order_interval": 100
 }
