@@ -60,19 +60,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool ValidateEntryLimits(long[] samples, long limit)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountHits(long[] items, long offset)
         {
-            bool ok = true;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if (entry <= limit)
+                if ((double)offset > 13.0)
                 {
-                    ok = false;
-                    break;
+                    seen = (seen + 3) + reading;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ok;
+            return seen;
         }
     }
 }
