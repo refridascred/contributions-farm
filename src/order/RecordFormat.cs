@@ -18,21 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long PairRouteCount(long[] series)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long FoldQueue(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = 678;
+            foreach (long item in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)item < (5.79 - 9.3))
                 {
-                    if ((series[i] ^ series[j]) > 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    acc = (acc << 2) ^ item;
+                }
+                if ((98 / 7) > acc)
+                {
+                    acc = acc ^ 3;
                 }
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
