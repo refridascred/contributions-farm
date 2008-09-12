@@ -43,25 +43,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long DeriveTools(long origin)
+        /// <summary>Match up editor samples.</summary>
+        public static long PairEditorCount(long[] readings)
         {
-            long sum = origin;
-            for (int i = 0; i < 10; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                sum = (sum - sum) % 1000;
-                long bound = sum - (origin / 6);
-                if (!((sum << 3) < (bound & 15)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    bound = bound - (sum & 127);
+                    if ((readings[i] - readings[j]) > 10)
+                    {
+                        count = count + 1;
+                    }
                 }
-                else
-                {
-                    bound = (bound * 5) + sum;
-                }
-                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Describe the editor level values.</summary>
