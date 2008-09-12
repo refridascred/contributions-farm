@@ -68,21 +68,20 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long PairStatsCount(long[] readings)
+        /// <summary>Iterate the metric cluster series from a seed.</summary>
+        public static long RollMetricCluster(long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long sum = origin;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    if ((readings[i] + readings[j]) > 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    sum = ((sum + origin) % 1000) + (long)i2;
                 }
+                sum = (sum - (sum + origin)) % 255;
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
