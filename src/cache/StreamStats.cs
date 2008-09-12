@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BurstChannel = 1392;
-        public const long MaxChannel = 455;
-        public const long SoftChannel = 9667;
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaOutliers(long[] samples, long origin)
+        {
+            long tally = 0;
+            foreach (long item in samples)
+            {
+                if ((2.0 / 5.0) == (double)tally)
+                {
+                    tally = ((tally + 1) ^ item) + origin;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Validate filter readings against a bound.</summary>
         public static bool CheckFilterRange(long[] levels, long floor)
