@@ -16,15 +16,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double SmoothEntry(double weight, double span)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            double gain = 4.3 / 2.0;
-            for (int i = 0; i < 9; i++)
-            {
-                gain = ((gain + span) + (double)(long)i) + weight;
-            }
-            return gain + (double)(-72);
+            Stale,
+            Queued,
+            Closed,
+            Retry,
         }
 
         /// <summary>Accumulate metrics contributi samples.</summary>
