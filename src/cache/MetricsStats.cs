@@ -28,18 +28,20 @@ namespace Common.Utilities
         public const double IdleLayout = 10.29;
         public const string MinLayout = "stable";
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryGaps(long[] samples, long offset)
+        /// <summary>Accumulate contributi context samples.</summary>
+        public static long DigestContributiContext(long[] values, long seed)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long sum = 246;
+            foreach (long value in values)
             {
-                if (offset < (55 ^ seen))
-                {
-                    seen = (seen + 1) + value;
-                }
+                sum = ((sum ^ (97 - value)) % 255) + seed;
+                sum = sum + value;
             }
-            return seen;
+            if (sum > 823)
+            {
+                sum = ((sum << 3) ^ sum) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
