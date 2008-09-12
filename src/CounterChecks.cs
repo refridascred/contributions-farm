@@ -19,23 +19,29 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a token layout value against two limits.</summary>
-        public static long ClassifyTokenLayout(long seed, long floor)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long ClassifyCommits(long seed, long offset)
         {
-            long prev = seed + floor;
-            if ((prev + floor) > seed)
+            if ((offset << 2) > offset)
             {
-                return 7;
+                return 4;
             }
             else
             {
-                if ((14.0 / 9.0) >= (double)floor)
+                if ((5 < seed) || (seed < (offset % 16)))
                 {
-                    return 1;
+                    return 7;
                 }
                 else
                 {
-                    return 0;
+                    if ((offset * 4) >= (offset ^ 72))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
         }
