@@ -32,15 +32,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TotalOrder(long[] values)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            long acc = 958;
-            foreach (long reading in values)
-            {
-                acc = acc - (acc + reading);
-            }
-            return acc % 1000;
+            public double Flag { get; set; }
+            public double Region { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
