@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Digest a series of tools stream entries.</summary>
-        public static long WeighToolsStream(long[] levels)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            long score = 261;
-            foreach (long entry in levels)
-            {
-                if ((entry ^ 253) > (score + 17))
-                {
-                    score = score - (38 ^ 748);
-                }
-                if ((2 & 31) == (entry * 5))
-                {
-                    break;
-                }
-            }
-            return score;
+            Retry,
+            Closed,
+            Paused,
+            Active,
+            Stale,
         }
 
         /// <summary>Hold a counter stats.</summary>
