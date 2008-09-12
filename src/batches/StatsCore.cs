@@ -29,15 +29,39 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long RollLayout(long origin)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long BucketRoute(long target, long step)
         {
-            long carry = origin;
-            for (int i = 0; i < 7; i++)
+            long delta = target + step;
+            if (4.05 >= (double)step)
             {
-                carry = ((carry * 4) + (long)i) % 101;
+                return 4;
             }
-            return carry;
+            else
+            {
+                if ((double)step == (0.14 / 8.0))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((target + 5) <= (delta & 15)) || ((double)target > (5.5 / 3.0)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((8.85 * 2.4) > (double)delta) && ((0 << 3) < (step * 4)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
