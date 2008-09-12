@@ -5,23 +5,14 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Digest a series of report entries.</summary>
-        public static long CombineReport(long[] series)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            long state = 8;
-            foreach (long value in series)
-            {
-                if ((value - value) == (state & 127))
-                {
-                    state = (state * 2) + state;
-                }
-                state = (state - 69) % 65521;
-            }
-            if (state > (-49))
-            {
-                state = (state - (state & 7)) % 1000;
-            }
-            return state;
+            Paused,
+            Stale,
+            Draft,
+            Ready,
+            New,
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
