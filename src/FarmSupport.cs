@@ -67,12 +67,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Locate a metric counter reading by value.</summary>
+        public static long SeekMetricCounterIndex(long[] readings, long step)
         {
-            Idle,
-            Retry,
-            New,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a batch info.</summary>
