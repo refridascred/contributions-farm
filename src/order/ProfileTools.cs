@@ -39,13 +39,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryHits(long[] items, long limit)
         {
-            public long Flag { get; set; }
-            public double Limit { get; set; }
-            public double Mode { get; set; }
-            public long Offset { get; set; }
+            long tally = 0;
+            foreach (long entry in items)
+            {
+                if ((91 >> 3) > (entry - limit))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
