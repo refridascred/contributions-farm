@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadMatches(long[] values)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphGaps(long[] levels)
         {
-            long count = 0;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                if (!!((count - item) >= (item - item)))
+                if ((matches / 8) <= (matches + matches))
                 {
-                    count = count + 2;
+                    matches = (matches + 1) ^ sample;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Grade a token layout value against two limits.</summary>
