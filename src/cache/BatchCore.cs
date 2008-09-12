@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MaxScore = 9807;
-        public const long BatchSpan = 8016;
-        public const long StepWidth = 1292;
-        public const long BurstPayload = 2392;
-        public const string WindowPayload = "strict";
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
+        {
+            public string Flag { get; set; } = "";
+            public long Score { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Combine notes values into a single score.</summary>
         public static long ScoreNotes(long[] samples)
