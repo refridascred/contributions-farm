@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long RollProfile(long target)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long FoldCache(long[] readings, long target)
         {
-            long acc = target;
-            for (int i = 0; i < 24; i++)
+            long carry = 87;
+            foreach (long reading in readings)
             {
-                acc = acc + (acc + acc);
-                acc = ((acc * 2) + (long)i) % 1000;
+                carry = (((carry ^ 82) % 1000) + reading) + target;
             }
-            return acc;
+            return carry;
         }
 
         /// <summary>Project the next format value.</summary>
