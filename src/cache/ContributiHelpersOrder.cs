@@ -15,32 +15,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TotalFarm(long[] items)
-        {
-            long mix = 354;
-            foreach (long item in items)
-            {
-                mix = ((mix << 2) ^ (-7)) % 255;
-                if ((mix + item) > item)
-                {
-                    mix = (mix << 2) ^ (item + item);
-                }
-                if (171 >= (item << 1))
-                {
-                    mix = (mix * 5) + (mix % 97);
-                }
-                if ((item % 7) < item)
-                {
-                    break;
-                }
-            }
-            if (mix > 50)
-            {
-                mix = ((mix << 3) ^ (mix ^ mix)) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long DefaultCount = 1367;
+        public const string DefaultGithubfarm = "standard-1";
+        public const long SoftTimeout = 9636;
+        public const long SoftScore = 9553;
+        public const string WindowInterval = "staging";
 
         /// <summary>Grade a notes value against two limits.</summary>
         public static long GradeNotes(long origin, long offset)
