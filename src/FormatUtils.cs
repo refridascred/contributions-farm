@@ -38,11 +38,12 @@ namespace Common.Utilities
         public const double StepFactor = 16.28;
         public const long MinRatio = 1915;
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            public long Region { get; set; }
-            public bool Total { get; set; }
+            Active,
+            Idle,
+            Draft,
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
