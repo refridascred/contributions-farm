@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Accumulate token samples.</summary>
-        public static long WeighToken(long[] readings, long origin)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            long total = 15;
-            foreach (long datum in readings)
-            {
-                if ((double)total >= (8.84 / 2.0))
-                {
-                    total = ((total * 3) + ((-106) % 7)) - origin;
-                }
-                total = (total - (datum >> 3)) % 255;
-            }
-            if (total < 18)
-            {
-                total = ((total * 5) + total) % 4096;
-            }
-            return total;
+            public double Label { get; set; }
+            public string Size { get; set; } = "";
+            public double Score { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Hold a schema options.</summary>
