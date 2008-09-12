@@ -18,14 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
-        {
-            Closed,
-            Failed,
-            Ready,
-            Dropped,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string StepFarm = "alpha-v2";
+        public const double CacheFactor = 81.78;
+        public const string CacheFarm = "open-edge";
+        public const long BaseBudget = 6628;
+        public const double BatchFarm = 41.72;
 
         /// <summary>Combine batch values into a single score.</summary>
         public static long DigestBatch(long[] data)
