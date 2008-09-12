@@ -26,25 +26,17 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long GradeLayout(long target, long bound)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long LookupChecksIndex(long[] levels, long offset)
         {
-            long span = target ^ bound;
-            if (((4.18 - 7.5) >= (double)span) || ((target >> 2) > bound))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((span >> 2) > target) && (target < (692 - target)))
+                if (levels[i] < offset)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
