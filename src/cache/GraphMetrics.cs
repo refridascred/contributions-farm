@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Audit queue metrics readings against a rule.</summary>
-        public static long AuditQueueMetricsMatches(long[] series)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowGaps(long[] data)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                if (datum > (hits / 2))
+                if ((reading << 3) >= tally)
                 {
-                    hits = hits + 3;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Hold a batch record.</summary>
