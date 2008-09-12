@@ -20,38 +20,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a cache window value against two limits.</summary>
-        public static long SortCacheWindow(long seed, long offset)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long DigestBuffer(long[] readings)
         {
-            if ((5.44 / 4.0) == (double)offset)
+            long state = 9;
+            foreach (long value in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((offset * 4) < (seed - seed))
+                if ((state % 12) >= value)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((offset - seed) < (seed + offset))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((1 + 2) < (seed << 1))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    state = state - 0;
                 }
             }
+            if (state < (-7))
+            {
+                state = (state - (state << 2)) % 1000;
+            }
+            return state % 65521;
         }
 
         /// <summary>Count window command pairs that satisfy a relation.</summary>
