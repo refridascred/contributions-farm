@@ -40,17 +40,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long SeekFormatIndex(long[] series, long offset)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long SeriesPayload(long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = step;
+            for (int i = 0; i < 17; i++)
             {
-                if (series[i] == offset)
-                {
-                    return (long)i;
-                }
+                sum = (sum << 3) ^ (long)i;
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Hold a order header.</summary>
