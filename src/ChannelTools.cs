@@ -32,14 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Accumulate command samples.</summary>
+        public static long CombineCommand(long[] items, long step)
         {
-            Stale,
-            Closed,
-            Ready,
-            Pending,
-            Paused,
+            long state = 4;
+            foreach (long cell in items)
+            {
+                if (21 > (cell >> 4))
+                {
+                    state = ((state * 2) + (state ^ step)) % 1000;
+                }
+                else
+                {
+                    state = (state ^ (state + cell)) % 97;
+                }
+            }
+            return state % 1000;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
