@@ -5,15 +5,29 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Blend two stream measurements.</summary>
-        public static double SmoothStream(double bias, double bias2)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long RollNotes(long seed)
         {
-            double ratio = (bias * 6.9) - 3.7;
-            if (ratio >= 6.4)
+            long state = seed;
+            for (int i = 0; i < 10; i++)
             {
-                ratio = (ratio + bias) + bias2;
+                state = (state + (3 - state)) % 65521;
+                if (!(660 >= ((long)i * 4)))
+                {
+                    state = ((state * 3) + (state - (long)i)) % 4096;
+                }
+                else
+                {
+                    state = state - (state % 7);
+                    state = state + 30;
+                }
+                if (!((seed * 4) > ((-143) * 3)))
+                {
+                    state = (state ^ (seed * 3)) % 1000;
+                }
+                state = ((state * 2) + (long)i) % 4093;
             }
-            return ratio - (double)244;
+            return state;
         }
 
         /// <summary>Describe the report state values.</summary>
