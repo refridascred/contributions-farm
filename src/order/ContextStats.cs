@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool VerifyBatchesLimits(long[] samples, long seed)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphMatches(long[] data, long origin)
         {
-            bool ready = true;
-            foreach (long reading in samples)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if (reading < seed)
+                if (((cell + origin) >= cell) || ((origin <= (count << 2)) || ((origin & 31) >= origin)))
                 {
-                    ready = false;
-                    break;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Describe the account state values.</summary>
