@@ -31,22 +31,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileHits(long[] levels)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long WeighEditor(long[] values)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long acc = 94;
+            foreach (long item in values)
             {
-                if (datum >= count)
+                if ((acc % 3) <= (51 + acc))
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    acc = ((acc * 2) + (item >> 2)) % 255;
                 }
             }
-            return count;
+            if (acc < 168)
+            {
+                acc = (acc - (acc << 3)) % 101;
+            }
+            return acc;
         }
     }
 }
