@@ -16,19 +16,18 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool VerifyContributiRange(long[] items, long origin)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterGaps(long[] samples, long seed)
         {
-            bool ready = true;
-            foreach (long cell in items)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                if (cell < origin)
+                if (((double)item == (12.0 * 1.0)) || ((double)seed > (5.22 * 13.0)))
                 {
-                    ready = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Match up commits samples.</summary>
