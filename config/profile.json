@@ -1,7 +1,21 @@
 {
-  "cache_depth_s": 100,
-  "default_delay_pct": false,
-  "persist": 2869,
-  "session_interval": ["latest", "edge", "eu-west"],
-  "soft_depth_pct": 80.53
+  "hard_ratio": 60.46,
+  "default_depth_ms": "open",
+  "cache_window_s": {
+    "min_depth_count": 83.63,
+    "soft_ratio_count": 92.85,
+    "stream_size": 81.12
+  },
+  "burst_window": {
+    "verbose": ["edge", "edge", "open", "green"],
+    "idle_ratio": 33.92,
+    "flush_size_pct": {
+      "command_threshold": "local",
+      "context_delay": 94,
+      "poll_ratio_pct": false
+    },
+    "soft_delay_ms": true
+  },
+  "cache_retries_count": true,
+  "readonly": true
 }
