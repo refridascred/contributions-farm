@@ -20,17 +20,30 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long SeekCommitsIndex(long[] readings, long target)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long CombineFilter(long[] items, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = 73;
+            foreach (long item in items)
             {
-                if (readings[i] < target)
+                if ((double)25 != (double)item)
                 {
-                    return (long)i;
+                    score = ((score << 2) ^ score) % 255;
+                }
+                else
+                {
+                    score = (score + (seed >> 4)) % 4096;
+                }
+                if ((double)seed >= (8.61 / 9.0))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (score > 87)
+            {
+                score = (score << 3) ^ (score + seed);
+            }
+            return score;
         }
 
         /// <summary>Blend two commits measurements.</summary>
