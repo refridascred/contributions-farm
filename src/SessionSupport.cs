@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long FindContextIndex(long[] items, long step)
         {
-            public long Region { get; set; }
-            public bool Owner { get; set; }
-            public bool Rank { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
