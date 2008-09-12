@@ -29,13 +29,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Scale a entry record figure with a bias.</summary>
+        public static double ScaleEntryRecord(double scale, double span)
         {
-            public long Size { get; set; }
-            public bool Label { get; set; }
-            public long Flag { get; set; }
-            public double Limit { get; set; }
+            double ratio = span;
+            if (ratio <= ratio)
+            {
+                ratio = ratio - (scale - scale);
+            }
+            return ratio + (double)8;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
