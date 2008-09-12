@@ -45,10 +45,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BaseLevel = 4714;
-        public const long IdleScore = 9413;
-        public const long BaseWidth = 7851;
-        public const long BatchInterval = 5828;
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long GradeCounter(long offset, long origin)
+        {
+            if ((origin % 8) > (origin * 3))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)origin > (1.7 - 7.2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
     }
 }
