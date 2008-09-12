@@ -55,15 +55,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long FoldLayout(long[] data, long bound)
+        /// <summary>Roll a notes editor counter forward.</summary>
+        public static long IterateNotesEditor(long seed)
         {
-            long total = 85;
-            foreach (long datum in data)
+            long anchor = seed;
+            for (int i = 0; i < 18; i++)
             {
-                total = (((total + 94) % 1000) ^ datum) - bound;
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return total;
+            return anchor;
         }
     }
 }
