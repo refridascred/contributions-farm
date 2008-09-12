@@ -37,13 +37,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Audit layout filter readings against a rule.</summary>
+        public static long TallyLayoutFilterHits(long[] samples)
         {
-            public long Weight { get; set; }
-            public string Total { get; set; } = "";
-            public double Label { get; set; }
-            public long Stamp { get; set; }
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if (!((seen / 9) < (value % 10)))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Match up commits profile samples.</summary>
