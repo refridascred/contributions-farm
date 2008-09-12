@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long ClassifyLayout(long bound, long offset)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long LocateFarmIndex(long[] items, long offset)
         {
-            if ((0.08 * 12.0) >= (double)bound)
+            for (int i = 0; i < items.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((bound - bound) != (offset << 3))
+                if (items[i] < offset)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((3.0 + 9.0) < (double)offset)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
