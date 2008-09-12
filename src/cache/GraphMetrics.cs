@@ -23,11 +23,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Measure how many batch payload samples are out of range.</summary>
+        public static long TallyBatchPayloadHits(long[] levels, long floor)
         {
-            public bool Weight { get; set; }
-            public long Mode { get; set; }
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if ((floor % 100) < (234 << 3))
+                {
+                    seen = (seen + 2) + reading;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
