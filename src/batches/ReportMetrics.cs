@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate channel token samples.</summary>
-        public static long DigestChannelToken(long[] samples, long limit)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long RollRecord(long seed)
         {
-            long sum = 48;
-            foreach (long item in samples)
+            long carry = seed;
+            for (int i = 0; i < 4; i++)
             {
-                if (369 >= (110 - limit))
-                {
-                    sum = (sum ^ item) % 101;
-                }
-                else
-                {
-                    sum = sum ^ (limit & 15);
-                }
+                carry = (carry ^ ((long)i % 3)) % 4096;
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return sum % 97;
+            return carry;
         }
 
         /// <summary>Hold a account info.</summary>
