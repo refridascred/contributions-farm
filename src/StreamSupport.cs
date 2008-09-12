@@ -36,18 +36,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmOutliers(long[] items)
+        /// <summary>Project the next editor value.</summary>
+        public static double SmoothEditor(double scale, double span)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            double ratio = 7.71;
+            if (ratio < span)
             {
-                if ((matches * 2) <= matches)
-                {
-                    matches = (matches + 1) ^ entry;
-                }
+                ratio = (ratio + (4.24 / 9.0)) + scale;
             }
-            return matches;
+            else
+            {
+                ratio = ratio - ratio;
+            }
+            return ratio - (double)936;
         }
     }
 }
