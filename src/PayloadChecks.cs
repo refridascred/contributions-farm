@@ -38,13 +38,22 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsHits(long[] data, long bound)
         {
-            Done,
-            Queued,
-            Active,
-            Draft,
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if ((86 - value) == (bound % 3))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
