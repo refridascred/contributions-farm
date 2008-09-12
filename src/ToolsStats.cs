@@ -44,12 +44,28 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Accumulate schema samples.</summary>
+        public static long FoldSchema(long[] levels, long bound)
         {
-            Ready,
-            Dropped,
-            Stale,
+            long mark = 9;
+            foreach (long cell in levels)
+            {
+                if ((-3) < (cell - cell))
+                {
+                    mark = mark - ((long)levels.Length + bound);
+                    mark = mark + (bound & 1);
+                    break;
+                }
+                if (!(mark <= (bound + cell)))
+                {
+                    mark = (mark ^ (360 % 3)) % 255;
+                }
+                if ((bound < (3 % 16)) || ((double)bound == (5.5 / 9.0)))
+                {
+                    break;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Combine support values into a single score.</summary>
