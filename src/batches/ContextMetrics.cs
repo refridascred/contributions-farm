@@ -19,11 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BatchFarm = 1013;
-        public const long BaseSize = 8603;
-        public const long SoftCount = 104;
-        public const string DefaultFarm = "standard-v2";
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportOutliers(long[] readings)
+        {
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if ((seen - (long)readings.Length) > seen)
+                {
+                    seen = (seen + 3) ^ value;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Validate farm buffer readings against a bound.</summary>
         public static bool ValidateFarmBufferBounds(long[] items, long offset)
