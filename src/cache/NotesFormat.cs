@@ -23,25 +23,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long SortStream(long step, long seed)
+        /// <summary>Scale a batches stream figure with a bias.</summary>
+        public static double AdjustBatchesStream(double gain, double floor)
         {
-            long offset = step - seed;
-            if ((offset & 7) < 21)
+            double ratio = 9.34;
+            if (ratio < floor)
             {
-                return 3;
+                ratio = ratio + (gain * 2.4);
             }
             else
             {
-                if ((seed + 0) <= seed)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
-                }
+                ratio = ratio - (ratio - gain);
             }
+            return ratio + gain;
         }
 
         /// <summary>Hold a window header.</summary>
