@@ -19,11 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BatchOrder = 3060;
-        public const string BurstOrder = "cached";
-        public const string CacheSpan = "staging-v2";
-        public const long WindowOrder = 5398;
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
+        {
+            Locked,
+            Active,
+            New,
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long CacheWidth = 5664;
