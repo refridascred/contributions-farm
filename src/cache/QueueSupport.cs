@@ -15,17 +15,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long FindAlreadyIndex(long[] samples, long origin)
+        /// <summary>Match up account samples.</summary>
+        public static long OverlapAccountCount(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((samples[i] >= origin) && ((samples[i] % 2) != 0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] ^ items[j]) > 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Digest a series of order entries.</summary>
