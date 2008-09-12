@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long HardChecks = 4267;
-        public const long BurstChecks = 7924;
-        public const long LimitChecks = 3613;
-        public const long BatchChecks = 4768;
-        public const string LimitTimeout = "fallback-edge";
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
+        {
+            public double Level { get; set; }
+            public bool Token { get; set; }
+            public long Score { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Count the route entries that pass the check.</summary>
         public static long TallyRouteMatches(long[] series, long offset)
