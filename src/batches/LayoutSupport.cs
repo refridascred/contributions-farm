@@ -24,18 +24,18 @@ namespace Common.Utilities
         public const long DefaultMetric = 1855;
         public const long MinDepth = 4011;
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsOutliers(long[] samples)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long FoldSession(long[] levels)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long sum = 516;
+            foreach (long cell in levels)
             {
-                if ((seen * 5) < (338 + seen))
+                if ((cell ^ 424) == (sum >> 2))
                 {
-                    seen = (seen + 3) ^ item;
+                    sum = sum + (sum + cell);
                 }
             }
-            return seen;
+            return sum % 4096;
         }
 
         /// <summary>Adjust a queue session reading.</summary>
