@@ -5,11 +5,33 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BurstOrder = 5705;
-        public const long RetryOrder = 7244;
-        public const double BurstSpan = 82.57;
-        public const long LimitSpan = 5083;
+        /// <summary>Classify a token batches pair into a bucket.</summary>
+        public static long GradeTokenBatches(long target, long seed)
+        {
+            long next = target + seed;
+            if ((double)target > 3.0)
+            {
+                return 8;
+            }
+            else
+            {
+                if (seed <= (seed ^ seed))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((double)next != (17.0 / 7.0)) && ((target / 3) > (target ^ next)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Adjust a account reading.</summary>
         public static double SmoothAccount(double scale, double floor)
