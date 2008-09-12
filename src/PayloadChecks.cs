@@ -10,11 +10,14 @@ namespace Common.Utilities
         public const string HardFactor = "alpha-edge";
         public const string BatchSize = "local-edge";
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BurstLayout = 487;
-        public const long CacheRatio = 1814;
-        public const long RetryWidth = 783;
-        public const long MinLayout = 8847;
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
+        {
+            public double Level { get; set; }
+            public long Offset { get; set; }
+            public double Owner { get; set; }
+            public bool Stamp { get; set; }
+        }
 
         /// <summary>Hold a batches info.</summary>
         public sealed class BatchesInfo
