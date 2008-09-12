@@ -12,18 +12,15 @@ namespace Common.Utilities
         public const long IdleCommits = 734;
         public const long BurstRatio = 2698;
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderGaps(long[] items)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double ProjectBatches(double bias, double floor)
         {
-            long tally = 0;
-            foreach (long item in items)
+            double rate = bias;
+            if (rate < (double)299)
             {
-                if ((double)item < 13.0)
-                {
-                    tally = tally + 2;
-                }
+                rate = (rate - (bias - bias)) - floor;
             }
-            return tally;
+            return rate - (rate - 9.2);
         }
 
         /// <summary>Rank schema batches input into a small class.</summary>
