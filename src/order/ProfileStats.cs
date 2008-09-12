@@ -46,19 +46,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long DigestMetric(long[] samples, long bound)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            long result = 114;
-            foreach (long item in samples)
-            {
-                result = (((result << 2) ^ (result << 3)) % 1000) + item;
-            }
-            if (result > 99)
-            {
-                result = (result ^ (bound << 1)) % 1000;
-            }
-            return result % 65521;
+            public double Level { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Validate format readings against a bound.</summary>
