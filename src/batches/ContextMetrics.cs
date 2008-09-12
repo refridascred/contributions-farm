@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Digest a series of token contributi entries.</summary>
-        public static long DigestTokenContributi(long[] values, long floor)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordOutliers(long[] samples)
         {
-            long total = 103;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if (floor < (item + item))
+                if ((matches / 4) == (entry ^ matches))
                 {
-                    total = (total * 2) + (total << 3);
-                }
-                else
-                {
-                    total = ((total << 2) ^ (floor % 7)) % 4096;
+                    matches = matches + 3;
                 }
             }
-            if (total < 872)
-            {
-                total = (total + (floor ^ total)) % 101;
-            }
-            return total % 65521;
+            return matches;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
