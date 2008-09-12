@@ -20,18 +20,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long FoldGraph(long[] items, long seed)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long LookupCommandIndex(long[] readings, long limit)
         {
-            long state = -71;
-            foreach (long entry in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((seed * 5) >= (state / 7))
+                if (readings[i] == limit)
                 {
-                    state = ((state + state) % 4096) ^ entry;
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Look up the position of a notes support sample.</summary>
