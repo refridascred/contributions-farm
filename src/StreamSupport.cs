@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TotalTools(long[] data, long bound)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            long mix = 661;
-            foreach (long sample in data)
-            {
-                if (!((mix % 2) != (mix * 3)))
-                {
-                    mix = ((mix ^ (bound + bound)) % 255) ^ sample;
-                }
-                else
-                {
-                    mix = mix - (bound ^ mix);
-                }
-            }
-            return mix % 4096;
+            public long Region { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Match up report samples.</summary>
