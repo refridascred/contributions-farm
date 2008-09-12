@@ -30,16 +30,14 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long RollSchema(long origin)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            long anchor = origin;
-            for (int i = 0; i < 15; i++)
-            {
-                anchor = (anchor << 3) ^ (anchor << 1);
-                anchor = ((anchor * 3) + (long)i) % 1000;
-            }
-            return anchor;
+            Stale,
+            Locked,
+            Active,
+            Retry,
+            Idle,
         }
     }
 }
