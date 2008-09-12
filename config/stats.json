@@ -1,8 +1,7 @@
 {
-  "idle_ratio_pct": true,
-  "entry_delay": 91,
-  "persist": [392, 317, 383, 497],
-  "window_retries": "green",
-  "batch_retries": 14.24,
-  "context_timeout": 56.0
+  "warm_ttl_s": 62.48,
+  "batch_ratio": true,
+  "queue_limit": 1024,
+  "soft_interval": "fallback",
+  "default_window_count": "staging"
 }
