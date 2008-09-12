@@ -38,22 +38,31 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsHits(long[] data, long bound)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long ClassifyContext(long target, long step)
         {
-            long matches = 0;
-            foreach (long value in data)
+            if ((target + step) < (811 - step))
             {
-                if ((86 - value) == (bound % 3))
+                return 3;
+            }
+            else
+            {
+                if ((0.63 * 4.8) > (double)step)
                 {
-                    matches = matches + 3;
+                    return 1;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((target >> 4) <= step)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
