@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
-        {
-            Queued,
-            Done,
-            Closed,
-            Draft,
-            Dropped,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long DefaultRecord = 7262;
+        public const long HardFactor = 2224;
+        public const string StepRecord = "cached";
+        public const double MinRecord = 68.82;
+        public const long MaxLevel = 4327;
 
         /// <summary>Describe the queue state values.</summary>
         public enum QueueState
