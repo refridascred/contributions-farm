@@ -39,22 +39,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of counter tools readings.</summary>
-        public static long OverlapCounterToolsCount(long[] readings)
-        {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long WindowSession = 9056;
+        public const string BaseSession = "local-edge";
+        public const string RetrySession = "alpha-1";
 
         /// <summary>Digest a series of report entries.</summary>
         public static long ScoreReport(long[] items)
