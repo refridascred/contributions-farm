@@ -70,12 +70,11 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            Failed,
-            Draft,
-            Done,
+            public double Region { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Digest a series of schema entries.</summary>
