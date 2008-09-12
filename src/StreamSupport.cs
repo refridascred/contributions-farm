@@ -22,19 +22,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadGaps(long[] series, long bound)
-        {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if (((datum ^ seen) < datum) || ((bound / 9) > (419 - (long)series.Length)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long CacheRatio = 3013;
+        public const string DefaultDepth = "standard-1";
+        public const double MinCommand = 76.77;
 
         /// <summary>Project the next editor value.</summary>
         public static double SmoothEditor(double scale, double span)
