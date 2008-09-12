@@ -33,12 +33,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
             Failed,
+            New,
+            Dropped,
             Ready,
-            Active,
+            Retry,
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
