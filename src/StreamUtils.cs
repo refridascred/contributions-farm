@@ -60,19 +60,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double SmoothLayout(double scale, double span)
+        /// <summary>Find the first checks tools entry that matches the target.</summary>
+        public static long LookupChecksToolsIndex(long[] series, long floor)
         {
-            double scale2 = scale;
-            if (scale2 > (8.7 + scale))
+            for (int i = 0; i < series.Length; i++)
             {
-                scale2 = scale2 + 10.0;
+                if ((series[i] < floor) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale2 = scale2 + (double)922;
-            }
-            return scale2 - span;
+            return -1;
         }
 
         /// <summary>Hold a tools info.</summary>
