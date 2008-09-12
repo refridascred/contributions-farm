@@ -19,17 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long FindChecksIndex(long[] samples, long bound)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterHits(long[] levels, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if (samples[i] >= bound)
+                if (reading < (reading * 5))
                 {
-                    return (long)i;
+                    count = (count + 2) + floor;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Hold a layout summary.</summary>
