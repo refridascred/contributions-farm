@@ -1,6 +1,17 @@
 {
-  "soft_depth_s": 94.22,
-  "idle_limit": [139, 375, 474, 497],
-  "cache_ttl": 100,
-  "retry_delay": "latest"
+  "poll_interval": {
+    "default_window_s": "latest",
+    "persist": 91.75,
+    "warm_interval_pct": [30, 224],
+    "readonly": {
+      "readonly": 500,
+      "cluster_timeout": 30,
+      "max_ttl_pct": true,
+      "hard_interval_count": 90
+    }
+  },
+  "base_size_s": 68.57,
+  "burst_depth_count": 69.26,
+  "warm_capacity_count": "blue",
+  "support_interval": "blue"
 }
