@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Adjust a payload reading.</summary>
-        public static double ScalePayload(double rate, double span)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long FindContributiIndex(long[] data, long limit)
         {
-            double load = (double)((-424) + (-513));
-            if (load < (double)50)
+            for (int i = 0; i < data.Length; i++)
             {
-                load = (load - span) - rate;
+                if (data[i] == limit)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                load = load - (double)(long)i;
-            }
-            return load - (double)273;
+            return -1;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
