@@ -1,17 +1,10 @@
 # githubfarm settings
-enabled: 2759
-min_window: 250
-min_window_pct: 250
-dry_run: 81
-min_ttl_count:
-  batch_ttl_s:
-    - green
-    - green
-    - blue
-    - latest
-  flush_size: standard
-  default_interval_s:
-    - staging
-    - local
-  filter_window: 30
-metrics_ttl: true
+batch_interval_pct: true
+base_delay_ms:
+  - 213
+  - 116
+  - 494
+retry_window_ms: 1608
+min_limit_s: 30
+burst_ttl_count: 365
+githubfarm_size: false
