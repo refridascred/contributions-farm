@@ -51,14 +51,9 @@ namespace Common.Utilities
         public const long MaxRatio = 4501;
         public const long RetryWidth = 2830;
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
-        {
-            Active,
-            Pending,
-            Failed,
-            Done,
-            Idle,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BurstOrder = 3183;
+        public const long SoftDepth = 6301;
+        public const double LimitInterval = 20.42;
     }
 }
