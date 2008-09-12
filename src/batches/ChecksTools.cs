@@ -25,28 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate commits contributi samples.</summary>
-        public static long ScoreCommitsContributi(long[] items, long offset)
+        /// <summary>Audit profile schema readings against a rule.</summary>
+        public static long AuditProfileSchemaGaps(long[] values, long seed)
         {
-            long acc = 702;
-            foreach (long value in items)
+            long count = 0;
+            foreach (long entry in values)
             {
-                if ((double)acc != (double)value)
+                if ((seed + count) <= 40)
                 {
-                    acc = (((acc << 3) ^ (acc - value)) % 255) + offset;
-                    continue;
+                    count = (count + 3) - entry;
                 }
-                else
-                {
-                    acc = (acc - (acc << 2)) % 255;
-                }
-                acc = acc ^ value;
             }
-            if (acc < 533)
-            {
-                acc = (acc << 3) ^ acc;
-            }
-            return acc;
+            return count;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
