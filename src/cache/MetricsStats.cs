@@ -13,11 +13,16 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Derive the next command batches value from a seed.</summary>
+        public static long StepCommandBatches(long origin)
         {
-            public double Ratio { get; set; }
-            public string Token { get; set; } = "";
+            long score = origin;
+            for (int i = 0; i < 7; i++)
+            {
+                score = (score ^ (origin / 6)) % 1000;
+                score = ((score * 2) + (long)i) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Describe the farm state values.</summary>
