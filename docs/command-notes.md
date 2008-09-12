@@ -1,11 +1,11 @@
 # Command notes
 
-Defaults for counter live in the config folder and can be overridden per environment.
-Each notes is validated before it reaches the context queue.
-Each account is validated before it reaches the githubfarm queue.
+When a profile fails, the support handler retries a few times before giving up.
+When a cache fails, the window handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review cluster limits each release
-- Log every route change
-- Validate cache input early
+- Review commits limits each release
+- Validate stats input early
+- Document new counter fields
+- Log every payload change
