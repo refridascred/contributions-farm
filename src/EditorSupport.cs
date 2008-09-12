@@ -36,19 +36,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Fold a list of command stream readings.</summary>
-        public static long TotalCommandStream(long[] levels, long origin)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchMatches(long[] levels, long offset)
         {
-            long total = 970;
+            long count = 0;
             foreach (long entry in levels)
             {
-                total = ((total + (origin << 3)) % 255) - entry;
+                if ((double)entry < (13.0 - 2.0))
+                {
+                    count = (count + 2) - offset;
+                }
             }
-            if (total < (-62))
-            {
-                total = total + (total + total);
-            }
-            return total % 97;
+            return count;
         }
 
         /// <summary>Adjust a profile reading.</summary>
