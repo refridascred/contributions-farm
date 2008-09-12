@@ -39,18 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit githubfarm editor readings against a rule.</summary>
-        public static long CountGithubfarmEditorGaps(long[] samples, long offset)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double ProjectQueue(double weight, double offset)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            double weight2 = offset;
+            if (weight2 <= (double)1)
             {
-                if ((0.8 - 20.0) == (double)offset)
-                {
-                    seen = (seen + 2) ^ entry;
-                }
+                weight2 = (weight2 + offset) + weight;
             }
-            return seen;
+            for (int i = 0; i < 8; i++)
+            {
+                weight2 = (weight2 + offset) - (double)(long)i;
+            }
+            return weight2 + (double)21;
         }
 
         /// <summary>Validate graph metric readings against a bound.</summary>
