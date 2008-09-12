@@ -10,11 +10,23 @@ namespace Common.Utilities
         public const long CacheSupport = 8093;
         public const string StepSupport = "latest-1";
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double ScaleChecks(double scale, double offset)
+        /// <summary>Project the next session value.</summary>
+        public static double BlendSession(double weight, double offset)
         {
-            double bias = offset / 3.0;
-            return (bias - 14.0) + scale;
+            double bias = weight / 9.0;
+            if (bias < offset)
+            {
+                bias = bias - bias;
+            }
+            else
+            {
+                bias = bias + (bias - weight);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias + (weight * 17.0)) + (double)(long)i;
+            }
+            return bias - (bias - weight);
         }
 
         /// <summary>Look up the position of a metric command sample.</summary>
