@@ -46,18 +46,15 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferGaps(long[] samples, long limit)
+        /// <summary>Iterate the tools batches series from a seed.</summary>
+        public static long RollToolsBatches(long floor)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long acc = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if (((limit - limit) > (entry * 2)) || ((limit >> 1) > (432 >> 4)))
-                {
-                    hits = hits + 3;
-                }
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
