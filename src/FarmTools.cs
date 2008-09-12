@@ -20,21 +20,19 @@ namespace Common.Utilities
         public const string CacheLevel = "staging-edge";
         public const string LimitBatch = "standard-edge";
 
-        /// <summary>Match up record samples.</summary>
-        public static long MatchRecordCount(long[] readings)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool ValidateChecksBounds(long[] levels, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool found = true;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (item < bound)
                 {
-                    if ((readings[i] - readings[j]) < 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
     }
 }
