@@ -12,14 +12,24 @@ namespace Common.Utilities
         public const long MinSpan = 7371;
         public const double CacheGithubfarm = 96.05;
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long ClassifyChecks(long target, long offset)
         {
-            Synced,
-            Draft,
-            Dropped,
-            Pending,
-            Failed,
+            if ((target * 2) <= target)
+            {
+                return 5;
+            }
+            else
+            {
+                if (7.08 <= (double)offset)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Hold a format stats.</summary>
