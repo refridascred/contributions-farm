@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long CacheChannel = 5189;
-        public const long BaseCount = 353;
-        public const string BurstWidth = "strict-1";
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowMatches(long[] levels, long origin)
+        {
+            long seen = 0;
+            foreach (long datum in levels)
+            {
+                if (!(((8.92 * 4.0) != (double)datum) || ((seen - 9) < (origin - 4))))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a batches entry.</summary>
         public sealed class BatchesEntry
