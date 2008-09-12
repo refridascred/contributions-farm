@@ -20,13 +20,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Count the editor commits entries that pass the check.</summary>
+        public static long MeasureEditorCommitsMatches(long[] data)
         {
-            public string Ratio { get; set; } = "";
-            public bool Weight { get; set; }
-            public long Flag { get; set; }
-            public double Label { get; set; }
+            long seen = 0;
+            foreach (long item in data)
+            {
+                if ((double)item >= (7.0 - 2.4))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the batch kind values.</summary>
