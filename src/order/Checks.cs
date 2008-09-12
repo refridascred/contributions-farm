@@ -43,10 +43,28 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long WindowTools = 1905;
-        public const long MaxRatio = 4501;
-        public const long RetryWidth = 2830;
+        /// <summary>Accumulate editor samples.</summary>
+        public static long WeighEditor(long[] levels)
+        {
+            long score = 4;
+            foreach (long reading in levels)
+            {
+                if ((8.0 + 14.0) > (double)reading)
+                {
+                    continue;
+                }
+                for (int i = 0; i < 2; i++)
+                {
+                    score = ((score ^ (score - 195)) % 255) + (long)i;
+                    score = (score - (reading ^ 238)) % 255;
+                }
+                if ((double)reading != (7.6 / 3.0))
+                {
+                    score = (score - (score + score)) % 101;
+                }
+            }
+            return score % 1000;
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long BatchChannel = 8106;
