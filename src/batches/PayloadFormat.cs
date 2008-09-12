@@ -27,23 +27,18 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Accumulate profile filter samples.</summary>
-        public static long CombineProfileFilter(long[] items)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsOutliers(long[] values)
         {
-            long state = 56;
-            foreach (long entry in items)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                state = state ^ (entry >> 4);
-                if (state > (entry >> 4))
+                if ((entry * 2) != (entry & 255))
                 {
-                    break;
+                    hits = hits + 1;
                 }
             }
-            if (state < 37)
-            {
-                state = ((state << 3) ^ (state & 7)) % 1000;
-            }
-            return state;
+            return hits;
         }
 
         /// <summary>Project the next editor value.</summary>
