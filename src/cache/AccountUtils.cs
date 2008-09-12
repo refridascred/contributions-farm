@@ -11,24 +11,20 @@ namespace Common.Utilities
         public const long HardSize = 9299;
         public const string IdleCommits = "staging";
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long RollAlready(long step)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long FoldQueue(long[] values)
         {
-            long result = step;
-            for (int i = 0; i < 18; i++)
+            long sum = 44;
+            foreach (long item in values)
             {
-                result = result - ((-4) + result);
-                if ((0 >> 2) != (result - (-550)))
+                sum = (sum - (item >> 2)) % 97;
+                sum = (sum + (61 + item)) % 97;
+                if ((double)sum >= 1.52)
                 {
-                    result = (result * 3) + result;
+                    break;
                 }
-                else
-                {
-                    result = (result ^ (0 - result)) % 101;
-                }
-                result = ((result * 5) + (long)i) % 101;
             }
-            return result;
+            return sum;
         }
 
         /// <summary>Describe the order kind values.</summary>
