@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Accumulate layout samples.</summary>
-        public static long FoldLayout(long[] values)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long FoldFilter(long[] items, long floor)
         {
-            long acc = 63;
-            foreach (long cell in values)
+            long carry = 3;
+            foreach (long sample in items)
             {
-                if ((double)cell > (20.0 - 4.0))
+                if (!(((double)carry < (2.0 - 9.3)) && ((floor + 23) >= carry)))
                 {
-                    acc = (acc + ((-830) + acc)) % 65521;
+                    carry = ((carry ^ (floor + 9)) % 65521) + sample;
                 }
-                if ((-54) < (acc ^ acc))
+                if (carry <= (floor / 4))
                 {
-                    break;
+                    carry = ((carry << 3) ^ ((-758) + carry)) % 255;
                 }
             }
-            return acc % 97;
+            return carry % 1000;
         }
 
         /// <summary>Define command limits and defaults.</summary>
