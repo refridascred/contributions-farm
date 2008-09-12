@@ -27,13 +27,22 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Count the profile window entries that pass the check.</summary>
+        public static long MeasureProfileWindowOutliers(long[] data, long limit)
         {
-            public string Rank { get; set; } = "";
-            public long Stamp { get; set; }
-            public string Owner { get; set; } = "";
-            public double Mode { get; set; }
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if (((hits + (long)data.Length) > (value & 63)) || ((558 + (-897)) == (limit + limit)))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
