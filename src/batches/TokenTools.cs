@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            public long Score { get; set; }
-            public double Limit { get; set; }
+            public long Offset { get; set; }
+            public double Score { get; set; }
+            public long Label { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
