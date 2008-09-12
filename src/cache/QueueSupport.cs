@@ -25,13 +25,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Locate a already reading by value.</summary>
+        public static long FindAlreadyIndex(long[] samples, long origin)
         {
-            public long Rank { get; set; }
-            public long Offset { get; set; }
-            public double Owner { get; set; }
-            public bool Stamp { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] >= origin) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit cache batches readings against a rule.</summary>
