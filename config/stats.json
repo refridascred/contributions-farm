@@ -1,7 +1,6 @@
 {
-  "warm_ttl_s": 62.48,
-  "batch_ratio": true,
-  "queue_limit": 1024,
-  "soft_interval": "fallback",
-  "default_window_count": "staging"
+  "soft_limit_ms": 2061,
+  "record_interval": 22,
+  "compress": 96.76,
+  "dry_run": [455, 439, 51, 482]
 }
