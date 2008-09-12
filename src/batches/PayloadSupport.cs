@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many githubfarm cache samples are out of range.</summary>
-        public static long MeasureGithubfarmCacheOutliers(long[] readings)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long IterateReport(long step)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long total = step;
+            for (int i = 0; i < 23; i++)
             {
-                if (!((2.68 - 7.7) != (double)(long)readings.Length) || ((6.0 + 7.0) != (double)tally))
-                {
-                    tally = (tally + 3) - reading;
-                }
+                total = ((total * 2) + (long)i) % 97;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
