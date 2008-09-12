@@ -14,12 +14,13 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            public double Rank { get; set; }
-            public long Size { get; set; }
-            public string Mode { get; set; } = "";
+            Pending,
+            Retry,
+            Failed,
+            Synced,
         }
 
         /// <summary>Match up format account samples.</summary>
