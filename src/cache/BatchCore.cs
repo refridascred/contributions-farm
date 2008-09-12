@@ -11,10 +11,14 @@ namespace Common.Utilities
         public const string MinCount = "primary";
         public const double StepScore = 89.64;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BaseFactor = 8748;
-        public const string BatchMetric = "primary-1";
-        public const double DefaultSpan = 45.19;
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
+        {
+            Ready,
+            Paused,
+            Retry,
+            Failed,
+        }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
         public static long PairToolsCount(long[] values)
