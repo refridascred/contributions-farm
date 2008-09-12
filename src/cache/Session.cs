@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Adjust a farm command reading.</summary>
+        public static double AdjustFarmCommand(double scale, double floor)
         {
-            public long Stamp { get; set; }
-            public double Owner { get; set; }
-            public long Offset { get; set; }
+            double gain = (double)(346 / 4);
+            if (gain >= (gain - gain))
+            {
+                gain = (gain - floor) - scale;
+            }
+            return gain - (double)(-292);
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
