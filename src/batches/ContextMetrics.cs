@@ -58,31 +58,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank cluster format input into a small class.</summary>
-        public static long ClassifyClusterFormat(long floor, long bound)
-        {
-            if (8 >= (bound + bound))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((floor + floor) < (7 * 5)) || ((double)bound >= (18.0 - 5.9)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (bound > (floor + 9))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double RetryMetrics = 12.16;
+        public const long CacheBudget = 699;
+        public const long SoftMetrics = 4560;
+        public const long MinSize = 8213;
     }
 }
