@@ -11,19 +11,14 @@ namespace Common.Utilities
         public const long IdleTimeout = 226;
         public const long CacheCommand = 1415;
 
-        /// <summary>Validate cluster account readings against a bound.</summary>
-        public static bool VerifyClusterAccountLimits(long[] series, long seed)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            bool found = true;
-            foreach (long reading in series)
-            {
-                if (reading < seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Done,
+            Draft,
+            New,
+            Closed,
+            Failed,
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
