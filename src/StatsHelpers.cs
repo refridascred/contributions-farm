@@ -21,11 +21,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double ScaleFilter(double weight, double bias)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long TotalAlready(long[] data, long limit)
         {
-            double mean = (double)(6 & 15);
-            return ((mean - (double)22) + weight) + bias;
+            long carry = 34;
+            foreach (long value in data)
+            {
+                carry = (((carry ^ (77 & 3)) % 97) + value) + limit;
+            }
+            return carry;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
