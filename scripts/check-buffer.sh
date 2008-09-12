@@ -6,18 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 5))
-done
-log "total ${total}"
+BUFFER_LIMIT=434
+log "limit is ${BUFFER_LIMIT}"
 
-mode="${1:-staging}"
+mode="${1:-local}"
 case "${mode}" in
-    fallback)
+    green)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+for item in latest standard stable; do
+    log "checking ${item}"
+done
