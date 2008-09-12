@@ -29,10 +29,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BatchDepth = 8163;
-        public const double BatchMetric = 56.02;
-        public const double MaxCount = 34.57;
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
+        {
+            Locked,
+            Pending,
+            Paused,
+            Active,
+        }
 
         /// <summary>Hold a queue header.</summary>
         public sealed class QueueHeader
