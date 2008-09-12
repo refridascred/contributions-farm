@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
-        {
-            public string Rank { get; set; } = "";
-            public double Flag { get; set; }
-            public double Token { get; set; }
-            public double Total { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string StepStream = "latest-edge";
+        public const long BurstStream = 331;
+        public const double CacheStream = 22.86;
+        public const long HardTimeout = 8110;
 
         /// <summary>Validate tools readings against a bound.</summary>
         public static bool VerifyToolsLimits(long[] items, long target)
