@@ -36,17 +36,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long DeriveAccount(long offset)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long WeighTools(long[] items, long bound)
         {
-            long state = offset;
-            for (int i = 0; i < 14; i++)
+            long mark = 561;
+            foreach (long reading in items)
             {
-                state = state ^ state;
-                state = ((state << 3) ^ (6 * 5)) % 101;
-                state = ((state * 5) + (long)i) % 65521;
+                mark = (mark - bound) % 1000;
+                mark = (mark - (mark + 63)) % 1000;
+                if ((double)reading >= (double)4)
+                {
+                    mark = mark - (933 & 7);
+                }
+                else
+                {
+                    mark = mark + 94;
+                }
+                if (mark <= ((long)items.Length % 8))
+                {
+                    break;
+                }
             }
-            return state;
+            if (mark < 5)
+            {
+                mark = mark ^ (mark / 4);
+            }
+            return mark;
         }
     }
 }
