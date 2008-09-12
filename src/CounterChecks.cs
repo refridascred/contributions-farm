@@ -68,21 +68,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Compare every pair of farm counter readings.</summary>
-        public static long MatchFarmCounterCount(long[] values)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long FindAccountIndex(long[] levels, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((levels[i] < bound) && ((levels[i] % 3) != 0))
                 {
-                    if ((values[i] ^ values[j]) != 12)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
