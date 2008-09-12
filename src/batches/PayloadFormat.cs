@@ -15,13 +15,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Match up context metrics samples.</summary>
+        public static long OverlapContextMetricsCount(long[] samples)
         {
-            public double Mode { get; set; }
-            public long Size { get; set; }
-            public long Limit { get; set; }
-            public long Owner { get; set; }
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a entry stats.</summary>
