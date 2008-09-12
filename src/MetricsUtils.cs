@@ -57,15 +57,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the channel format series from a seed.</summary>
-        public static long StepChannelFormat(long limit)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            long mark = limit;
-            for (int i = 0; i < 10; i++)
-            {
-                mark = ((mark * 3) + (long)i) % 101;
-            }
-            return mark;
+            public long Size { get; set; }
+            public long Ratio { get; set; }
+            public long Label { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
