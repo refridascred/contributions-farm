@@ -1,5 +1,5 @@
 {
-  "verbose": 95,
-  "poll_interval": 80,
-  "strict": true
+  "payload_size": "open",
+  "editor_limit": ["green", "standard", "edge", "fallback"],
+  "max_ttl": "standard"
 }
