@@ -28,18 +28,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the commits farm entries that pass the check.</summary>
-        public static long TallyCommitsFarmOutliers(long[] series)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if ((double)entry < (2.33 + 0.79))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Queued,
+            Locked,
+            Synced,
+            Draft,
         }
 
         /// <summary>Validate batches stats readings against a bound.</summary>
