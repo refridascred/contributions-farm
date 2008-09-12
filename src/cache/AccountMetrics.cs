@@ -71,14 +71,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long DigestProfile(long[] levels, long step)
         {
-            Failed,
-            Stale,
-            Dropped,
-            Ready,
-            Active,
+            long total = 37;
+            foreach (long datum in levels)
+            {
+                total = ((((total * 3) + 115) % 65521) ^ datum) + step;
+            }
+            return total;
         }
     }
 }
