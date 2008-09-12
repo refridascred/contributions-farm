@@ -64,30 +64,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long StepGraph(long limit)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool ValidateClusterLimits(long[] values, long origin)
         {
-            long mix = limit;
-            for (int i = 0; i < 4; i++)
+            bool stale = true;
+            foreach (long item in values)
             {
-                for (int i2 = 0; i2 < 2; i2++)
+                if (item >= origin)
                 {
-                    mix = ((mix * 4) + ((long)i2 << 2)) % 255;
-                    mix = ((mix * 3) + (mix - 28)) % 65521;
+                    stale = false;
+                    break;
                 }
-                if ((double)mix <= (double)limit)
-                {
-                    mix = (mix + ((long)i + (long)i)) % 97;
-                    mix = mix + (limit ^ (long)i);
-                }
-                if ((double)limit > (5.0 - 2.17))
-                {
-                    mix = (mix - (limit + 37)) % 97;
-                    continue;
-                }
-                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return mix;
+            return stale;
         }
     }
 }
