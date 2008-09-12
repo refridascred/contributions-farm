@@ -1,9 +1,5 @@
 {
-  "sync_ratio_s": [46, 303],
-  "strict": 100,
-  "channel_timeout": {
-    "already_interval": 9439,
-    "idle_interval_ms": 45,
-    "min_timeout": ["local", "blue"]
-  }
+  "sync_depth_ms": ["local", "green", "strict"],
+  "metric_size": false,
+  "channel_window": 90
 }
