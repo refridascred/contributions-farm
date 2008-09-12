@@ -1,7 +1,8 @@
 {
-  "sync_interval_count": 2998,
-  "hard_timeout_pct": "standard",
-  "readonly": 60,
-  "notes_retries": 52,
-  "audit": 69
+  "dry_run": false,
+  "strict": false,
+  "min_ratio_count": 55.08,
+  "idle_capacity_pct": ["green", "staging"],
+  "channel_depth": false,
+  "stats_size": "legacy"
 }
