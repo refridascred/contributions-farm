@@ -1,8 +1,10 @@
 # support settings
-base_size_s:
-  cache_capacity_count: fallback
-  githubfarm_limit: primary
-  max_timeout: stable
-flush_interval: fallback
-warm_capacity_ms: 6591
-route_ratio: green
+min_threshold: false
+warm_interval_s: open
+stats_window: false
+stream_capacity:
+  - fallback
+  - blue
+  - green
+  - latest
+schema_window: 0.98
