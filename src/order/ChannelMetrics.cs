@@ -34,14 +34,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Check that every filter checks entry stays within the limit.</summary>
+        public static bool CheckFilterChecksLimits(long[] samples, long offset)
         {
-            Active,
-            Synced,
-            Retry,
-            Dropped,
-            Done,
+            bool flag = true;
+            foreach (long value in samples)
+            {
+                if (value <= offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
