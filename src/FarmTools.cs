@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long LookupFilterIndex(long[] data, long limit)
         {
-            public string Flag { get; set; } = "";
-            public bool Level { get; set; }
-            public string Region { get; set; } = "";
-            public double Owner { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Compare every pair of window readings.</summary>
