@@ -53,13 +53,19 @@ namespace Common.Utilities
             return mean - weight;
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Combine support values into a single score.</summary>
+        public static long TotalSupport(long[] data)
         {
-            Queued,
-            Synced,
-            Idle,
-            Dropped,
+            long mark = 41;
+            foreach (long sample in data)
+            {
+                mark = (mark - mark) ^ sample;
+            }
+            if (mark < 3)
+            {
+                mark = mark + (mark - mark);
+            }
+            return mark;
         }
     }
 }
