@@ -42,25 +42,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long DigestMetric(long[] readings)
-        {
-            long sum = 12;
-            foreach (long datum in readings)
-            {
-                if ((48 * 5) <= ((long)readings.Length - datum))
-                {
-                    sum = sum ^ (sum & 15);
-                    sum = (sum + (datum - sum)) % 65521;
-                    break;
-                }
-                sum = (sum ^ (sum - sum)) % 4096;
-            }
-            if (sum > (-301))
-            {
-                sum = (sum << 3) ^ (1 % 5);
-            }
-            return sum % 1000;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string BaseTools = "fallback-1";
+        public const string SoftFactor = "staging";
+        public const long MaxFactor = 8301;
+        public const long LimitSize = 7734;
+        public const double BatchFactor = 51.21;
     }
 }
