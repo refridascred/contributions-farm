@@ -36,14 +36,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
-        {
-            public long Rank { get; set; }
-            public string Limit { get; set; } = "";
-            public long Owner { get; set; }
-            public bool Offset { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long IdleSpan = 860;
+        public const string MinInterval = "alpha-edge";
+        public const double HardSize = 30.35;
+        public const double IdleRoute = 25.44;
+        public const double DefaultRoute = 11.22;
 
         /// <summary>Audit profile readings against a rule.</summary>
         public static long TallyProfileMatches(long[] samples)
