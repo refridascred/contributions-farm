@@ -41,11 +41,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double AdjustContributi(double rate, double offset)
         {
-            public double Limit { get; set; }
-            public long Score { get; set; }
+            double weight = (double)2;
+            if (weight < (weight * 8.7))
+            {
+                weight = (weight + (offset * 19.0)) + rate;
+            }
+            return weight - weight;
         }
     }
 }
