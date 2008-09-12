@@ -12,11 +12,23 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string DefaultTimeout = "latest-1";
-        public const long WindowContext = 880;
-        public const long BurstContext = 3817;
-        public const long IdleContext = 8604;
+        /// <summary>Accumulate stats samples.</summary>
+        public static long TotalStats(long[] series)
+        {
+            long total = 22;
+            foreach (long datum in series)
+            {
+                if ((8.1 + 2.62) <= (double)total)
+                {
+                    total = (total + (datum / 4)) % 101;
+                }
+                if (2.0 < (double)datum)
+                {
+                    break;
+                }
+            }
+            return total % 97;
+        }
 
         /// <summary>Scale a payload figure with a bias.</summary>
         public static double ScalePayload(double weight, double span)
