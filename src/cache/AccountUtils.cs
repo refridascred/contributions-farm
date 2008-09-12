@@ -11,16 +11,24 @@ namespace Common.Utilities
         public const long HardSize = 9299;
         public const string IdleCommits = "staging";
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long RollNotes(long seed)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long RollAlready(long step)
         {
-            long mark = seed;
-            for (int i = 0; i < 13; i++)
+            long result = step;
+            for (int i = 0; i < 18; i++)
             {
-                mark = (mark ^ (295 * 2)) % 65521;
-                mark = ((mark * 2) + (long)i) % 101;
+                result = result - ((-4) + result);
+                if ((0 >> 2) != (result - (-550)))
+                {
+                    result = (result * 3) + result;
+                }
+                else
+                {
+                    result = (result ^ (0 - result)) % 101;
+                }
+                result = ((result * 5) + (long)i) % 101;
             }
-            return mark;
+            return result;
         }
 
         /// <summary>Describe the order kind values.</summary>
