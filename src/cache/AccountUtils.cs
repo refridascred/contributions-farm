@@ -5,39 +5,26 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Rank farm profile input into a small class.</summary>
-        public static long SortFarmProfile(long floor, long target)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long StepContext(long step)
         {
-            long next = floor - target;
-            if ((double)target <= (5.3 + 3.0))
+            long mark = step;
+            for (int i = 0; i < 17; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((floor + target) < ((-24) >> 5)) || ((target >> 1) <= (target * 3)))
+                mark = (mark - (step + step)) % 97;
+                if ((double)mark >= (double)step)
                 {
-                    return 4;
+                    long count = (806 + (long)i) * 5;
+                    mark = (mark ^ (mark + count)) % 255;
+                    continue;
                 }
                 else
                 {
-                    if ((double)target > (double)floor)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((floor + target) >= (next + floor)) || (8.2 >= (double)target))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    mark = mark + mark;
                 }
+                mark = ((mark * 5) + (long)i) % 4093;
             }
+            return mark;
         }
 
         /// <summary>Count the buffer counter entries that pass the check.</summary>
