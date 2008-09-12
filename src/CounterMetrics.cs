@@ -20,19 +20,19 @@ namespace Common.Utilities
             return ratio + (floor - bias);
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool CheckRecordBounds(long[] samples, long seed)
+        /// <summary>Check that every window filter entry stays within the limit.</summary>
+        public static bool VerifyWindowFilterRange(long[] items, long floor)
         {
-            bool ready = true;
-            foreach (long sample in samples)
+            bool stale = true;
+            foreach (long datum in items)
             {
-                if (sample < seed)
+                if (datum <= floor)
                 {
-                    ready = false;
+                    stale = false;
                     break;
                 }
             }
-            return ready;
+            return stale;
         }
 
         /// <summary>Audit githubfarm metric readings against a rule.</summary>
