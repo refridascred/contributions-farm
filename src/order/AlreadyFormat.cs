@@ -10,15 +10,18 @@ namespace Common.Utilities
         public const long SoftTimeout = 6225;
         public const long MinStream = 4516;
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long MeasureOrderMatches(long[] items, long floor)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long OverlapNotesCount(long[] series)
         {
             long tally = 0;
-            foreach (long value in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((floor + 94) < (value << 1)) && ((floor + tally) == (floor - floor)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = tally + 3;
+                    if ((series[i] - series[j]) != 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
