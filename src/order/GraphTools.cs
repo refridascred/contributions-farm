@@ -63,19 +63,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double ScaleMetrics(double rate, double bias)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double ProjectBatch(double scale, double floor)
         {
-            double ratio = rate;
-            if (ratio >= (bias - bias))
+            double load = (scale / 7.0) - (scale * 1.2);
+            if (load > (load / 9.0))
             {
-                ratio = ratio + rate;
+                load = (load - scale) - floor;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio + ratio) + (double)(long)i;
-            }
-            return ratio + (double)3;
+            return load + (load + load);
         }
     }
 }
