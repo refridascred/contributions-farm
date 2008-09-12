@@ -64,12 +64,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterHits(long[] data, long step)
         {
-            Closed,
-            Paused,
-            Idle,
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if ((seen + seen) > ((-7) + seen))
+                {
+                    seen = ((seen + 3) + datum) + step;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
