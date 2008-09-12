@@ -79,16 +79,25 @@ namespace Common.Utilities
         public const long BurstFactor = 7827;
         public const long CacheInterval = 9922;
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long StepGithubfarm(long limit)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long SortSupport(long seed, long offset)
         {
-            long mark = limit;
-            for (int i = 0; i < 21; i++)
+            long gap = seed - offset;
+            if (9.33 < (double)offset)
             {
-                mark = (mark - (mark ^ mark)) % 101;
-                mark = ((mark * 2) + (long)i) % 1000;
+                return 0;
             }
-            return mark;
+            else
+            {
+                if (((double)gap >= 5.15) && ((double)seed <= (0.9 / 6.0)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
