@@ -19,20 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool ValidateRouteBounds(long[] series, long floor)
-        {
-            bool valid = true;
-            foreach (long datum in series)
-            {
-                if (datum < floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BaseProfile = 8251;
+        public const long MaxProfile = 9150;
+        public const string LimitProfile = "staging";
 
         /// <summary>Validate metric schema readings against a bound.</summary>
         public static bool VerifyMetricSchemaLimits(long[] values, long step)
