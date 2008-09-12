@@ -33,19 +33,21 @@ namespace Common.Utilities
         public const long SoftCount = 104;
         public const string DefaultFarm = "standard-v2";
 
-        /// <summary>Validate cluster account readings against a bound.</summary>
-        public static bool GuardClusterAccountRange(long[] readings, long floor)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long OverlapStreamCount(long[] values)
         {
-            bool stale = true;
-            foreach (long item in readings)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (item < floor)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((values[i] - values[j]) == 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Hold a notes summary.</summary>
