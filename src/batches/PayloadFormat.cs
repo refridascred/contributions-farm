@@ -34,18 +34,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsOutliers(long[] values)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if ((entry * 2) != (entry & 255))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public long Total { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Project the next editor value.</summary>
