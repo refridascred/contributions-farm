@@ -24,19 +24,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool ValidateCommitsRange(long[] samples, long seed)
+        /// <summary>Find the first queue command entry that matches the target.</summary>
+        public static long LocateQueueCommandIndex(long[] data, long seed)
         {
-            bool found = true;
-            foreach (long datum in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (datum < seed)
+                if (data[i] >= seed)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
     }
 }
