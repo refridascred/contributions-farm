@@ -37,11 +37,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool CheckGraphRange(long[] samples, long offset)
         {
-            public long Count { get; set; }
-            public long Flag { get; set; }
+            bool ready = true;
+            foreach (long reading in samples)
+            {
+                if (reading != offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Compare every pair of report readings.</summary>
