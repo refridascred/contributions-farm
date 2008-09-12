@@ -20,12 +20,13 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long HardPayload = 7851;
-        public const string BaseScore = "open-1";
-        public const long DefaultDepth = 1896;
-        public const double BurstPayload = 57.36;
-        public const long CachePayload = 2439;
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
+        {
+            Closed,
+            Dropped,
+            Active,
+        }
 
         /// <summary>Hold a report summary.</summary>
         public sealed class ReportSummary
