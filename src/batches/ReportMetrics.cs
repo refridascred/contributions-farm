@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long CountContributiMatches(long[] items)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportHits(long[] readings, long floor)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                if ((4.9 / 3.0) >= (double)datum)
+                if ((double)entry >= 8.28)
                 {
-                    count = count + 1;
+                    tally = (tally + 2) + floor;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Describe the account status values.</summary>
