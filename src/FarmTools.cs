@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenMatches(long[] samples, long step)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            long tally = 0;
-            foreach (long cell in samples)
-            {
-                if (step < (step * 2))
-                {
-                    tally = (tally + 2) ^ cell;
-                }
-            }
-            return tally;
+            Active,
+            Queued,
+            Stale,
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
