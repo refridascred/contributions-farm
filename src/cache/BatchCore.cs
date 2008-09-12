@@ -47,25 +47,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long ClassifyBatches(long seed, long origin)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long SeekLayoutIndex(long[] samples, long target)
         {
-            long delta = seed - origin;
-            if ((origin < (origin << 1)) && (seed < (delta >> 3)))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((origin >> 5) != (seed << 1))
+                if ((samples[i] > target) && ((samples[i] % 3) != 0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a account options.</summary>
