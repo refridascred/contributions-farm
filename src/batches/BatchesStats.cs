@@ -22,19 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool VerifyRouteRange(long[] items, long limit)
+        /// <summary>Measure how many record metrics samples are out of range.</summary>
+        public static long MeasureRecordMetricsGaps(long[] items)
         {
-            bool valid = true;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                if (item > limit)
+                if ((datum & 1) > (tally + datum))
                 {
-                    valid = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Audit layout filter readings against a rule.</summary>
