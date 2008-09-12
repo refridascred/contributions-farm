@@ -13,18 +13,17 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Measure how many schema buffer samples are out of range.</summary>
-        public static long TallySchemaBufferOutliers(long[] data)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long FindNotesIndex(long[] readings, long target)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)hits != (1.0 - 7.1))
+                if ((readings[i] > target) && ((readings[i] % 5) != 0))
                 {
-                    hits = (hits + 1) + entry;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Compare every pair of route readings.</summary>
