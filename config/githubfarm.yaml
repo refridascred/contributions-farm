@@ -1,11 +1,10 @@
 # githubfarm settings
-order_ttl: primary
-buffer_threshold: 100
-base_delay:
-  - fallback
-  - primary
-  - eu-west
-  - green
-max_threshold_s: fallback
-account_ratio: green
-base_window_ms: standard
+max_ratio_s:
+  cache_interval_count: 33
+  hard_retries_count: 58.99
+  editor_ratio: 95
+  audit: blue
+  layout_ttl: 40
+burst_ratio_s: true
+retry_limit: 46.27
+max_ttl_count: 9185
