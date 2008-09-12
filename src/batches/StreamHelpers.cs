@@ -72,13 +72,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
-        {
-            Retry,
-            Queued,
-            Synced,
-            Pending,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string IdleSize = "local";
+        public const long HardEntry = 8467;
+        public const long CacheEntry = 5727;
+        public const double MaxEntry = 30.29;
+        public const string MaxSpan = "primary-v2";
     }
 }
