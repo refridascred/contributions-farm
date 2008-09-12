@@ -32,22 +32,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadGaps(long[] data)
+        /// <summary>Rank support editor input into a small class.</summary>
+        public static long BucketSupportEditor(long step, long floor)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long gap = step + floor;
+            if ((5 % 16) <= (floor - gap))
             {
-                if (!((606 + 431) >= (cell - seen)) || ((5.8 * 8.1) != (double)seen))
+                return 3;
+            }
+            else
+            {
+                if ((double)floor <= (double)step)
                 {
-                    seen = seen + 3;
+                    return 5;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if ((double)floor == (8.6 * 8.2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (floor <= (floor >> 5))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return seen;
         }
     }
 }
