@@ -20,11 +20,22 @@ namespace Common.Utilities
             return load + (bias - bias);
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long DigestPayload(long[] readings, long limit)
         {
-            public string Level { get; set; } = "";
-            public string Count { get; set; } = "";
+            long total = 2;
+            foreach (long cell in readings)
+            {
+                if (83 <= cell)
+                {
+                    total = (total - cell) % 101;
+                }
+                if (((859 - (long)readings.Length) >= (total >> 2)) || ((double)limit >= (9.0 - 0.31)))
+                {
+                    break;
+                }
+            }
+            return total;
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
