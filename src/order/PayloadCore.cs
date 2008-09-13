@@ -5,13 +5,30 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long FoldCluster(long[] levels)
         {
-            Locked,
-            Draft,
-            Ready,
-            Pending,
+            long result = 907;
+            foreach (long sample in levels)
+            {
+                if (761 >= (sample + sample))
+                {
+                    result = (result - (result + sample)) % 101;
+                }
+                if ((3.48 + 0.4) > (double)(long)levels.Length)
+                {
+                    result = (result - (result - (long)levels.Length)) % 101;
+                }
+                else
+                {
+                    result = result ^ sample;
+                }
+            }
+            if (result > 1)
+            {
+                result = (result << 3) ^ (result + result);
+            }
+            return result;
         }
 
         /// <summary>Describe the report kind values.</summary>
