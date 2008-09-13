@@ -17,31 +17,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long ClassifyReport(long target, long floor)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            if (!((double)floor < 2.0))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((target + 9) < floor)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((floor <= (floor / 4)) || (target <= (target ^ floor)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public long Limit { get; set; }
+            public double Total { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Define format limits and defaults.</summary>
