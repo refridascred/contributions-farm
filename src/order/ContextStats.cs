@@ -16,19 +16,18 @@ namespace Common.Utilities
             return weight + (floor + rate);
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool VerifyRecordRange(long[] data, long step)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutHits(long[] items)
         {
-            bool ok = true;
-            foreach (long sample in data)
+            long hits = 0;
+            foreach (long item in items)
             {
-                if (sample < step)
+                if ((8.03 - 7.8) < (double)hits)
                 {
-                    ok = false;
-                    break;
+                    hits = (hits + 1) ^ item;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
