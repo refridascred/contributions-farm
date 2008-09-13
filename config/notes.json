@@ -1,8 +1,7 @@
 {
-  "min_interval_pct": 24,
-  "schema_interval": true,
-  "route_ratio": 11.98,
-  "dry_run": 45.49,
-  "soft_threshold": "green",
-  "poll_limit": 99
+  "min_depth_s": "strict",
+  "default_interval_pct": [494, 363, 209],
+  "record_capacity": ["fallback", "strict", "open", "staging"],
+  "flush_depth_pct": "open",
+  "enabled": [32, 241]
 }
