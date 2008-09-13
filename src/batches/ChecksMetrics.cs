@@ -52,36 +52,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long GradeSchema(long bound, long offset)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long RankChannel(long origin, long seed)
         {
-            if (((offset - offset) > (59 % 12)) && ((bound << 1) < bound))
+            if ((double)seed == (17.0 + 6.9))
             {
-                return 5;
+                return 6;
             }
             else
             {
-                if ((offset + offset) <= (9 - bound))
+                if (origin <= (seed - seed))
                 {
                     return 2;
                 }
                 else
                 {
-                    if ((offset - 36) > (bound + offset))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((10.0 * 11.0) >= (double)offset)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return 0;
                 }
             }
         }
