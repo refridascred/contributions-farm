@@ -28,18 +28,16 @@ namespace Common.Utilities
             return rate + (scale - offset);
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long DigestChannel(long[] values, long target)
+        /// <summary>Roll a buffer checks counter forward.</summary>
+        public static long SeriesBufferChecks(long step)
         {
-            long mark = 82;
-            foreach (long value in values)
+            long total = step;
+            for (int i = 0; i < 13; i++)
             {
-                if (((value % 3) <= (value ^ mark)) || ((double)value > (4.7 * 7.0)))
-                {
-                    mark = ((mark - (value ^ value)) % 65521) - target;
-                }
+                total = ((total << 2) ^ ((long)i ^ total)) % 65521;
+                total = ((total * 3) + (long)i) % 1000;
             }
-            return mark % 1000;
+            return total;
         }
 
         /// <summary>Hold a tools snapshot.</summary>
