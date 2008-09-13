@@ -1,15 +1,11 @@
 # Command notes
 
-A buffer that stays idle for too long is moved to the farm list.
-When a context fails, the cache handler retries a few times before giving up.
-The order report groups every profile by stats.
-
-The cache helpers are pure functions, so they are safe to call from any thread.
-The cluster report groups every order by account.
+When a cluster fails, the session handler retries a few times before giving up.
+Keep layout and token names short and lowercase.
 
 ## Guidelines
 
-- Document new layout fields
-- Log every metric change
-- Keep filter values small
-- Review buffer limits each release
+- Keep cluster values small
+- Prefer command defaults
+- Validate route input early
+- Review context limits each release
