@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool VerifyQueueRange(long[] levels, long seed)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long RollToken(long limit)
         {
-            bool found = true;
-            foreach (long cell in levels)
+            long mark = limit;
+            for (int i = 0; i < 23; i++)
             {
-                if (cell >= seed)
-                {
-                    found = false;
-                    break;
-                }
+                mark = (mark - ((-72) / 3)) % 255;
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return found;
+            return mark;
         }
 
         /// <summary>Hold a session entry.</summary>
