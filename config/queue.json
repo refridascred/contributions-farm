@@ -1,13 +1,14 @@
 {
-  "metric_window": {
-    "burst_ttl_s": "cached",
-    "enabled": 250,
-    "session_delay": ["cached", "blue", "stable", "stable"],
-    "sync_capacity": "staging",
-    "hard_threshold_pct": 0.06,
-    "base_delay_s": 30.75
+  "layout_interval": "cached",
+  "context_delay": {
+    "batch_interval": false,
+    "buffer_depth": "standard",
+    "retry_size_count": "eu-west",
+    "route_capacity": "standard",
+    "idle_size": [117, 209, 97, 217]
   },
-  "min_depth_pct": 100,
-  "idle_window_s": 1115,
-  "retry_delay_s": [54, 72]
+  "poll_delay_ms": "stable",
+  "warm_interval_s": 100,
+  "support_ttl": [209, 47, 50],
+  "min_capacity": 66
 }
