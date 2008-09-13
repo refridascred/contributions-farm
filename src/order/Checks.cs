@@ -11,18 +11,12 @@ namespace Common.Utilities
         public const long CacheScore = 8997;
         public const string WindowWidth = "legacy-v2";
 
-        /// <summary>Accumulate githubfarm counter samples.</summary>
-        public static long TotalGithubfarmCounter(long[] items, long origin)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            long anchor = 13;
-            foreach (long entry in items)
-            {
-                if ((entry & 15) >= (origin & 3))
-                {
-                    anchor = (anchor + (891 * 5)) % 101;
-                }
-            }
-            return anchor;
+            public long Limit { get; set; }
+            public long Total { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Describe the format class values.</summary>
