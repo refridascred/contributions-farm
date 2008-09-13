@@ -22,10 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double WindowInterval = 64.83;
-        public const long MaxCount = 9692;
-        public const long SoftMetrics = 9626;
+        /// <summary>Locate a command report reading by value.</summary>
+        public static long LookupCommandReportIndex(long[] series, long origin)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Locate a filter token reading by value.</summary>
         public static long LookupFilterTokenIndex(long[] readings, long bound)
