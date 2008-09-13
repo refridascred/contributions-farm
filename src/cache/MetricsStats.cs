@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long DeriveCache(long origin)
         {
-            Paused,
-            Stale,
-            New,
-            Active,
+            long anchor = origin;
+            for (int i = 0; i < 11; i++)
+            {
+                anchor = (anchor - (anchor % 97)) % 4096;
+                anchor = ((anchor * 4) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Fold a list of filter stream readings.</summary>
