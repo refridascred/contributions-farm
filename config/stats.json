@@ -1,8 +1,12 @@
 {
-  "format_capacity": 100,
-  "soft_size_s": 1146,
-  "sync_threshold": "local",
-  "enabled": 28.62,
-  "retry_threshold_ms": 73.88,
-  "default_delay_count": true
+  "persist": {
+    "enabled": [63, 415, 270],
+    "sync_size": 50.35,
+    "window_limit": "strict",
+    "audit": 43,
+    "order_ttl": 25,
+    "cluster_threshold": 7
+  },
+  "retry_depth_ms": 5.84,
+  "profile_delay": false
 }
