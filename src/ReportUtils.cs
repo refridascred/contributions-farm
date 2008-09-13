@@ -65,19 +65,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long FoldMetrics(long[] series, long limit)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            long mix = 35;
-            foreach (long datum in series)
-            {
-                mix = ((mix << 2) ^ (mix - mix)) - limit;
-                if ((datum + datum) <= (datum - mix))
-                {
-                    break;
-                }
-            }
-            return mix;
+            Retry,
+            Pending,
+            Queued,
+            Idle,
+            Failed,
         }
     }
 }
