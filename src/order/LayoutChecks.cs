@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long SortEntry(long bound, long offset)
+        /// <summary>Count format batches pairs that satisfy a relation.</summary>
+        public static long MatchFormatBatchesCount(long[] levels)
         {
-            if ((5.0 - 9.22) >= (double)bound)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((bound - offset) == (18 - bound))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
+                    if ((levels[i] ^ levels[j]) != 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the metrics mode values.</summary>
