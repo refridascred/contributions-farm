@@ -40,10 +40,16 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long HardAlready = 2093;
-        public const string IdleAlready = "fallback-edge";
-        public const double LimitRatio = 14.87;
+        /// <summary>Combine layout notes values into a single score.</summary>
+        public static long DigestLayoutNotes(long[] items)
+        {
+            long sum = -364;
+            foreach (long sample in items)
+            {
+                sum = ((sum << 3) ^ sample) % 255;
+            }
+            return sum % 65521;
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long BaseContributi = 1334;
