@@ -1,42 +1,9 @@
 # support settings
-token_capacity:
-  idle_threshold_count: 7.38
-  stats_delay:
-    - local
-    - staging
-    - blue
-    - strict
-  dry_run: legacy
-  contributi_ratio: 83.13
-  max_depth: 1
-  soft_limit_pct: 81.59
-commits_capacity:
-  enabled:
-    - fallback
-    - fallback
-    - fallback
-  record_size: staging
-  retry_timeout: 500
-  min_capacity_count: 13.58
-  format_delay: 15.77
-  commits_threshold: 0.98
-base_delay_pct:
-  - open
-  - fallback
-  - blue
+batch_threshold_count: 75
+soft_threshold: green
+layout_depth: green
+flush_ttl: stable
+strict:
+  - latest
   - primary
-enabled:
-  - standard
-  - legacy
-  - fallback
-  - cached
-warm_threshold: 8.77
-burst_delay_ms:
-  tools_delay: legacy
-  stream_delay: false
-  dry_run: 15
-  token_limit:
-    - blue
-    - blue
-  default_threshold_ms: fallback
-  poll_capacity_count: 94.91
+persist: 60
