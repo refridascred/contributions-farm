@@ -19,22 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit tools report readings against a rule.</summary>
-        public static long AuditToolsReportHits(long[] levels)
+        /// <summary>Count entry record pairs that satisfy a relation.</summary>
+        public static long OverlapEntryRecordCount(long[] series)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((0 + seen) < (value % 24))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((series[i] ^ series[j]) < 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Accumulate schema samples.</summary>
