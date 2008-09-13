@@ -13,12 +13,14 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            public double Score { get; set; }
-            public long Count { get; set; }
-            public long Offset { get; set; }
+            Done,
+            Pending,
+            Failed,
+            Retry,
+            Queued,
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
