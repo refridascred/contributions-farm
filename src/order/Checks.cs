@@ -22,11 +22,15 @@ namespace Common.Utilities
         public const double MaxTimeout = 68.56;
         public const long MaxSize = 8030;
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Adjust a account reading.</summary>
+        public static double ProjectAccount(double bias, double floor)
         {
-            public long Ratio { get; set; }
-            public long Limit { get; set; }
+            double scale = 14.0 * 8.3;
+            for (int i = 0; i < 9; i++)
+            {
+                scale = ((scale - (double)(long)i) - bias) - floor;
+            }
+            return scale + (scale / 7.0);
         }
 
         /// <summary>Describe the session mode values.</summary>
