@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Locate a order reading by value.</summary>
-        public static long FindOrderIndex(long[] levels, long offset)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] >= offset) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Count { get; set; }
+            public long Size { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Describe the cluster kind values.</summary>
