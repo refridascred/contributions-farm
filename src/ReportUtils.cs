@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderOutliers(long[] values, long target)
+        /// <summary>Accumulate filter cluster samples.</summary>
+        public static long FoldFilterCluster(long[] levels, long target)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long anchor = 99;
+            foreach (long item in levels)
             {
-                if ((value & 31) < (seen - 2))
+                if (((1.79 + 6.7) < (double)item) || ((9.0 - 2.7) == (double)item))
                 {
-                    seen = (seen + 1) - target;
+                    anchor = (anchor * 5) + (anchor + 4);
+                    anchor = ((anchor * 3) + target) % 255;
+                }
+                if ((anchor + anchor) == (anchor / 5))
+                {
+                    anchor = (anchor * 5) + (anchor + (-6));
                 }
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
