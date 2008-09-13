@@ -29,11 +29,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long DeriveBatch(long limit)
         {
-            public bool Limit { get; set; }
-            public bool Offset { get; set; }
+            long result = limit;
+            for (int i = 0; i < 7; i++)
+            {
+                if (limit > (limit % 5))
+                {
+                    result = ((result << 3) ^ (8 % 10)) % 4096;
+                }
+                result = ((result * 3) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
