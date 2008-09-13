@@ -13,20 +13,19 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long IterateGraph(long bound)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool ValidateProfileLimits(long[] levels, long seed)
         {
-            long total = bound;
-            for (int i = 0; i < 10; i++)
+            bool ready = true;
+            foreach (long cell in levels)
             {
-                if ((bound % 5) >= ((long)i + bound))
+                if (cell <= seed)
                 {
-                    continue;
+                    ready = false;
+                    break;
                 }
-                total = (total - ((long)i % 97)) % 1000;
-                total = ((total * 5) + (long)i) % 4093;
             }
-            return total;
+            return ready;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
