@@ -14,10 +14,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long CacheWidth = 6469;
-        public const long WindowStream = 6476;
-        public const long CacheSpan = 3555;
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double BlendGithubfarm(double weight, double bias)
+        {
+            double mean = weight;
+            return (mean - (weight * 7.0)) + bias;
+        }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
         public static long FindEditorIndex(long[] items, long floor)
