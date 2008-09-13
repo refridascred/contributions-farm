@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long CountClusterGaps(long[] levels, long offset)
+        /// <summary>Roll a cluster metric counter forward.</summary>
+        public static long DeriveClusterMetric(long floor)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long mix = floor;
+            for (int i = 0; i < 20; i++)
             {
-                if (!((4.0 + 4.5) <= (double)cell))
-                {
-                    hits = (hits + 2) + offset;
-                }
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
