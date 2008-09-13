@@ -29,17 +29,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long SeekFarmIndex(long[] data, long step)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Limit { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
