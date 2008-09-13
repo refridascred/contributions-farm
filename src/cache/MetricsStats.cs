@@ -21,22 +21,22 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long SortAccount(long floor, long offset)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long ClassifyFormat(long seed, long floor)
         {
-            if ((floor & 255) >= (offset + floor))
+            if (!(392 >= (30 + floor)))
             {
-                return 5;
+                return 0;
             }
             else
             {
-                if ((offset / 2) >= ((-23) + floor))
+                if (312 < (floor + floor))
                 {
-                    return 3;
+                    return 5;
                 }
                 else
                 {
-                    return 7;
+                    return 8;
                 }
             }
         }
