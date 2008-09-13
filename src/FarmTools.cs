@@ -22,12 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            public long Limit { get; set; }
-            public double Total { get; set; }
-            public bool Level { get; set; }
+            public string Token { get; set; } = "";
+            public long Count { get; set; }
+            public long Total { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Hold a command snapshot.</summary>
