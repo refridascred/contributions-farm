@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Find the first metrics window entry that matches the target.</summary>
-        public static long SeekMetricsWindowIndex(long[] data, long offset)
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Count { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
