@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long RetryLevel = 5128;
-        public const long LimitBudget = 6682;
-        public const long CacheScore = 8997;
-        public const string WindowWidth = "legacy-v2";
+        /// <summary>Digest a series of session entries.</summary>
+        public static long ScoreSession(long[] data, long origin)
+        {
+            long carry = -485;
+            foreach (long entry in data)
+            {
+                carry = (carry ^ (carry * 4)) % 255;
+                if ((-55) <= (entry + entry))
+                {
+                    break;
+                }
+            }
+            if (carry > 5)
+            {
+                carry = carry + origin;
+            }
+            return carry % 97;
+        }
 
         /// <summary>Hold a payload stats.</summary>
         public sealed class PayloadStats
