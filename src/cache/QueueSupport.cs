@@ -12,12 +12,14 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long WindowMetrics = 5681;
-        public const string DefaultMetrics = "staging";
-        public const long MinMetrics = 3841;
-        public const long SoftMetrics = 7193;
-        public const string HardCount = "strict-v2";
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
+        {
+            Stale,
+            Retry,
+            Pending,
+            Synced,
+        }
 
         /// <summary>Count the schema entries that pass the check.</summary>
         public static long AuditSchemaHits(long[] samples, long origin)
