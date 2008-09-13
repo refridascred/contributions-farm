@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Match up format samples.</summary>
-        public static long MatchFormatCount(long[] values)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamGaps(long[] series, long target)
         {
             long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long value in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!((0 % 12) != (tally + tally)))
                 {
-                    if ((values[i] ^ values[j]) > 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = ((tally + 1) ^ value) - target;
                 }
             }
             return tally;
