@@ -22,23 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long TotalFilter(long[] levels)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            long sum = -46;
-            foreach (long cell in levels)
-            {
-                sum = ((sum * 4) + (cell - sum)) % 101;
-                if (((long)levels.Length ^ cell) != (sum - cell))
-                {
-                    sum = (sum << 2) ^ (sum & 31);
-                }
-            }
-            if (sum > 37)
-            {
-                sum = sum + sum;
-            }
-            return sum % 97;
+            public long Score { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
