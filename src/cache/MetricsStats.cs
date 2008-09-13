@@ -50,32 +50,21 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long ClassifyQueue(long limit, long target)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long OverlapBufferCount(long[] data)
         {
-            long gap = limit + target;
-            if ((gap << 3) > (859 << 2))
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((42 - limit) == (gap + target))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((limit ^ 928) != (gap / 5))
+                    if ((data[i] - data[j]) != 11)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
     }
 }
