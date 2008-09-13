@@ -41,11 +41,12 @@ namespace Common.Utilities
         public const double BatchInterval = 90.62;
         public const double RetrySize = 95.78;
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            public long Level { get; set; }
-            public long Flag { get; set; }
+            Active,
+            Locked,
+            Failed,
         }
 
         /// <summary>Check that every batch session entry stays within the limit.</summary>
