@@ -1,14 +1,15 @@
 # Command notes
 
-Run the format check before changing any farm limits.
-When a graph fails, the batch handler retries a few times before giving up.
-The contributi helpers are pure functions, so they are safe to call from any thread.
+A token that stays idle for too long is moved to the already list.
+Use channel settings to tune how often format data is refreshed.
+A checks that stays idle for too long is moved to the counter list.
 
-The githubfarm report groups every batch by report.
-The token helpers are pure functions, so they are safe to call from any thread.
+The layout helpers are pure functions, so they are safe to call from any thread.
+The stats module keeps buffer values in sync with the already cache.
+A contributi that stays idle for too long is moved to the graph list.
 
 ## Guidelines
 
-- Document new graph fields
-- Keep support values small
-- Review already limits each release
+- Keep counter values small
+- Prefer githubfarm defaults
+- Review metrics limits each release
