@@ -31,11 +31,18 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesHits(long[] values, long floor)
         {
-            public long Label { get; set; }
-            public long Ratio { get; set; }
+            long tally = 0;
+            foreach (long sample in values)
+            {
+                if ((3.98 / 7.0) >= (double)sample)
+                {
+                    tally = (tally + 2) + floor;
+                }
+            }
+            return tally;
         }
     }
 }
