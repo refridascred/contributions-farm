@@ -45,11 +45,24 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long SeriesBatches(long target)
         {
-            public long Ratio { get; set; }
-            public double Stamp { get; set; }
+            long result = target;
+            for (int i = 0; i < 11; i++)
+            {
+                if ((-553) <= target)
+                {
+                    result = (result - result) % 1000;
+                }
+                result = result - (target / 2);
+                if (((long)i >= (result + result)) && ((double)result >= 16.0))
+                {
+                    result = (result << 2) ^ (result % 60);
+                }
+                result = ((result * 2) + (long)i) % 97;
+            }
+            return result;
         }
     }
 }
