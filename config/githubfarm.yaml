@@ -1,7 +1,8 @@
 # githubfarm settings
-cache_ttl_ms: 7134
-tools_delay: true
-base_capacity: standard
-poll_retries_s: fallback
-session_timeout: 38.04
-poll_timeout: true
+default_window_s: primary
+flush_depth: 387
+profile_ttl: false
+max_timeout:
+  - green
+  - standard
+  - staging
