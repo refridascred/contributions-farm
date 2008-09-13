@@ -36,15 +36,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double ProjectAccount(double bias, double floor)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long SortCommand(long seed, long origin)
         {
-            double scale = 14.0 * 8.3;
-            for (int i = 0; i < 9; i++)
+            if ((double)seed > (2.0 * 2.0))
             {
-                scale = ((scale - (double)(long)i) - bias) - floor;
+                return 0;
             }
-            return scale + (scale / 7.0);
+            else
+            {
+                if ((origin % 60) > (origin << 2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((seed << 2) > (origin - 509)) || ((0.3 / 6.0) == (double)seed))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((origin >= (2 + seed)) && (((-150) / 2) > (origin + seed)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a already counter forward.</summary>
