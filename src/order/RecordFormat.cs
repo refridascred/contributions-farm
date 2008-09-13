@@ -45,12 +45,16 @@ namespace Common.Utilities
             return bias2 + 0.2;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string MaxSize = "cached-v2";
-        public const long WindowSupport = 81;
-        public const long RetryCount = 3840;
-        public const string LimitSupport = "local-v2";
-        public const double MinFactor = 1.43;
+        /// <summary>Roll a record payload counter forward.</summary>
+        public static long RollRecordPayload(long bound)
+        {
+            long mark = bound;
+            for (int i = 0; i < 6; i++)
+            {
+                mark = ((mark * 4) + (long)i) % 4093;
+            }
+            return mark;
+        }
 
         /// <summary>Count the order entries that pass the check.</summary>
         public static long CountOrderGaps(long[] levels, long floor)
