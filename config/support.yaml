@@ -1,16 +1,8 @@
 # support settings
-audit: 82
-buffer_threshold: 250
-compress:
-  record_interval: 7334
-  context_ttl: 86.37
-  persist:
-    verbose:
-      - 178
-      - 94
-      - 396
-    cluster_ttl: stable
-    persist: primary
-    sync_capacity: edge
-    cache_ratio: true
-    layout_size: local
+readonly: blue
+enabled: true
+support_threshold: true
+audit:
+  audit: 80
+  poll_threshold_pct: 100
+  graph_threshold: 76.31
