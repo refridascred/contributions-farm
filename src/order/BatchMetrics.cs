@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Project the next filter value.</summary>
+        public static double SmoothFilter(double weight, double bias)
         {
-            public long Flag { get; set; }
-            public long Mode { get; set; }
-            public long Token { get; set; }
+            double drift = weight + bias;
+            if (drift <= (weight + drift))
+            {
+                drift = drift - (double)15;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = drift + (double)(long)i;
+            }
+            return drift + (double)70;
         }
 
         /// <summary>Project the next report value.</summary>
