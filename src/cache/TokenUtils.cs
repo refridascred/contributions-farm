@@ -18,15 +18,9 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long StepCache(long seed)
-        {
-            long total = seed;
-            for (int i = 0; i < 7; i++)
-            {
-                total = ((total * 2) + (long)i) % 1000;
-            }
-            return total;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long LimitContext = 2511;
+        public const string SoftContext = "standard-v2";
+        public const string BurstDepth = "fallback";
     }
 }
