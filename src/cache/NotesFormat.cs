@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool ValidateStreamRange(long[] values, long limit)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long RankCluster(long bound, long target)
         {
-            bool stale = true;
-            foreach (long value in values)
+            long prev = bound - target;
+            if ((7.0 * 17.0) <= (double)bound)
             {
-                if (value > limit)
+                return 6;
+            }
+            else
+            {
+                if (prev <= (target / 5))
                 {
-                    stale = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if (bound > (target / 3))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)target >= (1.85 * 18.0))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Adjust a record reading.</summary>
