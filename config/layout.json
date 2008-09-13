@@ -1,15 +1,7 @@
 {
-  "burst_window": ["legacy", "fallback"],
-  "compress": {
-    "graph_capacity": "latest",
-    "counter_ttl": "stable",
-    "cache_delay": true,
-    "default_interval_pct": 2.51,
-    "base_depth_pct": "edge",
-    "record_depth": "green"
-  },
-  "hard_delay": 81.41,
-  "soft_size_count": ["edge", "fallback", "blue", "staging"],
-  "idle_limit": "blue",
-  "verbose": 91.42
+  "soft_ttl_ms": 86,
+  "burst_timeout_ms": 54.56,
+  "hard_retries_count": 94.85,
+  "contributi_depth": 28,
+  "readonly": true
 }
