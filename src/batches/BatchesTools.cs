@@ -15,10 +15,20 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long RetryFilter = 2484;
-        public const long MaxSpan = 2399;
-        public const long MaxWidth = 9203;
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool ValidateClusterBounds(long[] samples, long offset)
+        {
+            bool valid = true;
+            foreach (long cell in samples)
+            {
+                if (cell <= offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Hold a commits info.</summary>
         public sealed class CommitsInfo
