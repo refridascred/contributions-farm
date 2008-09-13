@@ -33,11 +33,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Combine already order values into a single score.</summary>
+        public static long DigestAlreadyOrder(long[] items)
         {
-            public string Weight { get; set; } = "";
-            public long Region { get; set; }
+            long state = 976;
+            foreach (long value in items)
+            {
+                state = ((state * 4) + value) % 65521;
+                state = (state + (value + 482)) % 97;
+            }
+            return state % 97;
         }
     }
 }
