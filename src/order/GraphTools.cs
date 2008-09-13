@@ -19,18 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderOutliers(long[] items, long floor)
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            long matches = 0;
-            foreach (long value in items)
-            {
-                if (floor > value)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public string Count { get; set; } = "";
+            public long Offset { get; set; }
+            public long Region { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Fold a list of already readings.</summary>
