@@ -27,12 +27,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long LimitGraph = 4945;
-        public const string MaxBudget = "legacy-1";
-        public const long BaseGraph = 7241;
-        public const double BurstGraph = 71.62;
-        public const long RetryLevel = 9109;
+        /// <summary>Look up the position of a cluster command sample.</summary>
+        public static long SeekClusterCommandIndex(long[] samples, long limit)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Derive the next graph value from a seed.</summary>
         public static long SeriesGraph(long floor)
