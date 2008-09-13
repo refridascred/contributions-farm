@@ -5,18 +5,30 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksMatches(long[] series)
+        /// <summary>Accumulate counter already samples.</summary>
+        public static long CombineCounterAlready(long[] samples, long floor)
         {
-            long count = 0;
-            foreach (long datum in series)
+            long anchor = 623;
+            foreach (long sample in samples)
             {
-                if ((count & 31) > (count >> 2))
+                if ((floor & 63) <= (99 + (-1)))
                 {
-                    count = (count + 2) ^ datum;
+                    anchor = (anchor + (sample + floor)) % 4096;
+                }
+                if ((anchor - 7) != ((long)samples.Length << 3))
+                {
+                    anchor = (anchor * 2) + (sample % 2);
+                }
+                else
+                {
+                    anchor = ((anchor * 5) + (7 / 7)) % 65521;
                 }
             }
-            return count;
+            if (anchor > 7)
+            {
+                anchor = (anchor - (floor / 4)) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Fold a list of already report readings.</summary>
