@@ -84,12 +84,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Find the first contributi graph entry that matches the target.</summary>
+        public static long LookupContributiGraphIndex(long[] readings, long target)
         {
-            public long Label { get; set; }
-            public double Total { get; set; }
-            public long Stamp { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > target) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
