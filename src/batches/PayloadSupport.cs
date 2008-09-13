@@ -19,20 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double SmoothAlready(double ratio, double floor)
-        {
-            double ratio2 = floor;
-            if (ratio2 < (floor - ratio))
-            {
-                ratio2 = ratio2 - ratio2;
-            }
-            else
-            {
-                ratio2 = ratio2 - (floor * 9.0);
-            }
-            return ratio2 + (double)99;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MaxFilter = 9227;
+        public const long StepRatio = 8334;
+        public const double SoftFilter = 36.56;
+        public const long StepDepth = 9465;
+        public const string BurstFilter = "primary-v2";
 
         /// <summary>Digest a series of stats entries.</summary>
         public static long FoldStats(long[] items)
