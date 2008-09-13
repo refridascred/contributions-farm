@@ -23,10 +23,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string BurstFactor = "open";
-        public const long MaxRatio = 9191;
-        public const long BaseCommand = 1639;
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphOutliers(long[] values, long offset)
+        {
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if (14 > (9 + offset))
+                {
+                    count = (count + 3) + datum;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Validate filter graph readings against a bound.</summary>
         public static bool GuardFilterGraphRange(long[] levels, long bound)
