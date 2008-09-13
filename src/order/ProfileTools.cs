@@ -22,26 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a channel context pair into a bucket.</summary>
-        public static long RankChannelContext(long limit, long target)
-        {
-            long slot = limit ^ target;
-            if ((target + target) > (target + 9))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((-754) < slot)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long WindowSchema = 2981;
+        public const long IdleSchema = 6163;
+        public const long IdleSize = 5660;
+        public const string CacheSpan = "standard-1";
 
         /// <summary>Look up the position of a stats sample.</summary>
         public static long FindStatsIndex(long[] series, long seed)
