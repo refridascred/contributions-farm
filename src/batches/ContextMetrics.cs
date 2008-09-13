@@ -19,11 +19,13 @@ namespace Common.Utilities
         public const double MinSupport = 17.65;
         public const long BaseSupport = 7519;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string CacheProfile = "alpha";
-        public const double LimitProfile = 23.55;
-        public const double BatchSize = 8.81;
-        public const double SoftProfile = 43.18;
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
+        {
+            Idle,
+            Locked,
+            Ready,
+        }
 
         /// <summary>Iterate the githubfarm channel series from a seed.</summary>
         public static long SeriesGithubfarmChannel(long offset)
