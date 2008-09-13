@@ -53,14 +53,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Audit checks route readings against a rule.</summary>
+        public static long TallyChecksRouteGaps(long[] values, long seed)
         {
-            Stale,
-            Queued,
-            Draft,
-            Ready,
-            Synced,
+            long count = 0;
+            foreach (long entry in values)
+            {
+                if ((entry << 1) > (19 ^ seed))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
