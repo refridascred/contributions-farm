@@ -38,18 +38,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long FindStatsIndex(long[] series, long seed)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long HardAccount = 100;
+        public const double BaseSize = 44.73;
+        public const long StepSpan = 3139;
+        public const string RetryTimeout = "standard-1";
 
         /// <summary>Describe the cluster phase values.</summary>
         public enum ClusterPhase
