@@ -1,14 +1,11 @@
 # Command notes
 
-Use stream settings to tune how often cluster data is refreshed.
-When a checks fails, the metrics handler retries a few times before giving up.
-
-The command module keeps githubfarm values in sync with the contributi cache.
-The context report groups every contributi by cluster.
+Each batch is validated before it reaches the buffer queue.
+The batch module keeps checks values in sync with the context cache.
 
 ## Guidelines
 
-- Validate command input early
-- Keep support values small
-- Prefer counter defaults
-- Document new contributi fields
+- Log every window change
+- Validate cache input early
+- Keep commits values small
+- Document new filter fields
