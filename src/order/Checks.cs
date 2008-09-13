@@ -27,21 +27,14 @@ namespace Common.Utilities
         public const long BaseSpan = 6517;
         public const double SoftTools = 57.65;
 
-        /// <summary>Match up filter samples.</summary>
-        public static long CompareFilterCount(long[] items)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 5)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Failed,
+            Queued,
+            Locked,
+            Idle,
+            Paused,
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
