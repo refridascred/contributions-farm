@@ -35,19 +35,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool GuardContributiBounds(long[] readings, long target)
-        {
-            bool ok = true;
-            foreach (long entry in readings)
-            {
-                if (entry != target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string MinBudget = "standard-1";
+        public const long LimitTools = 3124;
+        public const string MinTools = "staging-v2";
+        public const long BaseTools = 9330;
+        public const double LimitSize = 73.48;
     }
 }
