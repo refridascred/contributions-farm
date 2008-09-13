@@ -13,14 +13,11 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            Active,
-            Dropped,
-            Closed,
-            Queued,
-            Pending,
+            public long Owner { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Roll a counter counter forward.</summary>
