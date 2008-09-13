@@ -1,8 +1,23 @@
 {
-  "burst_delay_ms": [12, 464, 40, 9],
-  "entry_ratio": true,
-  "editor_interval": "cached",
-  "metrics_timeout": [221, 174],
-  "commits_ratio": 2738,
-  "readonly": "standard"
+  "route_window": {
+    "idle_size_s": {
+      "warm_window": 70.1,
+      "max_delay_pct": 1024,
+      "flush_timeout_ms": "blue",
+      "metrics_interval": false,
+      "retry_timeout": 1024
+    },
+    "command_timeout": "latest",
+    "counter_limit": {
+      "default_delay_s": "edge",
+      "readonly": 43,
+      "persist": "edge"
+    },
+    "burst_window": "local",
+    "editor_delay": 24.99
+  },
+  "channel_size": 4603,
+  "session_delay": 500,
+  "retry_depth": 250,
+  "soft_limit_pct": 9706
 }
