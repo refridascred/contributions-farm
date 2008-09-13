@@ -1,10 +1,9 @@
 # githubfarm settings
-contributi_capacity: 87.84
-metric_limit:
-  - 232
-  - 6
-format_depth:
-  - 111
-  - 214
-poll_window_count: 30
-max_interval_ms: 40
+command_window: local
+persist:
+  - 157
+  - 193
+  - 163
+  - 344
+flush_delay: eu-west
+support_timeout: true
