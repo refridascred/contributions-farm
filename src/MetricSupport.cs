@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long WeighNotes(long[] readings)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long OverlapCommitsCount(long[] data)
         {
-            long state = 459;
-            foreach (long reading in readings)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                state = (state - (state >> 4)) % 97;
-                if ((reading % 60) < (reading & 255))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    state = state ^ state;
-                }
-                if ((reading + state) > state)
-                {
-                    break;
+                    if ((data[i] + data[j]) < 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Hold a layout header.</summary>
