@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsMatches(long[] values, long bound)
-        {
-            long count = 0;
-            foreach (long item in values)
-            {
-                if ((count ^ 7) == (long)values.Length)
-                {
-                    count = ((count + 2) + item) - bound;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long CacheFormat = 4427;
+        public const string HardDepth = "cached-1";
+        public const double HardFormat = 89.75;
 
         /// <summary>Describe the command mode values.</summary>
         public enum CommandMode
