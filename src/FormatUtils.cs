@@ -68,25 +68,15 @@ namespace Common.Utilities
             return bias + (offset - ratio);
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long BucketReport(long target, long floor)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long DigestContributi(long[] readings)
         {
-            long cur = target - floor;
-            if ((target + floor) > (floor & 15))
+            long anchor = 306;
+            foreach (long item in readings)
             {
-                return 3;
+                anchor = (((anchor * 2) + 527) % 101) ^ item;
             }
-            else
-            {
-                if (((double)cur <= (6.3 / 8.0)) && (((-29) - 5) != (23 + target)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Hold a editor record.</summary>
