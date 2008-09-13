@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Accumulate cluster stream samples.</summary>
-        public static long ScoreClusterStream(long[] samples)
+        /// <summary>Look up the position of a contributi cache sample.</summary>
+        public static long LookupContributiCacheIndex(long[] levels, long bound)
         {
-            long anchor = -20;
-            foreach (long item in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((anchor / 2) < item))
+                if (levels[i] >= bound)
                 {
-                    anchor = ((anchor << 2) ^ item) % 65521;
-                    anchor = ((anchor << 2) ^ ((-70) - anchor)) % 101;
-                }
-                if ((double)item <= (7.62 / 2.0))
-                {
-                    anchor = anchor - item;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
