@@ -19,18 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the editor order entries that pass the check.</summary>
-        public static long TallyEditorOrderOutliers(long[] data)
+        /// <summary>Validate order farm readings against a bound.</summary>
+        public static bool CheckOrderFarmBounds(long[] items, long bound)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            bool found = true;
+            foreach (long sample in items)
             {
-                if ((seen + 77) <= seen)
+                if (sample <= bound)
                 {
-                    seen = (seen + 3) - datum;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
