@@ -15,18 +15,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextMatches(long[] items, long origin)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if (!((seen ^ seen) != (seen ^ 5)))
-                {
-                    seen = ((seen + 1) + item) - origin;
-                }
-            }
-            return seen;
+            public long Score { get; set; }
+            public long Rank { get; set; }
+            public double Label { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
