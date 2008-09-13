@@ -1,7 +1,12 @@
 {
-  "command_depth": 9,
-  "queue_depth": "fallback",
-  "idle_delay": 65,
-  "base_interval_count": [182, 207, 91, 143],
-  "strict": 250
+  "notes_ttl": "local",
+  "burst_capacity_pct": 95.37,
+  "retry_capacity_count": {
+    "readonly": [30, 407, 284],
+    "min_capacity_count": 1024,
+    "persist": 1440,
+    "record_capacity": 46
+  },
+  "hard_ttl": "legacy",
+  "min_limit": 25.19
 }
