@@ -23,19 +23,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long DigestStream(long[] series, long target)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long DeriveBatch(long origin)
         {
-            long score = 7;
-            foreach (long sample in series)
+            long anchor = origin;
+            for (int i = 0; i < 12; i++)
             {
-                score = (((score * 3) + (target % 24)) % 101) - sample;
-                if ((target >> 1) >= (239 + (long)series.Length))
+                anchor = (anchor << 3) ^ (anchor + anchor);
+                if ((anchor / 2) > origin)
                 {
-                    break;
+                    continue;
                 }
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return score;
+            return anchor;
         }
 
         /// <summary>Count the metrics githubfarm entries that pass the check.</summary>
