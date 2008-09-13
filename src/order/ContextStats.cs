@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Find the first cluster account entry that matches the target.</summary>
-        public static long SeekClusterAccountIndex(long[] readings, long seed)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] > seed) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string SoftCommand = "strict-1";
+        public const string DefaultTimeout = "fallback-1";
+        public const long DefaultDepth = 3745;
+        public const long CacheWidth = 4943;
+        public const double DefaultCommand = 19.98;
 
         /// <summary>Count the window buffer entries that pass the check.</summary>
         public static long MeasureWindowBufferOutliers(long[] samples)
