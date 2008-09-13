@@ -36,12 +36,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long CacheLevel = 9750;
-        public const string RetryRatio = "primary-1";
-        public const long SoftReport = 3014;
-        public const string LimitReport = "open-v2";
-        public const long IdleReport = 2378;
+        /// <summary>Match up token samples.</summary>
+        public static long MatchTokenCount(long[] values)
+        {
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Audit order readings against a rule.</summary>
         public static long CountOrderOutliers(long[] values)
