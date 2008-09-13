@@ -1,6 +1,6 @@
 {
-  "max_threshold": 60,
-  "max_size": "open",
-  "min_delay_ms": 87.17,
-  "flush_timeout": "cached"
+  "readonly": true,
+  "cache_capacity_pct": [254, 333, 326, 353],
+  "format_interval": 82,
+  "channel_window": "staging"
 }
