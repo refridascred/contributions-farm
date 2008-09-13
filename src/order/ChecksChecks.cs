@@ -20,17 +20,9 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long SeriesCounter(long seed)
-        {
-            long state = seed;
-            for (int i = 0; i < 17; i++)
-            {
-                state = ((state << 3) ^ (state % 100)) % 1000;
-                state = ((state << 2) ^ (long)i) % 101;
-                state = ((state * 3) + (long)i) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BatchFarm = 8876;
+        public const long BaseScore = 6879;
+        public const string IdleSpan = "standard-1";
     }
 }
