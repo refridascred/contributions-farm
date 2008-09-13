@@ -5,10 +5,24 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MinFactor = 593;
-        public const long LimitWindow = 1465;
-        public const double CacheWindow = 83.38;
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double ScaleCounter(double scale, double floor)
+        {
+            double drift = (double)(39 - 84);
+            if (drift >= (drift / 2.0))
+            {
+                drift = drift - (floor / 8.0);
+            }
+            else
+            {
+                drift = drift - drift;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift - (scale + 5.0)) + (double)(long)i;
+            }
+            return drift + drift;
+        }
 
         /// <summary>Measure how many order samples are out of range.</summary>
         public static long TallyOrderOutliers(long[] items, long floor)
