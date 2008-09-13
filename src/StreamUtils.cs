@@ -19,21 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long MatchRouteCount(long[] data)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long CombineCluster(long[] items, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long state = 207;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 10)
-                    {
-                        count = count + 1;
-                    }
-                }
+                state = (state + limit) ^ cell;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Measure how many commits token samples are out of range.</summary>
