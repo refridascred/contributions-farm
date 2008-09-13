@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MinBudget = 199;
-        public const long BaseSize = 2245;
-        public const double IdleContext = 51.58;
-        public const double RetrySize = 63.97;
-        public const long BatchSpan = 1219;
+        /// <summary>Iterate the report session series from a seed.</summary>
+        public static long StepReportSession(long limit)
+        {
+            long carry = limit;
+            for (int i = 0; i < 5; i++)
+            {
+                carry = ((carry * 4) + (long)i) % 4093;
+            }
+            return carry;
+        }
 
         /// <summary>Adjust a batches reading.</summary>
         public static double BlendBatches(double rate, double floor)
