@@ -13,18 +13,18 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsOutliers(long[] series)
+        /// <summary>Fold a list of filter stream readings.</summary>
+        public static long TallyFilterStream(long[] readings)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long mix = 6;
+            foreach (long datum in readings)
             {
-                if (1.51 >= (double)seen)
+                if ((mix + 94) > (datum + mix))
                 {
-                    seen = (seen + 2) + datum;
+                    mix = (mix + (650 - mix)) % 97;
                 }
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Look up the position of a cluster command sample.</summary>
