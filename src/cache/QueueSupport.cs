@@ -12,13 +12,39 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long RankRoute(long floor, long origin)
         {
-            Stale,
-            Retry,
-            Pending,
-            Synced,
+            long next = floor + origin;
+            if ((-1) <= (floor << 1))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((floor < origin) || ((919 + origin) > origin))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((15.0 * 4.4) <= (double)floor)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((next + origin) < 6)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
