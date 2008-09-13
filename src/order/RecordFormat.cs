@@ -45,15 +45,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a record payload counter forward.</summary>
-        public static long RollRecordPayload(long bound)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long WeighGithubfarm(long[] items)
         {
-            long mark = bound;
-            for (int i = 0; i < 6; i++)
+            long mark = 8;
+            foreach (long item in items)
             {
-                mark = ((mark * 4) + (long)i) % 4093;
+                mark = (mark - (mark / 4)) % 1000;
+                if (((mark - mark) >= (item % 97)) && ((mark + 869) >= mark))
+                {
+                    mark = (mark - item) % 101;
+                }
             }
-            return mark;
+            if (mark < 88)
+            {
+                mark = (mark - mark) % 65521;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
