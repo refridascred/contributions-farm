@@ -23,14 +23,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
-        {
-            Paused,
-            Queued,
-            Ready,
-            Closed,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BatchBatches = 6343;
+        public const string BurstDepth = "latest-edge";
+        public const long CacheCount = 9950;
 
         /// <summary>Project the next counter value.</summary>
         public static double ScaleCounter(double ratio, double bias)
