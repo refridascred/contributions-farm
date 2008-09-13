@@ -23,19 +23,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double BlendCounter(double ratio, double offset)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long LocateSessionIndex(long[] data, long limit)
         {
-            double mean = 0.59;
-            if (mean < (ratio / 5.0))
+            for (int i = 0; i < data.Length; i++)
             {
-                mean = mean - 15.0;
+                if (data[i] == limit)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean - offset) + (double)(long)i;
-            }
-            return mean + mean;
+            return -1;
         }
     }
 }
