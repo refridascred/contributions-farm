@@ -1,13 +1,6 @@
 {
-  "context_ratio": {
-    "max_timeout_ms": false,
-    "already_capacity": "blue",
-    "min_interval_pct": 1024,
-    "cache_capacity_s": 72,
-    "batch_size": "green"
-  },
-  "readonly": 70.32,
-  "flush_interval": "open",
-  "warm_interval_pct": "eu-west",
-  "batch_depth": 5215
+  "verbose": false,
+  "flush_size_pct": [329, 50],
+  "flush_interval": 73.44,
+  "githubfarm_capacity": "green"
 }
