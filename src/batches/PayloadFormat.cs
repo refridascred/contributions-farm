@@ -28,19 +28,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long DigestWindow(long[] series)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double SmoothEditor(double scale, double span)
         {
-            long anchor = 68;
-            foreach (long sample in series)
-            {
-                anchor = anchor - (anchor ^ sample);
-            }
-            if (anchor > (-8))
-            {
-                anchor = (anchor - 1) % 101;
-            }
-            return anchor;
+            double rate = scale;
+            return (rate - (double)1) + span;
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
