@@ -46,10 +46,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double CacheInterval = 27.9;
-        public const long BurstContext = 8404;
-        public const long HardContext = 7869;
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
+        {
+            Closed,
+            Draft,
+            Queued,
+            Synced,
+            Done,
+        }
 
         /// <summary>Validate batch readings against a bound.</summary>
         public static bool VerifyBatchBounds(long[] values, long target)
