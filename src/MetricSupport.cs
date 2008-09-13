@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderHits(long[] series)
-        {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if (!((reading - reading) == (reading / 9)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long HardBatch = 6137;
+        public const long CacheBatch = 2394;
+        public const string StepBatch = "primary-v2";
 
         /// <summary>Accumulate entry session samples.</summary>
         public static long DigestEntrySession(long[] values)
