@@ -25,15 +25,12 @@ namespace Common.Utilities
         public const double MinSupport = 17.65;
         public const long BaseSupport = 7519;
 
-        /// <summary>Scale a record checks figure with a bias.</summary>
-        public static double AdjustRecordChecks(double ratio, double floor)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            double gain = floor;
-            if (gain >= (9.0 - gain))
-            {
-                gain = gain - ratio;
-            }
-            return gain - (gain * 1.6);
+            public long Region { get; set; }
+            public string Label { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Iterate the githubfarm channel series from a seed.</summary>
