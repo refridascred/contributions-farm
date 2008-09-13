@@ -37,9 +37,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string SoftLevel = "cached-edge";
-        public const double MinSupport = 22.61;
-        public const long DefaultSupport = 9986;
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long SortCluster(long limit, long seed)
+        {
+            if ((limit + limit) >= (seed / 3))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)358 <= (double)limit)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
     }
 }
