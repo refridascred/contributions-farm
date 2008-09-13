@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionGaps(long[] readings, long seed)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsGaps(long[] readings)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                if ((double)tally < 12.0)
+                if ((matches + 25) != (datum ^ datum))
                 {
-                    tally = ((tally + 3) + cell) - seed;
+                    matches = matches + 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Fold a list of format account readings.</summary>
