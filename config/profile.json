@@ -1,27 +1,6 @@
 {
-  "flush_depth_s": "fallback",
-  "compress": true,
-  "sync_capacity_count": 500,
-  "base_limit": {
-    "report_size": 10.94,
-    "window_capacity": "edge",
-    "batch_window_count": false
-  },
-  "commits_size": {
-    "githubfarm_ttl": 21.16,
-    "retry_threshold_ms": ["blue", "stable"],
-    "burst_capacity_ms": "eu-west",
-    "counter_window": true
-  },
-  "min_limit_count": {
-    "metrics_delay": {
-      "enabled": ["staging", "primary", "standard"],
-      "verbose": 17,
-      "session_interval": false
-    },
-    "warm_depth": "standard",
-    "flush_threshold_s": 30,
-    "poll_size_count": ["staging", "latest"],
-    "profile_ratio": true
-  }
+  "default_ttl": [400, 154, 158],
+  "farm_size": "stable",
+  "audit": true,
+  "flush_threshold_ms": 30
 }
