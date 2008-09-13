@@ -36,17 +36,19 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long SeekReportIndex(long[] items, long step)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long DigestWindow(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 68;
+            foreach (long sample in series)
             {
-                if (items[i] == step)
-                {
-                    return (long)i;
-                }
+                anchor = anchor - (anchor ^ sample);
             }
-            return -1;
+            if (anchor > (-8))
+            {
+                anchor = (anchor - 1) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a token stats.</summary>
