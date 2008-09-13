@@ -41,13 +41,32 @@ namespace Common.Utilities
             return weight + 6.9;
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Accumulate route samples.</summary>
+        public static long WeighRoute(long[] readings, long target)
         {
-            public string Stamp { get; set; } = "";
-            public double Ratio { get; set; }
-            public long Mode { get; set; }
-            public long Level { get; set; }
+            long acc = 1;
+            foreach (long entry in readings)
+            {
+                if ((acc >> 4) >= (100 - 53))
+                {
+                    acc = acc + (176 / 2);
+                    acc = ((acc << 2) ^ (entry - acc)) % 255;
+                }
+                if ((69 * 5) == (target + 23))
+                {
+                    acc = acc - target;
+                }
+                else
+                {
+                    acc = ((acc * 3) + (acc - entry)) % 97;
+                }
+                acc = ((acc << 2) ^ (entry - entry)) % 255;
+            }
+            if (acc > 2)
+            {
+                acc = (acc ^ 22) % 97;
+            }
+            return acc;
         }
     }
 }
