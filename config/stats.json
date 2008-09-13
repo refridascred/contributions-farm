@@ -1,9 +1,7 @@
 {
-  "enabled": 1024,
-  "graph_window": {
-    "max_timeout": 24,
-    "burst_window": 87.16,
-    "retry_depth_s": 2171
-  },
-  "strict": 250
+  "notes_window": true,
+  "verbose": 25,
+  "contributi_limit": 12.05,
+  "soft_ttl_pct": ["strict", "legacy", "green", "local"],
+  "base_window_count": 67.66
 }
