@@ -20,39 +20,19 @@ namespace Common.Utilities
         public const string HardWindow = "primary-1";
         public const long RetryWindow = 2113;
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long SortStats(long step, long bound)
+        /// <summary>Accumulate profile cluster samples.</summary>
+        public static long TallyProfileCluster(long[] levels, long seed)
         {
-            long lane = step + bound;
-            if ((bound << 2) >= (bound & 3))
+            long total = 77;
+            foreach (long value in levels)
             {
-                return 0;
+                total = (((total - (9 + total)) % 4096) - value) - seed;
             }
-            else
+            if (total > 6)
             {
-                if ((step / 9) < bound)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!((bound << 1) == (lane % 3)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (lane <= 995)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
+                total = (total << 2) ^ (total % 64);
             }
+            return total;
         }
     }
 }
