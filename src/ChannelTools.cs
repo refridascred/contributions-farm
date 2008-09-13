@@ -47,13 +47,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
-        {
-            public bool Stamp { get; set; }
-            public long Owner { get; set; }
-            public bool Ratio { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long HardGithubfarm = 4190;
+        public const double IdleDepth = 34.35;
+        public const string BurstFactor = "standard-1";
+        public const long BatchInterval = 1702;
     }
 }
