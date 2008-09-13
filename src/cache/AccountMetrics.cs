@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileHits(long[] series, long floor)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long MatchCacheCount(long[] data)
         {
-            long count = 0;
-            foreach (long datum in series)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!(count <= (floor ^ floor)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = (count + 3) + datum;
+                    if ((data[i] - data[j]) != 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Compare every pair of route readings.</summary>
