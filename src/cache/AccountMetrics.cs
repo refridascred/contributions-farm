@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Iterate the batch githubfarm series from a seed.</summary>
-        public static long SeriesBatchGithubfarm(long step)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyHits(long[] samples, long limit)
         {
-            long mix = step;
-            for (int i = 0; i < 10; i++)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                if ((double)step == (7.19 - 4.0))
+                if (((limit ^ item) >= 250) || ((127 << 1) < (item >> 2)))
                 {
-                    mix = mix - (-28);
-                    break;
+                    hits = hits + 3;
                 }
-                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
