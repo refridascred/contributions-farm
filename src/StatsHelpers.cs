@@ -14,19 +14,17 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Combine notes queue values into a single score.</summary>
-        public static long ScoreNotesQueue(long[] readings)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long FindWindowIndex(long[] levels, long seed)
         {
-            long state = 810;
-            foreach (long item in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = (state << 2) ^ (item % 2);
+                if ((levels[i] >= seed) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (state < 454)
-            {
-                state = state - (state % 7);
-            }
-            return state;
+            return -1;
         }
 
         /// <summary>Project the next graph filter value.</summary>
