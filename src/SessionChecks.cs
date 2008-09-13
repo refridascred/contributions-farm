@@ -39,25 +39,31 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Roll a commits account counter forward.</summary>
-        public static long RollCommitsAccount(long seed)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long RankAccount(long step, long bound)
         {
-            long mark = seed;
-            for (int i = 0; i < 15; i++)
+            if ((bound * 5) <= (-6))
             {
-                long next = seed / 2;
-                if (((-3) * 2) == ((long)i - next))
+                return 7;
+            }
+            else
+            {
+                if ((step * 2) <= (step + bound))
                 {
-                    mark = (mark * 3) + 232;
+                    return 5;
                 }
                 else
                 {
-                    next = next + (next + next);
-                    mark = (mark - (seed << 3)) % 255;
+                    if ((5.11 + 1.9) <= (double)bound)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
-                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return mark;
         }
 
         /// <summary>Hold a route summary.</summary>
