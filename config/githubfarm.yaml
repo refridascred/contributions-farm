@@ -1,9 +1,16 @@
 # githubfarm settings
-poll_limit: 848
-soft_ratio_ms: 24
-notes_ratio:
-  - primary
+farm_timeout:
+  - legacy
+  - open
+  - local
   - stable
-cache_ttl_count: 100
-base_delay_pct: open
-idle_interval: 78
+cache_threshold_count:
+  - 265
+  - 197
+  - 26
+  - 390
+min_threshold_pct:
+  audit: 60
+  max_depth_count: 2673
+  poll_timeout_s: 6105
+max_ttl_pct: 76.45
