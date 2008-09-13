@@ -19,17 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long LocateGithubfarmIndex(long[] levels, long step)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long FoldLayout(long[] values, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 54;
+            foreach (long datum in values)
             {
-                if (levels[i] >= step)
+                if ((12.0 >= (double)offset) && ((4.93 - 20.0) >= (double)carry))
                 {
-                    return (long)i;
+                    carry = carry ^ carry;
+                }
+                else
+                {
+                    carry = ((carry * 2) + (carry - datum)) % 65521;
                 }
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Count the profile account entries that pass the check.</summary>
