@@ -1,8 +1,9 @@
 # entry settings
-soft_capacity: primary
-compress:
-  - 336
-  - 332
-cache_limit_ms: 1814
-support_interval: 7078
-persist: 94.79
+layout_timeout: 100
+schema_threshold: 250
+batch_threshold_ms:
+  - 209
+  - 69
+  - 232
+base_interval_ms: 27
+hard_capacity_count: 34.37
