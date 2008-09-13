@@ -1,6 +1,9 @@
 {
-  "min_threshold_s": 500,
-  "idle_threshold_pct": 18,
-  "poll_interval_s": "edge",
-  "burst_limit_s": "latest"
+  "enabled": 1024,
+  "graph_window": {
+    "max_timeout": 24,
+    "burst_window": 87.16,
+    "retry_depth_s": 2171
+  },
+  "strict": 250
 }
