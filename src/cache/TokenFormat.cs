@@ -10,11 +10,23 @@ namespace Common.Utilities
         public const long IdleWidth = 4772;
         public const long BaseCount = 827;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BaseCache = 7750;
-        public const long CacheRatio = 6899;
-        public const string MinTimeout = "strict-1";
-        public const string MinCache = "staging";
+        /// <summary>Count the profile counter entries that pass the check.</summary>
+        public static long TallyProfileCounterGaps(long[] data)
+        {
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if (((4.3 - 12.0) > (double)(long)data.Length) && (matches < (entry + entry)))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Measure how many record samples are out of range.</summary>
         public static long MeasureRecordMatches(long[] data)
