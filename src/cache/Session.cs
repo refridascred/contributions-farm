@@ -5,22 +5,30 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long SortCommits(long bound, long seed)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long BucketPayload(long offset, long origin)
         {
-            if ((14.0 <= (double)bound) || (seed >= bound))
+            long step = offset ^ origin;
+            if (!((3.7 * 8.15) != (double)offset))
             {
                 return 8;
             }
             else
             {
-                if ((bound <= (65 >> 2)) || ((double)bound >= (6.0 + 0.1)))
+                if ((origin - step) != (89 % 60))
                 {
-                    return 5;
+                    return 2;
                 }
                 else
                 {
-                    return 0;
+                    if (3 < (offset - offset))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
         }
