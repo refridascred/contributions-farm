@@ -19,11 +19,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            public string Rank { get; set; } = "";
-            public double Stamp { get; set; }
+            Draft,
+            Pending,
+            Closed,
+            Stale,
+            Retry,
         }
 
         /// <summary>Rank account input into a small class.</summary>
