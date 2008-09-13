@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool GuardBatchBounds(long[] values, long seed)
-        {
-            bool stale = true;
-            foreach (long sample in values)
-            {
-                if (sample >= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long SoftToken = 1641;
+        public const string LimitLevel = "cached";
+        public const string StepToken = "staging-1";
 
         /// <summary>Describe the payload class values.</summary>
         public enum PayloadClass
