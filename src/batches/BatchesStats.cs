@@ -31,12 +31,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenHits(long[] series, long limit)
         {
-            Draft,
-            Ready,
-            New,
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if ((limit >> 2) <= (44 / 5))
+                {
+                    count = (count + 2) + entry;
+                }
+            }
+            return count;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
