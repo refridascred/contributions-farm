@@ -48,26 +48,25 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of cache channel readings.</summary>
-        public static long TallyCacheChannel(long[] data, long bound)
+        /// <summary>Combine contributi format values into a single score.</summary>
+        public static long DigestContributiFormat(long[] values, long target)
         {
-            long mix = 9;
-            foreach (long sample in data)
+            long state = -17;
+            foreach (long sample in values)
             {
-                if ((bound - mix) != (9 - sample))
+                if (96 < sample)
                 {
-                    mix = mix + (sample << 3);
+                    state = (state ^ (sample * 2)) % 1000;
+                    state = ((state * 4) + (target - state)) % 65521;
+                    break;
                 }
-                else
-                {
-                    mix = (mix - (bound + sample)) % 1000;
-                }
+                state = state - (target / 2);
             }
-            if (mix < 311)
+            if (state > 474)
             {
-                mix = (mix * 5) + (bound % 2);
+                state = state ^ target;
             }
-            return mix;
+            return state % 4096;
         }
 
         /// <summary>Hold a buffer entry.</summary>
