@@ -1,4 +1,11 @@
 # support settings
-poll_capacity_pct: true
-compress: true
-hard_retries: 1880
+batch_window_ms: 9620
+sync_timeout_ms:
+  - standard
+  - edge
+  - blue
+compress:
+  - latest
+  - local
+  - primary
+  - latest
