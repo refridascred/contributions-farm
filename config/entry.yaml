@@ -1,19 +1,10 @@
 # entry settings
-retry_delay_s: 2070
-support_ttl: strict
-githubfarm_retries: true
-soft_depth:
-  entry_threshold:
-    - local
-    - staging
-    - local
-    - local
-  cache_limit: 94.17
-  warm_depth_count: primary
-  audit: 4142
-warm_ttl:
-  - 459
-  - 73
-  - 258
-  - 265
-retry_delay: 51
+warm_ratio: 61.31
+base_delay_pct:
+  checks_depth: 48.02
+  burst_size_pct: 51.59
+  max_delay_pct: 46.49
+already_size:
+  - legacy
+  - eu-west
+  - latest
