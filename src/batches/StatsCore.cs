@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long TotalCounter(long[] values, long offset)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long TallyChannel(long[] series)
         {
-            long state = -312;
-            foreach (long reading in values)
+            long result = -826;
+            foreach (long entry in series)
             {
-                for (int i = 0; i < 11; i++)
+                if ((entry >> 5) <= (result % 16))
                 {
-                    state = ((state + (reading + reading)) % 4096) + (long)i;
+                    result = result + (49 ^ result);
                 }
-                state = state ^ offset;
             }
-            return state % 97;
+            return result;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
