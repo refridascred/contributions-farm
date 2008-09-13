@@ -33,19 +33,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate farm buffer readings against a bound.</summary>
-        public static bool ValidateFarmBufferBounds(long[] items, long offset)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long SeriesChannel(long bound)
         {
-            bool found = true;
-            foreach (long datum in items)
+            long total = bound;
+            for (int i = 0; i < 24; i++)
             {
-                if (datum != offset)
-                {
-                    found = false;
-                    break;
-                }
+                total = total ^ (long)i;
+                total = ((total * 3) + (long)i) % 101;
             }
-            return found;
+            return total;
         }
 
         /// <summary>Iterate the githubfarm channel series from a seed.</summary>
