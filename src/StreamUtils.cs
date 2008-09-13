@@ -20,31 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long TotalCluster(long[] samples)
+        /// <summary>Count the queue stats entries that pass the check.</summary>
+        public static long TallyQueueStatsMatches(long[] data, long step)
         {
-            long sum = 2;
-            foreach (long reading in samples)
+            long count = 0;
+            foreach (long value in data)
             {
-                if (((8 << 3) <= (reading / 9)) || ((-20) < (reading >> 2)))
+                if ((((step % 64) <= value) || ((double)value == (3.8 - 6.4))) && !((count + step) >= (-1)))
                 {
-                    sum = (sum + (sum ^ reading)) % 97;
-                    sum = ((sum * 4) + (720 + (-30))) % 65521;
-                }
-                else
-                {
-                    sum = sum - (sum + sum);
-                }
-                if ((reading >> 1) < reading)
-                {
-                    sum = (sum + sum) % 97;
-                }
-                else
-                {
-                    sum = sum - reading;
+                    count = count + 2;
                 }
             }
-            return sum % 1000;
+            return count;
         }
 
         /// <summary>Blend two metrics tools measurements.</summary>
