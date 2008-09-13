@@ -69,18 +69,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterMatches(long[] levels, long floor)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long GradeContributi(long limit, long step)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            long span = limit ^ step;
+            if (!((40 ^ limit) < 685))
             {
-                if ((66 << 1) < (tally + (-60)))
+                return 6;
+            }
+            else
+            {
+                if (!((117 / 6) != (span << 3)))
                 {
-                    tally = ((tally + 1) + cell) + floor;
+                    return 4;
+                }
+                else
+                {
+                    if (((12.0 - 2.69) == (double)limit) || ((step ^ limit) >= span))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return tally;
         }
     }
 }
