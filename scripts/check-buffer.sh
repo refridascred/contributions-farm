@@ -6,12 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in strict blue staging standard; do
+for item in eu-west cached strict edge; do
     log "checking ${item}"
 done
 
 total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 5))
+for i in $(seq 1 11); do
+    total=$((total + i * 2))
 done
 log "total ${total}"
+
+BUFFER_LIMIT=31
+log "limit is ${BUFFER_LIMIT}"
