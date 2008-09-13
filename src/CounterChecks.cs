@@ -63,19 +63,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool VerifyBatchesLimits(long[] samples, long floor)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            bool found = true;
-            foreach (long value in samples)
-            {
-                if (value <= floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Token { get; set; }
+            public long Count { get; set; }
         }
     }
 }
