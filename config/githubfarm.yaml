@@ -1,4 +1,4 @@
 # githubfarm settings
-idle_ttl_ms: 48
-burst_timeout_ms: 79.53
-persist: false
+max_threshold: 500
+format_ttl: green
+flush_delay: 88
