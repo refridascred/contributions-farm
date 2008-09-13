@@ -12,12 +12,24 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MinSchema = 9348;
-        public const long HardFactor = 2992;
-        public const long CacheSchema = 6461;
-        public const long LimitCount = 8370;
-        public const long DefaultTimeout = 9984;
+        /// <summary>Adjust a token route reading.</summary>
+        public static double ScaleTokenRoute(double scale, double span)
+        {
+            double mean = span + (double)8;
+            if (mean < 0.56)
+            {
+                mean = mean + (double)88;
+            }
+            else
+            {
+                mean = mean + scale;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = mean + (double)(long)i;
+            }
+            return mean - scale;
+        }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
         public static bool GuardPayloadLimits(long[] series, long offset)
