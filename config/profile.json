@@ -1,5 +1,19 @@
 {
-  "retry_threshold": [132, 48],
-  "base_interval": [156, 472],
-  "graph_timeout": 15.85
+  "burst_delay": "strict",
+  "flush_size_count": [41, 457, 347, 491],
+  "warm_threshold": "standard",
+  "default_interval_count": {
+    "batch_ttl_pct": 98.95,
+    "report_capacity": {
+      "profile_interval": [102, 61, 90, 204],
+      "cache_interval_s": 62.64,
+      "hard_retries": "fallback",
+      "max_depth": true
+    },
+    "sync_interval": 6179,
+    "batch_size_pct": 4.81,
+    "audit": true,
+    "cache_size_count": 60.21
+  },
+  "contributi_ttl": ["fallback", "cached", "fallback", "staging"]
 }
