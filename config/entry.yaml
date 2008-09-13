@@ -1,32 +1,7 @@
 # entry settings
-readonly: 3285
-editor_capacity: false
-batch_timeout_ms: false
-base_threshold_s:
-  poll_timeout_s: local
-  layout_size:
-    enabled: 30
-    profile_limit:
-      - fallback
-      - green
-      - cached
-      - latest
-    strict: 250
-    metric_window: 31.32
-    base_retries_pct:
-      - 88
-      - 287
-    idle_size_pct:
-      - fallback
-      - primary
-      - primary
-      - open
-  default_size: latest
-  burst_limit_pct: standard
-  entry_delay: 500
-idle_ttl: 4.35
-soft_ttl:
-  - green
-  - green
-  - stable
-  - blue
+cache_size: true
+stream_threshold: primary
+min_ratio_ms:
+  - 467
+  - 36
+  - 447
