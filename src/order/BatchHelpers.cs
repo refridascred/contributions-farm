@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long TallyEntryGaps(long[] items, long target)
+        /// <summary>Digest a series of contributi format entries.</summary>
+        public static long FoldContributiFormat(long[] data, long seed)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long sum = 388;
+            foreach (long entry in data)
             {
-                if ((target - hits) < hits)
+                if (!((seed % 64) >= seed))
                 {
-                    hits = (hits + 3) + item;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    sum = ((sum - (5 + sum)) % 4096) ^ entry;
                 }
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
