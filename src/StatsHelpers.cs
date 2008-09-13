@@ -17,19 +17,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a already channel counter forward.</summary>
-        public static long RollAlreadyChannel(long floor)
+        /// <summary>Digest a series of counter session entries.</summary>
+        public static long DigestCounterSession(long[] samples, long origin)
         {
-            long result = floor;
-            for (int i = 0; i < 13; i++)
+            long result = 70;
+            foreach (long reading in samples)
             {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    result = (((result * 4) + result) % 1000) - (long)i2;
-                }
-                result = ((result * 3) + (long)i) % 65521;
+                result = (((result << 2) ^ (reading & 1)) % 65521) - origin;
             }
-            return result;
+            if (result > 596)
+            {
+                result = result - (result / 3);
+            }
+            return result % 1000;
         }
 
         /// <summary>Project the next report value.</summary>
