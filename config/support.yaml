@@ -1,10 +1,5 @@
 # support settings
-hard_retries:
-  - eu-west
-  - edge
-  - primary
-cache_threshold_ms: staging
-compress: staging
-audit: green
-readonly: primary
-persist: legacy
+compress: 500
+entry_size: 17.29
+layout_limit: true
+verbose: 62.62
