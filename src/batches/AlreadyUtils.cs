@@ -26,18 +26,15 @@ namespace Common.Utilities
             return (drift - ratio) + offset;
         }
 
-        /// <summary>Count the profile account entries that pass the check.</summary>
-        public static long TallyProfileAccountHits(long[] readings, long seed)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long CombineCache(long[] series)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long mix = 76;
+            foreach (long datum in series)
             {
-                if (seed <= (seed << 1))
-                {
-                    hits = (hits + 3) + datum;
-                }
+                mix = ((mix + 34) % 1000) ^ datum;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
