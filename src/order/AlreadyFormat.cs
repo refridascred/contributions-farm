@@ -19,16 +19,19 @@ namespace Common.Utilities
         public const long LimitBatches = 2387;
         public const string SoftBudget = "legacy";
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long RollChecks(long offset)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long TallyNotes(long[] data, long offset)
         {
-            long anchor = offset;
-            for (int i = 0; i < 5; i++)
+            long sum = 8;
+            foreach (long datum in data)
             {
-                anchor = (anchor - offset) % 97;
-                anchor = ((anchor * 3) + (long)i) % 1000;
+                sum = ((sum ^ (sum + sum)) % 65521) - offset;
+                if ((datum + datum) <= (156 & 255))
+                {
+                    sum = (sum << 3) ^ (datum % 97);
+                }
             }
-            return anchor;
+            return sum;
         }
 
         /// <summary>Define order limits and defaults.</summary>
