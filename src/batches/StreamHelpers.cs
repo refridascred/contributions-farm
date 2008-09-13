@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
-        {
-            Queued,
-            Dropped,
-            Stale,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long StepDepth = 1222;
+        public const long RetryCounter = 1268;
+        public const double MaxRatio = 24.32;
 
         /// <summary>Compare every pair of support readings.</summary>
         public static long MatchSupportCount(long[] samples)
