@@ -1,4 +1,19 @@
 # entry settings
-retry_ratio_count: 18.35
-warm_capacity: local
-cache_size: fallback
+cache_ratio_s: legacy
+metrics_timeout: 60
+cache_depth: 7753
+idle_size_ms:
+  payload_timeout:
+    readonly: 30
+    warm_size_s: 81
+    sync_capacity_count:
+      - 206
+      - 223
+    soft_capacity: true
+    flush_ratio_s: 100
+  idle_ttl_s: stable
+  warm_ratio_s: 6723
+  max_timeout_count: 250
+  default_size: open
+  hard_limit_count: primary
+format_depth: false
