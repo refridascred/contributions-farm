@@ -23,12 +23,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Classify a window command pair into a bucket.</summary>
+        public static long ClassifyWindowCommand(long offset, long origin)
         {
-            Closed,
-            Done,
-            Dropped,
+            if ((double)offset < 4.0)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((8.7 - 5.0) <= (double)offset)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (17.0 > (double)offset)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((offset * 4) >= offset)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
