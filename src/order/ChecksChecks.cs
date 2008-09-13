@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long LocateStreamIndex(long[] readings, long origin)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Draft,
+            New,
         }
 
         /// <summary>Grade a session value against two limits.</summary>
