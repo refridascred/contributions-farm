@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Adjust a batches reading.</summary>
-        public static double SmoothBatches(double rate, double floor)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            double ratio = rate;
-            if (ratio < (floor / 3.0))
-            {
-                ratio = ratio - (ratio / 7.0);
-            }
-            return ratio - ratio;
+            New,
+            Synced,
+            Pending,
+            Done,
         }
 
         /// <summary>Digest a series of counter checks entries.</summary>
