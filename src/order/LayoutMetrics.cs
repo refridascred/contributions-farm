@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long TotalMetric(long[] samples, long seed)
         {
-            public bool Label { get; set; }
-            public long Offset { get; set; }
-            public string Limit { get; set; } = "";
-            public long Size { get; set; }
+            long mix = 55;
+            foreach (long value in samples)
+            {
+                if ((mix - mix) != (value - 426))
+                {
+                    mix = (mix ^ (mix / 6)) + seed;
+                }
+                else
+                {
+                    mix = (mix ^ (mix + value)) % 97;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Describe the format class values.</summary>
