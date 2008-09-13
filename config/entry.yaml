@@ -1,24 +1,32 @@
 # entry settings
-cluster_threshold: 72.08
-tools_retries: true
-metrics_delay:
-  base_interval: 59.23
-  readonly: primary
-  format_timeout: blue
-  metrics_limit:
-    - 154
-    - 33
-    - 114
-    - 222
-burst_ttl_pct:
-  record_size: true
-  session_interval:
-    - 415
-    - 157
-    - 432
-    - 339
-  burst_ttl_count:
-    - open
-    - cached
-  hard_timeout_count: 92
-  poll_interval: 30
+readonly: 3285
+editor_capacity: false
+batch_timeout_ms: false
+base_threshold_s:
+  poll_timeout_s: local
+  layout_size:
+    enabled: 30
+    profile_limit:
+      - fallback
+      - green
+      - cached
+      - latest
+    strict: 250
+    metric_window: 31.32
+    base_retries_pct:
+      - 88
+      - 287
+    idle_size_pct:
+      - fallback
+      - primary
+      - primary
+      - open
+  default_size: latest
+  burst_limit_pct: standard
+  entry_delay: 500
+idle_ttl: 4.35
+soft_ttl:
+  - green
+  - green
+  - stable
+  - blue
