@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long SortCache(long target, long target2)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsGaps(long[] samples)
         {
-            if (((target2 - target2) >= (97 & 31)) && ((89 - target2) < (target2 >> 4)))
+            long hits = 0;
+            foreach (long item in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if (((double)target2 == (2.0 / 4.0)) && ((9.4 - 2.1) > (double)target))
+                if ((item ^ hits) <= (hits ^ hits))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the queue mode values.</summary>
