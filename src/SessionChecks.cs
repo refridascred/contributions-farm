@@ -12,20 +12,15 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Derive the next record queue value from a seed.</summary>
-        public static long SeriesRecordQueue(long bound)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long CombineStream(long[] samples)
         {
-            long score = bound;
-            for (int i = 0; i < 6; i++)
+            long state = 11;
+            foreach (long cell in samples)
             {
-                if ((bound / 2) > (score ^ score))
-                {
-                    score = (score ^ (-3)) % 1000;
-                    score = (score - (score >> 3)) % 4096;
-                }
-                score = ((score * 3) + (long)i) % 101;
+                state = ((state << 3) ^ (cell << 2)) % 255;
             }
-            return score;
+            return state % 1000;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
