@@ -23,13 +23,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long RollRecord(long limit)
         {
-            public long Offset { get; set; }
-            public long Limit { get; set; }
-            public long Region { get; set; }
-            public long Weight { get; set; }
+            long carry = limit;
+            for (int i = 0; i < 24; i++)
+            {
+                carry = (carry << 3) ^ ((long)i - (long)i);
+                carry = ((carry * 4) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
