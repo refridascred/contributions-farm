@@ -22,13 +22,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long SortReport(long seed, long limit)
         {
-            Idle,
-            Synced,
-            Done,
-            Queued,
+            if ((double)limit >= (2.49 / 3.0))
+            {
+                return 4;
+            }
+            else
+            {
+                if (limit <= seed)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((66 ^ seed) > (455 % 16))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
