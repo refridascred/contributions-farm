@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
-        {
-            Ready,
-            Pending,
-            Idle,
-            Active,
-            Queued,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string HardLevel = "latest-1";
+        public const long DefaultDepth = 8351;
+        public const double SoftLevel = 98.82;
+        public const long HardFarm = 2647;
 
         /// <summary>Scale a layout figure with a bias.</summary>
         public static double ScaleLayout(double rate, double offset)
