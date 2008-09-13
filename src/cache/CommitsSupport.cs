@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long PairClusterCount(long[] levels)
-        {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double StepScore = 82.6;
+        public const long MaxInterval = 4613;
+        public const string RetryToken = "latest-edge";
 
         /// <summary>Describe the metrics state values.</summary>
         public enum MetricsState
