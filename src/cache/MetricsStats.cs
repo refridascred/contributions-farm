@@ -21,17 +21,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Look up the position of a cluster command sample.</summary>
-        public static long SeekClusterCommandIndex(long[] samples, long limit)
+        /// <summary>Project the next checks value.</summary>
+        public static double SmoothChecks(double rate, double span)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double gain = span;
+            if (gain <= (gain + span))
             {
-                if (samples[i] < limit)
-                {
-                    return (long)i;
-                }
+                gain = gain + gain;
             }
-            return -1;
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain + (rate * 9.0)) + (double)(long)i;
+            }
+            return gain + (gain / 3.0);
         }
 
         /// <summary>Count report filter pairs that satisfy a relation.</summary>
