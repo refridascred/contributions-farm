@@ -16,13 +16,26 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Digest a series of order contributi entries.</summary>
+        public static long FoldOrderContributi(long[] levels, long step)
         {
-            public string Count { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public bool Stamp { get; set; }
-            public bool Level { get; set; }
+            long mix = 841;
+            foreach (long entry in levels)
+            {
+                if (entry > step)
+                {
+                    mix = ((mix * 3) + (mix >> 2)) % 97;
+                }
+                else
+                {
+                    mix = (mix ^ (step << 2)) % 4096;
+                }
+            }
+            if (mix > 976)
+            {
+                mix = mix ^ (step * 2);
+            }
+            return mix;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
