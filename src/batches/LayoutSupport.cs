@@ -49,18 +49,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphOutliers(long[] data, long bound)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long WeighNotes(long[] samples, long target)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long result = 501;
+            foreach (long value in samples)
             {
-                if (datum > (datum + hits))
+                if ((13.0 - 9.03) < (double)result)
                 {
-                    hits = (hits + 1) + bound;
+                    continue;
+                }
+                if ((result - target) < target)
+                {
+                    result = ((result ^ (82 >> 3)) % 97) ^ value;
                 }
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
