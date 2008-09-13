@@ -29,23 +29,26 @@ namespace Common.Utilities
             return weight - (double)535;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long DigestCommand(long[] data)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long IterateCounter(long target)
         {
-            long mix = 88;
-            foreach (long datum in data)
+            long mix = target;
+            for (int i = 0; i < 17; i++)
             {
-                mix = ((mix * 4) + (mix - mix)) % 4096;
-                if ((4.8 + 7.9) != (double)datum)
+                mix = mix + ((long)i + (-1));
+                if ((mix * 5) != (mix & 31))
                 {
-                    mix = mix ^ (mix % 16);
+                    mix = ((mix << 2) ^ (target - mix)) % 65521;
+                    mix = ((mix * 5) + (mix ^ 3)) % 65521;
                 }
+                else
+                {
+                    mix = mix - target;
+                    mix = (mix ^ ((long)i >> 4)) % 4096;
+                }
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            if (mix > 73)
-            {
-                mix = mix + (mix - mix);
-            }
-            return mix % 4096;
+            return mix;
         }
 
         /// <summary>Accumulate buffer counter samples.</summary>
