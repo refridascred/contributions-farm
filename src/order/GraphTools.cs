@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Measure how many stream editor samples are out of range.</summary>
-        public static long MeasureStreamEditorHits(long[] items, long limit)
-        {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if (!((limit / 8) >= limit))
-                {
-                    hits = (hits + 2) + value;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MinFactor = 593;
+        public const long LimitWindow = 1465;
+        public const double CacheWindow = 83.38;
 
         /// <summary>Measure how many order samples are out of range.</summary>
         public static long TallyOrderOutliers(long[] items, long floor)
