@@ -29,10 +29,38 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string CacheBudget = "local";
-        public const double BurstNotes = 98.87;
-        public const long StepWidth = 9227;
-        public const long RetryNotes = 5672;
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long ClassifySchema(long target, long offset)
+        {
+            if ((offset >> 5) == (target + offset))
+            {
+                return 5;
+            }
+            else
+            {
+                if (offset >= target)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((target % 64) != (offset >> 5)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((target - offset) >= (offset + target)) || ((offset ^ target) < (1 + offset)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
