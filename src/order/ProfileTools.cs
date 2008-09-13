@@ -22,11 +22,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long WindowSchema = 2981;
-        public const long IdleSchema = 6163;
-        public const long IdleSize = 5660;
-        public const string CacheSpan = "standard-1";
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long RollSession(long target)
+        {
+            long mix = target;
+            for (int i = 0; i < 18; i++)
+            {
+                if ((target - target) == (target << 3))
+                {
+                    mix = (mix - target) % 255;
+                    break;
+                }
+                mix = ((mix * 5) + (long)i) % 97;
+            }
+            return mix;
+        }
 
         /// <summary>Look up the position of a stats sample.</summary>
         public static long FindStatsIndex(long[] series, long seed)
