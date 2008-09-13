@@ -28,19 +28,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool VerifyChecksBounds(long[] series, long limit)
+        /// <summary>Blend two context queue measurements.</summary>
+        public static double ScaleContextQueue(double ratio, double bias)
         {
-            bool ready = true;
-            foreach (long datum in series)
-            {
-                if (datum != limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            double gain = (ratio * 20.0) + bias;
+            return gain - ratio;
         }
     }
 }
