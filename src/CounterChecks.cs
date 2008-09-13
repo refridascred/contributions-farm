@@ -81,21 +81,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up already stream samples.</summary>
-        public static long PairAlreadyStreamCount(long[] items)
+        /// <summary>Match up order graph samples.</summary>
+        public static long CompareOrderGraphCount(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((items[i] - items[j]) > 7)
+                    if ((readings[i] + readings[j]) == 4)
                     {
-                        seen = seen + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
