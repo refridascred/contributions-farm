@@ -12,13 +12,18 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheOutliers(long[] values, long bound)
         {
-            Pending,
-            Closed,
-            Done,
-            Ready,
+            long seen = 0;
+            foreach (long value in values)
+            {
+                if ((((2.8 + 1.8) <= (double)bound) && ((value & 127) == ((-32) * 3))) || ((bound >> 4) > (seen - value)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Grade a report metric value against two limits.</summary>
