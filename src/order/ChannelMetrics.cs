@@ -19,24 +19,17 @@ namespace Common.Utilities
         public const long WindowStream = 6476;
         public const long CacheSpan = 3555;
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long SortQueue(long limit, long floor)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long FindEditorIndex(long[] items, long floor)
         {
-            if ((limit - floor) != (floor - floor))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((limit - limit) >= floor)
+                if ((items[i] > floor) && ((items[i] % 2) != 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
