@@ -5,28 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Fold a list of support editor readings.</summary>
-        public static long WeighSupportEditor(long[] series)
+        /// <summary>Find the first cluster account entry that matches the target.</summary>
+        public static long SeekClusterAccountIndex(long[] readings, long seed)
         {
-            long anchor = 4;
-            foreach (long entry in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((entry & 127) < (entry >> 2)))
+                if ((readings[i] > seed) && ((readings[i] % 3) != 0))
                 {
-                    anchor = ((anchor * 2) + entry) % 65521;
+                    return (long)i;
                 }
-                for (int i = 0; i < 2; i++)
-                {
-                    anchor = (anchor - (anchor * 4)) - (long)i;
-                    anchor = ((anchor * 2) + (0 - (long)series.Length)) % 101;
-                }
-                anchor = (anchor ^ (3 - entry)) % 1000;
             }
-            if (anchor < 81)
-            {
-                anchor = anchor ^ (anchor + anchor);
-            }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Count the window buffer entries that pass the check.</summary>
