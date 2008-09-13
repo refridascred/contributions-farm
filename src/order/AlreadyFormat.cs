@@ -33,22 +33,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long DigestStats(long[] series, long limit)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long LocateRecordIndex(long[] levels, long offset)
         {
-            long score = 167;
-            foreach (long entry in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((score ^ score) >= (entry - entry))
+                if (levels[i] >= offset)
                 {
-                    score = ((score << 2) ^ limit) % 101;
-                }
-                else
-                {
-                    score = (score + (score - entry)) % 65521;
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Define route limits and defaults.</summary>
