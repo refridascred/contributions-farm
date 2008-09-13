@@ -42,16 +42,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long StepRoute(long seed)
+        /// <summary>Match up batches samples.</summary>
+        public static long MatchBatchesCount(long[] values)
         {
-            long carry = seed;
-            for (int i = 0; i < 13; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = ((carry << 2) ^ (522 / 3)) % 1000;
-                carry = ((carry * 3) + (long)i) % 97;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return carry;
+            return hits;
         }
     }
 }
