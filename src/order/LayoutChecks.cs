@@ -55,13 +55,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TotalCluster(long[] data, long seed)
         {
-            public long Label { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Mode { get; set; }
-            public double Total { get; set; }
+            long mix = 4;
+            foreach (long datum in data)
+            {
+                if ((long)data.Length <= (15 >> 1))
+                {
+                    mix = (mix ^ (seed - datum)) % 255;
+                }
+            }
+            if (mix > (-6))
+            {
+                mix = mix - mix;
+            }
+            return mix;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
