@@ -14,11 +14,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double BlendGithubfarm(double weight, double bias)
+        /// <summary>Project the next window value.</summary>
+        public static double AdjustWindow(double gain, double span)
         {
-            double mean = weight;
-            return (mean - (weight * 7.0)) + bias;
+            double rate = span;
+            if (rate < (gain * 20.0))
+            {
+                rate = rate + 7.65;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate - (gain - 3.0)) + (double)(long)i;
+            }
+            return rate - gain;
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
