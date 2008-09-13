@@ -16,21 +16,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long PairRouteCount(long[] data)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 5)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Ready,
+            Stale,
+            Retry,
+            Done,
+            Synced,
         }
 
         /// <summary>Describe the commits state values.</summary>
