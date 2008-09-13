@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long OverlapTokenCount(long[] data)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long ClassifyFilter(long step, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((step <= 4) || (step < 133))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if (step >= (bound - step))
                 {
-                    if ((data[i] - data[j]) < 16)
+                    return 3;
+                }
+                else
+                {
+                    if (9.2 > (double)bound)
                     {
-                        hits = hits + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the window state values.</summary>
