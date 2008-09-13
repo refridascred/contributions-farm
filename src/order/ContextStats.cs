@@ -61,9 +61,16 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string BurstCommits = "staging-edge";
-        public const long DefaultCommits = 2986;
-        public const double SoftCommits = 61.84;
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long RollMetric(long origin)
+        {
+            long score = origin;
+            for (int i = 0; i < 4; i++)
+            {
+                score = (score ^ (score >> 1)) % 255;
+                score = ((score * 2) + (long)i) % 65521;
+            }
+            return score;
+        }
     }
 }
