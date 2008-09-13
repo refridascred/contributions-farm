@@ -27,19 +27,16 @@ namespace Common.Utilities
             return mean - 1.31;
         }
 
-        /// <summary>Project the next metrics cache value.</summary>
-        public static double AdjustMetricsCache(double bias, double offset)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long IterateOrder(long limit)
         {
-            double rate = bias;
-            if (rate > (7.0 + bias))
+            long state = limit;
+            for (int i = 0; i < 23; i++)
             {
-                rate = rate - (6.9 + offset);
+                state = (state * 3) + (long)i;
+                state = ((state * 5) + (long)i) % 101;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate - (offset / 9.0)) - (double)(long)i;
-            }
-            return rate + (double)25;
+            return state;
         }
     }
 }
