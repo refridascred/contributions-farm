@@ -43,13 +43,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long GradeSchema(long target, long seed)
         {
-            public string Size { get; set; } = "";
-            public long Flag { get; set; }
-            public double Weight { get; set; }
-            public bool Stamp { get; set; }
+            if ((9.83 / 4.0) < (double)seed)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((6 - seed) > (target >> 1))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Define window limits and defaults.</summary>
