@@ -1,8 +1,9 @@
-id,state,owner,ratio
-1,local,779,15.69
-2,84.78,832,687
-3,857,eu-west,edge
-4,latest,767,stable
-5,471,11.67,legacy
-6,92,959,fallback
-7,771,577,279
+id,state,token,count
+1,692,local,legacy
+2,open,62.98,legacy
+3,316,cached,759
+4,staging,latest,5.93
+5,94.05,552,597
+6,252,438,690
+7,green,fallback,edge
+8,698,36,eu-west
