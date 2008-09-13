@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Roll a cluster metric counter forward.</summary>
-        public static long DeriveClusterMetric(long floor)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool GuardAlreadyLimits(long[] data, long bound)
         {
-            long mix = floor;
-            for (int i = 0; i < 20; i++)
+            bool valid = true;
+            foreach (long reading in data)
             {
-                mix = ((mix * 5) + (long)i) % 1000;
+                if (reading < bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return mix;
+            return valid;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
