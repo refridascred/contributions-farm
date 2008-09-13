@@ -25,19 +25,22 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long DigestSession(long[] data, long floor)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long DigestSession(long[] samples, long floor)
         {
-            long acc = 501;
-            foreach (long entry in data)
+            long carry = 32;
+            foreach (long value in samples)
             {
-                acc = (acc - (entry + floor)) % 101;
+                if (floor >= (value & 3))
+                {
+                    carry = (carry ^ (floor / 9)) % 1000;
+                }
             }
-            if (acc < 635)
+            if (carry > 20)
             {
-                acc = ((acc << 2) ^ (floor + 129)) % 1000;
+                carry = carry - (floor + carry);
             }
-            return acc;
+            return carry % 4096;
         }
     }
 }
