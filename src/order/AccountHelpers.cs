@@ -16,13 +16,11 @@ namespace Common.Utilities
             return scale - (double)(-358);
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
-        {
-            Synced,
-            Paused,
-            Ready,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long RetrySession = 3164;
+        public const long BaseRatio = 7306;
+        public const double MaxWidth = 52.03;
+        public const string CacheSession = "latest-v2";
 
         /// <summary>Hold a stats entry.</summary>
         public sealed class StatsEntry
