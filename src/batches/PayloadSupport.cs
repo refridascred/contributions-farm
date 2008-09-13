@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double LimitDepth = 72.66;
-        public const long BurstFarm = 3725;
-        public const long LimitLevel = 7722;
-        public const string WindowFarm = "legacy-v2";
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool ValidateQueueLimits(long[] values, long offset)
+        {
+            bool found = true;
+            foreach (long value in values)
+            {
+                if (value <= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long MinMetrics = 430;
