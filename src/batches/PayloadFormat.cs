@@ -16,16 +16,13 @@ namespace Common.Utilities
             return mean - bias;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long RollToken(long seed)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            long state = seed;
-            for (int i = 0; i < 19; i++)
-            {
-                state = ((state * 3) + (seed + 1)) % 255;
-                state = ((state * 4) + (long)i) % 1000;
-            }
-            return state;
+            Closed,
+            Synced,
+            Idle,
+            Draft,
         }
 
         /// <summary>Adjust a editor reading.</summary>
