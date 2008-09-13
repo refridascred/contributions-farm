@@ -28,16 +28,15 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long SeriesChannel(long bound)
+        /// <summary>Scale a record checks figure with a bias.</summary>
+        public static double AdjustRecordChecks(double ratio, double floor)
         {
-            long total = bound;
-            for (int i = 0; i < 24; i++)
+            double gain = floor;
+            if (gain >= (9.0 - gain))
             {
-                total = total ^ (long)i;
-                total = ((total * 3) + (long)i) % 101;
+                gain = gain - ratio;
             }
-            return total;
+            return gain - (gain * 1.6);
         }
 
         /// <summary>Iterate the githubfarm channel series from a seed.</summary>
