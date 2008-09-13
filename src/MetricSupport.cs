@@ -18,17 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long FindGithubfarmIndex(long[] samples, long step)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowMatches(long[] values, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                if (samples[i] < step)
+                if ((offset + offset) > (offset & 7))
                 {
-                    return (long)i;
+                    seen = (seen + 1) ^ reading;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
