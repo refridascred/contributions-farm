@@ -25,18 +25,12 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Count the editor commits entries that pass the check.</summary>
-        public static long MeasureEditorCommitsMatches(long[] data)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            long seen = 0;
-            foreach (long item in data)
-            {
-                if ((double)item >= (7.0 - 2.4))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public string Weight { get; set; } = "";
+            public bool Label { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Describe the batch kind values.</summary>
