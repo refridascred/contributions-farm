@@ -45,12 +45,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long LocateCacheIndex(long[] readings, long floor)
         {
-            public double Region { get; set; }
-            public string Owner { get; set; } = "";
-            public long Weight { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] == floor) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
