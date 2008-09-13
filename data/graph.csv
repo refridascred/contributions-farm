@@ -1,8 +1,8 @@
-id,region,token,level
-1,green,752,53.91
-2,560,local,45.42
-3,79.61,61.06,staging
-4,33.52,97.05,655
-5,617,28.4,862
-6,staging,local,581
-7,legacy,888,legacy
+id,score,count,weight,token
+1,77.05,eu-west,eu-west,26.46
+2,694,blue,blue,725
+3,2,838,401,standard
+4,latest,55.15,779,strict
+5,green,stable,standard,418
+6,657,79,837,181
+7,primary,245,primary,15.1
