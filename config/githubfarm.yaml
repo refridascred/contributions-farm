@@ -1,9 +1,7 @@
 # githubfarm settings
-cache_limit_s: blue
-hard_ttl_ms:
-  max_ratio: 89.66
-  farm_limit: false
-  already_ratio: local
-  window_capacity: staging
-  base_threshold_count: open
-batch_delay: eu-west
+githubfarm_ratio: open
+notes_timeout:
+  cluster_window: staging
+  retry_interval: 71.77
+  cache_ttl_s: 1342
+base_interval: 9366
