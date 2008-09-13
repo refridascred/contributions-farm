@@ -44,17 +44,15 @@ namespace Common.Utilities
             return gain2 - (gain - offset);
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long LocateBatchesIndex(long[] data, long target)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long ScoreAlready(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long acc = 70;
+            foreach (long value in series)
             {
-                if (data[i] == target)
-                {
-                    return (long)i;
-                }
+                acc = ((acc * 4) + (value + 58)) % 101;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Grade a token value against two limits.</summary>
