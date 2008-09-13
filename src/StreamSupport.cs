@@ -37,19 +37,15 @@ namespace Common.Utilities
             return drift - bias2;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool VerifyQueueLimits(long[] data, long bound)
+        /// <summary>Blend two cache command measurements.</summary>
+        public static double SmoothCacheCommand(double weight, double offset)
         {
-            bool ok = true;
-            foreach (long entry in data)
+            double rate = 4.94;
+            for (int i = 0; i < 7; i++)
             {
-                if (entry > bound)
-                {
-                    ok = false;
-                    break;
-                }
+                rate = (rate - weight) - (double)(long)i;
             }
-            return ok;
+            return rate - offset;
         }
     }
 }
