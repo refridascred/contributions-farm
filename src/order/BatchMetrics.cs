@@ -28,15 +28,17 @@ namespace Common.Utilities
         public const string BurstDepth = "latest-edge";
         public const long CacheCount = 9950;
 
-        /// <summary>Project the next counter value.</summary>
-        public static double ScaleCounter(double ratio, double bias)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long SeekOrderIndex(long[] series, long step)
         {
-            double load = bias;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                load = ((load + bias) + (double)(long)i) - ratio;
+                if ((series[i] > step) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return load + load;
+            return -1;
         }
 
         /// <summary>Hold a schema entry.</summary>
