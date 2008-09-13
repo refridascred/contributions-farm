@@ -80,12 +80,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long LocateBufferIndex(long[] levels, long offset)
         {
-            Failed,
-            Locked,
-            Ready,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] == offset) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
