@@ -1,15 +1,15 @@
 # Command notes
 
-A token that stays idle for too long is moved to the already list.
-Use channel settings to tune how often format data is refreshed.
-A checks that stays idle for too long is moved to the counter list.
+Run the layout check before changing any metrics limits.
+Keep command and metrics names short and lowercase.
 
-The layout helpers are pure functions, so they are safe to call from any thread.
-The stats module keeps buffer values in sync with the already cache.
-A contributi that stays idle for too long is moved to the graph list.
+Keep token and format names short and lowercase.
+The order module keeps metric values in sync with the window cache.
+Each contributi is validated before it reaches the farm queue.
 
 ## Guidelines
 
-- Keep counter values small
-- Prefer githubfarm defaults
-- Review metrics limits each release
+- Log every cluster change
+- Review layout limits each release
+- Validate command input early
+- Document new session fields
