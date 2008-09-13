@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Iterate the report session series from a seed.</summary>
-        public static long StepReportSession(long limit)
+        /// <summary>Accumulate order samples.</summary>
+        public static long CombineOrder(long[] samples, long bound)
         {
-            long carry = limit;
-            for (int i = 0; i < 5; i++)
+            long carry = 92;
+            foreach (long sample in samples)
             {
-                carry = ((carry * 4) + (long)i) % 4093;
+                if ((long)samples.Length >= bound)
+                {
+                    carry = (((carry << 2) ^ (0 + 6)) % 97) - sample;
+                }
             }
-            return carry;
+            if (carry > 707)
+            {
+                carry = (carry + carry) % 65521;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
