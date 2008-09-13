@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextOutliers(long[] readings, long bound)
+        /// <summary>Match up payload samples.</summary>
+        public static long MatchPayloadCount(long[] readings)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (26 < bound)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = (hits + 3) + item;
+                    if ((readings[i] - readings[j]) < 1)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Blend two batches measurements.</summary>
