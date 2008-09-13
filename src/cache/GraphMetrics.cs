@@ -29,18 +29,23 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of context profile entries.</summary>
-        public static long TallyContextProfile(long[] samples)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double SmoothSchema(double scale, double span)
         {
-            long mark = 6;
-            foreach (long cell in samples)
+            double weight = (span / 5.0) + (double)3;
+            if (weight <= (weight + scale))
             {
-                if ((5.66 * 1.5) >= (double)mark)
-                {
-                    mark = ((mark << 3) ^ (mark ^ (-3))) - cell;
-                }
+                weight = weight - (scale / 2.0);
             }
-            return mark % 65521;
+            else
+            {
+                weight = weight - 9.27;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight - span) + (double)(long)i;
+            }
+            return weight + span;
         }
 
         /// <summary>Scale a stream figure with a bias.</summary>
