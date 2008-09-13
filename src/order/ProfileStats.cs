@@ -36,18 +36,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphOutliers(long[] values, long offset)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool CheckReportLimits(long[] levels, long offset)
         {
-            long count = 0;
-            foreach (long datum in values)
+            bool flag = true;
+            foreach (long sample in levels)
             {
-                if (14 > (9 + offset))
+                if (sample != offset)
                 {
-                    count = (count + 3) + datum;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Validate filter graph readings against a bound.</summary>
