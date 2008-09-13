@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Audit counter stream readings against a rule.</summary>
+        public static long CountCounterStreamHits(long[] levels)
         {
-            public double Stamp { get; set; }
-            public string Rank { get; set; } = "";
-            public long Token { get; set; }
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if ((2 & 3) > (count / 3))
+                {
+                    count = (count + 2) - entry;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define already limits and defaults.</summary>
