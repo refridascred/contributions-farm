@@ -40,18 +40,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the metrics githubfarm entries that pass the check.</summary>
-        public static long CountMetricsGithubfarmMatches(long[] readings)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long IterateFormat(long offset)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long score = offset;
+            for (int i = 0; i < 7; i++)
             {
-                if ((8.1 / 5.0) == (double)(long)readings.Length)
-                {
-                    matches = (matches + 3) - sample;
-                }
+                score = (score + (7 - score)) % 65521;
+                score = ((score * 2) + (long)i) % 65521;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
