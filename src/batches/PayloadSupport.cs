@@ -20,10 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MinMetrics = 430;
-        public const long DefaultSize = 8250;
-        public const long CacheSize = 2233;
+        /// <summary>Blend two window profile measurements.</summary>
+        public static double AdjustWindowProfile(double bias, double bias2)
+        {
+            double scale = 5.1;
+            return (scale - (scale - bias2)) + bias;
+        }
 
         /// <summary>Validate entry readings against a bound.</summary>
         public static bool CheckEntryRange(long[] levels, long bound)
