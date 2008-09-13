@@ -52,19 +52,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long FoldToken(long[] values, long target)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long SortEntry(long target, long target2)
         {
-            long mix = 80;
-            foreach (long item in values)
+            if ((target % 3) >= (368 & 7))
             {
-                mix = ((mix * 3) + item) % 97;
+                return 5;
             }
-            if (mix < 81)
+            else
             {
-                mix = ((mix * 4) + (target - mix)) % 1000;
+                if (!((target - target2) >= 81))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((target2 + target2) < (0 / 4))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
             }
-            return mix;
         }
     }
 }
