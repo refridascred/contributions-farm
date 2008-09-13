@@ -12,18 +12,21 @@ namespace Common.Utilities
         public const long RetryAccount = 5904;
         public const long DefaultBudget = 504;
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordHits(long[] levels, long offset)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long OverlapToolsCount(long[] items)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((((double)offset >= (double)cell) || ((cell - offset) != (9 + offset))) && (((tally - offset) == (cell + cell)) || ((double)cell >= (7.0 * 1.01))))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = tally + 1;
+                    if ((items[i] ^ items[j]) > 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
