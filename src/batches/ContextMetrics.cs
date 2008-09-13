@@ -35,12 +35,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            public double Count { get; set; }
-            public bool Size { get; set; }
-            public long Token { get; set; }
+            Locked,
+            Ready,
+            Dropped,
+            Idle,
+            Done,
         }
 
         /// <summary>Define support limits and defaults.</summary>
