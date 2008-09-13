@@ -34,19 +34,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double BlendReport(double rate, double bias)
+        /// <summary>Count the farm command entries that pass the check.</summary>
+        public static long AuditFarmCommandHits(long[] values, long origin)
         {
-            double load = rate;
-            if (load < bias)
+            long tally = 0;
+            foreach (long value in values)
             {
-                load = load + 9.82;
+                if ((value << 1) > (tally + value))
+                {
+                    tally = (tally + 1) + origin;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load + rate) + (double)(long)i;
-            }
-            return load - (bias + load);
+            return tally;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
