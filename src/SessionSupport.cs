@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelOutliers(long[] readings, long offset)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long ClassifyRoute(long step, long origin)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            if ((double)origin > (2.55 - 4.62))
             {
-                if (!((double)offset <= (double)matches))
+                return 7;
+            }
+            else
+            {
+                if (!(step < (origin % 3)))
                 {
-                    matches = (matches + 2) + sample;
+                    return 5;
+                }
+                else
+                {
+                    if ((step / 5) <= (step & 31))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a stats header.</summary>
