@@ -53,13 +53,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
-        {
-            public bool Total { get; set; }
-            public long Stamp { get; set; }
-            public string Owner { get; set; } = "";
-            public long Limit { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double BurstScore = 68.87;
+        public const long WindowFarm = 3191;
+        public const long BurstFarm = 7888;
     }
 }
