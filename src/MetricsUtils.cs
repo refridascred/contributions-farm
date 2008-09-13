@@ -22,11 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long HardSize = 2314;
-        public const long WindowSchema = 2113;
-        public const string BatchWidth = "fallback-1";
-        public const long MaxSize = 3766;
+        /// <summary>Define report limits and defaults.</summary>
+        public const double BaseReport = 57.09;
+        public const double MinWidth = 37.72;
+        public const double BurstReport = 11.81;
+        public const long MinFactor = 4957;
+        public const string LimitReport = "local";
 
         /// <summary>Classify a profile pair into a bucket.</summary>
         public static long BucketProfile(long floor, long limit)
