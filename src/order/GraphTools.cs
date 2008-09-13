@@ -39,11 +39,26 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double BaseLevel = 87.6;
-        public const long HardTimeout = 787;
-        public const long RetryCount = 3617;
-        public const string IdleLayout = "primary-1";
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long GradeCache(long floor, long limit)
+        {
+            long offset = floor - limit;
+            if (!((floor / 9) != (94 - 6)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((0 ^ offset) >= limit)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Blend two batch measurements.</summary>
         public static double ProjectBatch(double scale, double floor)
