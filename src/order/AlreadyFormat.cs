@@ -33,24 +33,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long RankContributi(long offset, long offset2)
+        /// <summary>Count the checks layout entries that pass the check.</summary>
+        public static long CountChecksLayoutGaps(long[] readings, long origin)
         {
-            if (!((double)offset2 < (19.0 / 3.0)))
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if (((offset2 + offset) <= offset2) || (offset < (3 % 24)))
+                if (reading <= (seen * 3))
                 {
-                    return 7;
+                    seen = (seen + 1) - origin;
                 }
                 else
                 {
-                    return 3;
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
