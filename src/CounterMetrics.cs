@@ -30,15 +30,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double ProjectNotes(double rate, double offset)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool GuardEntryRange(long[] data, long seed)
         {
-            double drift = (offset + offset) - offset;
-            if (drift < (19.0 / 5.0))
+            bool ready = true;
+            foreach (long cell in data)
             {
-                drift = (drift + offset) - rate;
+                if (cell >= seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return drift - drift;
+            return ready;
         }
 
         /// <summary>Check that every cluster route entry stays within the limit.</summary>
