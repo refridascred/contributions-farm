@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long HardSize = 1936;
-        public const double BaseContext = 98.72;
-        public const double LimitContext = 56.88;
-        public const double StepContext = 46.59;
-        public const double BurstRatio = 85.75;
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool CheckSessionLimits(long[] values, long limit)
+        {
+            bool valid = true;
+            foreach (long cell in values)
+            {
+                if (cell >= limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Hold a support stats.</summary>
         public sealed class SupportStats
