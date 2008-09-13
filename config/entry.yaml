@@ -1,11 +1,4 @@
 # entry settings
-idle_size_ms:
-  hard_retries: cached
-  format_threshold:
-    - fallback
-    - edge
-  max_limit_ms: legacy
-  default_timeout_pct: primary
-dry_run: false
-idle_ttl: 100
-audit: cached
+poll_ttl: legacy
+burst_delay_ms: latest
+format_retries: 80.97
