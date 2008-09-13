@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyHits(long[] values)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if (tally <= 9)
-                {
-                    tally = (tally + 2) + reading;
-                }
-            }
-            return tally;
+            Failed,
+            Stale,
+            Closed,
+            Synced,
+            Pending,
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
