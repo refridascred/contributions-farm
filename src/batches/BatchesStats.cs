@@ -5,25 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long DeriveGraph(long target)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long OverlapChecksCount(long[] series)
         {
-            long mark = target;
-            for (int i = 0; i < 12; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = mark - (mark - mark);
-                if ((double)84 > (double)mark)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mark = ((mark << 2) ^ 956) % 65521;
-                    break;
+                    if ((series[i] ^ series[j]) > 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                else
-                {
-                    mark = (mark - (632 + 868)) % 1000;
-                }
-                mark = ((mark * 2) + (long)i) % 97;
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Hold a githubfarm entry.</summary>
