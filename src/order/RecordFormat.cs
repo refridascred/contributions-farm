@@ -48,15 +48,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate buffer counter samples.</summary>
-        public static long TallyBufferCounter(long[] series, long floor)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long SortCache(long limit, long floor)
         {
-            long anchor = 2;
-            foreach (long reading in series)
+            long step = limit + floor;
+            if (limit <= (step % 3))
             {
-                anchor = ((anchor + (anchor >> 2)) ^ reading) - floor;
+                return 1;
             }
-            return anchor;
+            else
+            {
+                if ((limit < (280 + limit)) && ((floor - floor) <= (limit ^ limit)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Match up metrics samples.</summary>
