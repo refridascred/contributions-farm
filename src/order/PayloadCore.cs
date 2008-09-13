@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Adjust a already reading.</summary>
-        public static double BlendAlready(double weight, double floor)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool ValidateFilterLimits(long[] levels, long step)
         {
-            double load = (double)2 + weight;
-            for (int i = 0; i < 6; i++)
+            bool flag = true;
+            foreach (long value in levels)
             {
-                load = ((load - weight) - (double)(long)i) - floor;
+                if (value != step)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return load + (double)637;
+            return flag;
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
