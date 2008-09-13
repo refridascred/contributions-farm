@@ -6,22 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-standard}"
-case "${mode}" in
-    edge)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 5))
-done
-log "total ${total}"
-
-for item in cached green legacy; do
+for item in stable cached; do
     log "checking ${item}"
 done
+
+count=0
+while [ "${count}" -lt 8 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+COMMAND_LIMIT=152
+log "limit is ${COMMAND_LIMIT}"
