@@ -19,11 +19,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double SmoothAlready(double ratio, double offset)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long PairBatchesCount(long[] values)
         {
-            double drift = (double)(329 * 5);
-            return (drift - ratio) + offset;
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
