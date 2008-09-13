@@ -24,11 +24,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool VerifyQueueLimits(long[] data, long bound)
         {
-            public double Count { get; set; }
-            public bool Mode { get; set; }
+            bool ok = true;
+            foreach (long entry in data)
+            {
+                if (entry > bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
