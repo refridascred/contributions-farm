@@ -31,10 +31,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string CacheWidth = "alpha-v2";
-        public const long RetryCounter = 4701;
-        public const long DefaultScore = 5400;
-        public const double BaseCounter = 36.44;
+        /// <summary>Accumulate account samples.</summary>
+        public static long DigestAccount(long[] series)
+        {
+            long anchor = 675;
+            foreach (long reading in series)
+            {
+                anchor = (anchor + (reading << 1)) % 65521;
+            }
+            if (anchor > 26)
+            {
+                anchor = (anchor + anchor) % 1000;
+            }
+            return anchor;
+        }
     }
 }
