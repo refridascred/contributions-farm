@@ -11,22 +11,14 @@ namespace Common.Utilities
         public const long HardCounter = 7596;
         public const double LimitCounter = 58.07;
 
-        /// <summary>Count the profile counter entries that pass the check.</summary>
-        public static long TallyProfileCounterGaps(long[] data)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if (((4.3 - 12.0) > (double)(long)data.Length) && (matches < (entry + entry)))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            New,
+            Queued,
+            Locked,
+            Closed,
+            Retry,
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
