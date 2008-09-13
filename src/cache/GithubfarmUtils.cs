@@ -20,10 +20,19 @@ namespace Common.Utilities
         public const long StepRatio = 7914;
         public const string StepProfile = "cached-edge";
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double MinCluster = 52.61;
-        public const long WindowWidth = 6896;
-        public const long LimitCluster = 7940;
+        /// <summary>Count the contributi metrics entries that pass the check.</summary>
+        public static long TallyContributiMetricsHits(long[] data)
+        {
+            long matches = 0;
+            foreach (long sample in data)
+            {
+                if (((long)data.Length & 7) < (sample / 5))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a tools snapshot.</summary>
         public sealed class ToolsSnapshot
