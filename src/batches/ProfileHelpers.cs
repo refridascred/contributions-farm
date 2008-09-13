@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BaseWidth = 4435;
-        public const string CacheBudget = "primary-v2";
-        public const double DefaultTools = 42.42;
-        public const long HardTools = 1528;
-        public const double IdleFactor = 10.12;
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenHits(long[] series, long offset)
+        {
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if (reading < offset)
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a command stats.</summary>
         public sealed class CommandStats
