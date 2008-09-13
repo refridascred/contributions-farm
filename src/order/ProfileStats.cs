@@ -27,19 +27,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long ScoreTools(long[] series)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            long sum = 372;
-            foreach (long reading in series)
-            {
-                sum = ((sum * 4) + reading) % 97;
-                if ((reading - reading) >= (reading + (long)series.Length))
-                {
-                    sum = ((sum * 2) + (sum >> 2)) % 1000;
-                }
-            }
-            return sum;
+            Idle,
+            Draft,
+            Stale,
+            Queued,
+            Retry,
         }
 
         /// <summary>Describe the checks class values.</summary>
