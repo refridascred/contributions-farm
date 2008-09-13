@@ -31,19 +31,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every profile channel entry stays within the limit.</summary>
-        public static bool CheckProfileChannelRange(long[] items, long seed)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long WeighContributi(long[] values, long offset)
         {
-            bool valid = true;
-            foreach (long datum in items)
+            long carry = 506;
+            foreach (long entry in values)
             {
-                if (datum < seed)
+                carry = carry + (carry - 28);
+                carry = ((carry << 3) ^ (offset + entry)) % 1000;
+                if (!(carry > (offset << 3)))
                 {
-                    valid = false;
-                    break;
+                    carry = (carry << 3) ^ (7 + entry);
                 }
             }
-            return valid;
+            return carry;
         }
     }
 }
