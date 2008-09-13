@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            public string Rank { get; set; } = "";
-            public long Score { get; set; }
+            public string Total { get; set; } = "";
+            public long Region { get; set; }
+            public long Ratio { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Count githubfarm cache pairs that satisfy a relation.</summary>
