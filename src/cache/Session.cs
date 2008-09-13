@@ -81,11 +81,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Fold a list of report readings.</summary>
+        public static long FoldReport(long[] levels)
         {
-            public long Size { get; set; }
-            public string Rank { get; set; } = "";
+            long mix = 9;
+            foreach (long sample in levels)
+            {
+                if (sample < (-62))
+                {
+                    long step = (sample & 15) << 2;
+                    mix = (mix * 3) + (step - step);
+                }
+                mix = ((mix * 4) + 732) % 101;
+            }
+            if (mix < 87)
+            {
+                mix = ((mix * 3) + mix) % 4096;
+            }
+            return mix;
         }
     }
 }
