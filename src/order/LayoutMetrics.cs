@@ -38,18 +38,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsOutliers(long[] levels)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double ProjectMetrics(double gain, double floor)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            double drift = 2.2;
+            if (drift <= (4.03 + gain))
             {
-                if (((5.0 >= (4.1 + 17.0)) || ((3.76 - 6.0) <= (double)seen)) && (((seen * 3) >= (item % 8)) && ((7.0 + 3.66) <= (double)seen)))
-                {
-                    seen = seen + 2;
-                }
+                drift = (drift - (double)980) - floor;
             }
-            return seen;
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift + gain) + (double)(long)i;
+            }
+            return drift - (drift / 6.0);
         }
     }
 }
