@@ -27,16 +27,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Iterate the githubfarm channel series from a seed.</summary>
-        public static long SeriesGithubfarmChannel(long offset)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            long score = offset;
-            for (int i = 0; i < 19; i++)
-            {
-                score = (score << 3) ^ ((long)i >> 4);
-                score = ((score * 3) + (long)i) % 4093;
-            }
-            return score;
+            public double Count { get; set; }
+            public bool Size { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
