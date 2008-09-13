@@ -1,26 +1,10 @@
 # support settings
-batch_retries_s:
-  cache_threshold_count: primary
-  dry_run:
-    - 165
-    - 115
-    - 197
-  payload_retries: 25.19
-  base_depth_pct: 60
-strict:
-  hard_size_ms: 29
-  tools_size:
-    audit: 46.94
-    tools_interval: 22.32
-    stats_window: open
-    idle_retries_ms: 40.62
-    min_retries_count: 30
-  readonly: 11.08
-  min_retries_pct: 100
-  idle_timeout_s: local
-  retry_ttl_s:
-    - blue
-    - blue
-    - strict
-    - standard
-compress: false
+hard_retries:
+  - eu-west
+  - edge
+  - primary
+cache_threshold_ms: staging
+compress: staging
+audit: green
+readonly: primary
+persist: legacy
