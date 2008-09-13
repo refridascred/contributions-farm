@@ -86,15 +86,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the layout context series from a seed.</summary>
-        public static long RollLayoutContext(long step)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long RankCounter(long floor, long limit)
         {
-            long mark = step;
-            for (int i = 0; i < 21; i++)
+            long gap = floor - limit;
+            if ((limit / 9) < (floor + gap))
             {
-                mark = ((mark * 5) + (long)i) % 4093;
+                return 5;
             }
-            return mark;
+            else
+            {
+                if ((gap + gap) > gap)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
