@@ -1,5 +1,12 @@
 {
-  "hard_delay_s": "standard",
-  "warm_capacity": 8187,
-  "dry_run": "standard"
+  "buffer_depth": false,
+  "retry_limit": "staging",
+  "compress": {
+    "flush_retries": [491, 84],
+    "max_delay_count": 87.48,
+    "max_size_s": ["open", "legacy", "green"]
+  },
+  "token_threshold": 4,
+  "hard_window": 80.57,
+  "max_ratio_pct": 1
 }
