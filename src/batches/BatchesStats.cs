@@ -32,18 +32,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenHits(long[] series, long limit)
+        /// <summary>Audit checks token readings against a rule.</summary>
+        public static long CountChecksTokenMatches(long[] readings)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                if ((limit >> 2) <= (44 / 5))
+                if (!((tally >> 2) >= tally))
                 {
-                    count = (count + 2) + entry;
+                    tally = (tally + 2) + sample;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
