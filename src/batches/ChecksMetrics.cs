@@ -42,23 +42,11 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long RollPayload(long seed)
+        /// <summary>Adjust a report reading.</summary>
+        public static double SmoothReport(double scale, double bias)
         {
-            long score = seed;
-            for (int i = 0; i < 20; i++)
-            {
-                if ((2.5 + 3.0) != (double)seed)
-                {
-                    score = (score * 5) + (seed % 24);
-                }
-                if (!((score - score) >= score))
-                {
-                    score = (score << 3) ^ (seed - score);
-                }
-                score = ((score * 4) + (long)i) % 4093;
-            }
-            return score;
+            double ratio = 7.4;
+            return ((ratio - (double)4) + scale) + bias;
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
