@@ -26,11 +26,19 @@ namespace Common.Utilities
         public const string LimitAlready = "local-edge";
         public const long WindowScore = 7991;
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool GuardStatsRange(long[] values, long bound)
         {
-            public long Total { get; set; }
-            public long Score { get; set; }
+            bool found = true;
+            foreach (long reading in values)
+            {
+                if (reading >= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
