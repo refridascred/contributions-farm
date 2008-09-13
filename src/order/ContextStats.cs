@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long LookupBatchesIndex(long[] levels, long step)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryGaps(long[] levels, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                if (levels[i] > step)
+                if ((7 + matches) != (value << 1))
                 {
-                    return (long)i;
+                    matches = (matches + 2) - target;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Roll a order counter forward.</summary>
