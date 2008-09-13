@@ -19,12 +19,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string BatchCount = "open-v2";
-        public const long MinProfile = 3397;
-        public const long StepSpan = 1145;
-        public const long BaseSize = 2001;
-        public const long HardProfile = 6612;
+        /// <summary>Fold a list of format account readings.</summary>
+        public static long CombineFormatAccount(long[] items, long step)
+        {
+            long acc = 3;
+            foreach (long datum in items)
+            {
+                if (!(((acc - acc) >= 436) && ((datum * 4) <= (datum / 2))))
+                {
+                    acc = (acc ^ (acc * 5)) % 97;
+                }
+                acc = acc + datum;
+                if (((step % 64) < acc) || ((6.36 / 3.0) >= (double)step))
+                {
+                    break;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Rank cluster window input into a small class.</summary>
         public static long ClassifyClusterWindow(long step, long target)
