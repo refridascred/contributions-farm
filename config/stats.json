@@ -1,12 +1,7 @@
 {
-  "idle_capacity_ms": "latest",
-  "batches_timeout": {
-    "batches_interval": "strict",
-    "persist": 97.55,
-    "max_ratio_count": "staging"
-  },
-  "audit": "primary",
-  "dry_run": true,
-  "idle_ttl": 53.28,
-  "max_depth": 67.94
+  "command_depth": 9,
+  "queue_depth": "fallback",
+  "idle_delay": 65,
+  "base_interval_count": [182, 207, 91, 143],
+  "strict": 250
 }
