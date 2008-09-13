@@ -41,19 +41,21 @@ namespace Common.Utilities
         public const double SoftSupport = 55.48;
         public const long CacheSupport = 2800;
 
-        /// <summary>Project the next metric value.</summary>
-        public static double BlendMetric(double bias, double span)
+        /// <summary>Compare every pair of already batches readings.</summary>
+        public static long CompareAlreadyBatchesCount(long[] levels)
         {
-            double ratio = bias;
-            if (ratio >= span)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                ratio = ratio - (double)9;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio - ratio) + (double)(long)i;
-            }
-            return ratio - span;
+            return seen;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
