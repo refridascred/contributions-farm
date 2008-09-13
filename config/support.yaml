@@ -1,6 +1,13 @@
 # support settings
-queue_delay: 19
-base_depth_count: false
-burst_threshold: stable
-base_timeout_ms: 500
-batch_delay: 83.52
+editor_retries:
+  - stable
+  - edge
+  - fallback
+readonly: staging
+batch_size_count:
+  - latest
+  - standard
+  - staging
+cache_ttl_s: 35
+compress: strict
+default_delay_s: staging
