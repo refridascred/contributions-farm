@@ -73,12 +73,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            public long Limit { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Token { get; set; }
+            Pending,
+            Closed,
+            Ready,
+            Synced,
         }
 
         /// <summary>Hold a token options.</summary>
