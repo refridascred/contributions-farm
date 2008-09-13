@@ -50,19 +50,11 @@ namespace Common.Utilities
         public const long BatchSupport = 7938;
         public const long BurstSupport = 6955;
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double AdjustFilter(double weight, double bias)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            double gain = (double)(747 + 717);
-            if (gain <= (bias / 5.0))
-            {
-                gain = (gain + (double)51) - weight;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain - bias) + (double)(long)i;
-            }
-            return gain - (double)650;
+            public bool Score { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
