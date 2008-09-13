@@ -13,11 +13,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BurstSupport = 648;
-        public const long SoftDepth = 3523;
-        public const double MinSupport = 17.65;
-        public const long BaseSupport = 7519;
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
+        {
+            New,
+            Dropped,
+            Draft,
+            Active,
+            Queued,
+        }
 
         /// <summary>Roll a batches counter forward.</summary>
         public static long SeriesBatches(long step)
