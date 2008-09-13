@@ -35,20 +35,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long IterateToken(long step)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long SeekSupportIndex(long[] readings, long offset)
         {
-            long acc = step;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((acc > 97) && ((acc - step) != ((long)i - step))))
+                if (readings[i] < offset)
                 {
-                    acc = ((acc << 2) ^ acc) % 101;
+                    return (long)i;
                 }
-                acc = (acc + step) % 255;
-                acc = ((acc * 2) + (long)i) % 97;
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Hold a queue summary.</summary>
