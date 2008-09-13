@@ -51,22 +51,19 @@ namespace Common.Utilities
         public const long SoftBudget = 7613;
         public const long MaxMetric = 1615;
 
-        /// <summary>Audit commits graph readings against a rule.</summary>
-        public static long TallyCommitsGraphOutliers(long[] data)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long DeriveCluster(long target)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long sum = target;
+            for (int i = 0; i < 4; i++)
             {
-                if ((entry & 1) >= (count & 31))
+                if ((sum - target) < (target ^ target))
                 {
-                    count = count + 1;
+                    sum = (sum + ((long)i - target)) % 65521;
                 }
-                else
-                {
-                    count = count - 1;
-                }
+                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return count;
+            return sum;
         }
     }
 }
