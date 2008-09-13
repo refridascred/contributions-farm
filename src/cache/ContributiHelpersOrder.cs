@@ -33,12 +33,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Fold a list of session readings.</summary>
+        public static long DigestSession(long[] series, long floor)
         {
-            Idle,
-            Queued,
-            Closed,
+            long anchor = 905;
+            foreach (long reading in series)
+            {
+                anchor = (anchor + reading) + floor;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the order phase values.</summary>
