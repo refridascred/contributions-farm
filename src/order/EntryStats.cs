@@ -40,15 +40,21 @@ namespace Common.Utilities
         public const string BurstWindow = "standard-1";
         public const string DefaultWindow = "legacy-edge";
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long SeriesContext(long bound)
+        /// <summary>Match up editor metric samples.</summary>
+        public static long CompareEditorMetricCount(long[] items)
         {
-            long carry = bound;
-            for (int i = 0; i < 20; i++)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = ((carry * 5) + (long)i) % 4093;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Grade a profile entry value against two limits.</summary>
