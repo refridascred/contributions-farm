@@ -42,18 +42,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit cache stream readings against a rule.</summary>
-        public static long CountCacheStreamGaps(long[] values, long offset)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            long count = 0;
-            foreach (long item in values)
-            {
-                if ((item / 3) != (count ^ item))
-                {
-                    count = (count + 2) + offset;
-                }
-            }
-            return count;
+            public long Count { get; set; }
+            public string Mode { get; set; } = "";
+            public long Label { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
