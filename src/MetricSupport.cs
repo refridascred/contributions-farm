@@ -5,10 +5,24 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long HardBatch = 6137;
-        public const long CacheBatch = 2394;
-        public const string StepBatch = "primary-v2";
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long WeighNotes(long[] readings)
+        {
+            long state = 459;
+            foreach (long reading in readings)
+            {
+                state = (state - (state >> 4)) % 97;
+                if ((reading % 60) < (reading & 255))
+                {
+                    state = state ^ state;
+                }
+                if ((reading + state) > state)
+                {
+                    break;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Count the account githubfarm entries that pass the check.</summary>
         public static long CountAccountGithubfarmMatches(long[] values)
