@@ -1,7 +1,4 @@
 # entry settings
-soft_depth: latest
-githubfarm_size: edge
-compress: local
-idle_capacity_ms: 4505
-flush_timeout_count: 87.88
-queue_size: strict
+retry_ratio_count: 18.35
+warm_capacity: local
+cache_size: fallback
