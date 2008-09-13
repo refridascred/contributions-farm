@@ -56,19 +56,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a counter stream reading.</summary>
-        public static double BlendCounterStream(double bias, double floor)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long DigestCache(long[] readings)
         {
-            double mean = (floor * 10.0) - 7.62;
-            if (mean < bias)
+            long total = 3;
+            foreach (long item in readings)
             {
-                mean = mean + (3.54 + mean);
+                total = ((total * 4) + item) % 1000;
             }
-            else
-            {
-                mean = mean - floor;
-            }
-            return mean - mean;
+            return total;
         }
     }
 }
