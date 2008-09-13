@@ -1,10 +1,22 @@
 # githubfarm settings
-already_interval: 28.67
-base_depth_ms:
-  - fallback
-  - primary
-  - eu-west
-retry_depth: 85
-base_depth: stable
-soft_size_pct: 4.85
-retry_retries: 500
+hard_timeout:
+  persist:
+    sync_interval_pct: false
+    commits_retries: stable
+    base_delay: open
+    enabled: 6926
+  hard_delay_s: 1024
+  compress: 4117
+  batches_limit:
+    compress: true
+    route_retries:
+      - 86
+      - 382
+      - 487
+      - 469
+    metric_ttl: true
+    max_capacity:
+      - 248
+      - 435
+min_depth_ms: staging
+soft_window_pct: false
