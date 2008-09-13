@@ -24,19 +24,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a schema order reading.</summary>
-        public static double BlendSchemaOrder(double gain, double offset)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            double mean = gain;
-            if (mean < mean)
-            {
-                mean = mean + (double)168;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean - (10.0 + 3.5)) + (double)(long)i;
-            }
-            return mean - (mean - offset);
+            public long Token { get; set; }
+            public string Level { get; set; } = "";
+            public double Count { get; set; }
         }
     }
 }
