@@ -16,19 +16,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksMatches(long[] readings, long origin)
-        {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if (((tally + (-3)) <= tally) && ((tally & 1) == (tally ^ value)))
-                {
-                    tally = (tally + 2) - origin;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long IdleBuffer = 8293;
+        public const long MinCount = 5099;
+        public const long HardBuffer = 204;
+        public const long MinBuffer = 2641;
 
         /// <summary>Roll a buffer counter forward.</summary>
         public static long StepBuffer(long bound)
