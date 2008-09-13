@@ -46,15 +46,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long FoldReport(long[] samples)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            long sum = 91;
-            foreach (long value in samples)
-            {
-                sum = (sum + (1 + sum)) + value;
-            }
-            return sum % 97;
+            public long Limit { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
