@@ -34,13 +34,17 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Look up the position of a stream format sample.</summary>
+        public static long LocateStreamFormatIndex(long[] levels, long floor)
         {
-            Locked,
-            Done,
-            Draft,
-            Synced,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] >= floor) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
