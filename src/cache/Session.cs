@@ -75,11 +75,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesMatches(long[] samples, long target)
         {
-            public bool Score { get; set; }
-            public string Owner { get; set; } = "";
+            long seen = 0;
+            foreach (long reading in samples)
+            {
+                if (!((seen << 3) <= (4 & 63)))
+                {
+                    seen = ((seen + 3) + reading) - target;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
