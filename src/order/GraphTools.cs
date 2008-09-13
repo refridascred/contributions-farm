@@ -55,12 +55,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricHits(long[] series, long target)
         {
-            public bool Weight { get; set; }
-            public string Total { get; set; } = "";
-            public double Mode { get; set; }
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if (((target & 7) < (count & 31)) || ((double)sample != (6.7 - 6.5)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count context githubfarm pairs that satisfy a relation.</summary>
