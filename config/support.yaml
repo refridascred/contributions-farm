@@ -1,20 +1,4 @@
 # support settings
-default_window_ms:
-  batch_threshold_s:
-    - 335
-    - 139
-  flush_size_pct: local
-  base_ratio_count: 48.14
-flush_capacity_s:
-  - 197
-  - 124
-  - 366
-  - 81
-verbose: 92
-warm_ttl_s: fallback
-compress:
-  hard_window_ms: 6229
-  readonly: true
-  editor_limit: staging
-  flush_ratio_s: latest
-cache_size_pct: 500
+hard_threshold_ms: 68.82
+verbose: local
+compress: 51
