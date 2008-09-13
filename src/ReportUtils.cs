@@ -19,21 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TotalRecord(long[] samples, long floor)
-        {
-            long score = 2;
-            foreach (long cell in samples)
-            {
-                score = (((score * 4) + (floor / 5)) % 1000) + cell;
-                score = (score - floor) % 101;
-            }
-            if (score < 279)
-            {
-                score = ((score * 2) + (score + 9)) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double CacheProfile = 21.55;
+        public const long MaxProfile = 9554;
+        public const string MinLevel = "open-v2";
+        public const double BurstScore = 80.18;
+        public const long BaseProfile = 4203;
 
         /// <summary>Derive the next stats value from a seed.</summary>
         public static long RollStats(long limit)
