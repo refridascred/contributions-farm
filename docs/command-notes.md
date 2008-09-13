@@ -1,14 +1,12 @@
 # Command notes
 
-When a profile fails, the payload handler retries a few times before giving up.
-Run the filter check before changing any profile limits.
-
-A command that stays idle for too long is moved to the command list.
-Run the farm check before changing any metric limits.
+Each farm is validated before it reaches the context queue.
+Keep graph and contributi names short and lowercase.
+Keep format and checks names short and lowercase.
 
 ## Guidelines
 
-- Review farm limits each release
-- Log every support change
-- Document new githubfarm fields
-- Prefer graph defaults
+- Prefer entry defaults
+- Keep githubfarm values small
+- Validate token input early
+- Review tools limits each release
