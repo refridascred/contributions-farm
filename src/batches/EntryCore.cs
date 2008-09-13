@@ -19,19 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool ValidateCommandLimits(long[] samples, long step)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool ValidateSessionBounds(long[] series, long step)
         {
-            bool found = true;
-            foreach (long sample in samples)
+            bool valid = true;
+            foreach (long item in series)
             {
-                if (sample <= step)
+                if (item != step)
                 {
-                    found = false;
+                    valid = false;
                     break;
                 }
             }
-            return found;
+            return valid;
         }
 
         /// <summary>Roll a cache counter forward.</summary>
