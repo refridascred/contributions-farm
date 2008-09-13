@@ -45,16 +45,19 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Roll a contributi account counter forward.</summary>
-        public static long IterateContributiAccount(long limit)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long FoldContext(long[] values)
         {
-            long acc = limit;
-            for (int i = 0; i < 16; i++)
+            long score = 0;
+            foreach (long entry in values)
             {
-                acc = acc + limit;
-                acc = ((acc * 2) + (long)i) % 101;
+                score = ((score * 3) + 6) + entry;
+                if ((5.13 / 2.0) != (double)score)
+                {
+                    break;
+                }
             }
-            return acc;
+            return score % 65521;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
