@@ -1,7 +1,21 @@
 {
-  "default_ttl_pct": 5412,
-  "max_ttl_ms": 48,
-  "schema_delay": ["local", "open"],
-  "readonly": 43,
-  "warm_ratio_ms": "strict"
+  "sync_timeout": 38.85,
+  "warm_delay_s": {
+    "persist": {
+      "persist": 5.05,
+      "verbose": true,
+      "hard_capacity": 816,
+      "batch_interval_ms": "edge",
+      "batch_ratio_ms": "eu-west",
+      "queue_interval": ["standard", "open", "open"]
+    },
+    "graph_interval": 3040,
+    "hard_depth_count": "staging",
+    "audit": 6110,
+    "max_depth_s": "latest"
+  },
+  "githubfarm_ratio": 250,
+  "soft_retries_count": "cached",
+  "persist": 66,
+  "base_size_s": 2101
 }
