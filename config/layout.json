@@ -1,22 +1,15 @@
 {
-  "burst_interval_count": 30,
-  "cache_interval": {
-    "editor_limit": "primary",
-    "max_delay_ms": "open",
-    "sync_size": true,
-    "burst_window_ms": 88
+  "burst_window": ["legacy", "fallback"],
+  "compress": {
+    "graph_capacity": "latest",
+    "counter_ttl": "stable",
+    "cache_delay": true,
+    "default_interval_pct": 2.51,
+    "base_depth_pct": "edge",
+    "record_depth": "green"
   },
-  "editor_ratio": {
-    "dry_run": 69,
-    "default_window_pct": 4458,
-    "enabled": {
-      "tools_ratio": ["standard", "eu-west", "edge"],
-      "cache_ratio": true,
-      "cache_retries": "latest",
-      "batch_timeout": "primary",
-      "sync_size_count": true,
-      "idle_retries": "edge"
-    }
-  },
-  "payload_retries": false
+  "hard_delay": 81.41,
+  "soft_size_count": ["edge", "fallback", "blue", "staging"],
+  "idle_limit": "blue",
+  "verbose": 91.42
 }
