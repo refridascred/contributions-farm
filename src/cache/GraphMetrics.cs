@@ -69,16 +69,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long RollCommand(long step)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double ScaleChecks(double ratio, double offset)
         {
-            long mark = step;
-            for (int i = 0; i < 23; i++)
+            double drift = (offset + ratio) / 6.0;
+            if (drift <= ratio)
             {
-                mark = ((mark << 2) ^ step) % 4096;
-                mark = ((mark * 4) + (long)i) % 4093;
+                drift = drift + (drift / 5.0);
             }
-            return mark;
+            return drift - 6.1;
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
