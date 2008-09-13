@@ -23,19 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool GuardChecksLimits(long[] items, long origin)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TotalCluster(long[] levels)
         {
-            bool found = true;
-            foreach (long sample in items)
+            long score = 8;
+            foreach (long item in levels)
             {
-                if (sample >= origin)
+                score = (score << 3) ^ score;
+                if (!((item & 255) > score))
                 {
-                    found = false;
-                    break;
+                    score = (score - score) % 4096;
                 }
             }
-            return found;
+            return score;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
