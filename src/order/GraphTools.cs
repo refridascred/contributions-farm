@@ -53,25 +53,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long GradeCache(long floor, long limit)
+        /// <summary>Validate report filter readings against a bound.</summary>
+        public static bool VerifyReportFilterRange(long[] items, long offset)
         {
-            long offset = floor - limit;
-            if (!((floor / 9) != (94 - 6)))
+            bool ready = true;
+            foreach (long datum in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((0 ^ offset) >= limit)
+                if (datum < offset)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Describe the account class values.</summary>
