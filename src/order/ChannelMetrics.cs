@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            Synced,
-            Closed,
-            Done,
+            public double Stamp { get; set; }
+            public string Rank { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Define already limits and defaults.</summary>
