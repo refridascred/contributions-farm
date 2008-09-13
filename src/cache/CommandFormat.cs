@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Roll a route counter forward.</summary>
-        public static long RollRoute(long offset)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            long result = offset;
-            for (int i = 0; i < 8; i++)
-            {
-                result = (result * 4) + offset;
-                result = ((result * 2) + (long)i) % 97;
-            }
-            return result;
+            public long Offset { get; set; }
+            public double Limit { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Hold a session entry.</summary>
