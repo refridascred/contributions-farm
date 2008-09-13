@@ -1,5 +1,8 @@
 {
-  "sync_interval": true,
-  "report_limit": 5351,
-  "max_size_count": true
+  "cache_limit_count": [161, 102],
+  "audit": ["local", "primary"],
+  "max_size": 769,
+  "hard_delay_count": 55.8,
+  "flush_ttl": 250,
+  "batch_retries": 91.92
 }
