@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Classify a metric cluster pair into a bucket.</summary>
-        public static long SortMetricCluster(long step, long offset)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileGaps(long[] data)
         {
-            long slot = step ^ offset;
-            if (((step ^ offset) < (offset & 3)) || (slot >= (53 + step)))
+            long count = 0;
+            foreach (long entry in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)offset >= (9.55 - 8.0))
+                if ((count << 1) <= entry)
                 {
-                    return 4;
+                    count = count + 1;
                 }
                 else
                 {
-                    if (704 >= offset)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Scale a cluster githubfarm figure with a bias.</summary>
