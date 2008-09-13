@@ -47,32 +47,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long SortPayload(long floor, long floor2)
+        /// <summary>Check that every cluster route entry stays within the limit.</summary>
+        public static bool GuardClusterRouteRange(long[] readings, long limit)
         {
-            long step = floor + floor2;
-            if (9.16 < (double)floor2)
+            bool stale = true;
+            foreach (long entry in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if (((floor - floor) > (floor << 3)) || ((step - 22) != (floor2 >> 4)))
+                if (entry >= limit)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (96 <= floor2)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
