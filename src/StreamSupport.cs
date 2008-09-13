@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long SortCluster(long limit, long target)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long SeriesTools(long origin)
         {
-            if ((target / 6) < limit)
+            long sum = origin;
+            for (int i = 0; i < 21; i++)
             {
-                return 6;
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            else
-            {
-                if ((target / 6) < target)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((6 % 60) < target)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((target ^ limit) <= (0 + target)) && ((target + 59) != (limit << 3)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return sum;
         }
 
         /// <summary>Describe the stream level values.</summary>
