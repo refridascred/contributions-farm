@@ -35,15 +35,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double SmoothCommand(double weight, double offset)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            double gain = weight;
-            if (gain >= (double)1)
-            {
-                gain = (gain - (1.0 / 2.0)) - offset;
-            }
-            return gain + (double)9;
+            public long Limit { get; set; }
+            public bool Owner { get; set; }
+            public long Level { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Describe the batch mode values.</summary>
