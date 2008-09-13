@@ -1,22 +1,16 @@
 # support settings
-persist: false
-default_ratio_pct:
-  - 201
-  - 369
-  - 40
-warm_retries_s: 91.75
-stream_capacity:
-  record_window:
-    burst_limit_count: cached
-    default_window_count: false
-    audit: open
-    retry_capacity: 1024
-    dry_run: primary
-    burst_ratio: stable
-  stream_retries: 60
-  already_window: staging
-  base_limit: 15.19
-  base_timeout_s:
-    - latest
-    - local
-    - legacy
+schema_timeout: 4400
+batch_size:
+  verbose: primary
+  base_threshold_ms:
+    poll_threshold_ms: 92.86
+    channel_capacity: 72.87
+    retry_retries: latest
+  warm_capacity_count: local
+  burst_threshold_count:
+    - 270
+    - 98
+    - 77
+    - 387
+  retry_ratio_count: 5618
+min_ttl_pct: 45
