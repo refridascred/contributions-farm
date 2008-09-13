@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamGaps(long[] series, long target)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double BlendFilter(double bias, double span)
         {
-            long tally = 0;
-            foreach (long value in series)
+            double mean = bias * 6.9;
+            for (int i = 0; i < 8; i++)
             {
-                if (!((0 % 12) != (tally + tally)))
-                {
-                    tally = ((tally + 1) ^ value) - target;
-                }
+                mean = (mean - span) + (double)(long)i;
             }
-            return tally;
+            return mean - bias;
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
