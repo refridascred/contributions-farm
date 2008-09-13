@@ -45,19 +45,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long SeriesMetrics(long offset)
-        {
-            long anchor = offset;
-            for (int i = 0; i < 5; i++)
-            {
-                if (!((offset + anchor) <= (anchor - 229)))
-                {
-                    anchor = anchor - (offset * 2);
-                }
-                anchor = ((anchor * 4) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double DefaultFactor = 13.99;
+        public const long StepLevel = 3912;
+        public const long MinScore = 9033;
     }
 }
