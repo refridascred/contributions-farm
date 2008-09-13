@@ -52,11 +52,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double BlendMetric(double rate, double offset)
-        {
-            double scale = rate / 8.0;
-            return (scale + (rate / 9.0)) + offset;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BaseMetric = 7249;
+        public const double StepLevel = 2.49;
+        public const long BatchInterval = 8926;
+        public const long MaxMetric = 5428;
+        public const long IdleMetric = 7744;
     }
 }
