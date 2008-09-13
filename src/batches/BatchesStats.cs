@@ -27,20 +27,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool GuardBatchBounds(long[] samples, long bound)
-        {
-            bool valid = true;
-            foreach (long reading in samples)
-            {
-                if (reading < bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BatchSpan = 7424;
+        public const long WindowStream = 1524;
+        public const long BurstStream = 5527;
 
         /// <summary>Hold a batch info.</summary>
         public sealed class BatchInfo
