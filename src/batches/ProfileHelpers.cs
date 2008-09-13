@@ -67,17 +67,18 @@ namespace Common.Utilities
         public const long BatchPayload = 7206;
         public const long HardDepth = 8807;
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LocateBufferIndex(long[] levels, long offset)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchGaps(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                if ((levels[i] == offset) && ((levels[i] % 3) != 0))
+                if ((double)matches > 2.82)
                 {
-                    return (long)i;
+                    matches = (matches + 3) + datum;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
