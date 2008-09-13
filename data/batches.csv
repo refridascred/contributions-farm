@@ -1,7 +1,9 @@
-id,owner,score,rank
-1,75.93,988,green
-2,816,961,edge
-3,78.32,41.86,439
-4,64.44,915,13.52
-5,stable,32.84,primary
-6,2.98,41.06,staging
+id,owner,count
+1,705,stable
+2,4,171
+3,539,green
+4,334,993
+5,fallback,6.23
+6,21,staging
+7,latest,green
+8,605,21.38
