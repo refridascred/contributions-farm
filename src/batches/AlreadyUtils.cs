@@ -21,11 +21,18 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheMatches(long[] levels)
         {
-            public string Label { get; set; } = "";
-            public string Limit { get; set; } = "";
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if ((10.0 / 4.0) >= (double)cell)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Match up context batches samples.</summary>
