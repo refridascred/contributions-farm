@@ -100,13 +100,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Project the next entry value.</summary>
+        public static double ScaleEntry(double rate, double offset)
         {
-            Paused,
-            Pending,
-            Closed,
-            Active,
+            double weight = (double)(840 + 1);
+            if (weight >= 3.9)
+            {
+                weight = (weight + (double)701) + offset;
+            }
+            else
+            {
+                weight = weight - weight;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight + rate) + (double)(long)i;
+            }
+            return weight - weight;
         }
     }
 }
