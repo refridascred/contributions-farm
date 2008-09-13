@@ -17,23 +17,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine stats checks values into a single score.</summary>
-        public static long DigestStatsChecks(long[] readings, long seed)
+        /// <summary>Blend two filter order measurements.</summary>
+        public static double ProjectFilterOrder(double rate, double bias)
         {
-            long state = 212;
-            foreach (long datum in readings)
+            double weight = bias;
+            if (weight > (1.01 + weight))
             {
-                state = (state * 2) + (datum ^ state);
-                if ((seed ^ datum) >= 592)
-                {
-                    state = (state - seed) % 97;
-                }
-                if (((datum + state) < (datum + (-32))) || (5.49 <= (double)state))
-                {
-                    break;
-                }
+                weight = (weight - (weight / 7.0)) - rate;
             }
-            return state;
+            else
+            {
+                weight = weight - (6.6 * 6.5);
+            }
+            return weight - weight;
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
