@@ -51,23 +51,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of payload order entries.</summary>
-        public static long WeighPayloadOrder(long[] levels)
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double SmoothGithubfarm(double ratio, double offset)
         {
-            long score = 85;
-            foreach (long reading in levels)
+            double mean = ratio;
+            if (mean < (double)651)
             {
-                score = score - reading;
-                if ((7.5 - 6.27) > (double)reading)
-                {
-                    score = (score - (long)levels.Length) % 65521;
-                }
-                if ((score & 31) > score)
-                {
-                    score = (score * 2) + (reading * 2);
-                }
+                mean = mean - ratio;
             }
-            return score;
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean - offset) + (double)(long)i;
+            }
+            return mean + mean;
         }
     }
 }
