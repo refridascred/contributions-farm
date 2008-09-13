@@ -1,21 +1,8 @@
 {
-  "sync_ratio": 84.81,
-  "idle_capacity_count": ["latest", "green", "stable", "latest"],
-  "base_size_count": {
-    "entry_window": {
-      "min_timeout_pct": 1,
-      "command_threshold": ["edge", "edge", "staging"],
-      "flush_timeout_count": 35,
-      "burst_ttl_s": 76
-    },
-    "batch_window": {
-      "profile_retries": true,
-      "persist": 26,
-      "hard_window_count": 48.36
-    },
-    "sync_window": 72.86,
-    "verbose": true,
-    "audit": "latest"
-  },
-  "soft_threshold_count": 3815
+  "cache_delay_pct": "blue",
+  "filter_ttl": "standard",
+  "soft_interval": "open",
+  "flush_ttl": "stable",
+  "flush_ratio_count": true,
+  "tools_size": 500
 }
