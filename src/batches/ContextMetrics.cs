@@ -47,18 +47,18 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordMatches(long[] data, long floor)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsOutliers(long[] levels)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long count = 0;
+            foreach (long value in levels)
             {
-                if (((double)floor > (9.6 / 5.0)) && ((0 + floor) >= ((long)data.Length / 2)))
+                if ((count + count) <= (count << 3))
                 {
-                    seen = (seen + 3) - entry;
+                    count = (count + 1) + value;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
