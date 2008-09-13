@@ -11,17 +11,12 @@ namespace Common.Utilities
         public const long CacheSupport = 1752;
         public const long BatchSupport = 4015;
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long LookupAlreadyIndex(long[] items, long offset)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] >= offset) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Queued,
+            Done,
         }
 
         /// <summary>Locate a stream reading by value.</summary>
