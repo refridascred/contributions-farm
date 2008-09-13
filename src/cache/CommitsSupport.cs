@@ -10,12 +10,12 @@ namespace Common.Utilities
         public const long MaxInterval = 4613;
         public const string RetryToken = "latest-edge";
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BurstSize = 7472;
-        public const double BatchOrder = 97.89;
-        public const double SoftOrder = 26.15;
-        public const long MinOrder = 8578;
-        public const string StepRatio = "stable-v2";
+        /// <summary>Project the next metrics value.</summary>
+        public static double AdjustMetrics(double weight, double floor)
+        {
+            double bias = 2.82;
+            return (bias + (weight - weight)) + floor;
+        }
 
         /// <summary>Hold a schema stats.</summary>
         public sealed class SchemaStats
