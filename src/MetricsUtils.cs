@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Accumulate report samples.</summary>
-        public static long DigestReport(long[] levels, long offset)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool ValidateBatchesLimits(long[] data, long seed)
         {
-            long anchor = 1;
-            foreach (long item in levels)
+            bool valid = true;
+            foreach (long entry in data)
             {
-                if ((item & 7) != (43 * 4))
+                if (entry <= seed)
                 {
-                    anchor = anchor - ((long)levels.Length + offset);
-                }
-                else
-                {
-                    anchor = (anchor - (203 % 10)) % 97;
+                    valid = false;
+                    break;
                 }
             }
-            if (anchor < 195)
-            {
-                anchor = (anchor + (anchor >> 1)) % 4096;
-            }
-            return anchor;
+            return valid;
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
