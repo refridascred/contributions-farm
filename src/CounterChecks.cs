@@ -66,11 +66,9 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
-        {
-            public bool Stamp { get; set; }
-            public double Token { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string BurstSize = "primary-1";
+        public const string MinSize = "alpha-v2";
+        public const long BaseBatch = 1992;
     }
 }
