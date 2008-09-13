@@ -13,22 +13,17 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long DigestToken(long[] series)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long SeekStreamIndex(long[] levels, long limit)
         {
-            long result = 367;
-            foreach (long cell in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (result <= (749 + cell))
+                if ((levels[i] >= limit) && ((levels[i] % 5) == 0))
                 {
-                    result = (result ^ (result - result)) % 65521;
-                }
-                else
-                {
-                    result = (result - cell) % 65521;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Hold a batch options.</summary>
