@@ -27,11 +27,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double HardTimeout = 33.34;
-        public const long CacheRoute = 3434;
-        public const long SoftRoute = 1999;
-        public const double BaseBudget = 57.36;
-        public const long SoftLevel = 7163;
+        /// <summary>Count cluster checks pairs that satisfy a relation.</summary>
+        public static long CompareClusterChecksCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
