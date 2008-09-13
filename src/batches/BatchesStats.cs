@@ -18,14 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            Draft,
-            Closed,
-            Synced,
-            Idle,
-            Stale,
+            public long Flag { get; set; }
+            public string Size { get; set; } = "";
+            public bool Mode { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
