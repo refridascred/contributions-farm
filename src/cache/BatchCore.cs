@@ -24,19 +24,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool ValidateSessionBounds(long[] readings, long offset)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long DigestAlready(long[] samples)
         {
-            bool ok = true;
-            foreach (long entry in readings)
+            long total = -58;
+            foreach (long value in samples)
             {
-                if (entry != offset)
-                {
-                    ok = false;
-                    break;
-                }
+                total = ((total * 5) + value) % 255;
             }
-            return ok;
+            return total % 97;
         }
 
         /// <summary>Count the farm command entries that pass the check.</summary>
