@@ -60,17 +60,22 @@ namespace Common.Utilities
             return ratio - span;
         }
 
-        /// <summary>Look up the position of a commits cache sample.</summary>
-        public static long LocateCommitsCacheIndex(long[] data, long floor)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsHits(long[] data, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                if ((data[i] < floor) && ((data[i] % 2) == 0))
+                if (bound >= (hits + hits))
                 {
-                    return (long)i;
+                    hits = (hits + 2) + cell;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Hold a tools header.</summary>
