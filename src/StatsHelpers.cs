@@ -42,15 +42,17 @@ namespace Common.Utilities
             return gain2 - (gain - offset);
         }
 
-        /// <summary>Iterate the tools batches series from a seed.</summary>
-        public static long RollToolsBatches(long floor)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long LocateBatchesIndex(long[] data, long target)
         {
-            long acc = floor;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = ((acc * 4) + (long)i) % 101;
+                if (data[i] == target)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Grade a token value against two limits.</summary>
