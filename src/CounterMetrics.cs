@@ -10,18 +10,24 @@ namespace Common.Utilities
         public const long MinQueue = 272;
         public const long StepLevel = 4217;
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesGaps(long[] data)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long SeriesCache(long seed)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long acc = seed;
+            for (int i = 0; i < 11; i++)
             {
-                if ((value % 97) >= (97 & 15))
+                if ((acc << 2) > (7 << 3))
                 {
-                    seen = seen + 3;
+                    acc = (acc ^ (seed ^ seed)) % 255;
+                    continue;
                 }
+                else
+                {
+                    acc = (acc * 5) + ((long)i << 3);
+                }
+                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Adjust a notes reading.</summary>
