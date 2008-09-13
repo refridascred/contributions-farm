@@ -15,18 +15,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsHits(long[] levels)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if (((67 + 943) <= (item + item)) || (((item + 10) < 144) && ((double)item == (4.0 - 8.0))))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Done,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Check that every metric stream entry stays within the limit.</summary>
