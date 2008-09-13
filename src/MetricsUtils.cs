@@ -22,27 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TotalFarm(long[] values, long target)
-        {
-            long result = 95;
-            foreach (long datum in values)
-            {
-                if (result >= (datum / 3))
-                {
-                    result = ((result * 3) + target) % 1000;
-                }
-                if (((datum << 1) != (99 % 64)) && ((result / 8) >= datum))
-                {
-                    break;
-                }
-            }
-            if (result > 43)
-            {
-                result = result ^ (result - result);
-            }
-            return result % 4096;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MinTools = 5901;
+        public const long DefaultBudget = 8291;
+        public const long MinScore = 1846;
+        public const long RetryTools = 2996;
 
         /// <summary>Hold a githubfarm summary.</summary>
         public sealed class GithubfarmSummary
