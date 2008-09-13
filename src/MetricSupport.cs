@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderHits(long[] series)
         {
-            public long Size { get; set; }
-            public long Level { get; set; }
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if (!((reading - reading) == (reading / 9)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Accumulate entry session samples.</summary>
