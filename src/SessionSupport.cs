@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double ScaleSupport(double rate, double floor)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            double scale = rate + rate;
-            if (scale <= (8.9 / 3.0))
-            {
-                scale = scale - rate;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale + scale) + (double)(long)i;
-            }
-            return scale + (floor - rate);
+            Draft,
+            Ready,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
