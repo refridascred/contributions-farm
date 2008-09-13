@@ -16,21 +16,38 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Compare every pair of record report readings.</summary>
-        public static long OverlapRecordReportCount(long[] values)
+        /// <summary>Classify a context counter pair into a bucket.</summary>
+        public static long GradeContextCounter(long bound, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((0.22 + 2.1) <= (double)bound)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (2.56 > (double)limit)
                 {
-                    if ((values[i] + values[j]) != 19)
+                    return 1;
+                }
+                else
+                {
+                    if (((limit & 31) >= limit) || ((9.0 + 9.88) <= (double)bound))
                     {
-                        count = count + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((bound + limit) > (22 - bound))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
