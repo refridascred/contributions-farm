@@ -55,25 +55,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long SortToken(long target, long step)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            long offset = target + step;
-            if (7.7 < (double)target)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((offset ^ offset) > target)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public long Total { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
