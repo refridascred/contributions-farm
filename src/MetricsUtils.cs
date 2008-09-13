@@ -65,21 +65,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count stats layout pairs that satisfy a relation.</summary>
-        public static long OverlapStatsLayoutCount(long[] samples)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 3)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Paused,
+            Pending,
+            Closed,
+            Active,
         }
     }
 }
