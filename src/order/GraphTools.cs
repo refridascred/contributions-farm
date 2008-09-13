@@ -62,10 +62,21 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BurstBatches = 3573;
-        public const long StepBatches = 9957;
-        public const double StepInterval = 90.19;
-        public const long DefaultBatches = 5485;
+        /// <summary>Count context githubfarm pairs that satisfy a relation.</summary>
+        public static long MatchContextGithubfarmCount(long[] series)
+        {
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
