@@ -31,18 +31,19 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesHits(long[] values, long floor)
+        /// <summary>Check that every profile channel entry stays within the limit.</summary>
+        public static bool CheckProfileChannelRange(long[] items, long seed)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            bool valid = true;
+            foreach (long datum in items)
             {
-                if ((3.98 / 7.0) >= (double)sample)
+                if (datum < seed)
                 {
-                    tally = (tally + 2) + floor;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
     }
 }
