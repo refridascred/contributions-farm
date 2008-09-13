@@ -1,8 +1,5 @@
 {
-  "cache_delay_pct": "blue",
-  "filter_ttl": "standard",
-  "soft_interval": "open",
-  "flush_ttl": "stable",
-  "flush_ratio_count": true,
-  "tools_size": 500
+  "checks_interval": "strict",
+  "burst_retries_count": true,
+  "hard_ttl_pct": true
 }
