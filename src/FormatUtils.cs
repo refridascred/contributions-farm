@@ -33,24 +33,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long SortSupport(long offset, long seed)
+        /// <summary>Count the metrics githubfarm entries that pass the check.</summary>
+        public static long CountMetricsGithubfarmMatches(long[] readings)
         {
-            if (((offset + offset) > ((-77) - offset)) && ((685 / 4) <= (seed % 2)))
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if (seed >= (seed * 2))
+                if ((8.1 / 5.0) == (double)(long)readings.Length)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
+                    matches = (matches + 3) - sample;
                 }
             }
+            return matches;
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
