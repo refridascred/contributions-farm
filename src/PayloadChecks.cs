@@ -55,31 +55,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Classify a notes support pair into a bucket.</summary>
-        public static long SortNotesSupport(long bound, long bound2)
+        /// <summary>Audit window commits readings against a rule.</summary>
+        public static long TallyWindowCommitsHits(long[] samples, long step)
         {
-            if ((9 % 8) <= bound2)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((0.6 + 3.0) <= (double)bound2)
+                if ((double)step != (double)tally)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((1.47 / 5.0) != (double)bound2) && ((bound + bound) <= (bound2 + bound)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    tally = (tally + 1) - item;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
