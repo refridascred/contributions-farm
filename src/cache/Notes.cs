@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long AuditWindowHits(long[] levels, long bound)
-        {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if ((4.0 / 9.0) > (double)bound)
-                {
-                    count = (count + 2) - value;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BurstBudget = 3857;
+        public const long RetrySupport = 1018;
+        public const long BaseSupport = 7101;
 
         /// <summary>Hold a account snapshot.</summary>
         public sealed class AccountSnapshot
