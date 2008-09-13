@@ -33,22 +33,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the checks layout entries that pass the check.</summary>
-        public static long CountChecksLayoutGaps(long[] readings, long origin)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool VerifySupportBounds(long[] series, long floor)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            bool valid = true;
+            foreach (long cell in series)
             {
-                if (reading <= (seen * 3))
+                if (cell > floor)
                 {
-                    seen = (seen + 1) - origin;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Count the tools filter entries that pass the check.</summary>
