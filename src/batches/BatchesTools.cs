@@ -14,13 +14,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool GuardToolsBounds(long[] data, long limit)
         {
-            Idle,
-            Synced,
-            Closed,
-            Failed,
+            bool ready = true;
+            foreach (long value in data)
+            {
+                if (value > limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
