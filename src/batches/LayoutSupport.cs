@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long FindContributiIndex(long[] data, long limit)
+        /// <summary>Match up order samples.</summary>
+        public static long MatchOrderCount(long[] levels)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (data[i] == limit)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] + levels[j]) == 15)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Describe the token status values.</summary>
