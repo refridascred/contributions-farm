@@ -14,11 +14,25 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long LimitLevel = 3762;
-        public const long SoftRatio = 177;
-        public const long StepRatio = 7914;
-        public const string StepProfile = "cached-edge";
+        /// <summary>Grade a buffer checks value against two limits.</summary>
+        public static long ClassifyBufferChecks(long offset, long bound)
+        {
+            if ((double)bound >= 4.0)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((2.1 / 2.0) >= (double)offset)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Count the contributi metrics entries that pass the check.</summary>
         public static long TallyContributiMetricsHits(long[] data)
