@@ -39,17 +39,22 @@ namespace Common.Utilities
             return ratio2 + (double)99;
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long LookupStreamIndex(long[] levels, long seed)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long FoldStream(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 6;
+            foreach (long reading in data)
             {
-                if ((levels[i] == seed) && ((levels[i] % 3) == 0))
+                if (0 > reading)
                 {
-                    return (long)i;
+                    anchor = (anchor - (reading + 61)) % 4096;
                 }
             }
-            return -1;
+            if (anchor < 2)
+            {
+                anchor = ((anchor << 2) ^ ((long)data.Length - anchor)) % 255;
+            }
+            return anchor;
         }
     }
 }
