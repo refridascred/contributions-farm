@@ -25,16 +25,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long SeriesSchema(long bound)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueOutliers(long[] values, long limit)
         {
-            long result = bound;
-            for (int i = 0; i < 15; i++)
+            long tally = 0;
+            foreach (long item in values)
             {
-                result = result ^ (bound * 4);
-                result = ((result * 3) + (long)i) % 1000;
+                if (((9 + limit) != (limit - 47)) && ((item - limit) <= (limit ^ tally)))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Project the next route value.</summary>
