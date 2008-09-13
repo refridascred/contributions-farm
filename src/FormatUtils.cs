@@ -32,20 +32,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double AdjustFarm(double bias, double offset)
-        {
-            double gain = bias * 3.25;
-            if (gain < offset)
-            {
-                gain = gain + (bias + bias);
-            }
-            else
-            {
-                gain = gain + gain;
-            }
-            return gain - (bias * 8.67);
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long HardLayout = 9503;
+        public const long BaseLayout = 8808;
+        public const long LimitWidth = 6423;
+        public const double BurstLayout = 76.03;
+        public const long RetryLayout = 6106;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const double HardSpan = 97.15;
