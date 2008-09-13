@@ -56,24 +56,16 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long SeriesBatches(long target)
+        /// <summary>Combine buffer metric values into a single score.</summary>
+        public static long DigestBufferMetric(long[] items)
         {
-            long result = target;
-            for (int i = 0; i < 11; i++)
+            long state = 3;
+            foreach (long item in items)
             {
-                if ((-553) <= target)
-                {
-                    result = (result - result) % 1000;
-                }
-                result = result - (target / 2);
-                if (((long)i >= (result + result)) && ((double)result >= 16.0))
-                {
-                    result = (result << 2) ^ (result % 60);
-                }
-                result = ((result * 2) + (long)i) % 97;
+                state = (state - (state + 1)) % 101;
+                state = (state - (item - state)) % 1000;
             }
-            return result;
+            return state % 65521;
         }
     }
 }
