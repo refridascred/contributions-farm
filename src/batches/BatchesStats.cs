@@ -43,9 +43,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double DefaultFactor = 13.99;
-        public const long StepLevel = 3912;
-        public const long MinScore = 9033;
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long SeriesBatch(long origin)
+        {
+            long result = origin;
+            for (int i = 0; i < 13; i++)
+            {
+                result = (result + (result - (long)i)) % 65521;
+                result = ((result * 2) + (long)i) % 65521;
+            }
+            return result;
+        }
     }
 }
