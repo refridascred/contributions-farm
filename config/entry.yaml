@@ -1,19 +1,18 @@
 # entry settings
-max_window: 50
-batches_window: 49
-profile_retries:
-  max_ratio:
-    - 312
-    - 26
-  compress: 94
-  persist:
-    verbose: 93.11
-    warm_interval_pct: strict
-    editor_limit:
-      - 387
-      - 281
-      - 208
-      - 18
-    flush_window_ms: 60
-    persist: 250
-    batches_threshold: eu-west
+cache_delay_s:
+  verbose: 1736
+  command_threshold: eu-west
+  flush_interval_ms: false
+  stream_window: 8587
+  hard_delay: 19.12
+  persist: green
+idle_capacity_pct:
+  - 344
+  - 496
+  - 49
+batch_depth_pct: legacy
+commits_limit:
+  - open
+  - green
+  - edge
+  - open
