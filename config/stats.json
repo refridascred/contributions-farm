@@ -1,14 +1,9 @@
 {
-  "default_size_count": 30,
-  "persist": 7678,
-  "burst_limit_ms": {
-    "commits_capacity": "latest",
-    "idle_capacity": 73.5,
-    "soft_threshold": "cached",
-    "window_capacity": ["fallback", "green", "legacy"],
-    "queue_ratio": 23
+  "batch_interval": {
+    "burst_timeout": 42.63,
+    "enabled": false,
+    "idle_interval_pct": false
   },
-  "counter_interval": false,
-  "burst_timeout_ms": 8892,
-  "window_depth": ["primary", "strict", "stable"]
+  "sync_capacity_ms": true,
+  "already_ratio": 80
 }
