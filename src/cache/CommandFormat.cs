@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count the batches stream entries that pass the check.</summary>
-        public static long MeasureBatchesStreamHits(long[] data)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long RollRoute(long offset)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long result = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if ((73 << 3) < (datum + tally))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                result = (result * 4) + offset;
+                result = ((result * 2) + (long)i) % 97;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Hold a session entry.</summary>
