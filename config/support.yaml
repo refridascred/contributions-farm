@@ -1,10 +1,20 @@
 # support settings
-batch_capacity: local
-sync_ttl_ms: true
-strict: 7207
-readonly: 250
-warm_ratio:
+retry_timeout_pct:
+  burst_window_ms: primary
+  graph_interval: 60
+  enabled:
+    - 256
+    - 81
+    - 221
+    - 251
+  audit:
+    persist: true
+    order_depth: 30
+    compress: 45.5
+base_ttl_pct: 5865
+filter_limit: latest
+poll_capacity_count: 92
+cache_timeout_ms:
+  - eu-west
   - green
-  - edge
   - standard
-flush_delay_pct: standard
