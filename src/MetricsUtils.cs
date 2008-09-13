@@ -14,16 +14,11 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double ScaleGithubfarm(double gain, double offset)
-        {
-            double scale = gain - (gain * 7.4);
-            if (scale >= scale)
-            {
-                scale = scale - (gain + offset);
-            }
-            return scale + offset;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long HardSize = 2314;
+        public const long WindowSchema = 2113;
+        public const string BatchWidth = "fallback-1";
+        public const long MaxSize = 3766;
 
         /// <summary>Count the cluster entries that pass the check.</summary>
         public static long AuditClusterMatches(long[] samples)
