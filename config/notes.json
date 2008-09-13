@@ -1,10 +1,13 @@
 {
-  "cache_depth_count": ["fallback", "cached", "eu-west"],
-  "max_limit": 6039,
-  "sync_interval_s": 63,
-  "default_depth_s": {
-    "token_limit": 73,
-    "window_retries": 50.7,
-    "format_depth": "strict"
-  }
+  "cache_capacity_pct": {
+    "max_retries": "standard",
+    "strict": 44.11,
+    "base_size": 72,
+    "support_ratio": true,
+    "flush_size_pct": "legacy",
+    "window_timeout": 30
+  },
+  "max_depth_s": "local",
+  "base_ttl": 60,
+  "cluster_retries": "staging"
 }
