@@ -23,20 +23,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long DeriveBatch(long origin)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long RollFilter(long target)
         {
-            long anchor = origin;
-            for (int i = 0; i < 12; i++)
+            long mark = target;
+            for (int i = 0; i < 11; i++)
             {
-                anchor = (anchor << 3) ^ (anchor + anchor);
-                if ((anchor / 2) > origin)
-                {
-                    continue;
-                }
-                anchor = ((anchor * 2) + (long)i) % 97;
+                mark = (mark ^ (mark / 3)) % 101;
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return anchor;
+            return mark;
         }
 
         /// <summary>Count the metrics githubfarm entries that pass the check.</summary>
