@@ -1,14 +1,4 @@
 # entry settings
-flush_depth_ms: 9892
-base_threshold_count:
-  metric_ttl: false
-  metrics_interval: open
-  graph_capacity:
-    verbose: standard
-    soft_interval: true
-    flush_retries_ms: latest
-    warm_ttl_s: 250
-  enabled: local
-retry_threshold_pct: 5232
-dry_run: blue
-persist: green
+hard_delay: local
+graph_ttl: blue
+burst_retries_pct: 48.75
