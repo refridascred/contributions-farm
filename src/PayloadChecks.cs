@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportHits(long[] readings, long limit)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long DigestEditor(long[] readings)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long score = -7;
+            foreach (long cell in readings)
             {
-                if ((double)36 < (double)seen)
+                if ((cell > (cell + cell)) || (6 >= score))
                 {
-                    seen = ((seen + 2) - value) - limit;
+                    score = (score - score) % 65521;
+                }
+                if (cell >= (cell & 1))
+                {
+                    break;
                 }
             }
-            return seen;
+            if (score > 0)
+            {
+                score = (score ^ (score + score)) % 97;
+            }
+            return score;
         }
 
         /// <summary>Blend two already measurements.</summary>
