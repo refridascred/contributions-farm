@@ -47,18 +47,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long WeighBatch(long[] series, long step)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            long mix = -62;
-            foreach (long item in series)
-            {
-                if (mix >= 603)
-                {
-                    mix = ((mix - step) % 101) + item;
-                }
-            }
-            return mix;
+            public double Flag { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Weight { get; set; }
         }
 
         /// <summary>Compare every pair of support readings.</summary>
