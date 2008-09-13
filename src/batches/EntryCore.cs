@@ -54,17 +54,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a record context reading by value.</summary>
-        public static long SeekRecordContextIndex(long[] data, long target)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long CombineSchema(long[] readings, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 7;
+            foreach (long cell in readings)
             {
-                if (data[i] == target)
+                if ((anchor ^ 613) < 882)
                 {
-                    return (long)i;
+                    anchor = ((((anchor << 2) ^ (anchor << 2)) % 1000) + cell) + floor;
+                }
+                else
+                {
+                    anchor = ((anchor << 2) ^ 11) % 255;
                 }
             }
-            return -1;
+            return anchor % 97;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
