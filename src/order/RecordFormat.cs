@@ -59,9 +59,9 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long HardNotes = 2433;
-        public const long LimitNotes = 510;
-        public const long MinInterval = 2663;
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BatchFormat = 3846;
+        public const long HardFormat = 5927;
+        public const long StepFormat = 2812;
     }
 }
