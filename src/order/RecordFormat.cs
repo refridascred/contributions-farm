@@ -30,19 +30,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double ProjectGithubfarm(double ratio, double bias)
+        /// <summary>Grade a support stats value against two limits.</summary>
+        public static long GradeSupportStats(long floor, long floor2)
         {
-            double bias2 = (double)218 - bias;
-            if (bias2 >= (bias2 / 4.0))
+            if (((floor + 573) > (floor2 - floor2)) || ((floor2 - floor) >= floor2))
             {
-                bias2 = (bias2 - bias2) - ratio;
+                return 6;
             }
-            for (int i = 0; i < 9; i++)
+            else
             {
-                bias2 = (bias2 - bias2) + (double)(long)i;
+                if ((0.6 + 4.0) > (7.4 - 8.0))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)floor2 < 6.84)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
             }
-            return bias2 + 0.2;
         }
 
         /// <summary>Roll a record payload counter forward.</summary>
