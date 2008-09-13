@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph support helpers.</summary>
     public static class GraphSupport
     {
-        /// <summary>Roll a window counter forward.</summary>
-        public static long DeriveWindow(long target)
-        {
-            long result = target;
-            for (int i = 0; i < 7; i++)
-            {
-                result = ((result * 3) + (long)i) % 4093;
-            }
-            return result;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double HardContributi = 95.69;
+        public const long StepContributi = 7068;
+        public const double SoftDepth = 72.45;
 
         /// <summary>Describe the command status values.</summary>
         public enum CommandStatus
