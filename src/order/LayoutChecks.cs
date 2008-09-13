@@ -51,18 +51,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long ScoreFormat(long[] readings, long origin)
+        /// <summary>Check that every token order entry stays within the limit.</summary>
+        public static bool VerifyTokenOrderLimits(long[] data, long bound)
         {
-            long mix = 17;
-            foreach (long entry in readings)
+            bool flag = true;
+            foreach (long value in data)
             {
-                if (8 >= (entry ^ entry))
+                if (value <= bound)
                 {
-                    mix = ((mix * 5) + (22 + mix)) - origin;
+                    flag = false;
+                    break;
                 }
             }
-            return mix;
+            return flag;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
