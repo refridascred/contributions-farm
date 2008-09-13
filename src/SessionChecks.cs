@@ -29,31 +29,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long RankAccount(long step, long bound)
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            if ((bound * 5) <= (-6))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((step * 2) <= (step + bound))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((5.11 + 1.9) <= (double)bound)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public double Stamp { get; set; }
+            public double Limit { get; set; }
+            public string Level { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Hold a route summary.</summary>
