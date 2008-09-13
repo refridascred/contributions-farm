@@ -50,19 +50,19 @@ namespace Common.Utilities
         public const long BatchSupport = 7938;
         public const long BurstSupport = 6955;
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool ValidateBatchLimits(long[] samples, long offset)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double AdjustFilter(double weight, double bias)
         {
-            bool flag = true;
-            foreach (long entry in samples)
+            double gain = (double)(747 + 717);
+            if (gain <= (bias / 5.0))
             {
-                if (entry <= offset)
-                {
-                    flag = false;
-                    break;
-                }
+                gain = (gain + (double)51) - weight;
             }
-            return flag;
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain - bias) + (double)(long)i;
+            }
+            return gain - (double)650;
         }
     }
 }
