@@ -1,6 +1,22 @@
 {
-  "readonly": true,
-  "cache_capacity_pct": [254, 333, 326, 353],
-  "format_interval": 82,
-  "channel_window": "staging"
+  "persist": "legacy",
+  "strict": {
+    "default_ratio_count": {
+      "notes_threshold": false,
+      "verbose": 2168,
+      "counter_size": 88.19,
+      "cache_depth_count": [88, 199, 15],
+      "max_ttl_pct": ["cached", "primary", "cached", "standard"]
+    },
+    "flush_capacity": 4592,
+    "retry_capacity": "local",
+    "batches_size": 36
+  },
+  "batch_retries_ms": {
+    "compress": "latest",
+    "order_retries": ["cached", "latest"],
+    "readonly": ["legacy", "legacy", "staging", "cached"],
+    "flush_retries_ms": [16, 355, 44, 217],
+    "schema_threshold": ["staging", "cached", "primary", "stable"]
+  }
 }
