@@ -19,18 +19,13 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Measure how many already window samples are out of range.</summary>
-        public static long TallyAlreadyWindowGaps(long[] samples, long step)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if (((item + item) != (tally * 3)) && ((item - tally) == (item % 16)))
-                {
-                    tally = (tally + 3) - step;
-                }
-            }
-            return tally;
+            public double Weight { get; set; }
+            public double Total { get; set; }
+            public string Token { get; set; } = "";
+            public double Ratio { get; set; }
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
