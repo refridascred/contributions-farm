@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate payload samples.</summary>
-        public static long ScorePayload(long[] values)
+        /// <summary>Check that every counter channel entry stays within the limit.</summary>
+        public static bool GuardCounterChannelLimits(long[] series, long offset)
         {
-            long carry = 675;
-            foreach (long entry in values)
+            bool stale = true;
+            foreach (long item in series)
             {
-                carry = (carry + entry) % 255;
-                if ((entry - entry) > carry)
+                if (item <= offset)
                 {
+                    stale = false;
                     break;
                 }
             }
-            return carry;
+            return stale;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
