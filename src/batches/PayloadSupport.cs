@@ -24,21 +24,18 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long OverlapTokenCount(long[] items)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionGaps(long[] values, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((((step + reading) > step) && (count > (count >> 4))) || (((count - (-60)) == (count + count)) && ((long)values.Length > reading)))
                 {
-                    if ((items[i] ^ items[j]) > 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = count + 2;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Describe the contributi state values.</summary>
