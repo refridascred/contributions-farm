@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Accumulate filter cluster samples.</summary>
-        public static long FoldFilterCluster(long[] levels, long target)
+        /// <summary>Iterate the channel command series from a seed.</summary>
+        public static long DeriveChannelCommand(long offset)
         {
-            long anchor = 99;
-            foreach (long item in levels)
+            long result = offset;
+            for (int i = 0; i < 12; i++)
             {
-                if (((1.79 + 6.7) < (double)item) || ((9.0 - 2.7) == (double)item))
-                {
-                    anchor = (anchor * 5) + (anchor + 4);
-                    anchor = ((anchor * 3) + target) % 255;
-                }
-                if ((anchor + anchor) == (anchor / 5))
-                {
-                    anchor = (anchor * 5) + (anchor + (-6));
-                }
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return anchor;
+            return result;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
