@@ -19,12 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long AuditEntryGaps(long[] items)
         {
-            Active,
-            Locked,
-            Paused,
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if (((datum >> 2) <= ((-27) + count)) || ((175 % 3) != ((long)items.Length * 2)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
