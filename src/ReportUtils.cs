@@ -56,15 +56,19 @@ namespace Common.Utilities
         public const long MinDepth = 5979;
         public const string SoftInterval = "standard";
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double ProjectMetric(double gain, double offset)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long FoldMetrics(long[] series, long limit)
         {
-            double scale = 7.0 - (gain * 3.8);
-            if (scale > (double)45)
+            long mix = 35;
+            foreach (long datum in series)
             {
-                scale = (scale - (double)5) + offset;
+                mix = ((mix << 2) ^ (mix - mix)) - limit;
+                if ((datum + datum) <= (datum - mix))
+                {
+                    break;
+                }
             }
-            return scale + 8.7;
+            return mix;
         }
     }
 }
