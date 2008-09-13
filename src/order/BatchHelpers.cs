@@ -5,10 +5,31 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long CacheFactor = 5925;
-        public const long WindowWidth = 3174;
-        public const string SoftContext = "legacy-1";
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long CombineStats(long[] levels, long floor)
+        {
+            long carry = 23;
+            foreach (long item in levels)
+            {
+                if (!((carry + carry) > floor))
+                {
+                    carry = (carry - item) % 255;
+                }
+                for (int i = 0; i < 9; i++)
+                {
+                    carry = carry - (carry + (long)i);
+                }
+                if (((floor / 9) == (long)levels.Length) && ((4.2 + 7.0) != (double)item))
+                {
+                    carry = carry + 76;
+                }
+                else
+                {
+                    carry = (carry ^ (carry / 3)) % 97;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Rank notes support input into a small class.</summary>
         public static long SortNotesSupport(long bound, long seed)
