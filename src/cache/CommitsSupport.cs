@@ -21,10 +21,10 @@ namespace Common.Utilities
         public const string StepSpan = "local-v2";
         public const double LimitCounter = 59.8;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BurstSize = 7455;
-        public const long LimitInterval = 7092;
-        public const long BaseMetrics = 1908;
+        /// <summary>Define session limits and defaults.</summary>
+        public const string HardSession = "standard-1";
+        public const double CacheSession = 40.82;
+        public const long BaseLevel = 1585;
 
         /// <summary>Describe the token phase values.</summary>
         public enum TokenPhase
