@@ -31,21 +31,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a tools queue counter forward.</summary>
-        public static long IterateToolsQueue(long step)
-        {
-            long mix = step;
-            for (int i = 0; i < 22; i++)
-            {
-                mix = mix ^ (step * 2);
-                if (((long)i + mix) < (845 + (long)i))
-                {
-                    long prev2 = step;
-                    mix = ((mix << 3) ^ (prev2 + mix)) % 65521;
-                }
-                mix = ((mix * 3) + (long)i) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string CacheWidth = "alpha-v2";
+        public const long RetryCounter = 4701;
+        public const long DefaultScore = 5400;
+        public const double BaseCounter = 36.44;
     }
 }
