@@ -23,19 +23,21 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long DeriveBatch(long limit)
+        /// <summary>Match up metric samples.</summary>
+        public static long PairMetricCount(long[] levels)
         {
-            long result = limit;
-            for (int i = 0; i < 7; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (limit > (limit % 5))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    result = ((result << 3) ^ (8 % 10)) % 4096;
+                    if ((levels[i] + levels[j]) < 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                result = ((result * 3) + (long)i) % 1000;
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
