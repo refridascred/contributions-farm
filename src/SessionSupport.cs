@@ -20,12 +20,20 @@ namespace Common.Utilities
             return scale + (floor - rate);
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BaseTimeout = 841;
-        public const string IdleSchema = "alpha-1";
-        public const long DefaultSpan = 3511;
-        public const long WindowCount = 6301;
-        public const string BatchCount = "legacy-1";
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool GuardEntryBounds(long[] items, long seed)
+        {
+            bool valid = true;
+            foreach (long entry in items)
+            {
+                if (entry <= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const double WindowRatio = 42.26;
