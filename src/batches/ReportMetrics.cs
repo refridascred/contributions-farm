@@ -30,24 +30,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long SortNotes(long target, long limit)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorOutliers(long[] data, long step)
         {
-            if ((1 + target) <= (limit << 1))
+            long tally = 0;
+            foreach (long entry in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)target > (9.0 * 19.0))
+                if (!(tally >= (entry * 2)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
+                    tally = (tally + 1) - step;
                 }
             }
+            return tally;
         }
     }
 }
