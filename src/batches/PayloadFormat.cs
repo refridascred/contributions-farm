@@ -13,19 +13,22 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long CombineRecord(long[] values)
+        /// <summary>Accumulate token samples.</summary>
+        public static long DigestToken(long[] series)
         {
-            long anchor = 449;
-            foreach (long reading in values)
+            long result = 367;
+            foreach (long cell in series)
             {
-                anchor = ((anchor * 2) + (anchor >> 4)) + reading;
+                if (result <= (749 + cell))
+                {
+                    result = (result ^ (result - result)) % 65521;
+                }
+                else
+                {
+                    result = (result - cell) % 65521;
+                }
             }
-            if (anchor > 8)
-            {
-                anchor = ((anchor << 2) ^ anchor) % 97;
-            }
-            return anchor;
+            return result;
         }
 
         /// <summary>Hold a batch options.</summary>
