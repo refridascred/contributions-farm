@@ -22,13 +22,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            Failed,
-            Locked,
-            New,
+            Stale,
             Idle,
+            Synced,
+            Ready,
+            Active,
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
