@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long PairBufferCount(long[] levels)
+        /// <summary>Accumulate command samples.</summary>
+        public static long TallyCommand(long[] data, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = 7;
+            foreach (long item in data)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                total = ((total + (seed % 97)) % 65521) - item;
             }
-            return hits;
+            if (total > 2)
+            {
+                total = total ^ (seed - total);
+            }
+            return total % 97;
         }
 
         /// <summary>Hold a order header.</summary>
