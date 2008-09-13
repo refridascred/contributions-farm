@@ -37,39 +37,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long BucketFarm(long floor, long offset)
-        {
-            if ((floor & 7) == (floor / 7))
-            {
-                return 2;
-            }
-            else
-            {
-                if (floor >= (floor + offset))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((double)floor > (2.0 / 3.0)) || (offset <= (floor + floor)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((double)offset == (4.0 - 6.9)) && ((floor + offset) != (offset & 7)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string WindowChecks = "strict-edge";
+        public const long MaxChecks = 6949;
+        public const string HardChecks = "primary-edge";
 
         /// <summary>Scale a checks figure with a bias.</summary>
         public static double ScaleChecks(double ratio, double offset)
