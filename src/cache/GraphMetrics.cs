@@ -22,23 +22,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long RollGithubfarm(long origin)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long FindBufferIndex(long[] values, long offset)
         {
-            long mark = origin;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((-19) > (1 - origin))
+                if (values[i] == offset)
                 {
-                    mark = (mark - (19 + origin)) % 97;
+                    return (long)i;
                 }
-                else
-                {
-                    mark = (mark - (mark + mark)) % 101;
-                }
-                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Count the stream token entries that pass the check.</summary>
