@@ -16,14 +16,19 @@ namespace Common.Utilities
             return load + (double)637;
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long RollSession(long target)
         {
-            Closed,
-            Retry,
-            Queued,
-            Pending,
-            Dropped,
+            long total = target;
+            for (int i = 0; i < 22; i++)
+            {
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    total = (((total * 2) + total) % 97) ^ (long)i2;
+                }
+                total = ((total * 2) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Hold a record snapshot.</summary>
