@@ -43,11 +43,9 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MaxSpan = 1967;
-        public const long WindowScore = 5094;
-        public const string MinSize = "legacy-1";
-        public const long IdleSpan = 8374;
-        public const string SoftBatches = "staging-edge";
+        /// <summary>Define support limits and defaults.</summary>
+        public const string CacheSupport = "local-1";
+        public const long CacheCount = 4383;
+        public const long LimitWidth = 9198;
     }
 }
