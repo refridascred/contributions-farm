@@ -14,18 +14,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesOutliers(long[] items)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if ((matches >> 1) < reading)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            New,
+            Draft,
+            Closed,
+            Retry,
         }
 
         /// <summary>Look up the position of a command sample.</summary>
