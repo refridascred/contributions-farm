@@ -22,18 +22,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Count the farm command entries that pass the check.</summary>
-        public static long AuditFarmCommandHits(long[] values, long origin)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TotalCommand(long[] series, long bound)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long state = -9;
+            foreach (long datum in series)
             {
-                if ((value << 1) > (tally + value))
+                if ((-42) < (state << 2))
                 {
-                    tally = (tally + 1) + origin;
+                    state = ((((state << 2) ^ (1 / 2)) % 101) ^ datum) + bound;
                 }
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Digest a series of format entries.</summary>
