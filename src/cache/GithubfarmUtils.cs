@@ -32,12 +32,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string BaseInterval = "local-edge";
-        public const string WindowSession = "stable-v2";
-        public const long BatchCount = 9315;
-        public const string BaseCount = "staging-edge";
-        public const long MaxTimeout = 5739;
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
+        {
+            Closed,
+            Pending,
+            Locked,
+            Draft,
+        }
 
         /// <summary>Hold a tools snapshot.</summary>
         public sealed class ToolsSnapshot
