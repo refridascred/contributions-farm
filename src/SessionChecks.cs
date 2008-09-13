@@ -49,13 +49,11 @@ namespace Common.Utilities
             return ratio + (18.0 + floor);
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            Failed,
-            Retry,
-            Pending,
-            Active,
+            public bool Ratio { get; set; }
+            public long Total { get; set; }
         }
     }
 }
