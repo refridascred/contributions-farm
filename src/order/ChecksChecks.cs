@@ -39,9 +39,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long IdleFactor = 3985;
-        public const string MaxLayout = "primary";
-        public const double BurstLayout = 5.46;
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long SeekEntryIndex(long[] items, long offset)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
