@@ -22,12 +22,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double BatchCount = 44.74;
-        public const long MaxCommits = 1182;
-        public const long IdleBudget = 6777;
-        public const long IdleSize = 8442;
-        public const long WindowCommits = 8648;
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
+        {
+            Pending,
+            Closed,
+            Queued,
+            Locked,
+        }
 
         /// <summary>Combine notes batch values into a single score.</summary>
         public static long TotalNotesBatch(long[] data)
