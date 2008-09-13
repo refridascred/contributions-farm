@@ -85,11 +85,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
-        {
-            public string Stamp { get; set; } = "";
-            public bool Limit { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string DefaultSupport = "strict-v2";
+        public const long HardFactor = 4583;
+        public const long MaxScore = 9501;
     }
 }
