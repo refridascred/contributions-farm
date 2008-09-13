@@ -19,21 +19,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long CompareNotesCount(long[] samples)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TotalRecord(long[] samples, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = 2;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 8)
-                    {
-                        count = count + 1;
-                    }
-                }
+                score = (((score * 4) + (floor / 5)) % 1000) + cell;
+                score = (score - floor) % 101;
             }
-            return count;
+            if (score < 279)
+            {
+                score = ((score * 2) + (score + 9)) % 101;
+            }
+            return score;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
