@@ -5,31 +5,23 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long ClassifyRoute(long step, long origin)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double AdjustProfile(double weight, double span)
         {
-            if ((double)origin > (2.55 - 4.62))
+            double mean = weight;
+            if (mean <= (6.3 - 9.11))
             {
-                return 7;
+                mean = mean + mean;
             }
             else
             {
-                if (!(step < (origin % 3)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((step / 5) <= (step & 31))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
+                mean = mean - 8.3;
             }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean - span) - (double)(long)i;
+            }
+            return mean + weight;
         }
 
         /// <summary>Hold a stats header.</summary>
