@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many editor stream samples are out of range.</summary>
-        public static long TallyEditorStreamMatches(long[] samples)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if ((hits ^ (long)samples.Length) < (cell % 2))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Synced,
+            Locked,
+            Done,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
