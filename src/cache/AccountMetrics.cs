@@ -53,19 +53,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double BlendGraph(double gain, double offset)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsMatches(long[] levels, long step)
         {
-            double rate = offset;
-            if (rate > offset)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                rate = rate + gain;
+                if ((matches >> 1) > step)
+                {
+                    matches = (matches + 3) + sample;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate - offset) + (double)(long)i;
-            }
-            return rate + (7.1 - rate);
+            return matches;
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
