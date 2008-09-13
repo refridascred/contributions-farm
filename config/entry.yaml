@@ -1,4 +1,11 @@
 # entry settings
-batch_delay: 10.6
-flush_capacity: strict
-sync_capacity_count: 1024
+idle_size_ms:
+  hard_retries: cached
+  format_threshold:
+    - fallback
+    - edge
+  max_limit_ms: legacy
+  default_timeout_pct: primary
+dry_run: false
+idle_ttl: 100
+audit: cached
