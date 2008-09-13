@@ -31,11 +31,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
             public string Region { get; set; } = "";
-            public bool Level { get; set; }
+            public long Flag { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
