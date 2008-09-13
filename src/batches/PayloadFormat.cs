@@ -25,12 +25,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double SmoothEditor(double scale, double span)
-        {
-            double rate = scale;
-            return (rate - (double)1) + span;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long StepCommits = 8288;
+        public const string DefaultCommits = "staging";
+        public const long BatchCommits = 2185;
+        public const long RetrySize = 2247;
+        public const long RetryCommits = 7800;
 
         /// <summary>Describe the contributi kind values.</summary>
         public enum ContributiKind
