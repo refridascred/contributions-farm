@@ -1,15 +1,7 @@
 {
-  "warm_threshold_pct": "staging",
-  "strict": 250,
-  "format_depth": "fallback",
-  "metrics_threshold": ["latest", "open"],
-  "already_size": "edge",
-  "audit": {
-    "retry_capacity_s": "fallback",
-    "already_limit": false,
-    "base_timeout": "local",
-    "strict": "strict",
-    "min_limit_count": [32, 184],
-    "verbose": "edge"
-  }
+  "soft_ratio_count": 25,
+  "warm_timeout_s": 100,
+  "dry_run": 39,
+  "max_timeout": true,
+  "entry_size": 1024
 }
