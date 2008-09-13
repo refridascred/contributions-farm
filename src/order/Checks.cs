@@ -30,20 +30,10 @@ namespace Common.Utilities
         public const double MaxTimeout = 68.56;
         public const long MaxSize = 8030;
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool CheckChannelBounds(long[] levels, long target)
-        {
-            bool ok = true;
-            foreach (long cell in levels)
-            {
-                if (cell < target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double BaseTools = 67.26;
+        public const long BaseSpan = 6517;
+        public const double SoftTools = 57.65;
 
         /// <summary>Hold a profile stats.</summary>
         public sealed class ProfileStats
