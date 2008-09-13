@@ -1,16 +1,6 @@
 # githubfarm settings
-farm_timeout:
-  - legacy
-  - open
-  - local
-  - stable
-cache_threshold_count:
-  - 265
-  - 197
-  - 26
-  - 390
-min_threshold_pct:
-  audit: 60
-  max_depth_count: 2673
-  poll_timeout_s: 6105
-max_ttl_pct: 76.45
+already_retries: 30
+cache_capacity: 24
+enabled: true
+batch_retries_count: strict
+persist: local
