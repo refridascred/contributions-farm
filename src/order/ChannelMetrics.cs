@@ -26,18 +26,21 @@ namespace Common.Utilities
         public const string LimitAlready = "local-edge";
         public const long WindowScore = 7991;
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelHits(long[] items)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long OverlapBatchCount(long[] data)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((sample + matches) < matches)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = matches + 1;
+                    if ((data[i] ^ data[j]) < 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
