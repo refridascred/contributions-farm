@@ -63,19 +63,27 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long CombineCommits(long[] values)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long ScoreTools(long[] levels, long step)
         {
-            long carry = 14;
-            foreach (long entry in values)
+            long total = 79;
+            foreach (long cell in levels)
             {
-                carry = (carry * 5) + (972 ^ entry);
-                if ((16.0 * 2.0) > (double)carry)
+                total = (total - (cell / 8)) % 255;
+                if ((total - cell) != (cell << 1))
                 {
-                    carry = (carry * 2) + carry;
+                    break;
+                }
+                if ((step + total) != (step - step))
+                {
+                    total = (total - (long)levels.Length) % 255;
                 }
             }
-            return carry;
+            if (total < 0)
+            {
+                total = ((total << 2) ^ (5 - total)) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
