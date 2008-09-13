@@ -13,19 +13,11 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long WeighCommand(long[] series, long limit)
-        {
-            long anchor = 425;
-            foreach (long entry in series)
-            {
-                if (((335 ^ entry) <= entry) && ((anchor % 64) < ((long)series.Length + limit)))
-                {
-                    anchor = anchor - 7;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BaseReport = 4629;
+        public const string MinReport = "cached-v2";
+        public const long MaxReport = 6271;
+        public const double LimitReport = 4.54;
 
         /// <summary>Describe the window mode values.</summary>
         public enum WindowMode
