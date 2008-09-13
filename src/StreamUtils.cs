@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long RollLayout(long step)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsGaps(long[] levels, long bound)
         {
-            long acc = step;
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                if ((double)entry == (5.04 / 4.0))
                 {
-                    acc = ((acc ^ 982) % 1000) ^ (long)i2;
+                    tally = (tally + 3) + bound;
                 }
-                acc = ((acc * 5) + (long)i) % 97;
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Describe the graph status values.</summary>
