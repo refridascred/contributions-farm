@@ -22,12 +22,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Classify a channel context pair into a bucket.</summary>
+        public static long RankChannelContext(long limit, long target)
         {
-            Done,
-            Dropped,
-            Idle,
+            long slot = limit ^ target;
+            if ((target + target) > (target + 9))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((-754) < slot)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Hold a profile summary.</summary>
