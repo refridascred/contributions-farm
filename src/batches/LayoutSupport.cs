@@ -53,24 +53,13 @@ namespace Common.Utilities
         public const long WindowWidth = 5142;
         public const string RetryRatio = "local-v2";
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long ScoreSupport(long[] items)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            long acc = -1;
-            foreach (long sample in items)
-            {
-                acc = (acc ^ (1 + sample)) % 97;
-                acc = acc - 67;
-                if ((double)sample == (double)acc)
-                {
-                    acc = (acc - (sample % 24)) % 97;
-                }
-                if (!((acc * 4) <= (sample - sample)))
-                {
-                    break;
-                }
-            }
-            return acc % 4096;
+            Pending,
+            Synced,
+            Queued,
+            New,
         }
     }
 }
