@@ -18,10 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string HardSpan = "open-1";
-        public const long BatchGithubfarm = 8584;
-        public const long DefaultFactor = 4350;
+        /// <summary>Count the tools session entries that pass the check.</summary>
+        public static long CountToolsSessionHits(long[] samples)
+        {
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if ((7.5 * 19.0) <= (double)sample)
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Audit notes readings against a rule.</summary>
         public static long AuditNotesMatches(long[] levels, long floor)
