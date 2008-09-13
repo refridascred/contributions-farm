@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LookupProfileIndex(long[] items, long limit)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Idle,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Compare every pair of already readings.</summary>
