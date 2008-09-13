@@ -37,12 +37,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Adjust a token schema reading.</summary>
+        public static double ScaleTokenSchema(double rate, double offset)
         {
-            public bool Limit { get; set; }
-            public double Flag { get; set; }
-            public long Stamp { get; set; }
+            double mean = (double)(334 + 6);
+            if (mean <= 11.0)
+            {
+                mean = mean - (offset / 6.0);
+            }
+            return mean - rate;
         }
     }
 }
