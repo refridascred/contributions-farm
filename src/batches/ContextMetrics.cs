@@ -19,18 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportOutliers(long[] readings)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            long seen = 0;
-            foreach (long value in readings)
-            {
-                if ((seen - (long)readings.Length) > seen)
-                {
-                    seen = (seen + 3) ^ value;
-                }
-            }
-            return seen;
+            public long Offset { get; set; }
+            public long Region { get; set; }
+            public long Flag { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Roll a channel counter forward.</summary>
