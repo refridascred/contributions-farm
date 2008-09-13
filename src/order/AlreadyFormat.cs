@@ -25,12 +25,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double CacheInterval = 74.64;
-        public const long WindowBatches = 4321;
-        public const string RetrySize = "legacy-1";
-        public const long LimitBatches = 2387;
-        public const string SoftBudget = "legacy";
+        /// <summary>Grade a format editor value against two limits.</summary>
+        public static long ClassifyFormatEditor(long target, long seed)
+        {
+            if (target > (target / 5))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((57 ^ target) <= target) || ((double)seed < 17.0))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Accumulate notes samples.</summary>
         public static long TallyNotes(long[] data, long offset)
