@@ -1,18 +1,14 @@
 {
-  "burst_capacity": {
-    "persist": "edge",
-    "flush_size_s": {
-      "base_retries": ["fallback", "open", "open"],
-      "dry_run": false,
-      "enabled": 21.64,
-      "cache_capacity": [373, 274, 226, 488]
-    },
-    "idle_timeout_count": "staging",
-    "enabled": 4916,
-    "queue_depth": false
+  "warm_retries": 4191,
+  "idle_limit_count": {
+    "record_retries": "fallback",
+    "min_delay_count": 250,
+    "filter_depth": "staging",
+    "persist": "primary",
+    "command_retries": true,
+    "base_window_ms": true
   },
-  "soft_threshold_ms": 52.04,
-  "account_ttl": "green",
-  "stream_ttl": 654,
-  "burst_timeout_s": true
+  "base_ratio": 3329,
+  "batch_ratio": [56, 127, 479, 329],
+  "hard_capacity": [15, 115, 154]
 }
