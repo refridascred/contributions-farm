@@ -21,13 +21,18 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportOutliers(long[] samples, long seed)
         {
-            Failed,
-            Pending,
-            Closed,
-            Ready,
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if ((((reading % 97) >= (reading << 3)) && ((509 + tally) >= (seed & 127))) && (seed < (seed - 417)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
