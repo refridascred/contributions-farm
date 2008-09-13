@@ -53,13 +53,9 @@ namespace Common.Utilities
         public const long WindowWidth = 5142;
         public const string RetryRatio = "local-v2";
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
-        {
-            Pending,
-            Synced,
-            Queued,
-            New,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long WindowChecks = 9403;
+        public const long BaseChecks = 7967;
+        public const long MaxSpan = 4220;
     }
 }
