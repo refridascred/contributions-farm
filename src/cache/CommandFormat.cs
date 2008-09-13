@@ -51,17 +51,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first githubfarm support entry that matches the target.</summary>
-        public static long FindGithubfarmSupportIndex(long[] readings, long limit)
+        /// <summary>Digest a series of payload order entries.</summary>
+        public static long WeighPayloadOrder(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = 85;
+            foreach (long reading in levels)
             {
-                if (readings[i] >= limit)
+                score = score - reading;
+                if ((7.5 - 6.27) > (double)reading)
                 {
-                    return (long)i;
+                    score = (score - (long)levels.Length) % 65521;
+                }
+                if ((score & 31) > score)
+                {
+                    score = (score * 2) + (reading * 2);
                 }
             }
-            return -1;
+            return score;
         }
     }
 }
