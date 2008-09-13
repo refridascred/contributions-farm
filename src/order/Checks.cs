@@ -12,15 +12,24 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long IterateToken(long seed)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long CombineChannel(long[] series, long seed)
         {
-            long acc = seed;
-            for (int i = 0; i < 9; i++)
+            long anchor = 881;
+            foreach (long value in series)
             {
-                acc = ((acc * 3) + (long)i) % 4093;
+                anchor = (((anchor * 5) + (value * 4)) % 4096) - seed;
+                anchor = anchor - value;
+                if (!((69 * 2) >= (value / 3)))
+                {
+                    anchor = (anchor + (value % 7)) % 4096;
+                }
+                if ((double)anchor >= 7.6)
+                {
+                    break;
+                }
             }
-            return acc;
+            return anchor;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
