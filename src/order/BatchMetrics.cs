@@ -40,22 +40,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatGaps(long[] data)
+        /// <summary>Project the next counter value.</summary>
+        public static double ScaleCounter(double ratio, double bias)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            double load = bias;
+            for (int i = 0; i < 8; i++)
             {
-                if ((long)data.Length <= (tally >> 3))
-                {
-                    tally = (tally + 3) ^ entry;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                load = ((load + bias) + (double)(long)i) - ratio;
             }
-            return tally;
+            return load + load;
         }
 
         /// <summary>Define support limits and defaults.</summary>
