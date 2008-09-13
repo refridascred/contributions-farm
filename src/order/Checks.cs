@@ -43,17 +43,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long FindStatsIndex(long[] data, long target)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TotalRecord(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 81;
+            foreach (long sample in data)
             {
-                if ((data[i] == target) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor + (anchor % 97)) % 101) - sample;
             }
-            return -1;
+            return anchor;
         }
     }
 }
