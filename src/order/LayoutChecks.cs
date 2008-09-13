@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Count format batches pairs that satisfy a relation.</summary>
-        public static long MatchFormatBatchesCount(long[] levels)
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Count { get; set; }
+            public string Mode { get; set; } = "";
+            public double Size { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
