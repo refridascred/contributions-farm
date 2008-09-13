@@ -77,12 +77,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Measure how many already report samples are out of range.</summary>
+        public static long CountAlreadyReportGaps(long[] values)
         {
-            public bool Level { get; set; }
-            public long Mode { get; set; }
-            public long Ratio { get; set; }
+            long matches = 0;
+            foreach (long entry in values)
+            {
+                if (((entry % 64) <= (matches & 31)) && (((-767) > entry) && (matches >= (3 / 6))))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
