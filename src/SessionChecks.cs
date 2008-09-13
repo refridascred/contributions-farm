@@ -47,22 +47,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long TallyAlready(long[] data, long origin)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long SortRecord(long target, long target2)
         {
-            long result = 9;
-            foreach (long sample in data)
+            if ((512 * 5) <= target2)
             {
-                if ((sample * 5) <= result)
+                return 6;
+            }
+            else
+            {
+                if ((target - target2) <= target2)
                 {
-                    result = result ^ (result + sample);
+                    return 5;
                 }
-                if (origin > (result + 789))
+                else
                 {
-                    result = (result ^ (sample + origin)) % 4096;
+                    if (target2 < (target << 2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return result;
         }
     }
 }
