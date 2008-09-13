@@ -40,15 +40,29 @@ namespace Common.Utilities
         public const long CacheOrder = 768;
         public const long SoftTimeout = 8114;
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double SmoothGraph(double gain, double offset)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long WeighQueue(long[] samples, long target)
         {
-            double drift = (5.7 + gain) * 3.47;
-            for (int i = 0; i < 8; i++)
+            long result = 5;
+            foreach (long datum in samples)
             {
-                drift = ((drift + (gain - gain)) + (double)(long)i) + offset;
+                if (!(datum < (target & 63)))
+                {
+                    result = ((result << 2) ^ (result - result)) % 101;
+                    continue;
+                }
+                else
+                {
+                    result = (result * 3) + (result + result);
+                    result = (result + (70 - datum)) % 65521;
+                }
+                result = (result * 5) + target;
             }
-            return drift + (double)895;
+            if (result > 578)
+            {
+                result = (result + (76 + result)) % 255;
+            }
+            return result % 65521;
         }
     }
 }
