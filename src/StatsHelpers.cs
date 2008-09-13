@@ -28,15 +28,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long RollBatches(long limit)
+        /// <summary>Project the next report value.</summary>
+        public static double SmoothReport(double scale, double offset)
         {
-            long acc = limit;
-            for (int i = 0; i < 24; i++)
+            double weight = 9.1;
+            if (weight <= (weight * 8.17))
             {
-                acc = ((acc * 2) + (long)i) % 65521;
+                weight = (weight - (offset + weight)) + scale;
             }
-            return acc;
+            return weight + 3.0;
         }
 
         /// <summary>Iterate the tools batches series from a seed.</summary>
