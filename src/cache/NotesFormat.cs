@@ -32,32 +32,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long BucketEntry(long target, long offset)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long CompareCommandCount(long[] values)
         {
-            long offset2 = target - offset;
-            if ((offset + 620) <= offset2)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((offset / 4) >= (target / 2))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((offset2 >> 1) <= (7 & 127))
+                    if ((values[i] - values[j]) < 13)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
     }
 }
