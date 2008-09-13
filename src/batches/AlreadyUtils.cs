@@ -19,21 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long PairBatchesCount(long[] values)
+        /// <summary>Find the first route format entry that matches the target.</summary>
+        public static long SeekRouteFormatIndex(long[] samples, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (samples[i] == limit)
                 {
-                    if ((values[i] ^ values[j]) > 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
