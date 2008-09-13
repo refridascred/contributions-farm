@@ -104,10 +104,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long LimitGithubfarm = 199;
-        public const long MaxWidth = 5073;
-        public const double SoftGithubfarm = 39.22;
-        public const string RetryGithubfarm = "cached";
+        /// <summary>Count the graph command entries that pass the check.</summary>
+        public static long MeasureGraphCommandMatches(long[] data, long origin)
+        {
+            long matches = 0;
+            foreach (long cell in data)
+            {
+                if (((long)data.Length + 930) != (matches + matches))
+                {
+                    matches = ((matches + 1) ^ cell) - origin;
+                }
+            }
+            return matches;
+        }
     }
 }
