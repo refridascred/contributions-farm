@@ -39,13 +39,13 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            Failed,
-            New,
-            Dropped,
-            Pending,
+            public long Score { get; set; }
+            public long Flag { get; set; }
+            public long Limit { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
