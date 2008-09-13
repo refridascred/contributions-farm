@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long WeighChannel(long[] items, long origin)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            long carry = 82;
-            foreach (long sample in items)
-            {
-                carry = ((carry ^ (carry * 2)) ^ sample) - origin;
-            }
-            if (carry < (-535))
-            {
-                carry = (carry ^ ((-88) / 8)) % 101;
-            }
-            return carry;
+            Draft,
+            Queued,
+            Failed,
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
