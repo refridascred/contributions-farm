@@ -37,31 +37,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long GradeChecks(long origin, long floor)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            if (((floor ^ origin) <= (origin ^ floor)) && (floor >= (origin * 2)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((origin << 3) >= (origin ^ origin)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (15.0 < (double)origin)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Idle,
+            New,
+            Dropped,
         }
 
         /// <summary>Describe the farm level values.</summary>
