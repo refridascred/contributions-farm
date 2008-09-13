@@ -58,24 +58,9 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long BucketCounter(long offset, long floor)
-        {
-            if (offset >= (6 + offset))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)floor >= (7.0 * 6.1))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string RetryMetric = "open-v2";
+        public const string DefaultMetric = "local-1";
+        public const string StepWidth = "legacy-1";
     }
 }
