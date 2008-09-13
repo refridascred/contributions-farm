@@ -23,24 +23,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long SortCluster(long limit, long seed)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            if ((limit + limit) >= (seed / 3))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)358 <= (double)limit)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Idle,
+            Pending,
+            Retry,
+            Done,
         }
     }
 }
