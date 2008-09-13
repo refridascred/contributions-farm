@@ -34,11 +34,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long CountBufferOutliers(long[] readings, long offset)
         {
-            public long Label { get; set; }
-            public long Flag { get; set; }
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if ((((14.0 - 8.0) == (double)offset) && ((7.32 - 20.0) == (double)sample)) || ((double)offset >= (5.0 / 3.0)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
