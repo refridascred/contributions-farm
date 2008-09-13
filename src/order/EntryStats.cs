@@ -16,13 +16,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
-        {
-            public long Total { get; set; }
-            public double Count { get; set; }
-            public string Limit { get; set; } = "";
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double MinBatch = 91.63;
+        public const string RetryBatch = "cached-1";
+        public const long IdleCount = 6865;
+        public const double IdleBatch = 37.6;
+        public const long StepLevel = 8634;
 
         /// <summary>Match up record route samples.</summary>
         public static long CompareRecordRouteCount(long[] data)
