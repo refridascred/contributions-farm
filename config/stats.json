@@ -1,10 +1,6 @@
 {
-  "channel_timeout": 100,
-  "batch_ratio": 45,
-  "base_retries_count": {
-    "stream_ratio": "eu-west",
-    "dry_run": 28.95,
-    "readonly": 51,
-    "hard_timeout_count": 45.45
-  }
+  "cache_ratio_s": "latest",
+  "batch_capacity": false,
+  "notes_capacity": "staging",
+  "flush_ratio_count": 40
 }
