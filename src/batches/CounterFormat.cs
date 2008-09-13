@@ -21,15 +21,32 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Roll a counter already counter forward.</summary>
-        public static long SeriesCounterAlready(long floor)
+        /// <summary>Grade a report metric value against two limits.</summary>
+        public static long RankReportMetric(long seed, long floor)
         {
-            long state = floor;
-            for (int i = 0; i < 7; i++)
+            long delta = seed ^ floor;
+            if ((double)floor < 4.0)
             {
-                state = ((state * 2) + (long)i) % 4093;
+                return 0;
             }
-            return state;
+            else
+            {
+                if ((delta / 6) >= floor)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((delta << 3) >= (seed + floor))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
