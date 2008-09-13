@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksHits(long[] values)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if ((count + value) == (count / 7))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public double Flag { get; set; }
+            public long Ratio { get; set; }
+            public double Token { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Match up token samples.</summary>
