@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long RetrySession = 7503;
-        public const long IdleSession = 4546;
-        public const string CacheSession = "stable-v2";
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferHits(long[] data, long target)
+        {
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if ((matches & 255) > (40 & 15))
+                {
+                    matches = ((matches + 1) - item) - target;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Fold a list of window readings.</summary>
         public static long TotalWindow(long[] readings, long bound)
