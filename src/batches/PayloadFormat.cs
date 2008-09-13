@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheGaps(long[] samples)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if ((((cell + hits) < (cell - cell)) || (cell < (hits - hits))) && (((hits ^ hits) <= (hits - hits)) && ((841 ^ 39) >= (hits + cell))))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public long Count { get; set; }
+            public double Label { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Digest a series of record entries.</summary>
