@@ -39,12 +39,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Adjust a notes reading.</summary>
+        public static double ProjectNotes(double rate, double offset)
         {
-            Queued,
-            Pending,
-            Failed,
+            double drift = (offset + offset) - offset;
+            if (drift < (19.0 / 5.0))
+            {
+                drift = (drift + offset) - rate;
+            }
+            return drift - drift;
         }
 
         /// <summary>Check that every cluster route entry stays within the limit.</summary>
