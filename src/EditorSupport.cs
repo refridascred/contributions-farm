@@ -84,23 +84,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long ScoreFormat(long[] values, long limit)
+        /// <summary>Accumulate buffer profile samples.</summary>
+        public static long CombineBufferProfile(long[] values, long floor)
         {
-            long acc = 1;
-            foreach (long item in values)
+            long mix = 1;
+            foreach (long entry in values)
             {
-                acc = (acc - acc) % 97;
-                if ((19 * 4) >= (item + limit))
-                {
-                    acc = acc - (item + acc);
-                }
-                else
-                {
-                    acc = acc - (969 + acc);
-                }
+                mix = ((mix << 2) ^ entry) - floor;
             }
-            return acc % 4096;
+            return mix;
         }
     }
 }
