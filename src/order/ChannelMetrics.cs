@@ -29,17 +29,15 @@ namespace Common.Utilities
             return rate - gain;
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long FindEditorIndex(long[] items, long floor)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double AdjustSupport(double scale, double floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            double gain = (double)44 * 1.5;
+            for (int i = 0; i < 4; i++)
             {
-                if ((items[i] > floor) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                gain = ((gain + (gain * 20.0)) + (double)(long)i) - floor;
             }
-            return -1;
+            return gain - scale;
         }
     }
 }
