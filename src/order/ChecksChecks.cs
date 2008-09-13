@@ -22,24 +22,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long ClassifyRoute(long target, long target2)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            if (target > (target2 - target2))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((9.71 - 12.0) == (double)target2) || (target >= (target & 3)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Active,
+            Dropped,
+            Closed,
+            Queued,
+            Pending,
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
