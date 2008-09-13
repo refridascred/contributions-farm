@@ -15,19 +15,32 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool ValidateClusterBounds(long[] samples, long offset)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long GradeBatches(long seed, long offset)
         {
-            bool valid = true;
-            foreach (long cell in samples)
+            long span = seed + offset;
+            if ((15.0 / 6.0) <= (double)offset)
             {
-                if (cell <= offset)
+                return 1;
+            }
+            else
+            {
+                if ((span / 6) == (seed ^ seed))
                 {
-                    valid = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((2.82 - 0.81) == (double)seed)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Hold a commits info.</summary>
