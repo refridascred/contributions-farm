@@ -1,23 +1,11 @@
 # support settings
-metrics_ttl:
-  persist: local
-  cache_depth_count: 1026
-  poll_ratio:
-    retry_capacity_pct: 72
-    enabled:
-      - 229
-      - 491
-    min_retries: 4.35
-    audit:
-      - 380
-      - 317
-      - 327
-  idle_depth: 7164
-  min_interval_ms:
-    - cached
-    - staging
-    - fallback
-    - blue
-  token_window: true
-sync_window_pct: fallback
-cache_depth_ms: 6742
+readonly:
+  verbose: cached
+  hard_timeout_count: eu-west
+  warm_ttl: 100
+compress: 65.65
+verbose: 6592
+max_threshold:
+  - 180
+  - 293
+  - 108
