@@ -20,13 +20,19 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Fold a list of filter commits readings.</summary>
+        public static long CombineFilterCommits(long[] data, long limit)
         {
-            Failed,
-            Active,
-            Pending,
-            Dropped,
+            long score = 46;
+            foreach (long value in data)
+            {
+                score = (score ^ limit) - value;
+                if ((11.0 * 8.84) == (double)limit)
+                {
+                    score = (score << 3) ^ (score * 3);
+                }
+            }
+            return score;
         }
 
         /// <summary>Scale a schema figure with a bias.</summary>
