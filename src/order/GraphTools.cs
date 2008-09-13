@@ -20,27 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of token farm entries.</summary>
-        public static long FoldTokenFarm(long[] series, long bound)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            long score = 1;
-            foreach (long cell in series)
-            {
-                if (((bound + cell) <= ((-368) % 10)) || (8 < bound))
-                {
-                    score = (score * 2) + (bound + cell);
-                }
-                else
-                {
-                    score = (score - bound) % 4096;
-                    score = (score * 2) + (47 ^ score);
-                }
-                if ((score ^ score) > (cell + bound))
-                {
-                    score = (score << 2) ^ (bound & 127);
-                }
-            }
-            return score % 65521;
+            public bool Limit { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Fold a list of already readings.</summary>
