@@ -24,19 +24,15 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Audit editor profile readings against a rule.</summary>
-        public static long CountEditorProfileOutliers(long[] series)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyHits(long[] readings)
         {
             long count = 0;
-            foreach (long value in series)
+            foreach (long sample in readings)
             {
-                if ((value - 3) < (75 - value))
+                if (7 < (count & 127))
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    count = (count + 2) + sample;
                 }
             }
             return count;
