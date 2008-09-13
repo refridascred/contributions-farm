@@ -1,11 +1,11 @@
 # Command notes
 
-When a batches fails, the batch handler retries a few times before giving up.
-Each commits is validated before it reaches the entry queue.
+The window module keeps stream values in sync with the support cache.
+Run the filter check before changing any tools limits.
 
 ## Guidelines
 
-- Log every cache change
-- Keep window values small
-- Validate format input early
-- Document new report fields
+- Log every schema change
+- Prefer session defaults
+- Document new entry fields
+- Keep layout values small
