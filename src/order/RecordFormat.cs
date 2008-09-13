@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Find the first farm command entry that matches the target.</summary>
-        public static long SeekFarmCommandIndex(long[] series, long bound)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long LookupRecordIndex(long[] levels, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((series[i] < bound) && ((series[i] % 5) == 0))
+                if (levels[i] == floor)
                 {
                     return (long)i;
                 }
