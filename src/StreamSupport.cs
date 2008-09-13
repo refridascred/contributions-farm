@@ -18,24 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long ClassifyFarm(long seed, long target)
+        /// <summary>Measure how many already command samples are out of range.</summary>
+        public static long TallyAlreadyCommandGaps(long[] values, long floor)
         {
-            if ((target + target) > 13)
+            long hits = 0;
+            foreach (long item in values)
             {
-                return 0;
-            }
-            else
-            {
-                if ((seed - seed) > seed)
+                if ((double)floor < (double)item)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
 
         /// <summary>Blend two cache command measurements.</summary>
