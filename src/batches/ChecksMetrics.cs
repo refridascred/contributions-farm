@@ -18,22 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueHits(long[] samples, long bound)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool GuardLayoutBounds(long[] series, long bound)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            bool stale = true;
+            foreach (long datum in series)
             {
-                if ((double)tally < (2.1 + 9.98))
+                if (datum != bound)
                 {
-                    tally = ((tally + 1) ^ item) + bound;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Hold a format summary.</summary>
