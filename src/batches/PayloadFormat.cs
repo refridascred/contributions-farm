@@ -44,24 +44,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long DeriveQueue(long step)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long LookupStreamIndex(long[] series, long step)
         {
-            long acc = step;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                acc = (acc ^ (step + 736)) % 255;
-                for (int i2 = 0; i2 < 10; i2++)
+                if ((series[i] == step) && ((series[i] % 5) != 0))
                 {
-                    acc = (acc ^ (acc & 7)) - (long)i2;
+                    return (long)i;
                 }
-                if ((((long)i % 100) < (acc >> 5)) && (acc >= (step + step)))
-                {
-                    acc = (acc << 2) ^ (acc ^ step);
-                }
-                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return acc;
+            return -1;
         }
     }
 }
