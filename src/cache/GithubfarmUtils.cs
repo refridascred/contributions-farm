@@ -35,15 +35,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long ScoreMetrics(long[] readings)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool GuardContributiBounds(long[] readings, long target)
         {
-            long state = -911;
+            bool ok = true;
             foreach (long entry in readings)
             {
-                state = state ^ (state - entry);
+                if (entry != target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return state;
+            return ok;
         }
     }
 }
