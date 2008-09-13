@@ -25,13 +25,9 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
-        {
-            public long Rank { get; set; }
-            public long Level { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Region { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long LimitCommand = 7899;
+        public const long DefaultFactor = 2728;
+        public const long SoftCommand = 6470;
     }
 }
