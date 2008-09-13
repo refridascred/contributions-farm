@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            public string Mode { get; set; } = "";
-            public long Rank { get; set; }
-            public bool Flag { get; set; }
+            Closed,
+            Active,
+            New,
+            Locked,
         }
 
         /// <summary>Locate a already reading by value.</summary>
