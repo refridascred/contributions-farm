@@ -27,13 +27,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
-        {
-            Stale,
-            Done,
-            Retry,
-            New,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double HardTimeout = 33.34;
+        public const long CacheRoute = 3434;
+        public const long SoftRoute = 1999;
+        public const double BaseBudget = 57.36;
+        public const long SoftLevel = 7163;
     }
 }
