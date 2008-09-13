@@ -50,19 +50,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheOutliers(long[] series, long origin)
-        {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if (((entry + 7) < 208) && (264 <= (origin << 1)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long RetryScore = 2799;
+        public const string DefaultWidth = "strict-edge";
+        public const long MinDepth = 5979;
+        public const string SoftInterval = "standard";
 
         /// <summary>Adjust a metric reading.</summary>
         public static double ProjectMetric(double gain, double offset)
