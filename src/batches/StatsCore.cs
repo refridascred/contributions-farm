@@ -53,19 +53,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderBounds(long[] data, long bound)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchOutliers(long[] samples)
         {
-            bool ready = true;
-            foreach (long entry in data)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                if (entry <= bound)
+                if ((((double)entry >= (5.48 - 2.4)) || ((double)(long)samples.Length >= (double)(-23))) || ((count - entry) > (37 + entry)))
                 {
-                    ready = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return ready;
+            return count;
         }
     }
 }
