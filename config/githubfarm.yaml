@@ -1,7 +1,6 @@
 # githubfarm settings
-batch_capacity_s: true
-command_interval: cached
-readonly: 92.88
-idle_depth_pct: 26.8
-base_limit_ms: stable
-strict: 6752
+report_capacity: true
+verbose: 23.61
+retry_threshold_s:
+  - open
+  - local
