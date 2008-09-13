@@ -23,21 +23,18 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long PairMetricCount(long[] levels)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportMatches(long[] readings, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)76 <= (6.86 - 9.16))
                 {
-                    if ((levels[i] + levels[j]) < 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = ((seen + 3) + reading) + bound;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
