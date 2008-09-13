@@ -1,5 +1,8 @@
 {
-  "checks_interval": "strict",
-  "burst_retries_count": true,
-  "hard_ttl_pct": true
+  "hard_window": [477, 239, 308],
+  "base_capacity_pct": "legacy",
+  "enabled": [272, 97, 361, 417],
+  "retry_interval_ms": 6365,
+  "verbose": 7394,
+  "retry_ratio_ms": [459, 133, 41]
 }
