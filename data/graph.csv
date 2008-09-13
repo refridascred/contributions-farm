@@ -1,7 +1,8 @@
-id,score,token
-1,open,88.41
-2,blue,standard
-3,5.52,primary
-4,cached,green
-5,blue,primary
-6,latest,94.23
+id,rank,token,score
+1,cached,683,edge
+2,160,778,871
+3,375,78.61,green
+4,27.61,938,eu-west
+5,235,stable,52.43
+6,edge,832,standard
+7,775,86.97,735
