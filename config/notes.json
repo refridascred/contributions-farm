@@ -1,7 +1,5 @@
 {
-  "min_depth_s": "strict",
-  "default_interval_pct": [494, 363, 209],
-  "record_capacity": ["fallback", "strict", "open", "staging"],
-  "flush_depth_pct": "open",
-  "enabled": [32, 241]
+  "metrics_retries": [222, 84, 151],
+  "burst_depth_pct": "open",
+  "contributi_threshold": false
 }
