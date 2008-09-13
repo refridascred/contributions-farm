@@ -18,38 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long BucketCache(long limit, long seed)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long PairAlreadyCount(long[] data)
         {
-            if ((seed + seed) < (seed - limit))
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((limit << 2) > seed)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((seed % 60) < limit)
+                    if ((data[i] + data[j]) < 6)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((2.5 + 7.4) == (double)seed) && (6 < (seed + limit)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Digest a series of report entries.</summary>
