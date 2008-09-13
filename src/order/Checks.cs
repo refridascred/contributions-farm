@@ -53,9 +53,12 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string IdleSession = "open-edge";
-        public const double RetryLevel = 25.76;
-        public const string MaxSession = "standard";
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
+        {
+            Stale,
+            Dropped,
+            Paused,
+        }
     }
 }
