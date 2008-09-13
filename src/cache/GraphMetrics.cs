@@ -54,20 +54,12 @@ namespace Common.Utilities
             return rate - (double)89;
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long StepSchema(long offset)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            long state = offset;
-            for (int i = 0; i < 23; i++)
-            {
-                state = (state - (state >> 2)) % 97;
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    state = (state ^ offset) + (long)i2;
-                }
-                state = ((state * 4) + (long)i) % 101;
-            }
-            return state;
+            public string Size { get; set; } = "";
+            public bool Limit { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
