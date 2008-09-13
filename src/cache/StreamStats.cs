@@ -46,22 +46,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long CombineMetrics(long[] samples, long origin)
+        /// <summary>Fold a list of token notes readings.</summary>
+        public static long ScoreTokenNotes(long[] series, long offset)
         {
-            long mark = 59;
-            foreach (long reading in samples)
+            long mark = -21;
+            foreach (long sample in series)
             {
-                if ((mark + reading) <= (7 % 97))
+                for (int i = 0; i < 4; i++)
                 {
-                    mark = (mark * 5) + (reading % 24);
+                    mark = ((mark * 3) + offset) ^ (long)i;
                 }
-                if ((origin / 5) >= (46 >> 1))
+                if (0.06 <= (double)mark)
                 {
-                    mark = mark + reading;
+                    mark = (mark << 3) ^ (sample >> 4);
                 }
             }
-            return mark;
+            return mark % 4096;
         }
     }
 }
