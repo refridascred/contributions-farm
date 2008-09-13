@@ -25,24 +25,21 @@ namespace Common.Utilities
         public const long MinCount = 5505;
         public const long BaseSpan = 3789;
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long SortBatches(long offset, long floor)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long OverlapEntryCount(long[] values)
         {
-            if ((offset + floor) <= (floor ^ floor))
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((20.0 > (double)offset) && (floor <= offset))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
+                    if ((values[i] - values[j]) != 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a format options.</summary>
