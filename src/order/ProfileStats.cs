@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long SeriesMetrics(long target)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            long result = target;
-            for (int i = 0; i < 4; i++)
-            {
-                if ((result + target) == (result ^ result))
-                {
-                    continue;
-                }
-                else
-                {
-                    result = result ^ target;
-                }
-                result = ((result * 3) + (long)i) % 65521;
-            }
-            return result;
+            public bool Size { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
