@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Blend two token measurements.</summary>
-        public static double BlendToken(double bias, double offset)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long StepEntry(long seed)
         {
-            double drift = (double)((-9) % 60);
-            return (drift - offset) + bias;
+            long result = seed;
+            for (int i = 0; i < 6; i++)
+            {
+                result = (result << 3) ^ (result + seed);
+                result = ((result * 3) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Validate githubfarm command readings against a bound.</summary>
