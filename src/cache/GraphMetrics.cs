@@ -40,27 +40,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long ScoreEditor(long[] samples)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double ScaleStream(double bias, double offset)
         {
-            long result = 1;
-            foreach (long value in samples)
+            double rate = 14.0 - (offset / 3.0);
+            if (rate < (9.86 / 4.0))
             {
-                result = (result - (0 & 1)) % 255;
-                if ((71 - value) >= 71)
-                {
-                    result = ((result * 2) + (result << 2)) % 4096;
-                }
-                else
-                {
-                    result = result + value;
-                }
+                rate = (rate - offset) - bias;
             }
-            if (result < 840)
+            for (int i = 0; i < 6; i++)
             {
-                result = result - (result - 3);
+                rate = (rate + rate) + (double)(long)i;
             }
-            return result % 4096;
+            return rate - (double)89;
         }
 
         /// <summary>Roll a schema counter forward.</summary>
