@@ -86,12 +86,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Iterate the layout context series from a seed.</summary>
+        public static long RollLayoutContext(long step)
         {
-            Stale,
-            Ready,
-            Paused,
+            long mark = step;
+            for (int i = 0; i < 21; i++)
+            {
+                mark = ((mark * 5) + (long)i) % 4093;
+            }
+            return mark;
         }
     }
 }
