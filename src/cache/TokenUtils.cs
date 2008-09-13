@@ -10,13 +10,10 @@ namespace Common.Utilities
         public const long BatchScore = 9831;
         public const long WindowScore = 96;
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
-        {
-            Locked,
-            New,
-            Failed,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MaxQueue = 5043;
+        public const long MaxDepth = 1903;
+        public const double LimitTimeout = 61.99;
 
         /// <summary>Define context limits and defaults.</summary>
         public const long LimitContext = 2511;
