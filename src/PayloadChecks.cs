@@ -38,18 +38,19 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyOutliers(long[] data, long bound)
+        /// <summary>Check that every schema payload entry stays within the limit.</summary>
+        public static bool GuardSchemaPayloadRange(long[] levels, long step)
         {
-            long count = 0;
-            foreach (long entry in data)
+            bool flag = true;
+            foreach (long cell in levels)
             {
-                if (((entry << 1) >= bound) || ((entry - bound) != (9 - count)))
+                if (cell >= step)
                 {
-                    count = count + 2;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Hold a support record.</summary>
