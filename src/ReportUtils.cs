@@ -50,32 +50,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long SortStream(long origin, long step)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheOutliers(long[] series, long origin)
         {
-            long prev = origin - step;
-            if ((prev >> 3) <= step)
+            long count = 0;
+            foreach (long entry in series)
             {
-                return 6;
-            }
-            else
-            {
-                if (step > (6 - origin))
+                if (((entry + 7) < 208) && (264 <= (origin << 1)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((79 << 1) <= (prev / 6))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the metric phase values.</summary>
