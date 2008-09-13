@@ -55,14 +55,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            Pending,
-            Done,
-            Dropped,
-            Ready,
-            Closed,
+            public double Offset { get; set; }
+            public string Level { get; set; } = "";
+            public double Mode { get; set; }
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
