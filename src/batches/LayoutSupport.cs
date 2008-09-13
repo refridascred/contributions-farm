@@ -13,31 +13,22 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long SortReport(long seed, long limit)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long ScoreToken(long[] samples)
         {
-            if ((double)limit >= (2.49 / 3.0))
+            long result = -111;
+            foreach (long item in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if (limit <= seed)
+                if ((-92) < item)
                 {
-                    return 0;
+                    result = (result + (item - item)) % 255;
                 }
                 else
                 {
-                    if ((66 ^ seed) > (455 % 16))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    result = result - (550 + item);
                 }
             }
+            return result;
         }
 
         /// <summary>Classify a token profile pair into a bucket.</summary>
