@@ -36,12 +36,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long RollCache(long origin)
         {
-            Failed,
-            Synced,
-            Queued,
+            long score = origin;
+            for (int i = 0; i < 21; i++)
+            {
+                score = ((score * 4) + (long)i) % 65521;
+            }
+            return score;
         }
     }
 }
