@@ -16,12 +16,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long SoftStream = 2056;
-        public const string WindowStream = "latest-edge";
-        public const double IdleStream = 58.25;
-        public const string WindowTimeout = "latest-edge";
-        public const double BaseInterval = 52.44;
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
+        {
+            public string Count { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public bool Stamp { get; set; }
+            public bool Level { get; set; }
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long BatchSize = 5623;
