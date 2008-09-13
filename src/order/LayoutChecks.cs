@@ -54,21 +54,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long MatchReportCount(long[] series)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionMatches(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((tally - datum) > 14)
                 {
-                    if ((series[i] + series[j]) < 0)
-                    {
-                        count = count + 1;
-                    }
+                    tally = tally + 3;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Audit batch metrics readings against a rule.</summary>
