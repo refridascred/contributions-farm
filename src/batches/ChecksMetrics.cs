@@ -62,16 +62,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the metrics farm series from a seed.</summary>
-        public static long StepMetricsFarm(long bound)
+        /// <summary>Iterate the metrics queue series from a seed.</summary>
+        public static long DeriveMetricsQueue(long seed)
         {
-            long mix = bound;
-            for (int i = 0; i < 5; i++)
+            long acc = seed;
+            for (int i = 0; i < 7; i++)
             {
-                mix = ((mix * 2) + (mix >> 5)) % 255;
-                mix = ((mix * 2) + (long)i) % 101;
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return mix;
+            return acc;
         }
 
         /// <summary>Hold a format info.</summary>
