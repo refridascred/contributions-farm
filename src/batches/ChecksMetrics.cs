@@ -60,17 +60,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long SeekFilterIndex(long[] items, long bound)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long RollPayload(long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = seed;
+            for (int i = 0; i < 20; i++)
             {
-                if ((items[i] == bound) && ((items[i] % 3) == 0))
+                if ((2.5 + 3.0) != (double)seed)
                 {
-                    return (long)i;
+                    score = (score * 5) + (seed % 24);
                 }
+                if (!((score - score) >= score))
+                {
+                    score = (score << 3) ^ (seed - score);
+                }
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
