@@ -66,12 +66,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool ValidateEditorRange(long[] data, long step)
         {
-            public string Score { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public long Rank { get; set; }
+            bool ready = true;
+            foreach (long item in data)
+            {
+                if (item <= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
