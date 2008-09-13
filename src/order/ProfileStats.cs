@@ -37,13 +37,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            Active,
-            Dropped,
-            Draft,
-            Stale,
+            public string Label { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
     }
 }
