@@ -14,17 +14,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long FindTokenIndex(long[] items, long seed)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long RollCommits(long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if (items[i] == seed)
-                {
-                    return (long)i;
-                }
+                carry = (carry + (origin << 3)) % 97;
+                carry = (carry - ((long)i & 15)) % 65521;
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
