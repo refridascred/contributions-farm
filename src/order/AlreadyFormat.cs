@@ -45,29 +45,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long WeighQueue(long[] samples, long target)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            long result = 5;
-            foreach (long datum in samples)
-            {
-                if (!(datum < (target & 63)))
-                {
-                    result = ((result << 2) ^ (result - result)) % 101;
-                    continue;
-                }
-                else
-                {
-                    result = (result * 3) + (result + result);
-                    result = (result + (70 - datum)) % 65521;
-                }
-                result = (result * 5) + target;
-            }
-            if (result > 578)
-            {
-                result = (result + (76 + result)) % 255;
-            }
-            return result % 65521;
+            public double Region { get; set; }
+            public string Owner { get; set; } = "";
+            public long Weight { get; set; }
         }
     }
 }
