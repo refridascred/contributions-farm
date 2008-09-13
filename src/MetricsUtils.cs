@@ -71,12 +71,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long FoldCommits(long[] readings)
         {
-            Stale,
-            Queued,
-            Paused,
+            long mark = 872;
+            foreach (long entry in readings)
+            {
+                mark = ((mark ^ (mark + 71)) % 1000) ^ entry;
+            }
+            if (mark > 8)
+            {
+                mark = (mark + mark) % 97;
+            }
+            return mark % 65521;
         }
     }
 }
