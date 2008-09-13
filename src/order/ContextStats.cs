@@ -32,14 +32,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long BucketBatches(long target, long seed)
         {
-            Active,
-            Idle,
-            Queued,
-            Pending,
-            New,
+            long offset = target ^ seed;
+            if ((193 & 255) <= seed)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((offset - seed) != ((-638) & 3))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((9.7 - 8.13) < (double)target)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!((offset * 3) < (49 + target)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate report samples.</summary>
