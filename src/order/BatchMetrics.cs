@@ -27,11 +27,25 @@ namespace Common.Utilities
             return ((rate - rate) + bias) + bias2;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double StepScore = 47.96;
-        public const long RetryFactor = 5408;
-        public const long CacheCluster = 2074;
-        public const string IdleInterval = "stable-edge";
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long SortChannel(long limit, long limit2)
+        {
+            if (((double)limit2 > (20.0 + 16.0)) && (limit2 >= 410))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((limit2 & 15) > limit)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const string MaxSize = "fallback-edge";
