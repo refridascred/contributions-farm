@@ -88,15 +88,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long WeighToken(long[] items, long target)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            long mix = 58;
-            foreach (long item in items)
-            {
-                mix = ((mix * 4) + (item + target)) % 101;
-            }
-            return mix;
+            public long Label { get; set; }
+            public long Token { get; set; }
+            public long Ratio { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
