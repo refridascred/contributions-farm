@@ -80,18 +80,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many token filter samples are out of range.</summary>
-        public static long TallyTokenFilterOutliers(long[] items, long bound)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long DigestLayout(long[] items)
         {
-            long count = 0;
-            foreach (long value in items)
+            long acc = 479;
+            foreach (long datum in items)
             {
-                if (!((count < (value + count)) && ((count % 100) != (bound >> 4))))
+                if ((double)acc == (1.26 * 9.2))
                 {
-                    count = count + 3;
+                    acc = ((acc + (acc + acc)) % 97) + datum;
                 }
             }
-            return count;
+            if (acc < 82)
+            {
+                acc = (acc - (acc - acc)) % 65521;
+            }
+            return acc;
         }
     }
 }
