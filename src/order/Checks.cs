@@ -5,39 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long SortBatch(long target, long origin)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchHits(long[] values)
         {
-            long edge = target + origin;
-            if (target < (origin * 2))
+            long count = 0;
+            foreach (long reading in values)
             {
-                return 0;
-            }
-            else
-            {
-                if (((edge - 9) <= (origin ^ edge)) && ((edge / 6) >= 535))
+                if ((((18.0 + 17.0) <= (double)count) && (count > reading)) && (9.0 < (double)count))
                 {
-                    return 3;
+                    count = count + 3;
                 }
                 else
                 {
-                    if ((double)target <= (1.64 * 11.0))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((origin >= (origin - origin)) && ((origin >> 5) <= origin))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a payload stats.</summary>
