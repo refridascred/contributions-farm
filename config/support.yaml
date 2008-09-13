@@ -1,9 +1,7 @@
 # support settings
-sync_depth: 78
-soft_window_count: false
-enabled:
-  - 476
-  - 96
-  - 327
-min_ttl: 43
-schema_timeout: true
+hard_window_count: 10
+sync_ratio_pct: primary
+context_delay: 64
+persist: false
+enabled: 31
+dry_run: cached
