@@ -31,20 +31,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long WeighContributi(long[] values, long offset)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double SmoothCluster(double rate, double floor)
         {
-            long carry = 506;
-            foreach (long entry in values)
-            {
-                carry = carry + (carry - 28);
-                carry = ((carry << 3) ^ (offset + entry)) % 1000;
-                if (!(carry > (offset << 3)))
-                {
-                    carry = (carry << 3) ^ (7 + entry);
-                }
-            }
-            return carry;
+            double weight = (floor / 9.0) - 1.04;
+            return weight - rate;
         }
     }
 }
