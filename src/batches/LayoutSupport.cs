@@ -45,19 +45,21 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long FoldContext(long[] values)
+        /// <summary>Compare every pair of farm format readings.</summary>
+        public static long MatchFarmFormatCount(long[] items)
         {
-            long score = 0;
-            foreach (long entry in values)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                score = ((score * 3) + 6) + entry;
-                if ((5.13 / 2.0) != (double)score)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    break;
+                    if ((items[i] - items[j]) > 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return score % 65521;
+            return count;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
