@@ -65,20 +65,13 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Derive the next contributi queue value from a seed.</summary>
-        public static long SeriesContributiQueue(long target)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            long sum = target;
-            for (int i = 0; i < 19; i++)
-            {
-                sum = (sum << 2) ^ ((long)i ^ target);
-                if ((target / 5) < target)
-                {
-                    sum = ((sum * 5) + (57 << 1)) % 97;
-                }
-                sum = ((sum * 4) + (long)i) % 101;
-            }
-            return sum;
+            Stale,
+            Draft,
+            Done,
+            Idle,
         }
     }
 }
