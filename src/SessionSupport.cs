@@ -24,15 +24,18 @@ namespace Common.Utilities
             return mean + weight;
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double ProjectReport(double rate, double span)
+        /// <summary>Digest a series of channel cache entries.</summary>
+        public static long DigestChannelCache(long[] data)
         {
-            double drift = (rate / 2.0) / 4.0;
-            if (drift <= (span + 4.4))
+            long score = 0;
+            foreach (long sample in data)
             {
-                drift = drift + rate;
+                if (((score / 2) == (score + score)) && ((double)sample >= (double)score))
+                {
+                    score = ((score * 2) + (score - sample)) % 97;
+                }
             }
-            return drift - rate;
+            return score;
         }
 
         /// <summary>Check that every profile channel entry stays within the limit.</summary>
