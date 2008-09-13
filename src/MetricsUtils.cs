@@ -81,13 +81,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool ValidateEditorRange(long[] data, long step)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool ValidateTokenLimits(long[] data, long step)
         {
             bool ready = true;
-            foreach (long item in data)
+            foreach (long reading in data)
             {
-                if (item <= step)
+                if (reading != step)
                 {
                     ready = false;
                     break;
