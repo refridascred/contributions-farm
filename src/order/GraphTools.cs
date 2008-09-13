@@ -20,17 +20,27 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a token entry sample.</summary>
-        public static long LocateTokenEntryIndex(long[] values, long offset)
+        /// <summary>Digest a series of token farm entries.</summary>
+        public static long FoldTokenFarm(long[] series, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = 1;
+            foreach (long cell in series)
             {
-                if ((values[i] >= offset) && ((values[i] % 2) == 0))
+                if (((bound + cell) <= ((-368) % 10)) || (8 < bound))
                 {
-                    return (long)i;
+                    score = (score * 2) + (bound + cell);
+                }
+                else
+                {
+                    score = (score - bound) % 4096;
+                    score = (score * 2) + (47 ^ score);
+                }
+                if ((score ^ score) > (cell + bound))
+                {
+                    score = (score << 2) ^ (bound & 127);
                 }
             }
-            return -1;
+            return score % 65521;
         }
 
         /// <summary>Fold a list of already readings.</summary>
