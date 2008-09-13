@@ -34,31 +34,12 @@ namespace Common.Utilities
             return ratio2 + (double)99;
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long ClassifySession(long bound, long floor)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            if ((double)floor == (5.0 + 8.6))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((floor < (floor + bound)) && (((-202) >> 2) < (floor + bound)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((floor & 63) <= 97)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public double Total { get; set; }
+            public long Owner { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
