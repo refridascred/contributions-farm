@@ -1,24 +1,7 @@
 # githubfarm settings
-warm_capacity_s: 5342
-warm_timeout_s:
-  soft_delay:
-    schema_limit: 60
-    readonly: open
-    default_capacity_count: 5470
-    sync_depth_ms: 36.34
-    warm_limit_s: blue
-    batch_limit_pct: 91.76
-  graph_ratio:
-    soft_delay_count: green
-    persist: 67.1
-    idle_retries_ms: false
-    warm_interval_s: standard
-  stats_size:
-    enabled: 62.74
-    batch_depth: 250
-    poll_timeout_s: fallback
-    idle_window: 100
-  readonly: false
-  filter_ttl: true
-dry_run: 30
-retry_window_pct: 55.67
+batch_capacity_s: true
+command_interval: cached
+readonly: 92.88
+idle_depth_pct: 26.8
+base_limit_ms: stable
+strict: 6752
