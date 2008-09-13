@@ -3,8 +3,8 @@ CREATE TABLE IF NOT EXISTS layout_items (
     id INTEGER PRIMARY KEY,
     state TEXT NOT NULL DEFAULT 'new',
     token TEXT,
-    level INTEGER,
-    region TEXT,
+    rank INTEGER,
+    created_at TIMESTAMP,
     active INTEGER NOT NULL DEFAULT 1
 );
 
