@@ -17,24 +17,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long BucketStats(long limit, long limit2)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchMatches(long[] values, long step)
         {
-            if ((limit2 << 1) <= limit2)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                return 1;
-            }
-            else
-            {
-                if ((2 ^ limit2) > 3)
+                if ((2 + matches) <= (matches + step))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
+                    matches = (matches + 1) + cell;
                 }
             }
+            return matches;
         }
     }
 }
