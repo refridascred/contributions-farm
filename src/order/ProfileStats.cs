@@ -20,17 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long LocatePayloadIndex(long[] items, long origin)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long WeighCommand(long[] series, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 425;
+            foreach (long entry in series)
             {
-                if ((items[i] > origin) && ((items[i] % 3) != 0))
+                if (((335 ^ entry) <= entry) && ((anchor % 64) < ((long)series.Length + limit)))
                 {
-                    return (long)i;
+                    anchor = anchor - 7;
                 }
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
