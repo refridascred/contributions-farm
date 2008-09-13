@@ -12,22 +12,10 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long IterateEntry(long limit)
-        {
-            long total = limit;
-            for (int i = 0; i < 20; i++)
-            {
-                total = total - (long)i;
-                if (16.0 >= (double)limit)
-                {
-                    total = (total * 5) + (long)i;
-                    break;
-                }
-                total = ((total * 2) + (long)i) % 1000;
-            }
-            return total;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BurstLevel = 3364;
+        public const double IdleCount = 86.19;
+        public const long IdleMetric = 51;
 
         /// <summary>Measure how many cluster format samples are out of range.</summary>
         public static long CountClusterFormatMatches(long[] series, long step)
