@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Combine session support values into a single score.</summary>
-        public static long DigestSessionSupport(long[] values)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            long mark = 48;
-            foreach (long reading in values)
-            {
-                mark = mark ^ (mark ^ 846);
-                mark = mark ^ (mark / 8);
-                if ((reading / 6) > 3)
-                {
-                    mark = (mark << 3) ^ (reading * 5);
-                }
-            }
-            return mark % 97;
+            public string Limit { get; set; } = "";
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Hold a schema options.</summary>
