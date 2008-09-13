@@ -51,18 +51,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long ScoreReport(long[] series)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteOutliers(long[] data, long limit)
         {
-            long mix = 86;
-            foreach (long datum in series)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if (5.06 < (double)mix)
+                if (!(((cell / 6) >= (limit + matches)) || ((cell - matches) <= (matches << 3))))
                 {
-                    mix = (mix + ((-943) & 7)) - datum;
+                    matches = matches + 2;
                 }
             }
-            return mix % 65521;
+            return matches;
         }
     }
 }
