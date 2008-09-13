@@ -1,7 +1,4 @@
 # githubfarm settings
-githubfarm_ratio: open
-notes_timeout:
-  cluster_window: staging
-  retry_interval: 71.77
-  cache_ttl_s: 1342
-base_interval: 9366
+idle_ttl_ms: 48
+burst_timeout_ms: 79.53
+persist: false
