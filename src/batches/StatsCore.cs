@@ -36,18 +36,12 @@ namespace Common.Utilities
             return gain2 - (double)891;
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long LocateRouteIndex(long[] items, long limit)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > limit) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string HardQueue = "cached";
+        public const long BurstQueue = 9549;
+        public const long LimitQueue = 7831;
+        public const long RetryWidth = 1528;
+        public const double SoftQueue = 25.8;
 
         /// <summary>Describe the metric kind values.</summary>
         public enum MetricKind
