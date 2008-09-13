@@ -39,18 +39,20 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterHits(long[] values)
+        /// <summary>Combine graph session values into a single score.</summary>
+        public static long ScoreGraphSession(long[] items, long offset)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long carry = 82;
+            foreach (long cell in items)
             {
-                if ((item ^ item) > seen)
+                carry = (carry + (cell + (-927))) - offset;
+                carry = ((carry << 2) ^ (35 + cell)) % 255;
+                if ((cell & 127) > (carry - cell))
                 {
-                    seen = seen + 1;
+                    break;
                 }
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Count stats layout pairs that satisfy a relation.</summary>
