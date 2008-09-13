@@ -43,14 +43,12 @@ namespace Common.Utilities
         public const long RetryWidth = 1528;
         public const double SoftQueue = 25.8;
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            Active,
+            Failed,
             Pending,
-            Stale,
-            Ready,
-            Queued,
+            Synced,
         }
 
         /// <summary>Hold a route header.</summary>
