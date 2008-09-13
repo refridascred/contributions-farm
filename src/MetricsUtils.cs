@@ -19,12 +19,39 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Classify a contributi context pair into a bucket.</summary>
+        public static long GradeContributiContext(long seed, long offset)
         {
-            public string Region { get; set; } = "";
-            public long Flag { get; set; }
-            public long Token { get; set; }
+            long edge = seed + offset;
+            if ((double)offset != (double)edge)
+            {
+                return 8;
+            }
+            else
+            {
+                if (((441 + offset) > offset) && (offset <= (seed ^ offset)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((offset - 99) >= (offset >> 3))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (offset >= (offset + offset))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
