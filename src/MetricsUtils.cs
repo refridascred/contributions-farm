@@ -22,13 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Measure how many batch tools samples are out of range.</summary>
+        public static long CountBatchToolsMatches(long[] series)
         {
-            Idle,
-            Active,
-            Stale,
-            Ready,
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if ((reading / 3) > ((-4) % 5))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
