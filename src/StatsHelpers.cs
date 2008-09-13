@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long SeriesGraph(long floor)
         {
-            public double Total { get; set; }
-            public double Score { get; set; }
+            long result = floor;
+            for (int i = 0; i < 23; i++)
+            {
+                result = (result << 3) ^ (floor ^ result);
+                result = ((result * 3) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Roll a schema notes counter forward.</summary>
