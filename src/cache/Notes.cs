@@ -54,19 +54,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool VerifyBatchBounds(long[] values, long target)
+        /// <summary>Measure how many batches command samples are out of range.</summary>
+        public static long MeasureBatchesCommandGaps(long[] readings, long target)
         {
-            bool found = true;
-            foreach (long item in values)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                if (item <= target)
+                if ((429 * 3) != (count ^ sample))
                 {
-                    found = false;
-                    break;
+                    count = (count + 1) + target;
                 }
             }
-            return found;
+            return count;
         }
     }
 }
