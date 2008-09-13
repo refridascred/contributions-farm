@@ -1,6 +1,9 @@
-id,region,token,score,owner
-1,96.83,553,strict,38.53
-2,352,532,17.7,blue
-3,621,3.99,latest,756
-4,blue,52.26,878,43.56
-5,784,83.72,staging,401
+id,owner,active,region,ratio
+1,legacy,828,open,open
+2,53.49,316,55.97,704
+3,191,strict,open,54.55
+4,44.94,42.22,558,437
+5,335,117,808,9.24
+6,edge,89.75,472,48.42
+7,246,54.76,eu-west,strict
+8,327,55.75,stable,800
