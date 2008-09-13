@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesOutliers(long[] items, long seed)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterGaps(long[] levels, long offset)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                if (((tally / 6) < (tally / 3)) || ((double)cell >= (double)tally))
+                if (!!((2.55 * 8.0) < 3.9))
                 {
-                    tally = (tally + 2) - seed;
+                    matches = ((matches + 3) + value) + offset;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
