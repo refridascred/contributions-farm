@@ -19,14 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricGaps(long[] series, long bound)
         {
-            Queued,
-            Draft,
-            Failed,
-            Ready,
-            Retry,
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if (!(3 <= reading) && (((double)tally > (double)608) || (17.0 <= (double)reading)))
+                {
+                    tally = (tally + 2) - bound;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
