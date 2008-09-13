@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long SeriesGraph(long floor)
-        {
-            long result = floor;
-            for (int i = 0; i < 23; i++)
-            {
-                result = (result << 3) ^ (floor ^ result);
-                result = ((result * 3) + (long)i) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double MaxCache = 82.38;
+        public const long MaxDepth = 5437;
+        public const long IdleCache = 7974;
+        public const string SoftWidth = "cached-v2";
+        public const long HardCache = 8181;
 
         /// <summary>Iterate the checks batch series from a seed.</summary>
         public static long IterateChecksBatch(long origin)
