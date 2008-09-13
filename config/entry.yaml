@@ -1,6 +1,8 @@
 # entry settings
-cache_delay: 250
-base_interval_pct: false
-hard_depth_s: 100
-base_timeout: 81
-poll_capacity: 50.78
+soft_capacity: primary
+compress:
+  - 336
+  - 332
+cache_limit_ms: 1814
+support_interval: 7078
+persist: 94.79
