@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool VerifyStreamBounds(long[] items, long step)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long SeriesQueue(long origin)
         {
-            bool ready = true;
-            foreach (long reading in items)
+            long mix = origin;
+            for (int i = 0; i < 5; i++)
             {
-                if (reading < step)
-                {
-                    ready = false;
-                    break;
-                }
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return ready;
+            return mix;
         }
 
         /// <summary>Hold a already summary.</summary>
