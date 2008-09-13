@@ -19,21 +19,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long PairSupportCount(long[] readings)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long RollToken(long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = seed;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                state = ((state * 3) + (seed + 1)) % 255;
+                state = ((state * 4) + (long)i) % 1000;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Combine window values into a single score.</summary>
