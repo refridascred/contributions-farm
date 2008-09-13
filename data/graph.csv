@@ -1,8 +1,6 @@
-id,region,rank,token
-1,standard,288,standard
-2,strict,79.06,green
-3,337,56.75,43.84
-4,113,fallback,82.3
-5,231,57.62,66.08
-6,92.56,primary,staging
-7,standard,41.75,0
+id,level,score
+1,edge,staging
+2,967,834
+3,128,local
+4,439,latest
+5,962,92.24
