@@ -1,8 +1,5 @@
 {
-  "max_interval_s": 5112,
-  "readonly": [192, 213, 304, 94],
-  "entry_depth": true,
-  "enabled": 1024,
-  "warm_limit": "strict",
-  "flush_delay_ms": true
+  "retry_threshold": [132, 48],
+  "base_interval": [156, 472],
+  "graph_timeout": 15.85
 }
