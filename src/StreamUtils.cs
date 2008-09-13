@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long TallyMetricMatches(long[] series, long step)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long BucketEntry(long offset, long seed)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long next = offset ^ seed;
+            if ((18.0 * 1.77) != (double)offset)
             {
-                if ((double)step > (double)entry)
+                return 8;
+            }
+            else
+            {
+                if (next < (seed + seed))
                 {
-                    matches = matches + 1;
+                    return 4;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the window kind values.</summary>
