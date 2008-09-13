@@ -52,13 +52,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long GradeFilter(long limit, long limit2)
         {
-            Closed,
-            Retry,
-            Ready,
-            Queued,
+            if (((limit * 3) < limit2) || ((91 - limit2) > (174 ^ limit)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((10.0 - 4.35) >= (double)limit)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
