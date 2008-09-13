@@ -1,11 +1,23 @@
 # support settings
-batch_window_ms: 9620
-sync_timeout_ms:
-  - standard
-  - edge
-  - blue
-compress:
-  - latest
-  - local
-  - primary
-  - latest
+metrics_ttl:
+  persist: local
+  cache_depth_count: 1026
+  poll_ratio:
+    retry_capacity_pct: 72
+    enabled:
+      - 229
+      - 491
+    min_retries: 4.35
+    audit:
+      - 380
+      - 317
+      - 327
+  idle_depth: 7164
+  min_interval_ms:
+    - cached
+    - staging
+    - fallback
+    - blue
+  token_window: true
+sync_window_pct: fallback
+cache_depth_ms: 6742
