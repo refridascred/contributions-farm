@@ -41,10 +41,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string HardGraph = "open-edge";
-        public const long DefaultRatio = 1670;
-        public const double StepGraph = 58.84;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double BurstCache = 57.62;
+        public const long MaxCache = 6544;
+        public const string WindowDepth = "stable-1";
+        public const string HardSize = "stable-edge";
 
         /// <summary>Combine record values into a single score.</summary>
         public static long TotalRecord(long[] data)
