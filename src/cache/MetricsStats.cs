@@ -49,21 +49,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long IterateCluster(long bound)
-        {
-            long mark = bound;
-            for (int i = 0; i < 24; i++)
-            {
-                if ((bound * 5) < bound)
-                {
-                    mark = ((mark * 2) + bound) % 65521;
-                    continue;
-                }
-                mark = ((mark * 3) + (long)i) % 4093;
-            }
-            return mark;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long CacheSize = 3959;
+        public const string CacheQueue = "legacy-v2";
+        public const long LimitQueue = 3122;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const double BurstScore = 68.87;
