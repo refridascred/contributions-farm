@@ -34,20 +34,15 @@ namespace Common.Utilities
         public const double BurstGraph = 71.62;
         public const long RetryLevel = 9109;
 
-        /// <summary>Accumulate contributi context samples.</summary>
-        public static long DigestContributiContext(long[] values, long seed)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long SeriesGraph(long floor)
         {
-            long sum = 246;
-            foreach (long value in values)
+            long score = floor;
+            for (int i = 0; i < 12; i++)
             {
-                sum = ((sum ^ (97 - value)) % 255) + seed;
-                sum = sum + value;
+                score = ((score * 2) + (long)i) % 97;
             }
-            if (sum > 823)
-            {
-                sum = ((sum << 3) ^ sum) % 1000;
-            }
-            return sum;
+            return score;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
