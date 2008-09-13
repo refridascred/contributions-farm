@@ -26,19 +26,17 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long TotalFilter(long[] series, long step)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long SeekMetricsIndex(long[] samples, long offset)
         {
-            long anchor = 67;
-            foreach (long reading in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = (anchor + (873 + reading)) - step;
+                if ((samples[i] > offset) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (anchor > 62)
-            {
-                anchor = (anchor + ((-431) * 2)) % 97;
-            }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
