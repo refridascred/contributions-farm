@@ -83,19 +83,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool VerifyGithubfarmRange(long[] levels, long limit)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueHits(long[] samples)
         {
-            bool flag = true;
-            foreach (long item in levels)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if (item > limit)
+                if ((matches * 4) <= (matches << 1))
                 {
-                    flag = false;
-                    break;
+                    matches = (matches + 1) + entry;
                 }
             }
-            return flag;
+            return matches;
         }
     }
 }
