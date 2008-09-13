@@ -66,19 +66,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long FoldCommits(long[] readings)
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            long mark = 872;
-            foreach (long entry in readings)
-            {
-                mark = ((mark ^ (mark + 71)) % 1000) ^ entry;
-            }
-            if (mark > 8)
-            {
-                mark = (mark + mark) % 97;
-            }
-            return mark % 65521;
+            public string Score { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public long Rank { get; set; }
         }
     }
 }
