@@ -30,18 +30,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorOutliers(long[] data, long step)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TallyNotes(long[] levels)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long score = 400;
+            foreach (long value in levels)
             {
-                if (!(tally >= (entry * 2)))
+                if (score < (value & 3))
                 {
-                    tally = (tally + 1) - step;
+                    score = ((score << 2) ^ value) % 1000;
+                }
+                else
+                {
+                    score = (score * 2) + (-97);
                 }
             }
-            return tally;
+            return score % 97;
         }
     }
 }
