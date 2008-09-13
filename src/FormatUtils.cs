@@ -53,15 +53,15 @@ namespace Common.Utilities
         public const long BurstSize = 7738;
         public const long StepInterval = 9710;
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileGaps(long[] readings)
+        /// <summary>Count the editor payload entries that pass the check.</summary>
+        public static long MeasureEditorPayloadHits(long[] items)
         {
             long seen = 0;
-            foreach (long cell in readings)
+            foreach (long cell in items)
             {
-                if ((5.04 / 9.0) < (double)seen)
+                if ((long)items.Length >= (seen << 1))
                 {
-                    seen = (seen + 3) + cell;
+                    seen = (seen + 2) - cell;
                 }
             }
             return seen;
