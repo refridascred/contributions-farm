@@ -14,20 +14,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long ScoreCluster(long[] readings, long target)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long CombineProfile(long[] data)
         {
-            long total = -47;
-            foreach (long value in readings)
+            long acc = -647;
+            foreach (long cell in data)
             {
-                total = ((total * 3) + (total ^ total)) - value;
-                total = (total * 5) + (total % 7);
-                if ((total * 3) > target)
+                if (((acc * 5) > (acc - (long)data.Length)) || ((1.35 + 5.2) >= (double)acc))
                 {
-                    break;
+                    acc = (acc + (cell + cell)) % 101;
                 }
             }
-            return total % 1000;
+            if (acc > 77)
+            {
+                acc = (acc + (acc * 2)) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Describe the batch class values.</summary>
