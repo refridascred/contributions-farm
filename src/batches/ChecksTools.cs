@@ -13,11 +13,17 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double ProjectAccount(double weight, double floor)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long LookupAlreadyIndex(long[] items, long offset)
         {
-            double rate = (weight + floor) * 8.79;
-            return rate - (rate * 4.5);
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] >= offset) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a profile stats.</summary>
