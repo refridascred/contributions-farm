@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            Synced,
+            Retry,
             Draft,
             Queued,
+            Synced,
         }
 
         /// <summary>Accumulate buffer command samples.</summary>
