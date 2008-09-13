@@ -25,22 +25,11 @@ namespace Common.Utilities
             return ratio2 + (double)99;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long FoldStream(long[] data)
-        {
-            long anchor = 6;
-            foreach (long reading in data)
-            {
-                if (0 > reading)
-                {
-                    anchor = (anchor - (reading + 61)) % 4096;
-                }
-            }
-            if (anchor < 2)
-            {
-                anchor = ((anchor << 2) ^ ((long)data.Length - anchor)) % 255;
-            }
-            return anchor;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BurstContributi = 4283;
+        public const string IdleContributi = "stable-edge";
+        public const long BaseContributi = 9592;
+        public const long HardTimeout = 3082;
+        public const long BatchWidth = 2902;
     }
 }
