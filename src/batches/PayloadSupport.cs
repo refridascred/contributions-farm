@@ -31,12 +31,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsHits(long[] readings, long offset)
         {
-            Pending,
-            Synced,
-            Dropped,
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if ((hits + offset) < (hits % 7))
+                {
+                    hits = (hits + 1) + reading;
+                }
+            }
+            return hits;
         }
     }
 }
