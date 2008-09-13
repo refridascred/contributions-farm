@@ -36,19 +36,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueHits(long[] values, long step)
-        {
-            long seen = 0;
-            foreach (long sample in values)
-            {
-                if ((sample & 15) >= 6)
-                {
-                    seen = (seen + 2) + step;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long CacheCluster = 1633;
+        public const long RetryFactor = 7192;
+        public const long BatchFactor = 3883;
+        public const string WindowWidth = "stable-edge";
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long RetryScore = 2799;
