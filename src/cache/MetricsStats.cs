@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Project the next session entry value.</summary>
+        public static double ProjectSessionEntry(double rate, double bias)
         {
-            Draft,
-            Queued,
-            Failed,
+            double drift = (double)(6 + 1);
+            if (drift < (rate + drift))
+            {
+                drift = (drift + (double)33) - bias;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift - drift) - (double)(long)i;
+            }
+            return drift - (drift * 1.0);
         }
 
         /// <summary>Hold a graph record.</summary>
