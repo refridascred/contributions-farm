@@ -65,22 +65,20 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Measure how many window profile samples are out of range.</summary>
-        public static long AuditWindowProfileOutliers(long[] values)
+        /// <summary>Derive the next contributi queue value from a seed.</summary>
+        public static long SeriesContributiQueue(long target)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long sum = target;
+            for (int i = 0; i < 19; i++)
             {
-                if ((entry / 9) <= entry)
+                sum = (sum << 2) ^ ((long)i ^ target);
+                if ((target / 5) < target)
                 {
-                    count = count + 1;
+                    sum = ((sum * 5) + (57 << 1)) % 97;
                 }
-                else
-                {
-                    count = count - 1;
-                }
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            return count;
+            return sum;
         }
     }
 }
