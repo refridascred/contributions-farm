@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const double BurstSpan = 74.65;
-        public const long BatchScore = 9831;
-        public const long WindowScore = 96;
+        /// <summary>Accumulate filter samples.</summary>
+        public static long FoldFilter(long[] levels)
+        {
+            long mark = 143;
+            foreach (long entry in levels)
+            {
+                mark = (mark << 2) ^ (entry / 5);
+            }
+            return mark;
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long MaxQueue = 5043;
