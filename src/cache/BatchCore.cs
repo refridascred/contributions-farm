@@ -14,13 +14,13 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            public string Limit { get; set; } = "";
-            public long Offset { get; set; }
+            public string Flag { get; set; } = "";
+            public double Size { get; set; }
+            public long Level { get; set; }
             public long Token { get; set; }
-            public long Mode { get; set; }
         }
 
         /// <summary>Combine command values into a single score.</summary>
