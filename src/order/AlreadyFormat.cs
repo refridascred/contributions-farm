@@ -66,32 +66,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long GradeContributi(long limit, long step)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double SmoothGraph(double gain, double offset)
         {
-            long span = limit ^ step;
-            if (!((40 ^ limit) < 685))
+            double drift = (5.7 + gain) * 3.47;
+            for (int i = 0; i < 8; i++)
             {
-                return 6;
+                drift = ((drift + (gain - gain)) + (double)(long)i) + offset;
             }
-            else
-            {
-                if (!((117 / 6) != (span << 3)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((12.0 - 2.69) == (double)limit) || ((step ^ limit) >= span))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return drift + (double)895;
         }
     }
 }
