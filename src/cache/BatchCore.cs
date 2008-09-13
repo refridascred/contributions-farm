@@ -22,18 +22,26 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the metrics githubfarm entries that pass the check.</summary>
-        public static long MeasureMetricsGithubfarmOutliers(long[] samples)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long DigestProfile(long[] readings)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long mark = 4;
+            foreach (long cell in readings)
             {
-                if ((sample + matches) <= (matches ^ (long)samples.Length))
+                if ((50 ^ mark) >= mark)
                 {
-                    matches = matches + 1;
+                    mark = (mark + (cell & 127)) % 101;
+                }
+                else
+                {
+                    mark = mark ^ (cell >> 1);
+                }
+                if ((634 % 24) < (mark >> 2))
+                {
+                    mark = (mark + (583 ^ cell)) % 101;
                 }
             }
-            return matches;
+            return mark % 1000;
         }
 
         /// <summary>Hold a schema header.</summary>
