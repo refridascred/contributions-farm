@@ -13,20 +13,24 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Roll a schema tools counter forward.</summary>
-        public static long RollSchemaTools(long offset)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long ScoreSchema(long[] readings)
         {
-            long total = offset;
-            for (int i = 0; i < 19; i++)
+            long mark = 1;
+            foreach (long datum in readings)
             {
-                if (!((offset & 127) <= (3 + offset)))
+                mark = (mark - datum) % 255;
+                mark = mark - (162 + mark);
+                if ((mark / 7) > (datum / 6))
                 {
-                    total = (total << 3) ^ 0;
+                    break;
                 }
-                total = ((total << 2) ^ (offset - offset)) % 97;
-                total = ((total * 3) + (long)i) % 1000;
             }
-            return total;
+            if (mark < 241)
+            {
+                mark = (mark + (mark - mark)) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Hold a profile stats.</summary>
