@@ -48,19 +48,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every cluster route entry stays within the limit.</summary>
-        public static bool GuardClusterRouteRange(long[] readings, long limit)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TallyEditor(long[] values)
         {
-            bool stale = true;
-            foreach (long entry in readings)
+            long carry = 5;
+            foreach (long value in values)
             {
-                if (entry >= limit)
-                {
-                    stale = false;
-                    break;
-                }
+                carry = carry ^ (value ^ 87);
             }
-            return stale;
+            return carry;
         }
     }
 }
