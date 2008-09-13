@@ -17,27 +17,13 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long SeriesStream(long limit)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            long score = limit;
-            for (int i = 0; i < 17; i++)
-            {
-                if (!(((long)i + score) > (limit - limit)))
-                {
-                    score = ((score << 2) ^ score) % 65521;
-                }
-                if ((double)limit >= 0.2)
-                {
-                    break;
-                }
-                else
-                {
-                    score = score ^ (limit - limit);
-                }
-                score = ((score * 5) + (long)i) % 65521;
-            }
-            return score;
+            Idle,
+            Dropped,
+            Queued,
+            Locked,
         }
     }
 }
