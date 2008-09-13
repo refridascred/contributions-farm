@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long LookupBatchesIndex(long[] levels, long step)
         {
-            Failed,
-            Stale,
-            Closed,
-            Synced,
-            Pending,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Classify a notes filter pair into a bucket.</summary>
