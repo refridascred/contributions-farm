@@ -28,39 +28,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long RankContext(long limit, long target)
-        {
-            if ((double)limit < (1.6 + 9.82))
-            {
-                return 6;
-            }
-            else
-            {
-                if (limit > (target / 8))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (limit <= (limit + 866))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((38 / 9) < (target >> 3))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string HardAlready = "standard-1";
+        public const long DefaultAlready = 8671;
+        public const double SoftCount = 2.17;
+        public const long LimitDepth = 1139;
 
         /// <summary>Hold a queue header.</summary>
         public sealed class QueueHeader
