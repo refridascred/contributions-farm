@@ -29,38 +29,26 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long ClassifySchema(long target, long offset)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long ScoreFormat(long[] levels, long floor)
         {
-            if ((offset >> 5) == (target + offset))
+            long result = 461;
+            foreach (long sample in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if (offset >= target)
+                if ((3.0 / 6.0) <= (double)floor)
                 {
-                    return 6;
+                    continue;
+                }
+                if (!((floor << 2) > result))
+                {
+                    result = (result + (sample & 255)) % 97;
                 }
                 else
                 {
-                    if (!((target % 64) != (offset >> 5)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((target - offset) >= (offset + target)) || ((offset ^ target) < (1 + offset)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    result = result - (sample & 255);
                 }
             }
+            return result % 97;
         }
     }
 }
