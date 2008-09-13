@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Validate schema stats readings against a bound.</summary>
-        public static bool CheckSchemaStatsLimits(long[] samples, long offset)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            bool ok = true;
-            foreach (long reading in samples)
-            {
-                if (reading > offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Stale,
+            Locked,
+            Queued,
+            Paused,
+            Ready,
         }
 
         /// <summary>Blend two stats measurements.</summary>
