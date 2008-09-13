@@ -19,12 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MaxFactor = 2407;
-        public const long SoftInterval = 322;
-        public const long HardInterval = 9938;
-        public const long CacheWindow = 4372;
-        public const double IdleWindow = 72.28;
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
+        {
+            public long Limit { get; set; }
+            public bool Region { get; set; }
+        }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
         public static long OverlapQueueCount(long[] items)
