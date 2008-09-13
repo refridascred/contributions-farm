@@ -53,18 +53,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many githubfarm farm samples are out of range.</summary>
-        public static long MeasureGithubfarmFarmMatches(long[] readings, long seed)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if ((seed / 4) <= seed)
-                {
-                    seen = (seen + 1) + item;
-                }
-            }
-            return seen;
+            Dropped,
+            Stale,
+            Active,
+            Failed,
+            Ready,
         }
     }
 }
