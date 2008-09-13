@@ -10,24 +10,14 @@ namespace Common.Utilities
         public const double MinCount = 49.74;
         public const double IdleLevel = 49.2;
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long BucketFormat(long bound, long offset)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            if ((3.7 - 6.0) == (double)bound)
-            {
-                return 1;
-            }
-            else
-            {
-                if (9.03 <= (double)bound)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Idle,
+            Draft,
+            Dropped,
+            Synced,
+            Queued,
         }
 
         /// <summary>Describe the counter status values.</summary>
