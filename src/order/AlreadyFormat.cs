@@ -38,23 +38,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the tools filter entries that pass the check.</summary>
-        public static long AuditToolsFilterMatches(long[] levels, long origin)
-        {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if (((hits ^ cell) >= hits) || (origin >= (hits >> 2)))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double MinOrder = 21.26;
+        public const double RetryDepth = 1.91;
+        public const long CacheOrder = 768;
+        public const long SoftTimeout = 8114;
 
         /// <summary>Blend two graph measurements.</summary>
         public static double SmoothGraph(double gain, double offset)
