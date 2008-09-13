@@ -12,12 +12,20 @@ namespace Common.Utilities
             return (drift - offset) + bias;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string StepRecord = "alpha-1";
-        public const string BaseWidth = "local-1";
-        public const long HardRecord = 3828;
-        public const long WindowRecord = 1399;
-        public const long BurstBudget = 2792;
+        /// <summary>Validate githubfarm command readings against a bound.</summary>
+        public static bool VerifyGithubfarmCommandRange(long[] series, long origin)
+        {
+            bool flag = true;
+            foreach (long item in series)
+            {
+                if (item < origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Audit farm readings against a rule.</summary>
         public static long MeasureFarmMatches(long[] readings, long offset)
