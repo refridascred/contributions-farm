@@ -43,22 +43,28 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of token notes readings.</summary>
-        public static long ScoreTokenNotes(long[] series, long offset)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long SeriesCluster(long target)
         {
-            long mark = -21;
-            foreach (long sample in series)
+            long score = target;
+            for (int i = 0; i < 6; i++)
             {
-                for (int i = 0; i < 4; i++)
+                if ((score + score) >= (target + 1))
                 {
-                    mark = ((mark * 3) + offset) ^ (long)i;
+                    score = (score * 3) + (6 << 3);
                 }
-                if (0.06 <= (double)mark)
+                if ((score > (0 >> 2)) || (target <= (target >> 3)))
                 {
-                    mark = (mark << 3) ^ (sample >> 4);
+                    score = ((score * 5) + (target << 3)) % 65521;
+                    score = (score * 4) + ((long)i / 8);
                 }
+                else
+                {
+                    score = (score ^ (target ^ score)) % 1000;
+                }
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return mark % 4096;
+            return score;
         }
     }
 }
