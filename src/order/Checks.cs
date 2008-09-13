@@ -19,13 +19,20 @@ namespace Common.Utilities
         public const long BaseFactor = 5738;
         public const long WindowRoute = 7415;
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long CombineContributi(long[] samples)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long FoldNotes(long[] samples)
         {
-            long mark = 434;
-            foreach (long datum in samples)
+            long mark = 5;
+            foreach (long sample in samples)
             {
-                mark = (mark - (9 - datum)) % 65521;
+                if ((sample * 5) != (long)samples.Length)
+                {
+                    mark = mark + (mark << 2);
+                }
+            }
+            if (mark < 60)
+            {
+                mark = (mark - mark) % 101;
             }
             return mark % 65521;
         }
