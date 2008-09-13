@@ -21,22 +21,18 @@ namespace Common.Utilities
         public const long MinScore = 8957;
         public const long BaseCount = 6943;
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesMatches(long[] readings, long origin)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long TallyGraphGaps(long[] data)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long tally = 0;
+            foreach (long value in data)
             {
-                if ((((origin - item) != (seen % 8)) || ((seen * 5) == (item + origin))) || ((double)item != (18.0 / 9.0)))
+                if ((value & 15) < (19 + 815))
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    tally = tally + 3;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Roll a token counter forward.</summary>
