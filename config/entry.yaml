@@ -1,34 +1,19 @@
 # entry settings
-poll_window_s: local
-min_ratio:
-  - 434
-  - 142
-  - 311
-  - 389
-verbose: 12.49
-compress:
-  route_depth: edge
-  support_capacity: false
-  soft_ttl:
-    metrics_delay: primary
-    retry_delay_count:
-      - 214
-      - 279
-      - 197
-    channel_ttl: 60
-    sync_timeout_pct:
-      - open
-      - primary
-      - open
-    default_delay_ms: true
-    poll_delay: latest
-  base_ttl_ms:
-    sync_timeout_count: 3315
-    base_capacity: 82.63
-    sync_limit: 1285
-    support_limit: local
-    audit: green
-    min_threshold_count: local
-  soft_interval: 39
-  batch_ratio_ms: 44.42
-audit: local
+max_window: 50
+batches_window: 49
+profile_retries:
+  max_ratio:
+    - 312
+    - 26
+  compress: 94
+  persist:
+    verbose: 93.11
+    warm_interval_pct: strict
+    editor_limit:
+      - 387
+      - 281
+      - 208
+      - 18
+    flush_window_ms: 60
+    persist: 250
+    batches_threshold: eu-west
