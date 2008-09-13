@@ -13,11 +13,10 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BaseReport = 4629;
-        public const string MinReport = "cached-v2";
-        public const long MaxReport = 6271;
-        public const double LimitReport = 4.54;
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BurstBudget = 2952;
+        public const double HardBudget = 73.54;
+        public const long RetrySession = 478;
 
         /// <summary>Define command limits and defaults.</summary>
         public const string BurstFactor = "open";
