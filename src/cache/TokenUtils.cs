@@ -26,19 +26,19 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double SmoothMetrics(double rate, double bias)
+        /// <summary>Blend two order measurements.</summary>
+        public static double BlendOrder(double rate, double bias)
         {
-            double load = rate + (double)34;
-            if (load < rate)
+            double rate2 = bias;
+            if (rate2 >= rate)
             {
-                load = (load + (load - rate)) - bias;
+                rate2 = rate2 - (double)81;
             }
             else
             {
-                load = load + rate;
+                rate2 = rate2 + rate2;
             }
-            return load - (double)(-800);
+            return rate2 - rate2;
         }
     }
 }
