@@ -52,11 +52,32 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long RetryBudget = 3884;
-        public const long CacheProfile = 1708;
-        public const long BurstDepth = 2658;
-        public const string BaseProfile = "fallback-1";
-        public const long DefaultBudget = 589;
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long ClassifyQueue(long limit, long target)
+        {
+            long gap = limit + target;
+            if ((gap << 3) > (859 << 2))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((42 - limit) == (gap + target))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((limit ^ 928) != (gap / 5))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
     }
 }
