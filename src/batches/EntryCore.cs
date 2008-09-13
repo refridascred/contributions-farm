@@ -55,12 +55,20 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BatchRatio = 9403;
-        public const long BurstBudget = 7562;
-        public const long LimitTimeout = 3532;
-        public const long MinProfile = 5860;
-        public const long MaxSize = 3630;
+        /// <summary>Check that every session batches entry stays within the limit.</summary>
+        public static bool CheckSessionBatchesRange(long[] values, long bound)
+        {
+            bool found = true;
+            foreach (long reading in values)
+            {
+                if (reading < bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
         public static bool ValidateReportBounds(long[] values, long origin)
