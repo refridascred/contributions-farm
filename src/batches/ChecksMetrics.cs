@@ -102,15 +102,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double ProjectLayout(double scale, double offset)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long RollFilter(long origin)
         {
-            double rate = scale;
-            for (int i = 0; i < 3; i++)
+            long anchor = origin;
+            for (int i = 0; i < 10; i++)
             {
-                rate = (rate - offset) + (double)(long)i;
+                anchor = ((anchor << 3) ^ (anchor + anchor)) % 255;
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return rate + rate;
+            return anchor;
         }
     }
 }
