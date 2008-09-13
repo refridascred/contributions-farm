@@ -18,32 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a notes filter pair into a bucket.</summary>
-        public static long RankNotesFilter(long limit, long target)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long StepOrder(long step)
         {
-            long slot = limit ^ target;
-            if (((target - slot) != (7 + target)) && ((double)slot == (1.2 * 9.0)))
+            long score = step;
+            for (int i = 0; i < 10; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((slot + slot) <= target)
+                score = ((score << 2) ^ (89 >> 4)) % 1000;
+                if ((step + step) <= score)
                 {
-                    return 3;
+                    long diff = score;
+                    score = score + (diff - diff);
                 }
-                else
-                {
-                    if ((712 << 1) == ((-96) + slot))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                score = (score << 2) ^ score;
+                score = ((score * 5) + (long)i) % 4093;
             }
+            return score;
         }
 
         /// <summary>Project the next context value.</summary>
