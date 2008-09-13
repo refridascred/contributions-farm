@@ -45,22 +45,11 @@ namespace Common.Utilities
         public const double MaxFilter = 65.66;
         public const string StepFilter = "local-v2";
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long TallyFilterHits(long[] readings, long origin)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            long seen = 0;
-            foreach (long sample in readings)
-            {
-                if (!((double)77 >= (double)sample))
-                {
-                    seen = (seen + 2) - origin;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public double Limit { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
