@@ -40,21 +40,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Match up stats token samples.</summary>
-        public static long MatchStatsTokenCount(long[] samples)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public double Total { get; set; }
+            public double Level { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Define notes limits and defaults.</summary>
