@@ -27,18 +27,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many command stream samples are out of range.</summary>
-        public static long CountCommandStreamMatches(long[] data, long offset)
+        /// <summary>Blend two order measurements.</summary>
+        public static double SmoothOrder(double rate, double span)
         {
-            long count = 0;
-            foreach (long item in data)
+            double scale = span;
+            if (scale < (scale / 8.0))
             {
-                if ((double)offset > 20.0)
-                {
-                    count = (count + 1) - item;
-                }
+                scale = scale - rate;
             }
-            return count;
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale - span) + (double)(long)i;
+            }
+            return scale + (scale / 3.0);
         }
 
         /// <summary>Classify a contributi context pair into a bucket.</summary>
