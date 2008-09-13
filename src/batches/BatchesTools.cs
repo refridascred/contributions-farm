@@ -14,13 +14,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            public string Score { get; set; } = "";
-            public double Rank { get; set; }
-            public long Offset { get; set; }
-            public bool Mode { get; set; }
+            Idle,
+            Synced,
+            Closed,
+            Failed,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
