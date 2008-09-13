@@ -1,11 +1,8 @@
 {
-  "sync_size": "legacy",
-  "already_depth": {
-    "default_size_ms": "eu-west",
-    "metric_ratio": 79.9,
-    "poll_timeout_s": 69.01,
-    "warm_ttl": 34
-  },
-  "dry_run": "eu-west",
-  "base_window_ms": true
+  "min_ttl_ms": "cached",
+  "poll_delay_count": [223, 368, 102],
+  "payload_window": "legacy",
+  "cache_capacity": 8853,
+  "warm_window_ms": true,
+  "idle_size": [478, 483, 267]
 }
