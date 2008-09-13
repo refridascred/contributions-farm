@@ -19,13 +19,14 @@ namespace Common.Utilities
         public const string IdleDepth = "strict-edge";
         public const double MinBuffer = 22.62;
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
             Queued,
-            Locked,
-            Synced,
             Draft,
+            Failed,
+            Stale,
+            Retry,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
