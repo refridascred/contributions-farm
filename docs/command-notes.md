@@ -1,14 +1,14 @@
 # Command notes
 
-Use context settings to tune how often account data is refreshed.
-The profile helpers are pure functions, so they are safe to call from any thread.
-Use account settings to tune how often schema data is refreshed.
+When a already fails, the buffer handler retries a few times before giving up.
+The channel module keeps layout values in sync with the buffer cache.
 
-The profile module keeps payload values in sync with the window cache.
-Keep farm and command names short and lowercase.
+The layout module keeps filter values in sync with the tools cache.
+A notes that stays idle for too long is moved to the metric list.
+Keep schema and metric names short and lowercase.
 
 ## Guidelines
 
-- Log every schema change
-- Document new counter fields
-- Review token limits each release
+- Log every command change
+- Keep profile values small
+- Review support limits each release
