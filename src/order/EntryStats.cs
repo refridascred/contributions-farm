@@ -24,22 +24,15 @@ namespace Common.Utilities
             return scale2 - scale;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphMatches(long[] values)
+        /// <summary>Project the next record order value.</summary>
+        public static double ProjectRecordOrder(double gain, double floor)
         {
-            long hits = 0;
-            foreach (long item in values)
+            double load = (double)(24 % 16);
+            if (load > (gain / 7.0))
             {
-                if ((hits + 6) == (item / 9))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                load = (load + (7.9 / 2.0)) - floor;
             }
-            return hits;
+            return load - (double)746;
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
