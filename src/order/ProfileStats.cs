@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Grade a schema tools value against two limits.</summary>
-        public static long BucketSchemaTools(long step, long target)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long LookupContextIndex(long[] values, long offset)
         {
-            if ((target & 15) <= step)
+            for (int i = 0; i < values.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)step <= (7.59 * 1.0))
+                if (values[i] < offset)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the contributi mode values.</summary>
