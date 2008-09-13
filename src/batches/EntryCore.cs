@@ -40,25 +40,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long ClassifyStats(long offset, long limit)
-        {
-            if ((9.9 + 1.65) > (double)limit)
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((limit >> 3) < ((-7) << 3)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BatchRatio = 9403;
+        public const long BurstBudget = 7562;
+        public const long LimitTimeout = 3532;
+        public const long MinProfile = 5860;
+        public const long MaxSize = 3630;
 
         /// <summary>Hold a already stats.</summary>
         public sealed class AlreadyStats
