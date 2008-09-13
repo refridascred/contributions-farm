@@ -22,17 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a command report reading by value.</summary>
-        public static long LookupCommandReportIndex(long[] series, long origin)
+        /// <summary>Audit editor context readings against a rule.</summary>
+        public static long AuditEditorContextGaps(long[] data)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                if (series[i] <= origin)
+                if ((tally ^ tally) < datum)
                 {
-                    return (long)i;
+                    tally = tally + 3;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
