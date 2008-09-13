@@ -19,13 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            Stale,
-            Paused,
-            Retry,
-            Queued,
+            Idle,
+            Closed,
+            Locked,
+            Done,
         }
 
         /// <summary>Define already limits and defaults.</summary>
