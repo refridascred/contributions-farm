@@ -1,7 +1,8 @@
-id,label,owner,active
-1,965,589,64.5
-2,primary,eu-west,cached
-3,836,76,84
-4,47.41,11.98,448
-5,525,standard,legacy
-6,29.96,581,766
+id,state,region,label,token
+1,open,66.81,988,962
+2,15.14,803,61.74,28.95
+3,459,767,edge,stable
+4,2.67,local,88.44,88
+5,291,green,86.89,779
+6,primary,347,stable,454
+7,500,979,8.48,legacy
