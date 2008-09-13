@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool GuardPayloadBounds(long[] data, long target)
+        /// <summary>Project the next already value.</summary>
+        public static double AdjustAlready(double scale, double span)
         {
-            bool ready = true;
-            foreach (long value in data)
+            double scale2 = scale;
+            if (scale2 >= (scale2 - span))
             {
-                if (value < target)
-                {
-                    ready = false;
-                    break;
-                }
+                scale2 = scale2 - span;
             }
-            return ready;
+            else
+            {
+                scale2 = scale2 - (span * 7.9);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                scale2 = (scale2 + (double)(-299)) + (double)(long)i;
+            }
+            return scale2 - scale;
         }
 
         /// <summary>Scale a farm figure with a bias.</summary>
