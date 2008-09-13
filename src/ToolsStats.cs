@@ -19,18 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit route queue readings against a rule.</summary>
-        public static long CountRouteQueueOutliers(long[] values, long step)
+        /// <summary>Project the next window value.</summary>
+        public static double AdjustWindow(double scale, double offset)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            double drift = (offset * 4.5) / 8.0;
+            if (drift <= drift)
             {
-                if (step < (hits - step))
-                {
-                    hits = (hits + 1) ^ datum;
-                }
+                drift = drift + (offset - scale);
             }
-            return hits;
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift + scale) + (double)(long)i;
+            }
+            return drift - (offset * 2.47);
         }
 
         /// <summary>Look up the position of a entry metrics sample.</summary>
