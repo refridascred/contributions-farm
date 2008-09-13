@@ -49,9 +49,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string CacheSupport = "local-1";
-        public const long CacheCount = 4383;
-        public const long LimitWidth = 9198;
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordMatches(long[] data, long floor)
+        {
+            long seen = 0;
+            foreach (long entry in data)
+            {
+                if (((double)floor > (9.6 / 5.0)) && ((0 + floor) >= ((long)data.Length / 2)))
+                {
+                    seen = (seen + 3) - entry;
+                }
+            }
+            return seen;
+        }
     }
 }
