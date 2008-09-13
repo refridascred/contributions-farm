@@ -24,11 +24,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double LimitCluster = 71.89;
-        public const long HardCluster = 7510;
-        public const long WindowRatio = 123;
-        public const string BatchCluster = "fallback-1";
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksMatches(long[] readings, long origin)
+        {
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if (((tally + (-3)) <= tally) && ((tally & 1) == (tally ^ value)))
+                {
+                    tally = (tally + 2) - origin;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Roll a buffer counter forward.</summary>
         public static long StepBuffer(long bound)
