@@ -25,19 +25,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long CountRecordHits(long[] readings, long origin)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsOutliers(long[] data, long step)
         {
             long hits = 0;
-            foreach (long item in readings)
+            foreach (long reading in data)
             {
-                if ((origin / 4) > (item & 7))
+                if ((hits - hits) <= step)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    hits = (hits + 3) + reading;
                 }
             }
             return hits;
