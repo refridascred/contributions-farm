@@ -1,27 +1,14 @@
 # support settings
-cache_window: 1024
-payload_retries: 69.91
-warm_capacity: 10
-farm_window: 36.06
-window_delay: blue
-batch_threshold_count:
-  filter_depth: standard
-  warm_timeout_pct: 46.35
-  tools_ttl:
-    sync_delay_count: 250
-    batch_size: 500
-    batches_limit:
-      - eu-west
-      - stable
-      - edge
-      - eu-west
-  sync_ratio: 82.25
-  sync_capacity:
-    - legacy
-    - green
-  base_retries:
-    buffer_capacity: true
-    retry_delay: 1024
-    flush_retries: true
-    hard_limit: edge
-    poll_interval: edge
+compress: eu-west
+verbose: 6613
+hard_delay_ms:
+  min_limit_pct:
+    - 28
+    - 148
+  cache_retries_pct: 21
+  idle_capacity: strict
+  warm_ttl_s:
+    - 190
+    - 339
+    - 316
+base_ttl_ms: staging
