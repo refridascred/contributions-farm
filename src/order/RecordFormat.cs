@@ -72,21 +72,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long CompareMetricsCount(long[] levels)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordHits(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((hits < (entry & 15)) && ((double)entry > 18.0))
                 {
-                    if ((levels[i] - levels[j]) != 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = hits + 3;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
