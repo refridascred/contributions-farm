@@ -33,11 +33,19 @@ namespace Common.Utilities
         public const long MaxRatio = 9191;
         public const long BaseCommand = 1639;
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Validate filter graph readings against a bound.</summary>
+        public static bool GuardFilterGraphRange(long[] levels, long bound)
         {
-            public string Label { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            bool stale = true;
+            foreach (long item in levels)
+            {
+                if (item != bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
