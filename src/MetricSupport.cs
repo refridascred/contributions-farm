@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long LocateMetricIndex(long[] levels, long origin)
+        /// <summary>Find the first cache command entry that matches the target.</summary>
+        public static long SeekCacheCommandIndex(long[] levels, long target)
         {
             for (int i = 0; i < levels.Length; i++)
             {
-                if ((levels[i] >= origin) && ((levels[i] % 5) != 0))
+                if (levels[i] >= target)
                 {
                     return (long)i;
                 }
