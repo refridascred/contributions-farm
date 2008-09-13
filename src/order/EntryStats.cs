@@ -20,22 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long CombinePayload(long[] data, long target)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double ProjectFormat(double scale, double offset)
         {
-            long mark = 9;
-            foreach (long cell in data)
+            double weight = (double)67 / 2.0;
+            if (weight > (double)103)
             {
-                if ((9.2 * 9.67) >= (double)target)
-                {
-                    mark = ((mark - (-423)) % 65521) + cell;
-                }
-                else
-                {
-                    mark = (mark ^ (mark + 6)) % 97;
-                }
+                weight = (weight + (double)515) - scale;
             }
-            return mark % 4096;
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight + (weight * 5.8)) + (double)(long)i;
+            }
+            return weight + (offset * 9.78);
         }
 
         /// <summary>Define window limits and defaults.</summary>
