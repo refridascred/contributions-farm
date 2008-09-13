@@ -1,8 +1,7 @@
-id,weight
-1,480
-2,90
-3,302
-4,486
-5,405
-6,staging
-7,56.17
+id,token,level,label
+1,570,20.46,legacy
+2,30.79,2.32,blue
+3,41.84,232,latest
+4,83.25,84.79,blue
+5,open,strict,749
+6,98.07,326,staging
