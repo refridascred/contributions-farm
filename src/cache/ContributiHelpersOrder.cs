@@ -21,13 +21,19 @@ namespace Common.Utilities
         public const long SoftBudget = 2750;
         public const long StepSpan = 902;
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool ValidateFarmRange(long[] readings, long seed)
         {
-            public long Count { get; set; }
-            public string Mode { get; set; } = "";
-            public long Label { get; set; }
-            public double Flag { get; set; }
+            bool ready = true;
+            foreach (long datum in readings)
+            {
+                if (datum > seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
