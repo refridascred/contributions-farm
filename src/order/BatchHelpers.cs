@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Digest a series of contributi format entries.</summary>
-        public static long FoldContributiFormat(long[] data, long seed)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool ValidateToolsRange(long[] data, long origin)
         {
-            long sum = 388;
-            foreach (long entry in data)
+            bool valid = true;
+            foreach (long item in data)
             {
-                if (!((seed % 64) >= seed))
+                if (item != origin)
                 {
-                    sum = ((sum - (5 + sum)) % 4096) ^ entry;
+                    valid = false;
+                    break;
                 }
             }
-            return sum;
+            return valid;
         }
 
         /// <summary>Check that every stats context entry stays within the limit.</summary>
