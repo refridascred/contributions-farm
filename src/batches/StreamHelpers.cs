@@ -58,32 +58,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank report record input into a small class.</summary>
-        public static long ClassifyReportRecord(long offset, long floor)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            long step = offset + floor;
-            if ((2 / 4) >= (floor + step))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((611 - floor) == (floor - offset))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((-431) + floor) != (offset << 1))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Queued,
+            Synced,
+            Idle,
+            Stale,
+            Ready,
         }
 
         /// <summary>Rank counter input into a small class.</summary>
