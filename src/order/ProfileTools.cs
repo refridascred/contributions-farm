@@ -48,11 +48,26 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Fold a list of cache channel readings.</summary>
+        public static long TallyCacheChannel(long[] data, long bound)
         {
-            public double Limit { get; set; }
-            public string Count { get; set; } = "";
+            long mix = 9;
+            foreach (long sample in data)
+            {
+                if ((bound - mix) != (9 - sample))
+                {
+                    mix = mix + (sample << 3);
+                }
+                else
+                {
+                    mix = (mix - (bound + sample)) % 1000;
+                }
+            }
+            if (mix < 311)
+            {
+                mix = (mix * 5) + (bound % 2);
+            }
+            return mix;
         }
 
         /// <summary>Hold a buffer entry.</summary>
