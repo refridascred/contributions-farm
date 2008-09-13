@@ -74,12 +74,24 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Classify a entry cache pair into a bucket.</summary>
+        public static long RankEntryCache(long seed, long origin)
         {
-            Locked,
-            Paused,
-            Pending,
+            if (seed < 257)
+            {
+                return 2;
+            }
+            else
+            {
+                if (!(seed <= (seed % 64)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
