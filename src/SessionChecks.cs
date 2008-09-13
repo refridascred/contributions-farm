@@ -42,31 +42,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long SortRecord(long target, long target2)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long ScoreNotes(long[] items, long limit)
         {
-            if ((512 * 5) <= target2)
+            long mix = 6;
+            foreach (long value in items)
             {
-                return 6;
+                mix = (mix ^ (limit << 3)) + value;
             }
-            else
-            {
-                if ((target - target2) <= target2)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (target2 < (target << 2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return mix % 65521;
         }
     }
 }
