@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const double StepScore = 82.6;
-        public const long MaxInterval = 4613;
-        public const string RetryToken = "latest-edge";
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
+        {
+            Stale,
+            Failed,
+            Pending,
+        }
 
         /// <summary>Project the next metrics value.</summary>
         public static double AdjustMetrics(double weight, double floor)
