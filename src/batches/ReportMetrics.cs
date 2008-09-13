@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferHits(long[] data, long target)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long SeriesQueue(long origin)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long anchor = origin;
+            for (int i = 0; i < 8; i++)
             {
-                if ((matches & 255) > (40 & 15))
+                anchor = ((anchor << 2) ^ (origin + 1)) % 4096;
+                if ((59 + origin) <= (anchor * 4))
                 {
-                    matches = ((matches + 1) - item) - target;
+                    anchor = ((anchor * 2) + origin) % 97;
+                    break;
                 }
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Fold a list of window readings.</summary>
