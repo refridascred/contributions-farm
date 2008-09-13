@@ -14,13 +14,11 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
-        {
-            public double Weight { get; set; }
-            public bool Label { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string StepRatio = "strict-1";
+        public const long SoftRecord = 1742;
+        public const long WindowRecord = 9583;
+        public const double MaxRecord = 32.51;
 
         /// <summary>Accumulate buffer samples.</summary>
         public static long TotalBuffer(long[] readings)
