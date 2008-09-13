@@ -48,18 +48,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long CombineEntry(long[] readings, long floor)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long ScoreReport(long[] series)
         {
-            long score = 30;
-            foreach (long entry in readings)
+            long mix = 86;
+            foreach (long datum in series)
             {
-                if ((double)entry != (8.37 / 3.0))
+                if (5.06 < (double)mix)
                 {
-                    score = ((score ^ (entry - (long)readings.Length)) % 4096) - floor;
+                    mix = (mix + ((-943) & 7)) - datum;
                 }
             }
-            return score;
+            return mix % 65521;
         }
     }
 }
