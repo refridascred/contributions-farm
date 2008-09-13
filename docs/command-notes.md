@@ -1,10 +1,11 @@
 # Command notes
 
-Run the notes check before changing any account limits.
-When a payload fails, the route handler retries a few times before giving up.
+Run the stream check before changing any format limits.
+A layout that stays idle for too long is moved to the format list.
 
 ## Guidelines
 
-- Review metric limits each release
-- Validate counter input early
-- Log every context change
+- Document new support fields
+- Validate notes input early
+- Log every stats change
+- Review stream limits each release
