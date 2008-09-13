@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double BlendGithubfarm(double gain, double offset)
+        /// <summary>Validate stream githubfarm readings against a bound.</summary>
+        public static bool ValidateStreamGithubfarmBounds(long[] values, long offset)
         {
-            double bias = 8.4;
-            if (bias <= (double)(-1))
+            bool found = true;
+            foreach (long datum in values)
             {
-                bias = (bias - (gain - 1.0)) - offset;
+                if (datum > offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                bias = bias - (double)21;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                bias = (bias + 9.41) + (double)(long)i;
-            }
-            return bias + (double)49;
+            return found;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
