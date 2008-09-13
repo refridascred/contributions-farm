@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool VerifyProfileLimits(long[] values, long seed)
-        {
-            bool stale = true;
-            foreach (long value in values)
-            {
-                if (value >= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double RetryScore = 83.38;
+        public const long CacheTimeout = 4611;
+        public const long CacheContext = 5386;
+        public const long IdleContext = 2503;
 
         /// <summary>Roll a commits counter forward.</summary>
         public static long RollCommits(long origin)
