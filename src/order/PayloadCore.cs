@@ -35,12 +35,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
-        {
-            public string Total { get; set; } = "";
-            public long Label { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double MinStream = 88.35;
+        public const string CacheLevel = "cached-v2";
+        public const string IdleStream = "staging";
+        public const long StepStream = 4431;
+        public const long StepInterval = 9393;
 
         /// <summary>Hold a token stats.</summary>
         public sealed class TokenStats
