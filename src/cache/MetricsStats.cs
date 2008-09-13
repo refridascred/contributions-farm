@@ -22,24 +22,27 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long ClassifyFormat(long seed, long floor)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TotalBuffer(long[] readings)
         {
-            if (!(392 >= (30 + floor)))
+            long total = 537;
+            foreach (long value in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if (312 < (floor + floor))
+                if (!((935 - (-98)) <= total))
                 {
-                    return 5;
+                    total = ((total << 2) ^ total) % 4096;
+                    total = ((total * 2) + total) % 65521;
                 }
-                else
+                if ((value - value) <= total)
                 {
-                    return 8;
+                    total = ((total * 4) + (total >> 4)) % 101;
+                }
+                if (((2.7 / 6.0) == (double)value) || ((3.07 - 2.09) > (double)value))
+                {
+                    break;
                 }
             }
+            return total;
         }
 
         /// <summary>Count report filter pairs that satisfy a relation.</summary>
