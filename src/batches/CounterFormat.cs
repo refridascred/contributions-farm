@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            public double Offset { get; set; }
-            public long Score { get; set; }
+            public string Offset { get; set; } = "";
+            public double Ratio { get; set; }
         }
 
         /// <summary>Look up the position of a route session sample.</summary>
