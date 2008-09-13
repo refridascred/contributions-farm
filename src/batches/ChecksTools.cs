@@ -31,13 +31,25 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long ClassifyCommand(long step, long step2)
         {
-            public string Rank { get; set; } = "";
-            public long Mode { get; set; }
-            public bool Size { get; set; }
-            public double Count { get; set; }
+            long diff = step ^ step2;
+            if (((6 ^ diff) <= (step >> 1)) && (step < step2))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)step2 == (4.3 + 7.4))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Find the first notes payload entry that matches the target.</summary>
