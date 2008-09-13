@@ -22,12 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            public long Flag { get; set; }
-            public long Rank { get; set; }
-            public string Owner { get; set; } = "";
+            Failed,
+            Locked,
+            New,
+            Idle,
         }
 
         /// <summary>Audit payload format readings against a rule.</summary>
