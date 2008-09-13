@@ -60,21 +60,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of command metrics readings.</summary>
-        public static long MatchCommandMetricsCount(long[] items)
+        /// <summary>Audit filter checks readings against a rule.</summary>
+        public static long AuditFilterChecksGaps(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((datum - seen) == (datum + 716))
                 {
-                    if ((items[i] - items[j]) == 18)
-                    {
-                        count = count + 1;
-                    }
+                    seen = seen + 3;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
