@@ -15,33 +15,11 @@ namespace Common.Utilities
         public const long CacheLayout = 5174;
         public const string BatchDepth = "cached";
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long ClassifyFormat(long offset, long seed)
-        {
-            long span = offset ^ seed;
-            if (!(6 <= span))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((seed << 2) != (212 >> 5))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((offset * 2) >= (720 + span)) && (seed > (-98)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string SoftRatio = "local";
+        public const long IdleRatio = 6399;
+        public const string StepSpan = "local-v2";
+        public const double LimitCounter = 59.8;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long BurstSize = 7455;
