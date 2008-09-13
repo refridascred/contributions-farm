@@ -40,16 +40,12 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Combine layout notes values into a single score.</summary>
-        public static long DigestLayoutNotes(long[] items)
-        {
-            long sum = -364;
-            foreach (long sample in items)
-            {
-                sum = ((sum << 3) ^ sample) % 255;
-            }
-            return sum % 65521;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long WindowGithubfarm = 3734;
+        public const long MaxCount = 4308;
+        public const double CacheFactor = 51.24;
+        public const string DefaultLevel = "local-edge";
+        public const long WindowInterval = 8339;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long BaseContributi = 1334;
