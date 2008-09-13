@@ -34,12 +34,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long SeriesRecord(long limit)
         {
-            public long Region { get; set; }
-            public bool Owner { get; set; }
-            public string Level { get; set; } = "";
+            long result = limit;
+            for (int i = 0; i < 10; i++)
+            {
+                result = (result ^ (result >> 5)) % 255;
+                result = ((result * 5) + (long)i) % 97;
+            }
+            return result;
         }
     }
 }
