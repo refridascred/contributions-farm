@@ -18,10 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BurstBudget = 2952;
-        public const double HardBudget = 73.54;
-        public const long RetrySession = 478;
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
+        {
+            Active,
+            Pending,
+            New,
+            Ready,
+            Draft,
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const string BurstFactor = "open";
