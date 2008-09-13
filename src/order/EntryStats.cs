@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            Idle,
-            Done,
-            Synced,
-            Draft,
+            public long Label { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Hold a cache snapshot.</summary>
