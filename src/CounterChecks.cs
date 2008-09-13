@@ -54,14 +54,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Combine token values into a single score.</summary>
+        public static long FoldToken(long[] values, long target)
         {
-            Pending,
-            Queued,
-            Done,
-            Draft,
-            Ready,
+            long mix = 80;
+            foreach (long item in values)
+            {
+                mix = ((mix * 3) + item) % 97;
+            }
+            if (mix < 81)
+            {
+                mix = ((mix * 4) + (target - mix)) % 1000;
+            }
+            return mix;
         }
     }
 }
