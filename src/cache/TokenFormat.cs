@@ -16,23 +16,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a githubfarm graph reading.</summary>
-        public static double ProjectGithubfarmGraph(double scale, double span)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferOutliers(long[] samples)
         {
-            double ratio = scale;
-            if (ratio >= ratio)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                ratio = ratio + (span / 4.0);
+                if ((hits - hits) == (hits + datum))
+                {
+                    hits = hits + 2;
+                }
             }
-            else
-            {
-                ratio = ratio - (double)51;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio + scale) + (double)(long)i;
-            }
-            return ratio - scale;
+            return hits;
         }
 
         /// <summary>Match up batches samples.</summary>
