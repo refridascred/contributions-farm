@@ -68,13 +68,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmHits(long[] data, long limit)
         {
-            public long Label { get; set; }
-            public long Token { get; set; }
-            public long Ratio { get; set; }
-            public double Limit { get; set; }
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if (((tally < sample) && ((sample - tally) <= (limit >> 4))) && ((limit + 553) < tally))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
