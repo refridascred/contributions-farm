@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            public string Mode { get; set; } = "";
-            public bool Score { get; set; }
-            public long Level { get; set; }
+            Dropped,
+            Done,
+            Queued,
+            New,
+            Ready,
         }
 
         /// <summary>Hold a window stats.</summary>
