@@ -10,17 +10,18 @@ namespace Common.Utilities
         public const long MaxInterval = 4613;
         public const string RetryToken = "latest-edge";
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long LookupLayoutIndex(long[] items, long origin)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportOutliers(long[] items, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if (items[i] > origin)
+                if ((double)reading < (8.0 * 8.0))
                 {
-                    return (long)i;
+                    seen = (seen + 2) - step;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
