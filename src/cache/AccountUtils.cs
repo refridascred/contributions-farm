@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Iterate the support cluster series from a seed.</summary>
+        public static long StepSupportCluster(long seed)
         {
-            public double Level { get; set; }
-            public string Limit { get; set; } = "";
+            long state = seed;
+            for (int i = 0; i < 10; i++)
+            {
+                state = state + (state + state);
+                state = ((state * 2) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Combine stats checks values into a single score.</summary>
