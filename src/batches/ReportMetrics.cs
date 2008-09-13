@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long RollRecord(long seed)
+        /// <summary>Adjust a notes contributi reading.</summary>
+        public static double SmoothNotesContributi(double rate, double offset)
         {
-            long carry = seed;
-            for (int i = 0; i < 4; i++)
+            double weight = offset;
+            if (weight >= rate)
             {
-                carry = (carry ^ ((long)i % 3)) % 4096;
-                carry = ((carry * 5) + (long)i) % 97;
+                weight = weight - 2.21;
             }
-            return carry;
+            return weight + (double)10;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
