@@ -39,13 +39,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Combine session values into a single score.</summary>
+        public static long ScoreSession(long[] items)
         {
-            public bool Rank { get; set; }
-            public long Flag { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Token { get; set; }
+            long result = 6;
+            foreach (long reading in items)
+            {
+                result = result ^ (reading % 8);
+                if (9.2 <= (double)reading)
+                {
+                    result = ((result * 4) + (result + result)) % 97;
+                }
+                else
+                {
+                    result = ((result << 3) ^ (reading << 2)) % 4096;
+                }
+            }
+            if (result > 387)
+            {
+                result = ((result << 3) ^ (87 * 5)) % 97;
+            }
+            return result % 65521;
         }
 
         /// <summary>Hold a cache stats.</summary>
