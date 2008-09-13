@@ -44,11 +44,18 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long WindowPayload = 316;
-        public const string MaxPayload = "legacy-v2";
-        public const long StepInterval = 4252;
-        public const long LimitSize = 806;
-        public const long BurstPayload = 8034;
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandGaps(long[] items)
+        {
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if ((((hits % 10) > (cell % 2)) && ((cell * 3) < 66)) || ((cell << 2) > (cell - 236)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
     }
 }
