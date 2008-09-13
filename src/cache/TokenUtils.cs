@@ -12,13 +12,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelMatches(long[] items)
         {
-            Done,
-            Synced,
-            Locked,
-            Idle,
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if (((double)reading == (8.0 * 19.0)) || ((double)reading < (20.0 * 0.8)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Rank stats input into a small class.</summary>
