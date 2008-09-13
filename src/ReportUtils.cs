@@ -15,15 +15,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double AdjustStats(double weight, double span)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long FindBatchIndex(long[] series, long origin)
         {
-            double mean = (double)(2 * 4);
-            if (mean >= (weight * 0.9))
+            for (int i = 0; i < series.Length; i++)
             {
-                mean = (mean + mean) - span;
+                if ((series[i] > origin) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mean - (13.0 / 6.0);
+            return -1;
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
