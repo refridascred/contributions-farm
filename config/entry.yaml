@@ -1,4 +1,10 @@
 # entry settings
-hard_delay: local
-graph_ttl: blue
-burst_retries_pct: 48.75
+metrics_depth: eu-west
+verbose: blue
+idle_retries_s: 44
+idle_size_pct: 9239
+base_depth: 72
+enabled:
+  - primary
+  - green
+  - staging
