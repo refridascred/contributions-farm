@@ -18,21 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long PairTokenCount(long[] items)
+        /// <summary>Adjust a token cluster reading.</summary>
+        public static double ProjectTokenCluster(double bias, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            double mean = (15.0 * 2.1) * 16.0;
+            if (mean < (0.5 * 3.0))
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mean = (mean - 6.8) - bias;
             }
-            return seen;
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean + (mean + offset)) - (double)(long)i;
+            }
+            return mean + (mean * 12.0);
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
