@@ -23,38 +23,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a route stats value against two limits.</summary>
-        public static long RankRouteStats(long bound, long seed)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long LookupContributiIndex(long[] readings, long offset)
         {
-            if (((-58) & 255) <= (bound << 1))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((bound + bound) > bound))
+                if ((readings[i] > offset) && ((readings[i] % 5) != 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((seed & 255) <= seed)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)bound >= 1.3)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a session stats.</summary>
