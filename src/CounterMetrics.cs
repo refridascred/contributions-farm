@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long CacheInterval = 1195;
-        public const long WindowCounter = 2252;
-        public const long LimitCounter = 864;
-        public const long DefaultRatio = 9504;
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long GradeAlready(long step, long step2)
+        {
+            if ((step2 % 100) <= (4 - step))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((0.5 * 0.6) <= (double)step2)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Describe the queue mode values.</summary>
         public enum QueueMode
