@@ -10,10 +10,20 @@ namespace Common.Utilities
         public const long MaxInterval = 4613;
         public const string RetryToken = "latest-edge";
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string WindowLayout = "primary-edge";
-        public const long CacheLayout = 5174;
-        public const string BatchDepth = "cached";
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool CheckOrderRange(long[] levels, long offset)
+        {
+            bool stale = true;
+            foreach (long value in levels)
+            {
+                if (value >= offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const string SoftRatio = "local";
