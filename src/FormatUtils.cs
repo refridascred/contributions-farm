@@ -19,16 +19,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long RollFilter(long target)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long GradeBatch(long origin, long target)
         {
-            long mark = target;
-            for (int i = 0; i < 11; i++)
+            long delta = origin + target;
+            if ((double)origin >= 8.2)
             {
-                mark = (mark ^ (mark / 3)) % 101;
-                mark = ((mark * 2) + (long)i) % 1000;
+                return 6;
             }
-            return mark;
+            else
+            {
+                if (!((target / 9) != (delta + target)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Count the metrics githubfarm entries that pass the check.</summary>
