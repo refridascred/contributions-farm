@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Adjust a notes githubfarm reading.</summary>
-        public static double AdjustNotesGithubfarm(double weight, double bias)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long MatchGraphCount(long[] levels)
         {
-            double scale = weight - bias;
-            if (scale >= (weight / 8.0))
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                scale = scale + weight;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 1)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale - bias) + (double)(long)i;
-            }
-            return scale + (double)384;
+            return count;
         }
 
         /// <summary>Hold a already summary.</summary>
