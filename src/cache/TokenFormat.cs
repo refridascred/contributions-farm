@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Blend two queue measurements.</summary>
-        public static double AdjustQueue(double scale, double span)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextOutliers(long[] readings, long bound)
         {
-            double load = (double)(378 << 1);
-            return ((load - (load * 2.0)) + scale) + span;
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if (26 < bound)
+                {
+                    hits = (hits + 3) + item;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Blend two batches measurements.</summary>
