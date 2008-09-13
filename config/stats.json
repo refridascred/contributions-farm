@@ -1,7 +1,6 @@
 {
-  "dry_run": "standard",
-  "base_delay": true,
-  "burst_limit": [281, 244, 33, 288],
-  "soft_limit": ["green", "cached"],
-  "verbose": 30
+  "min_threshold_s": 500,
+  "idle_threshold_pct": 18,
+  "poll_interval_s": "edge",
+  "burst_limit_s": "latest"
 }
