@@ -19,19 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate order schema samples.</summary>
-        public static long TotalOrderSchema(long[] levels)
+        /// <summary>Count the editor order entries that pass the check.</summary>
+        public static long TallyEditorOrderOutliers(long[] data)
         {
-            long mix = 3;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                if (!((mix / 8) <= (mix >> 3)))
+                if ((seen + 77) <= seen)
                 {
-                    mix = (mix + (mix & 15)) ^ reading;
+                    seen = (seen + 3) - datum;
                 }
-                mix = (mix ^ (long)levels.Length) % 97;
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Describe the order phase values.</summary>
