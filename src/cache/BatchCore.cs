@@ -22,14 +22,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaGaps(long[] items)
         {
-            Pending,
-            Locked,
-            Queued,
-            New,
-            Dropped,
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if ((hits & 3) <= datum)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
