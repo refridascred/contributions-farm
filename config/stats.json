@@ -1,7 +1,7 @@
 {
-  "soft_ratio_ms": "cached",
-  "record_depth": 21,
-  "payload_retries": "local",
-  "cache_size_pct": "primary",
-  "cluster_limit": "fallback"
+  "dry_run": "standard",
+  "base_delay": true,
+  "burst_limit": [281, 244, 33, 288],
+  "soft_limit": ["green", "cached"],
+  "verbose": 30
 }
