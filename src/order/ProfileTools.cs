@@ -59,11 +59,12 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            public bool Score { get; set; }
-            public bool Mode { get; set; }
+            public long Score { get; set; }
+            public double Count { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
