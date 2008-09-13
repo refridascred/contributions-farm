@@ -32,22 +32,13 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long DigestSession(long[] samples, long floor)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            long carry = 32;
-            foreach (long value in samples)
-            {
-                if (floor >= (value & 3))
-                {
-                    carry = (carry ^ (floor / 9)) % 1000;
-                }
-            }
-            if (carry > 20)
-            {
-                carry = carry - (floor + carry);
-            }
-            return carry % 4096;
+            public long Rank { get; set; }
+            public long Level { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Region { get; set; }
         }
     }
 }
