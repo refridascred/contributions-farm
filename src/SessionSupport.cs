@@ -26,21 +26,11 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long OverlapQueueCount(long[] items)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Label { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
