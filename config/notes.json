@@ -1,19 +1,8 @@
 {
-  "format_ttl": {
-    "hard_timeout": {
-      "audit": 72.49,
-      "hard_timeout": ["eu-west", "open", "local", "eu-west"],
-      "cache_ratio": false,
-      "compress": "green",
-      "strict": "primary",
-      "max_window_s": 84
-    },
-    "base_delay_count": "primary",
-    "editor_retries": 987
-  },
-  "dry_run": true,
-  "hard_capacity": 45,
-  "flush_capacity_count": ["legacy", "strict", "fallback", "strict"],
-  "cache_retries_pct": [217, 267, 368, 97],
-  "min_ttl": 70.04
+  "burst_delay_ms": [12, 464, 40, 9],
+  "entry_ratio": true,
+  "editor_interval": "cached",
+  "metrics_timeout": [221, 174],
+  "commits_ratio": 2738,
+  "readonly": "standard"
 }
