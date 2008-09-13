@@ -1,6 +1,8 @@
 {
-  "warm_size": ["primary", "blue", "legacy", "strict"],
-  "githubfarm_capacity": 58,
-  "flush_window_ms": "legacy",
-  "default_threshold": 100
+  "readonly": 28,
+  "burst_size_ms": false,
+  "flush_threshold_s": 18,
+  "verbose": 5967,
+  "persist": 51.54,
+  "audit": "fallback"
 }
