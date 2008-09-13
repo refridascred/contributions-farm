@@ -1,15 +1,12 @@
 # Command notes
 
-Defaults for batch live in the config folder and can be overridden per environment.
-Use counter settings to tune how often batch data is refreshed.
-
-Keep payload and stream names short and lowercase.
-Keep window and context names short and lowercase.
-The format module keeps session values in sync with the tools cache.
+Keep contributi and cluster names short and lowercase.
+Run the buffer check before changing any counter limits.
+The profile helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate checks input early
-- Document new already fields
-- Review profile limits each release
-- Prefer window defaults
+- Keep counter values small
+- Validate notes input early
+- Review tools limits each release
+- Prefer githubfarm defaults
