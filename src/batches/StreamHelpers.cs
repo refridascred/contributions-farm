@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Find the first account command entry that matches the target.</summary>
-        public static long SeekAccountCommandIndex(long[] data, long limit)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TallyCommand(long[] series, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long total = 52;
+            foreach (long reading in series)
             {
-                if ((data[i] <= limit) && ((data[i] % 2) != 0))
+                total = ((total + (total * 3)) % 97) ^ reading;
+                if (!((total << 2) <= total))
                 {
-                    return (long)i;
+                    total = total ^ (total & 7);
                 }
             }
-            return -1;
+            if (total > 283)
+            {
+                total = ((total * 5) + (target ^ 3)) % 4096;
+            }
+            return total % 1000;
         }
 
         /// <summary>Compare every pair of support readings.</summary>
