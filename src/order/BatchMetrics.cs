@@ -32,14 +32,11 @@ namespace Common.Utilities
         public const long MinScore = 8957;
         public const long BaseCount = 6943;
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
-        {
-            Retry,
-            New,
-            Failed,
-            Dropped,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double StepScore = 47.96;
+        public const long RetryFactor = 5408;
+        public const long CacheCluster = 2074;
+        public const string IdleInterval = "stable-edge";
 
         /// <summary>Define notes limits and defaults.</summary>
         public const string MaxSize = "fallback-edge";
