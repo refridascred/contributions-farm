@@ -54,17 +54,32 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next cache format value from a seed.</summary>
-        public static long IterateCacheFormat(long floor)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long RankStream(long seed, long floor)
         {
-            long anchor = floor;
-            for (int i = 0; i < 15; i++)
+            long delta = seed + floor;
+            if ((6 + seed) <= (seed * 2))
             {
-                anchor = (anchor + (568 % 3)) % 101;
-                anchor = (anchor - floor) % 65521;
-                anchor = ((anchor * 4) + (long)i) % 65521;
+                return 6;
             }
-            return anchor;
+            else
+            {
+                if ((seed << 2) >= (floor >> 4))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)delta != (4.4 * 6.94))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
