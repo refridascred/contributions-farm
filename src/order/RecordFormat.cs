@@ -16,15 +16,18 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Adjust a record graph reading.</summary>
-        public static double BlendRecordGraph(double scale, double bias)
+        /// <summary>Audit metric farm readings against a rule.</summary>
+        public static long MeasureMetricFarmGaps(long[] values)
         {
-            double weight = (bias * 7.76) / 5.0;
-            if (weight > 17.0)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                weight = (weight - (double)28) - scale;
+                if ((4 + 6) < matches)
+                {
+                    matches = (matches + 1) ^ datum;
+                }
             }
-            return weight - (double)535;
+            return matches;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
