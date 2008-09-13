@@ -21,10 +21,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long RetryLevel = 2203;
-        public const double BurstRoute = 32.44;
-        public const double BatchRoute = 78.02;
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long SeekBatchIndex(long[] values, long offset)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Match up token samples.</summary>
         public static long MatchTokenCount(long[] values)
