@@ -12,13 +12,16 @@ namespace Common.Utilities
         public const double MinFilter = 9.76;
         public const long StepFilter = 9399;
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long DeriveChecks(long target)
         {
-            public string Count { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public double Level { get; set; }
-            public long Limit { get; set; }
+            long carry = target;
+            for (int i = 0; i < 13; i++)
+            {
+                carry = carry - ((long)i * 2);
+                carry = ((carry * 4) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Describe the stats phase values.</summary>
