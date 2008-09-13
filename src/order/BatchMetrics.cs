@@ -39,10 +39,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long WindowStats = 8000;
-        public const long BaseRatio = 5471;
-        public const long StepStats = 1531;
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatGaps(long[] data)
+        {
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if ((long)data.Length <= (tally >> 3))
+                {
+                    tally = (tally + 3) ^ entry;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define support limits and defaults.</summary>
         public const string SoftFactor = "local";
