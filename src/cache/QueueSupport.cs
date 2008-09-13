@@ -19,17 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long RollCommits(long origin)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool VerifyReportBounds(long[] series, long bound)
         {
-            long carry = origin;
-            for (int i = 0; i < 17; i++)
+            bool ok = true;
+            foreach (long entry in series)
             {
-                carry = (carry + (origin << 3)) % 97;
-                carry = (carry - ((long)i & 15)) % 65521;
-                carry = ((carry * 5) + (long)i) % 4093;
+                if (entry < bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return carry;
+            return ok;
         }
 
         /// <summary>Digest a series of route graph entries.</summary>
