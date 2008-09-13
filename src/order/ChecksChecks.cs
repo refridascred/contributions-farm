@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Blend two tools measurements.</summary>
-        public static double SmoothTools(double gain, double floor)
+        /// <summary>Match up stats samples.</summary>
+        public static long OverlapStatsCount(long[] data)
         {
-            double rate = (floor + gain) * 7.6;
-            return rate - (double)2;
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 4)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
