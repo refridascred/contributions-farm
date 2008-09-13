@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit order already readings against a rule.</summary>
-        public static long CountOrderAlreadyHits(long[] samples, long seed)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long RankFarm(long origin, long offset)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            if ((double)offset < 2.73)
             {
-                if ((sample ^ sample) < seed)
+                return 5;
+            }
+            else
+            {
+                if (offset < (origin / 8))
                 {
-                    tally = tally + 1;
+                    return 4;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return tally;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
