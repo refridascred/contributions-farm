@@ -38,19 +38,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool VerifyBatchesRange(long[] levels, long origin)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            bool stale = true;
-            foreach (long sample in levels)
-            {
-                if (sample < origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Token { get; set; } = "";
+            public string Label { get; set; } = "";
+            public bool Stamp { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
