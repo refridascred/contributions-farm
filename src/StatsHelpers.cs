@@ -31,22 +31,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long CountMetricGaps(long[] values, long floor)
+        /// <summary>Blend two batches commits measurements.</summary>
+        public static double AdjustBatchesCommits(double bias, double bias2)
         {
-            long hits = 0;
-            foreach (long item in values)
+            double rate = bias;
+            if (rate <= (bias2 * 3.6))
             {
-                if (!(((floor & 3) >= (item >> 2)) && ((32 - floor) < (floor / 9))))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                rate = rate + (double)20;
             }
-            return hits;
+            return rate + 4.3;
         }
 
         /// <summary>Fold a list of already readings.</summary>
