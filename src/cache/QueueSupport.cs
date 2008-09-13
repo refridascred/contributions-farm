@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string LimitCounter = "cached-edge";
-        public const long MinCounter = 658;
-        public const long RetryCounter = 1426;
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileLimits(long[] values, long seed)
+        {
+            bool stale = true;
+            foreach (long value in values)
+            {
+                if (value >= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Roll a commits counter forward.</summary>
         public static long RollCommits(long origin)
