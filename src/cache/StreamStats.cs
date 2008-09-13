@@ -73,19 +73,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long TotalToken(long[] readings, long origin)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            long anchor = 11;
-            foreach (long value in readings)
-            {
-                if (anchor >= origin)
-                {
-                    anchor = ((anchor << 2) ^ (origin + value)) % 65521;
-                }
-                anchor = (anchor ^ (origin >> 4)) % 255;
-            }
-            return anchor;
+            public string Flag { get; set; } = "";
+            public long Stamp { get; set; }
+            public bool Size { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
