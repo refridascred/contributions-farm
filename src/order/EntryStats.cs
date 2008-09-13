@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Project the next already value.</summary>
-        public static double AdjustAlready(double scale, double span)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            double scale2 = scale;
-            if (scale2 >= (scale2 - span))
-            {
-                scale2 = scale2 - span;
-            }
-            else
-            {
-                scale2 = scale2 - (span * 7.9);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                scale2 = (scale2 + (double)(-299)) + (double)(long)i;
-            }
-            return scale2 - scale;
+            Idle,
+            Done,
+            Synced,
+            Draft,
         }
 
         /// <summary>Hold a cache snapshot.</summary>
