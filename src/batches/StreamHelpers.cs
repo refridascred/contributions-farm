@@ -19,25 +19,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long RankCommits(long offset, long bound)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool VerifyCounterRange(long[] values, long step)
         {
-            long bound2 = offset + bound;
-            if (!((offset + bound2) >= bound2))
+            bool ok = true;
+            foreach (long entry in values)
             {
-                return 2;
-            }
-            else
-            {
-                if (((double)bound != (8.28 - 5.1)) || (bound2 < (bound ^ (-251))))
+                if (entry < step)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Define support limits and defaults.</summary>
