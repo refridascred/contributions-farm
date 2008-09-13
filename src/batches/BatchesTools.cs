@@ -29,26 +29,38 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long ScoreFormat(long[] levels, long floor)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long ClassifyChannel(long target, long target2)
         {
-            long result = 461;
-            foreach (long sample in levels)
+            if ((target & 255) <= target2)
             {
-                if ((3.0 / 6.0) <= (double)floor)
+                return 8;
+            }
+            else
+            {
+                if ((target2 - target2) < (target2 << 3))
                 {
-                    continue;
-                }
-                if (!((floor << 2) > result))
-                {
-                    result = (result + (sample & 255)) % 97;
+                    return 5;
                 }
                 else
                 {
-                    result = result - (sample & 255);
+                    if (((target2 ^ target) == (target2 << 2)) || ((target - target2) != (target2 - target)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((target + target2) != (target2 + 69)) && ((target2 - target) <= (target2 + target2)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return result % 97;
         }
     }
 }
