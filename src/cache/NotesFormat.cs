@@ -22,15 +22,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double BlendFormat(double bias, double floor)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            double bias2 = bias;
-            if (bias2 <= (12.0 * 9.9))
-            {
-                bias2 = (bias2 + bias) + floor;
-            }
-            return bias2 + (double)0;
+            Failed,
+            Retry,
+            Locked,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Rank entry input into a small class.</summary>
