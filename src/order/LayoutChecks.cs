@@ -31,14 +31,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Blend two metric measurements.</summary>
+        public static double AdjustMetric(double bias, double offset)
         {
-            Queued,
-            Draft,
-            Retry,
-            Pending,
-            Ready,
+            double weight = bias;
+            if (weight < (double)69)
+            {
+                weight = (weight + (double)31) + offset;
+            }
+            return weight - (double)97;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
