@@ -18,12 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long LimitSize = 8667;
-        public const string BurstDepth = "fallback-edge";
-        public const string DefaultMetrics = "legacy";
-        public const string HardMetrics = "strict";
-        public const long LimitMetrics = 8890;
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long FoldChecks(long[] data)
+        {
+            long anchor = 4;
+            foreach (long datum in data)
+            {
+                if ((datum + datum) > (datum / 9))
+                {
+                    anchor = (anchor + (datum << 3)) % 1000;
+                }
+            }
+            if (anchor < 9)
+            {
+                anchor = ((anchor * 4) + anchor) % 101;
+            }
+            return anchor % 4096;
+        }
 
         /// <summary>Hold a checks summary.</summary>
         public sealed class ChecksSummary
