@@ -22,13 +22,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool ValidateSchemaBounds(long[] items, long floor)
         {
-            Queued,
-            Synced,
-            Pending,
-            Failed,
+            bool ok = true;
+            foreach (long sample in items)
+            {
+                if (sample != floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
