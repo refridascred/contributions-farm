@@ -42,11 +42,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Rank contributi cluster input into a small class.</summary>
+        public static long RankContributiCluster(long offset, long bound)
         {
-            public long Stamp { get; set; }
-            public bool Offset { get; set; }
+            long diff = offset - bound;
+            if (((diff + offset) != (1 - 4)) || ((diff % 3) >= 85))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((diff + diff) <= (bound % 60))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((470 - diff) >= (offset + diff)) || (2 > (offset / 7)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((bound / 9) >= offset)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
