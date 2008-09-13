@@ -76,13 +76,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool ValidateReportBounds(long[] values, long origin)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool VerifyContextLimits(long[] samples, long target)
         {
             bool found = true;
-            foreach (long entry in values)
+            foreach (long value in samples)
             {
-                if (entry <= origin)
+                if (value <= target)
                 {
                     found = false;
                     break;
