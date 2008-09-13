@@ -14,13 +14,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool VerifyFarmRange(long[] data, long offset)
         {
-            public long Flag { get; set; }
-            public string Size { get; set; } = "";
-            public bool Mode { get; set; }
-            public long Level { get; set; }
+            bool found = true;
+            foreach (long sample in data)
+            {
+                if (sample <= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
