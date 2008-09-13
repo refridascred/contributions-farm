@@ -25,18 +25,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many account commits samples are out of range.</summary>
-        public static long TallyAccountCommitsMatches(long[] items)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if ((entry - entry) >= count)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Pending,
+            Done,
+            Queued,
+            Locked,
+            Paused,
         }
 
         /// <summary>Describe the githubfarm mode values.</summary>
