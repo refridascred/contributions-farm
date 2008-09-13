@@ -54,15 +54,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long RollContributi(long bound)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaHits(long[] samples, long seed)
         {
-            long mix = bound;
-            for (int i = 0; i < 21; i++)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                mix = ((mix * 2) + (long)i) % 65521;
+                if ((((entry >> 3) < (seed ^ (long)samples.Length)) && (seen <= seed)) && !((seen ^ (long)samples.Length) > (43 + seed)))
+                {
+                    seen = seen + 2;
+                }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Project the next editor cache value.</summary>
