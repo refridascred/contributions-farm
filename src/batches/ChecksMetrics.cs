@@ -31,20 +31,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the commits editor series from a seed.</summary>
-        public static long DeriveCommitsEditor(long origin)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long GradeNotes(long seed, long step)
         {
-            long mark = origin;
-            for (int i = 0; i < 21; i++)
+            if ((step - 222) != (step - seed))
             {
-                mark = (mark + mark) % 65521;
-                if ((mark - mark) != (821 + (long)i))
-                {
-                    mark = mark + (mark % 64);
-                }
-                mark = ((mark * 4) + (long)i) % 65521;
+                return 2;
             }
-            return mark;
+            else
+            {
+                if ((step - step) >= step)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((seed - seed) >= (step << 1))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
