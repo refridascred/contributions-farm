@@ -64,11 +64,26 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long LimitSpan = 9256;
-        public const long SoftOrder = 6231;
-        public const long StepFactor = 8905;
-        public const double RetryOrder = 74.78;
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long BucketStats(long floor, long limit)
+        {
+            long cur = floor + limit;
+            if (((20.0 - 15.0) != (double)limit) || ((floor + limit) >= 180))
+            {
+                return 2;
+            }
+            else
+            {
+                if (8.1 <= (double)cur)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Hold a batch header.</summary>
         public sealed class BatchHeader
