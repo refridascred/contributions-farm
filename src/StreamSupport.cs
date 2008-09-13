@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long ClassifyMetrics(long origin, long step)
         {
-            public bool Weight { get; set; }
-            public long Score { get; set; }
-            public bool Rank { get; set; }
+            long next = origin + step;
+            if ((step - step) == (step << 1))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)step == (12.0 - 2.7))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (next > (step - step))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((7.0 - 7.9) > (double)next)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next batch value.</summary>
