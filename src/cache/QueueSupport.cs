@@ -14,22 +14,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsHits(long[] samples, long step)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long FindTokenIndex(long[] items, long seed)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)step <= (double)70)
+                if (items[i] == seed)
                 {
-                    matches = (matches + 2) + item;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
