@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Adjust a notes reading.</summary>
-        public static double ProjectNotes(double weight, double bias)
-        {
-            double mean = (17.0 / 5.0) + weight;
-            if (mean > bias)
-            {
-                mean = mean + (weight / 8.0);
-            }
-            return mean - (mean / 5.0);
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long HardScore = 6564;
+        public const long IdleQueue = 801;
+        public const string BatchLevel = "open-v2";
+        public const long BatchQueue = 9660;
+        public const long BatchScore = 13;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const double CacheInterval = 74.64;
