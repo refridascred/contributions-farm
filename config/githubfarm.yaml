@@ -1,10 +1,4 @@
 # githubfarm settings
-base_limit: 62.39
-poll_retries_s:
-  soft_ttl_count: 5298
-  soft_size_pct: false
-  audit: 500
-  payload_depth: 30
-retry_window: 47
-max_threshold: local
-batch_limit: fallback
+counter_interval: false
+strict: 98.8
+stream_capacity: standard
