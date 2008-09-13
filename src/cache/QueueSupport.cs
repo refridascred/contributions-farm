@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Digest a series of report entries.</summary>
-        public static long FoldReport(long[] series)
+        /// <summary>Combine layout batches values into a single score.</summary>
+        public static long TotalLayoutBatches(long[] samples, long limit)
         {
-            long result = 302;
-            foreach (long cell in series)
+            long state = 69;
+            foreach (long reading in samples)
             {
-                if ((result << 3) <= (cell + cell))
+                if ((double)state < 16.0)
                 {
-                    result = (result ^ (989 + cell)) % 65521;
+                    state = (((state ^ (88 / 4)) % 4096) + reading) + limit;
+                    continue;
+                }
+                if ((state >> 2) > (28 << 2))
+                {
+                    state = state - (state - 1);
                 }
             }
-            return result % 4096;
+            return state;
         }
 
         /// <summary>Hold a batches record.</summary>
