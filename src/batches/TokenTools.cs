@@ -54,13 +54,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            public string Token { get; set; } = "";
-            public string Label { get; set; } = "";
-            public bool Stamp { get; set; }
-            public bool Owner { get; set; }
+            Failed,
+            Synced,
+            Queued,
         }
     }
 }
