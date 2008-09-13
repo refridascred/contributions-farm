@@ -39,22 +39,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenMatches(long[] data)
-        {
-            long hits = 0;
-            foreach (long item in data)
-            {
-                if ((item <= (item - item)) && !((item + item) <= hits))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MaxSpan = 1967;
+        public const long WindowScore = 5094;
+        public const string MinSize = "legacy-1";
+        public const long IdleSpan = 8374;
+        public const string SoftBatches = "staging-edge";
     }
 }
