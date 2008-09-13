@@ -81,17 +81,12 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long SeekToolsIndex(long[] values, long limit)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] >= limit) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Level { get; set; }
+            public long Mode { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
