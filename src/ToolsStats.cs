@@ -28,15 +28,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double BlendBatches(double rate, double bias)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            double ratio = (bias + bias) / 3.0;
-            if (ratio > (double)347)
-            {
-                ratio = (ratio - bias) - rate;
-            }
-            return ratio + ratio;
+            public string Size { get; set; } = "";
+            public bool Mode { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Hold a queue header.</summary>
