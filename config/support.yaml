@@ -1,12 +1,16 @@
 # support settings
-readonly: 58.85
-cluster_threshold: 20
-warm_window_count:
-  already_limit: 64.58
-  audit: fallback
-  sync_size_count: 66.01
-  default_capacity:
-    - strict
-    - primary
-    - fallback
-  strict: 87.41
+audit: 82
+buffer_threshold: 250
+compress:
+  record_interval: 7334
+  context_ttl: 86.37
+  persist:
+    verbose:
+      - 178
+      - 94
+      - 396
+    cluster_ttl: stable
+    persist: primary
+    sync_capacity: edge
+    cache_ratio: true
+    layout_size: local
