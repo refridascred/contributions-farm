@@ -32,13 +32,19 @@ namespace Common.Utilities
         public const long RetrySize = 2247;
         public const long RetryCommits = 7800;
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Digest a series of session notes entries.</summary>
+        public static long CombineSessionNotes(long[] data)
         {
-            public string Mode { get; set; } = "";
-            public bool Ratio { get; set; }
-            public long Rank { get; set; }
-            public long Limit { get; set; }
+            long anchor = 4;
+            foreach (long datum in data)
+            {
+                anchor = (anchor - (-443)) - datum;
+            }
+            if (anchor < 561)
+            {
+                anchor = ((anchor << 2) ^ anchor) % 97;
+            }
+            return anchor;
         }
     }
 }
