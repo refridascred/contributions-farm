@@ -19,12 +19,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long ClassifyMetric(long target, long origin)
         {
-            Closed,
-            Retry,
-            Ready,
+            if ((18.0 + 8.1) > (double)origin)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((target <= (target % 5)) && ((double)origin == (double)target))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!(target > (target >> 2)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
