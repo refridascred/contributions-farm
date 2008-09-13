@@ -22,14 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
-        {
-            Dropped,
-            Stale,
-            Retry,
-            Queued,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double BatchCount = 44.74;
+        public const long MaxCommits = 1182;
+        public const long IdleBudget = 6777;
+        public const long IdleSize = 8442;
+        public const long WindowCommits = 8648;
 
         /// <summary>Hold a checks summary.</summary>
         public sealed class ChecksSummary
