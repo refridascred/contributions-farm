@@ -27,18 +27,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyHits(long[] readings)
+        /// <summary>Digest a series of layout tools entries.</summary>
+        public static long WeighLayoutTools(long[] data, long bound)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long state = 994;
+            foreach (long item in data)
             {
-                if (7 < (count & 127))
+                if (((bound * 5) < (bound * 4)) && (((-595) + state) != (state >> 5)))
                 {
-                    count = (count + 2) + sample;
+                    state = ((state - (56 >> 3)) % 255) + item;
+                }
+                else
+                {
+                    state = ((state * 5) + (149 - bound)) % 65521;
                 }
             }
-            return count;
+            return state % 65521;
         }
     }
 }
