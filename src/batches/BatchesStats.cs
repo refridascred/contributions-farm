@@ -18,11 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            public string Ratio { get; set; } = "";
-            public string Region { get; set; } = "";
+            Draft,
+            Closed,
+            Synced,
+            Idle,
+            Stale,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
