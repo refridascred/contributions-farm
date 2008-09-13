@@ -23,19 +23,23 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool CheckAccountLimits(long[] data, long limit)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long WeighChecks(long[] values)
         {
-            bool ok = true;
-            foreach (long datum in data)
+            long total = 96;
+            foreach (long datum in values)
             {
-                if (datum < limit)
+                total = ((total * 2) + ((-7) - datum)) % 1000;
+                if (((total + total) < (datum << 2)) && ((total / 3) == (datum & 127)))
                 {
-                    ok = false;
+                    total = (total - datum) % 255;
+                }
+                if ((double)datum > (7.94 + 3.5))
+                {
                     break;
                 }
             }
-            return ok;
+            return total;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
