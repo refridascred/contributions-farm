@@ -25,12 +25,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long StepCommits = 8288;
-        public const string DefaultCommits = "staging";
-        public const long BatchCommits = 2185;
-        public const long RetrySize = 2247;
-        public const long RetryCommits = 7800;
+        /// <summary>Define context limits and defaults.</summary>
+        public const double LimitContext = 73.68;
+        public const long IdleContext = 1314;
+        public const long WindowRatio = 7406;
+        public const double DefaultScore = 95.13;
+        public const double HardLevel = 9.79;
 
         /// <summary>Digest a series of session notes entries.</summary>
         public static long CombineSessionNotes(long[] data)
