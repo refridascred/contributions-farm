@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountHits(long[] levels)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long SeriesNotes(long target)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            long mark = target;
+            for (int i = 0; i < 5; i++)
             {
-                if (((0.01 * 20.0) <= (double)reading) || ((count + reading) > (reading >> 1)))
+                if (!(((mark - (long)i) < (target * 5)) || ((double)(long)i != (1.8 + 0.2))))
                 {
-                    count = count + 2;
+                    mark = ((mark << 3) ^ ((long)i + (long)i)) % 255;
                 }
+                mark = mark ^ (mark * 2);
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Blend two filter order measurements.</summary>
