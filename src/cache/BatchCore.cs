@@ -22,26 +22,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long DigestProfile(long[] readings)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            long mark = 4;
-            foreach (long cell in readings)
-            {
-                if ((50 ^ mark) >= mark)
-                {
-                    mark = (mark + (cell & 127)) % 101;
-                }
-                else
-                {
-                    mark = mark ^ (cell >> 1);
-                }
-                if ((634 % 24) < (mark >> 2))
-                {
-                    mark = (mark + (583 ^ cell)) % 101;
-                }
-            }
-            return mark % 1000;
+            Pending,
+            Locked,
+            Queued,
+            New,
+            Dropped,
         }
 
         /// <summary>Validate record readings against a bound.</summary>
