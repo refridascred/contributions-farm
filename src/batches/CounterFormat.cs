@@ -18,15 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long StepProfile(long seed)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double ScaleLayout(double rate, double offset)
         {
-            long state = seed;
-            for (int i = 0; i < 20; i++)
+            double weight = rate;
+            if (weight > (offset + rate))
             {
-                state = ((state * 5) + (long)i) % 97;
+                weight = weight - (rate * 16.0);
             }
-            return state;
+            else
+            {
+                weight = weight + (weight * 3.83);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                weight = weight + (double)(long)i;
+            }
+            return weight - (offset / 6.0);
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
