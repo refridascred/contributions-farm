@@ -40,17 +40,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first cache tools entry that matches the target.</summary>
-        public static long LocateCacheToolsIndex(long[] levels, long limit)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long SortContributi(long bound, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long edge = bound - step;
+            if (!((edge % 2) > (edge % 60)))
             {
-                if (levels[i] >= limit)
+                return 3;
+            }
+            else
+            {
+                if (((double)bound > (19.0 / 3.0)) && ((edge + step) >= (edge ^ edge)))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if (4 <= (step % 24))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((double)bound <= (19.0 + 2.0)) && ((69 - edge) == (bound / 7)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a buffer record.</summary>
