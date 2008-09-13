@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileGaps(long[] readings)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            long count = 0;
-            foreach (long value in readings)
-            {
-                if ((-902) >= (value - value))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public long Total { get; set; }
+            public long Flag { get; set; }
+            public bool Token { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Match up route samples.</summary>
