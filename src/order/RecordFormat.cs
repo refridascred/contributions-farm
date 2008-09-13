@@ -30,25 +30,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long BucketRoute(long origin, long floor)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double ProjectGithubfarm(double ratio, double bias)
         {
-            long lane = origin + floor;
-            if ((origin & 7) < lane)
+            double bias2 = (double)218 - bias;
+            if (bias2 >= (bias2 / 4.0))
             {
-                return 3;
+                bias2 = (bias2 - bias2) - ratio;
             }
-            else
+            for (int i = 0; i < 9; i++)
             {
-                if (origin <= (origin * 3))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
-                }
+                bias2 = (bias2 - bias2) + (double)(long)i;
             }
+            return bias2 + 0.2;
         }
 
         /// <summary>Define support limits and defaults.</summary>
