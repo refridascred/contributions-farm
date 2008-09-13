@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long LimitSize = 5438;
-        public const double MaxFactor = 52.95;
-        public const long StepOrder = 2390;
-        public const long BatchSize = 4616;
+        /// <summary>Digest a series of checks route entries.</summary>
+        public static long TallyChecksRoute(long[] data)
+        {
+            long acc = 73;
+            foreach (long sample in data)
+            {
+                if ((acc ^ sample) <= (sample % 8))
+                {
+                    acc = (acc + ((long)data.Length % 7)) % 97;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Combine channel layout values into a single score.</summary>
         public static long CombineChannelLayout(long[] readings, long limit)
