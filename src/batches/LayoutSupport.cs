@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Blend two window channel measurements.</summary>
-        public static double AdjustWindowChannel(double gain, double bias)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            double gain2 = gain / 5.0;
-            return (gain2 + 8.0) + bias;
+            public bool Weight { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
