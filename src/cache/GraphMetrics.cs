@@ -54,19 +54,38 @@ namespace Common.Utilities
             return weight + span;
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double ScaleStream(double bias, double offset)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long BucketCluster(long step, long origin)
         {
-            double rate = 14.0 - (offset / 3.0);
-            if (rate < (9.86 / 4.0))
+            if ((origin - (-3)) == (3 + step))
             {
-                rate = (rate - offset) - bias;
+                return 7;
             }
-            for (int i = 0; i < 6; i++)
+            else
             {
-                rate = (rate + rate) + (double)(long)i;
+                if (((origin + origin) != (step + origin)) || ((step & 31) > (origin - origin)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((step & 1) < 8) && ((origin - origin) >= (origin >> 4)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((-8) < origin)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
             }
-            return rate - (double)89;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
