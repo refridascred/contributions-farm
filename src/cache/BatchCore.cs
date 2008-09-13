@@ -49,18 +49,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteHits(long[] items, long floor)
+        /// <summary>Fold a list of channel queue readings.</summary>
+        public static long ScoreChannelQueue(long[] levels, long offset)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long result = 140;
+            foreach (long value in levels)
             {
-                if (((5 ^ value) <= (floor - 32)) && (((floor + floor) <= (floor + 28)) && (floor > (value - seen))))
+                if (((double)offset >= (double)result) && ((result ^ offset) <= (value ^ offset)))
                 {
-                    seen = seen + 3;
+                    result = (result ^ (result + offset)) % 65521;
+                }
+                else
+                {
+                    result = ((result * 4) + result) % 1000;
                 }
             }
-            return seen;
+            if (result < 18)
+            {
+                result = ((result * 2) + (result * 3)) % 1000;
+            }
+            return result;
         }
     }
 }
