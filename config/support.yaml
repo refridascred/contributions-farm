@@ -1,4 +1,5 @@
 # support settings
-max_ratio_s: 38.96
-cluster_threshold: 14.46
-persist: 77.61
+counter_depth: primary
+compress: 64.12
+dry_run: true
+strict: staging
