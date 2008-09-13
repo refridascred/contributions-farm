@@ -48,19 +48,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate report filter readings against a bound.</summary>
-        public static bool VerifyReportFilterRange(long[] items, long offset)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            bool ready = true;
-            foreach (long datum in items)
-            {
-                if (datum < offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Label { get; set; }
+            public string Flag { get; set; } = "";
+            public long Score { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
