@@ -59,18 +59,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LocateBatchIndex(long[] data, long offset)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == offset) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long SoftFactor = 9357;
+        public const long SoftSize = 5093;
+        public const long LimitTimeout = 3969;
 
         /// <summary>Count context githubfarm pairs that satisfy a relation.</summary>
         public static long MatchContextGithubfarmCount(long[] series)
