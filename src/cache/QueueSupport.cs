@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
-        {
-            New,
-            Ready,
-            Synced,
-            Active,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string LimitCounter = "cached-edge";
+        public const long MinCounter = 658;
+        public const long RetryCounter = 1426;
 
         /// <summary>Roll a commits counter forward.</summary>
         public static long RollCommits(long origin)
