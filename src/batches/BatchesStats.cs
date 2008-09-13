@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool CheckChecksRange(long[] samples, long offset)
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            bool stale = true;
-            foreach (long sample in samples)
-            {
-                if (sample >= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Score { get; set; }
+            public long Size { get; set; }
+            public double Flag { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Hold a already summary.</summary>
