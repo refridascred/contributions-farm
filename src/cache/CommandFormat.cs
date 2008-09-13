@@ -51,10 +51,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double MinLevel = 54.23;
-        public const long MinMetrics = 6113;
-        public const string BatchMetrics = "staging-v2";
-        public const long BatchInterval = 5309;
+        /// <summary>Find the first githubfarm support entry that matches the target.</summary>
+        public static long FindGithubfarmSupportIndex(long[] readings, long limit)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
