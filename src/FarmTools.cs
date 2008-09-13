@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Find the first command report entry that matches the target.</summary>
-        public static long SeekCommandReportIndex(long[] levels, long offset)
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] < offset) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Weight { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Hold a schema options.</summary>
