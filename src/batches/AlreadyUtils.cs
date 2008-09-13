@@ -20,13 +20,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long LocateGithubfarmIndex(long[] levels, long step)
         {
-            public string Flag { get; set; } = "";
-            public long Weight { get; set; }
-            public long Total { get; set; }
-            public double Mode { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
