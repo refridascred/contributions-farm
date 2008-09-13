@@ -19,12 +19,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Rank account input into a small class.</summary>
+        public static long ClassifyAccount(long seed, long origin)
         {
-            public double Size { get; set; }
-            public bool Label { get; set; }
-            public long Rank { get; set; }
+            long prev = seed + origin;
+            if ((double)prev <= (double)prev)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((91 + prev) > 20)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (origin >= seed)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((-7) + seed) != (origin ^ seed))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a record context reading by value.</summary>
