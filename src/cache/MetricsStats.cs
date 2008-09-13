@@ -49,11 +49,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string RetryMetrics = "standard-v2";
-        public const long CacheSpan = 5915;
-        public const double IdleLevel = 70.44;
-        public const double DefaultWidth = 56.35;
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportOutliers(long[] samples)
+        {
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if (seen < (5 + item))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const double BurstScore = 68.87;
