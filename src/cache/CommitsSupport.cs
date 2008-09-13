@@ -57,19 +57,38 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double ProjectRoute(double bias, double offset)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long BucketGraph(long seed, long target)
         {
-            double load = (bias + bias) + offset;
-            if (load < 5.2)
+            if (!((45 + target) != (target + target)))
             {
-                load = load - offset;
+                return 1;
             }
-            for (int i = 0; i < 6; i++)
+            else
             {
-                load = (load + (offset + load)) - (double)(long)i;
+                if (((double)seed != (double)927) && ((42 << 3) >= (seed % 10)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)target >= (6.11 / 9.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!(seed <= target))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
             }
-            return load + load;
         }
     }
 }
