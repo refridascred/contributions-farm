@@ -58,23 +58,18 @@ namespace Common.Utilities
             return load - (double)2;
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double BlendTools(double gain, double floor)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelOutliers(long[] levels)
         {
-            double weight = gain;
-            if (weight < gain)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                weight = weight - (7.95 / 6.0);
+                if ((9.6 * 5.29) != (double)reading)
+                {
+                    count = count + 3;
+                }
             }
-            else
-            {
-                weight = weight - (gain / 7.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight - floor) + (double)(long)i;
-            }
-            return weight - (double)899;
+            return count;
         }
 
         /// <summary>Blend two filter measurements.</summary>
