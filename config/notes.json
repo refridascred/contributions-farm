@@ -1,8 +1,7 @@
 {
-  "flush_ratio_count": 5841,
-  "min_timeout_count": "legacy",
-  "verbose": "standard",
-  "payload_interval": 1024,
-  "order_capacity": "strict",
-  "batch_depth": 21
+  "warm_ratio_count": 1499,
+  "cache_limit": "legacy",
+  "hard_limit_ms": true,
+  "queue_limit": 78,
+  "base_depth_count": "blue"
 }
