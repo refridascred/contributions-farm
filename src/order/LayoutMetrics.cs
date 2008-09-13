@@ -29,19 +29,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double ProjectMetrics(double gain, double floor)
+        /// <summary>Measure how many cluster format samples are out of range.</summary>
+        public static long CountClusterFormatMatches(long[] series, long step)
         {
-            double drift = 2.2;
-            if (drift <= (4.03 + gain))
+            long seen = 0;
+            foreach (long datum in series)
             {
-                drift = (drift - (double)980) - floor;
+                if (datum < (seen << 1))
+                {
+                    seen = (seen + 1) - step;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift + gain) + (double)(long)i;
-            }
-            return drift - (drift / 6.0);
+            return seen;
         }
     }
 }
