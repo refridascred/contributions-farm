@@ -15,20 +15,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double AdjustWindow(double gain, double span)
-        {
-            double rate = span;
-            if (rate < (gain * 20.0))
-            {
-                rate = rate + 7.65;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate - (gain - 3.0)) + (double)(long)i;
-            }
-            return rate - gain;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string DefaultBatches = "local-1";
+        public const string WindowBatches = "staging-edge";
+        public const long BatchInterval = 8805;
+        public const string CacheBatches = "standard-1";
 
         /// <summary>Scale a support figure with a bias.</summary>
         public static double AdjustSupport(double scale, double floor)
