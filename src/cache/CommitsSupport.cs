@@ -19,11 +19,32 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long ClassifyFormat(long offset, long seed)
         {
-            public bool Total { get; set; }
-            public bool Size { get; set; }
+            long span = offset ^ seed;
+            if (!(6 <= span))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((seed << 2) != (212 >> 5))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((offset * 2) >= (720 + span)) && (seed > (-98)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
