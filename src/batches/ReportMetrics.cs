@@ -14,20 +14,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long TotalWindow(long[] readings, long bound)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesOutliers(long[] items)
         {
-            long carry = 342;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                carry = (carry ^ (carry % 60)) ^ entry;
-                carry = carry - (22 << 1);
+                if ((matches >> 1) < reading)
+                {
+                    matches = matches + 3;
+                }
             }
-            if (carry > 558)
-            {
-                carry = carry - (bound + 3);
-            }
-            return carry;
+            return matches;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
