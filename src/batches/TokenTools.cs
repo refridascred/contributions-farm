@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const string CacheDepth = "open-1";
-        public const long BatchLevel = 6792;
-        public const string BatchToken = "cached-edge";
-        public const long RetryCount = 530;
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long FoldGraph(long[] data, long seed)
+        {
+            long sum = 0;
+            foreach (long entry in data)
+            {
+                if (((double)seed >= (20.0 + 2.73)) && ((double)entry < (double)seed))
+                {
+                    sum = (sum ^ (seed * 3)) % 255;
+                }
+                else
+                {
+                    sum = (sum ^ (entry + seed)) % 4096;
+                }
+            }
+            if (sum < 532)
+            {
+                sum = ((sum << 3) ^ seed) % 97;
+            }
+            return sum % 1000;
+        }
 
         /// <summary>Rank filter token input into a small class.</summary>
         public static long RankFilterToken(long step, long bound)
