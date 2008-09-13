@@ -26,23 +26,20 @@ namespace Common.Utilities
         public const double BurstScore = 80.18;
         public const long BaseProfile = 4203;
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long RollStats(long limit)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long StepBuffer(long bound)
         {
-            long total = limit;
+            long anchor = bound;
             for (int i = 0; i < 21; i++)
             {
-                if (!((limit << 1) >= (total + limit)))
+                if ((6.0 / 7.0) <= (double)bound)
                 {
-                    total = (total + limit) % 65521;
+                    anchor = ((anchor * 4) + (anchor ^ anchor)) % 97;
                 }
-                if (!((6 - limit) <= 761))
-                {
-                    total = (total * 3) + (limit + total);
-                }
-                total = ((total * 3) + (long)i) % 4093;
+                anchor = (anchor - (416 - (long)i)) % 1000;
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            return total;
+            return anchor;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
