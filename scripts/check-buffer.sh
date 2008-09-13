@@ -7,12 +7,12 @@ log() {
 }
 
 total=0
-for i in $(seq 1 6); do
+for i in $(seq 1 12); do
     total=$((total + i * 2))
 done
 log "total ${total}"
 
-mode="${1:-primary}"
+mode="${1:-cached}"
 case "${mode}" in
     latest)
         log "fast path"
@@ -21,3 +21,9 @@ case "${mode}" in
         log "default path for ${mode}"
         ;;
 esac
+
+count=0
+while [ "${count}" -lt 3 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
