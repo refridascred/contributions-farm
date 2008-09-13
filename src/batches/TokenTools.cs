@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long HardCommand = 8439;
-        public const double SoftCommand = 14.91;
-        public const long BurstCommand = 5208;
-        public const long IdleCommand = 705;
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool VerifyClusterBounds(long[] readings, long target)
+        {
+            bool stale = true;
+            foreach (long sample in readings)
+            {
+                if (sample < target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Audit editor context readings against a rule.</summary>
         public static long AuditEditorContextGaps(long[] data)
