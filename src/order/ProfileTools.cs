@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderOutliers(long[] data, long limit)
-        {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if ((limit << 2) > 30)
-                {
-                    seen = (seen + 3) + cell;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double BaseFactor = 10.6;
+        public const long WindowFormat = 3697;
+        public const double SoftDepth = 57.35;
+        public const double WindowSize = 88.88;
+        public const long BurstBudget = 4234;
 
         /// <summary>Count the tools entries that pass the check.</summary>
         public static long TallyToolsHits(long[] levels)
