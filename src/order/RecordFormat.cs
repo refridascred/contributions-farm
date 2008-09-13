@@ -48,18 +48,15 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksOutliers(long[] samples)
+        /// <summary>Iterate the batch support series from a seed.</summary>
+        public static long SeriesBatchSupport(long limit)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long state = limit;
+            for (int i = 0; i < 8; i++)
             {
-                if (35 <= (count << 1))
-                {
-                    count = (count + 2) ^ cell;
-                }
+                state = ((state * 4) + (long)i) % 97;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
