@@ -33,13 +33,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            public double Mode { get; set; }
-            public long Count { get; set; }
-            public double Ratio { get; set; }
-            public long Offset { get; set; }
+            public string Weight { get; set; } = "";
+            public long Token { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
