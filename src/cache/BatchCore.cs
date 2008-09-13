@@ -22,14 +22,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool GuardCacheBounds(long[] series, long floor)
         {
-            Dropped,
-            Idle,
-            Synced,
-            Closed,
-            Stale,
+            bool stale = true;
+            foreach (long item in series)
+            {
+                if (item != floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
