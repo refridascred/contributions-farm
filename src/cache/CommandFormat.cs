@@ -12,12 +12,27 @@ namespace Common.Utilities
             return ratio2 + ratio;
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Accumulate route samples.</summary>
+        public static long CombineRoute(long[] data, long origin)
         {
-            Paused,
-            New,
-            Ready,
+            long result = 2;
+            foreach (long value in data)
+            {
+                if (!((result & 31) > result))
+                {
+                    result = (result + (312 * 3)) % 255;
+                    result = ((result << 2) ^ 602) % 255;
+                }
+                if (value < (origin & 1))
+                {
+                    result = result - (result + value);
+                }
+                else
+                {
+                    result = (result << 3) ^ ((long)data.Length / 6);
+                }
+            }
+            return result;
         }
 
         /// <summary>Describe the entry class values.</summary>
