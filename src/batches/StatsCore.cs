@@ -50,12 +50,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
+            Ready,
+            Retry,
             Failed,
-            Pending,
-            Synced,
+            Locked,
         }
 
         /// <summary>Fold a list of layout readings.</summary>
