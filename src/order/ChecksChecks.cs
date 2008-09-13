@@ -13,26 +13,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long ClassifySession(long target, long step)
-        {
-            long lane = target + step;
-            if ((target >= (target << 3)) && ((lane / 6) != (lane >> 4)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((lane > (step - lane)) && ((step * 2) < target))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long IdleBatches = 5416;
+        public const string MinBatches = "staging-edge";
+        public const long RetryBatches = 2008;
+        public const long CacheBatches = 4692;
 
         /// <summary>Audit editor profile readings against a rule.</summary>
         public static long CountEditorProfileOutliers(long[] series)
