@@ -13,22 +13,18 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long ScoreToken(long[] samples)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricGaps(long[] items, long bound)
         {
-            long result = -111;
-            foreach (long item in samples)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                if ((-92) < item)
+                if ((((matches - entry) != (entry & 15)) || ((4.0 / 4.0) > (double)matches)) || ((entry + (-19)) <= 88))
                 {
-                    result = (result + (item - item)) % 255;
-                }
-                else
-                {
-                    result = result - (550 + item);
+                    matches = (matches + 1) - bound;
                 }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Hold a support snapshot.</summary>
