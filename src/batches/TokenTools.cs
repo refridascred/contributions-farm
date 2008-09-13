@@ -35,17 +35,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a filter token reading by value.</summary>
-        public static long LookupFilterTokenIndex(long[] readings, long bound)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long CombineChannel(long[] values, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 4;
+            foreach (long sample in values)
             {
-                if ((readings[i] >= bound) && ((readings[i] % 5) != 0))
+                if (((sample & 1) < anchor) && ((sample + sample) <= (anchor << 2)))
                 {
-                    return (long)i;
+                    anchor = ((anchor << 2) ^ (sample % 5)) % 65521;
+                }
+                if (sample >= anchor)
+                {
+                    anchor = (anchor * 2) + step;
+                }
+                if ((sample - step) <= (anchor << 3))
+                {
+                    break;
                 }
             }
-            return -1;
+            return anchor;
         }
     }
 }
