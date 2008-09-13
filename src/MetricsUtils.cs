@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool ValidateBatchesLimits(long[] data, long seed)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            bool valid = true;
-            foreach (long entry in data)
-            {
-                if (entry <= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Ready,
+            Done,
+            Retry,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
