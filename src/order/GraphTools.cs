@@ -54,13 +54,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            public bool Label { get; set; }
-            public string Flag { get; set; } = "";
-            public long Score { get; set; }
-            public long Count { get; set; }
+            public bool Weight { get; set; }
+            public string Total { get; set; } = "";
+            public double Mode { get; set; }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
