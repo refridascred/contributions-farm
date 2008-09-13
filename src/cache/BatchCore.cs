@@ -47,19 +47,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Project the next metrics queue value.</summary>
-        public static double BlendMetricsQueue(double scale, double floor)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool VerifyChecksLimits(long[] values, long seed)
         {
-            double gain = scale;
-            if (gain > (scale * 4.88))
+            bool found = true;
+            foreach (long datum in values)
             {
-                gain = gain - (gain / 3.0);
+                if (datum <= seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain - (floor + gain)) - (double)(long)i;
-            }
-            return gain - (floor + gain);
+            return found;
         }
     }
 }
