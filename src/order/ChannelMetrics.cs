@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit counter stream readings against a rule.</summary>
-        public static long CountCounterStreamHits(long[] levels)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryOutliers(long[] readings, long offset)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                if ((2 & 3) > (count / 3))
+                if ((double)matches >= (7.24 - 14.0))
                 {
-                    count = (count + 2) - entry;
+                    matches = ((matches + 2) ^ cell) + offset;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Digest a series of counter window entries.</summary>
