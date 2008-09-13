@@ -46,18 +46,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long TallyGraphOutliers(long[] readings)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportOutliers(long[] series, long floor)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                if (sample > (matches + sample))
+                if ((64 - seen) >= (684 + floor))
                 {
-                    matches = matches + 3;
+                    seen = (seen + 3) + entry;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Digest a series of command payload entries.</summary>
