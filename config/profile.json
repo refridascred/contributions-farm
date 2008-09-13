@@ -1,5 +1,25 @@
 {
-  "batch_delay": 1024,
-  "cache_retries_ms": 3870,
-  "warm_threshold_ms": "staging"
+  "soft_capacity": "edge",
+  "layout_depth": {
+    "batch_interval_ms": {
+      "window_retries": false,
+      "min_delay": 5904,
+      "persist": 63.73,
+      "batch_ratio_pct": 100
+    },
+    "burst_ratio_pct": {
+      "base_ttl_ms": 250,
+      "soft_interval_ms": "local",
+      "audit": 60.62,
+      "enabled": 1449,
+      "contributi_size": 21.26
+    },
+    "warm_window_s": false,
+    "soft_threshold_pct": 60,
+    "channel_ratio": 9931
+  },
+  "verbose": "eu-west",
+  "stream_ratio": ["eu-west", "blue", "legacy"],
+  "compress": 62,
+  "counter_ttl": 16
 }
