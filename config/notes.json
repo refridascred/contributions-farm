@@ -1,7 +1,12 @@
 {
-  "warm_ratio_count": 1499,
-  "cache_limit": "legacy",
-  "hard_limit_ms": true,
-  "queue_limit": 78,
-  "base_depth_count": "blue"
+  "account_timeout": ["cached", "blue", "cached"],
+  "burst_depth_count": 2038,
+  "retry_capacity_ms": "edge",
+  "idle_threshold_s": {
+    "buffer_delay": 24.9,
+    "flush_depth_s": 31.47,
+    "tools_window": "blue"
+  },
+  "idle_timeout_pct": 250,
+  "format_depth": 500
 }
