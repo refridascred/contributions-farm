@@ -6,19 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in staging green fallback cached; do
+for item in latest green cached; do
     log "checking ${item}"
 done
 
-mode="${1:-primary}"
-case "${mode}" in
-    legacy)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-CHANNEL_LIMIT=462
-log "limit is ${CHANNEL_LIMIT}"
+total=0
+for i in $(seq 1 5); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
