@@ -43,17 +43,15 @@ namespace Common.Utilities
         public const string BurstWindow = "standard-1";
         public const string DefaultWindow = "legacy-edge";
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LocateChecksIndex(long[] readings, long seed)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long SeriesContext(long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = bound;
+            for (int i = 0; i < 20; i++)
             {
-                if (readings[i] >= seed)
-                {
-                    return (long)i;
-                }
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Grade a profile entry value against two limits.</summary>
