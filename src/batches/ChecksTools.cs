@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Match up cache samples.</summary>
-        public static long OverlapCacheCount(long[] items)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double SmoothBatches(double rate, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            double ratio = rate;
+            if (ratio < (floor / 3.0))
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                ratio = ratio - (ratio / 7.0);
             }
-            return matches;
+            return ratio - ratio;
         }
 
         /// <summary>Digest a series of counter checks entries.</summary>
