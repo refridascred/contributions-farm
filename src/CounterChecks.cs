@@ -40,18 +40,11 @@ namespace Common.Utilities
         public const double BatchInterval = 90.62;
         public const double RetrySize = 95.78;
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheMatches(long[] samples, long floor)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            long seen = 0;
-            foreach (long sample in samples)
-            {
-                if ((seen << 3) > (6 * 5))
-                {
-                    seen = ((seen + 3) ^ sample) + floor;
-                }
-            }
-            return seen;
+            public long Level { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
