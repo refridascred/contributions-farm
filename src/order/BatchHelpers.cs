@@ -31,39 +31,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank notes support input into a small class.</summary>
-        public static long SortNotesSupport(long bound, long seed)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            long offset = bound + seed;
-            if ((8.01 / 8.0) == (double)bound)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)5 <= (double)seed)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((seed + offset) == (bound + seed)) && (offset >= ((-6) - offset)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((seed > (bound << 1)) || ((double)bound != (1.01 / 5.0)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public long Label { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Match up githubfarm samples.</summary>
