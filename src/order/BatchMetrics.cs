@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Project the next filter value.</summary>
-        public static double SmoothFilter(double weight, double bias)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long CompareOrderCount(long[] values)
         {
-            double drift = weight + bias;
-            if (drift <= (weight + drift))
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                drift = drift - (double)15;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 20)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = drift + (double)(long)i;
-            }
-            return drift + (double)70;
+            return count;
         }
 
         /// <summary>Project the next report value.</summary>
