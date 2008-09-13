@@ -1,7 +1,7 @@
-id,rank,count,label
-1,390,74.65,238
-2,330,490,490
-3,373,green,local
-4,559,cached,cached
-5,primary,700,8.45
-6,latest,973,0.36
+id,region,state,level
+1,541,stable,cached
+2,265,49.04,stable
+3,96.31,749,907
+4,932,45.32,3.47
+5,377,87.44,339
+6,strict,open,32
