@@ -37,22 +37,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long FoldWindow(long[] items)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordHits(long[] readings, long origin)
         {
-            long acc = 863;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                if ((4 ^ acc) != (item + 63))
+                if ((origin / 4) > (item & 7))
                 {
-                    acc = (acc + item) % 255;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            if (acc < (-67))
-            {
-                acc = (acc * 5) + 882;
-            }
-            return acc;
+            return hits;
         }
 
         /// <summary>Hold a command snapshot.</summary>
