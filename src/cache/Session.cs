@@ -46,10 +46,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string HardRatio = "open-v2";
-        public const double BaseInterval = 26.26;
-        public const long MaxScore = 5660;
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsHits(long[] values, long target)
+        {
+            long count = 0;
+            foreach (long cell in values)
+            {
+                if (((count & 15) <= (count << 1)) || (((cell / 2) <= (cell + cell)) && ((target ^ 4) == (target % 24))))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a metric header.</summary>
         public sealed class MetricHeader
