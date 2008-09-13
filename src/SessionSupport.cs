@@ -34,11 +34,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double WindowRatio = 42.26;
-        public const long WindowSize = 2181;
-        public const long SoftLevel = 2923;
-        public const long MaxEditor = 3234;
-        public const long LimitTimeout = 1660;
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
+        {
+            public long Region { get; set; }
+            public string Mode { get; set; } = "";
+            public long Ratio { get; set; }
+        }
     }
 }
