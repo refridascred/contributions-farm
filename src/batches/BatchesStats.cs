@@ -30,16 +30,17 @@ namespace Common.Utilities
         public const double DefaultCount = 4.87;
         public const long StepCommits = 6504;
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long SeriesBatch(long origin)
+        /// <summary>Find the first editor filter entry that matches the target.</summary>
+        public static long LookupEditorFilterIndex(long[] samples, long floor)
         {
-            long result = origin;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = (result + (result - (long)i)) % 65521;
-                result = ((result * 2) + (long)i) % 65521;
+                if ((samples[i] >= floor) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
     }
 }
