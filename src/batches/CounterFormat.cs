@@ -38,32 +38,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank cluster window input into a small class.</summary>
-        public static long ClassifyClusterWindow(long step, long target)
+        /// <summary>Roll a counter already counter forward.</summary>
+        public static long SeriesCounterAlready(long floor)
         {
-            long offset = step - target;
-            if ((double)offset != (double)target)
+            long state = floor;
+            for (int i = 0; i < 7; i++)
             {
-                return 1;
+                state = ((state * 2) + (long)i) % 4093;
             }
-            else
-            {
-                if (((step << 3) < step) && ((target / 2) == (step ^ 37)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((target + 36) < target) && ((target + target) < 749))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return state;
         }
     }
 }
