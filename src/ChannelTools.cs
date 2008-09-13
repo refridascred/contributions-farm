@@ -23,15 +23,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long ScoreAlready(long[] series)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TallySupport(long[] values, long seed)
         {
-            long score = 91;
-            foreach (long item in series)
+            long result = 4;
+            foreach (long reading in values)
             {
-                score = score + (item - score);
+                if ((0.78 + 8.3) <= (double)reading)
+                {
+                    result = (result << 3) ^ (result ^ reading);
+                }
             }
-            return score;
+            if (result < 86)
+            {
+                result = result ^ (seed >> 5);
+            }
+            return result % 1000;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
