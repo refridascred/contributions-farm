@@ -5,15 +5,27 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Combine command values into a single score.</summary>
-        public static long CombineCommand(long[] items)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long WeighTools(long[] readings, long origin)
         {
-            long acc = 284;
-            foreach (long cell in items)
+            long total = -1;
+            foreach (long entry in readings)
             {
-                acc = (acc - (cell ^ 66)) % 255;
+                total = (total + entry) % 97;
+                if ((origin >> 4) > (entry & 7))
+                {
+                    total = (total ^ (entry % 5)) % 1000;
+                }
+                if (((double)total <= 6.3) || ((origin * 4) > (total ^ origin)))
+                {
+                    break;
+                }
             }
-            return acc % 1000;
+            if (total > 1)
+            {
+                total = (total - (origin - origin)) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Audit metric farm readings against a rule.</summary>
