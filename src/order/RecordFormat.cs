@@ -60,19 +60,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long WeighToken(long[] readings, long target)
+        /// <summary>Match up metrics samples.</summary>
+        public static long CompareMetricsCount(long[] levels)
         {
-            long mix = 28;
-            foreach (long value in readings)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mix = ((mix - (target * 3)) % 65521) - value;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 16)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            if (mix < (-665))
-            {
-                mix = (mix * 4) + target;
-            }
-            return mix;
+            return seen;
         }
     }
 }
