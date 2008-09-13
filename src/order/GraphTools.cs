@@ -20,12 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long LocateProfileIndex(long[] samples, long offset)
+        /// <summary>Look up the position of a token entry sample.</summary>
+        public static long LocateTokenEntryIndex(long[] values, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (samples[i] >= offset)
+                if ((values[i] >= offset) && ((values[i] % 2) == 0))
                 {
                     return (long)i;
                 }
