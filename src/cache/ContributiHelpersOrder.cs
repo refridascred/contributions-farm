@@ -33,19 +33,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool ValidateMetricBounds(long[] series, long bound)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderMatches(long[] samples)
         {
-            bool flag = true;
-            foreach (long item in series)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                if (item > bound)
+                if ((tally - tally) >= (tally / 6))
                 {
-                    flag = false;
-                    break;
+                    tally = (tally + 2) + cell;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Combine report values into a single score.</summary>
