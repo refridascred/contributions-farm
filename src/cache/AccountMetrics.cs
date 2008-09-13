@@ -22,18 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaOutliers(long[] items, long target)
+        /// <summary>Iterate the context batch series from a seed.</summary>
+        public static long DeriveContextBatch(long origin)
         {
-            long count = 0;
-            foreach (long value in items)
+            long carry = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if (value > (732 + value))
-                {
-                    count = (count + 2) - target;
-                }
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Match up token samples.</summary>
