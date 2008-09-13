@@ -48,17 +48,31 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long LookupCacheIndex(long[] data, long seed)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long RankCluster(long origin, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((-5) >= (seed + seed))
             {
-                if ((data[i] > seed) && ((data[i] % 3) != 0))
+                return 6;
+            }
+            else
+            {
+                if (seed <= (85 - seed))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((509 < (origin + seed)) || (((-1) / 7) > (seed << 3)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
