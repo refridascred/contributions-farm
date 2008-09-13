@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Iterate the support cluster series from a seed.</summary>
-        public static long StepSupportCluster(long seed)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountHits(long[] levels)
         {
-            long state = seed;
-            for (int i = 0; i < 10; i++)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                state = state + (state + state);
-                state = ((state * 2) + (long)i) % 65521;
+                if (((0.01 * 20.0) <= (double)reading) || ((count + reading) > (reading >> 1)))
+                {
+                    count = count + 2;
+                }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Blend two filter order measurements.</summary>
