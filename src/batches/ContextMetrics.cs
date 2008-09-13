@@ -19,14 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
-        {
-            public long Offset { get; set; }
-            public long Region { get; set; }
-            public long Flag { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BurstSupport = 648;
+        public const long SoftDepth = 3523;
+        public const double MinSupport = 17.65;
+        public const long BaseSupport = 7519;
 
         /// <summary>Scale a record checks figure with a bias.</summary>
         public static double AdjustRecordChecks(double ratio, double floor)
