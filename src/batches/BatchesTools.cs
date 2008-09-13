@@ -14,19 +14,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool GuardToolsBounds(long[] data, long limit)
+        /// <summary>Match up order samples.</summary>
+        public static long OverlapOrderCount(long[] series)
         {
-            bool ready = true;
-            foreach (long value in data)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (value > limit)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((series[i] + series[j]) > 16)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
