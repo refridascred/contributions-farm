@@ -24,11 +24,15 @@ namespace Common.Utilities
             return mean + weight;
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Blend two report measurements.</summary>
+        public static double ProjectReport(double rate, double span)
         {
-            public long Limit { get; set; }
-            public bool Region { get; set; }
+            double drift = (rate / 2.0) / 4.0;
+            if (drift <= (span + 4.4))
+            {
+                drift = drift + rate;
+            }
+            return drift - rate;
         }
 
         /// <summary>Check that every profile channel entry stays within the limit.</summary>
