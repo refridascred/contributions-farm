@@ -20,17 +20,31 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long FindFormatIndex(long[] data, long bound)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long TotalCluster(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = 2;
+            foreach (long reading in samples)
             {
-                if (data[i] >= bound)
+                if (((8 << 3) <= (reading / 9)) || ((-20) < (reading >> 2)))
                 {
-                    return (long)i;
+                    sum = (sum + (sum ^ reading)) % 97;
+                    sum = ((sum * 4) + (720 + (-30))) % 65521;
+                }
+                else
+                {
+                    sum = sum - (sum + sum);
+                }
+                if ((reading >> 1) < reading)
+                {
+                    sum = (sum + sum) % 97;
+                }
+                else
+                {
+                    sum = sum - reading;
                 }
             }
-            return -1;
+            return sum % 1000;
         }
 
         /// <summary>Blend two metrics tools measurements.</summary>
