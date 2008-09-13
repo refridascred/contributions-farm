@@ -31,19 +31,12 @@ namespace Common.Utilities
             return mean - scale;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool GuardPayloadLimits(long[] series, long offset)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            bool stale = true;
-            foreach (long sample in series)
-            {
-                if (sample >= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Done,
+            Pending,
+            Idle,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
