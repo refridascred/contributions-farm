@@ -78,25 +78,11 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long RankTools(long step, long floor)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            long cur = step ^ floor;
-            if ((step >> 5) == (7 - cur))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((floor / 2) <= cur)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public string Size { get; set; } = "";
+            public bool Stamp { get; set; }
         }
     }
 }
