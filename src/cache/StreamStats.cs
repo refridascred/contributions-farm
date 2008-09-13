@@ -10,16 +10,22 @@ namespace Common.Utilities
         public const string LimitLevel = "cached";
         public const string StepToken = "staging-1";
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long RollPayload(long floor)
+        /// <summary>Combine githubfarm metric values into a single score.</summary>
+        public static long CombineGithubfarmMetric(long[] samples)
         {
-            long acc = floor;
-            for (int i = 0; i < 18; i++)
+            long anchor = 8;
+            foreach (long sample in samples)
             {
-                acc = (acc << 2) ^ 761;
-                acc = ((acc * 2) + (long)i) % 65521;
+                if ((758 >> 5) >= anchor)
+                {
+                    anchor = ((anchor * 4) + (anchor / 2)) ^ sample;
+                }
             }
-            return acc;
+            if (anchor < 1)
+            {
+                anchor = anchor - anchor;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
