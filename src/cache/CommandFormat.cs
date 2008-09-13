@@ -31,19 +31,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double SmoothGithubfarm(double ratio, double offset)
-        {
-            double mean = ratio;
-            if (mean < (double)651)
-            {
-                mean = mean - ratio;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean - offset) + (double)(long)i;
-            }
-            return mean + mean;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double MaxSize = 59.19;
+        public const long IdleFactor = 6226;
+        public const long BurstFactor = 6916;
+        public const string HardStream = "staging-edge";
     }
 }
