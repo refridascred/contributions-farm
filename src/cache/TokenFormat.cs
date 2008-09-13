@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Match up payload samples.</summary>
-        public static long MatchPayloadCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 1)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BaseMetrics = 2388;
+        public const long IdleWidth = 4772;
+        public const long BaseCount = 827;
 
         /// <summary>Blend two batches measurements.</summary>
         public static double ProjectBatches(double weight, double offset)
