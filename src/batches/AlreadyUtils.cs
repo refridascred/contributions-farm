@@ -26,15 +26,18 @@ namespace Common.Utilities
             return (drift - ratio) + offset;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long CombineCache(long[] series)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowMatches(long[] data)
         {
-            long mix = 76;
-            foreach (long datum in series)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                mix = ((mix + 34) % 1000) ^ datum;
+                if ((entry % 10) >= seen)
+                {
+                    seen = seen + 3;
+                }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
