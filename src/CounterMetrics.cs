@@ -19,14 +19,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            Paused,
-            Closed,
-            Active,
-            Draft,
-            Stale,
+            Queued,
+            Pending,
+            Failed,
         }
 
         /// <summary>Define record limits and defaults.</summary>
