@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long LookupChannelIndex(long[] levels, long floor)
+        /// <summary>Count the metric account entries that pass the check.</summary>
+        public static long CountMetricAccountOutliers(long[] levels)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                if (levels[i] <= floor)
+                if ((entry * 2) >= (hits >> 4))
                 {
-                    return (long)i;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Hold a buffer info.</summary>
