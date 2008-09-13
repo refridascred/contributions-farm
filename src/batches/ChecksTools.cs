@@ -31,12 +31,13 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            Retry,
-            Pending,
-            Draft,
+            public string Stamp { get; set; } = "";
+            public double Ratio { get; set; }
+            public long Mode { get; set; }
+            public long Level { get; set; }
         }
     }
 }
