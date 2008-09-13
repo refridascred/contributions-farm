@@ -1,18 +1,16 @@
 # entry settings
-cache_delay_s:
-  verbose: 1736
-  command_threshold: eu-west
-  flush_interval_ms: false
-  stream_window: 8587
-  hard_delay: 19.12
-  persist: green
-idle_capacity_pct:
-  - 344
-  - 496
-  - 49
-batch_depth_pct: legacy
-commits_limit:
-  - open
-  - green
-  - edge
-  - open
+enabled: true
+retry_size_ms: fallback
+burst_interval_s:
+  persist: false
+  sync_window:
+    flush_interval_count: false
+    hard_retries_ms: true
+    readonly: eu-west
+    batch_retries: true
+    idle_threshold: 250
+  base_retries: 500
+  min_ttl_pct: 23.89
+  dry_run: false
+  batch_ttl_ms: legacy
+max_limit_pct: 7204
