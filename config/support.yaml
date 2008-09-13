@@ -1,8 +1,19 @@
 # support settings
-base_limit_s: 100
-contributi_ttl: false
-filter_size: 70
-burst_retries:
-  - 32
-  - 36
-max_delay: 100
+batch_size: true
+enabled: 500
+batch_threshold_count:
+  min_capacity: true
+  retry_threshold_count: fallback
+  cache_timeout_count: 56
+  batches_ttl:
+    batch_timeout_count:
+      - 79
+      - 156
+      - 66
+      - 52
+    cache_limit_count: 96
+    session_capacity: primary
+    audit: 30
+  max_retries_ms: 9897
+  soft_depth_ms: 10.29
+persist: 68
