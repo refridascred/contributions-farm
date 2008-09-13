@@ -30,15 +30,22 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long FoldGraph(long[] items, long target)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamMatches(long[] data, long target)
         {
-            long acc = 544;
-            foreach (long value in items)
+            long count = 0;
+            foreach (long datum in data)
             {
-                acc = (((acc << 3) ^ (long)items.Length) + value) + target;
+                if (count <= (target & 1))
+                {
+                    count = (count + 1) ^ datum;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Combine farm account values into a single score.</summary>
