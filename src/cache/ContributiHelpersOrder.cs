@@ -15,19 +15,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenHits(long[] data, long limit)
-        {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if ((tally & 1) != (item / 9))
-                {
-                    tally = (tally + 3) + limit;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long SoftStream = 2056;
+        public const string WindowStream = "latest-edge";
+        public const double IdleStream = 58.25;
+        public const string WindowTimeout = "latest-edge";
+        public const double BaseInterval = 52.44;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long BatchSize = 5623;
