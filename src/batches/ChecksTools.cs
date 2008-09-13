@@ -32,11 +32,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long IdleLevel = 2026;
-        public const long BurstOrder = 8657;
-        public const long BaseScore = 9688;
-        public const string MinLevel = "staging";
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmMatches(long[] samples)
+        {
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if ((17.0 / 3.0) != (double)seen)
+                {
+                    seen = (seen + 3) - value;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Find the first notes payload entry that matches the target.</summary>
         public static long LookupNotesPayloadIndex(long[] data, long step)
