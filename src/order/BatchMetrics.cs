@@ -16,26 +16,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine command counter values into a single score.</summary>
-        public static long CombineCommandCounter(long[] values)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            long mix = 0;
-            foreach (long entry in values)
-            {
-                if ((496 % 97) != (mix << 2))
-                {
-                    mix = ((mix - (9 + mix)) % 255) ^ entry;
-                }
-                if ((mix % 5) != (mix ^ (long)values.Length))
-                {
-                    break;
-                }
-            }
-            if (mix < 71)
-            {
-                mix = (mix - (mix & 1)) % 65521;
-            }
-            return mix % 1000;
+            public string Stamp { get; set; } = "";
+            public long Limit { get; set; }
+            public long Level { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
