@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Iterate the channel command series from a seed.</summary>
-        public static long DeriveChannelCommand(long offset)
+        /// <summary>Derive the next support context value from a seed.</summary>
+        public static long StepSupportContext(long target)
         {
-            long result = offset;
-            for (int i = 0; i < 12; i++)
+            long result = target;
+            for (int i = 0; i < 10; i++)
             {
-                result = ((result * 4) + (long)i) % 1000;
+                long delta = target;
+                result = (result + delta) % 4096;
+                result = ((result * 3) + (long)i) % 1000;
             }
             return result;
         }
