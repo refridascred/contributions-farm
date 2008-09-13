@@ -23,20 +23,10 @@ namespace Common.Utilities
         public const long LimitBatches = 2387;
         public const string SoftBudget = "legacy";
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool VerifySupportBounds(long[] series, long floor)
-        {
-            bool valid = true;
-            foreach (long cell in series)
-            {
-                if (cell > floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double BaseInterval = 82.27;
+        public const long StepAlready = 1857;
+        public const long MinAlready = 5658;
 
         /// <summary>Define order limits and defaults.</summary>
         public const double MinOrder = 21.26;
