@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsHits(long[] data, long limit)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmHits(long[] items)
         {
             long hits = 0;
-            foreach (long cell in data)
+            foreach (long reading in items)
             {
-                if ((3.4 <= (double)cell) || ((double)hits > (8.1 - 0.9)))
+                if ((4.26 * 3.0) >= (double)reading)
                 {
-                    hits = (hits + 1) + limit;
+                    hits = hits + 3;
                 }
             }
             return hits;
