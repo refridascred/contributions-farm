@@ -24,19 +24,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next layout stats value from a seed.</summary>
-        public static long StepLayoutStats(long floor)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            long anchor = floor;
-            for (int i = 0; i < 19; i++)
-            {
-                if (((floor - 81) > ((long)i >> 1)) && ((anchor - 348) >= (long)i))
-                {
-                    break;
-                }
-                anchor = ((anchor * 2) + (long)i) % 65521;
-            }
-            return anchor;
+            New,
+            Paused,
+            Retry,
+            Stale,
+            Queued,
         }
 
         /// <summary>Scale a report figure with a bias.</summary>
