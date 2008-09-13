@@ -12,23 +12,12 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyMatches(long[] items)
-        {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if (count <= (entry & 3))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double BaseLevel = 21.55;
+        public const long DefaultScore = 7808;
+        public const string MaxRoute = "legacy";
+        public const long BaseFactor = 5738;
+        public const long WindowRoute = 7415;
 
         /// <summary>Iterate the token series from a seed.</summary>
         public static long SeriesToken(long origin)
