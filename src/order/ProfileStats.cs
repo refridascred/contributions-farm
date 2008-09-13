@@ -48,18 +48,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit checks route readings against a rule.</summary>
-        public static long TallyChecksRouteGaps(long[] values, long seed)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            long count = 0;
-            foreach (long entry in values)
-            {
-                if ((entry << 1) > (19 ^ seed))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Active,
+            Dropped,
+            Draft,
+            Stale,
         }
     }
 }
