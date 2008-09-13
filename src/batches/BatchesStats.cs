@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long SeriesQueue(long origin)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long LookupChannelIndex(long[] levels, long floor)
         {
-            long mix = origin;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mix = ((mix * 4) + (long)i) % 97;
+                if (levels[i] <= floor)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Hold a already summary.</summary>
