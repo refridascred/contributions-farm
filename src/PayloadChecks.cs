@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool CheckNotesLimits(long[] samples, long limit)
         {
-            Paused,
-            Synced,
-            Failed,
-            Draft,
-            Stale,
+            bool valid = true;
+            foreach (long datum in samples)
+            {
+                if (datum < limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Blend two already measurements.</summary>
