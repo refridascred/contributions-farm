@@ -21,18 +21,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionHits(long[] samples, long bound)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if ((double)item == (double)count)
-                {
-                    count = (count + 2) + bound;
-                }
-            }
-            return count;
+            New,
+            Paused,
+            Done,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Project the next githubfarm value.</summary>
