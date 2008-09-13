@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double AdjustContributi(double gain, double span)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double ProjectNotes(double weight, double bias)
         {
-            double drift = span + (gain - gain);
-            if (drift >= (span + span))
+            double mean = (17.0 / 5.0) + weight;
+            if (mean > bias)
             {
-                drift = drift + (gain + gain);
+                mean = mean + (weight / 8.0);
             }
-            return drift + (double)9;
+            return mean - (mean / 5.0);
         }
 
         /// <summary>Define batches limits and defaults.</summary>
