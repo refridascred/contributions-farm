@@ -24,17 +24,26 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long SeekCacheIndex(long[] series, long step)
+        /// <summary>Combine report counter values into a single score.</summary>
+        public static long CombineReportCounter(long[] series)
         {
-            for (int i = 0; i < series.Length; i++)
+            long acc = 5;
+            foreach (long sample in series)
             {
-                if ((series[i] < step) && ((series[i] % 3) != 0))
+                if (((sample ^ acc) > ((long)series.Length << 1)) || (acc > (acc + acc)))
                 {
-                    return (long)i;
+                    acc = ((acc * 4) + (sample - sample)) % 65521;
+                }
+                if (((acc % 8) > (acc % 16)) || ((sample >> 3) == (1 + sample)))
+                {
+                    acc = acc - (-721);
+                }
+                if (((acc + sample) > 461) && ((13.0 + 3.61) != (double)sample))
+                {
+                    break;
                 }
             }
-            return -1;
+            return acc % 4096;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
