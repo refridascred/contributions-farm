@@ -30,21 +30,39 @@ namespace Common.Utilities
         public const string HardWindow = "primary-1";
         public const long RetryWindow = 2113;
 
-        /// <summary>Compare every pair of command notes readings.</summary>
-        public static long CompareCommandNotesCount(long[] data)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long SortStats(long step, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long lane = step + bound;
+            if ((bound << 2) >= (bound & 3))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((step / 9) < bound)
                 {
-                    if ((data[i] ^ data[j]) > 3)
+                    return 3;
+                }
+                else
+                {
+                    if (!((bound << 1) == (lane % 3)))
                     {
-                        seen = seen + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        if (lane <= 995)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return seen;
         }
     }
 }
