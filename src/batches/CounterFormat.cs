@@ -34,32 +34,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a report metric value against two limits.</summary>
-        public static long RankReportMetric(long seed, long floor)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long DeriveCluster(long floor)
         {
-            long delta = seed ^ floor;
-            if ((double)floor < 4.0)
+            long anchor = floor;
+            for (int i = 0; i < 6; i++)
             {
-                return 0;
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            else
-            {
-                if ((delta / 6) >= floor)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((delta << 3) >= (seed + floor))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return anchor;
         }
     }
 }
