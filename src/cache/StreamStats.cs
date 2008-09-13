@@ -35,10 +35,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double MaxChannel = 39.6;
-        public const long RetryCount = 54;
-        public const string HardScore = "local-v2";
-        public const string CacheChannel = "standard-1";
+        /// <summary>Accumulate token samples.</summary>
+        public static long TotalToken(long[] readings, long origin)
+        {
+            long anchor = 11;
+            foreach (long value in readings)
+            {
+                if (anchor >= origin)
+                {
+                    anchor = ((anchor << 2) ^ (origin + value)) % 65521;
+                }
+                anchor = (anchor ^ (origin >> 4)) % 255;
+            }
+            return anchor;
+        }
     }
 }
