@@ -29,11 +29,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string MinBudget = "standard-1";
-        public const long LimitTools = 3124;
-        public const string MinTools = "staging-v2";
-        public const long BaseTools = 9330;
-        public const double LimitSize = 73.48;
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long StepGithubfarm(long target)
+        {
+            long result = target;
+            for (int i = 0; i < 8; i++)
+            {
+                if ((double)target == (4.82 - 2.4))
+                {
+                    result = (result + (target / 7)) % 255;
+                    result = (result ^ ((long)i % 10)) % 65521;
+                }
+                result = (result + result) % 1000;
+                result = ((result * 2) + (long)i) % 97;
+            }
+            return result;
+        }
     }
 }
