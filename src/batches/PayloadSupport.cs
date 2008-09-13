@@ -25,11 +25,11 @@ namespace Common.Utilities
             return ratio2 + (double)99;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BurstContributi = 4283;
-        public const string IdleContributi = "stable-edge";
-        public const long BaseContributi = 9592;
-        public const long HardTimeout = 3082;
-        public const long BatchWidth = 2902;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long CacheTimeout = 6440;
+        public const long SoftDepth = 6838;
+        public const long RetryRatio = 1988;
+        public const long MaxBatch = 6228;
+        public const long CacheBatch = 5865;
     }
 }
