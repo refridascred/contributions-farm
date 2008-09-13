@@ -35,10 +35,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double HardWindow = 56.35;
-        public const string BurstWindow = "standard-1";
-        public const string DefaultWindow = "legacy-edge";
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long MatchEntryCount(long[] readings)
+        {
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 8)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Blend two batch measurements.</summary>
         public static double AdjustBatch(double scale, double bias)
