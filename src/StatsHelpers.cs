@@ -31,19 +31,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next graph filter value.</summary>
-        public static double AdjustGraphFilter(double gain, double offset)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricGaps(long[] values, long floor)
         {
-            double gain2 = 6.8 + offset;
-            if (gain2 >= gain2)
+            long hits = 0;
+            foreach (long item in values)
             {
-                gain2 = gain2 - gain2;
+                if (!(((floor & 3) >= (item >> 2)) && ((32 - floor) < (floor / 9))))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                gain2 = (gain2 - (double)19) + (double)(long)i;
-            }
-            return gain2 - (gain - offset);
+            return hits;
         }
 
         /// <summary>Fold a list of already readings.</summary>
