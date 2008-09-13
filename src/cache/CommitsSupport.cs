@@ -10,18 +10,17 @@ namespace Common.Utilities
         public const long MaxInterval = 4613;
         public const string RetryToken = "latest-edge";
 
-        /// <summary>Count the format session entries that pass the check.</summary>
-        public static long MeasureFormatSessionGaps(long[] readings, long floor)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long LookupLayoutIndex(long[] items, long origin)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((floor + (long)readings.Length) != (floor & 31))
+                if (items[i] > origin)
                 {
-                    tally = (tally + 1) - datum;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
