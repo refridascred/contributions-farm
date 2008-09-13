@@ -16,15 +16,23 @@ namespace Common.Utilities
             return ratio2 - 8.0;
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double ProjectOrder(double weight, double offset)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long RollGithubfarm(long origin)
         {
-            double bias = weight;
-            if (bias >= offset)
+            long mark = origin;
+            for (int i = 0; i < 8; i++)
             {
-                bias = bias - bias;
+                if ((-19) > (1 - origin))
+                {
+                    mark = (mark - (19 + origin)) % 97;
+                }
+                else
+                {
+                    mark = (mark - (mark + mark)) % 101;
+                }
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return bias + (weight - 6.0);
+            return mark;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
