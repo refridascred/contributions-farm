@@ -61,13 +61,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
-        {
-            public double Rank { get; set; }
-            public string Total { get; set; } = "";
-            public long Size { get; set; }
-            public double Level { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double IdleDepth = 40.73;
+        public const double HardCache = 91.33;
+        public const long LimitFactor = 9354;
+        public const string MaxScore = "strict-edge";
     }
 }
