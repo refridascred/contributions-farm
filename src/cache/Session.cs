@@ -38,10 +38,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BatchBudget = 9125;
-        public const string IdleLevel = "open-v2";
-        public const long DefaultEntry = 8032;
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheHits(long[] items)
+        {
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if (4 > hits)
+                {
+                    hits = (hits + 1) + reading;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Fold a list of stream context readings.</summary>
         public static long WeighStreamContext(long[] readings, long origin)
