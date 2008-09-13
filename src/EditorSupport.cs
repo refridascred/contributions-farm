@@ -50,12 +50,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long ClassifyCluster(long target, long offset)
         {
-            public double Flag { get; set; }
-            public double Mode { get; set; }
-            public bool Total { get; set; }
+            long prev = target - offset;
+            if ((prev << 2) == (offset - prev))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((prev ^ 118) < (13 ^ offset))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
