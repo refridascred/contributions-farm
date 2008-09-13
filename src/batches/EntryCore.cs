@@ -19,10 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double BaseAlready = 34.23;
-        public const long CacheScore = 5246;
-        public const long HardDepth = 6830;
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
+        {
+            public double Size { get; set; }
+            public bool Label { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Look up the position of a batches sample.</summary>
         public static long SeekBatchesIndex(long[] readings, long step)
