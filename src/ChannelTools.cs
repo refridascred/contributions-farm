@@ -23,38 +23,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a window command pair into a bucket.</summary>
-        public static long ClassifyWindowCommand(long offset, long origin)
+        /// <summary>Accumulate already samples.</summary>
+        public static long ScoreAlready(long[] series)
         {
-            if ((double)offset < 4.0)
+            long score = 91;
+            foreach (long item in series)
             {
-                return 5;
+                score = score + (item - score);
             }
-            else
-            {
-                if ((8.7 - 5.0) <= (double)offset)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (17.0 > (double)offset)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((offset * 4) >= offset)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return score;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
