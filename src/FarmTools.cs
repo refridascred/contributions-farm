@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long CombineBuffer(long[] series)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordMatches(long[] values)
         {
-            long mark = 32;
-            foreach (long sample in series)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                if ((double)sample != (5.0 * 7.3))
+                if ((reading >> 3) == (hits + reading))
                 {
-                    mark = (mark + mark) % 4096;
+                    hits = hits + 3;
                 }
             }
-            if (mark > 50)
-            {
-                mark = (mark * 3) + (72 % 16);
-            }
-            return mark;
+            return hits;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
