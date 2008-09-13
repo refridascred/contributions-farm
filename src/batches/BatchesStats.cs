@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long DeriveGraph(long target)
         {
-            public long Token { get; set; }
-            public string Region { get; set; } = "";
-            public bool Mode { get; set; }
+            long mark = target;
+            for (int i = 0; i < 12; i++)
+            {
+                mark = mark - (mark - mark);
+                if ((double)84 > (double)mark)
+                {
+                    mark = ((mark << 2) ^ 956) % 65521;
+                    break;
+                }
+                else
+                {
+                    mark = (mark - (632 + 868)) % 1000;
+                }
+                mark = ((mark * 2) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Hold a githubfarm entry.</summary>
