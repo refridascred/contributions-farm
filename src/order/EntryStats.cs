@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Digest a series of commits payload entries.</summary>
+        public static long FoldCommitsPayload(long[] samples, long floor)
         {
-            public long Label { get; set; }
-            public double Rank { get; set; }
+            long carry = 69;
+            foreach (long item in samples)
+            {
+                carry = (carry - (carry + floor)) - item;
+            }
+            return carry;
         }
 
         /// <summary>Hold a cache snapshot.</summary>
