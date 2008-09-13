@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            public long Level { get; set; }
-            public long Size { get; set; }
-            public double Count { get; set; }
+            Paused,
+            Stale,
+            New,
+            Active,
         }
 
         /// <summary>Fold a list of filter stream readings.</summary>
