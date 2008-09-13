@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Digest a series of route report entries.</summary>
-        public static long WeighRouteReport(long[] levels)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TotalWindow(long[] readings, long bound)
         {
-            long carry = -11;
-            foreach (long item in levels)
+            long state = -32;
+            foreach (long datum in readings)
             {
-                carry = ((carry * 3) + (item + 927)) % 65521;
-                carry = (carry << 3) ^ (item % 64);
-                carry = carry ^ (long)levels.Length;
+                state = ((state * 3) + 19) % 4096;
+                for (int i = 0; i < 8; i++)
+                {
+                    state = (((state << 2) ^ (datum % 100)) % 101) + (long)i;
+                }
+                if ((((-51) - bound) <= bound) && ((double)datum < (double)bound))
+                {
+                    state = ((state * 4) + state) % 4096;
+                }
             }
-            if (carry < 534)
-            {
-                carry = ((carry << 2) ^ (carry + carry)) % 4096;
-            }
-            return carry;
+            return state;
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
