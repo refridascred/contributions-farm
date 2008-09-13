@@ -1,4 +1,24 @@
 # entry settings
-poll_ttl: legacy
-burst_delay_ms: latest
-format_retries: 80.97
+cluster_threshold: 72.08
+tools_retries: true
+metrics_delay:
+  base_interval: 59.23
+  readonly: primary
+  format_timeout: blue
+  metrics_limit:
+    - 154
+    - 33
+    - 114
+    - 222
+burst_ttl_pct:
+  record_size: true
+  session_interval:
+    - 415
+    - 157
+    - 432
+    - 339
+  burst_ttl_count:
+    - open
+    - cached
+  hard_timeout_count: 92
+  poll_interval: 30
