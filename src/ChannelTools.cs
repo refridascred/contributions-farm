@@ -18,39 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long RankFormat(long bound, long floor)
+        /// <summary>Check that every metrics order entry stays within the limit.</summary>
+        public static bool GuardMetricsOrderBounds(long[] series, long floor)
         {
-            long slot = bound ^ floor;
-            if ((0.44 / 2.0) >= (double)slot)
+            bool ok = true;
+            foreach (long entry in series)
             {
-                return 3;
-            }
-            else
-            {
-                if ((bound >= (slot * 3)) && (slot < (floor + 2)))
+                if (entry >= floor)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (bound < slot)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((bound + floor) == (floor - floor))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Describe the layout class values.</summary>
