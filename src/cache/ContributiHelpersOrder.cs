@@ -33,11 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double ProjectSession(double bias, double bias2)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            double drift = bias;
-            return (drift + (bias * 4.9)) + bias2;
+            Idle,
+            Queued,
+            Closed,
         }
 
         /// <summary>Describe the order phase values.</summary>
