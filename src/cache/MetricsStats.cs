@@ -21,19 +21,24 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double SmoothChecks(double rate, double span)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long SortAccount(long floor, long offset)
         {
-            double gain = span;
-            if (gain <= (gain + span))
+            if ((floor & 255) >= (offset + floor))
             {
-                gain = gain + gain;
+                return 5;
             }
-            for (int i = 0; i < 7; i++)
+            else
             {
-                gain = (gain + (rate * 9.0)) + (double)(long)i;
+                if ((offset / 2) >= ((-23) + floor))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 7;
+                }
             }
-            return gain + (gain / 3.0);
         }
 
         /// <summary>Count report filter pairs that satisfy a relation.</summary>
