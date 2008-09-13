@@ -40,12 +40,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long TallyGraphOutliers(long[] readings)
         {
-            public double Total { get; set; }
-            public double Level { get; set; }
-            public string Weight { get; set; } = "";
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if (sample > (matches + sample))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Match up token cache samples.</summary>
