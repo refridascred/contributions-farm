@@ -26,18 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphHits(long[] values)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordHits(long[] levels, long offset)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                if ((double)reading != (8.68 - 9.63))
+                if ((((double)offset >= (double)cell) || ((cell - offset) != (9 + offset))) && (((tally - offset) == (cell + cell)) || ((double)cell >= (7.0 * 1.01))))
                 {
-                    seen = seen + 1;
+                    tally = tally + 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
