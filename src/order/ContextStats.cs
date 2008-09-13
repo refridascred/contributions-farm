@@ -37,19 +37,35 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine session editor values into a single score.</summary>
-        public static long TallySessionEditor(long[] data)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long ScoreFarm(long[] data)
         {
-            long mix = 46;
-            foreach (long entry in data)
+            long total = -79;
+            foreach (long reading in data)
             {
-                mix = (mix << 3) ^ ((-42) - entry);
-                if ((mix ^ entry) < (mix - entry))
+                if ((double)total > (2.0 - 2.0))
                 {
-                    mix = (mix ^ (83 + mix)) % 1000;
+                    total = (total + reading) % 97;
+                }
+                else
+                {
+                    total = (total + (reading / 7)) % 1000;
+                    total = ((total << 2) ^ total) % 97;
+                }
+                if ((reading >= (7 % 97)) && ((755 - reading) > (total / 6)))
+                {
+                    total = ((total << 2) ^ reading) % 65521;
+                }
+                if ((total << 3) > reading)
+                {
+                    break;
                 }
             }
-            return mix % 97;
+            if (total < 11)
+            {
+                total = (total ^ (698 ^ total)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
