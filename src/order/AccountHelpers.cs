@@ -72,26 +72,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long ScoreEditor(long[] values, long bound)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long SortStats(long offset, long offset2)
         {
-            long mix = 64;
-            foreach (long value in values)
+            if ((0.35 / 3.0) < (double)offset2)
             {
-                if (!((bound & 255) > (mix / 3)))
+                return 1;
+            }
+            else
+            {
+                if ((offset2 >= (offset / 6)) || ((4.1 + 2.94) == (double)offset))
                 {
-                    mix = ((mix << 3) ^ (value + mix)) % 101;
+                    return 3;
                 }
-                if ((value << 3) <= (value * 3))
+                else
                 {
-                    mix = (mix - (value % 3)) % 1000;
+                    if ((3.6 + 3.5) >= (double)offset2)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            if (mix > 989)
-            {
-                mix = (mix + (bound >> 3)) % 97;
-            }
-            return mix;
         }
     }
 }
