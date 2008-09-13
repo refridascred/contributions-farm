@@ -20,11 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Blend two window profile measurements.</summary>
-        public static double AdjustWindowProfile(double bias, double bias2)
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            double scale = 5.1;
-            return (scale - (scale - bias2)) + bias;
+            public string Ratio { get; set; } = "";
+            public bool Score { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
