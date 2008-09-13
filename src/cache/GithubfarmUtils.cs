@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long DeriveBatch(long floor)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            long mix = floor;
-            for (int i = 0; i < 7; i++)
-            {
-                mix = ((mix << 3) ^ (floor >> 2)) % 1000;
-                if (mix < ((-3) & 7))
-                {
-                    mix = mix + (mix * 5);
-                }
-                else
-                {
-                    mix = (mix * 2) + mix;
-                }
-                mix = ((mix * 3) + (long)i) % 4093;
-            }
-            return mix;
+            Done,
+            Paused,
+            Closed,
         }
 
         /// <summary>Blend two already account measurements.</summary>
