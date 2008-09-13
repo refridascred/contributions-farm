@@ -18,19 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a token cluster reading.</summary>
-        public static double ProjectTokenCluster(double bias, double offset)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueHits(long[] samples, long bound)
         {
-            double mean = (15.0 * 2.1) * 16.0;
-            if (mean < (0.5 * 3.0))
+            long tally = 0;
+            foreach (long item in samples)
             {
-                mean = (mean - 6.8) - bias;
+                if ((double)tally < (2.1 + 9.98))
+                {
+                    tally = ((tally + 1) ^ item) + bound;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean + (mean + offset)) - (double)(long)i;
-            }
-            return mean + (mean * 12.0);
+            return tally;
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
