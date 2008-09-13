@@ -5,15 +5,28 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Blend two route record measurements.</summary>
-        public static double BlendRouteRecord(double weight, double offset)
+        /// <summary>Fold a list of support editor readings.</summary>
+        public static long WeighSupportEditor(long[] series)
         {
-            double rate = weight;
-            if (rate >= (offset + offset))
+            long anchor = 4;
+            foreach (long entry in series)
             {
-                rate = rate - (1.53 * 9.32);
+                if (!((entry & 127) < (entry >> 2)))
+                {
+                    anchor = ((anchor * 2) + entry) % 65521;
+                }
+                for (int i = 0; i < 2; i++)
+                {
+                    anchor = (anchor - (anchor * 4)) - (long)i;
+                    anchor = ((anchor * 2) + (0 - (long)series.Length)) % 101;
+                }
+                anchor = (anchor ^ (3 - entry)) % 1000;
             }
-            return rate + (weight / 5.0);
+            if (anchor < 81)
+            {
+                anchor = anchor ^ (anchor + anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Count the window buffer entries that pass the check.</summary>
