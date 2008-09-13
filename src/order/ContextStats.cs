@@ -34,11 +34,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            public string Offset { get; set; } = "";
-            public long Score { get; set; }
+            public double Total { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Accumulate report samples.</summary>
