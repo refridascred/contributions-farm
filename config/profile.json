@@ -1,7 +1,7 @@
 {
-  "graph_threshold": 6330,
-  "default_capacity_pct": ["cached", "local"],
-  "warm_size_s": 30,
-  "stream_delay": 31.49,
-  "already_delay": 2666
+  "persist": "latest",
+  "flush_threshold": true,
+  "default_interval": false,
+  "dry_run": 6897,
+  "batch_limit": "latest"
 }
