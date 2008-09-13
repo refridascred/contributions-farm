@@ -43,14 +43,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool VerifyCommitsBounds(long[] readings, long seed)
         {
-            Ready,
-            Retry,
-            Locked,
-            Draft,
-            Closed,
+            bool flag = true;
+            foreach (long datum in readings)
+            {
+                if (datum < seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Hold a format info.</summary>
