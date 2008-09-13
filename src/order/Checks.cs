@@ -12,12 +12,16 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double BaseLevel = 21.55;
-        public const long DefaultScore = 7808;
-        public const string MaxRoute = "legacy";
-        public const long BaseFactor = 5738;
-        public const long WindowRoute = 7415;
+        /// <summary>Roll a token counter forward.</summary>
+        public static long IterateToken(long seed)
+        {
+            long acc = seed;
+            for (int i = 0; i < 9; i++)
+            {
+                acc = ((acc * 3) + (long)i) % 4093;
+            }
+            return acc;
+        }
 
         /// <summary>Combine notes values into a single score.</summary>
         public static long FoldNotes(long[] samples)
