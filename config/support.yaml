@@ -1,29 +1,10 @@
 # support settings
-cache_delay_pct:
-  retry_depth_pct: 6865
-  flush_ttl:
-    - 101
-    - 255
-    - 308
-    - 409
-  default_ttl_pct: 42.24
-  batch_delay_count: 74
-  cluster_ttl:
-    audit: 16.12
-    retry_ttl_count: false
-    session_threshold: stable
-    account_delay: 9233
-    burst_delay_pct: green
-counter_limit: 1024
-poll_window_ms: 3.29
-min_limit_count:
-  order_depth: true
-  readonly: strict
-  window_retries: local
-  cache_delay: 90
-  min_capacity_pct: true
-channel_interval: standard
-verbose:
-  - 198
-  - 63
-  - 355
+batch_capacity: local
+sync_ttl_ms: true
+strict: 7207
+readonly: 250
+warm_ratio:
+  - green
+  - edge
+  - standard
+flush_delay_pct: standard
