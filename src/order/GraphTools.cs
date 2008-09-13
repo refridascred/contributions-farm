@@ -68,16 +68,17 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long RollTools(long target)
+        /// <summary>Look up the position of a cache channel sample.</summary>
+        public static long FindCacheChannelIndex(long[] values, long step)
         {
-            long sum = target;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                sum = (sum + sum) % 101;
-                sum = ((sum * 5) + (long)i) % 1000;
+                if (values[i] < step)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
     }
 }
