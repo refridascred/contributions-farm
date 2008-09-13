@@ -1,8 +1,7 @@
 {
-  "min_ttl_ms": "cached",
-  "poll_delay_count": [223, 368, 102],
-  "payload_window": "legacy",
-  "cache_capacity": 8853,
-  "warm_window_ms": true,
-  "idle_size": [478, 483, 267]
+  "flush_delay_s": false,
+  "max_delay_ms": "cached",
+  "flush_ttl": 23,
+  "poll_limit_pct": true,
+  "burst_size_ms": 25
 }
