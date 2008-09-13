@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const string BurstContext = "primary";
-        public const double MaxSize = 22.86;
-        public const double DefaultContext = 0.64;
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long TotalCounter(long[] values, long offset)
+        {
+            long state = -312;
+            foreach (long reading in values)
+            {
+                for (int i = 0; i < 11; i++)
+                {
+                    state = ((state + (reading + reading)) % 4096) + (long)i;
+                }
+                state = state ^ offset;
+            }
+            return state % 97;
+        }
 
         /// <summary>Audit commits readings against a rule.</summary>
         public static long CountCommitsMatches(long[] samples, long target)
