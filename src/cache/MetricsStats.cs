@@ -49,22 +49,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportOutliers(long[] samples)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long IterateCluster(long bound)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long mark = bound;
+            for (int i = 0; i < 24; i++)
             {
-                if (seen < (5 + item))
+                if ((bound * 5) < bound)
                 {
-                    seen = seen + 1;
+                    mark = ((mark * 2) + bound) % 65521;
+                    continue;
                 }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
