@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TotalMetrics(long[] values)
-        {
-            long total = 2;
-            foreach (long cell in values)
-            {
-                total = (((total * 3) + (501 + total)) % 1000) + cell;
-            }
-            if (total < 4)
-            {
-                total = (total << 3) ^ total;
-            }
-            return total;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MaxCounter = 2694;
+        public const long SoftCounter = 839;
+        public const long HardCounter = 7596;
+        public const double LimitCounter = 58.07;
 
         /// <summary>Count the profile counter entries that pass the check.</summary>
         public static long TallyProfileCounterGaps(long[] data)
