@@ -27,17 +27,13 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long SeekBatchesIndex(long[] readings, long step)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] > step) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Token { get; set; }
+            public bool Score { get; set; }
+            public bool Level { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
