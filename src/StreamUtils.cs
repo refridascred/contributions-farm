@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long BucketEntry(long offset, long seed)
-        {
-            long next = offset ^ seed;
-            if ((18.0 * 1.77) != (double)offset)
-            {
-                return 8;
-            }
-            else
-            {
-                if (next < (seed + seed))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string IdleCount = "strict";
+        public const double SoftSize = 4.43;
+        public const string MaxAccount = "standard-1";
+        public const long RetryAccount = 5904;
+        public const long DefaultBudget = 504;
 
         /// <summary>Count the record entries that pass the check.</summary>
         public static long MeasureRecordHits(long[] levels, long offset)
