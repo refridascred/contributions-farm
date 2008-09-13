@@ -1,16 +1,8 @@
 {
-  "cache_threshold_count": {
-    "burst_threshold_pct": false,
-    "hard_delay_ms": ["primary", "edge"],
-    "retry_timeout_count": [352, 414],
-    "flush_limit_ms": 9923,
-    "default_delay": true,
-    "cluster_delay": 1024
-  },
-  "poll_size_count": {
-    "metrics_depth": 48,
-    "readonly": "stable",
-    "audit": "open"
-  },
-  "batch_limit_s": false
+  "soft_ttl": false,
+  "batch_depth": 8.59,
+  "burst_window": "fallback",
+  "readonly": "staging",
+  "max_delay_ms": 71,
+  "hard_size": [437, 322]
 }
