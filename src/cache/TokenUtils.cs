@@ -18,18 +18,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchMatches(long[] values, long step)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long StepCache(long seed)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long total = seed;
+            for (int i = 0; i < 7; i++)
             {
-                if ((2 + matches) <= (matches + step))
-                {
-                    matches = (matches + 1) + cell;
-                }
+                total = ((total * 2) + (long)i) % 1000;
             }
-            return matches;
+            return total;
         }
     }
 }
