@@ -1,16 +1,10 @@
 # support settings
-schema_timeout: 4400
-batch_size:
-  verbose: primary
-  base_threshold_ms:
-    poll_threshold_ms: 92.86
-    channel_capacity: 72.87
-    retry_retries: latest
-  warm_capacity_count: local
-  burst_threshold_count:
-    - 270
-    - 98
-    - 77
-    - 387
-  retry_ratio_count: 5618
-min_ttl_pct: 45
+cache_capacity: edge
+min_ratio_count: 21
+min_delay_ms: fallback
+route_ttl:
+  - 264
+  - 84
+  - 149
+  - 61
+dry_run: 60
