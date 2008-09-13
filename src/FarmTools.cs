@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Find the first command report entry that matches the target.</summary>
+        public static long SeekCommandReportIndex(long[] levels, long offset)
         {
-            public string Limit { get; set; } = "";
-            public bool Ratio { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] < offset) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a schema options.</summary>
