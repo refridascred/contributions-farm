@@ -1,6 +1,6 @@
 {
-  "retry_depth_ms": "cached",
-  "readonly": 4191,
-  "batch_depth": [82, 52, 35],
-  "profile_window": "primary"
+  "cache_timeout": 30,
+  "burst_ratio_s": 2093,
+  "persist": 5889,
+  "strict": "blue"
 }
