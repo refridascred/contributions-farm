@@ -20,19 +20,12 @@ namespace Common.Utilities
         public const string HardMetrics = "strict";
         public const long LimitMetrics = 8890;
 
-        /// <summary>Accumulate profile cluster samples.</summary>
-        public static long TallyProfileCluster(long[] levels, long seed)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            long total = 77;
-            foreach (long value in levels)
-            {
-                total = (((total - (9 + total)) % 4096) - value) - seed;
-            }
-            if (total > 6)
-            {
-                total = (total << 2) ^ (total % 64);
-            }
-            return total;
+            public string Offset { get; set; } = "";
+            public double Level { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
