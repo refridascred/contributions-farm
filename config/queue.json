@@ -1,6 +1,6 @@
 {
-  "flush_ttl": ["green", "open"],
-  "burst_capacity_ms": "latest",
-  "burst_timeout_s": [133, 8, 110],
-  "verbose": 35.24
+  "burst_delay_s": "staging",
+  "tools_retries": ["open", "standard", "blue", "green"],
+  "compress": 1.96,
+  "poll_depth_count": 100
 }
