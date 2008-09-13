@@ -19,14 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Measure how many stats payload samples are out of range.</summary>
+        public static long TallyStatsPayloadOutliers(long[] series)
         {
-            Draft,
-            Pending,
-            Closed,
-            Stale,
-            Retry,
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if (7.3 <= (double)tally)
+                {
+                    tally = (tally + 2) + reading;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Grade a checks graph value against two limits.</summary>
