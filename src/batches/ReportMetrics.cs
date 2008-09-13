@@ -31,11 +31,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Match up stream samples.</summary>
+        public static long OverlapStreamCount(long[] readings)
         {
-            public double Count { get; set; }
-            public double Owner { get; set; }
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
