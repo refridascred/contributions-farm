@@ -48,19 +48,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool VerifyAccountRange(long[] levels, long origin)
-        {
-            bool stale = true;
-            foreach (long item in levels)
-            {
-                if (item != origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long IdleFactor = 3985;
+        public const string MaxLayout = "primary";
+        public const double BurstLayout = 5.46;
     }
 }
