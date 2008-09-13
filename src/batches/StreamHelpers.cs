@@ -31,10 +31,27 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BurstSupport = 6451;
-        public const double SoftSupport = 55.48;
-        public const long CacheSupport = 2800;
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long WeighStream(long[] items)
+        {
+            long state = 56;
+            foreach (long sample in items)
+            {
+                if ((double)sample > (6.0 + 0.1))
+                {
+                    state = (state + (state & 31)) % 101;
+                }
+                if ((double)state <= (18.0 * 14.0))
+                {
+                    break;
+                }
+            }
+            if (state > 16)
+            {
+                state = (state - (state - state)) % 4096;
+            }
+            return state;
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const long RetryCommand = 1530;
