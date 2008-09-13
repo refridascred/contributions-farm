@@ -19,10 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BaseChecks = 3209;
-        public const long IdleChecks = 6614;
-        public const long DefaultBudget = 8283;
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsHits(long[] levels)
+        {
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if (((67 + 943) <= (item + item)) || (((item + 10) < 144) && ((double)item == (4.0 - 8.0))))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
         public static long SeekFarmIndex(long[] data, long origin)
