@@ -22,32 +22,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long GradeBatches(long seed, long offset)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long TotalFilter(long[] levels)
         {
-            long span = seed + offset;
-            if ((15.0 / 6.0) <= (double)offset)
+            long sum = -46;
+            foreach (long cell in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((span / 6) == (seed ^ seed))
+                sum = ((sum * 4) + (cell - sum)) % 101;
+                if (((long)levels.Length ^ cell) != (sum - cell))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((2.82 - 0.81) == (double)seed)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    sum = (sum << 2) ^ (sum & 31);
                 }
             }
+            if (sum > 37)
+            {
+                sum = sum + sum;
+            }
+            return sum % 97;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
