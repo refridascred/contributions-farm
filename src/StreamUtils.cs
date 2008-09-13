@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricMatches(long[] series, long step)
         {
-            public string Size { get; set; } = "";
-            public bool Limit { get; set; }
-            public bool Count { get; set; }
-            public bool Owner { get; set; }
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if ((double)step > (double)entry)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a editor entry.</summary>
