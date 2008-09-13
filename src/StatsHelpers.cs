@@ -17,15 +17,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a schema notes counter forward.</summary>
-        public static long IterateSchemaNotes(long offset)
+        /// <summary>Roll a already channel counter forward.</summary>
+        public static long RollAlreadyChannel(long floor)
         {
-            long acc = offset;
-            for (int i = 0; i < 4; i++)
+            long result = floor;
+            for (int i = 0; i < 13; i++)
             {
-                acc = ((acc * 4) + (long)i) % 4093;
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    result = (((result * 4) + result) % 1000) - (long)i2;
+                }
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return acc;
+            return result;
         }
 
         /// <summary>Project the next report value.</summary>
