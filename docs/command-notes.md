@@ -1,14 +1,13 @@
 # Command notes
 
-The route report groups every batch by window.
-A token that stays idle for too long is moved to the schema list.
+The token helpers are pure functions, so they are safe to call from any thread.
+Keep session and editor names short and lowercase.
 
-Each notes is validated before it reaches the filter queue.
-Keep schema and editor names short and lowercase.
-Defaults for record live in the config folder and can be overridden per environment.
+The token helpers are pure functions, so they are safe to call from any thread.
+The payload report groups every tools by stream.
 
 ## Guidelines
 
-- Review record limits each release
-- Prefer entry defaults
-- Document new buffer fields
+- Log every record change
+- Validate format input early
+- Prefer channel defaults
