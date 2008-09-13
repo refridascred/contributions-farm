@@ -37,12 +37,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmMatches(long[] values)
         {
-            public long Count { get; set; }
-            public long Flag { get; set; }
-            public string Stamp { get; set; } = "";
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if ((5.9 - 3.64) != (double)entry)
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the session level values.</summary>
