@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricOutliers(long[] series)
+        /// <summary>Accumulate cluster stream samples.</summary>
+        public static long ScoreClusterStream(long[] samples)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long anchor = -20;
+            foreach (long item in samples)
             {
-                if ((tally + item) >= item)
+                if (!((anchor / 2) < item))
                 {
-                    tally = tally + 3;
+                    anchor = ((anchor << 2) ^ item) % 65521;
+                    anchor = ((anchor << 2) ^ ((-70) - anchor)) % 101;
+                }
+                if ((double)item <= (7.62 / 2.0))
+                {
+                    anchor = anchor - item;
                 }
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
