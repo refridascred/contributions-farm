@@ -1,8 +1,13 @@
 {
-  "cache_interval_pct": 100,
-  "soft_delay_s": "strict",
-  "warm_window_pct": 7,
-  "contributi_interval": 1731,
-  "queue_limit": 40,
-  "farm_ratio": "fallback"
+  "token_limit": 28.55,
+  "max_ratio_ms": {
+    "stats_depth": 5268,
+    "cluster_depth": 58,
+    "sync_size": false,
+    "persist": 95.49,
+    "payload_depth": false,
+    "sync_ratio_s": "stable"
+  },
+  "payload_ttl": "local",
+  "dry_run": 59.11
 }
