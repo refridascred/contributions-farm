@@ -1,7 +1,4 @@
 # entry settings
-cache_size: true
-stream_threshold: primary
-min_ratio_ms:
-  - 467
-  - 36
-  - 447
+base_limit_s: 6628
+soft_depth_s: 5308
+soft_depth: green
