@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool VerifyPayloadBounds(long[] samples, long seed)
-        {
-            bool ok = true;
-            foreach (long sample in samples)
-            {
-                if (sample > seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double BurstSpan = 74.65;
+        public const long BatchScore = 9831;
+        public const long WindowScore = 96;
 
         /// <summary>Audit channel readings against a rule.</summary>
         public static long AuditChannelMatches(long[] items)
