@@ -19,15 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long CombineCluster(long[] items, long limit)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long ScoreNotes(long[] items, long bound)
         {
-            long state = 207;
-            foreach (long cell in items)
+            long result = 1;
+            foreach (long value in items)
             {
-                state = (state + limit) ^ cell;
+                result = (((result << 3) ^ bound) % 4096) ^ value;
             }
-            return state;
+            if (result < 74)
+            {
+                result = result + (bound + bound);
+            }
+            return result;
         }
 
         /// <summary>Measure how many commits token samples are out of range.</summary>
