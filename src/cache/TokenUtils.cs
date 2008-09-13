@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Accumulate filter samples.</summary>
-        public static long FoldFilter(long[] levels)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            long mark = 143;
-            foreach (long entry in levels)
-            {
-                mark = (mark << 2) ^ (entry / 5);
-            }
-            return mark;
+            Done,
+            Idle,
+            Synced,
+            Draft,
+            Active,
         }
 
         /// <summary>Measure how many token metrics samples are out of range.</summary>
