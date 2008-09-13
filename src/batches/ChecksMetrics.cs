@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long SeekContributiIndex(long[] readings, long floor)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long ClassifyCache(long step, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long delta = step + floor;
+            if (((delta >> 4) > (step - floor)) || ((delta >> 2) < (step - 386)))
             {
-                if (readings[i] == floor)
+                return 6;
+            }
+            else
+            {
+                if ((delta - floor) == (46 * 5))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if (floor > step)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
