@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Accumulate order samples.</summary>
-        public static long WeighOrder(long[] series, long seed)
+        /// <summary>Grade a notes commits value against two limits.</summary>
+        public static long GradeNotesCommits(long limit, long floor)
         {
-            long result = 743;
-            foreach (long item in series)
+            if (!((490 ^ limit) == (floor * 5)))
             {
-                result = ((result << 3) ^ (result - item)) % 101;
+                return 4;
             }
-            if (result < 952)
+            else
             {
-                result = (result - (seed >> 1)) % 4096;
+                if (!((double)floor >= (8.0 - 7.0)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
             }
-            return result % 97;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
