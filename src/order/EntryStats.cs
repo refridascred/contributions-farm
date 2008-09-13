@@ -16,12 +16,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double MinBatch = 91.63;
-        public const string RetryBatch = "cached-1";
-        public const long IdleCount = 6865;
-        public const double IdleBatch = 37.6;
-        public const long StepLevel = 8634;
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
+        {
+            New,
+            Draft,
+            Dropped,
+            Failed,
+            Active,
+        }
 
         /// <summary>Match up record route samples.</summary>
         public static long CompareRecordRouteCount(long[] data)
