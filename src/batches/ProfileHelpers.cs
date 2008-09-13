@@ -68,19 +68,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every route farm entry stays within the limit.</summary>
-        public static bool GuardRouteFarmBounds(long[] samples, long step)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            bool ok = true;
-            foreach (long entry in samples)
-            {
-                if (entry <= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Idle,
+            Dropped,
+            Locked,
+            Ready,
+            Active,
         }
 
         /// <summary>Count the graph command entries that pass the check.</summary>
