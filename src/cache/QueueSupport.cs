@@ -34,22 +34,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of route graph entries.</summary>
-        public static long ScoreRouteGraph(long[] samples)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandOutliers(long[] readings)
         {
-            long total = -11;
-            foreach (long datum in samples)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if (((total % 60) <= datum) && ((total % 3) < total))
+                if ((reading % 3) != (tally >> 4))
                 {
-                    total = (total ^ datum) % 4096;
-                }
-                else
-                {
-                    total = (total << 3) ^ total;
+                    tally = tally + 2;
                 }
             }
-            return total % 1000;
+            return tally;
         }
     }
 }
