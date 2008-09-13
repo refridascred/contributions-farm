@@ -1,8 +1,6 @@
 {
-  "hard_window": [477, 239, 308],
-  "base_capacity_pct": "legacy",
-  "enabled": [272, 97, 361, 417],
-  "retry_interval_ms": 6365,
-  "verbose": 7394,
-  "retry_ratio_ms": [459, 133, 41]
+  "flush_ttl": ["green", "open"],
+  "burst_capacity_ms": "latest",
+  "burst_timeout_s": [133, 8, 110],
+  "verbose": 35.24
 }
