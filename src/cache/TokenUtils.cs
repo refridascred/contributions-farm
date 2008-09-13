@@ -29,16 +29,19 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Combine already order values into a single score.</summary>
-        public static long DigestAlreadyOrder(long[] items)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double SmoothMetrics(double rate, double bias)
         {
-            long state = 976;
-            foreach (long value in items)
+            double load = rate + (double)34;
+            if (load < rate)
             {
-                state = ((state * 4) + value) % 65521;
-                state = (state + (value + 482)) % 97;
+                load = (load + (load - rate)) - bias;
             }
-            return state % 97;
+            else
+            {
+                load = load + rate;
+            }
+            return load - (double)(-800);
         }
     }
 }
