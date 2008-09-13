@@ -1,8 +1,29 @@
 # entry settings
-flush_timeout_ms: 22
-persist:
-  - 309
-  - 127
-  - 114
-githubfarm_retries: legacy
-counter_timeout: strict
+flush_window_ms:
+  cache_timeout: eu-west
+  retry_size: 43.87
+  default_delay_pct: 2494
+  tools_ttl: open
+min_window:
+  min_threshold_s: 250
+  default_ratio_s:
+    batch_interval_count: true
+    base_ttl: 46
+    compress: local
+    strict: 650
+    warm_ratio:
+      - 113
+      - 273
+      - 77
+      - 162
+    editor_size: 54
+  soft_timeout_ms:
+    - 278
+    - 63
+    - 16
+  poll_window_ms: staging
+  default_limit: 5.93
+  base_limit_pct: 250
+strict: fallback
+default_ratio_ms: local
+readonly: 4743
