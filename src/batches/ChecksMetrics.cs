@@ -36,20 +36,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long DigestRecord(long[] series)
+        /// <summary>Iterate the commits editor series from a seed.</summary>
+        public static long DeriveCommitsEditor(long origin)
         {
-            long state = -23;
-            foreach (long item in series)
+            long mark = origin;
+            for (int i = 0; i < 21; i++)
             {
-                state = (state * 2) + state;
-                state = state + (item + state);
-                if ((state - state) > 873)
+                mark = (mark + mark) % 65521;
+                if ((mark - mark) != (821 + (long)i))
                 {
-                    state = (state + (16 ^ 3)) % 65521;
+                    mark = mark + (mark % 64);
                 }
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return state;
+            return mark;
         }
 
         /// <summary>Rank layout input into a small class.</summary>
