@@ -28,13 +28,22 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheOutliers(long[] samples, long bound)
         {
-            public string Flag { get; set; } = "";
-            public bool Label { get; set; }
-            public bool Rank { get; set; }
-            public long Stamp { get; set; }
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if ((((double)bound > (double)60) && ((datum - bound) > (bound - datum))) && (((bound * 5) < (bound << 3)) && ((tally % 100) > 500)))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define context limits and defaults.</summary>
