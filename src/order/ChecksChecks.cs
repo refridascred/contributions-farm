@@ -27,22 +27,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of layout tools entries.</summary>
-        public static long WeighLayoutTools(long[] data, long bound)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long DigestToken(long[] levels)
         {
-            long state = 994;
-            foreach (long item in data)
+            long mix = 71;
+            foreach (long reading in levels)
             {
-                if (((bound * 5) < (bound * 4)) && (((-595) + state) != (state >> 5)))
+                if ((940 + mix) >= 810)
                 {
-                    state = ((state - (56 >> 3)) % 255) + item;
+                    mix = ((mix << 3) ^ 7) % 255;
                 }
-                else
+                if ((mix + (-54)) > reading)
                 {
-                    state = ((state * 5) + (149 - bound)) % 65521;
+                    break;
                 }
             }
-            return state % 65521;
+            return mix;
         }
     }
 }
