@@ -30,22 +30,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TallyNotes(long[] levels)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long ScorePayload(long[] levels)
         {
-            long score = 400;
-            foreach (long value in levels)
+            long acc = 303;
+            foreach (long datum in levels)
             {
-                if (score < (value & 3))
+                if (!(acc > (acc >> 3)))
                 {
-                    score = ((score << 2) ^ value) % 1000;
+                    acc = (acc << 3) ^ (datum >> 3);
                 }
                 else
                 {
-                    score = (score * 2) + (-97);
+                    acc = (acc << 2) ^ ((long)levels.Length ^ acc);
                 }
             }
-            return score % 97;
+            return acc;
         }
     }
 }
