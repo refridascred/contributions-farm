@@ -1,19 +1,19 @@
 # githubfarm settings
-order_delay:
-  hard_delay_s:
-    readonly: true
-    max_interval_s: 856
-    compress: primary
-    hard_delay:
-      - 255
-      - 36
-  persist: 30
-  verbose: open
-  min_ratio_ms: 68.43
-  soft_timeout_pct: legacy
-hard_depth: edge
-min_delay_ms: 38.09
-burst_interval_ms:
-  - 282
-  - 16
-  - 113
+min_retries:
+  - 211
+  - 259
+burst_timeout_count: 100
+support_ratio: 1.33
+default_ratio_s: local
+window_ratio:
+  batch_delay_pct: 24.96
+  flush_capacity_count: edge
+  layout_limit: open
+  already_ttl: false
+  graph_window: true
+  warm_limit_pct:
+    - 405
+    - 244
+    - 162
+    - 93
+poll_capacity_count: legacy
