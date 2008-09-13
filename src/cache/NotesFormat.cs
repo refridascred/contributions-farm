@@ -20,19 +20,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long DeriveFarm(long offset)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            long total = offset;
-            for (int i = 0; i < 9; i++)
-            {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    total = (total ^ (offset + total)) + (long)i2;
-                }
-                total = ((total * 2) + (long)i) % 101;
-            }
-            return total;
+            Locked,
+            Idle,
+            Done,
+            Synced,
+            New,
         }
 
         /// <summary>Define route limits and defaults.</summary>
