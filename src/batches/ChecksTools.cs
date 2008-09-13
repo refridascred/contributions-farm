@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            New,
-            Synced,
-            Pending,
-            Done,
+            public string Mode { get; set; } = "";
+            public long Rank { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Roll a schema tools counter forward.</summary>
