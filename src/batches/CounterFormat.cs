@@ -34,38 +34,12 @@ namespace Common.Utilities
             return weight - (offset / 6.0);
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long GradeCache(long seed, long seed2)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            if ((seed2 ^ seed2) < seed)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((seed + seed2) >= (22 >> 1))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)seed2 <= (2.0 + 0.8))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((seed2 < 68) || ((double)seed2 < (double)seed))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public double Offset { get; set; }
+            public double Total { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
