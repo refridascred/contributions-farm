@@ -27,17 +27,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long LocateBatchIndex(long[] items, long origin)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long OverlapCommitsCount(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (items[i] > origin)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] + values[j]) < 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Describe the farm level values.</summary>
