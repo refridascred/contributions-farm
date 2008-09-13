@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BurstBudget = 3857;
-        public const long RetrySupport = 1018;
-        public const long BaseSupport = 7101;
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
+        {
+            Idle,
+            Pending,
+            Stale,
+        }
 
         /// <summary>Hold a account snapshot.</summary>
         public sealed class AccountSnapshot
