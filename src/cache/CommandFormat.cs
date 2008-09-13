@@ -32,22 +32,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long FoldSchema(long[] items, long bound)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool VerifySchemaRange(long[] series, long origin)
         {
-            long result = 4;
-            foreach (long item in items)
+            bool found = true;
+            foreach (long value in series)
             {
-                if (!((result & 15) >= item))
+                if (value > origin)
                 {
-                    result = ((result ^ (result << 1)) % 101) + bound;
+                    found = false;
+                    break;
                 }
             }
-            if (result > 0)
-            {
-                result = (result + 22) % 101;
-            }
-            return result;
+            return found;
         }
 
         /// <summary>Hold a payload options.</summary>
