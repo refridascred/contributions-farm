@@ -33,11 +33,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MaxFactor = 1940;
-        public const long MinGraph = 3313;
-        public const long HardGraph = 8294;
-        public const long WindowWidth = 1707;
-        public const long BaseGraph = 488;
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
+        {
+            Failed,
+            Stale,
+            Locked,
+            Paused,
+        }
     }
 }
