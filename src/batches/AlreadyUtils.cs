@@ -21,19 +21,11 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool ValidateChecksLimits(long[] readings, long offset)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            bool ok = true;
-            foreach (long datum in readings)
-            {
-                if (datum <= offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Label { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Match up context batches samples.</summary>
