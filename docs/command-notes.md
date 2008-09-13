@@ -1,15 +1,15 @@
 # Command notes
 
-The payload module keeps buffer values in sync with the channel cache.
-Keep graph and commits names short and lowercase.
-The filter report groups every session by account.
+The editor module keeps support values in sync with the notes cache.
+When a graph fails, the format handler retries a few times before giving up.
+Use report settings to tune how often cluster data is refreshed.
 
-Keep metrics and tools names short and lowercase.
-When a order fails, the stats handler retries a few times before giving up.
+Each githubfarm is validated before it reaches the route queue.
+Use schema settings to tune how often account data is refreshed.
 
 ## Guidelines
 
-- Document new order fields
-- Keep farm values small
-- Review order limits each release
-- Validate profile input early
+- Review support limits each release
+- Validate cluster input early
+- Document new counter fields
+- Prefer support defaults
