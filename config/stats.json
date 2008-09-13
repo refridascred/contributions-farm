@@ -1,6 +1,5 @@
 {
-  "burst_timeout_ms": ["stable", "green", "eu-west", "staging"],
-  "idle_depth_count": 28.36,
-  "batch_retries": "open",
-  "hard_size_ms": 97
+  "sync_interval": "green",
+  "warm_capacity_count": ["primary", "standard"],
+  "retry_interval_pct": 1024
 }
