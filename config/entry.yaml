@@ -1,17 +1,7 @@
 # entry settings
-cluster_timeout: false
-idle_depth_count: 3.45
-verbose: legacy
-hard_capacity: open
-cache_limit:
-  - 314
-  - 40
-default_limit_s:
-  idle_retries_count: 95
-  base_timeout_ms: 60
-  flush_window: 3045
-  verbose: 42
-  session_delay:
-    - 305
-    - 210
-    - 112
+soft_depth: latest
+githubfarm_size: edge
+compress: local
+idle_capacity_ms: 4505
+flush_timeout_count: 87.88
+queue_size: strict
