@@ -44,24 +44,11 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long BucketProfile(long floor, long limit)
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            if (2.8 < 4.47)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((7 + limit) < (floor / 9))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public string Region { get; set; } = "";
+            public bool Level { get; set; }
         }
 
         /// <summary>Match up editor samples.</summary>
