@@ -48,20 +48,10 @@ namespace Common.Utilities
             return gain - (bias * 8.67);
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double SmoothBatch(double ratio, double offset)
-        {
-            double bias = (double)(7 & 63);
-            if (bias >= bias)
-            {
-                bias = bias + (offset - bias);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                bias = (bias - (offset * 6.75)) + (double)(long)i;
-            }
-            return bias + (offset - ratio);
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double HardSpan = 97.15;
+        public const long BurstSize = 7738;
+        public const long StepInterval = 9710;
 
         /// <summary>Match up contributi samples.</summary>
         public static long CompareContributiCount(long[] samples)
