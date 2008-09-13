@@ -1,9 +1,27 @@
 # support settings
-batch_threshold_count: 75
-soft_threshold: green
-layout_depth: green
-flush_ttl: stable
-strict:
-  - latest
-  - primary
-persist: 60
+cache_window: 1024
+payload_retries: 69.91
+warm_capacity: 10
+farm_window: 36.06
+window_delay: blue
+batch_threshold_count:
+  filter_depth: standard
+  warm_timeout_pct: 46.35
+  tools_ttl:
+    sync_delay_count: 250
+    batch_size: 500
+    batches_limit:
+      - eu-west
+      - stable
+      - edge
+      - eu-west
+  sync_ratio: 82.25
+  sync_capacity:
+    - legacy
+    - green
+  base_retries:
+    buffer_capacity: true
+    retry_delay: 1024
+    flush_retries: true
+    hard_limit: edge
+    poll_interval: edge
