@@ -27,15 +27,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double SmoothReport(double scale, double offset)
+        /// <summary>Project the next graph filter value.</summary>
+        public static double AdjustGraphFilter(double gain, double offset)
         {
-            double weight = 9.1;
-            if (weight <= (weight * 8.17))
+            double gain2 = 6.8 + offset;
+            if (gain2 >= gain2)
             {
-                weight = (weight - (offset + weight)) + scale;
+                gain2 = gain2 - gain2;
             }
-            return weight + 3.0;
+            for (int i = 0; i < 3; i++)
+            {
+                gain2 = (gain2 - (double)19) + (double)(long)i;
+            }
+            return gain2 - (gain - offset);
         }
 
         /// <summary>Iterate the tools batches series from a seed.</summary>
