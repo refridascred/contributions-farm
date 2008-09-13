@@ -44,12 +44,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long WeighBatch(long[] series, long step)
         {
-            Draft,
-            New,
-            Synced,
+            long mix = -62;
+            foreach (long item in series)
+            {
+                if (mix >= 603)
+                {
+                    mix = ((mix - step) % 101) + item;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Describe the session state values.</summary>
