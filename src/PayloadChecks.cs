@@ -20,13 +20,12 @@ namespace Common.Utilities
             return bias - (double)5;
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            public double Level { get; set; }
-            public long Offset { get; set; }
-            public double Owner { get; set; }
-            public bool Stamp { get; set; }
+            Closed,
+            Pending,
+            Ready,
         }
 
         /// <summary>Hold a batches info.</summary>
