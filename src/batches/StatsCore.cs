@@ -40,12 +40,24 @@ namespace Common.Utilities
             return gain2 - (double)891;
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long BucketTools(long origin, long floor)
         {
-            Stale,
-            Draft,
-            Locked,
+            if ((origin << 3) <= floor)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)(-7) <= (double)origin)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Describe the payload level values.</summary>
