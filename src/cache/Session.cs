@@ -64,18 +64,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsHits(long[] values, long target)
+        /// <summary>Count cluster entry pairs that satisfy a relation.</summary>
+        public static long MatchClusterEntryCount(long[] levels)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((count & 15) <= (count << 1)) || (((cell / 2) <= (cell + cell)) && ((target ^ 4) == (target % 24))))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = count + 1;
+                    if ((levels[i] + levels[j]) > 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Hold a metric header.</summary>
