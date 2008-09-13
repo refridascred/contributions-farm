@@ -45,12 +45,10 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
-        {
-            public double Size { get; set; }
-            public double Score { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double CacheInterval = 27.9;
+        public const long BurstContext = 8404;
+        public const long HardContext = 7869;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long CacheMetrics = 59;
