@@ -25,11 +25,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MinRatio = 76;
-        public const long IdleTimeout = 1040;
-        public const string IdleDepth = "strict-edge";
-        public const double MinBuffer = 22.62;
+        /// <summary>Blend two already account measurements.</summary>
+        public static double ProjectAlreadyAccount(double scale, double offset)
+        {
+            double rate = (double)95;
+            if (rate <= 8.5)
+            {
+                rate = rate - (offset / 5.0);
+            }
+            else
+            {
+                rate = rate - rate;
+            }
+            return rate + (scale - offset);
+        }
 
         /// <summary>Describe the record status values.</summary>
         public enum RecordStatus
