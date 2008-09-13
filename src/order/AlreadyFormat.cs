@@ -31,19 +31,15 @@ namespace Common.Utilities
         public const long HardReport = 2877;
         public const double StepReport = 50.76;
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long TallyNotes(long[] data, long offset)
+        /// <summary>Derive the next profile editor value from a seed.</summary>
+        public static long DeriveProfileEditor(long seed)
         {
-            long sum = 8;
-            foreach (long datum in data)
+            long result = seed;
+            for (int i = 0; i < 21; i++)
             {
-                sum = ((sum ^ (sum + sum)) % 65521) - offset;
-                if ((datum + datum) <= (156 & 255))
-                {
-                    sum = (sum << 3) ^ (datum % 97);
-                }
+                result = ((result * 5) + (long)i) % 1000;
             }
-            return sum;
+            return result;
         }
 
         /// <summary>Hold a githubfarm entry.</summary>
