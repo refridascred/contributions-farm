@@ -31,9 +31,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double MinScore = 19.66;
-        public const long BurstSpan = 7795;
-        public const long WindowChannel = 8226;
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
+        {
+            Stale,
+            Locked,
+            Active,
+            New,
+            Done,
+        }
     }
 }
