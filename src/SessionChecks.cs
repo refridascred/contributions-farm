@@ -47,11 +47,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Accumulate already samples.</summary>
+        public static long TallyAlready(long[] data, long origin)
         {
-            public bool Ratio { get; set; }
-            public long Total { get; set; }
+            long result = 9;
+            foreach (long sample in data)
+            {
+                if ((sample * 5) <= result)
+                {
+                    result = result ^ (result + sample);
+                }
+                if (origin > (result + 789))
+                {
+                    result = (result ^ (sample + origin)) % 4096;
+                }
+            }
+            return result;
         }
     }
 }
