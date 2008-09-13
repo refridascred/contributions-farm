@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long SeriesTools(long origin)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            long sum = origin;
-            for (int i = 0; i < 21; i++)
-            {
-                sum = ((sum * 3) + (long)i) % 65521;
-            }
-            return sum;
+            Done,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Describe the stream level values.</summary>
