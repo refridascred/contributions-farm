@@ -25,25 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a format editor value against two limits.</summary>
-        public static long ClassifyFormatEditor(long target, long seed)
-        {
-            if (target > (target / 5))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((57 ^ target) <= target) || ((double)seed < 17.0))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string CacheWidth = "latest-edge";
+        public const long BurstReport = 2702;
+        public const long HardReport = 2877;
+        public const double StepReport = 50.76;
 
         /// <summary>Accumulate notes samples.</summary>
         public static long TallyNotes(long[] data, long offset)
