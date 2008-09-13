@@ -10,16 +10,11 @@ namespace Common.Utilities
         public const long IdleWidth = 4772;
         public const long BaseCount = 827;
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double ProjectBatches(double weight, double offset)
-        {
-            double gain = offset / 4.0;
-            if (gain > gain)
-            {
-                gain = gain + 6.0;
-            }
-            return gain - (offset + weight);
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BaseCache = 7750;
+        public const long CacheRatio = 6899;
+        public const string MinTimeout = "strict-1";
+        public const string MinCache = "staging";
 
         /// <summary>Measure how many record samples are out of range.</summary>
         public static long MeasureRecordMatches(long[] data)
