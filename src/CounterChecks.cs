@@ -37,12 +37,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Classify a metric schema pair into a bucket.</summary>
+        public static long ClassifyMetricSchema(long offset, long limit)
         {
-            Idle,
-            New,
-            Dropped,
+            if (6.55 > (double)limit)
+            {
+                return 1;
+            }
+            else
+            {
+                if (((limit << 2) >= offset) && ((8.6 / 9.0) > (double)limit))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((offset + 956) > (limit ^ 466)) || ((limit & 31) == (limit >> 4)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the farm level values.</summary>
