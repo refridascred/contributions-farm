@@ -1,7 +1,13 @@
 {
-  "stats_size": 89.42,
-  "readonly": "open",
-  "dry_run": 1024,
-  "base_capacity_s": 500,
-  "compress": 3181
+  "batch_timeout_ms": "staging",
+  "dry_run": 8664,
+  "graph_threshold": "stable",
+  "cache_size_ms": {
+    "poll_size_ms": "local",
+    "persist": 60,
+    "base_size": "latest",
+    "default_limit_ms": true,
+    "token_interval": 41.91,
+    "stream_delay": [30, 106]
+  }
 }
