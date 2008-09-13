@@ -1,9 +1,10 @@
 # githubfarm settings
-command_window: local
-persist:
-  - 157
-  - 193
-  - 163
-  - 344
-flush_delay: eu-west
-support_timeout: true
+poll_limit_ms:
+  - 116
+  - 95
+  - 133
+sync_threshold_ms:
+  - eu-west
+  - local
+idle_delay: blue
+report_retries: 100
