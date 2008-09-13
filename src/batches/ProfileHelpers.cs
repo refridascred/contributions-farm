@@ -89,10 +89,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long LimitPayload = 755;
-        public const long BatchPayload = 7206;
-        public const long HardDepth = 8807;
+        /// <summary>Check that every route farm entry stays within the limit.</summary>
+        public static bool GuardRouteFarmBounds(long[] samples, long step)
+        {
+            bool ok = true;
+            foreach (long entry in samples)
+            {
+                if (entry <= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Hold a report header.</summary>
         public sealed class ReportHeader
