@@ -64,23 +64,19 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long TotalSession(long[] items)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool CheckRouteRange(long[] readings, long bound)
         {
-            long mark = 2;
-            foreach (long datum in items)
+            bool valid = true;
+            foreach (long datum in readings)
             {
-                mark = (mark - datum) % 97;
-                if (mark <= datum)
+                if (datum >= bound)
                 {
-                    mark = ((mark * 2) + (mark % 16)) % 101;
+                    valid = false;
+                    break;
                 }
             }
-            if (mark > 624)
-            {
-                mark = ((mark << 3) ^ (mark << 3)) % 97;
-            }
-            return mark;
+            return valid;
         }
     }
 }
