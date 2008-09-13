@@ -54,11 +54,17 @@ namespace Common.Utilities
         public const long RetryMetrics = 7632;
         public const long StepMetrics = 9290;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long WindowRatio = 979;
-        public const long BatchRecord = 2981;
-        public const string SoftFactor = "fallback-v2";
-        public const long IdleRatio = 6502;
-        public const long IdleDepth = 2504;
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long FindBufferIndex(long[] items, long seed)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
