@@ -26,10 +26,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long CacheSize = 8576;
-        public const long BurstFarm = 7579;
-        public const double RetryFarm = 4.41;
-        public const long StepFarm = 5004;
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsHits(long[] samples)
+        {
+            long tally = 0;
+            foreach (long item in samples)
+            {
+                if ((double)(long)samples.Length == (double)91)
+                {
+                    tally = (tally + 1) + item;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
