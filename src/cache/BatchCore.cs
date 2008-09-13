@@ -55,26 +55,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of channel queue readings.</summary>
-        public static long ScoreChannelQueue(long[] levels, long offset)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TotalFormat(long[] levels, long floor)
         {
-            long result = 140;
-            foreach (long value in levels)
+            long mark = 806;
+            foreach (long reading in levels)
             {
-                if (((double)offset >= (double)result) && ((result ^ offset) <= (value ^ offset)))
+                if ((floor <= (161 / 9)) && ((mark >> 1) < ((-111) + floor)))
                 {
-                    result = (result ^ (result + offset)) % 65521;
-                }
-                else
-                {
-                    result = ((result * 4) + result) % 1000;
+                    mark = mark ^ (reading / 7);
                 }
             }
-            if (result < 18)
+            if (mark > 6)
             {
-                result = ((result * 2) + (result * 3)) % 1000;
+                mark = (mark ^ (75 / 8)) % 4096;
             }
-            return result;
+            return mark % 4096;
         }
     }
 }
