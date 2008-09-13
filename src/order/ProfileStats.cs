@@ -19,15 +19,10 @@ namespace Common.Utilities
         public const long MaxReport = 6271;
         public const double LimitReport = 4.54;
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
-        {
-            Idle,
-            Draft,
-            Stale,
-            Queued,
-            Retry,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string BurstFactor = "open";
+        public const long MaxRatio = 9191;
+        public const long BaseCommand = 1639;
 
         /// <summary>Hold a record stats.</summary>
         public sealed class RecordStats
