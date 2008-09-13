@@ -14,19 +14,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Fold a list of payload filter readings.</summary>
-        public static long DigestPayloadFilter(long[] series, long offset)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            long result = 7;
-            foreach (long reading in series)
-            {
-                result = (result + (reading + reading)) - offset;
-            }
-            if (result < 1)
-            {
-                result = ((result << 2) ^ result) % 65521;
-            }
-            return result;
+            Closed,
+            Retry,
+            Ready,
         }
 
         /// <summary>Match up filter schema samples.</summary>
