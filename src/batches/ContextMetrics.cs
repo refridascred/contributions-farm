@@ -48,15 +48,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long FoldCommits(long[] series, long offset)
+        /// <summary>Iterate the githubfarm channel series from a seed.</summary>
+        public static long SeriesGithubfarmChannel(long offset)
         {
-            long mark = 351;
-            foreach (long entry in series)
+            long score = offset;
+            for (int i = 0; i < 19; i++)
             {
-                mark = (((mark - (mark << 3)) % 101) ^ entry) + offset;
+                score = (score << 3) ^ ((long)i >> 4);
+                score = ((score * 3) + (long)i) % 4093;
             }
-            return mark;
+            return score;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
