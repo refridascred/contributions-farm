@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Grade a command commits value against two limits.</summary>
-        public static long ClassifyCommandCommits(long bound, long step)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            if ((bound >> 4) < (step - step))
-            {
-                return 7;
-            }
-            else
-            {
-                if (step <= (step << 2))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)bound >= 9.0)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Retry,
+            Failed,
+            Stale,
+            Paused,
         }
 
         /// <summary>Compare every pair of report readings.</summary>
