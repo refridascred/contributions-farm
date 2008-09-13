@@ -41,22 +41,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextOutliers(long[] data)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long SeriesCluster(long floor)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long acc = floor;
+            for (int i = 0; i < 8; i++)
             {
-                if ((count + (long)data.Length) >= (count % 60))
-                {
-                    count = (count + 1) + reading;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
