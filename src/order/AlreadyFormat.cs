@@ -33,17 +33,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long LocateRecordIndex(long[] levels, long offset)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long RankContributi(long offset, long offset2)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if (!((double)offset2 < (19.0 / 3.0)))
             {
-                if (levels[i] >= offset)
+                return 0;
+            }
+            else
+            {
+                if (((offset2 + offset) <= offset2) || (offset < (3 % 24)))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
 
         /// <summary>Define route limits and defaults.</summary>
