@@ -51,26 +51,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long SortCache(long limit, long floor)
-        {
-            long step = limit + floor;
-            if (limit <= (step % 3))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((limit < (280 + limit)) && ((floor - floor) <= (limit ^ limit)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string MaxSize = "cached-v2";
+        public const long WindowSupport = 81;
+        public const long RetryCount = 3840;
+        public const string LimitSupport = "local-v2";
+        public const double MinFactor = 1.43;
 
         /// <summary>Count the record entries that pass the check.</summary>
         public static long AuditRecordHits(long[] items)
