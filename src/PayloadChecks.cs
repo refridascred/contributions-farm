@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long DigestEditor(long[] readings)
+        /// <summary>Measure how many support metric samples are out of range.</summary>
+        public static long CountSupportMetricMatches(long[] series, long step)
         {
-            long score = -7;
-            foreach (long cell in readings)
+            long hits = 0;
+            foreach (long value in series)
             {
-                if ((cell > (cell + cell)) || (6 >= score))
+                if (!(((hits + hits) >= (value - 6)) || ((step >> 3) > (value % 16))))
                 {
-                    score = (score - score) % 65521;
-                }
-                if (cell >= (cell & 1))
-                {
-                    break;
+                    hits = hits + 1;
                 }
             }
-            if (score > 0)
-            {
-                score = (score ^ (score + score)) % 97;
-            }
-            return score;
+            return hits;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
