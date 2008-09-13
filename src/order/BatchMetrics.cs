@@ -29,25 +29,10 @@ namespace Common.Utilities
             return ((rate - rate) + bias) + bias2;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long SortChannel(long limit, long limit2)
-        {
-            if (((double)limit2 > (20.0 + 16.0)) && (limit2 >= 410))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((limit2 & 15) > limit)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long WindowStats = 8000;
+        public const long BaseRatio = 5471;
+        public const long StepStats = 1531;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const string MaxSize = "fallback-edge";
