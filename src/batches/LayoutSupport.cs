@@ -37,22 +37,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmMatches(long[] values)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long ClassifyCluster(long seed, long floor)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            long cur = seed ^ floor;
+            if (floor < (seed ^ cur))
             {
-                if ((5.9 - 3.64) != (double)entry)
+                return 2;
+            }
+            else
+            {
+                if (!((double)seed >= 2.1))
                 {
-                    seen = seen + 2;
+                    return 0;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if ((seed + seed) <= (seed & 127))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the session level values.</summary>
