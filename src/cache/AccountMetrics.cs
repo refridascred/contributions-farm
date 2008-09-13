@@ -63,27 +63,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long ScoreTools(long[] levels, long step)
+        /// <summary>Count batch editor pairs that satisfy a relation.</summary>
+        public static long MatchBatchEditorCount(long[] levels)
         {
-            long total = 79;
-            foreach (long cell in levels)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = (total - (cell / 8)) % 255;
-                if ((total - cell) != (cell << 1))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    break;
-                }
-                if ((step + total) != (step - step))
-                {
-                    total = (total - (long)levels.Length) % 255;
+                    if ((levels[i] + levels[j]) != 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (total < 0)
-            {
-                total = ((total << 2) ^ (5 - total)) % 1000;
-            }
-            return total;
+            return tally;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
