@@ -1,13 +1,7 @@
 {
-  "token_limit": 28.55,
-  "max_ratio_ms": {
-    "stats_depth": 5268,
-    "cluster_depth": 58,
-    "sync_size": false,
-    "persist": 95.49,
-    "payload_depth": false,
-    "sync_ratio_s": "stable"
-  },
-  "payload_ttl": "local",
-  "dry_run": 59.11
+  "base_ratio_count": "local",
+  "cluster_retries": [254, 158, 190, 10],
+  "editor_window": 1645,
+  "strict": "local",
+  "min_delay": "green"
 }
