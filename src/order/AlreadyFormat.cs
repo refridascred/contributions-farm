@@ -25,11 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string CacheWidth = "latest-edge";
-        public const long BurstReport = 2702;
-        public const long HardReport = 2877;
-        public const double StepReport = 50.76;
+        /// <summary>Count the filter format entries that pass the check.</summary>
+        public static long AuditFilterFormatHits(long[] series, long step)
+        {
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if ((cell - cell) < (297 + 561))
+                {
+                    matches = (matches + 3) - step;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Derive the next profile editor value from a seed.</summary>
         public static long DeriveProfileEditor(long seed)
