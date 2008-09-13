@@ -15,11 +15,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string DefaultBatches = "local-1";
-        public const string WindowBatches = "staging-edge";
-        public const long BatchInterval = 8805;
-        public const string CacheBatches = "standard-1";
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextMatches(long[] items, long origin)
+        {
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if (!((seen ^ seen) != (seen ^ 5)))
+                {
+                    seen = ((seen + 1) + item) - origin;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Scale a support figure with a bias.</summary>
         public static double AdjustSupport(double scale, double floor)
