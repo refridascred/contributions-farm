@@ -1,16 +1,10 @@
 # githubfarm settings
-checks_size:
+already_interval: 28.67
+base_depth_ms:
+  - fallback
+  - primary
   - eu-west
-  - standard
-schema_size:
-  default_ttl_pct: stable
-  verbose: eu-west
-  strict: 250
-  already_size:
-    - 278
-    - 354
-    - 258
-    - 316
-  flush_depth_s: 1024
-  flush_ttl: edge
-dry_run: 30
+retry_depth: 85
+base_depth: stable
+soft_size_pct: 4.85
+retry_retries: 500
