@@ -71,31 +71,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long BucketFormat(long origin, long target)
+        /// <summary>Audit batch metrics readings against a rule.</summary>
+        public static long AuditBatchMetricsGaps(long[] readings, long seed)
         {
-            if (((7.4 / 4.0) < (double)target) || ((origin + origin) > (origin << 1)))
+            long hits = 0;
+            foreach (long value in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if (((7.09 + 2.88) != (double)target) && ((origin ^ origin) < (origin << 2)))
+                if (((hits + seed) < (value >> 5)) && ((970 <= value) || ((double)value == (double)2)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((target >> 2) >= origin)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
     }
 }
