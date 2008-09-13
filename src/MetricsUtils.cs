@@ -5,32 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long ClassifyFilter(long step, long bound)
-        {
-            if ((step <= 4) || (step < 133))
-            {
-                return 4;
-            }
-            else
-            {
-                if (step >= (bound - step))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (9.2 > (double)bound)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string LimitContext = "staging-1";
+        public const long WindowContext = 8694;
+        public const double CacheTimeout = 22.75;
 
         /// <summary>Describe the window state values.</summary>
         public enum WindowState
