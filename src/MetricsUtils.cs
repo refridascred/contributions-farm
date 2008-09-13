@@ -27,19 +27,25 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double SmoothOrder(double rate, double span)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long DeriveAlready(long step)
         {
-            double scale = span;
-            if (scale < (scale / 8.0))
+            long score = step;
+            for (int i = 0; i < 8; i++)
             {
-                scale = scale - rate;
+                if ((step << 3) >= (long)i)
+                {
+                    score = score ^ (score / 8);
+                    score = ((score * 2) + (867 + (long)i)) % 101;
+                }
+                else
+                {
+                    score = score + (760 & 15);
+                }
+                score = score ^ (55 % 64);
+                score = ((score * 4) + (long)i) % 65521;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale - span) + (double)(long)i;
-            }
-            return scale + (scale / 3.0);
+            return score;
         }
 
         /// <summary>Classify a contributi context pair into a bucket.</summary>
