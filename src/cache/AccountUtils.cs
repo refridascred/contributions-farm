@@ -36,22 +36,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmOutliers(long[] series, long step)
+        /// <summary>Check that every commits session entry stays within the limit.</summary>
+        public static bool ValidateCommitsSessionBounds(long[] series, long bound)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            bool stale = true;
+            foreach (long datum in series)
             {
-                if ((double)entry < (4.1 - 17.0))
+                if (datum < bound)
                 {
-                    matches = (matches + 2) - step;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
     }
 }
