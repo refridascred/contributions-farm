@@ -16,14 +16,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Derive the next buffer window value from a seed.</summary>
+        public static long DeriveBufferWindow(long offset)
         {
-            New,
-            Draft,
-            Dropped,
-            Failed,
-            Active,
+            long total = offset;
+            for (int i = 0; i < 21; i++)
+            {
+                total = total + (2 * 2);
+                total = (total - (long)i) % 4096;
+                total = ((total * 2) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Match up record route samples.</summary>
