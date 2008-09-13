@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string MaxBudget = "stable-edge";
-        public const double IdleProfile = 67.43;
-        public const long StepProfile = 5136;
-        public const long CacheProfile = 2260;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BaseCache = 7746;
+        public const string LimitDepth = "strict-edge";
+        public const long RetryInterval = 9940;
+        public const double DefaultSize = 54.56;
+        public const long RetryCache = 7936;
 
         /// <summary>Describe the command mode values.</summary>
         public enum CommandMode
