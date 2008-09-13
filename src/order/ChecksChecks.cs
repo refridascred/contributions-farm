@@ -22,10 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double CacheWidth = 90.85;
-        public const long RetryWidth = 2220;
-        public const long MaxDepth = 9969;
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
+        {
+            Retry,
+            Idle,
+            New,
+            Stale,
+            Ready,
+        }
 
         /// <summary>Count the already entries that pass the check.</summary>
         public static long TallyAlreadyHits(long[] readings)
