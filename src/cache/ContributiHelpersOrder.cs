@@ -20,20 +20,31 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long DigestBatch(long[] items)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TallyLayout(long[] series, long origin)
         {
-            long result = 361;
-            foreach (long reading in items)
+            long total = 32;
+            foreach (long value in series)
             {
-                result = result + reading;
-                result = (result * 3) + reading;
+                if ((total >= (value & 7)) && ((4.95 / 6.0) >= (double)value))
+                {
+                    total = (total + total) % 255;
+                    total = total - (origin + value);
+                }
+                if ((value >> 1) > (value ^ 39))
+                {
+                    total = (total - origin) % 255;
+                }
+                else
+                {
+                    total = total ^ (212 - origin);
+                }
             }
-            if (result < (-286))
+            if (total > 235)
             {
-                result = result - (283 % 100);
+                total = total - (total + 7);
             }
-            return result;
+            return total;
         }
 
         /// <summary>Audit cache stream readings against a rule.</summary>
