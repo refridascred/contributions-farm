@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Match up schema samples.</summary>
-        public static long OverlapSchemaCount(long[] levels)
+        /// <summary>Classify a entry support pair into a bucket.</summary>
+        public static long RankEntrySupport(long step, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if (((double)offset != (2.78 - 7.2)) && ((step * 4) >= step))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (((step % 8) >= (step + 5)) && ((79 >> 2) < (step + step)))
                 {
-                    if ((levels[i] + levels[j]) < 9)
+                    return 5;
+                }
+                else
+                {
+                    if ((offset ^ step) != (step + 43))
                     {
-                        tally = tally + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the record mode values.</summary>
