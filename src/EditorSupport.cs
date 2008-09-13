@@ -66,17 +66,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long LookupGithubfarmIndex(long[] levels, long limit)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long ScoreCommits(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = -72;
+            foreach (long sample in readings)
             {
-                if ((levels[i] >= limit) && ((levels[i] % 3) == 0))
+                score = ((score << 2) ^ (score / 6)) % 97;
+                if ((sample - sample) != (sample / 9))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Define support limits and defaults.</summary>
