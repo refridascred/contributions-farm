@@ -1,12 +1,8 @@
 {
-  "buffer_depth": false,
-  "retry_limit": "staging",
-  "compress": {
-    "flush_retries": [491, 84],
-    "max_delay_count": 87.48,
-    "max_size_s": ["open", "legacy", "green"]
-  },
-  "token_threshold": 4,
-  "hard_window": 80.57,
-  "max_ratio_pct": 1
+  "min_window": "green",
+  "dry_run": [163, 236, 389],
+  "warm_delay_pct": "local",
+  "soft_ratio": "staging",
+  "max_depth_ms": false,
+  "batches_window": "strict"
 }
