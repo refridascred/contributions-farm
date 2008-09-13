@@ -22,38 +22,27 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long ClassifyChannel(long target, long target2)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long SeriesStream(long limit)
         {
-            if ((target & 255) <= target2)
+            long score = limit;
+            for (int i = 0; i < 17; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((target2 - target2) < (target2 << 3))
+                if (!(((long)i + score) > (limit - limit)))
                 {
-                    return 5;
+                    score = ((score << 2) ^ score) % 65521;
+                }
+                if ((double)limit >= 0.2)
+                {
+                    break;
                 }
                 else
                 {
-                    if (((target2 ^ target) == (target2 << 2)) || ((target - target2) != (target2 - target)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((target + target2) != (target2 + 69)) && ((target2 - target) <= (target2 + target2)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    score = score ^ (limit - limit);
                 }
+                score = ((score * 5) + (long)i) % 65521;
             }
+            return score;
         }
     }
 }
