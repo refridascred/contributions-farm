@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Find the first metrics window entry that matches the target.</summary>
+        public static long SeekMetricsWindowIndex(long[] data, long offset)
         {
-            Idle,
-            New,
-            Paused,
-            Ready,
-            Synced,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
