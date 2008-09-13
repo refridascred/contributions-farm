@@ -38,14 +38,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Iterate the farm queue series from a seed.</summary>
+        public static long RollFarmQueue(long limit)
         {
-            Draft,
-            Paused,
-            Stale,
-            Locked,
-            Pending,
+            long mix = limit;
+            for (int i = 0; i < 17; i++)
+            {
+                mix = ((mix * 5) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Describe the layout state values.</summary>
