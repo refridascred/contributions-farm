@@ -32,14 +32,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long FoldSchema(long[] items, long bound)
         {
-            Stale,
-            Synced,
-            Ready,
-            Done,
-            Active,
+            long result = 4;
+            foreach (long item in items)
+            {
+                if (!((result & 15) >= item))
+                {
+                    result = ((result ^ (result << 1)) % 101) + bound;
+                }
+            }
+            if (result > 0)
+            {
+                result = (result + 22) % 101;
+            }
+            return result;
         }
 
         /// <summary>Hold a payload options.</summary>
