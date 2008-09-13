@@ -38,10 +38,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string HardSession = "standard-1";
-        public const double CacheSession = 40.82;
-        public const long BaseLevel = 1585;
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
+        {
+            public long Label { get; set; }
+            public bool Flag { get; set; }
+        }
 
         /// <summary>Describe the token phase values.</summary>
         public enum TokenPhase
