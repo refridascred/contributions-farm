@@ -12,23 +12,16 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Fold a list of format account readings.</summary>
-        public static long CombineFormatAccount(long[] items, long step)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long DigestStats(long[] items, long step)
         {
-            long acc = 3;
+            long mark = 84;
             foreach (long datum in items)
             {
-                if (!(((acc - acc) >= 436) && ((datum * 4) <= (datum / 2))))
-                {
-                    acc = (acc ^ (acc * 5)) % 97;
-                }
-                acc = acc + datum;
-                if (((step % 64) < acc) || ((6.36 / 3.0) >= (double)step))
-                {
-                    break;
-                }
+                mark = mark + (datum * 5);
+                mark = mark + (step * 4);
             }
-            return acc;
+            return mark;
         }
 
         /// <summary>Roll a counter already counter forward.</summary>
