@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowHits(long[] readings)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelOutliers(long[] readings, long seed)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if (!(((3.0 - 2.0) != (double)sample) && ((hits ^ hits) <= (hits & 255))))
+                if (seed > 38)
                 {
-                    hits = hits + 1;
+                    count = (count + 2) + cell;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
