@@ -28,22 +28,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long ScorePayload(long[] levels)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            long acc = 303;
-            foreach (long datum in levels)
-            {
-                if (!(acc > (acc >> 3)))
-                {
-                    acc = (acc << 3) ^ (datum >> 3);
-                }
-                else
-                {
-                    acc = (acc << 2) ^ ((long)levels.Length ^ acc);
-                }
-            }
-            return acc;
+            public long Flag { get; set; }
+            public double Offset { get; set; }
+            public bool Count { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
