@@ -23,32 +23,11 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long GradeCounter(long target, long origin)
-        {
-            if ((target & 127) >= target)
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((double)origin >= (17.0 / 2.0)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)origin > (1.38 * 13.0))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double WindowCluster = 86.62;
+        public const long BatchScore = 9057;
+        public const long MaxRatio = 5923;
+        public const long DefaultCluster = 5566;
 
         /// <summary>Count the order entries that pass the check.</summary>
         public static long TallyOrderOutliers(long[] values, long limit)
