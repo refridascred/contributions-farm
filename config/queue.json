@@ -1,6 +1,13 @@
 {
-  "cache_timeout": 30,
-  "burst_ratio_s": 2093,
-  "persist": 5889,
-  "strict": "blue"
+  "metric_window": {
+    "burst_ttl_s": "cached",
+    "enabled": 250,
+    "session_delay": ["cached", "blue", "stable", "stable"],
+    "sync_capacity": "staging",
+    "hard_threshold_pct": 0.06,
+    "base_delay_s": 30.75
+  },
+  "min_depth_pct": 100,
+  "idle_window_s": 1115,
+  "retry_delay_s": [54, 72]
 }
