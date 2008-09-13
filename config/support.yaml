@@ -1,4 +1,9 @@
 # support settings
-hard_threshold_ms: 68.82
-verbose: local
-compress: 51
+poll_ttl: 64
+hard_size: latest
+filter_interval: true
+dry_run:
+  - 92
+  - 452
+base_timeout: local
+batches_delay: legacy
