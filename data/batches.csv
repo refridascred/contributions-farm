@@ -1,10 +1,6 @@
-id,score,weight,label,ratio
-1,6.84,blue,90.97,eu-west
-2,78.59,45.93,66.05,827
-3,strict,9,990,12.49
-4,68.15,108,874,eu-west
-5,741,868,781,28.13
-6,840,191,local,57.93
-7,96.36,staging,24.45,436
-8,975,blue,906,latest
-9,757,787,976,cached
+id,state,rank,ratio,level
+1,cached,138,17.24,0.24
+2,56.93,495,67.76,strict
+3,498,815,163,460
+4,297,654,767,940
+5,green,standard,12.06,291
