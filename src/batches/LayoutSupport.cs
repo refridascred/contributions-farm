@@ -19,15 +19,12 @@ namespace Common.Utilities
         public const long LimitCount = 8370;
         public const long DefaultTimeout = 9984;
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long RollNotes(long offset)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            long sum = offset;
-            for (int i = 0; i < 16; i++)
-            {
-                sum = ((sum * 4) + (long)i) % 97;
-            }
-            return sum;
+            Retry,
+            Draft,
+            Closed,
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
