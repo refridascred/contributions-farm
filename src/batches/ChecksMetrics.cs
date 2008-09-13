@@ -33,12 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long HardWindow = 2132;
-        public const long SoftWindow = 4378;
-        public const long StepFactor = 2668;
-        public const long StepBudget = 3720;
-        public const long IdleInterval = 9749;
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
+        {
+            Draft,
+            Closed,
+            Ready,
+        }
 
         /// <summary>Hold a format summary.</summary>
         public sealed class FormatSummary
