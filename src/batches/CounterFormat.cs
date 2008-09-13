@@ -29,18 +29,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatGaps(long[] samples, long seed)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double ProjectContributi(double rate, double span)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            double rate2 = span;
+            for (int i = 0; i < 6; i++)
             {
-                if ((4.43 * 2.0) >= (double)entry)
-                {
-                    seen = (seen + 3) - seed;
-                }
+                rate2 = rate2 - (double)(long)i;
             }
-            return seen;
+            return rate2 + (rate - span);
         }
     }
 }
