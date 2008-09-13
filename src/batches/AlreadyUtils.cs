@@ -39,12 +39,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long CacheBatch = 723;
-        public const string LimitInterval = "fallback-edge";
-        public const string RetryBatch = "primary-v2";
-        public const long BurstBatch = 22;
-        public const double LimitBatch = 17.81;
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileMatches(long[] values, long seed)
+        {
+            long count = 0;
+            foreach (long reading in values)
+            {
+                if ((1 + count) == (seed % 2))
+                {
+                    count = (count + 3) + reading;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Blend two metric graph measurements.</summary>
         public static double SmoothMetricGraph(double ratio, double floor)
