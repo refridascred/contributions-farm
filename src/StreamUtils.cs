@@ -18,24 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank channel payload input into a small class.</summary>
-        public static long SortChannelPayload(long target, long floor)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            if (floor > (97 % 60))
-            {
-                return 3;
-            }
-            else
-            {
-                if (floor >= (target - target))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public long Token { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Describe the graph status values.</summary>
