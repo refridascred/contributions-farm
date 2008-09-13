@@ -54,16 +54,25 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long DeriveLayout(long step)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long SortToken(long target, long step)
         {
-            long anchor = step;
-            for (int i = 0; i < 18; i++)
+            long offset = target + step;
+            if (7.7 < (double)target)
             {
-                anchor = ((anchor << 2) ^ ((long)i & 31)) % 101;
-                anchor = ((anchor * 4) + (long)i) % 4093;
+                return 6;
             }
-            return anchor;
+            else
+            {
+                if ((offset ^ offset) > target)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
