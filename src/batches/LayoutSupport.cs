@@ -19,12 +19,19 @@ namespace Common.Utilities
         public const long LimitCount = 8370;
         public const long DefaultTimeout = 9984;
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool GuardPayloadLimits(long[] series, long offset)
         {
-            Retry,
-            Draft,
-            Closed,
+            bool stale = true;
+            foreach (long sample in series)
+            {
+                if (sample >= offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
