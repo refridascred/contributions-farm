@@ -69,17 +69,23 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long RollCommand(long origin)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long WeighLayout(long[] series)
         {
-            long result = origin;
-            for (int i = 0; i < 19; i++)
+            long anchor = 798;
+            foreach (long item in series)
             {
-                result = (result * 2) + (origin - result);
-                result = (result * 4) + ((long)i - 485);
-                result = ((result * 3) + (long)i) % 4093;
+                if ((anchor / 5) != (item - item))
+                {
+                    anchor = ((anchor << 3) ^ (anchor - item)) % 255;
+                    anchor = (anchor - (item - item)) % 4096;
+                }
+                if (item >= (anchor + anchor))
+                {
+                    anchor = (anchor * 3) + (item + item);
+                }
             }
-            return result;
+            return anchor;
         }
     }
 }
