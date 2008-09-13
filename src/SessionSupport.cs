@@ -31,11 +31,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double SmoothCluster(double rate, double floor)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            double weight = (floor / 9.0) - 1.04;
-            return weight - rate;
+            public bool Limit { get; set; }
+            public long Ratio { get; set; }
+            public long Size { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
