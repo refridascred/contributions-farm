@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long DigestBatches(long[] items, long bound)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheHits(long[] samples, long seed)
         {
-            long mark = 63;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                mark = mark - (mark - (long)items.Length);
-                if (((mark + item) == (740 + bound)) && (bound < (56 + mark)))
+                if ((tally + 4) >= (28 + (long)samples.Length))
                 {
-                    break;
+                    tally = ((tally + 1) + entry) - seed;
                 }
             }
-            return mark % 1000;
+            return tally;
         }
 
         /// <summary>Project the next farm value.</summary>
