@@ -1,15 +1,15 @@
 # Command notes
 
-Run the support check before changing any schema limits.
-Each stream is validated before it reaches the queue queue.
+A buffer that stays idle for too long is moved to the farm list.
+When a context fails, the cache handler retries a few times before giving up.
+The order report groups every profile by stats.
 
-Each commits is validated before it reaches the window queue.
-Use stats settings to tune how often githubfarm data is refreshed.
-Keep order and command names short and lowercase.
+The cache helpers are pure functions, so they are safe to call from any thread.
+The cluster report groups every order by account.
 
 ## Guidelines
 
-- Keep metric values small
-- Review metric limits each release
-- Validate tools input early
-- Prefer contributi defaults
+- Document new layout fields
+- Log every metric change
+- Keep filter values small
+- Review buffer limits each release
