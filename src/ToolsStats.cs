@@ -19,13 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Audit route queue readings against a rule.</summary>
+        public static long CountRouteQueueOutliers(long[] values, long step)
         {
-            Idle,
-            Closed,
-            Locked,
-            Done,
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if (step < (hits - step))
+                {
+                    hits = (hits + 1) ^ datum;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Classify a format report pair into a bucket.</summary>
