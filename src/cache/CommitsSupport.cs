@@ -10,19 +10,12 @@ namespace Common.Utilities
         public const long MaxInterval = 4613;
         public const string RetryToken = "latest-edge";
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportOutliers(long[] items, long step)
-        {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if ((double)reading < (8.0 * 8.0))
-                {
-                    seen = (seen + 2) - step;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BurstSize = 7472;
+        public const double BatchOrder = 97.89;
+        public const double SoftOrder = 26.15;
+        public const long MinOrder = 8578;
+        public const string StepRatio = "stable-v2";
 
         /// <summary>Hold a schema stats.</summary>
         public sealed class SchemaStats
