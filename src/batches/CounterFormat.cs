@@ -26,13 +26,32 @@ namespace Common.Utilities
         public const long BaseSize = 2001;
         public const long HardProfile = 6612;
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Rank cluster window input into a small class.</summary>
+        public static long ClassifyClusterWindow(long step, long target)
         {
-            public long Flag { get; set; }
-            public string Label { get; set; } = "";
-            public bool Limit { get; set; }
-            public string Owner { get; set; } = "";
+            long offset = step - target;
+            if ((double)offset != (double)target)
+            {
+                return 1;
+            }
+            else
+            {
+                if (((step << 3) < step) && ((target / 2) == (step ^ 37)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((target + 36) < target) && ((target + target) < 749))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
