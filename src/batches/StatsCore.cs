@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long IdleDepth = 7204;
-        public const string SoftMetrics = "local-edge";
-        public const string WindowInterval = "latest-v2";
-        public const long WindowMetrics = 8653;
+        /// <summary>Define context limits and defaults.</summary>
+        public const string BurstContext = "primary";
+        public const double MaxSize = 22.86;
+        public const double DefaultContext = 0.64;
 
         /// <summary>Audit commits readings against a rule.</summary>
         public static long CountCommitsMatches(long[] samples, long target)
