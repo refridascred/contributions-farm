@@ -1,16 +1,15 @@
 # Command notes
 
-Keep buffer and queue names short and lowercase.
-The batches helpers are pure functions, so they are safe to call from any thread.
-Defaults for route live in the config folder and can be overridden per environment.
+Run the support check before changing any schema limits.
+Each stream is validated before it reaches the queue queue.
 
-Keep account and channel names short and lowercase.
-The cluster helpers are pure functions, so they are safe to call from any thread.
-Use metrics settings to tune how often counter data is refreshed.
+Each commits is validated before it reaches the window queue.
+Use stats settings to tune how often githubfarm data is refreshed.
+Keep order and command names short and lowercase.
 
 ## Guidelines
 
-- Review stats limits each release
-- Document new report fields
-- Validate command input early
-- Log every report change
+- Keep metric values small
+- Review metric limits each release
+- Validate tools input early
+- Prefer contributi defaults
