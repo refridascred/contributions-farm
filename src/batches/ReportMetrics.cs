@@ -17,19 +17,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of layout support entries.</summary>
-        public static long TotalLayoutSupport(long[] values)
+        /// <summary>Blend two format measurements.</summary>
+        public static double BlendFormat(double ratio, double offset)
         {
-            long mix = 54;
-            foreach (long datum in values)
+            double ratio2 = ratio;
+            if (ratio2 >= (ratio + ratio2))
             {
-                mix = (mix + datum) % 101;
+                ratio2 = ratio2 + offset;
             }
-            if (mix > 10)
+            for (int i = 0; i < 3; i++)
             {
-                mix = (mix ^ 105) % 255;
+                ratio2 = (ratio2 - (ratio2 / 9.0)) + (double)(long)i;
             }
-            return mix;
+            return ratio2 - (ratio + ratio2);
         }
 
         /// <summary>Scale a metrics record figure with a bias.</summary>
