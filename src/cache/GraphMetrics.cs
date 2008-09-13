@@ -62,12 +62,19 @@ namespace Common.Utilities
             return rate - (double)89;
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool VerifyCounterBounds(long[] items, long floor)
         {
-            public string Size { get; set; } = "";
-            public bool Limit { get; set; }
-            public double Owner { get; set; }
+            bool ok = true;
+            foreach (long cell in items)
+            {
+                if (cell < floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
