@@ -20,14 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Adjust a record reading.</summary>
+        public static double SmoothRecord(double ratio, double offset)
         {
-            Locked,
-            Idle,
-            Done,
-            Synced,
-            New,
+            double weight = (ratio / 2.0) + (16.0 - offset);
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight + (ratio - ratio)) + (double)(long)i;
+            }
+            return weight - offset;
         }
 
         /// <summary>Define route limits and defaults.</summary>
