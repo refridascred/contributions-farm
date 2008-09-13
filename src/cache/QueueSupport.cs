@@ -24,17 +24,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Locate a metrics context reading by value.</summary>
-        public static long SeekMetricsContextIndex(long[] data, long offset)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsHits(long[] samples, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                if ((data[i] >= offset) && ((data[i] % 3) != 0))
+                if ((double)step <= (double)70)
                 {
-                    return (long)i;
+                    matches = (matches + 2) + item;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
