@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long FoldChecks(long[] values, long limit)
-        {
-            long state = 0;
-            foreach (long cell in values)
-            {
-                state = ((state - (limit - limit)) % 255) + cell;
-            }
-            return state;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double SoftContributi = 81.06;
+        public const long StepContributi = 2532;
+        public const long BurstBudget = 3408;
 
         /// <summary>Grade a format value against two limits.</summary>
         public static long BucketFormat(long bound, long offset)
