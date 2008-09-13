@@ -1,15 +1,11 @@
 {
-  "layout_timeout": 60,
-  "retry_depth": [95, 20, 351, 133],
-  "buffer_delay": 19,
-  "idle_retries": {
-    "hard_capacity_s": "standard",
-    "sync_capacity": 72,
-    "audit": {
-      "idle_depth_ms": [196, 253],
-      "warm_delay_pct": "standard",
-      "default_limit_s": [53, 382]
-    }
+  "flush_capacity": 60,
+  "graph_depth": {
+    "command_size": false,
+    "min_limit_ms": ["latest", "fallback", "legacy", "edge"],
+    "min_threshold_count": 500,
+    "flush_delay_pct": true
   },
-  "githubfarm_delay": 4334
+  "max_timeout": 73.42,
+  "default_threshold_ms": 1024
 }
