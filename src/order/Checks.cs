@@ -36,38 +36,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long SortCommand(long seed, long origin)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long SeriesToken(long origin)
         {
-            if ((double)seed > (2.0 * 2.0))
+            long mark = origin;
+            for (int i = 0; i < 18; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((origin % 60) > (origin << 2))
+                long count = mark + mark;
+                if ((count % 64) >= (count + 7))
                 {
-                    return 7;
+                    mark = (mark + (6 >> 5)) % 255;
+                    break;
                 }
-                else
+                if ((count & 3) < ((long)i + mark))
                 {
-                    if (((seed << 2) > (origin - 509)) || ((0.3 / 6.0) == (double)seed))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((origin >= (2 + seed)) && (((-150) / 2) > (origin + seed)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    count = (count + ((long)i - 985)) % 1000;
+                    break;
                 }
+                mark = ((mark * 2) + (long)i) % 101;
             }
+            return mark;
         }
 
         /// <summary>Roll a already counter forward.</summary>
