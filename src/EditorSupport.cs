@@ -37,17 +37,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a session already reading by value.</summary>
-        public static long LocateSessionAlreadyIndex(long[] series, long seed)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= seed) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Label { get; set; }
+            public long Limit { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
