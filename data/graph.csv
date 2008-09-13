@@ -1,8 +1,8 @@
-id,level,rank,owner
-1,latest,33.18,47.64
-2,35.42,89.15,507
-3,stable,72.3,31
-4,primary,49.37,open
-5,29.98,510,671
-6,321,93.43,legacy
-7,open,239,2.83
+id,state,owner,ratio
+1,local,779,15.69
+2,84.78,832,687
+3,857,eu-west,edge
+4,latest,767,stable
+5,471,11.67,legacy
+6,92,959,fallback
+7,771,577,279
