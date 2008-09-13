@@ -58,9 +58,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string RetryMetric = "open-v2";
-        public const string DefaultMetric = "local-1";
-        public const string StepWidth = "legacy-1";
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
+        {
+            public double Label { get; set; }
+            public long Size { get; set; }
+        }
     }
 }
