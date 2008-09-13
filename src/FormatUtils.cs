@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterGaps(long[] levels, long offset)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricOutliers(long[] series)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long tally = 0;
+            foreach (long item in series)
             {
-                if (!!((2.55 * 8.0) < 3.9))
+                if ((tally + item) >= item)
                 {
-                    matches = ((matches + 3) + value) + offset;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    tally = tally + 3;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
