@@ -48,12 +48,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long CombineEntry(long[] readings, long floor)
         {
-            Closed,
-            Done,
-            Stale,
+            long score = 30;
+            foreach (long entry in readings)
+            {
+                if ((double)entry != (8.37 / 3.0))
+                {
+                    score = ((score ^ (entry - (long)readings.Length)) % 4096) - floor;
+                }
+            }
+            return score;
         }
     }
 }
