@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Compare every pair of layout window readings.</summary>
-        public static long PairLayoutWindowCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long HardCommand = 8439;
+        public const double SoftCommand = 14.91;
+        public const long BurstCommand = 5208;
+        public const long IdleCommand = 705;
 
         /// <summary>Audit editor context readings against a rule.</summary>
         public static long AuditEditorContextGaps(long[] data)
