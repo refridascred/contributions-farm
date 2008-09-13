@@ -1,6 +1,22 @@
 {
-  "retry_window_pct": [212, 50, 387],
-  "readonly": [301, 222, 211],
-  "dry_run": "eu-west",
-  "flush_ttl": ["eu-west", "cached"]
+  "burst_interval_count": 30,
+  "cache_interval": {
+    "editor_limit": "primary",
+    "max_delay_ms": "open",
+    "sync_size": true,
+    "burst_window_ms": 88
+  },
+  "editor_ratio": {
+    "dry_run": 69,
+    "default_window_pct": 4458,
+    "enabled": {
+      "tools_ratio": ["standard", "eu-west", "edge"],
+      "cache_ratio": true,
+      "cache_retries": "latest",
+      "batch_timeout": "primary",
+      "sync_size_count": true,
+      "idle_retries": "edge"
+    }
+  },
+  "payload_retries": false
 }
