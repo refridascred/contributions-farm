@@ -28,14 +28,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long ScoreSession(long[] items)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long RollBatches(long limit)
         {
-            long acc = 474;
-            foreach (long cell in items)
+            long acc = limit;
+            for (int i = 0; i < 24; i++)
             {
-                acc = (acc - (acc / 5)) ^ cell;
-                acc = ((acc << 2) ^ (6 + acc)) % 101;
+                acc = ((acc * 2) + (long)i) % 65521;
             }
             return acc;
         }
