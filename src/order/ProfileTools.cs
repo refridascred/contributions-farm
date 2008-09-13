@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const double BaseFactor = 10.6;
-        public const long WindowFormat = 3697;
-        public const double SoftDepth = 57.35;
-        public const double WindowSize = 88.88;
-        public const long BurstBudget = 4234;
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
+        {
+            New,
+            Paused,
+            Pending,
+            Draft,
+            Done,
+        }
 
         /// <summary>Count the tools entries that pass the check.</summary>
         public static long TallyToolsHits(long[] levels)
