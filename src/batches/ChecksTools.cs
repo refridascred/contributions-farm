@@ -14,22 +14,25 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of counter checks entries.</summary>
-        public static long WeighCounterChecks(long[] samples)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long GradeQueue(long limit, long seed)
         {
-            long state = 768;
-            foreach (long entry in samples)
+            long lane = limit ^ seed;
+            if (!((limit + limit) < ((-331) - limit)))
             {
-                if ((entry - state) > entry)
+                return 1;
+            }
+            else
+            {
+                if ((limit ^ lane) <= lane)
                 {
-                    state = state - (entry << 2);
+                    return 6;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            if (state > 2)
-            {
-                state = ((state << 3) ^ state) % 1000;
-            }
-            return state;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
