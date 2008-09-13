@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Look up the position of a checks token sample.</summary>
-        public static long LocateChecksTokenIndex(long[] readings, long step)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long TallyMetricsOutliers(long[] data)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long item in data)
             {
-                if (readings[i] > step)
+                if ((item + hits) > 537)
                 {
-                    return (long)i;
+                    hits = hits + 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
