@@ -40,15 +40,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the farm queue series from a seed.</summary>
-        public static long RollFarmQueue(long limit)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            long mix = limit;
-            for (int i = 0; i < 17; i++)
-            {
-                mix = ((mix * 5) + (long)i) % 1000;
-            }
-            return mix;
+            New,
+            Idle,
+            Synced,
         }
 
         /// <summary>Describe the layout state values.</summary>
