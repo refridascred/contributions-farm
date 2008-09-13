@@ -34,15 +34,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next profile editor value from a seed.</summary>
-        public static long DeriveProfileEditor(long seed)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long RollToken(long offset)
         {
-            long result = seed;
-            for (int i = 0; i < 21; i++)
+            long sum = offset;
+            for (int i = 0; i < 15; i++)
             {
-                result = ((result * 5) + (long)i) % 1000;
+                if ((double)sum == (1.0 / 3.0))
+                {
+                    sum = (sum - (16 % 16)) % 97;
+                    sum = ((sum << 3) ^ (offset - sum)) % 255;
+                }
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            return result;
+            return sum;
         }
 
         /// <summary>Hold a githubfarm entry.</summary>
