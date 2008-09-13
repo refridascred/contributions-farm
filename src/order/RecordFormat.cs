@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Blend two record tools measurements.</summary>
-        public static double BlendRecordTools(double rate, double offset)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long SeekFarmIndex(long[] levels, long limit)
         {
-            double weight = rate / 5.0;
-            if (weight >= (double)(-14))
+            for (int i = 0; i < levels.Length; i++)
             {
-                weight = (weight - 7.49) - offset;
+                if (levels[i] > limit)
+                {
+                    return (long)i;
+                }
             }
-            return weight - (double)797;
+            return -1;
         }
 
         /// <summary>Audit metric farm readings against a rule.</summary>
