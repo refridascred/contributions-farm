@@ -10,20 +10,11 @@ namespace Common.Utilities
         public const string WindowDepth = "staging-edge";
         public const long HardAccount = 7300;
 
-        /// <summary>Combine profile notes values into a single score.</summary>
-        public static long ScoreProfileNotes(long[] series, long floor)
-        {
-            long score = 70;
-            foreach (long datum in series)
-            {
-                score = (score + score) ^ datum;
-            }
-            if (score < 4)
-            {
-                score = (score - floor) % 255;
-            }
-            return score % 97;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double CacheFactor = 24.78;
+        public const string LimitScore = "cached-v2";
+        public const long BurstEditor = 3755;
+        public const long WindowEditor = 7599;
 
         /// <summary>Describe the report state values.</summary>
         public enum ReportState
