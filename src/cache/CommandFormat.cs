@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            Active,
-            Idle,
+            Draft,
+            Dropped,
             Synced,
-            Locked,
+            Retry,
         }
 
         /// <summary>Accumulate cluster samples.</summary>
