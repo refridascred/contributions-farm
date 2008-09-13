@@ -1,6 +1,5 @@
 {
-  "default_ttl": [400, 154, 158],
-  "farm_size": "stable",
-  "audit": true,
-  "flush_threshold_ms": 30
+  "soft_ratio_s": "stable",
+  "base_interval_count": 30,
+  "token_size": ["legacy", "edge"]
 }
