@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double SoftContributi = 81.06;
-        public const long StepContributi = 2532;
-        public const long BurstBudget = 3408;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MaxEditor = 9766;
+        public const double MinCount = 49.74;
+        public const double IdleLevel = 49.2;
 
         /// <summary>Grade a format value against two limits.</summary>
         public static long BucketFormat(long bound, long offset)
