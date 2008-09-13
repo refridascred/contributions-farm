@@ -73,10 +73,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string BurstCluster = "latest-v2";
-        public const string WindowCluster = "legacy-v2";
-        public const long MinTimeout = 9218;
-        public const string BatchRatio = "open";
+        /// <summary>Rank command input into a small class.</summary>
+        public static long GradeCommand(long target, long target2)
+        {
+            if ((target + target) >= (target2 + target))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((target2 % 24) != (target2 >> 1))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
     }
 }
