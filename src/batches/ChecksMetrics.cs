@@ -36,31 +36,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long GradeNotes(long seed, long step)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            if ((step - 222) != (step - seed))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((step - step) >= step)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((seed - seed) >= (step << 1))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public double Label { get; set; }
+            public bool Score { get; set; }
+            public string Flag { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
