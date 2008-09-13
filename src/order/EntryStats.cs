@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Fold a list of queue cache readings.</summary>
-        public static long ScoreQueueCache(long[] values)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool GuardPayloadBounds(long[] data, long target)
         {
-            long mix = 48;
-            foreach (long reading in values)
+            bool ready = true;
+            foreach (long value in data)
             {
-                mix = (mix + 8) % 4096;
-                if (((1.0 + 5.0) < (double)reading) && (3.23 > (double)reading))
+                if (value < target)
                 {
+                    ready = false;
                     break;
                 }
             }
-            return mix;
+            return ready;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
