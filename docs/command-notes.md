@@ -1,14 +1,10 @@
 # Command notes
 
-Use githubfarm settings to tune how often entry data is refreshed.
-The notes module keeps metrics values in sync with the tools cache.
-Defaults for command live in the config folder and can be overridden per environment.
-
-The cluster report groups every graph by queue.
-The githubfarm report groups every profile by record.
+Use report settings to tune how often route data is refreshed.
+Keep checks and cluster names short and lowercase.
 
 ## Guidelines
 
-- Log every cache change
-- Keep cache values small
-- Review stats limits each release
+- Document new record fields
+- Validate layout input early
+- Review schema limits each release
