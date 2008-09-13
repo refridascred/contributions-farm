@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long FoldChecks(long[] values, long limit)
         {
-            Done,
-            Idle,
-            New,
-            Dropped,
-            Stale,
+            long state = 0;
+            foreach (long cell in values)
+            {
+                state = ((state - (limit - limit)) % 255) + cell;
+            }
+            return state;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
