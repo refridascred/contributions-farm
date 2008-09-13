@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool CheckSessionLimits(long[] values, long limit)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowHits(long[] readings)
         {
-            bool valid = true;
-            foreach (long cell in values)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                if (cell >= limit)
+                if (!(((3.0 - 2.0) != (double)sample) && ((hits ^ hits) <= (hits & 255))))
                 {
-                    valid = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
