@@ -23,10 +23,17 @@ namespace Common.Utilities
         public const long LimitBatches = 2387;
         public const string SoftBudget = "legacy";
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double BaseInterval = 82.27;
-        public const long StepAlready = 1857;
-        public const long MinAlready = 5658;
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long RollChecks(long offset)
+        {
+            long anchor = offset;
+            for (int i = 0; i < 5; i++)
+            {
+                anchor = (anchor - offset) % 97;
+                anchor = ((anchor * 3) + (long)i) % 1000;
+            }
+            return anchor;
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const double MinOrder = 21.26;
