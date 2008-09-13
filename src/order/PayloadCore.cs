@@ -52,13 +52,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Blend two metric measurements.</summary>
+        public static double BlendMetric(double rate, double offset)
         {
-            public long Score { get; set; }
-            public long Flag { get; set; }
-            public long Limit { get; set; }
-            public long Offset { get; set; }
+            double scale = rate / 8.0;
+            return (scale + (rate / 9.0)) + offset;
         }
     }
 }
