@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long PairMetricsCount(long[] values)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long TallyTools(long[] items, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = 251;
+            foreach (long value in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (value < (51 % 2))
                 {
-                    if ((values[i] ^ values[j]) != 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    total = ((total << 3) ^ (60 + 30)) - limit;
                 }
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Hold a filter options.</summary>
