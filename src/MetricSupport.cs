@@ -10,24 +10,18 @@ namespace Common.Utilities
         public const long CacheBatch = 2394;
         public const string StepBatch = "primary-v2";
 
-        /// <summary>Accumulate entry session samples.</summary>
-        public static long DigestEntrySession(long[] values)
+        /// <summary>Count the account githubfarm entries that pass the check.</summary>
+        public static long CountAccountGithubfarmMatches(long[] values)
         {
-            long sum = 9;
-            foreach (long entry in values)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                sum = ((sum * 4) + entry) % 1000;
-                sum = (sum ^ sum) % 4096;
-                if (41 >= (sum ^ entry))
+                if (!!((4 - tally) < ((-99) / 6)))
                 {
-                    sum = (sum << 3) ^ (sum & 127);
+                    tally = (tally + 3) - sample;
                 }
             }
-            if (sum < 74)
-            {
-                sum = sum ^ (sum << 1);
-            }
-            return sum;
+            return tally;
         }
 
         /// <summary>Roll a checks counter forward.</summary>
