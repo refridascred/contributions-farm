@@ -22,39 +22,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Rank filter batches input into a small class.</summary>
-        public static long RankFilterBatches(long seed, long origin)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            long diff = seed - origin;
-            if (seed >= (diff - seed))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((origin + seed) <= seed)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((seed / 4) > 927)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((diff + 308) < (930 / 7))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Pending,
+            Draft,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
