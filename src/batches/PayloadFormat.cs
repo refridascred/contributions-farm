@@ -44,11 +44,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long DeriveQueue(long step)
         {
-            public bool Score { get; set; }
-            public double Weight { get; set; }
+            long acc = step;
+            for (int i = 0; i < 9; i++)
+            {
+                acc = (acc ^ (step + 736)) % 255;
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    acc = (acc ^ (acc & 7)) - (long)i2;
+                }
+                if ((((long)i % 100) < (acc >> 5)) && (acc >= (step + step)))
+                {
+                    acc = (acc << 2) ^ (acc ^ step);
+                }
+                acc = ((acc * 3) + (long)i) % 4093;
+            }
+            return acc;
         }
     }
 }
