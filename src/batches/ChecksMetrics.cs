@@ -41,13 +41,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextOutliers(long[] data)
         {
-            public double Label { get; set; }
-            public bool Score { get; set; }
-            public string Flag { get; set; } = "";
-            public long Level { get; set; }
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if ((count + (long)data.Length) >= (count % 60))
+                {
+                    count = (count + 1) + reading;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
