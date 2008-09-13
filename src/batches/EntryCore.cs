@@ -19,22 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long MatchNotesCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double BaseAlready = 34.23;
+        public const long CacheScore = 5246;
+        public const long HardDepth = 6830;
 
         /// <summary>Look up the position of a batches sample.</summary>
         public static long SeekBatchesIndex(long[] readings, long step)
