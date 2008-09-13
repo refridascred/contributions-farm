@@ -20,18 +20,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheOutliers(long[] values, long bound)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long LocateCacheIndex(long[] levels, long floor)
         {
-            long seen = 0;
-            foreach (long value in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((((2.8 + 1.8) <= (double)bound) && ((value & 127) == ((-32) * 3))) || ((bound >> 4) > (seen - value)))
+                if ((levels[i] > floor) && ((levels[i] % 3) == 0))
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
