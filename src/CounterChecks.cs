@@ -37,11 +37,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long IdleInterval = 8824;
-        public const long HardRecord = 9064;
-        public const string StepRecord = "latest-1";
-        public const string WindowWidth = "standard-v2";
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long GradeChecks(long origin, long floor)
+        {
+            if (((floor ^ origin) <= (origin ^ floor)) && (floor >= (origin * 2)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((origin << 3) >= (origin ^ origin)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (15.0 < (double)origin)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the entry class values.</summary>
         public enum EntryClass
