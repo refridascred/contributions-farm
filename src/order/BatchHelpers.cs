@@ -10,12 +10,39 @@ namespace Common.Utilities
         public const long WindowWidth = 3174;
         public const string SoftContext = "legacy-1";
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Rank notes support input into a small class.</summary>
+        public static long SortNotesSupport(long bound, long seed)
         {
-            public double Token { get; set; }
-            public bool Label { get; set; }
-            public bool Total { get; set; }
+            long offset = bound + seed;
+            if ((8.01 / 8.0) == (double)bound)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)5 <= (double)seed)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((seed + offset) == (bound + seed)) && (offset >= ((-6) - offset)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((seed > (bound << 1)) || ((double)bound != (1.01 / 5.0)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Match up githubfarm samples.</summary>
