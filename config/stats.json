@@ -1,6 +1,14 @@
 {
-  "cache_ratio_s": "latest",
-  "batch_capacity": false,
-  "notes_capacity": "staging",
-  "flush_ratio_count": 40
+  "already_delay": "cached",
+  "min_timeout": {
+    "retry_timeout_pct": 5.87,
+    "warm_delay": false,
+    "poll_capacity_pct": "green",
+    "context_limit": "staging",
+    "readonly": 95.31
+  },
+  "soft_ratio": "open",
+  "default_size_pct": "edge",
+  "hard_retries_ms": "strict",
+  "soft_capacity_s": "open"
 }
