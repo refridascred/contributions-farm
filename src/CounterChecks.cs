@@ -64,12 +64,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
+            Retry,
+            Queued,
+            Done,
             Active,
-            Locked,
-            Failed,
         }
 
         /// <summary>Check that every batch session entry stays within the limit.</summary>
