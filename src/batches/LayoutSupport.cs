@@ -65,15 +65,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double SmoothGithubfarm(double bias, double offset)
+        /// <summary>Roll a counter token counter forward.</summary>
+        public static long SeriesCounterToken(long step)
         {
-            double rate = bias / 4.0;
-            if (rate < (double)45)
+            long anchor = step;
+            for (int i = 0; i < 14; i++)
             {
-                rate = rate - (double)2;
+                if ((step - (long)i) >= (anchor & 7))
+                {
+                    continue;
+                }
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return rate - (offset - 2.08);
+            return anchor;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
