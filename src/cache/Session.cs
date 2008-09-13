@@ -18,19 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long WeighAlready(long[] samples, long seed)
+        /// <summary>Derive the next metrics channel value from a seed.</summary>
+        public static long RollMetricsChannel(long origin)
         {
-            long sum = 79;
-            foreach (long item in samples)
+            long score = origin;
+            for (int i = 0; i < 19; i++)
             {
-                sum = sum - (item + item);
+                if (score > (long)i)
+                {
+                    score = ((score << 3) ^ origin) % 1000;
+                    score = (score - ((long)i % 8)) % 4096;
+                }
+                score = ((score * 2) + (long)i) % 65521;
             }
-            if (sum < 74)
-            {
-                sum = sum - (seed + sum);
-            }
-            return sum % 1000;
+            return score;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
