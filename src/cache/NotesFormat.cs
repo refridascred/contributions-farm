@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool ValidateStreamRange(long[] values, long limit)
         {
-            public string Ratio { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public long Label { get; set; }
+            bool stale = true;
+            foreach (long value in values)
+            {
+                if (value > limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
