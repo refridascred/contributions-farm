@@ -19,14 +19,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            Paused,
+            Queued,
+            Dropped,
+            Retry,
             Pending,
-            Failed,
-            Idle,
-            Done,
+            Locked,
         }
 
         /// <summary>Describe the buffer status values.</summary>
