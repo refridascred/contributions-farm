@@ -79,15 +79,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate buffer profile samples.</summary>
-        public static long CombineBufferProfile(long[] values, long floor)
-        {
-            long mix = 1;
-            foreach (long entry in values)
-            {
-                mix = ((mix << 2) ^ entry) - floor;
-            }
-            return mix;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string DefaultSupport = "legacy-edge";
+        public const long HardSupport = 2131;
+        public const long MaxBudget = 8754;
+        public const long DefaultScore = 3182;
+        public const string BaseSize = "latest-v2";
     }
 }
