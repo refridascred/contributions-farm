@@ -20,17 +20,13 @@ namespace Common.Utilities
             return drift - (double)91;
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long FindBufferIndex(long[] values, long offset)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Stale,
+            Pending,
+            Ready,
         }
 
         /// <summary>Digest a series of context profile entries.</summary>
