@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout utils helpers.</summary>
     public static class LayoutUtils
     {
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long LookupCommandIndex(long[] items, long target)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long OverlapEditorCount(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (items[i] == target)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] + data[j]) == 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
