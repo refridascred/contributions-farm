@@ -50,19 +50,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long TallyContext(long[] samples, long bound)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            long mix = 6;
-            foreach (long reading in samples)
-            {
-                mix = (mix ^ 47) - reading;
-            }
-            if (mix < (-62))
-            {
-                mix = (mix * 3) + bound;
-            }
-            return mix;
+            public double Mode { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Rank queue input into a small class.</summary>
