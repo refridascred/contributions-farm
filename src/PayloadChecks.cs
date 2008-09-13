@@ -79,18 +79,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadOutliers(long[] samples, long bound)
-        {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if ((matches + value) < (matches << 2))
-                {
-                    matches = (matches + 3) + bound;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string BurstCluster = "latest-v2";
+        public const string WindowCluster = "legacy-v2";
+        public const long MinTimeout = 9218;
+        public const string BatchRatio = "open";
     }
 }
