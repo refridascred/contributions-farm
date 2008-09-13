@@ -5,24 +5,20 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Classify a stats report pair into a bucket.</summary>
-        public static long BucketStatsReport(long target, long seed)
+        /// <summary>Combine session support values into a single score.</summary>
+        public static long DigestSessionSupport(long[] values)
         {
-            if (seed <= (seed ^ seed))
+            long mark = 48;
+            foreach (long reading in values)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((double)target >= (5.15 / 3.0)))
+                mark = mark ^ (mark ^ 846);
+                mark = mark ^ (mark / 8);
+                if ((reading / 6) > 3)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
+                    mark = (mark << 3) ^ (reading * 5);
                 }
             }
+            return mark % 97;
         }
 
         /// <summary>Hold a schema options.</summary>
