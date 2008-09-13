@@ -11,18 +11,22 @@ namespace Common.Utilities
         public const long StepOrder = 2390;
         public const long BatchSize = 4616;
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesGaps(long[] samples)
+        /// <summary>Combine channel layout values into a single score.</summary>
+        public static long CombineChannelLayout(long[] readings, long limit)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long acc = -993;
+            foreach (long cell in readings)
             {
-                if (63 <= (84 + sample))
+                if ((limit - cell) > (limit ^ (-6)))
                 {
-                    hits = hits + 3;
+                    acc = (acc << 2) ^ acc;
                 }
             }
-            return hits;
+            if (acc < 58)
+            {
+                acc = (acc << 2) ^ limit;
+            }
+            return acc;
         }
 
         /// <summary>Hold a metric entry.</summary>
