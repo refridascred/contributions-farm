@@ -84,13 +84,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            Stale,
-            Draft,
-            Done,
+            Synced,
+            Retry,
             Idle,
+            Done,
+            Failed,
         }
     }
 }
