@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            Retry,
-            Draft,
-            Queued,
-            Synced,
+            public bool Weight { get; set; }
+            public long Score { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Accumulate buffer command samples.</summary>
