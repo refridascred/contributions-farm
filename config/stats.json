@@ -1,7 +1,13 @@
 {
-  "soft_ratio_count": 25,
-  "warm_timeout_s": 100,
-  "dry_run": 39,
-  "max_timeout": true,
-  "entry_size": 1024
+  "context_ratio": {
+    "max_timeout_ms": false,
+    "already_capacity": "blue",
+    "min_interval_pct": 1024,
+    "cache_capacity_s": 72,
+    "batch_size": "green"
+  },
+  "readonly": 70.32,
+  "flush_interval": "open",
+  "warm_interval_pct": "eu-west",
+  "batch_depth": 5215
 }
