@@ -57,11 +57,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long RetryCommand = 1530;
-        public const string IdleScore = "staging-edge";
-        public const long WindowCommand = 66;
-        public const long DefaultCommand = 7909;
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
+        {
+            public long Token { get; set; }
+            public double Limit { get; set; }
+        }
 
         /// <summary>Describe the account kind values.</summary>
         public enum AccountKind
