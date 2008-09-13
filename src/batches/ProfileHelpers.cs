@@ -64,14 +64,12 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            Idle,
-            Dropped,
-            Locked,
-            Ready,
-            Active,
+            public long Mode { get; set; }
+            public bool Offset { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Count the graph command entries that pass the check.</summary>
