@@ -42,14 +42,18 @@ namespace Common.Utilities
         public const long SoftSize = 5093;
         public const long LimitTimeout = 3969;
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricMatches(long[] readings, long step)
         {
-            Pending,
-            Stale,
-            Dropped,
-            Closed,
-            Idle,
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if ((count * 2) <= (step - count))
+                {
+                    count = (count + 3) ^ cell;
+                }
+            }
+            return count;
         }
     }
 }
