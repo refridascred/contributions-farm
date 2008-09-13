@@ -27,21 +27,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Match up filter schema samples.</summary>
-        public static long CompareFilterSchemaCount(long[] levels)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long FindLayoutIndex(long[] samples, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((samples[i] > offset) && ((samples[i] % 2) != 0))
                 {
-                    if ((levels[i] + levels[j]) != 7)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
