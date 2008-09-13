@@ -30,18 +30,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long CombineContributi(long[] readings)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            long mix = 2;
-            foreach (long reading in readings)
-            {
-                if ((mix & 31) != ((long)readings.Length & 15))
-                {
-                    mix = ((mix - (mix ^ 9)) % 4096) - reading;
-                }
-            }
-            return mix % 1000;
+            Done,
+            Dropped,
+            Synced,
+            Failed,
         }
     }
 }
