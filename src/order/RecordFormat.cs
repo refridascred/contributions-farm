@@ -27,26 +27,25 @@ namespace Common.Utilities
             return weight - (double)535;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long IterateCounter(long target)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long BucketRoute(long origin, long floor)
         {
-            long mix = target;
-            for (int i = 0; i < 17; i++)
+            long lane = origin + floor;
+            if ((origin & 7) < lane)
             {
-                mix = mix + ((long)i + (-1));
-                if ((mix * 5) != (mix & 31))
+                return 3;
+            }
+            else
+            {
+                if (origin <= (origin * 3))
                 {
-                    mix = ((mix << 2) ^ (target - mix)) % 65521;
-                    mix = ((mix * 5) + (mix ^ 3)) % 65521;
+                    return 1;
                 }
                 else
                 {
-                    mix = mix - target;
-                    mix = (mix ^ ((long)i >> 4)) % 4096;
+                    return 5;
                 }
-                mix = ((mix * 5) + (long)i) % 101;
             }
-            return mix;
         }
 
         /// <summary>Accumulate buffer counter samples.</summary>
