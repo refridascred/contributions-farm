@@ -5,24 +5,26 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Classify a commits schema pair into a bucket.</summary>
-        public static long ClassifyCommitsSchema(long limit, long offset)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long WeighContributi(long[] values, long floor)
         {
-            if ((0.2 * 6.9) > (double)limit)
+            long carry = 2;
+            foreach (long datum in values)
             {
-                return 0;
-            }
-            else
-            {
-                if (limit > (offset >> 4))
+                if ((double)datum < (double)291)
                 {
-                    return 8;
+                    carry = ((carry << 3) ^ (datum * 4)) % 101;
                 }
-                else
+                if ((double)floor > 0.4)
                 {
-                    return 5;
+                    break;
                 }
             }
+            if (carry > 559)
+            {
+                carry = (carry * 5) + (291 + carry);
+            }
+            return carry % 97;
         }
 
         /// <summary>Grade a session value against two limits.</summary>
