@@ -5,36 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long ClassifyRoute(long floor, long target)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long SortCommits(long bound, long seed)
         {
-            if ((2.1 - 7.4) >= (double)target)
+            if ((14.0 <= (double)bound) || (seed >= bound))
             {
-                return 7;
+                return 8;
             }
             else
             {
-                if ((floor - floor) < floor)
+                if ((bound <= (65 >> 2)) || ((double)bound >= (6.0 + 0.1)))
                 {
-                    return 6;
+                    return 5;
                 }
                 else
                 {
-                    if ((target < (target << 1)) || ((target / 3) > (floor ^ target)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((target & 15) < (floor % 5))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return 0;
                 }
             }
         }
