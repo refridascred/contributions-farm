@@ -35,11 +35,10 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string CacheSize = "strict-v2";
-        public const double BatchWindow = 82.73;
-        public const long DefaultWindow = 3348;
-        public const long HardWindow = 1715;
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MinDepth = 5994;
+        public const long MaxAccount = 8529;
+        public const long RetryAccount = 6719;
 
         /// <summary>Classify a notes support pair into a bucket.</summary>
         public static long SortNotesSupport(long bound, long bound2)
