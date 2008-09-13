@@ -1,14 +1,14 @@
 # Command notes
 
-Run the already check before changing any report limits.
-Each entry is validated before it reaches the channel queue.
+Use context settings to tune how often account data is refreshed.
+The profile helpers are pure functions, so they are safe to call from any thread.
+Use account settings to tune how often schema data is refreshed.
 
-When a batches fails, the entry handler retries a few times before giving up.
-The account helpers are pure functions, so they are safe to call from any thread.
+The profile module keeps payload values in sync with the window cache.
+Keep farm and command names short and lowercase.
 
 ## Guidelines
 
-- Review queue limits each release
-- Validate batch input early
-- Keep format values small
-- Document new farm fields
+- Log every schema change
+- Document new counter fields
+- Review token limits each release
