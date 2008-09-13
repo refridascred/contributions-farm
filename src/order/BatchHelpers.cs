@@ -15,19 +15,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenHits(long[] levels)
-        {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if ((cell ^ 1) > 60)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string BaseTimeout = "primary-1";
+        public const double BurstRatio = 13.69;
+        public const long SoftRatio = 795;
 
         /// <summary>Hold a graph record.</summary>
         public sealed class GraphRecord
