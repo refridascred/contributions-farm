@@ -1,7 +1,6 @@
 {
-  "flush_delay_s": false,
-  "max_delay_ms": "cached",
-  "flush_ttl": 23,
-  "poll_limit_pct": true,
-  "burst_size_ms": 25
+  "min_window": 24,
+  "metrics_depth": 9.49,
+  "graph_delay": "legacy",
+  "batches_ttl": 45.64
 }
