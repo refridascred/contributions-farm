@@ -51,18 +51,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the support metrics entries that pass the check.</summary>
-        public static long AuditSupportMetricsHits(long[] items, long step)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesHits(long[] samples, long bound)
         {
-            long count = 0;
-            foreach (long value in items)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if (value < (step + count))
+                if ((seen & 15) == (entry * 2))
                 {
-                    count = count + 1;
+                    seen = (seen + 1) - bound;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Validate context contributi readings against a bound.</summary>
