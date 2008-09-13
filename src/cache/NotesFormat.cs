@@ -22,14 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            Failed,
-            Retry,
-            Locked,
-            Pending,
             Dropped,
+            Stale,
+            Retry,
+            Queued,
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
