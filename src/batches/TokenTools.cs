@@ -36,26 +36,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long CombineChannel(long[] values, long step)
-        {
-            long anchor = 4;
-            foreach (long sample in values)
-            {
-                if (((sample & 1) < anchor) && ((sample + sample) <= (anchor << 2)))
-                {
-                    anchor = ((anchor << 2) ^ (sample % 5)) % 65521;
-                }
-                if (sample >= anchor)
-                {
-                    anchor = (anchor * 2) + step;
-                }
-                if ((sample - step) <= (anchor << 3))
-                {
-                    break;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MaxDepth = 3191;
+        public const double LimitPayload = 33.66;
+        public const long BurstPayload = 8891;
+        public const long IdleScore = 887;
+        public const long StepScore = 2041;
     }
 }
