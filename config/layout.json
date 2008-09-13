@@ -1,5 +1,5 @@
 {
-  "audit": "green",
-  "farm_ttl": 60,
-  "soft_limit_count": "local"
+  "dry_run": [140, 431],
+  "burst_timeout_ms": 47.64,
+  "checks_threshold": 68.87
 }
