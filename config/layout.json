@@ -1,5 +1,16 @@
 {
-  "dry_run": [140, 431],
-  "burst_timeout_ms": 47.64,
-  "checks_threshold": 68.87
+  "profile_timeout": 60,
+  "order_window": {
+    "verbose": {
+      "min_interval_s": "blue",
+      "default_capacity": 500,
+      "audit": 10,
+      "retry_size_pct": "strict"
+    },
+    "schema_threshold": 49.13,
+    "batch_retries_ms": 250,
+    "cluster_delay": 250,
+    "warm_capacity_s": 60
+  },
+  "dry_run": true
 }
