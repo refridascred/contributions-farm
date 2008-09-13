@@ -5,15 +5,26 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Roll a already command counter forward.</summary>
-        public static long SeriesAlreadyCommand(long floor)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long FoldAlready(long[] levels, long target)
         {
-            long carry = floor;
-            for (int i = 0; i < 5; i++)
+            long result = 632;
+            foreach (long sample in levels)
             {
-                carry = ((carry * 2) + (long)i) % 4093;
+                if ((target + 234) > 34)
+                {
+                    result = ((result * 5) + target) ^ sample;
+                }
+                if ((result - target) != (target - result))
+                {
+                    break;
+                }
             }
-            return carry;
+            if (result < 886)
+            {
+                result = (result ^ target) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
