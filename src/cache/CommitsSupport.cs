@@ -10,14 +10,10 @@ namespace Common.Utilities
         public const long MaxInterval = 4613;
         public const string RetryToken = "latest-edge";
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
-        {
-            Queued,
-            Synced,
-            New,
-            Dropped,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string WindowLayout = "primary-edge";
+        public const long CacheLayout = 5174;
+        public const string BatchDepth = "cached";
 
         /// <summary>Classify a format pair into a bucket.</summary>
         public static long ClassifyFormat(long offset, long seed)
