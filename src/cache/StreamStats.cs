@@ -40,22 +40,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine githubfarm metric values into a single score.</summary>
-        public static long CombineGithubfarmMetric(long[] samples)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long ClassifyOrder(long floor, long step)
         {
-            long anchor = 8;
-            foreach (long sample in samples)
+            if (((double)floor < 6.0) && ((step + (-703)) < (step & 255)))
             {
-                if ((758 >> 5) >= anchor)
+                return 4;
+            }
+            else
+            {
+                if ((9 % 60) > floor)
                 {
-                    anchor = ((anchor * 4) + (anchor / 2)) ^ sample;
+                    return 0;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            if (anchor < 1)
-            {
-                anchor = anchor - anchor;
-            }
-            return anchor % 65521;
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
