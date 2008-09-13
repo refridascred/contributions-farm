@@ -19,12 +19,33 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double CacheTimeout = 29.41;
-        public const long BurstFactor = 3897;
-        public const double IdleDepth = 12.63;
-        public const string LimitAlready = "local-edge";
-        public const long WindowScore = 7991;
+        /// <summary>Rank already input into a small class.</summary>
+        public static long RankAlready(long step, long offset)
+        {
+            long prev = step ^ offset;
+            if (((0 + prev) < (prev - prev)) || ((double)step < 7.0))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)offset > (8.7 * 4.63))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((prev + step) < (offset % 16))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long DefaultTimeout = 7136;
