@@ -25,13 +25,11 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
-        {
-            public double Size { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Level { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long SoftPayload = 1933;
+        public const long SoftLevel = 780;
+        public const long RetryInterval = 5903;
+        public const long IdlePayload = 5127;
 
         /// <summary>Roll a batch counter forward.</summary>
         public static long SeriesBatch(long origin)
