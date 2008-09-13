@@ -19,14 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            Queued,
-            Dropped,
+            Stale,
+            Paused,
             Retry,
-            Pending,
-            Locked,
+            Queued,
         }
 
         /// <summary>Describe the buffer status values.</summary>
