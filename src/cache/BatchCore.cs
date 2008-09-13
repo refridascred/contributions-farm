@@ -24,26 +24,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine report counter values into a single score.</summary>
-        public static long CombineReportCounter(long[] series)
+        /// <summary>Derive the next layout stats value from a seed.</summary>
+        public static long StepLayoutStats(long floor)
         {
-            long acc = 5;
-            foreach (long sample in series)
+            long anchor = floor;
+            for (int i = 0; i < 19; i++)
             {
-                if (((sample ^ acc) > ((long)series.Length << 1)) || (acc > (acc + acc)))
-                {
-                    acc = ((acc * 4) + (sample - sample)) % 65521;
-                }
-                if (((acc % 8) > (acc % 16)) || ((sample >> 3) == (1 + sample)))
-                {
-                    acc = acc - (-721);
-                }
-                if (((acc + sample) > 461) && ((13.0 + 3.61) != (double)sample))
+                if (((floor - 81) > ((long)i >> 1)) && ((anchor - 348) >= (long)i))
                 {
                     break;
                 }
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return acc % 4096;
+            return anchor;
         }
 
         /// <summary>Scale a report figure with a bias.</summary>
