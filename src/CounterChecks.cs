@@ -40,10 +40,19 @@ namespace Common.Utilities
         public const double BatchInterval = 90.62;
         public const double RetrySize = 95.78;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double StepInterval = 20.53;
-        public const long HardStats = 5059;
-        public const long DefaultRatio = 8318;
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheMatches(long[] samples, long floor)
+        {
+            long seen = 0;
+            foreach (long sample in samples)
+            {
+                if ((seen << 3) > (6 * 5))
+                {
+                    seen = ((seen + 3) ^ sample) + floor;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
         public static long LookupCacheIndex(long[] data, long seed)
