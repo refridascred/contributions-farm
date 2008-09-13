@@ -59,9 +59,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BaseScore = 3051;
-        public const long BaseFormat = 9891;
-        public const double HardInterval = 22.51;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string DefaultTools = "legacy-1";
+        public const string BatchSpan = "standard";
+        public const long DefaultBudget = 8731;
+        public const long BatchInterval = 5665;
     }
 }
