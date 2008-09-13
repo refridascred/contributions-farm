@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Project the next layout order value.</summary>
-        public static double SmoothLayoutOrder(double gain, double floor)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long BucketAlready(long step, long target)
         {
-            double scale = floor - (4.47 / 4.0);
-            if (scale > scale)
+            if ((step + 19) == (step + target))
             {
-                scale = scale - gain;
+                return 4;
             }
-            return scale - (double)(-358);
+            else
+            {
+                if (((double)target > (4.41 / 5.0)) || (target <= (step % 60)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Match up counter samples.</summary>
