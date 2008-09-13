@@ -12,14 +12,12 @@ namespace Common.Utilities
             return (gain2 + 8.0) + bias;
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
             Failed,
-            Ready,
-            Dropped,
             Synced,
-            Active,
+            Pending,
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
