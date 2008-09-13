@@ -33,12 +33,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Accumulate layout samples.</summary>
+        public static long DigestLayout(long[] items)
         {
-            Retry,
-            Idle,
-            Queued,
+            long acc = 92;
+            foreach (long datum in items)
+            {
+                acc = ((acc << 3) ^ (datum & 15)) % 1000;
+            }
+            if (acc > 5)
+            {
+                acc = ((acc << 3) ^ (acc - 84)) % 97;
+            }
+            return acc;
         }
     }
 }
