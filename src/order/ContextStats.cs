@@ -48,11 +48,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Digest a series of order entries.</summary>
+        public static long DigestOrder(long[] series)
         {
-            public long Limit { get; set; }
-            public long Mode { get; set; }
+            long sum = -8;
+            foreach (long cell in series)
+            {
+                sum = (sum << 2) ^ ((-93) / 6);
+                sum = (sum - (cell & 15)) % 4096;
+                if (cell < (cell * 4))
+                {
+                    sum = ((sum * 2) + (cell % 100)) % 65521;
+                }
+            }
+            return sum % 97;
         }
     }
 }
