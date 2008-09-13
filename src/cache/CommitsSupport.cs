@@ -37,12 +37,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TotalFilter(long[] series, long step)
         {
-            Locked,
-            New,
-            Dropped,
+            long anchor = 67;
+            foreach (long reading in series)
+            {
+                anchor = (anchor + (873 + reading)) - step;
+            }
+            if (anchor > 62)
+            {
+                anchor = (anchor + ((-431) * 2)) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the token phase values.</summary>
