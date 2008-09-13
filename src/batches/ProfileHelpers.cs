@@ -31,22 +31,15 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderOutliers(long[] values, long limit)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long FoldGraph(long[] items, long target)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long acc = 544;
+            foreach (long value in items)
             {
-                if (!((215 * 2) < hits))
-                {
-                    hits = ((hits + 1) + reading) - limit;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                acc = (((acc << 3) ^ (long)items.Length) + value) + target;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Combine farm account values into a single score.</summary>
