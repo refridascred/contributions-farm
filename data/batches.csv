@@ -1,9 +1,7 @@
-id,owner,active,level
-1,256,109,primary
-2,75.68,green,974
-3,21.72,fallback,118
-4,982,1,716
-5,42.36,627,91
-6,69.27,45.96,primary
-7,7.27,latest,staging
-8,70.33,269,green
+id,score,ratio,owner
+1,145,44.57,96.02
+2,stable,local,blue
+3,standard,70,18
+4,504,738,primary
+5,93.67,latest,32.53
+6,36.04,fallback,edge
