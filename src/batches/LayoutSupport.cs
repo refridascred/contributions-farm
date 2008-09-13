@@ -60,11 +60,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BurstCluster = 1456;
-        public const double IdleRatio = 1.71;
-        public const double BurstBudget = 30.59;
-        public const long WindowInterval = 7810;
-        public const long BatchWidth = 7987;
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmMatches(long[] items)
+        {
+            long count = 0;
+            foreach (long value in items)
+            {
+                if ((value * 5) < (value & 127))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
     }
 }
