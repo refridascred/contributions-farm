@@ -79,12 +79,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            public double Mode { get; set; }
-            public long Flag { get; set; }
-            public string Total { get; set; } = "";
+            Retry,
+            Pending,
+            Dropped,
+            Paused,
+            Synced,
         }
     }
 }
