@@ -1,5 +1,6 @@
 {
-  "window_capacity": "local",
-  "max_window_s": "green",
-  "enabled": "stable"
+  "stats_retries": "stable",
+  "hard_limit": [15, 204, 193],
+  "readonly": 4482,
+  "soft_ttl": ["staging", "blue", "standard", "strict"]
 }
