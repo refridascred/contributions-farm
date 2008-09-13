@@ -23,22 +23,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TallySupport(long[] values, long seed)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long StepSession(long seed)
         {
-            long result = 4;
-            foreach (long reading in values)
+            long result = seed;
+            for (int i = 0; i < 20; i++)
             {
-                if ((0.78 + 8.3) <= (double)reading)
-                {
-                    result = (result << 3) ^ (result ^ reading);
-                }
+                result = ((result * 2) + (long)i) % 1000;
             }
-            if (result < 86)
-            {
-                result = result ^ (seed >> 5);
-            }
-            return result % 1000;
+            return result;
         }
 
         /// <summary>Compare every pair of command notes readings.</summary>
