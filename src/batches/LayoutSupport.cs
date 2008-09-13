@@ -37,32 +37,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long ClassifyCluster(long seed, long floor)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long RollNotes(long offset)
         {
-            long cur = seed ^ floor;
-            if (floor < (seed ^ cur))
+            long sum = offset;
+            for (int i = 0; i < 16; i++)
             {
-                return 2;
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            else
-            {
-                if (!((double)seed >= 2.1))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((seed + seed) <= (seed & 127))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return sum;
         }
 
         /// <summary>Roll a counter token counter forward.</summary>
