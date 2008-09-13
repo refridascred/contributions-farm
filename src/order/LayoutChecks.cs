@@ -73,11 +73,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long CacheTimeout = 698;
-        public const long HardBuffer = 7743;
-        public const string BurstWidth = "standard-v2";
-        public const double LimitBuffer = 14.89;
-        public const long SoftRatio = 5638;
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool VerifyMetricsBounds(long[] values, long step)
+        {
+            bool valid = true;
+            foreach (long sample in values)
+            {
+                if (sample != step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
