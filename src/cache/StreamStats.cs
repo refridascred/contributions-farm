@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
-        {
-            Closed,
-            Idle,
-            Retry,
-            Failed,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MaxMetric = 8378;
+        public const long BatchScore = 4430;
+        public const long WindowWidth = 7764;
+        public const long DefaultMetric = 400;
 
         /// <summary>Rank order input into a small class.</summary>
         public static long ClassifyOrder(long floor, long step)
