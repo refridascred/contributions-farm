@@ -19,10 +19,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string BaseTimeout = "primary-1";
-        public const double BurstRatio = 13.69;
-        public const long SoftRatio = 795;
+        /// <summary>Derive the next editor stats value from a seed.</summary>
+        public static long DeriveEditorStats(long limit)
+        {
+            long total = limit;
+            for (int i = 0; i < 21; i++)
+            {
+                total = ((total * 4) + (long)i) % 101;
+            }
+            return total;
+        }
 
         /// <summary>Match up githubfarm samples.</summary>
         public static long OverlapGithubfarmCount(long[] readings)
