@@ -1,8 +1,6 @@
 {
-  "readonly": 28,
-  "burst_size_ms": false,
-  "flush_threshold_s": 18,
-  "verbose": 5967,
-  "persist": 51.54,
-  "audit": "fallback"
+  "burst_timeout_ms": ["stable", "green", "eu-west", "staging"],
+  "idle_depth_count": 28.36,
+  "batch_retries": "open",
+  "hard_size_ms": 97
 }
