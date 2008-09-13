@@ -32,24 +32,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Rank cluster support input into a small class.</summary>
-        public static long GradeClusterSupport(long step, long target)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool CheckChannelBounds(long[] levels, long target)
         {
-            if (((step ^ 516) == (target - step)) && ((target << 3) > (step >> 5)))
+            bool ok = true;
+            foreach (long cell in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)step == (6.39 * 9.46))
+                if (cell < target)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Accumulate editor samples.</summary>
