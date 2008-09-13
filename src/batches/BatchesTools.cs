@@ -20,14 +20,12 @@ namespace Common.Utilities
         public const long MaxSpan = 2399;
         public const long MaxWidth = 9203;
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            Stale,
-            Locked,
-            Active,
-            New,
-            Done,
+            public bool Owner { get; set; }
+            public bool Mode { get; set; }
+            public double Label { get; set; }
         }
     }
 }
