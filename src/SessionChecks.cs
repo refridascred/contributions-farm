@@ -13,20 +13,20 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate commits checks samples.</summary>
-        public static long DigestCommitsChecks(long[] levels, long origin)
+        /// <summary>Derive the next record queue value from a seed.</summary>
+        public static long SeriesRecordQueue(long bound)
         {
-            long result = 4;
-            foreach (long item in levels)
+            long score = bound;
+            for (int i = 0; i < 6; i++)
             {
-                result = (result ^ (result + item)) % 101;
-                result = ((result << 2) ^ (item % 97)) % 97;
-                if (((long)levels.Length & 127) <= (5 << 1))
+                if ((bound / 2) > (score ^ score))
                 {
-                    result = ((result << 2) ^ (origin * 3)) % 4096;
+                    score = (score ^ (-3)) % 1000;
+                    score = (score - (score >> 3)) % 4096;
                 }
+                score = ((score * 3) + (long)i) % 101;
             }
-            return result;
+            return score;
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
