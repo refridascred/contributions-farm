@@ -1,11 +1,16 @@
 # Command notes
 
-Run the stream check before changing any format limits.
-A layout that stays idle for too long is moved to the format list.
+The counter helpers are pure functions, so they are safe to call from any thread.
+The buffer module keeps support values in sync with the farm cache.
+Defaults for cache live in the config folder and can be overridden per environment.
+
+The counter helpers are pure functions, so they are safe to call from any thread.
+When a queue fails, the githubfarm handler retries a few times before giving up.
+The format helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new support fields
-- Validate notes input early
-- Log every stats change
-- Review stream limits each release
+- Keep filter values small
+- Validate tools input early
+- Prefer githubfarm defaults
+- Review order limits each release
