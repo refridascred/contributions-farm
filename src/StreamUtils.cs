@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long LocateNotesIndex(long[] levels, long step)
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Size { get; set; } = "";
+            public bool Limit { get; set; }
+            public bool Count { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Hold a editor entry.</summary>
