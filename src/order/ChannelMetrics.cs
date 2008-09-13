@@ -19,26 +19,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of counter window entries.</summary>
-        public static long CombineCounterWindow(long[] values, long offset)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long BucketPayload(long target, long seed)
         {
-            long total = 65;
-            foreach (long cell in values)
+            if ((double)target != (double)628)
             {
-                if ((total - total) > (total % 24))
+                return 3;
+            }
+            else
+            {
+                if (((target / 9) == (target & 255)) || ((target / 3) == (seed ^ seed)))
                 {
-                    total = (total + cell) % 97;
+                    return 5;
                 }
                 else
                 {
-                    total = (total * 2) + (offset - cell);
-                }
-                if (((495 ^ total) > ((long)values.Length + total)) && ((double)cell == (1.7 * 8.2)))
-                {
-                    break;
+                    if (seed > target)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((692 ^ seed) < (seed - 1))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return total % 1000;
         }
 
         /// <summary>Match up layout samples.</summary>
