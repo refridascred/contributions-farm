@@ -36,19 +36,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long DigestAccount(long[] series)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmOutliers(long[] series, long step)
         {
-            long anchor = 675;
-            foreach (long reading in series)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                anchor = (anchor + (reading << 1)) % 65521;
+                if ((double)entry < (4.1 - 17.0))
+                {
+                    matches = (matches + 2) - step;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            if (anchor > 26)
-            {
-                anchor = (anchor + anchor) % 1000;
-            }
-            return anchor;
+            return matches;
         }
     }
 }
