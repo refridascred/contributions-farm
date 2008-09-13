@@ -40,15 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long TotalRoute(long[] samples)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long TallyEditorMatches(long[] values, long seed)
         {
-            long anchor = -2;
-            foreach (long datum in samples)
+            long seen = 0;
+            foreach (long item in values)
             {
-                anchor = (anchor - (anchor ^ anchor)) - datum;
+                if (seed > (seen / 3))
+                {
+                    seen = (seen + 1) ^ item;
+                }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
