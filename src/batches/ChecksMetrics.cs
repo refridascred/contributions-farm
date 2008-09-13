@@ -52,38 +52,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long GradeLayout(long origin, long step)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool GuardFarmLimits(long[] data, long floor)
         {
-            if ((step - 53) != (origin << 1))
+            bool flag = true;
+            foreach (long cell in data)
             {
-                return 2;
-            }
-            else
-            {
-                if (step >= 382)
+                if (cell >= floor)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((origin & 31) > step)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((origin & 3) >= step)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Iterate the metrics farm series from a seed.</summary>
