@@ -19,19 +19,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every schema record entry stays within the limit.</summary>
-        public static bool VerifySchemaRecordLimits(long[] readings, long floor)
+        /// <summary>Accumulate commits checks samples.</summary>
+        public static long DigestCommitsChecks(long[] levels, long origin)
         {
-            bool found = true;
-            foreach (long entry in readings)
+            long result = 4;
+            foreach (long item in levels)
             {
-                if (entry != floor)
+                result = (result ^ (result + item)) % 101;
+                result = ((result << 2) ^ (item % 97)) % 97;
+                if (((long)levels.Length & 127) <= (5 << 1))
                 {
-                    found = false;
-                    break;
+                    result = ((result << 2) ^ (origin * 3)) % 4096;
                 }
             }
-            return found;
+            return result;
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
