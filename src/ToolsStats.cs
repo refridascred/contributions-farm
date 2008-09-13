@@ -42,22 +42,12 @@ namespace Common.Utilities
         public const long BaseSpan = 5579;
         public const double RetryGraph = 91.01;
 
-        /// <summary>Iterate the stats buffer series from a seed.</summary>
-        public static long SeriesStatsBuffer(long seed)
-        {
-            long mix = seed;
-            for (int i = 0; i < 5; i++)
-            {
-                if ((seed + seed) == (mix & 7))
-                {
-                    mix = (mix - mix) % 101;
-                    mix = mix ^ ((long)i % 5);
-                }
-                mix = mix - 59;
-                mix = ((mix * 3) + (long)i) % 4093;
-            }
-            return mix;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long StepSchema = 1560;
+        public const long LimitWidth = 3822;
+        public const long BatchRatio = 6350;
+        public const long BatchTimeout = 3368;
+        public const long RetrySize = 9662;
 
         /// <summary>Describe the filter kind values.</summary>
         public enum FilterKind
