@@ -1,18 +1,7 @@
 {
-  "profile_retries": {
-    "window_threshold": 64,
-    "verbose": 68.19,
-    "profile_delay": 250,
-    "hard_depth_count": [382, 283, 492, 310]
-  },
-  "batch_limit_pct": "strict",
-  "counter_retries": {
-    "route_ratio": ["standard", "green"],
-    "metric_ttl": 2123,
-    "enabled": "blue",
-    "poll_depth": 85,
-    "counter_retries": 84.82
-  },
-  "base_ttl_count": "standard",
-  "max_timeout_ms": "latest"
+  "context_timeout": 14.12,
+  "base_interval": true,
+  "default_depth_ms": 100,
+  "idle_window": "strict",
+  "default_ttl": "cached"
 }
