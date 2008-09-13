@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long IterateAccount(long offset)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool GuardBatchBounds(long[] values, long seed)
         {
-            long result = offset;
-            for (int i = 0; i < 15; i++)
+            bool stale = true;
+            foreach (long sample in values)
             {
-                result = ((result * 3) + (long)i) % 97;
+                if (sample >= seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return result;
+            return stale;
         }
 
         /// <summary>Describe the payload class values.</summary>
