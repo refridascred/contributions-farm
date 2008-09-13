@@ -12,17 +12,15 @@ namespace Common.Utilities
             return ((load - (load * 2.0)) + scale) + span;
         }
 
-        /// <summary>Find the first metric stats entry that matches the target.</summary>
-        public static long LookupMetricStatsIndex(long[] readings, long floor)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double ProjectBatches(double weight, double offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double gain = offset / 4.0;
+            if (gain > gain)
             {
-                if ((readings[i] <= floor) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                gain = gain + 6.0;
             }
-            return -1;
+            return gain - (offset + weight);
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
