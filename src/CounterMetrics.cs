@@ -25,12 +25,15 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string CacheInterval = "legacy-v2";
-        public const double BaseDepth = 92.56;
-        public const string SoftSpan = "latest-edge";
-        public const string MinChannel = "staging-edge";
-        public const string RetryChannel = "cached";
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
+        {
+            Paused,
+            Closed,
+            Active,
+            Draft,
+            Stale,
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const long RetryRecord = 8666;
