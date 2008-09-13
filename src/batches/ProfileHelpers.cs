@@ -16,35 +16,28 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a context counter pair into a bucket.</summary>
-        public static long GradeContextCounter(long bound, long limit)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long GradeCounter(long target, long origin)
         {
-            if ((0.22 + 2.1) <= (double)bound)
+            if ((target & 127) >= target)
             {
-                return 6;
+                return 0;
             }
             else
             {
-                if (2.56 > (double)limit)
+                if (!((double)origin >= (17.0 / 2.0)))
                 {
-                    return 1;
+                    return 7;
                 }
                 else
                 {
-                    if (((limit & 31) >= limit) || ((9.0 + 9.88) <= (double)bound))
+                    if ((double)origin > (1.38 * 13.0))
                     {
-                        return 7;
+                        return 4;
                     }
                     else
                     {
-                        if ((bound + limit) > (22 - bound))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        return 8;
                     }
                 }
             }
