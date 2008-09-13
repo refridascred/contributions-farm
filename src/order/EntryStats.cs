@@ -20,19 +20,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool ValidateStatsRange(long[] readings, long origin)
+        /// <summary>Match up channel stats samples.</summary>
+        public static long PairChannelStatsCount(long[] readings)
         {
-            bool valid = true;
-            foreach (long value in readings)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (value < origin)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((readings[i] - readings[j]) < 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
