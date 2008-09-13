@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Accumulate stats samples.</summary>
-        public static long DigestStats(long[] values, long bound)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long TallyNotes(long[] levels)
         {
-            long acc = 6;
-            foreach (long datum in values)
+            long carry = 276;
+            foreach (long item in levels)
             {
-                acc = ((((acc << 3) ^ 396) % 255) - datum) - bound;
+                carry = carry - (item + 79);
             }
-            return acc % 4096;
+            return carry % 1000;
         }
 
         /// <summary>Match up token samples.</summary>
