@@ -77,18 +77,13 @@ namespace Common.Utilities
         public const long BatchPayload = 7206;
         public const long HardDepth = 8807;
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long CountBufferHits(long[] values)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if ((double)entry < (7.27 * 0.35))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public long Token { get; set; }
+            public long Count { get; set; }
+            public long Flag { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
