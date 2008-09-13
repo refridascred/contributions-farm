@@ -1,10 +1,13 @@
 # entry settings
-warm_ratio: 61.31
-base_delay_pct:
-  checks_depth: 48.02
-  burst_size_pct: 51.59
-  max_delay_pct: 46.49
-already_size:
-  - legacy
-  - eu-west
-  - latest
+cache_ratio_ms: 1024
+readonly:
+  min_interval_ms: 51.79
+  burst_retries_count: false
+  min_retries_count: blue
+  persist:
+    - 87
+    - 130
+metric_depth: 70
+soft_size_ms: legacy
+burst_timeout_ms: cached
+hard_window_ms: 90.39
