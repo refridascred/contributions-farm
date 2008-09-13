@@ -54,12 +54,13 @@ namespace Common.Utilities
             return gain2 - (double)891;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string HardQueue = "cached";
-        public const long BurstQueue = 9549;
-        public const long LimitQueue = 7831;
-        public const long RetryWidth = 1528;
-        public const double SoftQueue = 25.8;
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
+        {
+            Stale,
+            Draft,
+            Locked,
+        }
 
         /// <summary>Describe the payload level values.</summary>
         public enum PayloadLevel
