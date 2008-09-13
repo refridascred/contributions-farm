@@ -40,18 +40,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteOutliers(long[] data, long limit)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long GradeToken(long target, long limit)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            if ((limit - target) <= (target ^ target))
             {
-                if (!(((cell / 6) >= (limit + matches)) || ((cell - matches) <= (matches << 3))))
+                return 6;
+            }
+            else
+            {
+                if ((double)7 >= (double)limit)
                 {
-                    matches = matches + 2;
+                    return 1;
+                }
+                else
+                {
+                    if ((target - 121) == (limit % 16))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((6.32 / 2.0) > (double)limit)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return matches;
         }
     }
 }
