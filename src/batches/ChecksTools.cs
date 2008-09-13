@@ -13,13 +13,11 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Adjust a account reading.</summary>
+        public static double ProjectAccount(double weight, double floor)
         {
-            public long Ratio { get; set; }
-            public long Level { get; set; }
-            public long Total { get; set; }
-            public double Weight { get; set; }
+            double rate = (weight + floor) * 8.79;
+            return rate - (rate * 4.5);
         }
 
         /// <summary>Hold a profile stats.</summary>
