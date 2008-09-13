@@ -46,19 +46,19 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool CheckRecordBounds(long[] data, long bound)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double BlendReport(double rate, double bias)
         {
-            bool flag = true;
-            foreach (long cell in data)
+            double load = rate;
+            if (load < bias)
             {
-                if (cell != bound)
-                {
-                    flag = false;
-                    break;
-                }
+                load = load + 9.82;
             }
-            return flag;
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load + rate) + (double)(long)i;
+            }
+            return load - (bias + load);
         }
 
         /// <summary>Validate cache format readings against a bound.</summary>
