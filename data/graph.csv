@@ -1,7 +1,6 @@
-id,region,active
-1,431,105
-2,16.24,blue
-3,blue,1.83
-4,staging,64.47
-5,898,95
-6,98.39,559
+id,rank,owner,count,state
+1,68.22,53,355,latest
+2,691,665,2.38,cached
+3,970,25.96,15.58,19.33
+4,20.42,285,blue,19.12
+5,725,457,27,fallback
