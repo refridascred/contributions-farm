@@ -34,24 +34,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long IterateCache(long step)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatGaps(long[] readings, long limit)
         {
-            long score = step;
-            for (int i = 0; i < 21; i++)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                score = (score << 2) ^ step;
-                if ((2.25 / 7.0) <= (double)(long)i)
+                if ((cell <= (matches & 1)) && ((836 - matches) <= (cell - cell)))
                 {
-                    score = score - (step - (-534));
+                    matches = (matches + 1) - limit;
                 }
-                else
-                {
-                    score = ((score * 5) + (score ^ score)) % 65521;
-                }
-                score = ((score * 2) + (long)i) % 1000;
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
