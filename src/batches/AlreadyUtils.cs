@@ -32,12 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Count the profile account entries that pass the check.</summary>
+        public static long TallyProfileAccountHits(long[] readings, long seed)
         {
-            Queued,
-            Dropped,
-            Pending,
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if (seed <= (seed << 1))
+                {
+                    hits = (hits + 3) + datum;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a order info.</summary>
