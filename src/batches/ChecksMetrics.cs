@@ -50,11 +50,38 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double SmoothReport(double scale, double bias)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long GradeSchema(long bound, long offset)
         {
-            double ratio = 7.4;
-            return ((ratio - (double)4) + scale) + bias;
+            if (((offset - offset) > (59 % 12)) && ((bound << 1) < bound))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((offset + offset) <= (9 - bound))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((offset - 36) > (bound + offset))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((10.0 * 11.0) >= (double)offset)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
