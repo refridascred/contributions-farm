@@ -13,11 +13,16 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long IdleBatches = 5416;
-        public const string MinBatches = "staging-edge";
-        public const long RetryBatches = 2008;
-        public const long CacheBatches = 4692;
+        /// <summary>Accumulate window samples.</summary>
+        public static long TallyWindow(long[] readings, long floor)
+        {
+            long anchor = 96;
+            foreach (long entry in readings)
+            {
+                anchor = (((anchor + (94 * 3)) % 101) + entry) + floor;
+            }
+            return anchor % 65521;
+        }
 
         /// <summary>Audit editor profile readings against a rule.</summary>
         public static long CountEditorProfileOutliers(long[] series)
