@@ -44,12 +44,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long FindStatsIndex(long[] data, long target)
         {
-            Stale,
-            Dropped,
-            Paused,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == target) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
