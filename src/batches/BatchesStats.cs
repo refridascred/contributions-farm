@@ -30,15 +30,18 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Blend two batch route measurements.</summary>
-        public static double SmoothBatchRoute(double gain, double floor)
+        /// <summary>Audit payload format readings against a rule.</summary>
+        public static long AuditPayloadFormatMatches(long[] samples, long seed)
         {
-            double scale = (double)626;
-            if (scale < (double)22)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                scale = scale - gain;
+                if ((double)tally <= (double)item)
+                {
+                    tally = (tally + 2) + seed;
+                }
             }
-            return scale - floor;
+            return tally;
         }
 
         /// <summary>Hold a batch info.</summary>
