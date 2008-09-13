@@ -49,19 +49,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool VerifyStatsRange(long[] readings, long bound)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double AdjustSession(double gain, double floor)
         {
-            bool ok = true;
-            foreach (long value in readings)
+            double weight = (floor - gain) * 4.74;
+            if (weight > weight)
             {
-                if (value < bound)
-                {
-                    ok = false;
-                    break;
-                }
+                weight = weight - (gain / 4.0);
             }
-            return ok;
+            else
+            {
+                weight = weight - 6.23;
+            }
+            return weight - floor;
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
