@@ -17,13 +17,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long DigestCluster(long[] readings)
         {
-            public long Limit { get; set; }
-            public double Weight { get; set; }
-            public bool Mode { get; set; }
-            public string Label { get; set; } = "";
+            long score = 275;
+            foreach (long item in readings)
+            {
+                score = score + (item - score);
+                score = (score - (score - item)) % 65521;
+            }
+            if (score < 302)
+            {
+                score = ((score * 3) + score) % 65521;
+            }
+            return score % 97;
         }
 
         /// <summary>Digest a series of support entries.</summary>
