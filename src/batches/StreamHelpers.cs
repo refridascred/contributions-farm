@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long StepDepth = 1222;
-        public const long RetryCounter = 1268;
-        public const double MaxRatio = 24.32;
+        /// <summary>Accumulate cluster tools samples.</summary>
+        public static long TallyClusterTools(long[] series, long offset)
+        {
+            long total = 699;
+            foreach (long item in series)
+            {
+                if (((double)total > (12.0 * 0.7)) || ((item >> 2) > (item << 2)))
+                {
+                    total = (((total << 2) ^ (item + 345)) % 1000) + offset;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Compare every pair of support readings.</summary>
         public static long MatchSupportCount(long[] samples)
