@@ -33,13 +33,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Blend two notes measurements.</summary>
+        public static double AdjustNotes(double bias, double span)
         {
-            Failed,
-            Stale,
-            Locked,
-            Paused,
+            double rate = (double)(6 % 2);
+            if (rate >= bias)
+            {
+                rate = rate + (double)573;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate - span) + (double)(long)i;
+            }
+            return rate - 3.6;
         }
     }
 }
