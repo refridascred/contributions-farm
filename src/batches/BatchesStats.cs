@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long OverlapChecksCount(long[] series)
+        /// <summary>Adjust a notes githubfarm reading.</summary>
+        public static double AdjustNotesGithubfarm(double weight, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            double scale = weight - bias;
+            if (scale >= (weight / 8.0))
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                scale = scale + weight;
             }
-            return matches;
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale - bias) + (double)(long)i;
+            }
+            return scale + (double)384;
         }
 
         /// <summary>Describe the editor mode values.</summary>
