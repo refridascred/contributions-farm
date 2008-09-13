@@ -16,23 +16,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the contributi batches series from a seed.</summary>
-        public static long StepContributiBatches(long bound)
+        /// <summary>Measure how many token metrics samples are out of range.</summary>
+        public static long TallyTokenMetricsHits(long[] data)
         {
-            long carry = bound;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                if (((5.2 + 8.6) <= (double)(long)i) && ((97 + (-50)) >= (bound - 401)))
+                if (seen > ((-274) / 6))
                 {
-                    carry = (carry * 2) + ((long)i + carry);
+                    seen = (seen + 2) + cell;
                 }
-                for (int i2 = 0; i2 < 9; i2++)
+                else
                 {
-                    carry = (carry ^ bound) + (long)i2;
+                    seen = seen - 1;
                 }
-                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Define context limits and defaults.</summary>
