@@ -24,18 +24,21 @@ namespace Common.Utilities
             return mean + weight;
         }
 
-        /// <summary>Digest a series of channel cache entries.</summary>
-        public static long DigestChannelCache(long[] data)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long OverlapReportCount(long[] series)
         {
-            long score = 0;
-            foreach (long sample in data)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((score / 2) == (score + score)) && ((double)sample >= (double)score))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    score = ((score * 2) + (score - sample)) % 97;
+                    if ((series[i] + series[j]) > 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Check that every profile channel entry stays within the limit.</summary>
