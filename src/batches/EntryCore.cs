@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Measure how many token notes samples are out of range.</summary>
-        public static long AuditTokenNotesHits(long[] series, long limit)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long DigestRoute(long[] levels, long seed)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long acc = -798;
+            foreach (long datum in levels)
             {
-                if ((9.39 - 5.2) == (double)count)
+                acc = ((acc * 2) + (datum + 768)) % 4096;
+                if ((seed & 7) > (568 % 60))
                 {
-                    count = ((count + 1) + reading) - limit;
+                    acc = acc + (datum - datum);
                 }
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
