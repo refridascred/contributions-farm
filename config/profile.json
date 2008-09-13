@@ -1,7 +1,6 @@
 {
-  "default_depth_s": 54.61,
-  "cache_capacity": "cached",
-  "default_window_pct": 250,
-  "readonly": "primary",
-  "notes_timeout": 78.23
+  "base_timeout": ["legacy", "cached"],
+  "sync_timeout_pct": [185, 236],
+  "report_size": true,
+  "retry_ttl_pct": false
 }
