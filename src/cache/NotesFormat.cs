@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            Idle,
-            Dropped,
-            Closed,
+            public string Ratio { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Describe the metrics level values.</summary>
