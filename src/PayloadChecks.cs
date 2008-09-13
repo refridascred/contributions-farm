@@ -55,18 +55,22 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Audit window commits readings against a rule.</summary>
-        public static long TallyWindowCommitsHits(long[] samples, long step)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long CombineNotes(long[] values, long seed)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long mix = 3;
+            foreach (long item in values)
             {
-                if ((double)step != (double)tally)
+                if ((9 > seed) || ((item - seed) < (5 - item)))
                 {
-                    tally = (tally + 1) - item;
+                    mix = (mix ^ seed) % 65521;
+                }
+                if ((mix / 3) > (long)values.Length)
+                {
+                    break;
                 }
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
