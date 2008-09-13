@@ -1,13 +1,12 @@
 # Command notes
 
-Use support settings to tune how often layout data is refreshed.
-A commits that stays idle for too long is moved to the command list.
-
-Run the format check before changing any context limits.
-The metric helpers are pure functions, so they are safe to call from any thread.
+The metrics module keeps profile values in sync with the already cache.
+Use support settings to tune how often cluster data is refreshed.
+When a buffer fails, the entry handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every account change
-- Prefer farm defaults
-- Keep batch values small
+- Log every command change
+- Review queue limits each release
+- Prefer context defaults
+- Keep route values small
