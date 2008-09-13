@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            Locked,
-            Draft,
-            New,
+            public string Ratio { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Define batches limits and defaults.</summary>
