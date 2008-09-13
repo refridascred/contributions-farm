@@ -1,6 +1,8 @@
 {
-  "burst_delay_s": "staging",
-  "tools_retries": ["open", "standard", "blue", "green"],
-  "compress": 1.96,
-  "poll_depth_count": 100
+  "burst_timeout_count": 76.07,
+  "route_window": "legacy",
+  "stats_retries": ["blue", "legacy", "eu-west"],
+  "sync_timeout": [421, 380, 319],
+  "batch_timeout_count": 75.86,
+  "order_depth": "stable"
 }
