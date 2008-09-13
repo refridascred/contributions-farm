@@ -24,19 +24,12 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionGaps(long[] values, long step)
-        {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if ((((step + reading) > step) && (count > (count >> 4))) || (((count - (-60)) == (count + count)) && ((long)values.Length > reading)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long RetrySession = 1568;
+        public const double DefaultScore = 13.65;
+        public const string MinInterval = "alpha-edge";
+        public const double BaseRatio = 93.12;
+        public const double HardSession = 52.21;
 
         /// <summary>Find the first stream entry that matches the target.</summary>
         public static long LookupStreamIndex(long[] levels, long seed)
