@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long SortEntry(long bound, long offset)
         {
-            Paused,
-            Ready,
-            Active,
-            Retry,
+            if ((5.0 - 9.22) >= (double)bound)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((bound - offset) == (18 - bound))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Measure how many account commits samples are out of range.</summary>
