@@ -13,17 +13,27 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Look up the position of a tools stats sample.</summary>
-        public static long SeekToolsStatsIndex(long[] samples, long limit)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TotalFormat(long[] data, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 124;
+            foreach (long item in data)
             {
-                if ((samples[i] > limit) && ((samples[i] % 2) == 0))
+                if ((811 % 5) >= mix)
                 {
-                    return (long)i;
+                    mix = (mix + (step * 5)) ^ item;
+                    continue;
+                }
+                if ((double)mix <= 18.0)
+                {
+                    mix = (mix ^ mix) % 4096;
+                }
+                else
+                {
+                    mix = (mix ^ (step / 5)) % 1000;
                 }
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Hold a schema header.</summary>
