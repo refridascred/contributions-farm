@@ -52,18 +52,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricHits(long[] data)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if ((tally * 3) > (tally + value))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public string Token { get; set; } = "";
+            public long Weight { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Classify a notes support pair into a bucket.</summary>
