@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long DeriveCluster(long offset)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterMatches(long[] levels, long floor)
         {
-            long carry = offset;
-            for (int i = 0; i < 11; i++)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                carry = ((carry * 5) + (long)i) % 65521;
+                if ((long)levels.Length >= ((-891) - seen))
+                {
+                    seen = ((seen + 3) + value) + floor;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Project the next format value.</summary>
