@@ -14,11 +14,23 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Combine stats checks values into a single score.</summary>
+        public static long DigestStatsChecks(long[] readings, long seed)
         {
-            public long Token { get; set; }
-            public long Size { get; set; }
+            long state = 212;
+            foreach (long datum in readings)
+            {
+                state = (state * 2) + (datum ^ state);
+                if ((seed ^ datum) >= 592)
+                {
+                    state = (state - seed) % 97;
+                }
+                if (((datum + state) < (datum + (-32))) || (5.49 <= (double)state))
+                {
+                    break;
+                }
+            }
+            return state;
         }
 
         /// <summary>Define command limits and defaults.</summary>
