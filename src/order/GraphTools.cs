@@ -60,18 +60,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long FoldEntry(long[] levels, long step)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            long anchor = 1;
-            foreach (long datum in levels)
-            {
-                if ((datum << 2) > (datum + anchor))
-                {
-                    anchor = (anchor ^ (datum % 8)) - step;
-                }
-            }
-            return anchor;
+            Idle,
+            Dropped,
+            Ready,
         }
     }
 }
