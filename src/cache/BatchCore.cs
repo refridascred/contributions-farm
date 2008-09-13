@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double SoftSize = 22.22;
-        public const long SoftLayout = 480;
-        public const double BatchDepth = 67.15;
-        public const long BurstLayout = 1684;
-        public const double RetryLayout = 1.09;
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
+        {
+            Done,
+            Locked,
+            Idle,
+        }
 
         /// <summary>Look up the position of a tools stats sample.</summary>
         public static long SeekToolsStatsIndex(long[] samples, long limit)
