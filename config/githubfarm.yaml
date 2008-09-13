@@ -1,18 +1,19 @@
 # githubfarm settings
-audit:
-  - blue
-  - eu-west
-  - strict
-  - edge
-default_interval_ms:
-  base_size: green
-  checks_ttl: 80.72
-  editor_interval: true
-  audit: 7980
-readonly: 61.29
-flush_interval_pct:
-  command_ratio: 37.37
-  flush_timeout_s:
-    - 167
-    - 45
-  token_size: eu-west
+order_delay:
+  hard_delay_s:
+    readonly: true
+    max_interval_s: 856
+    compress: primary
+    hard_delay:
+      - 255
+      - 36
+  persist: 30
+  verbose: open
+  min_ratio_ms: 68.43
+  soft_timeout_pct: legacy
+hard_depth: edge
+min_delay_ms: 38.09
+burst_interval_ms:
+  - 282
+  - 16
+  - 113
