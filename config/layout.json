@@ -1,7 +1,5 @@
 {
-  "soft_ttl_ms": 86,
-  "burst_timeout_ms": 54.56,
-  "hard_retries_count": 94.85,
-  "contributi_depth": 28,
-  "readonly": true
+  "audit": "green",
+  "farm_ttl": 60,
+  "soft_limit_count": "local"
 }
