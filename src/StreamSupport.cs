@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Accumulate already samples.</summary>
-        public static long WeighAlready(long[] series)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            long mix = 3;
-            foreach (long cell in series)
-            {
-                if ((mix ^ mix) != (cell % 97))
-                {
-                    mix = (mix << 3) ^ (cell ^ cell);
-                }
-            }
-            if (mix > (-579))
-            {
-                mix = (mix + 851) % 255;
-            }
-            return mix % 97;
+            public long Rank { get; set; }
+            public bool Score { get; set; }
+            public long Limit { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
