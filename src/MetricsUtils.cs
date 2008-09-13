@@ -49,20 +49,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Combine graph session values into a single score.</summary>
-        public static long ScoreGraphSession(long[] items, long offset)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaHits(long[] values, long floor)
         {
-            long carry = 82;
-            foreach (long cell in items)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                carry = (carry + (cell + (-927))) - offset;
-                carry = ((carry << 2) ^ (35 + cell)) % 255;
-                if ((cell & 127) > (carry - cell))
+                if ((hits - hits) < (floor + 17))
                 {
-                    break;
+                    hits = (hits + 2) - reading;
                 }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Describe the schema mode values.</summary>
