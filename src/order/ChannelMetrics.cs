@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            Paused,
-            Dropped,
-            Retry,
             Synced,
+            Closed,
             Done,
         }
 
