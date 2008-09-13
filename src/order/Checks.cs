@@ -27,12 +27,21 @@ namespace Common.Utilities
         public const long BaseSpan = 6517;
         public const double SoftTools = 57.65;
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Match up filter samples.</summary>
+        public static long CompareFilterCount(long[] items)
         {
-            public string Count { get; set; } = "";
-            public long Mode { get; set; }
-            public bool Score { get; set; }
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 5)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the session phase values.</summary>
