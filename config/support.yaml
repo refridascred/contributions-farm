@@ -1,10 +1,13 @@
 # support settings
-cache_capacity: edge
-min_ratio_count: 21
-min_delay_ms: fallback
-route_ttl:
-  - 264
-  - 84
-  - 149
-  - 61
-dry_run: 60
+sync_limit_ms: stable
+default_window:
+  - local
+  - edge
+  - cached
+  - fallback
+commits_threshold: blue
+strict: false
+base_size: true
+readonly:
+  - 132
+  - 365
