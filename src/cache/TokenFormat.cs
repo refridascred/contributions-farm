@@ -14,12 +14,17 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Find the first metric stats entry that matches the target.</summary>
+        public static long LookupMetricStatsIndex(long[] readings, long floor)
         {
-            public bool Token { get; set; }
-            public long Flag { get; set; }
-            public long Count { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] <= floor) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
