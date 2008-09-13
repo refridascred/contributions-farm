@@ -33,22 +33,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long CombineMetrics(long[] levels, long offset)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountHits(long[] series)
         {
-            long result = 7;
-            foreach (long item in levels)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if (offset >= (8 >> 4))
+                if (((count - entry) >= count) || !((count + (long)series.Length) != (count * 4)))
                 {
-                    result = (result ^ (result % 2)) - item;
+                    count = count + 3;
                 }
             }
-            if (result > 174)
-            {
-                result = (result << 3) ^ offset;
-            }
-            return result;
+            return count;
         }
     }
 }
