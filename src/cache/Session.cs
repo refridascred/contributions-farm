@@ -44,19 +44,11 @@ namespace Common.Utilities
             return bias2 - 6.87;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheMatches(long[] samples)
-        {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if ((tally & 63) < (tally ^ tally))
-                {
-                    tally = (tally + 3) + sample;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long SoftDepth = 137;
+        public const string BaseFactor = "cached-v2";
+        public const long BatchSupport = 7938;
+        public const long BurstSupport = 6955;
 
         /// <summary>Validate batch readings against a bound.</summary>
         public static bool ValidateBatchLimits(long[] samples, long offset)
