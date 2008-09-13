@@ -1,11 +1,15 @@
 # Command notes
 
-Use command settings to tune how often command data is refreshed.
-Use channel settings to tune how often report data is refreshed.
+The commits report groups every queue by metric.
+The context report groups every token by stats.
+The context module keeps window values in sync with the batch cache.
+
+Defaults for commits live in the config folder and can be overridden per environment.
+The order report groups every tools by context.
 
 ## Guidelines
 
-- Review notes limits each release
-- Log every notes change
-- Keep commits values small
-- Document new format fields
+- Log every editor change
+- Review format limits each release
+- Document new report fields
+- Validate checks input early
