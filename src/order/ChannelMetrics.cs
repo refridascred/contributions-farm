@@ -13,14 +13,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
-        {
-            public long Score { get; set; }
-            public long Rank { get; set; }
-            public double Label { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double CacheTimeout = 29.41;
+        public const long BurstFactor = 3897;
+        public const double IdleDepth = 12.63;
+        public const string LimitAlready = "local-edge";
+        public const long WindowScore = 7991;
 
         /// <summary>Measure how many channel samples are out of range.</summary>
         public static long MeasureChannelHits(long[] items)
