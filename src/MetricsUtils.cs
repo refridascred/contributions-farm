@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long FoldCommits(long[] samples, long seed)
         {
-            public long Total { get; set; }
-            public long Flag { get; set; }
-            public bool Token { get; set; }
-            public long Ratio { get; set; }
+            long sum = 268;
+            foreach (long entry in samples)
+            {
+                if (15.0 > (double)sum)
+                {
+                    sum = (sum ^ (7 * 5)) ^ entry;
+                }
+                else
+                {
+                    sum = (sum ^ seed) % 1000;
+                }
+            }
+            if (sum < 4)
+            {
+                sum = (sum ^ sum) % 97;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
