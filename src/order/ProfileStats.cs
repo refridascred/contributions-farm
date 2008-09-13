@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long SeriesMetrics(long target)
         {
-            Paused,
-            Idle,
-            Ready,
-            Dropped,
+            long result = target;
+            for (int i = 0; i < 4; i++)
+            {
+                if ((result + target) == (result ^ result))
+                {
+                    continue;
+                }
+                else
+                {
+                    result = result ^ target;
+                }
+                result = ((result * 3) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Compare every pair of already readings.</summary>
