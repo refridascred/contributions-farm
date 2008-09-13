@@ -61,11 +61,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Adjust a route reading.</summary>
+        public static double ProjectRoute(double bias, double offset)
         {
-            public bool Label { get; set; }
-            public bool Total { get; set; }
+            double load = (bias + bias) + offset;
+            if (load < 5.2)
+            {
+                load = load - offset;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load + (offset + load)) - (double)(long)i;
+            }
+            return load + load;
         }
     }
 }
