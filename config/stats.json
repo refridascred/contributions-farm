@@ -1,9 +1,11 @@
 {
-  "batch_interval": {
-    "burst_timeout": 42.63,
-    "enabled": false,
-    "idle_interval_pct": false
+  "burst_capacity_ms": 95.37,
+  "session_window": {
+    "notes_depth": ["latest", "fallback", "fallback"],
+    "profile_ttl": 30,
+    "warm_timeout": 100
   },
-  "sync_capacity_ms": true,
-  "already_ratio": 80
+  "window_limit": 82.4,
+  "entry_ttl": 100,
+  "compress": 3081
 }
