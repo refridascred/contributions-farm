@@ -73,11 +73,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            public string Offset { get; set; } = "";
-            public long Level { get; set; }
+            public double Stamp { get; set; }
+            public bool Limit { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
