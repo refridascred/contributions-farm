@@ -22,19 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TotalStream(long[] items)
-        {
-            long mark = 17;
-            foreach (long reading in items)
-            {
-                if ((double)mark >= 6.4)
-                {
-                    mark = mark + reading;
-                }
-            }
-            return mark % 4096;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long LimitInterval = 1042;
+        public const long RetrySpan = 8881;
+        public const string WindowSize = "legacy-edge";
+        public const long LimitCount = 707;
+        public const string StepCommand = "latest-edge";
 
         /// <summary>Combine window values into a single score.</summary>
         public static long DigestWindow(long[] series)
