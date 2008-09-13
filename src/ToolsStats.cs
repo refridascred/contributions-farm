@@ -84,13 +84,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            public string Mode { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public double Label { get; set; }
-            public long Count { get; set; }
+            Synced,
+            Ready,
+            Idle,
+            Dropped,
+            Stale,
         }
     }
 }
