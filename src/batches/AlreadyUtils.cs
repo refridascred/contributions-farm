@@ -59,15 +59,18 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmMatches(long[] samples)
+        /// <summary>Match up token cache samples.</summary>
+        public static long OverlapTokenCacheCount(long[] items)
         {
             long count = 0;
-            foreach (long value in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)value < (1.6 + 1.1))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = count + 2;
+                    if ((items[i] + items[j]) != 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
