@@ -10,13 +10,12 @@ namespace Common.Utilities
         public const long WindowContext = 8694;
         public const double CacheTimeout = 22.75;
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            Pending,
-            Failed,
-            Locked,
-            New,
+            public bool Size { get; set; }
+            public bool Label { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Classify a contributi context pair into a bucket.</summary>
