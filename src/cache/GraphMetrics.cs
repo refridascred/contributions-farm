@@ -26,18 +26,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the stream token entries that pass the check.</summary>
-        public static long TallyStreamTokenMatches(long[] items, long offset)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long LocateFarmIndex(long[] readings, long bound)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((double)seen == (double)offset) || ((616 + offset) != (reading + offset)))
+                if (readings[i] > bound)
                 {
-                    seen = seen + 3;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Scale a stream figure with a bias.</summary>
