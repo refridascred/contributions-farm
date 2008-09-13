@@ -23,18 +23,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphOutliers(long[] items, long offset)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long LocateContributiIndex(long[] series, long limit)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!(((hits * 4) >= offset) || ((entry - offset) <= (entry + entry))))
+                if ((series[i] == limit) && ((series[i] % 2) == 0))
                 {
-                    hits = hits + 2;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
