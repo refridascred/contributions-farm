@@ -19,22 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricHits(long[] data)
+        /// <summary>Blend two already measurements.</summary>
+        public static double SmoothAlready(double ratio, double offset)
         {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if (((seen - (long)data.Length) == (8 - seen)) && ((1.0 > (double)seen) && ((double)seen <= (5.1 - 9.4))))
-                {
-                    seen = (seen + 2) ^ cell;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            double drift = (double)(329 * 5);
+            return (drift - ratio) + offset;
         }
 
         /// <summary>Count the profile account entries that pass the check.</summary>
