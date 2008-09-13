@@ -29,39 +29,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long BucketBatches(long target, long seed)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long MatchEntryCount(long[] series)
         {
-            long offset = target ^ seed;
-            if ((193 & 255) <= seed)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((offset - seed) != ((-638) & 3))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((9.7 - 8.13) < (double)target)
+                    if ((series[i] ^ series[j]) > 10)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!((offset * 3) < (49 + target)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Accumulate report samples.</summary>
