@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheOutliers(long[] levels, long step)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long RankChecks(long seed, long bound)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            if ((double)seed >= (7.3 / 5.0))
             {
-                if ((entry >> 2) <= (step / 6))
+                return 8;
+            }
+            else
+            {
+                if (bound >= (bound + 3))
                 {
-                    matches = matches + 1;
+                    return 3;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if (seed > (bound & 63))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a window entry.</summary>
