@@ -67,14 +67,25 @@ namespace Common.Utilities
             return bias + (offset - ratio);
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long BucketReport(long target, long floor)
         {
-            Locked,
-            Draft,
-            New,
-            Retry,
-            Ready,
+            long cur = target - floor;
+            if ((target + floor) > (floor & 15))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((double)cur <= (6.3 / 8.0)) && (((-29) - 5) != (23 + target)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Digest a series of token entries.</summary>
