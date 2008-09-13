@@ -51,12 +51,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double RetryGithubfarm = 11.85;
-        public const double BurstCount = 20.76;
-        public const long RetryLevel = 6638;
-        public const long MinBudget = 6877;
-        public const long MinGithubfarm = 4887;
+        /// <summary>Count the tools filter entries that pass the check.</summary>
+        public static long AuditToolsFilterMatches(long[] levels, long origin)
+        {
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if (((hits ^ cell) >= hits) || (origin >= (hits >> 2)))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
         public static long MeasureClusterMatches(long[] levels, long floor)
