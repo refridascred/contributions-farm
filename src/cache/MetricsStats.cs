@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Project the next session entry value.</summary>
-        public static double ProjectSessionEntry(double rate, double bias)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            double drift = (double)(6 + 1);
-            if (drift < (rate + drift))
-            {
-                drift = (drift + (double)33) - bias;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift - drift) - (double)(long)i;
-            }
-            return drift - (drift * 1.0);
+            public bool Count { get; set; }
+            public long Offset { get; set; }
+            public bool Size { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Hold a graph record.</summary>
