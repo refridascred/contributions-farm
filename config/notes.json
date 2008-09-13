@@ -1,8 +1,8 @@
 {
-  "soft_ttl": false,
-  "batch_depth": 8.59,
-  "burst_window": "fallback",
-  "readonly": "staging",
-  "max_delay_ms": 71,
-  "hard_size": [437, 322]
+  "cache_limit": 93.77,
+  "compress": "strict",
+  "already_window": 42,
+  "warm_size_s": 1159,
+  "order_limit": true,
+  "retry_depth_pct": [40, 336, 472]
 }
