@@ -48,25 +48,11 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long SortAlready(long step, long origin)
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            long edge = step + origin;
-            if ((step + origin) == (841 & 63))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((edge & 15) > (step + step))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public long Ratio { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
