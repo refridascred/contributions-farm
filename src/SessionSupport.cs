@@ -31,13 +31,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            public bool Limit { get; set; }
-            public long Ratio { get; set; }
-            public long Size { get; set; }
-            public bool Label { get; set; }
+            Closed,
+            Dropped,
+            Paused,
         }
     }
 }
