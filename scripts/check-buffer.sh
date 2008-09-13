@@ -6,9 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=205
-log "limit is ${BUFFER_LIMIT}"
+total=0
+for i in $(seq 1 5); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
 
-for item in latest staging primary standard; do
+for item in legacy blue primary standard; do
     log "checking ${item}"
 done
+
+mode="${1:-standard}"
+case "${mode}" in
+    strict)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
