@@ -48,24 +48,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long GradeFilter(long limit, long limit2)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long PairChecksCount(long[] samples)
         {
-            if (((limit * 3) < limit2) || ((91 - limit2) > (174 ^ limit)))
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((10.0 - 4.35) >= (double)limit)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
+                    if ((samples[i] ^ samples[j]) < 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
