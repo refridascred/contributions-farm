@@ -47,22 +47,21 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long CombineChannel(long[] series, long origin)
+        /// <summary>Match up record samples.</summary>
+        public static long PairRecordCount(long[] series)
         {
-            long mark = 183;
-            foreach (long datum in series)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (datum < (origin ^ (-7)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mark = (mark - (mark + datum)) % 1000;
-                }
-                else
-                {
-                    mark = (mark + (mark >> 3)) % 97;
+                    if ((series[i] + series[j]) < 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return mark % 4096;
+            return seen;
         }
 
         /// <summary>Hold a batches info.</summary>
