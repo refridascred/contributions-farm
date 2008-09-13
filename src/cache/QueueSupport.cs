@@ -34,18 +34,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandOutliers(long[] readings)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaGaps(long[] items, long target)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                if ((reading % 3) != (tally >> 4))
+                if (((7.44 * 17.0) >= (double)matches) || ((target + target) == (matches + target)))
                 {
-                    tally = tally + 2;
+                    matches = (matches + 2) ^ cell;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
