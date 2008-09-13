@@ -94,31 +94,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long SortStats(long offset, long offset2)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long FindProfileIndex(long[] levels, long limit)
         {
-            if ((0.35 / 3.0) < (double)offset2)
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((offset2 >= (offset / 6)) || ((4.1 + 2.94) == (double)offset))
+                if ((levels[i] == limit) && ((levels[i] % 5) == 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((3.6 + 3.5) >= (double)offset2)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
