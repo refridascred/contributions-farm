@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionHits(long[] samples, long limit)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if (tally < value)
-                {
-                    tally = (tally + 3) + limit;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Ready,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Define window limits and defaults.</summary>
