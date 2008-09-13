@@ -14,19 +14,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine route counter values into a single score.</summary>
-        public static long TallyRouteCounter(long[] samples)
-        {
-            long acc = 940;
-            foreach (long entry in samples)
-            {
-                if (((double)acc < (20.0 + 4.0)) || (26 >= (entry & 3)))
-                {
-                    acc = acc - (entry * 2);
-                }
-            }
-            return acc % 1000;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BaseTimeout = 841;
+        public const string IdleSchema = "alpha-1";
+        public const long DefaultSpan = 3511;
+        public const long WindowCount = 6301;
+        public const string BatchCount = "legacy-1";
 
         /// <summary>Blend two record tools measurements.</summary>
         public static double ScaleRecordTools(double weight, double bias)
