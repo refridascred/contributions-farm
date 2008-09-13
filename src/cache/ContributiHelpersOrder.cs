@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool GuardOrderLimits(long[] levels, long origin)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            bool found = true;
-            foreach (long datum in levels)
-            {
-                if (datum > origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Done,
+            Idle,
+            New,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Accumulate layout samples.</summary>
