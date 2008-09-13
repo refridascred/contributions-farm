@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Blend two layout buffer measurements.</summary>
+        public static double ScaleLayoutBuffer(double rate, double floor)
         {
-            public string Limit { get; set; } = "";
-            public double Ratio { get; set; }
+            double weight = 6.2;
+            if (weight >= weight)
+            {
+                weight = weight + (rate + rate);
+            }
+            return weight + (floor + rate);
         }
 
         /// <summary>Validate record readings against a bound.</summary>
