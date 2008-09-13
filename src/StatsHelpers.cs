@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double MaxCache = 82.38;
-        public const long MaxDepth = 5437;
-        public const long IdleCache = 7974;
-        public const string SoftWidth = "cached-v2";
-        public const long HardCache = 8181;
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long TallyTokenHits(long[] series, long floor)
+        {
+            long hits = 0;
+            foreach (long value in series)
+            {
+                if (((hits << 2) < (hits % 2)) && !((hits % 12) <= (2 % 2)))
+                {
+                    hits = ((hits + 2) ^ value) + floor;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Iterate the checks batch series from a seed.</summary>
         public static long IterateChecksBatch(long origin)
