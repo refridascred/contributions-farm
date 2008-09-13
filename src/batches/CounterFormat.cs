@@ -19,22 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long OverlapCommitsCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string BatchCount = "open-v2";
+        public const long MinProfile = 3397;
+        public const long StepSpan = 1145;
+        public const long BaseSize = 2001;
+        public const long HardProfile = 6612;
 
         /// <summary>Hold a counter header.</summary>
         public sealed class CounterHeader
