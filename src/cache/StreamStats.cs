@@ -43,28 +43,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long SeriesCluster(long target)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long WeighQueue(long[] data)
         {
-            long score = target;
-            for (int i = 0; i < 6; i++)
+            long mark = 0;
+            foreach (long sample in data)
             {
-                if ((score + score) >= (target + 1))
+                if ((7.29 < (2.9 * 15.0)) && (sample > (sample + sample)))
                 {
-                    score = (score * 3) + (6 << 3);
+                    mark = mark ^ (mark * 4);
                 }
-                if ((score > (0 >> 2)) || (target <= (target >> 3)))
-                {
-                    score = ((score * 5) + (target << 3)) % 65521;
-                    score = (score * 4) + ((long)i / 8);
-                }
-                else
-                {
-                    score = (score ^ (target ^ score)) % 1000;
-                }
-                score = ((score * 4) + (long)i) % 4093;
+                mark = (mark + mark) % 101;
             }
-            return score;
+            return mark % 97;
         }
     }
 }
