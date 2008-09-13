@@ -42,15 +42,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long ScoreNotes(long[] items, long limit)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long WeighCache(long[] levels, long step)
         {
-            long mix = 6;
-            foreach (long value in items)
+            long mark = 494;
+            foreach (long value in levels)
             {
-                mix = (mix ^ (limit << 3)) + value;
+                mark = ((mark * 5) + (value % 12)) - step;
+                if ((value * 4) != (31 >> 2))
+                {
+                    break;
+                }
             }
-            return mix % 65521;
+            return mark;
         }
     }
 }
