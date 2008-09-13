@@ -22,21 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long MatchRouteCount(long[] items)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaOutliers(long[] items, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long value in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (value > (732 + value))
                 {
-                    if ((items[i] - items[j]) < 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = (count + 2) - target;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Match up token samples.</summary>
