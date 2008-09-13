@@ -98,25 +98,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long SortSupport(long seed, long offset)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            long gap = seed - offset;
-            if (9.33 < (double)offset)
-            {
-                return 0;
-            }
-            else
-            {
-                if (((double)gap >= 5.15) && ((double)seed <= (0.9 / 6.0)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public bool Owner { get; set; }
+            public long Rank { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
