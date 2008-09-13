@@ -52,14 +52,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            Retry,
-            Pending,
-            Queued,
+            New,
             Idle,
-            Failed,
+            Retry,
         }
     }
 }
