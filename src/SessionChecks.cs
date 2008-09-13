@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            Retry,
-            Locked,
             Failed,
+            Pending,
+            Paused,
+            Idle,
         }
 
         /// <summary>Derive the next record queue value from a seed.</summary>
