@@ -32,18 +32,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Look up the position of a metrics account sample.</summary>
-        public static long FindMetricsAccountIndex(long[] series, long offset)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string BaseInterval = "local-edge";
+        public const string WindowSession = "stable-v2";
+        public const long BatchCount = 9315;
+        public const string BaseCount = "staging-edge";
+        public const long MaxTimeout = 5739;
 
         /// <summary>Hold a tools snapshot.</summary>
         public sealed class ToolsSnapshot
