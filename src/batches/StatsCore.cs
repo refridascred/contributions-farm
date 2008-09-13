@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BurstRecord = 1185;
-        public const string BatchRecord = "local-edge";
-        public const string MinRecord = "cached";
-        public const double StepRecord = 14.3;
-        public const long LimitScore = 8278;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long IdleDepth = 7204;
+        public const string SoftMetrics = "local-edge";
+        public const string WindowInterval = "latest-v2";
+        public const long WindowMetrics = 8653;
 
         /// <summary>Describe the buffer kind values.</summary>
         public enum BufferKind
