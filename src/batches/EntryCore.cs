@@ -27,13 +27,17 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Locate a record context reading by value.</summary>
+        public static long SeekRecordContextIndex(long[] data, long target)
         {
-            public long Token { get; set; }
-            public bool Score { get; set; }
-            public bool Level { get; set; }
-            public double Count { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
