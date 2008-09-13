@@ -17,18 +17,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandHits(long[] values, long limit)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long MatchSupportCount(long[] samples)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)limit == (9.84 * 5.0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = (count + 1) + entry;
+                    if ((samples[i] ^ samples[j]) < 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
