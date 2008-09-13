@@ -36,22 +36,10 @@ namespace Common.Utilities
         public const double BatchInterval = 90.62;
         public const double RetrySize = 95.78;
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long PairRecordCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double StepInterval = 20.53;
+        public const long HardStats = 5059;
+        public const long DefaultRatio = 8318;
 
         /// <summary>Find the first cache entry that matches the target.</summary>
         public static long LookupCacheIndex(long[] data, long seed)
