@@ -24,15 +24,12 @@ namespace Common.Utilities
             return scale2 - scale;
         }
 
-        /// <summary>Project the next record order value.</summary>
-        public static double ProjectRecordOrder(double gain, double floor)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            double load = (double)(24 % 16);
-            if (load > (gain / 7.0))
-            {
-                load = (load + (7.9 / 2.0)) - floor;
-            }
-            return load - (double)746;
+            public long Total { get; set; }
+            public double Count { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
