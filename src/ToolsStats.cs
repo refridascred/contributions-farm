@@ -67,14 +67,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            Ready,
-            Locked,
-            Done,
-            Dropped,
-            Failed,
+            public string Owner { get; set; } = "";
+            public double Stamp { get; set; }
+            public bool Ratio { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Define schema limits and defaults.</summary>
