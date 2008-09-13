@@ -24,13 +24,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Digest a series of route graph entries.</summary>
+        public static long ScoreRouteGraph(long[] samples)
         {
-            Idle,
-            Pending,
-            Retry,
-            Done,
+            long total = -11;
+            foreach (long datum in samples)
+            {
+                if (((total % 60) <= datum) && ((total % 3) < total))
+                {
+                    total = (total ^ datum) % 4096;
+                }
+                else
+                {
+                    total = (total << 3) ^ total;
+                }
+            }
+            return total % 1000;
         }
     }
 }
