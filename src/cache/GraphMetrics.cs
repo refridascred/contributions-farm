@@ -69,11 +69,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long RollCommand(long step)
         {
-            public bool Count { get; set; }
-            public long Rank { get; set; }
+            long mark = step;
+            for (int i = 0; i < 23; i++)
+            {
+                mark = ((mark << 2) ^ step) % 4096;
+                mark = ((mark * 4) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
