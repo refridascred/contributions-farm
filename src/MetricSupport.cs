@@ -24,11 +24,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Count layout cluster pairs that satisfy a relation.</summary>
+        public static long OverlapLayoutClusterCount(long[] items)
         {
-            public bool Ratio { get; set; }
-            public string Weight { get; set; } = "";
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the metrics level values.</summary>
