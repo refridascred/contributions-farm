@@ -10,18 +10,11 @@ namespace Common.Utilities
         public const long BatchScore = 9831;
         public const long WindowScore = 96;
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelMatches(long[] items)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            long hits = 0;
-            foreach (long reading in items)
-            {
-                if (((double)reading == (8.0 * 19.0)) || ((double)reading < (20.0 * 0.8)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public double Region { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Rank stats input into a small class.</summary>
