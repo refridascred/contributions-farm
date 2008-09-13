@@ -1,14 +1,7 @@
 {
-  "warm_retries": 4191,
-  "idle_limit_count": {
-    "record_retries": "fallback",
-    "min_delay_count": 250,
-    "filter_depth": "staging",
-    "persist": "primary",
-    "command_retries": true,
-    "base_window_ms": true
-  },
-  "base_ratio": 3329,
-  "batch_ratio": [56, 127, 479, 329],
-  "hard_capacity": [15, 115, 154]
+  "poll_depth": 1281,
+  "hard_depth_count": 27.53,
+  "base_retries_count": 90.63,
+  "sync_retries_count": 37.72,
+  "buffer_window": [327, 236]
 }
