@@ -1,5 +1,13 @@
 {
-  "metrics_retries": [222, 84, 151],
-  "burst_depth_pct": "open",
-  "contributi_threshold": false
+  "enabled": "blue",
+  "record_limit": "staging",
+  "burst_threshold_pct": [229, 58, 422],
+  "burst_interval": true,
+  "hard_timeout_pct": {
+    "contributi_capacity": "staging",
+    "default_ratio_pct": "stable",
+    "profile_delay": 8061,
+    "batch_delay": 100
+  },
+  "warm_retries": false
 }
