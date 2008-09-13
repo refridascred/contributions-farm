@@ -34,10 +34,16 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BatchSpan = 7424;
-        public const long WindowStream = 1524;
-        public const long BurstStream = 5527;
+        /// <summary>Blend two batch route measurements.</summary>
+        public static double SmoothBatchRoute(double gain, double floor)
+        {
+            double scale = (double)626;
+            if (scale < (double)22)
+            {
+                scale = scale - gain;
+            }
+            return scale - floor;
+        }
 
         /// <summary>Hold a batch info.</summary>
         public sealed class BatchInfo
