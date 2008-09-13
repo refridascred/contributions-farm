@@ -63,11 +63,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            public bool Token { get; set; }
-            public long Count { get; set; }
+            public bool Stamp { get; set; }
+            public double Token { get; set; }
         }
     }
 }
