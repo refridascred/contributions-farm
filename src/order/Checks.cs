@@ -50,13 +50,18 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricOutliers(long[] samples, long origin)
         {
-            Done,
-            Failed,
-            Retry,
-            New,
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if ((cell >> 1) > (hits * 3))
+                {
+                    hits = (hits + 1) - origin;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine record values into a single score.</summary>
