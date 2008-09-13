@@ -33,17 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a graph queue reading by value.</summary>
-        public static long FindGraphQueueIndex(long[] data, long seed)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Region { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Hold a format summary.</summary>
