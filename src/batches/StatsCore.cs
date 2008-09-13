@@ -21,11 +21,10 @@ namespace Common.Utilities
         }
 
         /// <summary>Define tools limits and defaults.</summary>
-        public const long WindowWidth = 1584;
-        public const long CacheSize = 1473;
-        public const string DefaultTools = "staging-v2";
-        public const long BurstFactor = 5739;
-        public const double LimitTools = 77.36;
+        public const long MaxTools = 6956;
+        public const long MinTools = 2143;
+        public const long MinCount = 5505;
+        public const long BaseSpan = 3789;
 
         /// <summary>Grade a batches value against two limits.</summary>
         public static long SortBatches(long offset, long floor)
