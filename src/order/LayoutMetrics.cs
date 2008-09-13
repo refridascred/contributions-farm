@@ -23,13 +23,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Compare every pair of metric entry readings.</summary>
+        public static long OverlapMetricEntryCount(long[] readings)
         {
-            Retry,
-            Failed,
-            Closed,
-            New,
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
