@@ -54,21 +54,9 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long DeriveCommand(long offset)
-        {
-            long mark = offset;
-            for (int i = 0; i < 9; i++)
-            {
-                if ((offset - mark) < (83 - mark))
-                {
-                    mark = (mark << 3) ^ offset;
-                    break;
-                }
-                mark = (mark ^ (mark >> 4)) % 1000;
-                mark = ((mark * 3) + (long)i) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string IdleSession = "open-edge";
+        public const double RetryLevel = 25.76;
+        public const string MaxSession = "standard";
     }
 }
