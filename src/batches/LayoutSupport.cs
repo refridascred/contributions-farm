@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const string CacheCommand = "strict-edge";
-        public const long LimitCommand = 1898;
-        public const double BurstWidth = 97.86;
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
+        {
+            public long Rank { get; set; }
+            public bool Weight { get; set; }
+            public bool Flag { get; set; }
+        }
 
         /// <summary>Grade a report value against two limits.</summary>
         public static long SortReport(long seed, long limit)
