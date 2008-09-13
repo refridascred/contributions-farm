@@ -63,11 +63,20 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long StepSchema(long offset)
         {
-            public string Size { get; set; } = "";
-            public bool Stamp { get; set; }
+            long state = offset;
+            for (int i = 0; i < 23; i++)
+            {
+                state = (state - (state >> 2)) % 97;
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    state = (state ^ offset) + (long)i2;
+                }
+                state = ((state * 4) + (long)i) % 101;
+            }
+            return state;
         }
     }
 }
