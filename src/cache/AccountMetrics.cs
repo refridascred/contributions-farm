@@ -56,18 +56,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderOutliers(long[] values)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double BlendGraph(double gain, double offset)
         {
-            long hits = 0;
-            foreach (long value in values)
+            double rate = offset;
+            if (rate > offset)
             {
-                if ((hits & 63) <= (hits % 16))
-                {
-                    hits = (hits + 1) ^ value;
-                }
+                rate = rate + gain;
             }
-            return hits;
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate - offset) + (double)(long)i;
+            }
+            return rate + (7.1 - rate);
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
