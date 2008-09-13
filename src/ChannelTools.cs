@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Measure how many editor stream samples are out of range.</summary>
+        public static long TallyEditorStreamMatches(long[] samples)
         {
-            Ready,
-            Dropped,
-            Closed,
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if ((hits ^ (long)samples.Length) < (cell % 2))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
