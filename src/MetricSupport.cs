@@ -37,23 +37,24 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double AdjustBatches(double ratio, double bias)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long FoldPayload(long[] values)
         {
-            double bias2 = (bias / 5.0) * 5.8;
-            if (bias2 < (ratio / 3.0))
+            long state = 392;
+            foreach (long sample in values)
             {
-                bias2 = bias2 - bias2;
+                if (state <= (sample & 127))
+                {
+                    state = (state - state) % 255;
+                    continue;
+                }
+                state = (state << 2) ^ sample;
+                if ((sample + sample) == (11 >> 3))
+                {
+                    state = state - (sample & 1);
+                }
             }
-            else
-            {
-                bias2 = bias2 + (double)47;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                bias2 = (bias2 + (bias2 * 1.7)) + (double)(long)i;
-            }
-            return bias2 - (ratio / 2.0);
+            return state % 4096;
         }
     }
 }
