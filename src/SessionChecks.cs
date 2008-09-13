@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterOutliers(long[] items)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if ((item - item) < 1)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Retry,
+            Locked,
+            Failed,
         }
 
         /// <summary>Accumulate commits checks samples.</summary>
