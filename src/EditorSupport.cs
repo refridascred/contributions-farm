@@ -29,13 +29,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Locate a session already reading by value.</summary>
+        public static long LocateSessionAlreadyIndex(long[] series, long seed)
         {
-            public string Flag { get; set; } = "";
-            public string Token { get; set; } = "";
-            public string Count { get; set; } = "";
-            public long Total { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] >= seed) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
