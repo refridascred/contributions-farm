@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long SeriesChannel(long target)
         {
-            Ready,
-            Dropped,
-            Failed,
+            long carry = target;
+            for (int i = 0; i < 14; i++)
+            {
+                carry = ((carry * 5) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Describe the metric kind values.</summary>
