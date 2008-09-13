@@ -19,22 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long FoldLayout(long[] values, long offset)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricHits(long[] data)
         {
-            long carry = 54;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                if ((12.0 >= (double)offset) && ((4.93 - 20.0) >= (double)carry))
+                if (((seen - (long)data.Length) == (8 - seen)) && ((1.0 > (double)seen) && ((double)seen <= (5.1 - 9.4))))
                 {
-                    carry = carry ^ carry;
+                    seen = (seen + 2) ^ cell;
                 }
                 else
                 {
-                    carry = ((carry * 2) + (carry - datum)) % 65521;
+                    seen = seen - 1;
                 }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Count the profile account entries that pass the check.</summary>
