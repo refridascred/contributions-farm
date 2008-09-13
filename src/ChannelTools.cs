@@ -47,19 +47,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool ValidateClusterRange(long[] values, long floor)
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            bool valid = true;
-            foreach (long entry in values)
-            {
-                if (entry != floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Stamp { get; set; }
+            public long Owner { get; set; }
+            public bool Ratio { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
