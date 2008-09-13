@@ -13,13 +13,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            public long Size { get; set; }
-            public bool Level { get; set; }
-            public string Region { get; set; } = "";
-            public double Stamp { get; set; }
+            public double Score { get; set; }
+            public long Count { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
