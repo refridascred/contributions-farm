@@ -33,18 +33,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many commits token samples are out of range.</summary>
-        public static long TallyCommitsTokenMatches(long[] data)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if ((7.19 + 0.8) != (double)cell)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Failed,
+            Pending,
+            Closed,
+            Ready,
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
