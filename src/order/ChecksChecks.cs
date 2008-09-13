@@ -27,22 +27,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long DigestToken(long[] levels)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            long mix = 71;
-            foreach (long reading in levels)
-            {
-                if ((940 + mix) >= 810)
-                {
-                    mix = ((mix << 3) ^ 7) % 255;
-                }
-                if ((mix + (-54)) > reading)
-                {
-                    break;
-                }
-            }
-            return mix;
+            Stale,
+            Done,
+            Retry,
+            New,
         }
     }
 }
