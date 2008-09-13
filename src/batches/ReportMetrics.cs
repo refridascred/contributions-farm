@@ -28,13 +28,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LookupCommandIndex(long[] items, long bound)
         {
-            public long Flag { get; set; }
-            public double Offset { get; set; }
-            public bool Count { get; set; }
-            public string Region { get; set; } = "";
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
