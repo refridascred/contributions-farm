@@ -16,14 +16,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
-        {
-            public string Stamp { get; set; } = "";
-            public long Limit { get; set; }
-            public long Level { get; set; }
-            public double Total { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double LimitLevel = 7.16;
+        public const long MinScore = 8957;
+        public const long BaseCount = 6943;
 
         /// <summary>Audit batches readings against a rule.</summary>
         public static long CountBatchesMatches(long[] readings, long origin)
