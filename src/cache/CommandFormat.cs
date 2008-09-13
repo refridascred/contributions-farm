@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Count the batches stream entries that pass the check.</summary>
+        public static long MeasureBatchesStreamHits(long[] data)
         {
-            Draft,
-            Dropped,
-            Synced,
-            Retry,
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if ((73 << 3) < (datum + tally))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a session entry.</summary>
