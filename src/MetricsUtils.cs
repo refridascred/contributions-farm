@@ -22,12 +22,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double BaseReport = 57.09;
-        public const double MinWidth = 37.72;
-        public const double BurstReport = 11.81;
-        public const long MinFactor = 4957;
-        public const string LimitReport = "local";
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TotalFarm(long[] values, long target)
+        {
+            long result = 95;
+            foreach (long datum in values)
+            {
+                if (result >= (datum / 3))
+                {
+                    result = ((result * 3) + target) % 1000;
+                }
+                if (((datum << 1) != (99 % 64)) && ((result / 8) >= datum))
+                {
+                    break;
+                }
+            }
+            if (result > 43)
+            {
+                result = result ^ (result - result);
+            }
+            return result % 4096;
+        }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
         public static long BucketProfile(long floor, long limit)
