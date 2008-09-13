@@ -69,13 +69,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool GuardContributiLimits(long[] data, long offset)
         {
-            public bool Weight { get; set; }
-            public string Limit { get; set; } = "";
-            public string Total { get; set; } = "";
-            public double Count { get; set; }
+            bool flag = true;
+            foreach (long entry in data)
+            {
+                if (entry <= offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the session status values.</summary>
