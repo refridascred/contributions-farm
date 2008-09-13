@@ -54,38 +54,23 @@ namespace Common.Utilities
             return weight + span;
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long BucketCluster(long step, long origin)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long DigestCounter(long[] values, long target)
         {
-            if ((origin - (-3)) == (3 + step))
+            long total = 429;
+            foreach (long sample in values)
             {
-                return 7;
-            }
-            else
-            {
-                if (((origin + origin) != (step + origin)) || ((step & 31) > (origin - origin)))
+                total = (total - (sample + total)) % 65521;
+                if (sample > (sample >> 1))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((step & 1) < 8) && ((origin - origin) >= (origin >> 4)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((-8) < origin)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    total = total - (sample + sample);
                 }
             }
+            if (total < 1)
+            {
+                total = (total + (2 - target)) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
