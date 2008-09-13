@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool ValidateFormatBounds(long[] values, long offset)
+        /// <summary>Look up the position of a checks token sample.</summary>
+        public static long LocateChecksTokenIndex(long[] readings, long step)
         {
-            bool stale = true;
-            foreach (long item in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (item > offset)
+                if (readings[i] > step)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
