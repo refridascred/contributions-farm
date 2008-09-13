@@ -40,10 +40,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long HardGithubfarm = 4190;
-        public const double IdleDepth = 34.35;
-        public const string BurstFactor = "standard-1";
-        public const long BatchInterval = 1702;
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphMatches(long[] readings)
+        {
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if ((15 >= (tally << 1)) || ((tally < (5 + 783)) || ((value + tally) >= (value + value))))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
