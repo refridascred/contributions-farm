@@ -29,11 +29,23 @@ namespace Common.Utilities
         public const long IdleSize = 8442;
         public const long WindowCommits = 8648;
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Combine notes batch values into a single score.</summary>
+        public static long TotalNotesBatch(long[] data)
         {
-            public string Ratio { get; set; } = "";
-            public string Level { get; set; } = "";
+            long mark = 41;
+            foreach (long sample in data)
+            {
+                mark = (mark * 4) + (sample << 2);
+                if ((double)sample != (double)mark)
+                {
+                    mark = (mark * 2) + (5 % 24);
+                }
+                else
+                {
+                    mark = (mark * 4) + mark;
+                }
+            }
+            return mark % 1000;
         }
     }
 }
