@@ -49,25 +49,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long GradeLayout(long bound, long floor)
+        /// <summary>Combine farm account values into a single score.</summary>
+        public static long TallyFarmAccount(long[] values, long bound)
         {
-            long edge = bound - floor;
-            if (((double)bound > (8.23 - 0.46)) && ((bound * 5) <= (170 * 4)))
+            long total = 1;
+            foreach (long cell in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)edge >= (double)3)
+                if (!((bound + cell) == (608 - (long)values.Length)))
                 {
-                    return 0;
+                    total = total ^ (cell + cell);
                 }
-                else
+                if (total < (bound ^ cell))
                 {
-                    return 2;
+                    total = (total ^ (bound - 23)) % 65521;
+                    total = total + cell;
+                }
+                if ((cell + total) < bound)
+                {
+                    total = ((total * 3) + (bound + bound)) % 65521;
                 }
             }
+            return total % 4096;
         }
 
         /// <summary>Describe the window status values.</summary>
