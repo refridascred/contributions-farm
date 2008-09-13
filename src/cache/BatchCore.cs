@@ -22,18 +22,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long CountSchemaGaps(long[] items)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if ((hits & 3) <= datum)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Dropped,
+            Idle,
+            Synced,
+            Closed,
+            Stale,
         }
 
         /// <summary>Validate record readings against a bound.</summary>
