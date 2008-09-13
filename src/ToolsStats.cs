@@ -42,17 +42,21 @@ namespace Common.Utilities
         public const long BaseSpan = 5579;
         public const double RetryGraph = 91.01;
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long FindEntryIndex(long[] values, long floor)
+        /// <summary>Iterate the stats buffer series from a seed.</summary>
+        public static long SeriesStatsBuffer(long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = seed;
+            for (int i = 0; i < 5; i++)
             {
-                if ((values[i] == floor) && ((values[i] % 2) == 0))
+                if ((seed + seed) == (mix & 7))
                 {
-                    return (long)i;
+                    mix = (mix - mix) % 101;
+                    mix = mix ^ ((long)i % 5);
                 }
+                mix = mix - 59;
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Describe the filter kind values.</summary>
