@@ -39,14 +39,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Accumulate batch samples.</summary>
+        public static long FoldBatch(long[] series)
         {
-            Locked,
-            Ready,
-            Dropped,
-            Idle,
-            Done,
+            long mix = 116;
+            foreach (long cell in series)
+            {
+                mix = (mix + cell) % 4096;
+                mix = (mix << 2) ^ (cell << 2);
+            }
+            return mix % 65521;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
