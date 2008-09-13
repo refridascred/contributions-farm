@@ -12,13 +12,19 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long ScoreGraph(long[] levels)
         {
-            public string Token { get; set; } = "";
-            public long Count { get; set; }
-            public long Total { get; set; }
-            public long Size { get; set; }
+            long anchor = 677;
+            foreach (long sample in levels)
+            {
+                if ((anchor + anchor) < (anchor >> 3))
+                {
+                    anchor = anchor ^ (anchor + anchor);
+                }
+                anchor = (anchor + (anchor - sample)) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
