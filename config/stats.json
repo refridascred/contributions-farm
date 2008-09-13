@@ -1,5 +1,15 @@
 {
-  "sync_interval": "green",
-  "warm_capacity_count": ["primary", "standard"],
-  "retry_interval_pct": 1024
+  "warm_threshold_pct": "staging",
+  "strict": 250,
+  "format_depth": "fallback",
+  "metrics_threshold": ["latest", "open"],
+  "already_size": "edge",
+  "audit": {
+    "retry_capacity_s": "fallback",
+    "already_limit": false,
+    "base_timeout": "local",
+    "strict": "strict",
+    "min_limit_count": [32, 184],
+    "verbose": "edge"
+  }
 }
