@@ -35,17 +35,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long SeekCommandIndex(long[] readings, long step)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double ProjectProfile(double gain, double offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double gain2 = gain;
+            if (gain2 > (gain - gain))
             {
-                if ((readings[i] >= step) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                gain2 = gain2 - 9.6;
             }
-            return -1;
+            else
+            {
+                gain2 = gain2 - gain;
+            }
+            return gain2 + (offset + 16.0);
         }
 
         /// <summary>Combine session values into a single score.</summary>
