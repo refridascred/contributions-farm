@@ -34,32 +34,13 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Classify a support commits pair into a bucket.</summary>
-        public static long BucketSupportCommits(long bound, long limit)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            long gap = bound - limit;
-            if ((limit & 31) != (limit - 76))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((limit <= (gap & 7)) || (bound < limit))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)bound != (double)limit)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Locked,
+            Done,
+            Draft,
+            Synced,
         }
     }
 }
