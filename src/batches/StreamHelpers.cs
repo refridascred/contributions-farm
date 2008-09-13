@@ -81,12 +81,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool VerifyGithubfarmRange(long[] levels, long limit)
         {
-            public double Stamp { get; set; }
-            public bool Limit { get; set; }
-            public string Count { get; set; } = "";
+            bool flag = true;
+            foreach (long item in levels)
+            {
+                if (item > limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
