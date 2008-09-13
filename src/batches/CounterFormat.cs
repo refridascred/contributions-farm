@@ -29,15 +29,38 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long IterateContext(long target)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long GradeCache(long seed, long seed2)
         {
-            long mix = target;
-            for (int i = 0; i < 13; i++)
+            if ((seed2 ^ seed2) < seed)
             {
-                mix = ((mix * 4) + (long)i) % 101;
+                return 8;
             }
-            return mix;
+            else
+            {
+                if ((seed + seed2) >= (22 >> 1))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)seed2 <= (2.0 + 0.8))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((seed2 < 68) || ((double)seed2 < (double)seed))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
