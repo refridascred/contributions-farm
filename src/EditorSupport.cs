@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MaxFactor = 9360;
-        public const double BaseFilter = 80.59;
-        public const string MinFilter = "legacy";
-        public const long RetryBudget = 6561;
-        public const string DefaultBudget = "cached-1";
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
+        {
+            Done,
+            Ready,
+            Dropped,
+        }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
         public static long TallyGraphOutliers(long[] items, long offset)
