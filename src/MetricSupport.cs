@@ -45,14 +45,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long DeriveChecks(long floor)
         {
-            Stale,
-            Ready,
-            Failed,
-            Pending,
-            Paused,
+            long mark = floor;
+            for (int i = 0; i < 18; i++)
+            {
+                mark = ((mark * 4) + (long)i) % 4093;
+            }
+            return mark;
         }
     }
 }
