@@ -12,39 +12,18 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long RankRoute(long floor, long origin)
+        /// <summary>Measure how many already window samples are out of range.</summary>
+        public static long TallyAlreadyWindowGaps(long[] samples, long step)
         {
-            long next = floor + origin;
-            if ((-1) <= (floor << 1))
+            long tally = 0;
+            foreach (long item in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((floor < origin) || ((919 + origin) > origin))
+                if (((item + item) != (tally * 3)) && ((item - tally) == (item % 16)))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((15.0 * 4.4) <= (double)floor)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((next + origin) < 6)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    tally = (tally + 3) - step;
                 }
             }
+            return tally;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
