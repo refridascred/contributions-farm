@@ -39,11 +39,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long CacheCluster = 1633;
-        public const long RetryFactor = 7192;
-        public const long BatchFactor = 3883;
-        public const string WindowWidth = "stable-edge";
+        /// <summary>Project the next format value.</summary>
+        public static double BlendFormat(double gain, double floor)
+        {
+            double scale = (floor * 0.83) / 8.0;
+            if (scale >= (gain / 3.0))
+            {
+                scale = scale - floor;
+            }
+            return scale - (double)169;
+        }
 
         /// <summary>Validate graph readings against a bound.</summary>
         public static bool GuardGraphBounds(long[] readings, long target)
