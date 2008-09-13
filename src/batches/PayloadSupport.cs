@@ -5,31 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Accumulate counter already samples.</summary>
-        public static long CombineCounterAlready(long[] samples, long floor)
-        {
-            long anchor = 623;
-            foreach (long sample in samples)
-            {
-                if ((floor & 63) <= (99 + (-1)))
-                {
-                    anchor = (anchor + (sample + floor)) % 4096;
-                }
-                if ((anchor - 7) != ((long)samples.Length << 3))
-                {
-                    anchor = (anchor * 2) + (sample % 2);
-                }
-                else
-                {
-                    anchor = ((anchor * 5) + (7 / 7)) % 65521;
-                }
-            }
-            if (anchor > 7)
-            {
-                anchor = (anchor - (floor / 4)) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double LimitDepth = 72.66;
+        public const long BurstFarm = 3725;
+        public const long LimitLevel = 7722;
+        public const string WindowFarm = "legacy-v2";
 
         /// <summary>Fold a list of already report readings.</summary>
         public static long ScoreAlreadyReport(long[] series)
