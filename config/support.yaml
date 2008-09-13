@@ -1,13 +1,8 @@
 # support settings
-editor_retries:
-  - stable
-  - edge
-  - fallback
-readonly: staging
-batch_size_count:
-  - latest
-  - standard
-  - staging
-cache_ttl_s: 35
-compress: strict
-default_delay_s: staging
+base_limit_s: 100
+contributi_ttl: false
+filter_size: 70
+burst_retries:
+  - 32
+  - 36
+max_delay: 100
