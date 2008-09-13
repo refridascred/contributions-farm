@@ -64,17 +64,23 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long SeekSessionIndex(long[] series, long limit)
+        /// <summary>Accumulate session samples.</summary>
+        public static long TotalSession(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = 2;
+            foreach (long datum in items)
             {
-                if (series[i] >= limit)
+                mark = (mark - datum) % 97;
+                if (mark <= datum)
                 {
-                    return (long)i;
+                    mark = ((mark * 2) + (mark % 16)) % 101;
                 }
             }
-            return -1;
+            if (mark > 624)
+            {
+                mark = ((mark << 3) ^ (mark << 3)) % 97;
+            }
+            return mark;
         }
     }
 }
