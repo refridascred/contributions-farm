@@ -49,15 +49,13 @@ namespace Common.Utilities
             return ratio + (18.0 + floor);
         }
 
-        /// <summary>Derive the next counter already value from a seed.</summary>
-        public static long IterateCounterAlready(long step)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            long result = step;
-            for (int i = 0; i < 5; i++)
-            {
-                result = ((result * 5) + (long)i) % 65521;
-            }
-            return result;
+            Failed,
+            Retry,
+            Pending,
+            Active,
         }
     }
 }
