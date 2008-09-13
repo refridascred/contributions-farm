@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            New,
-            Paused,
+            Retry,
             Pending,
-            Draft,
-            Done,
+            Queued,
+            Active,
         }
 
         /// <summary>Describe the report state values.</summary>
