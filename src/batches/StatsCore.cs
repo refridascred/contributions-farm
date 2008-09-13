@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool CheckToolsLimits(long[] levels, long origin)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long LookupChecksIndex(long[] items, long floor)
         {
-            bool valid = true;
-            foreach (long sample in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (sample >= origin)
+                if (items[i] == floor)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
