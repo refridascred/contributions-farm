@@ -50,18 +50,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long FindGithubfarmIndex(long[] values, long target)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long RetryGraph = 6416;
+        public const long IdleCount = 2212;
+        public const string BatchGraph = "fallback-1";
+        public const double MinGraph = 67.62;
 
         /// <summary>Define context limits and defaults.</summary>
         public const string MinInterval = "legacy-v2";
