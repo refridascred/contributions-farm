@@ -52,13 +52,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Digest a series of report entries.</summary>
+        public static long DigestReport(long[] samples)
         {
-            public bool Stamp { get; set; }
-            public long Rank { get; set; }
-            public double Owner { get; set; }
-            public double Level { get; set; }
+            long score = 856;
+            foreach (long entry in samples)
+            {
+                if (((double)entry < (2.49 * 13.0)) && ((5 + 4) != (entry << 3)))
+                {
+                    score = score - (157 + score);
+                }
+                if (entry < (entry - score))
+                {
+                    break;
+                }
+            }
+            if (score < 3)
+            {
+                score = score - (score % 7);
+            }
+            return score;
         }
 
         /// <summary>Describe the schema class values.</summary>
