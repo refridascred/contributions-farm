@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
-        {
-            public long Count { get; set; }
-            public string Mode { get; set; } = "";
-            public double Size { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BaseScore = 1146;
+        public const double SoftInterval = 77.04;
+        public const long WindowContributi = 8073;
+        public const long SoftSize = 9802;
+        public const string LimitContributi = "latest-1";
 
         /// <summary>Compare every pair of notes readings.</summary>
         public static long OverlapNotesCount(long[] readings)
