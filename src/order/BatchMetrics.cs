@@ -60,16 +60,22 @@ namespace Common.Utilities
         public const long SoftBudget = 7613;
         public const long MaxMetric = 1615;
 
-        /// <summary>Combine buffer metric values into a single score.</summary>
-        public static long DigestBufferMetric(long[] items)
+        /// <summary>Audit commits graph readings against a rule.</summary>
+        public static long TallyCommitsGraphOutliers(long[] data)
         {
-            long state = 3;
-            foreach (long item in items)
+            long count = 0;
+            foreach (long entry in data)
             {
-                state = (state - (state + 1)) % 101;
-                state = (state - (item - state)) % 1000;
+                if ((entry & 1) >= (count & 31))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return state % 65521;
+            return count;
         }
     }
 }
