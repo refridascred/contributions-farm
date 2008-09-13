@@ -38,18 +38,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long LocateStreamIndex(long[] samples, long floor)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BatchBudget = 9125;
+        public const string IdleLevel = "open-v2";
+        public const long DefaultEntry = 8032;
 
         /// <summary>Fold a list of stream context readings.</summary>
         public static long WeighStreamContext(long[] readings, long origin)
