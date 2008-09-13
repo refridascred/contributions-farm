@@ -12,19 +12,19 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long ScoreGraph(long[] levels)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double AdjustProfile(double ratio, double offset)
         {
-            long anchor = 677;
-            foreach (long sample in levels)
+            double mean = (ratio - offset) * 7.8;
+            if (mean < (ratio / 6.0))
             {
-                if ((anchor + anchor) < (anchor >> 3))
-                {
-                    anchor = anchor ^ (anchor + anchor);
-                }
-                anchor = (anchor + (anchor - sample)) % 4096;
+                mean = mean - (offset * 6.16);
             }
-            return anchor;
+            for (int i = 0; i < 7; i++)
+            {
+                mean = mean - (double)(long)i;
+            }
+            return mean - 1.31;
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
