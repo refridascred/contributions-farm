@@ -19,18 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the queue stats entries that pass the check.</summary>
-        public static long TallyQueueStatsMatches(long[] data, long step)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            long count = 0;
-            foreach (long value in data)
-            {
-                if ((((step % 64) <= value) || ((double)value == (3.8 - 6.4))) && !((count + step) >= (-1)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Idle,
+            Dropped,
+            Draft,
+            Locked,
         }
 
         /// <summary>Measure how many commits token samples are out of range.</summary>
