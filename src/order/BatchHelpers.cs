@@ -31,11 +31,38 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long SortEditor(long step, long limit)
         {
-            public long Label { get; set; }
-            public string Flag { get; set; } = "";
+            if (limit <= (limit + step))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((5 + 387) < (limit * 4))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((limit * 4) > (step - step)) && ((limit + step) <= (limit ^ limit)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((step % 24) <= (limit & 127))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Match up githubfarm samples.</summary>
