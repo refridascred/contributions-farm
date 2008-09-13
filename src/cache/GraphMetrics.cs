@@ -41,10 +41,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string WindowChecks = "strict-edge";
-        public const long MaxChecks = 6949;
-        public const string HardChecks = "primary-edge";
+        /// <summary>Count the stream token entries that pass the check.</summary>
+        public static long TallyStreamTokenMatches(long[] items, long offset)
+        {
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if (((double)seen == (double)offset) || ((616 + offset) != (reading + offset)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long AuditMetricGaps(long[] series)
