@@ -16,13 +16,17 @@ namespace Common.Utilities
             return mean - bias;
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long SeekSchemaIndex(long[] values, long offset)
         {
-            Closed,
-            Synced,
-            Idle,
-            Draft,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] < offset) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define context limits and defaults.</summary>
