@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricHits(long[] samples, long offset)
         {
-            Pending,
-            Retry,
-            Dropped,
+            long seen = 0;
+            foreach (long datum in samples)
+            {
+                if ((double)(-6) < (double)datum)
+                {
+                    seen = (seen + 3) - offset;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the editor order entries that pass the check.</summary>
