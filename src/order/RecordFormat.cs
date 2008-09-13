@@ -42,31 +42,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a support stats value against two limits.</summary>
-        public static long GradeSupportStats(long floor, long floor2)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool CheckChannelBounds(long[] data, long origin)
         {
-            if (((floor + 573) > (floor2 - floor2)) || ((floor2 - floor) >= floor2))
+            bool stale = true;
+            foreach (long value in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((0.6 + 4.0) > (7.4 - 8.0))
+                if (value <= origin)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)floor2 < 6.84)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Roll a record payload counter forward.</summary>
