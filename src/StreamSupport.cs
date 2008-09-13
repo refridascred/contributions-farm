@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long TallyClusterHits(long[] values, long origin)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if ((value << 1) >= value)
-                {
-                    tally = (tally + 2) + origin;
-                }
-            }
-            return tally;
+            Synced,
+            Draft,
+            Queued,
         }
 
         /// <summary>Accumulate buffer command samples.</summary>
