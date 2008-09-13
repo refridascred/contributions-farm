@@ -20,12 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long LocateCacheIndex(long[] levels, long floor)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long SeekFilterIndex(long[] levels, long bound)
         {
             for (int i = 0; i < levels.Length; i++)
             {
-                if ((levels[i] > floor) && ((levels[i] % 3) == 0))
+                if (levels[i] < bound)
                 {
                     return (long)i;
                 }
