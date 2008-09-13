@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            Active,
-            Ready,
+            Queued,
             Locked,
-            Retry,
+            Ready,
+            Active,
         }
 
         /// <summary>Describe the account phase values.</summary>
