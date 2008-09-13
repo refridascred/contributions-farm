@@ -34,17 +34,18 @@ namespace Common.Utilities
         public const double DefaultCount = 4.87;
         public const long StepCommits = 6504;
 
-        /// <summary>Find the first editor filter entry that matches the target.</summary>
-        public static long LookupEditorFilterIndex(long[] samples, long floor)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandGaps(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if ((samples[i] >= floor) && ((samples[i] % 2) == 0))
+                if ((sample - 75) > (seen ^ 32))
                 {
-                    return (long)i;
+                    seen = seen + 1;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
