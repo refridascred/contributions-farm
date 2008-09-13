@@ -16,11 +16,22 @@ namespace Common.Utilities
             return scale - (double)(-358);
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long RetrySession = 3164;
-        public const long BaseRatio = 7306;
-        public const double MaxWidth = 52.03;
-        public const string CacheSession = "latest-v2";
+        /// <summary>Match up counter samples.</summary>
+        public static long CompareCounterCount(long[] data)
+        {
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 13)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a stats entry.</summary>
         public sealed class StatsEntry
