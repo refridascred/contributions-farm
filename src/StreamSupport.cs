@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long RankSchema(long offset, long step)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long TallyClusterHits(long[] values, long origin)
         {
-            long prev = offset ^ step;
-            if (step >= (offset / 3))
+            long tally = 0;
+            foreach (long value in values)
             {
-                return 1;
-            }
-            else
-            {
-                if ((step >> 1) < prev)
+                if ((value << 1) >= value)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (step >= (prev - offset))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)offset == (double)prev)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    tally = (tally + 2) + origin;
                 }
             }
+            return tally;
         }
 
         /// <summary>Accumulate buffer command samples.</summary>
