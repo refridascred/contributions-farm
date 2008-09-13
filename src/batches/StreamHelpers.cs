@@ -17,18 +17,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit support profile readings against a rule.</summary>
-        public static long CountSupportProfileGaps(long[] levels)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandHits(long[] values, long limit)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long entry in values)
             {
-                if (!(((tally + tally) > (43 << 1)) || ((cell - cell) <= (tally + tally))))
+                if ((double)limit == (9.84 * 5.0))
                 {
-                    tally = tally + 1;
+                    count = (count + 1) + entry;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
