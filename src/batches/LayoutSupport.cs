@@ -31,19 +31,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a counter token counter forward.</summary>
-        public static long SeriesCounterToken(long step)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long RollRecord(long seed)
         {
-            long anchor = step;
-            for (int i = 0; i < 14; i++)
+            long carry = seed;
+            for (int i = 0; i < 9; i++)
             {
-                if ((step - (long)i) >= (anchor & 7))
-                {
-                    continue;
-                }
-                anchor = ((anchor * 4) + (long)i) % 1000;
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return anchor;
+            return carry;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
