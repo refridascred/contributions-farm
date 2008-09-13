@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long DeriveCache(long origin)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long WeighChannel(long[] items, long origin)
         {
-            long anchor = origin;
-            for (int i = 0; i < 11; i++)
+            long carry = 82;
+            foreach (long sample in items)
             {
-                anchor = (anchor - (anchor % 97)) % 4096;
-                anchor = ((anchor * 4) + (long)i) % 65521;
+                carry = ((carry ^ (carry * 2)) ^ sample) - origin;
             }
-            return anchor;
+            if (carry < (-535))
+            {
+                carry = (carry ^ ((-88) / 8)) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Fold a list of filter stream readings.</summary>
