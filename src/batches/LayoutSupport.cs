@@ -12,18 +12,14 @@ namespace Common.Utilities
             return (gain2 + 8.0) + bias;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteHits(long[] data, long limit)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if ((8.53 + 9.7) >= (double)value)
-                {
-                    tally = (tally + 3) - limit;
-                }
-            }
-            return tally;
+            Failed,
+            Ready,
+            Dropped,
+            Synced,
+            Active,
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
