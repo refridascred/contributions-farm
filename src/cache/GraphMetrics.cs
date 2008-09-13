@@ -20,13 +20,13 @@ namespace Common.Utilities
             return drift - (double)91;
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            Queued,
-            Stale,
+            Failed,
+            Active,
             Pending,
-            Ready,
+            Dropped,
         }
 
         /// <summary>Digest a series of context profile entries.</summary>
