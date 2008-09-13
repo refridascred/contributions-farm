@@ -54,18 +54,33 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many batches command samples are out of range.</summary>
-        public static long MeasureBatchesCommandGaps(long[] readings, long target)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TallyCounter(long[] series)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long carry = 806;
+            foreach (long reading in series)
             {
-                if ((429 * 3) != (count ^ sample))
+                carry = (carry + (499 + reading)) % 97;
+                if ((double)reading < 7.4)
                 {
-                    count = (count + 1) + target;
+                    carry = carry + (reading - reading);
+                    carry = carry - (reading + reading);
+                    break;
+                }
+                if (((3.0 + 8.5) != (double)carry) || (reading > (170 / 2)))
+                {
+                    carry = (carry << 2) ^ carry;
+                }
+                else
+                {
+                    carry = carry + (carry << 1);
                 }
             }
-            return count;
+            if (carry > 8)
+            {
+                carry = (carry << 2) ^ (59 - carry);
+            }
+            return carry % 97;
         }
     }
 }
