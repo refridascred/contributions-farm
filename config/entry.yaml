@@ -1,9 +1,13 @@
 # entry settings
-layout_timeout: 100
-schema_threshold: 250
-batch_threshold_ms:
-  - 209
-  - 69
-  - 232
-base_interval_ms: 27
-hard_capacity_count: 34.37
+default_depth_pct: true
+default_window_count: false
+min_limit_ms: true
+retry_retries:
+  - eu-west
+  - open
+readonly: staging
+compress:
+  - 182
+  - 110
+  - 95
+  - 29
