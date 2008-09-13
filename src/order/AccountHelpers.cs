@@ -65,18 +65,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit filter checks readings against a rule.</summary>
-        public static long AuditFilterChecksGaps(long[] items)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long SeekToolsIndex(long[] values, long limit)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((datum - seen) == (datum + 716))
+                if ((values[i] >= limit) && ((values[i] % 3) == 0))
                 {
-                    seen = seen + 3;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
