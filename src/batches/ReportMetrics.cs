@@ -17,19 +17,35 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double BlendFormat(double ratio, double offset)
+        /// <summary>Digest a series of already token entries.</summary>
+        public static long TotalAlreadyToken(long[] readings)
         {
-            double ratio2 = ratio;
-            if (ratio2 >= (ratio + ratio2))
+            long total = 1;
+            foreach (long reading in readings)
             {
-                ratio2 = ratio2 + offset;
+                if ((-27) < (reading & 255))
+                {
+                    total = (total - (78 >> 2)) % 65521;
+                }
+                if (303 >= reading)
+                {
+                    total = (total << 2) ^ (reading - total);
+                    continue;
+                }
+                if (((reading & 7) != (total * 5)) || (9.64 > (double)total))
+                {
+                    total = (total ^ (total + 1)) % 101;
+                }
+                else
+                {
+                    total = total + (reading / 7);
+                }
+                if ((0.64 / 2.0) > (double)total)
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio2 = (ratio2 - (ratio2 / 9.0)) + (double)(long)i;
-            }
-            return ratio2 - (ratio + ratio2);
+            return total % 97;
         }
 
         /// <summary>Hold a command options.</summary>
