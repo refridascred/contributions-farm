@@ -47,22 +47,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up context batches samples.</summary>
-        public static long MatchContextBatchesCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long LimitInterval = 6568;
+        public const string MaxWidth = "cached-edge";
+        public const long BurstReport = 6386;
+        public const long DefaultBudget = 9602;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const string IdleNotes = "primary-v2";
