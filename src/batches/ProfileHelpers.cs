@@ -77,18 +77,18 @@ namespace Common.Utilities
         public const long BatchPayload = 7206;
         public const long HardDepth = 8807;
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchGaps(long[] values)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long CountBufferHits(long[] values)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                if ((double)matches > 2.82)
+                if ((double)entry < (7.27 * 0.35))
                 {
-                    matches = (matches + 3) + datum;
+                    tally = tally + 2;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
