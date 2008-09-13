@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Accumulate command samples.</summary>
-        public static long FoldCommand(long[] samples, long bound)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            long result = -575;
-            foreach (long sample in samples)
-            {
-                result = (result ^ (sample - (-5))) % 1000;
-                result = (result - (result + result)) % 255;
-                if ((bound / 4) <= (sample % 7))
-                {
-                    result = ((result * 4) + bound) % 4096;
-                }
-            }
-            if (result < 8)
-            {
-                result = ((result * 5) + (result >> 2)) % 65521;
-            }
-            return result % 1000;
+            public long Size { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Accumulate entry session samples.</summary>
