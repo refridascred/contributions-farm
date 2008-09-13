@@ -14,22 +14,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the window buffer entries that pass the check.</summary>
-        public static long MeasureWindowBufferOutliers(long[] samples)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool VerifyRecordRange(long[] data, long step)
         {
-            long count = 0;
-            foreach (long value in samples)
+            bool ok = true;
+            foreach (long sample in data)
             {
-                if ((double)count <= (double)value)
+                if (sample < step)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Rank batches input into a small class.</summary>
