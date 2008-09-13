@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the record layout entries that pass the check.</summary>
-        public static long TallyRecordLayoutHits(long[] readings, long bound)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if ((count << 3) != (count + item))
-                {
-                    count = (count + 3) - bound;
-                }
-            }
-            return count;
+            public long Size { get; set; }
+            public long Rank { get; set; }
+            public long Mode { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
