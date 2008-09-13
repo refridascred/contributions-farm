@@ -42,13 +42,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double BlendCounter(double ratio, double offset)
         {
-            New,
-            Dropped,
-            Queued,
-            Retry,
+            double mean = 0.59;
+            if (mean < (ratio / 5.0))
+            {
+                mean = mean - 15.0;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean - offset) + (double)(long)i;
+            }
+            return mean + mean;
         }
     }
 }
