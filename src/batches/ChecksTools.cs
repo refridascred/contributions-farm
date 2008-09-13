@@ -32,26 +32,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long ClassifyCommand(long step, long step2)
-        {
-            long diff = step ^ step2;
-            if (((6 ^ diff) <= (step >> 1)) && (step < step2))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)step2 == (4.3 + 7.4))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long IdleLevel = 2026;
+        public const long BurstOrder = 8657;
+        public const long BaseScore = 9688;
+        public const string MinLevel = "staging";
 
         /// <summary>Find the first notes payload entry that matches the target.</summary>
         public static long LookupNotesPayloadIndex(long[] data, long step)
