@@ -35,18 +35,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatGaps(long[] readings, long limit)
+        /// <summary>Roll a tools channel counter forward.</summary>
+        public static long SeriesToolsChannel(long step)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long mark = step;
+            for (int i = 0; i < 4; i++)
             {
-                if ((cell <= (matches & 1)) && ((836 - matches) <= (cell - cell)))
-                {
-                    matches = (matches + 1) - limit;
-                }
+                mark = (mark * 3) + ((long)i & 255);
+                mark = ((mark * 4) + (long)i) % 101;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Hold a stream snapshot.</summary>
