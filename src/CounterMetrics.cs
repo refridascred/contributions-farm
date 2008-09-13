@@ -47,22 +47,32 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsGaps(long[] levels, long bound)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long SortPayload(long floor, long floor2)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long step = floor + floor2;
+            if (9.16 < (double)floor2)
             {
-                if (((double)bound != (11.0 / 8.0)) && (57 >= (bound % 24)))
+                return 1;
+            }
+            else
+            {
+                if (((floor - floor) > (floor << 3)) || ((step - 22) != (floor2 >> 4)))
                 {
-                    hits = (hits + 2) + reading;
+                    return 5;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if (96 <= floor2)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return hits;
         }
     }
 }
