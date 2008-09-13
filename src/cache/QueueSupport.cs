@@ -37,26 +37,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate stream metrics samples.</summary>
-        public static long CombineStreamMetrics(long[] readings)
-        {
-            long result = 29;
-            foreach (long item in readings)
-            {
-                if (!((item / 8) >= 7))
-                {
-                    result = (result << 2) ^ ((-139) << 2);
-                }
-                else
-                {
-                    result = ((result << 3) ^ (item >> 5)) % 65521;
-                }
-            }
-            if (result < 820)
-            {
-                result = (result + result) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string SoftLevel = "cached-edge";
+        public const double MinSupport = 22.61;
+        public const long DefaultSupport = 9986;
     }
 }
