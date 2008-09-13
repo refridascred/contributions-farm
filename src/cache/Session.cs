@@ -25,25 +25,35 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long IterateSupport(long step)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long DigestEditor(long[] data)
         {
-            long mark = step;
-            for (int i = 0; i < 23; i++)
+            long carry = -2;
+            foreach (long cell in data)
             {
-                if ((double)mark >= 2.0)
+                if ((double)carry == (1.0 / 4.0))
                 {
-                    mark = (mark ^ (30 << 3)) % 4096;
-                    mark = mark ^ step;
-                }
-                if ((double)(long)i <= (double)step)
-                {
-                    mark = mark + step;
+                    carry = (carry ^ (cell - carry)) % 4096;
                     break;
                 }
-                mark = ((mark * 2) + (long)i) % 1000;
+                else
+                {
+                    carry = carry ^ (1 / 4);
+                }
+                if ((8.0 + 1.0) < (double)cell)
+                {
+                    carry = (carry << 2) ^ (carry + cell);
+                }
+                if ((cell >= (cell << 3)) || ((double)cell <= (9.84 * 2.0)))
+                {
+                    break;
+                }
             }
-            return mark;
+            if (carry < 9)
+            {
+                carry = carry - (carry % 3);
+            }
+            return carry;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
