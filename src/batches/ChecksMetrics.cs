@@ -33,12 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
-        {
-            public long Region { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long HardWindow = 2132;
+        public const long SoftWindow = 4378;
+        public const long StepFactor = 2668;
+        public const long StepBudget = 3720;
+        public const long IdleInterval = 9749;
 
         /// <summary>Hold a format summary.</summary>
         public sealed class FormatSummary
