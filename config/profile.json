@@ -1,5 +1,7 @@
 {
-  "max_ratio": "primary",
-  "warm_interval_s": 40,
-  "report_timeout": 67
+  "default_depth_s": 54.61,
+  "cache_capacity": "cached",
+  "default_window_pct": 250,
+  "readonly": "primary",
+  "notes_timeout": 78.23
 }
