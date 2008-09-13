@@ -20,19 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every stats context entry stays within the limit.</summary>
-        public static bool ValidateStatsContextRange(long[] values, long step)
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            bool stale = true;
-            foreach (long item in values)
-            {
-                if (item < step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Token { get; set; }
+            public bool Label { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Match up githubfarm samples.</summary>
