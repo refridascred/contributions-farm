@@ -64,14 +64,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Adjust a metric reading.</summary>
+        public static double ProjectMetric(double gain, double offset)
         {
-            Retry,
-            Pending,
-            Dropped,
-            Paused,
-            Synced,
+            double scale = 7.0 - (gain * 3.8);
+            if (scale > (double)45)
+            {
+                scale = (scale - (double)5) + offset;
+            }
+            return scale + 8.7;
         }
     }
 }
