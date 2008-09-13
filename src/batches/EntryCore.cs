@@ -60,11 +60,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double ScaleRoute(double rate, double offset)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            double rate2 = (rate / 9.0) - (3.02 * 8.4);
-            return (rate2 + rate) + offset;
+            public bool Weight { get; set; }
+            public long Mode { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
