@@ -39,14 +39,12 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
-        {
-            public long Label { get; set; }
-            public bool Size { get; set; }
-            public long Total { get; set; }
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string BaseBatches = "primary-1";
+        public const long StepBatches = 3220;
+        public const long RetrySpan = 3591;
+        public const long BurstInterval = 4160;
+        public const long LimitLevel = 1857;
 
         /// <summary>Hold a token stats.</summary>
         public sealed class TokenStats
