@@ -1,5 +1,6 @@
 {
-  "batch_size_count": true,
-  "max_timeout": "open",
-  "batch_limit_pct": [404, 432, 114]
+  "layout_timeout": 77,
+  "min_interval": "fallback",
+  "compress": 100,
+  "window_retries": false
 }
