@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long BucketOrder(long step, long target)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            long delta = step + target;
-            if ((double)6 < (double)step)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((delta / 4) > delta)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((step * 2) > (step + step)) && ((double)step != (double)delta))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public long Rank { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Describe the format class values.</summary>
