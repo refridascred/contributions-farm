@@ -1,7 +1,8 @@
-id,region,state,level
-1,541,stable,cached
-2,265,49.04,stable
-3,96.31,749,907
-4,932,45.32,3.47
-5,377,87.44,339
-6,strict,open,32
+id,label,score,level
+1,eu-west,396,latest
+2,stable,512,65.54
+3,97.49,81.8,eu-west
+4,221,952,217
+5,standard,944,stable
+6,75,20.3,47.15
+7,56.68,51,137
