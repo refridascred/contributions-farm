@@ -1,7 +1,7 @@
 # githubfarm settings
-flush_depth: open
-metric_interval: 11.55
-min_threshold:
-  - 249
-  - 439
-  - 382
+hard_ttl_s: open
+counter_ratio: 68
+flush_size_pct: 33
+hard_timeout: 4325
+min_threshold_s: 34.14
+compress: 74.26
