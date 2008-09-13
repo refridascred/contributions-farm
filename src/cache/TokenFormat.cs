@@ -16,12 +16,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmMatches(long[] samples, long step)
         {
-            Paused,
-            Ready,
-            Retry,
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if (((79 << 3) <= (datum >> 5)) || (datum > step))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
