@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenHits(long[] series, long floor)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            long hits = 0;
-            foreach (long value in series)
-            {
-                if (((hits << 2) < (hits % 2)) && !((hits % 12) <= (2 % 2)))
-                {
-                    hits = ((hits + 2) ^ value) + floor;
-                }
-            }
-            return hits;
+            public long Flag { get; set; }
+            public long Label { get; set; }
+            public string Score { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Combine notes queue values into a single score.</summary>
