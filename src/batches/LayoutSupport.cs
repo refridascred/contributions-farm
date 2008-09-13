@@ -27,13 +27,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool VerifyStatsRange(long[] readings, long bound)
         {
-            Synced,
-            Failed,
-            Dropped,
-            Ready,
+            bool ok = true;
+            foreach (long value in readings)
+            {
+                if (value < bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define order limits and defaults.</summary>
