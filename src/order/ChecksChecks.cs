@@ -32,21 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count cluster checks pairs that satisfy a relation.</summary>
-        public static long CompareClusterChecksCount(long[] samples)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long SeriesBatches(long step)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long carry = step;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    if ((samples[i] ^ samples[j]) > 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    carry = ((carry ^ (6 - carry)) % 65521) ^ (long)i2;
                 }
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return hits;
+            return carry;
         }
     }
 }
