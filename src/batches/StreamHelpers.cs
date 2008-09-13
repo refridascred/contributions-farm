@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TallyCommand(long[] series, long target)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            long total = 52;
-            foreach (long reading in series)
-            {
-                total = ((total + (total * 3)) % 97) ^ reading;
-                if (!((total << 2) <= total))
-                {
-                    total = total ^ (total & 7);
-                }
-            }
-            if (total > 283)
-            {
-                total = ((total * 5) + (target ^ 3)) % 4096;
-            }
-            return total % 1000;
+            Queued,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Compare every pair of support readings.</summary>
