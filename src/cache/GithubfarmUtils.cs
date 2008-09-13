@@ -27,22 +27,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmMatches(long[] readings, long offset)
+        /// <summary>Look up the position of a metrics account sample.</summary>
+        public static long FindMetricsAccountIndex(long[] series, long offset)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((item * 5) == (76 + offset))
+                if (series[i] <= offset)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Hold a tools snapshot.</summary>
