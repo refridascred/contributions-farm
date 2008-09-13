@@ -49,32 +49,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long RankStream(long seed, long floor)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            long delta = seed + floor;
-            if ((6 + seed) <= (seed * 2))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((seed << 2) >= (floor >> 4))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)delta != (4.4 * 6.94))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public long Label { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
