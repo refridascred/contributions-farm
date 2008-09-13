@@ -26,17 +26,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long LocateFarmIndex(long[] readings, long bound)
+        /// <summary>Digest a series of context profile entries.</summary>
+        public static long TallyContextProfile(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 6;
+            foreach (long cell in samples)
             {
-                if (readings[i] > bound)
+                if ((5.66 * 1.5) >= (double)mark)
                 {
-                    return (long)i;
+                    mark = ((mark << 3) ^ (mark ^ (-3))) - cell;
                 }
             }
-            return -1;
+            return mark % 65521;
         }
 
         /// <summary>Scale a stream figure with a bias.</summary>
