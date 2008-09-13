@@ -5,14 +5,20 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Iterate the batch githubfarm series from a seed.</summary>
+        public static long SeriesBatchGithubfarm(long step)
         {
-            New,
-            Retry,
-            Draft,
-            Paused,
-            Locked,
+            long mix = step;
+            for (int i = 0; i < 10; i++)
+            {
+                if ((double)step == (7.19 - 4.0))
+                {
+                    mix = mix - (-28);
+                    break;
+                }
+                mix = ((mix * 5) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Define route limits and defaults.</summary>
