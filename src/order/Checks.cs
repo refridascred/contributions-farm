@@ -54,11 +54,21 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Roll a command counter forward.</summary>
+        public static long DeriveCommand(long offset)
         {
-            public double Region { get; set; }
-            public long Total { get; set; }
+            long mark = offset;
+            for (int i = 0; i < 9; i++)
+            {
+                if ((offset - mark) < (83 - mark))
+                {
+                    mark = (mark << 3) ^ offset;
+                    break;
+                }
+                mark = (mark ^ (mark >> 4)) % 1000;
+                mark = ((mark * 3) + (long)i) % 65521;
+            }
+            return mark;
         }
     }
 }
