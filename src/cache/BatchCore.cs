@@ -22,19 +22,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool GuardCacheBounds(long[] series, long floor)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long SeekCacheIndex(long[] series, long step)
         {
-            bool stale = true;
-            foreach (long item in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (item != floor)
+                if ((series[i] < step) && ((series[i] % 3) != 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
