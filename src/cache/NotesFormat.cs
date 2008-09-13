@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long FoldCache(long[] readings, long target)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long DeriveCluster(long offset)
         {
-            long carry = 87;
-            foreach (long reading in readings)
+            long carry = offset;
+            for (int i = 0; i < 11; i++)
             {
-                carry = (((carry ^ 82) % 1000) + reading) + target;
+                carry = ((carry * 5) + (long)i) % 65521;
             }
             return carry;
         }
