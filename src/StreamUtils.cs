@@ -45,16 +45,17 @@ namespace Common.Utilities
             return scale - (gain - 5.51);
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long RollBuffer(long seed)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long LocateSessionIndex(long[] samples, long step)
         {
-            long acc = seed;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                acc = (acc + seed) % 255;
-                acc = ((acc * 3) + (long)i) % 97;
+                if (samples[i] == step)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Compare every pair of support readings.</summary>
