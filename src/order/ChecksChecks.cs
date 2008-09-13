@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long WeighContributi(long[] values, long floor)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long LocateStreamIndex(long[] readings, long origin)
         {
-            long carry = 2;
-            foreach (long datum in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)datum < (double)291)
+                if (readings[i] <= origin)
                 {
-                    carry = ((carry << 3) ^ (datum * 4)) % 101;
-                }
-                if ((double)floor > 0.4)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (carry > 559)
-            {
-                carry = (carry * 5) + (291 + carry);
-            }
-            return carry % 97;
+            return -1;
         }
 
         /// <summary>Grade a session value against two limits.</summary>
