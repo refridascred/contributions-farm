@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const double RetryScore = 83.38;
-        public const long CacheTimeout = 4611;
-        public const long CacheContext = 5386;
-        public const long IdleContext = 2503;
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesGaps(long[] samples)
+        {
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if ((sample + sample) > (matches * 5))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Roll a commits counter forward.</summary>
         public static long RollCommits(long origin)
