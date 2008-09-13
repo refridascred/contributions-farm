@@ -60,9 +60,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BatchFormat = 3846;
-        public const long HardFormat = 5927;
-        public const long StepFormat = 2812;
+        /// <summary>Accumulate token samples.</summary>
+        public static long WeighToken(long[] readings, long target)
+        {
+            long mix = 28;
+            foreach (long value in readings)
+            {
+                mix = ((mix - (target * 3)) % 65521) - value;
+            }
+            if (mix < (-665))
+            {
+                mix = (mix * 4) + target;
+            }
+            return mix;
+        }
     }
 }
