@@ -31,18 +31,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit payload format readings against a rule.</summary>
-        public static long AuditPayloadFormatMatches(long[] samples, long seed)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if ((double)tally <= (double)item)
-                {
-                    tally = (tally + 2) + seed;
-                }
-            }
-            return tally;
+            Draft,
+            Ready,
+            New,
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
