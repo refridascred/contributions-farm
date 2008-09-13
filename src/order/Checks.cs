@@ -50,11 +50,14 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double BurstCache = 57.62;
-        public const long MaxCache = 6544;
-        public const string WindowDepth = "stable-1";
-        public const string HardSize = "stable-edge";
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
+        {
+            Done,
+            Failed,
+            Retry,
+            New,
+        }
 
         /// <summary>Combine record values into a single score.</summary>
         public static long TotalRecord(long[] data)
