@@ -18,19 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchMatches(long[] readings)
-        {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if (tally >= (63 >> 2))
-                {
-                    tally = (tally + 1) ^ cell;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long RetryLevel = 2203;
+        public const double BurstRoute = 32.44;
+        public const double BatchRoute = 78.02;
 
         /// <summary>Match up token samples.</summary>
         public static long MatchTokenCount(long[] values)
