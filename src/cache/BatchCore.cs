@@ -51,13 +51,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Project the next metrics queue value.</summary>
+        public static double BlendMetricsQueue(double scale, double floor)
         {
-            Idle,
-            Closed,
-            Active,
-            Pending,
+            double gain = scale;
+            if (gain > (scale * 4.88))
+            {
+                gain = gain - (gain / 3.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain - (floor + gain)) - (double)(long)i;
+            }
+            return gain - (floor + gain);
         }
     }
 }
