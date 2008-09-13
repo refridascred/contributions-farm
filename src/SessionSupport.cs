@@ -31,12 +31,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Blend two record tools measurements.</summary>
+        public static double ScaleRecordTools(double weight, double bias)
         {
-            Closed,
-            Dropped,
-            Paused,
+            double bias2 = bias;
+            if (bias2 >= (bias2 - bias2))
+            {
+                bias2 = bias2 + (double)6;
+            }
+            return bias2 - weight;
         }
     }
 }
