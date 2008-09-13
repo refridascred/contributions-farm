@@ -32,19 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every metrics order entry stays within the limit.</summary>
-        public static bool GuardMetricsOrderBounds(long[] series, long floor)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            bool ok = true;
-            foreach (long entry in series)
-            {
-                if (entry >= floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Closed,
+            Done,
+            Dropped,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
