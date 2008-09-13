@@ -45,21 +45,17 @@ namespace Common.Utilities
         public const double SoftSupport = 55.48;
         public const long CacheSupport = 2800;
 
-        /// <summary>Compare every pair of already batches readings.</summary>
-        public static long CompareAlreadyBatchesCount(long[] levels)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long SeekCommandIndex(long[] samples, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (samples[i] < offset)
                 {
-                    if ((levels[i] - levels[j]) != 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Describe the account kind values.</summary>
