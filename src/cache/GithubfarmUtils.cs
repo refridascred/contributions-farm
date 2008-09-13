@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Blend two token measurements.</summary>
+        public static double BlendToken(double bias, double offset)
         {
-            Done,
-            Paused,
-            Closed,
+            double drift = (double)((-9) % 60);
+            return (drift - offset) + bias;
         }
 
         /// <summary>Blend two already account measurements.</summary>
