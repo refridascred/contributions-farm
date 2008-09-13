@@ -20,18 +20,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of filter stream readings.</summary>
-        public static long TallyFilterStream(long[] readings)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long MatchToolsCount(long[] data)
         {
-            long mix = 6;
-            foreach (long datum in readings)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((mix + 94) > (datum + mix))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mix = (mix + (650 - mix)) % 97;
+                    if ((data[i] ^ data[j]) < 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Look up the position of a cluster command sample.</summary>
