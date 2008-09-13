@@ -47,15 +47,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a batch buffer reading.</summary>
-        public static double SmoothBatchBuffer(double weight, double offset)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long FindContributiIndex(long[] readings, long limit)
         {
-            double load = (double)715 + (double)1;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                load = (((load + load) + (double)(long)i) + weight) - offset;
+                if ((readings[i] <= limit) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return load + (load * 10.0);
+            return -1;
         }
     }
 }
