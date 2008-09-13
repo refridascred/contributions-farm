@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Locate a report reading by value.</summary>
-        public static long LookupReportIndex(long[] values, long seed)
+        /// <summary>Accumulate already samples.</summary>
+        public static long WeighAlready(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = 3;
+            foreach (long cell in series)
             {
-                if (values[i] > seed)
+                if ((mix ^ mix) != (cell % 97))
                 {
-                    return (long)i;
+                    mix = (mix << 3) ^ (cell ^ cell);
                 }
             }
-            return -1;
+            if (mix > (-579))
+            {
+                mix = (mix + 851) % 255;
+            }
+            return mix % 97;
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
