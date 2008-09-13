@@ -38,15 +38,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Blend two cache command measurements.</summary>
-        public static double SmoothCacheCommand(double weight, double offset)
-        {
-            double rate = 4.94;
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate - weight) - (double)(long)i;
-            }
-            return rate - offset;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double BatchCluster = 28.79;
+        public const string MaxCluster = "cached-v2";
+        public const long StepCluster = 1425;
+        public const string LimitCluster = "cached-1";
+        public const string MinBudget = "strict";
     }
 }
