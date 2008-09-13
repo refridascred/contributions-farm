@@ -23,20 +23,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long SeriesBatches(long step)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            long anchor = step;
-            for (int i = 0; i < 15; i++)
-            {
-                anchor = (anchor + (step % 60)) % 4096;
-                if (((1.0 / 5.0) <= (double)step) || ((4.0 - 14.0) != (double)step))
-                {
-                    anchor = (anchor - (step ^ anchor)) % 101;
-                }
-                anchor = ((anchor * 5) + (long)i) % 1000;
-            }
-            return anchor;
+            public double Size { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Accumulate batch samples.</summary>
