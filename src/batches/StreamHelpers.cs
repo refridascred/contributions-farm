@@ -69,25 +69,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long RankCounter(long floor, long limit)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            long gap = floor - limit;
-            if ((limit / 9) < (floor + gap))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((gap + gap) > gap)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Locked,
+            Paused,
+            Pending,
         }
     }
 }
