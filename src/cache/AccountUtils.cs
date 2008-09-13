@@ -32,21 +32,32 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long OverlapCounterCount(long[] samples)
+        /// <summary>Classify a support commits pair into a bucket.</summary>
+        public static long BucketSupportCommits(long bound, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long gap = bound - limit;
+            if ((limit & 31) != (limit - 76))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((limit <= (gap & 7)) || (bound < limit))
                 {
-                    if ((samples[i] - samples[j]) != 10)
+                    return 2;
+                }
+                else
+                {
+                    if ((double)bound != (double)limit)
                     {
-                        count = count + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return count;
         }
     }
 }
