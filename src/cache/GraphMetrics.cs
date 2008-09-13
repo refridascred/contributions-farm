@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Blend two metric measurements.</summary>
-        public static double AdjustMetric(double ratio, double offset)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long LookupLayoutIndex(long[] items, long seed)
         {
-            double ratio2 = (3.1 / 7.0) + (double)304;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                ratio2 = (((ratio2 - ratio2) + (double)(long)i) + ratio) - offset;
+                if (items[i] >= seed)
+                {
+                    return (long)i;
+                }
             }
-            return ratio2 - 8.0;
+            return -1;
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
