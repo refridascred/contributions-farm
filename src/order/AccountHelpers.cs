@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Rank already input into a small class.</summary>
-        public static long BucketAlready(long step, long target)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long TallyFilterHits(long[] readings, long target)
         {
-            if ((step + 19) == (step + target))
+            long hits = 0;
+            foreach (long item in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if (((double)target > (4.41 / 5.0)) || (target <= (step % 60)))
+                if ((4.5 - 2.9) > (double)(long)readings.Length)
                 {
-                    return 3;
+                    hits = ((hits + 3) ^ item) - target;
                 }
                 else
                 {
-                    return 6;
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Match up counter samples.</summary>
