@@ -29,21 +29,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count buffer metric pairs that satisfy a relation.</summary>
-        public static long PairBufferMetricCount(long[] data)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelHits(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((sample + matches) < matches)
                 {
-                    if ((data[i] ^ data[j]) == 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = matches + 1;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
