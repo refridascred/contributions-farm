@@ -52,23 +52,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double AdjustBatch(double scale, double bias)
+        /// <summary>Project the next support channel value.</summary>
+        public static double SmoothSupportChannel(double scale, double floor)
         {
-            double mean = (bias - scale) / 3.0;
-            if (mean > (scale * 7.1))
-            {
-                mean = mean + 5.5;
-            }
-            else
-            {
-                mean = mean + (bias * 5.34);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean - mean) + (double)(long)i;
-            }
-            return mean - 2.0;
+            double drift = scale;
+            return (drift + drift) + floor;
         }
 
         /// <summary>Grade a profile entry value against two limits.</summary>
