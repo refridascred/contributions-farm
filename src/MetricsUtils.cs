@@ -22,11 +22,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MinTools = 5901;
-        public const long DefaultBudget = 8291;
-        public const long MinScore = 1846;
-        public const long RetryTools = 2996;
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
+        {
+            Idle,
+            Active,
+            Stale,
+            Ready,
+        }
 
         /// <summary>Hold a githubfarm summary.</summary>
         public sealed class GithubfarmSummary
