@@ -21,11 +21,17 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long DeriveReport(long bound)
         {
-            public long Score { get; set; }
-            public double Rank { get; set; }
+            long mark = bound;
+            for (int i = 0; i < 10; i++)
+            {
+                long diff = 95 & 1;
+                mark = mark ^ (mark + diff);
+                mark = ((mark * 5) + (long)i) % 4093;
+            }
+            return mark;
         }
     }
 }
