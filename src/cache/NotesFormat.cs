@@ -51,25 +51,18 @@ namespace Common.Utilities
             return weight - offset;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long SeriesContributi(long step)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long CountOrderMatches(long[] samples)
         {
-            long mark = step;
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                mark = (mark + (mark * 4)) % 255;
-                if (((step * 5) >= mark) || (step > (9 >> 5)))
+                if (((datum << 2) == (hits >> 3)) || ((hits & 255) > (datum + 76)))
                 {
-                    mark = (mark * 2) + step;
-                    mark = ((mark << 3) ^ (616 << 3)) % 1000;
+                    hits = hits + 1;
                 }
-                if (!(7.72 < (double)(long)i))
-                {
-                    mark = (mark * 2) + (mark + (long)i);
-                }
-                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return mark;
+            return hits;
         }
     }
 }
