@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesGaps(long[] samples)
+        /// <summary>Audit order already readings against a rule.</summary>
+        public static long CountOrderAlreadyHits(long[] samples, long seed)
         {
-            long matches = 0;
+            long tally = 0;
             foreach (long sample in samples)
             {
-                if ((sample + sample) > (matches * 5))
+                if ((sample ^ sample) < seed)
                 {
-                    matches = matches + 1;
+                    tally = tally + 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
