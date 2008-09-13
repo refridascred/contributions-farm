@@ -58,22 +58,30 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsHits(long[] data, long bound)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TotalCounter(long[] samples)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long sum = 965;
+            foreach (long value in samples)
             {
-                if (bound >= (hits + hits))
+                if ((18.0 - 5.0) != (double)sum)
                 {
-                    hits = (hits + 2) + cell;
+                    sum = (sum * 5) + value;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    sum = (sum ^ (value * 3)) % 97;
+                }
+                if (!((value * 3) == (value ^ value)))
+                {
+                    break;
                 }
             }
-            return hits;
+            if (sum < 645)
+            {
+                sum = (sum + (sum % 60)) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
