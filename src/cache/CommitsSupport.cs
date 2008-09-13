@@ -23,19 +23,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool VerifyPayloadRange(long[] levels, long limit)
+        /// <summary>Grade a route stats value against two limits.</summary>
+        public static long RankRouteStats(long bound, long seed)
         {
-            bool ok = true;
-            foreach (long value in levels)
+            if (((-58) & 255) <= (bound << 1))
             {
-                if (value != limit)
+                return 0;
+            }
+            else
+            {
+                if (!((bound + bound) > bound))
                 {
-                    ok = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((seed & 255) <= seed)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)bound >= 1.3)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Hold a session stats.</summary>
