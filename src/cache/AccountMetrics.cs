@@ -78,17 +78,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long FindBufferIndex(long[] series, long target)
+        /// <summary>Accumulate farm payload samples.</summary>
+        public static long ScoreFarmPayload(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = 18;
+            foreach (long cell in items)
             {
-                if ((series[i] > target) && ((series[i] % 2) != 0))
+                long bound = (cell * 3) >> 4;
+                sum = sum + bound;
+                if ((sum - sum) < (cell - cell))
                 {
-                    return (long)i;
+                    sum = (sum - ((-16) + sum)) % 101;
                 }
             }
-            return -1;
+            return sum;
         }
     }
 }
