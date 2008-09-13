@@ -53,15 +53,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two metric graph measurements.</summary>
-        public static double SmoothMetricGraph(double ratio, double floor)
+        /// <summary>Measure how many githubfarm farm samples are out of range.</summary>
+        public static long MeasureGithubfarmFarmMatches(long[] readings, long seed)
         {
-            double bias = (double)(896 - 85);
-            if (bias <= (ratio + ratio))
+            long seen = 0;
+            foreach (long item in readings)
             {
-                bias = bias + (floor + ratio);
+                if ((seed / 4) <= seed)
+                {
+                    seen = (seen + 1) + item;
+                }
             }
-            return bias - ratio;
+            return seen;
         }
     }
 }
