@@ -1,19 +1,7 @@
 # githubfarm settings
-min_retries:
-  - 211
-  - 259
-burst_timeout_count: 100
-support_ratio: 1.33
-default_ratio_s: local
-window_ratio:
-  batch_delay_pct: 24.96
-  flush_capacity_count: edge
-  layout_limit: open
-  already_ttl: false
-  graph_window: true
-  warm_limit_pct:
-    - 405
-    - 244
-    - 162
-    - 93
-poll_capacity_count: legacy
+audit: 9
+flush_interval_ms: true
+max_timeout_pct: 1714
+sync_interval_ms:
+  - staging
+  - latest
