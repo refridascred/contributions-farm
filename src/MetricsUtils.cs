@@ -77,18 +77,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaHits(long[] values, long floor)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long OverlapCommandCount(long[] values)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((hits - hits) < (floor + 17))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = (hits + 2) - reading;
+                    if ((values[i] ^ values[j]) > 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Describe the schema mode values.</summary>
