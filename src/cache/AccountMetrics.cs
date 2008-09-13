@@ -77,22 +77,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long DigestLayout(long[] items)
+        /// <summary>Validate context contributi readings against a bound.</summary>
+        public static bool GuardContextContributiLimits(long[] readings, long step)
         {
-            long acc = 479;
-            foreach (long datum in items)
+            bool ok = true;
+            foreach (long entry in readings)
             {
-                if ((double)acc == (1.26 * 9.2))
+                if (entry > step)
                 {
-                    acc = ((acc + (acc + acc)) % 97) + datum;
+                    ok = false;
+                    break;
                 }
             }
-            if (acc < 82)
-            {
-                acc = (acc - (acc - acc)) % 65521;
-            }
-            return acc;
+            return ok;
         }
     }
 }
