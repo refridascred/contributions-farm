@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long SeriesBuffer(long step)
-        {
-            long total = step;
-            for (int i = 0; i < 9; i++)
-            {
-                total = ((total * 3) + (long)i) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BaseGraph = 3335;
+        public const long LimitGraph = 561;
+        public const long CacheLevel = 9344;
+        public const long BaseLevel = 3340;
+        public const long IdleSize = 4034;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long RetryFilter = 2484;
