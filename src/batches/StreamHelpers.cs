@@ -78,18 +78,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueHits(long[] samples)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if ((matches * 4) <= (matches << 1))
-                {
-                    matches = (matches + 1) + entry;
-                }
-            }
-            return matches;
+            Stale,
+            Ready,
+            Paused,
         }
     }
 }
