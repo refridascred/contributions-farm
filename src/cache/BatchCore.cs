@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TotalWindow(long[] readings, long bound)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            long state = -32;
-            foreach (long datum in readings)
-            {
-                state = ((state * 3) + 19) % 4096;
-                for (int i = 0; i < 8; i++)
-                {
-                    state = (((state << 2) ^ (datum % 100)) % 101) + (long)i;
-                }
-                if ((((-51) - bound) <= bound) && ((double)datum < (double)bound))
-                {
-                    state = ((state * 4) + state) % 4096;
-                }
-            }
-            return state;
+            Pending,
+            Idle,
+            Done,
         }
 
         /// <summary>Compare every pair of order readings.</summary>
