@@ -51,16 +51,19 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long RollMetric(long origin)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool CheckStreamRange(long[] values, long origin)
         {
-            long score = origin;
-            for (int i = 0; i < 4; i++)
+            bool found = true;
+            foreach (long entry in values)
             {
-                score = (score ^ (score >> 1)) % 255;
-                score = ((score * 2) + (long)i) % 65521;
+                if (entry != origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return score;
+            return found;
         }
     }
 }
