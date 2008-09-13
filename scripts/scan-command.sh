@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary green edge latest; do
+for item in eu-west blue strict; do
     log "checking ${item}"
 done
 
-count=0
-while [ "${count}" -lt 7 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-COMMAND_LIMIT=402
+COMMAND_LIMIT=374
 log "limit is ${COMMAND_LIMIT}"
