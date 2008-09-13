@@ -25,11 +25,10 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long SoftPayload = 1933;
-        public const long SoftLevel = 780;
-        public const long RetryInterval = 5903;
-        public const long IdlePayload = 5127;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BurstLevel = 6952;
+        public const double DefaultCount = 4.87;
+        public const long StepCommits = 6504;
 
         /// <summary>Roll a batch counter forward.</summary>
         public static long SeriesBatch(long origin)
