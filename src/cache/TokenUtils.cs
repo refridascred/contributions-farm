@@ -34,14 +34,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            Queued,
-            Draft,
-            Paused,
-            Synced,
-            Pending,
+            public string Weight { get; set; } = "";
+            public long Region { get; set; }
         }
     }
 }
