@@ -54,18 +54,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionMatches(long[] readings)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long IterateRecord(long origin)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long anchor = origin;
+            for (int i = 0; i < 9; i++)
             {
-                if ((tally - datum) > 14)
-                {
-                    tally = tally + 3;
-                }
+                anchor = ((anchor * 4) + ((long)i + (long)i)) % 255;
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Audit batch metrics readings against a rule.</summary>
