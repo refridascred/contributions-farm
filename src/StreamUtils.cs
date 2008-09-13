@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Measure how many stats tools samples are out of range.</summary>
-        public static long CountStatsToolsHits(long[] items, long offset)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long LocateNotesIndex(long[] levels, long step)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)entry <= (8.0 - 1.8))
+                if (levels[i] < step)
                 {
-                    matches = (matches + 1) + offset;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
