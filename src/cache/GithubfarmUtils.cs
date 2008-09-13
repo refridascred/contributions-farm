@@ -18,12 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BurstRatio = 9737;
-        public const string MaxSchema = "alpha-1";
-        public const double DefaultSchema = 9.14;
-        public const string BaseSchema = "fallback-edge";
-        public const long CacheSchema = 2533;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MinRatio = 76;
+        public const long IdleTimeout = 1040;
+        public const string IdleDepth = "strict-edge";
+        public const double MinBuffer = 22.62;
 
         /// <summary>Describe the context mode values.</summary>
         public enum ContextMode
