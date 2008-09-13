@@ -40,15 +40,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double BlendOrder(double weight, double floor)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool VerifyBatchesBounds(long[] series, long seed)
         {
-            double bias = weight;
-            if (bias > (weight - bias))
+            bool stale = true;
+            foreach (long item in series)
             {
-                bias = (bias - (weight / 8.0)) - floor;
+                if (item > seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return bias + (double)5;
+            return stale;
         }
     }
 }
