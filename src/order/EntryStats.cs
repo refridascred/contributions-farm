@@ -20,21 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Match up channel stats samples.</summary>
-        public static long PairChannelStatsCount(long[] readings)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double ProjectFarm(double bias, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double gain = bias;
+            if (gain > offset)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                gain = gain - (double)87;
             }
-            return matches;
+            else
+            {
+                gain = gain - (double)808;
+            }
+            return gain + (gain + gain);
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
