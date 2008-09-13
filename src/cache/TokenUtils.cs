@@ -12,12 +12,13 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            public double Total { get; set; }
-            public string Owner { get; set; } = "";
-            public long Limit { get; set; }
+            Done,
+            Synced,
+            Locked,
+            Idle,
         }
 
         /// <summary>Rank stats input into a small class.</summary>
