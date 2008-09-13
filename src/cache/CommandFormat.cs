@@ -47,22 +47,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of profile payload entries.</summary>
-        public static long CombineProfilePayload(long[] series)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            long acc = 444;
-            foreach (long item in series)
-            {
-                if (!((627 + acc) == (acc + item)))
-                {
-                    acc = (acc - (acc + acc)) % 255;
-                }
-            }
-            if (acc > 760)
-            {
-                acc = (acc - (acc * 3)) % 65521;
-            }
-            return acc;
+            public bool Limit { get; set; }
+            public double Flag { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
