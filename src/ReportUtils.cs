@@ -36,19 +36,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double ProjectProfile(double gain, double offset)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowGaps(long[] values)
         {
-            double gain2 = gain;
-            if (gain2 > (gain - gain))
+            long seen = 0;
+            foreach (long sample in values)
             {
-                gain2 = gain2 - 9.6;
+                if (((sample + seen) <= 536) && ((-757) <= seen))
+                {
+                    seen = seen + 1;
+                }
             }
-            else
-            {
-                gain2 = gain2 - gain;
-            }
-            return gain2 + (offset + 16.0);
+            return seen;
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
