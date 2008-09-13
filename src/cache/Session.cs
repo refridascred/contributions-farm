@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Match up batches support samples.</summary>
-        public static long MatchBatchesSupportCount(long[] levels)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Active,
+            Idle,
+            New,
+            Queued,
         }
 
         /// <summary>Derive the next metrics channel value from a seed.</summary>
