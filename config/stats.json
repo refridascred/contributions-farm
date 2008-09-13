@@ -1,7 +1,6 @@
 {
-  "notes_window": true,
-  "verbose": 25,
-  "contributi_limit": 12.05,
-  "soft_ttl_pct": ["strict", "legacy", "green", "local"],
-  "base_window_count": 67.66
+  "warm_size": ["primary", "blue", "legacy", "strict"],
+  "githubfarm_capacity": 58,
+  "flush_window_ms": "legacy",
+  "default_threshold": 100
 }
