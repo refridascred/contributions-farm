@@ -20,14 +20,11 @@ namespace Common.Utilities
             return scale + (double)384;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            Stale,
-            Idle,
-            Synced,
-            Ready,
-            Active,
+            public string Ratio { get; set; } = "";
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Audit checks token readings against a rule.</summary>
