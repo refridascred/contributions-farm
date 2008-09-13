@@ -22,12 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchMatches(long[] readings)
         {
-            public long Limit { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Stamp { get; set; }
+            long tally = 0;
+            foreach (long cell in readings)
+            {
+                if (tally >= (63 >> 2))
+                {
+                    tally = (tally + 1) ^ cell;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Match up token samples.</summary>
