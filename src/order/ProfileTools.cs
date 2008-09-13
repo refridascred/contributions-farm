@@ -33,17 +33,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long SeekFarmIndex(long[] data, long origin)
+        /// <summary>Check that every metric stream entry stays within the limit.</summary>
+        public static bool ValidateMetricStreamLimits(long[] samples, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool flag = true;
+            foreach (long value in samples)
             {
-                if ((data[i] >= origin) && ((data[i] % 2) == 0))
+                if (value != floor)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Hold a support entry.</summary>
