@@ -42,22 +42,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaHits(long[] samples, long origin)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long StepRoute(long seed)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long carry = seed;
+            for (int i = 0; i < 13; i++)
             {
-                if ((origin % 64) != (cell - 876))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                carry = ((carry << 2) ^ (522 / 3)) % 1000;
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            return seen;
+            return carry;
         }
     }
 }
