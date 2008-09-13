@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Look up the position of a schema contributi sample.</summary>
-        public static long FindSchemaContributiIndex(long[] values, long bound)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long SortCommits(long target, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            if (((-686) >> 1) == (target % 5))
             {
-                if (values[i] <= bound)
+                return 3;
+            }
+            else
+            {
+                if (((target % 8) == (seed << 2)) && (3 >= (seed + seed)))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a record info.</summary>
