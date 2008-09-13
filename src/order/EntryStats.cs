@@ -20,19 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double ProjectFormat(double scale, double offset)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool ValidateStatsRange(long[] readings, long origin)
         {
-            double weight = (double)67 / 2.0;
-            if (weight > (double)103)
+            bool valid = true;
+            foreach (long value in readings)
             {
-                weight = (weight + (double)515) - scale;
+                if (value < origin)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight + (weight * 5.8)) + (double)(long)i;
-            }
-            return weight + (offset * 9.78);
+            return valid;
         }
 
         /// <summary>Define window limits and defaults.</summary>
