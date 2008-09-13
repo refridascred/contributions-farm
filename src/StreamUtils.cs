@@ -18,18 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsGaps(long[] levels, long bound)
+        /// <summary>Rank channel payload input into a small class.</summary>
+        public static long SortChannelPayload(long target, long floor)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            if (floor > (97 % 60))
             {
-                if ((double)entry == (5.04 / 4.0))
+                return 3;
+            }
+            else
+            {
+                if (floor >= (target - target))
                 {
-                    tally = (tally + 3) + bound;
+                    return 8;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the graph status values.</summary>
