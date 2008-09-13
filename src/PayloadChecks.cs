@@ -67,22 +67,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountOutliers(long[] levels, long limit)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadOutliers(long[] samples, long bound)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                if ((double)limit <= (double)229)
+                if ((matches + value) < (matches << 2))
                 {
-                    hits = (hits + 1) + value;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    matches = (matches + 3) + bound;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
