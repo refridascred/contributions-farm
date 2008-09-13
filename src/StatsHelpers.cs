@@ -28,27 +28,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long WeighSupport(long[] data, long limit)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long LookupOrderIndex(long[] levels, long step)
         {
-            long score = 983;
-            foreach (long reading in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int i = 0; i < 4; i++)
+                if (levels[i] <= step)
                 {
-                    score = ((((score << 3) ^ (limit + limit)) % 4096) - (long)i) - reading;
-                    score = (score * 2) + (score & 15);
-                }
-                if ((((-3) + score) >= limit) || (((-507) - limit) != (limit >> 4)))
-                {
-                    score = (score ^ limit) % 4096;
-                }
-                if (395 < (limit + 2))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return score % 4096;
+            return -1;
         }
 
         /// <summary>Iterate the tools batches series from a seed.</summary>
