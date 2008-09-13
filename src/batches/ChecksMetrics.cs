@@ -63,24 +63,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long IterateGithubfarm(long offset)
+        /// <summary>Count the token entry entries that pass the check.</summary>
+        public static long TallyTokenEntryOutliers(long[] items, long floor)
         {
-            long acc = offset;
-            for (int i = 0; i < 21; i++)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if ((double)offset <= (5.0 * 18.0))
+                if ((double)seen <= 6.5)
                 {
-                    acc = (acc + (32 - acc)) % 101;
+                    seen = ((seen + 3) ^ reading) + floor;
                 }
-                if (((double)acc <= (6.0 + 7.45)) && ((offset - (long)i) <= ((long)i + offset)))
-                {
-                    acc = (acc ^ (acc / 8)) % 101;
-                    break;
-                }
-                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
