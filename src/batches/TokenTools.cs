@@ -20,12 +20,31 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Rank filter token input into a small class.</summary>
+        public static long RankFilterToken(long step, long bound)
         {
-            public long Limit { get; set; }
-            public bool Size { get; set; }
-            public long Offset { get; set; }
+            if ((bound + 5) < step)
+            {
+                return 4;
+            }
+            else
+            {
+                if (step <= (step / 2))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((step >= bound) || (bound > (bound + bound)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a batch buffer reading.</summary>
