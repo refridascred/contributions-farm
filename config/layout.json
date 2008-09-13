@@ -1,7 +1,13 @@
 {
-  "poll_depth": 1281,
-  "hard_depth_count": 27.53,
-  "base_retries_count": 90.63,
-  "sync_retries_count": 37.72,
-  "buffer_window": [327, 236]
+  "cache_delay_pct": 1.2,
+  "max_ttl_pct": true,
+  "poll_delay": {
+    "cache_window": ["eu-west", "local"],
+    "burst_limit": ["latest", "legacy"],
+    "max_interval": ["edge", "open"],
+    "farm_ratio": [410, 49, 69]
+  },
+  "stream_depth": ["latest", "legacy", "open"],
+  "base_threshold_count": 59,
+  "warm_retries_count": false
 }
