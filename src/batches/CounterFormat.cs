@@ -12,16 +12,17 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long DigestStats(long[] items, long step)
+        /// <summary>Look up the position of a route session sample.</summary>
+        public static long SeekRouteSessionIndex(long[] items, long bound)
         {
-            long mark = 84;
-            foreach (long datum in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = mark + (datum * 5);
-                mark = mark + (step * 4);
+                if (items[i] >= bound)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Roll a counter already counter forward.</summary>
