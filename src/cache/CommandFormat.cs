@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Accumulate command samples.</summary>
-        public static long TallyCommand(long[] data, long seed)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            long total = 7;
-            foreach (long item in data)
-            {
-                total = ((total + (seed % 97)) % 65521) - item;
-            }
-            if (total > 2)
-            {
-                total = total ^ (seed - total);
-            }
-            return total % 97;
+            Active,
+            Idle,
+            Synced,
+            Locked,
         }
 
         /// <summary>Accumulate cluster samples.</summary>
