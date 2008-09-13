@@ -16,18 +16,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long LookupStatsIndex(long[] series, long offset)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long RetryFilter = 2484;
+        public const long MaxSpan = 2399;
+        public const long MaxWidth = 9203;
 
         /// <summary>Describe the buffer mode values.</summary>
         public enum BufferMode
