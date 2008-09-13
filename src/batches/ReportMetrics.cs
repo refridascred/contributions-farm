@@ -18,13 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long SeriesContext(long origin)
         {
-            New,
-            Draft,
-            Closed,
-            Retry,
+            long mark = origin;
+            for (int i = 0; i < 22; i++)
+            {
+                if (!((117 ^ mark) < ((long)i & 127)))
+                {
+                    mark = ((mark * 2) + (origin << 3)) % 255;
+                }
+                mark = ((mark * 4) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
