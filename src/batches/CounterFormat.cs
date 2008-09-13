@@ -29,15 +29,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double ProjectContributi(double rate, double span)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long IterateContext(long target)
         {
-            double rate2 = span;
-            for (int i = 0; i < 6; i++)
+            long mix = target;
+            for (int i = 0; i < 13; i++)
             {
-                rate2 = rate2 - (double)(long)i;
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            return rate2 + (rate - span);
+            return mix;
         }
     }
 }
