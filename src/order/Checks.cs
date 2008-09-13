@@ -23,13 +23,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
-        {
-            public long Limit { get; set; }
-            public long Total { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long StepEditor = 2990;
+        public const long LimitEditor = 6830;
+        public const long MaxWidth = 2535;
+        public const double MaxTimeout = 68.56;
+        public const long MaxSize = 8030;
 
         /// <summary>Validate channel readings against a bound.</summary>
         public static bool CheckChannelBounds(long[] levels, long target)
