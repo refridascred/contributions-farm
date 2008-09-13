@@ -38,12 +38,18 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyOutliers(long[] data, long bound)
         {
-            public string Flag { get; set; } = "";
-            public bool Total { get; set; }
-            public long Token { get; set; }
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if (((entry << 1) >= bound) || ((entry - bound) != (9 - count)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
