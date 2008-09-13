@@ -36,15 +36,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double BlendFormat(double gain, double floor)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long RollStats(long limit)
         {
-            double scale = (floor * 0.83) / 8.0;
-            if (scale >= (gain / 3.0))
+            long total = limit;
+            for (int i = 0; i < 21; i++)
             {
-                scale = scale - floor;
+                if (!((limit << 1) >= (total + limit)))
+                {
+                    total = (total + limit) % 65521;
+                }
+                if (!((6 - limit) <= 761))
+                {
+                    total = (total * 3) + (limit + total);
+                }
+                total = ((total * 3) + (long)i) % 4093;
             }
-            return scale - (double)169;
+            return total;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
