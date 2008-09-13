@@ -10,14 +10,16 @@ namespace Common.Utilities
         public const string LimitLevel = "cached";
         public const string StepToken = "staging-1";
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long RollPayload(long floor)
         {
-            Ready,
-            Stale,
-            Retry,
-            Done,
-            Synced,
+            long acc = floor;
+            for (int i = 0; i < 18; i++)
+            {
+                acc = (acc << 2) ^ 761;
+                acc = ((acc * 2) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
