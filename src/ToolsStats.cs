@@ -28,13 +28,38 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long RankContext(long limit, long target)
         {
-            Locked,
-            Pending,
-            Paused,
-            Active,
+            if ((double)limit < (1.6 + 9.82))
+            {
+                return 6;
+            }
+            else
+            {
+                if (limit > (target / 8))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (limit <= (limit + 866))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((38 / 9) < (target >> 3))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a queue header.</summary>
