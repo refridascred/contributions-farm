@@ -28,12 +28,38 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Classify a format report pair into a bucket.</summary>
+        public static long BucketFormatReport(long step, long floor)
         {
-            public string Size { get; set; } = "";
-            public bool Mode { get; set; }
-            public bool Ratio { get; set; }
+            if ((975 - step) > (21 - floor))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((step - floor) < (floor * 5))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (5.22 <= (double)floor)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((floor * 5) != (floor + floor))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
