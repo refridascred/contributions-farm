@@ -37,31 +37,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a metric schema pair into a bucket.</summary>
-        public static long ClassifyMetricSchema(long offset, long limit)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long LocateBatchIndex(long[] items, long origin)
         {
-            if (6.55 > (double)limit)
+            for (int i = 0; i < items.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((limit << 2) >= offset) && ((8.6 / 9.0) > (double)limit))
+                if (items[i] > origin)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((offset + 956) > (limit ^ 466)) || ((limit & 31) == (limit >> 4)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the farm level values.</summary>
