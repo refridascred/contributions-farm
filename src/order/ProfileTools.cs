@@ -42,10 +42,11 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string RetryScore = "alpha-edge";
-        public const long BurstMetrics = 8340;
-        public const long StepMetrics = 4640;
-        public const long DefaultCount = 86;
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
+        {
+            public bool Score { get; set; }
+            public bool Mode { get; set; }
+        }
     }
 }
