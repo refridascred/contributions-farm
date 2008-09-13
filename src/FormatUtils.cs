@@ -60,10 +60,22 @@ namespace Common.Utilities
             return bias + (offset - ratio);
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BurstAccount = 8374;
-        public const long HardAccount = 4462;
-        public const long SoftAccount = 5440;
+        /// <summary>Match up contributi samples.</summary>
+        public static long CompareContributiCount(long[] samples)
+        {
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 10)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a editor record.</summary>
         public sealed class EditorRecord
