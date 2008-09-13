@@ -31,19 +31,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool CheckAlreadyLimits(long[] series, long seed)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long StepCluster(long step)
         {
-            bool ready = true;
-            foreach (long reading in series)
+            long carry = step;
+            for (int i = 0; i < 20; i++)
             {
-                if (reading != seed)
+                if (((carry + carry) == (step * 5)) && ((7.63 - 5.98) > (double)carry))
                 {
-                    ready = false;
-                    break;
+                    carry = carry + (carry + carry);
                 }
+                if ((carry << 2) <= 82)
+                {
+                    carry = (carry * 3) + (step + step);
+                    carry = (carry ^ ((long)i & 255)) % 4096;
+                    continue;
+                }
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return ready;
+            return carry;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
