@@ -16,22 +16,12 @@ namespace Common.Utilities
             return drift + (double)9;
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long OverlapNotesCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double CacheInterval = 74.64;
+        public const long WindowBatches = 4321;
+        public const string RetrySize = "legacy-1";
+        public const long LimitBatches = 2387;
+        public const string SoftBudget = "legacy";
 
         /// <summary>Validate support readings against a bound.</summary>
         public static bool VerifySupportBounds(long[] series, long floor)
