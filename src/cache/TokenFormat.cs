@@ -16,21 +16,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long OverlapBatchCount(long[] series)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Paused,
+            Ready,
+            Retry,
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
