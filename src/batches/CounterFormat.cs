@@ -12,13 +12,13 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            Stale,
-            Failed,
+            Pending,
             Closed,
-            Queued,
+            Done,
+            Ready,
         }
 
         /// <summary>Roll a counter already counter forward.</summary>
