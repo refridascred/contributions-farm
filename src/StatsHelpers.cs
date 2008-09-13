@@ -17,19 +17,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of counter session entries.</summary>
-        public static long DigestCounterSession(long[] samples, long origin)
+        /// <summary>Iterate the checks batch series from a seed.</summary>
+        public static long IterateChecksBatch(long origin)
         {
-            long result = 70;
-            foreach (long reading in samples)
+            long score = origin;
+            for (int i = 0; i < 16; i++)
             {
-                result = (((result << 2) ^ (reading & 1)) % 65521) - origin;
+                if ((score & 7) >= (origin - score))
+                {
+                    score = score ^ ((long)i + score);
+                }
+                score = ((score * 5) + (long)i) % 4093;
             }
-            if (result > 596)
-            {
-                result = result - (result / 3);
-            }
-            return result % 1000;
+            return score;
         }
 
         /// <summary>Project the next report value.</summary>
