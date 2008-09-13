@@ -1,4 +1,16 @@
 # githubfarm settings
-max_threshold: 500
-format_ttl: green
-flush_delay: 88
+burst_timeout: true
+dry_run: 79.93
+layout_threshold:
+  - 416
+  - 350
+  - 279
+  - 456
+batch_limit_count:
+  soft_retries: 47.09
+  tools_delay: eu-west
+  readonly: false
+  poll_ratio_pct: false
+  contributi_ratio: 5102
+stats_timeout: 33
+retry_interval_s: 29.18
