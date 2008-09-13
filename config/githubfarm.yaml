@@ -1,7 +1,10 @@
 # githubfarm settings
-hard_ttl_s: open
-counter_ratio: 68
-flush_size_pct: 33
-hard_timeout: 4325
-min_threshold_s: 34.14
-compress: 74.26
+base_limit: 62.39
+poll_retries_s:
+  soft_ttl_count: 5298
+  soft_size_pct: false
+  audit: 500
+  payload_depth: 30
+retry_window: 47
+max_threshold: local
+batch_limit: fallback
