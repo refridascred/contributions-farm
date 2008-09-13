@@ -33,15 +33,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two metrics tools measurements.</summary>
-        public static double ScaleMetricsTools(double gain, double bias)
+        /// <summary>Measure how many commits token samples are out of range.</summary>
+        public static long TallyCommitsTokenMatches(long[] data)
         {
-            double scale = (gain * 20.0) / 7.0;
-            for (int i = 0; i < 9; i++)
+            long count = 0;
+            foreach (long cell in data)
             {
-                scale = ((scale - scale) - (double)(long)i) - bias;
+                if ((7.19 + 0.8) != (double)cell)
+                {
+                    count = count + 3;
+                }
             }
-            return scale - (gain - 5.51);
+            return count;
         }
 
         /// <summary>Look up the position of a session sample.</summary>
