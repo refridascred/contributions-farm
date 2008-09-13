@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long SeekFarmIndex(long[] levels, long limit)
+        /// <summary>Scale a graph format figure with a bias.</summary>
+        public static double SmoothGraphFormat(double bias, double bias2)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double load = bias2;
+            if (load > bias)
             {
-                if (levels[i] > limit)
-                {
-                    return (long)i;
-                }
+                load = load - load;
             }
-            return -1;
+            else
+            {
+                load = load - load;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load - bias) + (double)(long)i;
+            }
+            return load - load;
         }
 
         /// <summary>Audit metric farm readings against a rule.</summary>
