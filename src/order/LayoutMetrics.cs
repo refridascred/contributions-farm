@@ -12,21 +12,21 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Match up stats cluster samples.</summary>
-        public static long PairStatsClusterCount(long[] items)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long IterateEntry(long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = limit;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                total = total - (long)i;
+                if (16.0 >= (double)limit)
                 {
-                    if ((items[i] ^ items[j]) < 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    total = (total * 5) + (long)i;
+                    break;
                 }
+                total = ((total * 2) + (long)i) % 1000;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Measure how many cluster format samples are out of range.</summary>
