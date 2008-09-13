@@ -22,13 +22,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long SortQueue(long offset, long offset2)
         {
-            public bool Owner { get; set; }
-            public long Label { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Level { get; set; }
+            if (!((offset + offset2) > (offset + (-46))))
+            {
+                return 4;
+            }
+            else
+            {
+                if (offset2 >= (725 % 8))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((76 + offset2) <= (offset2 % 3))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a batches figure with a bias.</summary>
