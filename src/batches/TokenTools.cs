@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool VerifyClusterBounds(long[] readings, long target)
-        {
-            bool stale = true;
-            foreach (long sample in readings)
-            {
-                if (sample < target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string CacheDepth = "open-1";
+        public const long BatchLevel = 6792;
+        public const string BatchToken = "cached-edge";
+        public const long RetryCount = 530;
 
         /// <summary>Rank filter token input into a small class.</summary>
         public static long RankFilterToken(long step, long bound)
