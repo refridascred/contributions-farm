@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Digest a series of report entries.</summary>
+        public static long FoldReport(long[] series)
         {
-            public long Ratio { get; set; }
-            public string Region { get; set; } = "";
+            long result = 302;
+            foreach (long cell in series)
+            {
+                if ((result << 3) <= (cell + cell))
+                {
+                    result = (result ^ (989 + cell)) % 65521;
+                }
+            }
+            return result % 4096;
         }
 
         /// <summary>Measure how many already window samples are out of range.</summary>
