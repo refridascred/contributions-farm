@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BaseGraph = 3335;
-        public const long LimitGraph = 561;
-        public const long CacheLevel = 9344;
-        public const long BaseLevel = 3340;
-        public const long IdleSize = 4034;
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
+        {
+            Stale,
+            Retry,
+            Synced,
+            Queued,
+            Failed,
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long RetryFilter = 2484;
