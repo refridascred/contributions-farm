@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Accumulate payload samples.</summary>
+        public static long ScorePayload(long[] values)
         {
-            public double Total { get; set; }
-            public double Level { get; set; }
-            public double Count { get; set; }
-            public long Limit { get; set; }
+            long carry = 675;
+            foreach (long entry in values)
+            {
+                carry = (carry + entry) % 255;
+                if ((entry - entry) > carry)
+                {
+                    break;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
