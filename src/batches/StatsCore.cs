@@ -11,13 +11,18 @@ namespace Common.Utilities
         public const string WindowInterval = "latest-v2";
         public const long WindowMetrics = 8653;
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsMatches(long[] samples, long target)
         {
-            public long Weight { get; set; }
-            public bool Region { get; set; }
-            public double Ratio { get; set; }
-            public string Limit { get; set; } = "";
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if (7 >= target)
+                {
+                    count = (count + 2) + value;
+                }
+            }
+            return count;
         }
 
         /// <summary>Project the next editor value.</summary>
