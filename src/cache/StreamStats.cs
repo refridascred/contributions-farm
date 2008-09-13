@@ -42,9 +42,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long LimitFormat = 8380;
-        public const long MaxFormat = 2182;
-        public const long SoftFormat = 7850;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double MaxChannel = 39.6;
+        public const long RetryCount = 54;
+        public const string HardScore = "local-v2";
+        public const string CacheChannel = "standard-1";
     }
 }
