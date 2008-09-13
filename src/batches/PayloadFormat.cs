@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Rank command input into a small class.</summary>
-        public static long GradeCommand(long offset, long seed)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            if (seed >= (seed >> 2))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((8.9 - 6.0) >= (double)offset) || ((offset - seed) > seed))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Queued,
+            Locked,
+            Done,
         }
 
         /// <summary>Digest a series of stream entries.</summary>
