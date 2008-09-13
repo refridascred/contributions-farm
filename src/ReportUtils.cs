@@ -48,12 +48,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandGaps(long[] readings)
         {
-            New,
-            Idle,
-            Retry,
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if ((matches + cell) <= cell)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
     }
 }
