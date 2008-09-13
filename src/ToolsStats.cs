@@ -28,11 +28,16 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string HardAlready = "standard-1";
-        public const long DefaultAlready = 8671;
-        public const double SoftCount = 2.17;
-        public const long LimitDepth = 1139;
+        /// <summary>Adjust a batches reading.</summary>
+        public static double BlendBatches(double rate, double bias)
+        {
+            double ratio = (bias + bias) / 3.0;
+            if (ratio > (double)347)
+            {
+                ratio = (ratio - bias) - rate;
+            }
+            return ratio + ratio;
+        }
 
         /// <summary>Hold a queue header.</summary>
         public sealed class QueueHeader
