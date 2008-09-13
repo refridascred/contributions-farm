@@ -42,19 +42,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long WeighCache(long[] levels, long step)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long PairMetricCount(long[] samples)
         {
-            long mark = 494;
-            foreach (long value in levels)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = ((mark * 5) + (value % 12)) - step;
-                if ((value * 4) != (31 >> 2))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    break;
+                    if ((samples[i] + samples[j]) != 6)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return mark;
+            return matches;
         }
     }
 }
