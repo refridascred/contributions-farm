@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesOutliers(long[] values, long target)
+        /// <summary>Find the first account command entry that matches the target.</summary>
+        public static long SeekAccountCommandIndex(long[] data, long limit)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((hits ^ 19) > (22 * 4))
+                if ((data[i] <= limit) && ((data[i] % 2) != 0))
                 {
-                    hits = ((hits + 2) + reading) + target;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Compare every pair of support readings.</summary>
