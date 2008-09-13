@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchHits(long[] values)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if ((((18.0 + 17.0) <= (double)count) && (count > reading)) && (9.0 < (double)count))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Idle,
+            New,
+            Paused,
+            Ready,
+            Synced,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
