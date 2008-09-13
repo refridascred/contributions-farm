@@ -27,12 +27,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Measure how many command stream samples are out of range.</summary>
+        public static long CountCommandStreamMatches(long[] data, long offset)
         {
-            public bool Size { get; set; }
-            public bool Label { get; set; }
-            public long Offset { get; set; }
+            long count = 0;
+            foreach (long item in data)
+            {
+                if ((double)offset > 20.0)
+                {
+                    count = (count + 1) - item;
+                }
+            }
+            return count;
         }
 
         /// <summary>Classify a contributi context pair into a bucket.</summary>
