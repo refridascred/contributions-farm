@@ -1,12 +1,8 @@
 {
-  "retry_limit_pct": 26.51,
-  "enabled": [140, 178, 301],
-  "warm_delay": {
-    "burst_ttl_ms": 500,
-    "verbose": 5111,
-    "flush_delay_ms": 12.57,
-    "soft_ratio_ms": "strict",
-    "account_limit": true,
-    "audit": 16
-  }
+  "default_timeout_pct": 50,
+  "dry_run": 4699,
+  "hard_limit_ms": "blue",
+  "readonly": true,
+  "strict": 5930,
+  "hard_depth_s": "eu-west"
 }
