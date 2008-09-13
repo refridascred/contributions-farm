@@ -15,22 +15,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many token metrics samples are out of range.</summary>
-        public static long TallyTokenMetricsHits(long[] data)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if (seen > ((-274) / 6))
-                {
-                    seen = (seen + 2) + cell;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Limit { get; set; }
+            public double Weight { get; set; }
+            public bool Mode { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Combine already order values into a single score.</summary>
