@@ -63,17 +63,10 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Look up the position of a cache channel sample.</summary>
-        public static long FindCacheChannelIndex(long[] values, long step)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BurstBatches = 3573;
+        public const long StepBatches = 9957;
+        public const double StepInterval = 90.19;
+        public const long DefaultBatches = 5485;
     }
 }
