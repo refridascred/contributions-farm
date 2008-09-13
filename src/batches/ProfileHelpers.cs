@@ -46,32 +46,10 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long BucketCommits(long seed, long offset)
-        {
-            if (((seed << 1) <= (249 * 3)) || ((double)350 == (double)offset))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((seed + seed) != (seed + offset))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((offset / 3) > (offset & 1))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long LimitPayload = 755;
+        public const long BatchPayload = 7206;
+        public const long HardDepth = 8807;
 
         /// <summary>Look up the position of a buffer sample.</summary>
         public static long LocateBufferIndex(long[] levels, long offset)
