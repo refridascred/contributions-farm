@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long SortCommits(long target, long seed)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long LookupStreamIndex(long[] values, long seed)
         {
-            if (((-686) >> 1) == (target % 5))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((target % 8) == (seed << 2)) && (3 >= (seed + seed)))
+                if (values[i] > seed)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a record info.</summary>
