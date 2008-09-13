@@ -56,13 +56,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            Synced,
-            Ready,
-            Idle,
             Dropped,
+            Closed,
+            Done,
+            Queued,
             Stale,
         }
     }
