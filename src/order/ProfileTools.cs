@@ -38,26 +38,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine contributi format values into a single score.</summary>
-        public static long DigestContributiFormat(long[] values, long target)
-        {
-            long state = -17;
-            foreach (long sample in values)
-            {
-                if (96 < sample)
-                {
-                    state = (state ^ (sample * 2)) % 1000;
-                    state = ((state * 4) + (target - state)) % 65521;
-                    break;
-                }
-                state = state - (target / 2);
-            }
-            if (state > 474)
-            {
-                state = state ^ target;
-            }
-            return state % 4096;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string LimitWindow = "staging-1";
+        public const double BaseBudget = 3.61;
+        public const double BatchWindow = 23.81;
+        public const long StepDepth = 7154;
+        public const long CacheDepth = 5995;
 
         /// <summary>Hold a format stats.</summary>
         public sealed class FormatStats
