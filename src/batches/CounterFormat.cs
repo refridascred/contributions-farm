@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Find the first payload buffer entry that matches the target.</summary>
-        public static long FindPayloadBufferIndex(long[] series, long target)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Pending,
+            Idle,
+            Active,
+            Queued,
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
