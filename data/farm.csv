@@ -1,6 +1,11 @@
-id,active
-1,942
-2,blue
-3,staging
-4,77
-5,850
+id,score,active
+1,68.6,29.91
+2,565,23.57
+3,eu-west,standard
+4,81,534
+5,89.6,363
+6,121,426
+7,82.54,legacy
+8,open,open
+9,1.69,25.56
+10,994,973
