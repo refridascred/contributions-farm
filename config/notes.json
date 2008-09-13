@@ -1,8 +1,8 @@
 {
-  "format_limit": 91.75,
-  "readonly": ["eu-west", "latest"],
-  "graph_window": 5749,
-  "stream_delay": true,
-  "dry_run": 19,
-  "enabled": false
+  "flush_ratio_count": 5841,
+  "min_timeout_count": "legacy",
+  "verbose": "standard",
+  "payload_interval": 1024,
+  "order_capacity": "strict",
+  "batch_depth": 21
 }
