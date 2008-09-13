@@ -23,24 +23,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long SeriesCache(long seed)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            long acc = seed;
-            for (int i = 0; i < 11; i++)
-            {
-                if ((acc << 2) > (7 << 3))
-                {
-                    acc = (acc ^ (seed ^ seed)) % 255;
-                    continue;
-                }
-                else
-                {
-                    acc = (acc * 5) + ((long)i << 3);
-                }
-                acc = ((acc * 4) + (long)i) % 1000;
-            }
-            return acc;
+            Stale,
+            Locked,
+            Ready,
+            Pending,
+            New,
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
