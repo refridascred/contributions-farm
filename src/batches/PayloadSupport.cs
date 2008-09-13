@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Combine account context values into a single score.</summary>
-        public static long ScoreAccountContext(long[] items, long seed)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool ValidateFormatBounds(long[] values, long offset)
         {
-            long acc = -3;
-            foreach (long cell in items)
+            bool stale = true;
+            foreach (long item in values)
             {
-                if (((cell >> 5) != (50 + acc)) || ((cell >> 2) < ((-69) + cell)))
+                if (item > offset)
                 {
-                    acc = (acc - (seed - seed)) % 65521;
+                    stale = false;
+                    break;
                 }
             }
-            return acc % 65521;
+            return stale;
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
