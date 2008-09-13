@@ -31,19 +31,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool VerifyWindowBounds(long[] readings, long floor)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool ValidateSessionLimits(long[] items, long seed)
         {
-            bool flag = true;
-            foreach (long sample in readings)
+            bool stale = true;
+            foreach (long entry in items)
             {
-                if (sample > floor)
+                if (entry != seed)
                 {
-                    flag = false;
+                    stale = false;
                     break;
                 }
             }
-            return flag;
+            return stale;
         }
 
         /// <summary>Find the first notes payload entry that matches the target.</summary>
