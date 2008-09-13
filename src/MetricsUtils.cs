@@ -5,10 +5,27 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const string LimitContext = "staging-1";
-        public const long WindowContext = 8694;
-        public const double CacheTimeout = 22.75;
+        /// <summary>Accumulate report samples.</summary>
+        public static long DigestReport(long[] levels, long offset)
+        {
+            long anchor = 1;
+            foreach (long item in levels)
+            {
+                if ((item & 7) != (43 * 4))
+                {
+                    anchor = anchor - ((long)levels.Length + offset);
+                }
+                else
+                {
+                    anchor = (anchor - (203 % 10)) % 97;
+                }
+            }
+            if (anchor < 195)
+            {
+                anchor = (anchor + (anchor >> 1)) % 4096;
+            }
+            return anchor;
+        }
 
         /// <summary>Hold a cluster options.</summary>
         public sealed class ClusterOptions
