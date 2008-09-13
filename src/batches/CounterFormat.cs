@@ -19,23 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double ScaleLayout(double rate, double offset)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long OverlapCommitsCount(long[] levels)
         {
-            double weight = rate;
-            if (weight > (offset + rate))
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                weight = weight - (rate * 16.0);
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                weight = weight + (weight * 3.83);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = weight + (double)(long)i;
-            }
-            return weight - (offset / 6.0);
+            return tally;
         }
 
         /// <summary>Hold a counter header.</summary>
