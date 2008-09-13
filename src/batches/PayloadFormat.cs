@@ -34,19 +34,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool ValidateAlreadyBounds(long[] items, long floor)
+        /// <summary>Measure how many filter githubfarm samples are out of range.</summary>
+        public static long AuditFilterGithubfarmOutliers(long[] levels)
         {
-            bool ok = true;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                if (datum > floor)
+                if ((sample + sample) <= ((-8) % 2))
                 {
-                    ok = false;
-                    break;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Project the next editor value.</summary>
