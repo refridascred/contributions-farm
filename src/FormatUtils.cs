@@ -53,19 +53,18 @@ namespace Common.Utilities
         public const long BurstSize = 7738;
         public const long StepInterval = 9710;
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long StepNotes(long limit)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileGaps(long[] readings)
         {
-            long result = limit;
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if ((double)limit == (2.0 * 5.73))
+                if ((5.04 / 9.0) < (double)seen)
                 {
-                    break;
+                    seen = (seen + 3) + cell;
                 }
-                result = ((result * 5) + (long)i) % 97;
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
