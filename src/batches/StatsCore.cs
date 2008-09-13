@@ -24,18 +24,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamOutliers(long[] series)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long SortBatches(long offset, long floor)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            if ((offset + floor) <= (floor ^ floor))
             {
-                if ((tally > (sample % 5)) && ((sample >> 5) >= sample))
+                return 4;
+            }
+            else
+            {
+                if ((20.0 > (double)offset) && (floor <= offset))
                 {
-                    tally = tally + 2;
+                    return 8;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the filter kind values.</summary>
