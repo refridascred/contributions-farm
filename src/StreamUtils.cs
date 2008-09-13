@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsMatches(long[] levels, long seed)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double ProjectCommits(double ratio, double span)
         {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if (!(((long)levels.Length >> 3) <= (5 * 3)) || ((seed + datum) < ((-527) & 63)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            double drift = ratio;
+            return drift + span;
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
