@@ -33,9 +33,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long LimitCommand = 7899;
-        public const long DefaultFactor = 2728;
-        public const long SoftCommand = 6470;
+        /// <summary>Accumulate channel route samples.</summary>
+        public static long DigestChannelRoute(long[] levels, long seed)
+        {
+            long anchor = 322;
+            foreach (long reading in levels)
+            {
+                anchor = (anchor ^ (reading - seed)) % 65521;
+                if (seed <= (seed / 8))
+                {
+                    anchor = (anchor * 2) + (anchor % 60);
+                }
+                else
+                {
+                    anchor = (anchor - (anchor & 63)) % 255;
+                }
+            }
+            return anchor % 1000;
+        }
     }
 }
