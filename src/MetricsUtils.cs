@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long FoldCommits(long[] samples, long seed)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long OverlapTokenCount(long[] data)
         {
-            long sum = 268;
-            foreach (long entry in samples)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (15.0 > (double)sum)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    sum = (sum ^ (7 * 5)) ^ entry;
-                }
-                else
-                {
-                    sum = (sum ^ seed) % 1000;
+                    if ((data[i] - data[j]) < 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (sum < 4)
-            {
-                sum = (sum ^ sum) % 97;
-            }
-            return sum % 4096;
+            return hits;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
