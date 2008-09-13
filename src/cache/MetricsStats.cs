@@ -13,21 +13,27 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long MatchToolsCount(long[] data)
+        /// <summary>Combine contributi cache values into a single score.</summary>
+        public static long FoldContributiCache(long[] data, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long carry = 6;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                carry = (carry + reading) % 4096;
+                if ((961 << 2) <= (reading & 1))
                 {
-                    if ((data[i] ^ data[j]) < 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    break;
+                }
+                if ((double)origin < (9.2 / 9.0))
+                {
+                    carry = ((carry * 5) + reading) % 101;
+                }
+                else
+                {
+                    carry = ((carry * 4) + reading) % 1000;
                 }
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Look up the position of a cluster command sample.</summary>
