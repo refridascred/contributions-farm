@@ -40,38 +40,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long GradeToken(long target, long limit)
+        /// <summary>Blend two order measurements.</summary>
+        public static double BlendOrder(double weight, double floor)
         {
-            if ((limit - target) <= (target ^ target))
+            double bias = weight;
+            if (bias > (weight - bias))
             {
-                return 6;
+                bias = (bias - (weight / 8.0)) - floor;
             }
-            else
-            {
-                if ((double)7 >= (double)limit)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((target - 121) == (limit % 16))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((6.32 / 2.0) > (double)limit)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return bias + (double)5;
         }
     }
 }
