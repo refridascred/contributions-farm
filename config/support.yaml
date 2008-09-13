@@ -1,5 +1,6 @@
 # support settings
-metric_capacity: false
-default_limit: true
-idle_limit_count: 75.03
-audit: 59.43
+poll_size_count:
+  - 182
+  - 205
+warm_limit_s: local
+strict: eu-west
