@@ -54,21 +54,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count batch editor pairs that satisfy a relation.</summary>
-        public static long MatchBatchEditorCount(long[] levels)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long WeighOrder(long[] samples, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = 16;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                score = ((score + (score ^ score)) % 4096) - floor;
+                if (((-322) + 9) > score)
                 {
-                    if ((levels[i] + levels[j]) != 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    score = ((score * 2) + (reading << 2)) % 97;
+                }
+                else
+                {
+                    score = score ^ 82;
                 }
             }
-            return tally;
+            if (score < 5)
+            {
+                score = score - (score / 7);
+            }
+            return score % 4096;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
