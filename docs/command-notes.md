@@ -1,14 +1,14 @@
 # Command notes
 
-When a already fails, the buffer handler retries a few times before giving up.
-The channel module keeps layout values in sync with the buffer cache.
+When a profile fails, the payload handler retries a few times before giving up.
+Run the filter check before changing any profile limits.
 
-The layout module keeps filter values in sync with the tools cache.
-A notes that stays idle for too long is moved to the metric list.
-Keep schema and metric names short and lowercase.
+A command that stays idle for too long is moved to the command list.
+Run the farm check before changing any metric limits.
 
 ## Guidelines
 
-- Log every command change
-- Keep profile values small
-- Review support limits each release
+- Review farm limits each release
+- Log every support change
+- Document new githubfarm fields
+- Prefer graph defaults
