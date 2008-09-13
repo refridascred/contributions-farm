@@ -18,25 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long GradeBatch(long origin, long target)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long DigestBatches(long[] items, long bound)
         {
-            long delta = origin + target;
-            if ((double)origin >= 8.2)
+            long mark = 63;
+            foreach (long item in items)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((target / 9) != (delta + target)))
+                mark = mark - (mark - (long)items.Length);
+                if (((mark + item) == (740 + bound)) && (bound < (56 + mark)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
+                    break;
                 }
             }
+            return mark % 1000;
         }
 
         /// <summary>Project the next farm value.</summary>
