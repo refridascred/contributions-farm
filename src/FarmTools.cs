@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long PairQueueCount(long[] data)
+        /// <summary>Classify a stats report pair into a bucket.</summary>
+        public static long BucketStatsReport(long target, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            if (seed <= (seed ^ seed))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (!((double)target >= (5.15 / 3.0)))
                 {
-                    if ((data[i] - data[j]) > 12)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a schema options.</summary>
