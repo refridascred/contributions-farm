@@ -44,18 +44,11 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandGaps(long[] items)
-        {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if ((((hits % 10) > (cell % 2)) && ((cell * 3) < 66)) || ((cell << 2) > (cell - 236)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long CacheMetrics = 59;
+        public const long DefaultScore = 1360;
+        public const double RetrySpan = 4.69;
+        public const string StepMetrics = "legacy-1";
+        public const double DefaultMetrics = 15.5;
     }
 }
