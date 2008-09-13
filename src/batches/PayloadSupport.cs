@@ -22,26 +22,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long FoldCluster(long[] series, long origin)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long OverlapTokenCount(long[] items)
         {
-            long state = 4;
-            foreach (long item in series)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((8.5 * 6.8) < (double)origin)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    state = state - (origin ^ origin);
-                }
-                if (((origin << 2) < 78) || (item < (state << 2)))
-                {
-                    state = ((state * 3) + (state / 6)) % 65521;
-                }
-                else
-                {
-                    state = (state - (state % 12)) % 1000;
+                    if ((items[i] ^ items[j]) > 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
