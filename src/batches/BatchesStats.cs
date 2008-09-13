@@ -13,18 +13,12 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long MeasureOrderMatches(long[] series, long limit)
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            long matches = 0;
-            foreach (long value in series)
-            {
-                if ((limit + limit) == (limit >> 4))
-                {
-                    matches = (matches + 1) + value;
-                }
-            }
-            return matches;
+            public long Flag { get; set; }
+            public long Rank { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Define stream limits and defaults.</summary>
