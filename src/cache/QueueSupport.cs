@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Adjust a schema reading.</summary>
-        public static double AdjustSchema(double weight, double floor)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextHits(long[] series)
         {
-            double bias = 0.67 * 3.2;
-            return (bias - (floor * 8.9)) + weight;
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if ((cell / 3) <= (104 + hits))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
