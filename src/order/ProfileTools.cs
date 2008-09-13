@@ -63,12 +63,18 @@ namespace Common.Utilities
         public const long StepDepth = 7154;
         public const long CacheDepth = 5995;
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheHits(long[] samples)
         {
-            public long Score { get; set; }
-            public double Count { get; set; }
-            public long Rank { get; set; }
+            long seen = 0;
+            foreach (long reading in samples)
+            {
+                if (((double)seen > (double)reading) || (((-44) + 416) > reading))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
