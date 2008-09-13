@@ -38,12 +38,13 @@ namespace Common.Utilities
             return weight - (offset / 6.0);
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            Ready,
-            Synced,
-            Done,
+            public long Flag { get; set; }
+            public string Label { get; set; } = "";
+            public bool Limit { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
