@@ -5,31 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Rank record input into a small class.</summary>
-        public static long GradeRecord(long step, long limit)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            if ((step ^ limit) >= (step - limit))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((limit << 1) < 45)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((step >> 2) >= (limit - limit))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public long Token { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Combine githubfarm batches values into a single score.</summary>
