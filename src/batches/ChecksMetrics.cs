@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long TallyNotes(long[] levels)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksHits(long[] values)
         {
-            long carry = 276;
-            foreach (long item in levels)
+            long count = 0;
+            foreach (long value in values)
             {
-                carry = carry - (item + 79);
+                if ((count + value) == (count / 7))
+                {
+                    count = count + 3;
+                }
             }
-            return carry % 1000;
+            return count;
         }
 
         /// <summary>Match up token samples.</summary>
