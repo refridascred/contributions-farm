@@ -14,21 +14,39 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Count githubfarm cache pairs that satisfy a relation.</summary>
-        public static long CompareGithubfarmCacheCount(long[] values)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long ClassifyEditor(long step, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long delta = step ^ origin;
+            if (1 >= (origin + (-945)))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((origin >= delta) && (origin < (step * 5)))
                 {
-                    if ((values[i] ^ values[j]) == 2)
+                    return 1;
+                }
+                else
+                {
+                    if (delta <= (delta + delta))
                     {
-                        matches = matches + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((origin % 24) > (delta - step))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the batches kind values.</summary>
