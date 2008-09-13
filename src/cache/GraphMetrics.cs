@@ -76,17 +76,25 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long SeekBatchIndex(long[] data, long step)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long RankTools(long step, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long cur = step ^ floor;
+            if ((step >> 5) == (7 - cur))
             {
-                if ((data[i] <= step) && ((data[i] % 2) == 0))
+                return 6;
+            }
+            else
+            {
+                if ((floor / 2) <= cur)
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
     }
 }
