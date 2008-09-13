@@ -68,12 +68,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long RollTools(long target)
         {
-            Idle,
-            Dropped,
-            Ready,
+            long sum = target;
+            for (int i = 0; i < 12; i++)
+            {
+                sum = (sum + sum) % 101;
+                sum = ((sum * 5) + (long)i) % 1000;
+            }
+            return sum;
         }
     }
 }
