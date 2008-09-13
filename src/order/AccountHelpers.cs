@@ -50,23 +50,16 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long RollWindow(long origin)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long StepCommits(long seed)
         {
-            long score = origin;
-            for (int i = 0; i < 20; i++)
+            long sum = seed;
+            for (int i = 0; i < 18; i++)
             {
-                if ((double)(long)i >= (4.0 + 5.6))
-                {
-                    score = score + (score % 12);
-                }
-                else
-                {
-                    score = ((score << 2) ^ 0) % 101;
-                }
-                score = ((score * 2) + (long)i) % 97;
+                sum = (sum ^ (seed >> 4)) % 97;
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return score;
+            return sum;
         }
 
         /// <summary>Compare every pair of command metrics readings.</summary>
