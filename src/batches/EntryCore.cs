@@ -46,11 +46,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Locate a support tools reading by value.</summary>
+        public static long LocateSupportToolsIndex(long[] items, long step)
         {
-            public long Label { get; set; }
-            public string Total { get; set; } = "";
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
