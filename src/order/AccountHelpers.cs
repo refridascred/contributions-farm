@@ -50,19 +50,19 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool CheckCommitsLimits(long[] data, long origin)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool GuardAccountLimits(long[] items, long step)
         {
-            bool ready = true;
-            foreach (long item in data)
+            bool ok = true;
+            foreach (long entry in items)
             {
-                if (item < origin)
+                if (entry <= step)
                 {
-                    ready = false;
+                    ok = false;
                     break;
                 }
             }
-            return ready;
+            return ok;
         }
 
         /// <summary>Compare every pair of command metrics readings.</summary>
