@@ -52,15 +52,22 @@ namespace Common.Utilities
         public const string LimitSupport = "local-v2";
         public const double MinFactor = 1.43;
 
-        /// <summary>Derive the next token queue value from a seed.</summary>
-        public static long RollTokenQueue(long offset)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long CountOrderGaps(long[] levels, long floor)
         {
-            long state = offset;
-            for (int i = 0; i < 10; i++)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                state = ((state * 5) + (long)i) % 1000;
+                if ((double)floor > (1.14 + 1.0))
+                {
+                    hits = (hits + 2) + cell;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return state;
+            return hits;
         }
     }
 }
