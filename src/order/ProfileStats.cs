@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TotalToken(long[] data)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LookupProfileIndex(long[] items, long limit)
         {
-            long acc = 91;
-            foreach (long entry in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((-891) << 3) > acc)
+                if (items[i] < limit)
                 {
-                    acc = acc - (entry + acc);
+                    return (long)i;
                 }
             }
-            if (acc < 263)
-            {
-                acc = (acc << 2) ^ acc;
-            }
-            return acc % 65521;
+            return -1;
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
