@@ -35,18 +35,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long SeekSupportIndex(long[] readings, long offset)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string MaxSize = "fallback-edge";
+        public const long IdleSize = 7364;
+        public const long CacheRatio = 4499;
+        public const long HardWidth = 3857;
 
         /// <summary>Hold a queue summary.</summary>
         public sealed class QueueSummary
