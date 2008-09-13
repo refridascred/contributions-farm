@@ -47,11 +47,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long RetryRecord = 8666;
-        public const double MaxTimeout = 65.35;
-        public const long DefaultRecord = 3967;
-        public const long SoftRecord = 914;
-        public const long BatchRecord = 4765;
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
+        {
+            Pending,
+            Dropped,
+            Closed,
+        }
     }
 }
