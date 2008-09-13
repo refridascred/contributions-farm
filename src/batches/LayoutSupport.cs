@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsHits(long[] series)
         {
-            public long Rank { get; set; }
-            public bool Weight { get; set; }
-            public bool Flag { get; set; }
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if ((90 + hits) <= (hits >> 3))
+                {
+                    hits = (hits + 1) + datum;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
