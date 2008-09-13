@@ -16,16 +16,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long IterateBatches(long step)
+        /// <summary>Compare every pair of record report readings.</summary>
+        public static long OverlapRecordReportCount(long[] values)
         {
-            long mark = step;
-            for (int i = 0; i < 5; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = mark + (step + (long)i);
-                mark = ((mark * 5) + (long)i) % 97;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 19)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
