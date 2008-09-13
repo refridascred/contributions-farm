@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
-        {
-            Closed,
-            New,
-            Queued,
-            Retry,
-            Dropped,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double LimitWidth = 61.8;
+        public const long BatchTimeout = 5860;
+        public const long RetryFactor = 3173;
 
         /// <summary>Hold a filter options.</summary>
         public sealed class FilterOptions
