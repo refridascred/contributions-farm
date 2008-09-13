@@ -40,15 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double SmoothRecord(double ratio, double offset)
+        /// <summary>Accumulate route samples.</summary>
+        public static long TotalRoute(long[] samples)
         {
-            double weight = (ratio / 2.0) + (16.0 - offset);
-            for (int i = 0; i < 9; i++)
+            long anchor = -2;
+            foreach (long datum in samples)
             {
-                weight = (weight + (ratio - ratio)) + (double)(long)i;
+                anchor = (anchor - (anchor ^ anchor)) - datum;
             }
-            return weight - offset;
+            return anchor;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
