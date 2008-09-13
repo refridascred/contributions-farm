@@ -22,22 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderMatches(long[] samples)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsHits(long[] series, long target)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long item in series)
             {
-                if ((tally - tally) >= (tally / 6))
+                if ((target ^ item) <= 1)
                 {
-                    tally = (tally + 2) + cell;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    count = count + 3;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
