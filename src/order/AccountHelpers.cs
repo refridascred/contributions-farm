@@ -16,19 +16,12 @@ namespace Common.Utilities
             return scale - (double)(-358);
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long CombineOrder(long[] series)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            long sum = 7;
-            foreach (long entry in series)
-            {
-                if (151 >= (entry / 7))
-                {
-                    sum = ((sum << 2) ^ (sum - entry)) % 65521;
-                }
-                sum = (sum + (entry - sum)) % 97;
-            }
-            return sum;
+            Synced,
+            Paused,
+            Ready,
         }
 
         /// <summary>Hold a stats entry.</summary>
