@@ -44,11 +44,19 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool CheckRecordBounds(long[] data, long bound)
         {
-            public double Limit { get; set; }
-            public long Score { get; set; }
+            bool flag = true;
+            foreach (long cell in data)
+            {
+                if (cell != bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Project the next metrics queue value.</summary>
