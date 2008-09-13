@@ -12,12 +12,22 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BaseFactor = 3678;
-        public const long WindowCache = 8832;
-        public const double MinFactor = 78.73;
-        public const long MinCache = 3788;
-        public const long WindowInterval = 9621;
+        /// <summary>Compare every pair of batches command readings.</summary>
+        public static long MatchBatchesCommandCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 13)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Blend two metrics measurements.</summary>
         public static double ProjectMetrics(double gain, double floor)
