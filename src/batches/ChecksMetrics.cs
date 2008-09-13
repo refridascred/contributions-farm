@@ -84,16 +84,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long RollFilter(long origin)
-        {
-            long anchor = origin;
-            for (int i = 0; i < 10; i++)
-            {
-                anchor = ((anchor << 3) ^ (anchor + anchor)) % 255;
-                anchor = ((anchor * 4) + (long)i) % 4093;
-            }
-            return anchor;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string BaseTimeout = "staging-v2";
+        public const string SoftStream = "open-1";
+        public const long WindowDepth = 3146;
+        public const long IdleScore = 2957;
+        public const long CacheStream = 8664;
     }
 }
