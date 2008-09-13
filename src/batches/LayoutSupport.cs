@@ -65,13 +65,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
-        {
-            Active,
-            Synced,
-            New,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string MaxFarm = "open-v2";
+        public const long MaxLevel = 1680;
+        public const long BurstScore = 3581;
+        public const string BatchFarm = "legacy-v2";
+        public const long BaseInterval = 2638;
 
         /// <summary>Count the farm entries that pass the check.</summary>
         public static long CountFarmMatches(long[] items)
