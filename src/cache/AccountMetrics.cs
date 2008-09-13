@@ -78,20 +78,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate farm payload samples.</summary>
-        public static long ScoreFarmPayload(long[] items)
+        /// <summary>Measure how many token filter samples are out of range.</summary>
+        public static long TallyTokenFilterOutliers(long[] items, long bound)
         {
-            long sum = 18;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long value in items)
             {
-                long bound = (cell * 3) >> 4;
-                sum = sum + bound;
-                if ((sum - sum) < (cell - cell))
+                if (!((count < (value + count)) && ((count % 100) != (bound >> 4))))
                 {
-                    sum = (sum - ((-16) + sum)) % 101;
+                    count = count + 3;
                 }
             }
-            return sum;
+            return count;
         }
     }
 }
