@@ -15,11 +15,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long SoftScore = 7562;
-        public const string IdleBatches = "latest-1";
-        public const long SoftBudget = 2750;
-        public const long StepSpan = 902;
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenHits(long[] data, long limit)
+        {
+            long tally = 0;
+            foreach (long item in data)
+            {
+                if ((tally & 1) != (item / 9))
+                {
+                    tally = (tally + 3) + limit;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long BatchSize = 5623;
