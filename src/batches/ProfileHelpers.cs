@@ -12,18 +12,17 @@ namespace Common.Utilities
         public const double RetrySize = 63.97;
         public const long BatchSpan = 1219;
 
-        /// <summary>Accumulate cluster cache samples.</summary>
-        public static long DigestClusterCache(long[] series)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long FindAlreadyIndex(long[] levels, long limit)
         {
-            long anchor = 448;
-            foreach (long entry in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((double)anchor >= (7.0 / 4.0)))
+                if ((levels[i] <= limit) && ((levels[i] % 5) != 0))
                 {
-                    anchor = (((anchor << 3) ^ (anchor + (long)series.Length)) % 1000) - entry;
+                    return (long)i;
                 }
             }
-            return anchor % 4096;
+            return -1;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
