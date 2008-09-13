@@ -47,12 +47,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            public string Token { get; set; } = "";
-            public long Weight { get; set; }
-            public long Size { get; set; }
+            public bool Mode { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
