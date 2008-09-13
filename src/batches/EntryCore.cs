@@ -19,39 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long ClassifyAccount(long seed, long origin)
+        /// <summary>Audit tools report readings against a rule.</summary>
+        public static long AuditToolsReportHits(long[] levels)
         {
-            long prev = seed + origin;
-            if ((double)prev <= (double)prev)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((91 + prev) > 20)
+                if ((0 + seen) < (value % 24))
                 {
-                    return 1;
+                    seen = seen + 2;
                 }
                 else
                 {
-                    if (origin >= seed)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((-7) + seed) != (origin ^ seed))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Accumulate schema samples.</summary>
