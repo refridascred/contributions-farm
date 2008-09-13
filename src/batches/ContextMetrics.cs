@@ -19,12 +19,20 @@ namespace Common.Utilities
         public const double MinSupport = 17.65;
         public const long BaseSupport = 7519;
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long SeriesBatches(long step)
         {
-            Idle,
-            Locked,
-            Ready,
+            long anchor = step;
+            for (int i = 0; i < 15; i++)
+            {
+                anchor = (anchor + (step % 60)) % 4096;
+                if (((1.0 / 5.0) <= (double)step) || ((4.0 - 14.0) != (double)step))
+                {
+                    anchor = (anchor - (step ^ anchor)) % 101;
+                }
+                anchor = ((anchor * 5) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
