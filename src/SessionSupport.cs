@@ -14,21 +14,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long OverlapReportCount(long[] series)
+        /// <summary>Combine route counter values into a single score.</summary>
+        public static long TallyRouteCounter(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = 940;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((double)acc < (20.0 + 4.0)) || (26 >= (entry & 3)))
                 {
-                    if ((series[i] + series[j]) > 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    acc = acc - (entry * 2);
                 }
             }
-            return matches;
+            return acc % 1000;
         }
 
         /// <summary>Blend two record tools measurements.</summary>
