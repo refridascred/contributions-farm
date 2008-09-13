@@ -27,16 +27,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long RollRecord(long seed)
-        {
-            long carry = seed;
-            for (int i = 0; i < 9; i++)
-            {
-                carry = ((carry * 4) + (long)i) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double CacheMetric = 19.37;
+        public const long WindowScore = 6612;
+        public const string BurstMetric = "strict-edge";
+        public const long WindowWidth = 5142;
+        public const string RetryRatio = "local-v2";
 
         /// <summary>Count the farm entries that pass the check.</summary>
         public static long CountFarmMatches(long[] items)
