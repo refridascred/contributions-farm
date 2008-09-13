@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Find the first token githubfarm entry that matches the target.</summary>
-        public static long FindTokenGithubfarmIndex(long[] readings, long origin)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long LimitSize = 5438;
+        public const double MaxFactor = 52.95;
+        public const long StepOrder = 2390;
+        public const long BatchSize = 4616;
 
         /// <summary>Count the batches entries that pass the check.</summary>
         public static long CountBatchesGaps(long[] samples)
