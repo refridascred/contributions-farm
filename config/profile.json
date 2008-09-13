@@ -1,7 +1,15 @@
 {
-  "persist": "latest",
-  "flush_threshold": true,
-  "default_interval": false,
-  "dry_run": 6897,
-  "batch_limit": "latest"
+  "batch_threshold_count": [142, 286],
+  "githubfarm_limit": 2677,
+  "enabled": "strict",
+  "burst_interval_ms": 13.72,
+  "compress": false,
+  "buffer_size": {
+    "min_threshold_ms": 78.62,
+    "sync_capacity_pct": false,
+    "burst_window": 250,
+    "strict": 60,
+    "tools_ratio": [417, 90, 217, 126],
+    "format_timeout": "fallback"
+  }
 }
