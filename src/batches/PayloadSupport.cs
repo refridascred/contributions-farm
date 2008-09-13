@@ -39,18 +39,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsHits(long[] readings, long offset)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if ((hits + offset) < (hits % 7))
-                {
-                    hits = (hits + 1) + reading;
-                }
-            }
-            return hits;
+            Dropped,
+            Synced,
+            New,
+            Pending,
+            Draft,
         }
     }
 }
