@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double ScaleCounter(double scale, double floor)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterGaps(long[] levels, long offset)
         {
-            double drift = (double)(39 - 84);
-            if (drift >= (drift / 2.0))
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                drift = drift - (floor / 8.0);
+                if (!((4.0 + 4.5) <= (double)cell))
+                {
+                    hits = (hits + 2) + offset;
+                }
             }
-            else
-            {
-                drift = drift - drift;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift - (scale + 5.0)) + (double)(long)i;
-            }
-            return drift + drift;
+            return hits;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
