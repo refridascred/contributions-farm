@@ -44,11 +44,20 @@ namespace Common.Utilities
             return bias2 - 6.87;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long SoftDepth = 137;
-        public const string BaseFactor = "cached-v2";
-        public const long BatchSupport = 7938;
-        public const long BurstSupport = 6955;
+        /// <summary>Validate checks account readings against a bound.</summary>
+        public static bool CheckChecksAccountBounds(long[] items, long floor)
+        {
+            bool flag = true;
+            foreach (long entry in items)
+            {
+                if (entry > floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Hold a buffer record.</summary>
         public sealed class BufferRecord
