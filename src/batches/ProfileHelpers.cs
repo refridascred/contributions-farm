@@ -22,12 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool VerifyFormatRange(long[] values, long step)
         {
-            public long Offset { get; set; }
-            public bool Stamp { get; set; }
-            public long Owner { get; set; }
+            bool flag = true;
+            foreach (long value in values)
+            {
+                if (value >= step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
