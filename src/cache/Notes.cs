@@ -44,12 +44,11 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
-        {
-            public double Total { get; set; }
-            public long Rank { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long WindowPayload = 316;
+        public const string MaxPayload = "legacy-v2";
+        public const long StepInterval = 4252;
+        public const long LimitSize = 806;
+        public const long BurstPayload = 8034;
     }
 }
