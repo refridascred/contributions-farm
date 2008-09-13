@@ -51,15 +51,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a token schema reading.</summary>
-        public static double ScaleTokenSchema(double rate, double offset)
-        {
-            double mean = (double)(334 + 6);
-            if (mean <= 11.0)
-            {
-                mean = mean - (offset / 6.0);
-            }
-            return mean - rate;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double MinLevel = 54.23;
+        public const long MinMetrics = 6113;
+        public const string BatchMetrics = "staging-v2";
+        public const long BatchInterval = 5309;
     }
 }
