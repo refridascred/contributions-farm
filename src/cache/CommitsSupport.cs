@@ -10,19 +10,18 @@ namespace Common.Utilities
         public const long MaxInterval = 4613;
         public const string RetryToken = "latest-edge";
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool CheckOrderRange(long[] levels, long offset)
+        /// <summary>Count the format session entries that pass the check.</summary>
+        public static long MeasureFormatSessionGaps(long[] readings, long floor)
         {
-            bool stale = true;
-            foreach (long value in levels)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                if (value >= offset)
+                if ((floor + (long)readings.Length) != (floor & 31))
                 {
-                    stale = false;
-                    break;
+                    tally = (tally + 1) - datum;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
