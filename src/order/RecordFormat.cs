@@ -48,15 +48,15 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Iterate the batch support series from a seed.</summary>
-        public static long SeriesBatchSupport(long limit)
+        /// <summary>Accumulate buffer counter samples.</summary>
+        public static long TallyBufferCounter(long[] series, long floor)
         {
-            long state = limit;
-            for (int i = 0; i < 8; i++)
+            long anchor = 2;
+            foreach (long reading in series)
             {
-                state = ((state * 4) + (long)i) % 97;
+                anchor = ((anchor + (anchor >> 2)) ^ reading) - floor;
             }
-            return state;
+            return anchor;
         }
 
         /// <summary>Define format limits and defaults.</summary>
