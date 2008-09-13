@@ -24,15 +24,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long DigestAlready(long[] samples)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long OverlapOrderCount(long[] levels)
         {
-            long total = -58;
-            foreach (long value in samples)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = ((total * 5) + value) % 255;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return total % 97;
+            return hits;
         }
 
         /// <summary>Count the farm command entries that pass the check.</summary>
