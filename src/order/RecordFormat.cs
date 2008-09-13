@@ -62,12 +62,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
-        {
-            public long Offset { get; set; }
-            public long Owner { get; set; }
-            public string Rank { get; set; } = "";
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long HardNotes = 2433;
+        public const long LimitNotes = 510;
+        public const long MinInterval = 2663;
     }
 }
