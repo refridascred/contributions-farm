@@ -26,12 +26,9 @@ namespace Common.Utilities
         public const string LimitAlready = "local-edge";
         public const long WindowScore = 7991;
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
-        {
-            Paused,
-            Retry,
-            Failed,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long DefaultTimeout = 7136;
+        public const long LimitWidth = 6034;
+        public const string BaseScore = "fallback-v2";
     }
 }
