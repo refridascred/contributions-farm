@@ -36,11 +36,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double SmoothReport(double rate, double floor)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long OverlapCounterCount(long[] samples)
         {
-            double bias = floor + (double)27;
-            return (bias - bias) + rate;
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 10)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
