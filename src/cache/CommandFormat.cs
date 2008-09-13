@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Adjust a filter layout reading.</summary>
+        public static double ProjectFilterLayout(double ratio, double bias)
         {
-            public long Offset { get; set; }
-            public double Limit { get; set; }
-            public long Mode { get; set; }
+            double ratio2 = bias / 3.0;
+            return ratio2 + ratio;
         }
 
         /// <summary>Describe the batch mode values.</summary>
