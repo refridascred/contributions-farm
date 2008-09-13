@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            Active,
-            Closed,
-            Stale,
+            Paused,
+            Dropped,
             Retry,
+            Synced,
+            Done,
         }
 
         /// <summary>Project the next window value.</summary>
