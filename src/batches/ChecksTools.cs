@@ -24,19 +24,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double AdjustStats(double ratio, double offset)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long SeekStreamIndex(long[] samples, long bound)
         {
-            double weight = (ratio * 3.0) * 3.0;
-            if (weight >= (double)274)
+            for (int i = 0; i < samples.Length; i++)
             {
-                weight = weight + (weight / 5.0);
+                if ((samples[i] >= bound) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                weight = weight + offset;
-            }
-            return weight + 6.9;
+            return -1;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
