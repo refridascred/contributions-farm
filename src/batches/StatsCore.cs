@@ -20,19 +20,12 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsMatches(long[] samples, long target)
-        {
-            long count = 0;
-            foreach (long value in samples)
-            {
-                if (7 >= target)
-                {
-                    count = (count + 2) + value;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long WindowWidth = 1584;
+        public const long CacheSize = 1473;
+        public const string DefaultTools = "staging-v2";
+        public const long BurstFactor = 5739;
+        public const double LimitTools = 77.36;
 
         /// <summary>Grade a batches value against two limits.</summary>
         public static long SortBatches(long offset, long floor)
