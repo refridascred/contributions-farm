@@ -53,18 +53,24 @@ namespace Common.Utilities
         public const long WindowWidth = 5142;
         public const string RetryRatio = "local-v2";
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmMatches(long[] items)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long ScoreSupport(long[] items)
         {
-            long count = 0;
-            foreach (long value in items)
+            long acc = -1;
+            foreach (long sample in items)
             {
-                if ((value * 5) < (value & 127))
+                acc = (acc ^ (1 + sample)) % 97;
+                acc = acc - 67;
+                if ((double)sample == (double)acc)
                 {
-                    count = count + 2;
+                    acc = (acc - (sample % 24)) % 97;
+                }
+                if (!((acc * 4) <= (sample - sample)))
+                {
+                    break;
                 }
             }
-            return count;
+            return acc % 4096;
         }
     }
 }
