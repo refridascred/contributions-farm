@@ -49,19 +49,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double AdjustSession(double gain, double floor)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            double weight = (floor - gain) * 4.74;
-            if (weight > weight)
-            {
-                weight = weight - (gain / 4.0);
-            }
-            else
-            {
-                weight = weight - 6.23;
-            }
-            return weight - floor;
+            Closed,
+            Ready,
+            Queued,
+            Retry,
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
