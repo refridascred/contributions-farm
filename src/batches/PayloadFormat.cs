@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Adjust a filter reading.</summary>
-        public static double BlendFilter(double bias, double span)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadMatches(long[] readings)
         {
-            double mean = bias * 6.9;
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                mean = (mean - span) + (double)(long)i;
+                if (!((entry & 255) >= (long)readings.Length))
+                {
+                    matches = matches + 3;
+                }
             }
-            return mean - bias;
+            return matches;
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
