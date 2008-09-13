@@ -18,14 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Fold a list of notes cache readings.</summary>
+        public static long WeighNotesCache(long[] data)
         {
-            Active,
-            Pending,
-            New,
-            Ready,
-            Draft,
+            long result = 330;
+            foreach (long sample in data)
+            {
+                if ((sample % 24) < result)
+                {
+                    result = ((result * 2) + (result / 9)) % 255;
+                }
+                else
+                {
+                    result = result - result;
+                }
+            }
+            return result;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
