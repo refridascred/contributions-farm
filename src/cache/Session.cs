@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Rank githubfarm tools input into a small class.</summary>
-        public static long BucketGithubfarmTools(long target, long offset)
+        /// <summary>Match up checks samples.</summary>
+        public static long CompareChecksCount(long[] levels)
         {
-            long offset2 = target - offset;
-            if (!((-190) <= (offset2 << 2)))
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((offset2 - (-808)) != (offset2 + offset2))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)offset2 >= (9.11 / 4.0))
+                    if ((levels[i] + levels[j]) > 14)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
