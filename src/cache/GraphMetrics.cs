@@ -16,17 +16,15 @@ namespace Common.Utilities
             return ratio2 - 8.0;
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long LocateCounterIndex(long[] readings, long target)
+        /// <summary>Blend two order measurements.</summary>
+        public static double ProjectOrder(double weight, double offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double bias = weight;
+            if (bias >= offset)
             {
-                if (readings[i] > target)
-                {
-                    return (long)i;
-                }
+                bias = bias - bias;
             }
-            return -1;
+            return bias + (weight - 6.0);
         }
 
         /// <summary>Check that every tools contributi entry stays within the limit.</summary>
