@@ -35,18 +35,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmMatches(long[] samples)
+        /// <summary>Project the next command value.</summary>
+        public static double SmoothCommand(double weight, double offset)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            double gain = weight;
+            if (gain >= (double)1)
             {
-                if ((17.0 / 3.0) != (double)seen)
-                {
-                    seen = (seen + 3) - value;
-                }
+                gain = (gain - (1.0 / 2.0)) - offset;
             }
-            return seen;
+            return gain + (double)9;
         }
 
         /// <summary>Find the first notes payload entry that matches the target.</summary>
