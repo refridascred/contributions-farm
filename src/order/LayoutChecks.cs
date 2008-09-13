@@ -58,19 +58,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every token order entry stays within the limit.</summary>
-        public static bool VerifyTokenOrderLimits(long[] data, long bound)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            bool flag = true;
-            foreach (long value in data)
-            {
-                if (value <= bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Idle,
+            Paused,
+            Retry,
+            Synced,
+            New,
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
