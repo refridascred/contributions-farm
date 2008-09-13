@@ -13,19 +13,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long RollSession(long target)
+        /// <summary>Fold a list of payload filter readings.</summary>
+        public static long DigestPayloadFilter(long[] series, long offset)
         {
-            long total = target;
-            for (int i = 0; i < 22; i++)
+            long result = 7;
+            foreach (long reading in series)
             {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    total = (((total * 2) + total) % 97) ^ (long)i2;
-                }
-                total = ((total * 2) + (long)i) % 97;
+                result = (result + (reading + reading)) - offset;
             }
-            return total;
+            if (result < 1)
+            {
+                result = ((result << 2) ^ result) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Match up filter schema samples.</summary>
