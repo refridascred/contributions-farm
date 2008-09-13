@@ -1,7 +1,5 @@
 {
-  "default_size_s": "cached",
-  "default_ttl_ms": true,
-  "commits_size": 8822,
-  "strict": "edge",
-  "warm_timeout_ms": 57.69
+  "farm_ratio": 64.63,
+  "metric_window": ["legacy", "edge", "standard"],
+  "min_capacity": 6105
 }
