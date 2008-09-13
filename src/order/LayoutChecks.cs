@@ -64,18 +64,17 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Audit batch metrics readings against a rule.</summary>
-        public static long AuditBatchMetricsGaps(long[] readings, long seed)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long SeekSessionIndex(long[] series, long limit)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((hits + seed) < (value >> 5)) && ((970 <= value) || ((double)value == (double)2)))
+                if (series[i] >= limit)
                 {
-                    hits = hits + 3;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
