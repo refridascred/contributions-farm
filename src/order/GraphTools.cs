@@ -59,15 +59,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricHits(long[] series, long target)
+        /// <summary>Audit channel counter readings against a rule.</summary>
+        public static long CountChannelCounterOutliers(long[] series)
         {
             long count = 0;
-            foreach (long sample in series)
+            foreach (long value in series)
             {
-                if (((target & 7) < (count & 31)) || ((double)sample != (6.7 - 6.5)))
+                if ((((count + (-57)) > (count >> 5)) && ((count & 63) > (value & 7))) || ((double)count > 6.8))
                 {
-                    count = count + 3;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
