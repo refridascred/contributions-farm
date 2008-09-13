@@ -37,13 +37,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long GradeLayout(long bound, long floor)
         {
-            public long Size { get; set; }
-            public long Region { get; set; }
-            public long Offset { get; set; }
-            public bool Count { get; set; }
+            long edge = bound - floor;
+            if (((double)bound > (8.23 - 0.46)) && ((bound * 5) <= (170 * 4)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)edge >= (double)3)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
