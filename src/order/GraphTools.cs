@@ -58,21 +58,12 @@ namespace Common.Utilities
         public const long SoftSize = 5093;
         public const long LimitTimeout = 3969;
 
-        /// <summary>Count context githubfarm pairs that satisfy a relation.</summary>
-        public static long MatchContextGithubfarmCount(long[] series)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Failed,
+            Pending,
+            Active,
         }
     }
 }
