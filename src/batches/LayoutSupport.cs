@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Match up order samples.</summary>
-        public static long MatchOrderCount(long[] levels)
-        {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 15)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string CacheCommand = "strict-edge";
+        public const long LimitCommand = 1898;
+        public const double BurstWidth = 97.86;
 
         /// <summary>Grade a report value against two limits.</summary>
         public static long SortReport(long seed, long limit)
