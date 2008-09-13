@@ -20,19 +20,18 @@ namespace Common.Utilities
             return scale + (floor - rate);
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool GuardEntryBounds(long[] items, long seed)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenOutliers(long[] series, long limit)
         {
-            bool valid = true;
-            foreach (long entry in items)
+            long count = 0;
+            foreach (long cell in series)
             {
-                if (entry <= seed)
+                if (((long)series.Length & 255) >= 905)
                 {
-                    valid = false;
-                    break;
+                    count = ((count + 1) + cell) - limit;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
