@@ -33,14 +33,12 @@ namespace Common.Utilities
             return scale + (scale / 7.0);
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            Failed,
-            Queued,
-            Locked,
-            Idle,
-            Paused,
+            Closed,
+            Active,
+            Stale,
         }
 
         /// <summary>Combine record values into a single score.</summary>
