@@ -53,21 +53,19 @@ namespace Common.Utilities
         public const long BurstSize = 7738;
         public const long StepInterval = 9710;
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long CompareContributiCount(long[] samples)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long StepNotes(long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = limit;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)limit == (2.0 * 5.73))
                 {
-                    if ((samples[i] - samples[j]) == 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    break;
                 }
+                result = ((result * 5) + (long)i) % 97;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Hold a editor record.</summary>
