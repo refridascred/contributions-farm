@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool ValidateToolsRange(long[] data, long origin)
-        {
-            bool valid = true;
-            foreach (long item in data)
-            {
-                if (item != origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long CacheFactor = 5925;
+        public const long WindowWidth = 3174;
+        public const string SoftContext = "legacy-1";
 
         /// <summary>Hold a command snapshot.</summary>
         public sealed class CommandSnapshot
