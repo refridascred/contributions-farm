@@ -60,17 +60,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long LookupChannelIndex(long[] samples, long offset)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Label { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Accumulate metrics samples.</summary>
