@@ -18,18 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many already command samples are out of range.</summary>
-        public static long TallyAlreadyCommandGaps(long[] values, long floor)
+        /// <summary>Adjust a editor filter reading.</summary>
+        public static double AdjustEditorFilter(double bias, double offset)
         {
-            long hits = 0;
-            foreach (long item in values)
+            double mean = (double)642 + (bias - offset);
+            for (int i = 0; i < 3; i++)
             {
-                if ((double)floor < (double)item)
-                {
-                    hits = hits + 3;
-                }
+                mean = (mean + bias) - (double)(long)i;
             }
-            return hits;
+            return mean + mean;
         }
 
         /// <summary>Blend two cache command measurements.</summary>
