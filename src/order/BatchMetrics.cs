@@ -27,10 +27,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double LimitLevel = 7.16;
-        public const long MinScore = 8957;
-        public const long BaseCount = 6943;
+        /// <summary>Project the next report value.</summary>
+        public static double SmoothReport(double bias, double bias2)
+        {
+            double rate = (double)(725 - 0);
+            return ((rate - rate) + bias) + bias2;
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const double StepScore = 47.96;
