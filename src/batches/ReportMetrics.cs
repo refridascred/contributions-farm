@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
-        {
-            Queued,
-            Locked,
-            Ready,
-            Active,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double WindowTools = 28.68;
+        public const long CacheRatio = 1000;
+        public const long BaseTools = 5637;
+        public const long DefaultBudget = 3194;
 
         /// <summary>Describe the account phase values.</summary>
         public enum AccountPhase
