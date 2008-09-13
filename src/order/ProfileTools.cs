@@ -41,12 +41,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string LimitWindow = "staging-1";
-        public const double BaseBudget = 3.61;
-        public const double BatchWindow = 23.81;
-        public const long StepDepth = 7154;
-        public const long CacheDepth = 5995;
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
+        {
+            New,
+            Active,
+            Draft,
+            Retry,
+        }
 
         /// <summary>Hold a order record.</summary>
         public sealed class OrderRecord
