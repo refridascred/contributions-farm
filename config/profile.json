@@ -1,7 +1,5 @@
 {
-  "batch_timeout_s": false,
-  "schema_capacity": 22.13,
-  "idle_limit_s": 1914,
-  "sync_interval_ms": "cached",
-  "strict": "stable"
+  "channel_timeout": true,
+  "support_limit": "strict",
+  "min_threshold_ms": "fallback"
 }
