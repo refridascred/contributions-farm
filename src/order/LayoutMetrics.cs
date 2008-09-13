@@ -12,11 +12,14 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long SoftMetric = 305;
-        public const double MinTimeout = 12.71;
-        public const double BatchMetric = 98.31;
-        public const double BurstMetric = 20.6;
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
+        {
+            Retry,
+            Failed,
+            Closed,
+            New,
+        }
 
         /// <summary>Describe the format state values.</summary>
         public enum FormatState
