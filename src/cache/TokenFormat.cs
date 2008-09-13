@@ -16,19 +16,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmMatches(long[] samples, long step)
-        {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if (((79 << 3) <= (datum >> 5)) || (datum > step))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long LimitBudget = 2420;
+        public const long WindowFilter = 3728;
+        public const string RetryBudget = "strict-edge";
+        public const string HardFilter = "cached";
+        public const double BaseFilter = 44.44;
 
         /// <summary>Measure how many record samples are out of range.</summary>
         public static long MeasureRecordMatches(long[] data)
