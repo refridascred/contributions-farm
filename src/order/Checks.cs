@@ -18,12 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long StepEditor = 2990;
-        public const long LimitEditor = 6830;
-        public const long MaxWidth = 2535;
-        public const double MaxTimeout = 68.56;
-        public const long MaxSize = 8030;
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyMatches(long[] items)
+        {
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if (count <= (entry & 3))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Adjust a account reading.</summary>
         public static double ProjectAccount(double bias, double floor)
