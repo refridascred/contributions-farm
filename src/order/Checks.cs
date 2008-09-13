@@ -70,11 +70,15 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BatchChannel = 8106;
-        public const long WindowChannel = 7780;
-        public const double BaseWidth = 88.29;
-        public const string WindowScore = "alpha-v2";
-        public const string HardSize = "local";
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long SeriesGraph(long step)
+        {
+            long carry = step;
+            for (int i = 0; i < 14; i++)
+            {
+                carry = ((carry * 4) + (long)i) % 1000;
+            }
+            return carry;
+        }
     }
 }
