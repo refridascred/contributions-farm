@@ -23,11 +23,13 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double WindowCluster = 86.62;
-        public const long BatchScore = 9057;
-        public const long MaxRatio = 5923;
-        public const long DefaultCluster = 5566;
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
+        {
+            public long Offset { get; set; }
+            public bool Stamp { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Count the order entries that pass the check.</summary>
         public static long TallyOrderOutliers(long[] values, long limit)
