@@ -67,11 +67,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BurstGraph = 2718;
-        public const long BatchGraph = 6861;
-        public const long BaseSpan = 5579;
-        public const double RetryGraph = 91.01;
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
+        {
+            Ready,
+            Locked,
+            Done,
+            Dropped,
+            Failed,
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long StepSchema = 1560;
