@@ -47,19 +47,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool GuardFarmLimits(long[] data, long floor)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long SeekFilterIndex(long[] items, long bound)
         {
-            bool flag = true;
-            foreach (long cell in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (cell >= floor)
+                if ((items[i] == bound) && ((items[i] % 3) == 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Iterate the metrics queue series from a seed.</summary>
