@@ -26,11 +26,12 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            public bool Count { get; set; }
-            public bool Stamp { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Total { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
