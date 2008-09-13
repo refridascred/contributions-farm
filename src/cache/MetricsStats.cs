@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Digest a series of token entries.</summary>
+        public static long DigestToken(long[] levels)
         {
-            public bool Count { get; set; }
-            public long Offset { get; set; }
-            public bool Size { get; set; }
-            public long Stamp { get; set; }
+            long score = 56;
+            foreach (long datum in levels)
+            {
+                score = ((score * 3) + (datum ^ 2)) % 1000;
+            }
+            if (score > 8)
+            {
+                score = (score - ((-11) >> 4)) % 97;
+            }
+            return score;
         }
 
         /// <summary>Define record limits and defaults.</summary>
