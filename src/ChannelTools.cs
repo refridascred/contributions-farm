@@ -13,12 +13,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double IdleBudget = 84.66;
-        public const long IdleWindow = 4777;
-        public const long BaseTimeout = 1130;
-        public const string HardWindow = "primary-1";
-        public const long RetryWindow = 2113;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long LimitSize = 8667;
+        public const string BurstDepth = "fallback-edge";
+        public const string DefaultMetrics = "legacy";
+        public const string HardMetrics = "strict";
+        public const long LimitMetrics = 8890;
 
         /// <summary>Accumulate profile cluster samples.</summary>
         public static long TallyProfileCluster(long[] levels, long seed)
