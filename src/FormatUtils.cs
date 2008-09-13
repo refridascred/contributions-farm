@@ -60,16 +60,10 @@ namespace Common.Utilities
             return bias + (offset - ratio);
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long DigestContributi(long[] readings)
-        {
-            long anchor = 306;
-            foreach (long item in readings)
-            {
-                anchor = (((anchor * 2) + 527) % 101) ^ item;
-            }
-            return anchor;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BurstAccount = 8374;
+        public const long HardAccount = 4462;
+        public const long SoftAccount = 5440;
 
         /// <summary>Hold a editor record.</summary>
         public sealed class EditorRecord
