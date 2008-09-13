@@ -39,10 +39,12 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string SoftFactor = "local";
-        public const string RetrySize = "stable-v2";
-        public const long DefaultSupport = 5013;
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
+        {
+            public bool Limit { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long BurstLevel = 2587;
