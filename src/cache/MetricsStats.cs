@@ -41,15 +41,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long SeriesGraph(long floor)
+        /// <summary>Audit batch schema readings against a rule.</summary>
+        public static long TallyBatchSchemaOutliers(long[] readings)
         {
-            long score = floor;
-            for (int i = 0; i < 12; i++)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                score = ((score * 2) + (long)i) % 97;
+                if ((251 % 10) > (item + 104))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Rank queue input into a small class.</summary>
