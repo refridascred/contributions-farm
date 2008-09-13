@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryGaps(long[] levels, long target)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatLimits(long[] items, long offset)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            bool found = true;
+            foreach (long datum in items)
             {
-                if ((7 + matches) != (value << 1))
+                if (datum != offset)
                 {
-                    matches = (matches + 2) - target;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Roll a order counter forward.</summary>
