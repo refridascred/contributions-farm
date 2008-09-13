@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheOutliers(long[] levels, long step)
         {
-            Pending,
-            Dropped,
-            Locked,
-            Done,
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if ((entry >> 2) <= (step / 6))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
