@@ -1,8 +1,16 @@
 {
-  "max_delay_s": "fallback",
-  "commits_limit": 48.5,
-  "strict": "legacy",
-  "buffer_depth": [349, 64, 231],
-  "default_capacity_s": "strict",
-  "enabled": [10, 89]
+  "sync_timeout_pct": [313, 40],
+  "account_timeout": {
+    "retry_interval": 37.43,
+    "retry_size_pct": 48,
+    "strict": 500,
+    "soft_delay_ms": {
+      "stream_timeout": 57.7,
+      "already_window": 34,
+      "readonly": "fallback"
+    },
+    "base_interval_pct": "blue"
+  },
+  "batch_capacity": "local",
+  "audit": [45, 118, 247, 31]
 }
