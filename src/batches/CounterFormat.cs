@@ -38,13 +38,12 @@ namespace Common.Utilities
             return weight - (offset / 6.0);
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            Locked,
-            Idle,
-            Pending,
-            Paused,
+            Ready,
+            Synced,
+            Done,
         }
     }
 }
