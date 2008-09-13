@@ -23,39 +23,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long BucketCounter(long step, long limit)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountGaps(long[] readings, long limit)
         {
-            long edge = step - limit;
-            if (step < (step % 2))
+            long hits = 0;
+            foreach (long item in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if ((limit * 2) > (edge * 4))
+                if (!(limit >= (limit ^ limit)))
                 {
-                    return 7;
+                    hits = (hits + 1) + item;
                 }
                 else
                 {
-                    if ((double)limit != (2.1 / 9.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((edge % 16) == (limit % 7))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
