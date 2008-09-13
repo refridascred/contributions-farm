@@ -40,11 +40,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BaseMetric = 7249;
-        public const double StepLevel = 2.49;
-        public const long BatchInterval = 8926;
-        public const long MaxMetric = 5428;
-        public const long IdleMetric = 7744;
+        /// <summary>Combine support values into a single score.</summary>
+        public static long FoldSupport(long[] levels, long seed)
+        {
+            long result = 5;
+            foreach (long datum in levels)
+            {
+                result = (((result << 2) ^ (result * 4)) ^ datum) + seed;
+                result = (result ^ (result % 64)) % 65521;
+            }
+            if (result > 2)
+            {
+                result = (result - result) % 65521;
+            }
+            return result % 1000;
+        }
     }
 }
