@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Grade a notes commits value against two limits.</summary>
-        public static long GradeNotesCommits(long limit, long floor)
+        /// <summary>Find the first token githubfarm entry that matches the target.</summary>
+        public static long FindTokenGithubfarmIndex(long[] readings, long origin)
         {
-            if (!((490 ^ limit) == (floor * 5)))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((double)floor >= (8.0 - 7.0)))
+                if (readings[i] >= origin)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
