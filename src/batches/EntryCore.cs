@@ -56,19 +56,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every session batches entry stays within the limit.</summary>
-        public static bool CheckSessionBatchesRange(long[] values, long bound)
+        /// <summary>Derive the next cache format value from a seed.</summary>
+        public static long IterateCacheFormat(long floor)
         {
-            bool found = true;
-            foreach (long reading in values)
+            long anchor = floor;
+            for (int i = 0; i < 15; i++)
             {
-                if (reading < bound)
-                {
-                    found = false;
-                    break;
-                }
+                anchor = (anchor + (568 % 3)) % 101;
+                anchor = (anchor - floor) % 65521;
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return found;
+            return anchor;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
