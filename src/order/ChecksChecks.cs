@@ -5,28 +5,36 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Classify a entry support pair into a bucket.</summary>
-        public static long RankEntrySupport(long step, long offset)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long GradeChecks(long step, long floor)
         {
-            if (((double)offset != (2.78 - 7.2)) && ((step * 4) >= step))
+            long step2 = step + floor;
+            if (((floor - floor) <= step) || (step < (25 % 64)))
             {
-                return 2;
+                return 8;
             }
             else
             {
-                if (((step % 8) >= (step + 5)) && ((79 >> 2) < (step + step)))
+                if ((step * 3) < (floor << 1))
                 {
-                    return 5;
+                    return 4;
                 }
                 else
                 {
-                    if ((offset ^ step) != (step + 43))
+                    if (step >= step2)
                     {
-                        return 6;
+                        return 1;
                     }
                     else
                     {
-                        return 3;
+                        if ((step < (floor + floor)) && ((floor - 799) < (step2 & 31)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
