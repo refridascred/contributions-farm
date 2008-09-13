@@ -24,18 +24,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the account githubfarm entries that pass the check.</summary>
-        public static long CountAccountGithubfarmMatches(long[] values)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if (!!((4 - tally) < ((-99) / 6)))
-                {
-                    tally = (tally + 3) - sample;
-                }
-            }
-            return tally;
+            public bool Ratio { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Describe the metrics level values.</summary>
