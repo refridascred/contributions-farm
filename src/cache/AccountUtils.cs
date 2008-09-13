@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long SeriesNotes(long target)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TallyCommits(long[] levels, long limit)
         {
-            long mark = target;
-            for (int i = 0; i < 5; i++)
+            long total = 13;
+            foreach (long value in levels)
             {
-                if (!(((mark - (long)i) < (target * 5)) || ((double)(long)i != (1.8 + 0.2))))
+                if (((6.74 + 3.0) == (double)limit) && ((limit + limit) >= 3))
                 {
-                    mark = ((mark << 3) ^ ((long)i + (long)i)) % 255;
+                    total = (total + (limit - value)) % 4096;
                 }
-                mark = mark ^ (mark * 2);
-                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return mark;
+            return total % 1000;
         }
 
         /// <summary>Blend two filter order measurements.</summary>
