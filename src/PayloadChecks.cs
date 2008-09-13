@@ -35,10 +35,19 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MinDepth = 5994;
-        public const long MaxAccount = 8529;
-        public const long RetryAccount = 6719;
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricHits(long[] data)
+        {
+            long tally = 0;
+            foreach (long value in data)
+            {
+                if ((tally * 3) > (tally + value))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Classify a notes support pair into a bucket.</summary>
         public static long SortNotesSupport(long bound, long bound2)
