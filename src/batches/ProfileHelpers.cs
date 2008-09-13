@@ -97,13 +97,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
-        {
-            public long Token { get; set; }
-            public long Count { get; set; }
-            public long Flag { get; set; }
-            public string Rank { get; set; } = "";
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long LimitGithubfarm = 199;
+        public const long MaxWidth = 5073;
+        public const double SoftGithubfarm = 39.22;
+        public const string RetryGithubfarm = "cached";
     }
 }
