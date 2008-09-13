@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long SeriesQueue(long origin)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            long anchor = origin;
-            for (int i = 0; i < 8; i++)
-            {
-                anchor = ((anchor << 2) ^ (origin + 1)) % 4096;
-                if ((59 + origin) <= (anchor * 4))
-                {
-                    anchor = ((anchor * 2) + origin) % 97;
-                    break;
-                }
-                anchor = ((anchor * 3) + (long)i) % 65521;
-            }
-            return anchor;
+            Active,
+            Ready,
+            Locked,
+            Retry,
         }
 
         /// <summary>Fold a list of window readings.</summary>
