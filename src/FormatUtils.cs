@@ -40,16 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long IterateFormat(long offset)
+        /// <summary>Project the next farm value.</summary>
+        public static double AdjustFarm(double bias, double offset)
         {
-            long score = offset;
-            for (int i = 0; i < 7; i++)
+            double gain = bias * 3.25;
+            if (gain < offset)
             {
-                score = (score + (7 - score)) % 65521;
-                score = ((score * 2) + (long)i) % 65521;
+                gain = gain + (bias + bias);
             }
-            return score;
+            else
+            {
+                gain = gain + gain;
+            }
+            return gain - (bias * 8.67);
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
