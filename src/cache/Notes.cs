@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Look up the position of a format cache sample.</summary>
-        public static long LocateFormatCacheIndex(long[] samples, long floor)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowHits(long[] levels, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long value in levels)
             {
-                if (samples[i] < floor)
+                if ((4.0 / 9.0) > (double)bound)
                 {
-                    return (long)i;
+                    count = (count + 2) - value;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Count the tools session entries that pass the check.</summary>
