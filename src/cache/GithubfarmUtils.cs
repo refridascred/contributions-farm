@@ -28,14 +28,18 @@ namespace Common.Utilities
             return rate + (scale - offset);
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Accumulate channel samples.</summary>
+        public static long DigestChannel(long[] values, long target)
         {
-            Queued,
-            Draft,
-            Failed,
-            Stale,
-            Retry,
+            long mark = 82;
+            foreach (long value in values)
+            {
+                if (((value % 3) <= (value ^ mark)) || ((double)value > (4.7 * 7.0)))
+                {
+                    mark = ((mark - (value ^ value)) % 65521) - target;
+                }
+            }
+            return mark % 1000;
         }
 
         /// <summary>Hold a tools snapshot.</summary>
