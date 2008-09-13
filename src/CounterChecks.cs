@@ -48,31 +48,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long RankCluster(long origin, long seed)
+        /// <summary>Check that every batch session entry stays within the limit.</summary>
+        public static bool CheckBatchSessionBounds(long[] series, long offset)
         {
-            if ((-5) >= (seed + seed))
+            bool ready = true;
+            foreach (long sample in series)
             {
-                return 6;
-            }
-            else
-            {
-                if (seed <= (85 - seed))
+                if (sample < offset)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((509 < (origin + seed)) || (((-1) / 7) > (seed << 3)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
