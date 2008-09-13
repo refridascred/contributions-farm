@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Roll a layout buffer counter forward.</summary>
-        public static long DeriveLayoutBuffer(long target)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesOutliers(long[] values, long target)
         {
-            long sum = target;
-            for (int i = 0; i < 10; i++)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                sum = (sum << 3) ^ target;
-                sum = ((sum * 3) + (long)i) % 97;
+                if ((hits ^ 19) > (22 * 4))
+                {
+                    hits = ((hits + 2) + reading) + target;
+                }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Compare every pair of support readings.</summary>
