@@ -23,13 +23,39 @@ namespace Common.Utilities
         public const long StepRatio = 7914;
         public const string StepProfile = "cached-edge";
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Classify a stream channel pair into a bucket.</summary>
+        public static long GradeStreamChannel(long bound, long step)
         {
-            Closed,
-            Pending,
-            Locked,
-            Draft,
+            long bound2 = bound + step;
+            if ((14.0 / 3.0) > (double)bound2)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((bound2 + step) <= (bound2 - bound))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((76 >> 5) == ((-24) - bound))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (step > (bound & 255))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a tools snapshot.</summary>
