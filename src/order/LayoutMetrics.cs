@@ -17,18 +17,13 @@ namespace Common.Utilities
         public const double IdleCount = 86.19;
         public const long IdleMetric = 51;
 
-        /// <summary>Measure how many cluster format samples are out of range.</summary>
-        public static long CountClusterFormatMatches(long[] series, long step)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if (datum < (seen << 1))
-                {
-                    seen = (seen + 1) - step;
-                }
-            }
-            return seen;
+            New,
+            Dropped,
+            Queued,
+            Retry,
         }
     }
 }
