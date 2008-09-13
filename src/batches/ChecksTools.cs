@@ -46,17 +46,12 @@ namespace Common.Utilities
             return gain + (double)9;
         }
 
-        /// <summary>Find the first notes payload entry that matches the target.</summary>
-        public static long LookupNotesPayloadIndex(long[] data, long step)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Pending,
+            Draft,
         }
     }
 }
