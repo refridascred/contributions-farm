@@ -52,31 +52,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long SortEntry(long target, long target2)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool VerifyBatchesLimits(long[] samples, long floor)
         {
-            if ((target % 3) >= (368 & 7))
+            bool found = true;
+            foreach (long value in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((target - target2) >= 81))
+                if (value <= floor)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((target2 + target2) < (0 / 4))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
