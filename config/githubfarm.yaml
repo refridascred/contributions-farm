@@ -1,10 +1,18 @@
 # githubfarm settings
-poll_limit_ms:
-  - 116
-  - 95
-  - 133
-sync_threshold_ms:
+audit:
+  - blue
   - eu-west
-  - local
-idle_delay: blue
-report_retries: 100
+  - strict
+  - edge
+default_interval_ms:
+  base_size: green
+  checks_ttl: 80.72
+  editor_interval: true
+  audit: 7980
+readonly: 61.29
+flush_interval_pct:
+  command_ratio: 37.37
+  flush_timeout_s:
+    - 167
+    - 45
+  token_size: eu-west
