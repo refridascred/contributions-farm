@@ -22,10 +22,12 @@ namespace Common.Utilities
         public const double MaxTimeout = 68.56;
         public const long MaxSize = 8030;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double BaseTools = 67.26;
-        public const long BaseSpan = 6517;
-        public const double SoftTools = 57.65;
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
+        {
+            public long Ratio { get; set; }
+            public long Limit { get; set; }
+        }
 
         /// <summary>Describe the session mode values.</summary>
         public enum SessionMode
