@@ -19,12 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double CacheProfile = 21.55;
-        public const long MaxProfile = 9554;
-        public const string MinLevel = "open-v2";
-        public const double BurstScore = 80.18;
-        public const long BaseProfile = 4203;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double LimitCluster = 71.89;
+        public const long HardCluster = 7510;
+        public const long WindowRatio = 123;
+        public const string BatchCluster = "fallback-1";
 
         /// <summary>Roll a buffer counter forward.</summary>
         public static long StepBuffer(long bound)
