@@ -33,19 +33,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long DigestLayout(long[] items)
+        /// <summary>Match up entry batches samples.</summary>
+        public static long MatchEntryBatchesCount(long[] samples)
         {
-            long acc = 92;
-            foreach (long datum in items)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                acc = ((acc << 3) ^ (datum & 15)) % 1000;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 18)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (acc > 5)
-            {
-                acc = ((acc << 3) ^ (acc - 84)) % 97;
-            }
-            return acc;
+            return count;
         }
     }
 }
