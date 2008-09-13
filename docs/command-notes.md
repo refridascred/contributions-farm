@@ -1,11 +1,14 @@
 # Command notes
 
-Use token settings to tune how often githubfarm data is refreshed.
-Keep schema and session names short and lowercase.
+Run the already check before changing any report limits.
+Each entry is validated before it reaches the channel queue.
+
+When a batches fails, the entry handler retries a few times before giving up.
+The account helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every context change
-- Prefer cluster defaults
-- Keep batch values small
-- Validate window input early
+- Review queue limits each release
+- Validate batch input early
+- Keep format values small
+- Document new farm fields
