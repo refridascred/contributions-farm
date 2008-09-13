@@ -44,12 +44,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Find the first notes payload entry that matches the target.</summary>
+        public static long LookupNotesPayloadIndex(long[] data, long step)
         {
-            Pending,
-            Paused,
-            Stale,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
