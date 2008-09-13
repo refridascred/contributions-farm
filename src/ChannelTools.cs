@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long OverlapLayoutCount(long[] readings)
+        /// <summary>Grade a command cluster value against two limits.</summary>
+        public static long RankCommandCluster(long bound, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if (!((4.0 - 12.0) < (double)bound))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (bound <= (offset - 4))
                 {
-                    if ((readings[i] + readings[j]) > 9)
+                    return 3;
+                }
+                else
+                {
+                    if (offset <= (bound - 159))
                     {
-                        tally = tally + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Check that every metrics order entry stays within the limit.</summary>
