@@ -45,12 +45,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            public double Offset { get; set; }
-            public string Level { get; set; } = "";
+            public double Flag { get; set; }
             public double Mode { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
