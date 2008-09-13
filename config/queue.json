@@ -1,7 +1,10 @@
 {
-  "warm_window_s": true,
-  "batch_delay_pct": true,
-  "soft_window": "edge",
-  "max_limit_s": 65,
-  "base_interval_count": [17, 54, 7, 267]
+  "soft_window_pct": {
+    "cache_retries": true,
+    "default_retries_ms": "blue",
+    "batch_retries_count": "fallback"
+  },
+  "githubfarm_threshold": 4490,
+  "default_depth_count": 30.22,
+  "min_threshold_ms": false
 }
