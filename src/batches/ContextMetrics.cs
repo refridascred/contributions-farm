@@ -47,17 +47,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long FoldBatch(long[] series)
-        {
-            long mix = 116;
-            foreach (long cell in series)
-            {
-                mix = (mix + cell) % 4096;
-                mix = (mix << 2) ^ (cell << 2);
-            }
-            return mix % 65521;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BaseContributi = 1334;
+        public const long SoftContributi = 3554;
+        public const double RetryInterval = 23.18;
 
         /// <summary>Count the metrics entries that pass the check.</summary>
         public static long CountMetricsOutliers(long[] levels)
