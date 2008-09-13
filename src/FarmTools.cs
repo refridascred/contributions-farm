@@ -17,19 +17,31 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate order farm readings against a bound.</summary>
-        public static bool CheckOrderFarmBounds(long[] items, long bound)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long ClassifyReport(long target, long floor)
         {
-            bool found = true;
-            foreach (long sample in items)
+            if (!((double)floor < 2.0))
             {
-                if (sample <= bound)
+                return 6;
+            }
+            else
+            {
+                if ((target + 9) < floor)
                 {
-                    found = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((floor <= (floor / 4)) || (target <= (target ^ floor)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Define format limits and defaults.</summary>
