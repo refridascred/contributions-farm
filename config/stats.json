@@ -1,13 +1,7 @@
 {
-  "batch_timeout_ms": "staging",
-  "dry_run": 8664,
-  "graph_threshold": "stable",
-  "cache_size_ms": {
-    "poll_size_ms": "local",
-    "persist": 60,
-    "base_size": "latest",
-    "default_limit_ms": true,
-    "token_interval": 41.91,
-    "stream_delay": [30, 106]
-  }
+  "soft_ratio_ms": "cached",
+  "record_depth": 21,
+  "payload_retries": "local",
+  "cache_size_pct": "primary",
+  "cluster_limit": "fallback"
 }
