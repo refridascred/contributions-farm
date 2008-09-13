@@ -1,12 +1,11 @@
 # Command notes
 
-Each farm is validated before it reaches the context queue.
-Keep graph and contributi names short and lowercase.
-Keep format and checks names short and lowercase.
+When a batches fails, the batch handler retries a few times before giving up.
+Each commits is validated before it reaches the entry queue.
 
 ## Guidelines
 
-- Prefer entry defaults
-- Keep githubfarm values small
-- Validate token input early
-- Review tools limits each release
+- Log every cache change
+- Keep window values small
+- Validate format input early
+- Document new report fields
