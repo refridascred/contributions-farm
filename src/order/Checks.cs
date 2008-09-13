@@ -33,12 +33,15 @@ namespace Common.Utilities
             return scale + (scale / 7.0);
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Roll a already counter forward.</summary>
+        public static long RollAlready(long step)
         {
-            Closed,
-            Active,
-            Stale,
+            long result = step;
+            for (int i = 0; i < 14; i++)
+            {
+                result = ((result * 3) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Combine record values into a single score.</summary>
