@@ -5,30 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long FoldCluster(long[] levels)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionOutliers(long[] series)
         {
-            long result = 907;
-            foreach (long sample in levels)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                if (761 >= (sample + sample))
+                if (((double)sample == (12.0 * 13.0)) || ((matches + sample) < (8 + sample)))
                 {
-                    result = (result - (result + sample)) % 101;
-                }
-                if ((3.48 + 0.4) > (double)(long)levels.Length)
-                {
-                    result = (result - (result - (long)levels.Length)) % 101;
-                }
-                else
-                {
-                    result = result ^ sample;
+                    matches = matches + 2;
                 }
             }
-            if (result > 1)
-            {
-                result = (result << 3) ^ (result + result);
-            }
-            return result;
+            return matches;
         }
 
         /// <summary>Describe the report kind values.</summary>
