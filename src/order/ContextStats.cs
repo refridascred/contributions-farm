@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Blend two layout buffer measurements.</summary>
-        public static double ScaleLayoutBuffer(double rate, double floor)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double ProjectFilter(double bias, double span)
         {
-            double weight = 6.2;
-            if (weight >= weight)
-            {
-                weight = weight + (rate + rate);
-            }
-            return weight + (floor + rate);
+            double weight = (double)(8 + 1);
+            return ((weight + (19.0 * 4.4)) + bias) + span;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
