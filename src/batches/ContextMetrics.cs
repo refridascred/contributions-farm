@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelMatches(long[] values, long limit)
+        /// <summary>Classify a metric cluster pair into a bucket.</summary>
+        public static long SortMetricCluster(long step, long offset)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long slot = step ^ offset;
+            if (((step ^ offset) < (offset & 3)) || (slot >= (53 + step)))
             {
-                if ((value % 60) >= (value - value))
+                return 2;
+            }
+            else
+            {
+                if ((double)offset >= (9.55 - 8.0))
                 {
-                    tally = (tally + 2) + limit;
+                    return 4;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if (704 >= offset)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a farm header.</summary>
