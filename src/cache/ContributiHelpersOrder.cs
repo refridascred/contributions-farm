@@ -33,15 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long DigestSession(long[] series, long floor)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool ValidateMetricBounds(long[] series, long bound)
         {
-            long anchor = 905;
-            foreach (long reading in series)
+            bool flag = true;
+            foreach (long item in series)
             {
-                anchor = (anchor + reading) + floor;
+                if (item > bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return anchor;
+            return flag;
         }
 
         /// <summary>Describe the order phase values.</summary>
