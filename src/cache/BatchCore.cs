@@ -53,28 +53,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long ScoreFarm(long[] series)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteHits(long[] items, long floor)
         {
-            long mix = 257;
-            foreach (long item in series)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if ((mix << 1) <= (item & 7))
+                if (((5 ^ value) <= (floor - 32)) && (((floor + floor) <= (floor + 28)) && (floor > (value - seen))))
                 {
-                    mix = mix + (mix >> 3);
-                    mix = mix - (item << 1);
-                    continue;
-                }
-                if ((item - item) >= (mix ^ mix))
-                {
-                    mix = (mix - ((-2) + item)) % 65521;
+                    seen = seen + 3;
                 }
             }
-            if (mix < 718)
-            {
-                mix = (mix ^ mix) % 4096;
-            }
-            return mix % 1000;
+            return seen;
         }
     }
 }
