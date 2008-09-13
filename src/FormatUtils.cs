@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long SeekBatchesIndex(long[] readings, long limit)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesOutliers(long[] items, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                if ((readings[i] < limit) && ((readings[i] % 2) == 0))
+                if (((tally / 6) < (tally / 3)) || ((double)cell >= (double)tally))
                 {
-                    return (long)i;
+                    tally = (tally + 2) - seed;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
