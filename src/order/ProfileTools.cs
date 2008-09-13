@@ -23,19 +23,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TotalCluster(long[] levels)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            long score = 8;
-            foreach (long item in levels)
-            {
-                score = (score << 3) ^ score;
-                if (!((item & 255) > score))
-                {
-                    score = (score - score) % 4096;
-                }
-            }
-            return score;
+            public long Offset { get; set; }
+            public long Limit { get; set; }
+            public long Region { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
