@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Scale a batches commits figure with a bias.</summary>
-        public static double ProjectBatchesCommits(double weight, double span)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            double bias = span + weight;
-            if (bias <= weight)
-            {
-                bias = bias + (span + span);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias - (weight - bias)) - (double)(long)i;
-            }
-            return bias - (double)5;
+            Paused,
+            Synced,
+            Failed,
+            Draft,
+            Stale,
         }
 
         /// <summary>Describe the cluster state values.</summary>
