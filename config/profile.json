@@ -1,5 +1,18 @@
 {
-  "soft_ratio_s": "stable",
-  "base_interval_count": 30,
-  "token_size": ["legacy", "edge"]
+  "warm_delay_ms": 34.87,
+  "notes_timeout": 80.48,
+  "soft_timeout": 3493,
+  "batch_window": {
+    "idle_ttl_s": false,
+    "sync_size_pct": 100,
+    "profile_limit": {
+      "soft_ttl": false,
+      "burst_threshold_count": "blue",
+      "entry_timeout": "fallback",
+      "window_limit": 9243,
+      "record_delay": [410, 265, 440, 234]
+    }
+  },
+  "min_limit_ms": [44, 494, 456],
+  "min_limit_pct": "eu-west"
 }
