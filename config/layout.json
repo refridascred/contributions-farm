@@ -1,6 +1,8 @@
 {
-  "min_window": 24,
-  "metrics_depth": 9.49,
-  "graph_delay": "legacy",
-  "batches_ttl": 45.64
+  "cache_interval_pct": 100,
+  "soft_delay_s": "strict",
+  "warm_window_pct": 7,
+  "contributi_interval": 1731,
+  "queue_limit": 40,
+  "farm_ratio": "fallback"
 }
