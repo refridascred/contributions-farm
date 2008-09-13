@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string BurstSpan = "primary";
-        public const string HardTimeout = "local-v2";
-        public const long HardFactor = 4010;
-        public const double MinFilter = 9.76;
-        public const long StepFilter = 9399;
+        /// <summary>Rank record input into a small class.</summary>
+        public static long GradeRecord(long step, long limit)
+        {
+            if ((step ^ limit) >= (step - limit))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((limit << 1) < 45)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((step >> 2) >= (limit - limit))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Combine githubfarm batches values into a single score.</summary>
         public static long DigestGithubfarmBatches(long[] data, long seed)
