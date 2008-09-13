@@ -34,11 +34,31 @@ namespace Common.Utilities
             return ratio2 + (double)99;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long CacheTimeout = 6440;
-        public const long SoftDepth = 6838;
-        public const long RetryRatio = 1988;
-        public const long MaxBatch = 6228;
-        public const long CacheBatch = 5865;
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long ClassifySession(long bound, long floor)
+        {
+            if ((double)floor == (5.0 + 8.6))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((floor < (floor + bound)) && (((-202) >> 2) < (floor + bound)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((floor & 63) <= 97)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
     }
 }
