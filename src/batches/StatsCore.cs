@@ -11,13 +11,32 @@ namespace Common.Utilities
         public const string WindowInterval = "latest-v2";
         public const long WindowMetrics = 8653;
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long SortSupport(long bound, long floor)
         {
-            Retry,
-            New,
-            Paused,
-            Closed,
+            long next = bound ^ floor;
+            if (((bound & 31) != (next & 1)) && ((next >> 4) >= (bound + next)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)floor < 14.0)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((681 % 8) < (next / 4))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next editor value.</summary>
