@@ -6,6 +6,10 @@ log() {
     printf '%s\n' "$*"
 }
 
+for item in legacy stable open staging; do
+    log "checking ${item}"
+done
+
 mode="${1:-staging}"
 case "${mode}" in
     edge)
@@ -16,6 +20,5 @@ case "${mode}" in
         ;;
 esac
 
-for item in standard legacy eu-west open; do
-    log "checking ${item}"
-done
+CHANNEL_LIMIT=475
+log "limit is ${CHANNEL_LIMIT}"
