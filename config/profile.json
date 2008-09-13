@@ -1,5 +1,5 @@
 {
-  "channel_timeout": true,
-  "support_limit": "strict",
-  "min_threshold_ms": "fallback"
+  "max_ratio": "primary",
+  "warm_interval_s": 40,
+  "report_timeout": 67
 }
