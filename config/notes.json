@@ -1,23 +1,7 @@
 {
-  "route_window": {
-    "idle_size_s": {
-      "warm_window": 70.1,
-      "max_delay_pct": 1024,
-      "flush_timeout_ms": "blue",
-      "metrics_interval": false,
-      "retry_timeout": 1024
-    },
-    "command_timeout": "latest",
-    "counter_limit": {
-      "default_delay_s": "edge",
-      "readonly": 43,
-      "persist": "edge"
-    },
-    "burst_window": "local",
-    "editor_delay": 24.99
-  },
-  "channel_size": 4603,
-  "session_delay": 500,
-  "retry_depth": 250,
-  "soft_limit_pct": 9706
+  "burst_threshold_count": "stable",
+  "flush_window": "local",
+  "warm_retries_s": 68,
+  "editor_window": 68,
+  "min_ratio_count": 20
 }
