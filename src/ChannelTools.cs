@@ -33,12 +33,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TotalContributi(long[] values, long floor)
         {
-            Active,
-            Ready,
-            Queued,
+            long total = 505;
+            foreach (long sample in values)
+            {
+                if ((total ^ total) > (total + total))
+                {
+                    total = (total + sample) % 1000;
+                }
+            }
+            if (total < (-699))
+            {
+                total = ((total * 2) + (floor + floor)) % 101;
+            }
+            return total % 1000;
         }
     }
 }
