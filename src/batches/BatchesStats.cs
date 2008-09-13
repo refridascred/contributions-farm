@@ -29,18 +29,17 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Audit checks token readings against a rule.</summary>
-        public static long CountChecksTokenMatches(long[] readings)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long SeekRouteIndex(long[] levels, long origin)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((tally >> 2) >= tally))
+                if ((levels[i] == origin) && ((levels[i] % 2) == 0))
                 {
-                    tally = (tally + 2) + sample;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
