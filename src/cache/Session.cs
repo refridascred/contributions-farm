@@ -5,13 +5,38 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long ClassifyRoute(long floor, long target)
         {
-            Active,
-            Idle,
-            New,
-            Queued,
+            if ((2.1 - 7.4) >= (double)target)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((floor - floor) < floor)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((target < (target << 1)) || ((target / 3) > (floor ^ target)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((target & 15) < (floor % 5))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
