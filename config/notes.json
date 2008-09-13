@@ -1,5 +1,15 @@
 {
-  "batch_retries_ms": 2097,
-  "strict": "fallback",
-  "githubfarm_ttl": false
+  "idle_timeout_ms": true,
+  "window_size": 86.45,
+  "strict": {
+    "retry_limit": false,
+    "max_size_count": 9551,
+    "report_depth": 4669,
+    "sync_size_count": 250,
+    "default_timeout_count": 4572,
+    "sync_depth_count": 9094
+  },
+  "idle_delay_ms": 34.74,
+  "profile_delay": ["green", "blue"],
+  "batches_limit": 40.39
 }
