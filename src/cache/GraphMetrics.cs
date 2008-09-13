@@ -46,11 +46,18 @@ namespace Common.Utilities
         public const long MaxChecks = 6949;
         public const string HardChecks = "primary-edge";
 
-        /// <summary>Blend two batch order measurements.</summary>
-        public static double ProjectBatchOrder(double scale, double bias)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricGaps(long[] series)
         {
-            double bias2 = scale - scale;
-            return (bias2 - scale) + bias;
+            long tally = 0;
+            foreach (long datum in series)
+            {
+                if (!((datum ^ 625) < (2 ^ tally)) && ((tally - datum) <= (datum / 8)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
