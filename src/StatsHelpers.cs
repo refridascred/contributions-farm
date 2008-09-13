@@ -28,17 +28,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long LookupOrderIndex(long[] levels, long step)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long ScoreSession(long[] items)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 474;
+            foreach (long cell in items)
             {
-                if (levels[i] <= step)
-                {
-                    return (long)i;
-                }
+                acc = (acc - (acc / 5)) ^ cell;
+                acc = ((acc << 2) ^ (6 + acc)) % 101;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Iterate the tools batches series from a seed.</summary>
