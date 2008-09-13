@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextHits(long[] series)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if ((cell / 3) <= (104 + hits))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            New,
+            Ready,
+            Synced,
+            Active,
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
