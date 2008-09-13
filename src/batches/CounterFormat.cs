@@ -30,12 +30,13 @@ namespace Common.Utilities
             return weight - (offset / 6.0);
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            public double Offset { get; set; }
-            public double Total { get; set; }
-            public string Label { get; set; } = "";
+            Locked,
+            Idle,
+            Pending,
+            Paused,
         }
     }
 }
