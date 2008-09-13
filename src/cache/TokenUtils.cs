@@ -34,9 +34,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long LimitContext = 2511;
-        public const string SoftContext = "standard-v2";
-        public const string BurstDepth = "fallback";
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
+        {
+            Queued,
+            Draft,
+            Paused,
+            Synced,
+            Pending,
+        }
     }
 }
