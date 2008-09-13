@@ -92,17 +92,22 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long FindContextIndex(long[] readings, long offset)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long DigestSchema(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = 7;
+            foreach (long sample in levels)
             {
-                if ((readings[i] <= offset) && ((readings[i] % 5) == 0))
+                if ((sample ^ score) <= (score >> 3))
                 {
-                    return (long)i;
+                    score = (score ^ (sample - score)) % 4096;
                 }
             }
-            return -1;
+            if (score < 173)
+            {
+                score = (score - score) % 255;
+            }
+            return score % 65521;
         }
     }
 }
