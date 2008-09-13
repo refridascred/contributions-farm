@@ -27,19 +27,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double BlendEditor(double rate, double floor)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool GuardBatchBounds(long[] samples, long bound)
         {
-            double ratio = rate;
-            if (ratio > (ratio - 4.5))
+            bool valid = true;
+            foreach (long reading in samples)
             {
-                ratio = ratio - floor;
+                if (reading < bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio - (floor / 8.0)) + (double)(long)i;
-            }
-            return ratio + 15.0;
+            return valid;
         }
 
         /// <summary>Hold a batch info.</summary>
