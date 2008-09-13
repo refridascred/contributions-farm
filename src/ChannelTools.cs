@@ -15,22 +15,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long FoldChecks(long[] data)
+        /// <summary>Match up filter samples.</summary>
+        public static long MatchFilterCount(long[] items)
         {
-            long anchor = 4;
-            foreach (long datum in data)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((datum + datum) > (datum / 9))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    anchor = (anchor + (datum << 3)) % 1000;
+                    if ((items[i] ^ items[j]) < 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (anchor < 9)
-            {
-                anchor = ((anchor * 4) + anchor) % 101;
-            }
-            return anchor % 4096;
+            return seen;
         }
 
         /// <summary>Hold a checks summary.</summary>
