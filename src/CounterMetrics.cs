@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long LimitLevel = 121;
-        public const long MinQueue = 272;
-        public const long StepLevel = 4217;
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsMatches(long[] values, long bound)
+        {
+            long count = 0;
+            foreach (long item in values)
+            {
+                if ((count ^ 7) == (long)values.Length)
+                {
+                    count = ((count + 2) + item) - bound;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Derive the next cache value from a seed.</summary>
         public static long SeriesCache(long seed)
