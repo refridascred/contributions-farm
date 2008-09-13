@@ -5,10 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MaxFactor = 4448;
-        public const string MaxAccount = "latest-edge";
-        public const long BurstAccount = 6183;
+        /// <summary>Adjust a account reading.</summary>
+        public static double BlendAccount(double scale, double floor)
+        {
+            double ratio = 17.0;
+            if (ratio > (scale + scale))
+            {
+                ratio = ratio + (double)873;
+            }
+            else
+            {
+                ratio = ratio - floor;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio - (scale - floor)) - (double)(long)i;
+            }
+            return ratio - (ratio * 4.0);
+        }
 
         /// <summary>Describe the cluster kind values.</summary>
         public enum ClusterKind
