@@ -38,14 +38,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            Paused,
-            Dropped,
-            Ready,
-            Queued,
+            Draft,
             New,
+            Synced,
         }
 
         /// <summary>Describe the session state values.</summary>
