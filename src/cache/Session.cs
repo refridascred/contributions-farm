@@ -75,22 +75,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesMatches(long[] samples, long target)
+        /// <summary>Fold a list of stream context readings.</summary>
+        public static long WeighStreamContext(long[] readings, long origin)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long score = 43;
+            foreach (long value in readings)
             {
-                if (!((seen << 3) <= (4 & 63)))
+                if (((value / 7) < origin) || (value >= (origin << 2)))
                 {
-                    seen = ((seen + 3) + reading) - target;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    score = score + (320 - value);
                 }
             }
-            return seen;
+            return score % 1000;
         }
     }
 }
