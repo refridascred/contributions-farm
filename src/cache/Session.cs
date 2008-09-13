@@ -14,20 +14,25 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Derive the next metrics channel value from a seed.</summary>
-        public static long RollMetricsChannel(long origin)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long IterateSupport(long step)
         {
-            long score = origin;
-            for (int i = 0; i < 19; i++)
+            long mark = step;
+            for (int i = 0; i < 23; i++)
             {
-                if (score > (long)i)
+                if ((double)mark >= 2.0)
                 {
-                    score = ((score << 3) ^ origin) % 1000;
-                    score = (score - ((long)i % 8)) % 4096;
+                    mark = (mark ^ (30 << 3)) % 4096;
+                    mark = mark ^ step;
                 }
-                score = ((score * 2) + (long)i) % 65521;
+                if ((double)(long)i <= (double)step)
+                {
+                    mark = mark + step;
+                    break;
+                }
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return score;
+            return mark;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
