@@ -15,32 +15,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TallyLayout(long[] series, long origin)
-        {
-            long total = 32;
-            foreach (long value in series)
-            {
-                if ((total >= (value & 7)) && ((4.95 / 6.0) >= (double)value))
-                {
-                    total = (total + total) % 255;
-                    total = total - (origin + value);
-                }
-                if ((value >> 1) > (value ^ 39))
-                {
-                    total = (total - origin) % 255;
-                }
-                else
-                {
-                    total = total ^ (212 - origin);
-                }
-            }
-            if (total > 235)
-            {
-                total = total - (total + 7);
-            }
-            return total;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long SoftScore = 7562;
+        public const string IdleBatches = "latest-1";
+        public const long SoftBudget = 2750;
+        public const long StepSpan = 902;
 
         /// <summary>Hold a filter options.</summary>
         public sealed class FilterOptions
