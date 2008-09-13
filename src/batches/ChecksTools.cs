@@ -31,19 +31,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool ValidateSessionLimits(long[] items, long seed)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            bool stale = true;
-            foreach (long entry in items)
-            {
-                if (entry != seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Rank { get; set; } = "";
+            public long Mode { get; set; }
+            public bool Size { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Find the first notes payload entry that matches the target.</summary>
