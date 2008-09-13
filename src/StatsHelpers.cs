@@ -57,11 +57,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Blend two command measurements.</summary>
+        public static double BlendCommand(double rate, double floor)
         {
-            public long Total { get; set; }
-            public string Size { get; set; } = "";
+            double load = floor;
+            return load + rate;
         }
     }
 }
