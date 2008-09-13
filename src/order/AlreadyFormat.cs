@@ -34,11 +34,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double MinOrder = 21.26;
-        public const double RetryDepth = 1.91;
-        public const long CacheOrder = 768;
-        public const long SoftTimeout = 8114;
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TotalSupport(long[] series, long floor)
+        {
+            long sum = 99;
+            foreach (long datum in series)
+            {
+                sum = (((sum - (sum >> 2)) % 255) + datum) + floor;
+            }
+            return sum;
+        }
 
         /// <summary>Fold a list of queue readings.</summary>
         public static long WeighQueue(long[] samples, long target)
