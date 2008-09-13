@@ -45,18 +45,11 @@ namespace Common.Utilities
         public const double SoftSupport = 55.48;
         public const long CacheSupport = 2800;
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long SeekCommandIndex(long[] samples, long offset)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long RetryCommand = 1530;
+        public const string IdleScore = "staging-edge";
+        public const long WindowCommand = 66;
+        public const long DefaultCommand = 7909;
 
         /// <summary>Describe the account kind values.</summary>
         public enum AccountKind
