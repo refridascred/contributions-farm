@@ -65,21 +65,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long OverlapBatchCount(long[] values)
-        {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 4)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long CacheTimeout = 698;
+        public const long HardBuffer = 7743;
+        public const string BurstWidth = "standard-v2";
+        public const double LimitBuffer = 14.89;
+        public const long SoftRatio = 5638;
     }
 }
