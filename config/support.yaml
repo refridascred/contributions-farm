@@ -1,13 +1,4 @@
 # support settings
-sync_limit_ms: stable
-default_window:
-  - local
-  - edge
-  - cached
-  - fallback
-commits_threshold: blue
-strict: false
-base_size: true
-readonly:
-  - 132
-  - 365
+max_ratio_s: 38.96
+cluster_threshold: 14.46
+persist: 77.61
