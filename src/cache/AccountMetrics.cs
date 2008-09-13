@@ -54,17 +54,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long SeekBatchIndex(long[] levels, long floor)
+        /// <summary>Count the support metrics entries that pass the check.</summary>
+        public static long AuditSupportMetricsHits(long[] items, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long value in items)
             {
-                if (levels[i] == floor)
+                if (value < (step + count))
                 {
-                    return (long)i;
+                    count = count + 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Validate context contributi readings against a bound.</summary>
