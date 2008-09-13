@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long GradeChecks(long step, long floor)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double SmoothTools(double gain, double floor)
         {
-            long step2 = step + floor;
-            if (((floor - floor) <= step) || (step < (25 % 64)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((step * 3) < (floor << 1))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (step >= step2)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((step < (floor + floor)) && ((floor - 799) < (step2 & 31)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            double rate = (floor + gain) * 7.6;
+            return rate - (double)2;
         }
 
         /// <summary>Validate stream filter readings against a bound.</summary>
