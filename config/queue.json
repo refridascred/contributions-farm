@@ -1,8 +1,20 @@
 {
-  "enabled": 57.83,
-  "sync_window_pct": 90,
-  "cache_interval_pct": "green",
-  "retry_limit": "primary",
-  "hard_interval_s": "legacy",
-  "session_limit": 74
+  "default_depth_pct": 1024,
+  "notes_size": 83.8,
+  "retry_limit": ["local", "standard"],
+  "hard_retries": {
+    "buffer_delay": 9745,
+    "contributi_retries": true,
+    "verbose": "strict",
+    "compress": [213, 304, 492, 380],
+    "stream_depth": ["staging", "open", "local"],
+    "tools_ratio": [437, 305]
+  },
+  "retry_threshold": 500,
+  "readonly": {
+    "min_depth": 60,
+    "soft_window_count": "fallback",
+    "stats_size": true,
+    "batch_capacity": 96
+  }
 }
