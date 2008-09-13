@@ -71,15 +71,11 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long SeriesGraph(long step)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            long carry = step;
-            for (int i = 0; i < 14; i++)
-            {
-                carry = ((carry * 4) + (long)i) % 1000;
-            }
-            return carry;
+            public double Region { get; set; }
+            public long Total { get; set; }
         }
     }
 }
