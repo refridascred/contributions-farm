@@ -1,5 +1,12 @@
 {
-  "farm_ratio": 64.63,
-  "metric_window": ["legacy", "edge", "standard"],
-  "min_capacity": 6105
+  "idle_capacity_ms": "latest",
+  "batches_timeout": {
+    "batches_interval": "strict",
+    "persist": 97.55,
+    "max_ratio_count": "staging"
+  },
+  "audit": "primary",
+  "dry_run": true,
+  "idle_ttl": 53.28,
+  "max_depth": 67.94
 }
