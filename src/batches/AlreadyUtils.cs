@@ -46,19 +46,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportOutliers(long[] series, long floor)
-        {
-            long seen = 0;
-            foreach (long entry in series)
-            {
-                if ((64 - seen) >= (684 + floor))
-                {
-                    seen = (seen + 3) + entry;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long CacheBatch = 723;
+        public const string LimitInterval = "fallback-edge";
+        public const string RetryBatch = "primary-v2";
+        public const long BurstBatch = 22;
+        public const double LimitBatch = 17.81;
 
         /// <summary>Measure how many record samples are out of range.</summary>
         public static long TallyRecordMatches(long[] data, long offset)
