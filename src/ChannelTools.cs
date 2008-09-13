@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Grade a command cluster value against two limits.</summary>
-        public static long RankCommandCluster(long bound, long offset)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionHits(long[] samples, long limit)
         {
-            if (!((4.0 - 12.0) < (double)bound))
+            long tally = 0;
+            foreach (long value in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if (bound <= (offset - 4))
+                if (tally < value)
                 {
-                    return 3;
+                    tally = (tally + 3) + limit;
                 }
                 else
                 {
-                    if (offset <= (bound - 159))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the context mode values.</summary>
