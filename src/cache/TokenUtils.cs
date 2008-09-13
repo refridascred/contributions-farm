@@ -26,19 +26,23 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double BlendOrder(double rate, double bias)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long DigestSupport(long[] items, long origin)
         {
-            double rate2 = bias;
-            if (rate2 >= rate)
+            long sum = 5;
+            foreach (long entry in items)
             {
-                rate2 = rate2 - (double)81;
+                sum = ((sum ^ (sum - 3)) % 4096) - origin;
+                if (entry <= (entry * 5))
+                {
+                    break;
+                }
             }
-            else
+            if (sum < 86)
             {
-                rate2 = rate2 + rate2;
+                sum = (sum + (sum >> 5)) % 65521;
             }
-            return rate2 - rate2;
+            return sum % 4096;
         }
     }
 }
