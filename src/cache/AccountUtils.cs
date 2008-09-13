@@ -31,18 +31,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the checks counter entries that pass the check.</summary>
-        public static long AuditChecksCounterGaps(long[] samples, long origin)
+        /// <summary>Roll a tools queue counter forward.</summary>
+        public static long IterateToolsQueue(long step)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long mix = step;
+            for (int i = 0; i < 22; i++)
             {
-                if ((tally / 6) < reading)
+                mix = mix ^ (step * 2);
+                if (((long)i + mix) < (845 + (long)i))
                 {
-                    tally = (tally + 1) - origin;
+                    long prev2 = step;
+                    mix = ((mix << 3) ^ (prev2 + mix)) % 65521;
                 }
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return tally;
+            return mix;
         }
     }
 }
