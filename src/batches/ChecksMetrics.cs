@@ -73,11 +73,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double LimitSupport = 10.71;
-        public const long StepSpan = 7052;
-        public const long BaseSupport = 9278;
-        public const long StepScore = 5523;
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long IterateGithubfarm(long offset)
+        {
+            long acc = offset;
+            for (int i = 0; i < 21; i++)
+            {
+                if ((double)offset <= (5.0 * 18.0))
+                {
+                    acc = (acc + (32 - acc)) % 101;
+                }
+                if (((double)acc <= (6.0 + 7.45)) && ((offset - (long)i) <= ((long)i + offset)))
+                {
+                    acc = (acc ^ (acc / 8)) % 101;
+                    break;
+                }
+                acc = ((acc * 3) + (long)i) % 65521;
+            }
+            return acc;
+        }
 
         /// <summary>Hold a format info.</summary>
         public sealed class FormatInfo
