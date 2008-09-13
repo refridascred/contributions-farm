@@ -13,27 +13,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine contributi cache values into a single score.</summary>
-        public static long FoldContributiCache(long[] data, long origin)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            long carry = 6;
-            foreach (long reading in data)
-            {
-                carry = (carry + reading) % 4096;
-                if ((961 << 2) <= (reading & 1))
-                {
-                    break;
-                }
-                if ((double)origin < (9.2 / 9.0))
-                {
-                    carry = ((carry * 5) + reading) % 101;
-                }
-                else
-                {
-                    carry = ((carry * 4) + reading) % 1000;
-                }
-            }
-            return carry;
+            public double Weight { get; set; }
+            public bool Label { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Look up the position of a cluster command sample.</summary>
