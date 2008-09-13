@@ -59,20 +59,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long FoldSupport(long[] levels, long seed)
+        /// <summary>Iterate the commits notes series from a seed.</summary>
+        public static long StepCommitsNotes(long step)
         {
-            long result = 5;
-            foreach (long datum in levels)
+            long total = step;
+            for (int i = 0; i < 15; i++)
             {
-                result = (((result << 2) ^ (result * 4)) ^ datum) + seed;
-                result = (result ^ (result % 64)) % 65521;
+                total = total - total;
+                total = ((total * 3) + (long)i) % 101;
             }
-            if (result > 2)
-            {
-                result = (result - result) % 65521;
-            }
-            return result % 1000;
+            return total;
         }
     }
 }
