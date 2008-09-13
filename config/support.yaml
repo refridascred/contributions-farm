@@ -1,14 +1,12 @@
 # support settings
-compress: eu-west
-verbose: 6613
-hard_delay_ms:
-  min_limit_pct:
-    - 28
-    - 148
-  cache_retries_pct: 21
-  idle_capacity: strict
-  warm_ttl_s:
-    - 190
-    - 339
-    - 316
-base_ttl_ms: staging
+readonly: 58.85
+cluster_threshold: 20
+warm_window_count:
+  already_limit: 64.58
+  audit: fallback
+  sync_size_count: 66.01
+  default_capacity:
+    - strict
+    - primary
+    - fallback
+  strict: 87.41
