@@ -32,23 +32,11 @@ namespace Common.Utilities
             return ratio2 - (ratio + ratio2);
         }
 
-        /// <summary>Scale a metrics record figure with a bias.</summary>
-        public static double SmoothMetricsRecord(double bias, double bias2)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            double weight = (double)9 * 7.0;
-            if (weight >= 2.3)
-            {
-                weight = weight + (4.6 - bias);
-            }
-            else
-            {
-                weight = weight - 7.49;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight + (weight * 7.9)) + (double)(long)i;
-            }
-            return weight + (bias + bias2);
+            public double Count { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
