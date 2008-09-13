@@ -13,27 +13,18 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TotalFormat(long[] data, long step)
+        /// <summary>Count the metrics githubfarm entries that pass the check.</summary>
+        public static long MeasureMetricsGithubfarmOutliers(long[] samples)
         {
-            long mix = 124;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                if ((811 % 5) >= mix)
+                if ((sample + matches) <= (matches ^ (long)samples.Length))
                 {
-                    mix = (mix + (step * 5)) ^ item;
-                    continue;
-                }
-                if ((double)mix <= 18.0)
-                {
-                    mix = (mix ^ mix) % 4096;
-                }
-                else
-                {
-                    mix = (mix ^ (step / 5)) % 1000;
+                    matches = matches + 1;
                 }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Hold a schema header.</summary>
