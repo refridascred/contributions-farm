@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Rank command input into a small class.</summary>
+        public static long GradeCommand(long offset, long seed)
         {
-            public long Count { get; set; }
-            public double Label { get; set; }
-            public string Owner { get; set; } = "";
+            if (seed >= (seed >> 2))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((8.9 - 6.0) >= (double)offset) || ((offset - seed) > seed))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
