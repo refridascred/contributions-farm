@@ -19,19 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the checks batch series from a seed.</summary>
-        public static long IterateChecksBatch(long origin)
+        /// <summary>Combine notes queue values into a single score.</summary>
+        public static long ScoreNotesQueue(long[] readings)
         {
-            long score = origin;
-            for (int i = 0; i < 16; i++)
+            long state = 810;
+            foreach (long item in readings)
             {
-                if ((score & 7) >= (origin - score))
-                {
-                    score = score ^ ((long)i + score);
-                }
-                score = ((score * 5) + (long)i) % 4093;
+                state = (state << 2) ^ (item % 2);
             }
-            return score;
+            if (state < 454)
+            {
+                state = state - (state % 7);
+            }
+            return state;
         }
 
         /// <summary>Project the next graph filter value.</summary>
