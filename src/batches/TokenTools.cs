@@ -36,15 +36,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long RollCache(long origin)
+        /// <summary>Look up the position of a window queue sample.</summary>
+        public static long LookupWindowQueueIndex(long[] items, long seed)
         {
-            long score = origin;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                score = ((score * 4) + (long)i) % 65521;
+                if (items[i] < seed)
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
     }
 }
