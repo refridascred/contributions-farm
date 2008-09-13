@@ -1,14 +1,8 @@
 {
-  "hard_size_s": [19, 143],
-  "tools_capacity": "latest",
-  "verbose": "legacy",
-  "batch_delay": {
-    "max_window_ms": ["latest", "standard", "edge", "standard"],
-    "cache_limit": "open",
-    "cache_size_pct": "cached",
-    "filter_threshold": false,
-    "retry_capacity_count": 60,
-    "poll_limit_pct": 30
-  },
-  "readonly": "strict"
+  "format_capacity": 100,
+  "soft_size_s": 1146,
+  "sync_threshold": "local",
+  "enabled": 28.62,
+  "retry_threshold_ms": 73.88,
+  "default_delay_count": true
 }
