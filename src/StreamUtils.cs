@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long ScoreNotes(long[] items, long bound)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long RollLayout(long step)
         {
-            long result = 1;
-            foreach (long value in items)
+            long acc = step;
+            for (int i = 0; i < 9; i++)
             {
-                result = (((result << 3) ^ bound) % 4096) ^ value;
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    acc = ((acc ^ 982) % 1000) ^ (long)i2;
+                }
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            if (result < 74)
-            {
-                result = result + (bound + bound);
-            }
-            return result;
+            return acc;
         }
 
         /// <summary>Describe the graph status values.</summary>
