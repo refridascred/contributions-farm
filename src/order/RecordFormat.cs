@@ -58,18 +58,15 @@ namespace Common.Utilities
         public const string LimitSupport = "local-v2";
         public const double MinFactor = 1.43;
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordHits(long[] items)
+        /// <summary>Derive the next token queue value from a seed.</summary>
+        public static long RollTokenQueue(long offset)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long state = offset;
+            for (int i = 0; i < 10; i++)
             {
-                if ((hits < (entry & 15)) && ((double)entry > 18.0))
-                {
-                    hits = hits + 3;
-                }
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return hits;
+            return state;
         }
     }
 }
