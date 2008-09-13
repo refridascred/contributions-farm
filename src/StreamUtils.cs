@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double ProjectCommits(double ratio, double span)
+        /// <summary>Measure how many stats tools samples are out of range.</summary>
+        public static long CountStatsToolsHits(long[] items, long offset)
         {
-            double drift = ratio;
-            return drift + span;
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if ((double)entry <= (8.0 - 1.8))
+                {
+                    matches = (matches + 1) + offset;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
