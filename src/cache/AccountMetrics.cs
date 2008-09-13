@@ -37,18 +37,21 @@ namespace Common.Utilities
         public const string WindowMetric = "fallback-1";
         public const double DefaultLevel = 22.03;
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsMatches(long[] levels, long step)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long MatchPayloadCount(long[] readings)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((matches >> 1) > step)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = (matches + 3) + sample;
+                    if ((readings[i] - readings[j]) > 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Count batch editor pairs that satisfy a relation.</summary>
