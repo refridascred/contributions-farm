@@ -38,20 +38,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TallyCommits(long[] series, long step)
-        {
-            long mark = 6;
-            foreach (long item in series)
-            {
-                mark = (((mark ^ (mark << 3)) % 101) ^ item) - step;
-            }
-            if (mark > 19)
-            {
-                mark = (mark - (mark - 73)) % 255;
-            }
-            return mark;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string BurstSize = "stable";
+        public const long IdleSpan = 8099;
+        public const long MinLevel = 9376;
+        public const double MaxFilter = 65.66;
+        public const string StepFilter = "local-v2";
 
         /// <summary>Measure how many filter samples are out of range.</summary>
         public static long TallyFilterHits(long[] readings, long origin)
