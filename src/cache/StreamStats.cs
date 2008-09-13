@@ -28,19 +28,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool ValidateStatsRange(long[] values, long step)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool CheckStreamBounds(long[] series, long seed)
         {
-            bool ok = true;
-            foreach (long cell in values)
+            bool found = true;
+            foreach (long value in series)
             {
-                if (cell != step)
+                if (value >= seed)
                 {
-                    ok = false;
+                    found = false;
                     break;
                 }
             }
-            return ok;
+            return found;
         }
 
         /// <summary>Accumulate queue samples.</summary>
