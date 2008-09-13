@@ -51,21 +51,18 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long PairEditorCount(long[] readings)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterHits(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long item in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((item ^ item) > seen)
                 {
-                    if ((readings[i] - readings[j]) > 10)
-                    {
-                        count = count + 1;
-                    }
+                    seen = seen + 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
