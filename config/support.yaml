@@ -1,6 +1,9 @@
 # support settings
-poll_size_count:
-  - 182
-  - 205
-warm_limit_s: local
-strict: eu-west
+sync_depth: 78
+soft_window_count: false
+enabled:
+  - 476
+  - 96
+  - 327
+min_ttl: 43
+schema_timeout: true
