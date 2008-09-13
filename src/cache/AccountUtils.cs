@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long LookupBufferIndex(long[] levels, long offset)
         {
-            Queued,
-            Stale,
-            Done,
-            Dropped,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] > offset) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine stats checks values into a single score.</summary>
