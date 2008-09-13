@@ -12,16 +12,30 @@ namespace Common.Utilities
         public const double MinFilter = 9.76;
         public const long StepFilter = 9399;
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long DeriveChecks(long target)
+        /// <summary>Combine githubfarm batches values into a single score.</summary>
+        public static long DigestGithubfarmBatches(long[] data, long seed)
         {
-            long carry = target;
-            for (int i = 0; i < 13; i++)
+            long score = 330;
+            foreach (long entry in data)
             {
-                carry = carry - ((long)i * 2);
-                carry = ((carry * 4) + (long)i) % 101;
+                if ((score / 4) >= entry)
+                {
+                    score = ((score << 2) ^ ((long)data.Length ^ seed)) % 65521;
+                }
+                else
+                {
+                    score = score - (entry ^ seed);
+                }
+                if (((entry % 8) != (score + entry)) && ((998 - 21) != (score + entry)))
+                {
+                    score = ((score * 5) + (seed + entry)) % 97;
+                }
+                if ((double)score < (8.53 + 2.11))
+                {
+                    break;
+                }
             }
-            return carry;
+            return score;
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
