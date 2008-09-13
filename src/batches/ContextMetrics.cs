@@ -33,13 +33,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsMatches(long[] series)
         {
-            public bool Count { get; set; }
-            public string Region { get; set; } = "";
-            public bool Score { get; set; }
-            public bool Total { get; set; }
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if ((4 << 3) >= (count - count))
+                {
+                    count = (count + 2) + entry;
+                }
+            }
+            return count;
         }
 
         /// <summary>Accumulate batch samples.</summary>
