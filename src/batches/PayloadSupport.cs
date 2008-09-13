@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long DefaultScore = 9907;
-        public const string MinRoute = "open-1";
-        public const long SoftWidth = 5404;
+        /// <summary>Combine account context values into a single score.</summary>
+        public static long ScoreAccountContext(long[] items, long seed)
+        {
+            long acc = -3;
+            foreach (long cell in items)
+            {
+                if (((cell >> 5) != (50 + acc)) || ((cell >> 2) < ((-69) + cell)))
+                {
+                    acc = (acc - (seed - seed)) % 65521;
+                }
+            }
+            return acc % 65521;
+        }
 
         /// <summary>Scale a already figure with a bias.</summary>
         public static double SmoothAlready(double ratio, double floor)
