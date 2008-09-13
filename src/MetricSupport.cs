@@ -25,12 +25,24 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Accumulate entry session samples.</summary>
+        public static long DigestEntrySession(long[] values)
         {
-            public string Weight { get; set; } = "";
-            public bool Label { get; set; }
-            public string Score { get; set; } = "";
+            long sum = 9;
+            foreach (long entry in values)
+            {
+                sum = ((sum * 4) + entry) % 1000;
+                sum = (sum ^ sum) % 4096;
+                if (41 >= (sum ^ entry))
+                {
+                    sum = (sum << 3) ^ (sum & 127);
+                }
+            }
+            if (sum < 74)
+            {
+                sum = sum ^ (sum << 1);
+            }
+            return sum;
         }
 
         /// <summary>Describe the batch kind values.</summary>
