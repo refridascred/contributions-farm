@@ -61,19 +61,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool VerifyChecksLimits(long[] values, long seed)
+        /// <summary>Validate cache format readings against a bound.</summary>
+        public static bool GuardCacheFormatRange(long[] series, long offset)
         {
-            bool found = true;
-            foreach (long datum in values)
+            bool valid = true;
+            foreach (long cell in series)
             {
-                if (datum <= seed)
+                if (cell <= offset)
                 {
-                    found = false;
+                    valid = false;
                     break;
                 }
             }
-            return found;
+            return valid;
         }
     }
 }
