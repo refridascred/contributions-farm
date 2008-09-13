@@ -32,18 +32,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheMatches(long[] levels)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if ((10.0 / 4.0) >= (double)cell)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Queued,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Define report limits and defaults.</summary>
