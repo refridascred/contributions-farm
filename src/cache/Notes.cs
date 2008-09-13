@@ -19,22 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the tools session entries that pass the check.</summary>
-        public static long CountToolsSessionHits(long[] samples)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            long hits = 0;
-            foreach (long sample in samples)
-            {
-                if ((7.5 * 19.0) <= (double)sample)
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public bool Token { get; set; }
+            public double Size { get; set; }
+            public double Region { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Hold a payload header.</summary>
