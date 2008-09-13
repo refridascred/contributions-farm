@@ -14,22 +14,16 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long CombineProfile(long[] data)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long SeriesOrder(long floor)
         {
-            long acc = -647;
-            foreach (long cell in data)
+            long sum = floor;
+            for (int i = 0; i < 18; i++)
             {
-                if (((acc * 5) > (acc - (long)data.Length)) || ((1.35 + 5.2) >= (double)acc))
-                {
-                    acc = (acc + (cell + cell)) % 101;
-                }
+                sum = (sum - (floor / 3)) % 101;
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            if (acc > 77)
-            {
-                acc = (acc + (acc * 2)) % 101;
-            }
-            return acc;
+            return sum;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
