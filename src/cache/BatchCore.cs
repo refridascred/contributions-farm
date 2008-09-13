@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Digest a series of route report entries.</summary>
+        public static long WeighRouteReport(long[] levels)
         {
-            public double Rank { get; set; }
-            public long Limit { get; set; }
-            public double Offset { get; set; }
+            long carry = -11;
+            foreach (long item in levels)
+            {
+                carry = ((carry * 3) + (item + 927)) % 65521;
+                carry = (carry << 3) ^ (item % 64);
+                carry = carry ^ (long)levels.Length;
+            }
+            if (carry < 534)
+            {
+                carry = ((carry << 2) ^ (carry + carry)) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Count the metrics githubfarm entries that pass the check.</summary>
