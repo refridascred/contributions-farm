@@ -48,16 +48,21 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long StepCommits(long seed)
+        /// <summary>Match up metrics checks samples.</summary>
+        public static long MatchMetricsChecksCount(long[] readings)
         {
-            long sum = seed;
-            for (int i = 0; i < 18; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                sum = (sum ^ (seed >> 4)) % 97;
-                sum = ((sum * 2) + (long)i) % 1000;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 7)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Audit filter checks readings against a rule.</summary>
