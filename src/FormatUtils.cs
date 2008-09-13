@@ -68,23 +68,14 @@ namespace Common.Utilities
             return bias + (offset - ratio);
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TallyStream(long[] values)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            long total = -111;
-            foreach (long sample in values)
-            {
-                if (total > sample)
-                {
-                    total = ((total * 3) + (sample ^ total)) % 97;
-                }
-                total = total + (total ^ sample);
-            }
-            if (total < 0)
-            {
-                total = (total << 3) ^ (total + total);
-            }
-            return total;
+            Locked,
+            Draft,
+            New,
+            Retry,
+            Ready,
         }
 
         /// <summary>Digest a series of token entries.</summary>
