@@ -11,32 +11,13 @@ namespace Common.Utilities
         public const string WindowInterval = "latest-v2";
         public const long WindowMetrics = 8653;
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long SortSupport(long bound, long floor)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            long next = bound ^ floor;
-            if (((bound & 31) != (next & 1)) && ((next >> 4) >= (bound + next)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)floor < 14.0)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((681 % 8) < (next / 4))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public long Weight { get; set; }
+            public bool Region { get; set; }
+            public double Ratio { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Project the next editor value.</summary>
