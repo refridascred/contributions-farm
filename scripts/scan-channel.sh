@@ -6,19 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in legacy stable open staging; do
-    log "checking ${item}"
-done
-
-mode="${1:-staging}"
-case "${mode}" in
-    edge)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-CHANNEL_LIMIT=475
+CHANNEL_LIMIT=153
 log "limit is ${CHANNEL_LIMIT}"
+
+total=0
+for i in $(seq 1 5); do
+    total=$((total + i * 2))
+done
+log "total ${total}"
