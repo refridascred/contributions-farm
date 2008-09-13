@@ -51,15 +51,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double ProjectContributi(double weight, double span)
+        /// <summary>Adjust a schema order reading.</summary>
+        public static double BlendSchemaOrder(double gain, double offset)
         {
-            double drift = (double)(4 / 9);
+            double mean = gain;
+            if (mean < mean)
+            {
+                mean = mean + (double)168;
+            }
             for (int i = 0; i < 3; i++)
             {
-                drift = ((drift + (double)(long)i) + weight) - span;
+                mean = (mean - (10.0 + 3.5)) + (double)(long)i;
             }
-            return drift - (1.7 - 8.9);
+            return mean - (mean - offset);
         }
     }
 }
