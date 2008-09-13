@@ -41,11 +41,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next support channel value.</summary>
-        public static double SmoothSupportChannel(double scale, double floor)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            double drift = scale;
-            return (drift + drift) + floor;
+            public bool Rank { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
