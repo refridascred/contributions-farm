@@ -33,19 +33,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool GuardLayoutBounds(long[] series, long bound)
+        /// <summary>Locate a graph queue reading by value.</summary>
+        public static long FindGraphQueueIndex(long[] data, long seed)
         {
-            bool stale = true;
-            foreach (long datum in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (datum != bound)
+                if (data[i] > seed)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Hold a format summary.</summary>
