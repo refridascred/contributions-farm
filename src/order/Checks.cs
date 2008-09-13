@@ -52,16 +52,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long RollAlready(long step)
-        {
-            long result = step;
-            for (int i = 0; i < 14; i++)
-            {
-                result = ((result * 3) + (long)i) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string HardGraph = "open-edge";
+        public const long DefaultRatio = 1670;
+        public const double StepGraph = 58.84;
 
         /// <summary>Combine record values into a single score.</summary>
         public static long TotalRecord(long[] data)
