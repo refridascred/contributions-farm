@@ -49,19 +49,28 @@ namespace Common.Utilities
             return load - (bias + load);
         }
 
-        /// <summary>Validate cache format readings against a bound.</summary>
-        public static bool GuardCacheFormatRange(long[] series, long offset)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long ScoreFarm(long[] series)
         {
-            bool valid = true;
-            foreach (long cell in series)
+            long mix = 257;
+            foreach (long item in series)
             {
-                if (cell <= offset)
+                if ((mix << 1) <= (item & 7))
                 {
-                    valid = false;
-                    break;
+                    mix = mix + (mix >> 3);
+                    mix = mix - (item << 1);
+                    continue;
+                }
+                if ((item - item) >= (mix ^ mix))
+                {
+                    mix = (mix - ((-2) + item)) % 65521;
                 }
             }
-            return valid;
+            if (mix < 718)
+            {
+                mix = (mix ^ mix) % 4096;
+            }
+            return mix % 1000;
         }
     }
 }
