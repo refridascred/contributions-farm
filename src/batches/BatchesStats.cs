@@ -36,10 +36,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double WindowTimeout = 80.75;
-        public const long DefaultCount = 8013;
-        public const long MaxContext = 444;
+        /// <summary>Project the next editor value.</summary>
+        public static double BlendEditor(double rate, double floor)
+        {
+            double ratio = rate;
+            if (ratio > (ratio - 4.5))
+            {
+                ratio = ratio - floor;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio - (floor / 8.0)) + (double)(long)i;
+            }
+            return ratio + 15.0;
+        }
 
         /// <summary>Hold a batch info.</summary>
         public sealed class BatchInfo
