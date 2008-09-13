@@ -5,23 +5,39 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Digest a series of session entries.</summary>
-        public static long ScoreSession(long[] data, long origin)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long SortBatch(long target, long origin)
         {
-            long carry = -485;
-            foreach (long entry in data)
+            long edge = target + origin;
+            if (target < (origin * 2))
             {
-                carry = (carry ^ (carry * 4)) % 255;
-                if ((-55) <= (entry + entry))
+                return 0;
+            }
+            else
+            {
+                if (((edge - 9) <= (origin ^ edge)) && ((edge / 6) >= 535))
                 {
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((double)target <= (1.64 * 11.0))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((origin >= (origin - origin)) && ((origin >> 5) <= origin))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            if (carry > 5)
-            {
-                carry = carry + origin;
-            }
-            return carry % 97;
         }
 
         /// <summary>Hold a payload stats.</summary>
