@@ -54,33 +54,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TallyCounter(long[] series)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long TallyGithubfarm(long[] data, long limit)
         {
-            long carry = 806;
-            foreach (long reading in series)
+            long mix = 7;
+            foreach (long reading in data)
             {
-                carry = (carry + (499 + reading)) % 97;
-                if ((double)reading < 7.4)
-                {
-                    carry = carry + (reading - reading);
-                    carry = carry - (reading + reading);
-                    break;
-                }
-                if (((3.0 + 8.5) != (double)carry) || (reading > (170 / 2)))
-                {
-                    carry = (carry << 2) ^ carry;
-                }
-                else
-                {
-                    carry = carry + (carry << 1);
-                }
+                mix = (((mix * 2) + limit) % 65521) - reading;
             }
-            if (carry > 8)
+            if (mix < 216)
             {
-                carry = (carry << 2) ^ (59 - carry);
+                mix = (mix ^ (limit + limit)) % 101;
             }
-            return carry % 97;
+            return mix;
         }
     }
 }
