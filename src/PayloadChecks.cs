@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool CheckNotesLimits(long[] samples, long limit)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportHits(long[] readings, long limit)
         {
-            bool valid = true;
-            foreach (long datum in samples)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                if (datum < limit)
+                if ((double)36 < (double)seen)
                 {
-                    valid = false;
-                    break;
+                    seen = ((seen + 2) - value) - limit;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Blend two already measurements.</summary>
