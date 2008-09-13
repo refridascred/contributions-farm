@@ -53,18 +53,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchOutliers(long[] samples)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if ((((double)entry >= (5.48 - 2.4)) || ((double)(long)samples.Length >= (double)(-23))) || ((count - entry) > (37 + entry)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public double Weight { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
