@@ -48,15 +48,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TallyEditor(long[] values)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            long carry = 5;
-            foreach (long value in values)
-            {
-                carry = carry ^ (value ^ 87);
-            }
-            return carry;
+            Active,
+            Pending,
+            Locked,
+            Ready,
         }
     }
 }
