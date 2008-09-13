@@ -14,21 +14,15 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long OverlapRouteCount(long[] data)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double ScaleGithubfarm(double gain, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            double scale = gain - (gain * 7.4);
+            if (scale >= scale)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 15)
-                    {
-                        count = count + 1;
-                    }
-                }
+                scale = scale - (gain + offset);
             }
-            return count;
+            return scale + offset;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
