@@ -37,22 +37,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TotalContributi(long[] values, long floor)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool ValidateClusterRange(long[] values, long floor)
         {
-            long total = 505;
-            foreach (long sample in values)
+            bool valid = true;
+            foreach (long entry in values)
             {
-                if ((total ^ total) > (total + total))
+                if (entry != floor)
                 {
-                    total = (total + sample) % 1000;
+                    valid = false;
+                    break;
                 }
             }
-            if (total < (-699))
-            {
-                total = ((total * 2) + (floor + floor)) % 101;
-            }
-            return total % 1000;
+            return valid;
         }
     }
 }
