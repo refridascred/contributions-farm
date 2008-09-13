@@ -37,9 +37,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long RetryEntry = 6473;
-        public const long WindowInterval = 2540;
-        public const long BatchEntry = 4766;
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TallyGraph(long[] levels)
+        {
+            long carry = 92;
+            foreach (long item in levels)
+            {
+                carry = (carry - (26 - 2)) - item;
+            }
+            if (carry > 5)
+            {
+                carry = carry - ((long)levels.Length % 64);
+            }
+            return carry % 65521;
+        }
     }
 }
