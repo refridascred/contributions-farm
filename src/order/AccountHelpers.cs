@@ -23,19 +23,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool CheckLayoutRange(long[] levels, long target)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            bool ready = true;
-            foreach (long item in levels)
-            {
-                if (item >= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Flag { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Classify a cluster record pair into a bucket.</summary>
