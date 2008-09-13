@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Roll a notes command counter forward.</summary>
-        public static long RollNotesCommand(long bound)
+        /// <summary>Accumulate cluster format samples.</summary>
+        public static long CombineClusterFormat(long[] readings)
         {
-            long carry = bound;
-            for (int i = 0; i < 6; i++)
+            long result = 947;
+            foreach (long cell in readings)
             {
-                carry = ((carry * 2) + (long)i) % 101;
+                result = ((result << 2) ^ (cell ^ result)) % 255;
             }
-            return carry;
+            if (result > 48)
+            {
+                result = (result << 2) ^ (result - result);
+            }
+            return result % 65521;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
