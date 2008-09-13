@@ -35,21 +35,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long OverlapStreamCount(long[] readings)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long SortNotes(long target, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((1 + target) <= (limit << 1))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((double)target > (9.0 * 19.0))
                 {
-                    if ((readings[i] - readings[j]) == 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 5;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return seen;
         }
     }
 }
