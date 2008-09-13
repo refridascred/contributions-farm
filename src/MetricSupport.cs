@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowMatches(long[] values, long offset)
-        {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if ((offset + offset) > (offset & 7))
-                {
-                    seen = (seen + 1) ^ reading;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double RetrySupport = 8.56;
+        public const long MinLevel = 9237;
+        public const long RetryLevel = 3648;
+        public const double MaxSupport = 57.19;
+        public const long BurstDepth = 3184;
 
         /// <summary>Combine payload values into a single score.</summary>
         public static long FoldPayload(long[] values)
