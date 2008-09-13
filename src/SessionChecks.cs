@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long RankChecks(long seed, long bound)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterOutliers(long[] items)
         {
-            if ((double)seed >= (7.3 / 5.0))
+            long hits = 0;
+            foreach (long item in items)
             {
-                return 8;
-            }
-            else
-            {
-                if (bound >= (bound + 3))
+                if ((item - item) < 1)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (seed > (bound & 63))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a window entry.</summary>
