@@ -33,20 +33,22 @@ namespace Common.Utilities
             return gain - (offset + weight);
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long IterateBatches(long limit)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordMatches(long[] data)
         {
-            long anchor = limit;
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            foreach (long item in data)
             {
-                long diff = ((-5) << 2) << 3;
-                if ((double)diff < (5.1 / 2.0))
+                if ((item + item) > item)
                 {
-                    diff = (diff + (limit ^ limit)) % 97;
+                    hits = hits + 3;
                 }
-                anchor = ((anchor * 4) + (long)i) % 65521;
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return anchor;
+            return hits;
         }
     }
 }
