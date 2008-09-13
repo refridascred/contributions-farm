@@ -29,13 +29,39 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Grade a checks graph value against two limits.</summary>
+        public static long GradeChecksGraph(long limit, long limit2)
         {
-            public double Stamp { get; set; }
-            public double Limit { get; set; }
-            public string Level { get; set; } = "";
-            public long Region { get; set; }
+            long prev = limit + limit2;
+            if ((double)limit == (7.2 / 7.0))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((limit2 * 2) > (prev % 7))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)limit < (5.0 * 8.0))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((197 + limit2) >= limit)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a route summary.</summary>
