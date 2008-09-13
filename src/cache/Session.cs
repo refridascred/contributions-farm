@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteOutliers(long[] items, long limit)
+        /// <summary>Classify a notes already pair into a bucket.</summary>
+        public static long ClassifyNotesAlready(long origin, long step)
         {
-            long hits = 0;
-            foreach (long value in items)
+            if ((20.0 / 3.0) == (double)step)
             {
-                if ((hits / 9) < (value & 1))
+                return 5;
+            }
+            else
+            {
+                if ((8.5 / 9.0) >= (double)step)
                 {
-                    hits = (hits + 3) + limit;
+                    return 0;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if ((origin + step) <= (step + step))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Accumulate editor samples.</summary>
