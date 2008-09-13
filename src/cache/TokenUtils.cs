@@ -12,26 +12,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long DigestWindow(long[] data, long origin)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            long sum = 62;
-            foreach (long reading in data)
-            {
-                if ((origin & 3) > (sum - 83))
-                {
-                    sum = sum ^ (reading % 16);
-                }
-                else
-                {
-                    sum = sum ^ (reading - reading);
-                }
-                if (((origin + origin) != (origin - reading)) && ((4 - reading) >= (reading - origin)))
-                {
-                    break;
-                }
-            }
-            return sum;
+            public double Total { get; set; }
+            public string Owner { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Rank stats input into a small class.</summary>
