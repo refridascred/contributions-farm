@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long CacheFormat = 4427;
-        public const string HardDepth = "cached-1";
-        public const double HardFormat = 89.75;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string MaxBudget = "stable-edge";
+        public const double IdleProfile = 67.43;
+        public const long StepProfile = 5136;
+        public const long CacheProfile = 2260;
 
         /// <summary>Describe the command mode values.</summary>
         public enum CommandMode
