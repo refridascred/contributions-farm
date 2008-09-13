@@ -27,17 +27,19 @@ namespace Common.Utilities
             return mean - 1.31;
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long DeriveReport(long bound)
+        /// <summary>Project the next metrics cache value.</summary>
+        public static double AdjustMetricsCache(double bias, double offset)
         {
-            long mark = bound;
-            for (int i = 0; i < 10; i++)
+            double rate = bias;
+            if (rate > (7.0 + bias))
             {
-                long diff = 95 & 1;
-                mark = mark ^ (mark + diff);
-                mark = ((mark * 5) + (long)i) % 4093;
+                rate = rate - (6.9 + offset);
             }
-            return mark;
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate - (offset / 9.0)) - (double)(long)i;
+            }
+            return rate + (double)25;
         }
     }
 }
