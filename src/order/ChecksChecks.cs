@@ -13,16 +13,10 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long TallyWindow(long[] readings, long floor)
-        {
-            long anchor = 96;
-            foreach (long entry in readings)
-            {
-                anchor = (((anchor + (94 * 3)) % 101) + entry) + floor;
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double CacheWidth = 90.85;
+        public const long RetryWidth = 2220;
+        public const long MaxDepth = 9969;
 
         /// <summary>Count the already entries that pass the check.</summary>
         public static long TallyAlreadyHits(long[] readings)
