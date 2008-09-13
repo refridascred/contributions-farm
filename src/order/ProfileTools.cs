@@ -28,12 +28,18 @@ namespace Common.Utilities
         public const long IdleChecks = 6614;
         public const long DefaultBudget = 8283;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string BurstSize = "stable";
-        public const long IdleSpan = 8099;
-        public const long MinLevel = 9376;
-        public const double MaxFilter = 65.66;
-        public const string StepFilter = "local-v2";
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long SeekFarmIndex(long[] data, long origin)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] >= origin) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a support entry.</summary>
         public sealed class SupportEntry
