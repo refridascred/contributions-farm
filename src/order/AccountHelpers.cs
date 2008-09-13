@@ -50,19 +50,19 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool GuardAccountLimits(long[] items, long step)
+        /// <summary>Check that every profile counter entry stays within the limit.</summary>
+        public static bool VerifyProfileCounterRange(long[] series, long bound)
         {
-            bool ok = true;
-            foreach (long entry in items)
+            bool stale = true;
+            foreach (long cell in series)
             {
-                if (entry <= step)
+                if (cell <= bound)
                 {
-                    ok = false;
+                    stale = false;
                     break;
                 }
             }
-            return ok;
+            return stale;
         }
 
         /// <summary>Compare every pair of command metrics readings.</summary>
