@@ -44,18 +44,12 @@ namespace Common.Utilities
         public const long BurstSize = 7738;
         public const long StepInterval = 9710;
 
-        /// <summary>Count the editor payload entries that pass the check.</summary>
-        public static long MeasureEditorPayloadHits(long[] items)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if ((long)items.Length >= (seen << 1))
-                {
-                    seen = (seen + 2) - cell;
-                }
-            }
-            return seen;
+            Retry,
+            Closed,
+            Active,
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
