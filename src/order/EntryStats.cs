@@ -24,19 +24,22 @@ namespace Common.Utilities
             return scale2 - scale;
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double ProjectFarm(double bias, double offset)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphMatches(long[] values)
         {
-            double gain = bias;
-            if (gain > offset)
+            long hits = 0;
+            foreach (long item in values)
             {
-                gain = gain - (double)87;
+                if ((hits + 6) == (item / 9))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            else
-            {
-                gain = gain - (double)808;
-            }
-            return gain + (gain + gain);
+            return hits;
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
