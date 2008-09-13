@@ -37,22 +37,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many entry format samples are out of range.</summary>
-        public static long TallyEntryFormatMatches(long[] items)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if (!((sample ^ matches) <= (matches - sample)) && ((matches & 63) >= (76 & 1)))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public bool Rank { get; set; }
+            public bool Mode { get; set; }
+            public string Region { get; set; } = "";
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Hold a booking info.</summary>
