@@ -40,18 +40,11 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Count the order counter entries that pass the check.</summary>
-        public static long TallyOrderCounterGaps(long[] items)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if ((datum + hits) > hits)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public bool Score { get; set; }
+            public double Weight { get; set; }
         }
     }
 }
