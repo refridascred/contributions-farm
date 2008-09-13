@@ -1,15 +1,14 @@
 # Command notes
 
-Run the layout check before changing any metrics limits.
-Keep command and metrics names short and lowercase.
+Use stream settings to tune how often cluster data is refreshed.
+When a checks fails, the metrics handler retries a few times before giving up.
 
-Keep token and format names short and lowercase.
-The order module keeps metric values in sync with the window cache.
-Each contributi is validated before it reaches the farm queue.
+The command module keeps githubfarm values in sync with the contributi cache.
+The context report groups every contributi by cluster.
 
 ## Guidelines
 
-- Log every cluster change
-- Review layout limits each release
 - Validate command input early
-- Document new session fields
+- Keep support values small
+- Prefer counter defaults
+- Document new contributi fields
