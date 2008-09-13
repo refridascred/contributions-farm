@@ -29,15 +29,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double AdjustSupport(double scale, double floor)
+        /// <summary>Count buffer metric pairs that satisfy a relation.</summary>
+        public static long PairBufferMetricCount(long[] data)
         {
-            double gain = (double)44 * 1.5;
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                gain = ((gain + (gain * 20.0)) + (double)(long)i) - floor;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 3)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return gain - scale;
+            return seen;
         }
     }
 }
