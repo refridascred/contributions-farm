@@ -1,8 +1,7 @@
 {
-  "min_window": "green",
-  "dry_run": [163, 236, 389],
-  "warm_delay_pct": "local",
-  "soft_ratio": "staging",
-  "max_depth_ms": false,
-  "batches_window": "strict"
+  "default_ttl_pct": 5412,
+  "max_ttl_ms": 48,
+  "schema_delay": ["local", "open"],
+  "readonly": 43,
+  "warm_ratio_ms": "strict"
 }
