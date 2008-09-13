@@ -1,11 +1,11 @@
 # Command notes
 
-When a cluster fails, the session handler retries a few times before giving up.
-Keep layout and token names short and lowercase.
+Use command settings to tune how often command data is refreshed.
+Use channel settings to tune how often report data is refreshed.
 
 ## Guidelines
 
-- Keep cluster values small
-- Prefer command defaults
-- Validate route input early
-- Review context limits each release
+- Review notes limits each release
+- Log every notes change
+- Keep commits values small
+- Document new format fields
