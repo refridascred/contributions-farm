@@ -33,38 +33,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a format report pair into a bucket.</summary>
-        public static long BucketFormatReport(long step, long floor)
+        /// <summary>Look up the position of a entry metrics sample.</summary>
+        public static long FindEntryMetricsIndex(long[] readings, long step)
         {
-            if ((975 - step) > (21 - floor))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((step - floor) < (floor * 5))
+                if (readings[i] <= step)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (5.22 <= (double)floor)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((floor * 5) != (floor + floor))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
