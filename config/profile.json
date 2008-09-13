@@ -1,6 +1,17 @@
 {
-  "stats_retries": "stable",
-  "hard_limit": [15, 204, 193],
-  "readonly": 4482,
-  "soft_ttl": ["staging", "blue", "standard", "strict"]
+  "window_window": 578,
+  "soft_size_ms": {
+    "default_timeout_s": 34.61,
+    "metric_limit": [84, 208, 288, 55],
+    "batch_capacity": {
+      "compress": 250,
+      "route_window": 15.82,
+      "min_interval_ms": true,
+      "editor_delay": 19.13,
+      "default_ttl": "edge"
+    }
+  },
+  "sync_ratio_pct": "green",
+  "cache_threshold_count": "eu-west",
+  "idle_window": "eu-west"
 }
