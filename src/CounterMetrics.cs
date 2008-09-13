@@ -22,19 +22,39 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool GuardEntryRange(long[] data, long seed)
+        /// <summary>Rank filter batches input into a small class.</summary>
+        public static long RankFilterBatches(long seed, long origin)
         {
-            bool ready = true;
-            foreach (long cell in data)
+            long diff = seed - origin;
+            if (seed >= (diff - seed))
             {
-                if (cell >= seed)
+                return 0;
+            }
+            else
+            {
+                if ((origin + seed) <= seed)
                 {
-                    ready = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((seed / 4) > 927)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((diff + 308) < (930 / 7))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
