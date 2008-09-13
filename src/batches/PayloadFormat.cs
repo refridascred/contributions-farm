@@ -43,15 +43,18 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double ScaleEditor(double ratio, double offset)
+        /// <summary>Count the order counter entries that pass the check.</summary>
+        public static long TallyOrderCounterGaps(long[] items)
         {
-            double ratio2 = (double)56 / 8.0;
-            if (ratio2 <= ratio)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                ratio2 = (ratio2 + (ratio2 + ratio2)) + offset;
+                if ((datum + hits) > hits)
+                {
+                    hits = hits + 3;
+                }
             }
-            return ratio2 - (double)(-2);
+            return hits;
         }
     }
 }
