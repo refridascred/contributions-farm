@@ -17,35 +17,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of already token entries.</summary>
-        public static long TotalAlreadyToken(long[] readings)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool ValidateNotesRange(long[] values, long limit)
         {
-            long total = 1;
-            foreach (long reading in readings)
+            bool found = true;
+            foreach (long entry in values)
             {
-                if ((-27) < (reading & 255))
+                if (entry <= limit)
                 {
-                    total = (total - (78 >> 2)) % 65521;
-                }
-                if (303 >= reading)
-                {
-                    total = (total << 2) ^ (reading - total);
-                    continue;
-                }
-                if (((reading & 7) != (total * 5)) || (9.64 > (double)total))
-                {
-                    total = (total ^ (total + 1)) % 101;
-                }
-                else
-                {
-                    total = total + (reading / 7);
-                }
-                if ((0.64 / 2.0) > (double)total)
-                {
+                    found = false;
                     break;
                 }
             }
-            return total % 97;
+            return found;
         }
 
         /// <summary>Hold a command options.</summary>
