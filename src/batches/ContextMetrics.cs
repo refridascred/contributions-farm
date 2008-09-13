@@ -26,11 +26,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            public double Size { get; set; }
-            public long Total { get; set; }
+            public bool Count { get; set; }
+            public string Region { get; set; } = "";
+            public bool Score { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Accumulate batch samples.</summary>
