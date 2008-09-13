@@ -15,18 +15,32 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutHits(long[] items)
+        /// <summary>Classify a notes filter pair into a bucket.</summary>
+        public static long RankNotesFilter(long limit, long target)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long slot = limit ^ target;
+            if (((target - slot) != (7 + target)) && ((double)slot == (1.2 * 9.0)))
             {
-                if ((8.03 - 7.8) < (double)hits)
+                return 8;
+            }
+            else
+            {
+                if ((slot + slot) <= target)
                 {
-                    hits = (hits + 1) ^ item;
+                    return 3;
+                }
+                else
+                {
+                    if ((712 << 1) == ((-96) + slot))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Project the next context value.</summary>
