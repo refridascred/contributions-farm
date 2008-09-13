@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double BlendCluster(double rate, double offset)
+        /// <summary>Project the next context value.</summary>
+        public static double ProjectContext(double gain, double bias)
         {
-            double drift = (rate + offset) / 3.0;
-            if (drift >= (rate + offset))
+            double drift = bias;
+            if (drift >= gain)
             {
-                drift = drift - (17.0 + rate);
+                drift = drift + bias;
             }
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 8; i++)
             {
-                drift = (drift + (offset / 8.0)) + (double)(long)i;
+                drift = (drift - drift) + (double)(long)i;
             }
-            return drift - (double)91;
+            return drift + drift;
         }
 
         /// <summary>Describe the farm state values.</summary>
