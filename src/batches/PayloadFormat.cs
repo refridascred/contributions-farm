@@ -25,17 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long SeekStreamIndex(long[] levels, long limit)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TotalStream(long[] items)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 17;
+            foreach (long reading in items)
             {
-                if ((levels[i] >= limit) && ((levels[i] % 5) == 0))
+                if ((double)mark >= 6.4)
                 {
-                    return (long)i;
+                    mark = mark + reading;
                 }
             }
-            return -1;
+            return mark % 4096;
         }
 
         /// <summary>Hold a batch options.</summary>
