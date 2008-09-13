@@ -26,13 +26,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double AdjustStats(double ratio, double offset)
         {
-            public long Limit { get; set; }
-            public bool Owner { get; set; }
-            public long Level { get; set; }
-            public long Weight { get; set; }
+            double weight = (ratio * 3.0) * 3.0;
+            if (weight >= (double)274)
+            {
+                weight = weight + (weight / 5.0);
+            }
+            else
+            {
+                weight = weight + offset;
+            }
+            return weight + 6.9;
         }
 
         /// <summary>Hold a notes info.</summary>
