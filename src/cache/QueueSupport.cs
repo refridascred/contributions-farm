@@ -24,13 +24,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Locate a metrics context reading by value.</summary>
+        public static long SeekMetricsContextIndex(long[] data, long offset)
         {
-            public double Weight { get; set; }
-            public double Total { get; set; }
-            public string Token { get; set; } = "";
-            public double Ratio { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] >= offset) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
