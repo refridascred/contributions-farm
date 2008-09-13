@@ -1,9 +1,8 @@
-id,state,token,count
-1,692,local,legacy
-2,open,62.98,legacy
-3,316,cached,759
-4,staging,latest,5.93
-5,94.05,552,597
-6,252,438,690
-7,green,fallback,edge
-8,698,36,eu-west
+id,active,ratio,label,token
+1,609,989,eu-west,19.17
+2,legacy,76.1,32,13.23
+3,86.25,472,legacy,edge
+4,308,26.89,560,standard
+5,standard,926,903,507
+6,889,51.51,55.53,legacy
+7,59.04,41.62,cached,stable
