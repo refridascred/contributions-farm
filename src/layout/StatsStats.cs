@@ -48,13 +48,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Measure how many counter githubfarm samples are out of range.</summary>
+        public static long MeasureCounterGithubfarmOutliers(long[] data, long offset)
         {
-            public string Region { get; set; } = "";
-            public double Count { get; set; }
-            public bool Stamp { get; set; }
-            public bool Token { get; set; }
+            long seen = 0;
+            foreach (long reading in data)
+            {
+                if ((double)offset <= (double)(long)data.Length)
+                {
+                    seen = (seen + 3) ^ reading;
+                }
+            }
+            return seen;
         }
     }
 }
