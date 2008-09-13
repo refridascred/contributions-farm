@@ -30,23 +30,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheHits(long[] items)
-        {
-            long hits = 0;
-            foreach (long reading in items)
-            {
-                if (4 > hits)
-                {
-                    hits = (hits + 1) + reading;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string HardRatio = "open-v2";
+        public const double BaseInterval = 26.26;
+        public const long MaxScore = 5660;
 
         /// <summary>Hold a metric header.</summary>
         public sealed class MetricHeader
