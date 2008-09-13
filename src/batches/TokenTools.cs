@@ -35,18 +35,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferMatches(long[] items)
+        /// <summary>Locate a filter token reading by value.</summary>
+        public static long LookupFilterTokenIndex(long[] readings, long bound)
         {
-            long hits = 0;
-            foreach (long value in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((long)items.Length == (hits + hits))
+                if ((readings[i] >= bound) && ((readings[i] % 5) != 0))
                 {
-                    hits = (hits + 2) ^ value;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
