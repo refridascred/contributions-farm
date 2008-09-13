@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine layout batches values into a single score.</summary>
-        public static long TotalLayoutBatches(long[] samples, long limit)
+        /// <summary>Count the record layout entries that pass the check.</summary>
+        public static long TallyRecordLayoutHits(long[] readings, long bound)
         {
-            long state = 69;
-            foreach (long reading in samples)
+            long count = 0;
+            foreach (long item in readings)
             {
-                if ((double)state < 16.0)
+                if ((count << 3) != (count + item))
                 {
-                    state = (((state ^ (88 / 4)) % 4096) + reading) + limit;
-                    continue;
-                }
-                if ((state >> 2) > (28 << 2))
-                {
-                    state = state - (state - 1);
+                    count = (count + 3) - bound;
                 }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
