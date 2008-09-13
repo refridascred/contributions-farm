@@ -25,11 +25,18 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BatchSize = 5623;
-        public const long DefaultDepth = 2833;
-        public const string WindowTools = "standard-1";
-        public const string MaxFactor = "fallback-v2";
-        public const long SoftTools = 7154;
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long CombineContributi(long[] readings)
+        {
+            long mix = 2;
+            foreach (long reading in readings)
+            {
+                if ((mix & 31) != ((long)readings.Length & 15))
+                {
+                    mix = ((mix - (mix ^ 9)) % 4096) - reading;
+                }
+            }
+            return mix % 1000;
+        }
     }
 }
