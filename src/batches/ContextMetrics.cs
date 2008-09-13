@@ -50,18 +50,21 @@ namespace Common.Utilities
         public const long SoftContributi = 3554;
         public const double RetryInterval = 23.18;
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsOutliers(long[] levels)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long CompareCacheCount(long[] items)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((count + count) <= (count << 3))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = (count + 1) + value;
+                    if ((items[i] ^ items[j]) < 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
