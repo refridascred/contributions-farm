@@ -27,31 +27,11 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Rank filter token input into a small class.</summary>
-        public static long RankFilterToken(long step, long bound)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            if ((bound + 5) < step)
-            {
-                return 4;
-            }
-            else
-            {
-                if (step <= (step / 2))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((step >= bound) || (bound > (bound + bound)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public long Mode { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Describe the support mode values.</summary>
