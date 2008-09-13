@@ -1,6 +1,7 @@
 {
-  "poll_delay_s": [343, 472, 356, 41],
-  "payload_threshold": 979,
-  "batch_ttl_s": ["latest", "strict"],
-  "soft_depth_ms": "open"
+  "batch_timeout_s": false,
+  "schema_capacity": 22.13,
+  "idle_limit_s": 1914,
+  "sync_interval_ms": "cached",
+  "strict": "stable"
 }
