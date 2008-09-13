@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            Failed,
-            Pending,
-            Paused,
-            Idle,
+            public string Owner { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Derive the next record queue value from a seed.</summary>
