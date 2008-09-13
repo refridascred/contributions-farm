@@ -57,38 +57,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long BucketGraph(long seed, long target)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            if (!((45 + target) != (target + target)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((double)seed != (double)927) && ((42 << 3) >= (seed % 10)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)target >= (6.11 / 9.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!(seed <= target))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public double Rank { get; set; }
+            public string Total { get; set; } = "";
+            public long Size { get; set; }
+            public double Level { get; set; }
         }
     }
 }
