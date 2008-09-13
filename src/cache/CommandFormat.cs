@@ -13,14 +13,28 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long IterateTools(long seed)
         {
-            Done,
-            Pending,
-            Failed,
-            Retry,
-            Queued,
+            long mark = seed;
+            for (int i = 0; i < 9; i++)
+            {
+                if ((seed + seed) >= seed)
+                {
+                    mark = (mark ^ mark) % 97;
+                }
+                else
+                {
+                    long span = mark;
+                    mark = (mark ^ (span + mark)) % 97;
+                }
+                if ((14.0 * 13.0) != (double)mark)
+                {
+                    continue;
+                }
+                mark = ((mark * 5) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
