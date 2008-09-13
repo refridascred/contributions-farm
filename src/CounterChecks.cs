@@ -46,10 +46,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long IdleFactor = 9888;
-        public const long MaxFactor = 8884;
-        public const double MinLevel = 87.79;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long LimitSpan = 9938;
+        public const string CacheInterval = "latest-v2";
+        public const long WindowInterval = 5198;
+        public const double BatchInterval = 90.62;
+        public const double RetrySize = 95.78;
 
         /// <summary>Compare every pair of record readings.</summary>
         public static long PairRecordCount(long[] readings)
