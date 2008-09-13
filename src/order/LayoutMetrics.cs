@@ -58,11 +58,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            public double Label { get; set; }
-            public long Size { get; set; }
+            public long Flag { get; set; }
+            public bool Rank { get; set; }
+            public bool Weight { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
