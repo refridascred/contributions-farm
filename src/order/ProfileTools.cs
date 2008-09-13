@@ -63,18 +63,11 @@ namespace Common.Utilities
         public const long StepDepth = 7154;
         public const long CacheDepth = 5995;
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheHits(long[] samples)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if (((double)seen > (double)reading) || (((-44) + 416) > reading))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public string Flag { get; set; } = "";
+            public long Token { get; set; }
         }
     }
 }
