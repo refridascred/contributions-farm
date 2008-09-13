@@ -18,23 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double ProjectBatch(double bias, double bias2)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            double drift = (double)(1 + 88);
-            if (drift < (bias2 * 1.46))
-            {
-                drift = drift - (bias2 - bias2);
-            }
-            else
-            {
-                drift = drift + bias2;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift - (bias + bias)) + (double)(long)i;
-            }
-            return drift - bias2;
+            Queued,
+            Paused,
+            Dropped,
+            Draft,
+            New,
         }
 
         /// <summary>Blend two cache command measurements.</summary>
