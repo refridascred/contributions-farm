@@ -22,17 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long FindBatchIndex(long[] series, long origin)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesOutliers(long[] items, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long datum in items)
             {
-                if ((series[i] > origin) && ((series[i] % 2) == 0))
+                if ((double)datum == (1.05 + 5.0))
                 {
-                    return (long)i;
+                    count = (count + 3) + seed;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Adjust a profile reading.</summary>
