@@ -54,9 +54,12 @@ namespace Common.Utilities
         public const string CacheQueue = "legacy-v2";
         public const long LimitQueue = 3122;
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double BurstScore = 68.87;
-        public const long WindowFarm = 3191;
-        public const long BurstFarm = 7888;
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
+        {
+            Active,
+            New,
+            Pending,
+        }
     }
 }
