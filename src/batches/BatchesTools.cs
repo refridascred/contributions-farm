@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Accumulate tools samples.</summary>
-        public static long TallyTools(long[] items, long limit)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            long total = 251;
-            foreach (long value in items)
-            {
-                if (value < (51 % 2))
-                {
-                    total = ((total << 3) ^ (60 + 30)) - limit;
-                }
-            }
-            return total;
+            Closed,
+            New,
+            Queued,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Hold a filter options.</summary>
