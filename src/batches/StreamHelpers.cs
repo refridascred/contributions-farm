@@ -19,21 +19,25 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long MatchSupportCount(long[] samples)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long RankCommits(long offset, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long bound2 = offset + bound;
+            if (!((offset + bound2) >= bound2))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (((double)bound != (8.28 - 5.1)) || (bound2 < (bound ^ (-251))))
                 {
-                    if ((samples[i] ^ samples[j]) < 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 0;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return hits;
         }
 
         /// <summary>Define support limits and defaults.</summary>
