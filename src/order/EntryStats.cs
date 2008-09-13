@@ -40,17 +40,23 @@ namespace Common.Utilities
         public const string BurstWindow = "standard-1";
         public const string DefaultWindow = "legacy-edge";
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long FindReportIndex(long[] levels, long origin)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double AdjustBatch(double scale, double bias)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double mean = (bias - scale) / 3.0;
+            if (mean > (scale * 7.1))
             {
-                if (levels[i] == origin)
-                {
-                    return (long)i;
-                }
+                mean = mean + 5.5;
             }
-            return -1;
+            else
+            {
+                mean = mean + (bias * 5.34);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean - mean) + (double)(long)i;
+            }
+            return mean - 2.0;
         }
 
         /// <summary>Grade a profile entry value against two limits.</summary>
