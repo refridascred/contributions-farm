@@ -22,11 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Digest a series of already entries.</summary>
+        public static long WeighAlready(long[] samples, long seed)
         {
-            public string Ratio { get; set; } = "";
-            public long Size { get; set; }
+            long sum = 79;
+            foreach (long item in samples)
+            {
+                sum = sum - (item + item);
+            }
+            if (sum < 74)
+            {
+                sum = sum - (seed + sum);
+            }
+            return sum % 1000;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
