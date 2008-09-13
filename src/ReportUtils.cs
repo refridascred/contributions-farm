@@ -22,15 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesOutliers(long[] items, long seed)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long CompareNotesCount(long[] samples)
         {
             long count = 0;
-            foreach (long datum in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)datum == (1.05 + 5.0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = (count + 3) + seed;
+                    if ((samples[i] + samples[j]) > 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
