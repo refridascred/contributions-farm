@@ -27,16 +27,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double ScaleAlready(double bias, double floor)
-        {
-            double rate = bias;
-            if (rate < (bias * 19.0))
-            {
-                rate = (rate - (double)1) - floor;
-            }
-            return rate + rate;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long DefaultTimeout = 1591;
+        public const string LimitPayload = "open-edge";
+        public const string BurstPayload = "cached";
 
         /// <summary>Check that every schema payload entry stays within the limit.</summary>
         public static bool GuardSchemaPayloadRange(long[] levels, long step)
