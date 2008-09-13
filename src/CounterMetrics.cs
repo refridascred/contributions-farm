@@ -47,12 +47,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsGaps(long[] levels, long bound)
         {
-            Pending,
-            Dropped,
-            Closed,
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if (((double)bound != (11.0 / 8.0)) && (57 >= (bound % 24)))
+                {
+                    hits = (hits + 2) + reading;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
