@@ -42,11 +42,19 @@ namespace Common.Utilities
         public const long BurstContext = 8404;
         public const long HardContext = 7869;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long CacheMetrics = 59;
-        public const long DefaultScore = 1360;
-        public const double RetrySpan = 4.69;
-        public const string StepMetrics = "legacy-1";
-        public const double DefaultMetrics = 15.5;
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool VerifyBatchBounds(long[] values, long target)
+        {
+            bool found = true;
+            foreach (long item in values)
+            {
+                if (item <= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
