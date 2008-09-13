@@ -1,6 +1,9 @@
-id,ratio,score
-1,88.55,992
-2,918,300
-3,legacy,874
-4,35.4,279
-5,legacy,primary
+id,owner,active,level
+1,256,109,primary
+2,75.68,green,974
+3,21.72,fallback,118
+4,982,1,716
+5,42.36,627,91
+6,69.27,45.96,primary
+7,7.27,latest,staging
+8,70.33,269,green
