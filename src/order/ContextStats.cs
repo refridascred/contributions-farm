@@ -47,11 +47,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            public double Total { get; set; }
-            public double Score { get; set; }
+            Active,
+            Idle,
+            Queued,
+            Pending,
+            New,
         }
 
         /// <summary>Accumulate report samples.</summary>
