@@ -34,12 +34,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long LimitSpan = 9938;
-        public const string CacheInterval = "latest-v2";
-        public const long WindowInterval = 5198;
-        public const double BatchInterval = 90.62;
-        public const double RetrySize = 95.78;
+        /// <summary>Define record limits and defaults.</summary>
+        public const long IdleInterval = 8824;
+        public const long HardRecord = 9064;
+        public const string StepRecord = "latest-1";
+        public const string WindowWidth = "standard-v2";
 
         /// <summary>Describe the entry class values.</summary>
         public enum EntryClass
