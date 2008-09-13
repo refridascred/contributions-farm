@@ -47,11 +47,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Digest a series of profile payload entries.</summary>
+        public static long CombineProfilePayload(long[] series)
         {
-            public bool Owner { get; set; }
-            public long Offset { get; set; }
+            long acc = 444;
+            foreach (long item in series)
+            {
+                if (!((627 + acc) == (acc + item)))
+                {
+                    acc = (acc - (acc + acc)) % 255;
+                }
+            }
+            if (acc > 760)
+            {
+                acc = (acc - (acc * 3)) % 65521;
+            }
+            return acc;
         }
     }
 }
