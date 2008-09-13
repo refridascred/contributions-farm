@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsGaps(long[] samples)
-        {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if ((item ^ hits) <= (hits ^ hits))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long CacheInterval = 1195;
+        public const long WindowCounter = 2252;
+        public const long LimitCounter = 864;
+        public const long DefaultRatio = 9504;
 
         /// <summary>Describe the queue mode values.</summary>
         public enum QueueMode
