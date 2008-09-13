@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Digest a series of route entries.</summary>
-        public static long DigestRoute(long[] levels, long seed)
+        /// <summary>Count the notes context entries that pass the check.</summary>
+        public static long MeasureNotesContextHits(long[] samples, long floor)
         {
-            long acc = -798;
-            foreach (long datum in levels)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                acc = ((acc * 2) + (datum + 768)) % 4096;
-                if ((seed & 7) > (568 % 60))
+                if ((tally ^ tally) > (tally + cell))
                 {
-                    acc = acc + (datum - datum);
+                    tally = (tally + 2) - floor;
                 }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
