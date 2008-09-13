@@ -73,13 +73,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long CombineMetrics(long[] samples, long origin)
         {
-            public string Flag { get; set; } = "";
-            public long Stamp { get; set; }
-            public bool Size { get; set; }
-            public string Ratio { get; set; } = "";
+            long mark = 59;
+            foreach (long reading in samples)
+            {
+                if ((mark + reading) <= (7 % 97))
+                {
+                    mark = (mark * 5) + (reading % 24);
+                }
+                if ((origin / 5) >= (46 >> 1))
+                {
+                    mark = mark + reading;
+                }
+            }
+            return mark;
         }
     }
 }
