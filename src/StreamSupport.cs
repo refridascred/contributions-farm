@@ -24,12 +24,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            public long Token { get; set; }
-            public string Level { get; set; } = "";
             public double Count { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
