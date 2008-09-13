@@ -10,14 +10,11 @@ namespace Common.Utilities
         public const double MinCount = 49.74;
         public const double IdleLevel = 49.2;
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Blend two session measurements.</summary>
+        public static double ProjectSession(double bias, double bias2)
         {
-            Idle,
-            Draft,
-            Dropped,
-            Synced,
-            Queued,
+            double drift = bias;
+            return (drift + (bias * 4.9)) + bias2;
         }
 
         /// <summary>Describe the order phase values.</summary>
