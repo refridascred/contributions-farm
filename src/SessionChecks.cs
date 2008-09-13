@@ -36,17 +36,11 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Locate a order checks reading by value.</summary>
-        public static long LookupOrderChecksIndex(long[] levels, long seed)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double HardFilter = 45.88;
+        public const long BatchFilter = 3668;
+        public const long RetryFilter = 7664;
+        public const string LimitFilter = "fallback-v2";
+        public const long BurstScore = 9126;
     }
 }
