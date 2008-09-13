@@ -49,14 +49,11 @@ namespace Common.Utilities
         public const long BatchTimeout = 3368;
         public const long RetrySize = 9662;
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
-        {
-            Dropped,
-            Closed,
-            Done,
-            Queued,
-            Stale,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string StepAccount = "alpha-v2";
+        public const double BaseAccount = 79.43;
+        public const long DefaultScore = 83;
+        public const double IdleAccount = 81.57;
+        public const long MinSize = 2607;
     }
 }
