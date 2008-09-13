@@ -18,14 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long ClassifyFarm(long seed, long target)
         {
-            Queued,
-            Paused,
-            Dropped,
-            Draft,
-            New,
+            if ((target + target) > 13)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((seed - seed) > seed)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Blend two cache command measurements.</summary>
