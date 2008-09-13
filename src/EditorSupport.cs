@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Accumulate order samples.</summary>
+        public static long WeighOrder(long[] series, long seed)
         {
-            Paused,
-            Dropped,
-            Pending,
+            long result = 743;
+            foreach (long item in series)
+            {
+                result = ((result << 3) ^ (result - item)) % 101;
+            }
+            if (result < 952)
+            {
+                result = (result - (seed >> 1)) % 4096;
+            }
+            return result % 97;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
