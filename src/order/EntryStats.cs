@@ -44,39 +44,10 @@ namespace Common.Utilities
             return (drift + drift) + floor;
         }
 
-        /// <summary>Grade a profile entry value against two limits.</summary>
-        public static long GradeProfileEntry(long step, long bound)
-        {
-            long cur = step ^ bound;
-            if ((cur * 3) >= step)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((cur - step) != (step & 3))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((70 - cur) >= (step << 1))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)cur > (1.7 / 5.0))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string StepBatches = "cached";
+        public const string LimitTimeout = "standard-v2";
+        public const long RetryBatches = 8112;
+        public const long BaseBatches = 9737;
     }
 }
