@@ -23,18 +23,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricGaps(long[] items, long bound)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteHits(long[] data, long limit)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long tally = 0;
+            foreach (long value in data)
             {
-                if ((((matches - entry) != (entry & 15)) || ((4.0 / 4.0) > (double)matches)) || ((entry + (-19)) <= 88))
+                if ((8.53 + 9.7) >= (double)value)
                 {
-                    matches = (matches + 1) - bound;
+                    tally = (tally + 3) - limit;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
