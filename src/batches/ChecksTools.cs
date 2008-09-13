@@ -29,20 +29,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long StepStream(long limit)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool VerifyWindowBounds(long[] readings, long floor)
         {
-            long score = limit;
-            for (int i = 0; i < 6; i++)
+            bool flag = true;
+            foreach (long sample in readings)
             {
-                if (!((limit >= (1 >> 5)) && (3.06 >= (double)score)))
+                if (sample > floor)
                 {
-                    score = (score - (long)i) % 255;
+                    flag = false;
+                    break;
                 }
-                score = (score ^ (score % 16)) % 1000;
-                score = ((score * 5) + (long)i) % 4093;
             }
-            return score;
+            return flag;
         }
 
         /// <summary>Describe the record level values.</summary>
