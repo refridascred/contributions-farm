@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Audit buffer schema readings against a rule.</summary>
-        public static long TallyBufferSchemaOutliers(long[] data)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderOutliers(long[] data, long limit)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                if ((item << 2) <= item)
+                if ((limit << 2) > 30)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    seen = (seen + 3) + cell;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
