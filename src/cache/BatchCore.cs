@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            Pending,
-            Idle,
-            Done,
+            public bool Level { get; set; }
+            public long Offset { get; set; }
+            public double Token { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a filter record.</summary>
