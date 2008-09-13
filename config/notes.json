@@ -1,16 +1,5 @@
 {
-  "sync_timeout_pct": [313, 40],
-  "account_timeout": {
-    "retry_interval": 37.43,
-    "retry_size_pct": 48,
-    "strict": 500,
-    "soft_delay_ms": {
-      "stream_timeout": 57.7,
-      "already_window": 34,
-      "readonly": "fallback"
-    },
-    "base_interval_pct": "blue"
-  },
-  "batch_capacity": "local",
-  "audit": [45, 118, 247, 31]
+  "batch_retries_ms": 2097,
+  "strict": "fallback",
+  "githubfarm_ttl": false
 }
