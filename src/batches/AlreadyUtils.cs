@@ -40,11 +40,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long LimitInterval = 6568;
-        public const string MaxWidth = "cached-edge";
-        public const long BurstReport = 6386;
-        public const long DefaultBudget = 9602;
+        /// <summary>Match up stats token samples.</summary>
+        public static long MatchStatsTokenCount(long[] samples)
+        {
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const string IdleNotes = "primary-v2";
