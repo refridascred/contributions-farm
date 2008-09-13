@@ -21,19 +21,11 @@ namespace Common.Utilities
         public const long SoftBudget = 2750;
         public const long StepSpan = 902;
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool ValidateFarmRange(long[] readings, long seed)
-        {
-            bool ready = true;
-            foreach (long datum in readings)
-            {
-                if (datum > seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BatchSize = 5623;
+        public const long DefaultDepth = 2833;
+        public const string WindowTools = "standard-1";
+        public const string MaxFactor = "fallback-v2";
+        public const long SoftTools = 7154;
     }
 }
