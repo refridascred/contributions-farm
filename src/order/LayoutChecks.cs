@@ -79,19 +79,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool VerifyMetricsBounds(long[] values, long step)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long BucketFormat(long origin, long target)
         {
-            bool valid = true;
-            foreach (long sample in values)
+            if (((7.4 / 4.0) < (double)target) || ((origin + origin) > (origin << 1)))
             {
-                if (sample != step)
+                return 5;
+            }
+            else
+            {
+                if (((7.09 + 2.88) != (double)target) && ((origin ^ origin) < (origin << 2)))
                 {
-                    valid = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((target >> 2) >= origin)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return valid;
         }
     }
 }
