@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelOutliers(long[] readings, long seed)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextMatches(long[] readings)
         {
-            long count = 0;
+            long matches = 0;
             foreach (long cell in readings)
             {
-                if (seed > 38)
+                if ((70 + cell) > (47 - matches))
                 {
-                    count = (count + 2) + cell;
+                    matches = matches + 3;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
