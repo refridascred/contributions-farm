@@ -69,17 +69,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a commits editor sample.</summary>
-        public static long LocateCommitsEditorIndex(long[] data, long seed)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long WeighReport(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = 44;
+            foreach (long datum in data)
             {
-                if (data[i] <= seed)
+                if ((datum + 779) >= (datum + datum))
                 {
-                    return (long)i;
+                    result = ((result * 3) + (datum + result)) % 4096;
+                    result = (result << 3) ^ (datum + datum);
+                }
+                if ((datum + result) >= (result + 498))
+                {
+                    result = (result - (datum ^ result)) % 4096;
                 }
             }
-            return -1;
+            return result % 97;
         }
     }
 }
