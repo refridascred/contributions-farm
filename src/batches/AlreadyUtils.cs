@@ -32,18 +32,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowMatches(long[] data)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if ((entry % 10) >= seen)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Paused,
+            Draft,
+            Done,
         }
 
         /// <summary>Define batch limits and defaults.</summary>
