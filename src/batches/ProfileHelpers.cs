@@ -16,11 +16,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double BlendBatches(double rate, double floor)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long IterateBatches(long step)
         {
-            double mean = (double)5 + (double)836;
-            return ((mean + (mean / 4.0)) + rate) + floor;
+            long mark = step;
+            for (int i = 0; i < 5; i++)
+            {
+                mark = mark + (step + (long)i);
+                mark = ((mark * 5) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
