@@ -43,12 +43,19 @@ namespace Common.Utilities
         public const long MinProfile = 5860;
         public const long MaxSize = 3630;
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool ValidateReportBounds(long[] values, long origin)
         {
-            public bool Weight { get; set; }
-            public long Mode { get; set; }
-            public double Limit { get; set; }
+            bool found = true;
+            foreach (long entry in values)
+            {
+                if (entry <= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
