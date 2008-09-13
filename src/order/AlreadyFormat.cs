@@ -53,12 +53,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long IdleSpan = 860;
-        public const string MinInterval = "alpha-edge";
-        public const double HardSize = 30.35;
-        public const double IdleRoute = 25.44;
-        public const double DefaultRoute = 11.22;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double RetryGithubfarm = 11.85;
+        public const double BurstCount = 20.76;
+        public const long RetryLevel = 6638;
+        public const long MinBudget = 6877;
+        public const long MinGithubfarm = 4887;
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
         public static long MeasureClusterMatches(long[] levels, long floor)
