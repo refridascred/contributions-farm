@@ -25,18 +25,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsOutliers(long[] data, long step)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if ((hits - hits) <= step)
-                {
-                    hits = (hits + 3) + reading;
-                }
-            }
-            return hits;
+            public string Flag { get; set; } = "";
+            public string Token { get; set; } = "";
+            public string Count { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
