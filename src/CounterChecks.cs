@@ -66,21 +66,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up order graph samples.</summary>
-        public static long CompareOrderGraphCount(long[] readings)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long FoldStream(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 711;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 4)
-                    {
-                        count = count + 1;
-                    }
-                }
+                anchor = ((anchor + anchor) % 255) + reading;
             }
-            return count;
+            return anchor;
         }
     }
 }
