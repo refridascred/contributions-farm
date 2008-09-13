@@ -34,18 +34,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountHits(long[] series)
-        {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if (((count - entry) >= count) || !((count + (long)series.Length) != (count * 4)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double BurstDepth = 82.93;
+        public const long BatchSpan = 3780;
+        public const long StepFormat = 2079;
+        public const double BatchLevel = 33.14;
+        public const long IdleLevel = 9122;
     }
 }
