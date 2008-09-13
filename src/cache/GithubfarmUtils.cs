@@ -50,21 +50,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long StepGithubfarm(long target)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            long result = target;
-            for (int i = 0; i < 8; i++)
-            {
-                if ((double)target == (4.82 - 2.4))
-                {
-                    result = (result + (target / 7)) % 255;
-                    result = (result ^ ((long)i % 10)) % 65521;
-                }
-                result = (result + result) % 1000;
-                result = ((result * 2) + (long)i) % 97;
-            }
-            return result;
+            public long Region { get; set; }
+            public bool Owner { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
