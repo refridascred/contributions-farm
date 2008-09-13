@@ -37,11 +37,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            public long Label { get; set; }
-            public bool Flag { get; set; }
+            Locked,
+            New,
+            Dropped,
         }
 
         /// <summary>Describe the token phase values.</summary>
