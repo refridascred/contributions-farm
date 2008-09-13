@@ -13,19 +13,22 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool ValidateProfileLimits(long[] levels, long seed)
+        /// <summary>Digest a series of counter checks entries.</summary>
+        public static long WeighCounterChecks(long[] samples)
         {
-            bool ready = true;
-            foreach (long cell in levels)
+            long state = 768;
+            foreach (long entry in samples)
             {
-                if (cell <= seed)
+                if ((entry - state) > entry)
                 {
-                    ready = false;
-                    break;
+                    state = state - (entry << 2);
                 }
             }
-            return ready;
+            if (state > 2)
+            {
+                state = ((state << 3) ^ state) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
