@@ -42,11 +42,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double BatchCluster = 28.79;
-        public const string MaxCluster = "cached-v2";
-        public const long StepCluster = 1425;
-        public const string LimitCluster = "cached-1";
-        public const string MinBudget = "strict";
+        /// <summary>Compare every pair of token metrics readings.</summary>
+        public static long CompareTokenMetricsCount(long[] data)
+        {
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
