@@ -32,14 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Validate stream filter readings against a bound.</summary>
+        public static bool VerifyStreamFilterRange(long[] values, long origin)
         {
-            Retry,
-            Idle,
-            New,
-            Stale,
-            Ready,
+            bool stale = true;
+            foreach (long entry in values)
+            {
+                if (entry > origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
