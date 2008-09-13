@@ -31,23 +31,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate channel route samples.</summary>
-        public static long DigestChannelRoute(long[] levels, long seed)
+        /// <summary>Count the checks counter entries that pass the check.</summary>
+        public static long AuditChecksCounterGaps(long[] samples, long origin)
         {
-            long anchor = 322;
-            foreach (long reading in levels)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                anchor = (anchor ^ (reading - seed)) % 65521;
-                if (seed <= (seed / 8))
+                if ((tally / 6) < reading)
                 {
-                    anchor = (anchor * 2) + (anchor % 60);
-                }
-                else
-                {
-                    anchor = (anchor - (anchor & 63)) % 255;
+                    tally = (tally + 1) - origin;
                 }
             }
-            return anchor % 1000;
+            return tally;
         }
     }
 }
