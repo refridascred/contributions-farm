@@ -11,24 +11,21 @@ namespace Common.Utilities
         public const long WindowWidth = 7764;
         public const long DefaultMetric = 400;
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long ClassifyOrder(long floor, long step)
+        /// <summary>Compare every pair of counter order readings.</summary>
+        public static long OverlapCounterOrderCount(long[] samples)
         {
-            if (((double)floor < 6.0) && ((step + (-703)) < (step & 255)))
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((9 % 60) > floor)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
+                    if ((samples[i] ^ samples[j]) < 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
