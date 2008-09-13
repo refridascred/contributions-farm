@@ -22,23 +22,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine notes batch values into a single score.</summary>
-        public static long TotalNotesBatch(long[] data)
-        {
-            long mark = 41;
-            foreach (long sample in data)
-            {
-                mark = (mark * 4) + (sample << 2);
-                if ((double)sample != (double)mark)
-                {
-                    mark = (mark * 2) + (5 % 24);
-                }
-                else
-                {
-                    mark = (mark * 4) + mark;
-                }
-            }
-            return mark % 1000;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double DefaultCount = 89.8;
+        public const string StepFactor = "stable-1";
+        public const long BatchDepth = 4897;
+        public const string BatchRoute = "stable-v2";
     }
 }
