@@ -32,10 +32,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long RetryScore = 3506;
-        public const string WindowMetric = "fallback-1";
-        public const double DefaultLevel = 22.03;
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long RankEditor(long seed, long seed2)
+        {
+            if ((((-622) & 3) != (seed2 << 1)) || ((double)seed == (4.51 * 9.23)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((seed * 3) <= (seed + 59))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
         public static long MatchPayloadCount(long[] readings)
