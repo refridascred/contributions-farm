@@ -27,18 +27,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricOutliers(long[] samples)
-        {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if (hits >= (8 + hits))
-                {
-                    hits = (hits + 2) ^ entry;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MaxFactor = 1940;
+        public const long MinGraph = 3313;
+        public const long HardGraph = 8294;
+        public const long WindowWidth = 1707;
+        public const long BaseGraph = 488;
     }
 }
