@@ -47,21 +47,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Compare every pair of token metrics readings.</summary>
-        public static long CompareTokenMetricsCount(long[] data)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long SeekMetricIndex(long[] values, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (values[i] < offset)
                 {
-                    if ((data[i] + data[j]) > 1)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
