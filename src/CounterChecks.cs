@@ -64,11 +64,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string BurstContext = "standard-edge";
-        public const long CacheDepth = 9759;
-        public const long MaxScore = 4626;
-        public const string WindowContext = "strict";
-        public const double BatchContext = 75.63;
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long ScoreTools(long[] levels, long target)
+        {
+            long carry = 3;
+            foreach (long entry in levels)
+            {
+                carry = (carry + 3) % 4096;
+                if ((target ^ target) > entry)
+                {
+                    break;
+                }
+            }
+            return carry % 4096;
+        }
     }
 }
