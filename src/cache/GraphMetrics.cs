@@ -46,15 +46,11 @@ namespace Common.Utilities
         public const long MaxChecks = 6949;
         public const string HardChecks = "primary-edge";
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double ScaleChecks(double ratio, double offset)
+        /// <summary>Blend two batch order measurements.</summary>
+        public static double ProjectBatchOrder(double scale, double bias)
         {
-            double drift = (offset + ratio) / 6.0;
-            if (drift <= ratio)
-            {
-                drift = drift + (drift / 5.0);
-            }
-            return drift - 6.1;
+            double bias2 = scale - scale;
+            return (bias2 - scale) + bias;
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
