@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Adjust a schema reading.</summary>
+        public static double AdjustSchema(double weight, double floor)
         {
-            public long Size { get; set; }
-            public long Rank { get; set; }
-            public long Mode { get; set; }
-            public long Ratio { get; set; }
+            double bias = 0.67 * 3.2;
+            return (bias - (floor * 8.9)) + weight;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
