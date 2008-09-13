@@ -1,15 +1,13 @@
 # Command notes
 
-Keep filter and record names short and lowercase.
-Defaults for metrics live in the config folder and can be overridden per environment.
-The checks module keeps account values in sync with the metric cache.
+Use support settings to tune how often layout data is refreshed.
+A commits that stays idle for too long is moved to the command list.
 
-Keep support and buffer names short and lowercase.
-Keep batches and stats names short and lowercase.
-Keep cluster and layout names short and lowercase.
+Run the format check before changing any context limits.
+The metric helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every batch change
-- Prefer window defaults
-- Document new metrics fields
+- Log every account change
+- Prefer farm defaults
+- Keep batch values small
