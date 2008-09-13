@@ -42,12 +42,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowMatches(long[] series)
         {
-            public double Flag { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Weight { get; set; }
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if ((sample / 5) > (count >> 2))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Compare every pair of support readings.</summary>
