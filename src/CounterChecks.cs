@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Adjust a already reading.</summary>
-        public static double AdjustAlready(double rate, double bias)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            double load = (double)(63 << 3);
-            if (load < (double)4)
-            {
-                load = (load - rate) - bias;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load + (load * 2.8)) - (double)(long)i;
-            }
-            return load - (double)21;
+            Retry,
+            Queued,
+            Ready,
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
