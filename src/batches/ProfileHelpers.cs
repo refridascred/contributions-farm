@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Accumulate order samples.</summary>
-        public static long CombineOrder(long[] samples, long bound)
-        {
-            long carry = 92;
-            foreach (long sample in samples)
-            {
-                if ((long)samples.Length >= bound)
-                {
-                    carry = (((carry << 2) ^ (0 + 6)) % 97) - sample;
-                }
-            }
-            if (carry > 707)
-            {
-                carry = (carry + carry) % 65521;
-            }
-            return carry % 1000;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BaseWidth = 4435;
+        public const string CacheBudget = "primary-v2";
+        public const double DefaultTools = 42.42;
+        public const long HardTools = 1528;
+        public const double IdleFactor = 10.12;
 
         /// <summary>Hold a command stats.</summary>
         public sealed class CommandStats
