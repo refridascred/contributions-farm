@@ -55,16 +55,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long IterateRecord(long origin)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            long anchor = origin;
-            for (int i = 0; i < 9; i++)
-            {
-                anchor = ((anchor * 4) + ((long)i + (long)i)) % 255;
-                anchor = ((anchor * 2) + (long)i) % 97;
-            }
-            return anchor;
+            public long Label { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Mode { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Audit batch metrics readings against a rule.</summary>
