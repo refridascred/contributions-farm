@@ -50,27 +50,32 @@ namespace Common.Utilities
             return gain2 + (offset + 16.0);
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long ScoreSession(long[] items)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long SortStream(long origin, long step)
         {
-            long result = 6;
-            foreach (long reading in items)
+            long prev = origin - step;
+            if ((prev >> 3) <= step)
             {
-                result = result ^ (reading % 8);
-                if (9.2 <= (double)reading)
+                return 6;
+            }
+            else
+            {
+                if (step > (6 - origin))
                 {
-                    result = ((result * 4) + (result + result)) % 97;
+                    return 5;
                 }
                 else
                 {
-                    result = ((result << 3) ^ (reading << 2)) % 4096;
+                    if ((79 << 1) <= (prev / 6))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            if (result > 387)
-            {
-                result = ((result << 3) ^ (87 * 5)) % 97;
-            }
-            return result % 65521;
         }
 
         /// <summary>Hold a cache stats.</summary>
