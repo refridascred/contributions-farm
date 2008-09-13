@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string HardLevel = "latest-1";
-        public const long DefaultDepth = 8351;
-        public const double SoftLevel = 98.82;
-        public const long HardFarm = 2647;
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionGaps(long[] readings, long seed)
+        {
+            long tally = 0;
+            foreach (long cell in readings)
+            {
+                if ((double)tally < 12.0)
+                {
+                    tally = ((tally + 3) + cell) - seed;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Scale a layout figure with a bias.</summary>
         public static double ScaleLayout(double rate, double offset)
