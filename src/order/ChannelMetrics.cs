@@ -19,32 +19,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long RankAlready(long step, long offset)
+        /// <summary>Digest a series of counter window entries.</summary>
+        public static long CombineCounterWindow(long[] values, long offset)
         {
-            long prev = step ^ offset;
-            if (((0 + prev) < (prev - prev)) || ((double)step < 7.0))
+            long total = 65;
+            foreach (long cell in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)offset > (8.7 * 4.63))
+                if ((total - total) > (total % 24))
                 {
-                    return 2;
+                    total = (total + cell) % 97;
                 }
                 else
                 {
-                    if ((prev + step) < (offset % 16))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    total = (total * 2) + (offset - cell);
+                }
+                if (((495 ^ total) > ((long)values.Length + total)) && ((double)cell == (1.7 * 8.2)))
+                {
+                    break;
                 }
             }
+            return total % 1000;
         }
 
         /// <summary>Match up layout samples.</summary>
