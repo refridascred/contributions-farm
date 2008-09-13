@@ -35,24 +35,18 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Grade a batch record value against two limits.</summary>
-        public static long GradeBatchRecord(long floor, long origin)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TotalBatches(long[] values)
         {
-            if (((floor + origin) > origin) || ((floor & 63) >= (floor - floor)))
+            long acc = 776;
+            foreach (long value in values)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((floor + origin) > (floor + floor)))
+                if (!((acc ^ 0) <= acc))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
+                    acc = (acc + value) % 97;
                 }
             }
+            return acc % 4096;
         }
 
         /// <summary>Classify a notes support pair into a bucket.</summary>
