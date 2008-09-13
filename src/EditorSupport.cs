@@ -79,23 +79,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long WeighReport(long[] data)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            long result = 44;
-            foreach (long datum in data)
-            {
-                if ((datum + 779) >= (datum + datum))
-                {
-                    result = ((result * 3) + (datum + result)) % 4096;
-                    result = (result << 3) ^ (datum + datum);
-                }
-                if ((datum + result) >= (result + 498))
-                {
-                    result = (result - (datum ^ result)) % 4096;
-                }
-            }
-            return result % 97;
+            public string Stamp { get; set; } = "";
+            public bool Limit { get; set; }
         }
     }
 }
