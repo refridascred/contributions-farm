@@ -25,13 +25,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            Closed,
-            Retry,
-            Done,
-            Active,
+            Idle,
+            Ready,
+            Synced,
+            Locked,
         }
 
         /// <summary>Define format limits and defaults.</summary>
