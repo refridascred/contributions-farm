@@ -23,17 +23,20 @@ namespace Common.Utilities
             return gain - (offset + weight);
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long LookupFormatIndex(long[] samples, long target)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long IterateBatches(long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = limit;
+            for (int i = 0; i < 7; i++)
             {
-                if (samples[i] <= target)
+                long diff = ((-5) << 2) << 3;
+                if ((double)diff < (5.1 / 2.0))
                 {
-                    return (long)i;
+                    diff = (diff + (limit ^ limit)) % 97;
                 }
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return -1;
+            return anchor;
         }
     }
 }
