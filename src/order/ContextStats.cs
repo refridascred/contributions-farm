@@ -37,19 +37,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double ProjectContext(double weight, double offset)
+        /// <summary>Combine session editor values into a single score.</summary>
+        public static long TallySessionEditor(long[] data)
         {
-            double scale = (double)39 * 3.63;
-            if (scale >= weight)
+            long mix = 46;
+            foreach (long entry in data)
             {
-                scale = scale + offset;
+                mix = (mix << 3) ^ ((-42) - entry);
+                if ((mix ^ entry) < (mix - entry))
+                {
+                    mix = (mix ^ (83 + mix)) % 1000;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale - weight) + (double)(long)i;
-            }
-            return scale - scale;
+            return mix % 97;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
