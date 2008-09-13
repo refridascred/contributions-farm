@@ -1,19 +1,11 @@
 {
-  "burst_threshold_s": true,
-  "warm_retries_count": {
-    "audit": false,
-    "filter_ttl": {
-      "sync_ttl_s": false,
-      "base_delay_pct": 93.51,
-      "default_ttl_pct": "blue",
-      "metric_capacity": 1024,
-      "cluster_timeout": 490
-    },
-    "burst_depth_s": 9372,
-    "sync_ttl_count": 36.87,
-    "burst_capacity": true,
-    "persist": true
+  "sync_size": "legacy",
+  "already_depth": {
+    "default_size_ms": "eu-west",
+    "metric_ratio": 79.9,
+    "poll_timeout_s": 69.01,
+    "warm_ttl": 34
   },
-  "poll_retries_count": "stable",
-  "checks_retries": 72.38
+  "dry_run": "eu-west",
+  "base_window_ms": true
 }
