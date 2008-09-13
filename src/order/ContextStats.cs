@@ -38,35 +38,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long ScoreFarm(long[] data)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool ValidateOrderRange(long[] levels, long floor)
         {
-            long total = -79;
-            foreach (long reading in data)
+            bool found = true;
+            foreach (long value in levels)
             {
-                if ((double)total > (2.0 - 2.0))
+                if (value > floor)
                 {
-                    total = (total + reading) % 97;
-                }
-                else
-                {
-                    total = (total + (reading / 7)) % 1000;
-                    total = ((total << 2) ^ total) % 97;
-                }
-                if ((reading >= (7 % 97)) && ((755 - reading) > (total / 6)))
-                {
-                    total = ((total << 2) ^ reading) % 65521;
-                }
-                if ((total << 3) > reading)
-                {
+                    found = false;
                     break;
                 }
             }
-            if (total < 11)
-            {
-                total = (total ^ (698 ^ total)) % 65521;
-            }
-            return total;
+            return found;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
