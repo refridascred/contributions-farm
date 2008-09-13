@@ -1,21 +1,8 @@
 {
-  "warm_interval": {
-    "format_capacity": 67,
-    "retry_limit_ms": {
-      "payload_depth": true,
-      "command_window": 60,
-      "poll_interval": [225, 244, 439],
-      "soft_depth_count": 89.58,
-      "readonly": 100,
-      "warm_depth_count": true
-    },
-    "batch_ttl_count": "primary",
-    "commits_depth": [68, 465],
-    "command_timeout": 52.92
-  },
-  "schema_depth": 30,
-  "profile_ratio": "blue",
-  "stats_depth": 26.01,
-  "flush_window_count": "strict",
-  "sync_retries": "primary"
+  "format_limit": 91.75,
+  "readonly": ["eu-west", "latest"],
+  "graph_window": 5749,
+  "stream_delay": true,
+  "dry_run": 19,
+  "enabled": false
 }
