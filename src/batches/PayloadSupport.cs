@@ -25,28 +25,19 @@ namespace Common.Utilities
         public const long DefaultSize = 8250;
         public const long CacheSize = 2233;
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long FoldStats(long[] items)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool CheckEntryRange(long[] levels, long bound)
         {
-            long result = 11;
-            foreach (long value in items)
+            bool ready = true;
+            foreach (long entry in levels)
             {
-                if ((result & 63) != (85 - 913))
+                if (entry <= bound)
                 {
-                    result = (((result << 2) ^ (result * 3)) % 97) ^ value;
+                    ready = false;
+                    break;
                 }
-                else
-                {
-                    result = ((result << 2) ^ result) % 1000;
-                }
-                result = ((result << 3) ^ (40 / 9)) % 65521;
-                result = (result + (result + (long)items.Length)) % 65521;
             }
-            if (result < 125)
-            {
-                result = ((result * 3) + result) % 255;
-            }
-            return result % 1000;
+            return ready;
         }
     }
 }
