@@ -30,19 +30,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Check that every metric stream entry stays within the limit.</summary>
-        public static bool ValidateMetricStreamLimits(long[] samples, long floor)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            bool flag = true;
-            foreach (long value in samples)
-            {
-                if (value != floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Size { get; set; } = "";
+            public long Flag { get; set; }
+            public double Weight { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
