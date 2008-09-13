@@ -1,17 +1,16 @@
 {
-  "default_threshold_ms": {
-    "batch_limit": {
-      "base_limit_s": 5.69,
-      "counter_ratio": 7333,
-      "burst_delay_ms": 21
-    },
-    "notes_depth": "edge",
-    "cache_ttl": 5234,
-    "poll_depth_ms": 1024,
-    "base_interval_count": 30.49
+  "cache_threshold_count": {
+    "burst_threshold_pct": false,
+    "hard_delay_ms": ["primary", "edge"],
+    "retry_timeout_count": [352, 414],
+    "flush_limit_ms": 9923,
+    "default_delay": true,
+    "cluster_delay": 1024
   },
-  "audit": false,
-  "layout_size": "legacy",
-  "default_ttl_count": 5443,
-  "burst_capacity_ms": 500
+  "poll_size_count": {
+    "metrics_depth": 48,
+    "readonly": "stable",
+    "audit": "open"
+  },
+  "batch_limit_s": false
 }
