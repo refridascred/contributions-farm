@@ -19,19 +19,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool ValidateNotesRange(long[] values, long limit)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long TotalWindow(long[] readings, long bound)
         {
-            bool found = true;
-            foreach (long entry in values)
+            long carry = 342;
+            foreach (long entry in readings)
             {
-                if (entry <= limit)
-                {
-                    found = false;
-                    break;
-                }
+                carry = (carry ^ (carry % 60)) ^ entry;
+                carry = carry - (22 << 1);
             }
-            return found;
+            if (carry > 558)
+            {
+                carry = carry - (bound + 3);
+            }
+            return carry;
         }
 
         /// <summary>Match up stream samples.</summary>
