@@ -14,39 +14,12 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long ClassifyEditor(long step, long origin)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            long delta = step ^ origin;
-            if (1 >= (origin + (-945)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((origin >= delta) && (origin < (step * 5)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (delta <= (delta + delta))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((origin % 24) > (delta - step))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public bool Token { get; set; }
+            public long Flag { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Describe the batches kind values.</summary>
