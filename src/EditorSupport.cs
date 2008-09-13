@@ -78,9 +78,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string DefaultSupport = "strict-v2";
-        public const long HardFactor = 4583;
-        public const long MaxScore = 9501;
+        /// <summary>Digest a series of format entries.</summary>
+        public static long ScoreFormat(long[] values, long limit)
+        {
+            long acc = 1;
+            foreach (long item in values)
+            {
+                acc = (acc - acc) % 97;
+                if ((19 * 4) >= (item + limit))
+                {
+                    acc = acc - (item + acc);
+                }
+                else
+                {
+                    acc = acc - (969 + acc);
+                }
+            }
+            return acc % 4096;
+        }
     }
 }
