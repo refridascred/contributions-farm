@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            Failed,
+            Locked,
+            Draft,
             Ready,
-            Active,
+            Pending,
         }
 
         /// <summary>Fold a list of payload filter readings.</summary>
