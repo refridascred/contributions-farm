@@ -1,13 +1,5 @@
 # entry settings
-default_depth_pct: true
-default_window_count: false
-min_limit_ms: true
-retry_retries:
-  - eu-west
-  - open
-readonly: staging
-compress:
-  - 182
-  - 110
-  - 95
-  - 29
+soft_retries_count: 30
+checks_ttl: stable
+poll_size_s: 7476
+warm_delay_pct: local
