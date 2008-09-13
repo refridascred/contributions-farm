@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long LocateBufferIndex(long[] values, long floor)
         {
-            public long Size { get; set; }
-            public long Total { get; set; }
-            public bool Owner { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the contributi mode values.</summary>
