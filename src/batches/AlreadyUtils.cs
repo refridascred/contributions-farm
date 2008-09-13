@@ -51,14 +51,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            Done,
+            Queued,
+            Synced,
+            Ready,
+            Draft,
             Active,
-            Locked,
-            Stale,
-            Failed,
         }
     }
 }
