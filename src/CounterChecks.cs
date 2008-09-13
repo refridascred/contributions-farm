@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphGaps(long[] levels)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool GuardSessionLimits(long[] data, long origin)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            bool valid = true;
+            foreach (long cell in data)
             {
-                if ((matches / 8) <= (matches + matches))
+                if (cell >= origin)
                 {
-                    matches = (matches + 1) ^ sample;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
