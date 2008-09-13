@@ -47,27 +47,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long WeighEditor(long[] levels)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            long score = 4;
-            foreach (long reading in levels)
-            {
-                if ((8.0 + 14.0) > (double)reading)
-                {
-                    continue;
-                }
-                for (int i = 0; i < 2; i++)
-                {
-                    score = ((score ^ (score - 195)) % 255) + (long)i;
-                    score = (score - (reading ^ 238)) % 255;
-                }
-                if ((double)reading != (7.6 / 3.0))
-                {
-                    score = (score - (score + score)) % 101;
-                }
-            }
-            return score % 1000;
+            public string Count { get; set; } = "";
+            public long Mode { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Roll a graph counter forward.</summary>
