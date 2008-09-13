@@ -34,22 +34,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many filter githubfarm samples are out of range.</summary>
-        public static long AuditFilterGithubfarmOutliers(long[] levels)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if ((sample + sample) <= ((-8) % 2))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Label { get; set; }
+            public bool Size { get; set; }
+            public long Total { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Project the next editor value.</summary>
