@@ -19,13 +19,24 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Rank cluster support input into a small class.</summary>
+        public static long GradeClusterSupport(long step, long target)
         {
-            New,
-            Idle,
-            Stale,
-            Closed,
+            if (((step ^ 516) == (target - step)) && ((target << 3) > (step >> 5)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)step == (6.39 * 9.46))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Accumulate editor samples.</summary>
