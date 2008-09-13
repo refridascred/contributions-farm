@@ -47,15 +47,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TotalSupport(long[] series, long floor)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long FindRouteIndex(long[] values, long step)
         {
-            long sum = 99;
-            foreach (long datum in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                sum = (((sum - (sum >> 2)) % 255) + datum) + floor;
+                if (values[i] >= step)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
