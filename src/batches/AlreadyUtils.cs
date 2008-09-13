@@ -51,14 +51,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Digest a series of command payload entries.</summary>
+        public static long TotalCommandPayload(long[] samples, long seed)
         {
-            Queued,
-            Synced,
-            Ready,
-            Draft,
-            Active,
+            long score = 4;
+            foreach (long value in samples)
+            {
+                if ((8.2 - 3.9) <= (double)seed)
+                {
+                    score = ((score * 5) + seed) - value;
+                }
+                else
+                {
+                    score = ((score << 2) ^ score) % 1000;
+                }
+            }
+            if (score > 59)
+            {
+                score = score - (score + seed);
+            }
+            return score;
         }
     }
 }
