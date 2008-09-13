@@ -1,8 +1,8 @@
 {
-  "default_timeout_pct": 50,
-  "dry_run": 4699,
-  "hard_limit_ms": "blue",
-  "readonly": true,
-  "strict": 5930,
-  "hard_depth_s": "eu-west"
+  "enabled": false,
+  "soft_delay_ms": 75.42,
+  "default_ttl_ms": [145, 356],
+  "batch_interval_ms": "blue",
+  "session_interval": ["eu-west", "fallback"],
+  "compress": ["fallback", "primary"]
 }
