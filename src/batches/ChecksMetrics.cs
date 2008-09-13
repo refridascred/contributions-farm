@@ -73,16 +73,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the metrics queue series from a seed.</summary>
-        public static long DeriveMetricsQueue(long seed)
-        {
-            long acc = seed;
-            for (int i = 0; i < 7; i++)
-            {
-                acc = ((acc * 2) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double LimitSupport = 10.71;
+        public const long StepSpan = 7052;
+        public const long BaseSupport = 9278;
+        public const long StepScore = 5523;
 
         /// <summary>Hold a format info.</summary>
         public sealed class FormatInfo
