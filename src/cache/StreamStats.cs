@@ -34,18 +34,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long CountBufferOutliers(long[] readings, long offset)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool ValidateStatsRange(long[] values, long step)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            bool ok = true;
+            foreach (long cell in values)
             {
-                if ((((14.0 - 8.0) == (double)offset) && ((7.32 - 20.0) == (double)sample)) || ((double)offset >= (5.0 / 3.0)))
+                if (cell != step)
                 {
-                    matches = matches + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
