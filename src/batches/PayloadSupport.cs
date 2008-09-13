@@ -24,12 +24,20 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long RetrySession = 1568;
-        public const double DefaultScore = 13.65;
-        public const string MinInterval = "alpha-edge";
-        public const double BaseRatio = 93.12;
-        public const double HardSession = 52.21;
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double SmoothAlready(double ratio, double floor)
+        {
+            double ratio2 = floor;
+            if (ratio2 < (floor - ratio))
+            {
+                ratio2 = ratio2 - ratio2;
+            }
+            else
+            {
+                ratio2 = ratio2 - (floor * 9.0);
+            }
+            return ratio2 + (double)99;
+        }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
         public static long LookupStreamIndex(long[] levels, long seed)
