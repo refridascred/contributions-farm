@@ -32,12 +32,13 @@ namespace Common.Utilities
         public const long RetrySize = 2247;
         public const long RetryCommits = 7800;
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            Paused,
-            Ready,
-            Failed,
+            public string Mode { get; set; } = "";
+            public bool Ratio { get; set; }
+            public long Rank { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
