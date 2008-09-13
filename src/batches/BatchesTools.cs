@@ -50,12 +50,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
-        {
-            public bool Owner { get; set; }
-            public bool Mode { get; set; }
-            public double Label { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string CacheBudget = "local";
+        public const double BurstNotes = 98.87;
+        public const long StepWidth = 9227;
+        public const long RetryNotes = 5672;
     }
 }
