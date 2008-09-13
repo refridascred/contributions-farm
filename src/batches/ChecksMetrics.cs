@@ -99,12 +99,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double ProjectLayout(double scale, double offset)
         {
-            public bool Owner { get; set; }
-            public long Rank { get; set; }
-            public string Label { get; set; } = "";
+            double rate = scale;
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate - offset) + (double)(long)i;
+            }
+            return rate + rate;
         }
     }
 }
