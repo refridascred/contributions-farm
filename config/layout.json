@@ -1,8 +1,18 @@
 {
-  "cache_ratio": "primary",
-  "hard_ttl_ms": 7421,
-  "hard_interval_count": "edge",
-  "tools_capacity": false,
-  "warm_window": 0.54,
-  "max_retries_pct": true
+  "burst_capacity": {
+    "persist": "edge",
+    "flush_size_s": {
+      "base_retries": ["fallback", "open", "open"],
+      "dry_run": false,
+      "enabled": 21.64,
+      "cache_capacity": [373, 274, 226, 488]
+    },
+    "idle_timeout_count": "staging",
+    "enabled": 4916,
+    "queue_depth": false
+  },
+  "soft_threshold_ms": 52.04,
+  "account_ttl": "green",
+  "stream_ttl": 654,
+  "burst_timeout_s": true
 }
