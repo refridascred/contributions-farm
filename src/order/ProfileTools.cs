@@ -23,17 +23,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long RollRecord(long limit)
-        {
-            long carry = limit;
-            for (int i = 0; i < 24; i++)
-            {
-                carry = (carry << 3) ^ ((long)i - (long)i);
-                carry = ((carry * 4) + (long)i) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BaseChecks = 3209;
+        public const long IdleChecks = 6614;
+        public const long DefaultBudget = 8283;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const string BurstSize = "stable";
