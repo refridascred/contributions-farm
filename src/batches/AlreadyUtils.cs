@@ -60,26 +60,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of command payload entries.</summary>
-        public static long TotalCommandPayload(long[] samples, long seed)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordMatches(long[] data, long offset)
         {
-            long score = 4;
-            foreach (long value in samples)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if ((8.2 - 3.9) <= (double)seed)
+                if (20.0 <= (double)offset)
                 {
-                    score = ((score * 5) + seed) - value;
-                }
-                else
-                {
-                    score = ((score << 2) ^ score) % 1000;
+                    hits = (hits + 3) ^ datum;
                 }
             }
-            if (score > 59)
-            {
-                score = score - (score + seed);
-            }
-            return score;
+            return hits;
         }
     }
 }
