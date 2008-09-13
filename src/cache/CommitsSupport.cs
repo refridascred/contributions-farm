@@ -23,11 +23,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string SoftRatio = "local";
-        public const long IdleRatio = 6399;
-        public const string StepSpan = "local-v2";
-        public const double LimitCounter = 59.8;
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool VerifyPayloadRange(long[] levels, long limit)
+        {
+            bool ok = true;
+            foreach (long value in levels)
+            {
+                if (value != limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const string HardSession = "standard-1";
