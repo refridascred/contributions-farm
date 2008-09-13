@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaGaps(long[] levels)
+        /// <summary>Adjust a already reading.</summary>
+        public static double AdjustAlready(double rate, double bias)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            double load = (double)(63 << 3);
+            if (load < (double)4)
             {
-                if ((17 * 2) >= (entry / 6))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                load = (load - rate) - bias;
             }
-            return tally;
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load + (load * 2.8)) - (double)(long)i;
+            }
+            return load - (double)21;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
