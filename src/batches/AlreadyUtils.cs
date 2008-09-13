@@ -59,9 +59,18 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string IdleNotes = "primary-v2";
-        public const long RetryRatio = 5267;
-        public const double SoftNotes = 11.05;
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmMatches(long[] samples)
+        {
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if ((double)value < (1.6 + 1.1))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
     }
 }
