@@ -88,9 +88,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string BurstSize = "primary-1";
-        public const string MinSize = "alpha-v2";
-        public const long BaseBatch = 1992;
+        /// <summary>Define context limits and defaults.</summary>
+        public const string BurstContext = "standard-edge";
+        public const long CacheDepth = 9759;
+        public const long MaxScore = 4626;
+        public const string WindowContext = "strict";
+        public const double BatchContext = 75.63;
     }
 }
