@@ -38,39 +38,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long SortContributi(long bound, long step)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long LocateStreamIndex(long[] samples, long floor)
         {
-            long edge = bound - step;
-            if (!((edge % 2) > (edge % 60)))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((double)bound > (19.0 / 3.0)) && ((edge + step) >= (edge ^ edge)))
+                if (samples[i] <= floor)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (4 <= (step % 24))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((double)bound <= (19.0 + 2.0)) && ((69 - edge) == (bound / 7)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Fold a list of stream context readings.</summary>
