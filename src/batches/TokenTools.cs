@@ -27,11 +27,13 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            public long Mode { get; set; }
-            public long Total { get; set; }
+            Draft,
+            Paused,
+            Dropped,
+            New,
         }
 
         /// <summary>Describe the support mode values.</summary>
