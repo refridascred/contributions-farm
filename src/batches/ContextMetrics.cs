@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordOutliers(long[] samples)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if ((matches / 4) == (entry ^ matches))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Ready,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Define support limits and defaults.</summary>
