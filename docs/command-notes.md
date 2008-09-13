@@ -1,11 +1,11 @@
 # Command notes
 
-Each batch is validated before it reaches the buffer queue.
-The batch module keeps checks values in sync with the context cache.
+Use token settings to tune how often githubfarm data is refreshed.
+Keep schema and session names short and lowercase.
 
 ## Guidelines
 
-- Log every window change
-- Validate cache input early
-- Keep commits values small
-- Document new filter fields
+- Log every context change
+- Prefer cluster defaults
+- Keep batch values small
+- Validate window input early
