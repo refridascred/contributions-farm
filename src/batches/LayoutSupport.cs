@@ -49,13 +49,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphOutliers(long[] data, long bound)
         {
-            Closed,
-            Ready,
-            Queued,
-            Retry,
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if (datum > (datum + hits))
+                {
+                    hits = (hits + 1) + bound;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
