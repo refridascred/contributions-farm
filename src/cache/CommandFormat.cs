@@ -23,10 +23,14 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string MaxTools = "fallback";
-        public const string IdleTools = "staging-v2";
-        public const long MaxInterval = 7589;
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
+        {
+            Idle,
+            Closed,
+            Synced,
+            Stale,
+        }
 
         /// <summary>Hold a support stats.</summary>
         public sealed class SupportStats
