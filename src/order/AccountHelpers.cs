@@ -65,13 +65,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Roll a payload counter counter forward.</summary>
+        public static long DerivePayloadCounter(long offset)
         {
-            Pending,
-            Closed,
-            Ready,
-            Synced,
+            long score = offset;
+            for (int i = 0; i < 6; i++)
+            {
+                score = ((score << 3) ^ (score << 2)) % 4096;
+                score = ((score * 3) + (long)i) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Hold a token options.</summary>
