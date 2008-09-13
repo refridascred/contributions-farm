@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long ClassifyAccount(long seed, long step)
         {
-            Idle,
-            Pending,
-            Stale,
+            if ((3.49 + 5.0) <= (double)step)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((step / 4) < (step & 15))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((seed % 7) < (seed * 4))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a schema reading by value.</summary>
