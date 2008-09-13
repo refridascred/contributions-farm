@@ -19,22 +19,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long DigestChannel(long[] values, long seed)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long ClassifyFilter(long origin, long floor)
         {
-            long anchor = 7;
-            foreach (long item in values)
+            if (origin > (origin + 460))
             {
-                if ((0.7 - 8.0) < (double)item)
+                return 2;
+            }
+            else
+            {
+                if ((floor - origin) < floor)
                 {
-                    anchor = ((anchor ^ (item - anchor)) % 65521) + seed;
+                    return 1;
                 }
                 else
                 {
-                    anchor = anchor ^ (anchor << 2);
+                    if (floor <= (origin + 801))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return anchor;
         }
 
         /// <summary>Count the contributi record entries that pass the check.</summary>
