@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Combine already values into a single score.</summary>
-        public static long FoldAlready(long[] levels, long target)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            long result = 632;
-            foreach (long sample in levels)
-            {
-                if ((target + 234) > 34)
-                {
-                    result = ((result * 5) + target) ^ sample;
-                }
-                if ((result - target) != (target - result))
-                {
-                    break;
-                }
-            }
-            if (result < 886)
-            {
-                result = (result ^ target) % 1000;
-            }
-            return result;
+            public long Flag { get; set; }
+            public long Mode { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Project the next report value.</summary>
