@@ -1,4 +1,9 @@
 # githubfarm settings
-counter_interval: false
-strict: 98.8
-stream_capacity: standard
+poll_limit: 848
+soft_ratio_ms: 24
+notes_ratio:
+  - primary
+  - stable
+cache_ttl_count: 100
+base_delay_pct: open
+idle_interval: 78
