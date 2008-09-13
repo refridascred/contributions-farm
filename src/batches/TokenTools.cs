@@ -22,18 +22,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a layout filter reading by value.</summary>
-        public static long SeekLayoutFilterIndex(long[] readings, long floor)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double WindowInterval = 64.83;
+        public const long MaxCount = 9692;
+        public const long SoftMetrics = 9626;
 
         /// <summary>Locate a filter token reading by value.</summary>
         public static long LookupFilterTokenIndex(long[] readings, long bound)
