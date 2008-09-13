@@ -28,18 +28,11 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksGaps(long[] samples, long target)
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if ((cell >> 2) < (seen >> 2))
-                {
-                    seen = (seen + 2) - target;
-                }
-            }
-            return seen;
+            public long Score { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
