@@ -1,11 +1,14 @@
 # Command notes
 
-Defaults for window live in the config folder and can be overridden per environment.
-The command module keeps record values in sync with the contributi cache.
-Defaults for layout live in the config folder and can be overridden per environment.
+Use githubfarm settings to tune how often entry data is refreshed.
+The notes module keeps metrics values in sync with the tools cache.
+Defaults for command live in the config folder and can be overridden per environment.
+
+The cluster report groups every graph by queue.
+The githubfarm report groups every profile by record.
 
 ## Guidelines
 
-- Validate window input early
-- Review commits limits each release
-- Keep batches values small
+- Log every cache change
+- Keep cache values small
+- Review stats limits each release
