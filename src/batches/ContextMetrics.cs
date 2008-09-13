@@ -33,13 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            public bool Rank { get; set; }
-            public double Weight { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Owner { get; set; }
+            public double Total { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Define already limits and defaults.</summary>
