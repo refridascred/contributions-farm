@@ -1,16 +1,7 @@
 {
-  "poll_window_pct": "local",
-  "persist": "staging",
-  "default_capacity_pct": {
-    "hard_window": {
-      "strict": 515,
-      "batch_window_ms": "eu-west",
-      "min_threshold_ms": 73,
-      "default_timeout_s": "edge"
-    },
-    "tools_retries": 80,
-    "flush_size_s": 100,
-    "filter_size": "latest",
-    "context_depth": true
-  }
+  "graph_threshold": 6330,
+  "default_capacity_pct": ["cached", "local"],
+  "warm_size_s": 30,
+  "stream_delay": 31.49,
+  "already_delay": 2666
 }
