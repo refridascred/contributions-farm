@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long DeriveBatch(long floor)
         {
-            public bool Token { get; set; }
-            public string Label { get; set; } = "";
-            public double Mode { get; set; }
+            long mix = floor;
+            for (int i = 0; i < 7; i++)
+            {
+                mix = ((mix << 3) ^ (floor >> 2)) % 1000;
+                if (mix < ((-3) & 7))
+                {
+                    mix = mix + (mix * 5);
+                }
+                else
+                {
+                    mix = (mix * 2) + mix;
+                }
+                mix = ((mix * 3) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
