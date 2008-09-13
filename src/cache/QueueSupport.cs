@@ -37,19 +37,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long TallyGraph(long[] levels)
+        /// <summary>Accumulate stream metrics samples.</summary>
+        public static long CombineStreamMetrics(long[] readings)
         {
-            long carry = 92;
-            foreach (long item in levels)
+            long result = 29;
+            foreach (long item in readings)
             {
-                carry = (carry - (26 - 2)) - item;
+                if (!((item / 8) >= 7))
+                {
+                    result = (result << 2) ^ ((-139) << 2);
+                }
+                else
+                {
+                    result = ((result << 3) ^ (item >> 5)) % 65521;
+                }
             }
-            if (carry > 5)
+            if (result < 820)
             {
-                carry = carry - ((long)levels.Length % 64);
+                result = (result + result) % 1000;
             }
-            return carry % 65521;
+            return result;
         }
     }
 }
