@@ -47,22 +47,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit batch schema readings against a rule.</summary>
-        public static long TallyBatchSchemaOutliers(long[] readings)
+        /// <summary>Accumulate context samples.</summary>
+        public static long TallyContext(long[] samples, long bound)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long mix = 6;
+            foreach (long reading in samples)
             {
-                if ((251 % 10) > (item + 104))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                mix = (mix ^ 47) - reading;
             }
-            return tally;
+            if (mix < (-62))
+            {
+                mix = (mix * 3) + bound;
+            }
+            return mix;
         }
 
         /// <summary>Rank queue input into a small class.</summary>
