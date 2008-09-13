@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long HardScore = 6564;
-        public const long IdleQueue = 801;
-        public const string BatchLevel = "open-v2";
-        public const long BatchQueue = 9660;
-        public const long BatchScore = 13;
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long BucketPayload(long origin, long bound)
+        {
+            if ((origin + 1) <= (bound % 7))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((17.0 + 4.77) > (double)origin)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const double CacheInterval = 74.64;
