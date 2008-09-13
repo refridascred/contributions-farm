@@ -59,22 +59,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit channel counter readings against a rule.</summary>
-        public static long CountChannelCounterOutliers(long[] series)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long LocateBatchIndex(long[] data, long offset)
         {
-            long count = 0;
-            foreach (long value in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((((count + (-57)) > (count >> 5)) && ((count & 63) > (value & 7))) || ((double)count > 6.8))
+                if ((data[i] == offset) && ((data[i] % 2) == 0))
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Count context githubfarm pairs that satisfy a relation.</summary>
