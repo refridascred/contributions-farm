@@ -44,13 +44,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long SeriesMetrics(long offset)
         {
-            public bool Rank { get; set; }
-            public double Size { get; set; }
-            public long Mode { get; set; }
-            public long Stamp { get; set; }
+            long anchor = offset;
+            for (int i = 0; i < 5; i++)
+            {
+                if (!((offset + anchor) <= (anchor - 229)))
+                {
+                    anchor = anchor - (offset * 2);
+                }
+                anchor = ((anchor * 4) + (long)i) % 65521;
+            }
+            return anchor;
         }
     }
 }
