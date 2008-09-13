@@ -20,17 +20,20 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long LookupStreamIndex(long[] values, long seed)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long ScoreCluster(long[] readings, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = -47;
+            foreach (long value in readings)
             {
-                if (values[i] <= seed)
+                total = ((total * 3) + (total ^ total)) - value;
+                total = (total * 5) + (total % 7);
+                if ((total * 3) > target)
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return total % 1000;
         }
 
         /// <summary>Describe the batch class values.</summary>
