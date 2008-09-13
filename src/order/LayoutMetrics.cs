@@ -24,12 +24,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long BucketCounter(long offset, long floor)
         {
-            Queued,
-            Active,
-            Retry,
+            if (offset >= (6 + offset))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)floor >= (7.0 * 6.1))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
