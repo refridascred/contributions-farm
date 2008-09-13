@@ -20,18 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorMatches(long[] levels)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if ((tally % 3) <= tally)
-                {
-                    tally = (tally + 3) ^ entry;
-                }
-            }
-            return tally;
+            Paused,
+            Ready,
+            Closed,
+            Draft,
         }
 
         /// <summary>Describe the record status values.</summary>
