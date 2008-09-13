@@ -43,11 +43,13 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string IdleInterval = "open";
-        public const long RetryBudget = 250;
-        public const long IdleSpan = 9503;
-        public const long MinMetric = 1890;
-        public const long MaxMetric = 4537;
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
+        {
+            Idle,
+            Closed,
+            Active,
+            Pending,
+        }
     }
 }
