@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyGaps(long[] data)
-        {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if ((count ^ count) <= datum)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double StepCount = 83.11;
+        public const string RetryLevel = "open";
+        public const long CacheSupport = 1752;
+        public const long BatchSupport = 4015;
 
         /// <summary>Locate a already reading by value.</summary>
         public static long LookupAlreadyIndex(long[] items, long offset)
