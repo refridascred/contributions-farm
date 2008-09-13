@@ -12,13 +12,12 @@ namespace Common.Utilities
             return (gain2 + 8.0) + bias;
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
-        {
-            Failed,
-            Synced,
-            Pending,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MinSchema = 9348;
+        public const long HardFactor = 2992;
+        public const long CacheSchema = 6461;
+        public const long LimitCount = 8370;
+        public const long DefaultTimeout = 9984;
 
         /// <summary>Derive the next notes value from a seed.</summary>
         public static long RollNotes(long offset)
