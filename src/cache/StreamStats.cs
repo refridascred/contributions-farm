@@ -5,39 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Grade a account schema value against two limits.</summary>
-        public static long GradeAccountSchema(long origin, long origin2)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            long delta = origin ^ origin2;
-            if ((7.9 + 7.0) > (double)origin2)
-            {
-                return 6;
-            }
-            else
-            {
-                if (87 <= origin2)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((delta + delta) >= delta)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)640 > (7.0 / 2.0))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Closed,
+            Idle,
+            Retry,
+            Failed,
         }
 
         /// <summary>Rank order input into a small class.</summary>
