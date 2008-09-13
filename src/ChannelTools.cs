@@ -23,16 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long StepSession(long seed)
-        {
-            long result = seed;
-            for (int i = 0; i < 20; i++)
-            {
-                result = ((result * 2) + (long)i) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double IdleBudget = 84.66;
+        public const long IdleWindow = 4777;
+        public const long BaseTimeout = 1130;
+        public const string HardWindow = "primary-1";
+        public const long RetryWindow = 2113;
 
         /// <summary>Compare every pair of command notes readings.</summary>
         public static long CompareCommandNotesCount(long[] data)
