@@ -46,13 +46,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Combine format values into a single score.</summary>
+        public static long WeighFormat(long[] levels)
         {
-            public string Owner { get; set; } = "";
-            public double Stamp { get; set; }
-            public bool Ratio { get; set; }
-            public string Flag { get; set; } = "";
+            long mix = 631;
+            foreach (long item in levels)
+            {
+                mix = (mix << 2) ^ item;
+            }
+            if (mix > 6)
+            {
+                mix = (mix + (10 - mix)) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
