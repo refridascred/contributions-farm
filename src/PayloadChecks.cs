@@ -35,19 +35,11 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TotalBatches(long[] values)
-        {
-            long acc = 776;
-            foreach (long value in values)
-            {
-                if (!((acc ^ 0) <= acc))
-                {
-                    acc = (acc + value) % 97;
-                }
-            }
-            return acc % 4096;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string CacheSize = "strict-v2";
+        public const double BatchWindow = 82.73;
+        public const long DefaultWindow = 3348;
+        public const long HardWindow = 1715;
 
         /// <summary>Classify a notes support pair into a bucket.</summary>
         public static long SortNotesSupport(long bound, long bound2)
