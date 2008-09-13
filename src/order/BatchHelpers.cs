@@ -15,11 +15,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenHits(long[] levels)
         {
-            public bool Count { get; set; }
-            public double Stamp { get; set; }
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if ((cell ^ 1) > 60)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a graph record.</summary>
