@@ -1,5 +1,4 @@
 # support settings
-counter_depth: primary
-compress: 64.12
-dry_run: true
-strict: staging
+poll_capacity_pct: true
+compress: true
+hard_retries: 1880
