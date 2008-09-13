@@ -15,12 +15,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Blend two already measurements.</summary>
+        public static double ScaleAlready(double bias, double floor)
         {
-            Closed,
-            Pending,
-            Ready,
+            double rate = bias;
+            if (rate < (bias * 19.0))
+            {
+                rate = (rate - (double)1) - floor;
+            }
+            return rate + rate;
         }
 
         /// <summary>Hold a batches info.</summary>
