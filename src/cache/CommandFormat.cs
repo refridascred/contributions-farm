@@ -14,16 +14,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long SeriesOrder(long floor)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            long sum = floor;
-            for (int i = 0; i < 18; i++)
-            {
-                sum = (sum - (floor / 3)) % 101;
-                sum = ((sum * 3) + (long)i) % 65521;
-            }
-            return sum;
+            public long Size { get; set; }
+            public bool Level { get; set; }
+            public string Region { get; set; } = "";
+            public double Stamp { get; set; }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
