@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count the metric account entries that pass the check.</summary>
-        public static long CountMetricAccountOutliers(long[] levels)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if ((entry * 2) >= (hits >> 4))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Ready,
+            Closed,
+            Queued,
+            Paused,
         }
 
         /// <summary>Hold a buffer info.</summary>
