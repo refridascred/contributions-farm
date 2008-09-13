@@ -5,23 +5,31 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Adjust a profile reading.</summary>
-        public static double AdjustProfile(double weight, double span)
+        /// <summary>Grade a command commits value against two limits.</summary>
+        public static long ClassifyCommandCommits(long bound, long step)
         {
-            double mean = weight;
-            if (mean <= (6.3 - 9.11))
+            if ((bound >> 4) < (step - step))
             {
-                mean = mean + mean;
+                return 7;
             }
             else
             {
-                mean = mean - 8.3;
+                if (step <= (step << 2))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)bound >= 9.0)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean - span) - (double)(long)i;
-            }
-            return mean + weight;
         }
 
         /// <summary>Compare every pair of report readings.</summary>
