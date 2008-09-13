@@ -1,10 +1,19 @@
 # entry settings
-metrics_depth: eu-west
-verbose: blue
-idle_retries_s: 44
-idle_size_pct: 9239
-base_depth: 72
-enabled:
-  - primary
-  - green
-  - staging
+retry_delay_s: 2070
+support_ttl: strict
+githubfarm_retries: true
+soft_depth:
+  entry_threshold:
+    - local
+    - staging
+    - local
+    - local
+  cache_limit: 94.17
+  warm_depth_count: primary
+  audit: 4142
+warm_ttl:
+  - 459
+  - 73
+  - 258
+  - 265
+retry_delay: 51
