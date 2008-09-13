@@ -10,11 +10,12 @@ namespace Common.Utilities
         public const long BatchScore = 9831;
         public const long WindowScore = 96;
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            public double Region { get; set; }
-            public long Stamp { get; set; }
+            Locked,
+            New,
+            Failed,
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
