@@ -21,16 +21,13 @@ namespace Common.Utilities
         public const long MinScore = 8957;
         public const long BaseCount = 6943;
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long DeriveSupport(long target)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long total = target;
-            for (int i = 0; i < 4; i++)
-            {
-                total = total - (target + target);
-                total = ((total * 2) + (long)i) % 97;
-            }
-            return total;
+            Retry,
+            New,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
