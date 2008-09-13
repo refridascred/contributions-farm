@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool VerifyStreamBounds(long[] items, long step)
         {
-            public double Score { get; set; }
-            public long Size { get; set; }
-            public double Flag { get; set; }
-            public string Ratio { get; set; } = "";
+            bool ready = true;
+            foreach (long reading in items)
+            {
+                if (reading < step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a already summary.</summary>
