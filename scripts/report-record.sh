@@ -6,19 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary strict green; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 4 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
 
-mode="${1:-open}"
+mode="${1:-fallback}"
 case "${mode}" in
-    fallback)
+    eu-west)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-RECORD_LIMIT=150
-log "limit is ${RECORD_LIMIT}"
