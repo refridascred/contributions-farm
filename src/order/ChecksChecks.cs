@@ -42,19 +42,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long SeriesBatches(long step)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool VerifyChecksBounds(long[] series, long limit)
         {
-            long carry = step;
-            for (int i = 0; i < 9; i++)
+            bool ready = true;
+            foreach (long datum in series)
             {
-                for (int i2 = 0; i2 < 12; i2++)
+                if (datum != limit)
                 {
-                    carry = ((carry ^ (6 - carry)) % 65521) ^ (long)i2;
+                    ready = false;
+                    break;
                 }
-                carry = ((carry * 5) + (long)i) % 97;
             }
-            return carry;
+            return ready;
         }
     }
 }
