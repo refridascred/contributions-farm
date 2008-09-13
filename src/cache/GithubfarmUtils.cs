@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Project the next filter stats value.</summary>
-        public static double BlendFilterStats(double bias, double span)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            double rate = bias;
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate + span) + (double)(long)i;
-            }
-            return rate - 1.0;
+            public bool Count { get; set; }
+            public long Mode { get; set; }
+            public bool Score { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
