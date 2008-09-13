@@ -1,16 +1,14 @@
 # entry settings
-enabled: true
-retry_size_ms: fallback
-burst_interval_s:
-  persist: false
-  sync_window:
-    flush_interval_count: false
-    hard_retries_ms: true
-    readonly: eu-west
-    batch_retries: true
-    idle_threshold: 250
-  base_retries: 500
-  min_ttl_pct: 23.89
-  dry_run: false
-  batch_ttl_ms: legacy
-max_limit_pct: 7204
+max_delay: open
+counter_limit:
+  max_window_ms: 23.71
+  flush_depth_ms: 917
+  retry_retries_s: 21.73
+  default_limit_count: green
+default_depth_ms:
+  retry_size_count: primary
+  account_interval: legacy
+  soft_timeout_ms: edge
+idle_limit_s: 60
+editor_depth: false
+base_limit_s: 100
