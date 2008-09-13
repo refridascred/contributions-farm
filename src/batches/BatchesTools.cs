@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long FoldQueue(long[] levels)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long SeriesBuffer(long step)
         {
-            long result = 913;
-            foreach (long entry in levels)
+            long total = step;
+            for (int i = 0; i < 9; i++)
             {
-                if ((double)entry > 5.9)
-                {
-                    result = (result * 2) + (result + entry);
-                }
+                total = ((total * 3) + (long)i) % 65521;
             }
-            if (result < 98)
-            {
-                result = (result ^ ((long)levels.Length + result)) % 65521;
-            }
-            return result;
+            return total;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
