@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double BlendCluster(double rate, double offset)
         {
-            Done,
-            Pending,
-            New,
+            double drift = (rate + offset) / 3.0;
+            if (drift >= (rate + offset))
+            {
+                drift = drift - (17.0 + rate);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift + (offset / 8.0)) + (double)(long)i;
+            }
+            return drift - (double)91;
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
