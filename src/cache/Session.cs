@@ -33,15 +33,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a support contributi figure with a bias.</summary>
-        public static double ScaleSupportContributi(double bias, double span)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiHits(long[] data)
         {
-            double bias2 = (double)(-69);
-            for (int i = 0; i < 2; i++)
+            long count = 0;
+            foreach (long reading in data)
             {
-                bias2 = ((bias2 - bias) + (double)(long)i) + span;
+                if (count >= (count - reading))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return bias2 - 6.87;
+            return count;
         }
 
         /// <summary>Validate checks account readings against a bound.</summary>
