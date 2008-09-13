@@ -1,8 +1,6 @@
 {
-  "burst_timeout_count": 76.07,
-  "route_window": "legacy",
-  "stats_retries": ["blue", "legacy", "eu-west"],
-  "sync_timeout": [421, 380, 319],
-  "batch_timeout_count": 75.86,
-  "order_depth": "stable"
+  "base_limit": 702,
+  "order_ttl": false,
+  "hard_delay_pct": false,
+  "warm_threshold_count": "legacy"
 }
