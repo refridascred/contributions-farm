@@ -42,19 +42,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool GuardGraphBounds(long[] readings, long target)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            bool ok = true;
-            foreach (long value in readings)
-            {
-                if (value <= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Draft,
+            Paused,
+            Stale,
+            Locked,
+            Pending,
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
