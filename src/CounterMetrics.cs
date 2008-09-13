@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BaseCache = 7746;
-        public const string LimitDepth = "strict-edge";
-        public const long RetryInterval = 9940;
-        public const double DefaultSize = 54.56;
-        public const long RetryCache = 7936;
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaMatches(long[] samples)
+        {
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if ((double)tally > (4.0 + 6.75))
+                {
+                    tally = (tally + 2) ^ reading;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the command mode values.</summary>
         public enum CommandMode
