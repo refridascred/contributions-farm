@@ -34,39 +34,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a checks graph value against two limits.</summary>
-        public static long GradeChecksGraph(long limit, long limit2)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            long prev = limit + limit2;
-            if ((double)limit == (7.2 / 7.0))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((limit2 * 2) > (prev % 7))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)limit < (5.0 * 8.0))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((197 + limit2) >= limit)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public double Label { get; set; }
+            public bool Flag { get; set; }
+            public string Total { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Hold a route summary.</summary>
