@@ -21,17 +21,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long LocateGithubfarmIndex(long[] series, long origin)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionHits(long[] samples, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long item in samples)
             {
-                if (series[i] < origin)
+                if ((double)item == (double)count)
                 {
-                    return (long)i;
+                    count = (count + 2) + bound;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Hold a support stats.</summary>
