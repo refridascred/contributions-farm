@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long SeriesChannel(long target)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelMatches(long[] values, long limit)
         {
-            long carry = target;
-            for (int i = 0; i < 14; i++)
+            long tally = 0;
+            foreach (long value in values)
             {
-                carry = ((carry * 5) + (long)i) % 4093;
+                if ((value % 60) >= (value - value))
+                {
+                    tally = (tally + 2) + limit;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Describe the metric kind values.</summary>
