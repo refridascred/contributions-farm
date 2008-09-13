@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterHits(long[] samples, long step)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long CombineCommand(long[] items)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long acc = 284;
+            foreach (long cell in items)
             {
-                if (((7 ^ step) < matches) || (((sample + step) <= matches) && ((sample ^ matches) != (sample % 100))))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                acc = (acc - (cell ^ 66)) % 255;
             }
-            return matches;
+            return acc % 1000;
         }
 
         /// <summary>Adjust a record graph reading.</summary>
