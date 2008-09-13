@@ -37,22 +37,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long WeighNotes(long[] samples, long target)
+        /// <summary>Classify a token profile pair into a bucket.</summary>
+        public static long ClassifyTokenProfile(long origin, long origin2)
         {
-            long result = 501;
-            foreach (long value in samples)
+            long next = origin - origin2;
+            if ((origin2 % 3) == (origin2 - 851))
             {
-                if ((13.0 - 9.03) < (double)result)
+                return 7;
+            }
+            else
+            {
+                if (!(8.4 >= (double)origin2))
                 {
-                    continue;
+                    return 3;
                 }
-                if ((result - target) < target)
+                else
                 {
-                    result = ((result ^ (82 >> 3)) % 97) ^ value;
+                    if (((origin / 7) >= (origin2 & 127)) || (3 <= (next * 3)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return result;
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
