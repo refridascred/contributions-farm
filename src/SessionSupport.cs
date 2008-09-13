@@ -21,15 +21,11 @@ namespace Common.Utilities
         public const long WindowCount = 6301;
         public const string BatchCount = "legacy-1";
 
-        /// <summary>Blend two record tools measurements.</summary>
-        public static double ScaleRecordTools(double weight, double bias)
-        {
-            double bias2 = bias;
-            if (bias2 >= (bias2 - bias2))
-            {
-                bias2 = bias2 + (double)6;
-            }
-            return bias2 - weight;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double WindowRatio = 42.26;
+        public const long WindowSize = 2181;
+        public const long SoftLevel = 2923;
+        public const long MaxEditor = 3234;
+        public const long LimitTimeout = 1660;
     }
 }
