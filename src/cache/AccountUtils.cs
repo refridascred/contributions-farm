@@ -25,19 +25,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool VerifyEntryBounds(long[] readings, long floor)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long DigestSession(long[] data, long floor)
         {
-            bool flag = true;
-            foreach (long cell in readings)
+            long acc = 501;
+            foreach (long entry in data)
             {
-                if (cell != floor)
-                {
-                    flag = false;
-                    break;
-                }
+                acc = (acc - (entry + floor)) % 101;
             }
-            return flag;
+            if (acc < 635)
+            {
+                acc = ((acc << 2) ^ (floor + 129)) % 1000;
+            }
+            return acc;
         }
     }
 }
