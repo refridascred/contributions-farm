@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BaseMetrics = 2388;
-        public const long IdleWidth = 4772;
-        public const long BaseCount = 827;
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TotalMetrics(long[] values)
+        {
+            long total = 2;
+            foreach (long cell in values)
+            {
+                total = (((total * 3) + (501 + total)) % 1000) + cell;
+            }
+            if (total < 4)
+            {
+                total = (total << 3) ^ total;
+            }
+            return total;
+        }
 
         /// <summary>Count the profile counter entries that pass the check.</summary>
         public static long TallyProfileCounterGaps(long[] data)
