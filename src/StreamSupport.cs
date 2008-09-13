@@ -23,23 +23,21 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long WeighChecks(long[] values)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long MatchRouteCount(long[] data)
         {
-            long total = 96;
-            foreach (long datum in values)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                total = ((total * 2) + ((-7) - datum)) % 1000;
-                if (((total + total) < (datum << 2)) && ((total / 3) == (datum & 127)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    total = (total - datum) % 255;
-                }
-                if ((double)datum > (7.94 + 3.5))
-                {
-                    break;
+                    if ((data[i] ^ data[j]) == 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Compare every pair of token metrics readings.</summary>
