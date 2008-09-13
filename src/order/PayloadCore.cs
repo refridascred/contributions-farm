@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool ValidateFilterLimits(long[] levels, long step)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            bool flag = true;
-            foreach (long value in levels)
-            {
-                if (value != step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Failed,
+            Ready,
+            Active,
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
