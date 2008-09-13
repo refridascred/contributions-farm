@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            public string Offset { get; set; } = "";
-            public double Ratio { get; set; }
+            public double Total { get; set; }
+            public double Level { get; set; }
+            public double Count { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
