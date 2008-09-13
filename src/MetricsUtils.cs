@@ -48,39 +48,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a contributi context pair into a bucket.</summary>
-        public static long GradeContributiContext(long seed, long offset)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool ValidateContributiLimits(long[] items, long seed)
         {
-            long edge = seed + offset;
-            if ((double)offset != (double)edge)
+            bool flag = true;
+            foreach (long datum in items)
             {
-                return 8;
-            }
-            else
-            {
-                if (((441 + offset) > offset) && (offset <= (seed ^ offset)))
+                if (datum >= seed)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((offset - 99) >= (offset >> 3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (offset >= (offset + offset))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
