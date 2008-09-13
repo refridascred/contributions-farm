@@ -12,17 +12,11 @@ namespace Common.Utilities
         public const double RetrySize = 63.97;
         public const long BatchSpan = 1219;
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long FindAlreadyIndex(long[] levels, long limit)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double BlendBatches(double rate, double floor)
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] <= limit) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double mean = (double)5 + (double)836;
+            return ((mean + (mean / 4.0)) + rate) + floor;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
