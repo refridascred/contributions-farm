@@ -66,15 +66,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long FoldStream(long[] series)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            long anchor = 711;
-            foreach (long reading in series)
-            {
-                anchor = ((anchor + anchor) % 255) + reading;
-            }
-            return anchor;
+            Pending,
+            Queued,
+            Done,
+            Draft,
+            Ready,
         }
     }
 }
