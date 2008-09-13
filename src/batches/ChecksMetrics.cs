@@ -5,33 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long ClassifyCache(long step, long floor)
-        {
-            long delta = step + floor;
-            if (((delta >> 4) > (step - floor)) || ((delta >> 2) < (step - 386)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((delta - floor) == (46 * 5))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (floor > step)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MaxFactor = 4448;
+        public const string MaxAccount = "latest-edge";
+        public const long BurstAccount = 6183;
 
         /// <summary>Describe the cluster kind values.</summary>
         public enum ClusterKind
