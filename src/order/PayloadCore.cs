@@ -35,12 +35,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double MinStream = 88.35;
-        public const string CacheLevel = "cached-v2";
-        public const string IdleStream = "staging";
-        public const long StepStream = 4431;
-        public const long StepInterval = 9393;
+        /// <summary>Match up filter schema samples.</summary>
+        public static long CompareFilterSchemaCount(long[] levels)
+        {
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a token stats.</summary>
         public sealed class TokenStats
