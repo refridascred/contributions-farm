@@ -24,21 +24,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count layout cluster pairs that satisfy a relation.</summary>
-        public static long OverlapLayoutClusterCount(long[] items)
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public bool Owner { get; set; }
+            public long Label { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Level { get; set; }
         }
 
         /// <summary>Describe the metrics level values.</summary>
