@@ -36,22 +36,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long CombineSchema(long[] readings, long floor)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long IterateCache(long step)
         {
-            long anchor = 7;
-            foreach (long cell in readings)
+            long score = step;
+            for (int i = 0; i < 21; i++)
             {
-                if ((anchor ^ 613) < 882)
+                score = (score << 2) ^ step;
+                if ((2.25 / 7.0) <= (double)(long)i)
                 {
-                    anchor = ((((anchor << 2) ^ (anchor << 2)) % 1000) + cell) + floor;
+                    score = score - (step - (-534));
                 }
                 else
                 {
-                    anchor = ((anchor << 2) ^ 11) % 255;
+                    score = ((score * 5) + (score ^ score)) % 65521;
                 }
+                score = ((score * 2) + (long)i) % 1000;
             }
-            return anchor % 97;
+            return score;
         }
 
         /// <summary>Check that every session batches entry stays within the limit.</summary>
