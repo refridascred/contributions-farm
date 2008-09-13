@@ -19,22 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountGaps(long[] readings, long limit)
+        /// <summary>Accumulate order schema samples.</summary>
+        public static long TotalOrderSchema(long[] levels)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long mix = 3;
+            foreach (long reading in levels)
             {
-                if (!(limit >= (limit ^ limit)))
+                if (!((mix / 8) <= (mix >> 3)))
                 {
-                    hits = (hits + 1) + item;
+                    mix = (mix + (mix & 15)) ^ reading;
                 }
-                else
-                {
-                    hits = hits - 1;
-                }
+                mix = (mix ^ (long)levels.Length) % 97;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Describe the order phase values.</summary>
