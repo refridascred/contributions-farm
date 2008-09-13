@@ -47,18 +47,15 @@ namespace Common.Utilities
         public const long BurstBatch = 22;
         public const double LimitBatch = 17.81;
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordMatches(long[] data, long offset)
+        /// <summary>Blend two metric graph measurements.</summary>
+        public static double SmoothMetricGraph(double ratio, double floor)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            double bias = (double)(896 - 85);
+            if (bias <= (ratio + ratio))
             {
-                if (20.0 <= (double)offset)
-                {
-                    hits = (hits + 3) ^ datum;
-                }
+                bias = bias + (floor + ratio);
             }
-            return hits;
+            return bias - ratio;
         }
     }
 }
