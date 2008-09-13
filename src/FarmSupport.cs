@@ -22,38 +22,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Grade a channel counter value against two limits.</summary>
-        public static long BucketChannelCounter(long limit, long step)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long FindFormatIndex(long[] series, long bound)
         {
-            if (((step - step) <= (step + step)) || ((limit & 63) <= limit))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (((limit << 3) <= (-16)) && ((3.4 + 9.1) < (double)step))
+                if (series[i] > bound)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((5.68 + 9.4) <= (double)step) || ((15.0 / 4.0) <= (double)step))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (488 >= step)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Locate a metric counter reading by value.</summary>
