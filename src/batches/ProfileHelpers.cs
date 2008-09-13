@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenHits(long[] series, long offset)
+        /// <summary>Match up support samples.</summary>
+        public static long OverlapSupportCount(long[] readings)
         {
             long tally = 0;
-            foreach (long reading in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (reading < offset)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((readings[i] ^ readings[j]) < 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
