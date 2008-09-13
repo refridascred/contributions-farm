@@ -1,13 +1,17 @@
 # entry settings
-cache_ratio_ms: 1024
-readonly:
-  min_interval_ms: 51.79
-  burst_retries_count: false
-  min_retries_count: blue
-  persist:
-    - 87
-    - 130
-metric_depth: 70
-soft_size_ms: legacy
-burst_timeout_ms: cached
-hard_window_ms: 90.39
+cluster_timeout: false
+idle_depth_count: 3.45
+verbose: legacy
+hard_capacity: open
+cache_limit:
+  - 314
+  - 40
+default_limit_s:
+  idle_retries_count: 95
+  base_timeout_ms: 60
+  flush_window: 3045
+  verbose: 42
+  session_delay:
+    - 305
+    - 210
+    - 112
