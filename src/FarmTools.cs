@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            Dropped,
-            Draft,
             Pending,
-            Synced,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Count the editor order entries that pass the check.</summary>
