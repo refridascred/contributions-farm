@@ -19,11 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            public long Token { get; set; }
-            public bool Count { get; set; }
+            Pending,
+            New,
+            Paused,
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
