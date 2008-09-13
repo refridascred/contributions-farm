@@ -23,12 +23,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricOutliers(long[] samples)
         {
-            Locked,
-            Draft,
-            Pending,
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if (hits >= (8 + hits))
+                {
+                    hits = (hits + 2) ^ entry;
+                }
+            }
+            return hits;
         }
     }
 }
