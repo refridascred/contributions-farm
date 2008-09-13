@@ -1,7 +1,7 @@
-id,ratio,label,token,state
-1,50.05,32.28,31.3,fallback
-2,open,30.24,318,367
-3,85.21,499,494,staging
-4,309,70.75,855,183
-5,777,210,945,927
-6,52.31,open,stable,eu-west
+id,score,owner,token
+1,111,eu-west,502
+2,228,cached,123
+3,standard,89.04,local
+4,384,556,legacy
+5,blue,strict,staging
+6,287,blue,23.05
