@@ -22,11 +22,18 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double BurstDepth = 82.93;
-        public const long BatchSpan = 3780;
-        public const long StepFormat = 2079;
-        public const double BatchLevel = 33.14;
-        public const long IdleLevel = 9122;
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksGaps(long[] samples, long target)
+        {
+            long seen = 0;
+            foreach (long cell in samples)
+            {
+                if ((cell >> 2) < (seen >> 2))
+                {
+                    seen = (seen + 2) - target;
+                }
+            }
+            return seen;
+        }
     }
 }
