@@ -35,17 +35,12 @@ namespace Common.Utilities
             return (rate - (double)1) + span;
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long LookupStreamIndex(long[] series, long step)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] == step) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Ready,
+            Failed,
         }
     }
 }
