@@ -44,14 +44,10 @@ namespace Common.Utilities
         public const long CacheRatio = 4499;
         public const long HardWidth = 3857;
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
-        {
-            public long Token { get; set; }
-            public double Mode { get; set; }
-            public long Weight { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BurstLevel = 2587;
+        public const long SoftBudget = 7613;
+        public const long MaxMetric = 1615;
 
         /// <summary>Combine buffer metric values into a single score.</summary>
         public static long DigestBufferMetric(long[] items)
