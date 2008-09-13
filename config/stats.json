@@ -1,5 +1,7 @@
 {
-  "flush_delay_s": 60,
-  "channel_depth": 2764,
-  "layout_timeout": 3519
+  "strict": "legacy",
+  "audit": 60.47,
+  "persist": "blue",
+  "min_size_count": 89,
+  "command_capacity": "primary"
 }
