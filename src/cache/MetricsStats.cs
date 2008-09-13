@@ -26,27 +26,18 @@ namespace Common.Utilities
         public const long WindowRecord = 9583;
         public const double MaxRecord = 32.51;
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TotalBuffer(long[] readings)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterHits(long[] readings)
         {
-            long total = 537;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if (!((935 - (-98)) <= total))
+                if ((reading & 127) <= (reading >> 3))
                 {
-                    total = ((total << 2) ^ total) % 4096;
-                    total = ((total * 2) + total) % 65521;
-                }
-                if ((value - value) <= total)
-                {
-                    total = ((total * 4) + (total >> 4)) % 101;
-                }
-                if (((2.7 / 6.0) == (double)value) || ((3.07 - 2.09) > (double)value))
-                {
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
