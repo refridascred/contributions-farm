@@ -38,14 +38,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
-        {
-            Dropped,
-            Synced,
-            New,
-            Pending,
-            Draft,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MaxCache = 4810;
+        public const long BatchFactor = 2230;
+        public const double StepSize = 67.25;
+        public const long MinCache = 6466;
     }
 }
