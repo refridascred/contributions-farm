@@ -5,39 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long ClassifyMetrics(long origin, long step)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long LookupReportIndex(long[] values, long seed)
         {
-            long next = origin + step;
-            if ((step - step) == (step << 1))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)step == (12.0 - 2.7))
+                if (values[i] > seed)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (next > (step - step))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((7.0 - 7.9) > (double)next)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Project the next batch value.</summary>
