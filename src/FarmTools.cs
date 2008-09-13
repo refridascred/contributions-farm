@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricHits(long[] samples, long offset)
+        /// <summary>Derive the next support session value from a seed.</summary>
+        public static long RollSupportSession(long seed)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long anchor = seed;
+            for (int i = 0; i < 23; i++)
             {
-                if ((double)(-6) < (double)datum)
-                {
-                    seen = (seen + 3) - offset;
-                }
+                anchor = (anchor + (anchor * 2)) % 1000;
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Validate order farm readings against a bound.</summary>
