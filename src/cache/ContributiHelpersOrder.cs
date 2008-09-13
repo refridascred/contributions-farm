@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long RankToken(long target, long step)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long OverlapSessionCount(long[] items)
         {
-            long step2 = target ^ step;
-            if (((-639) / 8) != (target + step))
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (1 <= step2)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((step - target) <= step2) || ((step << 3) >= (target & 63)))
+                    if ((items[i] - items[j]) < 0)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
