@@ -5,13 +5,38 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long SortCluster(long limit, long target)
         {
-            public long Rank { get; set; }
-            public bool Score { get; set; }
-            public long Limit { get; set; }
-            public long Token { get; set; }
+            if ((target / 6) < limit)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((target / 6) < target)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((6 % 60) < target)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((target ^ limit) <= (0 + target)) && ((target + 59) != (limit << 3)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
