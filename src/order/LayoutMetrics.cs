@@ -58,13 +58,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsOutliers(long[] levels)
         {
-            public long Flag { get; set; }
-            public bool Rank { get; set; }
-            public bool Weight { get; set; }
-            public double Ratio { get; set; }
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if (((5.0 >= (4.1 + 17.0)) || ((3.76 - 6.0) <= (double)seen)) && (((seen * 3) >= (item % 8)) && ((7.0 + 3.66) <= (double)seen)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
