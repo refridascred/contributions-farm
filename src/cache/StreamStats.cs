@@ -5,10 +5,40 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long SoftToken = 1641;
-        public const string LimitLevel = "cached";
-        public const string StepToken = "staging-1";
+        /// <summary>Grade a account schema value against two limits.</summary>
+        public static long GradeAccountSchema(long origin, long origin2)
+        {
+            long delta = origin ^ origin2;
+            if ((7.9 + 7.0) > (double)origin2)
+            {
+                return 6;
+            }
+            else
+            {
+                if (87 <= origin2)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((delta + delta) >= delta)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)640 > (7.0 / 2.0))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Combine githubfarm metric values into a single score.</summary>
         public static long CombineGithubfarmMetric(long[] samples)
