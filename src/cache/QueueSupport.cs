@@ -37,12 +37,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
-        {
-            public string Owner { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public double Rank { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long RetryEntry = 6473;
+        public const long WindowInterval = 2540;
+        public const long BatchEntry = 4766;
     }
 }
