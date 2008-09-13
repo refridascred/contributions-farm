@@ -23,14 +23,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            New,
-            Dropped,
-            Draft,
-            Active,
-            Queued,
+            public bool Rank { get; set; }
+            public double Weight { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Define already limits and defaults.</summary>
