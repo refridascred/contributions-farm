@@ -1,20 +1,12 @@
 {
-  "record_threshold": 22.6,
-  "flush_limit_count": {
-    "idle_delay": {
-      "dry_run": true,
-      "base_ttl_s": true,
-      "verbose": 82,
-      "poll_interval": "standard",
-      "min_interval_count": true
-    },
-    "default_depth": 4567,
-    "readonly": "primary",
-    "retry_window_s": "latest",
-    "default_ttl_pct": 500,
-    "poll_retries_s": false
-  },
-  "base_window_count": 430,
-  "burst_delay_pct": "primary",
-  "audit": [229, 236, 218, 42]
+  "retry_limit_pct": 26.51,
+  "enabled": [140, 178, 301],
+  "warm_delay": {
+    "burst_ttl_ms": 500,
+    "verbose": 5111,
+    "flush_delay_ms": 12.57,
+    "soft_ratio_ms": "strict",
+    "account_limit": true,
+    "audit": 16
+  }
 }
