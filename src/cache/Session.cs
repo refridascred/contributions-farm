@@ -51,19 +51,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate checks account readings against a bound.</summary>
-        public static bool CheckChecksAccountBounds(long[] items, long floor)
+        /// <summary>Find the first cache tools entry that matches the target.</summary>
+        public static long LocateCacheToolsIndex(long[] levels, long limit)
         {
-            bool flag = true;
-            foreach (long entry in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (entry > floor)
+                if (levels[i] >= limit)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Hold a buffer record.</summary>
