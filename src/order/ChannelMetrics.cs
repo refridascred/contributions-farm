@@ -26,9 +26,11 @@ namespace Common.Utilities
         public const string LimitAlready = "local-edge";
         public const long WindowScore = 7991;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double MinRoute = 19.98;
-        public const long MaxRoute = 7598;
-        public const long HardInterval = 7922;
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
+        {
+            public long Total { get; set; }
+            public long Score { get; set; }
+        }
     }
 }
