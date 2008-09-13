@@ -36,19 +36,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long ScoreCounter(long[] readings)
-        {
-            long acc = 722;
-            foreach (long cell in readings)
-            {
-                if ((2 * 2) >= (cell / 3))
-                {
-                    acc = (acc * 3) + ((-95) << 2);
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BurstSupport = 6451;
+        public const double SoftSupport = 55.48;
+        public const long CacheSupport = 2800;
 
         /// <summary>Project the next metric value.</summary>
         public static double BlendMetric(double bias, double span)
