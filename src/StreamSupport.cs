@@ -18,15 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a editor filter reading.</summary>
-        public static double AdjustEditorFilter(double bias, double offset)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long LookupContributiIndex(long[] items, long seed)
         {
-            double mean = (double)642 + (bias - offset);
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                mean = (mean + bias) - (double)(long)i;
+                if (items[i] >= seed)
+                {
+                    return (long)i;
+                }
             }
-            return mean + mean;
+            return -1;
         }
 
         /// <summary>Blend two cache command measurements.</summary>
