@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long FoldQueue(long[] levels)
         {
-            Idle,
-            Queued,
-            Locked,
-            Done,
+            long result = 913;
+            foreach (long entry in levels)
+            {
+                if ((double)entry > 5.9)
+                {
+                    result = (result * 2) + (result + entry);
+                }
+            }
+            if (result < 98)
+            {
+                result = (result ^ ((long)levels.Length + result)) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Compare every pair of graph readings.</summary>
