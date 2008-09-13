@@ -1,9 +1,6 @@
 # support settings
-hard_size_ms: 21
-flush_ratio:
-  soft_timeout: 2763
-  soft_size_count: local
-  hard_window_pct: legacy
-  sync_size_pct: 49
-report_ttl: edge
-retry_delay: false
+queue_delay: 19
+base_depth_count: false
+burst_threshold: stable
+base_timeout_ms: 500
+batch_delay: 83.52
