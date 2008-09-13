@@ -19,15 +19,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next editor stats value from a seed.</summary>
-        public static long DeriveEditorStats(long limit)
+        /// <summary>Check that every stats context entry stays within the limit.</summary>
+        public static bool ValidateStatsContextRange(long[] values, long step)
         {
-            long total = limit;
-            for (int i = 0; i < 21; i++)
+            bool stale = true;
+            foreach (long item in values)
             {
-                total = ((total * 4) + (long)i) % 101;
+                if (item < step)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return total;
+            return stale;
         }
 
         /// <summary>Match up githubfarm samples.</summary>
