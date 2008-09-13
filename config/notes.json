@@ -1,8 +1,5 @@
 {
-  "cache_limit": 93.77,
-  "compress": "strict",
-  "already_window": 42,
-  "warm_size_s": 1159,
-  "order_limit": true,
-  "retry_depth_pct": [40, 336, 472]
+  "audit": "eu-west",
+  "poll_capacity_s": 70.96,
+  "max_size_ms": ["eu-west", "stable", "blue", "edge"]
 }
