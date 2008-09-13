@@ -44,13 +44,13 @@ namespace Common.Utilities
         public const long StepSpan = 3139;
         public const string RetryTimeout = "standard-1";
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            New,
-            Active,
-            Draft,
-            Retry,
+            public long Weight { get; set; }
+            public string Score { get; set; } = "";
+            public double Rank { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Hold a order record.</summary>
