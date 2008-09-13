@@ -50,11 +50,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long RollCommand(long origin)
         {
-            public double Weight { get; set; }
-            public string Flag { get; set; } = "";
+            long result = origin;
+            for (int i = 0; i < 19; i++)
+            {
+                result = (result * 2) + (origin - result);
+                result = (result * 4) + ((long)i - 485);
+                result = ((result * 3) + (long)i) % 4093;
+            }
+            return result;
         }
     }
 }
