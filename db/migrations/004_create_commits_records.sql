@@ -2,12 +2,8 @@
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
     level INTEGER,
-    label TEXT,
+    rank INTEGER,
     ratio REAL
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_label ON commits_records (label);
-
-INSERT INTO commits_records (level, label, ratio) VALUES (0, 'blue', 0.79);
-INSERT INTO commits_records (level, label, ratio) VALUES (97, 'staging', 56.34);
-INSERT INTO commits_records (level, label, ratio) VALUES (37, 'open', 7.82);
+CREATE INDEX IF NOT EXISTS idx_commits_records_level ON commits_records (level);
