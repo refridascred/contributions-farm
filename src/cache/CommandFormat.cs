@@ -26,20 +26,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool VerifySchemaRange(long[] series, long origin)
-        {
-            bool found = true;
-            foreach (long value in series)
-            {
-                if (value > origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string MaxTools = "fallback";
+        public const string IdleTools = "staging-v2";
+        public const long MaxInterval = 7589;
 
         /// <summary>Hold a support stats.</summary>
         public sealed class SupportStats
