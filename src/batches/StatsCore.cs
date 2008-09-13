@@ -25,19 +25,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double BlendEditor(double gain, double bias)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamOutliers(long[] series)
         {
-            double gain2 = bias + bias;
-            if (gain2 >= (bias - gain2))
+            long tally = 0;
+            foreach (long sample in series)
             {
-                gain2 = (gain2 - gain2) + gain;
+                if ((tally > (sample % 5)) && ((sample >> 5) >= sample))
+                {
+                    tally = tally + 2;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                gain2 = (gain2 + 11.0) + (double)(long)i;
-            }
-            return gain2 - (double)891;
+            return tally;
         }
 
         /// <summary>Describe the token level values.</summary>
