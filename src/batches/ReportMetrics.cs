@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Adjust a notes contributi reading.</summary>
-        public static double SmoothNotesContributi(double rate, double offset)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long TallyMetricsMatches(long[] data, long step)
         {
-            double weight = offset;
-            if (weight >= rate)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                weight = weight - 2.21;
+                if ((((matches + reading) <= (step - reading)) || ((reading << 3) > ((long)data.Length % 64))) || ((step * 4) < (matches ^ 217)))
+                {
+                    matches = matches + 3;
+                }
             }
-            return weight + (double)10;
+            return matches;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
