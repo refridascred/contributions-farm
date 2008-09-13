@@ -72,19 +72,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate context contributi readings against a bound.</summary>
-        public static bool GuardContextContributiLimits(long[] readings, long step)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long FindContextIndex(long[] readings, long offset)
         {
-            bool ok = true;
-            foreach (long entry in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (entry > step)
+                if ((readings[i] <= offset) && ((readings[i] % 5) == 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
     }
 }
