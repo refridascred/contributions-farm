@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterMatches(long[] levels, long floor)
+        /// <summary>Match up batch githubfarm samples.</summary>
+        public static long OverlapBatchGithubfarmCount(long[] levels)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((long)levels.Length >= ((-891) - seen))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = ((seen + 3) + value) + floor;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((levels[i] ^ levels[j]) < 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Project the next format value.</summary>
