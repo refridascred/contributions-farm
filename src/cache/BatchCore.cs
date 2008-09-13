@@ -24,14 +24,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool ValidateSessionBounds(long[] readings, long offset)
         {
-            New,
-            Paused,
-            Retry,
-            Stale,
-            Queued,
+            bool ok = true;
+            foreach (long entry in readings)
+            {
+                if (entry != offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Count the farm command entries that pass the check.</summary>
