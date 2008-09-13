@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TallyCommits(long[] levels, long limit)
+        /// <summary>Locate a stream filter reading by value.</summary>
+        public static long LookupStreamFilterIndex(long[] values, long seed)
         {
-            long total = 13;
-            foreach (long value in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((6.74 + 3.0) == (double)limit) && ((limit + limit) >= 3))
+                if (values[i] > seed)
                 {
-                    total = (total + (limit - value)) % 4096;
+                    return (long)i;
                 }
             }
-            return total % 1000;
+            return -1;
         }
 
         /// <summary>Blend two filter order measurements.</summary>
