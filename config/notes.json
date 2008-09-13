@@ -1,13 +1,5 @@
 {
-  "enabled": "blue",
-  "record_limit": "staging",
-  "burst_threshold_pct": [229, 58, 422],
-  "burst_interval": true,
-  "hard_timeout_pct": {
-    "contributi_capacity": "staging",
-    "default_ratio_pct": "stable",
-    "profile_delay": 8061,
-    "batch_delay": 100
-  },
-  "warm_retries": false
+  "cache_size": ["blue", "standard", "eu-west", "green"],
+  "idle_ratio": "cached",
+  "strict": 3003
 }
