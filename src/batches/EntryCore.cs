@@ -19,21 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count entry record pairs that satisfy a relation.</summary>
-        public static long OverlapEntryRecordCount(long[] series)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool ValidateCommandLimits(long[] samples, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool found = true;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (sample <= step)
                 {
-                    if ((series[i] ^ series[j]) < 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Roll a cache counter forward.</summary>
