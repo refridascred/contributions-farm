@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TallyChannel(long[] series)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool CheckToolsLimits(long[] levels, long origin)
         {
-            long result = -826;
-            foreach (long entry in series)
+            bool valid = true;
+            foreach (long sample in levels)
             {
-                if ((entry >> 5) <= (result % 16))
+                if (sample >= origin)
                 {
-                    result = result + (49 ^ result);
+                    valid = false;
+                    break;
                 }
             }
-            return result;
+            return valid;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
