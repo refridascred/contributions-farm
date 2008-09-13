@@ -1,8 +1,9 @@
 # githubfarm settings
-default_window_s: primary
-flush_depth: 387
-profile_ttl: false
-max_timeout:
-  - green
-  - standard
-  - staging
+cache_limit_s: blue
+hard_ttl_ms:
+  max_ratio: 89.66
+  farm_limit: false
+  already_ratio: local
+  window_capacity: staging
+  base_threshold_count: open
+batch_delay: eu-west
