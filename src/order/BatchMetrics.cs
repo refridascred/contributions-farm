@@ -21,18 +21,16 @@ namespace Common.Utilities
         public const long MinScore = 8957;
         public const long BaseCount = 6943;
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long TallyGraphGaps(long[] data)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long DeriveSupport(long target)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long total = target;
+            for (int i = 0; i < 4; i++)
             {
-                if ((value & 15) < (19 + 815))
-                {
-                    tally = tally + 3;
-                }
+                total = total - (target + target);
+                total = ((total * 2) + (long)i) % 97;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
