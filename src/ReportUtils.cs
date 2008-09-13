@@ -45,11 +45,20 @@ namespace Common.Utilities
         public const long BatchFactor = 3883;
         public const string WindowWidth = "stable-edge";
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long RetryScore = 2799;
-        public const string DefaultWidth = "strict-edge";
-        public const long MinDepth = 5979;
-        public const string SoftInterval = "standard";
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool GuardGraphBounds(long[] readings, long target)
+        {
+            bool ok = true;
+            foreach (long value in readings)
+            {
+                if (value <= target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Accumulate metrics samples.</summary>
         public static long FoldMetrics(long[] series, long limit)
