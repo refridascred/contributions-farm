@@ -30,21 +30,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long MatchEntryCount(long[] series)
+        /// <summary>Project the next context value.</summary>
+        public static double ProjectContext(double weight, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            double scale = (double)39 * 3.63;
+            if (scale >= weight)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 10)
-                    {
-                        count = count + 1;
-                    }
-                }
+                scale = scale + offset;
             }
-            return count;
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale - weight) + (double)(long)i;
+            }
+            return scale - scale;
         }
 
         /// <summary>Digest a series of order entries.</summary>
