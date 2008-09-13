@@ -23,19 +23,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool VerifyFormatBounds(long[] readings, long offset)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            bool stale = true;
-            foreach (long reading in readings)
-            {
-                if (reading > offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Rank { get; set; } = "";
+            public double Stamp { get; set; }
         }
 
         /// <summary>Project the next metrics support value.</summary>
