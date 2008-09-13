@@ -1,11 +1,5 @@
 {
-  "burst_capacity_ms": 95.37,
-  "session_window": {
-    "notes_depth": ["latest", "fallback", "fallback"],
-    "profile_ttl": 30,
-    "warm_timeout": 100
-  },
-  "window_limit": 82.4,
-  "entry_ttl": 100,
-  "compress": 3081
+  "flush_delay_s": 60,
+  "channel_depth": 2764,
+  "layout_timeout": 3519
 }
