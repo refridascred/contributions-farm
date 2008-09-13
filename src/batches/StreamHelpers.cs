@@ -58,30 +58,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TotalCounter(long[] samples)
+        /// <summary>Rank report record input into a small class.</summary>
+        public static long ClassifyReportRecord(long offset, long floor)
         {
-            long sum = 965;
-            foreach (long value in samples)
+            long step = offset + floor;
+            if ((2 / 4) >= (floor + step))
             {
-                if ((18.0 - 5.0) != (double)sum)
+                return 2;
+            }
+            else
+            {
+                if ((611 - floor) == (floor - offset))
                 {
-                    sum = (sum * 5) + value;
+                    return 0;
                 }
                 else
                 {
-                    sum = (sum ^ (value * 3)) % 97;
-                }
-                if (!((value * 3) == (value ^ value)))
-                {
-                    break;
+                    if (((-431) + floor) != (offset << 1))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            if (sum < 645)
-            {
-                sum = (sum + (sum % 60)) % 97;
-            }
-            return sum;
         }
 
         /// <summary>Describe the metrics state values.</summary>
