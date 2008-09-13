@@ -50,19 +50,23 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Check that every profile counter entry stays within the limit.</summary>
-        public static bool VerifyProfileCounterRange(long[] series, long bound)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long RollWindow(long origin)
         {
-            bool stale = true;
-            foreach (long cell in series)
+            long score = origin;
+            for (int i = 0; i < 20; i++)
             {
-                if (cell <= bound)
+                if ((double)(long)i >= (4.0 + 5.6))
                 {
-                    stale = false;
-                    break;
+                    score = score + (score % 12);
                 }
+                else
+                {
+                    score = ((score << 2) ^ 0) % 101;
+                }
+                score = ((score * 2) + (long)i) % 97;
             }
-            return stale;
+            return score;
         }
 
         /// <summary>Compare every pair of command metrics readings.</summary>
