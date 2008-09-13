@@ -31,32 +31,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a token profile pair into a bucket.</summary>
-        public static long ClassifyTokenProfile(long origin, long origin2)
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            long next = origin - origin2;
-            if ((origin2 % 3) == (origin2 - 851))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!(8.4 >= (double)origin2))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((origin / 7) >= (origin2 & 127)) || (3 <= (next * 3)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public long Count { get; set; }
+            public long Flag { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
