@@ -80,17 +80,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first contributi graph entry that matches the target.</summary>
-        public static long LookupContributiGraphIndex(long[] readings, long target)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] > target) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BurstCluster = 1456;
+        public const double IdleRatio = 1.71;
+        public const double BurstBudget = 30.59;
+        public const long WindowInterval = 7810;
+        public const long BatchWidth = 7987;
     }
 }
