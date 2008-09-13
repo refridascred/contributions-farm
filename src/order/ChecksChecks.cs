@@ -34,13 +34,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
-        {
-            Closed,
-            Draft,
-            Stale,
-            New,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double MinFactor = 25.84;
+        public const long MaxLevel = 9136;
+        public const double BaseCount = 92.06;
+        public const long RetryStream = 3623;
     }
 }
