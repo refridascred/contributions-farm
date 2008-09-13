@@ -60,15 +60,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double ProjectBatch(double scale, double floor)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long FoldEntry(long[] levels, long step)
         {
-            double load = (scale / 7.0) - (scale * 1.2);
-            if (load > (load / 9.0))
+            long anchor = 1;
+            foreach (long datum in levels)
             {
-                load = (load - scale) - floor;
+                if ((datum << 2) > (datum + anchor))
+                {
+                    anchor = (anchor ^ (datum % 8)) - step;
+                }
             }
-            return load + (load + load);
+            return anchor;
         }
     }
 }
