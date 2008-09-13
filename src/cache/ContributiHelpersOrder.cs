@@ -16,26 +16,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of order contributi entries.</summary>
-        public static long FoldOrderContributi(long[] levels, long step)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long BucketFormat(long bound, long offset)
         {
-            long mix = 841;
-            foreach (long entry in levels)
+            if ((3.7 - 6.0) == (double)bound)
             {
-                if (entry > step)
+                return 1;
+            }
+            else
+            {
+                if (9.03 <= (double)bound)
                 {
-                    mix = ((mix * 3) + (mix >> 2)) % 97;
+                    return 3;
                 }
                 else
                 {
-                    mix = (mix ^ (step << 2)) % 4096;
+                    return 0;
                 }
             }
-            if (mix > 976)
-            {
-                mix = mix ^ (step * 2);
-            }
-            return mix;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
