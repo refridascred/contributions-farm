@@ -31,10 +31,14 @@ namespace Common.Utilities
             return weight - offset;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double DefaultCount = 89.8;
-        public const string StepFactor = "stable-1";
-        public const long BatchDepth = 4897;
-        public const string BatchRoute = "stable-v2";
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
+        {
+            Active,
+            Pending,
+            Dropped,
+            Failed,
+            Ready,
+        }
     }
 }
