@@ -56,18 +56,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of stream context readings.</summary>
-        public static long WeighStreamContext(long[] readings, long origin)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            long score = 43;
-            foreach (long value in readings)
-            {
-                if (((value / 7) < origin) || (value >= (origin << 2)))
-                {
-                    score = score + (320 - value);
-                }
-            }
-            return score % 1000;
+            public long Size { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
