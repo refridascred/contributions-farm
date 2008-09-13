@@ -42,19 +42,14 @@ namespace Common.Utilities
         public const long SoftSize = 5093;
         public const long LimitTimeout = 3969;
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long CombineCounter(long[] series)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            long acc = 5;
-            foreach (long entry in series)
-            {
-                acc = ((acc * 2) + (3 - 0)) - entry;
-            }
-            if (acc < 8)
-            {
-                acc = ((acc * 5) + acc) % 101;
-            }
-            return acc;
+            Pending,
+            Stale,
+            Dropped,
+            Closed,
+            Idle,
         }
     }
 }
