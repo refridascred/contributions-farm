@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long BucketPayload(long origin, long bound)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool VerifySessionRange(long[] values, long step)
         {
-            if ((origin + 1) <= (bound % 7))
+            bool ready = true;
+            foreach (long item in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((17.0 + 4.77) > (double)origin)
+                if (item > step)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Count the filter format entries that pass the check.</summary>
