@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long BucketPayload(long offset, long origin)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteOutliers(long[] items, long limit)
         {
-            long step = offset ^ origin;
-            if (!((3.7 * 8.15) != (double)offset))
+            long hits = 0;
+            foreach (long value in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((origin - step) != (89 % 60))
+                if ((hits / 9) < (value & 1))
                 {
-                    return 2;
+                    hits = (hits + 3) + limit;
                 }
                 else
                 {
-                    if (3 < (offset - offset))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Accumulate editor samples.</summary>
