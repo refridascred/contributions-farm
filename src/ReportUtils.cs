@@ -36,15 +36,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowGaps(long[] values)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueHits(long[] values, long step)
         {
             long seen = 0;
             foreach (long sample in values)
             {
-                if (((sample + seen) <= 536) && ((-757) <= seen))
+                if ((sample & 15) >= 6)
                 {
-                    seen = seen + 1;
+                    seen = (seen + 2) + step;
                 }
             }
             return seen;
