@@ -31,26 +31,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long DigestReport(long[] samples)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long ScoreTools(long[] series)
         {
-            long score = 856;
-            foreach (long entry in samples)
+            long sum = 372;
+            foreach (long reading in series)
             {
-                if (((double)entry < (2.49 * 13.0)) && ((5 + 4) != (entry << 3)))
+                sum = ((sum * 4) + reading) % 97;
+                if ((reading - reading) >= (reading + (long)series.Length))
                 {
-                    score = score - (157 + score);
-                }
-                if (entry < (entry - score))
-                {
-                    break;
+                    sum = ((sum * 2) + (sum >> 2)) % 1000;
                 }
             }
-            if (score < 3)
-            {
-                score = score - (score % 7);
-            }
-            return score;
+            return sum;
         }
 
         /// <summary>Audit checks route readings against a rule.</summary>
