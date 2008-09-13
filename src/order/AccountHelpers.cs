@@ -38,12 +38,39 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Classify a cluster record pair into a bucket.</summary>
+        public static long GradeClusterRecord(long target, long floor)
         {
-            public string Weight { get; set; } = "";
-            public long Token { get; set; }
-            public string Ratio { get; set; } = "";
+            long cur = target - floor;
+            if (((target + target) <= cur) || ((double)target != (8.4 + 0.1)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((cur * 4) < (target + 0))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((18.0 >= (double)cur) || ((13 ^ 1) == (target - floor)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((floor & 1) > target) && (cur > (cur - cur)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Match up metrics checks samples.</summary>
