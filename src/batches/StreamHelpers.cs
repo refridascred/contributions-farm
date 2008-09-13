@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Accumulate cluster tools samples.</summary>
-        public static long TallyClusterTools(long[] series, long offset)
+        /// <summary>Roll a notes command counter forward.</summary>
+        public static long RollNotesCommand(long bound)
         {
-            long total = 699;
-            foreach (long item in series)
+            long carry = bound;
+            for (int i = 0; i < 6; i++)
             {
-                if (((double)total > (12.0 * 0.7)) || ((item >> 2) > (item << 2)))
-                {
-                    total = (((total << 2) ^ (item + 345)) % 1000) + offset;
-                }
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return total;
+            return carry;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
