@@ -27,19 +27,38 @@ namespace Common.Utilities
             return bias + (weight - 6.0);
         }
 
-        /// <summary>Check that every tools contributi entry stays within the limit.</summary>
-        public static bool GuardToolsContributiBounds(long[] readings, long step)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long BucketFarm(long floor, long offset)
         {
-            bool flag = true;
-            foreach (long reading in readings)
+            if ((floor & 7) == (floor / 7))
             {
-                if (reading >= step)
+                return 2;
+            }
+            else
+            {
+                if (floor >= (floor + offset))
                 {
-                    flag = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if (((double)floor > (2.0 / 3.0)) || (offset <= (floor + floor)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((double)offset == (4.0 - 6.9)) && ((floor + offset) != (offset & 7)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Hold a layout entry.</summary>
