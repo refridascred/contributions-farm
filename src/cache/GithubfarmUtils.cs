@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long StepEntry(long seed)
+        /// <summary>Project the next filter stats value.</summary>
+        public static double BlendFilterStats(double bias, double span)
         {
-            long result = seed;
-            for (int i = 0; i < 6; i++)
+            double rate = bias;
+            for (int i = 0; i < 7; i++)
             {
-                result = (result << 3) ^ (result + seed);
-                result = ((result * 3) + (long)i) % 97;
+                rate = (rate + span) + (double)(long)i;
             }
-            return result;
+            return rate - 1.0;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
