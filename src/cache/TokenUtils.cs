@@ -16,10 +16,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MaxQueue = 5043;
-        public const long MaxDepth = 1903;
-        public const double LimitTimeout = 61.99;
+        /// <summary>Iterate the contributi batches series from a seed.</summary>
+        public static long StepContributiBatches(long bound)
+        {
+            long carry = bound;
+            for (int i = 0; i < 6; i++)
+            {
+                if (((5.2 + 8.6) <= (double)(long)i) && ((97 + (-50)) >= (bound - 401)))
+                {
+                    carry = (carry * 2) + ((long)i + carry);
+                }
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    carry = (carry ^ bound) + (long)i2;
+                }
+                carry = ((carry * 5) + (long)i) % 4093;
+            }
+            return carry;
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const long LimitContext = 2511;
