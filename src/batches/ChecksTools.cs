@@ -14,25 +14,20 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long GradeQueue(long limit, long seed)
+        /// <summary>Roll a schema tools counter forward.</summary>
+        public static long RollSchemaTools(long offset)
         {
-            long lane = limit ^ seed;
-            if (!((limit + limit) < ((-331) - limit)))
+            long total = offset;
+            for (int i = 0; i < 19; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((limit ^ lane) <= lane)
+                if (!((offset & 127) <= (3 + offset)))
                 {
-                    return 6;
+                    total = (total << 3) ^ 0;
                 }
-                else
-                {
-                    return 0;
-                }
+                total = ((total << 2) ^ (offset - offset)) % 97;
+                total = ((total * 3) + (long)i) % 1000;
             }
+            return total;
         }
 
         /// <summary>Hold a profile stats.</summary>
