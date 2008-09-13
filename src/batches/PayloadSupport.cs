@@ -19,12 +19,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MaxFilter = 9227;
-        public const long StepRatio = 8334;
-        public const double SoftFilter = 36.56;
-        public const long StepDepth = 9465;
-        public const string BurstFilter = "primary-v2";
+        /// <summary>Fold a list of already report readings.</summary>
+        public static long ScoreAlreadyReport(long[] series)
+        {
+            long score = -9;
+            foreach (long reading in series)
+            {
+                if (((56 - reading) >= score) && ((double)score <= (double)reading))
+                {
+                    score = ((score << 2) ^ (reading - 36)) % 4096;
+                }
+            }
+            if (score < 51)
+            {
+                score = (score * 3) + (3 % 16);
+            }
+            return score;
+        }
 
         /// <summary>Digest a series of stats entries.</summary>
         public static long FoldStats(long[] items)
