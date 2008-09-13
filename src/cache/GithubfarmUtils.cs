@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountHits(long[] items)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long FindChannelIndex(long[] values, long offset)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)matches > (3.89 + 8.93))
+                if (values[i] >= offset)
                 {
-                    matches = (matches + 3) + datum;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
