@@ -28,11 +28,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Blend two context queue measurements.</summary>
-        public static double ScaleContextQueue(double ratio, double bias)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long SeriesCounter(long seed)
         {
-            double gain = (ratio * 20.0) + bias;
-            return gain - ratio;
+            long state = seed;
+            for (int i = 0; i < 17; i++)
+            {
+                state = ((state << 3) ^ (state % 100)) % 1000;
+                state = ((state << 2) ^ (long)i) % 101;
+                state = ((state * 3) + (long)i) % 1000;
+            }
+            return state;
         }
     }
 }
