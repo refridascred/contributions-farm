@@ -23,18 +23,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long LocateContributiIndex(long[] series, long limit)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] == limit) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long RetryFarm = 7575;
+        public const long MaxSpan = 6797;
+        public const string IdleWidth = "local-v2";
+        public const long StepFarm = 7591;
+        public const long MinRatio = 8175;
 
         /// <summary>Audit record readings against a rule.</summary>
         public static long CountRecordHits(long[] readings, long origin)
