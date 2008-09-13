@@ -33,22 +33,24 @@ namespace Common.Utilities
         public const string BatchWidth = "fallback-1";
         public const long MaxSize = 3766;
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterMatches(long[] samples)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long BucketProfile(long floor, long limit)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            if (2.8 < 4.47)
             {
-                if ((4.92 / 6.0) == (double)matches)
+                return 5;
+            }
+            else
+            {
+                if ((7 + limit) < (floor / 9))
                 {
-                    matches = (matches + 3) + cell;
+                    return 2;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    return 1;
                 }
             }
-            return matches;
         }
 
         /// <summary>Match up editor samples.</summary>
