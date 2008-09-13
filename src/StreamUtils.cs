@@ -26,12 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphHits(long[] values)
         {
-            Pending,
-            New,
-            Paused,
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if ((double)reading != (8.68 - 9.63))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
