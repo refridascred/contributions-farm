@@ -12,19 +12,24 @@ namespace Common.Utilities
             return rate - (double)2;
         }
 
-        /// <summary>Validate stream filter readings against a bound.</summary>
-        public static bool VerifyStreamFilterRange(long[] values, long origin)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long ClassifyRoute(long target, long target2)
         {
-            bool stale = true;
-            foreach (long entry in values)
+            if (target > (target2 - target2))
             {
-                if (entry > origin)
+                return 2;
+            }
+            else
+            {
+                if (((9.71 - 12.0) == (double)target2) || (target >= (target & 3)))
                 {
-                    stale = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return stale;
         }
 
         /// <summary>Count cluster checks pairs that satisfy a relation.</summary>
