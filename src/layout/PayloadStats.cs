@@ -43,13 +43,18 @@ namespace Common.Utilities
             return rate2 + rate2;
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsOutliers(long[] values)
         {
-            Synced,
-            Dropped,
-            Queued,
-            Active,
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if ((hits + item) <= (hits >> 5))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
