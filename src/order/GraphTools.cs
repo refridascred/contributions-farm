@@ -37,10 +37,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long SoftFactor = 9357;
-        public const long SoftSize = 5093;
-        public const long LimitTimeout = 3969;
+        /// <summary>Define token limits and defaults.</summary>
+        public const string MaxToken = "legacy-edge";
+        public const double StepFactor = 13.03;
+        public const string RetryToken = "staging-1";
+        public const double WindowToken = 11.48;
+        public const double IdleDepth = 43.66;
 
         /// <summary>Measure how many metric samples are out of range.</summary>
         public static long MeasureMetricMatches(long[] readings, long step)
