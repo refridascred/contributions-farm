@@ -19,26 +19,15 @@ namespace Common.Utilities
         public const long BaseFactor = 5738;
         public const long WindowRoute = 7415;
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long SeriesToken(long origin)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long CombineContributi(long[] samples)
         {
-            long mark = origin;
-            for (int i = 0; i < 18; i++)
+            long mark = 434;
+            foreach (long datum in samples)
             {
-                long count = mark + mark;
-                if ((count % 64) >= (count + 7))
-                {
-                    mark = (mark + (6 >> 5)) % 255;
-                    break;
-                }
-                if ((count & 3) < ((long)i + mark))
-                {
-                    count = (count + ((long)i - 985)) % 1000;
-                    break;
-                }
-                mark = ((mark * 2) + (long)i) % 101;
+                mark = (mark - (9 - datum)) % 65521;
             }
-            return mark;
+            return mark % 65521;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
