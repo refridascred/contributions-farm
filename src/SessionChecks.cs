@@ -19,18 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many stats payload samples are out of range.</summary>
-        public static long TallyStatsPayloadOutliers(long[] series)
+        /// <summary>Check that every schema record entry stays within the limit.</summary>
+        public static bool VerifySchemaRecordLimits(long[] readings, long floor)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            bool found = true;
+            foreach (long entry in readings)
             {
-                if (7.3 <= (double)tally)
+                if (entry != floor)
                 {
-                    tally = (tally + 2) + reading;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Grade a checks graph value against two limits.</summary>
