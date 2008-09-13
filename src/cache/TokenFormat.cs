@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MaxCounter = 2694;
-        public const long SoftCounter = 839;
-        public const long HardCounter = 7596;
-        public const double LimitCounter = 58.07;
+        /// <summary>Roll a format entry counter forward.</summary>
+        public static long IterateFormatEntry(long seed)
+        {
+            long sum = seed;
+            for (int i = 0; i < 19; i++)
+            {
+                sum = ((sum * 2) + (long)i) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Match up batch samples.</summary>
         public static long OverlapBatchCount(long[] series)
