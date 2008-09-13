@@ -56,22 +56,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long CountOrderGaps(long[] levels, long floor)
+        /// <summary>Adjust a counter stream reading.</summary>
+        public static double BlendCounterStream(double bias, double floor)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            double mean = (floor * 10.0) - 7.62;
+            if (mean < bias)
             {
-                if ((double)floor > (1.14 + 1.0))
-                {
-                    hits = (hits + 2) + cell;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                mean = mean + (3.54 + mean);
             }
-            return hits;
+            else
+            {
+                mean = mean - floor;
+            }
+            return mean - mean;
         }
     }
 }
