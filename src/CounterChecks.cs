@@ -19,31 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long ClassifyCommits(long seed, long offset)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            if ((offset << 2) > offset)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((5 < seed) || (seed < (offset % 16)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((offset * 4) >= (offset ^ 72))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Queued,
+            Draft,
+            Failed,
+            Ready,
+            Retry,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
