@@ -1,6 +1,10 @@
-id,weight,ratio
-1,893,edge
-2,103,76
-3,994,32.7
-4,954,standard
-5,edge,legacy
+id,score,weight,label,ratio
+1,6.84,blue,90.97,eu-west
+2,78.59,45.93,66.05,827
+3,strict,9,990,12.49
+4,68.15,108,874,eu-west
+5,741,868,781,28.13
+6,840,191,local,57.93
+7,96.36,staging,24.45,436
+8,975,blue,906,latest
+9,757,787,976,cached
