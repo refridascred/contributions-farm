@@ -35,25 +35,16 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long BucketStats(long floor, long limit)
+        /// <summary>Roll a contributi account counter forward.</summary>
+        public static long IterateContributiAccount(long limit)
         {
-            long cur = floor + limit;
-            if (((20.0 - 15.0) != (double)limit) || ((floor + limit) >= 180))
+            long acc = limit;
+            for (int i = 0; i < 16; i++)
             {
-                return 2;
+                acc = acc + limit;
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            else
-            {
-                if (8.1 <= (double)cur)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return acc;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
