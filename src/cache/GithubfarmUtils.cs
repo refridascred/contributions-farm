@@ -17,20 +17,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate githubfarm command readings against a bound.</summary>
-        public static bool VerifyGithubfarmCommandRange(long[] series, long origin)
-        {
-            bool flag = true;
-            foreach (long item in series)
-            {
-                if (item < origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long LimitLevel = 3762;
+        public const long SoftRatio = 177;
+        public const long StepRatio = 7914;
+        public const string StepProfile = "cached-edge";
 
         /// <summary>Describe the queue mode values.</summary>
         public enum QueueMode
