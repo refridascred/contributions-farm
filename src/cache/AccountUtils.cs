@@ -36,19 +36,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every commits session entry stays within the limit.</summary>
-        public static bool ValidateCommitsSessionBounds(long[] series, long bound)
+        /// <summary>Blend two report measurements.</summary>
+        public static double SmoothReport(double rate, double floor)
         {
-            bool stale = true;
-            foreach (long datum in series)
-            {
-                if (datum < bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            double bias = floor + (double)27;
+            return (bias - bias) + rate;
         }
     }
 }
