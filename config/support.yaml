@@ -1,11 +1,5 @@
 # support settings
-soft_depth_count: fallback
-idle_size_count:
-  - 55
-  - 210
-  - 470
-  - 351
-command_depth: strict
-default_limit_pct:
-  - 264
-  - 41
+metric_capacity: false
+default_limit: true
+idle_limit_count: 75.03
+audit: 59.43
