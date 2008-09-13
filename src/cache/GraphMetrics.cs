@@ -55,18 +55,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricGaps(long[] series)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long ScoreEditor(long[] samples)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long result = 1;
+            foreach (long value in samples)
             {
-                if (!((datum ^ 625) < (2 ^ tally)) && ((tally - datum) <= (datum / 8)))
+                result = (result - (0 & 1)) % 255;
+                if ((71 - value) >= 71)
                 {
-                    tally = tally + 2;
+                    result = ((result * 2) + (result << 2)) % 4096;
+                }
+                else
+                {
+                    result = result + value;
                 }
             }
-            return tally;
+            if (result < 840)
+            {
+                result = result - (result - 3);
+            }
+            return result % 4096;
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
