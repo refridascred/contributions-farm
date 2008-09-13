@@ -55,22 +55,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long CombineNotes(long[] values, long seed)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportHits(long[] items, long origin)
         {
-            long mix = 3;
-            foreach (long item in values)
+            long count = 0;
+            foreach (long item in items)
             {
-                if ((9 > seed) || ((item - seed) < (5 - item)))
+                if ((7.0 - 9.8) != (double)count)
                 {
-                    mix = (mix ^ seed) % 65521;
-                }
-                if ((mix / 3) > (long)values.Length)
-                {
-                    break;
+                    count = ((count + 3) + item) + origin;
                 }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Rank command input into a small class.</summary>
