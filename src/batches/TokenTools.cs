@@ -25,11 +25,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MaxDepth = 3191;
-        public const double LimitPayload = 33.66;
-        public const long BurstPayload = 8891;
-        public const long IdleScore = 887;
-        public const long StepScore = 2041;
+        /// <summary>Adjust a batch buffer reading.</summary>
+        public static double SmoothBatchBuffer(double weight, double offset)
+        {
+            double load = (double)715 + (double)1;
+            for (int i = 0; i < 8; i++)
+            {
+                load = (((load + load) + (double)(long)i) + weight) - offset;
+            }
+            return load + (load * 10.0);
+        }
     }
 }
