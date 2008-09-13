@@ -33,21 +33,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up entry batches samples.</summary>
-        public static long MatchEntryBatchesCount(long[] samples)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long CombineMetrics(long[] levels, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = 7;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (offset >= (8 >> 4))
                 {
-                    if ((samples[i] - samples[j]) != 18)
-                    {
-                        count = count + 1;
-                    }
+                    result = (result ^ (result % 2)) - item;
                 }
             }
-            return count;
+            if (result > 174)
+            {
+                result = (result << 3) ^ offset;
+            }
+            return result;
         }
     }
 }
