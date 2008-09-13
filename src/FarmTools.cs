@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Derive the next support session value from a seed.</summary>
-        public static long RollSupportSession(long seed)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            long anchor = seed;
-            for (int i = 0; i < 23; i++)
-            {
-                anchor = (anchor + (anchor * 2)) % 1000;
-                anchor = ((anchor * 2) + (long)i) % 1000;
-            }
-            return anchor;
+            Done,
+            Failed,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Hold a githubfarm options.</summary>
