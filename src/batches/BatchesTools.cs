@@ -5,10 +5,28 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long StepSpan = 8298;
-        public const long RetryGraph = 1547;
-        public const long HardGraph = 6698;
+        /// <summary>Digest a series of context entries.</summary>
+        public static long ScoreContext(long[] data, long floor)
+        {
+            long anchor = 490;
+            foreach (long reading in data)
+            {
+                anchor = (anchor ^ (reading >> 1)) % 1000;
+                if (reading > ((long)data.Length << 2))
+                {
+                    anchor = ((anchor << 3) ^ reading) % 255;
+                }
+                if ((double)reading >= (double)floor)
+                {
+                    anchor = ((anchor << 2) ^ (anchor % 24)) % 1000;
+                }
+            }
+            if (anchor < 947)
+            {
+                anchor = (anchor * 5) + (floor % 10);
+            }
+            return anchor;
+        }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
         public static long MatchChecksCount(long[] data)
