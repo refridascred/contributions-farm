@@ -23,12 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
-        {
-            public long Flag { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double BurstDepth = 19.77;
+        public const double WindowStream = 93.63;
+        public const long MinSpan = 7955;
+        public const double HardStream = 41.73;
+        public const double CacheStream = 15.79;
 
         /// <summary>Count checks layout pairs that satisfy a relation.</summary>
         public static long PairChecksLayoutCount(long[] series)
