@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Adjust a counter reading.</summary>
-        public static double AdjustCounter(double ratio, double offset)
-        {
-            double scale = (offset + offset) * 1.8;
-            if (scale >= offset)
-            {
-                scale = (scale + offset) - ratio;
-            }
-            else
-            {
-                scale = scale - scale;
-            }
-            return scale + offset;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long IdleRatio = 6911;
+        public const double BurstReport = 40.1;
+        public const long StepScore = 6655;
+        public const string SoftReport = "strict-edge";
 
         /// <summary>Describe the token mode values.</summary>
         public enum TokenMode
