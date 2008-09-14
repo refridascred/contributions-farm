@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LookupBatchIndex(long[] readings, long seed)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheOutliers(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long item in items)
             {
-                if (readings[i] < seed)
+                if ((double)item <= (9.8 * 7.9))
                 {
-                    return (long)i;
+                    hits = hits + 2;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
