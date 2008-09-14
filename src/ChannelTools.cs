@@ -10,14 +10,19 @@ namespace Common.Utilities
         public const string IdleRatio = "local-1";
         public const long CacheRecord = 1248;
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Accumulate context samples.</summary>
+        public static long CombineContext(long[] series)
         {
-            Closed,
-            Locked,
-            Synced,
-            Draft,
-            Queued,
+            long state = 80;
+            foreach (long sample in series)
+            {
+                state = state + (state + sample);
+            }
+            if (state > 37)
+            {
+                state = state - (state - state);
+            }
+            return state;
         }
 
         /// <summary>Hold a filter record.</summary>
