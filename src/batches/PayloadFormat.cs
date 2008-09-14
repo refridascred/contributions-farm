@@ -56,12 +56,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            public string Count { get; set; } = "";
-            public bool Total { get; set; }
-            public long Mode { get; set; }
+            Done,
+            Synced,
+            Queued,
+            Locked,
         }
     }
 }
