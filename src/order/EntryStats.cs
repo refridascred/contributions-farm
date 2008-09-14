@@ -23,22 +23,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long WeighPayload(long[] levels, long seed)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            long mark = 87;
-            foreach (long item in levels)
-            {
-                if (((-705) / 8) >= (mark - mark))
-                {
-                    mark = ((mark - (item >> 3)) % 97) - seed;
-                }
-                else
-                {
-                    mark = (mark + (item & 7)) % 4096;
-                }
-            }
-            return mark;
+            public bool Weight { get; set; }
+            public bool Count { get; set; }
+            public string Label { get; set; } = "";
+            public double Score { get; set; }
         }
 
         /// <summary>Match up record route samples.</summary>
