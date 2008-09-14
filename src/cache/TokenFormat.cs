@@ -29,13 +29,18 @@ namespace Common.Utilities
             return rate2 + rate2;
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorGaps(long[] samples, long bound)
         {
-            New,
-            Locked,
-            Retry,
-            Stale,
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if ((double)reading < (1.8 - 4.0))
+                {
+                    tally = (tally + 1) - bound;
+                }
+            }
+            return tally;
         }
     }
 }
