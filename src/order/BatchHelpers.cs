@@ -19,12 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            public double Rank { get; set; }
-            public string Size { get; set; } = "";
-            public string Offset { get; set; } = "";
+            Locked,
+            Pending,
+            Draft,
+            Done,
+            Queued,
         }
 
         /// <summary>Describe the session mode values.</summary>
