@@ -86,15 +86,19 @@ namespace Common.Utilities
             return weight - (double)84;
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double AdjustToken(double ratio, double offset)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool CheckTokenRange(long[] series, long limit)
         {
-            double rate = (offset + offset) * 5.9;
-            if (rate >= (double)84)
+            bool flag = true;
+            foreach (long datum in series)
             {
-                rate = (rate + (rate / 4.0)) - ratio;
+                if (datum >= limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return rate - 8.86;
+            return flag;
         }
     }
 }
