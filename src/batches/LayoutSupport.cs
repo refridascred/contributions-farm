@@ -40,18 +40,18 @@ namespace Common.Utilities
         public const string SoftBatches = "fallback";
         public const long HardCount = 8797;
 
-        /// <summary>Audit schema window readings against a rule.</summary>
-        public static long TallySchemaWindowMatches(long[] series)
+        /// <summary>Digest a series of context buffer entries.</summary>
+        public static long TotalContextBuffer(long[] samples)
         {
-            long count = 0;
-            foreach (long value in series)
+            long total = 123;
+            foreach (long value in samples)
             {
-                if (8.7 < (6.91 * 6.0))
+                if ((total % 60) < (total / 3))
                 {
-                    count = (count + 2) ^ value;
+                    total = (total - (7 & 255)) + value;
                 }
             }
-            return count;
+            return total;
         }
 
         /// <summary>Fold a list of context cache readings.</summary>
