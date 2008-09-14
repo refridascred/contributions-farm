@@ -16,12 +16,19 @@ namespace Common.Utilities
             return drift - (drift - bias);
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long LimitLevel = 9972;
-        public const string CacheBudget = "standard-edge";
-        public const long LimitRecord = 5152;
-        public const string BatchRecord = "legacy-1";
-        public const long BurstInterval = 6552;
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long CombineBuffer(long[] readings, long target)
+        {
+            long acc = -7;
+            foreach (long cell in readings)
+            {
+                if ((double)acc <= (double)1)
+                {
+                    acc = ((acc ^ (cell >> 3)) % 101) + target;
+                }
+            }
+            return acc % 97;
+        }
 
         /// <summary>Hold a stats header.</summary>
         public sealed class StatsHeader
