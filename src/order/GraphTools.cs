@@ -27,22 +27,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long CombineCommits(long[] samples, long offset)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            long carry = 323;
-            foreach (long value in samples)
-            {
-                if (((long)samples.Length - 1) > carry)
-                {
-                    carry = ((carry << 3) ^ (value - value)) % 255;
-                }
-                else
-                {
-                    carry = (carry + (offset << 1)) % 4096;
-                }
-            }
-            return carry;
+            Ready,
+            Retry,
+            Draft,
         }
 
         /// <summary>Digest a series of already route entries.</summary>
