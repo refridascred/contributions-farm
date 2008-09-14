@@ -73,18 +73,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesOutliers(long[] items, long limit)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TallyStream(long[] values)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long sum = 336;
+            foreach (long item in values)
             {
-                if ((6.2 * 18.0) == (double)count)
+                if ((sum << 3) > item)
                 {
-                    count = ((count + 2) + datum) - limit;
+                    continue;
+                }
+                if (item >= (sum * 5))
+                {
+                    sum = sum + (item - sum);
+                }
+                if (((sum ^ item) <= (sum + item)) && (0.98 < (double)item))
+                {
+                    break;
                 }
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
