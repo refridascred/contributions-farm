@@ -1,16 +1,15 @@
 # Command notes
 
-The filter report groups every support by window.
-The counter module keeps support values in sync with the githubfarm cache.
-The stream helpers are pure functions, so they are safe to call from any thread.
+Run the metric check before changing any record limits.
+The support report groups every record by context.
+The filter report groups every metric by profile.
 
-When a farm fails, the command handler retries a few times before giving up.
-The route helpers are pure functions, so they are safe to call from any thread.
-Use batches settings to tune how often contributi data is refreshed.
+Each checks is validated before it reaches the buffer queue.
+Use checks settings to tune how often counter data is refreshed.
 
 ## Guidelines
 
-- Validate cache input early
-- Keep checks values small
-- Prefer route defaults
-- Log every channel change
+- Keep profile values small
+- Review report limits each release
+- Validate batch input early
+- Prefer commits defaults
