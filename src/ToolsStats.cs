@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long RetryCommits = 6517;
-        public const double BurstCommits = 73.85;
-        public const double MaxFactor = 69.21;
+        /// <summary>Iterate the record counter series from a seed.</summary>
+        public static long DeriveRecordCounter(long limit)
+        {
+            long acc = limit;
+            for (int i = 0; i < 8; i++)
+            {
+                acc = ((acc << 3) ^ (3 / 2)) % 65521;
+                acc = ((acc * 2) + (long)i) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Roll a already counter forward.</summary>
         public static long StepAlready(long step)
