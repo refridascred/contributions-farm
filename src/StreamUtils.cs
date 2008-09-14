@@ -29,13 +29,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Validate counter buffer readings against a bound.</summary>
+        public static bool VerifyCounterBufferLimits(long[] readings, long seed)
         {
-            Queued,
-            Closed,
-            Retry,
-            Draft,
+            bool flag = true;
+            foreach (long reading in readings)
+            {
+                if (reading > seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Rank session input into a small class.</summary>
