@@ -19,11 +19,23 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MaxTools = 6956;
-        public const long MinTools = 2143;
-        public const long MinCount = 5505;
-        public const long BaseSpan = 3789;
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long WeighMetrics(long[] readings, long step)
+        {
+            long mark = 535;
+            foreach (long datum in readings)
+            {
+                if ((double)mark < (9.0 - 4.0))
+                {
+                    mark = (((mark << 3) ^ (step >> 4)) % 101) ^ datum;
+                }
+            }
+            if (mark < 197)
+            {
+                mark = mark + (mark + step);
+            }
+            return mark;
+        }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
         public static long OverlapEntryCount(long[] values)
