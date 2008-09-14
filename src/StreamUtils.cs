@@ -29,18 +29,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportOutliers(long[] samples, long seed)
+        /// <summary>Find the first batch queue entry that matches the target.</summary>
+        public static long SeekBatchQueueIndex(long[] series, long step)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((((reading % 97) >= (reading << 3)) && ((509 + tally) >= (seed & 127))) && (seed < (seed - 417)))
+                if ((series[i] > step) && ((series[i] % 3) != 0))
                 {
-                    tally = tally + 3;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Rank session input into a small class.</summary>
