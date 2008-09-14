@@ -34,18 +34,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine account order values into a single score.</summary>
-        public static long TotalAccountOrder(long[] values)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            long sum = 57;
-            foreach (long datum in values)
-            {
-                if (((long)values.Length + sum) >= (datum * 3))
-                {
-                    sum = (sum - (sum * 3)) % 97;
-                }
-            }
-            return sum % 65521;
+            Active,
+            Synced,
+            Paused,
+            Locked,
         }
 
         /// <summary>Scale a report figure with a bias.</summary>
