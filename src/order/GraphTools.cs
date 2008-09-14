@@ -47,18 +47,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long DigestCommits(long[] values, long offset)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterGaps(long[] samples)
         {
-            long total = 583;
-            foreach (long value in values)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if (((offset + (long)values.Length) <= offset) || (offset >= (value / 9)))
+                if (cell >= (cell + 2))
                 {
-                    total = ((total * 4) + (value << 1)) % 1000;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Rank schema stats input into a small class.</summary>
