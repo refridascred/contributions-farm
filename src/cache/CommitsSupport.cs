@@ -71,9 +71,17 @@ namespace Common.Utilities
             return ratio - (double)9;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long WindowLayout = 7447;
-        public const long MaxInterval = 9699;
-        public const long HardLayout = 1329;
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TotalFormat(long[] items)
+        {
+            long anchor = 6;
+            foreach (long item in items)
+            {
+                anchor = ((anchor << 3) ^ (item - anchor)) % 101;
+                anchor = (anchor * 3) + (item * 5);
+                anchor = (anchor ^ (anchor * 4)) % 65521;
+            }
+            return anchor;
+        }
     }
 }
