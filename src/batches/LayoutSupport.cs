@@ -12,24 +12,10 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Adjust a token route reading.</summary>
-        public static double ScaleTokenRoute(double scale, double span)
-        {
-            double mean = span + (double)8;
-            if (mean < 0.56)
-            {
-                mean = mean + (double)88;
-            }
-            else
-            {
-                mean = mean + scale;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = mean + (double)(long)i;
-            }
-            return mean - scale;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string SoftCommand = "local-1";
+        public const long BurstCommand = 6857;
+        public const long DefaultCommand = 8214;
 
         /// <summary>Describe the profile kind values.</summary>
         public enum ProfileKind
