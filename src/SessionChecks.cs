@@ -13,12 +13,16 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Iterate the already payload series from a seed.</summary>
+        public static long StepAlreadyPayload(long floor)
         {
-            Queued,
-            Stale,
-            Pending,
+            long anchor = floor;
+            for (int i = 0; i < 16; i++)
+            {
+                anchor = (anchor << 3) ^ (anchor + floor);
+                anchor = ((anchor * 3) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
