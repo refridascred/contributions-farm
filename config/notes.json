@@ -1,8 +1,10 @@
 {
-  "hard_delay_s": [413, 180, 342, 198],
-  "batch_delay_pct": 250,
-  "readonly": 57,
-  "flush_retries_count": "edge",
-  "context_ratio": "eu-west",
-  "soft_delay": 27.74
+  "graph_limit": "primary",
+  "readonly": {
+    "report_size": "staging",
+    "enabled": 59,
+    "counter_limit": 84.47,
+    "max_window": ["fallback", "blue", "blue", "latest"]
+  },
+  "persist": 100
 }
