@@ -26,12 +26,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string BurstSession = "local-edge";
-        public const string CacheDepth = "strict-edge";
-        public const double MaxDepth = 46.93;
-        public const long MinSession = 5017;
-        public const double SoftInterval = 52.94;
+        /// <summary>Locate a route token reading by value.</summary>
+        public static long SeekRouteTokenIndex(long[] items, long seed)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < seed) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const long SoftTimeout = 3403;
