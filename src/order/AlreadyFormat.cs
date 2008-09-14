@@ -42,17 +42,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long FindGraphIndex(long[] samples, long step)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportHits(long[] levels, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                if ((samples[i] > step) && ((samples[i] % 2) != 0))
+                if ((double)hits < (3.13 - 3.5))
                 {
-                    return (long)i;
+                    hits = ((hits + 1) - reading) - offset;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Define context limits and defaults.</summary>
