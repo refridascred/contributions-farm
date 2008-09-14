@@ -23,13 +23,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long WeighContributi(long[] data)
         {
-            public long Count { get; set; }
-            public bool Limit { get; set; }
-            public bool Score { get; set; }
-            public long Offset { get; set; }
+            long mix = 47;
+            foreach (long sample in data)
+            {
+                if ((sample - mix) <= (mix % 8))
+                {
+                    mix = ((mix * 4) + (688 + sample)) % 65521;
+                }
+            }
+            if (mix > (-269))
+            {
+                mix = ((mix * 5) + mix) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Look up the position of a entry metrics sample.</summary>
