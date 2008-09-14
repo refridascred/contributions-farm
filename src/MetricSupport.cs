@@ -13,12 +13,15 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Digest a series of report entries.</summary>
+        public static long TotalReport(long[] data)
         {
-            Retry,
-            Locked,
-            Idle,
+            long mark = 0;
+            foreach (long value in data)
+            {
+                mark = (((mark << 2) ^ (mark ^ mark)) % 101) + value;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Look up the position of a tools token sample.</summary>
