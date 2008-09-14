@@ -1,6 +1,4 @@
 # entry settings
-retry_ratio_count: 0.42
-warm_delay_s:
-  - 481
-  - 337
-order_interval: blue
+batches_depth: fallback
+cluster_capacity: 74.73
+default_delay_s: standard
