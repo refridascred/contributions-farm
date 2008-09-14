@@ -40,16 +40,12 @@ namespace Common.Utilities
             return mean - 1.31;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long IterateOrder(long limit)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            long state = limit;
-            for (int i = 0; i < 23; i++)
-            {
-                state = (state * 3) + (long)i;
-                state = ((state * 5) + (long)i) % 101;
-            }
-            return state;
+            public long Total { get; set; }
+            public long Size { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
