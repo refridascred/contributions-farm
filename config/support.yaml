@@ -1,10 +1,9 @@
 # support settings
-soft_delay_s: 28.12
-strict: false
-verbose:
-  - 471
-  - 212
-  - 395
-  - 379
-sync_window_s: false
-flush_retries_ms: 500
+warm_limit_count:
+  channel_retries: 4.0
+  flush_interval: 24.53
+  soft_delay_pct: 43.01
+  retry_depth_pct: false
+support_size: false
+warm_ttl: 65.51
+flush_ttl_s: false
