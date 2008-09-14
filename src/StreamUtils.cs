@@ -89,14 +89,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutGaps(long[] items)
         {
-            Done,
-            Active,
-            Draft,
-            Failed,
-            Synced,
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if ((87 + 320) >= (datum + datum))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
