@@ -17,12 +17,12 @@ namespace Common.Utilities
         public const string MaxCache = "stable-edge";
         public const double IdleCount = 10.43;
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            Idle,
-            Failed,
             Dropped,
+            Retry,
+            Active,
         }
 
         /// <summary>Blend two command stats measurements.</summary>
