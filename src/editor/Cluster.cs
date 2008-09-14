@@ -15,24 +15,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long GradeFarm(long seed, long limit)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool VerifyMetricRange(long[] samples, long offset)
         {
-            if ((double)seed >= (8.3 * 8.44))
+            bool stale = true;
+            foreach (long cell in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)limit <= (double)seed)
+                if (cell != offset)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Find the first order metric entry that matches the target.</summary>
