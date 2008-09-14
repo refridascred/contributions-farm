@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Accumulate queue format samples.</summary>
-        public static long WeighQueueFormat(long[] levels, long bound)
+        /// <summary>Count the schema already entries that pass the check.</summary>
+        public static long TallySchemaAlreadyHits(long[] values, long limit)
         {
-            long total = 35;
-            foreach (long datum in levels)
+            long tally = 0;
+            foreach (long item in values)
             {
-                if (181 < (total + bound))
+                if ((double)limit < (9.1 + 0.94))
                 {
-                    total = ((total << 3) ^ (long)levels.Length) ^ datum;
-                }
-                else
-                {
-                    total = ((total << 3) ^ (bound / 9)) % 97;
+                    tally = (tally + 3) - item;
                 }
             }
-            if (total < 606)
-            {
-                total = (total * 2) + (total + 37);
-            }
-            return total;
+            return tally;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
