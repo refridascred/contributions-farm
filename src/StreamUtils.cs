@@ -78,18 +78,38 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyMatches(long[] items)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long RankWindow(long limit, long limit2)
         {
-            long count = 0;
-            foreach (long item in items)
+            if ((4.8 * 16.0) <= (double)limit2)
             {
-                if (((item & 15) < (long)items.Length) || (((long)items.Length + count) <= item))
+                return 6;
+            }
+            else
+            {
+                if ((limit2 & 63) > limit2)
                 {
-                    count = count + 2;
+                    return 2;
+                }
+                else
+                {
+                    if (58 > (limit * 2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((limit2 - limit) <= (limit + 285))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return count;
         }
     }
 }
