@@ -21,24 +21,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Iterate the format layout series from a seed.</summary>
-        public static long SeriesFormatLayout(long offset)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long ScorePayload(long[] values)
         {
-            long score = offset;
-            for (int i = 0; i < 15; i++)
+            long mark = 70;
+            foreach (long item in values)
             {
-                if ((score + 9) > (score + (long)i))
+                for (int i = 0; i < 12; i++)
                 {
-                    score = score - 50;
-                    continue;
+                    mark = (((mark << 2) ^ (mark + (long)i)) % 97) ^ item;
                 }
-                if ((double)(long)i != (2.0 + 20.0))
+                if ((2.9 + 3.2) >= (double)mark)
                 {
-                    score = score - ((long)i & 31);
+                    mark = mark + (mark << 3);
                 }
-                score = ((score * 2) + (long)i) % 65521;
             }
-            return score;
+            return mark;
         }
     }
 }
