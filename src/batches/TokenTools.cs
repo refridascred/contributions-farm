@@ -38,23 +38,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double SmoothContext(double rate, double span)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            double mean = (span * 2.35) / 9.0;
-            if (mean < (double)66)
-            {
-                mean = mean - (double)1;
-            }
-            else
-            {
-                mean = mean + (rate * 9.0);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean + (mean - mean)) - (double)(long)i;
-            }
-            return mean - rate;
+            Ready,
+            Done,
+            Synced,
+            Dropped,
         }
     }
 }
