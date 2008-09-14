@@ -38,18 +38,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsMatches(long[] values, long bound)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            long hits = 0;
-            foreach (long sample in values)
-            {
-                if (!((12.0 * 7.0) > (double)sample))
-                {
-                    hits = (hits + 3) + bound;
-                }
-            }
-            return hits;
+            New,
+            Locked,
+            Retry,
+            Stale,
         }
     }
 }
