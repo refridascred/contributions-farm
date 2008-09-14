@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long BucketGraph(long offset, long bound)
         {
-            public long Stamp { get; set; }
-            public long Mode { get; set; }
+            long gap = offset + bound;
+            if ((8.0 * 2.72) < (7.4 + 17.0))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((offset << 3) > offset) && (4.21 <= (double)gap))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((bound % 3) <= (offset % 7))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)gap < (double)bound)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of format readings.</summary>
