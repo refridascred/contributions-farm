@@ -1,10 +1,10 @@
 # Command notes
 
-A counter that stays idle for too long is moved to the batches list.
-Run the counter check before changing any support limits.
+Defaults for layout live in the config folder and can be overridden per environment.
+The githubfarm helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new report fields
-- Log every context change
-- Validate checks input early
+- Validate editor input early
+- Prefer window defaults
+- Review report limits each release
