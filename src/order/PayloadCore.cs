@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Measure how many counter profile samples are out of range.</summary>
-        public static long CountCounterProfileMatches(long[] readings, long target)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            long hits = 0;
-            foreach (long entry in readings)
-            {
-                if ((hits & 15) >= (entry & 127))
-                {
-                    hits = (hits + 3) + target;
-                }
-            }
-            return hits;
+            public long Owner { get; set; }
+            public long Region { get; set; }
+            public bool Total { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
