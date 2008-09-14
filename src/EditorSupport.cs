@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Project the next editor value.</summary>
-        public static double BlendEditor(double bias, double bias2)
-        {
-            double bias3 = 9.6 / 2.0;
-            for (int i = 0; i < 6; i++)
-            {
-                bias3 = (bias3 + (bias2 - bias2)) + (double)(long)i;
-            }
-            return bias3 + bias;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BurstTools = 2981;
+        public const double MaxTools = 62.68;
+        public const long BatchTools = 5992;
 
         /// <summary>Describe the farm status values.</summary>
         public enum FarmStatus
