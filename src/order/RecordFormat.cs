@@ -57,15 +57,18 @@ namespace Common.Utilities
         public const string MinPayload = "staging";
         public const string DefaultPayload = "latest-edge";
 
-        /// <summary>Project the next channel value.</summary>
-        public static double ProjectChannel(double gain, double span)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorMatches(long[] series)
         {
-            double rate = (double)(0 + 2);
-            if (rate <= (rate - span))
+            long tally = 0;
+            foreach (long datum in series)
             {
-                rate = (rate - (double)(-20)) - gain;
+                if ((6.9 / 9.0) < (double)tally)
+                {
+                    tally = (tally + 3) ^ datum;
+                }
             }
-            return rate - (double)(-811);
+            return tally;
         }
     }
 }
