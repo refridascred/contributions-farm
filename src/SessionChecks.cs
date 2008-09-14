@@ -42,15 +42,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long WeighNotes(long[] values, long offset)
+        /// <summary>Look up the position of a commits report sample.</summary>
+        public static long SeekCommitsReportIndex(long[] values, long bound)
         {
-            long total = 60;
-            foreach (long value in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                total = (total ^ (value ^ total)) + offset;
+                if ((values[i] == bound) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
     }
 }
