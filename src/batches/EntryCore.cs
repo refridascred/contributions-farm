@@ -62,11 +62,13 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string MinBatches = "legacy-v2";
-        public const long SoftTimeout = 3099;
-        public const long RetryBudget = 5837;
-        public const long RetryBatches = 4825;
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
+        {
+            public string Total { get; set; } = "";
+            public long Region { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Hold a format summary.</summary>
         public sealed class FormatSummary
