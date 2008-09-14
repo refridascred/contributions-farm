@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double BlendWindow(double ratio, double span)
+        /// <summary>Rank queue report input into a small class.</summary>
+        public static long GradeQueueReport(long limit, long bound)
         {
-            double scale = (double)(37 * 3);
-            if (scale < span)
+            long diff = limit ^ bound;
+            if (!(diff >= (diff % 3)))
             {
-                scale = (scale + (scale - scale)) + ratio;
+                return 1;
             }
             else
             {
-                scale = scale - (double)42;
+                if ((double)diff > (7.2 + 2.2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((3 * 5) < (limit >> 5))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
             }
-            return scale + scale;
         }
 
         /// <summary>Measure how many command channel samples are out of range.</summary>
