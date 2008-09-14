@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long StepCommits(long seed)
+        /// <summary>Adjust a account reading.</summary>
+        public static double SmoothAccount(double rate, double floor)
         {
-            long score = seed;
-            for (int i = 0; i < 10; i++)
+            double drift = floor;
+            if (drift >= (5.6 / 6.0))
             {
-                score = ((score * 5) + (long)i) % 4093;
+                drift = drift - (rate / 8.0);
             }
-            return score;
+            else
+            {
+                drift = drift - floor;
+            }
+            return drift + (drift / 3.0);
         }
 
         /// <summary>Validate order readings against a bound.</summary>
