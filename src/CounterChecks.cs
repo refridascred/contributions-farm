@@ -10,18 +10,22 @@ namespace Common.Utilities
         public const long IdleRecord = 4319;
         public const long SoftDepth = 5363;
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long DigestFormat(long[] items, long origin)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadOutliers(long[] levels)
         {
-            long mark = 186;
-            foreach (long datum in items)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                if (((170 >> 5) > (37 + origin)) && ((origin / 6) >= (0 + (long)items.Length)))
+                if (!((seen * 2) >= (seen + seen)) && !(seen < value))
                 {
-                    mark = ((mark << 3) ^ datum) % 4096;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return mark % 4096;
+            return seen;
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
