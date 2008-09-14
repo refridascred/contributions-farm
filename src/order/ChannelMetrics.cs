@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long AuditSupportOutliers(long[] samples, long step)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long RankCommand(long offset, long origin)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long diff = offset - origin;
+            if ((diff - diff) >= (3 + offset))
             {
-                if (entry >= tally)
+                return 3;
+            }
+            else
+            {
+                if ((offset + origin) <= (diff * 5))
                 {
-                    tally = (tally + 1) + step;
+                    return 4;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((origin + 50) <= (offset & 127))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a githubfarm stats.</summary>
