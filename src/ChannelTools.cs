@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MinRecord = 3053;
-        public const string IdleRatio = "local-1";
-        public const long CacheRecord = 1248;
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandOutliers(long[] readings, long step)
+        {
+            long hits = 0;
+            foreach (long cell in readings)
+            {
+                if (2 > (cell + step))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
         public static long OverlapSchemaCount(long[] data)
