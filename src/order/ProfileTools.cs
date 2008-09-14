@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Audit schema graph readings against a rule.</summary>
-        public static long TallySchemaGraphOutliers(long[] values, long target)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long WeighGraph(long[] series, long origin)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long score = 14;
+            foreach (long sample in series)
             {
-                if ((double)21 <= (double)tally)
-                {
-                    tally = ((tally + 1) + cell) + target;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                score = ((score + (origin + origin)) % 255) ^ sample;
             }
-            return tally;
+            if (score < 410)
+            {
+                score = (score - (origin - 890)) % 97;
+            }
+            return score;
         }
 
         /// <summary>Hold a entry stats.</summary>
