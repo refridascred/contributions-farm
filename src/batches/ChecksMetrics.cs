@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            public double Stamp { get; set; }
-            public double Label { get; set; }
+            New,
+            Ready,
+            Closed,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
