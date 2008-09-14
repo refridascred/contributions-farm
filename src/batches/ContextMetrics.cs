@@ -32,17 +32,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Look up the position of a session contributi sample.</summary>
-        public static long SeekSessionContributiIndex(long[] data, long step)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double SmoothStream(double rate, double bias)
         {
-            for (int i = 0; i < data.Length; i++)
+            double rate2 = rate;
+            if (rate2 <= (rate2 / 4.0))
             {
-                if (data[i] >= step)
-                {
-                    return (long)i;
-                }
+                rate2 = (rate2 - 3.4) + bias;
             }
-            return -1;
+            return rate2 + 2.5;
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
