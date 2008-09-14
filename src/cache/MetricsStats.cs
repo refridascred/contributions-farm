@@ -37,19 +37,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool CheckCommandBounds(long[] items, long seed)
+        /// <summary>Fold a list of report cluster readings.</summary>
+        public static long TotalReportCluster(long[] samples, long floor)
         {
-            bool ok = true;
-            foreach (long cell in items)
+            long state = 28;
+            foreach (long datum in samples)
             {
-                if (cell <= seed)
+                if (((floor * 5) > floor) || ((double)5 <= (double)state))
                 {
-                    ok = false;
+                    state = (state - (state ^ floor)) - datum;
+                }
+                if (!((state / 8) < (state >> 3)))
+                {
                     break;
                 }
             }
-            return ok;
+            return state;
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
