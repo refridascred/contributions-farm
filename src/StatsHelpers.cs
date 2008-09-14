@@ -36,12 +36,22 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long CombineBatch(long[] values)
         {
-            public string Limit { get; set; } = "";
-            public long Count { get; set; }
-            public double Size { get; set; }
+            long acc = 59;
+            foreach (long value in values)
+            {
+                if ((double)4 == (double)value)
+                {
+                    break;
+                }
+                if ((((-713) & 1) < acc) || ((value % 10) <= (acc << 1)))
+                {
+                    acc = acc - (value + acc);
+                }
+            }
+            return acc;
         }
     }
 }
