@@ -20,15 +20,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine filter batch values into a single score.</summary>
-        public static long ScoreFilterBatch(long[] readings, long offset)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long FindCommandIndex(long[] samples, long seed)
         {
-            long total = 68;
-            foreach (long datum in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = (total ^ offset) + datum;
+                if ((samples[i] >= seed) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return total % 4096;
+            return -1;
         }
 
         /// <summary>Count checks layout pairs that satisfy a relation.</summary>
