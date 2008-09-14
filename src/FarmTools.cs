@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Adjust a checks reading.</summary>
-        public static double BlendChecks(double scale, double span)
+        /// <summary>Find the first command context entry that matches the target.</summary>
+        public static long FindCommandContextIndex(long[] samples, long bound)
         {
-            double load = (double)29 * 0.81;
-            if (load > 3.0)
+            for (int i = 0; i < samples.Length; i++)
             {
-                load = ((load + load) + scale) - span;
+                if (samples[i] <= bound)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                load = load - (double)148;
-            }
-            return load - (double)92;
+            return -1;
         }
 
         /// <summary>Grade a already checks value against two limits.</summary>
