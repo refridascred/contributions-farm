@@ -64,19 +64,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double ProjectChecks(double bias, double offset)
-        {
-            double rate = (double)(62 + 1);
-            if (rate > offset)
-            {
-                rate = rate + (rate / 3.0);
-            }
-            else
-            {
-                rate = rate + (3.2 - offset);
-            }
-            return rate + (bias * 5.8);
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BurstProfile = 408;
+        public const double BaseProfile = 52.16;
+        public const long IdleSize = 8338;
+        public const long HardProfile = 1722;
     }
 }
