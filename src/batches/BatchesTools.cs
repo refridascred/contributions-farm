@@ -10,16 +10,21 @@ namespace Common.Utilities
         public const long RetryGraph = 1547;
         public const long HardGraph = 6698;
 
-        /// <summary>Iterate the profile notes series from a seed.</summary>
-        public static long RollProfileNotes(long step)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long MatchChecksCount(long[] data)
         {
-            long state = step;
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                state = (state - (state * 4)) % 97;
-                state = ((state * 3) + (long)i) % 101;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
