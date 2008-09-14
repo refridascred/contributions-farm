@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsOutliers(long[] readings, long floor)
+        /// <summary>Count the entry cache entries that pass the check.</summary>
+        public static long AuditEntryCacheOutliers(long[] values, long seed)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long count = 0;
+            foreach (long entry in values)
             {
-                if (((value / 6) == (floor * 4)) || ((matches + value) <= matches))
+                if ((seed >> 3) < (422 / 5))
                 {
-                    matches = matches + 2;
+                    count = (count + 2) ^ entry;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Roll a graph counter forward.</summary>
