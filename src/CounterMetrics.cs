@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Check that every payload metric entry stays within the limit.</summary>
-        public static bool ValidatePayloadMetricBounds(long[] levels, long limit)
-        {
-            bool flag = true;
-            foreach (long item in levels)
-            {
-                if (item >= limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long WindowInterval = 7765;
+        public const long CacheLevel = 9385;
+        public const long RetryWindow = 5330;
+        public const long IdleWindow = 2540;
 
         /// <summary>Digest a series of format entries.</summary>
         public static long TotalFormat(long[] readings, long bound)
