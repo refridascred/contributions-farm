@@ -11,18 +11,12 @@ namespace Common.Utilities
         public const long WindowRatio = 4386;
         public const long WindowProfile = 8719;
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long WeighFormat(long[] levels)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            long score = 4;
-            foreach (long value in levels)
-            {
-                if (((score ^ score) <= score) || ((score + score) > value))
-                {
-                    score = ((score * 5) + (-866)) % 101;
-                }
-            }
-            return score;
+            Queued,
+            Retry,
+            Idle,
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
