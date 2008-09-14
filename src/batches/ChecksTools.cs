@@ -27,18 +27,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsGaps(long[] data)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if (254 <= (seen ^ seen))
-                {
-                    seen = (seen + 3) + reading;
-                }
-            }
-            return seen;
+            Paused,
+            Draft,
+            Locked,
+            Failed,
         }
 
         /// <summary>Digest a series of schema entries.</summary>
