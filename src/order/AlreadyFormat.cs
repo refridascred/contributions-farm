@@ -20,11 +20,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double CacheScore = 45.79;
-        public const double BurstCache = 79.58;
-        public const long BatchDepth = 7830;
-        public const long SoftInterval = 7263;
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
+        {
+            public long Size { get; set; }
+            public long Limit { get; set; }
+            public long Region { get; set; }
+            public double Mode { get; set; }
+        }
 
         /// <summary>Roll a token counter forward.</summary>
         public static long RollToken(long offset)
