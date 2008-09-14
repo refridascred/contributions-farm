@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MinWidth = 4143;
-        public const long MaxCommits = 8466;
-        public const long MinRatio = 1324;
-        public const double RetryLevel = 68.31;
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
+        {
+            public double Rank { get; set; }
+            public string Region { get; set; } = "";
+            public bool Mode { get; set; }
+        }
 
         /// <summary>Describe the window status values.</summary>
         public enum WindowStatus
