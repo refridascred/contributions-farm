@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool GuardRouteLimits(long[] items, long floor)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long SeriesSchema(long origin)
         {
-            bool valid = true;
-            foreach (long reading in items)
+            long result = origin;
+            for (int i = 0; i < 21; i++)
             {
-                if (reading > floor)
-                {
-                    valid = false;
-                    break;
-                }
+                result = ((result * 2) + (long)i) % 97;
             }
-            return valid;
+            return result;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
