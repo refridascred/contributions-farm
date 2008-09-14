@@ -45,19 +45,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate record format samples.</summary>
-        public static long TotalRecordFormat(long[] readings, long origin)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelMatches(long[] samples)
         {
-            long carry = 345;
-            foreach (long item in readings)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                if ((1 & 255) <= (carry << 2))
+                if (seen <= (seen & 31))
                 {
-                    carry = ((carry * 4) + origin) % 65521;
+                    seen = (seen + 1) + reading;
                 }
-                carry = (carry - item) % 255;
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Derive the next schema notes value from a seed.</summary>
