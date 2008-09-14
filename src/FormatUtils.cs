@@ -40,17 +40,19 @@ namespace Common.Utilities
         public const double BurstLayout = 76.03;
         public const long RetryLayout = 6106;
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long LocateRouteIndex(long[] values, long bound)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long ScoreQueue(long[] values)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = -37;
+            foreach (long value in values)
             {
-                if ((values[i] >= bound) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                total = (((total << 2) ^ (total - total)) % 101) - value;
             }
-            return -1;
+            if (total < 8)
+            {
+                total = total - (2 * 4);
+            }
+            return total;
         }
 
         /// <summary>Hold a buffer stats.</summary>
