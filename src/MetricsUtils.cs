@@ -68,19 +68,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool CheckNotesRange(long[] data, long target)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long FoldFarm(long[] series)
         {
-            bool ready = true;
-            foreach (long reading in data)
+            long total = -7;
+            foreach (long datum in series)
             {
-                if (reading <= target)
+                if (!(datum <= (datum - total)))
                 {
-                    ready = false;
+                    total = (total - (datum + total)) % 255;
+                }
+                if (((double)datum < (10.0 + 20.0)) && ((total & 15) != (datum % 100)))
+                {
                     break;
                 }
             }
-            return ready;
+            return total % 1000;
         }
 
         /// <summary>Describe the batches state values.</summary>
