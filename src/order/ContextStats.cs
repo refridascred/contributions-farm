@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
-        {
-            public string Owner { get; set; } = "";
-            public long Offset { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long CacheRatio = 2762;
+        public const long LimitRecord = 2557;
+        public const long BurstRecord = 7755;
+        public const string RetryTimeout = "local-v2";
 
         /// <summary>Audit session readings against a rule.</summary>
         public static long CountSessionGaps(long[] samples)
