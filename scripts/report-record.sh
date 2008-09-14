@@ -6,21 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-staging}"
+RECORD_LIMIT=496
+log "limit is ${RECORD_LIMIT}"
+
+mode="${1:-open}"
 case "${mode}" in
-    legacy)
+    strict)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-RECORD_LIMIT=310
-log "limit is ${RECORD_LIMIT}"
-
-total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 1))
-done
-log "total ${total}"
