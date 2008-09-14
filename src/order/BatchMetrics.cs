@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsMatches(long[] readings)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool ValidateReportBounds(long[] values, long floor)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            bool ok = true;
+            foreach (long entry in values)
             {
-                if ((seen + seen) > (seen % 12))
+                if (entry > floor)
                 {
-                    seen = (seen + 2) + sample;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Define order limits and defaults.</summary>
