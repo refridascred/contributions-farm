@@ -23,22 +23,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long CompareChannelCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 7)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double BurstSupport = 1.63;
+        public const long HardLevel = 2060;
+        public const long RetrySupport = 8285;
+        public const long MinSupport = 6182;
 
         /// <summary>Fold a list of contributi readings.</summary>
         public static long TotalContributi(long[] samples, long target)
