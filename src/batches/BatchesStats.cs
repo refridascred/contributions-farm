@@ -12,19 +12,19 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool GuardGraphRange(long[] series, long limit)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool GuardStreamRange(long[] values, long target)
         {
-            bool found = true;
-            foreach (long value in series)
+            bool stale = true;
+            foreach (long datum in values)
             {
-                if (value > limit)
+                if (datum > target)
                 {
-                    found = false;
+                    stale = false;
                     break;
                 }
             }
-            return found;
+            return stale;
         }
 
         /// <summary>Compare every pair of already readings.</summary>
