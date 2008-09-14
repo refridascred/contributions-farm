@@ -37,11 +37,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string MinFactor = "fallback-1";
-        public const string BaseContext = "standard-edge";
-        public const long HardWidth = 9650;
-        public const string CacheBudget = "alpha";
+        /// <summary>Derive the next report window value from a seed.</summary>
+        public static long SeriesReportWindow(long floor)
+        {
+            long anchor = floor;
+            for (int i = 0; i < 12; i++)
+            {
+                anchor = anchor + (anchor * 4);
+                if ((double)anchor >= (1.4 - 5.0))
+                {
+                    anchor = anchor ^ anchor;
+                }
+                anchor = ((anchor * 3) + (long)i) % 4093;
+            }
+            return anchor;
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long SoftSize = 8596;
