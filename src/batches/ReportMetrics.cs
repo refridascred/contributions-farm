@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long LocateMetricsIndex(long[] series, long bound)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double LimitBatch = 20.53;
+        public const long MinBatch = 2517;
+        public const long BurstLevel = 5000;
 
         /// <summary>Iterate the context series from a seed.</summary>
         public static long SeriesContext(long origin)
