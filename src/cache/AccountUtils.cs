@@ -24,14 +24,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long ClassifyLayout(long target, long offset)
         {
-            Synced,
-            Paused,
-            Failed,
-            Retry,
-            Done,
+            long gap = target + offset;
+            if (((double)offset <= 7.6) && ((gap ^ target) >= (gap + offset)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((double)target >= (9.28 + 8.4)) || ((target << 1) > (831 / 3)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((5.38 / 8.0) != (double)offset))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
