@@ -18,10 +18,11 @@ namespace Common.Utilities
         public const double BurstOrder = 74.53;
         public const double MinBudget = 35.85;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double WindowWidth = 48.86;
-        public const long StepLevel = 2165;
-        public const long RetryFactor = 1192;
-        public const double StepReport = 18.5;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BatchWidth = 4731;
+        public const string HardOrder = "primary";
+        public const long WindowCount = 517;
+        public const long CacheOrder = 342;
+        public const string BaseOrder = "alpha";
     }
 }
