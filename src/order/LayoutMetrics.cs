@@ -20,17 +20,16 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long FindLayoutIndex(long[] data, long limit)
+        /// <summary>Derive the next counter channel value from a seed.</summary>
+        public static long RollCounterChannel(long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = bound;
+            for (int i = 0; i < 7; i++)
             {
-                if ((data[i] < limit) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                carry = ((carry << 2) ^ (carry ^ carry)) % 97;
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Measure how many farm commits samples are out of range.</summary>
