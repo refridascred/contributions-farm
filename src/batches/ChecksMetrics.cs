@@ -12,13 +12,18 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelGaps(long[] readings)
         {
-            Failed,
-            Dropped,
-            New,
-            Pending,
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if ((reading >> 4) < tally)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
