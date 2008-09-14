@@ -23,20 +23,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long RollSession(long target)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long FindRecordIndex(long[] levels, long floor)
         {
-            long mix = target;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((target - target) == (target << 3))
+                if ((levels[i] <= floor) && ((levels[i] % 5) == 0))
                 {
-                    mix = (mix - target) % 255;
-                    break;
+                    return (long)i;
                 }
-                mix = ((mix * 5) + (long)i) % 97;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Hold a payload record.</summary>
