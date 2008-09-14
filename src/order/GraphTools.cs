@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long SortGraph(long step, long offset)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double BlendWindow(double ratio, double span)
         {
-            if ((double)step > (6.25 / 6.0))
+            double scale = (double)(37 * 3);
+            if (scale < span)
             {
-                return 7;
+                scale = (scale + (scale - scale)) + ratio;
             }
             else
             {
-                if ((step - offset) >= (offset - offset))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((offset < 230) || ((double)offset == (2.6 + 10.0)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((offset / 3) < (offset + 86))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                scale = scale - (double)42;
             }
+            return scale + scale;
         }
 
         /// <summary>Describe the queue phase values.</summary>
