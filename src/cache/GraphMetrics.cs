@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long BucketAccount(long floor, long floor2)
+        /// <summary>Blend two order measurements.</summary>
+        public static double ProjectOrder(double bias, double floor)
         {
-            long offset = floor - floor2;
-            if ((3 - 26) > floor2)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)offset >= (7.0 - 20.0))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (81 >= (floor % 60))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            double load = floor / 4.0;
+            return (load + (double)435) + bias;
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
