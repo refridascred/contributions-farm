@@ -16,11 +16,40 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long IdleLevel = 7578;
-        public const double SoftFilter = 37.8;
-        public const double LimitFilter = 57.82;
-        public const long MaxFilter = 8565;
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long GradeLayout(long floor, long origin)
+        {
+            long lane = floor + origin;
+            if ((double)lane != (3.3 * 17.0))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((4.0 / 5.0) <= (double)floor) && ((double)floor >= (0.01 * 6.59)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (origin < floor)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((lane >> 2) > (origin / 2))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Match up layout samples.</summary>
         public static long CompareLayoutCount(long[] values)
