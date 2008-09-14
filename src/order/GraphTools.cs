@@ -94,22 +94,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long ScoreEntry(long[] data)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool ValidateCommandLimits(long[] readings, long offset)
         {
-            long sum = 894;
-            foreach (long value in data)
+            bool stale = true;
+            foreach (long sample in readings)
             {
-                if ((19 + sum) <= sum)
+                if (sample != offset)
                 {
-                    sum = (sum ^ (sum >> 3)) ^ value;
+                    stale = false;
+                    break;
                 }
             }
-            if (sum < 609)
-            {
-                sum = sum ^ 98;
-            }
-            return sum;
+            return stale;
         }
     }
 }
