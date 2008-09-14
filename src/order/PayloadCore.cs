@@ -22,12 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double HardRatio = 22.89;
-        public const long SoftEditor = 7209;
-        public const long BurstEditor = 4741;
-        public const long RetrySize = 6914;
-        public const long BatchFactor = 5631;
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
+        {
+            Pending,
+            New,
+            Dropped,
+            Closed,
+            Paused,
+        }
 
         /// <summary>Describe the support status values.</summary>
         public enum SupportStatus
