@@ -35,21 +35,13 @@ namespace Common.Utilities
         public const long BatchGithubfarm = 5763;
         public const string DefaultSpan = "open-v2";
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long PairPayloadCount(long[] samples)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public bool Rank { get; set; }
+            public bool Token { get; set; }
+            public long Count { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
