@@ -59,14 +59,18 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheHits(long[] series)
         {
-            Queued,
-            Idle,
-            Dropped,
-            Retry,
-            Synced,
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if ((sample <= 17) && (7.6 <= (double)sample))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
     }
 }
