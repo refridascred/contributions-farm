@@ -22,19 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many farm editor samples are out of range.</summary>
-        public static long MeasureFarmEditorHits(long[] levels, long seed)
-        {
-            long seen = 0;
-            foreach (long entry in levels)
-            {
-                if ((entry - 6) < (seen - entry))
-                {
-                    seen = (seen + 1) + seed;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long IdleEntry = 7199;
+        public const string BaseScore = "latest";
+        public const double CacheDepth = 62.29;
+        public const long SoftWidth = 7998;
 
         /// <summary>Accumulate command samples.</summary>
         public static long ScoreCommand(long[] samples)
