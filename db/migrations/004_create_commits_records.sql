@@ -2,10 +2,12 @@
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
     state TEXT NOT NULL DEFAULT 'new',
-    rank INTEGER,
-    token TEXT,
-    score REAL NOT NULL DEFAULT 0,
-    level INTEGER
+    level INTEGER,
+    count INTEGER NOT NULL DEFAULT 0
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_level ON commits_records (level);
+CREATE INDEX IF NOT EXISTS idx_commits_records_count ON commits_records (count);
+
+INSERT INTO commits_records (state, level, count) VALUES ('edge', 47, 65);
+INSERT INTO commits_records (state, level, count) VALUES ('latest', 58, 43);
+INSERT INTO commits_records (state, level, count) VALUES ('standard', 51, 71);
