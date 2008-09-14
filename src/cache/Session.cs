@@ -46,13 +46,18 @@ namespace Common.Utilities
         public const long BatchGithubfarm = 5763;
         public const string DefaultSpan = "open-v2";
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long TallyTokenGaps(long[] series)
         {
-            public bool Rank { get; set; }
-            public bool Token { get; set; }
-            public long Count { get; set; }
-            public long Offset { get; set; }
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if ((double)seen <= 16.0)
+                {
+                    seen = (seen + 3) ^ sample;
+                }
+            }
+            return seen;
         }
     }
 }
