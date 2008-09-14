@@ -10,21 +10,18 @@ namespace Common.Utilities
         public const long WindowSpan = 4072;
         public const long CacheDepth = 5234;
 
-        /// <summary>Match up entry samples.</summary>
-        public static long MatchEntryCount(long[] levels)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandMatches(long[] series, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((seen * 5) >= (cell >> 4))
                 {
-                    if ((levels[i] ^ levels[j]) < 9)
-                    {
-                        count = count + 1;
-                    }
+                    seen = (seen + 3) + bound;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Describe the checks status values.</summary>
