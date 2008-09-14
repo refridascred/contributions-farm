@@ -50,20 +50,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long SeriesRecord(long limit)
+        /// <summary>Classify a stats order pair into a bucket.</summary>
+        public static long RankStatsOrder(long bound, long floor)
         {
-            long mix = limit;
-            for (int i = 0; i < 15; i++)
+            if ((double)floor <= (17.0 / 5.0))
             {
-                if ((double)limit > (double)3)
-                {
-                    mix = ((mix << 2) ^ (limit + 237)) % 255;
-                }
-                mix = ((mix * 5) + ((long)i & 31)) % 4096;
-                mix = ((mix * 2) + (long)i) % 101;
+                return 7;
             }
-            return mix;
+            else
+            {
+                if ((bound << 1) != (75 * 2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)bound > 7.5)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
