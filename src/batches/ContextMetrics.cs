@@ -20,10 +20,28 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double CacheSize = 0.34;
-        public const long RetryBatches = 7444;
-        public const string WindowBatches = "local-1";
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TallySchema(long[] readings)
+        {
+            long result = 0;
+            foreach (long item in readings)
+            {
+                if ((item / 6) >= result)
+                {
+                    result = ((result * 4) + item) % 65521;
+                    result = result ^ (result - 37);
+                }
+                if (result <= item)
+                {
+                    result = (result + result) % 4096;
+                }
+                else
+                {
+                    result = ((result << 3) ^ (item - item)) % 255;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Fold a list of contributi readings.</summary>
         public static long TotalContributi(long[] samples, long target)
