@@ -23,24 +23,14 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long BucketCache(long limit, long floor)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            if (!((floor * 2) != (floor << 2)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((6 << 1) < (5 - limit))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Dropped,
+            Paused,
+            Stale,
+            Active,
+            Draft,
         }
 
         /// <summary>Describe the editor kind values.</summary>
