@@ -28,21 +28,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long MatchChecksCount(long[] data)
+        /// <summary>Match up entry samples.</summary>
+        public static long PairEntryCount(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((data[i] + data[j]) != 7)
+                    if ((readings[i] ^ readings[j]) == 9)
                     {
-                        hits = hits + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
