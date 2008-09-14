@@ -13,19 +13,11 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsHits(long[] levels, long bound)
-        {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if (((double)bound >= (double)matches) && (((0.4 - 3.4) <= (double)bound) && ((double)matches != (5.7 / 8.0))))
-                {
-                    matches = (matches + 2) ^ sample;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BatchScore = 5863;
+        public const long BatchNotes = 7642;
+        public const long BaseNotes = 3205;
+        public const long IdleLevel = 2694;
 
         /// <summary>Digest a series of graph editor entries.</summary>
         public static long DigestGraphEditor(long[] values)
