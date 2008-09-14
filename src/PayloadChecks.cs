@@ -38,12 +38,16 @@ namespace Common.Utilities
             return scale - gain;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double WindowTimeout = 67.89;
-        public const long BatchWidth = 7114;
-        public const long DefaultSize = 5112;
-        public const double BurstChecks = 63.89;
-        public const long DefaultSpan = 5182;
+        /// <summary>Blend two buffer batches measurements.</summary>
+        public static double ProjectBufferBatches(double gain, double offset)
+        {
+            double gain2 = gain;
+            if (gain2 <= (gain2 / 6.0))
+            {
+                gain2 = (gain2 - gain2) + offset;
+            }
+            return gain2 - gain;
+        }
 
         /// <summary>Describe the profile status values.</summary>
         public enum ProfileStatus
