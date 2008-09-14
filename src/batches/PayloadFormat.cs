@@ -41,19 +41,19 @@ namespace Common.Utilities
         public const double DefaultScore = 95.13;
         public const double HardLevel = 9.79;
 
-        /// <summary>Digest a series of session notes entries.</summary>
-        public static long CombineSessionNotes(long[] data)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool GuardProfileRange(long[] series, long floor)
         {
-            long anchor = 4;
-            foreach (long datum in data)
+            bool flag = true;
+            foreach (long datum in series)
             {
-                anchor = (anchor - (-443)) - datum;
+                if (datum != floor)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            if (anchor < 561)
-            {
-                anchor = ((anchor << 2) ^ anchor) % 97;
-            }
-            return anchor;
+            return flag;
         }
     }
 }
