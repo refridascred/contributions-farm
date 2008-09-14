@@ -30,23 +30,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double SmoothToken(double rate, double floor)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool GuardToolsLimits(long[] samples, long floor)
         {
-            double drift = (double)(3 - 25);
-            if (drift < rate)
+            bool ok = true;
+            foreach (long item in samples)
             {
-                drift = drift + (double)9;
+                if (item <= floor)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                drift = drift - drift;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift + floor) + (double)(long)i;
-            }
-            return drift + floor;
+            return ok;
         }
     }
 }
