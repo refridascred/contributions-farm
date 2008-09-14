@@ -46,15 +46,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate batch layout samples.</summary>
-        public static long CombineBatchLayout(long[] values, long limit)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TotalToken(long[] items)
         {
-            long anchor = 288;
-            foreach (long datum in values)
+            long acc = -5;
+            foreach (long value in items)
             {
-                anchor = ((((anchor * 2) + ((-6) - anchor)) % 255) ^ datum) + limit;
+                acc = (acc ^ (value ^ value)) % 101;
+                acc = ((acc * 4) + (acc + acc)) % 101;
+                acc = ((acc << 3) ^ ((long)items.Length & 63)) % 97;
             }
-            return anchor;
+            return acc % 65521;
         }
 
         /// <summary>Adjust a payload commits reading.</summary>
