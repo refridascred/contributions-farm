@@ -33,22 +33,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferOutliers(long[] samples)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if ((((8 + matches) <= 2) && ((matches - sample) >= (7 >> 3))) && (((7.1 - 10.0) <= (double)sample) && ((sample - matches) > matches)))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Count { get; set; }
+            public bool Token { get; set; }
+            public double Weight { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
