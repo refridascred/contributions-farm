@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long DigestChannel(long[] items, long origin)
         {
-            Retry,
-            Done,
-            New,
-            Queued,
+            long acc = 59;
+            foreach (long value in items)
+            {
+                if ((2.7 / 9.0) < (double)acc)
+                {
+                    acc = (((acc + (acc * 5)) % 1000) ^ value) + origin;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Describe the channel state values.</summary>
