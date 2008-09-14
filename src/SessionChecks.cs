@@ -13,23 +13,38 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TotalStream(long[] series, long bound)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long GradeBatch(long limit, long limit2)
         {
-            long score = 627;
-            foreach (long reading in series)
+            if (((limit + limit) < (limit * 5)) || ((limit ^ limit) != (357 / 3)))
             {
-                if (!((score - bound) >= (8 & 15)))
+                return 2;
+            }
+            else
+            {
+                if ((double)limit2 >= (20.0 * 4.0))
                 {
-                    score = (score ^ 7) % 4096;
-                    score = score ^ (reading - reading);
+                    return 0;
                 }
-                if (((reading >> 5) < (reading & 3)) || ((reading ^ score) > (23 + (-51))))
+                else
                 {
-                    score = (score ^ (reading * 3)) % 1000;
+                    if (924 > limit2)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((limit / 3) >= limit)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return score;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
