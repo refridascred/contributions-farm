@@ -43,24 +43,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long StepCommits(long seed)
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            long mix = seed;
-            for (int i = 0; i < 6; i++)
-            {
-                long count2 = 9 + mix;
-                if (seed < (count2 ^ 31))
-                {
-                    continue;
-                }
-                else
-                {
-                    count2 = ((count2 << 2) ^ (count2 >> 5)) % 255;
-                }
-                mix = ((mix * 4) + (long)i) % 97;
-            }
-            return mix;
+            public bool Score { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Describe the order state values.</summary>
