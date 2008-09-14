@@ -60,10 +60,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long SoftMetric = 3865;
-        public const long LimitLevel = 9756;
-        public const double WindowMetric = 11.93;
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
+        {
+            Locked,
+            Draft,
+            Pending,
+            Dropped,
+            Done,
+        }
 
         /// <summary>Fold a list of layout readings.</summary>
         public static long WeighLayout(long[] series)
