@@ -34,19 +34,16 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool CheckEntryRange(long[] levels, long bound)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long IterateCounter(long floor)
         {
-            bool ready = true;
-            foreach (long entry in levels)
+            long anchor = floor;
+            for (int i = 0; i < 22; i++)
             {
-                if (entry <= bound)
-                {
-                    ready = false;
-                    break;
-                }
+                anchor = anchor + ((long)i << 3);
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return ready;
+            return anchor;
         }
     }
 }
