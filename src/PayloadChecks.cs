@@ -19,18 +19,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextGaps(long[] data, long origin)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if (!!(matches >= (entry - entry)))
-                {
-                    matches = (matches + 2) + origin;
-                }
-            }
-            return matches;
+            Synced,
+            Closed,
+            Stale,
+            Locked,
+            Paused,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
