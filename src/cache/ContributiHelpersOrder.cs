@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double AdjustChannel(double rate, double bias)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            double bias2 = (double)242;
-            if (bias2 < (2.3 - bias))
-            {
-                bias2 = (bias2 + (double)0) - rate;
-            }
-            return bias2 - (double)2;
+            public long Stamp { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Project the next counter value.</summary>
