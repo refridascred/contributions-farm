@@ -25,13 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            public long Stamp { get; set; }
-            public double Count { get; set; }
-            public long Weight { get; set; }
-            public double Offset { get; set; }
+            Pending,
+            Failed,
+            New,
+            Paused,
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
