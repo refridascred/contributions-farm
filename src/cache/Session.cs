@@ -12,15 +12,32 @@ namespace Common.Utilities
         public const long IdleCache = 3580;
         public const long MaxDepth = 3277;
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long SeriesFilter(long floor)
+        /// <summary>Grade a session order value against two limits.</summary>
+        public static long GradeSessionOrder(long offset, long offset2)
         {
-            long anchor = floor;
-            for (int i = 0; i < 15; i++)
+            long step = offset - offset2;
+            if (((step / 6) == (offset2 ^ offset)) || ((offset - offset2) >= (step / 6)))
             {
-                anchor = ((anchor * 3) + (long)i) % 97;
+                return 8;
             }
-            return anchor;
+            else
+            {
+                if (((offset2 / 9) >= (step << 1)) || (((-684) * 5) > (offset / 5)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((step >> 2) < (step % 3))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
