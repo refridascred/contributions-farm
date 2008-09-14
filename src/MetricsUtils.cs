@@ -45,14 +45,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Match up stream samples.</summary>
+        public static long PairStreamCount(long[] readings)
         {
-            Failed,
-            Synced,
-            Queued,
-            Done,
-            Draft,
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 16)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
