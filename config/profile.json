@@ -1,10 +1,8 @@
 {
-  "compress": "local",
-  "sync_capacity_ms": {
-    "audit": true,
-    "queue_ttl": [239, 210, 477],
-    "buffer_retries": "fallback"
-  },
-  "filter_timeout": false,
-  "warm_delay_ms": "standard"
+  "retry_ratio_ms": "open",
+  "audit": "standard",
+  "burst_limit_count": ["edge", "eu-west", "eu-west"],
+  "max_threshold": 1774,
+  "default_threshold": 6,
+  "dry_run": "fallback"
 }
