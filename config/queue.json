@@ -1,6 +1,11 @@
 {
-  "hard_window": ["standard", "local", "stable", "standard"],
-  "checks_window": 12.56,
-  "context_limit": 88.34,
-  "idle_interval_count": "stable"
+  "context_depth": 85,
+  "batch_delay": "latest",
+  "retry_timeout": {
+    "poll_size_s": false,
+    "poll_limit": "edge",
+    "soft_size_ms": 30
+  },
+  "hard_delay": 94.01,
+  "batch_depth_pct": 30
 }
