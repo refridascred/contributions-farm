@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long SeriesFilter(long offset)
-        {
-            long acc = offset;
-            for (int i = 0; i < 11; i++)
-            {
-                acc = acc + (offset - acc);
-                if (((long)i - offset) >= (offset - 525))
-                {
-                    acc = (acc << 3) ^ 2;
-                    break;
-                }
-                acc = ((acc * 2) + (long)i) % 4093;
-            }
-            return acc;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BurstEditor = 2267;
+        public const long BaseEditor = 4172;
+        public const long SoftEditor = 7089;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const double CacheSize = 0.34;
