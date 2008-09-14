@@ -1,16 +1,14 @@
 # Command notes
 
-The filter helpers are pure functions, so they are safe to call from any thread.
-Run the window check before changing any support limits.
-When a token fails, the buffer handler retries a few times before giving up.
+A entry that stays idle for too long is moved to the checks list.
+When a batch fails, the queue handler retries a few times before giving up.
 
-Each record is validated before it reaches the route queue.
-Run the counter check before changing any stats limits.
-Keep channel and filter names short and lowercase.
+Keep filter and token names short and lowercase.
+Defaults for channel live in the config folder and can be overridden per environment.
+Run the graph check before changing any command limits.
 
 ## Guidelines
 
-- Prefer record defaults
-- Keep batches values small
-- Review cluster limits each release
-- Validate context input early
+- Document new counter fields
+- Validate batch input early
+- Prefer session defaults
