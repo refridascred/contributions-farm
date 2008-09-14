@@ -16,31 +16,25 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long GradeToken(long limit, long step)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long SeriesStats(long seed)
         {
-            if (!((step + step) >= (step - step)))
+            long total = seed;
+            for (int i = 0; i < 7; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((step / 8) <= step)
+                if ((seed + (long)i) >= (total * 3))
                 {
-                    return 4;
+                    total = (total - (5 * 2)) % 101;
                 }
-                else
+                total = (total ^ (seed + total)) % 255;
+                if (total > seed)
                 {
-                    if ((step + limit) > limit)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    total = total ^ (23 ^ total);
+                    continue;
                 }
+                total = ((total * 3) + (long)i) % 1000;
             }
+            return total;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
