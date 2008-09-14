@@ -1,8 +1,7 @@
 {
-  "base_ttl_ms": 89.45,
-  "min_interval": "latest",
-  "batch_delay_pct": "edge",
-  "min_threshold_s": "eu-west",
-  "default_interval_ms": true,
-  "strict": 100
+  "cache_delay_s": false,
+  "context_delay": ["green", "edge", "eu-west"],
+  "profile_retries": false,
+  "sync_delay_ms": 8879,
+  "default_limit_count": ["local", "open", "open"]
 }
