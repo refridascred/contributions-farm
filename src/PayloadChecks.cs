@@ -74,9 +74,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long RetrySpan = 3311;
-        public const double BurstFactor = 55.35;
-        public const long BaseSize = 8930;
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesGaps(long[] items, long seed)
+        {
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if ((1 >= tally) || ((tally * 4) <= cell))
+                {
+                    tally = (tally + 3) + seed;
+                }
+            }
+            return tally;
+        }
     }
 }
