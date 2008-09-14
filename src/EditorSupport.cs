@@ -14,13 +14,12 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
-        {
-            Dropped,
-            Synced,
-            New,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long HardRatio = 4189;
+        public const double MinProfile = 75.92;
+        public const double WindowCount = 35.75;
+        public const string DefaultRatio = "alpha-v2";
+        public const string MaxInterval = "stable";
 
         /// <summary>Define editor limits and defaults.</summary>
         public const string BatchRatio = "cached-1";
