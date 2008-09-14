@@ -81,12 +81,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmOutliers(long[] items, long step)
         {
-            Retry,
-            Synced,
-            Idle,
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if ((step - 97) != (573 / 2))
+                {
+                    tally = (tally + 1) ^ sample;
+                }
+            }
+            return tally;
         }
     }
 }
