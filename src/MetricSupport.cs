@@ -18,22 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterMatches(long[] series, long offset)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool GuardOrderBounds(long[] values, long target)
         {
-            long count = 0;
-            foreach (long cell in series)
+            bool found = true;
+            foreach (long entry in values)
             {
-                if (count >= ((-9) / 5))
+                if (entry <= target)
                 {
-                    count = ((count + 3) + cell) + offset;
-                }
-                else
-                {
-                    count = count - 1;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
