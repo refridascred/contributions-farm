@@ -24,17 +24,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long SeekChecksIndex(long[] levels, long floor)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long ScoreTools(long[] data, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 375;
+            foreach (long sample in data)
             {
-                if ((levels[i] > floor) && ((levels[i] % 2) != 0))
+                if (((mark << 2) <= (offset << 2)) || ((double)sample <= 9.87))
                 {
-                    return (long)i;
+                    mark = (mark ^ (offset - offset)) % 255;
                 }
             }
-            return -1;
+            return mark % 65521;
         }
 
         /// <summary>Define route limits and defaults.</summary>
