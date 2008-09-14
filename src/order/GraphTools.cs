@@ -40,13 +40,19 @@ namespace Common.Utilities
         public const long BatchWindow = 1148;
         public const long RetryCount = 7224;
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Validate contributi entry readings against a bound.</summary>
+        public static bool GuardContributiEntryBounds(long[] data, long origin)
         {
-            Pending,
-            Queued,
-            Active,
-            Stale,
+            bool stale = true;
+            foreach (long sample in data)
+            {
+                if (sample < origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
