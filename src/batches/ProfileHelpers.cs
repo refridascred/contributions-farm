@@ -69,19 +69,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double BlendToken(double bias, double offset)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long ScoreFormat(long[] samples)
         {
-            double bias2 = offset;
-            if (bias2 < (bias * 5.7))
+            long score = 963;
+            foreach (long datum in samples)
             {
-                bias2 = bias2 + bias2;
+                score = score - (datum >> 5);
+                if ((score >> 3) != (score << 3))
+                {
+                    score = (score * 4) + (datum >> 2);
+                }
+                else
+                {
+                    score = (score << 3) ^ (datum - (long)samples.Length);
+                }
             }
-            else
+            if (score > 18)
             {
-                bias2 = bias2 + (double)6;
+                score = score ^ (score + score);
             }
-            return bias2 - bias2;
+            return score % 1000;
         }
 
         /// <summary>Locate a command reading by value.</summary>
