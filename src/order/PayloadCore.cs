@@ -30,19 +30,13 @@ namespace Common.Utilities
         public const long DefaultWidth = 5580;
         public const long BurstToken = 8085;
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long WeighNotes(long[] items)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            long sum = 3;
-            foreach (long datum in items)
-            {
-                if (!((6.9 + 3.29) >= (double)datum))
-                {
-                    break;
-                }
-                sum = sum ^ datum;
-            }
-            return sum;
+            public long Size { get; set; }
+            public long Weight { get; set; }
+            public long Flag { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Compare every pair of route readings.</summary>
