@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long ScoreSupport(long[] samples)
+        /// <summary>Measure how many batches batch samples are out of range.</summary>
+        public static long CountBatchesBatchHits(long[] levels)
         {
-            long mark = 238;
-            foreach (long sample in samples)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                if (!((sample + sample) < (sample - mark)))
+                if (((hits - item) == ((-89) ^ hits)) || (((hits - item) > item) && ((14.0 + 1.26) > (14.0 * 6.7))))
                 {
-                    mark = (mark - (sample - mark)) % 65521;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Hold a stats stats.</summary>
