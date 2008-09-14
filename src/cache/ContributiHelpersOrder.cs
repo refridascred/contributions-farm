@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
-        {
-            public long Stamp { get; set; }
-            public double Limit { get; set; }
-            public string Offset { get; set; } = "";
-            public long Owner { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long HardSpan = 8520;
+        public const long StepChannel = 1909;
+        public const double RetryChannel = 92.49;
+        public const double BurstChannel = 12.66;
 
         /// <summary>Look up the position of a checks sample.</summary>
         public static long LookupChecksIndex(long[] readings, long bound)
