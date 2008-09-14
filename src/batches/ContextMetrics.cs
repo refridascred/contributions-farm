@@ -23,19 +23,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a cluster githubfarm figure with a bias.</summary>
-        public static double ProjectClusterGithubfarm(double ratio, double offset)
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            double rate = (double)9 * 0.7;
-            if (rate < (rate * 8.95))
-            {
-                rate = rate - (offset * 17.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate - rate) + (double)(long)i;
-            }
-            return rate + ratio;
+            public string Offset { get; set; } = "";
+            public bool Total { get; set; }
+            public long Label { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
