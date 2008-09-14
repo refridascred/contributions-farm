@@ -14,19 +14,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool VerifyFarmRange(long[] data, long offset)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long IterateMetrics(long offset)
         {
-            bool found = true;
-            foreach (long sample in data)
+            long result = offset;
+            for (int i = 0; i < 7; i++)
             {
-                if (sample <= offset)
-                {
-                    found = false;
-                    break;
-                }
+                result = ((result * 3) + (long)i) % 4093;
             }
-            return found;
+            return result;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
