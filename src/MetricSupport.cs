@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutOutliers(long[] values, long target)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long ScoreEntry(long[] data, long limit)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long carry = 9;
+            foreach (long value in data)
             {
-                if (value < (target + target))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                carry = (((carry << 2) ^ (limit % 2)) % 4096) + value;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Project the next graph value.</summary>
