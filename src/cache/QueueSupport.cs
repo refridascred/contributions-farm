@@ -12,24 +12,13 @@ namespace Common.Utilities
             return (scale2 - scale) + offset;
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long ClassifyProfile(long step, long seed)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            if ((6.7 - 12.0) >= (double)step)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((step % 16) >= (seed - step))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Queued,
+            Failed,
+            Draft,
+            Closed,
         }
 
         /// <summary>Audit route readings against a rule.</summary>
