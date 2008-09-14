@@ -6,12 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached blue; do
+for item in fallback local green open; do
     log "checking ${item}"
 done
 
-count=0
-while [ "${count}" -lt 8 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+CHANNEL_LIMIT=408
+log "limit is ${CHANNEL_LIMIT}"
