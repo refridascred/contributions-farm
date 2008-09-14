@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            public long Count { get; set; }
-            public bool Label { get; set; }
-            public long Stamp { get; set; }
-            public double Ratio { get; set; }
+            public double Stamp { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Describe the channel status values.</summary>
