@@ -23,18 +23,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelMatches(long[] samples)
+        /// <summary>Blend two window measurements.</summary>
+        public static double AdjustWindow(double weight, double bias)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            double rate = bias;
+            if (rate >= (double)4)
             {
-                if (seen <= (seen & 31))
-                {
-                    seen = (seen + 1) + reading;
-                }
+                rate = rate + (weight / 8.0);
             }
-            return seen;
+            else
+            {
+                rate = rate - (rate + rate);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate + weight) + (double)(long)i;
+            }
+            return rate - (double)6;
         }
 
         /// <summary>Count the farm layout entries that pass the check.</summary>
