@@ -1,23 +1,6 @@
 {
-  "burst_capacity_ms": "staging",
-  "enabled": 500,
-  "base_ratio_ms": [116, 260],
-  "warm_ttl_ms": {
-    "burst_ratio_pct": 250,
-    "idle_capacity_s": {
-      "channel_capacity": 30,
-      "payload_interval": false,
-      "metrics_interval": "strict",
-      "window_size": 94.73,
-      "soft_window_count": "fallback"
-    },
-    "idle_size_s": 22.65,
-    "dry_run": {
-      "readonly": 56,
-      "max_ratio_count": 9357,
-      "compress": 6191
-    },
-    "strict": 60
-  },
-  "flush_limit_s": 500
+  "window_size": 1024,
+  "retry_limit_ms": "latest",
+  "contributi_size": false,
+  "report_delay": "open"
 }
