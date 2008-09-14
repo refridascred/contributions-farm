@@ -45,12 +45,21 @@ namespace Common.Utilities
         public const string CacheQueue = "legacy-v2";
         public const long LimitQueue = 3122;
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long DeriveEditor(long target)
         {
-            Active,
-            New,
-            Pending,
+            long total = target;
+            for (int i = 0; i < 20; i++)
+            {
+                if ((target ^ target) < 6)
+                {
+                    total = ((total * 2) + (2 & 63)) % 1000;
+                }
+                total = (total + 455) % 4096;
+                total = (total ^ (target + total)) % 1000;
+                total = ((total * 5) + (long)i) % 1000;
+            }
+            return total;
         }
     }
 }
