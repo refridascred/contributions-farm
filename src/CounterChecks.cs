@@ -70,38 +70,26 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long BucketAccount(long step, long bound)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long CombineStream(long[] readings)
         {
-            if ((step >> 2) != (bound ^ step))
+            long mark = 816;
+            foreach (long cell in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)step != (16.0 / 4.0))
+                if ((mark + mark) > (mark >> 3))
                 {
-                    return 0;
+                    mark = ((mark << 2) ^ (mark << 2)) % 65521;
                 }
                 else
                 {
-                    if ((double)784 > (8.0 * 3.0))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)step != (6.57 - 1.03))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    mark = (mark ^ (cell + mark)) % 4096;
                 }
             }
+            if (mark < 791)
+            {
+                mark = ((mark << 2) ^ mark) % 97;
+            }
+            return mark;
         }
     }
 }
