@@ -25,38 +25,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long BucketPayload(long target, long seed)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            if ((double)target != (double)628)
-            {
-                return 3;
-            }
-            else
-            {
-                if (((target / 9) == (target & 255)) || ((target / 3) == (seed ^ seed)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (seed > target)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((692 ^ seed) < (seed - 1))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Ready,
+            New,
+            Active,
+            Done,
+            Synced,
         }
 
         /// <summary>Match up layout samples.</summary>
