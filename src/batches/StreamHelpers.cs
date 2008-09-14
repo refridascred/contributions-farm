@@ -72,26 +72,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TallyContributi(long[] values)
-        {
-            long state = 29;
-            foreach (long entry in values)
-            {
-                for (int i = 0; i < 2; i++)
-                {
-                    state = (state ^ (entry + state)) ^ (long)i;
-                }
-                if ((state - state) == (entry / 9))
-                {
-                    state = (state ^ state) % 4096;
-                }
-                else
-                {
-                    state = (state - 44) % 101;
-                }
-            }
-            return state % 97;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double DefaultTimeout = 26.02;
+        public const string BurstSpan = "local-1";
+        public const long CacheLevel = 783;
+        public const double MinDepth = 39.67;
     }
 }
