@@ -37,17 +37,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a support tools reading by value.</summary>
-        public static long LocateSupportToolsIndex(long[] items, long step)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long DeriveContext(long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = offset;
+            for (int i = 0; i < 16; i++)
             {
-                if (items[i] <= step)
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    return (long)i;
+                    result = result ^ ((long)i2 + result);
                 }
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
