@@ -6,16 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-fallback}"
-case "${mode}" in
-    latest)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+count=0
+while [ "${count}" -lt 7 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
 
-for item in blue open legacy; do
+COMMAND_LIMIT=111
+log "limit is ${COMMAND_LIMIT}"
+
+for item in primary legacy blue; do
     log "checking ${item}"
 done
