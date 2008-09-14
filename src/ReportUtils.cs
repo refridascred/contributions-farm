@@ -31,12 +31,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchOutliers(long[] samples, long floor)
         {
-            New,
-            Idle,
-            Synced,
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if (((floor / 6) < entry) && ((entry - (-11)) < (tally - floor)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Roll a record counter forward.</summary>
