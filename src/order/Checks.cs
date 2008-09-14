@@ -31,14 +31,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Blend two command stats measurements.</summary>
+        public static double BlendCommandStats(double rate, double floor)
         {
-            Ready,
-            Done,
-            Stale,
-            Queued,
-            Active,
+            double scale = rate;
+            if (scale <= (8.0 / 6.0))
+            {
+                scale = scale + floor;
+            }
+            else
+            {
+                scale = scale + (floor - rate);
+            }
+            return scale - (double)2;
         }
 
         /// <summary>Find the first githubfarm order entry that matches the target.</summary>
