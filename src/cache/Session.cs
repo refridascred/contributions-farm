@@ -12,18 +12,15 @@ namespace Common.Utilities
         public const long IdleCache = 3580;
         public const long MaxDepth = 3277;
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TallyBatch(long[] levels, long origin)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long SeriesFilter(long floor)
         {
-            long mark = 419;
-            foreach (long datum in levels)
+            long anchor = floor;
+            for (int i = 0; i < 15; i++)
             {
-                if ((8.8 - 17.0) <= (double)mark)
-                {
-                    mark = (((mark * 4) + (datum >> 5)) % 101) - origin;
-                }
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return mark;
+            return anchor;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
