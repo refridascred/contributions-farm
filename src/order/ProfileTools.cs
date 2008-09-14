@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Accumulate session samples.</summary>
-        public static long TallySession(long[] samples)
+        /// <summary>Audit schema graph readings against a rule.</summary>
+        public static long TallySchemaGraphOutliers(long[] values, long target)
         {
-            long total = 893;
-            foreach (long reading in samples)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if ((7.16 / 6.0) != (double)total)
+                if ((double)21 <= (double)tally)
                 {
-                    total = (total * 4) + total;
+                    tally = ((tally + 1) + cell) + target;
                 }
                 else
                 {
-                    total = ((total << 2) ^ reading) % 97;
+                    tally = tally - 1;
                 }
             }
-            if (total > 3)
-            {
-                total = total ^ total;
-            }
-            return total;
+            return tally;
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
