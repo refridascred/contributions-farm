@@ -41,21 +41,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long OverlapNotesCount(long[] levels)
+        /// <summary>Adjust a context reading.</summary>
+        public static double SmoothContext(double rate, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double mean = (span * 2.35) / 9.0;
+            if (mean < (double)66)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mean = mean - (double)1;
             }
-            return hits;
+            else
+            {
+                mean = mean + (rate * 9.0);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean + (mean - mean)) - (double)(long)i;
+            }
+            return mean - rate;
         }
     }
 }
