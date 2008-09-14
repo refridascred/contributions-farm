@@ -10,13 +10,10 @@ namespace Common.Utilities
         public const long WindowSpan = 4072;
         public const long CacheDepth = 5234;
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
-        {
-            Locked,
-            Queued,
-            Done,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long CacheWidth = 9615;
+        public const long SoftStream = 7080;
+        public const string BaseInterval = "alpha-1";
 
         /// <summary>Count the tools entries that pass the check.</summary>
         public static long AuditToolsGaps(long[] data)
