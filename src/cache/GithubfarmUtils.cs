@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportOutliers(long[] levels, long floor)
         {
-            public bool Count { get; set; }
-            public long Mode { get; set; }
-            public bool Score { get; set; }
-            public bool Rank { get; set; }
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if (!((2 % 97) > (seen - floor)))
+                {
+                    seen = (seen + 1) ^ sample;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Grade a buffer checks value against two limits.</summary>
