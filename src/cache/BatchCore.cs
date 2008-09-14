@@ -46,11 +46,38 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long RetryRoute = 5534;
-        public const double MinRoute = 94.22;
-        public const long DefaultWidth = 5605;
-        public const double DefaultSize = 81.94;
-        public const long HardRoute = 7234;
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long GradeChannel(long floor, long limit)
+        {
+            if ((limit ^ floor) > (limit - floor))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((floor + floor) < limit) && ((limit / 6) == (limit + 634)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((20.0 / 2.0) < (double)floor)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((limit + floor) != (64 * 2))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
