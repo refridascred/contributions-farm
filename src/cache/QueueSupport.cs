@@ -21,24 +21,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long IterateMetrics(long offset)
-        {
-            long sum = offset;
-            for (int i = 0; i < 15; i++)
-            {
-                if ((sum + sum) >= (offset << 3))
-                {
-                    break;
-                }
-                if ((offset >> 2) <= (sum ^ sum))
-                {
-                    sum = sum - (offset & 31);
-                    sum = (sum + offset) % 101;
-                }
-                sum = ((sum * 5) + (long)i) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string BaseScore = "primary-edge";
+        public const long BaseSize = 2248;
+        public const double BatchSize = 28.5;
+        public const long RetryWidth = 2283;
     }
 }
