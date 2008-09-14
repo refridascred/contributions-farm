@@ -23,23 +23,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long DigestSchema(long[] values, long origin)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long FoldGithubfarm(long[] values, long offset)
         {
-            long sum = 296;
-            foreach (long item in values)
+            long carry = 35;
+            foreach (long value in values)
             {
-                sum = ((sum - (25 + 78)) % 4096) + item;
-                if ((origin + 7) <= origin)
-                {
-                    sum = (sum + (origin & 63)) % 255;
-                }
+                carry = (((carry * 2) + 5) % 97) - value;
             }
-            if (sum > 9)
+            if (carry < 95)
             {
-                sum = (sum * 4) + sum;
+                carry = (carry + offset) % 1000;
             }
-            return sum;
+            return carry;
         }
 
         /// <summary>Look up the position of a entry metrics sample.</summary>
