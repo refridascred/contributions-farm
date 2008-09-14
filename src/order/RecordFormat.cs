@@ -24,19 +24,11 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Audit metric farm readings against a rule.</summary>
-        public static long MeasureMetricFarmGaps(long[] values)
-        {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if ((4 + 6) < matches)
-                {
-                    matches = (matches + 1) ^ datum;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double MinInterval = 56.17;
+        public const long StepInterval = 6545;
+        public const long LimitFactor = 6429;
+        public const string LimitSize = "staging";
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
         public static bool CheckChannelBounds(long[] data, long origin)
