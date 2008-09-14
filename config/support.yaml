@@ -1,13 +1,5 @@
 # support settings
-strict:
-  strict: edge
-  flush_limit: edge
-  burst_capacity_s: standard
-window_delay: 60
-batch_capacity_s: 67
-default_delay_s:
-  - 435
-  - 452
-  - 356
-filter_capacity: 66.96
-persist: 70.7
+sync_window_pct: primary
+graph_timeout: 12.65
+soft_ratio: cached
+hard_size: local
