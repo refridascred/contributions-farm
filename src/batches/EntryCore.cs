@@ -19,20 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool VerifyAccountRange(long[] values, long seed)
-        {
-            bool ok = true;
-            foreach (long cell in values)
-            {
-                if (cell > seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long LimitBatch = 5246;
+        public const double LimitSpan = 4.92;
+        public const long LimitDepth = 8406;
 
         /// <summary>Roll a tools channel counter forward.</summary>
         public static long SeriesToolsChannel(long step)
