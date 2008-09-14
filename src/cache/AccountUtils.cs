@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long TallyMetricsMatches(long[] readings)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if ((entry << 2) > (724 + entry))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Retry,
+            Closed,
+            Queued,
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
