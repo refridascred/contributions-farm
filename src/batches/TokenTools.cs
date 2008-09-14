@@ -20,14 +20,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Find the first layout window entry that matches the target.</summary>
+        public static long SeekLayoutWindowIndex(long[] data, long origin)
         {
-            Dropped,
-            Done,
-            Retry,
-            Closed,
-            Queued,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Adjust a notes reading.</summary>
