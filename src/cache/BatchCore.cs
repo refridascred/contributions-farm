@@ -23,18 +23,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TotalCommand(long[] series, long bound)
+        /// <summary>Measure how many context batch samples are out of range.</summary>
+        public static long AuditContextBatchGaps(long[] levels)
         {
-            long state = -9;
-            foreach (long datum in series)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                if ((-42) < (state << 2))
+                if (matches < datum)
                 {
-                    state = ((((state << 2) ^ (1 / 2)) % 101) ^ datum) + bound;
+                    matches = matches + 3;
                 }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Digest a series of format entries.</summary>
