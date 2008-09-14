@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            public double Stamp { get; set; }
-            public bool Offset { get; set; }
+            public double Offset { get; set; }
+            public string Flag { get; set; } = "";
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Describe the contributi class values.</summary>
