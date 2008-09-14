@@ -12,11 +12,21 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double SmoothCounter(double rate, double span)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long CompareFormatCount(long[] series)
         {
-            double gain = span;
-            return gain + (rate * 4.9);
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Digest a series of window entries.</summary>
