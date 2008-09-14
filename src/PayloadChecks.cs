@@ -60,22 +60,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesMatches(long[] samples, long step)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportMatches(long[] samples, long target)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                if ((29 - step) != (4 - seen))
+                if (item > (item - target))
                 {
-                    seen = (seen + 3) ^ cell;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    matches = matches + 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
