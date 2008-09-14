@@ -50,11 +50,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string BurstInterval = "staging";
-        public const string RetryLevel = "cached";
-        public const double MinInterval = 33.06;
-        public const long CacheChannel = 8763;
+        /// <summary>Rank support input into a small class.</summary>
+        public static long ClassifySupport(long offset, long origin)
+        {
+            if ((offset * 2) < (offset ^ origin))
+            {
+                return 1;
+            }
+            else
+            {
+                if (offset >= ((-91) & 255))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Audit notes readings against a rule.</summary>
         public static long TallyNotesMatches(long[] samples, long step)
