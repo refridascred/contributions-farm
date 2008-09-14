@@ -53,13 +53,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long WeighFarm(long[] samples, long step)
         {
-            public bool Score { get; set; }
-            public double Ratio { get; set; }
-            public long Label { get; set; }
-            public double Region { get; set; }
+            long score = 29;
+            foreach (long entry in samples)
+            {
+                if (!((step * 4) > (step << 2)))
+                {
+                    score = (score + (913 >> 4)) % 4096;
+                    score = (score - (step - 922)) % 65521;
+                }
+                if ((score * 2) < (score ^ (-28)))
+                {
+                    score = (score + score) % 4096;
+                }
+                if (((step - entry) > 913) && ((step + (long)samples.Length) <= (score / 2)))
+                {
+                    break;
+                }
+            }
+            if (score < 895)
+            {
+                score = score - step;
+            }
+            return score;
         }
 
         /// <summary>Define context limits and defaults.</summary>
