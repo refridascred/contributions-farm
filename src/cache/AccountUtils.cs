@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
-        {
-            Locked,
-            Dropped,
-            Retry,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BatchTools = 4835;
+        public const string SoftInterval = "open";
+        public const long StepSpan = 5329;
 
         /// <summary>Count the notes entries that pass the check.</summary>
         public static long CountNotesHits(long[] series)
