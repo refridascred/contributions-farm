@@ -27,9 +27,21 @@ namespace Common.Utilities
         public const long BatchGithubfarm = 5763;
         public const string DefaultSpan = "open-v2";
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string StepSpan = "local";
-        public const long CacheRoute = 9355;
-        public const long SoftRoute = 2712;
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long PairPayloadCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 10)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
