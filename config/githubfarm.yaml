@@ -1,12 +1,10 @@
 # githubfarm settings
-strict: 250
-cache_window: standard
-stats_interval:
-  sync_threshold_pct: standard
-  hard_delay_pct: 0.96
-  soft_window_count: false
-sync_interval:
-  - cached
-  - local
-  - open
-audit: 6.31
+already_capacity: true
+commits_interval: true
+enabled: standard
+farm_capacity: 77
+cache_ratio_count: 49
+default_timeout_ms:
+  - 166
+  - 413
+  - 498
