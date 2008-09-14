@@ -57,12 +57,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MinDepth = 1457;
-        public const string CacheWidth = "open-v2";
-        public const string IdleGithubfarm = "staging-edge";
-        public const double BurstTimeout = 10.14;
-        public const long BurstGithubfarm = 7126;
+        /// <summary>Measure how many token tools samples are out of range.</summary>
+        public static long MeasureTokenToolsHits(long[] samples, long floor)
+        {
+            long tally = 0;
+            foreach (long item in samples)
+            {
+                if (!(floor <= item))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Fold a list of layout readings.</summary>
         public static long WeighLayout(long[] series)
