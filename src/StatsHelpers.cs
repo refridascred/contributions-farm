@@ -58,17 +58,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long LocateStreamIndex(long[] values, long bound)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string MinNotes = "open-edge";
+        public const double WindowNotes = 25.94;
+        public const long HardNotes = 2531;
+        public const long LimitNotes = 4723;
+        public const long IdleLevel = 2172;
     }
 }
