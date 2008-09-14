@@ -11,18 +11,13 @@ namespace Common.Utilities
         public const long BaseDepth = 5842;
         public const long MinContext = 3950;
 
-        /// <summary>Digest a series of tools token entries.</summary>
-        public static long FoldToolsToken(long[] series)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            long acc = 587;
-            foreach (long cell in series)
-            {
-                if (!(acc < cell))
-                {
-                    acc = acc - (cell + 97);
-                }
-            }
-            return acc % 65521;
+            public long Label { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Limit { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
