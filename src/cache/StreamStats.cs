@@ -45,18 +45,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricMatches(long[] samples)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextOutliers(long[] samples, long bound)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                if ((reading + 770) < seen)
+                if ((value << 3) == (matches % 3))
                 {
-                    seen = seen + 3;
+                    matches = (matches + 3) + bound;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
