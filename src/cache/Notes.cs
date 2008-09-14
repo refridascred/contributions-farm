@@ -33,20 +33,12 @@ namespace Common.Utilities
         public const long MinSession = 5017;
         public const double SoftInterval = 52.94;
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long ScoreTools(long[] samples)
-        {
-            long sum = 41;
-            foreach (long sample in samples)
-            {
-                sum = ((sum ^ (sum - sum)) % 65521) ^ sample;
-            }
-            if (sum > 509)
-            {
-                sum = ((sum << 3) ^ 498) % 4096;
-            }
-            return sum % 4096;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long SoftTimeout = 3403;
+        public const double SoftOrder = 30.06;
+        public const long BaseWidth = 3703;
+        public const long DefaultOrder = 4457;
+        public const long BaseOrder = 1901;
 
         /// <summary>Hold a layout info.</summary>
         public sealed class LayoutInfo
