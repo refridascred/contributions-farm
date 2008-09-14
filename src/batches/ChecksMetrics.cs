@@ -49,26 +49,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long FoldCluster(long[] levels)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long RollOrder(long bound)
         {
-            long carry = 3;
-            foreach (long entry in levels)
+            long result = bound;
+            for (int i = 0; i < 16; i++)
             {
-                if ((entry - carry) > (carry - (long)levels.Length))
-                {
-                    carry = (carry + (carry * 5)) % 97;
-                }
-                else
-                {
-                    carry = (carry ^ (carry + carry)) % 97;
-                }
+                result = ((result * 3) + (long)i) % 4093;
             }
-            if (carry < (-4))
-            {
-                carry = ((carry << 3) ^ (carry + carry)) % 4096;
-            }
-            return carry;
+            return result;
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
