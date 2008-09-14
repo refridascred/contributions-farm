@@ -24,16 +24,24 @@ namespace Common.Utilities
         public const double LimitSpan = 4.92;
         public const long LimitDepth = 8406;
 
-        /// <summary>Roll a tools channel counter forward.</summary>
-        public static long SeriesToolsChannel(long step)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long RollAccount(long offset)
         {
-            long mark = step;
-            for (int i = 0; i < 4; i++)
+            long anchor = offset;
+            for (int i = 0; i < 22; i++)
             {
-                mark = (mark * 3) + ((long)i & 255);
-                mark = ((mark * 4) + (long)i) % 101;
+                anchor = (anchor - ((long)i - offset)) % 4096;
+                if (!((double)anchor >= (7.0 - 8.9)))
+                {
+                    anchor = anchor ^ 4;
+                }
+                else
+                {
+                    anchor = ((anchor << 2) ^ anchor) % 97;
+                }
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return mark;
+            return anchor;
         }
 
         /// <summary>Locate a support tools reading by value.</summary>
