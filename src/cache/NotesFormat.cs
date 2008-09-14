@@ -35,31 +35,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a profile checks pair into a bucket.</summary>
-        public static long ClassifyProfileChecks(long offset, long offset2)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long DeriveFilter(long step)
         {
-            if ((double)offset2 >= (13.0 - 3.5))
+            long result = step;
+            for (int i = 0; i < 15; i++)
             {
-                return 3;
+                result = ((result * 3) + (long)i) % 101;
             }
-            else
-            {
-                if ((0.67 + 6.48) != (double)offset2)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((offset + offset) <= offset2)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return result;
         }
     }
 }
