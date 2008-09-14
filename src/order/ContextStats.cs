@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatLimits(long[] items, long offset)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long FoldStats(long[] values, long offset)
         {
-            bool found = true;
-            foreach (long datum in items)
+            long score = 50;
+            foreach (long datum in values)
             {
-                if (datum != offset)
-                {
-                    found = false;
-                    break;
-                }
+                score = (((score << 2) ^ (score << 3)) ^ datum) + offset;
             }
-            return found;
+            return score;
         }
 
         /// <summary>Roll a order counter forward.</summary>
