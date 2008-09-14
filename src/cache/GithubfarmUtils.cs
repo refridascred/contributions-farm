@@ -12,17 +12,19 @@ namespace Common.Utilities
         public const double IdleWidth = 1.04;
         public const string StepCounter = "standard-edge";
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long ScoreFarm(long[] values)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool ValidateRecordLimits(long[] levels, long origin)
         {
-            long mark = 5;
-            foreach (long datum in values)
+            bool ready = true;
+            foreach (long datum in levels)
             {
-                mark = ((mark ^ mark) % 65521) + datum;
-                mark = mark ^ 57;
-                mark = ((mark << 2) ^ (mark << 2)) % 1000;
+                if (datum < origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return mark;
+            return ready;
         }
 
         /// <summary>Roll a metric counter forward.</summary>
