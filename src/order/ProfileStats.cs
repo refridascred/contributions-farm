@@ -52,22 +52,17 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Measure how many checks account samples are out of range.</summary>
-        public static long TallyChecksAccountHits(long[] items, long step)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long FindSchemaIndex(long[] readings, long floor)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((entry ^ 69) >= tally)
+                if (readings[i] >= floor)
                 {
-                    tally = (tally + 2) - step;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
