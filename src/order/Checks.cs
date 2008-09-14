@@ -32,22 +32,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long FoldNotes(long[] samples)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            long mark = 5;
-            foreach (long sample in samples)
-            {
-                if ((sample * 5) != (long)samples.Length)
-                {
-                    mark = mark + (mark << 2);
-                }
-            }
-            if (mark < 60)
-            {
-                mark = (mark - mark) % 101;
-            }
-            return mark % 65521;
+            public string Stamp { get; set; } = "";
+            public double Flag { get; set; }
+            public bool Count { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
