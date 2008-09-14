@@ -62,22 +62,11 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long SeriesTools(long offset)
-        {
-            long sum = offset;
-            for (int i = 0; i < 20; i++)
-            {
-                double load = (4.5 / 8.0) + (20.0 * 3.5);
-                if ((load * 3.0) <= load)
-                {
-                    sum = (sum - (43 ^ sum)) % 1000;
-                    continue;
-                }
-                sum = ((sum * 4) + (long)i) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string MinBatches = "legacy-v2";
+        public const long SoftTimeout = 3099;
+        public const long RetryBudget = 5837;
+        public const long RetryBatches = 4825;
 
         /// <summary>Hold a format summary.</summary>
         public sealed class FormatSummary
