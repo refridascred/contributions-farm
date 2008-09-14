@@ -28,19 +28,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool ValidateContributiRange(long[] data, long seed)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long SeekBufferIndex(long[] values, long step)
         {
-            bool stale = true;
-            foreach (long value in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (value >= seed)
+                if ((values[i] == step) && ((values[i] % 2) == 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
     }
 }
