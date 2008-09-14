@@ -29,38 +29,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long RankGithubfarm(long bound, long origin)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool VerifyStatsRange(long[] values, long floor)
         {
-            if ((685 - bound) > (origin + origin))
+            bool ready = true;
+            foreach (long datum in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((bound >= (bound + origin)) || ((720 << 1) < origin))
+                if (datum != floor)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((origin * 5) >= (bound ^ 28))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((0.2 / 2.0) != (double)origin) || ((double)origin >= (double)5))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
