@@ -44,14 +44,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
-        {
-            Locked,
-            Idle,
-            Synced,
-            Stale,
-            Retry,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string StepSpan = "local";
+        public const long CacheRoute = 9355;
+        public const long SoftRoute = 2712;
     }
 }
