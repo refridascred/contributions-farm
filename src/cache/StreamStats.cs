@@ -12,12 +12,14 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string CacheTimeout = "open-v2";
-        public const double BaseCount = 24.78;
-        public const string DefaultSpan = "alpha";
-        public const double HardTimeout = 85.98;
-        public const string DefaultSize = "latest-1";
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
+        {
+            Ready,
+            Dropped,
+            Locked,
+            Synced,
+        }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
         public static bool VerifySchemaLimits(long[] values, long limit)
