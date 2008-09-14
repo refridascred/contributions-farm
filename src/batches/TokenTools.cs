@@ -29,16 +29,32 @@ namespace Common.Utilities
         public const long SoftSpan = 8522;
         public const double MaxWindow = 95.65;
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long SeriesLayout(long step)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long SortStats(long target, long limit)
         {
-            long carry = step;
-            for (int i = 0; i < 22; i++)
+            long offset = target + limit;
+            if (!((target - limit) <= limit))
             {
-                carry = (carry - ((long)i + carry)) % 1000;
-                carry = ((carry * 4) + (long)i) % 1000;
+                return 7;
             }
-            return carry;
+            else
+            {
+                if (!((offset % 2) >= target))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((limit % 7) >= target)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
