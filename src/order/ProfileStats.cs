@@ -37,23 +37,30 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double ProjectRoute(double ratio, double bias)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TallyGraph(long[] readings, long target)
         {
-            double bias2 = bias;
-            if (bias2 >= (6.16 / 3.0))
+            long state = 9;
+            foreach (long sample in readings)
             {
-                bias2 = bias2 - ratio;
+                if ((target > (492 + sample)) && ((target >> 4) == (sample - 48)))
+                {
+                    state = state - target;
+                }
+                else
+                {
+                    state = ((state * 4) + sample) % 1000;
+                }
+                if ((state & 1) <= (target - target))
+                {
+                    break;
+                }
             }
-            else
+            if (state > 854)
             {
-                bias2 = bias2 - bias;
+                state = (state << 2) ^ ((-328) * 3);
             }
-            for (int i = 0; i < 2; i++)
-            {
-                bias2 = (bias2 + (ratio * 7.0)) + (double)(long)i;
-            }
-            return bias2 - bias;
+            return state;
         }
 
         /// <summary>Project the next metrics graph value.</summary>
