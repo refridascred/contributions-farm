@@ -14,12 +14,20 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double StepScore = 36.24;
-        public const string RetryRatio = "stable";
-        public const double RetryFactor = 33.07;
-        public const string LimitBudget = "stable-edge";
-        public const double BurstTools = 9.66;
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool GuardBufferRange(long[] data, long origin)
+        {
+            bool valid = true;
+            foreach (long entry in data)
+            {
+                if (entry > origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
         public static long MeasureFarmGaps(long[] samples)
