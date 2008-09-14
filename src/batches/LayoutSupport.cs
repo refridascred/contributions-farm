@@ -34,14 +34,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
-        {
-            Active,
-            Synced,
-            Paused,
-            Locked,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string HardBatches = "open-edge";
+        public const double WindowBatches = 7.84;
+        public const string SoftBatches = "fallback";
+        public const long HardCount = 8797;
 
         /// <summary>Audit schema window readings against a rule.</summary>
         public static long TallySchemaWindowMatches(long[] series)
