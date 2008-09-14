@@ -58,19 +58,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate order format readings against a bound.</summary>
-        public static bool CheckOrderFormatBounds(long[] series, long floor)
-        {
-            bool flag = true;
-            foreach (long cell in series)
-            {
-                if (cell < floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long SoftLevel = 3183;
+        public const long BurstPayload = 8508;
+        public const long BurstInterval = 198;
+        public const double WindowSpan = 70.95;
     }
 }
