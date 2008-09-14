@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long RetryRatio = 1341;
-        public const long MaxProfile = 7153;
-        public const long RetryDepth = 3698;
-        public const string MinTimeout = "alpha-edge";
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long SeriesChannel(long step)
+        {
+            long total = step;
+            for (int i = 0; i < 7; i++)
+            {
+                if ((14.0 - 2.7) == (double)total)
+                {
+                    total = (total ^ (total - (long)i)) % 4096;
+                }
+                total = ((total * 5) + (long)i) % 101;
+            }
+            return total;
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const string CacheSpan = "cached-1";
