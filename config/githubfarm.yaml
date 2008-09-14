@@ -1,15 +1,13 @@
 # githubfarm settings
-flush_size_ms: 60
-strict:
-  idle_depth: standard
-  batch_window_s: standard
-  poll_ratio: 1013
-  hard_capacity_s: primary
-cache_ratio_pct: 36.28
-warm_limit_s: 46
-batch_threshold_pct:
-  - 339
-  - 340
-  - 345
-  - 191
-enabled: 91
+verbose: 500
+batch_depth: 23.64
+entry_retries:
+  - fallback
+  - local
+burst_depth_s:
+  - 409
+  - 450
+  - 253
+  - 268
+readonly: fallback
+dry_run: false
