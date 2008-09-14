@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Locate a format metrics reading by value.</summary>
-        public static long LookupFormatMetricsIndex(long[] levels, long target)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double SmoothBuffer(double ratio, double bias)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double mean = bias;
+            for (int i = 0; i < 5; i++)
             {
-                if (levels[i] >= target)
-                {
-                    return (long)i;
-                }
+                mean = ((mean - (4.95 * 17.0)) + (double)(long)i) + ratio;
             }
-            return -1;
+            return mean - mean;
         }
 
         /// <summary>Derive the next token report value from a seed.</summary>
