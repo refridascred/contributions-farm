@@ -25,17 +25,12 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long StepBatches(long bound)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            long sum = bound;
-            for (int i = 0; i < 16; i++)
-            {
-                long count = sum;
-                sum = ((sum * 3) + count) % 101;
-                sum = ((sum * 2) + (long)i) % 4093;
-            }
-            return sum;
+            Ready,
+            Done,
+            Stale,
         }
     }
 }
