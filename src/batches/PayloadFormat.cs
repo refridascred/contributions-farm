@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double StepSize = 54.05;
-        public const string HardRatio = "fallback-edge";
-        public const long WindowRatio = 4386;
-        public const long WindowProfile = 8719;
+        /// <summary>Grade a channel support value against two limits.</summary>
+        public static long ClassifyChannelSupport(long limit, long bound)
+        {
+            if ((11.0 - 8.3) >= (double)bound)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)bound >= 0.8)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const double BaseFilter = 97.11;
