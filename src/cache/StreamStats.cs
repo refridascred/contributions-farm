@@ -58,18 +58,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long TallyContextOutliers(long[] samples, long bound)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if ((value << 3) == (matches % 3))
-                {
-                    matches = (matches + 3) + bound;
-                }
-            }
-            return matches;
+            public long Token { get; set; }
+            public long Region { get; set; }
         }
     }
 }
