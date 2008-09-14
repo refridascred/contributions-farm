@@ -37,18 +37,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many farm entry samples are out of range.</summary>
-        public static long AuditFarmEntryMatches(long[] levels)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if (((datum + 41) <= (tally + tally)) || (((tally + (long)levels.Length) <= (datum / 9)) || ((datum - 983) < tally)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Draft,
+            Active,
+            Failed,
         }
 
         /// <summary>Hold a batches options.</summary>
