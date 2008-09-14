@@ -23,17 +23,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first editor record entry that matches the target.</summary>
-        public static long SeekEditorRecordIndex(long[] data, long step)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long MeasureClusterMatches(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if ((data[i] > step) && ((data[i] % 3) == 0))
+                if ((entry ^ entry) < matches)
                 {
-                    return (long)i;
+                    matches = matches + 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Combine order values into a single score.</summary>
