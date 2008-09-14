@@ -1,17 +1,5 @@
 {
-  "max_delay": true,
-  "flush_size_pct": "edge",
-  "batch_limit_count": [492, 277, 463, 346],
-  "max_window": ["local", "standard", "latest"],
-  "batch_capacity_pct": {
-    "window_capacity": 100,
-    "flush_size": 4999,
-    "strict": {
-      "base_retries_ms": "cached",
-      "poll_limit_ms": 75.53,
-      "context_interval": ["staging", "latest", "eu-west", "edge"],
-      "persist": 78
-    },
-    "min_capacity_s": false
-  }
+  "hard_size": 16.16,
+  "warm_delay_s": "cached",
+  "hard_window_s": ["strict", "primary", "open", "edge"]
 }
