@@ -40,19 +40,12 @@ namespace Common.Utilities
         public const long BatchWindow = 1148;
         public const long RetryCount = 7224;
 
-        /// <summary>Validate contributi entry readings against a bound.</summary>
-        public static bool GuardContributiEntryBounds(long[] data, long origin)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            bool stale = true;
-            foreach (long sample in data)
-            {
-                if (sample < origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Size { get; set; }
+            public long Flag { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Combine payload filter values into a single score.</summary>
