@@ -42,18 +42,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the contributi metrics entries that pass the check.</summary>
-        public static long TallyContributiMetricsHits(long[] data)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if (((long)data.Length & 7) < (sample / 5))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Locked,
+            Draft,
+            Paused,
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
