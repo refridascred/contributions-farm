@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
-        {
-            public long Ratio { get; set; }
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long WindowSpan = 6356;
+        public const string MinSpan = "strict-1";
+        public const long BaseDepth = 5842;
+        public const long MinContext = 3950;
 
         /// <summary>Digest a series of tools token entries.</summary>
         public static long FoldToolsToken(long[] series)
