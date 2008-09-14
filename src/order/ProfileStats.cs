@@ -19,26 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine graph account values into a single score.</summary>
-        public static long TallyGraphAccount(long[] levels)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            long score = 141;
-            foreach (long value in levels)
-            {
-                if ((7.4 + 9.3) == (double)value)
-                {
-                    score = (score - ((-54) & 3)) % 4096;
-                }
-                else
-                {
-                    score = (score + (long)levels.Length) % 255;
-                }
-                if ((17.0 + 1.3) < (double)score)
-                {
-                    break;
-                }
-            }
-            return score;
+            public string Rank { get; set; } = "";
+            public string Region { get; set; } = "";
+            public long Token { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Fold a list of graph readings.</summary>
