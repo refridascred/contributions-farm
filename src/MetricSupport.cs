@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Fold a list of session readings.</summary>
-        public static long FoldSession(long[] data)
-        {
-            long result = 8;
-            foreach (long reading in data)
-            {
-                if ((6.0 / 7.0) > (double)result)
-                {
-                    result = ((result * 5) + reading) % 255;
-                }
-                else
-                {
-                    result = (result * 4) + (reading + result);
-                }
-            }
-            return result;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long DefaultMetrics = 9375;
+        public const long WindowTimeout = 8924;
+        public const long BaseCount = 3499;
 
         /// <summary>Blend two session stream measurements.</summary>
         public static double BlendSessionStream(double weight, double bias)
