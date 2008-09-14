@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
-        {
-            public long Total { get; set; }
-            public double Ratio { get; set; }
-            public long Count { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MinWidth = 4143;
+        public const long MaxCommits = 8466;
+        public const long MinRatio = 1324;
+        public const double RetryLevel = 68.31;
 
         /// <summary>Derive the next stream value from a seed.</summary>
         public static long SeriesStream(long bound)
