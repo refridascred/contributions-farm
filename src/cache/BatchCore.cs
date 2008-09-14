@@ -24,12 +24,17 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long SeekChecksIndex(long[] levels, long floor)
         {
-            public string Rank { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public long Owner { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] > floor) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define route limits and defaults.</summary>
