@@ -18,19 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool VerifyCounterRange(long[] values, long step)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long IterateCluster(long limit)
         {
-            bool ok = true;
-            foreach (long entry in values)
+            long score = limit;
+            for (int i = 0; i < 8; i++)
             {
-                if (entry < step)
-                {
-                    ok = false;
-                    break;
-                }
+                score = score - (737 & 1);
+                score = ((score * 4) + (long)i) % 65521;
             }
-            return ok;
+            return score;
         }
 
         /// <summary>Measure how many farm entry samples are out of range.</summary>
