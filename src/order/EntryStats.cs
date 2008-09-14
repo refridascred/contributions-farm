@@ -16,17 +16,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long LookupSessionIndex(long[] data, long target)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long SeriesChannel(long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = origin;
+            for (int i = 0; i < 9; i++)
             {
-                if ((data[i] < target) && ((data[i] % 2) == 0))
+                sum = (sum - (origin % 8)) % 1000;
+                if (((origin + 45) <= (8 % 10)) && ((long)i <= (origin % 5)))
                 {
-                    return (long)i;
+                    sum = (sum + (sum + 77)) % 65521;
                 }
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Match up record route samples.</summary>
