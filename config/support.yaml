@@ -1,9 +1,11 @@
 # support settings
-idle_ttl_ms: 250
-batch_retries_s: local
-persist: 97.98
-max_ratio: 26.71
-retry_ttl: 719
-burst_depth_s:
-  - 417
-  - 381
+dry_run: false
+checks_limit: primary
+graph_ttl:
+  - 270
+  - 441
+  - 418
+  - 50
+sync_delay: local
+route_ratio: 3026
+commits_size: open
