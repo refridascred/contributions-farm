@@ -76,9 +76,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long HardScore = 1074;
-        public const double BatchAlready = 14.38;
-        public const long IdleDepth = 2220;
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterOutliers(long[] items)
+        {
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if ((double)reading > 5.4)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
     }
 }
