@@ -59,21 +59,14 @@ namespace Common.Utilities
             return load + (double)2;
         }
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long OverlapContextCount(long[] levels)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 1)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Draft,
+            Ready,
+            Dropped,
+            Synced,
+            Failed,
         }
     }
 }
