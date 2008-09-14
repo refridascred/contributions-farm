@@ -23,14 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            Dropped,
-            Queued,
-            Idle,
-            Active,
-            Pending,
+            public string Score { get; set; } = "";
+            public bool Label { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Hold a entry summary.</summary>
