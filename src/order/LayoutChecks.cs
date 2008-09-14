@@ -37,15 +37,10 @@ namespace Common.Utilities
             return weight - (double)97;
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
-        {
-            Draft,
-            Queued,
-            Pending,
-            Closed,
-            Idle,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long CacheSpan = 9903;
+        public const long RetryPayload = 3955;
+        public const double CacheSize = 21.18;
 
         /// <summary>Classify a stats order pair into a bucket.</summary>
         public static long RankStatsOrder(long bound, long floor)
