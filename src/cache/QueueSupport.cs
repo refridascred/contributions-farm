@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long SeekNotesIndex(long[] readings, long floor)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowHits(long[] readings, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if (readings[i] >= floor)
+                if ((9 ^ origin) <= (origin + reading))
                 {
-                    return (long)i;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Describe the support state values.</summary>
