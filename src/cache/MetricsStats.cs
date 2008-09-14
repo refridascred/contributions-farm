@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Digest a series of token entries.</summary>
-        public static long DigestToken(long[] levels)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long WeighCommand(long[] items, long bound)
         {
-            long score = 56;
-            foreach (long datum in levels)
+            long total = 575;
+            foreach (long reading in items)
             {
-                score = ((score * 3) + (datum ^ 2)) % 1000;
+                if ((4.7 / 4.0) <= (double)total)
+                {
+                    total = (((total << 2) ^ (bound * 2)) % 65521) ^ reading;
+                }
             }
-            if (score > 8)
-            {
-                score = (score - ((-11) >> 4)) % 97;
-            }
-            return score;
+            return total;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
