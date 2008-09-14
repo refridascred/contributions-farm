@@ -21,11 +21,13 @@ namespace Common.Utilities
         public const string MaxLevel = "strict-1";
         public const long DefaultFactor = 8003;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BaseProfile = 7335;
-        public const long MaxProfile = 202;
-        public const long WindowProfile = 3483;
-        public const long HardScore = 8513;
-        public const long HardProfile = 2110;
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
+        {
+            Stale,
+            New,
+            Locked,
+            Retry,
+        }
     }
 }
