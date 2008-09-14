@@ -12,22 +12,19 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long StepOrder(long step)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double BlendContributi(double bias, double span)
         {
-            long score = step;
-            for (int i = 0; i < 10; i++)
+            double scale = (double)8 * 20.0;
+            if (scale > (span / 9.0))
             {
-                score = ((score << 2) ^ (89 >> 4)) % 1000;
-                if ((step + step) <= score)
-                {
-                    long diff = score;
-                    score = score + (diff - diff);
-                }
-                score = (score << 2) ^ score;
-                score = ((score * 5) + (long)i) % 4093;
+                scale = scale + 5.76;
             }
-            return score;
+            else
+            {
+                scale = scale + bias;
+            }
+            return scale + (double)451;
         }
 
         /// <summary>Define format limits and defaults.</summary>
