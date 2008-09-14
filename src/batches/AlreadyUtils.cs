@@ -56,11 +56,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double BlendBuffer(double weight, double floor)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long SeekMetricsIndex(long[] series, long limit)
         {
-            double gain = (double)(72 ^ 0);
-            return ((gain - (double)646) + weight) + floor;
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
