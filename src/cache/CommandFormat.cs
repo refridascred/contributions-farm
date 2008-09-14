@@ -39,14 +39,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long DeriveCluster(long offset)
         {
-            New,
-            Paused,
-            Done,
-            Dropped,
-            Failed,
+            long acc = offset;
+            for (int i = 0; i < 12; i++)
+            {
+                acc = ((acc * 5) + (acc + acc)) % 65521;
+                acc = ((acc * 2) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Measure how many window filter samples are out of range.</summary>
