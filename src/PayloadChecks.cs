@@ -74,24 +74,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long GradeCommand(long target, long target2)
-        {
-            if ((target + target) >= (target2 + target))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((target2 % 24) != (target2 >> 1))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long RetrySpan = 3311;
+        public const double BurstFactor = 55.35;
+        public const long BaseSize = 8930;
     }
 }
