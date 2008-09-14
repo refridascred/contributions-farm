@@ -16,18 +16,39 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchOutliers(long[] items, long target)
+        /// <summary>Classify a batch farm pair into a bucket.</summary>
+        public static long RankBatchFarm(long target, long offset)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long delta = target + offset;
+            if ((offset - target) > (delta % 8))
             {
-                if ((target << 3) == (matches + matches))
+                return 3;
+            }
+            else
+            {
+                if ((double)target != (7.0 + 4.73))
                 {
-                    matches = (matches + 2) + datum;
+                    return 7;
+                }
+                else
+                {
+                    if (!((offset & 127) < (364 & 31)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((double)delta < (double)target))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Count the payload commits entries that pass the check.</summary>
