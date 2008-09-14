@@ -1,6 +1,6 @@
 {
-  "max_size": "fallback",
-  "payload_capacity": 20.03,
-  "base_depth_s": "local",
-  "warm_size_pct": 9
+  "soft_size_count": 74,
+  "burst_size_ms": "green",
+  "warm_size_s": 84.53,
+  "flush_capacity_pct": true
 }
