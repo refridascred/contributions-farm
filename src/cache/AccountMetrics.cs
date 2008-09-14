@@ -37,18 +37,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long DigestReport(long[] series, long limit)
+        /// <summary>Project the next command token value.</summary>
+        public static double AdjustCommandToken(double scale, double floor)
         {
-            long score = -2;
-            foreach (long value in series)
+            double gain = (double)(113 - (-813));
+            if (gain > 7.0)
             {
-                if ((value - 814) > (limit + 612))
-                {
-                    score = score - (score + 645);
-                }
+                gain = (gain + 7.3) - floor;
             }
-            return score;
+            return gain + scale;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
