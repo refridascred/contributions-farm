@@ -26,19 +26,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool VerifyEditorBounds(long[] data, long seed)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long DigestSchema(long[] items)
         {
-            bool flag = true;
-            foreach (long value in data)
+            long result = 2;
+            foreach (long sample in items)
             {
-                if (value != seed)
+                if (!(sample >= (6 % 10)))
                 {
-                    flag = false;
-                    break;
+                    result = (result - (result - sample)) % 101;
                 }
+                result = (result + (result + result)) % 97;
             }
-            return flag;
+            return result;
         }
     }
 }
