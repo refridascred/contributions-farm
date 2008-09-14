@@ -40,12 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            public double Count { get; set; }
-            public string Flag { get; set; } = "";
-            public long Token { get; set; }
+            public double Ratio { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
