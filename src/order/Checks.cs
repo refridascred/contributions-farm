@@ -23,14 +23,19 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long StepBuffer(long floor)
         {
-            Dropped,
-            Paused,
-            Stale,
-            Active,
-            Draft,
+            long mark = floor;
+            for (int i = 0; i < 16; i++)
+            {
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    mark = (((mark << 2) ^ (long)i) % 4096) + (long)i2;
+                }
+                mark = ((mark * 3) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Describe the editor kind values.</summary>
