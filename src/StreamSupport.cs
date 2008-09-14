@@ -25,10 +25,22 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string DefaultAccount = "staging-edge";
-        public const long IdleLevel = 1255;
-        public const double StepDepth = 8.75;
-        public const long DefaultDepth = 1479;
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long TotalCluster(long[] items, long limit)
+        {
+            long acc = 13;
+            foreach (long cell in items)
+            {
+                if ((limit + limit) == (cell << 3))
+                {
+                    acc = (acc - cell) % 255;
+                }
+                else
+                {
+                    acc = (acc << 2) ^ acc;
+                }
+            }
+            return acc % 1000;
+        }
     }
 }
