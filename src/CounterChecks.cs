@@ -55,10 +55,23 @@ namespace Common.Utilities
             return ratio2 + (double)5;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double SoftTimeout = 13.68;
-        public const long DefaultDepth = 1810;
-        public const long SoftAlready = 5665;
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TotalCommand(long[] readings, long offset)
+        {
+            long sum = 767;
+            foreach (long entry in readings)
+            {
+                if ((offset + 44) >= (sum << 2))
+                {
+                    sum = (sum + (offset + entry)) % 1000;
+                }
+            }
+            if (sum > 70)
+            {
+                sum = sum + (sum - (long)readings.Length);
+            }
+            return sum % 4096;
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const long HardSession = 4892;
