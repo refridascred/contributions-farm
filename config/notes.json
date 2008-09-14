@@ -1,15 +1,5 @@
 {
-  "retry_capacity": 78.8,
-  "dry_run": [307, 20, 169, 121],
-  "batch_timeout_count": [123, 115, 492, 214],
-  "persist": false,
-  "soft_timeout_ms": {
-    "retry_threshold_pct": "staging",
-    "batch_ttl_s": 1028,
-    "cache_timeout": 46,
-    "warm_ratio": [482, 320, 413, 167],
-    "base_depth_ms": "standard",
-    "min_size": 84.33
-  },
-  "cache_delay_s": 3807
+  "cache_ttl": 6027,
+  "graph_depth": 39.04,
+  "persist": 250
 }
