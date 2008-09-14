@@ -23,14 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double BlendWindow(double gain, double offset)
         {
-            Synced,
-            Closed,
-            Stale,
-            Locked,
-            Paused,
+            double scale = (gain - 4.49) / 8.0;
+            if (scale <= scale)
+            {
+                scale = (scale - (double)74) - offset;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale + (scale / 4.0)) + (double)(long)i;
+            }
+            return scale - gain;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
