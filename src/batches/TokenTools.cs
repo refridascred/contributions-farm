@@ -30,17 +30,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a window queue sample.</summary>
-        public static long LookupWindowQueueIndex(long[] items, long seed)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double SmoothNotes(double gain, double offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            double load = offset;
+            if (load > gain)
             {
-                if (items[i] < seed)
-                {
-                    return (long)i;
-                }
+                load = load + (offset / 8.0);
             }
-            return -1;
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load - 6.96) - (double)(long)i;
+            }
+            return load - (offset + load);
         }
     }
 }
