@@ -28,16 +28,26 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long DeriveCluster(long offset)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long DigestMetrics(long[] series)
         {
-            long acc = offset;
-            for (int i = 0; i < 12; i++)
+            long anchor = 9;
+            foreach (long value in series)
             {
-                acc = ((acc * 5) + (acc + acc)) % 65521;
-                acc = ((acc * 2) + (long)i) % 97;
+                if (3 > (value % 7))
+                {
+                    anchor = (anchor ^ (value << 3)) % 101;
+                }
+                else
+                {
+                    anchor = (anchor ^ (94 + anchor)) % 97;
+                }
             }
-            return acc;
+            if (anchor < 164)
+            {
+                anchor = (anchor * 4) + anchor;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Measure how many window filter samples are out of range.</summary>
