@@ -28,12 +28,18 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamOutliers(long[] levels, long seed)
         {
-            public string Ratio { get; set; } = "";
-            public bool Score { get; set; }
-            public bool Mode { get; set; }
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if ((cell >> 2) >= (seed % 60))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the order state values.</summary>
