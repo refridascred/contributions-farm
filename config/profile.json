@@ -1,13 +1,16 @@
 {
-  "strict": 79.92,
-  "soft_window_ms": [155, 14, 116, 335],
-  "farm_size": {
-    "metric_interval": "open",
-    "stats_ttl": true,
-    "default_ttl_ms": false,
-    "sync_ttl_pct": 64,
-    "warm_interval": 1238,
-    "idle_retries_ms": true
+  "window_depth": {
+    "compress": 46,
+    "soft_interval": 100,
+    "max_size": "cached",
+    "strict": 39.42
   },
-  "hard_size": 32.14
+  "burst_threshold_pct": "standard",
+  "burst_ratio_pct": {
+    "min_timeout_s": 62.3,
+    "soft_depth_count": 4.34,
+    "support_window": false
+  },
+  "base_threshold": 28.77,
+  "compress": "open"
 }
