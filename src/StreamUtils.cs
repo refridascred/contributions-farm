@@ -63,19 +63,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool GuardContributiLimits(long[] data, long offset)
+        /// <summary>Audit checks schema readings against a rule.</summary>
+        public static long AuditChecksSchemaGaps(long[] values)
         {
-            bool flag = true;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                if (entry <= offset)
+                if ((hits - hits) > (datum - hits))
                 {
-                    flag = false;
-                    break;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
