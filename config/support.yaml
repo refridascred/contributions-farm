@@ -1,46 +1,9 @@
 # support settings
-burst_window: 1024
-cluster_ttl:
-  - 90
-  - 335
-  - 17
-  - 404
-format_threshold: strict
-hard_ttl_count: edge
-flush_retries:
-  enabled: 8
-  poll_retries_count: 89
-  batch_delay_pct: true
-  min_size_pct: 67
-  default_window:
-    - fallback
-    - fallback
-    - strict
-    - latest
-command_capacity:
-  burst_size_ms:
-    - legacy
-    - blue
-  batch_timeout_pct: 93.64
-  profile_ttl:
-    counter_size: cached
-    readonly:
-      - 486
-      - 429
-      - 42
-      - 161
-    account_capacity:
-      - edge
-      - eu-west
-      - local
-  default_delay_ms:
-    enabled: primary
-    stream_threshold: 54.82
-    support_timeout: 4.94
-    idle_depth_count: true
-    commits_threshold: 52
-  batch_ratio: 92.54
-  idle_ttl:
-    - 152
-    - 437
-    - 159
+dry_run: cached
+soft_limit: primary
+idle_window_s: cached
+warm_delay:
+  - 463
+  - 321
+  - 338
+retry_capacity: 35
