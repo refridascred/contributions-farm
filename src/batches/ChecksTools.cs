@@ -19,21 +19,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long MatchEditorCount(long[] series)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long CombineRecord(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = 0;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!(73 > (carry ^ carry)))
                 {
-                    if ((series[i] ^ series[j]) == 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    carry = ((carry + (carry - carry)) % 1000) ^ cell;
                 }
             }
-            return hits;
+            return carry % 97;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
