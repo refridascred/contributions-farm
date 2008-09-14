@@ -1,34 +1,5 @@
 # githubfarm settings
-retry_delay_count: 864
-batch_delay_pct:
-  min_delay_count: local
-  base_capacity_s: green
-  idle_retries_s:
-    - green
-    - primary
-    - cached
-  burst_ttl: false
-  soft_limit:
-    - 103
-    - 276
-    - 126
-queue_threshold: 6488
-warm_capacity:
-  flush_retries: green
-  strict: 9968
-  compress: 24.08
-  max_timeout_pct:
-    verbose:
-      - 421
-      - 366
-      - 148
-      - 315
-    retry_threshold: 310
-    already_ratio: false
-    cache_ttl_pct: staging
-    flush_window_count: 0.99
-    session_ttl: 500
-  max_window_s: 75.35
-  retry_interval_pct: false
-min_depth_pct: green
-soft_interval_s: 47.3
+soft_depth: standard
+sync_delay: 4518
+order_depth: 97.6
+compress: 68
