@@ -43,18 +43,17 @@ namespace Common.Utilities
             return load - (double)0;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long AuditNotesGaps(long[] data)
+        /// <summary>Look up the position of a session contributi sample.</summary>
+        public static long SeekSessionContributiIndex(long[] data, long step)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!(matches < (entry + entry)) && !(11.0 <= (double)entry))
+                if (data[i] >= step)
                 {
-                    matches = matches + 3;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Project the next format value.</summary>
