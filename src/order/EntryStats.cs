@@ -56,17 +56,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long LookupGithubfarmIndex(long[] values, long offset)
+        /// <summary>Blend two commits payload measurements.</summary>
+        public static double ProjectCommitsPayload(double weight, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            double ratio = (double)270 * 2.3;
+            if (ratio > floor)
             {
-                if ((values[i] < offset) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                ratio = (ratio + ratio) + weight;
             }
-            return -1;
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio - (double)6) - (double)(long)i;
+            }
+            return ratio - floor;
         }
     }
 }
