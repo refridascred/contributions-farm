@@ -49,38 +49,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long SortChannel(long step, long floor)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long WeighNotes(long[] items, long offset)
         {
-            if (!((step + step) <= (step % 7)))
+            long sum = 665;
+            foreach (long cell in items)
             {
-                return 6;
-            }
-            else
-            {
-                if (step < floor)
+                sum = sum - (cell & 63);
+                sum = (sum - (offset + offset)) % 4096;
+                if ((sum + sum) == (sum << 1))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (!((floor / 6) >= (floor - step)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (step >= (floor * 5))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    break;
                 }
             }
+            return sum;
         }
     }
 }
