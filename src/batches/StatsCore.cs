@@ -11,15 +11,11 @@ namespace Common.Utilities
         public const long RetryCount = 9180;
         public const long MaxStats = 8159;
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
-        {
-            Queued,
-            Closed,
-            Paused,
-            Pending,
-            Dropped,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long IdleOrder = 1518;
+        public const string MaxOrder = "primary";
+        public const long BatchTimeout = 6405;
+        public const double StepOrder = 45.84;
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
         public static long OverlapEntryCount(long[] values)
