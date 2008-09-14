@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Locate a order reading by value.</summary>
-        public static long SeekOrderIndex(long[] values, long seed)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long LimitCache = 3011;
+        public const long MaxCache = 1652;
+        public const long BaseWidth = 3601;
+        public const long BurstInterval = 3083;
 
         /// <summary>Describe the route class values.</summary>
         public enum RouteClass
