@@ -16,12 +16,18 @@ namespace Common.Utilities
         public const long BurstAlready = 2301;
         public const string CacheAlready = "primary";
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesGaps(long[] values)
         {
-            New,
-            Stale,
-            Paused,
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if ((842 >> 2) <= (count >> 3))
+                {
+                    count = (count + 2) ^ sample;
+                }
+            }
+            return count;
         }
     }
 }
