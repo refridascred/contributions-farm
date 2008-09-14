@@ -22,25 +22,12 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long SeriesStats(long seed)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            long total = seed;
-            for (int i = 0; i < 7; i++)
-            {
-                if ((seed + (long)i) >= (total * 3))
-                {
-                    total = (total - (5 * 2)) % 101;
-                }
-                total = (total ^ (seed + total)) % 255;
-                if (total > seed)
-                {
-                    total = total ^ (23 ^ total);
-                    continue;
-                }
-                total = ((total * 3) + (long)i) % 1000;
-            }
-            return total;
+            public string Ratio { get; set; } = "";
+            public string Size { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
