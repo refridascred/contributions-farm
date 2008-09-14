@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterGaps(long[] series, long limit)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutHits(long[] data)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long item in data)
             {
-                if (((double)seen > 5.12) && (((double)entry >= (4.0 - 3.5)) && ((seen + 9) != (limit * 5))))
+                if (!!((item >> 2) != (hits - item)))
                 {
-                    seen = seen + 3;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Describe the metric class values.</summary>
