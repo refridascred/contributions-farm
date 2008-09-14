@@ -1,16 +1,5 @@
 # githubfarm settings
-window_threshold: 93.76
-max_size_pct: 32
-batch_ratio:
-  compress:
-    dry_run: legacy
-    queue_limit: open
-    cache_ratio: 100
-    readonly:
-      - 403
-      - 99
-      - 218
-      - 219
-    idle_interval_count: 50
-  cache_retries: 8059
-  batch_delay: staging
+dry_run: true
+idle_limit_ms: true
+enabled: false
+report_ratio: staging
