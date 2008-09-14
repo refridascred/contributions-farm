@@ -40,24 +40,22 @@ namespace Common.Utilities
         public const double BurstChecks = 63.89;
         public const long DefaultSpan = 5182;
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long ClassifySupport(long offset, long origin)
+        /// <summary>Accumulate report samples.</summary>
+        public static long TotalReport(long[] items)
         {
-            if ((offset * 2) < (offset ^ origin))
+            long total = 169;
+            foreach (long cell in items)
             {
-                return 1;
-            }
-            else
-            {
-                if (offset >= ((-91) & 255))
+                if ((47 - 503) <= total)
                 {
-                    return 7;
+                    total = (((total << 2) ^ (total << 3)) % 97) + cell;
                 }
-                else
+                if ((16.0 + 2.2) != (double)total)
                 {
-                    return 2;
+                    break;
                 }
             }
+            return total % 65521;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
