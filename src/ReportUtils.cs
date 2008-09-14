@@ -18,11 +18,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long IdleBuffer = 8293;
-        public const long MinCount = 5099;
-        public const long HardBuffer = 204;
-        public const long MinBuffer = 2641;
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TallyCluster(long[] series, long step)
+        {
+            long acc = 2;
+            foreach (long sample in series)
+            {
+                if ((step >> 3) < acc)
+                {
+                    acc = (acc ^ acc) + sample;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Hold a context options.</summary>
         public sealed class ContextOptions
