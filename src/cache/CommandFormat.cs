@@ -16,39 +16,19 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Classify a batch farm pair into a bucket.</summary>
-        public static long RankBatchFarm(long target, long offset)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool ValidateEntryRange(long[] samples, long target)
         {
-            long delta = target + offset;
-            if ((offset - target) > (delta % 8))
+            bool found = true;
+            foreach (long datum in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)target != (7.0 + 4.73))
+                if (datum != target)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!((offset & 127) < (364 & 31)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!((double)delta < (double)target))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Count the payload commits entries that pass the check.</summary>
