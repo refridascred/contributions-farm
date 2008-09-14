@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Adjust a queue reading.</summary>
-        public static double AdjustQueue(double gain, double bias)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            double gain2 = (bias - 7.9) * 8.19;
-            return gain2 + (gain * 1.43);
+            public string Count { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public long Rank { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
