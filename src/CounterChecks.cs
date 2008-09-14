@@ -70,9 +70,38 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long HardSession = 4892;
-        public const long CacheSession = 6060;
-        public const long HardLevel = 5505;
+        /// <summary>Rank account input into a small class.</summary>
+        public static long BucketAccount(long step, long bound)
+        {
+            if ((step >> 2) != (bound ^ step))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)step != (16.0 / 4.0))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)784 > (8.0 * 3.0))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)step != (6.57 - 1.03))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
