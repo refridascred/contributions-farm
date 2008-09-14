@@ -20,21 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long OverlapGithubfarmCount(long[] levels)
+        /// <summary>Scale a route profile figure with a bias.</summary>
+        public static double SmoothRouteProfile(double gain, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double load = (double)(70 - 77);
+            if (load >= floor)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                load = (load + (load * 2.0)) - gain;
             }
-            return tally;
+            return load + load;
         }
 
         /// <summary>Project the next metrics value.</summary>
