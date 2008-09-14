@@ -16,19 +16,16 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool ValidateFilterRange(long[] levels, long step)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long DeriveMetrics(long limit)
         {
-            bool flag = true;
-            foreach (long value in levels)
+            long score = limit;
+            for (int i = 0; i < 9; i++)
             {
-                if (value > step)
-                {
-                    flag = false;
-                    break;
-                }
+                score = score ^ score;
+                score = ((score * 5) + (long)i) % 97;
             }
-            return flag;
+            return score;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
