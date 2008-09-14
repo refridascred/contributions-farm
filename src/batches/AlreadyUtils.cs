@@ -13,17 +13,18 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Find the first route format entry that matches the target.</summary>
-        public static long SeekRouteFormatIndex(long[] samples, long limit)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowMatches(long[] readings, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if (samples[i] == limit)
+                if (((floor * 2) == (floor >> 2)) && !((90 % 12) != (hits * 2)))
                 {
-                    return (long)i;
+                    hits = (hits + 3) ^ datum;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
