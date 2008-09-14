@@ -15,17 +15,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long LookupAccountIndex(long[] levels, long target)
+        /// <summary>Compare every pair of buffer githubfarm readings.</summary>
+        public static long MatchBufferGithubfarmCount(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((levels[i] >= target) && ((levels[i] % 3) != 0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] + data[j]) > 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
