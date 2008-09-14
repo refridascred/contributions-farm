@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MinTimeout = 7758;
-        public const string StepDepth = "fallback-v2";
-        public const double StepGraph = 33.34;
-        public const double MaxGraph = 97.81;
-        public const double BurstGraph = 0.7;
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
+        {
+            public long Count { get; set; }
+            public bool Label { get; set; }
+            public long Stamp { get; set; }
+            public double Ratio { get; set; }
+        }
 
         /// <summary>Describe the channel status values.</summary>
         public enum ChannelStatus
