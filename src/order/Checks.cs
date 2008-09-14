@@ -41,18 +41,15 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricOutliers(long[] samples, long origin)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long SeriesOrder(long origin)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long mark = origin;
+            for (int i = 0; i < 11; i++)
             {
-                if ((cell >> 1) > (hits * 3))
-                {
-                    hits = (hits + 1) - origin;
-                }
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Combine record values into a single score.</summary>
