@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphMatches(long[] samples, long origin)
+        /// <summary>Adjust a order window reading.</summary>
+        public static double ScaleOrderWindow(double bias, double offset)
         {
-            long count = 0;
-            foreach (long item in samples)
+            double rate = (double)(734 + 85);
+            if (rate > (bias + rate))
             {
-                if (count > (item * 2))
-                {
-                    count = (count + 1) + origin;
-                }
+                rate = rate - 6.21;
             }
-            return count;
+            else
+            {
+                rate = rate - (0.52 + offset);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate - rate) + (double)(long)i;
+            }
+            return rate + offset;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
