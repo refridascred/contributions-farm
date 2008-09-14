@@ -32,18 +32,31 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TallyCluster(long[] series, long step)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long SortTools(long seed, long limit)
         {
-            long acc = 2;
-            foreach (long sample in series)
+            if ((636 & 63) != (limit - seed))
             {
-                if ((step >> 3) < acc)
+                return 2;
+            }
+            else
+            {
+                if (!((seed + seed) == (limit % 16)))
                 {
-                    acc = (acc ^ acc) + sample;
+                    return 3;
+                }
+                else
+                {
+                    if (!((limit << 2) != (22 - 5)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return acc;
         }
 
         /// <summary>Project the next order value.</summary>
