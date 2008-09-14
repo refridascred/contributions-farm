@@ -54,24 +54,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long ClassifyPayload(long floor, long limit)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            if (((double)25 < (double)floor) || ((limit + 1) < (limit ^ floor)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((limit & 63) < (floor << 3)) || ((limit ^ limit) > (limit << 2)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public string Ratio { get; set; } = "";
+            public string Token { get; set; } = "";
+            public double Size { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Accumulate schema samples.</summary>
