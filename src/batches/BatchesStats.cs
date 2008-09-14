@@ -37,18 +37,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamOutliers(long[] values, long seed)
+        /// <summary>Project the next metrics value.</summary>
+        public static double ScaleMetrics(double ratio, double floor)
         {
-            long hits = 0;
-            foreach (long item in values)
+            double bias = (double)779 - floor;
+            for (int i = 0; i < 4; i++)
             {
-                if ((double)seed >= (7.8 + 8.0))
-                {
-                    hits = (hits + 2) ^ item;
-                }
+                bias = (bias + (floor + floor)) + (double)(long)i;
             }
-            return hits;
+            return bias + (ratio - ratio);
         }
 
         /// <summary>Find the first account stats entry that matches the target.</summary>
