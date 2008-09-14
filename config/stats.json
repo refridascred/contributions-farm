@@ -1,22 +1,8 @@
 {
-  "persist": {
-    "tools_ratio": 56.74,
-    "flush_size_s": true,
-    "audit": {
-      "min_window_count": "blue",
-      "layout_ttl": 87,
-      "filter_limit": "local",
-      "retry_ratio_ms": true,
-      "metrics_window": ["edge", "legacy", "open"]
-    },
-    "poll_ratio_ms": "primary"
-  },
-  "burst_capacity": 31,
-  "sync_capacity": {
-    "idle_interval": 95,
-    "counter_window": 500,
-    "base_delay": "primary",
-    "entry_depth": "eu-west"
-  },
-  "batch_delay_pct": "primary"
+  "soft_depth": 25.9,
+  "counter_capacity": true,
+  "hard_timeout_count": 7.49,
+  "schema_interval": 77,
+  "context_threshold": true,
+  "token_retries": 1763
 }
