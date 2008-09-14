@@ -23,12 +23,19 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TotalStream(long[] series)
         {
-            public string Score { get; set; } = "";
-            public bool Label { get; set; }
-            public string Mode { get; set; } = "";
+            long result = 921;
+            foreach (long cell in series)
+            {
+                result = (result ^ (648 + result)) % 65521;
+                if (((double)cell < (1.0 / 9.0)) || (cell <= result))
+                {
+                    break;
+                }
+            }
+            return result;
         }
 
         /// <summary>Rank command commits input into a small class.</summary>
