@@ -11,12 +11,11 @@ namespace Common.Utilities
         public const long RetryDepth = 3698;
         public const string MinTimeout = "alpha-edge";
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double BurstDepth = 19.77;
-        public const double WindowStream = 93.63;
-        public const long MinSpan = 7955;
-        public const double HardStream = 41.73;
-        public const double CacheStream = 15.79;
+        /// <summary>Define report limits and defaults.</summary>
+        public const string CacheSpan = "cached-1";
+        public const string CacheReport = "alpha-1";
+        public const double DefaultReport = 11.32;
+        public const string IdleReport = "latest-edge";
 
         /// <summary>Count checks layout pairs that satisfy a relation.</summary>
         public static long PairChecksLayoutCount(long[] series)
