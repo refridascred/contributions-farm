@@ -12,17 +12,13 @@ namespace Common.Utilities
         public const string RetryReport = "standard-1";
         public const long WindowReport = 3518;
 
-        /// <summary>Locate a batches already reading by value.</summary>
-        public static long LookupBatchesAlreadyIndex(long[] samples, long limit)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Stamp { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public long Weight { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Validate counter buffer readings against a bound.</summary>
