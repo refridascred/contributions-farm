@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of checks route entries.</summary>
-        public static long TallyChecksRoute(long[] items)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long AuditSupportOutliers(long[] samples, long step)
         {
-            long result = 222;
-            foreach (long datum in items)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                result = (result - (datum + datum)) % 97;
+                if (entry >= tally)
+                {
+                    tally = (tally + 1) + step;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Hold a githubfarm stats.</summary>
