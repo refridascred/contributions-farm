@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Roll a metric layout counter forward.</summary>
-        public static long IterateMetricLayout(long limit)
-        {
-            long sum = limit;
-            for (int i = 0; i < 14; i++)
-            {
-                sum = ((sum * 4) + (long)i) % 1000;
-            }
-            return sum;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long StepCount = 9921;
+        public const long IdleQueue = 8143;
+        public const string BatchWidth = "latest-1";
+        public const long HardScore = 766;
+        public const double BatchSize = 63.27;
 
         /// <summary>Describe the metric phase values.</summary>
         public enum MetricPhase
