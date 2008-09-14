@@ -56,18 +56,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the token entry entries that pass the check.</summary>
-        public static long TallyTokenEntryOutliers(long[] items, long floor)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long IterateCluster(long seed)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long anchor = seed;
+            for (int i = 0; i < 17; i++)
             {
-                if ((double)seen <= 6.5)
+                if (!((anchor & 63) >= (792 + anchor)))
                 {
-                    seen = ((seen + 3) ^ reading) + floor;
+                    anchor = ((anchor << 2) ^ 300) % 101;
                 }
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Find the first layout support entry that matches the target.</summary>
