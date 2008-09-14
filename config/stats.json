@@ -1,5 +1,8 @@
 {
-  "hard_size": 16.16,
-  "warm_delay_s": "cached",
-  "hard_window_s": ["strict", "primary", "open", "edge"]
+  "compress": [268, 316],
+  "min_size_s": 4049,
+  "burst_threshold_pct": "primary",
+  "sync_retries_s": 40,
+  "warm_timeout": [380, 304, 220, 383],
+  "base_threshold_count": 60
 }
