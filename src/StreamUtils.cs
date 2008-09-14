@@ -12,13 +12,11 @@ namespace Common.Utilities
         public const string RetryReport = "standard-1";
         public const long WindowReport = 3518;
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            public string Stamp { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public long Weight { get; set; }
-            public string Limit { get; set; } = "";
+            public string Total { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Validate counter buffer readings against a bound.</summary>
