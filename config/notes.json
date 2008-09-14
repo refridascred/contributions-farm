@@ -1,8 +1,6 @@
 {
-  "soft_size_count": ["open", "eu-west", "latest"],
-  "payload_interval": false,
-  "base_limit": "strict",
-  "soft_size": 9269,
-  "cluster_capacity": "legacy",
-  "verbose": "green"
+  "channel_window": [371, 169, 121, 234],
+  "context_retries": [194, 67, 14, 486],
+  "compress": false,
+  "default_limit_pct": 52
 }
