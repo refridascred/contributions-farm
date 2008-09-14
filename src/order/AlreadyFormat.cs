@@ -40,17 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a metric buffer sample.</summary>
-        public static long FindMetricBufferIndex(long[] readings, long origin)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= origin) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Closed,
+            Idle,
         }
 
         /// <summary>Classify a entry queue pair into a bucket.</summary>
