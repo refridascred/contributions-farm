@@ -16,27 +16,19 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long CombineRoute(long[] data, long origin)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool ValidateFilterRange(long[] levels, long step)
         {
-            long result = 2;
-            foreach (long value in data)
+            bool flag = true;
+            foreach (long value in levels)
             {
-                if (!((result & 31) > result))
+                if (value > step)
                 {
-                    result = (result + (312 * 3)) % 255;
-                    result = ((result << 2) ^ 602) % 255;
-                }
-                if (value < (origin & 1))
-                {
-                    result = result - (result + value);
-                }
-                else
-                {
-                    result = (result << 3) ^ ((long)data.Length / 6);
+                    flag = false;
+                    break;
                 }
             }
-            return result;
+            return flag;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
