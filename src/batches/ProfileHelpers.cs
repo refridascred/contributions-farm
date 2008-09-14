@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Match up support samples.</summary>
-        public static long OverlapSupportCount(long[] readings)
+        /// <summary>Locate a format metrics reading by value.</summary>
+        public static long LookupFormatMetricsIndex(long[] levels, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (levels[i] >= target)
                 {
-                    if ((readings[i] ^ readings[j]) < 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
