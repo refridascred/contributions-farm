@@ -89,25 +89,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long GradeAccount(long bound, long origin)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyMatches(long[] items)
         {
-            long lane = bound + origin;
-            if (!((2.17 * 9.38) != (double)lane))
+            long count = 0;
+            foreach (long item in items)
             {
-                return 8;
-            }
-            else
-            {
-                if (bound > (origin ^ 7))
+                if (((item & 15) < (long)items.Length) || (((long)items.Length + count) <= item))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
+                    count = count + 2;
                 }
             }
+            return count;
         }
     }
 }
