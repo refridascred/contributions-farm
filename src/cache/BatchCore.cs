@@ -38,32 +38,17 @@ namespace Common.Utilities
             return (rate2 + (double)785) + rate;
         }
 
-        /// <summary>Classify a support channel pair into a bucket.</summary>
-        public static long BucketSupportChannel(long seed, long offset)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long FindCommitsIndex(long[] samples, long limit)
         {
-            long span = seed + offset;
-            if (2.0 >= (double)offset)
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((seed - offset) >= (span % 100))
+                if (samples[i] > limit)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((8 < (offset - 327)) && ((9.26 / 4.0) <= (double)seed))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
