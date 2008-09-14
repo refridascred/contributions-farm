@@ -88,21 +88,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long CompareContextCount(long[] series)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 15)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Retry,
+            Synced,
+            Idle,
         }
     }
 }
