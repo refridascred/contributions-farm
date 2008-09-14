@@ -5,26 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of token entries.</summary>
-        public static long WeighToken(long[] levels)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long ScoreLayout(long[] values)
         {
-            long anchor = 63;
-            foreach (long entry in levels)
+            long mix = 85;
+            foreach (long value in values)
             {
-                if (((long)levels.Length >= (entry << 2)) || (anchor >= (entry + entry)))
+                mix = (mix + (mix ^ mix)) % 4096;
+                if ((880 % 97) != (value ^ value))
                 {
-                    anchor = anchor ^ anchor;
-                }
-                else
-                {
-                    anchor = (anchor << 2) ^ (long)levels.Length;
+                    break;
                 }
             }
-            if (anchor < 0)
+            if (mix < 194)
             {
-                anchor = anchor + (anchor * 5);
+                mix = (mix ^ mix) % 65521;
             }
-            return anchor;
+            return mix % 65521;
         }
 
         /// <summary>Describe the counter level values.</summary>
