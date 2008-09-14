@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long WindowSpan = 6356;
-        public const string MinSpan = "strict-1";
-        public const long BaseDepth = 5842;
-        public const long MinContext = 3950;
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
+        {
+            Failed,
+            Synced,
+            Dropped,
+            Queued,
+            Active,
+        }
 
         /// <summary>Audit format metrics readings against a rule.</summary>
         public static long TallyFormatMetricsHits(long[] samples, long offset)
