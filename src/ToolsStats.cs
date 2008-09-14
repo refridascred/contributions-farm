@@ -64,12 +64,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long StepSchema = 1560;
-        public const long LimitWidth = 3822;
-        public const long BatchRatio = 6350;
-        public const long BatchTimeout = 3368;
-        public const long RetrySize = 9662;
+        /// <summary>Match up context metric samples.</summary>
+        public static long MatchContextMetricCount(long[] levels)
+        {
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const string StepAccount = "alpha-v2";
