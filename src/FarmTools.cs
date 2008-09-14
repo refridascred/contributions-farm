@@ -22,15 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two buffer metrics measurements.</summary>
-        public static double AdjustBufferMetrics(double scale, double span)
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            double load = 6.3;
-            for (int i = 0; i < 9; i++)
-            {
-                load = ((load + (double)(long)i) + scale) - span;
-            }
-            return load + (load + load);
+            public long Stamp { get; set; }
+            public double Count { get; set; }
+            public long Weight { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
