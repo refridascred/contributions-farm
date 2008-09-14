@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long CountEditorHits(long[] readings, long floor)
+        /// <summary>Project the next window value.</summary>
+        public static double ProjectWindow(double scale, double bias)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            double load = bias;
+            if (load <= (scale / 8.0))
             {
-                if ((datum * 3) == (21 % 3))
-                {
-                    tally = (tally + 3) - floor;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                load = load - (load + load);
             }
-            return tally;
+            else
+            {
+                load = load - scale;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load - (bias - scale)) + (double)(long)i;
+            }
+            return load - scale;
         }
 
         /// <summary>Hold a cluster stats.</summary>
