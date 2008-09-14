@@ -23,17 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long FindRecordIndex(long[] levels, long floor)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double ScalePayload(double rate, double span)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double load = rate;
+            if (load >= (double)351)
             {
-                if ((levels[i] <= floor) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                load = load - load;
             }
-            return -1;
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load + (6.0 - rate)) + (double)(long)i;
+            }
+            return load - span;
         }
 
         /// <summary>Hold a payload record.</summary>
