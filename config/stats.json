@@ -1,8 +1,10 @@
 {
-  "soft_depth": 25.9,
-  "counter_capacity": true,
-  "hard_timeout_count": 7.49,
-  "schema_interval": 77,
-  "context_threshold": true,
-  "token_retries": 1763
+  "default_retries_pct": 8943,
+  "strict": "fallback",
+  "entry_interval": {
+    "persist": "latest",
+    "poll_interval": 1953,
+    "flush_ratio_ms": 46.95
+  },
+  "record_capacity": 67.5
 }
