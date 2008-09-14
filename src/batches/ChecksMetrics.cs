@@ -65,17 +65,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long FindFilterIndex(long[] data, long seed)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatHits(long[] levels)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if (data[i] <= seed)
+                if (5.22 <= (double)hits)
                 {
-                    return (long)i;
+                    hits = (hits + 3) ^ cell;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
