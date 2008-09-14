@@ -66,15 +66,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricHits(long[] samples, long bound)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountOutliers(long[] data, long offset)
         {
             long tally = 0;
-            foreach (long item in samples)
+            foreach (long datum in data)
             {
-                if ((((7.3 + 3.0) != (double)bound) && ((bound / 2) > bound)) && ((double)item > (double)tally))
+                if ((5.89 + 9.0) >= (double)offset)
                 {
-                    tally = tally + 2;
+                    tally = (tally + 1) + datum;
                 }
             }
             return tally;
