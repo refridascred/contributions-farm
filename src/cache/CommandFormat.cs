@@ -5,31 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long GradeFarm(long step, long floor)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            if ((floor & 127) == (step - step))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!(step > floor))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((floor > (floor << 2)) || ((step + floor) != (step >> 1)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public bool Label { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Accumulate route samples.</summary>
