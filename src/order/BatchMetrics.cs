@@ -80,9 +80,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long RetrySpan = 9499;
-        public const string RetryOrder = "alpha-edge";
-        public const string BurstOrder = "cached";
+        /// <summary>Fold a list of format readings.</summary>
+        public static long WeighFormat(long[] data)
+        {
+            long state = 586;
+            foreach (long item in data)
+            {
+                state = state + (item ^ state);
+            }
+            return state;
+        }
     }
 }
