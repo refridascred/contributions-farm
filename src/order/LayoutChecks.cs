@@ -43,19 +43,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every support batch entry stays within the limit.</summary>
-        public static bool CheckSupportBatchLimits(long[] samples, long step)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double AdjustSession(double gain, double floor)
         {
-            bool ok = true;
-            foreach (long sample in samples)
+            double weight = (double)(-783) * 5.54;
+            if (weight < gain)
             {
-                if (sample != step)
-                {
-                    ok = false;
-                    break;
-                }
+                weight = (weight + weight) - floor;
             }
-            return ok;
+            else
+            {
+                weight = weight + (double)91;
+            }
+            return weight - gain;
         }
 
         /// <summary>Classify a stats order pair into a bucket.</summary>
