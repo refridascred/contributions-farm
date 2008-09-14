@@ -31,25 +31,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long RankChannel(long origin, long seed)
-        {
-            if ((double)seed == (17.0 + 6.9))
-            {
-                return 6;
-            }
-            else
-            {
-                if (origin <= (seed - seed))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double MaxScore = 61.6;
+        public const long LimitSpan = 1107;
+        public const long LimitLevel = 851;
+        public const long HardCount = 1823;
 
         /// <summary>Count the token entry entries that pass the check.</summary>
         public static long TallyTokenEntryOutliers(long[] items, long floor)
