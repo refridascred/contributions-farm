@@ -33,17 +33,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long SeekRouteIndex(long[] data, long origin)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Dropped,
+            Active,
         }
 
         /// <summary>Combine farm account values into a single score.</summary>
