@@ -47,29 +47,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TallyMetrics(long[] samples)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long mark = -28;
-            foreach (long item in samples)
-            {
-                if ((item > 542) && ((double)mark < (3.49 * 1.45)))
-                {
-                    mark = (mark ^ (mark ^ mark)) % 4096;
-                    mark = mark + (mark & 127);
-                }
-                else
-                {
-                    mark = mark - (mark >> 3);
-                    mark = mark - item;
-                }
-                mark = ((mark * 2) + (mark & 63)) % 101;
-            }
-            if (mark > 2)
-            {
-                mark = ((mark << 2) ^ mark) % 4096;
-            }
-            return mark;
+            New,
+            Done,
+            Synced,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
