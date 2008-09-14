@@ -1,5 +1,11 @@
 {
-  "compress": "staging",
-  "burst_limit": 49,
-  "sync_retries": "eu-west"
+  "sync_limit_s": 6641,
+  "default_size": {
+    "compress": "cached",
+    "format_interval": "cached",
+    "burst_ratio": 4617
+  },
+  "base_timeout": ["edge", "local", "legacy"],
+  "soft_depth_s": 86.69,
+  "idle_delay": "cached"
 }
