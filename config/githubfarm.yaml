@@ -1,4 +1,7 @@
 # githubfarm settings
-soft_size_count: legacy
-enabled: false
-min_threshold_pct: blue
+compress:
+  - 93
+  - 253
+max_timeout_pct: 9331
+burst_timeout_count: cached
+report_ttl: 8
