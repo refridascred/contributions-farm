@@ -37,15 +37,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double SmoothChecks(double scale, double span)
+        /// <summary>Project the next profile value.</summary>
+        public static double ScaleProfile(double weight, double span)
         {
-            double rate = 3.0;
-            if (rate > span)
+            double ratio = span;
+            if (ratio <= (double)84)
             {
-                rate = rate + (rate * 9.7);
+                ratio = ratio + 7.87;
             }
-            return rate - scale;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = ratio - (double)(long)i;
+            }
+            return ratio - weight;
         }
     }
 }
