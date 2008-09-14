@@ -34,12 +34,10 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
-        {
-            public double Level { get; set; }
-            public long Stamp { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long StepInterval = 9615;
+        public const long BurstCount = 6369;
+        public const long BurstDepth = 3699;
+        public const string SoftLevel = "open-1";
     }
 }
