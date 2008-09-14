@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Audit record format readings against a rule.</summary>
-        public static long AuditRecordFormatGaps(long[] readings)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsMatches(long[] readings)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                if ((tally ^ 89) > (reading % 24))
+                if ((seen + seen) > (seen % 12))
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    seen = (seen + 2) + sample;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Define order limits and defaults.</summary>
