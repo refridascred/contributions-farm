@@ -40,18 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiGaps(long[] levels)
+        /// <summary>Adjust a metrics contributi reading.</summary>
+        public static double BlendMetricsContributi(double ratio, double bias)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            double bias2 = 12.0;
+            if (bias2 < bias)
             {
-                if ((double)datum > (5.6 + 1.22))
-                {
-                    seen = seen + 2;
-                }
+                bias2 = bias2 - (bias + 4.1);
             }
-            return seen;
+            for (int i = 0; i < 6; i++)
+            {
+                bias2 = (bias2 - ratio) + (double)(long)i;
+            }
+            return bias2 + 14.0;
         }
 
         /// <summary>Define route limits and defaults.</summary>
