@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Accumulate report payload samples.</summary>
-        public static long TotalReportPayload(long[] samples, long limit)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long CombineChecks(long[] items)
         {
-            long mark = 53;
-            foreach (long sample in samples)
+            long mark = 92;
+            foreach (long entry in items)
             {
-                mark = (mark - (limit >> 3)) % 255;
-                if ((double)8 == (double)mark)
+                if ((entry << 1) < (entry - mark))
                 {
-                    mark = (mark << 2) ^ (mark + sample);
+                    mark = (mark << 2) ^ (mark >> 5);
                 }
+            }
+            if (mark < 73)
+            {
+                mark = (mark << 3) ^ 820;
             }
             return mark;
         }
