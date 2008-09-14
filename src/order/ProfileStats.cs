@@ -51,19 +51,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate filter graph readings against a bound.</summary>
-        public static bool GuardFilterGraphRange(long[] levels, long bound)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsHits(long[] samples)
         {
-            bool stale = true;
-            foreach (long item in levels)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                if (item != bound)
+                if (((value > matches) && ((value << 2) <= value)) || ((value * 5) > (matches * 3)))
                 {
-                    stale = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return stale;
+            return matches;
         }
     }
 }
