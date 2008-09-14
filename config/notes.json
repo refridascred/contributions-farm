@@ -1,6 +1,7 @@
 {
-  "poll_threshold_ms": "edge",
-  "soft_window_s": 56.73,
-  "enabled": "standard",
-  "idle_ttl": "latest"
+  "persist": 76.15,
+  "compress": 8.74,
+  "warm_ratio": "fallback",
+  "verbose": "cached",
+  "max_ttl_pct": [296, 335]
 }
