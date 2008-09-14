@@ -84,22 +84,17 @@ namespace Common.Utilities
             return bias2 - bias2;
         }
 
-        /// <summary>Combine account payload values into a single score.</summary>
-        public static long ScoreAccountPayload(long[] levels)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long LocateCommandIndex(long[] levels, long bound)
         {
-            long acc = 3;
-            foreach (long value in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((value + acc) < (acc + value)))
+                if (levels[i] > bound)
                 {
-                    acc = (acc - value) % 4096;
-                }
-                else
-                {
-                    acc = acc + (acc + acc);
+                    return (long)i;
                 }
             }
-            return acc % 65521;
+            return -1;
         }
     }
 }
