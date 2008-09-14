@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long FindQueueIndex(long[] values, long bound)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BurstScore = 2632;
+        public const long BatchDepth = 3964;
+        public const long MaxSize = 9346;
+        public const double IdleWidth = 1.04;
+        public const string StepCounter = "standard-edge";
 
         /// <summary>Combine already values into a single score.</summary>
         public static long ScoreAlready(long[] data, long seed)
