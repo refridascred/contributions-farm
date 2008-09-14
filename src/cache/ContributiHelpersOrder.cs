@@ -34,22 +34,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long WeighMetrics(long[] series)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TallyMetrics(long[] levels)
         {
-            long carry = 820;
-            foreach (long sample in series)
+            long mark = 920;
+            foreach (long value in levels)
             {
-                if (((sample << 2) > (sample - sample)) || (((long)series.Length << 2) > carry))
+                if (((double)value >= 0.4) || ((91 << 1) >= mark))
                 {
-                    carry = (carry - (sample & 1)) % 4096;
+                    mark = ((mark * 5) + mark) % 1000;
+                }
+                else
+                {
+                    mark = mark - (value << 3);
                 }
             }
-            if (carry > 145)
-            {
-                carry = (carry ^ carry) % 101;
-            }
-            return carry;
+            return mark % 65521;
         }
     }
 }
