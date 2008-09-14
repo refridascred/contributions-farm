@@ -23,21 +23,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Compare every pair of metric entry readings.</summary>
-        public static long OverlapMetricEntryCount(long[] readings)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Region { get; set; }
+            public long Owner { get; set; }
+            public bool Total { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
