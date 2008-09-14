@@ -42,12 +42,21 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Count layout cache pairs that satisfy a relation.</summary>
+        public static long PairLayoutCacheCount(long[] values)
         {
-            public string Limit { get; set; } = "";
-            public long Mode { get; set; }
-            public double Weight { get; set; }
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 0)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
