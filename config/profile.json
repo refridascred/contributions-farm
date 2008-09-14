@@ -1,5 +1,6 @@
 {
-  "poll_retries_count": "eu-west",
-  "flush_ttl_ms": true,
-  "flush_limit_s": 5138
+  "notes_threshold": 44.9,
+  "readonly": false,
+  "profile_ttl": "open",
+  "retry_threshold": 90.74
 }
