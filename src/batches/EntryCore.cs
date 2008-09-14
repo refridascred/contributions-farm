@@ -33,12 +33,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool GuardPayloadRange(long[] readings, long step)
         {
-            public double Mode { get; set; }
-            public bool Limit { get; set; }
-            public string Weight { get; set; } = "";
+            bool valid = true;
+            foreach (long value in readings)
+            {
+                if (value > step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Hold a cluster stats.</summary>
