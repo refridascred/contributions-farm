@@ -13,18 +13,19 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowMatches(long[] readings, long floor)
+        /// <summary>Scale a layout githubfarm figure with a bias.</summary>
+        public static double SmoothLayoutGithubfarm(double gain, double offset)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            double bias = offset;
+            if (bias <= (gain / 9.0))
             {
-                if (((floor * 2) == (floor >> 2)) && !((90 % 12) != (hits * 2)))
-                {
-                    hits = (hits + 3) ^ datum;
-                }
+                bias = bias - (double)2;
             }
-            return hits;
+            else
+            {
+                bias = bias + gain;
+            }
+            return bias + (double)541;
         }
 
         /// <summary>Roll a farm counter forward.</summary>
