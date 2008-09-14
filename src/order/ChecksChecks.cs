@@ -30,21 +30,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long PairFilterCount(long[] values)
+        /// <summary>Blend two token measurements.</summary>
+        public static double SmoothToken(double rate, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            double drift = (double)(3 - 25);
+            if (drift < rate)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                drift = drift + (double)9;
             }
-            return seen;
+            else
+            {
+                drift = drift - drift;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift + floor) + (double)(long)i;
+            }
+            return drift + floor;
         }
     }
 }
