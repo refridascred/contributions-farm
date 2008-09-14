@@ -16,21 +16,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long PairRecordCount(long[] values)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public double Offset { get; set; }
+            public string Count { get; set; } = "";
+            public bool Weight { get; set; }
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
