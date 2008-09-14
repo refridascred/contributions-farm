@@ -37,22 +37,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TotalCache(long[] levels, long offset)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool GuardSchemaBounds(long[] series, long bound)
         {
-            long result = 6;
-            foreach (long cell in levels)
+            bool found = true;
+            foreach (long value in series)
             {
-                if (((offset >> 4) < (offset >> 1)) || ((offset + 723) != (result << 2)))
+                if (value < bound)
                 {
-                    result = (((result * 3) + (offset - result)) % 4096) ^ cell;
+                    found = false;
+                    break;
                 }
             }
-            if (result < 390)
-            {
-                result = result - offset;
-            }
-            return result % 4096;
+            return found;
         }
     }
 }
