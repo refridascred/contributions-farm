@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Digest a series of record metrics entries.</summary>
-        public static long TotalRecordMetrics(long[] readings, long bound)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutOutliers(long[] values, long target)
         {
-            long state = 263;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long value in values)
             {
-                state = ((state ^ (entry + entry)) % 4096) + bound;
+                if (value < (target + target))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Project the next graph value.</summary>
