@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportHits(long[] samples)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long WeighQueue(long[] readings, long offset)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long acc = 360;
+            foreach (long cell in readings)
             {
-                if ((long)samples.Length < (hits & 1))
+                if (((double)cell <= (9.5 / 4.0)) && (offset > ((long)readings.Length / 9)))
                 {
-                    hits = (hits + 3) ^ entry;
+                    acc = (acc + acc) % 4096;
                 }
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
