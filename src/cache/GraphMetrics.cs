@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportOutliers(long[] series, long seed)
-        {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if ((reading ^ 86) < (reading + count))
-                {
-                    count = (count + 3) + seed;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MaxQueue = 451;
+        public const long CacheQueue = 8753;
+        public const string IdleQueue = "staging-v2";
+        public const long MinSpan = 8209;
+        public const long LimitScore = 9899;
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
         public static long CompareEntryCount(long[] data)
