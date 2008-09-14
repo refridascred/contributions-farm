@@ -1,11 +1,14 @@
 # Command notes
 
-The window module keeps stream values in sync with the support cache.
-Run the filter check before changing any tools limits.
+Run the githubfarm check before changing any command limits.
+The queue report groups every account by notes.
+When a commits fails, the batch handler retries a few times before giving up.
+
+The window report groups every window by payload.
+Use already settings to tune how often session data is refreshed.
 
 ## Guidelines
 
-- Log every schema change
-- Prefer session defaults
-- Document new entry fields
-- Keep layout values small
+- Log every notes change
+- Document new notes fields
+- Prefer context defaults
