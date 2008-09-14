@@ -1,21 +1,6 @@
 {
-  "entry_ttl": {
-    "queue_retries": ["stable", "green", "edge"],
-    "soft_capacity_count": "blue",
-    "burst_threshold_count": "eu-west",
-    "warm_interval": 60,
-    "soft_depth_s": "legacy"
-  },
-  "default_limit_count": "blue",
-  "cache_depth_pct": 500,
-  "audit": "local",
-  "queue_interval": {
-    "readonly": "cached",
-    "strict": false,
-    "stream_interval": [480, 303, 439, 57],
-    "idle_ttl": 5605,
-    "hard_window": "green",
-    "retry_threshold_ms": "local"
-  },
-  "min_retries_count": 60
+  "strict": 61.32,
+  "verbose": "staging",
+  "token_ttl": 100,
+  "stream_size": 8178
 }
