@@ -5,38 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long RankAlready(long target, long step)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            if ((214 - target) == (target >> 2))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((target << 2) >= target)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)target > (1.14 - 11.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)target >= (5.0 * 19.0))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public double Stamp { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
