@@ -32,32 +32,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long ClassifyFormat(long floor, long target)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool ValidateCommitsBounds(long[] data, long seed)
         {
-            long cur = floor ^ target;
-            if ((double)2 <= (double)floor)
+            bool ready = true;
+            foreach (long item in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)cur > 5.78)
+                if (item < seed)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((9.8 + 1.14) >= (double)cur)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
