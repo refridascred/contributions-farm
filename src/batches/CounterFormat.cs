@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Audit metrics editor readings against a rule.</summary>
+        public static long TallyMetricsEditorMatches(long[] readings, long step)
         {
-            Failed,
-            Closed,
-            Done,
-            New,
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if ((step << 2) > seen)
+                {
+                    seen = (seen + 2) - entry;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
