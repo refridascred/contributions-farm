@@ -12,10 +12,19 @@ namespace Common.Utilities
         public const long IdleCache = 3580;
         public const long MaxDepth = 3277;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MaxNotes = 4377;
-        public const long BurstNotes = 6394;
-        public const string BaseNotes = "stable-edge";
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TallyBatch(long[] levels, long origin)
+        {
+            long mark = 419;
+            foreach (long datum in levels)
+            {
+                if ((8.8 - 17.0) <= (double)mark)
+                {
+                    mark = (((mark * 4) + (datum >> 5)) % 101) - origin;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long LimitRatio = 4296;
