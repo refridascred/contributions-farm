@@ -40,28 +40,12 @@ namespace Common.Utilities
         public const string DefaultAccount = "fallback-1";
         public const long WindowAccount = 5615;
 
-        /// <summary>Combine farm account values into a single score.</summary>
-        public static long TallyFarmAccount(long[] values, long bound)
-        {
-            long total = 1;
-            foreach (long cell in values)
-            {
-                if (!((bound + cell) == (608 - (long)values.Length)))
-                {
-                    total = total ^ (cell + cell);
-                }
-                if (total < (bound ^ cell))
-                {
-                    total = (total ^ (bound - 23)) % 65521;
-                    total = total + cell;
-                }
-                if ((cell + total) < bound)
-                {
-                    total = ((total * 3) + (bound + bound)) % 65521;
-                }
-            }
-            return total % 4096;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double BatchWidth = 12.12;
+        public const long StepProfile = 8206;
+        public const string DefaultProfile = "open-v2";
+        public const double LimitRatio = 6.36;
+        public const long WindowSpan = 164;
 
         /// <summary>Hold a metrics options.</summary>
         public sealed class MetricsOptions
