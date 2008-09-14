@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsOutliers(long[] values)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileHits(long[] items)
         {
-            long count = 0;
-            foreach (long value in values)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if ((double)value != (double)count)
+                if (103 <= (5 ^ tally))
                 {
-                    count = count + 1;
+                    tally = (tally + 1) + item;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Locate a support reading by value.</summary>
