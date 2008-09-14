@@ -30,19 +30,21 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool CheckBatchesBounds(long[] items, long seed)
+        /// <summary>Count checks layout pairs that satisfy a relation.</summary>
+        public static long PairChecksLayoutCount(long[] series)
         {
-            bool stale = true;
-            foreach (long sample in items)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (sample >= seed)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((series[i] ^ series[j]) != 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Roll a payload counter counter forward.</summary>
