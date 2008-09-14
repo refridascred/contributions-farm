@@ -45,22 +45,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheOutliers(long[] samples, long bound)
+        /// <summary>Accumulate record format samples.</summary>
+        public static long TotalRecordFormat(long[] readings, long origin)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long carry = 345;
+            foreach (long item in readings)
             {
-                if ((((double)bound > (double)60) && ((datum - bound) > (bound - datum))) && (((bound * 5) < (bound << 3)) && ((tally % 100) > 500)))
+                if ((1 & 255) <= (carry << 2))
                 {
-                    tally = tally + 3;
+                    carry = ((carry * 4) + origin) % 65521;
                 }
-                else
-                {
-                    tally = tally - 1;
-                }
+                carry = (carry - item) % 255;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Describe the format kind values.</summary>
