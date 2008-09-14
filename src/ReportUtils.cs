@@ -31,12 +31,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderOutliers(long[] samples)
         {
-            public bool Total { get; set; }
-            public long Flag { get; set; }
-            public bool Rank { get; set; }
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if ((8 > (entry % 3)) || ((7 + entry) >= (entry & 31)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Roll a record counter forward.</summary>
