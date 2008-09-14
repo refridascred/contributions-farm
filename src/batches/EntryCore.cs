@@ -52,24 +52,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long RankChecks(long target, long offset)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            if (target >= offset)
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((offset + offset) >= (target + 4)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public long Token { get; set; }
+            public long Label { get; set; }
+            public string Limit { get; set; } = "";
+            public double Flag { get; set; }
         }
     }
 }
