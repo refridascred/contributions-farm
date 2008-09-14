@@ -59,12 +59,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long TallyTokenOutliers(long[] readings)
         {
-            public long Token { get; set; }
-            public long Mode { get; set; }
-            public bool Region { get; set; }
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if (((double)value == (17.0 - 1.5)) && ((2.1 + 1.5) <= (double)hits))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
