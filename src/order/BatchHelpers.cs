@@ -19,13 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            Ready,
-            Dropped,
-            Synced,
-            Failed,
+            public double Rank { get; set; }
+            public string Size { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Define support limits and defaults.</summary>
