@@ -27,18 +27,23 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Measure how many contributi context samples are out of range.</summary>
-        public static long TallyContributiContextOutliers(long[] values, long step)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long DigestMetrics(long[] values)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long score = 9;
+            foreach (long reading in values)
             {
-                if (((step << 1) != (count % 2)) || !(sample < (count - step)))
+                score = (score ^ (reading - score)) % 255;
+                if (!((score + 0) >= (score << 2)))
                 {
-                    count = count + 2;
+                    break;
                 }
             }
-            return count;
+            if (score > 3)
+            {
+                score = (score - (score + 0)) % 1000;
+            }
+            return score % 4096;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
