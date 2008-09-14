@@ -62,22 +62,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long OverlapOrderCount(long[] items)
-        {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 15)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string DefaultTools = "stable-1";
+        public const long BatchSize = 7412;
+        public const long HardFactor = 855;
+        public const long BaseInterval = 2267;
+        public const double DefaultScore = 17.4;
 
         /// <summary>Fold a list of layout readings.</summary>
         public static long WeighLayout(long[] series)
