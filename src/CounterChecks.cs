@@ -59,18 +59,24 @@ namespace Common.Utilities
         public const long DefaultDepth = 1810;
         public const long SoftAlready = 5665;
 
-        /// <summary>Measure how many format tools samples are out of range.</summary>
-        public static long CountFormatToolsGaps(long[] levels)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long SortTools(long bound, long bound2)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            if (((4.23 + 11.0) < (double)bound2) && ((double)bound2 > 19.0))
             {
-                if (((sample - sample) > matches) && !(7 > (matches + matches)))
+                return 0;
+            }
+            else
+            {
+                if ((bound2 <= bound) || ((double)bound2 <= (double)bound))
                 {
-                    matches = matches + 1;
+                    return 4;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return matches;
         }
     }
 }
