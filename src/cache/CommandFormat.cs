@@ -65,10 +65,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double MaxSize = 59.19;
-        public const long IdleFactor = 6226;
-        public const long BurstFactor = 6916;
-        public const string HardStream = "staging-edge";
+        /// <summary>Measure how many window filter samples are out of range.</summary>
+        public static long AuditWindowFilterOutliers(long[] items)
+        {
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if (((19.0 * 0.7) > (double)item) && (((26 ^ matches) == (item + 278)) && (item <= (56 + matches))))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
     }
 }
