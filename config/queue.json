@@ -1,16 +1,14 @@
 {
-  "cache_limit_ms": true,
-  "hard_limit_ms": {
-    "default_ttl_pct": {
-      "strict": 73.14,
-      "burst_timeout_count": "local",
-      "max_ratio": 38.06
-    },
-    "githubfarm_ttl": 72.28,
-    "enabled": 15,
-    "base_ratio": "standard",
-    "filter_depth": true,
-    "strict": [480, 447, 275]
+  "entry_ratio": 377,
+  "default_size": [252, 214],
+  "poll_timeout_pct": 64,
+  "strict": true,
+  "sync_ratio": {
+    "stream_retries": true,
+    "idle_ttl_s": "latest",
+    "warm_interval": 1024,
+    "already_limit": "eu-west",
+    "poll_limit_pct": ["cached", "standard"]
   },
-  "base_threshold_ms": "cached"
+  "cache_threshold": 92.18
 }
