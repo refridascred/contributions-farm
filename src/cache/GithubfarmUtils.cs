@@ -51,18 +51,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long FoldLayout(long[] values, long target)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long WeighBuffer(long[] samples)
         {
-            long acc = 9;
-            foreach (long reading in values)
+            long mix = 291;
+            foreach (long entry in samples)
             {
-                if ((double)acc < (5.0 - 2.5))
+                if ((double)entry <= (7.17 / 2.0))
                 {
-                    acc = (acc + (acc - reading)) + target;
+                    mix = ((mix * 3) + 114) % 97;
                 }
             }
-            return acc;
+            if (mix < 49)
+            {
+                mix = mix ^ (mix * 5);
+            }
+            return mix;
         }
     }
 }
