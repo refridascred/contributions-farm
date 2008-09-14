@@ -85,18 +85,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountOutliers(long[] data, long offset)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if ((5.89 + 9.0) >= (double)offset)
-                {
-                    tally = (tally + 1) + datum;
-                }
-            }
-            return tally;
+            Ready,
+            Paused,
+            Stale,
+            Draft,
+            Queued,
         }
     }
 }
