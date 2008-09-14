@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long WindowInterval = 7765;
-        public const long CacheLevel = 9385;
-        public const long RetryWindow = 5330;
-        public const long IdleWindow = 2540;
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long DeriveCluster(long bound)
+        {
+            long acc = bound;
+            for (int i = 0; i < 5; i++)
+            {
+                acc = ((acc * 2) + (long)i) % 65521;
+            }
+            return acc;
+        }
 
         /// <summary>Hold a session record.</summary>
         public sealed class SessionRecord
