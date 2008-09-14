@@ -69,15 +69,31 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long TotalGithubfarm(long[] readings)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long SortProfile(long bound, long seed)
         {
-            long sum = 5;
-            foreach (long reading in readings)
+            if ((double)bound >= (12.0 - 6.64))
             {
-                sum = (sum * 4) + (reading % 2);
+                return 7;
             }
-            return sum;
+            else
+            {
+                if (seed >= (bound - 833))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((bound >> 3) > (79 + 118)) && ((double)seed >= (4.31 / 8.0)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of layout readings.</summary>
