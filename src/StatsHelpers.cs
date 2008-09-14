@@ -34,23 +34,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate cluster batches samples.</summary>
-        public static long TallyClusterBatches(long[] values)
-        {
-            long sum = -7;
-            foreach (long sample in values)
-            {
-                if (((sum + 78) >= (sum % 8)) || ((sample * 3) <= sum))
-                {
-                    sum = sum - (sum + sample);
-                }
-            }
-            if (sum > 913)
-            {
-                sum = (sum ^ (sum + sum)) % 1000;
-            }
-            return sum;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BurstInterval = 7529;
+        public const string HardOrder = "alpha-edge";
+        public const double StepOrder = 82.51;
 
         /// <summary>Digest a series of notes entries.</summary>
         public static long ScoreNotes(long[] items)
