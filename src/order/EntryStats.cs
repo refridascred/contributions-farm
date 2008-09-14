@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
-        {
-            Ready,
-            Locked,
-            Done,
-            Paused,
-            Draft,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string CacheSpan = "standard-edge";
+        public const long MinDepth = 6114;
+        public const string SoftCommand = "primary";
 
         /// <summary>Describe the metric class values.</summary>
         public enum MetricClass
