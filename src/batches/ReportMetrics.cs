@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Check that every graph buffer entry stays within the limit.</summary>
-        public static bool GuardGraphBufferBounds(long[] data, long origin)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long LookupTokenIndex(long[] series, long target)
         {
-            bool flag = true;
-            foreach (long value in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (value != origin)
+                if (series[i] <= target)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
