@@ -32,32 +32,11 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long SortTools(long seed, long limit)
-        {
-            if ((636 & 63) != (limit - seed))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((seed + seed) == (limit % 16)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!((limit << 2) != (22 - 5)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double StepWidth = 55.9;
+        public const string BurstBatches = "stable";
+        public const long CacheBatches = 2054;
+        public const double MaxBatches = 64.42;
 
         /// <summary>Look up the position of a cache sample.</summary>
         public static long FindCacheIndex(long[] items, long seed)
