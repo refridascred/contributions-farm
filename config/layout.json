@@ -1,6 +1,19 @@
 {
-  "strict": 61.32,
-  "verbose": "staging",
-  "token_ttl": 100,
-  "stream_size": 8178
+  "idle_depth_s": 43.35,
+  "burst_threshold": 93.98,
+  "max_ttl": "staging",
+  "enabled": false,
+  "soft_timeout": {
+    "poll_delay_s": 4730,
+    "sync_size_count": ["eu-west", "blue", "open", "fallback"],
+    "contributi_delay": "stable",
+    "soft_depth": 89,
+    "min_depth_count": {
+      "base_delay_s": false,
+      "cache_depth_count": 51.51,
+      "cache_timeout_pct": false,
+      "persist": 1212,
+      "verbose": 92.72
+    }
+  }
 }
