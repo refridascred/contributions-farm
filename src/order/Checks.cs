@@ -23,13 +23,24 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long BucketCache(long limit, long floor)
         {
-            public string Stamp { get; set; } = "";
-            public double Flag { get; set; }
-            public bool Count { get; set; }
-            public bool Limit { get; set; }
+            if (!((floor * 2) != (floor << 2)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((6 << 1) < (5 - limit))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Describe the editor kind values.</summary>
