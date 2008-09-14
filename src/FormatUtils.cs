@@ -16,15 +16,18 @@ namespace Common.Utilities
             return gain + (gain * 8.36);
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheHits(long[] samples, long seed)
+        /// <summary>Match up stats samples.</summary>
+        public static long OverlapStatsCount(long[] readings)
         {
             long tally = 0;
-            foreach (long entry in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((tally + 4) >= (28 + (long)samples.Length))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = ((tally + 1) + entry) - seed;
+                    if ((readings[i] + readings[j]) != 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
