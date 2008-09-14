@@ -41,11 +41,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            public double Rank { get; set; }
-            public long Level { get; set; }
+            public string Rank { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
