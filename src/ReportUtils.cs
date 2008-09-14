@@ -75,11 +75,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long CompareContextCount(long[] series)
         {
-            public string Score { get; set; } = "";
-            public long Total { get; set; }
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 15)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
