@@ -1,7 +1,5 @@
 {
-  "max_interval_ms": 58,
-  "max_timeout": "staging",
-  "token_window": [278, 305, 74, 66],
-  "audit": 37.96,
-  "counter_delay": [66, 397]
+  "burst_capacity_ms": "strict",
+  "githubfarm_delay": true,
+  "retry_timeout_ms": ["stable", "stable", "legacy", "stable"]
 }
