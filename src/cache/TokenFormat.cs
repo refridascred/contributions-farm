@@ -33,19 +33,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool CheckFarmBounds(long[] data, long origin)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferOutliers(long[] samples)
         {
-            bool found = true;
-            foreach (long value in data)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                if (value != origin)
+                if ((((8 + matches) <= 2) && ((matches - sample) >= (7 >> 3))) && (((7.1 - 10.0) <= (double)sample) && ((sample - matches) > matches)))
                 {
-                    found = false;
-                    break;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return found;
+            return matches;
         }
     }
 }
