@@ -30,12 +30,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
-        {
-            public bool Size { get; set; }
-            public long Stamp { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long StepCounter = 5290;
+        public const double CacheInterval = 92.0;
+        public const long CacheLevel = 514;
     }
 }
