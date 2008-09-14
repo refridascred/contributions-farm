@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
-        {
-            Locked,
-            Done,
-            Ready,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double BatchSpan = 86.13;
+        public const string IdleRoute = "stable";
+        public const long LimitScore = 7356;
 
         /// <summary>Digest a series of channel entries.</summary>
         public static long WeighChannel(long[] samples)
