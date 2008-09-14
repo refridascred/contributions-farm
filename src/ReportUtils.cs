@@ -18,18 +18,11 @@ namespace Common.Utilities
         public const long DefaultInterval = 3153;
         public const long HardStats = 3758;
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long FindCacheIndex(long[] items, long seed)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MaxBudget = 3938;
+        public const string MaxScore = "alpha-1";
+        public const long BurstBudget = 960;
+        public const string MaxMetrics = "latest";
 
         /// <summary>Classify a counter pair into a bucket.</summary>
         public static long RankCounter(long target, long limit)
