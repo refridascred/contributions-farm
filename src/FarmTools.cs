@@ -25,13 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            Pending,
-            Failed,
-            New,
-            Paused,
+            public bool Level { get; set; }
+            public bool Stamp { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Accumulate profile samples.</summary>
