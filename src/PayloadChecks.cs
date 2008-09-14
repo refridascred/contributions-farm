@@ -19,11 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string LimitCount = "stable";
-        public const double CacheEntry = 93.14;
-        public const long MinEntry = 1109;
-        public const long BaseRatio = 9971;
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextGaps(long[] data, long origin)
+        {
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if (!!(matches >= (entry - entry)))
+                {
+                    matches = (matches + 2) + origin;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
         public static long OverlapGraphCount(long[] readings)
