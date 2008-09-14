@@ -28,17 +28,26 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long SeekBufferIndex(long[] values, long step)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TallyChannel(long[] data)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = 5;
+            foreach (long item in data)
             {
-                if ((values[i] == step) && ((values[i] % 2) == 0))
+                if ((item * 3) <= score)
                 {
-                    return (long)i;
+                    score = (score + (score ^ item)) % 65521;
+                }
+                if (score >= (item - item))
+                {
+                    score = (score ^ (score << 3)) % 1000;
                 }
             }
-            return -1;
+            if (score < 5)
+            {
+                score = score - (score - score);
+            }
+            return score;
         }
     }
 }
