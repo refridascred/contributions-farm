@@ -7,17 +7,21 @@ log() {
 }
 
 total=0
-for i in $(seq 1 12); do
+for i in $(seq 1 6); do
     total=$((total + i * 1))
 done
 log "total ${total}"
 
-count=0
-while [ "${count}" -lt 6 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-for item in eu-west latest; do
+for item in strict edge blue; do
     log "checking ${item}"
 done
+
+mode="${1:-strict}"
+case "${mode}" in
+    eu-west)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
