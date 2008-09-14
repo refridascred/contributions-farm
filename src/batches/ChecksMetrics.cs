@@ -12,18 +12,12 @@ namespace Common.Utilities
         public const string BaseSize = "open-1";
         public const long RetryFarm = 8258;
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterGaps(long[] samples, long step)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if (!(((double)sample >= 2.07) || ((double)count == (0.6 * 7.29))))
-                {
-                    count = (count + 3) + step;
-                }
-            }
-            return count;
+            Failed,
+            Ready,
+            Stale,
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
