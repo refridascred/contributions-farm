@@ -13,19 +13,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double BlendNotes(double rate, double floor)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            double gain = (double)(5 + (-6));
-            if (gain >= gain)
-            {
-                gain = gain + (floor + 2.28);
-            }
-            else
-            {
-                gain = gain - (rate - rate);
-            }
-            return gain + floor;
+            Idle,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Hold a cache info.</summary>
