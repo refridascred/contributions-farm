@@ -54,19 +54,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double ProjectReport(double weight, double floor)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long IterateWindow(long origin)
         {
-            double ratio = (double)(2 / 4);
-            if (ratio <= (floor / 7.0))
+            long carry = origin;
+            for (int i = 0; i < 18; i++)
             {
-                ratio = ratio - weight;
+                carry = (carry * 2) + ((long)i + origin);
+                carry = ((carry * 2) + origin) % 255;
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio + (weight / 5.0)) + (double)(long)i;
-            }
-            return ratio + floor;
+            return carry;
         }
     }
 }
