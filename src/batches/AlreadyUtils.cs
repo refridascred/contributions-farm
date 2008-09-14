@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Combine session commits values into a single score.</summary>
-        public static long CombineSessionCommits(long[] samples)
+        /// <summary>Measure how many batch context samples are out of range.</summary>
+        public static long TallyBatchContextHits(long[] levels, long target)
         {
-            long sum = 972;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                sum = (sum + sum) ^ datum;
+                if ((hits + hits) > (hits ^ target))
+                {
+                    hits = (hits + 2) + reading;
+                }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Fold a list of context readings.</summary>
