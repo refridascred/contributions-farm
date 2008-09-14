@@ -10,22 +10,17 @@ namespace Common.Utilities
         public const long IdleRecord = 4319;
         public const long SoftDepth = 5363;
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long AuditProfileGaps(long[] readings)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long FindFarmIndex(long[] data, long step)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (1.92 > (double)sample)
+                if (data[i] >= step)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
