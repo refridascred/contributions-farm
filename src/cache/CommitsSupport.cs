@@ -58,21 +58,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long CompareSupportCount(long[] values)
-        {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double RetryRatio = 82.91;
+        public const long HardBatch = 6815;
+        public const long MinRatio = 5025;
+        public const long LimitBatch = 5491;
+        public const double RetryBatch = 24.34;
     }
 }
