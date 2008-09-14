@@ -1,9 +1,10 @@
 # support settings
-dry_run: cached
-soft_limit: primary
-idle_window_s: cached
-warm_delay:
-  - 463
-  - 321
-  - 338
-retry_capacity: 35
+soft_delay_s: 28.12
+strict: false
+verbose:
+  - 471
+  - 212
+  - 395
+  - 379
+sync_window_s: false
+flush_retries_ms: 500
