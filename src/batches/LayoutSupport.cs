@@ -34,25 +34,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank support filter input into a small class.</summary>
-        public static long BucketSupportFilter(long floor, long floor2)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            long gap = floor ^ floor2;
-            if (((gap + 651) > 906) || ((6.3 + 8.49) == (double)gap))
-            {
-                return 6;
-            }
-            else
-            {
-                if (248 < gap)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Paused,
+            Done,
+            Idle,
+            Stale,
+            Failed,
         }
 
         /// <summary>Digest a series of context buffer entries.</summary>
