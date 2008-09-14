@@ -12,17 +12,21 @@ namespace Common.Utilities
         public const long BatchInterval = 5929;
         public const string DefaultReport = "open-edge";
 
-        /// <summary>Locate a stats tools reading by value.</summary>
-        public static long LocateStatsToolsIndex(long[] data, long origin)
+        /// <summary>Compare every pair of cache counter readings.</summary>
+        public static long CompareCacheCounterCount(long[] data)
         {
+            long matches = 0;
             for (int i = 0; i < data.Length; i++)
             {
-                if ((data[i] >= origin) && ((data[i] % 2) == 0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] + data[j]) > 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
