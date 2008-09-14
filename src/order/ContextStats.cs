@@ -22,12 +22,23 @@ namespace Common.Utilities
         public const long IdleBudget = 8409;
         public const string DefaultCluster = "strict";
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Roll a notes already counter forward.</summary>
+        public static long IterateNotesAlready(long step)
         {
-            Stale,
-            Ready,
-            Done,
+            long anchor = step;
+            for (int i = 0; i < 14; i++)
+            {
+                if ((anchor % 12) != (step - 468))
+                {
+                    anchor = anchor + anchor;
+                }
+                if (anchor < step)
+                {
+                    anchor = ((anchor * 3) + step) % 4096;
+                }
+                anchor = ((anchor * 3) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
