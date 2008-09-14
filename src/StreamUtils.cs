@@ -63,19 +63,21 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double ScaleMetric(double bias, double offset)
+        /// <summary>Match up tools samples.</summary>
+        public static long OverlapToolsCount(long[] series)
         {
-            double bias2 = offset;
-            if (bias2 <= (bias2 / 3.0))
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                bias2 = (bias2 + (double)3) + bias;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                bias2 = bias2 - offset;
-            }
-            return bias2 - 0.76;
+            return hits;
         }
     }
 }
