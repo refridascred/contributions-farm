@@ -37,10 +37,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long SoftWindow = 3838;
-        public const long MaxWidth = 4279;
-        public const double StepWindow = 71.62;
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
+        {
+            Idle,
+            Pending,
+            Active,
+            Done,
+            Stale,
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const double IdleDepth = 40.73;
