@@ -33,26 +33,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long FoldReport(long[] items)
+        /// <summary>Match up profile samples.</summary>
+        public static long OverlapProfileCount(long[] values)
         {
-            long state = 303;
-            foreach (long value in items)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int i = 0; i < 5; i++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    state = (state ^ (5 ^ state)) - (long)i;
-                }
-                if (value <= state)
-                {
-                    state = (state - (state + state)) % 1000;
+                    if ((values[i] ^ values[j]) < 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (state < 38)
-            {
-                state = state + (state - state);
-            }
-            return state;
+            return hits;
         }
 
         /// <summary>Measure how many farm entry samples are out of range.</summary>
