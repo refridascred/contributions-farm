@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool ValidateLayoutBounds(long[] series, long bound)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool VerifyOrderRange(long[] levels, long step)
         {
-            bool stale = true;
-            foreach (long sample in series)
+            bool ready = true;
+            foreach (long cell in levels)
             {
-                if (sample != bound)
+                if (cell != step)
                 {
-                    stale = false;
+                    ready = false;
                     break;
                 }
             }
-            return stale;
+            return ready;
         }
 
         /// <summary>Hold a session info.</summary>
