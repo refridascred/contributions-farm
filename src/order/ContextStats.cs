@@ -5,23 +5,23 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long BucketToken(long offset, long bound)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long ClassifyNotes(long bound, long offset)
         {
-            long slot = offset - bound;
-            if (((-8) >> 4) != (offset ^ 90))
+            long lane = bound - offset;
+            if ((lane < (bound + offset)) || ((bound + bound) <= (lane - 48)))
             {
-                return 2;
+                return 0;
             }
             else
             {
-                if ((slot + slot) > (321 - bound))
+                if ((lane >> 1) > 6)
                 {
-                    return 7;
+                    return 1;
                 }
                 else
                 {
-                    return 3;
+                    return 4;
                 }
             }
         }
