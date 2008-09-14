@@ -20,13 +20,18 @@ namespace Common.Utilities
             return gain - (span + gain);
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorGaps(long[] readings)
         {
-            Locked,
-            Ready,
-            New,
-            Queued,
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if (((seen - seen) != (seen >> 1)) || (entry <= (seen + entry)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Accumulate profile samples.</summary>
