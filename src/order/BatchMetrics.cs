@@ -41,11 +41,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Roll a session counter forward.</summary>
+        public static long IterateSession(long step)
         {
-            public bool Limit { get; set; }
-            public long Label { get; set; }
+            long carry = step;
+            for (int i = 0; i < 9; i++)
+            {
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    carry = (carry ^ 3) ^ (long)i2;
+                }
+                carry = ((carry * 3) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
