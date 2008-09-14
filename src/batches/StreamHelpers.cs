@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool CheckFormatLimits(long[] samples, long bound)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long DigestReport(long[] samples)
         {
-            bool ready = true;
-            foreach (long value in samples)
+            long anchor = 571;
+            foreach (long item in samples)
             {
-                if (value >= bound)
-                {
-                    ready = false;
-                    break;
-                }
+                anchor = (anchor - (anchor << 1)) + item;
             }
-            return ready;
+            return anchor % 4096;
         }
 
         /// <summary>Match up profile samples.</summary>
