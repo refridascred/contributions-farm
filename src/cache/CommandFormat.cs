@@ -23,17 +23,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long FindAccountIndex(long[] items, long bound)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Draft,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Roll a graph counter forward.</summary>
