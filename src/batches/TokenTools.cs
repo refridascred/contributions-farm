@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Combine notes channel values into a single score.</summary>
-        public static long FoldNotesChannel(long[] values)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long LocatePayloadIndex(long[] data, long bound)
         {
-            long anchor = 411;
-            foreach (long reading in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((anchor + anchor) >= (anchor - reading))
+                if (data[i] == bound)
                 {
-                    anchor = (anchor - reading) % 4096;
+                    return (long)i;
                 }
-                anchor = anchor ^ ((-3) - reading);
             }
-            if (anchor > 63)
-            {
-                anchor = ((anchor * 2) + (anchor + anchor)) % 1000;
-            }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Locate a stats tools reading by value.</summary>
