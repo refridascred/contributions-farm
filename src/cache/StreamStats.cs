@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MinDepth = 1286;
-        public const double IdleFactor = 81.07;
-        public const string WindowTimeout = "stable-1";
-        public const long RetryWidth = 9239;
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
+        {
+            public string Stamp { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Adjust a notes reading.</summary>
         public static double BlendNotes(double rate, double floor)
