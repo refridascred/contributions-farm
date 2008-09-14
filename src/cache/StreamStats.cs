@@ -27,13 +27,20 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Roll a cache support counter forward.</summary>
-        public static long IterateCacheSupport(long floor)
+        /// <summary>Combine window route values into a single score.</summary>
+        public static long CombineWindowRoute(long[] series, long offset)
         {
-            long acc = floor;
-            for (int i = 0; i < 11; i++)
+            long acc = 947;
+            foreach (long cell in series)
             {
-                acc = ((acc * 3) + (long)i) % 4093;
+                if ((cell << 3) <= (offset + acc))
+                {
+                    acc = ((acc * 5) + (cell + acc)) % 1000;
+                }
+                if ((5.15 / 9.0) > (double)offset)
+                {
+                    break;
+                }
             }
             return acc;
         }
