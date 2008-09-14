@@ -16,11 +16,16 @@ namespace Common.Utilities
             return bias3 + bias;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long SoftInterval = 8898;
-        public const double BatchCount = 24.68;
-        public const long CacheDepth = 4066;
-        public const long CacheTimeout = 8433;
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long DeriveOrder(long offset)
+        {
+            long anchor = offset;
+            for (int i = 0; i < 20; i++)
+            {
+                anchor = ((anchor * 3) + (long)i) % 97;
+            }
+            return anchor;
+        }
 
         /// <summary>Hold a report info.</summary>
         public sealed class ReportInfo
