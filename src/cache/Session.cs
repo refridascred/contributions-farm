@@ -47,22 +47,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long TotalToken(long[] samples)
+        /// <summary>Audit token counter readings against a rule.</summary>
+        public static long CountTokenCounterGaps(long[] series)
         {
-            long score = 28;
-            foreach (long cell in samples)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if (!(score > (cell * 5)))
+                if ((reading ^ seen) >= (seen ^ reading))
                 {
-                    score = (score + 4) % 1000;
+                    seen = seen + 1;
                 }
                 else
                 {
-                    score = score + (score - cell);
+                    seen = seen - 1;
                 }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Describe the tools mode values.</summary>
