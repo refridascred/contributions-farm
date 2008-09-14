@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MaxFarm = 3966;
-        public const long MaxBudget = 4965;
-        public const long DefaultSize = 568;
-        public const long MinFarm = 46;
+        /// <summary>Define account limits and defaults.</summary>
+        public const string LimitAccount = "staging";
+        public const double IdleAccount = 35.82;
+        public const long MaxAccount = 7790;
 
         /// <summary>Digest a series of tools token entries.</summary>
         public static long FoldToolsToken(long[] series)
