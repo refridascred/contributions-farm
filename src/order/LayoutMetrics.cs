@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            Dropped,
-            Failed,
-            Stale,
-            Queued,
-            Paused,
+            public long Mode { get; set; }
+            public bool Score { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
