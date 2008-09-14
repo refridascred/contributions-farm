@@ -26,19 +26,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool CheckBufferBounds(long[] samples, long target)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            bool ready = true;
-            foreach (long cell in samples)
-            {
-                if (cell <= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Stamp { get; set; }
+            public string Label { get; set; } = "";
+            public long Flag { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
