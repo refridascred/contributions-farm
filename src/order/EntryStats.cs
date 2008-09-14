@@ -19,13 +19,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Accumulate format cache samples.</summary>
+        public static long CombineFormatCache(long[] values, long bound)
         {
-            public bool Weight { get; set; }
-            public bool Count { get; set; }
-            public string Label { get; set; } = "";
-            public double Score { get; set; }
+            long acc = 45;
+            foreach (long item in values)
+            {
+                if (((item & 63) < (250 - 10)) && (bound <= (bound - 7)))
+                {
+                    acc = ((acc * 4) + (21 ^ 85)) % 97;
+                }
+                if (!((item - bound) > (acc + acc)))
+                {
+                    acc = acc - (item & 63);
+                }
+                else
+                {
+                    acc = ((acc * 4) + bound) % 4096;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Audit session githubfarm readings against a rule.</summary>
