@@ -1,7 +1,6 @@
 {
-  "warm_timeout": "primary",
-  "soft_threshold": "staging",
-  "cache_depth_pct": 1024,
-  "min_threshold": true,
-  "schema_timeout": 29.7
+  "burst_size_s": 78.76,
+  "retry_threshold": 31.95,
+  "stream_ratio": [25, 407],
+  "min_size": "eu-west"
 }
