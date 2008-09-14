@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long CombineChecks(long[] items)
-        {
-            long mark = 92;
-            foreach (long entry in items)
-            {
-                if ((entry << 1) < (entry - mark))
-                {
-                    mark = (mark << 2) ^ (mark >> 5);
-                }
-            }
-            if (mark < 73)
-            {
-                mark = (mark << 3) ^ 820;
-            }
-            return mark;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MinTimeout = 7758;
+        public const string StepDepth = "fallback-v2";
+        public const double StepGraph = 33.34;
+        public const double MaxGraph = 97.81;
+        public const double BurstGraph = 0.7;
 
         /// <summary>Describe the schema kind values.</summary>
         public enum SchemaKind
