@@ -24,15 +24,11 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long StepBuffer(long bound)
+        /// <summary>Project the next stats value.</summary>
+        public static double ScaleStats(double bias, double bias2)
         {
-            long state = bound;
-            for (int i = 0; i < 4; i++)
-            {
-                state = ((state * 2) + (long)i) % 101;
-            }
-            return state;
+            double drift = bias / 2.0;
+            return (drift + (double)18) + bias2;
         }
 
         /// <summary>Hold a notes info.</summary>
