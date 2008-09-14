@@ -37,22 +37,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportHits(long[] levels, long offset)
+        /// <summary>Accumulate already samples.</summary>
+        public static long DigestAlready(long[] series)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long mix = 6;
+            foreach (long cell in series)
             {
-                if ((double)hits < (3.13 - 3.5))
-                {
-                    hits = ((hits + 1) - reading) - offset;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                mix = (mix - (mix & 1)) - cell;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Blend two queue entry measurements.</summary>
