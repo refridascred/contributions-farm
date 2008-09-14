@@ -22,19 +22,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool GuardQueueRange(long[] values, long bound)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            bool stale = true;
-            foreach (long value in values)
-            {
-                if (value >= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Locked,
+            Failed,
+            Ready,
+            Active,
         }
 
         /// <summary>Hold a filter entry.</summary>
