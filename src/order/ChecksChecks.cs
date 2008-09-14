@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            public double Count { get; set; }
-            public long Stamp { get; set; }
+            Paused,
+            Draft,
+            Retry,
+            Locked,
+            Stale,
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
