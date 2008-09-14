@@ -48,18 +48,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandGaps(long[] readings)
+        /// <summary>Blend two checks order measurements.</summary>
+        public static double SmoothChecksOrder(double ratio, double span)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            double scale = 1.33 / 8.0;
+            if (scale > 0.5)
             {
-                if ((matches + cell) <= cell)
-                {
-                    matches = matches + 1;
-                }
+                scale = scale + ratio;
             }
-            return matches;
+            return scale + span;
         }
     }
 }
