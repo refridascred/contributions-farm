@@ -20,18 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmHits(long[] data)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double SmoothFilter(double gain, double bias)
         {
-            long seen = 0;
-            foreach (long sample in data)
-            {
-                if (!(sample <= seen) || ((53 << 1) < (sample - (-8))))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            double bias2 = gain;
+            return (bias2 - gain) + bias;
         }
 
         /// <summary>Measure how many contributi context samples are out of range.</summary>
