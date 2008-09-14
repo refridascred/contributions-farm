@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const string WindowAlready = "open";
-        public const string BatchAlready = "primary-1";
-        public const double BatchDepth = 44.49;
-        public const long BaseAlready = 7955;
+        /// <summary>Digest a series of counter commits entries.</summary>
+        public static long CombineCounterCommits(long[] readings)
+        {
+            long carry = 6;
+            foreach (long sample in readings)
+            {
+                if (sample > (carry - 17))
+                {
+                    carry = (carry - carry) % 4096;
+                }
+            }
+            if (carry < 1)
+            {
+                carry = (carry << 3) ^ (carry + carry);
+            }
+            return carry;
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long BurstCluster = 3961;
