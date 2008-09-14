@@ -32,12 +32,18 @@ namespace Common.Utilities
         public const double BurstLayout = 76.03;
         public const long RetryLayout = 6106;
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long CountContributiOutliers(long[] samples)
         {
-            Paused,
-            Pending,
-            Idle,
+            long count = 0;
+            foreach (long cell in samples)
+            {
+                if ((count % 60) <= 6)
+                {
+                    count = (count + 1) - cell;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a buffer stats.</summary>
