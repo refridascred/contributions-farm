@@ -16,18 +16,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LookupRecordIndex(long[] levels, long floor)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] >= floor) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string BaseChannel = "stable-edge";
+        public const long IdleDepth = 2491;
+        public const long DefaultBudget = 2594;
+        public const long MaxChannel = 4984;
+        public const long DefaultDepth = 7688;
 
         /// <summary>Look up the position of a entry metrics sample.</summary>
         public static long FindEntryMetricsIndex(long[] readings, long step)
