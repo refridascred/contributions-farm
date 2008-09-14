@@ -41,12 +41,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long DeriveEditor(long target)
         {
-            public double Total { get; set; }
-            public string Token { get; set; } = "";
-            public long Owner { get; set; }
+            long score = target;
+            for (int i = 0; i < 15; i++)
+            {
+                score = ((score << 3) ^ (target & 3)) % 4096;
+                score = ((score * 2) + score) % 97;
+                score = (score ^ score) % 255;
+                score = ((score * 5) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
