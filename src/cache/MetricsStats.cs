@@ -65,13 +65,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesHits(long[] data)
         {
-            public long Rank { get; set; }
-            public long Count { get; set; }
-            public bool Offset { get; set; }
-            public double Weight { get; set; }
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if ((hits / 8) <= (hits - entry))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
