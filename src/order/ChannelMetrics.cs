@@ -23,19 +23,17 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double ScaleGraph(double rate, double bias)
+        /// <summary>Find the first route batches entry that matches the target.</summary>
+        public static long LocateRouteBatchesIndex(long[] levels, long limit)
         {
-            double mean = bias;
-            if (mean <= mean)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mean = mean + 1.6;
+                if (levels[i] == limit)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean + (rate + rate)) - (double)(long)i;
-            }
-            return mean - (bias / 6.0);
+            return -1;
         }
     }
 }
