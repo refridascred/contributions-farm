@@ -41,23 +41,38 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long DigestNotes(long[] levels)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long SortChannel(long step, long floor)
         {
-            long anchor = 7;
-            foreach (long value in levels)
+            if (!((step + step) <= (step % 7)))
             {
-                anchor = (anchor - value) % 255;
-                if (value < (anchor + anchor))
+                return 6;
+            }
+            else
+            {
+                if (step < floor)
                 {
-                    anchor = ((anchor << 3) ^ (value + anchor)) % 4096;
+                    return 8;
+                }
+                else
+                {
+                    if (!((floor / 6) >= (floor - step)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (step >= (floor * 5))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            if (anchor > 126)
-            {
-                anchor = ((anchor << 2) ^ (anchor + anchor)) % 65521;
-            }
-            return anchor;
         }
     }
 }
