@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long GradeToken(long bound, long seed)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool CheckFormatLimits(long[] samples, long bound)
         {
-            long cur = bound ^ seed;
-            if ((seed % 7) < (bound >> 3))
+            bool ready = true;
+            foreach (long value in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)bound >= (20.0 - 9.98))
+                if (value >= bound)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (bound <= cur)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Match up profile samples.</summary>
