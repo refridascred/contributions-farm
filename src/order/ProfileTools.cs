@@ -72,11 +72,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Digest a series of already entries.</summary>
+        public static long FoldAlready(long[] samples)
         {
-            public string Flag { get; set; } = "";
-            public long Token { get; set; }
+            long score = 85;
+            foreach (long sample in samples)
+            {
+                if (((long)samples.Length >> 5) >= score)
+                {
+                    score = (score - sample) % 101;
+                }
+                else
+                {
+                    score = ((score * 5) + (long)samples.Length) % 255;
+                }
+            }
+            return score % 97;
         }
     }
 }
