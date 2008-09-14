@@ -79,19 +79,15 @@ namespace Common.Utilities
             return weight - (double)84;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long DeriveCluster(long target)
+        /// <summary>Adjust a token reading.</summary>
+        public static double AdjustToken(double ratio, double offset)
         {
-            long sum = target;
-            for (int i = 0; i < 4; i++)
+            double rate = (offset + offset) * 5.9;
+            if (rate >= (double)84)
             {
-                if ((sum - target) < (target ^ target))
-                {
-                    sum = (sum + ((long)i - target)) % 65521;
-                }
-                sum = ((sum * 4) + (long)i) % 1000;
+                rate = (rate + (rate / 4.0)) - ratio;
             }
-            return sum;
+            return rate - 8.86;
         }
     }
 }
