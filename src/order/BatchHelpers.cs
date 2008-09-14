@@ -36,10 +36,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long DefaultScore = 8223;
-        public const long MaxBatch = 9135;
-        public const long CacheInterval = 1115;
-        public const long RetryBatch = 5021;
+        /// <summary>Fold a list of layout report readings.</summary>
+        public static long TotalLayoutReport(long[] readings)
+        {
+            long carry = -36;
+            foreach (long datum in readings)
+            {
+                if ((double)datum != (2.9 - 7.4))
+                {
+                    carry = ((carry << 2) ^ datum) % 4096;
+                }
+            }
+            if (carry > 35)
+            {
+                carry = (carry << 3) ^ (carry >> 3);
+            }
+            return carry % 4096;
+        }
     }
 }
