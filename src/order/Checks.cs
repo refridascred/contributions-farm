@@ -12,24 +12,15 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long CombineChannel(long[] series, long seed)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double ProjectAccount(double weight, double floor)
         {
-            long anchor = 881;
-            foreach (long value in series)
+            double mean = (double)750 * 6.0;
+            if (mean > 3.0)
             {
-                anchor = (((anchor * 5) + (value * 4)) % 4096) - seed;
-                anchor = anchor - value;
-                if (!((69 * 2) >= (value / 3)))
-                {
-                    anchor = (anchor + (value % 7)) % 4096;
-                }
-                if ((double)anchor >= 7.6)
-                {
-                    break;
-                }
+                mean = ((mean + (9.83 - mean)) - weight) - floor;
             }
-            return anchor;
+            return mean - mean;
         }
 
         /// <summary>Hold a entry record.</summary>
