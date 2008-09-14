@@ -32,12 +32,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long HardLayout = 9503;
-        public const long BaseLayout = 8808;
-        public const long LimitWidth = 6423;
-        public const double BurstLayout = 76.03;
-        public const long RetryLayout = 6106;
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool GuardCommandLimits(long[] levels, long limit)
+        {
+            bool stale = true;
+            foreach (long entry in levels)
+            {
+                if (entry > limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Accumulate counter profile samples.</summary>
         public static long FoldCounterProfile(long[] series)
