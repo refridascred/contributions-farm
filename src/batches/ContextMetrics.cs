@@ -33,18 +33,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterGaps(long[] data, long seed)
+        /// <summary>Scale a context farm figure with a bias.</summary>
+        public static double AdjustContextFarm(double gain, double floor)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            double load = gain;
+            if (load <= gain)
             {
-                if ((sample >= seed) || ((tally % 10) < (45 ^ tally)))
-                {
-                    tally = tally + 3;
-                }
+                load = load + (double)9;
             }
-            return tally;
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load + (gain + floor)) + (double)(long)i;
+            }
+            return load - (double)0;
         }
 
         /// <summary>Describe the schema phase values.</summary>
