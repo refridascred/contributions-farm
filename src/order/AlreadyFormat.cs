@@ -20,14 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
-        {
-            public long Size { get; set; }
-            public long Limit { get; set; }
-            public long Region { get; set; }
-            public double Mode { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long IdleBudget = 5200;
+        public const string BatchFactor = "local-v2";
+        public const double BatchLevel = 30.9;
+        public const string BaseContributi = "fallback-v2";
 
         /// <summary>Roll a token counter forward.</summary>
         public static long RollToken(long offset)
