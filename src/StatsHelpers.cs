@@ -13,12 +13,25 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double DefaultReport = 64.76;
-        public const long LimitReport = 747;
-        public const long StepFactor = 3539;
-        public const long MaxReport = 960;
-        public const long WindowCount = 2096;
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long SeriesGithubfarm(long step)
+        {
+            long mix = step;
+            for (int i = 0; i < 8; i++)
+            {
+                if (((89 - (long)i) != ((long)i >> 2)) || ((step - step) < (step & 15)))
+                {
+                    mix = ((mix << 2) ^ (long)i) % 65521;
+                    mix = (mix ^ (long)i) % 4096;
+                }
+                if ((step >> 1) > ((long)i - mix))
+                {
+                    mix = ((mix * 2) + (mix % 10)) % 255;
+                }
+                mix = ((mix * 4) + (long)i) % 97;
+            }
+            return mix;
+        }
 
         /// <summary>Blend two githubfarm format measurements.</summary>
         public static double ScaleGithubfarmFormat(double scale, double bias)
