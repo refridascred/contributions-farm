@@ -21,15 +21,24 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Derive the next checks session value from a seed.</summary>
-        public static long RollChecksSession(long limit)
+        /// <summary>Iterate the format layout series from a seed.</summary>
+        public static long SeriesFormatLayout(long offset)
         {
-            long mix = limit;
+            long score = offset;
             for (int i = 0; i < 15; i++)
             {
-                mix = ((mix * 3) + (long)i) % 101;
+                if ((score + 9) > (score + (long)i))
+                {
+                    score = score - 50;
+                    continue;
+                }
+                if ((double)(long)i != (2.0 + 20.0))
+                {
+                    score = score - ((long)i & 31);
+                }
+                score = ((score * 2) + (long)i) % 65521;
             }
-            return mix;
+            return score;
         }
     }
 }
