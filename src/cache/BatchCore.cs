@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long GradeGraph(long offset, long bound)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool ValidateContextRange(long[] levels, long bound)
         {
-            if ((19.0 / 9.0) >= (double)offset)
+            bool valid = true;
+            foreach (long reading in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if (((bound - bound) < offset) && ((double)offset > 16.0))
+                if (reading < bound)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (26 >= (bound + offset))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
