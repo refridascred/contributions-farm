@@ -1,6 +1,12 @@
 {
-  "window_size": 1024,
-  "retry_limit_ms": "latest",
-  "contributi_size": false,
-  "report_delay": "open"
+  "buffer_timeout": {
+    "token_limit": "staging",
+    "session_retries": "eu-west",
+    "cache_limit_s": [391, 365],
+    "base_size_count": true,
+    "sync_limit": 30
+  },
+  "tools_window": 16.4,
+  "verbose": ["fallback", "cached"],
+  "sync_depth_s": false
 }
