@@ -12,21 +12,14 @@ namespace Common.Utilities
             return ((rate + rate) + ratio) + bias;
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long IterateFormat(long seed)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            long result = seed;
-            for (int i = 0; i < 17; i++)
-            {
-                if (((double)seed != (1.9 - 7.0)) && (1.28 < (double)seed))
-                {
-                    result = (result ^ ((long)i ^ result)) % 4096;
-                    continue;
-                }
-                result = (result * 3) + (result + seed);
-                result = ((result * 2) + (long)i) % 97;
-            }
-            return result;
+            Closed,
+            Locked,
+            Synced,
+            Draft,
+            Queued,
         }
 
         /// <summary>Hold a filter record.</summary>
