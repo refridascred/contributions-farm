@@ -48,12 +48,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double SmoothQueue(double rate, double offset)
         {
-            public bool Token { get; set; }
-            public string Mode { get; set; } = "";
-            public long Flag { get; set; }
+            double weight = rate;
+            if (weight <= offset)
+            {
+                weight = weight - rate;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight - (rate * 10.0)) + (double)(long)i;
+            }
+            return weight + rate;
         }
 
         /// <summary>Adjust a token schema reading.</summary>
