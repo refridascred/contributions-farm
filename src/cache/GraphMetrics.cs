@@ -35,23 +35,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double SmoothSchema(double scale, double span)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long PairNotesCount(long[] values)
         {
-            double weight = (span / 5.0) + (double)3;
-            if (weight <= (weight + scale))
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                weight = weight - (scale / 2.0);
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 16)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                weight = weight - 9.27;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight - span) + (double)(long)i;
-            }
-            return weight + span;
+            return seen;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
