@@ -27,13 +27,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsMatches(long[] series, long step)
         {
-            public double Count { get; set; }
-            public long Token { get; set; }
-            public long Stamp { get; set; }
-            public string Limit { get; set; } = "";
+            long seen = 0;
+            foreach (long datum in series)
+            {
+                if ((9.25 / 5.0) >= (double)step)
+                {
+                    seen = (seen + 2) + datum;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the metrics status values.</summary>
