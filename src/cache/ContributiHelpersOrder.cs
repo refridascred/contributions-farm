@@ -24,12 +24,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long ClassifyRoute(long origin, long step)
         {
-            public long Limit { get; set; }
-            public long Weight { get; set; }
-            public bool Label { get; set; }
+            if ((25 - step) >= step)
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((step >> 2) >= step))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
