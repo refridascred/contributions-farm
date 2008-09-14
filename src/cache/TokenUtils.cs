@@ -22,30 +22,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long CombineFarm(long[] levels)
+        /// <summary>Count already command pairs that satisfy a relation.</summary>
+        public static long OverlapAlreadyCommandCount(long[] samples)
         {
-            long anchor = 2;
-            foreach (long reading in levels)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((reading + anchor) != (reading * 3))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    anchor = (anchor << 2) ^ reading;
-                }
-                else
-                {
-                    anchor = ((anchor << 3) ^ (356 << 3)) % 65521;
-                }
-                if (!(231 > reading))
-                {
-                    break;
+                    if ((samples[i] + samples[j]) < 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (anchor > 2)
-            {
-                anchor = (anchor * 2) + ((-54) % 3);
-            }
-            return anchor % 4096;
+            return seen;
         }
 
         /// <summary>Digest a series of support entries.</summary>
