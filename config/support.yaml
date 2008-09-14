@@ -1,10 +1,17 @@
 # support settings
-hard_timeout: legacy
-enabled:
-  - strict
-  - stable
-  - staging
-readonly: green
-route_threshold:
-  - 355
-  - 419
+min_threshold_ms: false
+strict: 14
+max_interval_ms:
+  command_threshold: 30
+  flush_delay: cached
+  base_threshold_s: true
+persist: 5.75
+account_interval: 7072
+token_threshold:
+  cache_ratio:
+    - 500
+    - 271
+    - 347
+    - 52
+  sync_timeout: stable
+  audit: edge
