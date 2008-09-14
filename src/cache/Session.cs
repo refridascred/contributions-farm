@@ -22,23 +22,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Audit token counter readings against a rule.</summary>
-        public static long CountTokenCounterGaps(long[] series)
-        {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if ((reading ^ seen) >= (seen ^ reading))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long LimitRatio = 4296;
+        public const string IdleGithubfarm = "primary-v2";
+        public const long BatchGithubfarm = 5763;
+        public const string DefaultSpan = "open-v2";
 
         /// <summary>Define route limits and defaults.</summary>
         public const string StepSpan = "local";
