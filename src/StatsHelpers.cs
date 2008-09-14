@@ -52,11 +52,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string MinNotes = "open-edge";
-        public const double WindowNotes = 25.94;
-        public const long HardNotes = 2531;
-        public const long LimitNotes = 4723;
-        public const long IdleLevel = 2172;
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long ScoreNotes(long[] items)
+        {
+            long result = -7;
+            foreach (long sample in items)
+            {
+                if ((result + sample) >= (result * 5))
+                {
+                    result = result - sample;
+                }
+            }
+            return result;
+        }
     }
 }
