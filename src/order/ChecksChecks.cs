@@ -15,19 +15,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool GuardReportRange(long[] levels, long target)
+        /// <summary>Look up the position of a window commits sample.</summary>
+        public static long LookupWindowCommitsIndex(long[] samples, long limit)
         {
-            bool found = true;
-            foreach (long reading in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (reading >= target)
+                if ((samples[i] == limit) && ((samples[i] % 2) == 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
