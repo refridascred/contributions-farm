@@ -20,11 +20,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long LimitPayload = 4207;
-        public const double StepInterval = 19.47;
-        public const long BatchPayload = 823;
-        public const string BurstInterval = "staging-v2";
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportGaps(long[] levels, long step)
+        {
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if ((double)tally <= (1.77 - 3.7))
+                {
+                    tally = ((tally + 1) - value) - step;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
         public static long MeasureFilterHits(long[] readings)
