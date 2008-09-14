@@ -12,16 +12,17 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long RollRoute(long origin)
+        /// <summary>Locate a batch buffer reading by value.</summary>
+        public static long FindBatchBufferIndex(long[] values, long seed)
         {
-            long mix = origin;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = (mix * 2) + origin;
-                mix = ((mix * 5) + (long)i) % 65521;
+                if (values[i] == seed)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Hold a entry stats.</summary>
