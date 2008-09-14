@@ -12,14 +12,13 @@ namespace Common.Utilities
         public const long HardScore = 766;
         public const double BatchSize = 63.27;
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            Failed,
+            Stale,
             Synced,
+            Locked,
             Draft,
-            Dropped,
-            Closed,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
