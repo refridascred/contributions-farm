@@ -41,18 +41,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowMatches(long[] readings, long floor)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long FindCommandIndex(long[] levels, long floor)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((911 + count) == (8 & 63)))
+                if ((levels[i] < floor) && ((levels[i] % 5) != 0))
                 {
-                    count = ((count + 1) ^ reading) + floor;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
