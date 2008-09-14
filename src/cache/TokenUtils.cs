@@ -22,18 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count already command pairs that satisfy a relation.</summary>
-        public static long OverlapAlreadyCommandCount(long[] samples)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheGaps(long[] readings, long origin)
         {
             long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long value in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((12.0 * 8.4) != (double)value)
                 {
-                    if ((samples[i] + samples[j]) < 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = (seen + 2) + origin;
                 }
             }
             return seen;
