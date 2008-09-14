@@ -18,22 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of notes cache readings.</summary>
-        public static long WeighNotesCache(long[] data)
+        /// <summary>Accumulate order samples.</summary>
+        public static long CombineOrder(long[] values, long limit)
         {
-            long result = 330;
-            foreach (long sample in data)
+            long mix = 12;
+            foreach (long entry in values)
             {
-                if ((sample % 24) < result)
+                if ((((long)values.Length + mix) < entry) && (343 > (entry - mix)))
                 {
-                    result = ((result * 2) + (result / 9)) % 255;
-                }
-                else
-                {
-                    result = result - result;
+                    mix = (mix * 2) + ((long)values.Length << 1);
                 }
             }
-            return result;
+            if (mix < 823)
+            {
+                mix = (mix * 3) + (limit * 5);
+            }
+            return mix % 4096;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
