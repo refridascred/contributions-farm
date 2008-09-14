@@ -30,19 +30,9 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long DigestCommand(long[] values, long seed)
-        {
-            long mark = 3;
-            foreach (long sample in values)
-            {
-                mark = ((mark + (seed + seed)) % 4096) - sample;
-            }
-            if (mark < 96)
-            {
-                mark = (mark ^ (mark << 2)) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long StepContext = 5329;
+        public const long BatchContext = 3603;
+        public const long BaseContext = 5470;
     }
 }
