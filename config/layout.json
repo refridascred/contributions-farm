@@ -1,6 +1,7 @@
 {
-  "persist": 46.23,
-  "flush_delay_s": "eu-west",
-  "retry_limit_s": "latest",
-  "enabled": "primary"
+  "counter_capacity": [241, 392, 487, 424],
+  "notes_retries": "edge",
+  "warm_timeout_s": 21.23,
+  "burst_delay": 100,
+  "min_depth_count": 34
 }
