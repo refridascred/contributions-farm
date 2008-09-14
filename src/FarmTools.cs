@@ -20,10 +20,25 @@ namespace Common.Utilities
             return gain - (span + gain);
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long HardLayout = 1178;
-        public const string IdleLayout = "fallback";
-        public const long BatchBudget = 8333;
+        /// <summary>Grade a already checks value against two limits.</summary>
+        public static long SortAlreadyChecks(long bound, long step)
+        {
+            if ((step & 31) != (91 ^ bound))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)bound > (7.3 / 2.0))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
         public static long TallyGithubfarmOutliers(long[] series, long target)
