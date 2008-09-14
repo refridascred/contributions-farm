@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportOutliers(long[] levels, long floor)
+        /// <summary>Match up commits samples.</summary>
+        public static long MatchCommitsCount(long[] items)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((2 % 97) > (seen - floor)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    seen = (seen + 1) ^ sample;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((items[i] ^ items[j]) == 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Grade a buffer checks value against two limits.</summary>
