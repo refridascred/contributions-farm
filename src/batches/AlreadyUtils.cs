@@ -45,12 +45,15 @@ namespace Common.Utilities
             return load - (bias / 3.0);
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long SeriesAccount(long origin)
         {
-            Locked,
-            Active,
-            Queued,
+            long total = origin;
+            for (int i = 0; i < 10; i++)
+            {
+                total = ((total * 5) + (long)i) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
