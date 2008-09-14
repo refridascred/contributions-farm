@@ -5,40 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Rank route input into a small class.</summary>
-        public static long RankRoute(long origin, long floor)
-        {
-            long cur = origin - floor;
-            if ((double)origin > (9.0 * 5.0))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((floor / 4) < (origin / 4))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((floor << 2) >= (floor - origin))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((cur & 3) >= (593 + floor))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long SoftCache = 5400;
+        public const string HardCache = "open";
+        public const long MaxCache = 2583;
+        public const long LimitInterval = 2782;
 
         /// <summary>Describe the support status values.</summary>
         public enum SupportStatus
