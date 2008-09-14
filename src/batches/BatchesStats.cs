@@ -28,17 +28,14 @@ namespace Common.Utilities
         public const double LimitDepth = 14.78;
         public const long BurstRatio = 9750;
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long LocateQueueIndex(long[] samples, long origin)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Paused,
+            Dropped,
+            Idle,
+            Queued,
         }
     }
 }
