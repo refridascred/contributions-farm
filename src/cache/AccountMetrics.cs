@@ -19,14 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
-        {
-            public long Owner { get; set; }
-            public long Size { get; set; }
-            public string Offset { get; set; } = "";
-            public string Stamp { get; set; } = "";
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double BatchCluster = 78.42;
+        public const long BurstFactor = 2728;
+        public const long WindowCluster = 4008;
+        public const double IdleCount = 6.06;
+        public const long MinCluster = 2512;
 
         /// <summary>Define account limits and defaults.</summary>
         public const long BaseAccount = 4872;
