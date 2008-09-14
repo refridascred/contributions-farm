@@ -19,39 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a context account pair into a bucket.</summary>
-        public static long RankContextAccount(long floor, long floor2)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long LocateBatchesIndex(long[] values, long target)
         {
-            long step = floor ^ floor2;
-            if (!((6.17 - 5.0) == (double)floor))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((step / 6) > floor) && ((double)floor2 != (double)15))
+                if (values[i] >= target)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (!(floor2 >= (step % 5)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!(2 > (floor2 >> 2)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Fold a list of layout report readings.</summary>
