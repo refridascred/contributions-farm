@@ -53,12 +53,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            Paused,
-            Done,
-            Retry,
+            public long Size { get; set; }
+            public double Level { get; set; }
+            public double Count { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
