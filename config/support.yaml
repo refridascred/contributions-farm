@@ -1,13 +1,42 @@
 # support settings
-max_limit:
-  - legacy
-  - green
-max_size_count: 58.29
-burst_limit: 34.3
-flush_capacity_pct: true
-compress: eu-west
-burst_depth_s:
-  - eu-west
-  - cached
-  - standard
-  - standard
+strict:
+  poll_delay:
+    - 113
+    - 76
+    - 79
+    - 20
+  report_retries: 6987
+  hard_threshold_count:
+    burst_threshold_s: eu-west
+    filter_ttl: eu-west
+    default_limit_pct:
+      - local
+      - strict
+      - eu-west
+      - legacy
+  default_retries: 100
+  dry_run:
+    - 269
+    - 409
+    - 165
+    - 289
+  idle_size_pct: false
+persist:
+  - 203
+  - 402
+  - 364
+  - 265
+retry_retries: 49.83
+audit:
+  batch_capacity_pct: true
+  notes_interval:
+    - edge
+    - stable
+  idle_retries:
+    contributi_ratio: 4.62
+    idle_ratio_count: 8189
+    sync_limit_pct: fallback
+  batch_window_count: edge
+  verbose: 37.79
+  persist: 39.77
+tools_ttl: latest
