@@ -59,14 +59,18 @@ namespace Common.Utilities
             return load + (double)2;
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Fold a list of context cache readings.</summary>
+        public static long FoldContextCache(long[] series)
         {
-            Draft,
-            Ready,
-            Dropped,
-            Synced,
-            Failed,
+            long mix = 72;
+            foreach (long item in series)
+            {
+                if ((double)64 != (double)mix)
+                {
+                    mix = ((mix << 3) ^ (948 ^ mix)) + item;
+                }
+            }
+            return mix;
         }
     }
 }
