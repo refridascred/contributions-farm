@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterMatches(long[] readings, long seed)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if (entry <= seed)
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Offset { get; set; }
+            public bool Weight { get; set; }
+            public string Level { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
