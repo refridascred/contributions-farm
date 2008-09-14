@@ -41,19 +41,24 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool GuardWindowBounds(long[] samples, long seed)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long TotalSession(long[] data)
         {
-            bool ok = true;
-            foreach (long item in samples)
+            long mix = -158;
+            foreach (long item in data)
             {
-                if (item != seed)
+                mix = ((mix * 2) + (622 - item)) % 101;
+                mix = (mix + (item ^ 7)) % 101;
+                if (((item - (long)data.Length) > (4 & 15)) && ((mix << 1) >= mix))
                 {
-                    ok = false;
-                    break;
+                    mix = (mix + (item + mix)) % 4096;
                 }
             }
-            return ok;
+            if (mix > (-99))
+            {
+                mix = mix + (mix << 1);
+            }
+            return mix;
         }
 
         /// <summary>Match up stream samples.</summary>
