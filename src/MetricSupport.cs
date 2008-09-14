@@ -24,24 +24,22 @@ namespace Common.Utilities
             return mean - (gain * 6.0);
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long DeriveProfile(long origin)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionHits(long[] samples)
         {
-            long mark = origin;
-            for (int i = 0; i < 17; i++)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if ((origin ^ mark) > (origin >> 5))
+                if (!((datum - datum) < (280 >> 3)) && (((datum + datum) <= (datum + hits)) || ((double)datum != (double)hits)))
                 {
-                    mark = (mark << 2) ^ (mark >> 4);
-                    break;
+                    hits = hits + 2;
                 }
                 else
                 {
-                    mark = mark ^ ((long)i >> 5);
+                    hits = hits - 1;
                 }
-                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Define route limits and defaults.</summary>
