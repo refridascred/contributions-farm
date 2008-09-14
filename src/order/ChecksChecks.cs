@@ -20,38 +20,22 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long GradeFilter(long seed, long seed2)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextHits(long[] readings, long target)
         {
-            if ((30 >> 5) > seed2)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((seed * 3) <= (seed2 / 2))
+                if (!(((80 / 6) > (cell << 3)) && ((tally << 1) >= (target ^ target))))
                 {
-                    return 2;
+                    tally = tally + 3;
                 }
                 else
                 {
-                    if ((seed2 / 3) <= (seed + 585))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!((2.0 * 9.91) < (double)seed))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
