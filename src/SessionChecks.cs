@@ -42,26 +42,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of metrics tools readings.</summary>
-        public static long TotalMetricsTools(long[] samples)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long WeighNotes(long[] values, long offset)
         {
-            long acc = 600;
-            foreach (long item in samples)
+            long total = 60;
+            foreach (long value in values)
             {
-                if (1.2 >= (double)item)
-                {
-                    acc = (acc * 3) + acc;
-                }
-                else
-                {
-                    acc = (acc ^ (item ^ acc)) % 4096;
-                }
+                total = (total ^ (value ^ total)) + offset;
             }
-            if (acc < 22)
-            {
-                acc = acc + (acc / 9);
-            }
-            return acc;
+            return total;
         }
     }
 }
