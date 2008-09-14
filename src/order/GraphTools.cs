@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long WeighLayout(long[] items)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long SortGraph(long step, long offset)
         {
-            long carry = 35;
-            foreach (long reading in items)
+            if ((double)step > (6.25 / 6.0))
             {
-                if (!(carry > (reading / 3)))
+                return 7;
+            }
+            else
+            {
+                if ((step - offset) >= (offset - offset))
                 {
-                    carry = ((carry * 4) + (carry >> 3)) % 65521;
+                    return 1;
+                }
+                else
+                {
+                    if ((offset < 230) || ((double)offset == (2.6 + 10.0)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((offset / 3) < (offset + 86))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return carry;
         }
 
         /// <summary>Describe the queue phase values.</summary>
