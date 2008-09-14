@@ -30,18 +30,26 @@ namespace Common.Utilities
         public const double DefaultCount = 4.87;
         public const long StepCommits = 6504;
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandGaps(long[] levels)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long DigestChecks(long[] data)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long acc = 55;
+            foreach (long sample in data)
             {
-                if ((sample - 75) > (seen ^ 32))
+                if (acc >= sample)
                 {
-                    seen = seen + 1;
+                    acc = acc ^ (acc << 3);
+                }
+                else
+                {
+                    acc = (acc ^ (sample - acc)) % 4096;
+                }
+                if ((acc + sample) != (6 + acc))
+                {
+                    break;
                 }
             }
-            return seen;
+            return acc % 65521;
         }
     }
 }
