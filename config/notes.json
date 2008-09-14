@@ -1,5 +1,17 @@
 {
-  "batches_ttl": 6327,
-  "poll_threshold_pct": true,
-  "burst_retries_ms": "strict"
+  "farm_limit": {
+    "verbose": true,
+    "readonly": "staging",
+    "githubfarm_window": {
+      "burst_limit": "open",
+      "window_capacity": 3537,
+      "farm_ttl": 95.56,
+      "max_limit_count": 7
+    },
+    "idle_retries_s": 9144
+  },
+  "readonly": true,
+  "retry_threshold": ["green", "legacy", "standard", "strict"],
+  "commits_retries": 1024,
+  "notes_interval": 33
 }
