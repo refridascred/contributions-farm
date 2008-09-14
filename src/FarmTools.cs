@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long SeriesSession(long floor)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            long score = floor;
-            for (int i = 0; i < 18; i++)
-            {
-                if (!(((score - floor) > floor) || (((-39) / 4) < floor)))
-                {
-                    score = (score ^ score) % 4096;
-                }
-                score = (score + ((-7) + (long)i)) % 97;
-                if ((4.1 + 7.83) >= (double)score)
-                {
-                    score = (score * 5) + (score >> 3);
-                    score = ((score * 4) + (floor * 4)) % 65521;
-                }
-                score = ((score * 4) + (long)i) % 101;
-            }
-            return score;
+            Retry,
+            Queued,
+            New,
+            Closed,
         }
 
         /// <summary>Hold a channel snapshot.</summary>
