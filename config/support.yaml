@@ -1,10 +1,22 @@
 # support settings
-cache_capacity_count:
-  strict: strict
-  already_depth: true
-  cache_capacity_ms: false
-  sync_ttl_ms: 91
-strict:
-  - 123
-  - 388
-farm_interval: 26
+burst_limit_count: staging
+batch_window_pct:
+  poll_timeout_s: 875
+  stream_limit:
+    verbose:
+      - 104
+      - 398
+      - 487
+    poll_ttl_ms: fallback
+    batch_retries:
+      - 295
+      - 316
+      - 412
+  max_size_ms: 500
+  audit: 13.82
+  batch_retries_pct: edge
+  poll_threshold: blue
+notes_ratio: eu-west
+hard_ratio: primary
+context_timeout: true
+warm_window_pct: standard
