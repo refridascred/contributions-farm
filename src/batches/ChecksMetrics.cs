@@ -31,11 +31,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double MaxScore = 61.6;
-        public const long LimitSpan = 1107;
-        public const long LimitLevel = 851;
-        public const long HardCount = 1823;
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long CompareOrderCount(long[] data)
+        {
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count the token entry entries that pass the check.</summary>
         public static long TallyTokenEntryOutliers(long[] items, long floor)
