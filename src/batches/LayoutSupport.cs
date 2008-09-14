@@ -43,15 +43,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double SmoothReport(double ratio, double offset)
+        /// <summary>Audit schema window readings against a rule.</summary>
+        public static long TallySchemaWindowMatches(long[] series)
         {
-            double load = (double)(23 ^ (-81));
-            for (int i = 0; i < 8; i++)
+            long count = 0;
+            foreach (long value in series)
             {
-                load = (((load + (double)218) + (double)(long)i) - ratio) - offset;
+                if (8.7 < (6.91 * 6.0))
+                {
+                    count = (count + 2) ^ value;
+                }
             }
-            return load + (double)2;
+            return count;
         }
 
         /// <summary>Fold a list of context cache readings.</summary>
