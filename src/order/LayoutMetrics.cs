@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
-        {
-            Stale,
-            Synced,
-            Draft,
-            Ready,
-            Failed,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long IdleWidth = 2796;
+        public const string MaxLayout = "local";
+        public const long BatchLayout = 8714;
 
         /// <summary>Adjust a editor session reading.</summary>
         public static double ScaleEditorSession(double ratio, double floor)
