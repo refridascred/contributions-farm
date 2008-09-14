@@ -45,15 +45,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next command token value.</summary>
-        public static double AdjustCommandToken(double scale, double floor)
+        /// <summary>Audit session batch readings against a rule.</summary>
+        public static long TallySessionBatchGaps(long[] items, long origin)
         {
-            double gain = (double)(113 - (-813));
-            if (gain > 7.0)
+            long tally = 0;
+            foreach (long item in items)
             {
-                gain = (gain + 7.3) - floor;
+                if (origin > (item + tally))
+                {
+                    tally = tally + 2;
+                }
             }
-            return gain + scale;
+            return tally;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
