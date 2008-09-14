@@ -71,19 +71,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TotalSchema(long[] readings, long target)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            long sum = 0;
-            foreach (long entry in readings)
-            {
-                if (((target ^ target) >= (target + 282)) && ((entry - sum) != (451 << 1)))
-                {
-                    sum = (sum ^ (sum >> 5)) % 1000;
-                }
-                sum = (sum - (sum - sum)) % 4096;
-            }
-            return sum % 65521;
+            public bool Score { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
