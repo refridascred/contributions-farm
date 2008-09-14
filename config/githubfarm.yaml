@@ -1,9 +1,9 @@
 # githubfarm settings
-warm_delay_ms: 69.0
-batch_timeout_s: 9916
-poll_threshold_s:
-  - 244
-  - 373
-  - 350
-  - 231
-verbose: 17
+verbose: 3.9
+sync_depth_s: 49
+route_size:
+  - strict
+  - edge
+  - edge
+  - primary
+burst_threshold_pct: 72
