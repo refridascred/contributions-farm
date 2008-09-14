@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatMatches(long[] data)
         {
-            public bool Mode { get; set; }
-            public long Limit { get; set; }
-            public string Weight { get; set; } = "";
-            public string Size { get; set; } = "";
+            long count = 0;
+            foreach (long value in data)
+            {
+                if ((5 % 16) > (value << 2))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define already limits and defaults.</summary>
