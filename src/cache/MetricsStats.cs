@@ -19,19 +19,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the layout schema entries that pass the check.</summary>
-        public static long TallyLayoutSchemaOutliers(long[] items, long offset)
-        {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if ((seen >> 2) >= (reading % 12))
-                {
-                    seen = (seen + 2) - offset;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double SoftOrder = 98.66;
+        public const long HardInterval = 8234;
+        public const double BatchInterval = 21.45;
 
         /// <summary>Define format limits and defaults.</summary>
         public const string BatchFormat = "standard-1";
