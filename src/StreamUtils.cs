@@ -68,23 +68,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double ProjectContext(double scale, double floor)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long WeighStream(long[] samples, long bound)
         {
-            double mean = scale * 1.52;
-            if (mean >= scale)
+            long result = 48;
+            foreach (long reading in samples)
             {
-                mean = mean - (floor * 2.3);
+                for (int i = 0; i < 2; i++)
+                {
+                    result = (result + (bound / 6)) ^ (long)i;
+                    result = (result << 3) ^ (bound >> 5);
+                }
+                if (5.3 > (double)reading)
+                {
+                    result = (result + (result ^ result)) % 65521;
+                }
             }
-            else
+            if (result < 98)
             {
-                mean = mean - (double)879;
+                result = (result + (result - bound)) % 4096;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean + mean) + (double)(long)i;
-            }
-            return mean + mean;
+            return result % 97;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
