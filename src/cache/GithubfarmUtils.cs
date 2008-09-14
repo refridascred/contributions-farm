@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long GradeProfile(long offset, long offset2)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long FindQueueIndex(long[] values, long bound)
         {
-            long offset3 = offset - offset2;
-            if (offset3 > 0)
+            for (int i = 0; i < values.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((offset << 1) <= (offset - offset3))
+                if (values[i] >= bound)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((9 - 42) == (86 + offset))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
