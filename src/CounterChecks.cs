@@ -10,18 +10,22 @@ namespace Common.Utilities
         public const long IdleRecord = 4319;
         public const long SoftDepth = 5363;
 
-        /// <summary>Measure how many account contributi samples are out of range.</summary>
-        public static long TallyAccountContributiMatches(long[] readings, long seed)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileGaps(long[] readings)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                if ((seed ^ hits) <= (hits * 5))
+                if (1.92 > (double)sample)
                 {
-                    hits = (hits + 3) ^ reading;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
