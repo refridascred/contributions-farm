@@ -6,15 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 12); do
-    total=$((total + i * 2))
+for item in open eu-west stable edge; do
+    log "checking ${item}"
 done
-log "total ${total}"
 
-mode="${1:-latest}"
+mode="${1:-edge}"
 case "${mode}" in
-    primary)
+    cached)
         log "fast path"
         ;;
     *)
