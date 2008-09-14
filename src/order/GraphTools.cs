@@ -20,13 +20,18 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Measure how many command channel samples are out of range.</summary>
+        public static long AuditCommandChannelOutliers(long[] samples, long bound)
         {
-            Synced,
-            Retry,
-            Done,
-            Active,
+            long count = 0;
+            foreach (long sample in samples)
+            {
+                if ((99 <= (count >> 3)) || !((1.0 * 4.2) < (double)sample))
+                {
+                    count = (count + 3) + bound;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a already options.</summary>
