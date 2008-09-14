@@ -31,18 +31,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit payload report readings against a rule.</summary>
-        public static long TallyPayloadReportMatches(long[] levels)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool VerifyRecordRange(long[] levels, long seed)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            bool stale = true;
+            foreach (long reading in levels)
             {
-                if (((20.0 - 14.0) == (double)tally) && ((double)tally > 18.0))
+                if (reading < seed)
                 {
-                    tally = (tally + 2) - item;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
     }
 }
