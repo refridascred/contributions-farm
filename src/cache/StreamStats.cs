@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double BlendPayload(double weight, double floor)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long FoldChecks(long[] items)
         {
-            double bias = 0.1 * 5.22;
-            if (bias < weight)
+            long carry = 776;
+            foreach (long cell in items)
             {
-                bias = (bias + (bias / 8.0)) - floor;
+                if (((cell * 4) >= (984 & 31)) || (((long)items.Length / 4) > (carry ^ 92)))
+                {
+                    carry = (carry * 2) + (96 & 127);
+                }
             }
-            return bias - bias;
+            return carry;
         }
 
         /// <summary>Adjust a notes reading.</summary>
