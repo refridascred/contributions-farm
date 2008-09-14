@@ -48,15 +48,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
-        {
-            Paused,
-            Idle,
-            New,
-            Draft,
-            Pending,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string RetryWidth = "standard";
+        public const string StepWidth = "strict-edge";
+        public const long BurstLevel = 3656;
 
         /// <summary>Hold a order entry.</summary>
         public sealed class OrderEntry
