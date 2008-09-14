@@ -20,17 +20,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long LookupContributiIndex(long[] levels, long step)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double ScaleChecks(double rate, double offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double rate2 = offset;
+            for (int i = 0; i < 5; i++)
             {
-                if ((levels[i] > step) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                rate2 = ((rate2 + (rate2 / 4.0)) + (double)(long)i) - rate;
             }
-            return -1;
+            return rate2 + rate2;
         }
 
         /// <summary>Describe the stream kind values.</summary>
