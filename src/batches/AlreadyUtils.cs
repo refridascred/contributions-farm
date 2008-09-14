@@ -41,12 +41,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long FindCommandIndex(long[] levels, long floor)
+        /// <summary>Look up the position of a order farm sample.</summary>
+        public static long FindOrderFarmIndex(long[] series, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((levels[i] < floor) && ((levels[i] % 5) != 0))
+                if (series[i] == origin)
                 {
                     return (long)i;
                 }
