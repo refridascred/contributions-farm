@@ -1,27 +1,8 @@
 # entry settings
-batch_size: 1481
-enabled:
-  sync_window_pct: 6596
-  flush_delay_ms: staging
-  strict:
-    compress: 36
-    tools_delay:
-      - local
-      - green
-    max_retries_s: cached
-    cache_ratio_count: 79
-    commits_delay:
-      - stable
-      - staging
-      - edge
-      - open
-    report_capacity:
-      - local
-      - blue
-      - open
-      - latest
-  entry_limit: true
-  counter_limit: primary
-verbose: 1643
-min_timeout: 62.99
-compress: false
+account_retries: green
+min_interval_s: 9560
+retry_retries:
+  readonly: latest
+  idle_threshold: 30
+  warm_window: 36.9
+  githubfarm_delay: 32
