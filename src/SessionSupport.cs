@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const string LimitAlready = "fallback-edge";
-        public const long BurstAlready = 3642;
-        public const long LimitDepth = 3687;
-        public const long BaseRatio = 8090;
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long RankRoute(long floor, long target)
+        {
+            if ((target % 5) >= (target + floor))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((target * 4) != (target << 1)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)target >= (1.13 - 8.0))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Classify a cluster metrics pair into a bucket.</summary>
         public static long ClassifyClusterMetrics(long seed, long origin)
