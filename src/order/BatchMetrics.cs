@@ -23,12 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
-        {
-            public long Label { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long RetryOrder = 2885;
+        public const long CacheTimeout = 2425;
+        public const long RetryLevel = 3344;
+        public const long BurstOrder = 7483;
+        public const double WindowRatio = 97.92;
 
         /// <summary>Describe the farm level values.</summary>
         public enum FarmLevel
