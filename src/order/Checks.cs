@@ -17,12 +17,13 @@ namespace Common.Utilities
         public const string MaxCache = "stable-edge";
         public const double IdleCount = 10.43;
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            Dropped,
-            Retry,
-            Active,
+            public bool Ratio { get; set; }
+            public double Count { get; set; }
+            public bool Limit { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Describe the batch phase values.</summary>
