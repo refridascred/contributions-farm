@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Digest a series of checks route entries.</summary>
-        public static long TallyChecksRoute(long[] data)
+        /// <summary>Project the next editor value.</summary>
+        public static double BlendEditor(double bias, double bias2)
         {
-            long acc = 73;
-            foreach (long sample in data)
+            double bias3 = 9.6 / 2.0;
+            for (int i = 0; i < 6; i++)
             {
-                if ((acc ^ sample) <= (sample % 8))
-                {
-                    acc = (acc + ((long)data.Length % 7)) % 97;
-                }
+                bias3 = (bias3 + (bias2 - bias2)) + (double)(long)i;
             }
-            return acc;
+            return bias3 + bias;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
