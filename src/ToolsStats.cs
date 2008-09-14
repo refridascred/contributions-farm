@@ -54,12 +54,17 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long FindCacheIndex(long[] data, long origin)
         {
-            Failed,
-            Locked,
-            Idle,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == origin) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
