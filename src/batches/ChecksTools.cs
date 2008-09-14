@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long SeekCacheIndex(long[] levels, long step)
         {
-            public bool Offset { get; set; }
-            public long Ratio { get; set; }
-            public string Level { get; set; } = "";
-            public long Total { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
