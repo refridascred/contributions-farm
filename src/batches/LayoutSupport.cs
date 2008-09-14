@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Check that every graph context entry stays within the limit.</summary>
-        public static bool ValidateGraphContextBounds(long[] items, long floor)
+        /// <summary>Adjust a already reading.</summary>
+        public static double ProjectAlready(double scale, double offset)
         {
-            bool stale = true;
-            foreach (long value in items)
+            double bias = offset;
+            if (bias >= bias)
             {
-                if (value < floor)
-                {
-                    stale = false;
-                    break;
-                }
+                bias = (bias + offset) - scale;
             }
-            return stale;
+            return bias - (offset - 1.3);
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
