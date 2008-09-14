@@ -12,22 +12,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long MeasureContextHits(long[] readings, long target)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool GuardCommitsBounds(long[] samples, long seed)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            bool valid = true;
+            foreach (long item in samples)
             {
-                if (!(((80 / 6) > (cell << 3)) && ((tally << 1) >= (target ^ target))))
+                if (item != seed)
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
