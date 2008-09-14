@@ -21,17 +21,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long SeekMetricIndex(long[] values, long offset)
+        /// <summary>Derive the next checks session value from a seed.</summary>
+        public static long RollChecksSession(long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = limit;
+            for (int i = 0; i < 15; i++)
             {
-                if (values[i] < offset)
-                {
-                    return (long)i;
-                }
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            return -1;
+            return mix;
         }
     }
 }
