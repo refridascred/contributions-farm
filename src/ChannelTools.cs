@@ -20,19 +20,12 @@ namespace Common.Utilities
             return drift - floor;
         }
 
-        /// <summary>Accumulate entry profile samples.</summary>
-        public static long WeighEntryProfile(long[] samples)
-        {
-            long mark = 394;
-            foreach (long item in samples)
-            {
-                if ((item + item) >= (83 >> 2))
-                {
-                    mark = mark + mark;
-                }
-            }
-            return mark % 4096;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double LimitFactor = 54.81;
+        public const long BurstLevel = 134;
+        public const long WindowFormat = 9307;
+        public const double WindowRatio = 2.48;
+        public const string IdleFormat = "staging-1";
 
         /// <summary>Iterate the contributi series from a seed.</summary>
         public static long StepContributi(long seed)
