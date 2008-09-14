@@ -20,23 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double ProjectCommits(double scale, double bias)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            double mean = (double)((-6) - 1);
-            if (mean > 8.0)
-            {
-                mean = mean - (bias + mean);
-            }
-            else
-            {
-                mean = mean + (scale / 8.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean - (bias + mean)) + (double)(long)i;
-            }
-            return mean + (double)969;
+            Retry,
+            Done,
+            Queued,
         }
 
         /// <summary>Compare every pair of context readings.</summary>
