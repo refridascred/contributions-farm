@@ -1,7 +1,6 @@
 # entry settings
-soft_depth_count:
-  - latest
-  - blue
-compress: 9060
-dry_run: staging
-warm_ratio_s: 4888
+retry_ratio_count: 0.42
+warm_delay_s:
+  - 481
+  - 337
+order_interval: blue
