@@ -19,22 +19,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorHits(long[] series)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long SeekAlreadyIndex(long[] items, long target)
         {
-            long count = 0;
-            foreach (long value in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((9.03 + 3.6) > (double)value) && ((count * 4) <= value))
+                if (items[i] > target)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Fold a list of report cluster readings.</summary>
