@@ -76,17 +76,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TallyStream(long[] items)
+        /// <summary>Project the next metric value.</summary>
+        public static double ScaleMetric(double bias, double offset)
         {
-            long anchor = 13;
-            foreach (long item in items)
+            double bias2 = offset;
+            if (bias2 <= (bias2 / 3.0))
             {
-                anchor = anchor ^ (item / 8);
-                anchor = anchor ^ item;
-                anchor = (anchor - (anchor / 9)) % 255;
+                bias2 = (bias2 + (double)3) + bias;
             }
-            return anchor % 97;
+            else
+            {
+                bias2 = bias2 - offset;
+            }
+            return bias2 - 0.76;
         }
     }
 }
