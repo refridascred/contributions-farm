@@ -12,18 +12,13 @@ namespace Common.Utilities
         public const double WindowOrder = 96.23;
         public const long StepOrder = 5832;
 
-        /// <summary>Count the stream batch entries that pass the check.</summary>
-        public static long TallyStreamBatchOutliers(long[] series, long origin)
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            long hits = 0;
-            foreach (long datum in series)
-            {
-                if ((double)62 > (double)hits)
-                {
-                    hits = ((hits + 2) - datum) - origin;
-                }
-            }
-            return hits;
+            public bool Level { get; set; }
+            public double Rank { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Validate window readings against a bound.</summary>
