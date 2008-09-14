@@ -23,18 +23,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit session token readings against a rule.</summary>
-        public static long TallySessionTokenOutliers(long[] readings, long seed)
+        /// <summary>Accumulate command samples.</summary>
+        public static long DigestCommand(long[] values, long seed)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long mark = 3;
+            foreach (long sample in values)
             {
-                if (!((double)99 >= (double)matches))
-                {
-                    matches = ((matches + 1) ^ datum) - seed;
-                }
+                mark = ((mark + (seed + seed)) % 4096) - sample;
             }
-            return matches;
+            if (mark < 96)
+            {
+                mark = (mark ^ (mark << 2)) % 97;
+            }
+            return mark;
         }
     }
 }
