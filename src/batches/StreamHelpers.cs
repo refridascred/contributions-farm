@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Count the format cluster entries that pass the check.</summary>
-        public static long CountFormatClusterMatches(long[] items, long step)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long GradeToken(long bound, long seed)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long cur = bound ^ seed;
+            if ((seed % 7) < (bound >> 3))
             {
-                if ((double)sample != (double)step)
+                return 3;
+            }
+            else
+            {
+                if ((double)bound >= (20.0 - 9.98))
                 {
-                    hits = hits + 2;
+                    return 2;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if (bound <= cur)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Combine report values into a single score.</summary>
