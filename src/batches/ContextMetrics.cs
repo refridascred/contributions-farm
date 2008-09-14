@@ -10,27 +10,14 @@ namespace Common.Utilities
         public const double StepEditor = 38.37;
         public const string BurstWidth = "alpha-edge";
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TallySchema(long[] readings)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            long result = 0;
-            foreach (long item in readings)
-            {
-                if ((item / 6) >= result)
-                {
-                    result = ((result * 4) + item) % 65521;
-                    result = result ^ (result - 37);
-                }
-                if (result <= item)
-                {
-                    result = (result + result) % 4096;
-                }
-                else
-                {
-                    result = ((result << 3) ^ (item - item)) % 255;
-                }
-            }
-            return result;
+            Pending,
+            Stale,
+            Ready,
+            Draft,
+            Done,
         }
 
         /// <summary>Scale a context farm figure with a bias.</summary>
