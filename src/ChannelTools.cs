@@ -33,32 +33,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long GradeEditor(long bound, long bound2)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long RollTools(long limit)
         {
-            long next = bound ^ bound2;
-            if ((985 * 5) < (next + 3))
+            long score = limit;
+            for (int i = 0; i < 12; i++)
             {
-                return 6;
+                score = ((score * 2) + (long)i) % 65521;
             }
-            else
-            {
-                if (((double)next < (double)bound2) || ((bound + 42) == (next * 4)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((1 - bound) > (next / 5))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return score;
         }
     }
 }
