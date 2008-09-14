@@ -23,16 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long DeriveAccount(long floor)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmOutliers(long[] values)
         {
-            long sum = floor;
-            for (int i = 0; i < 20; i++)
+            long count = 0;
+            foreach (long item in values)
             {
-                sum = sum - (sum + sum);
-                sum = ((sum * 2) + (long)i) % 101;
+                if ((count % 16) > item)
+                {
+                    count = count + 2;
+                }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Look up the position of a payload graph sample.</summary>
