@@ -27,15 +27,19 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Iterate the githubfarm filter series from a seed.</summary>
-        public static long DeriveGithubfarmFilter(long step)
+        /// <summary>Iterate the batches route series from a seed.</summary>
+        public static long RollBatchesRoute(long bound)
         {
-            long mix = step;
-            for (int i = 0; i < 20; i++)
+            long state = bound;
+            for (int i = 0; i < 12; i++)
             {
-                mix = ((mix * 2) + (long)i) % 4093;
+                if ((state % 12) != (state ^ bound))
+                {
+                    state = ((state << 3) ^ (bound >> 5)) % 65521;
+                }
+                state = ((state * 4) + (long)i) % 101;
             }
-            return mix;
+            return state;
         }
 
         /// <summary>Describe the stream level values.</summary>
