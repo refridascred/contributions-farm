@@ -72,18 +72,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderOutliers(long[] samples)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if ((8 > (entry % 3)) || ((7 + entry) >= (entry & 31)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Locked,
+            Stale,
+            Closed,
+            Synced,
         }
 
         /// <summary>Describe the buffer level values.</summary>
