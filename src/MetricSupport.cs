@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Match up commits samples.</summary>
-        public static long CompareCommitsCount(long[] levels)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long FoldSession(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = 8;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((6.0 / 7.0) > (double)result)
                 {
-                    if ((levels[i] - levels[j]) < 10)
-                    {
-                        seen = seen + 1;
-                    }
+                    result = ((result * 5) + reading) % 255;
+                }
+                else
+                {
+                    result = (result * 4) + (reading + result);
                 }
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Blend two session stream measurements.</summary>
