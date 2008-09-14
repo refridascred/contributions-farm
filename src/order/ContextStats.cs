@@ -27,21 +27,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next format schema value from a seed.</summary>
-        public static long DeriveFormatSchema(long offset)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            long sum = offset;
-            for (int i = 0; i < 21; i++)
-            {
-                if (((long)i & 15) <= (offset & 255))
-                {
-                    long offset2 = (offset + sum) & 255;
-                    sum = (sum << 3) ^ (offset2 + sum);
-                }
-                sum = (sum + (5 + sum)) % 97;
-                sum = ((sum * 4) + (long)i) % 97;
-            }
-            return sum;
+            Stale,
+            Ready,
+            Done,
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
