@@ -29,13 +29,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            Synced,
+            New,
             Stale,
-            Active,
-            Draft,
+            Paused,
         }
     }
 }
