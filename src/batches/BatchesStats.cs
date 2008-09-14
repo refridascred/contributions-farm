@@ -31,17 +31,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long LookupSessionIndex(long[] items, long origin)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamOutliers(long[] values, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if (items[i] < origin)
+                if ((double)seed >= (7.8 + 8.0))
                 {
-                    return (long)i;
+                    hits = (hits + 2) ^ item;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Roll a order githubfarm counter forward.</summary>
