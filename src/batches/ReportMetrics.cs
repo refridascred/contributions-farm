@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Scale a profile githubfarm figure with a bias.</summary>
-        public static double ScaleProfileGithubfarm(double rate, double offset)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            double drift = rate * 9.4;
-            if (drift > (offset * 5.11))
-            {
-                drift = drift + (double)717;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift - offset) + (double)(long)i;
-            }
-            return drift - rate;
+            public long Mode { get; set; }
+            public bool Label { get; set; }
+            public long Token { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
