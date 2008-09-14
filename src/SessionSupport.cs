@@ -32,10 +32,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MinInterval = 7069;
-        public const long BaseDepth = 7664;
-        public const long RetryScore = 7085;
-        public const long WindowBudget = 7159;
+        /// <summary>Digest a series of metric stream entries.</summary>
+        public static long WeighMetricStream(long[] readings)
+        {
+            long carry = 890;
+            foreach (long value in readings)
+            {
+                if ((carry + carry) <= (value / 4))
+                {
+                    carry = carry ^ (carry - value);
+                }
+                else
+                {
+                    carry = (carry << 2) ^ (value + value);
+                }
+            }
+            if (carry < 49)
+            {
+                carry = carry - carry;
+            }
+            return carry % 1000;
+        }
     }
 }
