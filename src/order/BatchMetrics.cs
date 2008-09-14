@@ -56,10 +56,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BurstLevel = 2587;
-        public const long SoftBudget = 7613;
-        public const long MaxMetric = 1615;
+        /// <summary>Adjust a token schema reading.</summary>
+        public static double SmoothTokenSchema(double scale, double floor)
+        {
+            double weight = (double)(978 + 5);
+            if (weight >= (floor * 5.4))
+            {
+                weight = weight - (double)66;
+            }
+            else
+            {
+                weight = weight + (scale + weight);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                weight = weight + (double)(long)i;
+            }
+            return weight - (double)84;
+        }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
         public static long DeriveCluster(long target)
