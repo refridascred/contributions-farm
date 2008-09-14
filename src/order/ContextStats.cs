@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long CacheRatio = 2762;
-        public const long LimitRecord = 2557;
-        public const long BurstRecord = 7755;
-        public const string RetryTimeout = "local-v2";
+        /// <summary>Accumulate already samples.</summary>
+        public static long TallyAlready(long[] levels)
+        {
+            long mark = 7;
+            foreach (long item in levels)
+            {
+                mark = (mark * 5) + (mark / 4);
+                mark = (mark - (item * 5)) % 65521;
+            }
+            return mark;
+        }
 
         /// <summary>Describe the metrics class values.</summary>
         public enum MetricsClass
