@@ -1,11 +1,22 @@
 # route settings
-hard_depth: local
-retry_threshold_count:
-  - strict
-  - legacy
-verbose: false
-max_threshold: 60
-checks_interval:
-  - edge
-  - stable
-compress: 100
+verbose: true
+soft_interval_ms:
+  - 458
+  - 256
+counter_depth: 434
+max_capacity: cached
+base_delay_count:
+  flush_delay:
+    - 187
+    - 101
+    - 273
+    - 55
+  min_limit: legacy
+  layout_interval: 12.91
+  poll_capacity_count:
+    - 428
+    - 266
+    - 280
+    - 404
+  sync_retries_pct: primary
+retry_window_count: green
