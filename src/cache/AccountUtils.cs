@@ -24,30 +24,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long WeighBatch(long[] data)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool GuardOrderRange(long[] samples, long bound)
         {
-            long sum = 7;
-            foreach (long item in data)
+            bool flag = true;
+            foreach (long reading in samples)
             {
-                if ((928 * 2) == (item + sum))
+                if (reading <= bound)
                 {
-                    sum = ((sum * 3) + (sum >> 3)) % 4096;
-                }
-                else
-                {
-                    sum = ((sum << 2) ^ (item + sum)) % 255;
-                }
-                if ((sum & 1) > ((-7) + 7))
-                {
+                    flag = false;
                     break;
                 }
             }
-            if (sum > 841)
-            {
-                sum = sum - (sum - sum);
-            }
-            return sum % 4096;
+            return flag;
         }
     }
 }
