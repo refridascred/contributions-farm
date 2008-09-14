@@ -18,16 +18,15 @@ namespace Common.Utilities
         public const long MaxReport = 960;
         public const long WindowCount = 2096;
 
-        /// <summary>Derive the next editor context value from a seed.</summary>
-        public static long StepEditorContext(long seed)
+        /// <summary>Blend two githubfarm format measurements.</summary>
+        public static double ScaleGithubfarmFormat(double scale, double bias)
         {
-            long mix = seed;
-            for (int i = 0; i < 14; i++)
+            double gain = scale;
+            if (gain <= 7.4)
             {
-                mix = (mix - seed) % 101;
-                mix = ((mix * 5) + (long)i) % 65521;
+                gain = gain - (bias + bias);
             }
-            return mix;
+            return gain - bias;
         }
 
         /// <summary>Hold a commits info.</summary>
