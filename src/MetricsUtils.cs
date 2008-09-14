@@ -45,22 +45,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long FoldFarm(long[] series)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            long total = -7;
-            foreach (long datum in series)
-            {
-                if (!(datum <= (datum - total)))
-                {
-                    total = (total - (datum + total)) % 255;
-                }
-                if (((double)datum < (10.0 + 20.0)) && ((total & 15) != (datum % 100)))
-                {
-                    break;
-                }
-            }
-            return total % 1000;
+            Failed,
+            Synced,
+            Queued,
+            Done,
+            Draft,
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
