@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long ScoreEntry(long[] data, long limit)
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            long carry = 9;
-            foreach (long value in data)
-            {
-                carry = (((carry << 2) ^ (limit % 2)) % 4096) + value;
-            }
-            return carry;
+            public long Total { get; set; }
+            public double Ratio { get; set; }
+            public long Count { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
