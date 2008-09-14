@@ -20,11 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Digest a series of schema session entries.</summary>
+        public static long WeighSchemaSession(long[] data, long seed)
         {
-            public bool Limit { get; set; }
-            public long Label { get; set; }
+            long total = 6;
+            foreach (long entry in data)
+            {
+                total = ((((total * 5) + (total / 7)) % 65521) + entry) + seed;
+            }
+            if (total < 20)
+            {
+                total = total ^ (total + total);
+            }
+            return total;
         }
 
         /// <summary>Describe the commits phase values.</summary>
