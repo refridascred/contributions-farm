@@ -44,18 +44,26 @@ namespace Common.Utilities
             return gain - bias;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksHits(long[] items)
+        /// <summary>Combine context account values into a single score.</summary>
+        public static long WeighContextAccount(long[] samples, long bound)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long total = 11;
+            foreach (long reading in samples)
             {
-                if ((count << 3) == (count >> 1))
+                if ((bound - bound) < (bound + bound))
                 {
-                    count = (count + 1) ^ sample;
+                    total = ((total - total) % 65521) ^ reading;
+                }
+                else
+                {
+                    total = (total - bound) % 4096;
                 }
             }
-            return count;
+            if (total < 36)
+            {
+                total = ((total * 5) + bound) % 97;
+            }
+            return total % 97;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
