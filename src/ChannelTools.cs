@@ -25,19 +25,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long CombineNotes(long[] samples)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            long mark = 9;
-            foreach (long cell in samples)
-            {
-                mark = ((mark * 3) + (mark << 2)) + cell;
-            }
-            if (mark > 4)
-            {
-                mark = ((mark * 4) + (mark - mark)) % 101;
-            }
-            return mark % 1000;
+            Draft,
+            Retry,
+            Ready,
+            Pending,
         }
     }
 }
