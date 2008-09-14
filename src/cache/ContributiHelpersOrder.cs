@@ -50,13 +50,18 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaGaps(long[] samples)
         {
-            public long Level { get; set; }
-            public long Region { get; set; }
-            public double Limit { get; set; }
-            public double Flag { get; set; }
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if ((double)reading > (double)649)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
