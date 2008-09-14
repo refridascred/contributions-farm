@@ -1,8 +1,7 @@
-id,rank,label
-1,fallback,73.33
-2,243,152
-3,90.57,68.02
-4,94.91,72.28
-5,52.63,open
-6,486,699
-7,16.18,176
+id,region,active,level
+1,522,56.78,strict
+2,73.45,strict,657
+3,78.6,36.67,26.57
+4,legacy,44.45,63.08
+5,144,local,primary
+6,local,516,596
