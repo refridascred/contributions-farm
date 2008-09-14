@@ -23,10 +23,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BatchBatches = 6343;
-        public const string BurstDepth = "latest-edge";
-        public const long CacheCount = 9950;
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long StepBatch(long origin)
+        {
+            long mix = origin;
+            for (int i = 0; i < 22; i++)
+            {
+                if (394 > (origin >> 1))
+                {
+                    break;
+                }
+                mix = (mix * 2) + (origin ^ mix);
+                mix = ((mix * 4) + (long)i) % 97;
+            }
+            return mix;
+        }
 
         /// <summary>Look up the position of a order sample.</summary>
         public static long SeekOrderIndex(long[] series, long step)
