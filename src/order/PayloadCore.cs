@@ -12,31 +12,15 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long ClassifyMetric(long target, long origin)
+        /// <summary>Roll a format graph counter forward.</summary>
+        public static long IterateFormatGraph(long bound)
         {
-            if ((18.0 + 8.1) > (double)origin)
+            long carry = bound;
+            for (int i = 0; i < 22; i++)
             {
-                return 7;
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            else
-            {
-                if ((target <= (target % 5)) && ((double)origin == (double)target))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!(target > (target >> 2)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Find the first editor record entry that matches the target.</summary>
