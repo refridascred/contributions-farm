@@ -71,13 +71,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TotalSchema(long[] readings, long target)
         {
-            public string Label { get; set; } = "";
-            public string Score { get; set; } = "";
-            public bool Size { get; set; }
-            public string Weight { get; set; } = "";
+            long sum = 0;
+            foreach (long entry in readings)
+            {
+                if (((target ^ target) >= (target + 282)) && ((entry - sum) != (451 << 1)))
+                {
+                    sum = (sum ^ (sum >> 5)) % 1000;
+                }
+                sum = (sum - (sum - sum)) % 4096;
+            }
+            return sum % 65521;
         }
     }
 }
