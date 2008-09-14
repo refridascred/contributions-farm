@@ -1,13 +1,6 @@
 {
-  "stream_threshold": {
-    "verbose": "blue",
-    "warm_ratio": "legacy",
-    "base_depth": [316, 37]
-  },
-  "queue_delay": {
-    "command_ratio": 75.28,
-    "cache_timeout_s": 95.06,
-    "max_size_ms": 9743
-  },
-  "sync_interval_ms": 1
+  "hard_window": ["standard", "local", "stable", "standard"],
+  "checks_window": 12.56,
+  "context_limit": 88.34,
+  "idle_interval_count": "stable"
 }
