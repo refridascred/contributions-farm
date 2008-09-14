@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long ScoreChecks(long[] series)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long LocateGithubfarmIndex(long[] samples, long step)
         {
-            long total = 904;
-            foreach (long cell in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = ((total * 5) + (total + cell)) % 65521;
+                if ((samples[i] > step) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Describe the queue phase values.</summary>
