@@ -1,14 +1,15 @@
 # Command notes
 
-Defaults for stats live in the config folder and can be overridden per environment.
-Use account settings to tune how often batches data is refreshed.
+The notes report groups every already by metric.
+Keep window and cache names short and lowercase.
+The route helpers are pure functions, so they are safe to call from any thread.
 
-The githubfarm report groups every channel by account.
-The cache helpers are pure functions, so they are safe to call from any thread.
-The metrics helpers are pure functions, so they are safe to call from any thread.
+A buffer that stays idle for too long is moved to the entry list.
+Defaults for cluster live in the config folder and can be overridden per environment.
+The command module keeps report values in sync with the order cache.
 
 ## Guidelines
 
-- Review buffer limits each release
-- Keep buffer values small
-- Validate notes input early
+- Prefer farm defaults
+- Review githubfarm limits each release
+- Document new report fields
