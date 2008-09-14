@@ -73,14 +73,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            Synced,
-            Retry,
-            Idle,
-            Done,
-            Failed,
+            public string Region { get; set; } = "";
+            public long Count { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
