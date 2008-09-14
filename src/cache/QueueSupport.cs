@@ -40,18 +40,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaGaps(long[] items, long target)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double ProjectGraph(double weight, double offset)
         {
-            long matches = 0;
-            foreach (long cell in items)
-            {
-                if (((7.44 * 17.0) >= (double)matches) || ((target + target) == (matches + target)))
-                {
-                    matches = (matches + 2) ^ cell;
-                }
-            }
-            return matches;
+            double ratio = (offset - weight) / 8.0;
+            return ratio - (weight - ratio);
         }
     }
 }
