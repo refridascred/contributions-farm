@@ -22,19 +22,22 @@ namespace Common.Utilities
             return (ratio2 + (double)19) + floor;
         }
 
-        /// <summary>Validate githubfarm command readings against a bound.</summary>
-        public static bool GuardGithubfarmCommandBounds(long[] readings, long seed)
+        /// <summary>Measure how many farm commits samples are out of range.</summary>
+        public static long AuditFarmCommitsGaps(long[] levels)
         {
-            bool flag = true;
-            foreach (long value in readings)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                if (value <= seed)
+                if (!(((double)datum >= 6.0) && (datum < tally)))
                 {
-                    flag = false;
-                    break;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return flag;
+            return tally;
         }
     }
 }
