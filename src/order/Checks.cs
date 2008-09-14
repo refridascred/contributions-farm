@@ -48,13 +48,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Find the first githubfarm order entry that matches the target.</summary>
+        public static long FindGithubfarmOrderIndex(long[] values, long origin)
         {
-            public long Count { get; set; }
-            public long Token { get; set; }
-            public double Stamp { get; set; }
-            public string Mode { get; set; } = "";
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == origin) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
