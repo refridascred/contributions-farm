@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long ScoreStream(long[] samples)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            long score = 7;
-            foreach (long item in samples)
-            {
-                score = (score * 2) + (score % 8);
-                if ((item + 887) < (item + (long)samples.Length))
-                {
-                    score = score ^ score;
-                }
-                if ((long)samples.Length == (item ^ item))
-                {
-                    break;
-                }
-            }
-            return score;
+            public double Region { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Iterate the profile notes series from a seed.</summary>
