@@ -1,5 +1,10 @@
 {
-  "cache_ttl": 6027,
-  "graph_depth": 39.04,
-  "persist": 250
+  "compress": false,
+  "payload_limit": {
+    "cache_delay": 100,
+    "batch_timeout_ms": 1024,
+    "idle_timeout_s": 37,
+    "burst_ratio_ms": "primary"
+  },
+  "flush_size": "latest"
 }
