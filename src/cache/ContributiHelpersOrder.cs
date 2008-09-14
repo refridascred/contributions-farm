@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long OverlapSessionCount(long[] items)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long FoldPayload(long[] levels, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 68;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((double)(long)levels.Length > 5.41) && ((datum + floor) <= anchor))
                 {
-                    if ((items[i] - items[j]) < 0)
-                    {
-                        count = count + 1;
-                    }
+                    anchor = (anchor ^ (614 * 4)) % 255;
                 }
             }
-            return count;
+            if (anchor < 28)
+            {
+                anchor = (anchor ^ floor) % 65521;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
