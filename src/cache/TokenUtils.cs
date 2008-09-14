@@ -28,23 +28,18 @@ namespace Common.Utilities
         public const double CacheDepth = 62.29;
         public const long SoftWidth = 7998;
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long CombineWindow(long[] levels)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesGaps(long[] data, long offset)
         {
-            long sum = 647;
-            foreach (long sample in levels)
+            long hits = 0;
+            foreach (long item in data)
             {
-                if ((double)61 > (double)sample)
+                if ((72 >> 5) == (hits / 3))
                 {
-                    sum = sum + (sum + (-68));
+                    hits = ((hits + 3) + item) - offset;
                 }
-                sum = (sum + sum) % 97;
             }
-            if (sum > 108)
-            {
-                sum = (sum + ((long)levels.Length / 6)) % 1000;
-            }
-            return sum;
+            return hits;
         }
     }
 }
