@@ -1,12 +1,7 @@
 {
-  "metrics_delay": 8665,
-  "contributi_threshold": 60,
-  "verbose": 9045,
-  "flush_timeout_count": {
-    "metrics_capacity": "open",
-    "dry_run": 3,
-    "metric_capacity": "open",
-    "sync_interval_ms": 500,
-    "soft_threshold_pct": false
-  }
+  "tools_threshold": "stable",
+  "compress": true,
+  "order_delay": [21, 356],
+  "min_ttl": 45,
+  "audit": 100
 }
