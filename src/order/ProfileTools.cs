@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long WeighGraph(long[] series, long origin)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long WeighProfile(long[] series)
         {
-            long score = 14;
-            foreach (long sample in series)
+            long state = 771;
+            foreach (long cell in series)
             {
-                score = ((score + (origin + origin)) % 255) ^ sample;
+                if ((double)state != (1.3 * 5.01))
+                {
+                    state = (state * 2) + cell;
+                }
             }
-            if (score < 410)
+            if (state > 34)
             {
-                score = (score - (origin - 890)) % 97;
+                state = (state - (state - 170)) % 1000;
             }
-            return score;
+            return state % 1000;
         }
 
         /// <summary>Hold a entry stats.</summary>
