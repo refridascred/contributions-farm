@@ -63,22 +63,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit checks schema readings against a rule.</summary>
-        public static long AuditChecksSchemaGaps(long[] values)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long LocateNotesIndex(long[] readings, long target)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((hits - hits) > (datum - hits))
+                if (readings[i] > target)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Project the next layout value.</summary>
