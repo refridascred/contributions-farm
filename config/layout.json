@@ -1,5 +1,5 @@
 {
-  "compress": 96,
-  "readonly": false,
-  "max_ttl_pct": false
+  "enabled": true,
+  "record_threshold": 78.26,
+  "sync_ttl": 55.32
 }
