@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long CombineOrder(long[] readings)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long WeighChannel(long[] values, long floor)
         {
-            long sum = 1;
-            foreach (long reading in readings)
+            long state = -69;
+            foreach (long cell in values)
             {
-                if (reading < (1 % 7))
+                if ((state << 2) <= (state % 16))
                 {
-                    sum = ((sum << 2) ^ sum) % 1000;
+                    state = ((state * 4) + (floor % 64)) ^ cell;
                 }
             }
-            return sum;
+            return state;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
