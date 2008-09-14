@@ -27,13 +27,10 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
-        {
-            Ready,
-            Retry,
-            Draft,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string BaseTimeout = "alpha-edge";
+        public const long RetryRatio = 9156;
+        public const string LimitFarm = "standard-edge";
 
         /// <summary>Digest a series of already route entries.</summary>
         public static long ScoreAlreadyRoute(long[] readings, long bound)
