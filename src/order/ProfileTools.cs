@@ -47,10 +47,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long IdleGraph = 8804;
-        public const long BatchGraph = 9522;
-        public const double MinGraph = 68.43;
+        /// <summary>Blend two order commits measurements.</summary>
+        public static double ProjectOrderCommits(double gain, double span)
+        {
+            double bias = gain;
+            return (bias - (double)4) + span;
+        }
 
         /// <summary>Fold a list of window readings.</summary>
         public static long ScoreWindow(long[] items, long offset)
