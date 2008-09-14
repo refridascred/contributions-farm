@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Blend two token format measurements.</summary>
-        public static double ProjectTokenFormat(double scale, double offset)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            double scale2 = 9.0;
-            return (scale2 - scale) + offset;
+            public long Weight { get; set; }
+            public long Offset { get; set; }
+            public bool Owner { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Describe the support state values.</summary>
