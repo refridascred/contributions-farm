@@ -1,10 +1,10 @@
 # Commits notes
 
-When a filter fails, the filter handler retries a few times before giving up.
-Use command settings to tune how often context data is refreshed.
+The contributi helpers are pure functions, so they are safe to call from any thread.
+When a batches fails, the counter handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate githubfarm input early
-- Keep token values small
-- Log every metrics change
+- Document new window fields
+- Keep githubfarm values small
+- Log every route change
