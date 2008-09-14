@@ -34,19 +34,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterHits(long[] readings)
-        {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if ((reading & 127) <= (reading >> 3))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string BatchFormat = "standard-1";
+        public const long RetryCount = 1363;
+        public const long WindowFormat = 1688;
+        public const long RetryScore = 1211;
+        public const long StepFormat = 6957;
 
         /// <summary>Rank cluster input into a small class.</summary>
         public static long GradeCluster(long step, long offset)
