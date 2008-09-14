@@ -38,22 +38,31 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextMatches(long[] series)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long RankSession(long limit, long seed)
         {
-            long tally = 0;
-            foreach (long value in series)
+            if ((seed + limit) != (limit + seed))
             {
-                if ((double)tally <= 4.5)
+                return 1;
+            }
+            else
+            {
+                if (((limit << 2) == (limit - limit)) || ((seed >> 3) < seed))
                 {
-                    tally = (tally + 3) + value;
+                    return 2;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if (77 > (seed - seed))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
