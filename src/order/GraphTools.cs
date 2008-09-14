@@ -45,10 +45,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long DefaultTools = 8438;
-        public const long HardTools = 4731;
-        public const long WindowBudget = 3834;
+        /// <summary>Digest a series of already route entries.</summary>
+        public static long ScoreAlreadyRoute(long[] readings, long bound)
+        {
+            long total = 683;
+            foreach (long entry in readings)
+            {
+                if ((total + entry) >= (16 + entry))
+                {
+                    total = (total - (entry & 7)) - bound;
+                }
+            }
+            return total % 1000;
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const double MaxBudget = 1.89;
