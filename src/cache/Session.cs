@@ -16,35 +16,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long DigestEditor(long[] data)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            long carry = -2;
-            foreach (long cell in data)
-            {
-                if ((double)carry == (1.0 / 4.0))
-                {
-                    carry = (carry ^ (cell - carry)) % 4096;
-                    break;
-                }
-                else
-                {
-                    carry = carry ^ (1 / 4);
-                }
-                if ((8.0 + 1.0) < (double)cell)
-                {
-                    carry = (carry << 2) ^ (carry + cell);
-                }
-                if ((cell >= (cell << 3)) || ((double)cell <= (9.84 * 2.0)))
-                {
-                    break;
-                }
-            }
-            if (carry < 9)
-            {
-                carry = carry - (carry % 3);
-            }
-            return carry;
+            Failed,
+            Synced,
+            Draft,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Audit token counter readings against a rule.</summary>
