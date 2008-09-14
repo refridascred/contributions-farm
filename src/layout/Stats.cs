@@ -13,11 +13,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double BlendLayout(double ratio, double bias)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            double weight = (double)(644 - 0);
-            return ((weight + weight) + ratio) + bias;
+            public string Flag { get; set; } = "";
+            public bool Count { get; set; }
+            public long Level { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Hold a cluster entry.</summary>
