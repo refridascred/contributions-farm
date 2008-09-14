@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const double BatchSpan = 86.13;
-        public const string IdleRoute = "stable";
-        public const long LimitScore = 7356;
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
+        {
+            Dropped,
+            Locked,
+            Paused,
+        }
 
         /// <summary>Describe the stream class values.</summary>
         public enum StreamClass
