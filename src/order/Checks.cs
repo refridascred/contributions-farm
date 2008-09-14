@@ -25,19 +25,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Blend two command stats measurements.</summary>
-        public static double BlendCommandStats(double rate, double floor)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            double scale = rate;
-            if (scale <= (8.0 / 6.0))
-            {
-                scale = scale + floor;
-            }
-            else
-            {
-                scale = scale + (floor - rate);
-            }
-            return scale - (double)2;
+            Done,
+            Pending,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
