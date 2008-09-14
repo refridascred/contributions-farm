@@ -1,7 +1,5 @@
 {
-  "persist": 76.15,
-  "compress": 8.74,
-  "warm_ratio": "fallback",
-  "verbose": "cached",
-  "max_ttl_pct": [296, 335]
+  "entry_ttl": "strict",
+  "compress": 32.59,
+  "profile_depth": 60
 }
