@@ -1,12 +1,22 @@
 # entry settings
-sync_ratio_count: 6806
-graph_limit:
-  enabled: 16.25
-  max_ratio_count: 30
-  format_capacity: primary
-  flush_depth: strict
-verbose:
-  - 81
-  - 182
-  - 395
-  - 64
+contributi_size:
+  - stable
+  - eu-west
+idle_threshold_count: true
+base_delay:
+  - 108
+  - 305
+token_size:
+  warm_timeout_s: edge
+  burst_limit_pct: 5.38
+  token_capacity: 28
+warm_window_s:
+  soft_depth_s: 1858
+  cache_ttl_s: cached
+  retry_depth_count:
+    base_ratio: 30.24
+    base_depth: 56
+    report_timeout: 4702
+    max_threshold_count: legacy
+  cache_ratio: 1506
+  retry_capacity_count: local
