@@ -65,24 +65,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long FoldReport(long[] levels)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            long mix = 9;
-            foreach (long sample in levels)
-            {
-                if (sample < (-62))
-                {
-                    long step = (sample & 15) << 2;
-                    mix = (mix * 3) + (step - step);
-                }
-                mix = ((mix * 4) + 732) % 101;
-            }
-            if (mix < 87)
-            {
-                mix = ((mix * 3) + mix) % 4096;
-            }
-            return mix;
+            Locked,
+            Idle,
+            Synced,
+            Stale,
+            Retry,
         }
     }
 }
