@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatMatches(long[] data)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            long count = 0;
-            foreach (long value in data)
-            {
-                if ((5 % 16) > (value << 2))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Retry,
+            Idle,
+            Closed,
+            Ready,
         }
 
         /// <summary>Define already limits and defaults.</summary>
