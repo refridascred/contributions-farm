@@ -33,17 +33,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long SeekMetricIndex(long[] series, long bound)
+        /// <summary>Digest a series of graph editor entries.</summary>
+        public static long DigestGraphEditor(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = -2;
+            foreach (long datum in values)
             {
-                if (series[i] >= bound)
+                if (!((3.7 / 2.0) != (double)carry))
                 {
-                    return (long)i;
+                    carry = (carry - datum) % 1000;
+                }
+                else
+                {
+                    carry = ((carry * 3) + (datum & 7)) % 1000;
                 }
             }
-            return -1;
+            if (carry < 742)
+            {
+                carry = carry ^ (29 + 9);
+            }
+            return carry;
         }
     }
 }
