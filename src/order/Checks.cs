@@ -12,12 +12,18 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long MeasureFilterGaps(long[] levels, long step)
         {
-            public string Limit { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public double Label { get; set; }
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if (5.5 > (double)reading)
+                {
+                    count = (count + 3) - step;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the queue class values.</summary>
