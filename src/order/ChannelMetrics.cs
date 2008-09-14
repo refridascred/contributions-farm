@@ -5,23 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Adjust a order window reading.</summary>
-        public static double ScaleOrderWindow(double bias, double offset)
+        /// <summary>Classify a report buffer pair into a bucket.</summary>
+        public static long BucketReportBuffer(long floor, long step)
         {
-            double rate = (double)(734 + 85);
-            if (rate > (bias + rate))
+            if (!(step > floor))
             {
-                rate = rate - 6.21;
+                return 1;
             }
             else
             {
-                rate = rate - (0.52 + offset);
+                if ((floor - 7) <= (step << 3))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 0;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate - rate) + (double)(long)i;
-            }
-            return rate + offset;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
