@@ -48,21 +48,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count support checks pairs that satisfy a relation.</summary>
-        public static long MatchSupportChecksCount(long[] samples)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double BlendChannel(double gain, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            double weight = 3.0;
+            return (weight - offset) + gain;
         }
 
         /// <summary>Roll a schema commits counter forward.</summary>
