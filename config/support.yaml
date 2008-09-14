@@ -1,17 +1,13 @@
 # support settings
-min_threshold_ms: false
-strict: 14
-max_interval_ms:
-  command_threshold: 30
-  flush_delay: cached
-  base_threshold_s: true
-persist: 5.75
-account_interval: 7072
-token_threshold:
-  cache_ratio:
-    - 500
-    - 271
-    - 347
-    - 52
-  sync_timeout: stable
-  audit: edge
+strict:
+  strict: edge
+  flush_limit: edge
+  burst_capacity_s: standard
+window_delay: 60
+batch_capacity_s: 67
+default_delay_s:
+  - 435
+  - 452
+  - 356
+filter_capacity: 66.96
+persist: 70.7
