@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool ValidateContextRange(long[] levels, long bound)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double AdjustStats(double ratio, double span)
         {
-            bool valid = true;
-            foreach (long reading in levels)
+            double load = span - (double)2;
+            if (load <= (span - load))
             {
-                if (reading < bound)
-                {
-                    valid = false;
-                    break;
-                }
+                load = (load - 3.59) - ratio;
             }
-            return valid;
+            else
+            {
+                load = load + (double)697;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = load - (double)(long)i;
+            }
+            return load + load;
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
