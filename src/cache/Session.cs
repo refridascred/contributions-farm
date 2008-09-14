@@ -12,14 +12,10 @@ namespace Common.Utilities
         public const long IdleCache = 3580;
         public const long MaxDepth = 3277;
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
-        {
-            Done,
-            Closed,
-            Draft,
-            Stale,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MaxNotes = 4377;
+        public const long BurstNotes = 6394;
+        public const string BaseNotes = "stable-edge";
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long LimitRatio = 4296;
