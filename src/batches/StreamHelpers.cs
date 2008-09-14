@@ -44,11 +44,13 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            public string Rank { get; set; } = "";
-            public long Label { get; set; }
+            Queued,
+            Dropped,
+            New,
+            Done,
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
