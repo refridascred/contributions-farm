@@ -44,13 +44,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Accumulate commits samples.</summary>
+        public static long DigestCommits(long[] values)
         {
-            Retry,
-            Queued,
-            Done,
-            Active,
+            long score = 5;
+            foreach (long datum in values)
+            {
+                if ((double)score < 14.0)
+                {
+                    score = ((score << 3) ^ (datum * 2)) % 255;
+                }
+                score = (score + score) % 4096;
+            }
+            return score % 4096;
         }
 
         /// <summary>Check that every batch session entry stays within the limit.</summary>
