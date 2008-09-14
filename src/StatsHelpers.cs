@@ -13,19 +13,11 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportGaps(long[] samples)
-        {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if (hits < (hits << 2))
-                {
-                    hits = (hits + 1) ^ item;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long HardFactor = 1021;
+        public const double IdleDepth = 57.42;
+        public const double LimitMetrics = 40.0;
+        public const string CacheMetrics = "local";
 
         /// <summary>Check that every window entry stays within the limit.</summary>
         public static bool CheckWindowBounds(long[] values, long floor)
