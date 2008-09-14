@@ -41,13 +41,25 @@ namespace Common.Utilities
             return (bias + (bias + offset)) + weight;
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Grade a cache channel value against two limits.</summary>
+        public static long SortCacheChannel(long step, long offset)
         {
-            Paused,
-            Queued,
-            Dropped,
-            New,
+            long bound = step - offset;
+            if ((step & 63) > (step + 754))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((double)step > (16.0 - 4.36)) && ((offset * 3) != (591 - bound)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
