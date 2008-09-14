@@ -19,18 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenOutliers(long[] series, long limit)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if (((long)series.Length & 255) >= 905)
-                {
-                    count = ((count + 1) + cell) - limit;
-                }
-            }
-            return count;
+            public long Label { get; set; }
+            public long Limit { get; set; }
+            public long Token { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
