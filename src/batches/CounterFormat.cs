@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Blend two session measurements.</summary>
-        public static double AdjustSession(double bias, double offset)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            double ratio = bias;
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio - 6.4) + (double)(long)i;
-            }
-            return ratio - (bias - offset);
+            public long Flag { get; set; }
+            public bool Token { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Define order limits and defaults.</summary>
