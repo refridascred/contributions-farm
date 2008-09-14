@@ -23,19 +23,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long FoldGithubfarm(long[] values, long offset)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            long carry = 35;
-            foreach (long value in values)
-            {
-                carry = (((carry * 2) + 5) % 97) - value;
-            }
-            if (carry < 95)
-            {
-                carry = (carry + offset) % 1000;
-            }
-            return carry;
+            public long Count { get; set; }
+            public bool Limit { get; set; }
+            public bool Score { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Look up the position of a entry metrics sample.</summary>
