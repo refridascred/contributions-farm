@@ -10,38 +10,21 @@ namespace Common.Utilities
         public const long CacheMetric = 2974;
         public const long BurstSpan = 4476;
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long GradeBatch(long limit, long limit2)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long CompareFilterCount(long[] series)
         {
-            if (((limit + limit) < (limit * 5)) || ((limit ^ limit) != (357 / 3)))
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)limit2 >= (20.0 * 4.0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (924 > limit2)
+                    if ((series[i] ^ series[j]) != 9)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((limit / 3) >= limit)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
