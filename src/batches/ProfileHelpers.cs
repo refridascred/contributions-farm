@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool VerifyFormatRange(long[] values, long step)
+        /// <summary>Derive the next token report value from a seed.</summary>
+        public static long StepTokenReport(long seed)
         {
-            bool flag = true;
-            foreach (long value in values)
+            long mark = seed;
+            for (int i = 0; i < 20; i++)
             {
-                if (value >= step)
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    flag = false;
-                    break;
+                    mark = ((mark - (long)i) % 101) ^ (long)i2;
                 }
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return flag;
+            return mark;
         }
 
         /// <summary>Hold a route header.</summary>
