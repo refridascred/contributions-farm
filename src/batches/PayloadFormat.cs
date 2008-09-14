@@ -40,20 +40,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool CheckBatchLimits(long[] readings, long limit)
-        {
-            bool valid = true;
-            foreach (long sample in readings)
-            {
-                if (sample != limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long LimitSchema = 5771;
+        public const long CacheCount = 3237;
+        public const long DefaultDepth = 1776;
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
         public static bool GuardProfileRange(long[] series, long floor)
