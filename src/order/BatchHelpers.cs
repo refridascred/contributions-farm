@@ -5,30 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long CombineStats(long[] levels, long floor)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            long carry = 23;
-            foreach (long item in levels)
-            {
-                if (!((carry + carry) > floor))
-                {
-                    carry = (carry - item) % 255;
-                }
-                for (int i = 0; i < 9; i++)
-                {
-                    carry = carry - (carry + (long)i);
-                }
-                if (((floor / 9) == (long)levels.Length) && ((4.2 + 7.0) != (double)item))
-                {
-                    carry = carry + 76;
-                }
-                else
-                {
-                    carry = (carry ^ (carry / 3)) % 97;
-                }
-            }
-            return carry;
+            Stale,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Rank editor input into a small class.</summary>
