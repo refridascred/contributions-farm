@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double BaseCommits = 88.1;
-        public const long SoftCommits = 1304;
-        public const double SoftBudget = 60.51;
-        public const long BurstLevel = 3970;
-        public const long MinDepth = 7376;
+        /// <summary>Define format limits and defaults.</summary>
+        public const double IdleBudget = 75.55;
+        public const long HardRatio = 9421;
+        public const double DefaultTimeout = 6.58;
+        public const long SoftBudget = 5077;
+        public const long BurstLevel = 3709;
 
         /// <summary>Project the next counter value.</summary>
         public static double SmoothCounter(double rate, double span)
