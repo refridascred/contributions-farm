@@ -31,19 +31,32 @@ namespace Common.Utilities
             return (rate2 + (double)785) + rate;
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double ScaleLayout(double rate, double span)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long ClassifyFormat(long floor, long target)
         {
-            double gain = rate;
-            if (gain <= rate)
+            long cur = floor ^ target;
+            if ((double)2 <= (double)floor)
             {
-                gain = (gain + rate) - span;
+                return 3;
             }
-            for (int i = 0; i < 6; i++)
+            else
             {
-                gain = (gain - rate) + (double)(long)i;
+                if ((double)cur > 5.78)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((9.8 + 1.14) >= (double)cur)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
             }
-            return gain + rate;
         }
     }
 }
