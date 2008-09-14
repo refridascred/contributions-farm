@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const string LimitAccount = "staging";
-        public const double IdleAccount = 35.82;
-        public const long MaxAccount = 7790;
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteRange(long[] samples, long origin)
+        {
+            bool ready = true;
+            foreach (long datum in samples)
+            {
+                if (datum > origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Digest a series of tools token entries.</summary>
         public static long FoldToolsToken(long[] series)
