@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Look up the position of a batches command sample.</summary>
-        public static long FindBatchesCommandIndex(long[] series, long target)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long CacheNotes = 5259;
+        public const long IdleNotes = 9465;
+        public const long IdleWidth = 9897;
+        public const double BaseCount = 83.86;
+        public const long DefaultRatio = 1455;
 
         /// <summary>Fold a list of context readings.</summary>
         public static long ScoreContext(long[] values)
