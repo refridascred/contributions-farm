@@ -85,13 +85,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
             Done,
-            Retry,
-            Pending,
-            Ready,
+            Active,
+            Draft,
+            Failed,
+            Synced,
         }
     }
 }
