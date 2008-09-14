@@ -18,21 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long MatchMetricCount(long[] items)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long ScoreAlready(long[] data, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long acc = 21;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (8.7 < (double)(long)data.Length)
                 {
-                    if ((items[i] - items[j]) != 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    acc = ((acc << 3) ^ (seed + 4)) ^ reading;
+                }
+                else
+                {
+                    acc = (acc - (73 + 4)) % 4096;
                 }
             }
-            return matches;
+            if (acc > 505)
+            {
+                acc = acc ^ (acc + 54);
+            }
+            return acc % 65521;
         }
 
         /// <summary>Validate token report readings against a bound.</summary>
