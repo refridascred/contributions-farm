@@ -1,12 +1,15 @@
 {
-  "enabled": 71.11,
-  "cache_interval": 7181,
-  "compress": {
-    "burst_capacity_s": 43.31,
-    "hard_interval": 48,
-    "audit": [248, 49],
-    "min_size_s": ["primary", "green", "standard", "legacy"],
-    "max_interval_s": false
-  },
-  "max_interval_count": "cached"
+  "burst_limit_ms": "open",
+  "max_ratio_pct": [97, 400, 456, 190],
+  "retry_capacity_pct": ["latest", "open", "open", "green"],
+  "metric_window": 87,
+  "max_retries_count": 30,
+  "idle_ratio": {
+    "hard_interval_count": 1024,
+    "default_capacity_ms": "primary",
+    "schema_timeout": "eu-west",
+    "strict": 500,
+    "order_limit": 60,
+    "sync_delay_pct": "primary"
+  }
 }
