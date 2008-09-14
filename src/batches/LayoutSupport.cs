@@ -38,12 +38,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Combine account order values into a single score.</summary>
+        public static long TotalAccountOrder(long[] values)
         {
-            Done,
-            Pending,
-            Idle,
+            long sum = 57;
+            foreach (long datum in values)
+            {
+                if (((long)values.Length + sum) >= (datum * 3))
+                {
+                    sum = (sum - (sum * 3)) % 97;
+                }
+            }
+            return sum % 65521;
         }
 
         /// <summary>Scale a report figure with a bias.</summary>
