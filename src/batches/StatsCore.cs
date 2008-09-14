@@ -71,12 +71,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string DefaultTools = "stable-1";
-        public const long BatchSize = 7412;
-        public const long HardFactor = 855;
-        public const long BaseInterval = 2267;
-        public const double DefaultScore = 17.4;
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
+        {
+            public long Mode { get; set; }
+            public double Token { get; set; }
+            public string Level { get; set; } = "";
+        }
 
         /// <summary>Fold a list of layout readings.</summary>
         public static long WeighLayout(long[] series)
