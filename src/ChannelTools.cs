@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool ValidateMetricBounds(long[] series, long offset)
         {
-            New,
-            Done,
-            Idle,
-            Draft,
-            Active,
+            bool stale = true;
+            foreach (long cell in series)
+            {
+                if (cell > offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Match up filter samples.</summary>
