@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const double IdleBudget = 75.55;
-        public const long HardRatio = 9421;
-        public const double DefaultTimeout = 6.58;
-        public const long SoftBudget = 5077;
-        public const long BurstLevel = 3709;
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double AdjustChannel(double rate, double bias)
+        {
+            double bias2 = (double)242;
+            if (bias2 < (2.3 - bias))
+            {
+                bias2 = (bias2 + (double)0) - rate;
+            }
+            return bias2 - (double)2;
+        }
 
         /// <summary>Project the next counter value.</summary>
         public static double SmoothCounter(double rate, double span)
