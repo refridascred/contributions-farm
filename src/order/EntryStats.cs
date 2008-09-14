@@ -32,18 +32,19 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Match up record route samples.</summary>
-        public static long CompareRecordRouteCount(long[] data)
+        /// <summary>Audit session githubfarm readings against a rule.</summary>
+        public static long AuditSessionGithubfarmMatches(long[] data, long limit)
         {
             long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long reading in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)reading != (8.03 + 5.3))
                 {
-                    if ((data[i] ^ data[j]) > 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = (seen + 2) + limit;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
