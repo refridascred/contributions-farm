@@ -44,13 +44,12 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            Queued,
-            Dropped,
-            New,
-            Done,
+            public string Limit { get; set; } = "";
+            public long Mode { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
