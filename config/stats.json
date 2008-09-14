@@ -1,7 +1,9 @@
 {
-  "batch_limit_ms": "staging",
-  "hard_capacity_count": [302, 75, 410, 175],
-  "poll_capacity_count": [26, 225, 235],
-  "sync_window_ms": "primary",
-  "sync_depth": ["blue", "open"]
+  "sync_ratio": {
+    "readonly": "open",
+    "burst_timeout_count": true,
+    "poll_depth_ms": 50
+  },
+  "audit": 11,
+  "readonly": "open"
 }
