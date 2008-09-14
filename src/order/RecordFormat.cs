@@ -14,12 +14,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmHits(long[] data)
         {
-            Closed,
-            Draft,
-            Paused,
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if (!(sample <= seen) || ((53 << 1) < (sample - (-8))))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
