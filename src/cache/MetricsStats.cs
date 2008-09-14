@@ -19,13 +19,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            Pending,
-            Locked,
-            Active,
+            Ready,
             Failed,
+            Queued,
+            Idle,
         }
 
         /// <summary>Define format limits and defaults.</summary>
