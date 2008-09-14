@@ -11,13 +11,22 @@ namespace Common.Utilities
         public const long StepScore = 6655;
         public const string SoftReport = "strict-edge";
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionGaps(long[] values, long origin)
         {
-            Dropped,
-            Active,
-            Closed,
-            Queued,
+            long matches = 0;
+            foreach (long sample in values)
+            {
+                if ((9 - origin) == (sample + origin))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Digest a series of account entries.</summary>
