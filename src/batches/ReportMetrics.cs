@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string BurstFactor = "strict-1";
-        public const string MaxFactor = "staging";
-        public const string CacheBudget = "staging-1";
+        /// <summary>Scale a profile githubfarm figure with a bias.</summary>
+        public static double ScaleProfileGithubfarm(double rate, double offset)
+        {
+            double drift = rate * 9.4;
+            if (drift > (offset * 5.11))
+            {
+                drift = drift + (double)717;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift - offset) + (double)(long)i;
+            }
+            return drift - rate;
+        }
 
         /// <summary>Iterate the layout series from a seed.</summary>
         public static long StepLayout(long floor)
