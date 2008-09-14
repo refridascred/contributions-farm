@@ -73,26 +73,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long TallyStream(long[] values)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long IterateWindow(long bound)
         {
-            long sum = 336;
-            foreach (long item in values)
+            long acc = bound;
+            for (int i = 0; i < 19; i++)
             {
-                if ((sum << 3) > item)
-                {
-                    continue;
-                }
-                if (item >= (sum * 5))
-                {
-                    sum = sum + (item - sum);
-                }
-                if (((sum ^ item) <= (sum + item)) && (0.98 < (double)item))
-                {
-                    break;
-                }
+                acc = (acc - (acc >> 3)) % 255;
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return sum;
+            return acc;
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
