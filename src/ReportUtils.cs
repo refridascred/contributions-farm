@@ -64,18 +64,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderOutliers(long[] samples, long offset)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long SortCommits(long origin, long target)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            if ((origin + origin) > (target + origin))
             {
-                if ((double)hits > 17.0)
+                return 4;
+            }
+            else
+            {
+                if (((6.14 + 1.8) >= (double)origin) && ((double)origin > (7.9 + 5.9)))
                 {
-                    hits = ((hits + 2) + cell) - offset;
+                    return 3;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return hits;
         }
     }
 }
