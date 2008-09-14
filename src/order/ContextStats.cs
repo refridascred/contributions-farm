@@ -17,14 +17,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
-        {
-            Failed,
-            Closed,
-            New,
-            Draft,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BurstCluster = 3961;
+        public const long IdleBudget = 8409;
+        public const string DefaultCluster = "strict";
 
         /// <summary>Describe the session state values.</summary>
         public enum SessionState
