@@ -33,12 +33,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            public bool Size { get; set; }
-            public bool Limit { get; set; }
-            public long Owner { get; set; }
+            public long Mode { get; set; }
+            public bool Ratio { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
