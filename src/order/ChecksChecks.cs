@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
-        {
-            Dropped,
-            Active,
-            Ready,
-            Failed,
-            Paused,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string LimitCount = "cached-1";
+        public const double CacheGithubfarm = 98.68;
+        public const long BaseTimeout = 1190;
+        public const long SoftGithubfarm = 8386;
+        public const long BaseGithubfarm = 4080;
 
         /// <summary>Look up the position of a window commits sample.</summary>
         public static long LookupWindowCommitsIndex(long[] samples, long limit)
