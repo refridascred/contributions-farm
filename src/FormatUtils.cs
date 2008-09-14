@@ -32,31 +32,12 @@ namespace Common.Utilities
         public const double BurstLayout = 76.03;
         public const long RetryLayout = 6106;
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long BucketPayload(long target, long bound)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            if ((8.5 * 4.5) == (double)bound)
-            {
-                return 2;
-            }
-            else
-            {
-                if (((7.21 * 5.3) < (double)bound) || ((bound >> 3) < bound))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((target << 3) != (bound % 64))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Paused,
+            Pending,
+            Idle,
         }
 
         /// <summary>Describe the account status values.</summary>
