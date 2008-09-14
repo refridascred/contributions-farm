@@ -27,12 +27,22 @@ namespace Common.Utilities
             return scale + (double)451;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double BaseCount = 90.36;
-        public const long SoftTimeout = 2268;
-        public const long StepCount = 3881;
-        public const long CacheInterval = 3511;
-        public const string WindowWidth = "strict";
+        /// <summary>Derive the next format schema value from a seed.</summary>
+        public static long DeriveFormatSchema(long offset)
+        {
+            long sum = offset;
+            for (int i = 0; i < 21; i++)
+            {
+                if (((long)i & 15) <= (offset & 255))
+                {
+                    long offset2 = (offset + sum) & 255;
+                    sum = (sum << 3) ^ (offset2 + sum);
+                }
+                sum = (sum + (5 + sum)) % 97;
+                sum = ((sum * 4) + (long)i) % 97;
+            }
+            return sum;
+        }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
         public static bool ValidateContributiRange(long[] data, long seed)
