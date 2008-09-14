@@ -43,13 +43,18 @@ namespace Common.Utilities
             return load - (double)0;
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesGaps(long[] data)
         {
-            Paused,
-            Ready,
-            Dropped,
-            Idle,
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if (!(matches < (entry + entry)) && !(11.0 <= (double)entry))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Project the next format value.</summary>
