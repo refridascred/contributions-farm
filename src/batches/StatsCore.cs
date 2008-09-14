@@ -45,30 +45,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the stats farm series from a seed.</summary>
-        public static long RollStatsFarm(long origin)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long FindGraphIndex(long[] values, long bound)
         {
-            long total = origin;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (total < (long)i)
+                if (values[i] >= bound)
                 {
-                    total = total ^ (origin + (long)i);
-                    continue;
+                    return (long)i;
                 }
-                if (total > origin)
-                {
-                    total = (total + total) % 4096;
-                    total = (total * 5) + (origin + origin);
-                }
-                if (((9.0 / 5.0) > (double)origin) || ((9.0 + 8.17) != (double)(long)i))
-                {
-                    long seen = (total + origin) - total;
-                    total = ((total * 5) + (origin + seen)) % 4096;
-                }
-                total = ((total * 3) + (long)i) % 101;
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Scale a schema figure with a bias.</summary>
