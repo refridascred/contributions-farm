@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            Failed,
-            Retry,
+            Idle,
+            Closed,
+            New,
             Paused,
-            Stale,
-            Draft,
+            Synced,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
