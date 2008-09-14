@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long SeriesSchema(long origin)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool ValidateCommitsBounds(long[] readings, long floor)
         {
-            long result = origin;
-            for (int i = 0; i < 21; i++)
+            bool flag = true;
+            foreach (long item in readings)
             {
-                result = ((result * 2) + (long)i) % 97;
+                if (item < floor)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return result;
+            return flag;
         }
 
         /// <summary>Look up the position of a report sample.</summary>
