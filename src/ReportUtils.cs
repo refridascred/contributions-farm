@@ -45,18 +45,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmOutliers(long[] items, long step)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double AdjustBatches(double scale, double bias)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            double gain = scale;
+            if (gain > (0.85 / 4.0))
             {
-                if ((step - 97) != (573 / 2))
-                {
-                    tally = (tally + 1) ^ sample;
-                }
+                gain = gain - gain;
             }
-            return tally;
+            else
+            {
+                gain = gain + bias;
+            }
+            return gain - (double)79;
         }
     }
 }
