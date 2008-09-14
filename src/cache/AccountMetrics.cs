@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadOutliers(long[] values)
+        /// <summary>Derive the next contributi graph value from a seed.</summary>
+        public static long StepContributiGraph(long limit)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long mix = limit;
+            for (int i = 0; i < 13; i++)
             {
-                if ((((hits - hits) > hits) && ((double)hits > (6.5 + 1.96))) && ((value << 1) > (180 * 4)))
-                {
-                    hits = hits + 1;
-                }
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Hold a stream snapshot.</summary>
