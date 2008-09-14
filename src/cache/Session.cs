@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long DefaultRatio = 2902;
-        public const string BaseCache = "latest-v2";
-        public const long HardCache = 5466;
-        public const long IdleCache = 3580;
-        public const long MaxDepth = 3277;
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
+        {
+            Draft,
+            Idle,
+            Dropped,
+            Active,
+            Ready,
+        }
 
         /// <summary>Grade a session order value against two limits.</summary>
         public static long GradeSessionOrder(long offset, long offset2)
