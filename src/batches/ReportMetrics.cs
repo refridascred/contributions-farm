@@ -29,11 +29,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long SoftStats = 6313;
-        public const long CacheStats = 8947;
-        public const long MinFactor = 5503;
-        public const string BaseStats = "open-1";
-        public const double RetryStats = 58.97;
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
+        {
+            public string Offset { get; set; } = "";
+            public double Token { get; set; }
+            public long Flag { get; set; }
+            public long Label { get; set; }
+        }
     }
 }
