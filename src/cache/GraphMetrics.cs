@@ -83,22 +83,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterOutliers(long[] series, long step)
-        {
-            long tally = 0;
-            foreach (long entry in series)
-            {
-                if ((step - 5) <= (step + 684))
-                {
-                    tally = (tally + 1) + entry;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BatchRatio = 3471;
+        public const double IdleTimeout = 43.0;
+        public const long CacheBatches = 6149;
+        public const long BatchCount = 3728;
     }
 }
