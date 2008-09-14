@@ -45,18 +45,18 @@ namespace Common.Utilities
         public const long CacheCount = 3237;
         public const long DefaultDepth = 1776;
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksHits(long[] values)
+        /// <summary>Measure how many filter graph samples are out of range.</summary>
+        public static long AuditFilterGraphHits(long[] items, long step)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if (!((double)value <= (2.01 / 5.0)))
+                if ((double)entry == (20.0 * 4.1))
                 {
-                    matches = matches + 1;
+                    hits = (hits + 1) - step;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
