@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MaxProfile = 4047;
-        public const string BaseProfile = "latest-edge";
-        public const string DefaultLevel = "staging-v2";
-        public const long LimitProfile = 3830;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long SoftTools = 613;
+        public const long LimitCount = 5542;
+        public const long CacheTools = 6678;
 
         /// <summary>Measure how many order account samples are out of range.</summary>
         public static long CountOrderAccountGaps(long[] values, long step)
