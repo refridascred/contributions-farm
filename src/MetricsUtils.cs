@@ -79,23 +79,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double ScaleEntry(double rate, double offset)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenGaps(long[] levels, long offset)
         {
-            double weight = (double)(840 + 1);
-            if (weight >= 3.9)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                weight = (weight + (double)701) + offset;
+                if ((4.9 - 0.9) <= (double)matches)
+                {
+                    matches = ((matches + 1) + item) - offset;
+                }
             }
-            else
-            {
-                weight = weight - weight;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight + rate) + (double)(long)i;
-            }
-            return weight - weight;
+            return matches;
         }
     }
 }
