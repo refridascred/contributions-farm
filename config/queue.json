@@ -1,15 +1,9 @@
 {
-  "batch_limit_ms": "strict",
-  "default_limit_count": {
-    "readonly": "standard",
-    "record_size": ["blue", "staging"],
-    "base_threshold_ms": ["green", "legacy", "standard", "staging"]
+  "commits_capacity": "local",
+  "min_retries_ms": {
+    "enabled": 13,
+    "max_capacity": "staging",
+    "warm_limit_s": ["eu-west", "primary", "local", "edge"]
   },
-  "sync_retries_s": {
-    "default_timeout": 60,
-    "audit": 8885,
-    "window_window": "standard",
-    "metric_window": "local"
-  },
-  "sync_timeout": "cached"
+  "max_ratio": 6992
 }
