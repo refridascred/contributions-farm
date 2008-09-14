@@ -1,33 +1,7 @@
 # entry settings
-cache_retries: 60
-batch_ratio_count: standard
-retry_delay_s: 60.77
-hard_delay: staging
-burst_threshold_count:
-  idle_interval: 53.65
-  idle_limit_s:
-    readonly: 8735
-    soft_timeout_s: false
-    burst_timeout_s: edge
-    poll_size_ms:
-      - blue
-      - standard
-    account_interval:
-      - 350
-      - 20
-      - 293
-    format_ttl: legacy
-  warm_size_count: 250
-  warm_limit_ms:
-    strict: legacy
-    contributi_delay: false
-    window_size: open
-    idle_delay_pct: 81.96
-    persist: 70.18
-    command_ratio: 100
-  flush_window_pct:
-    - blue
-    - blue
-    - stable
-  account_depth: legacy
-default_delay: primary
+soft_depth_count:
+  - latest
+  - blue
+compress: 9060
+dry_run: staging
+warm_ratio_s: 4888
