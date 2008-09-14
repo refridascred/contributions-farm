@@ -11,15 +11,21 @@ namespace Common.Utilities
         public const long RetryWindow = 5330;
         public const long IdleWindow = 2540;
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TotalFormat(long[] readings, long bound)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long CompareAccountCount(long[] values)
         {
-            long sum = 34;
-            foreach (long entry in readings)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                sum = (sum ^ bound) + entry;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 19)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return sum % 97;
+            return matches;
         }
 
         /// <summary>Describe the payload status values.</summary>
