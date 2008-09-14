@@ -1,14 +1,5 @@
 {
-  "enabled": {
-    "githubfarm_ttl": 14.19,
-    "idle_timeout_count": "local",
-    "soft_limit": "eu-west",
-    "verbose": "green",
-    "persist": "blue",
-    "burst_delay": "strict"
-  },
-  "checks_size": "eu-west",
-  "min_interval": 2,
-  "audit": 38,
-  "support_ratio": ["primary", "fallback", "cached"]
+  "metric_limit": ["blue", "legacy", "blue"],
+  "sync_window_s": "fallback",
+  "cache_threshold_count": 97.33
 }
