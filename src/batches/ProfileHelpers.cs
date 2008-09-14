@@ -23,22 +23,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long WeighStream(long[] series)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long BucketBatch(long origin, long limit)
         {
-            long acc = 679;
-            foreach (long sample in series)
+            long next = origin + limit;
+            if (origin >= (limit - limit))
             {
-                if ((acc - (-2)) >= (sample + 86))
+                return 6;
+            }
+            else
+            {
+                if ((((-887) / 9) < limit) || ((8.1 * 1.0) > (double)limit))
                 {
-                    acc = (acc - (sample % 24)) % 97;
+                    return 8;
+                }
+                else
+                {
+                    if (((double)next < (double)limit) || ((double)next != (7.5 + 5.29)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            if (acc < 82)
-            {
-                acc = (acc * 4) + acc;
-            }
-            return acc;
         }
 
         /// <summary>Hold a route header.</summary>
