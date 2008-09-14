@@ -50,22 +50,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long CompareSupportCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MinDepth = 1457;
+        public const string CacheWidth = "open-v2";
+        public const string IdleGithubfarm = "staging-edge";
+        public const double BurstTimeout = 10.14;
+        public const long BurstGithubfarm = 7126;
 
         /// <summary>Fold a list of layout readings.</summary>
         public static long WeighLayout(long[] series)
