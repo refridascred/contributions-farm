@@ -23,11 +23,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two session stream measurements.</summary>
-        public static double BlendSessionStream(double weight, double bias)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long LocatePayloadIndex(long[] data, long floor)
         {
-            double scale = bias;
-            return (scale - (double)857) + weight;
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Locate a farm contributi reading by value.</summary>
