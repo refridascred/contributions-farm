@@ -1,22 +1,6 @@
 {
-  "token_ratio": {
-    "warm_capacity_count": 30,
-    "persist": {
-      "contributi_window": 4,
-      "cache_limit": "stable",
-      "batch_threshold_count": 500
-    },
-    "cache_interval_ms": true
-  },
-  "max_ratio_count": 89.98,
-  "window_capacity": {
-    "poll_depth_count": 5432,
-    "batch_size_s": true,
-    "flush_capacity": "blue",
-    "strict": "staging",
-    "farm_delay": 1.05,
-    "base_window_ms": true
-  },
-  "githubfarm_interval": [376, 203, 38, 246],
-  "soft_retries_count": false
+  "sync_ratio": "fallback",
+  "strict": 82.26,
+  "record_capacity": "stable",
+  "retry_retries": 1058
 }
