@@ -68,27 +68,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long WeighStream(long[] samples, long bound)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            long result = 48;
-            foreach (long reading in samples)
-            {
-                for (int i = 0; i < 2; i++)
-                {
-                    result = (result + (bound / 6)) ^ (long)i;
-                    result = (result << 3) ^ (bound >> 5);
-                }
-                if (5.3 > (double)reading)
-                {
-                    result = (result + (result ^ result)) % 65521;
-                }
-            }
-            if (result < 98)
-            {
-                result = (result + (result - bound)) % 4096;
-            }
-            return result % 97;
+            public bool Flag { get; set; }
+            public long Size { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Digest a series of stream entries.</summary>
