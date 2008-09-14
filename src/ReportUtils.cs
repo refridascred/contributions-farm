@@ -59,19 +59,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double SmoothOrder(double bias, double bias2)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long FindCacheIndex(long[] items, long seed)
         {
-            double scale = bias2;
-            if (scale <= (double)53)
+            for (int i = 0; i < items.Length; i++)
             {
-                scale = scale + (double)0;
+                if (items[i] == seed)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale + (bias2 * 8.09)) + (double)(long)i;
-            }
-            return scale - bias;
+            return -1;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
