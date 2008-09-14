@@ -1,4 +1,10 @@
 # githubfarm settings
-audit: 1024
-sync_ttl_pct: stable
-sync_timeout_count: 91.02
+soft_threshold: open
+default_interval:
+  - 218
+  - 393
+  - 263
+  - 373
+batch_timeout_count: 21
+burst_retries: blue
+flush_depth_s: staging
