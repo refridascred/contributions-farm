@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
-        {
-            Closed,
-            Locked,
-            Queued,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double StepGithubfarm = 13.28;
+        public const double StepScore = 12.55;
+        public const long IdleWidth = 8776;
+        public const string BatchBudget = "fallback-edge";
+        public const long BurstFactor = 2562;
 
         /// <summary>Rank cluster input into a small class.</summary>
         public static long ClassifyCluster(long step, long origin)
