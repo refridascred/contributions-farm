@@ -15,19 +15,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine filter schema values into a single score.</summary>
-        public static long TallyFilterSchema(long[] samples, long bound)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            long score = 72;
-            foreach (long value in samples)
-            {
-                score = (score ^ (bound + score)) ^ value;
-            }
-            if (score < 34)
-            {
-                score = score ^ (bound - bound);
-            }
-            return score;
+            Ready,
+            Locked,
+            Failed,
+            Closed,
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
