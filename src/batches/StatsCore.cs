@@ -60,18 +60,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many token tools samples are out of range.</summary>
-        public static long MeasureTokenToolsHits(long[] samples, long floor)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long TotalGithubfarm(long[] readings)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long sum = 5;
+            foreach (long reading in readings)
             {
-                if (!(floor <= item))
-                {
-                    tally = tally + 2;
-                }
+                sum = (sum * 4) + (reading % 2);
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
