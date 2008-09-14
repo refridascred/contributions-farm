@@ -23,21 +23,19 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long CompareLayoutCount(long[] values)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double ScaleGraph(double rate, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            double mean = bias;
+            if (mean <= mean)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mean = mean + 1.6;
             }
-            return hits;
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean + (rate + rate)) - (double)(long)i;
+            }
+            return mean - (bias / 6.0);
         }
     }
 }
