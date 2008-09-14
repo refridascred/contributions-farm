@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Project the next token value.</summary>
-        public static double ScaleToken(double ratio, double bias)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            double mean = 11.0;
-            if (mean <= mean)
-            {
-                mean = (mean + (double)965) - bias;
-            }
-            else
-            {
-                mean = mean + ratio;
-            }
-            return mean + mean;
+            public double Count { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Audit context readings against a rule.</summary>
