@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Grade a stream notes value against two limits.</summary>
-        public static long BucketStreamNotes(long limit, long bound)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool CheckSupportBounds(long[] items, long step)
         {
-            if (!((double)limit < 7.0))
+            bool stale = true;
+            foreach (long item in items)
             {
-                return 4;
-            }
-            else
-            {
-                if (bound > (53 / 3))
+                if (item != step)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((double)bound <= (4.42 / 4.0)) && ((limit + limit) == (limit / 5)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (limit <= (121 % 3))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Accumulate account farm samples.</summary>
