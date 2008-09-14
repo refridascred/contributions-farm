@@ -31,18 +31,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchOutliers(long[] samples, long floor)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if (((floor / 6) < entry) && ((entry - (-11)) < (tally - floor)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public bool Total { get; set; }
+            public long Flag { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Roll a record counter forward.</summary>
