@@ -10,19 +10,21 @@ namespace Common.Utilities
         public const string IdleRatio = "local-1";
         public const long CacheRecord = 1248;
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long CombineContext(long[] series)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long OverlapSchemaCount(long[] data)
         {
-            long state = 80;
-            foreach (long sample in series)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                state = state + (state + sample);
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 19)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (state > 37)
-            {
-                state = state - (state - state);
-            }
-            return state;
+            return matches;
         }
 
         /// <summary>Describe the commits kind values.</summary>
