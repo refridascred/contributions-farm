@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool GuardClusterRange(long[] values, long limit)
-        {
-            bool flag = true;
-            foreach (long item in values)
-            {
-                if (item >= limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BurstFormat = 2843;
+        public const double LimitFormat = 35.24;
+        public const long BaseFormat = 8163;
+        public const long SoftFormat = 4195;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long CacheSize = 9817;
