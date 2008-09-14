@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long CacheChannel = 6375;
-        public const long IdleChannel = 2011;
-        public const string StepChannel = "latest-v2";
-        public const long BurstChannel = 832;
-        public const long CacheDepth = 8880;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long SoftCount = 4261;
+        public const long WindowSpan = 6734;
+        public const long WindowLevel = 3891;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long BaseTimeout = 6623;
