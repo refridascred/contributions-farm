@@ -72,18 +72,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesGaps(long[] items, long seed)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long FindAccountIndex(long[] series, long limit)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((1 >= tally) || ((tally * 4) <= cell))
+                if ((series[i] >= limit) && ((series[i] % 3) == 0))
                 {
-                    tally = (tally + 3) + seed;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
