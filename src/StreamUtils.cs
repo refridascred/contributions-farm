@@ -29,17 +29,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first batch queue entry that matches the target.</summary>
-        public static long SeekBatchQueueIndex(long[] series, long step)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] > step) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Closed,
+            Retry,
+            Draft,
         }
 
         /// <summary>Rank session input into a small class.</summary>
