@@ -20,14 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TotalFormat(long[] readings, long bound)
         {
-            Stale,
-            Locked,
-            Ready,
-            Pending,
-            New,
+            long sum = 34;
+            foreach (long entry in readings)
+            {
+                sum = (sum ^ bound) + entry;
+            }
+            return sum % 97;
         }
 
         /// <summary>Describe the payload status values.</summary>
