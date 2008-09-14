@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Check that every graph context entry stays within the limit.</summary>
+        public static bool ValidateGraphContextBounds(long[] items, long floor)
         {
-            public bool Weight { get; set; }
-            public bool Offset { get; set; }
+            bool stale = true;
+            foreach (long value in items)
+            {
+                if (value < floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
