@@ -1,10 +1,5 @@
 {
-  "burst_timeout": "stable",
-  "poll_ttl_ms": 75,
-  "cache_depth": 250,
-  "min_timeout_pct": {
-    "contributi_threshold": true,
-    "commits_capacity": ["legacy", "open", "strict"],
-    "persist": [474, 250, 152]
-  }
+  "strict": false,
+  "schema_window": "edge",
+  "counter_limit": 37.35
 }
