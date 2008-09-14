@@ -62,19 +62,21 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long DeriveContext(long offset)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long SeriesTools(long offset)
         {
-            long result = offset;
-            for (int i = 0; i < 16; i++)
+            long sum = offset;
+            for (int i = 0; i < 20; i++)
             {
-                for (int i2 = 0; i2 < 3; i2++)
+                double load = (4.5 / 8.0) + (20.0 * 3.5);
+                if ((load * 3.0) <= load)
                 {
-                    result = result ^ ((long)i2 + result);
+                    sum = (sum - (43 ^ sum)) % 1000;
+                    continue;
                 }
-                result = ((result * 4) + (long)i) % 4093;
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return result;
+            return sum;
         }
 
         /// <summary>Hold a format summary.</summary>
