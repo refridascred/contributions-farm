@@ -27,10 +27,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string BaseScore = "primary-edge";
-        public const long BaseSize = 2248;
-        public const double BatchSize = 28.5;
-        public const long RetryWidth = 2283;
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long SeriesStream(long step)
+        {
+            long total = step;
+            for (int i = 0; i < 22; i++)
+            {
+                total = total + (total - total);
+                total = (total ^ (step / 6)) % 65521;
+                total = ((total * 5) + (long)i) % 101;
+            }
+            return total;
+        }
     }
 }
