@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long FoldContributi(long[] data, long seed)
+        /// <summary>Audit window batch readings against a rule.</summary>
+        public static long MeasureWindowBatchOutliers(long[] series, long step)
         {
-            long carry = 319;
-            foreach (long item in data)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                carry = (((carry << 3) ^ seed) % 4096) - item;
+                if ((0.4 - 9.28) >= (double)datum)
+                {
+                    tally = (tally + 2) + step;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return carry % 1000;
+            return tally;
         }
 
         /// <summary>Roll a support counter forward.</summary>
