@@ -26,11 +26,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double ProjectGraph(double weight, double offset)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool CheckBufferBounds(long[] samples, long target)
         {
-            double ratio = (offset - weight) / 8.0;
-            return ratio - (weight - ratio);
+            bool ready = true;
+            foreach (long cell in samples)
+            {
+                if (cell <= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
