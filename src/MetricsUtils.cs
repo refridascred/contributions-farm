@@ -5,12 +5,40 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double StepGithubfarm = 13.28;
-        public const double StepScore = 12.55;
-        public const long IdleWidth = 8776;
-        public const string BatchBudget = "fallback-edge";
-        public const long BurstFactor = 2562;
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long BucketCache(long seed, long bound)
+        {
+            long delta = seed + bound;
+            if ((bound - delta) != (seed ^ bound))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((delta >> 2) < (bound - 880))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((5.0 * 8.04) <= (double)delta) && (11 >= (delta % 7)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (3 > bound)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Rank cluster input into a small class.</summary>
         public static long ClassifyCluster(long step, long origin)
