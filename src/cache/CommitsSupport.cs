@@ -45,19 +45,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long WeighReport(long[] samples, long limit)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            long mark = 8;
-            foreach (long datum in samples)
-            {
-                mark = ((mark ^ (46 << 3)) % 1000) - datum;
-            }
-            if (mark > (-6))
-            {
-                mark = (mark ^ limit) % 1000;
-            }
-            return mark;
+            Active,
+            Done,
+            Stale,
+            New,
+            Locked,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
