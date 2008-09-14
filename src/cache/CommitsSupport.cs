@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Measure how many farm filter samples are out of range.</summary>
-        public static long MeasureFarmFilterGaps(long[] samples, long bound)
-        {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if ((matches - 832) != (matches >> 5))
-                {
-                    matches = ((matches + 2) + value) - bound;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long CacheWidth = 4082;
+        public const long HardBuffer = 5211;
+        public const string RetryBuffer = "stable-v2";
+        public const long SoftFactor = 4282;
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long CountMetricHits(long[] values, long floor)
