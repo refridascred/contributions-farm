@@ -1,14 +1,7 @@
 {
-  "strict": 55.3,
-  "filter_interval": {
-    "soft_timeout_s": "local",
-    "already_threshold": 22.0,
-    "entry_retries": "green",
-    "burst_window": "primary",
-    "hard_window": 86,
-    "flush_window_ms": 38.39
-  },
-  "warm_window_count": 9551,
-  "sync_window_s": 12.52,
-  "audit": true
+  "max_interval_ms": 58,
+  "max_timeout": "staging",
+  "token_window": [278, 305, 74, 66],
+  "audit": 37.96,
+  "counter_delay": [66, 397]
 }
