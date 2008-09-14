@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
+            public string Owner { get; set; } = "";
             public long Offset { get; set; }
-            public long Owner { get; set; }
-            public long Limit { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Audit session readings against a rule.</summary>
