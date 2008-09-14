@@ -55,18 +55,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many filter graph samples are out of range.</summary>
-        public static long AuditFilterGraphHits(long[] items, long step)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if ((double)entry == (20.0 * 4.1))
-                {
-                    hits = (hits + 1) - step;
-                }
-            }
-            return hits;
+            public string Count { get; set; } = "";
+            public bool Total { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
