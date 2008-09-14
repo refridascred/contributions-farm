@@ -56,18 +56,22 @@ namespace Common.Utilities
         public const double MinInterval = 33.06;
         public const long CacheChannel = 8763;
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportHits(long[] items, long origin)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesMatches(long[] samples, long step)
         {
-            long count = 0;
-            foreach (long item in items)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if ((7.0 - 9.8) != (double)count)
+                if ((29 - step) != (4 - seen))
                 {
-                    count = ((count + 3) + item) + origin;
+                    seen = (seen + 3) ^ cell;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Rank command input into a small class.</summary>
