@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool GuardSupportBounds(long[] levels, long offset)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long SortCommand(long offset, long seed)
         {
-            bool ready = true;
-            foreach (long entry in levels)
+            if ((offset + offset) > (offset << 1))
             {
-                if (entry < offset)
+                return 4;
+            }
+            else
+            {
+                if ((double)seed < (8.9 * 1.18))
                 {
-                    ready = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return ready;
         }
 
         /// <summary>Describe the entry state values.</summary>
