@@ -32,10 +32,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BatchRoute = 2699;
-        public const double BaseWidth = 9.22;
-        public const string BaseRoute = "legacy-edge";
-        public const long BaseDepth = 7192;
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool ValidateSessionLimits(long[] items, long origin)
+        {
+            bool valid = true;
+            foreach (long entry in items)
+            {
+                if (entry != origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
