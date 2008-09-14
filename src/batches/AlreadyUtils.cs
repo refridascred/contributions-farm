@@ -48,17 +48,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Look up the position of a order farm sample.</summary>
-        public static long FindOrderFarmIndex(long[] series, long origin)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double BlendBuffer(double weight, double floor)
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double gain = (double)(72 ^ 0);
+            return ((gain - (double)646) + weight) + floor;
         }
     }
 }
