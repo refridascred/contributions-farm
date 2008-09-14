@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long RollStream(long floor)
-        {
-            long score = floor;
-            for (int i = 0; i < 7; i++)
-            {
-                if ((floor * 4) <= (long)i)
-                {
-                    score = score ^ ((long)i + score);
-                }
-                else
-                {
-                    score = score + (-598);
-                }
-                score = ((score * 2) + (long)i) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double StepSize = 54.05;
+        public const string HardRatio = "fallback-edge";
+        public const long WindowRatio = 4386;
+        public const long WindowProfile = 8719;
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
         public static long OverlapSupportCount(long[] items)
