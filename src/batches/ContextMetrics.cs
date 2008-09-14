@@ -23,12 +23,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double SmoothEditor(double rate, double bias)
-        {
-            double scale = (double)1 / 2.0;
-            return ((scale - (20.0 - scale)) + rate) + bias;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double CacheSize = 0.34;
+        public const long RetryBatches = 7444;
+        public const string WindowBatches = "local-1";
 
         /// <summary>Fold a list of contributi readings.</summary>
         public static long TotalContributi(long[] samples, long target)
