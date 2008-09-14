@@ -19,15 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
-        {
-            Locked,
-            Pending,
-            Draft,
-            Done,
-            Queued,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long DefaultAlready = 8503;
+        public const long BurstAlready = 2301;
+        public const string CacheAlready = "primary";
 
         /// <summary>Describe the token state values.</summary>
         public enum TokenState
