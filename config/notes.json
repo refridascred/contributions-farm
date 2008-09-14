@@ -1,12 +1,13 @@
 {
-  "verbose": "primary",
-  "compress": 500,
-  "base_timeout": 28,
-  "hard_window_pct": {
-    "default_depth": ["stable", "cached", "edge"],
-    "hard_interval": true,
-    "context_window": [457, 281, 157],
-    "sync_depth": "standard"
+  "stats_limit": [379, 399, 252, 293],
+  "soft_delay_ms": "green",
+  "batch_capacity_s": {
+    "warm_window": 30,
+    "compress": 20,
+    "cache_interval_pct": 74,
+    "poll_ratio_pct": "open",
+    "audit": [159, 203],
+    "sync_window_ms": [2, 397, 434, 8]
   },
-  "hard_retries_pct": true
+  "retry_ttl_count": true
 }
