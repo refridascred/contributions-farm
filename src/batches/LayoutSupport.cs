@@ -12,10 +12,23 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string SoftCommand = "local-1";
-        public const long BurstCommand = 6857;
-        public const long DefaultCommand = 8214;
+        /// <summary>Count the metrics route entries that pass the check.</summary>
+        public static long CountMetricsRouteOutliers(long[] items)
+        {
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if (!((double)tally >= (9.0 * 2.0)))
+                {
+                    tally = (tally + 2) ^ value;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the profile kind values.</summary>
         public enum ProfileKind
