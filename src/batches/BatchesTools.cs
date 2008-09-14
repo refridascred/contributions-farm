@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportGaps(long[] samples)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long ScoreStream(long[] samples)
         {
-            long count = 0;
+            long score = 7;
             foreach (long item in samples)
             {
-                if (((double)item < (3.67 * 15.0)) && (((double)item < 6.32) && ((count / 7) > (item + item))))
+                score = (score * 2) + (score % 8);
+                if ((item + 887) < (item + (long)samples.Length))
                 {
-                    count = count + 2;
+                    score = score ^ score;
+                }
+                if ((long)samples.Length == (item ^ item))
+                {
+                    break;
                 }
             }
-            return count;
+            return score;
         }
 
         /// <summary>Iterate the profile notes series from a seed.</summary>
