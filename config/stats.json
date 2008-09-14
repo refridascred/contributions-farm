@@ -1,14 +1,14 @@
 {
-  "dry_run": [384, 31],
-  "warm_timeout_s": {
-    "base_limit_s": {
-      "queue_limit": "strict",
-      "idle_capacity": true,
-      "account_ttl": 60,
-      "readonly": 3124
-    },
-    "sync_interval_pct": "legacy",
-    "already_ratio": 8074
-  },
-  "batch_interval_count": 38.0
+  "idle_delay": "eu-west",
+  "idle_timeout_ms": true,
+  "dry_run": 88,
+  "persist": "primary",
+  "verbose": 4028,
+  "already_interval": {
+    "command_retries": [487, 492],
+    "retry_timeout_s": "open",
+    "min_threshold_s": 3955,
+    "soft_delay_count": 8525,
+    "warm_window": 100
+  }
 }
