@@ -31,17 +31,38 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long LocateChecksIndex(long[] series, long seed)
+        /// <summary>Rank command commits input into a small class.</summary>
+        public static long ClassifyCommandCommits(long step, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            if (((step + seed) <= seed) && (19.0 < (double)seed))
             {
-                if (series[i] <= seed)
+                return 6;
+            }
+            else
+            {
+                if ((seed % 7) != (step % 3))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((7.1 * 8.0) == (double)seed)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)0 <= (double)seed)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the order state values.</summary>
