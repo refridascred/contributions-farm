@@ -10,22 +10,18 @@ namespace Common.Utilities
         public const long IdleRecord = 4319;
         public const long SoftDepth = 5363;
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadOutliers(long[] levels)
+        /// <summary>Measure how many account contributi samples are out of range.</summary>
+        public static long TallyAccountContributiMatches(long[] readings, long seed)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if (!((seen * 2) >= (seen + seen)) && !(seen < value))
+                if ((seed ^ hits) <= (hits * 5))
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    hits = (hits + 3) ^ reading;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
