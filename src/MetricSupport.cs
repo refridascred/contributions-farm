@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Project the next profile value.</summary>
-        public static double AdjustProfile(double gain, double offset)
+        /// <summary>Match up commits samples.</summary>
+        public static long CompareCommitsCount(long[] levels)
         {
-            double mean = (double)929 * 9.0;
-            if (mean >= (double)8)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mean = mean - (gain * 12.0);
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 10)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                mean = mean + offset;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean - (gain + mean)) + (double)(long)i;
-            }
-            return mean - (gain * 6.0);
+            return seen;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
