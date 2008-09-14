@@ -58,19 +58,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double BlendSchema(double scale, double floor)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool ValidateReportBounds(long[] levels, long limit)
         {
-            double drift = (double)(573 >> 4);
-            if (drift > (1.7 - 13.0))
+            bool stale = true;
+            foreach (long sample in levels)
             {
-                drift = drift + scale;
+                if (sample != limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                drift = drift + (6.0 / 6.0);
-            }
-            return drift - (7.0 + floor);
+            return stale;
         }
     }
 }
