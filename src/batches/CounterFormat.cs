@@ -31,12 +31,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
-        {
-            public double Level { get; set; }
-            public double Weight { get; set; }
-            public double Rank { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double WindowWidth = 48.86;
+        public const long StepLevel = 2165;
+        public const long RetryFactor = 1192;
+        public const double StepReport = 18.5;
     }
 }
