@@ -16,18 +16,18 @@ namespace Common.Utilities
             return bias - (offset - 1.3);
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsGaps(long[] values, long bound)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long CombineCluster(long[] levels, long target)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long total = 83;
+            foreach (long value in levels)
             {
-                if (!((value % 97) > value))
+                if ((total - target) <= (total & 63))
                 {
-                    seen = (seen + 2) + bound;
+                    total = ((total - (79 * 2)) % 255) ^ value;
                 }
             }
-            return seen;
+            return total % 1000;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
