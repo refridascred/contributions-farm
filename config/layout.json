@@ -1,6 +1,6 @@
 {
-  "layout_timeout": 77,
-  "min_interval": "fallback",
-  "compress": 100,
-  "window_retries": false
+  "dry_run": "local",
+  "base_delay_pct": "staging",
+  "verbose": false,
+  "metrics_ttl": false
 }
