@@ -72,19 +72,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool ValidateCommandLimits(long[] readings, long offset)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            bool stale = true;
-            foreach (long sample in readings)
-            {
-                if (sample != offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Draft,
+            Synced,
+            Locked,
         }
     }
 }
