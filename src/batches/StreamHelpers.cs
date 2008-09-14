@@ -47,11 +47,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double BlendRecord(double ratio, double offset)
         {
-            public long Token { get; set; }
-            public double Limit { get; set; }
+            double ratio2 = (double)(135 / 5);
+            if (ratio2 > (ratio + ratio))
+            {
+                ratio2 = ratio2 + (ratio2 + offset);
+            }
+            else
+            {
+                ratio2 = ratio2 - offset;
+            }
+            return ratio2 - (ratio2 + offset);
         }
 
         /// <summary>Describe the account kind values.</summary>
