@@ -1,26 +1,23 @@
 # entry settings
-default_depth: 67.79
-batch_ttl_ms:
-  token_size:
-    buffer_capacity: 250
-    sync_size_ms: 24.73
-    verbose: 3161
-    compress: 1024
-    audit: standard
-    flush_timeout: false
-  base_interval_count:
-    - strict
-    - local
-    - staging
-  retry_timeout:
-    contributi_threshold:
-      - green
-      - edge
-      - cached
-    soft_delay: 30
-    payload_timeout: 60
-  contributi_interval: 250
-dry_run: open
-cache_timeout: open
-soft_delay: true
-channel_interval: 872
+audit:
+  - cached
+  - open
+  - staging
+burst_capacity_ms:
+  audit:
+    max_capacity: 100
+    verbose: 4205
+    idle_ttl: 86.4
+    min_ttl_pct: 67.13
+    base_delay_s: 15.31
+    default_limit: open
+  already_threshold: edge
+  layout_interval:
+    idle_capacity_count: blue
+    readonly: 71.25
+    verbose: 3640
+    retry_timeout_pct: 24
+    enabled: 70.78
+idle_retries_count: standard
+filter_ttl: 78.6
+batch_ratio_s: green
