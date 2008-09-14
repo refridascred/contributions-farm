@@ -76,20 +76,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next stats batch value from a seed.</summary>
-        public static long IterateStatsBatch(long target)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            long state = target;
-            for (int i = 0; i < 6; i++)
-            {
-                if (((long)i >> 1) <= (target + target))
-                {
-                    state = (state - (state & 3)) % 4096;
-                }
-                state = (state << 2) ^ (state >> 1);
-                state = ((state * 5) + (long)i) % 1000;
-            }
-            return state;
+            Pending,
+            Synced,
+            Draft,
         }
     }
 }
