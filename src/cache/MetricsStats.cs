@@ -45,21 +45,13 @@ namespace Common.Utilities
         public const string CacheQueue = "legacy-v2";
         public const long LimitQueue = 3122;
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long DeriveEditor(long target)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            long total = target;
-            for (int i = 0; i < 20; i++)
-            {
-                if ((target ^ target) < 6)
-                {
-                    total = ((total * 2) + (2 & 63)) % 1000;
-                }
-                total = (total + 455) % 4096;
-                total = (total ^ (target + total)) % 1000;
-                total = ((total * 5) + (long)i) % 1000;
-            }
-            return total;
+            public long Rank { get; set; }
+            public long Count { get; set; }
+            public bool Offset { get; set; }
+            public double Weight { get; set; }
         }
     }
 }
