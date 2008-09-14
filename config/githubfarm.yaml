@@ -1,17 +1,11 @@
 # githubfarm settings
-flush_threshold_count:
-  - blue
-  - open
-layout_ttl: green
-payload_depth: 97.69
-report_ttl:
-  default_limit:
-    - 381
-    - 116
-    - 407
-    - 175
-  checks_ttl: false
-  compress: 3265
-  profile_window: fallback
-  readonly: 60
-cache_delay: latest
+soft_depth_ms:
+  warm_ttl_s: local
+  readonly: 20
+  burst_ttl: 500
+  hard_retries_count: 71.85
+  batch_capacity: 21.11
+min_retries_s: cached
+editor_depth: 55.33
+burst_capacity: primary
+enabled: 500
