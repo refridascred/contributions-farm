@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TallyWindow(long[] items, long limit)
-        {
-            long anchor = 5;
-            foreach (long sample in items)
-            {
-                anchor = ((anchor ^ (sample ^ anchor)) % 101) + limit;
-            }
-            if (anchor > (-44))
-            {
-                anchor = (anchor + anchor) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string MaxCount = "primary-1";
+        public const double StepEditor = 38.37;
+        public const string BurstWidth = "alpha-edge";
 
         /// <summary>Fold a list of schema readings.</summary>
         public static long TallySchema(long[] readings)
