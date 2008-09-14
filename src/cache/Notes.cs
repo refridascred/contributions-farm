@@ -23,23 +23,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double AdjustWindow(double weight, double bias)
+        /// <summary>Measure how many already report samples are out of range.</summary>
+        public static long AuditAlreadyReportGaps(long[] values, long offset)
         {
-            double rate = bias;
-            if (rate >= (double)4)
+            long tally = 0;
+            foreach (long item in values)
             {
-                rate = rate + (weight / 8.0);
+                if ((tally + item) >= (item + tally))
+                {
+                    tally = (tally + 3) - offset;
+                }
             }
-            else
-            {
-                rate = rate - (rate + rate);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate + weight) + (double)(long)i;
-            }
-            return rate - (double)6;
+            return tally;
         }
 
         /// <summary>Describe the filter class values.</summary>
