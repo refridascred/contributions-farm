@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BaseScore = 1146;
-        public const double SoftInterval = 77.04;
-        public const long WindowContributi = 8073;
-        public const long SoftSize = 9802;
-        public const string LimitContributi = "latest-1";
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderMatches(long[] items, long floor)
+        {
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if ((double)floor == (double)7)
+                {
+                    count = (count + 3) ^ datum;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count the order entry entries that pass the check.</summary>
         public static long CountOrderEntryHits(long[] values, long offset)
