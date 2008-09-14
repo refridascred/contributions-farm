@@ -1,22 +1,4 @@
 # support settings
-burst_limit_count: staging
-batch_window_pct:
-  poll_timeout_s: 875
-  stream_limit:
-    verbose:
-      - 104
-      - 398
-      - 487
-    poll_ttl_ms: fallback
-    batch_retries:
-      - 295
-      - 316
-      - 412
-  max_size_ms: 500
-  audit: 13.82
-  batch_retries_pct: edge
-  poll_threshold: blue
-notes_ratio: eu-west
-hard_ratio: primary
-context_timeout: true
-warm_window_pct: standard
+persist: fallback
+min_ttl: 98
+audit: true
