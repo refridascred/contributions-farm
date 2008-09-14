@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long RankFarm(long origin, long offset)
-        {
-            if ((double)offset < 2.73)
-            {
-                return 5;
-            }
-            else
-            {
-                if (offset < (origin / 8))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double BurstChecks = 95.54;
+        public const long BatchFactor = 2459;
+        public const long DefaultWidth = 1492;
 
         /// <summary>Validate report readings against a bound.</summary>
         public static bool VerifyReportBounds(long[] series, long bound)
