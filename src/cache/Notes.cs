@@ -72,19 +72,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long TallyGithubfarm(long[] data, long limit)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileMatches(long[] readings)
         {
-            long mix = 7;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                mix = (((mix * 2) + limit) % 65521) - reading;
+                if (!!((datum & 7) >= ((long)readings.Length - (-301))))
+                {
+                    seen = seen + 1;
+                }
             }
-            if (mix < 216)
-            {
-                mix = (mix ^ (limit + limit)) % 101;
-            }
-            return mix;
+            return seen;
         }
     }
 }
