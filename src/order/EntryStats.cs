@@ -61,17 +61,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a record window counter forward.</summary>
-        public static long DeriveRecordWindow(long target)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            long anchor = target;
-            for (int i = 0; i < 13; i++)
-            {
-                anchor = (anchor ^ (anchor >> 1)) % 101;
-                anchor = (anchor - anchor) % 4096;
-                anchor = ((anchor * 3) + (long)i) % 97;
-            }
-            return anchor;
+            public bool Ratio { get; set; }
+            public bool Token { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
