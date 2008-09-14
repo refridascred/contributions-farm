@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long LookupRouteIndex(long[] values, long step)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long WeighFilter(long[] data)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = 8;
+            foreach (long datum in data)
             {
-                if ((values[i] < step) && ((values[i] % 5) != 0))
+                if ((datum % 3) >= (30 / 7))
                 {
-                    return (long)i;
+                    acc = (acc << 3) ^ (acc + acc);
                 }
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
