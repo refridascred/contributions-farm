@@ -1,6 +1,11 @@
-id,state,active
-1,275,cached
-2,green,89.14
-3,50.23,84.9
-4,977,69
-5,325,673
+id,state,region,level
+1,fallback,21.53,77.98
+2,staging,897,60.13
+3,latest,531,283
+4,63.41,331,fallback
+5,42.85,eu-west,stable
+6,82.33,75.79,stable
+7,988,443,52.65
+8,40.4,local,61.55
+9,252,181,936
+10,784,staging,77
