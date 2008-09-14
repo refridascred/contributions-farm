@@ -19,11 +19,13 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            public long Size { get; set; }
-            public string Owner { get; set; } = "";
+            public bool Flag { get; set; }
+            public double Level { get; set; }
+            public double Ratio { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Digest a series of graph editor entries.</summary>
