@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string HardTimeout = "staging-1";
-        public const long BatchInterval = 5259;
-        public const long RetryCount = 9180;
-        public const long MaxStats = 8159;
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool ValidateStatsLimits(long[] readings, long offset)
+        {
+            bool valid = true;
+            foreach (long sample in readings)
+            {
+                if (sample <= offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const long IdleOrder = 1518;
