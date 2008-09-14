@@ -12,18 +12,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatOutliers(long[] levels, long step)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long IterateSession(long step)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long state = step;
+            for (int i = 0; i < 17; i++)
             {
-                if (((step << 2) < count) || (((910 + count) >= step) && ((2.21 + 3.57) < (double)count)))
+                if (((state * 2) > (step + state)) || (state >= (state % 16)))
                 {
-                    count = (count + 2) ^ cell;
+                    state = state ^ step;
                 }
+                state = ((state * 2) + (long)i) % 1000;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
