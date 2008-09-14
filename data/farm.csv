@@ -1,7 +1,8 @@
-id,rank,score,level
-1,38.34,855,36.77
-2,fallback,edge,557
-3,56.98,cached,open
-4,659,951,52
-5,150,fallback,fallback
-6,fallback,latest,18.0
+id,level,label,active
+1,56.17,592,72
+2,8.63,edge,eu-west
+3,934,727,982
+4,strict,10.78,legacy
+5,stable,59.31,48.34
+6,16,96.58,70.46
+7,58,fallback,open
