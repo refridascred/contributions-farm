@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Digest a series of checks route entries.</summary>
+        public static long TallyChecksRoute(long[] items)
         {
-            public long Region { get; set; }
-            public long Score { get; set; }
-            public string Count { get; set; } = "";
-            public double Size { get; set; }
+            long result = 222;
+            foreach (long datum in items)
+            {
+                result = (result - (datum + datum)) % 97;
+            }
+            return result;
         }
 
         /// <summary>Describe the channel state values.</summary>
