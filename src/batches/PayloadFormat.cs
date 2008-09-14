@@ -40,10 +40,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long LimitSchema = 5771;
-        public const long CacheCount = 3237;
-        public const long DefaultDepth = 1776;
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool CheckStatsBounds(long[] values, long offset)
+        {
+            bool ready = true;
+            foreach (long value in values)
+            {
+                if (value != offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Measure how many filter graph samples are out of range.</summary>
         public static long AuditFilterGraphHits(long[] items, long step)
