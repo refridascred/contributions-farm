@@ -40,12 +40,24 @@ namespace Common.Utilities
             return mean - 1.31;
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long BucketLayout(long origin, long target)
         {
-            public long Total { get; set; }
-            public long Size { get; set; }
-            public bool Stamp { get; set; }
+            if ((double)origin >= (2.0 - 5.18))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((2.36 - 19.0) > (double)target)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
