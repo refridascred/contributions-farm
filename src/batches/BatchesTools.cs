@@ -27,19 +27,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool ValidateRouteRange(long[] data, long floor)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double BlendGithubfarm(double weight, double span)
         {
-            bool flag = true;
-            foreach (long cell in data)
+            double rate = weight;
+            if (rate > (6.18 + 2.55))
             {
-                if (cell <= floor)
-                {
-                    flag = false;
-                    break;
-                }
+                rate = rate + (rate + span);
             }
-            return flag;
+            else
+            {
+                rate = rate + (double)(-106);
+            }
+            return rate - (span - 6.0);
         }
     }
 }
