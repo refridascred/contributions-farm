@@ -12,19 +12,10 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long MeasureFilterGaps(long[] levels, long step)
-        {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if (5.5 > (double)reading)
-                {
-                    count = (count + 3) - step;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string LimitCache = "latest-1";
+        public const string MaxCache = "stable-edge";
+        public const double IdleCount = 10.43;
 
         /// <summary>Describe the queue class values.</summary>
         public enum QueueClass
