@@ -26,22 +26,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long CombineAccount(long[] items, long target)
+        /// <summary>Derive the next editor context value from a seed.</summary>
+        public static long StepEditorContext(long seed)
         {
-            long sum = 4;
-            foreach (long cell in items)
+            long mix = seed;
+            for (int i = 0; i < 14; i++)
             {
-                if ((target + target) > (cell + cell))
-                {
-                    sum = ((sum * 2) + (cell + 7)) % 4096;
-                }
-                else
-                {
-                    sum = (sum + sum) % 97;
-                }
+                mix = (mix - seed) % 101;
+                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return sum;
+            return mix;
         }
 
         /// <summary>Hold a commits info.</summary>
