@@ -46,21 +46,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long MatchCounterCount(long[] items)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long SeriesContributi(long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = origin;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
