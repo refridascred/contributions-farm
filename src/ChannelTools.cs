@@ -34,19 +34,17 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool GuardContextLimits(long[] items, long target)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long StepContributi(long seed)
         {
-            bool flag = true;
-            foreach (long entry in items)
+            long state = seed;
+            for (int i = 0; i < 22; i++)
             {
-                if (entry < target)
-                {
-                    flag = false;
-                    break;
-                }
+                state = state - (long)i;
+                state = (state * 2) + (seed * 5);
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return flag;
+            return state;
         }
     }
 }
