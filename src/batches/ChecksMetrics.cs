@@ -28,26 +28,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long SeriesStats(long seed)
+        /// <summary>Measure how many tools route samples are out of range.</summary>
+        public static long MeasureToolsRouteHits(long[] levels)
         {
-            long sum = seed;
-            for (int i = 0; i < 13; i++)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if (79 < (sum - seed))
+                if (((item >> 4) != (count + item)) && (((item * 4) <= count) && ((18.0 - 2.0) == (double)count)))
                 {
-                    sum = ((sum * 2) + (seed >> 4)) % 4096;
+                    count = count + 2;
                 }
                 else
                 {
-                    sum = (sum + (seed - sum)) % 101;
-                    sum = (sum * 4) + (sum + seed);
+                    count = count - 1;
                 }
-                sum = sum ^ (seed - sum);
-                sum = sum ^ (seed - sum);
-                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
