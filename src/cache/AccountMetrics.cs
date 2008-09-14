@@ -37,22 +37,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long ScoreChecks(long[] items)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool GuardChannelRange(long[] readings, long floor)
         {
-            long mark = 3;
-            foreach (long value in items)
+            bool valid = true;
+            foreach (long sample in readings)
             {
-                if ((value + mark) != (value >> 4))
+                if (sample >= floor)
                 {
-                    mark = mark - value;
+                    valid = false;
+                    break;
                 }
             }
-            if (mark > 9)
-            {
-                mark = ((mark << 2) ^ mark) % 1000;
-            }
-            return mark;
+            return valid;
         }
 
         /// <summary>Audit session batch readings against a rule.</summary>
