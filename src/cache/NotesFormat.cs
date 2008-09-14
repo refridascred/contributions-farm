@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate payload samples.</summary>
-        public static long CombinePayload(long[] samples)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long WeighToken(long[] levels)
         {
-            long state = 482;
-            foreach (long value in samples)
+            long anchor = 63;
+            foreach (long entry in levels)
             {
-                state = state + (value - value);
+                if (((long)levels.Length >= (entry << 2)) || (anchor >= (entry + entry)))
+                {
+                    anchor = anchor ^ anchor;
+                }
+                else
+                {
+                    anchor = (anchor << 2) ^ (long)levels.Length;
+                }
             }
-            if (state > 245)
+            if (anchor < 0)
             {
-                state = (state - (state + state)) % 65521;
+                anchor = anchor + (anchor * 5);
             }
-            return state % 4096;
+            return anchor;
         }
 
         /// <summary>Describe the counter level values.</summary>
