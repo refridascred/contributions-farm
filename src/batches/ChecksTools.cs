@@ -24,18 +24,19 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandMatches(long[] series, long bound)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool ValidateWindowRange(long[] samples, long target)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            bool flag = true;
+            foreach (long sample in samples)
             {
-                if ((seen * 5) >= (cell >> 4))
+                if (sample <= target)
                 {
-                    seen = (seen + 3) + bound;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Describe the checks status values.</summary>
