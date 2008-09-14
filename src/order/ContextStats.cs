@@ -49,26 +49,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TallyChannel(long[] data)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            long score = 5;
-            foreach (long item in data)
-            {
-                if ((item * 3) <= score)
-                {
-                    score = (score + (score ^ item)) % 65521;
-                }
-                if (score >= (item - item))
-                {
-                    score = (score ^ (score << 3)) % 1000;
-                }
-            }
-            if (score < 5)
-            {
-                score = score - (score - score);
-            }
-            return score;
+            Ready,
+            New,
+            Retry,
+            Paused,
+            Active,
         }
     }
 }
