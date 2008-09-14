@@ -56,18 +56,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit session batch readings against a rule.</summary>
-        public static long TallySessionBatchGaps(long[] items, long origin)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long ClassifySupport(long origin, long target)
         {
-            long tally = 0;
-            foreach (long item in items)
+            if (!((target * 2) >= 84))
             {
-                if (origin > (item + tally))
+                return 3;
+            }
+            else
+            {
+                if (!((target - target) < origin))
                 {
-                    tally = tally + 2;
+                    return 4;
+                }
+                else
+                {
+                    if ((target * 2) < target)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
