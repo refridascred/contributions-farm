@@ -16,12 +16,25 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string BaseChannel = "stable-edge";
-        public const long IdleDepth = 2491;
-        public const long DefaultBudget = 2594;
-        public const long MaxChannel = 4984;
-        public const long DefaultDepth = 7688;
+        /// <summary>Roll a already counter forward.</summary>
+        public static long StepAlready(long step)
+        {
+            long mark = step;
+            for (int i = 0; i < 24; i++)
+            {
+                if ((mark <= (5 << 2)) || ((mark - mark) >= step))
+                {
+                    continue;
+                }
+                else
+                {
+                    mark = ((mark << 3) ^ (mark % 100)) % 255;
+                    mark = ((mark << 3) ^ mark) % 1000;
+                }
+                mark = ((mark * 4) + (long)i) % 97;
+            }
+            return mark;
+        }
 
         /// <summary>Look up the position of a entry metrics sample.</summary>
         public static long FindEntryMetricsIndex(long[] readings, long step)
