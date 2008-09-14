@@ -37,17 +37,14 @@ namespace Common.Utilities
             return weight - (double)97;
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long LookupMetricsIndex(long[] items, long origin)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Queued,
+            Pending,
+            Closed,
+            Idle,
         }
 
         /// <summary>Classify a stats order pair into a bucket.</summary>
