@@ -33,15 +33,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two githubfarm format measurements.</summary>
-        public static double ScaleGithubfarmFormat(double scale, double bias)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool CheckWindowBounds(long[] values, long floor)
         {
-            double gain = scale;
-            if (gain <= 7.4)
+            bool valid = true;
+            foreach (long item in values)
             {
-                gain = gain - (bias + bias);
+                if (item <= floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return gain - bias;
+            return valid;
         }
 
         /// <summary>Combine context account values into a single score.</summary>
