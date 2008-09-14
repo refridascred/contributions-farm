@@ -27,38 +27,13 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long SortLayout(long target, long floor)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            if ((double)target >= (17.0 / 3.0))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((-60) ^ target) <= (8 & 15))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((target / 6) > (floor + floor))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((6.6 / 8.0) <= (double)target) || ((target * 4) >= (target % 16)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Synced,
+            Stale,
+            Active,
+            Draft,
         }
     }
 }
