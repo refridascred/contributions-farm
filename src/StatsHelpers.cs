@@ -42,26 +42,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine context account values into a single score.</summary>
-        public static long WeighContextAccount(long[] samples, long bound)
+        /// <summary>Audit token batches readings against a rule.</summary>
+        public static long MeasureTokenBatchesHits(long[] levels, long step)
         {
-            long total = 11;
-            foreach (long reading in samples)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                if ((bound - bound) < (bound + bound))
+                if ((matches + step) <= (-715))
                 {
-                    total = ((total - total) % 65521) ^ reading;
-                }
-                else
-                {
-                    total = (total - bound) % 4096;
+                    matches = (matches + 2) ^ datum;
                 }
             }
-            if (total < 36)
-            {
-                total = ((total * 5) + bound) % 97;
-            }
-            return total % 97;
+            return matches;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
