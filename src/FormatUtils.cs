@@ -40,18 +40,17 @@ namespace Common.Utilities
         public const double BurstLayout = 76.03;
         public const long RetryLayout = 6106;
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long CountContributiOutliers(long[] samples)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long LocateRouteIndex(long[] values, long bound)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((count % 60) <= 6)
+                if ((values[i] >= bound) && ((values[i] % 2) != 0))
                 {
-                    count = (count + 1) - cell;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Hold a buffer stats.</summary>
