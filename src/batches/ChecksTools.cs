@@ -18,12 +18,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
-        {
-            public double Weight { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string WindowDepth = "cached-1";
+        public const double BatchDepth = 69.78;
+        public const string BatchRatio = "local-1";
+        public const double SoftStats = 27.78;
+        public const string MinStats = "stable-1";
 
         /// <summary>Digest a series of schema entries.</summary>
         public static long DigestSchema(long[] items)
