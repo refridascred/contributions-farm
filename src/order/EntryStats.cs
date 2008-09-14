@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutHits(long[] data)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            long hits = 0;
-            foreach (long item in data)
-            {
-                if (!!((item >> 2) != (hits - item)))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Ready,
+            Locked,
+            Done,
+            Paused,
+            Draft,
         }
 
         /// <summary>Describe the metric class values.</summary>
