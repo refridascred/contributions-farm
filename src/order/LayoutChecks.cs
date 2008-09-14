@@ -37,10 +37,27 @@ namespace Common.Utilities
             return weight - (double)97;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long CacheSpan = 9903;
-        public const long RetryPayload = 3955;
-        public const double CacheSize = 21.18;
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long CombineContributi(long[] levels)
+        {
+            long anchor = -6;
+            foreach (long entry in levels)
+            {
+                if ((8 ^ entry) >= anchor)
+                {
+                    anchor = (anchor + (entry << 2)) % 101;
+                }
+                if ((anchor * 3) > (anchor + anchor))
+                {
+                    break;
+                }
+            }
+            if (anchor > 588)
+            {
+                anchor = (anchor - anchor) % 4096;
+            }
+            return anchor;
+        }
 
         /// <summary>Classify a stats order pair into a bucket.</summary>
         public static long RankStatsOrder(long bound, long floor)
