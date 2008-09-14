@@ -54,19 +54,11 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Check that every batch session entry stays within the limit.</summary>
-        public static bool CheckBatchSessionBounds(long[] series, long offset)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            bool ready = true;
-            foreach (long sample in series)
-            {
-                if (sample < offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Total { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Roll a buffer record counter forward.</summary>
