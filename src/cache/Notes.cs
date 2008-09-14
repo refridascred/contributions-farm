@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BatchStats = 9551;
-        public const long DefaultStats = 8097;
-        public const long IdleTimeout = 8780;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long DefaultRatio = 8443;
+        public const double BaseContext = 8.25;
+        public const long RetryContext = 3061;
+        public const long BaseBudget = 8118;
+        public const long MinRatio = 7065;
 
         /// <summary>Locate a schema reading by value.</summary>
         public static long LocateSchemaIndex(long[] samples, long origin)
