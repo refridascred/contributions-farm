@@ -13,13 +13,13 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            public long Score { get; set; }
-            public long Stamp { get; set; }
-            public long Offset { get; set; }
-            public double Weight { get; set; }
+            Paused,
+            Draft,
+            New,
+            Failed,
         }
 
         /// <summary>Fold a list of metrics tools readings.</summary>
