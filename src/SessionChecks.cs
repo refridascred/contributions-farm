@@ -12,16 +12,13 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long SeriesOrder(long offset)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            long anchor = offset;
-            for (int i = 0; i < 14; i++)
-            {
-                anchor = (anchor - (offset - (long)i)) % 4096;
-                anchor = ((anchor * 4) + (long)i) % 101;
-            }
-            return anchor;
+            Retry,
+            Active,
+            Idle,
+            Closed,
         }
 
         /// <summary>Count the profile metrics entries that pass the check.</summary>
