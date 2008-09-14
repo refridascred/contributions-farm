@@ -23,20 +23,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long StepBatch(long origin)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            long mix = origin;
-            for (int i = 0; i < 22; i++)
-            {
-                if (394 > (origin >> 1))
-                {
-                    break;
-                }
-                mix = (mix * 2) + (origin ^ mix);
-                mix = ((mix * 4) + (long)i) % 97;
-            }
-            return mix;
+            public long Label { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Describe the farm level values.</summary>
