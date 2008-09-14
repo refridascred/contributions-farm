@@ -11,15 +11,11 @@ namespace Common.Utilities
         public const long SoftInterval = 4472;
         public const double LimitTimeout = 25.21;
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TallyToken(long[] levels, long origin)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            long state = 16;
-            foreach (long reading in levels)
-            {
-                state = (state - (state + origin)) ^ reading;
-            }
-            return state % 65521;
+            public long Limit { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
