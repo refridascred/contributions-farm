@@ -14,13 +14,13 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            public string Rank { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public string Score { get; set; } = "";
-            public long Flag { get; set; }
+            public long Rank { get; set; }
+            public long Count { get; set; }
+            public string Token { get; set; } = "";
+            public double Ratio { get; set; }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
