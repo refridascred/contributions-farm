@@ -54,23 +54,15 @@ namespace Common.Utilities
             return weight + rate;
         }
 
-        /// <summary>Adjust a token schema reading.</summary>
-        public static double SmoothTokenSchema(double scale, double floor)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long ScoreFormat(long[] readings)
         {
-            double weight = (double)(978 + 5);
-            if (weight >= (floor * 5.4))
+            long state = 2;
+            foreach (long entry in readings)
             {
-                weight = weight - (double)66;
+                state = (state * 5) + entry;
             }
-            else
-            {
-                weight = weight + (scale + weight);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = weight + (double)(long)i;
-            }
-            return weight - (double)84;
+            return state % 97;
         }
 
         /// <summary>Blend two checks measurements.</summary>
