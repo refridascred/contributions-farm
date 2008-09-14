@@ -73,11 +73,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long StepToken = 5078;
-        public const string MaxToken = "standard";
-        public const long WindowToken = 4648;
-        public const string RetryScore = "cached";
-        public const long MinWidth = 3183;
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferOutliers(long[] samples, long origin)
+        {
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if (!(((-47) << 1) > origin))
+                {
+                    hits = (hits + 1) - datum;
+                }
+            }
+            return hits;
+        }
     }
 }
