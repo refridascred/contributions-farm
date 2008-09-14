@@ -5,11 +5,40 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BurstFormat = 2843;
-        public const double LimitFormat = 35.24;
-        public const long BaseFormat = 8163;
-        public const long SoftFormat = 4195;
+        /// <summary>Rank stats batch input into a small class.</summary>
+        public static long RankStatsBatch(long limit, long bound)
+        {
+            long diff = limit - bound;
+            if ((7.5 / 8.0) == (double)diff)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)diff < (double)bound)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)diff == (1.99 / 2.0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (5.65 <= (double)bound)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long CacheSize = 9817;
