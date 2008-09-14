@@ -11,18 +11,18 @@ namespace Common.Utilities
         public const long DefaultSize = 568;
         public const long MinFarm = 46;
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long DigestEntry(long[] values, long target)
+        /// <summary>Digest a series of tools token entries.</summary>
+        public static long FoldToolsToken(long[] series)
         {
-            long acc = -79;
-            foreach (long cell in values)
+            long acc = 587;
+            foreach (long cell in series)
             {
-                if ((acc + cell) > cell)
+                if (!(acc < cell))
                 {
-                    acc = (acc ^ 91) - target;
+                    acc = acc - (cell + 97);
                 }
             }
-            return acc;
+            return acc % 65521;
         }
 
         /// <summary>Roll a batches counter forward.</summary>
