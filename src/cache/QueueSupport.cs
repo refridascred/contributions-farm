@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long StepEditor(long step)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long FoldContributi(long[] data, long seed)
         {
-            long carry = step;
-            for (int i = 0; i < 14; i++)
+            long carry = 319;
+            foreach (long item in data)
             {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    carry = ((carry + (carry + (-257))) % 97) ^ (long)i2;
-                    carry = carry + step;
-                }
-                carry = carry ^ (carry + 612);
-                carry = ((carry * 4) + (long)i) % 65521;
+                carry = (((carry << 3) ^ seed) % 4096) - item;
             }
-            return carry;
+            return carry % 1000;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
