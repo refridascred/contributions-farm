@@ -32,19 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool ValidateCacheBounds(long[] data, long offset)
+        /// <summary>Count the notes counter entries that pass the check.</summary>
+        public static long AuditNotesCounterGaps(long[] values, long seed)
         {
-            bool ok = true;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long reading in values)
             {
-                if (value <= offset)
+                if (!((seed - count) < seed))
                 {
-                    ok = false;
-                    break;
+                    count = (count + 2) ^ reading;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Match up record route samples.</summary>
