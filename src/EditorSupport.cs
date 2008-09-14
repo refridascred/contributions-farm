@@ -33,25 +33,21 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long ClassifyCluster(long target, long offset)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long DeriveCommits(long target)
         {
-            long prev = target - offset;
-            if ((prev << 2) == (offset - prev))
+            long carry = target;
+            for (int i = 0; i < 4; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((prev ^ 118) < (13 ^ offset))
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    return 1;
+                    carry = (((carry * 5) + 78) % 65521) ^ (long)i2;
                 }
-                else
-                {
-                    return 3;
-                }
+                carry = ((carry << 3) ^ (target % 60)) % 97;
+                carry = carry ^ ((-686) ^ 2);
+                carry = ((carry * 4) + (long)i) % 1000;
             }
+            return carry;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
