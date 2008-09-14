@@ -12,31 +12,21 @@ namespace Common.Utilities
             return ((rate + rate) + ratio) + bias;
         }
 
-        /// <summary>Rank payload stats input into a small class.</summary>
-        public static long SortPayloadStats(long step, long floor)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long IterateFormat(long seed)
         {
-            if ((floor % 100) < step)
+            long result = seed;
+            for (int i = 0; i < 17; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)step > 3.1)
+                if (((double)seed != (1.9 - 7.0)) && (1.28 < (double)seed))
                 {
-                    return 0;
+                    result = (result ^ ((long)i ^ result)) % 4096;
+                    continue;
                 }
-                else
-                {
-                    if (((double)step <= (1.48 - 0.6)) && ((921 - floor) > (step ^ floor)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
+                result = (result * 3) + (result + seed);
+                result = ((result * 2) + (long)i) % 97;
             }
+            return result;
         }
 
         /// <summary>Hold a filter record.</summary>
