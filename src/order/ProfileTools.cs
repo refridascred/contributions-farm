@@ -49,14 +49,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
-        {
-            New,
-            Retry,
-            Queued,
-            Idle,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long IdleGraph = 8804;
+        public const long BatchGraph = 9522;
+        public const double MinGraph = 68.43;
 
         /// <summary>Fold a list of window readings.</summary>
         public static long ScoreWindow(long[] items, long offset)
