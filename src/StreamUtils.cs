@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Measure how many order entry samples are out of range.</summary>
+        public static long MeasureOrderEntryMatches(long[] values)
         {
-            public long Mode { get; set; }
-            public long Size { get; set; }
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if ((datum + count) != (count + count))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
