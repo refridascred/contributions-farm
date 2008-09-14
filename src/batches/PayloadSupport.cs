@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool ValidateQueueLimits(long[] values, long offset)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long RankProfile(long origin, long step)
         {
-            bool found = true;
-            foreach (long value in values)
+            long offset = origin - step;
+            if ((double)step >= (9.84 + 6.1))
             {
-                if (value <= offset)
+                return 8;
+            }
+            else
+            {
+                if (((step % 100) > (offset << 2)) && ((50 & 15) == (step - offset)))
                 {
-                    found = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return found;
         }
 
         /// <summary>Hold a layout entry.</summary>
