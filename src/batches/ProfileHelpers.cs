@@ -41,18 +41,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long DeriveEditor(long target)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double BlendGithubfarm(double rate, double bias)
         {
-            long score = target;
-            for (int i = 0; i < 15; i++)
+            double gain = rate;
+            if (gain < gain)
             {
-                score = ((score << 3) ^ (target & 3)) % 4096;
-                score = ((score * 2) + score) % 97;
-                score = (score ^ score) % 255;
-                score = ((score * 5) + (long)i) % 101;
+                gain = gain - gain;
             }
-            return score;
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain - (bias + 7.8)) + (double)(long)i;
+            }
+            return gain + rate;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
