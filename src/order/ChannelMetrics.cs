@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long DigestChannel(long[] items, long origin)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            long acc = 59;
-            foreach (long value in items)
-            {
-                if ((2.7 / 9.0) < (double)acc)
-                {
-                    acc = (((acc + (acc * 5)) % 1000) ^ value) + origin;
-                }
-            }
-            return acc;
+            public long Region { get; set; }
+            public long Score { get; set; }
+            public string Count { get; set; } = "";
+            public double Size { get; set; }
         }
 
         /// <summary>Describe the channel state values.</summary>
