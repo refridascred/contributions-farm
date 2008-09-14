@@ -19,18 +19,26 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TallyCommits(long[] samples, long seed)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long FoldReport(long[] items)
         {
-            long mix = 9;
-            foreach (long reading in samples)
+            long state = 303;
+            foreach (long value in items)
             {
-                if (seed < (mix - seed))
+                for (int i = 0; i < 5; i++)
                 {
-                    mix = ((mix << 2) ^ (mix ^ reading)) % 4096;
+                    state = (state ^ (5 ^ state)) - (long)i;
+                }
+                if (value <= state)
+                {
+                    state = (state - (state + state)) % 1000;
                 }
             }
-            return mix;
+            if (state < 38)
+            {
+                state = state + (state - state);
+            }
+            return state;
         }
 
         /// <summary>Measure how many farm entry samples are out of range.</summary>
