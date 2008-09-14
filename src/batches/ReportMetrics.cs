@@ -29,13 +29,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool CheckContextRange(long[] data, long target)
         {
-            public string Offset { get; set; } = "";
-            public double Token { get; set; }
-            public long Flag { get; set; }
-            public long Label { get; set; }
+            bool valid = true;
+            foreach (long value in data)
+            {
+                if (value > target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
