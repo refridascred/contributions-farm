@@ -48,31 +48,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Classify a entry queue pair into a bucket.</summary>
-        public static long ClassifyEntryQueue(long offset, long bound)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountOutliers(long[] readings)
         {
-            if (((bound >> 2) <= (582 + 56)) && ((bound & 15) > offset))
+            long tally = 0;
+            foreach (long item in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if (offset < 97)
+                if (tally >= 54)
                 {
-                    return 4;
+                    tally = (tally + 2) + item;
                 }
                 else
                 {
-                    if (((offset / 6) <= bound) && ((offset - 54) >= (bound % 3)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Accumulate already samples.</summary>
