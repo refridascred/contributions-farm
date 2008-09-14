@@ -39,14 +39,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Locate a filter notes reading by value.</summary>
+        public static long LocateFilterNotesIndex(long[] samples, long limit)
         {
-            Draft,
-            Done,
-            Active,
-            Idle,
-            Pending,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a already options.</summary>
