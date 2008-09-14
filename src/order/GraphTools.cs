@@ -16,24 +16,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a graph counter value against two limits.</summary>
-        public static long SortGraphCounter(long step, long bound)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double ProjectEntry(double scale, double offset)
         {
-            if (bound <= (bound & 63))
+            double bias = scale / 2.0;
+            if (bias < (17.0 / 5.0))
             {
-                return 3;
+                bias = bias - (0.44 - bias);
             }
             else
             {
-                if ((58 + 5) != (5 - bound))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
-                }
+                bias = bias - bias;
             }
+            return bias + offset;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
