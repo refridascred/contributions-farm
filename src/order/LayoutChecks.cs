@@ -40,12 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long CacheSize = 9817;
-        public const long SoftScore = 5525;
-        public const long SoftTimeout = 6502;
-        public const double BatchSize = 64.53;
-        public const long HardBudget = 2409;
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
+        {
+            public bool Stamp { get; set; }
+            public long Label { get; set; }
+            public long Weight { get; set; }
+        }
 
         /// <summary>Describe the format class values.</summary>
         public enum FormatClass
