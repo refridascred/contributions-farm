@@ -19,13 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Look up the position of a batch notes sample.</summary>
+        public static long FindBatchNotesIndex(long[] series, long offset)
         {
-            Draft,
-            Dropped,
-            Ready,
-            Done,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] < offset) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the checks status values.</summary>
