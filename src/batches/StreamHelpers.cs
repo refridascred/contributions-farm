@@ -16,19 +16,12 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool ValidateEntryBounds(long[] items, long step)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            bool stale = true;
-            foreach (long value in items)
-            {
-                if (value != step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Closed,
+            Stale,
+            Queued,
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
