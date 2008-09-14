@@ -68,21 +68,26 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long PairGraphCount(long[] items)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TallyContributi(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = 29;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int i = 0; i < 2; i++)
                 {
-                    if ((items[i] + items[j]) == 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    state = (state ^ (entry + state)) ^ (long)i;
+                }
+                if ((state - state) == (entry / 9))
+                {
+                    state = (state ^ state) % 4096;
+                }
+                else
+                {
+                    state = (state - 44) % 101;
                 }
             }
-            return tally;
+            return state % 97;
         }
     }
 }
