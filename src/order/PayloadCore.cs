@@ -18,18 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmGaps(long[] series)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double SmoothMetric(double scale, double floor)
         {
-            long count = 0;
-            foreach (long cell in series)
+            double gain = floor;
+            for (int i = 0; i < 8; i++)
             {
-                if (!((double)cell <= (double)count))
-                {
-                    count = count + 1;
-                }
+                gain = ((gain - floor) + (double)(long)i) + scale;
             }
-            return count;
+            return gain + floor;
         }
 
         /// <summary>Define session limits and defaults.</summary>
