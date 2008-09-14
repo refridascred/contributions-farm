@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long CountContributiOutliers(long[] samples)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long FoldFormat(long[] items, long limit)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            long sum = 379;
+            foreach (long item in items)
             {
-                if ((cell << 2) != (71 + 30))
+                if (!((limit >> 1) >= (sum - limit)))
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    sum = ((sum - (limit / 6)) % 1000) - item;
                 }
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Describe the record level values.</summary>
