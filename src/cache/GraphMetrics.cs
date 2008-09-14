@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MaxQueue = 451;
-        public const long CacheQueue = 8753;
-        public const string IdleQueue = "staging-v2";
-        public const long MinSpan = 8209;
-        public const long LimitScore = 9899;
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
+        {
+            Pending,
+            Queued,
+            Stale,
+        }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
         public static long CompareEntryCount(long[] data)
