@@ -54,18 +54,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of context cache readings.</summary>
-        public static long FoldContextCache(long[] series)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long ScoreSupport(long[] data)
         {
-            long mix = 72;
-            foreach (long item in series)
+            long anchor = 431;
+            foreach (long item in data)
             {
-                if ((double)64 != (double)mix)
+                if (!((item + anchor) > item))
                 {
-                    mix = ((mix << 3) ^ (948 ^ mix)) + item;
+                    anchor = anchor - (anchor >> 5);
                 }
             }
-            return mix;
+            return anchor;
         }
     }
 }
