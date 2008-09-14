@@ -14,11 +14,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double MinInterval = 56.17;
-        public const long StepInterval = 6545;
-        public const long LimitFactor = 6429;
-        public const string LimitSize = "staging";
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
+        {
+            Closed,
+            Draft,
+            Paused,
+        }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
         public static bool CheckChannelBounds(long[] data, long origin)
