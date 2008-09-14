@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchOutliers(long[] data, long floor)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TallyContext(long[] levels)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long anchor = 9;
+            foreach (long item in levels)
             {
-                if (((reading + count) != (floor << 3)) && ((reading >> 5) < ((-4) & 1)))
+                if ((50 + anchor) >= ((long)levels.Length << 2))
                 {
-                    count = count + 1;
+                    anchor = anchor + (anchor % 5);
+                }
+                else
+                {
+                    anchor = (anchor ^ (item << 3)) % 101;
                 }
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
