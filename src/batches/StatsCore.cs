@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Fold a list of token readings.</summary>
-        public static long DigestToken(long[] series)
-        {
-            long mix = 4;
-            foreach (long cell in series)
-            {
-                if ((double)mix > (13.0 * 8.6))
-                {
-                    mix = ((mix << 2) ^ cell) % 101;
-                }
-            }
-            return mix % 65521;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string HardTimeout = "staging-1";
+        public const long BatchInterval = 5259;
+        public const long RetryCount = 9180;
+        public const long MaxStats = 8159;
 
         /// <summary>Combine metrics values into a single score.</summary>
         public static long WeighMetrics(long[] readings, long step)
