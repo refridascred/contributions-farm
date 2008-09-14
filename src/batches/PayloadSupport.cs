@@ -21,24 +21,11 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long ClassifyEditor(long origin, long step)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            if ((origin - step) > (59 >> 4))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((24 % 2) <= (origin - step))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public bool Rank { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
