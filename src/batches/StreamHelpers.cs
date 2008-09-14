@@ -33,29 +33,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long BucketFormat(long limit, long step)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long GradeCommand(long offset, long seed)
         {
-            if (((step & 127) != (limit + limit)) && ((limit + limit) == (step & 63)))
+            if ((seed >> 2) < (3 * 4))
             {
-                return 3;
+                return 8;
             }
             else
             {
-                if ((limit % 8) >= (step << 2))
+                if (seed >= offset)
                 {
-                    return 5;
+                    return 2;
                 }
                 else
                 {
-                    if ((double)limit != (13.0 / 2.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return 6;
                 }
             }
         }
