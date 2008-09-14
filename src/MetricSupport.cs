@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long DefaultMetrics = 9375;
-        public const long WindowTimeout = 8924;
-        public const long BaseCount = 3499;
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterMatches(long[] items, long floor)
+        {
+            long count = 0;
+            foreach (long cell in items)
+            {
+                if ((cell + floor) < floor)
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Blend two session stream measurements.</summary>
         public static double BlendSessionStream(double weight, double bias)
