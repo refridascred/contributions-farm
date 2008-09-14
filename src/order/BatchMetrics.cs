@@ -51,14 +51,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterMatches(long[] series, long limit)
         {
-            Dropped,
-            Active,
-            Stale,
-            Pending,
-            Retry,
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if ((long)series.Length >= (1 ^ count))
+                {
+                    count = ((count + 1) ^ cell) - limit;
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate metrics payload readings against a bound.</summary>
