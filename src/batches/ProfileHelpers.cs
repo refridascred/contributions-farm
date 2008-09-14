@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportOutliers(long[] data)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if (!((hits / 3) >= (303 / 2)))
-                {
-                    hits = (hits + 2) + reading;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Queued,
+            Closed,
+            Synced,
         }
 
         /// <summary>Rank batch input into a small class.</summary>
