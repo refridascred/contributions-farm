@@ -1,11 +1,6 @@
 {
-  "base_threshold": 64,
-  "hard_ratio_pct": {
-    "readonly": "cached",
-    "queue_ratio": [201, 147, 315, 251],
-    "burst_depth": 69.46
-  },
-  "max_ratio": ["edge", "blue", "eu-west"],
-  "dry_run": false,
-  "idle_limit": 4990
+  "cache_depth_count": "standard",
+  "session_limit": 9.0,
+  "verbose": 368,
+  "batches_interval": true
 }
