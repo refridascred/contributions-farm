@@ -10,19 +10,21 @@ namespace Common.Utilities
         public const long MinBatch = 2517;
         public const long BurstLevel = 5000;
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long SeriesContext(long origin)
+        /// <summary>Compare every pair of notes cache readings.</summary>
+        public static long MatchNotesCacheCount(long[] samples)
         {
-            long mark = origin;
-            for (int i = 0; i < 22; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((117 ^ mark) < ((long)i & 127)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mark = ((mark * 2) + (origin << 3)) % 255;
+                    if ((samples[i] ^ samples[j]) > 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Blend two checks measurements.</summary>
