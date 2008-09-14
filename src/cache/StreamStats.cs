@@ -48,22 +48,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine window route values into a single score.</summary>
-        public static long CombineWindowRoute(long[] series, long offset)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            long acc = 947;
-            foreach (long cell in series)
-            {
-                if ((cell << 3) <= (offset + acc))
-                {
-                    acc = ((acc * 5) + (cell + acc)) % 1000;
-                }
-                if ((5.15 / 9.0) > (double)offset)
-                {
-                    break;
-                }
-            }
-            return acc;
+            Paused,
+            Idle,
+            New,
+            Draft,
+            Pending,
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
