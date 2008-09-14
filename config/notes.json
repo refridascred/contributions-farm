@@ -1,15 +1,6 @@
 {
-  "burst_interval": "staging",
-  "session_interval": {
-    "verbose": true,
-    "context_interval": {
-      "base_ttl_pct": "staging",
-      "layout_ratio": 64.39,
-      "default_depth_count": 16
-    },
-    "queue_ttl": 10
-  },
-  "verbose": 500,
-  "contributi_limit": 60,
-  "flush_threshold_s": 42.22
+  "poll_threshold_ms": "edge",
+  "soft_window_s": 56.73,
+  "enabled": "standard",
+  "idle_ttl": "latest"
 }
