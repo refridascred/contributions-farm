@@ -19,23 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsOutliers(long[] values)
-        {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if ((tally ^ 96) > (tally - tally))
-                {
-                    tally = (tally + 2) + reading;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BatchWidth = 4323;
+        public const string BatchDepth = "stable-v2";
+        public const long IdleBudget = 5276;
+        public const string IdleDepth = "latest-1";
+        public const long RetryQueue = 779;
 
         /// <summary>Describe the stream level values.</summary>
         public enum StreamLevel
