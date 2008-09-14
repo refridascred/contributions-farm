@@ -1,11 +1,12 @@
 # githubfarm settings
-soft_depth_ms:
-  warm_ttl_s: local
-  readonly: 20
-  burst_ttl: 500
-  hard_retries_count: 71.85
-  batch_capacity: 21.11
-min_retries_s: cached
-editor_depth: 55.33
-burst_capacity: primary
-enabled: 500
+strict: 250
+cache_window: standard
+stats_interval:
+  sync_threshold_pct: standard
+  hard_delay_pct: 0.96
+  soft_window_count: false
+sync_interval:
+  - cached
+  - local
+  - open
+audit: 6.31
