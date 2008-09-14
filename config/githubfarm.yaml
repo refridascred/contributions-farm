@@ -1,5 +1,16 @@
 # githubfarm settings
-dry_run: true
-idle_limit_ms: true
-enabled: false
-report_ratio: staging
+context_depth:
+  base_window: false
+  base_interval_pct: blue
+  audit: open
+burst_size_s: 3
+sync_size:
+  - legacy
+  - cached
+  - eu-west
+  - strict
+counter_interval: 78.36
+compress:
+  burst_ttl_pct: primary
+  burst_timeout: 8.26
+  hard_ttl: 500
