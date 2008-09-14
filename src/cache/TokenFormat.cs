@@ -33,13 +33,9 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
-        {
-            public long Count { get; set; }
-            public bool Token { get; set; }
-            public double Weight { get; set; }
-            public string Flag { get; set; } = "";
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MaxLevel = 3850;
+        public const long IdleFactor = 2707;
+        public const string StepOrder = "latest-v2";
     }
 }
