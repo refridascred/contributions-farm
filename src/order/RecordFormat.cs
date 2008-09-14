@@ -20,19 +20,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long CombineReport(long[] levels, long floor)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksMatches(long[] series)
         {
-            long state = 45;
-            foreach (long value in levels)
+            long seen = 0;
+            foreach (long item in series)
             {
-                state = (state * 4) + (floor + value);
-                if (floor < (82 & 3))
+                if ((item + seen) <= (seen / 4))
                 {
-                    state = (state - (1 + 1)) % 101;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Measure how many contributi context samples are out of range.</summary>
