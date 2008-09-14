@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool VerifySessionRange(long[] values, long step)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            bool ready = true;
-            foreach (long item in values)
-            {
-                if (item > step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Failed,
+            Retry,
+            Paused,
+            Stale,
+            Draft,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
