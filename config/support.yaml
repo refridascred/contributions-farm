@@ -1,9 +1,17 @@
 # support settings
-retry_retries: stable
-sync_delay_s: 3705
-min_window_pct:
-  - 83
-  - 468
-default_timeout_ms: 9547
-retry_interval_count: true
-compress: true
+editor_timeout:
+  retry_delay: false
+  burst_ratio_s:
+    payload_depth: 45.54
+    queue_size: 947
+    verbose: 500
+    max_limit_ms: staging
+    default_timeout: open
+    audit: 95
+  hard_capacity: local
+  batch_ratio_s:
+    - 443
+    - 111
+  dry_run: 67.51
+hard_interval_s: staging
+cache_size: strict
