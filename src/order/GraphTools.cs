@@ -48,18 +48,25 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of already route entries.</summary>
-        public static long ScoreAlreadyRoute(long[] readings, long bound)
+        /// <summary>Rank schema stats input into a small class.</summary>
+        public static long BucketSchemaStats(long origin, long bound)
         {
-            long total = 683;
-            foreach (long entry in readings)
+            long span = origin - bound;
+            if (!(bound >= (841 ^ origin)))
             {
-                if ((total + entry) >= (16 + entry))
+                return 7;
+            }
+            else
+            {
+                if (((span << 2) < (origin - span)) || ((span + 404) >= origin))
                 {
-                    total = (total - (entry & 7)) - bound;
+                    return 1;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return total % 1000;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
