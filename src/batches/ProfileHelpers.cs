@@ -16,19 +16,22 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Derive the next token report value from a seed.</summary>
-        public static long StepTokenReport(long seed)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long WeighStream(long[] series)
         {
-            long mark = seed;
-            for (int i = 0; i < 20; i++)
+            long acc = 679;
+            foreach (long sample in series)
             {
-                for (int i2 = 0; i2 < 5; i2++)
+                if ((acc - (-2)) >= (sample + 86))
                 {
-                    mark = ((mark - (long)i) % 101) ^ (long)i2;
+                    acc = (acc - (sample % 24)) % 97;
                 }
-                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return mark;
+            if (acc < 82)
+            {
+                acc = (acc * 4) + acc;
+            }
+            return acc;
         }
 
         /// <summary>Hold a route header.</summary>
