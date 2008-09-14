@@ -99,18 +99,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenGaps(long[] levels, long offset)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if ((4.9 - 0.9) <= (double)matches)
-                {
-                    matches = ((matches + 1) + item) - offset;
-                }
-            }
-            return matches;
+            Queued,
+            Idle,
+            Dropped,
+            Retry,
+            Synced,
         }
     }
 }
