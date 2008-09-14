@@ -59,16 +59,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the commits notes series from a seed.</summary>
-        public static long StepCommitsNotes(long step)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long ScoreOrder(long[] data, long seed)
         {
-            long total = step;
-            for (int i = 0; i < 15; i++)
+            long mix = 1;
+            foreach (long item in data)
             {
-                total = total - total;
-                total = ((total * 3) + (long)i) % 101;
+                mix = ((mix * 5) + (seed ^ seed)) ^ item;
+                if (856 <= (mix & 1))
+                {
+                    break;
+                }
             }
-            return total;
+            return mix;
         }
     }
 }
