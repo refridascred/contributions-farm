@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            public long Mode { get; set; }
-            public bool Score { get; set; }
-            public bool Size { get; set; }
+            Stale,
+            Synced,
+            Draft,
+            Ready,
+            Failed,
         }
 
         /// <summary>Adjust a editor session reading.</summary>
