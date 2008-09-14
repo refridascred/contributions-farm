@@ -18,12 +18,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string WindowDepth = "cached-1";
-        public const double BatchDepth = 69.78;
-        public const string BatchRatio = "local-1";
-        public const double SoftStats = 27.78;
-        public const string MinStats = "stable-1";
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsGaps(long[] data)
+        {
+            long seen = 0;
+            foreach (long reading in data)
+            {
+                if (254 <= (seen ^ seen))
+                {
+                    seen = (seen + 3) + reading;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Digest a series of schema entries.</summary>
         public static long DigestSchema(long[] items)
