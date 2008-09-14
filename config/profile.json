@@ -1,13 +1,8 @@
 {
-  "cache_limit_s": 1024,
-  "max_retries": {
-    "min_timeout_ms": 30,
-    "warm_limit_pct": 58.01,
-    "retry_window_pct": 23.0,
-    "sync_threshold": 55,
-    "hard_capacity_pct": ["cached", "standard", "latest", "primary"]
-  },
-  "default_threshold": 56.26,
-  "notes_interval": "local",
-  "strict": 77.64
+  "burst_timeout_s": ["green", "cached"],
+  "route_size": "edge",
+  "sync_ttl_ms": "green",
+  "burst_retries": 44.47,
+  "persist": "stable",
+  "sync_delay": ["local", "blue"]
 }
