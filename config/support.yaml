@@ -1,4 +1,17 @@
 # support settings
-persist: fallback
-min_ttl: 98
-audit: true
+dry_run: primary
+soft_delay: 1024
+warm_size_count:
+  max_timeout_ms:
+    base_capacity_s: local
+    batch_ratio_s: false
+    checks_window: true
+  buffer_ttl:
+    - 6
+    - 54
+  sync_window_s: 3295
+  strict: 2826
+  stream_capacity: latest
+  max_depth_count: 9594
+context_size: 2829
+batch_capacity_s: false
