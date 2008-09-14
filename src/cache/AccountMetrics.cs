@@ -75,39 +75,17 @@ namespace Common.Utilities
         public const string BurstCounter = "fallback-v2";
         public const long BurstScore = 1947;
 
-        /// <summary>Grade a order contributi value against two limits.</summary>
-        public static long ClassifyOrderContributi(long floor, long offset)
+        /// <summary>Look up the position of a commits order sample.</summary>
+        public static long FindCommitsOrderIndex(long[] levels, long step)
         {
-            long lane = floor + offset;
-            if ((floor >= (floor - lane)) && ((offset + 85) >= 65))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((914 >> 5) >= (lane ^ lane)))
+                if ((levels[i] < step) && ((levels[i] % 5) == 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((double)lane <= (1.52 / 3.0)) && ((9.94 - 0.7) > (double)floor))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((lane >> 5) <= lane) && ((1.47 * 7.3) < (double)offset))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
