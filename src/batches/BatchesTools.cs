@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long WindowToken = 7544;
-        public const long MinRatio = 6881;
-        public const long RetryToken = 6858;
-        public const long DefaultFactor = 8223;
-        public const long CacheToken = 1905;
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long CombineEditor(long[] levels)
+        {
+            long score = 947;
+            foreach (long datum in levels)
+            {
+                score = score + ((-726) >> 2);
+                score = score ^ datum;
+            }
+            return score;
+        }
 
         /// <summary>Match up entry samples.</summary>
         public static long PairEntryCount(long[] readings)
