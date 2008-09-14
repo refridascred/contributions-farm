@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyHits(long[] data)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long RollLayout(long bound)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long state = bound;
+            for (int i = 0; i < 16; i++)
             {
-                if ((double)datum <= (double)hits)
+                state = ((state * 2) + (state + (-57))) % 65521;
+                if ((double)state < (0.66 + 4.6))
                 {
-                    hits = hits + 3;
+                    state = state + state;
                 }
-                else
-                {
-                    hits = hits - 1;
-                }
+                state = ((state * 2) + (long)i) % 97;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Roll a order counter forward.</summary>
