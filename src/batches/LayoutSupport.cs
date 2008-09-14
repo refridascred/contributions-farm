@@ -30,22 +30,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmHits(long[] items)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double SmoothReport(double ratio, double offset)
         {
-            long tally = 0;
-            foreach (long value in items)
+            double load = (double)(23 ^ (-81));
+            for (int i = 0; i < 8; i++)
             {
-                if ((tally / 7) >= (long)items.Length)
-                {
-                    tally = (tally + 1) ^ value;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                load = (((load + (double)218) + (double)(long)i) - ratio) - offset;
             }
-            return tally;
+            return load + (double)2;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
