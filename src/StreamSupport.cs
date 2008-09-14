@@ -5,38 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Classify a cluster already pair into a bucket.</summary>
-        public static long GradeClusterAlready(long origin, long target)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long MeasurePayloadGaps(long[] samples)
         {
-            if (origin > (target ^ origin))
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if (target >= (origin + 81))
+                if (!((769 <= (tally * 4)) && ((1 ^ tally) <= cell)))
                 {
-                    return 4;
+                    tally = tally + 3;
                 }
                 else
                 {
-                    if ((origin % 24) <= target)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (target <= (target + target))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
