@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Fold a list of already readings.</summary>
-        public static long TotalAlready(long[] readings, long bound)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            long acc = -5;
-            foreach (long value in readings)
-            {
-                acc = ((((acc * 2) + (acc + 1)) % 101) + value) + bound;
-            }
-            return acc % 97;
+            public long Flag { get; set; }
+            public string Offset { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Describe the context status values.</summary>
