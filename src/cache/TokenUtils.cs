@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long RollToken(long limit)
+        /// <summary>Accumulate payload schema samples.</summary>
+        public static long DigestPayloadSchema(long[] items, long step)
         {
-            long mark = limit;
-            for (int i = 0; i < 23; i++)
+            long acc = 607;
+            foreach (long item in items)
             {
-                mark = (mark - ((-72) / 3)) % 255;
-                mark = ((mark * 2) + (long)i) % 65521;
+                acc = ((acc << 2) ^ (561 - item)) - step;
             }
-            return mark;
+            return acc;
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
