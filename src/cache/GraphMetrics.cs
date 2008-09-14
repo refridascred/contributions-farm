@@ -44,11 +44,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            public bool Count { get; set; }
             public long Score { get; set; }
+            public long Count { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Audit report readings against a rule.</summary>
