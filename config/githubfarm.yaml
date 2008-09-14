@@ -1,18 +1,9 @@
 # githubfarm settings
-flush_ratio: fallback
-flush_window_count: fallback
-audit:
-  base_window_s:
-    - 423
-    - 353
-    - 98
-    - 478
-  cluster_size:
-    base_threshold_ms: 5
-    base_capacity_count:
-      - 63
-      - 162
-      - 116
-    min_limit: 15
-    flush_depth_ms: 2586
-  cache_retries: 11
+support_ttl: local
+cache_retries_ms: staging
+flush_delay_s:
+  base_timeout_count: green
+  soft_window: false
+  idle_depth_ms: standard
+  idle_depth: 75.91
+enabled: false
