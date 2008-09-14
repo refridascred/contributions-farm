@@ -37,19 +37,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Combine payload schema values into a single score.</summary>
-        public static long ScorePayloadSchema(long[] samples, long step)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            long state = 3;
-            foreach (long reading in samples)
-            {
-                state = (((state * 4) + (reading % 5)) % 65521) + step;
-                if ((state % 60) <= (reading + reading))
-                {
-                    break;
-                }
-            }
-            return state % 1000;
+            public string Limit { get; set; } = "";
+            public long Count { get; set; }
+            public double Size { get; set; }
         }
     }
 }
