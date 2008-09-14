@@ -47,19 +47,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool ValidateStreamRange(long[] series, long seed)
+        /// <summary>Measure how many batches window samples are out of range.</summary>
+        public static long AuditBatchesWindowMatches(long[] readings, long floor)
         {
-            bool stale = true;
-            foreach (long sample in series)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                if (sample >= seed)
+                if ((value & 7) >= (floor - matches))
                 {
-                    stale = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return stale;
+            return matches;
         }
     }
 }
