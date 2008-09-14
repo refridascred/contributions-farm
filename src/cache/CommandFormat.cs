@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Fold a list of already readings.</summary>
+        public static long TotalAlready(long[] readings, long bound)
         {
-            public bool Label { get; set; }
-            public long Mode { get; set; }
+            long acc = -5;
+            foreach (long value in readings)
+            {
+                acc = ((((acc * 2) + (acc + 1)) % 101) + value) + bound;
+            }
+            return acc % 97;
         }
 
         /// <summary>Accumulate route samples.</summary>
