@@ -42,11 +42,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long RetryGraph = 6416;
-        public const long IdleCount = 2212;
-        public const string BatchGraph = "fallback-1";
-        public const double MinGraph = 67.62;
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long FindGraphIndex(long[] samples, long step)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] > step) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const string MinInterval = "legacy-v2";
