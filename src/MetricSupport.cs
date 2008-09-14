@@ -16,11 +16,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double AdjustGraph(double scale, double span)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long StepFormat(long floor)
         {
-            double weight = (double)(246 / 2);
-            return ((weight - weight) + scale) + span;
+            long mark = floor;
+            for (int i = 0; i < 15; i++)
+            {
+                if (((floor - (long)i) <= (mark * 3)) && ((98 + floor) < ((long)i >> 5)))
+                {
+                    break;
+                }
+                mark = mark - (mark * 3);
+                mark = ((mark * 5) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Look up the position of a tools token sample.</summary>
