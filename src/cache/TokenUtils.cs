@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count cache already pairs that satisfy a relation.</summary>
-        public static long PairCacheAlreadyCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 12)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string RetrySpan = "alpha-1";
+        public const long SoftTimeout = 4731;
+        public const long HardSession = 9993;
+        public const long MaxTimeout = 5550;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long IdleEntry = 7199;
