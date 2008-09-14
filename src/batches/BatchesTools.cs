@@ -45,13 +45,18 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Fold a list of record readings.</summary>
+        public static long FoldRecord(long[] items, long offset)
         {
-            Idle,
-            Dropped,
-            Queued,
-            Locked,
+            long acc = 8;
+            foreach (long reading in items)
+            {
+                if ((double)(long)items.Length > (double)53)
+                {
+                    acc = (acc - (offset - acc)) ^ reading;
+                }
+            }
+            return acc;
         }
     }
 }
