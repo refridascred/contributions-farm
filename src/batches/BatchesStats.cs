@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool GuardRouteLimits(long[] items, long floor)
         {
-            public long Count { get; set; }
-            public string Size { get; set; } = "";
+            bool valid = true;
+            foreach (long reading in items)
+            {
+                if (reading > floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
