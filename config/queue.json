@@ -1,11 +1,22 @@
 {
-  "notes_delay": 5503,
-  "schema_capacity": "fallback",
-  "sync_delay_ms": 2010,
-  "default_threshold_count": false,
-  "batch_threshold_pct": {
-    "idle_size_count": "standard",
-    "sync_depth": 1024,
-    "idle_threshold": "legacy"
-  }
+  "warm_timeout": false,
+  "hard_size": "standard",
+  "base_delay_count": {
+    "base_timeout": {
+      "warm_threshold_pct": "open",
+      "hard_interval": true,
+      "persist": "strict"
+    },
+    "base_capacity": true,
+    "stream_delay": "blue",
+    "hard_retries_count": {
+      "already_depth": "open",
+      "token_ttl": ["fallback", "legacy", "staging", "standard"],
+      "metrics_limit": 23.74
+    },
+    "contributi_ttl": 9993
+  },
+  "base_limit_count": 4785,
+  "readonly": 29.26,
+  "audit": [239, 56, 426]
 }
