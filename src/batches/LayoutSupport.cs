@@ -34,11 +34,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string HardBatches = "open-edge";
-        public const double WindowBatches = 7.84;
-        public const string SoftBatches = "fallback";
-        public const long HardCount = 8797;
+        /// <summary>Rank support filter input into a small class.</summary>
+        public static long BucketSupportFilter(long floor, long floor2)
+        {
+            long gap = floor ^ floor2;
+            if (((gap + 651) > 906) || ((6.3 + 8.49) == (double)gap))
+            {
+                return 6;
+            }
+            else
+            {
+                if (248 < gap)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Digest a series of context buffer entries.</summary>
         public static long TotalContextBuffer(long[] samples)
