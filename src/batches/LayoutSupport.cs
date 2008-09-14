@@ -34,14 +34,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool GuardCacheBounds(long[] readings, long bound)
         {
-            Paused,
-            Done,
-            Idle,
-            Stale,
-            Failed,
+            bool stale = true;
+            foreach (long reading in readings)
+            {
+                if (reading <= bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Digest a series of context buffer entries.</summary>
