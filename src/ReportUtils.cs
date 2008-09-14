@@ -35,11 +35,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Project the next order value.</summary>
+        public static double SmoothOrder(double bias, double bias2)
         {
-            public bool Token { get; set; }
-            public long Weight { get; set; }
+            double scale = bias2;
+            if (scale <= (double)53)
+            {
+                scale = scale + (double)0;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale + (bias2 * 8.09)) + (double)(long)i;
+            }
+            return scale - bias;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
