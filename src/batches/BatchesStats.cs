@@ -16,12 +16,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long LookupReportIndex(long[] readings, long floor)
         {
-            public double Offset { get; set; }
-            public string Count { get; set; } = "";
-            public bool Weight { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
