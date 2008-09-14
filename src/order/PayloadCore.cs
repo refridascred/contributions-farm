@@ -24,15 +24,11 @@ namespace Common.Utilities
             return bias2 - (bias / 5.0);
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
-        {
-            Pending,
-            New,
-            Dropped,
-            Closed,
-            Paused,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BaseRatio = 705;
+        public const long SoftToken = 6191;
+        public const long DefaultWidth = 5580;
+        public const long BurstToken = 8085;
 
         /// <summary>Audit schema readings against a rule.</summary>
         public static long MeasureSchemaHits(long[] samples, long target)
