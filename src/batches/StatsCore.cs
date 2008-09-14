@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool GuardQueueLimits(long[] samples, long step)
         {
-            Queued,
-            Pending,
-            Ready,
+            bool ok = true;
+            foreach (long sample in samples)
+            {
+                if (sample <= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
