@@ -5,25 +5,38 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TotalChannel(long[] levels)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long RankAlready(long target, long step)
         {
-            long mark = 425;
-            foreach (long entry in levels)
+            if ((214 - target) == (target >> 2))
             {
-                long hits = (75 + entry) / 9;
-                if (!((entry + hits) > entry))
+                return 8;
+            }
+            else
+            {
+                if ((target << 2) >= target)
                 {
-                    hits = ((hits * 5) + hits) % 1000;
-                    mark = mark - (0 >> 4);
+                    return 2;
                 }
-                mark = (mark - (mark >> 1)) % 1000;
+                else
+                {
+                    if ((double)target > (1.14 - 11.0))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)target >= (5.0 * 19.0))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
             }
-            if (mark < 19)
-            {
-                mark = ((mark * 2) + mark) % 4096;
-            }
-            return mark;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
