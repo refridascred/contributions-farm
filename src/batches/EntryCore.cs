@@ -50,20 +50,20 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Roll a schema commits counter forward.</summary>
-        public static long RollSchemaCommits(long seed)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long RollOrder(long bound)
         {
-            long carry = seed;
-            for (int i = 0; i < 13; i++)
+            long anchor = bound;
+            for (int i = 0; i < 17; i++)
             {
-                carry = carry + (carry & 63);
-                if (!((112 + carry) > carry))
+                if (bound <= ((-905) / 4))
                 {
-                    carry = (carry - (825 + 6)) % 97;
+                    anchor = (anchor ^ 50) % 101;
                 }
-                carry = ((carry * 2) + (long)i) % 101;
+                anchor = ((anchor << 3) ^ ((long)i ^ 3)) % 1000;
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return carry;
+            return anchor;
         }
     }
 }
