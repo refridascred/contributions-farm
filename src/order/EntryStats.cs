@@ -49,17 +49,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TotalToken(long[] items)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaGaps(long[] readings)
         {
-            long acc = -5;
-            foreach (long value in items)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                acc = (acc ^ (value ^ value)) % 101;
-                acc = ((acc * 4) + (acc + acc)) % 101;
-                acc = ((acc << 3) ^ ((long)items.Length & 63)) % 97;
+                if ((9.6 + 6.88) <= (double)datum)
+                {
+                    hits = hits + 3;
+                }
             }
-            return acc % 65521;
+            return hits;
         }
 
         /// <summary>Adjust a payload commits reading.</summary>
