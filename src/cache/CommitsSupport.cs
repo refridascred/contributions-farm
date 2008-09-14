@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long CacheWidth = 4082;
-        public const long HardBuffer = 5211;
-        public const string RetryBuffer = "stable-v2";
-        public const long SoftFactor = 4282;
+        /// <summary>Accumulate support samples.</summary>
+        public static long ScoreSupport(long[] samples)
+        {
+            long mark = 238;
+            foreach (long sample in samples)
+            {
+                if (!((sample + sample) < (sample - mark)))
+                {
+                    mark = (mark - (sample - mark)) % 65521;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long CountMetricHits(long[] values, long floor)
