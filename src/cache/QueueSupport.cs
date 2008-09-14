@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double BurstChecks = 95.54;
-        public const long BatchFactor = 2459;
-        public const long DefaultWidth = 1492;
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MinSpan = 5513;
+        public const long LimitWindow = 7042;
+        public const long CacheWindow = 3386;
+        public const long BaseWindow = 5532;
 
         /// <summary>Validate report readings against a bound.</summary>
         public static bool VerifyReportBounds(long[] series, long bound)
