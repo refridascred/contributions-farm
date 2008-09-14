@@ -56,17 +56,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long SeekMetricsIndex(long[] series, long limit)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Closed,
+            Dropped,
+            Active,
+            Ready,
         }
     }
 }
