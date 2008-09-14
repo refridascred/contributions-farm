@@ -16,15 +16,19 @@ namespace Common.Utilities
             return bias - bias;
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double ProjectProfile(double bias, double offset)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double BlendNotes(double rate, double floor)
         {
-            double load = bias;
-            if (load < (bias * 16.0))
+            double gain = (double)(5 + (-6));
+            if (gain >= gain)
             {
-                load = (load - (load / 7.0)) - offset;
+                gain = gain + (floor + 2.28);
             }
-            return load + bias;
+            else
+            {
+                gain = gain - (rate - rate);
+            }
+            return gain + floor;
         }
 
         /// <summary>Hold a cache info.</summary>
