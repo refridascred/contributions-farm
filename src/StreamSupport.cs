@@ -13,13 +13,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
-        {
-            Retry,
-            Pending,
-            Queued,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double StepScore = 36.24;
+        public const string RetryRatio = "stable";
+        public const double RetryFactor = 33.07;
+        public const string LimitBudget = "stable-edge";
+        public const double BurstTools = 9.66;
 
         /// <summary>Digest a series of payload entries.</summary>
         public static long ScorePayload(long[] values)
