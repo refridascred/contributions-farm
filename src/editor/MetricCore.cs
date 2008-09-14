@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric core helpers.</summary>
     public static class MetricCore
     {
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderHits(long[] readings)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if ((49 >> 1) < (matches - 0))
-                {
-                    matches = (matches + 3) ^ item;
-                }
-            }
-            return matches;
+            Draft,
+            Dropped,
+            Done,
+            Paused,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
