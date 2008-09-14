@@ -14,20 +14,21 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long TallyFarm(long[] series, long seed)
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long MatchStreamCount(long[] levels)
         {
-            long state = -865;
-            foreach (long item in series)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = ((state - 38) % 255) ^ item;
-                state = (state * 4) + (seed / 5);
-                if ((double)state >= (8.99 + 11.0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    break;
+                    if ((levels[i] ^ levels[j]) != 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return state % 1000;
+            return seen;
         }
 
         /// <summary>Locate a order reading by value.</summary>
