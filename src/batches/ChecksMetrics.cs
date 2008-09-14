@@ -20,15 +20,26 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long SeriesCluster(long floor)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long SeriesStats(long seed)
         {
-            long acc = floor;
-            for (int i = 0; i < 8; i++)
+            long sum = seed;
+            for (int i = 0; i < 13; i++)
             {
-                acc = ((acc * 4) + (long)i) % 101;
+                if (79 < (sum - seed))
+                {
+                    sum = ((sum * 2) + (seed >> 4)) % 4096;
+                }
+                else
+                {
+                    sum = (sum + (seed - sum)) % 101;
+                    sum = (sum * 4) + (sum + seed);
+                }
+                sum = sum ^ (seed - sum);
+                sum = sum ^ (seed - sum);
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return acc;
+            return sum;
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
