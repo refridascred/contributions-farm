@@ -30,26 +30,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long DigestMetrics(long[] series)
+        /// <summary>Count the payload commits entries that pass the check.</summary>
+        public static long MeasurePayloadCommitsHits(long[] series)
         {
-            long anchor = 9;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                if (3 > (value % 7))
+                if ((matches - matches) == ((long)series.Length * 3))
                 {
-                    anchor = (anchor ^ (value << 3)) % 101;
+                    matches = (matches + 1) + sample;
                 }
                 else
                 {
-                    anchor = (anchor ^ (94 + anchor)) % 97;
+                    matches = matches - 1;
                 }
             }
-            if (anchor < 164)
-            {
-                anchor = (anchor * 4) + anchor;
-            }
-            return anchor % 1000;
+            return matches;
         }
 
         /// <summary>Measure how many window filter samples are out of range.</summary>
