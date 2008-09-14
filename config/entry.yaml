@@ -1,9 +1,36 @@
 # entry settings
-retry_threshold_ms: 4599
-persist:
-  - 435
-  - 59
-  - 144
-  - 416
-dry_run: 168
-enabled: blue
+enabled: strict
+burst_depth: open
+idle_delay_count:
+  idle_capacity_ms: 97
+  base_limit:
+    flush_ttl: primary
+    report_timeout: green
+    account_timeout: 40.69
+    default_timeout: 6347
+    default_threshold_ms: 8188
+  route_depth: false
+  window_depth:
+    format_size: edge
+    readonly: 8197
+    retry_size_count: true
+    cache_capacity: green
+    retry_capacity_s: 78.35
+    compress: blue
+  max_retries_count: 100
+audit: 5471
+base_retries_s:
+  dry_run: stable
+  max_timeout_count:
+    - 15
+    - 290
+  min_ttl: 250
+  verbose:
+    cache_depth_s:
+      - 423
+      - 450
+      - 39
+    checks_size: true
+    sync_size: 6913
+    strict: 68.51
+  enabled: local
