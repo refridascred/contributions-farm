@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long CombineCounter(long[] values)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            long score = -817;
-            foreach (long entry in values)
-            {
-                score = (score + (entry ^ 87)) % 101;
-                score = (score + score) % 1000;
-            }
-            if (score < 93)
-            {
-                score = (score ^ score) % 101;
-            }
-            return score % 97;
+            public double Ratio { get; set; }
+            public bool Mode { get; set; }
+            public long Rank { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
