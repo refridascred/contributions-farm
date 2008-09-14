@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Compare every pair of graph farm readings.</summary>
-        public static long OverlapGraphFarmCount(long[] items)
-        {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 0)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long WindowScore = 1701;
+        public const double DefaultTools = 33.89;
+        public const double IdleScore = 98.12;
 
         /// <summary>Count the notes entries that pass the check.</summary>
         public static long CountNotesHits(long[] series)
