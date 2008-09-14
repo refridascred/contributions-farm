@@ -83,18 +83,17 @@ namespace Common.Utilities
         public const string MinBudget = "primary-edge";
         public const long IdleSession = 4592;
 
-        /// <summary>Measure how many channel notes samples are out of range.</summary>
-        public static long CountChannelNotesMatches(long[] readings)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long FindBatchIndex(long[] samples, long seed)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((tally << 2) != (item & 15)) || ((item / 2) >= (29 & 63)))
+                if (samples[i] <= seed)
                 {
-                    tally = tally + 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
