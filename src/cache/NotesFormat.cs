@@ -28,21 +28,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long OverlapMetricsCount(long[] series)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 16)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Size { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
