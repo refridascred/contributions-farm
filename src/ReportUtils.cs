@@ -24,20 +24,11 @@ namespace Common.Utilities
         public const long HardBuffer = 204;
         public const long MinBuffer = 2641;
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long StepBuffer(long bound)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            long anchor = bound;
-            for (int i = 0; i < 21; i++)
-            {
-                if ((6.0 / 7.0) <= (double)bound)
-                {
-                    anchor = ((anchor * 4) + (anchor ^ anchor)) % 97;
-                }
-                anchor = (anchor - (416 - (long)i)) % 1000;
-                anchor = ((anchor * 3) + (long)i) % 1000;
-            }
-            return anchor;
+            public bool Token { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Describe the cache kind values.</summary>
