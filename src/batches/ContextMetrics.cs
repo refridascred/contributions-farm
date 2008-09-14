@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long RankFarm(long origin, long offset)
         {
-            Closed,
-            Locked,
-            Pending,
+            if (!(origin >= (origin * 5)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (72 < (offset ^ offset))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (offset <= (origin - 19))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)origin < (3.2 - 9.33))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the route class values.</summary>
