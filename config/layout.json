@@ -1,7 +1,5 @@
 {
-  "counter_capacity": [241, 392, 487, 424],
-  "notes_retries": "edge",
-  "warm_timeout_s": 21.23,
-  "burst_delay": 100,
-  "min_depth_count": 34
+  "compress": true,
+  "retry_capacity_pct": 6647,
+  "metrics_threshold": true
 }
