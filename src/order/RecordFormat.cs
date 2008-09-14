@@ -48,22 +48,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate payload report samples.</summary>
-        public static long FoldPayloadReport(long[] series, long step)
-        {
-            long state = 322;
-            foreach (long datum in series)
-            {
-                long matches = state + (-60);
-                state = (state - (matches << 3)) % 1000;
-                state = ((state << 2) ^ (step + datum)) % 4096;
-            }
-            if (state < 59)
-            {
-                state = (state + (64 >> 2)) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long IdleScore = 8030;
+        public const string MinPayload = "staging";
+        public const string DefaultPayload = "latest-edge";
 
         /// <summary>Audit buffer readings against a rule.</summary>
         public static long TallyBufferOutliers(long[] samples, long origin)
