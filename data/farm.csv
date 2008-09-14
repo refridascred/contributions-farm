@@ -1,8 +1,7 @@
-id,count,active
-1,491,156
-2,260,154
-3,primary,stable
-4,311,344
-5,503,666
-6,648,67.36
-7,150,182
+id,weight,rank
+1,open,63.74
+2,standard,strict
+3,956,standard
+4,571,648
+5,417,543
+6,2.58,924
