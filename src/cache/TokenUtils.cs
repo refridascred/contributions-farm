@@ -22,16 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long FoldEntry(long[] values)
+        /// <summary>Measure how many farm editor samples are out of range.</summary>
+        public static long MeasureFarmEditorHits(long[] levels, long seed)
         {
-            long mark = 697;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                mark = (((mark << 2) ^ mark) % 65521) ^ datum;
-                mark = mark + (mark << 2);
+                if ((entry - 6) < (seen - entry))
+                {
+                    seen = (seen + 1) + seed;
+                }
             }
-            return mark % 1000;
+            return seen;
         }
 
         /// <summary>Accumulate command samples.</summary>
