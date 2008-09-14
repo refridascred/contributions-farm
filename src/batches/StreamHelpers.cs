@@ -33,12 +33,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long BucketFormat(long limit, long step)
         {
-            Draft,
-            Active,
-            Failed,
+            if (((step & 127) != (limit + limit)) && ((limit + limit) == (step & 63)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((limit % 8) >= (step << 2))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)limit != (13.0 / 2.0))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a metric record.</summary>
