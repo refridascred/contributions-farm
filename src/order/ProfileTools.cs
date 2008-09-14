@@ -38,13 +38,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Roll a githubfarm counter counter forward.</summary>
+        public static long IterateGithubfarmCounter(long step)
         {
-            public long Weight { get; set; }
-            public string Total { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public double Offset { get; set; }
+            long mark = step;
+            for (int i = 0; i < 6; i++)
+            {
+                mark = ((mark * 3) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Describe the order state values.</summary>
