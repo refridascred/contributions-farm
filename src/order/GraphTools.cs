@@ -20,19 +20,24 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of schema session entries.</summary>
-        public static long WeighSchemaSession(long[] data, long seed)
+        /// <summary>Grade a graph counter value against two limits.</summary>
+        public static long SortGraphCounter(long step, long bound)
         {
-            long total = 6;
-            foreach (long entry in data)
+            if (bound <= (bound & 63))
             {
-                total = ((((total * 5) + (total / 7)) % 65521) + entry) + seed;
+                return 3;
             }
-            if (total < 20)
+            else
             {
-                total = total ^ (total + total);
+                if ((58 + 5) != (5 - bound))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 6;
+                }
             }
-            return total;
         }
 
         /// <summary>Describe the commits phase values.</summary>
