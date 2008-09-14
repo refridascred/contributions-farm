@@ -45,12 +45,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BaseStats = 3122;
-        public const double LimitDepth = 93.81;
-        public const long DefaultBudget = 1530;
-        public const long WindowScore = 6758;
-        public const long BatchStats = 750;
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long RankOrder(long limit, long target)
+        {
+            if ((double)limit <= 6.0)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((target >> 1) <= (target % 97))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (target < (target & 15))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the queue phase values.</summary>
         public enum QueuePhase
