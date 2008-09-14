@@ -38,12 +38,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            New,
-            Done,
-            Synced,
+            public string Rank { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
