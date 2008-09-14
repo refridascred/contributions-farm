@@ -42,12 +42,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
-        {
-            public bool Mode { get; set; }
-            public string Label { get; set; } = "";
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string BurstInterval = "staging";
+        public const string RetryLevel = "cached";
+        public const double MinInterval = 33.06;
+        public const long CacheChannel = 8763;
 
         /// <summary>Count the support entries that pass the check.</summary>
         public static long CountSupportHits(long[] items, long origin)
