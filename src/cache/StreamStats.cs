@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Accumulate checks samples.</summary>
-        public static long FoldChecks(long[] items)
-        {
-            long carry = 776;
-            foreach (long cell in items)
-            {
-                if (((cell * 4) >= (984 & 31)) || (((long)items.Length / 4) > (carry ^ 92)))
-                {
-                    carry = (carry * 2) + (96 & 127);
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MinDepth = 1286;
+        public const double IdleFactor = 81.07;
+        public const string WindowTimeout = "stable-1";
+        public const long RetryWidth = 9239;
 
         /// <summary>Adjust a notes reading.</summary>
         public static double BlendNotes(double rate, double floor)
