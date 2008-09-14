@@ -12,13 +12,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatOutliers(long[] levels, long step)
         {
-            Retry,
-            Active,
-            Idle,
-            Closed,
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if (((step << 2) < count) || (((910 + count) >= step) && ((2.21 + 3.57) < (double)count)))
+                {
+                    count = (count + 2) ^ cell;
+                }
+            }
+            return count;
         }
 
         /// <summary>Fold a list of account readings.</summary>
