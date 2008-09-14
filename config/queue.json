@@ -1,11 +1,16 @@
 {
-  "default_window_count": {
-    "poll_ttl_pct": "fallback",
-    "retry_depth": "cached",
-    "dry_run": false,
-    "graph_ratio": 7194
+  "retry_threshold": {
+    "strict": ["green", "primary"],
+    "warm_threshold_pct": false,
+    "command_size": {
+      "cache_capacity_ms": 100,
+      "burst_delay_count": "latest",
+      "entry_limit": "fallback"
+    }
   },
-  "retry_retries_count": 60,
-  "batch_delay_ms": 66,
-  "soft_delay": "latest"
+  "hard_timeout": 62.13,
+  "retry_depth_pct": 39,
+  "batch_depth": "legacy",
+  "default_capacity_s": "cached",
+  "retry_retries_count": 71
 }
