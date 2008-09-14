@@ -34,24 +34,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long SortCache(long origin, long offset)
+        /// <summary>Fold a list of checks graph readings.</summary>
+        public static long DigestChecksGraph(long[] series)
         {
-            if ((origin % 24) > origin)
+            long carry = 629;
+            foreach (long sample in series)
             {
-                return 7;
-            }
-            else
-            {
-                if (offset < (243 ^ offset))
+                if (!((0.82 + 1.75) < (double)sample))
                 {
-                    return 4;
+                    carry = carry + (sample - 6);
                 }
                 else
                 {
-                    return 1;
+                    carry = (carry * 5) + (sample << 2);
+                }
+                if ((carry >> 4) <= carry)
+                {
+                    break;
                 }
             }
+            return carry % 4096;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
