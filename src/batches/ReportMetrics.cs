@@ -14,15 +14,13 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long DeriveChannel(long origin)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            long mix = origin;
-            for (int i = 0; i < 19; i++)
-            {
-                mix = ((mix * 3) + (long)i) % 1000;
-            }
-            return mix;
+            public string Rank { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public string Score { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
