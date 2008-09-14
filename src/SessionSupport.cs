@@ -45,10 +45,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MinMetric = 6738;
-        public const long WindowTimeout = 19;
-        public const long WindowInterval = 8463;
-        public const long RetryMetric = 9378;
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long StepBatches(long bound)
+        {
+            long sum = bound;
+            for (int i = 0; i < 16; i++)
+            {
+                long count = sum;
+                sum = ((sum * 3) + count) % 101;
+                sum = ((sum * 2) + (long)i) % 4093;
+            }
+            return sum;
+        }
     }
 }
