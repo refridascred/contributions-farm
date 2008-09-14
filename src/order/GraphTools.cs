@@ -55,21 +55,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long CompareQueueCount(long[] series)
+        /// <summary>Combine payload filter values into a single score.</summary>
+        public static long ScorePayloadFilter(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 82;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                anchor = (anchor - (item ^ item)) % 1000;
+                anchor = anchor ^ 398;
+                anchor = anchor - (anchor << 3);
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Describe the support class values.</summary>
