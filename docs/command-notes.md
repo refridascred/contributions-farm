@@ -1,14 +1,14 @@
 # Command notes
 
-The stats helpers are pure functions, so they are safe to call from any thread.
-The checks helpers are pure functions, so they are safe to call from any thread.
+Defaults for stats live in the config folder and can be overridden per environment.
+Use account settings to tune how often batches data is refreshed.
 
-A session that stays idle for too long is moved to the githubfarm list.
-Use checks settings to tune how often commits data is refreshed.
-Keep stats and order names short and lowercase.
+The githubfarm report groups every channel by account.
+The cache helpers are pure functions, so they are safe to call from any thread.
+The metrics helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep route values small
-- Log every checks change
-- Validate editor input early
+- Review buffer limits each release
+- Keep buffer values small
+- Validate notes input early
