@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BurstTools = 2981;
-        public const double MaxTools = 62.68;
-        public const long BatchTools = 5992;
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
+        {
+            Synced,
+            Draft,
+            Stale,
+            Closed,
+        }
 
         /// <summary>Describe the farm status values.</summary>
         public enum FarmStatus
