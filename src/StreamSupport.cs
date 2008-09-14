@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long RollContributi(long target)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long LocateChecksIndex(long[] readings, long origin)
         {
-            long acc = target;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((target + acc) != (acc - target))
+                if (readings[i] < origin)
                 {
-                    acc = acc - (acc >> 5);
+                    return (long)i;
                 }
-                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Hold a already info.</summary>
