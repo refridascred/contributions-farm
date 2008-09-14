@@ -36,15 +36,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long DeriveMetric(long target)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            long mark = target;
-            for (int i = 0; i < 5; i++)
-            {
-                mark = ((mark * 3) + (long)i) % 101;
-            }
-            return mark;
+            public long Total { get; set; }
+            public string Limit { get; set; } = "";
+            public long Token { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Hold a stream summary.</summary>
