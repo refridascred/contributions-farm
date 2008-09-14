@@ -63,19 +63,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool GuardSchemaRange(long[] values, long step)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            bool found = true;
-            foreach (long datum in values)
-            {
-                if (datum < step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Stale,
+            Failed,
+            Done,
+            New,
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
