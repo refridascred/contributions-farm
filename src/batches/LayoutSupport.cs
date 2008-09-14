@@ -30,12 +30,23 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double CacheMetric = 19.37;
-        public const long WindowScore = 6612;
-        public const string BurstMetric = "strict-edge";
-        public const long WindowWidth = 5142;
-        public const string RetryRatio = "local-v2";
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmHits(long[] items)
+        {
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if ((tally / 7) >= (long)items.Length)
+                {
+                    tally = (tally + 1) ^ value;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long WindowChecks = 9403;
