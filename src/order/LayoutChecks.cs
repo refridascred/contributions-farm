@@ -43,26 +43,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long CombineContributi(long[] levels)
+        /// <summary>Check that every support batch entry stays within the limit.</summary>
+        public static bool CheckSupportBatchLimits(long[] samples, long step)
         {
-            long anchor = -6;
-            foreach (long entry in levels)
+            bool ok = true;
+            foreach (long sample in samples)
             {
-                if ((8 ^ entry) >= anchor)
+                if (sample != step)
                 {
-                    anchor = (anchor + (entry << 2)) % 101;
-                }
-                if ((anchor * 3) > (anchor + anchor))
-                {
+                    ok = false;
                     break;
                 }
             }
-            if (anchor > 588)
-            {
-                anchor = (anchor - anchor) % 4096;
-            }
-            return anchor;
+            return ok;
         }
 
         /// <summary>Classify a stats order pair into a bucket.</summary>
