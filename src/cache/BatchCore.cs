@@ -17,11 +17,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            public long Size { get; set; }
-            public long Stamp { get; set; }
+            Dropped,
+            Ready,
+            Stale,
         }
 
         /// <summary>Accumulate tools samples.</summary>
