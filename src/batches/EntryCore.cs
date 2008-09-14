@@ -19,18 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit batches batch readings against a rule.</summary>
-        public static long MeasureBatchesBatchMatches(long[] levels)
+        /// <summary>Validate checks contributi readings against a bound.</summary>
+        public static bool GuardChecksContributiLimits(long[] values, long target)
         {
-            long count = 0;
-            foreach (long item in levels)
+            bool ok = true;
+            foreach (long sample in values)
             {
-                if ((double)count >= (1.0 + 4.5))
+                if (sample >= target)
                 {
-                    count = (count + 2) ^ item;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Scale a entry already figure with a bias.</summary>
