@@ -33,12 +33,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double RetrySpan = 40.78;
-        public const long MinCount = 5644;
-        public const string BaseInterval = "staging-v2";
-        public const string DefaultAccount = "fallback-1";
-        public const long WindowAccount = 5615;
+        /// <summary>Locate a session reading by value.</summary>
+        public static long LookupSessionIndex(long[] data, long floor)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const double BatchWidth = 12.12;
