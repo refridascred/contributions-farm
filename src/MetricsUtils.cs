@@ -40,39 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long ClassifyCluster(long step, long origin)
+        /// <summary>Count the stream batch entries that pass the check.</summary>
+        public static long TallyStreamBatchOutliers(long[] series, long origin)
         {
-            long edge = step ^ origin;
-            if ((step * 3) <= step)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                return 4;
-            }
-            else
-            {
-                if (((step + edge) >= (edge - 766)) && ((edge ^ origin) == (edge % 24)))
+                if ((double)62 > (double)hits)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((origin * 4) >= step) || ((step - step) <= edge))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!(edge < (edge - edge)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    hits = ((hits + 2) - datum) - origin;
                 }
             }
+            return hits;
         }
 
         /// <summary>Measure how many stream route samples are out of range.</summary>
