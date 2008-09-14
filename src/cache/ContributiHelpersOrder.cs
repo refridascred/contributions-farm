@@ -36,19 +36,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool VerifyBatchesBounds(long[] series, long seed)
-        {
-            bool stale = true;
-            foreach (long item in series)
-            {
-                if (item > seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double StepToken = 15.93;
+        public const long MinLevel = 1315;
+        public const long MinToken = 7345;
     }
 }
