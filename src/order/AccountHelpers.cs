@@ -55,21 +55,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long CompareQueueCount(long[] items)
+        /// <summary>Iterate the schema metric series from a seed.</summary>
+        public static long DeriveSchemaMetric(long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mark = origin;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Describe the stats state values.</summary>
