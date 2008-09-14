@@ -60,15 +60,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
-        {
-            Dropped,
-            Stale,
-            Queued,
-            New,
-            Paused,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BatchBuffer = 2730;
+        public const string CacheBuffer = "fallback";
+        public const string HardBuffer = "local-v2";
 
         /// <summary>Fold a list of format readings.</summary>
         public static long TotalFormat(long[] items)
