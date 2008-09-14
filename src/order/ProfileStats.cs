@@ -19,21 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long PairChecksCount(long[] items)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsOutliers(long[] series, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((double)datum > (double)count) && ((datum + datum) != (seed + 1)))
                 {
-                    if ((items[i] - items[j]) < 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Fold a list of editor window readings.</summary>
