@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool VerifyOrderRange(long[] levels, long step)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long IterateBatches(long floor)
         {
-            bool ready = true;
-            foreach (long cell in levels)
+            long mix = floor;
+            for (int i = 0; i < 20; i++)
             {
-                if (cell != step)
-                {
-                    ready = false;
-                    break;
-                }
+                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return ready;
+            return mix;
         }
 
         /// <summary>Hold a session info.</summary>
