@@ -37,18 +37,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long CountSchemaGaps(long[] readings, long origin)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long RankGithubfarm(long bound, long origin)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            if ((685 - bound) > (origin + origin))
             {
-                if ((seen - 24) == (23 + cell))
+                return 2;
+            }
+            else
+            {
+                if ((bound >= (bound + origin)) || ((720 << 1) < origin))
                 {
-                    seen = (seen + 1) - origin;
+                    return 0;
+                }
+                else
+                {
+                    if ((origin * 5) >= (bound ^ 28))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((0.2 / 2.0) != (double)origin) || ((double)origin >= (double)5))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return seen;
         }
     }
 }
