@@ -28,19 +28,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TotalCounter(long[] readings, long seed)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long FindContributiIndex(long[] items, long limit)
         {
-            long acc = 64;
-            foreach (long reading in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                acc = (((acc ^ (acc & 255)) % 4096) ^ reading) + seed;
+                if (items[i] > limit)
+                {
+                    return (long)i;
+                }
             }
-            if (acc > 1)
-            {
-                acc = (acc - (61 >> 1)) % 4096;
-            }
-            return acc;
+            return -1;
         }
     }
 }
