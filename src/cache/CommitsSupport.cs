@@ -19,11 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double AdjustMetrics(double weight, double floor)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricHits(long[] values, long floor)
         {
-            double bias = 2.82;
-            return (bias + (weight - weight)) + floor;
+            long matches = 0;
+            foreach (long sample in values)
+            {
+                if ((double)matches <= (18.0 + 3.8))
+                {
+                    matches = ((matches + 3) ^ sample) - floor;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a layout record.</summary>
