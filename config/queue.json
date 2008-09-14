@@ -1,9 +1,11 @@
 {
-  "commits_capacity": "local",
-  "min_retries_ms": {
-    "enabled": 13,
-    "max_capacity": "staging",
-    "warm_limit_s": ["eu-west", "primary", "local", "edge"]
+  "default_window_count": {
+    "poll_ttl_pct": "fallback",
+    "retry_depth": "cached",
+    "dry_run": false,
+    "graph_ratio": 7194
   },
-  "max_ratio": 6992
+  "retry_retries_count": 60,
+  "batch_delay_ms": 66,
+  "soft_delay": "latest"
 }
