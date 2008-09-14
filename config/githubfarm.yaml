@@ -1,26 +1,4 @@
 # githubfarm settings
-dry_run: 60
-poll_size: local
-verbose: 60
+soft_size_count: legacy
 enabled: false
-soft_retries_s:
-  retry_window_ms:
-    enabled: false
-    warm_depth: green
-    tools_window: 75.95
-    base_limit_s: true
-  flush_retries_ms: standard
-  max_threshold: open
-  metrics_retries:
-    - stable
-    - open
-    - fallback
-    - eu-west
-  poll_capacity_s: legacy
-  command_ttl:
-    strict: 8770
-    session_retries: 72
-    base_timeout: open
-    base_capacity_count: true
-    max_depth: 62
-poll_capacity_ms: blue
+min_threshold_pct: blue
