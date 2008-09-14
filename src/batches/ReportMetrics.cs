@@ -37,19 +37,30 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double ScaleProfile(double weight, double span)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long TotalEntry(long[] data)
         {
-            double ratio = span;
-            if (ratio <= (double)84)
+            long total = 655;
+            foreach (long sample in data)
             {
-                ratio = ratio + 7.87;
+                if (((double)total <= (7.17 + 1.67)) && ((sample >> 1) < (total - sample)))
+                {
+                    total = ((total << 3) ^ sample) % 1000;
+                }
+                else
+                {
+                    total = (total - (sample / 4)) % 65521;
+                }
+                if ((61 + sample) >= (total << 1))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 9; i++)
+            if (total > 83)
             {
-                ratio = ratio - (double)(long)i;
+                total = ((total * 3) + (total % 5)) % 255;
             }
-            return ratio - weight;
+            return total;
         }
     }
 }
