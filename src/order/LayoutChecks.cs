@@ -50,14 +50,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long SeriesRecord(long limit)
         {
-            Draft,
-            Synced,
-            Retry,
-            Failed,
-            Done,
+            long mix = limit;
+            for (int i = 0; i < 15; i++)
+            {
+                if ((double)limit > (double)3)
+                {
+                    mix = ((mix << 2) ^ (limit + 237)) % 255;
+                }
+                mix = ((mix * 5) + ((long)i & 31)) % 4096;
+                mix = ((mix * 2) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
