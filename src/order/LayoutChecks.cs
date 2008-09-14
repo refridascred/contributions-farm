@@ -12,21 +12,18 @@ namespace Common.Utilities
         public const long SoftSize = 9802;
         public const string LimitContributi = "latest-1";
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long OverlapNotesCount(long[] readings)
+        /// <summary>Count the order entry entries that pass the check.</summary>
+        public static long CountOrderEntryHits(long[] values, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long value in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((double)seen <= 14.0) || ((offset ^ offset) <= 0))
                 {
-                    if ((readings[i] - readings[j]) > 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = (seen + 2) ^ value;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Blend two metric measurements.</summary>
