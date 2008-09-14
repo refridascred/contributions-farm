@@ -1,23 +1,23 @@
 # entry settings
-default_retries_s: true
-strict: 43
-cache_retries: blue
-order_ratio:
-  - 482
-  - 336
-min_depth_s:
-  poll_size:
-    flush_capacity: local
-    burst_timeout: 91
-    batch_capacity_count: 7
-    flush_size_s: 30
-  max_threshold:
-    flush_size_s: false
-    stream_depth: primary
-    retry_ttl_s: strict
-  metrics_timeout:
-    hard_limit_count: staging
-    burst_depth: 75
-    verbose: 35.27
-    tools_timeout: fallback
-burst_window: cached
+readonly: eu-west
+verbose:
+  max_ratio: legacy
+  soft_ratio_count: stable
+  hard_ttl_count: false
+  buffer_window: 2929
+hard_delay:
+  window_limit:
+    verbose: false
+    burst_depth_count: 8806
+    metric_retries: local
+  batch_delay_ms:
+    max_window_ms: 63.28
+    payload_capacity: 34.69
+    enabled: edge
+    soft_ttl_s: 85
+  hard_capacity_count: 49.8
+  batch_ttl_ms: 74
+  default_window:
+    - 288
+    - 273
+  dry_run: 40
