@@ -75,11 +75,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Measure how many stream route samples are out of range.</summary>
+        public static long AuditStreamRouteGaps(long[] items, long target)
         {
-            public string Size { get; set; } = "";
-            public double Label { get; set; }
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if (((22 - target) != (target / 7)) || ((double)cell > (double)target))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
