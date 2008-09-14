@@ -30,14 +30,17 @@ namespace Common.Utilities
         public const string IdleDepth = "latest-1";
         public const long RetryQueue = 779;
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Look up the position of a payload graph sample.</summary>
+        public static long SeekPayloadGraphIndex(long[] series, long limit)
         {
-            Closed,
-            Failed,
-            Active,
-            Done,
-            Synced,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] <= limit) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
