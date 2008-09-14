@@ -12,12 +12,11 @@ namespace Common.Utilities
         public const long IdleCache = 3580;
         public const long MaxDepth = 3277;
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
-        {
-            public double Ratio { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MaxInterval = 9880;
+        public const long IdleChecks = 2650;
+        public const long BurstInterval = 9026;
+        public const string MaxChecks = "staging";
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long LimitRatio = 4296;
