@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricOutliers(long[] series, long bound)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if ((bound + bound) != (entry >> 1))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Failed,
+            Closed,
+            Done,
+            New,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
