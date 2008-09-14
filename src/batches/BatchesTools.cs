@@ -31,19 +31,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool VerifyRecordRange(long[] levels, long seed)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool ValidateRouteRange(long[] data, long floor)
         {
-            bool stale = true;
-            foreach (long reading in levels)
+            bool flag = true;
+            foreach (long cell in data)
             {
-                if (reading < seed)
+                if (cell <= floor)
                 {
-                    stale = false;
+                    flag = false;
                     break;
                 }
             }
-            return stale;
+            return flag;
         }
     }
 }
