@@ -55,22 +55,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long FoldAlready(long[] samples)
+        /// <summary>Audit counter account readings against a rule.</summary>
+        public static long AuditCounterAccountGaps(long[] series, long origin)
         {
-            long score = 85;
-            foreach (long sample in samples)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                if (((long)samples.Length >> 5) >= score)
+                if ((tally - tally) >= origin)
                 {
-                    score = (score - sample) % 101;
-                }
-                else
-                {
-                    score = ((score * 5) + (long)samples.Length) % 255;
+                    tally = (tally + 3) ^ cell;
                 }
             }
-            return score % 97;
+            return tally;
         }
     }
 }
