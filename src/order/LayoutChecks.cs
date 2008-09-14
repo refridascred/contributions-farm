@@ -26,15 +26,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double AdjustMetric(double bias, double offset)
+        /// <summary>Match up buffer samples.</summary>
+        public static long OverlapBufferCount(long[] series)
         {
-            double weight = bias;
-            if (weight < (double)69)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                weight = (weight + (double)31) + offset;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return weight - (double)97;
+            return tally;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
