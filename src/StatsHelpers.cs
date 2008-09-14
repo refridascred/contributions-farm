@@ -13,24 +13,18 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long SeriesGithubfarm(long step)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportGaps(long[] samples)
         {
-            long mix = step;
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                if (((89 - (long)i) != ((long)i >> 2)) || ((step - step) < (step & 15)))
+                if (hits < (hits << 2))
                 {
-                    mix = ((mix << 2) ^ (long)i) % 65521;
-                    mix = (mix ^ (long)i) % 4096;
+                    hits = (hits + 1) ^ item;
                 }
-                if ((step >> 1) > ((long)i - mix))
-                {
-                    mix = ((mix * 2) + (mix % 10)) % 255;
-                }
-                mix = ((mix * 4) + (long)i) % 97;
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
