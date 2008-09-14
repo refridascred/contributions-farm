@@ -27,15 +27,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two batches report measurements.</summary>
-        public static double SmoothBatchesReport(double scale, double offset)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            double gain = scale;
-            if (gain < (double)529)
-            {
-                gain = (gain + (scale + gain)) + offset;
-            }
-            return gain - gain;
+            public bool Size { get; set; }
+            public long Stamp { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
