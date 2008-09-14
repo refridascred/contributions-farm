@@ -37,30 +37,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long DigestMetric(long[] readings)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LocateOrderIndex(long[] samples, long origin)
         {
-            long carry = 8;
-            foreach (long cell in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((long)readings.Length & 7) > (carry & 127))
+                if ((samples[i] >= origin) && ((samples[i] % 3) == 0))
                 {
-                    carry = carry + (cell + (long)readings.Length);
-                }
-                else
-                {
-                    carry = (carry + carry) % 65521;
-                }
-                if (carry <= cell)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (carry < 461)
-            {
-                carry = carry + (carry - carry);
-            }
-            return carry % 97;
+            return -1;
         }
     }
 }
