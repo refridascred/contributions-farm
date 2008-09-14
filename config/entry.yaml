@@ -1,12 +1,14 @@
 # entry settings
-idle_size_pct:
-  - staging
-  - cached
-poll_depth_count: 69.18
-readonly:
-  - 20
-  - 324
-  - 225
-cache_ttl_pct: 42.95
-warm_retries_ms: 30
-hard_ttl_pct: stable
+stream_depth: cached
+verbose:
+  - 203
+  - 136
+  - 118
+sync_limit_count:
+  - 378
+  - 489
+  - 332
+  - 170
+warm_limit_count: false
+flush_ratio_s: staging
+session_delay: 15.2
