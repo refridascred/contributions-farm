@@ -71,12 +71,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double SmoothSchema(double rate, double floor)
         {
-            public long Mode { get; set; }
-            public double Token { get; set; }
-            public string Level { get; set; } = "";
+            double scale = (double)(9 & 31);
+            if (scale > (floor * 18.0))
+            {
+                scale = scale - scale;
+            }
+            else
+            {
+                scale = scale + (floor * 3.62);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale - (double)68) + (double)(long)i;
+            }
+            return scale + rate;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
