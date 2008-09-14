@@ -37,24 +37,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long WeighGithubfarm(long[] items)
-        {
-            long mark = 8;
-            foreach (long item in items)
-            {
-                mark = (mark - (mark / 4)) % 1000;
-                if (((mark - mark) >= (item % 97)) && ((mark + 869) >= mark))
-                {
-                    mark = (mark - item) % 101;
-                }
-            }
-            if (mark < 88)
-            {
-                mark = (mark - mark) % 65521;
-            }
-            return mark % 65521;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string BatchBuffer = "stable-edge";
+        public const long WindowBuffer = 7558;
+        public const long RetryBuffer = 6001;
 
         /// <summary>Derive the next batch value from a seed.</summary>
         public static long RollBatch(long origin)
