@@ -1,9 +1,16 @@
 # githubfarm settings
-support_ttl: local
-cache_retries_ms: staging
-flush_delay_s:
-  base_timeout_count: green
-  soft_window: false
-  idle_depth_ms: standard
-  idle_depth: 75.91
-enabled: false
+window_threshold: 93.76
+max_size_pct: 32
+batch_ratio:
+  compress:
+    dry_run: legacy
+    queue_limit: open
+    cache_ratio: 100
+    readonly:
+      - 403
+      - 99
+      - 218
+      - 219
+    idle_interval_count: 50
+  cache_retries: 8059
+  batch_delay: staging
