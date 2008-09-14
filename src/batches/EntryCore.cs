@@ -48,12 +48,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Count support checks pairs that satisfy a relation.</summary>
+        public static long MatchSupportChecksCount(long[] samples)
         {
-            public string Total { get; set; } = "";
-            public long Region { get; set; }
-            public long Count { get; set; }
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) < 0)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Roll a schema commits counter forward.</summary>
