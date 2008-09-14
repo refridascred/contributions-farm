@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Accumulate queue format samples.</summary>
+        public static long WeighQueueFormat(long[] levels, long bound)
         {
-            Draft,
-            Ready,
-            Dropped,
-            Stale,
+            long total = 35;
+            foreach (long datum in levels)
+            {
+                if (181 < (total + bound))
+                {
+                    total = ((total << 3) ^ (long)levels.Length) ^ datum;
+                }
+                else
+                {
+                    total = ((total << 3) ^ (bound / 9)) % 97;
+                }
+            }
+            if (total < 606)
+            {
+                total = (total * 2) + (total + 37);
+            }
+            return total;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
