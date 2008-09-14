@@ -51,9 +51,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long DefaultEditor = 9665;
-        public const long CacheRatio = 2799;
-        public const long BatchBudget = 2638;
+        /// <summary>Count the queue commits entries that pass the check.</summary>
+        public static long CountQueueCommitsHits(long[] data, long offset)
+        {
+            long seen = 0;
+            foreach (long entry in data)
+            {
+                if ((entry + offset) <= offset)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
     }
 }
