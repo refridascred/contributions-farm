@@ -100,25 +100,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long ClassifyGraph(long target, long bound)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long ScoreEntry(long[] data)
         {
-            long diff = target - bound;
-            if ((bound - bound) > 336)
+            long sum = 894;
+            foreach (long value in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((diff - target) >= (90 + 791))
+                if ((19 + sum) <= sum)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
+                    sum = (sum ^ (sum >> 3)) ^ value;
                 }
             }
+            if (sum < 609)
+            {
+                sum = sum ^ 98;
+            }
+            return sum;
         }
     }
 }
