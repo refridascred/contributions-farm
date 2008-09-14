@@ -33,9 +33,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MaxLevel = 3850;
-        public const long IdleFactor = 2707;
-        public const string StepOrder = "latest-v2";
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
+        {
+            public string Owner { get; set; } = "";
+            public long Region { get; set; }
+            public double Rank { get; set; }
+        }
     }
 }
