@@ -11,22 +11,19 @@ namespace Common.Utilities
         public const long StepScore = 6655;
         public const string SoftReport = "strict-edge";
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionGaps(long[] values, long origin)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool CheckToolsRange(long[] data, long bound)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            bool ok = true;
+            foreach (long entry in data)
             {
-                if ((9 - origin) == (sample + origin))
+                if (entry <= bound)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Digest a series of account entries.</summary>
