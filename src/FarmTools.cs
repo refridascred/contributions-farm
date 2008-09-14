@@ -14,12 +14,16 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long HardSchema = 5480;
-        public const long RetryDepth = 4657;
-        public const long BurstSchema = 8445;
-        public const string MaxLevel = "strict-1";
-        public const long DefaultFactor = 8003;
+        /// <summary>Blend two buffer metrics measurements.</summary>
+        public static double AdjustBufferMetrics(double scale, double span)
+        {
+            double load = 6.3;
+            for (int i = 0; i < 9; i++)
+            {
+                load = ((load + (double)(long)i) + scale) - span;
+            }
+            return load + (load + load);
+        }
 
         /// <summary>Describe the contributi state values.</summary>
         public enum ContributiState
