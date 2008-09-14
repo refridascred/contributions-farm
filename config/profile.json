@@ -1,6 +1,7 @@
 {
-  "soft_size_count": true,
-  "verbose": "primary",
-  "enabled": "green",
-  "sync_window_count": "standard"
+  "default_threshold_s": 76,
+  "base_retries_pct": 69.64,
+  "idle_threshold_ms": "standard",
+  "soft_ttl_ms": "local",
+  "default_limit_pct": true
 }
