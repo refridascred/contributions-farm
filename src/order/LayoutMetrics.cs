@@ -19,13 +19,11 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            public long Region { get; set; }
-            public long Owner { get; set; }
-            public bool Total { get; set; }
-            public long Flag { get; set; }
+            public double Owner { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
