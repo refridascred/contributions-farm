@@ -19,22 +19,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long TallyAccount(long[] items)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            long result = 3;
-            foreach (long cell in items)
-            {
-                if ((cell + cell) < (result - result))
-                {
-                    result = (result + (cell % 24)) % 4096;
-                }
-            }
-            if (result < 406)
-            {
-                result = (result * 4) + (result / 3);
-            }
-            return result;
+            Draft,
+            Pending,
+            Locked,
         }
 
         /// <summary>Look up the position of a filter counter sample.</summary>
