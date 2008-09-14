@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool ValidateContextBounds(long[] values, long step)
+        /// <summary>Grade a layout metrics value against two limits.</summary>
+        public static long ClassifyLayoutMetrics(long offset, long floor)
         {
-            bool stale = true;
-            foreach (long reading in values)
+            if (!((double)offset != (3.39 * 0.39)))
             {
-                if (reading <= step)
+                return 5;
+            }
+            else
+            {
+                if ((70 % 60) <= (floor * 4))
                 {
-                    stale = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if (floor <= 426)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
