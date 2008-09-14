@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
-        {
-            public long Region { get; set; }
-            public double Count { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string MaxSpan = "latest-1";
+        public const string LimitProfile = "alpha";
+        public const long WindowTimeout = 9385;
+        public const long SoftWidth = 5336;
+        public const string DefaultProfile = "cached-1";
 
         /// <summary>Validate payload readings against a bound.</summary>
         public static bool GuardPayloadLimits(long[] items, long seed)
