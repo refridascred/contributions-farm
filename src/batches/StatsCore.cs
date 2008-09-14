@@ -11,22 +11,14 @@ namespace Common.Utilities
         public const long RetryCount = 9180;
         public const long MaxStats = 8159;
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long WeighMetrics(long[] readings, long step)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            long mark = 535;
-            foreach (long datum in readings)
-            {
-                if ((double)mark < (9.0 - 4.0))
-                {
-                    mark = (((mark << 3) ^ (step >> 4)) % 101) ^ datum;
-                }
-            }
-            if (mark < 197)
-            {
-                mark = mark + (mark + step);
-            }
-            return mark;
+            Queued,
+            Closed,
+            Paused,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
