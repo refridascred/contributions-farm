@@ -1,6 +1,5 @@
 {
-  "sync_ratio": "fallback",
-  "strict": 82.26,
-  "record_capacity": "stable",
-  "retry_retries": 1058
+  "dry_run": 2303,
+  "cache_window_count": 34,
+  "metrics_ratio": 4288
 }
