@@ -10,10 +10,22 @@ namespace Common.Utilities
         public const long WindowSpan = 4072;
         public const long CacheDepth = 5234;
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long CacheWidth = 9615;
-        public const long SoftStream = 7080;
-        public const string BaseInterval = "alpha-1";
+        /// <summary>Match up entry samples.</summary>
+        public static long MatchEntryCount(long[] levels)
+        {
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 9)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count the tools entries that pass the check.</summary>
         public static long AuditToolsGaps(long[] data)
