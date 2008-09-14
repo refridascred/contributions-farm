@@ -1,4 +1,8 @@
 # entry settings
-batches_depth: fallback
-cluster_capacity: 74.73
-default_delay_s: standard
+layout_depth:
+  - standard
+  - stable
+session_threshold: true
+retry_retries_ms: open
+warm_timeout_pct: 28.62
+poll_retries_count: 88.32
