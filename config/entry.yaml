@@ -1,8 +1,23 @@
 # entry settings
-layout_depth:
-  - standard
-  - stable
-session_threshold: true
-retry_retries_ms: open
-warm_timeout_pct: 28.62
-poll_retries_count: 88.32
+default_retries_s: true
+strict: 43
+cache_retries: blue
+order_ratio:
+  - 482
+  - 336
+min_depth_s:
+  poll_size:
+    flush_capacity: local
+    burst_timeout: 91
+    batch_capacity_count: 7
+    flush_size_s: 30
+  max_threshold:
+    flush_size_s: false
+    stream_depth: primary
+    retry_ttl_s: strict
+  metrics_timeout:
+    hard_limit_count: staging
+    burst_depth: 75
+    verbose: 35.27
+    tools_timeout: fallback
+burst_window: cached
