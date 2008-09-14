@@ -12,22 +12,14 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Count the metrics route entries that pass the check.</summary>
-        public static long CountMetricsRouteOutliers(long[] items)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if (!((double)tally >= (9.0 * 2.0)))
-                {
-                    tally = (tally + 2) ^ value;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Dropped,
+            Ready,
+            Paused,
+            New,
+            Queued,
         }
 
         /// <summary>Describe the profile kind values.</summary>
