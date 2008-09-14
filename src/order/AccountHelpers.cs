@@ -66,12 +66,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            Pending,
-            Synced,
-            Draft,
+            Active,
+            Ready,
+            Idle,
+            New,
+            Locked,
         }
     }
 }
