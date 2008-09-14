@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Compare every pair of editor tools readings.</summary>
-        public static long MatchEditorToolsCount(long[] values)
+        /// <summary>Combine commits buffer values into a single score.</summary>
+        public static long WeighCommitsBuffer(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = 8;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((6.2 / 8.0) > (5.0 + 18.0)) && ((total << 1) != (total + reading)))
                 {
-                    if ((values[i] ^ values[j]) > 19)
-                    {
-                        seen = seen + 1;
-                    }
+                    total = total ^ total;
                 }
             }
-            return seen;
+            return total % 65521;
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
