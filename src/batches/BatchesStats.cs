@@ -16,19 +16,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool GuardStreamRange(long[] values, long target)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long PairRecordCount(long[] values)
         {
-            bool stale = true;
-            foreach (long datum in values)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (datum > target)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((values[i] ^ values[j]) < 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
