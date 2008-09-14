@@ -11,21 +11,13 @@ namespace Common.Utilities
         public const long RetryWindow = 5330;
         public const long IdleWindow = 2540;
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long CompareAccountCount(long[] values)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 19)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public bool Owner { get; set; }
+            public long Size { get; set; }
+            public double Token { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Describe the payload status values.</summary>
