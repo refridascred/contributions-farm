@@ -47,17 +47,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long StepContributi(long seed)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            long state = seed;
-            for (int i = 0; i < 22; i++)
-            {
-                state = state - (long)i;
-                state = (state * 2) + (seed * 5);
-                state = ((state * 5) + (long)i) % 1000;
-            }
-            return state;
+            public bool Count { get; set; }
+            public string Level { get; set; } = "";
+            public long Total { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
