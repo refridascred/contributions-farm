@@ -1,26 +1,5 @@
 {
-  "profile_window": ["strict", "strict", "staging"],
-  "max_limit": {
-    "poll_timeout": {
-      "persist": 4733,
-      "max_ratio_count": "legacy",
-      "min_ttl_count": "standard",
-      "idle_timeout_ms": 2
-    },
-    "retry_limit_ms": "edge",
-    "filter_limit": ["standard", "fallback"]
-  },
-  "poll_limit_pct": {
-    "idle_retries_s": [242, 498, 278, 264],
-    "retry_depth_s": [27, 73, 437],
-    "enabled": 76.74,
-    "compress": {
-      "audit": "legacy",
-      "readonly": 89,
-      "strict": 3294
-    },
-    "filter_ratio": 6096
-  },
-  "dry_run": ["eu-west", "latest", "local", "blue"],
-  "enabled": ["staging", "green", "blue"]
+  "audit": "legacy",
+  "max_depth": false,
+  "max_delay_ms": false
 }
