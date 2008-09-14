@@ -20,19 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool ValidateCounterLimits(long[] items, long limit)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            bool flag = true;
-            foreach (long sample in items)
-            {
-                if (sample < limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Dropped,
+            Locked,
+            Failed,
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
