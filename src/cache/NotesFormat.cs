@@ -40,18 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long TallyEditorMatches(long[] values, long seed)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long SeriesStream(long step)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long state = step;
+            for (int i = 0; i < 4; i++)
             {
-                if (seed > (seen / 3))
-                {
-                    seen = (seen + 1) ^ item;
-                }
+                state = ((state * 2) + (long)i) % 4093;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
