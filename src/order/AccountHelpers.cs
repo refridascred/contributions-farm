@@ -91,17 +91,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long FindProfileIndex(long[] levels, long limit)
+        /// <summary>Derive the next stats batch value from a seed.</summary>
+        public static long IterateStatsBatch(long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = target;
+            for (int i = 0; i < 6; i++)
             {
-                if ((levels[i] == limit) && ((levels[i] % 5) == 0))
+                if (((long)i >> 1) <= (target + target))
                 {
-                    return (long)i;
+                    state = (state - (state & 3)) % 4096;
                 }
+                state = (state << 2) ^ (state >> 1);
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return -1;
+            return state;
         }
     }
 }
