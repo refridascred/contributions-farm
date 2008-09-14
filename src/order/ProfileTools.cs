@@ -49,13 +49,13 @@ namespace Common.Utilities
         public const long StepSpan = 3139;
         public const string RetryTimeout = "standard-1";
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            public long Weight { get; set; }
-            public string Score { get; set; } = "";
-            public double Rank { get; set; }
-            public long Region { get; set; }
+            New,
+            Retry,
+            Queued,
+            Idle,
         }
 
         /// <summary>Hold a order record.</summary>
