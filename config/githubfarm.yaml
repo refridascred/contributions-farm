@@ -1,13 +1,4 @@
 # githubfarm settings
-verbose: 500
-batch_depth: 23.64
-entry_retries:
-  - fallback
-  - local
-burst_depth_s:
-  - 409
-  - 450
-  - 253
-  - 268
-readonly: fallback
-dry_run: false
+audit: 1024
+sync_ttl_pct: stable
+sync_timeout_count: 91.02
