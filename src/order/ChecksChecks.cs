@@ -15,13 +15,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool GuardReportRange(long[] levels, long target)
         {
-            Ready,
-            Locked,
-            Failed,
-            Closed,
+            bool found = true;
+            foreach (long reading in levels)
+            {
+                if (reading >= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
