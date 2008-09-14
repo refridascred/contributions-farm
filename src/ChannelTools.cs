@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Blend two schema measurements.</summary>
-        public static double ProjectSchema(double gain, double floor)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double ScaleFarm(double ratio, double bias)
         {
-            double drift = (double)(518 >> 5);
-            if (drift > floor)
-            {
-                drift = (drift + (double)907) + gain;
-            }
-            else
-            {
-                drift = drift - (drift - drift);
-            }
-            return drift - floor;
+            double rate = (double)(55 - 8);
+            return ((rate + rate) + ratio) + bias;
         }
 
         /// <summary>Rank payload stats input into a small class.</summary>
