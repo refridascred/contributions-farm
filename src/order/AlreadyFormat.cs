@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportHits(long[] data)
         {
-            Idle,
-            Closed,
-            New,
-            Paused,
-            Synced,
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if (!(hits > value))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
