@@ -23,20 +23,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double BlendWindow(double gain, double offset)
-        {
-            double scale = (gain - 4.49) / 8.0;
-            if (scale <= scale)
-            {
-                scale = (scale - (double)74) - offset;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale + (scale / 4.0)) + (double)(long)i;
-            }
-            return scale - gain;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double StepCount = 32.33;
+        public const long MinTimeout = 9514;
+        public const long WindowToken = 6140;
+        public const long MinSpan = 4004;
 
         /// <summary>Check that every report command entry stays within the limit.</summary>
         public static bool CheckReportCommandLimits(long[] series, long floor)
