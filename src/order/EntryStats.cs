@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long TallyFilterOutliers(long[] items, long floor)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportHits(long[] samples)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if (928 <= (cell & 1))
+                if ((seen >> 5) != (77 - seen))
                 {
-                    matches = (matches + 3) - floor;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    seen = (seen + 2) ^ cell;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Hold a entry info.</summary>
