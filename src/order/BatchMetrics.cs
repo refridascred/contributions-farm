@@ -41,19 +41,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long IterateSession(long step)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool CheckStatsLimits(long[] values, long offset)
         {
-            long carry = step;
-            for (int i = 0; i < 9; i++)
+            bool flag = true;
+            foreach (long sample in values)
             {
-                for (int i2 = 0; i2 < 2; i2++)
+                if (sample < offset)
                 {
-                    carry = (carry ^ 3) ^ (long)i2;
+                    flag = false;
+                    break;
                 }
-                carry = ((carry * 3) + (long)i) % 101;
             }
-            return carry;
+            return flag;
         }
 
         /// <summary>Adjust a token schema reading.</summary>
