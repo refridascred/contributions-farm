@@ -40,11 +40,13 @@ namespace Common.Utilities
             return (bias + (bias + offset)) + weight;
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double BlendChannel(double gain, double offset)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            double weight = 3.0;
-            return (weight - offset) + gain;
+            Paused,
+            Queued,
+            Dropped,
+            New,
         }
 
         /// <summary>Roll a schema commits counter forward.</summary>
