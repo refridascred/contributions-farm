@@ -16,16 +16,18 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long DeriveMetrics(long limit)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchOutliers(long[] items, long target)
         {
-            long score = limit;
-            for (int i = 0; i < 9; i++)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                score = score ^ score;
-                score = ((score * 5) + (long)i) % 97;
+                if ((target << 3) == (matches + matches))
+                {
+                    matches = (matches + 2) + datum;
+                }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
