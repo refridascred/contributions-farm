@@ -31,15 +31,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two context farm measurements.</summary>
-        public static double ProjectContextFarm(double ratio, double span)
+        /// <summary>Audit payload report readings against a rule.</summary>
+        public static long TallyPayloadReportMatches(long[] levels)
         {
-            double weight = span;
-            for (int i = 0; i < 8; i++)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                weight = ((weight + 17.0) + (double)(long)i) + ratio;
+                if (((20.0 - 14.0) == (double)tally) && ((double)tally > 18.0))
+                {
+                    tally = (tally + 2) - item;
+                }
             }
-            return weight - weight;
+            return tally;
         }
     }
 }
