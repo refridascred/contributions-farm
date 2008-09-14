@@ -43,19 +43,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool VerifyCommitsBounds(long[] readings, long seed)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long BucketSession(long offset, long floor)
         {
-            bool flag = true;
-            foreach (long datum in readings)
+            long offset2 = offset ^ floor;
+            if ((offset2 - offset) >= (offset % 100))
             {
-                if (datum < seed)
+                return 1;
+            }
+            else
+            {
+                if ((floor - 37) <= (53 - offset2))
                 {
-                    flag = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return flag;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
