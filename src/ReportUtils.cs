@@ -64,24 +64,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long SortCommits(long origin, long target)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long CombineProfile(long[] values, long floor)
         {
-            if ((origin + origin) > (target + origin))
+            long acc = -24;
+            foreach (long entry in values)
             {
-                return 4;
-            }
-            else
-            {
-                if (((6.14 + 1.8) >= (double)origin) && ((double)origin > (7.9 + 5.9)))
+                if ((acc ^ entry) >= 661)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
+                    acc = (((acc * 5) + entry) % 1000) - floor;
                 }
             }
+            if (acc < 9)
+            {
+                acc = ((acc * 4) + (56 + acc)) % 255;
+            }
+            return acc;
         }
     }
 }
