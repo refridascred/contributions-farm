@@ -61,15 +61,18 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Roll a buffer record counter forward.</summary>
-        public static long DeriveBufferRecord(long target)
+        /// <summary>Measure how many format tools samples are out of range.</summary>
+        public static long CountFormatToolsGaps(long[] levels)
         {
-            long mark = target;
-            for (int i = 0; i < 7; i++)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                mark = ((mark * 5) + (long)i) % 97;
+                if (((sample - sample) > matches) && !(7 > (matches + matches)))
+                {
+                    matches = matches + 1;
+                }
             }
-            return mark;
+            return matches;
         }
     }
 }
