@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Locate a token reading by value.</summary>
-        public static long FindTokenIndex(long[] values, long offset)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] == offset) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Ratio { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Digest a series of tools token entries.</summary>
