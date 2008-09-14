@@ -76,12 +76,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long DefaultSession = 4063;
-        public const long MaxSession = 4708;
-        public const long StepSession = 9359;
-        public const string MinBudget = "primary-edge";
-        public const long IdleSession = 4592;
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
+        {
+            public long Label { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Locate a batch reading by value.</summary>
         public static long FindBatchIndex(long[] samples, long seed)
