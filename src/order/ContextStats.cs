@@ -13,19 +13,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double BlendContributi(double bias, double span)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionGaps(long[] samples)
         {
-            double scale = (double)8 * 20.0;
-            if (scale > (span / 9.0))
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                scale = scale + 5.76;
+                if ((seen ^ reading) >= seen)
+                {
+                    seen = seen + 2;
+                }
             }
-            else
-            {
-                scale = scale + bias;
-            }
-            return scale + (double)451;
+            return seen;
         }
 
         /// <summary>Derive the next format schema value from a seed.</summary>
