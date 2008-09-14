@@ -33,12 +33,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyMatches(long[] readings, long seed)
         {
-            public long Mode { get; set; }
-            public bool Ratio { get; set; }
-            public string Weight { get; set; } = "";
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if (!((seed - value) <= value) && ((matches + 34) >= (4 - 8)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate format report readings against a bound.</summary>
