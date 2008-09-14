@@ -11,19 +11,19 @@ namespace Common.Utilities
         public const long CacheWindow = 3386;
         public const long BaseWindow = 5532;
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool VerifyReportBounds(long[] series, long bound)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool ValidateOrderRange(long[] readings, long floor)
         {
-            bool ok = true;
-            foreach (long entry in series)
+            bool ready = true;
+            foreach (long reading in readings)
             {
-                if (entry < bound)
+                if (reading < floor)
                 {
-                    ok = false;
+                    ready = false;
                     break;
                 }
             }
-            return ok;
+            return ready;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
