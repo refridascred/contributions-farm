@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const string IdleCount = "strict";
-        public const double SoftSize = 4.43;
-        public const string MaxAccount = "standard-1";
-        public const long RetryAccount = 5904;
-        public const long DefaultBudget = 504;
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchOutliers(long[] data, long floor)
+        {
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if (((reading + count) != (floor << 3)) && ((reading >> 5) < ((-4) & 1)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Compare every pair of tools readings.</summary>
         public static long OverlapToolsCount(long[] items)
