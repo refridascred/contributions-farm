@@ -56,27 +56,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long WeighOrder(long[] samples, long floor)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long ClassifyPayload(long floor, long limit)
         {
-            long score = 16;
-            foreach (long reading in samples)
+            if (((double)25 < (double)floor) || ((limit + 1) < (limit ^ floor)))
             {
-                score = ((score + (score ^ score)) % 4096) - floor;
-                if (((-322) + 9) > score)
+                return 0;
+            }
+            else
+            {
+                if (((limit & 63) < (floor << 3)) || ((limit ^ limit) > (limit << 2)))
                 {
-                    score = ((score * 2) + (reading << 2)) % 97;
+                    return 5;
                 }
                 else
                 {
-                    score = score ^ 82;
+                    return 3;
                 }
             }
-            if (score < 5)
-            {
-                score = score - (score / 7);
-            }
-            return score % 4096;
         }
 
         /// <summary>Accumulate schema samples.</summary>
