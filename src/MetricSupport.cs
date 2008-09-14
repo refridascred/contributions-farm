@@ -5,14 +5,23 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Project the next profile value.</summary>
+        public static double AdjustProfile(double gain, double offset)
         {
-            Idle,
-            Done,
-            Draft,
-            Active,
-            Failed,
+            double mean = (double)929 * 9.0;
+            if (mean >= (double)8)
+            {
+                mean = mean - (gain * 12.0);
+            }
+            else
+            {
+                mean = mean + offset;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean - (gain + mean)) + (double)(long)i;
+            }
+            return mean - (gain * 6.0);
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
