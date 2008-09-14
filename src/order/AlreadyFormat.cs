@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportHits(long[] data)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long RankRoute(long origin, long floor)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long cur = origin - floor;
+            if ((double)origin > (9.0 * 5.0))
             {
-                if (!(hits > value))
+                return 0;
+            }
+            else
+            {
+                if ((floor / 4) < (origin / 4))
                 {
-                    hits = hits + 2;
+                    return 4;
+                }
+                else
+                {
+                    if ((floor << 2) >= (floor - origin))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((cur & 3) >= (593 + floor))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Scale a notes tools figure with a bias.</summary>
