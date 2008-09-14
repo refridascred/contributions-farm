@@ -37,20 +37,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of editor window readings.</summary>
-        public static long TotalEditorWindow(long[] series)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double ProjectRoute(double ratio, double bias)
         {
-            long sum = 0;
-            foreach (long cell in series)
+            double bias2 = bias;
+            if (bias2 >= (6.16 / 3.0))
             {
-                sum = ((sum << 3) ^ (cell ^ cell)) % 255;
-                sum = (sum - (cell - cell)) % 255;
+                bias2 = bias2 - ratio;
             }
-            if (sum > 3)
+            else
             {
-                sum = ((sum << 3) ^ (sum << 1)) % 255;
+                bias2 = bias2 - bias;
             }
-            return sum % 65521;
+            for (int i = 0; i < 2; i++)
+            {
+                bias2 = (bias2 + (ratio * 7.0)) + (double)(long)i;
+            }
+            return bias2 - bias;
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
