@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool CheckWindowLimits(long[] values, long origin)
         {
-            Dropped,
-            Locked,
-            Paused,
+            bool ready = true;
+            foreach (long sample in values)
+            {
+                if (sample > origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the stream class values.</summary>
