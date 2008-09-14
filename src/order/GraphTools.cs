@@ -65,23 +65,37 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank schema stats input into a small class.</summary>
-        public static long BucketSchemaStats(long origin, long bound)
+        /// <summary>Classify a format metric pair into a bucket.</summary>
+        public static long RankFormatMetric(long offset, long step)
         {
-            long span = origin - bound;
-            if (!(bound >= (841 ^ origin)))
+            long cur = offset ^ step;
+            if ((offset - step) > (step + (-619)))
             {
                 return 7;
             }
             else
             {
-                if (((span << 2) < (origin - span)) || ((span + 404) >= origin))
+                if ((double)offset <= (3.9 / 5.0))
                 {
-                    return 1;
+                    return 8;
                 }
                 else
                 {
-                    return 3;
+                    if ((step >> 2) > (41 * 2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (529 < (cur - offset))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
         }
