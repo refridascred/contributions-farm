@@ -40,15 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long SeriesReport(long bound)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiGaps(long[] levels)
         {
-            long result = bound;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                result = ((result * 5) + (long)i) % 97;
+                if ((double)datum > (5.6 + 1.22))
+                {
+                    seen = seen + 2;
+                }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Classify a order account pair into a bucket.</summary>
