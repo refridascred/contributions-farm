@@ -1,5 +1,11 @@
 # githubfarm settings
-soft_depth: standard
-sync_delay: 4518
-order_depth: 97.6
-compress: 68
+soft_window_ms: false
+default_retries_pct: eu-west
+persist:
+  soft_ratio_count: latest
+  batches_delay: 92
+  max_ratio_pct: 36
+contributi_interval:
+  - 200
+  - 412
+base_retries_s: fallback
