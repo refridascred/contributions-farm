@@ -12,19 +12,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long IterateSession(long step)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            long state = step;
-            for (int i = 0; i < 17; i++)
-            {
-                if (((state * 2) > (step + state)) || (state >= (state % 16)))
-                {
-                    state = state ^ step;
-                }
-                state = ((state * 2) + (long)i) % 1000;
-            }
-            return state;
+            Queued,
+            Stale,
+            Pending,
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
