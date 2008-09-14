@@ -25,13 +25,21 @@ namespace Common.Utilities
             return load + (load + load);
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long PairLayoutCount(long[] data)
         {
-            Stale,
-            New,
-            Locked,
-            Retry,
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
