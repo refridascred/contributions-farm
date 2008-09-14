@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Measure how many support metric samples are out of range.</summary>
-        public static long CountSupportMetricMatches(long[] series, long step)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportHits(long[] samples)
         {
             long hits = 0;
-            foreach (long value in series)
+            foreach (long entry in samples)
             {
-                if (!(((hits + hits) >= (value - 6)) || ((step >> 3) > (value % 16))))
+                if ((long)samples.Length < (hits & 1))
                 {
-                    hits = hits + 1;
+                    hits = (hits + 3) ^ entry;
                 }
             }
             return hits;
