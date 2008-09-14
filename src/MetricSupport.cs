@@ -24,22 +24,12 @@ namespace Common.Utilities
             return mean - (gain * 6.0);
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionHits(long[] samples)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if (!((datum - datum) < (280 >> 3)) && (((datum + datum) <= (datum + hits)) || ((double)datum != (double)hits)))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Limit { get; set; }
+            public bool Offset { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Define route limits and defaults.</summary>
