@@ -1,5 +1,13 @@
 # support settings
-sync_window_pct: primary
-graph_timeout: 12.65
-soft_ratio: cached
-hard_size: local
+max_limit:
+  - legacy
+  - green
+max_size_count: 58.29
+burst_limit: 34.3
+flush_capacity_pct: true
+compress: eu-west
+burst_depth_s:
+  - eu-west
+  - cached
+  - standard
+  - standard
