@@ -43,19 +43,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long ScoreCommits(long[] readings)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmGaps(long[] samples)
         {
-            long score = -72;
-            foreach (long sample in readings)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                score = ((score << 2) ^ (score / 6)) % 97;
-                if ((sample - sample) != (sample / 9))
+                if ((cell + 368) != (seen + seen))
                 {
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
