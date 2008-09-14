@@ -12,13 +12,27 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long FoldSchema(long[] levels, long origin)
         {
-            public double Token { get; set; }
-            public long Region { get; set; }
-            public bool Count { get; set; }
-            public bool Mode { get; set; }
+            long result = 600;
+            foreach (long sample in levels)
+            {
+                if (((long)levels.Length / 8) < origin)
+                {
+                    result = result ^ (sample - sample);
+                }
+                else
+                {
+                    long gap = sample;
+                    result = ((result * 2) + (gap % 12)) % 65521;
+                }
+                if ((double)origin >= (10.0 / 7.0))
+                {
+                    result = (result << 2) ^ (sample << 3);
+                }
+            }
+            return result;
         }
 
         /// <summary>Hold a entry stats.</summary>
