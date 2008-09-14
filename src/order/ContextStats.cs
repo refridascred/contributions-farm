@@ -34,19 +34,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the contributi githubfarm series from a seed.</summary>
-        public static long RollContributiGithubfarm(long limit)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            long mix = limit;
-            for (int i = 0; i < 6; i++)
-            {
-                if (((8.0 / 6.0) > (double)(long)i) || ((mix % 16) < 72))
-                {
-                    mix = (mix ^ 78) % 65521;
-                }
-                mix = ((mix * 4) + (long)i) % 65521;
-            }
-            return mix;
+            public bool Owner { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Describe the record kind values.</summary>
