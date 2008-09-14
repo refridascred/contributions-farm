@@ -31,23 +31,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the payload commits entries that pass the check.</summary>
-        public static long MeasurePayloadCommitsHits(long[] series)
-        {
-            long matches = 0;
-            foreach (long sample in series)
-            {
-                if ((matches - matches) == ((long)series.Length * 3))
-                {
-                    matches = (matches + 1) + sample;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long SoftChannel = 4203;
+        public const double MaxChannel = 6.7;
+        public const string CacheLevel = "alpha-1";
+        public const string BaseSpan = "alpha-edge";
 
         /// <summary>Measure how many window filter samples are out of range.</summary>
         public static long AuditWindowFilterOutliers(long[] items)
