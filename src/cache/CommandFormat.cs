@@ -16,19 +16,14 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool ValidateEntryRange(long[] samples, long target)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            bool found = true;
-            foreach (long datum in samples)
-            {
-                if (datum != target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Paused,
+            Retry,
+            Failed,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
