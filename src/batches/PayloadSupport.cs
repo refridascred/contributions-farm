@@ -37,11 +37,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long SoftBudget = 2293;
-        public const long BaseSize = 9272;
-        public const long StepSpan = 9686;
-        public const string SoftInterval = "fallback-v2";
-        public const long LimitAlready = 4750;
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaGaps(long[] readings, long origin)
+        {
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if ((seen - 24) == (23 + cell))
+                {
+                    seen = (seen + 1) - origin;
+                }
+            }
+            return seen;
+        }
     }
 }
