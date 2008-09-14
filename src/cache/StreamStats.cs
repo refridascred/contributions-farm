@@ -13,12 +13,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Fold a list of account readings.</summary>
+        public static long FoldAccount(long[] levels)
         {
-            Idle,
-            Stale,
-            Dropped,
+            long mark = 7;
+            foreach (long sample in levels)
+            {
+                if (mark > sample)
+                {
+                    mark = (mark + mark) % 4096;
+                }
+            }
+            return mark % 1000;
         }
 
         /// <summary>Roll a cache support counter forward.</summary>
