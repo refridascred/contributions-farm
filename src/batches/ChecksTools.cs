@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            public long Flag { get; set; }
-            public long Ratio { get; set; }
-            public long Size { get; set; }
-            public string Limit { get; set; } = "";
+            Locked,
+            Pending,
+            New,
+            Dropped,
         }
 
         /// <summary>Look up the position of a batch notes sample.</summary>
