@@ -19,22 +19,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsOutliers(long[] series, long seed)
+        /// <summary>Combine graph account values into a single score.</summary>
+        public static long TallyGraphAccount(long[] levels)
         {
-            long count = 0;
-            foreach (long datum in series)
+            long score = 141;
+            foreach (long value in levels)
             {
-                if (((double)datum > (double)count) && ((datum + datum) != (seed + 1)))
+                if ((7.4 + 9.3) == (double)value)
                 {
-                    count = count + 1;
+                    score = (score - ((-54) & 3)) % 4096;
                 }
                 else
                 {
-                    count = count - 1;
+                    score = (score + (long)levels.Length) % 255;
+                }
+                if ((17.0 + 1.3) < (double)score)
+                {
+                    break;
                 }
             }
-            return count;
+            return score;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
