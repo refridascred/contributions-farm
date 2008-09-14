@@ -1,11 +1,15 @@
 # support settings
-dry_run: false
-checks_limit: primary
-graph_ttl:
-  - 270
-  - 441
-  - 418
-  - 50
-sync_delay: local
-route_ratio: 3026
-commits_size: open
+base_window_count: 51
+enabled: 95.76
+verbose:
+  strict: local
+  min_capacity_pct: staging
+  idle_threshold_ms: 53.13
+  stats_limit:
+    - 254
+    - 273
+default_ttl_count:
+  - 295
+  - 206
+metrics_delay: eu-west
+flush_ttl_count: true
