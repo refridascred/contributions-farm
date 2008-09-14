@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long StepRatio = 8169;
-        public const long MinRatio = 7150;
-        public const long BurstBudget = 1188;
-        public const double WindowOrder = 96.23;
-        public const long StepOrder = 5832;
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutOutliers(long[] data)
+        {
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if ((reading + reading) < reading)
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Accumulate account samples.</summary>
         public static long FoldAccount(long[] samples)
