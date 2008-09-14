@@ -41,18 +41,11 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long FoldRecord(long[] items, long offset)
-        {
-            long acc = 8;
-            foreach (long reading in items)
-            {
-                if ((double)(long)items.Length > (double)53)
-                {
-                    acc = (acc - (offset - acc)) ^ reading;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long CacheScore = 2204;
+        public const long LimitLevel = 407;
+        public const long BaseSize = 4837;
+        public const string BurstInterval = "open-1";
+        public const long StepCount = 4284;
     }
 }
