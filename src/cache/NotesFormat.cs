@@ -24,13 +24,15 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long StepBuffer(long bound)
         {
-            Queued,
-            Idle,
-            Done,
-            Retry,
+            long state = bound;
+            for (int i = 0; i < 4; i++)
+            {
+                state = ((state * 2) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Accumulate stream samples.</summary>
