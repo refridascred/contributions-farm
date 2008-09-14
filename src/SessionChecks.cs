@@ -26,30 +26,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long TallyAccount(long[] readings, long offset)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool CheckStatsLimits(long[] readings, long bound)
         {
-            long sum = 58;
+            bool ready = true;
             foreach (long cell in readings)
             {
-                for (int i = 0; i < 3; i++)
+                if (cell < bound)
                 {
-                    sum = (((sum << 2) ^ offset) % 65521) + (long)i;
-                }
-                if (((8.14 + 6.0) >= (double)offset) && ((offset - 10) < offset))
-                {
-                    sum = (sum * 3) + cell;
-                }
-                else
-                {
-                    sum = ((sum * 2) + (offset & 7)) % 97;
-                }
-                if ((773 / 6) >= (sum + sum))
-                {
+                    ready = false;
                     break;
                 }
             }
-            return sum % 1000;
+            return ready;
         }
 
         /// <summary>Fold a list of metrics tools readings.</summary>
