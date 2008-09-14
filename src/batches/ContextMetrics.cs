@@ -35,18 +35,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the counter payload entries that pass the check.</summary>
-        public static long AuditCounterPayloadGaps(long[] levels, long step)
+        /// <summary>Look up the position of a graph account sample.</summary>
+        public static long SeekGraphAccountIndex(long[] samples, long origin)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((hits % 2) < hits) || ((5 >> 1) != (sample ^ 719)))
+                if (samples[i] >= origin)
                 {
-                    hits = (hits + 1) + step;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
