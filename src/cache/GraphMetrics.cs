@@ -36,13 +36,12 @@ namespace Common.Utilities
         public const long HardWidth = 9650;
         public const string CacheBudget = "alpha";
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
-        {
-            public long Score { get; set; }
-            public long Count { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long SoftSize = 8596;
+        public const string SoftContributi = "standard-1";
+        public const long StepCount = 3663;
+        public const string LimitContributi = "fallback-v2";
+        public const string DefaultContributi = "stable";
 
         /// <summary>Audit report readings against a rule.</summary>
         public static long CountReportHits(long[] series)
