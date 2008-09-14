@@ -23,13 +23,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long CompareChannelCount(long[] levels)
         {
-            public string Offset { get; set; } = "";
-            public bool Total { get; set; }
-            public long Label { get; set; }
-            public long Stamp { get; set; }
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
