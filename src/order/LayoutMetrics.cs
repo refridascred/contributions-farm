@@ -19,18 +19,11 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryGaps(long[] data)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if ((seen - 6) < (entry + entry))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public long Size { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Digest a series of graph editor entries.</summary>
