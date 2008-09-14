@@ -68,21 +68,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up context metric samples.</summary>
-        public static long MatchContextMetricCount(long[] levels)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Rank { get; set; }
+            public double Mode { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define account limits and defaults.</summary>
