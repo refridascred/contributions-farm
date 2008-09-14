@@ -5,39 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long RankCluster(long bound, long target)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long DigestSchema(long[] items)
         {
-            long prev = bound - target;
-            if ((7.0 * 17.0) <= (double)bound)
+            long state = 7;
+            foreach (long item in items)
             {
-                return 6;
-            }
-            else
-            {
-                if (prev <= (target / 5))
+                if ((item + (-467)) < (-97))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (bound > (target / 3))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)target >= (1.85 * 18.0))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    state = (state + 77) % 4096;
                 }
             }
+            if (state > 702)
+            {
+                state = ((state * 3) + state) % 255;
+            }
+            return state;
         }
 
         /// <summary>Describe the counter level values.</summary>
