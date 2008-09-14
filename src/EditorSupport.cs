@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Derive the next route githubfarm value from a seed.</summary>
+        public static long SeriesRouteGithubfarm(long bound)
         {
-            public long Region { get; set; }
-            public bool Level { get; set; }
-            public long Token { get; set; }
-            public double Label { get; set; }
+            long result = bound;
+            for (int i = 0; i < 20; i++)
+            {
+                if (((13.0 / 2.0) != (double)result) && ((double)bound != (15.0 - 4.9)))
+                {
+                    result = result + ((long)i / 8);
+                    continue;
+                }
+                result = ((result * 3) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
