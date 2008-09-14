@@ -64,15 +64,12 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double ScaleRecord(double weight, double offset)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            double scale = (double)614 + (weight + offset);
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale - (offset * 3.8)) + (double)(long)i;
-            }
-            return scale + (weight + offset);
+            Failed,
+            Locked,
+            Idle,
         }
 
         /// <summary>Define account limits and defaults.</summary>
