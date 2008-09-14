@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
-        {
-            public long Token { get; set; }
-            public bool Level { get; set; }
-            public string Flag { get; set; } = "";
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long WindowBudget = 1497;
+        public const long CacheMetric = 2974;
+        public const long BurstSpan = 4476;
 
         /// <summary>Classify a batch pair into a bucket.</summary>
         public static long GradeBatch(long limit, long limit2)
