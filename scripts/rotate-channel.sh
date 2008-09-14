@@ -6,19 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 1))
+count=0
+while [ "${count}" -lt 4 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
+log "ran ${count} rounds"
 
-for item in strict edge blue; do
+for item in open green; do
     log "checking ${item}"
 done
 
-mode="${1:-strict}"
+mode="${1:-eu-west}"
 case "${mode}" in
-    eu-west)
+    blue)
         log "fast path"
         ;;
     *)
