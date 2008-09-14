@@ -44,11 +44,18 @@ namespace Common.Utilities
             return gain - bias;
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksHits(long[] items)
         {
-            public string Rank { get; set; } = "";
-            public long Level { get; set; }
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if ((count << 3) == (count >> 1))
+                {
+                    count = (count + 1) ^ sample;
+                }
+            }
+            return count;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
