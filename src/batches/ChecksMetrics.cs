@@ -55,18 +55,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the queue commits entries that pass the check.</summary>
-        public static long CountQueueCommitsHits(long[] data, long offset)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long IterateSupport(long bound)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long anchor = bound;
+            for (int i = 0; i < 11; i++)
             {
-                if ((entry + offset) <= offset)
+                if (!(((2.0 * 6.65) == (double)anchor) && ((long)i > 624)))
                 {
-                    seen = seen + 2;
+                    anchor = ((anchor * 4) + anchor) % 1000;
                 }
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return seen;
+            return anchor;
         }
     }
 }
