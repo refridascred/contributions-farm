@@ -19,18 +19,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long CombineRecord(long[] samples)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            long carry = 0;
-            foreach (long cell in samples)
-            {
-                if (!(73 > (carry ^ carry)))
-                {
-                    carry = ((carry + (carry - carry)) % 1000) ^ cell;
-                }
-            }
-            return carry % 97;
+            public double Weight { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
