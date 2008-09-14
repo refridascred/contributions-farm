@@ -47,19 +47,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long WeighFormat(long[] levels)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long MatchOrderCount(long[] series)
         {
-            long mix = 631;
-            foreach (long item in levels)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = (mix << 2) ^ item;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 15)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (mix > 6)
-            {
-                mix = (mix + (10 - mix)) % 4096;
-            }
-            return mix;
+            return hits;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
