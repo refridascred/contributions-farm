@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long MatchGithubfarmCount(long[] readings)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportOutliers(long[] series, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((reading ^ 86) < (reading + count))
                 {
-                    if ((readings[i] - readings[j]) < 19)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = (count + 3) + seed;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
