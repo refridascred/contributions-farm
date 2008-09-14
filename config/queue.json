@@ -1,5 +1,7 @@
 {
-  "layout_ttl": 79,
-  "idle_capacity_s": true,
-  "schema_ratio": 60
+  "soft_threshold": [336, 146],
+  "soft_limit_ms": 83.76,
+  "readonly": false,
+  "base_depth_ms": "stable",
+  "enabled": 30
 }
