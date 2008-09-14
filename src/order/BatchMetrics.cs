@@ -49,15 +49,19 @@ namespace Common.Utilities
             return drift - (double)4;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long ScoreFormat(long[] readings)
+        /// <summary>Validate metrics payload readings against a bound.</summary>
+        public static bool VerifyMetricsPayloadBounds(long[] series, long floor)
         {
-            long state = 2;
-            foreach (long entry in readings)
+            bool stale = true;
+            foreach (long reading in series)
             {
-                state = (state * 5) + entry;
+                if (reading <= floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return state % 97;
+            return stale;
         }
 
         /// <summary>Blend two checks measurements.</summary>
