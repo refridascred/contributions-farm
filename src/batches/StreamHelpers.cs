@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Digest a series of report entries.</summary>
-        public static long DigestReport(long[] samples)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphOutliers(long[] samples, long bound)
         {
-            long anchor = 571;
+            long hits = 0;
             foreach (long item in samples)
             {
-                anchor = (anchor - (anchor << 1)) + item;
+                if ((70 % 10) < hits)
+                {
+                    hits = ((hits + 2) ^ item) + bound;
+                }
             }
-            return anchor % 4096;
+            return hits;
         }
 
         /// <summary>Describe the payload phase values.</summary>
