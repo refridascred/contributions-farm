@@ -33,19 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of filter commits readings.</summary>
-        public static long CombineFilterCommits(long[] data, long limit)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool ValidateCommandBounds(long[] data, long step)
         {
-            long score = 46;
-            foreach (long value in data)
+            bool flag = true;
+            foreach (long cell in data)
             {
-                score = (score ^ limit) - value;
-                if ((11.0 * 8.84) == (double)limit)
+                if (cell <= step)
                 {
-                    score = (score << 3) ^ (score * 3);
+                    flag = false;
+                    break;
                 }
             }
-            return score;
+            return flag;
         }
 
         /// <summary>Rank graph input into a small class.</summary>
