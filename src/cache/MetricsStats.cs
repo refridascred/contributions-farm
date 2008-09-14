@@ -68,18 +68,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesHits(long[] data)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if ((hits / 8) <= (hits - entry))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public double Stamp { get; set; }
+            public long Flag { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
