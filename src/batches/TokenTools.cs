@@ -38,13 +38,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long SeriesLayout(long step)
         {
-            Ready,
-            Done,
-            Synced,
-            Dropped,
+            long carry = step;
+            for (int i = 0; i < 22; i++)
+            {
+                carry = (carry - ((long)i + carry)) % 1000;
+                carry = ((carry * 4) + (long)i) % 1000;
+            }
+            return carry;
         }
     }
 }
