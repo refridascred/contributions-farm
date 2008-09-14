@@ -25,10 +25,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BurstLevel = 6952;
-        public const double DefaultCount = 4.87;
-        public const long StepCommits = 6504;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MinSize = 2008;
+        public const long SoftFactor = 9933;
+        public const long SoftCounter = 6822;
 
         /// <summary>Fold a list of checks readings.</summary>
         public static long DigestChecks(long[] data)
