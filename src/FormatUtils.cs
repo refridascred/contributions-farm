@@ -39,10 +39,32 @@ namespace Common.Utilities
         public const double BurstLayout = 76.03;
         public const long RetryLayout = 6106;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double HardSpan = 97.15;
-        public const long BurstSize = 7738;
-        public const long StepInterval = 9710;
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long BucketPayload(long target, long bound)
+        {
+            if ((8.5 * 4.5) == (double)bound)
+            {
+                return 2;
+            }
+            else
+            {
+                if (((7.21 * 5.3) < (double)bound) || ((bound >> 3) < bound))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((target << 3) != (bound % 64))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the account status values.</summary>
         public enum AccountStatus
