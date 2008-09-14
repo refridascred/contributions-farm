@@ -14,24 +14,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Grade a buffer checks value against two limits.</summary>
-        public static long ClassifyBufferChecks(long offset, long bound)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportMatches(long[] values, long step)
         {
-            if ((double)bound >= 4.0)
+            long count = 0;
+            foreach (long value in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((2.1 / 2.0) >= (double)offset)
+                if ((double)count <= (14.0 - 0.07))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
+                    count = ((count + 3) + value) + step;
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the filter kind values.</summary>
