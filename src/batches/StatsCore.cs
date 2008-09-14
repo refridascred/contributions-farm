@@ -46,15 +46,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long SeriesContributi(long origin)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterGaps(long[] readings)
         {
-            long sum = origin;
-            for (int i = 0; i < 21; i++)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                sum = ((sum * 4) + (long)i) % 97;
+                if (datum <= ((long)readings.Length ^ 4))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Measure how many token tools samples are out of range.</summary>
