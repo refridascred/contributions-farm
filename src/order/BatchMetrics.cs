@@ -82,19 +82,19 @@ namespace Common.Utilities
             return weight - (double)84;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool CheckTokenRange(long[] series, long limit)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double ProjectChecks(double bias, double offset)
         {
-            bool flag = true;
-            foreach (long datum in series)
+            double rate = (double)(62 + 1);
+            if (rate > offset)
             {
-                if (datum >= limit)
-                {
-                    flag = false;
-                    break;
-                }
+                rate = rate + (rate / 3.0);
             }
-            return flag;
+            else
+            {
+                rate = rate + (3.2 - offset);
+            }
+            return rate + (bias * 5.8);
         }
     }
 }
