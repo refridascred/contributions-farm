@@ -1,8 +1,9 @@
 # entry settings
-account_retries: green
-min_interval_s: 9560
-retry_retries:
-  readonly: latest
-  idle_threshold: 30
-  warm_window: 36.9
-  githubfarm_delay: 32
+retry_threshold_ms: 4599
+persist:
+  - 435
+  - 59
+  - 144
+  - 416
+dry_run: 168
+enabled: blue
