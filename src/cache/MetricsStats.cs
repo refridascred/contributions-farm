@@ -19,13 +19,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Count the layout schema entries that pass the check.</summary>
+        public static long TallyLayoutSchemaOutliers(long[] items, long offset)
         {
-            Ready,
-            Failed,
-            Queued,
-            Idle,
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if ((seen >> 2) >= (reading % 12))
+                {
+                    seen = (seen + 2) - offset;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define format limits and defaults.</summary>
