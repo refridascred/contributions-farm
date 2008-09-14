@@ -68,18 +68,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterOutliers(long[] items)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool VerifyEntryLimits(long[] data, long offset)
         {
-            long count = 0;
-            foreach (long reading in items)
+            bool flag = true;
+            foreach (long reading in data)
             {
-                if ((double)reading > 5.4)
+                if (reading > offset)
                 {
-                    count = count + 2;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
     }
 }
