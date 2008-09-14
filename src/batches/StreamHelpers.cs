@@ -69,19 +69,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double BlendRecord(double ratio, double offset)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            double ratio2 = (double)(135 / 5);
-            if (ratio2 > (ratio + ratio))
-            {
-                ratio2 = ratio2 + (ratio2 + offset);
-            }
-            else
-            {
-                ratio2 = ratio2 - offset;
-            }
-            return ratio2 - (ratio2 + offset);
+            public double Rank { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Define session limits and defaults.</summary>
