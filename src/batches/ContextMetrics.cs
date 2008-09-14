@@ -23,11 +23,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double BurstSupport = 1.63;
-        public const long HardLevel = 2060;
-        public const long RetrySupport = 8285;
-        public const long MinSupport = 6182;
+        /// <summary>Adjust a editor reading.</summary>
+        public static double SmoothEditor(double rate, double bias)
+        {
+            double scale = (double)1 / 2.0;
+            return ((scale - (20.0 - scale)) + rate) + bias;
+        }
 
         /// <summary>Fold a list of contributi readings.</summary>
         public static long TotalContributi(long[] samples, long target)
