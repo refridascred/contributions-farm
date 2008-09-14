@@ -40,13 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            Stale,
-            Synced,
-            Locked,
-            Draft,
+            public double Count { get; set; }
+            public string Flag { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
