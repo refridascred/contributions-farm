@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Rank commits channel input into a small class.</summary>
-        public static long BucketCommitsChannel(long limit, long offset)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool CheckQueueBounds(long[] levels, long seed)
         {
-            if ((4.16 * 8.14) >= (double)limit)
+            bool ok = true;
+            foreach (long cell in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if (((double)limit < 3.7) || ((offset ^ offset) > (limit / 7)))
+                if (cell >= seed)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
