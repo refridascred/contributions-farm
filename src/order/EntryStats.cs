@@ -20,20 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long SeriesChannel(long origin)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool ValidateCacheBounds(long[] data, long offset)
         {
-            long sum = origin;
-            for (int i = 0; i < 9; i++)
+            bool ok = true;
+            foreach (long value in data)
             {
-                sum = (sum - (origin % 8)) % 1000;
-                if (((origin + 45) <= (8 % 10)) && ((long)i <= (origin % 5)))
+                if (value <= offset)
                 {
-                    sum = (sum + (sum + 77)) % 65521;
+                    ok = false;
+                    break;
                 }
-                sum = ((sum * 3) + (long)i) % 101;
             }
-            return sum;
+            return ok;
         }
 
         /// <summary>Match up record route samples.</summary>
