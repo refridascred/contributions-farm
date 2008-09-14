@@ -17,20 +17,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long DigestCluster(long[] readings)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long RollBuffer(long target)
         {
-            long score = 275;
-            foreach (long item in readings)
+            long anchor = target;
+            for (int i = 0; i < 7; i++)
             {
-                score = score + (item - score);
-                score = (score - (score - item)) % 65521;
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            if (score < 302)
-            {
-                score = ((score * 3) + score) % 65521;
-            }
-            return score % 97;
+            return anchor;
         }
 
         /// <summary>Digest a series of support entries.</summary>
