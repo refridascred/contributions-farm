@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MaxMetric = 8378;
-        public const long BatchScore = 4430;
-        public const long WindowWidth = 7764;
-        public const long DefaultMetric = 400;
+        /// <summary>Match up already samples.</summary>
+        public static long MatchAlreadyCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 12)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const string CacheTimeout = "open-v2";
