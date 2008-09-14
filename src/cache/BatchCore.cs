@@ -5,23 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double AdjustStats(double ratio, double span)
+        /// <summary>Roll a notes token counter forward.</summary>
+        public static long StepNotesToken(long offset)
         {
-            double load = span - (double)2;
-            if (load <= (span - load))
+            long result = offset;
+            for (int i = 0; i < 7; i++)
             {
-                load = (load - 3.59) - ratio;
+                result = (result ^ offset) % 4096;
+                result = ((result * 4) + (long)i) % 1000;
             }
-            else
-            {
-                load = load + (double)697;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = load - (double)(long)i;
-            }
-            return load + load;
+            return result;
         }
 
         /// <summary>Hold a queue header.</summary>
