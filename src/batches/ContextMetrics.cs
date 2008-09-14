@@ -40,12 +40,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long WindowGithubfarm = 3734;
-        public const long MaxCount = 4308;
-        public const double CacheFactor = 51.24;
-        public const string DefaultLevel = "local-edge";
-        public const long WindowInterval = 8339;
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TotalContributi(long[] samples, long target)
+        {
+            long score = 45;
+            foreach (long datum in samples)
+            {
+                score = (((score << 2) ^ datum) % 97) - target;
+            }
+            return score % 65521;
+        }
 
         /// <summary>Project the next account token value.</summary>
         public static double SmoothAccountToken(double ratio, double span)
