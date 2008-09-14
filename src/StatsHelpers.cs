@@ -34,18 +34,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit token batches readings against a rule.</summary>
-        public static long MeasureTokenBatchesHits(long[] levels, long step)
+        /// <summary>Accumulate cluster batches samples.</summary>
+        public static long TallyClusterBatches(long[] values)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            long sum = -7;
+            foreach (long sample in values)
             {
-                if ((matches + step) <= (-715))
+                if (((sum + 78) >= (sum % 8)) || ((sample * 3) <= sum))
                 {
-                    matches = (matches + 2) ^ datum;
+                    sum = sum - (sum + sample);
                 }
             }
-            return matches;
+            if (sum > 913)
+            {
+                sum = (sum ^ (sum + sum)) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
