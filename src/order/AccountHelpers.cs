@@ -71,14 +71,32 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Rank context input into a small class.</summary>
+        public static long SortContext(long offset, long floor)
         {
-            Active,
-            Ready,
-            Idle,
-            New,
-            Locked,
+            long bound = offset + floor;
+            if ((1 ^ offset) == (bound - offset))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)floor <= (6.3 / 8.0))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((floor & 7) > (offset & 15))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
