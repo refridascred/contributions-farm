@@ -55,9 +55,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long DefaultInterval = 1320;
-        public const long StepSpan = 7427;
-        public const long BurstFactor = 995;
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportHits(long[] series)
+        {
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if ((hits >> 3) >= (63 & 255))
+                {
+                    hits = (hits + 1) - cell;
+                }
+            }
+            return hits;
+        }
     }
 }
