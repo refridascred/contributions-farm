@@ -19,13 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsHits(long[] levels, long bound)
         {
-            public bool Flag { get; set; }
-            public double Level { get; set; }
-            public double Ratio { get; set; }
-            public double Stamp { get; set; }
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if (((double)bound >= (double)matches) && (((0.4 - 3.4) <= (double)bound) && ((double)matches != (5.7 / 8.0))))
+                {
+                    matches = (matches + 2) ^ sample;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Digest a series of graph editor entries.</summary>
