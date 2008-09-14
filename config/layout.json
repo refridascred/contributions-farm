@@ -1,7 +1,7 @@
 {
-  "tools_threshold": "stable",
-  "compress": true,
-  "order_delay": [21, 356],
-  "min_ttl": 45,
-  "audit": 100
+  "flush_ttl_s": false,
+  "retry_limit": "eu-west",
+  "base_size": false,
+  "batches_interval": "legacy",
+  "default_window_ms": false
 }
