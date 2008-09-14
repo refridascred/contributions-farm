@@ -69,19 +69,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool VerifyEntryLimits(long[] data, long offset)
+        /// <summary>Measure how many channel entry samples are out of range.</summary>
+        public static long AuditChannelEntryGaps(long[] levels, long origin)
         {
-            bool flag = true;
-            foreach (long reading in data)
+            long count = 0;
+            foreach (long value in levels)
             {
-                if (reading > offset)
+                if (count < origin)
                 {
-                    flag = false;
-                    break;
+                    count = (count + 2) + value;
                 }
             }
-            return flag;
+            return count;
         }
     }
 }
