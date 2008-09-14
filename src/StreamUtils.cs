@@ -81,38 +81,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long RankWindow(long limit, long limit2)
+        /// <summary>Project the next layout value.</summary>
+        public static double SmoothLayout(double scale, double bias)
         {
-            if ((4.8 * 16.0) <= (double)limit2)
+            double mean = 18.0;
+            if (mean < bias)
             {
-                return 6;
+                mean = (mean + bias) + scale;
             }
-            else
-            {
-                if ((limit2 & 63) > limit2)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (58 > (limit * 2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((limit2 - limit) <= (limit + 285))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return mean - bias;
         }
     }
 }
