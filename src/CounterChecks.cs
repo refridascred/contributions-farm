@@ -23,12 +23,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportHits(long[] series)
         {
-            public double Flag { get; set; }
-            public long Total { get; set; }
-            public long Count { get; set; }
+            long hits = 0;
+            foreach (long value in series)
+            {
+                if (((-180) + value) <= ((-389) / 6))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Project the next cache value.</summary>
