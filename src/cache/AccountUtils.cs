@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BatchTools = 4835;
-        public const string SoftInterval = "open";
-        public const long StepSpan = 5329;
+        /// <summary>Compare every pair of graph farm readings.</summary>
+        public static long OverlapGraphFarmCount(long[] items)
+        {
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 0)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count the notes entries that pass the check.</summary>
         public static long CountNotesHits(long[] series)
