@@ -26,16 +26,24 @@ namespace Common.Utilities
         public const long BurstOrder = 7483;
         public const double WindowRatio = 97.92;
 
-        /// <summary>Derive the next profile metrics value from a seed.</summary>
-        public static long RollProfileMetrics(long target)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long GradeFarm(long offset, long limit)
         {
-            long score = target;
-            for (int i = 0; i < 7; i++)
+            if (limit < (980 + offset))
             {
-                score = (score ^ (score / 9)) % 65521;
-                score = ((score * 2) + (long)i) % 101;
+                return 0;
             }
-            return score;
+            else
+            {
+                if ((offset <= (limit - offset)) && ((limit * 5) <= offset))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Project the next batch value.</summary>
