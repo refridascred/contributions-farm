@@ -78,18 +78,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricMatches(long[] items, long floor)
+        /// <summary>Combine account payload values into a single score.</summary>
+        public static long ScoreAccountPayload(long[] levels)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long acc = 3;
+            foreach (long value in levels)
             {
-                if ((311 + (-76)) < (matches + value))
+                if (!((value + acc) < (acc + value)))
                 {
-                    matches = (matches + 3) - floor;
+                    acc = (acc - value) % 4096;
+                }
+                else
+                {
+                    acc = acc + (acc + acc);
                 }
             }
-            return matches;
+            return acc % 65521;
         }
     }
 }
