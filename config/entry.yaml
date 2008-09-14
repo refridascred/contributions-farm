@@ -1,23 +1,10 @@
 # entry settings
-readonly: eu-west
-verbose:
-  max_ratio: legacy
-  soft_ratio_count: stable
-  hard_ttl_count: false
-  buffer_window: 2929
-hard_delay:
-  window_limit:
-    verbose: false
-    burst_depth_count: 8806
-    metric_retries: local
-  batch_delay_ms:
-    max_window_ms: 63.28
-    payload_capacity: 34.69
-    enabled: edge
-    soft_ttl_s: 85
-  hard_capacity_count: 49.8
-  batch_ttl_ms: 74
-  default_window:
-    - 288
-    - 273
-  dry_run: 40
+audit: 500
+account_threshold:
+  - 205
+  - 274
+  - 26
+cache_delay_count: edge
+editor_limit: false
+retry_timeout: 27.09
+compress: 30
