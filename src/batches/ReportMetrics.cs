@@ -10,18 +10,21 @@ namespace Common.Utilities
         public const long MinBatch = 2517;
         public const long BurstLevel = 5000;
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterGaps(long[] readings, long step)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long PairGraphCount(long[] data)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((hits <= (hits - hits)) || ((cell <= hits) && ((step - 28) >= (hits * 5))))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = hits + 2;
+                    if ((data[i] + data[j]) == 1)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Blend two checks measurements.</summary>
