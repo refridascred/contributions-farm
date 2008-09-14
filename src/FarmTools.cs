@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Grade a checks cluster value against two limits.</summary>
-        public static long ClassifyChecksCluster(long target, long seed)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            if ((target / 3) >= (seed + (-62)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((seed + seed) <= target)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Active,
+            Locked,
+            Paused,
+            Stale,
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
