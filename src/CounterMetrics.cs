@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            Pending,
-            Done,
-            Idle,
+            public double Score { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Describe the command mode values.</summary>
