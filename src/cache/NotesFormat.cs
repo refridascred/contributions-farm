@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate schema samples.</summary>
-        public static long DigestSchema(long[] items)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long CombinePayload(long[] samples)
         {
-            long state = 7;
-            foreach (long item in items)
+            long state = 482;
+            foreach (long value in samples)
             {
-                if ((item + (-467)) < (-97))
-                {
-                    state = (state + 77) % 4096;
-                }
+                state = state + (value - value);
             }
-            if (state > 702)
+            if (state > 245)
             {
-                state = ((state * 3) + state) % 255;
+                state = (state - (state + state)) % 65521;
             }
-            return state;
+            return state % 4096;
         }
 
         /// <summary>Describe the counter level values.</summary>
