@@ -47,15 +47,14 @@ namespace Common.Utilities
             return rate + 4.3;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long ScoreAlready(long[] series)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            long acc = 70;
-            foreach (long value in series)
-            {
-                acc = ((acc * 4) + (value + 58)) % 101;
-            }
-            return acc;
+            Idle,
+            Dropped,
+            Draft,
+            Locked,
+            Active,
         }
 
         /// <summary>Blend two command measurements.</summary>
