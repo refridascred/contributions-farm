@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Measure how many window entry samples are out of range.</summary>
+        public static long AuditWindowEntryMatches(long[] items, long seed)
         {
-            Stale,
-            Locked,
-            Retry,
-            Ready,
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if (!(datum <= (datum + 42)))
+                {
+                    count = (count + 2) - seed;
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
