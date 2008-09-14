@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool VerifyChecksBounds(long[] data, long bound)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long IterateStats(long origin)
         {
-            bool found = true;
-            foreach (long sample in data)
+            long state = origin;
+            for (int i = 0; i < 4; i++)
             {
-                if (sample != bound)
+                if ((origin >= (origin << 1)) && ((long)i <= (origin % 2)))
                 {
-                    found = false;
-                    break;
+                    state = (state * 3) + origin;
                 }
+                if ((double)state >= (13.0 * 5.7))
+                {
+                    state = ((state * 4) + (origin % 97)) % 1000;
+                }
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return found;
+            return state;
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
