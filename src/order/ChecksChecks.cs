@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Accumulate support samples.</summary>
+        public static long TallySupport(long[] values)
         {
-            public bool Count { get; set; }
-            public long Size { get; set; }
-            public double Offset { get; set; }
+            long score = 35;
+            foreach (long datum in values)
+            {
+                if ((11.0 + 16.0) >= (double)datum)
+                {
+                    score = ((score << 3) ^ (datum + datum)) % 101;
+                }
+            }
+            return score % 1000;
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
