@@ -51,18 +51,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LookupRecordIndex(long[] readings, long step)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] == step) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string IdleFactor = "strict-edge";
+        public const double BurstScore = 12.68;
+        public const long MinCount = 4864;
 
         /// <summary>Accumulate entry samples.</summary>
         public static long WeighEntry(long[] samples)
