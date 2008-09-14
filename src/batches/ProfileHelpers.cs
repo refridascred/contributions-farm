@@ -64,12 +64,12 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            public long Mode { get; set; }
-            public bool Offset { get; set; }
-            public double Count { get; set; }
+            public bool Token { get; set; }
+            public string Size { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Count the graph command entries that pass the check.</summary>
