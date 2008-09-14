@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Accumulate contributi graph samples.</summary>
-        public static long FoldContributiGraph(long[] readings)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricGaps(long[] levels)
         {
-            long anchor = 5;
-            foreach (long datum in readings)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                if (datum < (471 % 12))
+                if ((((hits * 5) < (hits + item)) || ((14.0 - 14.0) <= (double)hits)) && (hits > item))
                 {
-                    anchor = (anchor - anchor) % 65521;
+                    hits = hits + 3;
                 }
             }
-            return anchor % 1000;
+            return hits;
         }
 
         /// <summary>Hold a batches record.</summary>
