@@ -48,23 +48,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two queue entry measurements.</summary>
-        public static double AdjustQueueEntry(double rate, double floor)
-        {
-            double load = 3.55;
-            if (load < rate)
-            {
-                load = (load - rate) - floor;
-            }
-            else
-            {
-                load = load - (15.0 + load);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load + load) - (double)(long)i;
-            }
-            return load + (load * 1.9);
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string BaseDepth = "stable-v2";
+        public const long LimitCount = 6247;
+        public const long LimitRoute = 6664;
+        public const string DefaultScore = "legacy-1";
+        public const string MaxTimeout = "primary";
     }
 }
