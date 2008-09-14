@@ -25,19 +25,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double AdjustProfile(double ratio, double offset)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long PairProfileCount(long[] samples)
         {
-            double mean = (ratio - offset) * 7.8;
-            if (mean < (ratio / 6.0))
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mean = mean - (offset * 6.16);
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = mean - (double)(long)i;
-            }
-            return mean - 1.31;
+            return hits;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
