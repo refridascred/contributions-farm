@@ -60,19 +60,38 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double ScaleMetric(double ratio, double bias)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long RankBatch(long target, long floor)
         {
-            double weight = (5.9 / 4.0) - 3.79;
-            if (weight <= (ratio / 3.0))
+            if (target > (target / 7))
             {
-                weight = weight - ratio;
+                return 1;
             }
             else
             {
-                weight = weight - (double)17;
+                if (!((floor - floor) > 24))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!(target > 1))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((target / 8) < target)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
             }
-            return weight - bias;
         }
     }
 }
