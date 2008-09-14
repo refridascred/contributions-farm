@@ -43,15 +43,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TotalRecord(long[] data)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            long anchor = 81;
-            foreach (long sample in data)
-            {
-                anchor = ((anchor + (anchor % 97)) % 101) - sample;
-            }
-            return anchor;
+            public long Count { get; set; }
+            public long Token { get; set; }
+            public double Stamp { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
