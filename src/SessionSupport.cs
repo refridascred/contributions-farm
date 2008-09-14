@@ -11,13 +11,18 @@ namespace Common.Utilities
         public const long BaseDepth = 5842;
         public const long MinContext = 3950;
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Audit format metrics readings against a rule.</summary>
+        public static long TallyFormatMetricsHits(long[] samples, long offset)
         {
-            public long Label { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Limit { get; set; }
-            public double Token { get; set; }
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if ((double)(long)samples.Length < (4.0 / 8.0))
+                {
+                    matches = ((matches + 3) - value) - offset;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
