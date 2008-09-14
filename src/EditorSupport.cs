@@ -40,18 +40,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmGaps(long[] samples)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long DeriveMetric(long floor)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long anchor = floor;
+            for (int i = 0; i < 17; i++)
             {
-                if ((cell + 368) != (seen + seen))
+                long count = ((long)i & 15) - ((long)i + floor);
+                if ((anchor * 5) < (1 - count))
                 {
-                    seen = seen + 3;
+                    anchor = anchor - (anchor & 63);
                 }
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Hold a already options.</summary>
