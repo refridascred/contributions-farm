@@ -39,10 +39,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long IdleDepth = 4270;
-        public const long BaseInterval = 5823;
-        public const double LimitRoute = 58.4;
-        public const string BurstBudget = "local-v2";
+        /// <summary>Locate a farm contributi reading by value.</summary>
+        public static long FindFarmContributiIndex(long[] data, long origin)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] <= origin) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
