@@ -64,23 +64,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long CombineCluster(long[] series, long limit)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long CombineGithubfarm(long[] data)
         {
-            long mark = 63;
-            foreach (long item in series)
+            long acc = 1;
+            foreach (long entry in data)
             {
-                for (int i = 0; i < 3; i++)
-                {
-                    mark = ((mark - ((long)i ^ mark)) % 4096) - limit;
-                }
-                mark = (mark - ((long)series.Length >> 4)) % 101;
-                if (((long)series.Length * 3) <= item)
-                {
-                    mark = (mark - (mark + mark)) % 255;
-                }
+                acc = ((acc * 3) + (acc >> 5)) + entry;
             }
-            return mark;
+            if (acc < 65)
+            {
+                acc = (acc - (acc << 3)) % 255;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
