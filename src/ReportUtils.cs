@@ -64,22 +64,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long CombineProfile(long[] values, long floor)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            long acc = -24;
-            foreach (long entry in values)
-            {
-                if ((acc ^ entry) >= 661)
-                {
-                    acc = (((acc * 5) + entry) % 1000) - floor;
-                }
-            }
-            if (acc < 9)
-            {
-                acc = ((acc * 4) + (56 + acc)) % 255;
-            }
-            return acc;
+            public string Score { get; set; } = "";
+            public long Total { get; set; }
         }
     }
 }
