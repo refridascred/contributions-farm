@@ -12,17 +12,11 @@ namespace Common.Utilities
         public const long BurstLevel = 3970;
         public const long MinDepth = 7376;
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long FindSupportIndex(long[] values, long origin)
+        /// <summary>Project the next counter value.</summary>
+        public static double SmoothCounter(double rate, double span)
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double gain = span;
+            return gain + (rate * 4.9);
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
