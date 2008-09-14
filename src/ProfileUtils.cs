@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile utils helpers.</summary>
     public static class ProfileUtils
     {
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            public string Weight { get; set; } = "";
-            public bool Score { get; set; }
-            public string Limit { get; set; } = "";
+            Ready,
+            Draft,
+            Dropped,
+            Queued,
+            Failed,
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
