@@ -38,21 +38,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long CompareContextCount(long[] series)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsMatches(long[] values, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!((12.0 * 7.0) > (double)sample))
                 {
-                    if ((series[i] - series[j]) > 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = (hits + 3) + bound;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
