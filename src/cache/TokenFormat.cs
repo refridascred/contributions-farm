@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Roll a format entry counter forward.</summary>
-        public static long IterateFormatEntry(long seed)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool VerifyChecksBounds(long[] data, long bound)
         {
-            long sum = seed;
-            for (int i = 0; i < 19; i++)
+            bool found = true;
+            foreach (long sample in data)
             {
-                sum = ((sum * 2) + (long)i) % 65521;
+                if (sample != bound)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return sum;
+            return found;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
