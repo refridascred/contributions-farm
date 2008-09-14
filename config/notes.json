@@ -1,12 +1,20 @@
 {
-  "default_depth_count": ["staging", "staging", "blue"],
-  "dry_run": 500,
-  "order_interval": ["open", "standard"],
-  "min_interval_ms": true,
-  "soft_capacity_pct": {
-    "schema_size": false,
-    "default_ttl": "legacy",
-    "flush_depth_ms": ["latest", "primary", "blue", "green"],
-    "readonly": 1024
-  }
+  "compress": {
+    "readonly": 1780,
+    "buffer_limit": {
+      "batch_limit_pct": "latest",
+      "retry_depth": 47.97,
+      "sync_delay_ms": 29.63
+    },
+    "account_delay": {
+      "already_depth": [239, 118, 19],
+      "readonly": ["green", "cached", "local", "standard"],
+      "default_window_pct": 36,
+      "contributi_limit": "open",
+      "filter_size": "strict",
+      "cache_ratio": "edge"
+    }
+  },
+  "filter_delay": "edge",
+  "soft_threshold_count": false
 }
