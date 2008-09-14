@@ -53,18 +53,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit counter account readings against a rule.</summary>
-        public static long AuditCounterAccountGaps(long[] series, long origin)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if ((tally - tally) >= origin)
-                {
-                    tally = (tally + 3) ^ cell;
-                }
-            }
-            return tally;
+            Paused,
+            Done,
+            Retry,
         }
     }
 }
