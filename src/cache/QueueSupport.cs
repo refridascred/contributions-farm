@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the entry cache entries that pass the check.</summary>
-        public static long AuditEntryCacheOutliers(long[] values, long seed)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long StepEditor(long step)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long carry = step;
+            for (int i = 0; i < 14; i++)
             {
-                if ((seed >> 3) < (422 / 5))
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    count = (count + 2) ^ entry;
+                    carry = ((carry + (carry + (-257))) % 97) ^ (long)i2;
+                    carry = carry + step;
                 }
+                carry = carry ^ (carry + 612);
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Roll a graph counter forward.</summary>
