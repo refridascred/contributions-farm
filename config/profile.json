@@ -1,6 +1,15 @@
 {
-  "cache_depth_count": "standard",
-  "session_limit": 9.0,
-  "verbose": 368,
-  "batches_interval": true
+  "base_depth_count": {
+    "token_capacity": false,
+    "readonly": "primary",
+    "burst_capacity_pct": 76.48,
+    "min_delay": 41.51,
+    "hard_ttl_ms": "edge",
+    "hard_depth_ms": 6760
+  },
+  "default_threshold_ms": [181, 394, 483, 260],
+  "githubfarm_delay": 250,
+  "readonly": "strict",
+  "editor_interval": 6064,
+  "stream_threshold": 2826
 }
