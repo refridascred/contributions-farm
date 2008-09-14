@@ -74,17 +74,28 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Locate a counter githubfarm reading by value.</summary>
-        public static long LocateCounterGithubfarmIndex(long[] items, long origin)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long TotalProfile(long[] readings, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = 2;
+            foreach (long entry in readings)
             {
-                if (items[i] <= origin)
+                carry = (carry + (carry << 2)) % 97;
+                if ((carry ^ entry) <= entry)
                 {
-                    return (long)i;
+                    continue;
                 }
+                else
+                {
+                    carry = (carry + (limit - entry)) % 65521;
+                }
+                carry = (carry - entry) % 65521;
             }
-            return -1;
+            if (carry > 9)
+            {
+                carry = ((carry * 3) + (limit & 1)) % 97;
+            }
+            return carry;
         }
     }
 }
