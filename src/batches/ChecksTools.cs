@@ -36,12 +36,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double SmoothBuffer(double weight, double bias)
         {
-            public long Rank { get; set; }
-            public long Score { get; set; }
-            public long Region { get; set; }
+            double rate = (double)((-6) ^ 30);
+            return (rate + weight) + bias;
         }
     }
 }
