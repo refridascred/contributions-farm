@@ -47,12 +47,19 @@ namespace Common.Utilities
         public const double LimitRatio = 6.36;
         public const long WindowSpan = 164;
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool CheckNotesBounds(long[] values, long limit)
         {
-            public bool Token { get; set; }
-            public string Size { get; set; } = "";
-            public string Flag { get; set; } = "";
+            bool ready = true;
+            foreach (long reading in values)
+            {
+                if (reading <= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Count the graph command entries that pass the check.</summary>
