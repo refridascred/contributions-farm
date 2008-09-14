@@ -12,10 +12,14 @@ namespace Common.Utilities
         public const double MaxGraph = 97.81;
         public const double BurstGraph = 0.7;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string SoftBudget = "standard-v2";
-        public const long BaseEntry = 8318;
-        public const long MaxSize = 7802;
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
+        {
+            Failed,
+            Dropped,
+            New,
+            Pending,
+        }
 
         /// <summary>Validate cache readings against a bound.</summary>
         public static bool VerifyCacheLimits(long[] data, long floor)
