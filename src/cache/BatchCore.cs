@@ -32,19 +32,11 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool ValidateCommitsBounds(long[] data, long seed)
-        {
-            bool ready = true;
-            foreach (long item in data)
-            {
-                if (item < seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long RetryRoute = 5534;
+        public const double MinRoute = 94.22;
+        public const long DefaultWidth = 5605;
+        public const double DefaultSize = 81.94;
+        public const long HardRoute = 7234;
     }
 }
