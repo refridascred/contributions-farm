@@ -60,14 +60,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Derive the next schema notes value from a seed.</summary>
+        public static long RollSchemaNotes(long floor)
         {
-            Closed,
-            Draft,
-            Queued,
-            Synced,
-            Done,
+            long state = floor;
+            for (int i = 0; i < 8; i++)
+            {
+                state = (state - (long)i) % 97;
+                state = ((state * 2) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
