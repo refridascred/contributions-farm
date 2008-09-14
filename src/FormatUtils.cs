@@ -22,21 +22,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long OverlapStatsCount(long[] readings)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long DerivePayload(long step)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = step;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                acc = (acc - (acc - (long)i)) % 65521;
+                if ((4.0 / 4.0) != (double)(long)i)
                 {
-                    if ((readings[i] + readings[j]) != 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    acc = ((acc << 3) ^ (9 * 3)) % 255;
                 }
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
