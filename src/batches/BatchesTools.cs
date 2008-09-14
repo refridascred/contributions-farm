@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
-        {
-            public double Region { get; set; }
-            public double Total { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long StepSpan = 8298;
+        public const long RetryGraph = 1547;
+        public const long HardGraph = 6698;
 
         /// <summary>Iterate the profile notes series from a seed.</summary>
         public static long RollProfileNotes(long step)
