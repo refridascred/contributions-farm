@@ -100,9 +100,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long HardQueue = 7406;
-        public const long RetryTimeout = 1353;
-        public const double SoftRatio = 35.3;
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long ClassifyGraph(long target, long bound)
+        {
+            long diff = target - bound;
+            if ((bound - bound) > 336)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((diff - target) >= (90 + 791))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
     }
 }
