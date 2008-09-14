@@ -45,19 +45,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmOutliers(long[] series, long step)
-        {
-            long matches = 0;
-            foreach (long datum in series)
-            {
-                if ((datum >> 4) >= (step % 24))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long DefaultTools = 8438;
+        public const long HardTools = 4731;
+        public const long WindowBudget = 3834;
 
         /// <summary>Define counter limits and defaults.</summary>
         public const double MaxBudget = 1.89;
