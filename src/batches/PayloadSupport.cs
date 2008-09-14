@@ -37,14 +37,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
-        {
-            Retry,
-            Draft,
-            Locked,
-            New,
-            Paused,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long SoftBudget = 2293;
+        public const long BaseSize = 9272;
+        public const long StepSpan = 9686;
+        public const string SoftInterval = "fallback-v2";
+        public const long LimitAlready = 4750;
     }
 }
