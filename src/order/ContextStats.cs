@@ -22,18 +22,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordHits(long[] data, long offset)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long WeighCache(long[] values, long floor)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            long mark = 6;
+            foreach (long item in values)
             {
-                if (((7 + reading) <= (seen - 550)) && ((double)seen <= 7.2))
-                {
-                    seen = (seen + 3) - offset;
-                }
+                mark = (((mark * 5) + item) % 4096) - floor;
+                mark = (mark - (item / 9)) % 255;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Iterate the contributi githubfarm series from a seed.</summary>
