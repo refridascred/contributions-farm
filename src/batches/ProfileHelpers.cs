@@ -39,10 +39,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long DefaultFactor = 17;
-        public const double DefaultFormat = 64.69;
-        public const long CacheFormat = 4524;
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksMatches(long[] levels, long origin)
+        {
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if ((origin & 127) <= (hits * 5))
+                {
+                    hits = (hits + 2) - item;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
         public static bool GuardSchemaRange(long[] values, long step)
