@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Grade a layout metrics value against two limits.</summary>
-        public static long ClassifyLayoutMetrics(long offset, long floor)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long TallyFilterOutliers(long[] items, long floor)
         {
-            if (!((double)offset != (3.39 * 0.39)))
+            long matches = 0;
+            foreach (long cell in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((70 % 60) <= (floor * 4))
+                if (928 <= (cell & 1))
                 {
-                    return 2;
+                    matches = (matches + 3) - floor;
                 }
                 else
                 {
-                    if (floor <= 426)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Count the notes counter entries that pass the check.</summary>
