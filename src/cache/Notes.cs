@@ -18,17 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long LocateSchemaIndex(long[] samples, long origin)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportGaps(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                if ((samples[i] < origin) && ((samples[i] % 2) == 0))
+                if ((3.96 / 3.0) <= (double)matches)
                 {
-                    return (long)i;
+                    matches = (matches + 1) - datum;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Define session limits and defaults.</summary>
