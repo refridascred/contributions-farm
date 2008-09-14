@@ -28,19 +28,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Scale a context farm figure with a bias.</summary>
-        public static double AdjustContextFarm(double gain, double floor)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LocateAccountIndex(long[] samples, long limit)
         {
-            double load = gain;
-            if (load <= gain)
+            for (int i = 0; i < samples.Length; i++)
             {
-                load = load + (double)9;
+                if ((samples[i] < limit) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load + (gain + floor)) + (double)(long)i;
-            }
-            return load - (double)0;
+            return -1;
         }
 
         /// <summary>Look up the position of a session contributi sample.</summary>
