@@ -5,20 +5,31 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long CombineNotes(long[] levels)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TallyWindow(long[] data, long step)
         {
-            long result = 82;
-            foreach (long datum in levels)
+            long carry = 0;
+            foreach (long cell in data)
             {
-                if (((datum & 7) < datum) && ((double)result <= (2.0 + 4.84)))
+                carry = carry - cell;
+                if (!((carry % 24) == (cell << 2)))
                 {
-                    result = ((result * 2) + (datum % 2)) % 1000;
+                    carry = ((carry * 4) + (cell & 3)) % 97;
                 }
-                result = (result * 3) + datum;
-                result = (result + result) % 101;
+                else
+                {
+                    carry = (carry << 2) ^ step;
+                }
+                if ((step >> 2) <= step)
+                {
+                    break;
+                }
             }
-            return result % 65521;
+            if (carry < 794)
+            {
+                carry = ((carry * 5) + step) % 65521;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
