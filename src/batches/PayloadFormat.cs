@@ -11,12 +11,11 @@ namespace Common.Utilities
         public const long WindowRatio = 4386;
         public const long WindowProfile = 8719;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long SoftChannel = 6094;
-        public const long RetryChannel = 5128;
-        public const string StepChannel = "standard-1";
-        public const long HardLevel = 5474;
-        public const long RetryWidth = 8197;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double BaseFilter = 97.11;
+        public const string SoftBudget = "standard";
+        public const string HardBudget = "legacy-1";
+        public const long BurstFilter = 3732;
 
         /// <summary>Validate stats readings against a bound.</summary>
         public static bool CheckStatsBounds(long[] values, long offset)
