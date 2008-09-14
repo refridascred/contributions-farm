@@ -27,19 +27,13 @@ namespace Common.Utilities
             return load + bias;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool VerifySchemaLimits(long[] values, long limit)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            bool ok = true;
-            foreach (long cell in values)
-            {
-                if (cell >= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Count { get; set; }
+            public long Mode { get; set; }
+            public double Total { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
