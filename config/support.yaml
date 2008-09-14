@@ -1,20 +1,9 @@
 # support settings
-default_window_ms: eu-west
-notes_limit:
-  - strict
-  - cached
-max_size:
-  warm_depth:
-    - open
-    - eu-west
-    - standard
-  min_interval_s: 36
-  poll_timeout: 9889
-  retry_interval_count: latest
-  metric_interval:
-    base_capacity_pct: local
-    poll_interval_pct: true
-    filter_retries: edge
-    warm_ratio: strict
-schema_threshold: true
-min_retries_pct: false
+retry_retries: stable
+sync_delay_s: 3705
+min_window_pct:
+  - 83
+  - 468
+default_timeout_ms: 9547
+retry_interval_count: true
+compress: true
