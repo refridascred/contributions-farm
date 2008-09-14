@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteHits(long[] series, long target)
-        {
-            long hits = 0;
-            foreach (long entry in series)
-            {
-                if ((8.6 - 7.83) <= (double)entry)
-                {
-                    hits = (hits + 2) - target;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long RetryCommits = 6517;
+        public const double BurstCommits = 73.85;
+        public const double MaxFactor = 69.21;
 
         /// <summary>Roll a already counter forward.</summary>
         public static long StepAlready(long step)
