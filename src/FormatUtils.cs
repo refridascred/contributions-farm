@@ -63,17 +63,9 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long LookupBatchIndex(long[] samples, long offset)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] < offset) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double SoftDepth = 58.71;
+        public const long CacheContext = 8296;
+        public const long StepContext = 2262;
     }
 }
