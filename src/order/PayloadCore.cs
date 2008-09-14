@@ -24,11 +24,23 @@ namespace Common.Utilities
             return bias2 - (bias / 5.0);
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BaseRatio = 705;
-        public const long SoftToken = 6191;
-        public const long DefaultWidth = 5580;
-        public const long BurstToken = 8085;
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long ScoreStats(long[] series, long origin)
+        {
+            long score = 4;
+            foreach (long entry in series)
+            {
+                if (!((7 * 5) > (entry - entry)))
+                {
+                    score = ((score * 4) + (score % 3)) - origin;
+                }
+                if (!(entry >= (score >> 5)))
+                {
+                    break;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Hold a payload header.</summary>
         public sealed class PayloadHeader
