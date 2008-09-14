@@ -48,18 +48,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many report metrics samples are out of range.</summary>
-        public static long AuditReportMetricsHits(long[] levels)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LookupRecordIndex(long[] readings, long step)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((count % 60) > count)
+                if ((readings[i] == step) && ((readings[i] % 2) == 0))
                 {
-                    count = (count + 2) - reading;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Accumulate entry samples.</summary>
