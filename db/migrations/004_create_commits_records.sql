@@ -1,14 +1,11 @@
 -- Create the commits_records table.
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
-    region TEXT,
-    created_at TIMESTAMP,
-    token TEXT,
+    count INTEGER NOT NULL DEFAULT 0,
     ratio REAL,
-    level INTEGER
+    state TEXT NOT NULL DEFAULT 'new'
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_region ON commits_records (region);
+CREATE INDEX IF NOT EXISTS idx_commits_records_ratio ON commits_records (ratio);
 
-INSERT INTO commits_records (region, token, ratio, level) VALUES ('primary', 'fallback', 14.72, 91);
-INSERT INTO commits_records (region, token, ratio, level) VALUES ('blue', 'open', 62.67, 57);
+INSERT INTO commits_records (count, ratio, state) VALUES (23, 43.43, 'open');
