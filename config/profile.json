@@ -1,16 +1,13 @@
 {
-  "window_depth": {
-    "compress": 46,
-    "soft_interval": 100,
-    "max_size": "cached",
-    "strict": 39.42
+  "cache_limit_s": 1024,
+  "max_retries": {
+    "min_timeout_ms": 30,
+    "warm_limit_pct": 58.01,
+    "retry_window_pct": 23.0,
+    "sync_threshold": 55,
+    "hard_capacity_pct": ["cached", "standard", "latest", "primary"]
   },
-  "burst_threshold_pct": "standard",
-  "burst_ratio_pct": {
-    "min_timeout_s": 62.3,
-    "soft_depth_count": 4.34,
-    "support_window": false
-  },
-  "base_threshold": 28.77,
-  "compress": "open"
+  "default_threshold": 56.26,
+  "notes_interval": "local",
+  "strict": 77.64
 }
