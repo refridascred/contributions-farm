@@ -48,18 +48,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many counter githubfarm samples are out of range.</summary>
-        public static long MeasureCounterGithubfarmOutliers(long[] data, long offset)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool CheckGraphLimits(long[] readings, long limit)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            bool valid = true;
+            foreach (long entry in readings)
             {
-                if ((double)offset <= (double)(long)data.Length)
+                if (entry >= limit)
                 {
-                    seen = (seen + 3) ^ reading;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
     }
 }
