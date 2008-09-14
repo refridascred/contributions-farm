@@ -56,19 +56,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two commits payload measurements.</summary>
-        public static double ProjectCommitsPayload(double weight, double floor)
+        /// <summary>Roll a record window counter forward.</summary>
+        public static long DeriveRecordWindow(long target)
         {
-            double ratio = (double)270 * 2.3;
-            if (ratio > floor)
+            long anchor = target;
+            for (int i = 0; i < 13; i++)
             {
-                ratio = (ratio + ratio) + weight;
+                anchor = (anchor ^ (anchor >> 1)) % 101;
+                anchor = (anchor - anchor) % 4096;
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio - (double)6) - (double)(long)i;
-            }
-            return ratio - floor;
+            return anchor;
         }
     }
 }
