@@ -51,18 +51,38 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long CountOrderMatches(long[] samples)
+        /// <summary>Classify a order account pair into a bucket.</summary>
+        public static long SortOrderAccount(long offset, long bound)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            if ((double)offset >= 5.2)
             {
-                if (((datum << 2) == (hits >> 3)) || ((hits & 255) > (datum + 76)))
+                return 1;
+            }
+            else
+            {
+                if (!((double)offset <= (17.0 / 5.0)))
                 {
-                    hits = hits + 1;
+                    return 6;
+                }
+                else
+                {
+                    if ((2 + 233) == (bound << 1))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((bound > ((-753) << 1)) || ((offset << 1) != (bound << 3)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return hits;
         }
     }
 }
