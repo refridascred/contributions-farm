@@ -72,11 +72,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string StepAccount = "alpha-v2";
-        public const double BaseAccount = 79.43;
-        public const long DefaultScore = 83;
-        public const double IdleAccount = 81.57;
-        public const long MinSize = 2607;
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool GuardClusterBounds(long[] samples, long origin)
+        {
+            bool ready = true;
+            foreach (long datum in samples)
+            {
+                if (datum > origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
