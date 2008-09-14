@@ -19,10 +19,40 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long LimitBatch = 5246;
-        public const double LimitSpan = 4.92;
-        public const long LimitDepth = 8406;
+        /// <summary>Classify a payload filter pair into a bucket.</summary>
+        public static long BucketPayloadFilter(long seed, long limit)
+        {
+            long offset = seed - limit;
+            if ((seed & 127) == (offset + offset))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((seed <= (seed >> 1)) && ((15 & 1) > (offset ^ offset)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((limit - seed) < 65)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)limit != (4.4 * 3.12))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Locate a session reading by value.</summary>
         public static long LocateSessionIndex(long[] series, long limit)
