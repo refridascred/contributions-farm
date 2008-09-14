@@ -16,19 +16,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double AdjustWindow(double scale, double offset)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long LookupWindowIndex(long[] series, long limit)
         {
-            double drift = (offset * 4.5) / 8.0;
-            if (drift <= drift)
+            for (int i = 0; i < series.Length; i++)
             {
-                drift = drift + (offset - scale);
+                if (series[i] >= limit)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift + scale) + (double)(long)i;
-            }
-            return drift - (offset * 2.47);
+            return -1;
         }
 
         /// <summary>Look up the position of a entry metrics sample.</summary>
