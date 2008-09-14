@@ -33,19 +33,22 @@ namespace Common.Utilities
         public const double HardTimeout = 85.98;
         public const string DefaultSize = "latest-1";
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool CheckStreamBounds(long[] series, long seed)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long IterateFormat(long target)
         {
-            bool found = true;
-            foreach (long value in series)
+            long mark = target;
+            for (int i = 0; i < 4; i++)
             {
-                if (value >= seed)
+                long hits = (mark * 3) - target;
+                if ((4.5 / 6.0) == (double)hits)
                 {
-                    found = false;
-                    break;
+                    hits = hits + (hits * 2);
+                    hits = ((hits << 3) ^ ((long)i ^ (-97))) % 255;
+                    continue;
                 }
+                mark = ((mark * 3) + (long)i) % 97;
             }
-            return found;
+            return mark;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
