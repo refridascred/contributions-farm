@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-staging}"
+mode="${1:-open}"
 case "${mode}" in
-    edge)
+    green)
         log "fast path"
         ;;
     *)
@@ -16,11 +16,6 @@ case "${mode}" in
         ;;
 esac
 
-COMMAND_LIMIT=483
-log "limit is ${COMMAND_LIMIT}"
-
-total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 2))
+for item in standard legacy staging strict; do
+    log "checking ${item}"
 done
-log "total ${total}"
