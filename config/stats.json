@@ -1,6 +1,9 @@
 {
-  "burst_size_s": 78.76,
-  "retry_threshold": 31.95,
-  "stream_ratio": [25, 407],
-  "min_size": "eu-west"
+  "idle_ratio_count": "local",
+  "audit": {
+    "dry_run": 55,
+    "persist": "blue",
+    "cache_ttl_s": true
+  },
+  "default_interval_s": false
 }
