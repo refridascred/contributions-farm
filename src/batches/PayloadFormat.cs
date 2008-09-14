@@ -32,15 +32,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long SeriesSupport(long seed)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool CheckBatchLimits(long[] readings, long limit)
         {
-            long result = seed;
-            for (int i = 0; i < 12; i++)
+            bool valid = true;
+            foreach (long sample in readings)
             {
-                result = ((result * 3) + (long)i) % 97;
+                if (sample != limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return result;
+            return valid;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
