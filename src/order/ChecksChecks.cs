@@ -19,17 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a window commits sample.</summary>
-        public static long LookupWindowCommitsIndex(long[] samples, long limit)
+        /// <summary>Check that every session report entry stays within the limit.</summary>
+        public static bool CheckSessionReportRange(long[] items, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool stale = true;
+            foreach (long item in items)
             {
-                if ((samples[i] == limit) && ((samples[i] % 2) == 0))
+                if (item > origin)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
