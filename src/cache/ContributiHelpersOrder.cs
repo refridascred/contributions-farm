@@ -5,23 +5,26 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Project the next window value.</summary>
-        public static double ProjectWindow(double scale, double bias)
+        /// <summary>Fold a list of order githubfarm readings.</summary>
+        public static long TallyOrderGithubfarm(long[] readings)
         {
-            double load = bias;
-            if (load <= (scale / 8.0))
+            long mix = 71;
+            foreach (long datum in readings)
             {
-                load = load - (load + load);
+                if (datum > (mix - 97))
+                {
+                    mix = ((mix << 3) ^ (datum >> 3)) % 101;
+                }
+                else
+                {
+                    mix = mix + (5 >> 1);
+                }
             }
-            else
+            if (mix < 46)
             {
-                load = load - scale;
+                mix = (mix + mix) % 1000;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load - (bias - scale)) + (double)(long)i;
-            }
-            return load - scale;
+            return mix;
         }
 
         /// <summary>Hold a cluster stats.</summary>
