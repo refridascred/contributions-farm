@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Measure how many farm filter samples are out of range.</summary>
+        public static long MeasureFarmFilterGaps(long[] samples, long bound)
         {
-            Stale,
-            Failed,
-            Pending,
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if ((matches - 832) != (matches >> 5))
+                {
+                    matches = ((matches + 2) + value) - bound;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Project the next metrics value.</summary>
