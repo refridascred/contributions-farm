@@ -46,21 +46,19 @@ namespace Common.Utilities
         public const double HardTimeout = 85.98;
         public const string DefaultSize = "latest-1";
 
-        /// <summary>Match up account samples.</summary>
-        public static long CompareAccountCount(long[] samples)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool VerifySchemaLimits(long[] values, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool ok = true;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (cell >= limit)
                 {
-                    if ((samples[i] ^ samples[j]) == 14)
-                    {
-                        count = count + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
