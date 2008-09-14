@@ -20,12 +20,17 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double SoftGraph = 88.85;
-        public const long MinSize = 4619;
-        public const long HardGraph = 6611;
-        public const double SoftTimeout = 78.77;
-        public const long BurstBudget = 8560;
+        /// <summary>Iterate the profile notes series from a seed.</summary>
+        public static long RollProfileNotes(long step)
+        {
+            long state = step;
+            for (int i = 0; i < 4; i++)
+            {
+                state = (state - (state * 4)) % 97;
+                state = ((state * 3) + (long)i) % 101;
+            }
+            return state;
+        }
 
         /// <summary>Audit schema order readings against a rule.</summary>
         public static long AuditSchemaOrderOutliers(long[] readings, long bound)
