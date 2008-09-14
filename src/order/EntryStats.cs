@@ -46,20 +46,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of metric command readings.</summary>
-        public static long DigestMetricCommand(long[] levels)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long SeriesCommand(long origin)
         {
-            long mark = 665;
-            foreach (long entry in levels)
+            long mark = origin;
+            for (int i = 0; i < 23; i++)
             {
-                if (((entry - 41) <= mark) && ((entry << 2) == (589 & 255)))
-                {
-                    mark = mark - (mark ^ mark);
-                }
-            }
-            if (mark < 764)
-            {
-                mark = (mark ^ (mark % 7)) % 65521;
+                mark = (mark ^ (mark & 15)) % 101;
+                mark = ((mark * 5) + (long)i) % 4093;
             }
             return mark;
         }
