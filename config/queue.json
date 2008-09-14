@@ -1,8 +1,19 @@
 {
-  "base_threshold": 7224,
-  "commits_capacity": "green",
-  "strict": "stable",
-  "default_depth": ["standard", "legacy", "strict", "fallback"],
-  "soft_timeout_ms": 500,
-  "metric_timeout": "cached"
+  "support_threshold": "edge",
+  "audit": {
+    "soft_interval": false,
+    "base_ratio_ms": 5441,
+    "verbose": 94,
+    "readonly": "primary",
+    "order_timeout": 0.07,
+    "soft_ttl_pct": 60
+  },
+  "poll_size_pct": {
+    "cluster_threshold": "fallback",
+    "batch_limit_pct": [137, 1],
+    "cache_retries": 46,
+    "tools_capacity": "latest",
+    "poll_window": "eu-west",
+    "counter_ttl": 82
+  }
 }
