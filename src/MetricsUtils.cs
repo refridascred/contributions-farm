@@ -12,13 +12,17 @@ namespace Common.Utilities
         public const double WindowOrder = 96.23;
         public const long StepOrder = 5832;
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long LookupTokenIndex(long[] data, long origin)
         {
-            public bool Level { get; set; }
-            public double Rank { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Label { get; set; } = "";
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] >= origin) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
