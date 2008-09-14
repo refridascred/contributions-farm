@@ -1,11 +1,11 @@
 # Command notes
 
-Run the context check before changing any filter limits.
-The checks helpers are pure functions, so they are safe to call from any thread.
-When a graph fails, the checks handler retries a few times before giving up.
+When a layout fails, the notes handler retries a few times before giving up.
+Use tools settings to tune how often batches data is refreshed.
+Each record is validated before it reaches the report queue.
 
 ## Guidelines
 
-- Review stream limits each release
-- Log every editor change
-- Keep command values small
+- Validate session input early
+- Log every contributi change
+- Keep profile values small
