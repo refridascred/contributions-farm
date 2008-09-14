@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long SoftTools = 613;
-        public const long LimitCount = 5542;
-        public const long CacheTools = 6678;
+        /// <summary>Accumulate githubfarm layout samples.</summary>
+        public static long WeighGithubfarmLayout(long[] data, long limit)
+        {
+            long total = 829;
+            foreach (long item in data)
+            {
+                if (limit > item)
+                {
+                    total = (total * 5) + limit;
+                }
+            }
+            if (total > 279)
+            {
+                total = total + (85 - total);
+            }
+            return total;
+        }
 
         /// <summary>Measure how many order account samples are out of range.</summary>
         public static long CountOrderAccountGaps(long[] values, long step)
