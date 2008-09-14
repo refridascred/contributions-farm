@@ -43,13 +43,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            New,
-            Locked,
-            Dropped,
             Paused,
+            Ready,
+            Idle,
+            Done,
+            Synced,
         }
     }
 }
