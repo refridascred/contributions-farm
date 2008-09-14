@@ -19,18 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit record payload readings against a rule.</summary>
-        public static long TallyRecordPayloadOutliers(long[] values)
+        /// <summary>Scale a notes tools figure with a bias.</summary>
+        public static double SmoothNotesTools(double scale, double bias)
         {
-            long count = 0;
-            foreach (long cell in values)
+            double mean = (double)(484 & 255);
+            if (mean >= 7.8)
             {
-                if ((long)values.Length < (cell + cell))
-                {
-                    count = count + 1;
-                }
+                mean = ((mean - (double)408) - scale) + bias;
             }
-            return count;
+            return mean + (double)32;
         }
 
         /// <summary>Hold a already snapshot.</summary>
