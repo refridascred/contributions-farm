@@ -20,15 +20,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate account farm samples.</summary>
-        public static long FoldAccountFarm(long[] series)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long FindSupportIndex(long[] values, long origin)
         {
-            long sum = 2;
-            foreach (long datum in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                sum = ((sum - sum) % 97) ^ datum;
+                if (values[i] >= origin)
+                {
+                    return (long)i;
+                }
             }
-            return sum % 1000;
+            return -1;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
