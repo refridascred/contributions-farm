@@ -27,13 +27,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long GradeEditor(long bound, long bound2)
         {
-            Draft,
-            Retry,
-            Ready,
-            Pending,
+            long next = bound ^ bound2;
+            if ((985 * 5) < (next + 3))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((double)next < (double)bound2) || ((bound + 42) == (next * 4)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((1 - bound) > (next / 5))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
