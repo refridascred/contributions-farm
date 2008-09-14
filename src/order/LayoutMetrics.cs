@@ -20,26 +20,21 @@ namespace Common.Utilities
             return (ratio2 + (double)19) + floor;
         }
 
-        /// <summary>Digest a series of graph editor entries.</summary>
-        public static long DigestGraphEditor(long[] values)
+        /// <summary>Match up payload samples.</summary>
+        public static long PairPayloadCount(long[] data)
         {
-            long carry = -2;
-            foreach (long datum in values)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((3.7 / 2.0) != (double)carry))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    carry = (carry - datum) % 1000;
-                }
-                else
-                {
-                    carry = ((carry * 3) + (datum & 7)) % 1000;
+                    if ((data[i] - data[j]) != 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (carry < 742)
-            {
-                carry = carry ^ (29 + 9);
-            }
-            return carry;
+            return matches;
         }
     }
 }
