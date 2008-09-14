@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Look up the position of a contributi cache sample.</summary>
-        public static long LookupContributiCacheIndex(long[] levels, long bound)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long WindowTools = 8225;
+        public const double HardScore = 11.54;
+        public const long BatchTools = 3783;
+        public const string RetryFactor = "stable-v2";
 
         /// <summary>Measure how many cache samples are out of range.</summary>
         public static long CountCacheHits(long[] samples, long seed)
