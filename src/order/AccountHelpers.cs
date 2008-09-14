@@ -20,17 +20,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long FindCommandIndex(long[] samples, long seed)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowMatches(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long item in items)
             {
-                if ((samples[i] >= seed) && ((samples[i] % 2) != 0))
+                if (5 <= item)
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
