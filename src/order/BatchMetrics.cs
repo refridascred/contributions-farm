@@ -80,15 +80,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long WeighFormat(long[] data)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            long state = 586;
-            foreach (long item in data)
-            {
-                state = state + (item ^ state);
-            }
-            return state;
+            Failed,
+            Locked,
+            Ready,
+            Active,
+            Stale,
         }
     }
 }
