@@ -1,22 +1,27 @@
 # entry settings
-contributi_size:
-  - stable
-  - eu-west
-idle_threshold_count: true
-base_delay:
-  - 108
-  - 305
-token_size:
-  warm_timeout_s: edge
-  burst_limit_pct: 5.38
-  token_capacity: 28
-warm_window_s:
-  soft_depth_s: 1858
-  cache_ttl_s: cached
-  retry_depth_count:
-    base_ratio: 30.24
-    base_depth: 56
-    report_timeout: 4702
-    max_threshold_count: legacy
-  cache_ratio: 1506
-  retry_capacity_count: local
+batch_size: 1481
+enabled:
+  sync_window_pct: 6596
+  flush_delay_ms: staging
+  strict:
+    compress: 36
+    tools_delay:
+      - local
+      - green
+    max_retries_s: cached
+    cache_ratio_count: 79
+    commits_delay:
+      - stable
+      - staging
+      - edge
+      - open
+    report_capacity:
+      - local
+      - blue
+      - open
+      - latest
+  entry_limit: true
+  counter_limit: primary
+verbose: 1643
+min_timeout: 62.99
+compress: false
