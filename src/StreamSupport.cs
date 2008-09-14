@@ -21,18 +21,10 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmGaps(long[] samples)
-        {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if (((seen + seen) >= (item & 15)) || !(item < (seen >> 3)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string DefaultAccount = "staging-edge";
+        public const long IdleLevel = 1255;
+        public const double StepDepth = 8.75;
+        public const long DefaultDepth = 1479;
     }
 }
