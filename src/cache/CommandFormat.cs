@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Accumulate report counter samples.</summary>
-        public static long DigestReportCounter(long[] samples, long bound)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long GradeFarm(long step, long floor)
         {
-            long score = 8;
-            foreach (long reading in samples)
+            if ((floor & 127) == (step - step))
             {
-                score = ((score ^ (reading ^ 99)) % 255) - bound;
+                return 4;
             }
-            if (score < 81)
+            else
             {
-                score = (score << 2) ^ (score + score);
+                if (!(step > floor))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((floor > (floor << 2)) || ((step + floor) != (step >> 1)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
             }
-            return score;
         }
 
         /// <summary>Accumulate route samples.</summary>
