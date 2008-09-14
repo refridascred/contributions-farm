@@ -20,16 +20,19 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Derive the next counter channel value from a seed.</summary>
-        public static long RollCounterChannel(long bound)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool CheckCacheRange(long[] values, long step)
         {
-            long carry = bound;
-            for (int i = 0; i < 7; i++)
+            bool valid = true;
+            foreach (long sample in values)
             {
-                carry = ((carry << 2) ^ (carry ^ carry)) % 97;
-                carry = ((carry * 2) + (long)i) % 4093;
+                if (sample >= step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return carry;
+            return valid;
         }
 
         /// <summary>Measure how many farm commits samples are out of range.</summary>
