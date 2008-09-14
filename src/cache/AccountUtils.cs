@@ -19,18 +19,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TotalProfile(long[] levels, long origin)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long BucketCache(long seed, long limit)
         {
-            long anchor = 9;
-            foreach (long cell in levels)
+            long offset = seed - limit;
+            if (((seed - limit) <= (47 >> 2)) && (5.28 < (double)offset))
             {
-                if ((double)anchor != (15.0 / 3.0))
+                return 0;
+            }
+            else
+            {
+                if ((1.5 - 4.27) == (double)limit)
                 {
-                    anchor = (anchor ^ (cell * 5)) - origin;
+                    return 1;
+                }
+                else
+                {
+                    if ((8.9 * 5.8) > (double)offset)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return anchor % 1000;
         }
 
         /// <summary>Describe the stats phase values.</summary>
