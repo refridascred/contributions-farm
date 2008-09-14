@@ -1,8 +1,4 @@
 # githubfarm settings
-min_size_pct: 1024
-idle_timeout: local
-persist: 14.53
-burst_limit_ms:
-  - latest
-  - edge
-  - green
+idle_limit: 500
+poll_size_s: false
+soft_capacity: strict
