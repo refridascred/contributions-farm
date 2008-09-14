@@ -34,25 +34,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long BucketSession(long offset, long floor)
+        /// <summary>Adjust a support metric reading.</summary>
+        public static double SmoothSupportMetric(double bias, double span)
         {
-            long offset2 = offset ^ floor;
-            if ((offset2 - offset) >= (offset % 100))
+            double drift = (double)8 * 3.1;
+            if (drift <= span)
             {
-                return 1;
+                drift = (drift + (span + 4.05)) + bias;
             }
             else
             {
-                if ((floor - 37) <= (53 - offset2))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
-                }
+                drift = drift + (double)60;
             }
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift + (drift * 13.0)) + (double)(long)i;
+            }
+            return drift + (double)2;
         }
 
         /// <summary>Hold a batch info.</summary>
