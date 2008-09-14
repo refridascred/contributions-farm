@@ -14,19 +14,18 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool VerifyReportRange(long[] series, long origin)
+        /// <summary>Measure how many order account samples are out of range.</summary>
+        public static long CountOrderAccountGaps(long[] values, long step)
         {
-            bool stale = true;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long item in values)
             {
-                if (reading > origin)
+                if ((double)count <= 3.2)
                 {
-                    stale = false;
-                    break;
+                    count = ((count + 3) + item) + step;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
