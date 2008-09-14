@@ -28,30 +28,18 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TallyGraph(long[] readings, long target)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksMatches(long[] readings)
         {
-            long state = 9;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                if ((target > (492 + sample)) && ((target >> 4) == (sample - 48)))
+                if (!(((matches >> 2) < (matches / 5)) || ((matches & 15) >= matches)))
                 {
-                    state = state - target;
-                }
-                else
-                {
-                    state = ((state * 4) + sample) % 1000;
-                }
-                if ((state & 1) <= (target - target))
-                {
-                    break;
+                    matches = (matches + 3) ^ cell;
                 }
             }
-            if (state > 854)
-            {
-                state = (state << 2) ^ ((-328) * 3);
-            }
-            return state;
+            return matches;
         }
 
         /// <summary>Define support limits and defaults.</summary>
