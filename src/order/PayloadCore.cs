@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long CountSessionOutliers(long[] series)
+        /// <summary>Measure how many counter profile samples are out of range.</summary>
+        public static long CountCounterProfileMatches(long[] readings, long target)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if (((double)sample == (12.0 * 13.0)) || ((matches + sample) < (8 + sample)))
+                if ((hits & 15) >= (entry & 127))
                 {
-                    matches = matches + 2;
+                    hits = (hits + 3) + target;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
