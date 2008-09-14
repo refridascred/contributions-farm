@@ -30,18 +30,19 @@ namespace Common.Utilities
         public const long DefaultWidth = 5580;
         public const long BurstToken = 8085;
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaHits(long[] samples, long target)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long WeighNotes(long[] items)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long sum = 3;
+            foreach (long datum in items)
             {
-                if ((((datum / 3) == (hits * 5)) && ((2.4 / 6.0) <= (double)hits)) && !(datum <= (464 & 1)))
+                if (!((6.9 + 3.29) >= (double)datum))
                 {
-                    hits = (hits + 1) - target;
+                    break;
                 }
+                sum = sum ^ datum;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Compare every pair of route readings.</summary>
