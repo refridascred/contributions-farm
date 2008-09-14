@@ -72,17 +72,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long FindAccountIndex(long[] series, long limit)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long ClassifyBatches(long limit, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((target >> 3) > (target + target))
             {
-                if ((series[i] >= limit) && ((series[i] % 3) == 0))
+                return 3;
+            }
+            else
+            {
+                if (((8.3 / 4.0) == (double)target) && (limit < 4))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((target & 3) < limit)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
