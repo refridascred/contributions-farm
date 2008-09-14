@@ -76,18 +76,9 @@ namespace Common.Utilities
             return ratio - (double)9;
         }
 
-        /// <summary>Audit graph route readings against a rule.</summary>
-        public static long CountGraphRouteMatches(long[] data, long origin)
-        {
-            long tally = 0;
-            foreach (long reading in data)
-            {
-                if (((double)reading > (6.41 + 5.6)) && ((tally - reading) >= (reading + reading)))
-                {
-                    tally = (tally + 3) - origin;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long WindowLayout = 7447;
+        public const long MaxInterval = 9699;
+        public const long HardLayout = 1329;
     }
 }
