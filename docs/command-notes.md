@@ -1,14 +1,15 @@
 # Command notes
 
-A entry that stays idle for too long is moved to the checks list.
-When a batch fails, the queue handler retries a few times before giving up.
+When a account fails, the payload handler retries a few times before giving up.
+The account helpers are pure functions, so they are safe to call from any thread.
+The batch module keeps batches values in sync with the graph cache.
 
-Keep filter and token names short and lowercase.
-Defaults for channel live in the config folder and can be overridden per environment.
-Run the graph check before changing any command limits.
+The record module keeps entry values in sync with the cache cache.
+A stats that stays idle for too long is moved to the window list.
+Use report settings to tune how often buffer data is refreshed.
 
 ## Guidelines
 
-- Document new counter fields
-- Validate batch input early
-- Prefer session defaults
+- Review filter limits each release
+- Prefer contributi defaults
+- Log every githubfarm change
