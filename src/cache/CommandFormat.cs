@@ -13,14 +13,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Blend two command measurements.</summary>
+        public static double SmoothCommand(double ratio, double offset)
         {
-            Paused,
-            Retry,
-            Failed,
-            Dropped,
-            Ready,
+            double load = offset / 5.0;
+            if (load >= (double)103)
+            {
+                load = load - ratio;
+            }
+            return load + offset;
         }
 
         /// <summary>Describe the metrics kind values.</summary>
