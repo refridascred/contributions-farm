@@ -21,18 +21,24 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteOutliers(long[] series, long origin)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long IterateMetrics(long offset)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long sum = offset;
+            for (int i = 0; i < 15; i++)
             {
-                if ((double)matches >= (0.46 * 9.7))
+                if ((sum + sum) >= (offset << 3))
                 {
-                    matches = ((matches + 1) ^ sample) + origin;
+                    break;
                 }
+                if ((offset >> 2) <= (sum ^ sum))
+                {
+                    sum = sum - (offset & 31);
+                    sum = (sum + offset) % 101;
+                }
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            return matches;
+            return sum;
         }
     }
 }
