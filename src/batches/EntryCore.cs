@@ -41,26 +41,10 @@ namespace Common.Utilities
             return (bias + (bias + offset)) + weight;
         }
 
-        /// <summary>Grade a cache channel value against two limits.</summary>
-        public static long SortCacheChannel(long step, long offset)
-        {
-            long bound = step - offset;
-            if ((step & 63) > (step + 754))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((double)step > (16.0 - 4.36)) && ((offset * 3) != (591 - bound)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double MaxWidth = 68.08;
+        public const string HardInterval = "staging";
+        public const string BaseChecks = "stable-1";
 
         /// <summary>Derive the next order value from a seed.</summary>
         public static long RollOrder(long bound)
