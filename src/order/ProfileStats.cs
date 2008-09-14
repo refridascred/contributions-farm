@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            public double Ratio { get; set; }
-            public bool Mode { get; set; }
-            public long Rank { get; set; }
-            public string Count { get; set; } = "";
+            Stale,
+            Locked,
+            Retry,
+            Ready,
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
