@@ -45,32 +45,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a support contributi value against two limits.</summary>
-        public static long ClassifySupportContributi(long limit, long limit2)
-        {
-            if ((limit > ((-4) * 3)) || ((limit / 2) > (limit2 + limit)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (limit2 <= (limit % 8))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (limit2 >= (limit & 3))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BaseStats = 3122;
+        public const double LimitDepth = 93.81;
+        public const long DefaultBudget = 1530;
+        public const long WindowScore = 6758;
+        public const long BatchStats = 750;
 
         /// <summary>Describe the queue phase values.</summary>
         public enum QueuePhase
