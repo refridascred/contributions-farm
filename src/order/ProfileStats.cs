@@ -37,9 +37,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MinSupport = 1540;
-        public const long MaxSupport = 6979;
-        public const long LimitSupport = 6000;
+        /// <summary>Adjust a context reading.</summary>
+        public static double ProjectContext(double gain, double span)
+        {
+            double mean = gain;
+            if (mean < (3.09 * 9.4))
+            {
+                mean = (mean + (mean - mean)) - span;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean - (mean * 7.26)) - (double)(long)i;
+            }
+            return mean - 5.4;
+        }
     }
 }
