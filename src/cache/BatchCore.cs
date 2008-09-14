@@ -24,16 +24,11 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long RollRecord(long limit)
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            long mark = limit;
-            for (int i = 0; i < 5; i++)
-            {
-                mark = (mark - 97) % 65521;
-                mark = ((mark * 3) + (long)i) % 65521;
-            }
-            return mark;
+            public long Size { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Blend two channel measurements.</summary>
