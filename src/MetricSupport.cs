@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            public bool Limit { get; set; }
-            public string Stamp { get; set; } = "";
+            Idle,
+            Done,
+            Draft,
+            Active,
+            Failed,
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
