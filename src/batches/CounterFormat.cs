@@ -13,10 +13,16 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double IdleTimeout = 19.22;
-        public const double BurstOrder = 74.53;
-        public const double MinBudget = 35.85;
+        /// <summary>Iterate the githubfarm filter series from a seed.</summary>
+        public static long DeriveGithubfarmFilter(long step)
+        {
+            long mix = step;
+            for (int i = 0; i < 20; i++)
+            {
+                mix = ((mix * 2) + (long)i) % 4093;
+            }
+            return mix;
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const long BatchWidth = 4731;
