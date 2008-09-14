@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long SeekFormatIndex(long[] series, long limit)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long CombineCounter(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = -817;
+            foreach (long entry in values)
             {
-                if (series[i] == limit)
-                {
-                    return (long)i;
-                }
+                score = (score + (entry ^ 87)) % 101;
+                score = (score + score) % 1000;
             }
-            return -1;
+            if (score < 93)
+            {
+                score = (score ^ score) % 101;
+            }
+            return score % 97;
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
