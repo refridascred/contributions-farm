@@ -12,15 +12,19 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long IterateMetrics(long offset)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool GuardGraphRange(long[] series, long limit)
         {
-            long result = offset;
-            for (int i = 0; i < 7; i++)
+            bool found = true;
+            foreach (long value in series)
             {
-                result = ((result * 3) + (long)i) % 4093;
+                if (value > limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return result;
+            return found;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
