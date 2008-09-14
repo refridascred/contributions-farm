@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            Done,
-            Dropped,
-            Idle,
+            public double Score { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Total { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
