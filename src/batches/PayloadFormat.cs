@@ -32,13 +32,35 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Fold a list of token queue readings.</summary>
+        public static long CombineTokenQueue(long[] data, long limit)
         {
-            Done,
-            Synced,
-            Queued,
-            Locked,
+            long carry = 0;
+            foreach (long value in data)
+            {
+                if ((24 + limit) <= (value * 2))
+                {
+                    carry = (carry + value) % 4096;
+                }
+                else
+                {
+                    long next = carry;
+                    carry = (carry - (next - limit)) % 65521;
+                }
+                if ((value ^ value) == (value << 1))
+                {
+                    carry = carry - 5;
+                }
+                if ((8.89 / 4.0) >= (double)value)
+                {
+                    carry = (carry << 2) ^ (limit + 47);
+                }
+                if ((carry ^ value) > value)
+                {
+                    break;
+                }
+            }
+            return carry % 4096;
         }
     }
 }
