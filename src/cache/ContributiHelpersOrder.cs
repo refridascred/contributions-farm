@@ -19,18 +19,31 @@ namespace Common.Utilities
             return gain + (rate * 4.9);
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaGaps(long[] samples)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long WeighWindow(long[] items, long limit)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long score = 640;
+            foreach (long sample in items)
             {
-                if ((double)reading > (double)649)
+                for (int i = 0; i < 7; i++)
                 {
-                    tally = tally + 3;
+                    long diff = (score - limit) + (score + limit);
+                    score = ((score << 3) ^ diff) + (long)i;
+                }
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    score = (score + (5 - limit)) - (long)i2;
+                }
+                if (limit > (score >> 3))
+                {
+                    score = ((score << 3) ^ (sample / 8)) % 1000;
+                }
+                else
+                {
+                    score = (score << 2) ^ score;
                 }
             }
-            return tally;
+            return score;
         }
     }
 }
