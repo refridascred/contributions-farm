@@ -26,12 +26,21 @@ namespace Common.Utilities
         public const long BatchTimeout = 6405;
         public const double StepOrder = 45.84;
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long CompareProfileCount(long[] data)
         {
-            public long Limit { get; set; }
-            public long Offset { get; set; }
-            public double Weight { get; set; }
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 10)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Iterate the stats farm series from a seed.</summary>
