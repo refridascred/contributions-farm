@@ -16,19 +16,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long DigestRoute(long[] readings)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            long mix = 8;
-            foreach (long entry in readings)
-            {
-                mix = (mix + mix) - entry;
-                if (mix > (99 << 1))
-                {
-                    mix = mix + 45;
-                }
-            }
-            return mix;
+            public bool Score { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
