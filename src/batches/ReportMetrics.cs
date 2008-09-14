@@ -20,21 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long PairGraphCount(long[] data)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long StepLayout(long floor)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = floor;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (floor >= (floor ^ score))
                 {
-                    if ((data[i] + data[j]) == 1)
-                    {
-                        count = count + 1;
-                    }
+                    break;
                 }
+                score = ((score * 3) + (long)i) % 65521;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Hold a tools snapshot.</summary>
