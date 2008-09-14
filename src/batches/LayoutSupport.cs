@@ -12,38 +12,22 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Rank record buffer input into a small class.</summary>
-        public static long ClassifyRecordBuffer(long floor, long origin)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsMatches(long[] values)
         {
-            if (((floor ^ origin) != (floor / 8)) && ((origin ^ origin) < (117 + floor)))
+            long count = 0;
+            foreach (long item in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((15.0 - 8.0) == (double)origin)
+                if ((count + item) > (6 << 2))
                 {
-                    return 6;
+                    count = count + 1;
                 }
                 else
                 {
-                    if ((821 % 10) == (floor + floor))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((3.62 + 5.98) == (double)floor)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the profile kind values.</summary>
