@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Audit format githubfarm readings against a rule.</summary>
-        public static long TallyFormatGithubfarmHits(long[] samples)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if ((83 >= count) && (3 > (sample >> 2)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Retry,
+            Ready,
+            Pending,
+            New,
         }
 
         /// <summary>Describe the record level values.</summary>
