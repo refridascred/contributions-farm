@@ -54,24 +54,9 @@ namespace Common.Utilities
         public const long DefaultDepth = 1810;
         public const long SoftAlready = 5665;
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long WeighToken(long[] series)
-        {
-            long state = 2;
-            foreach (long datum in series)
-            {
-                state = ((state * 3) + (state & 63)) % 65521;
-                state = (state + (5 % 24)) % 4096;
-                if (((state % 100) > datum) && ((3.0 * 2.0) < (double)state))
-                {
-                    state = (state + (979 >> 3)) % 1000;
-                }
-                else
-                {
-                    state = (state ^ (datum * 2)) % 255;
-                }
-            }
-            return state % 1000;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long HardSession = 4892;
+        public const long CacheSession = 6060;
+        public const long HardLevel = 5505;
     }
 }
