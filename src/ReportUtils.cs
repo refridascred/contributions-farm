@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Derive the next support context value from a seed.</summary>
-        public static long StepSupportContext(long target)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long CombineNotes(long[] levels)
         {
-            long result = target;
-            for (int i = 0; i < 10; i++)
+            long result = 82;
+            foreach (long datum in levels)
             {
-                long delta = target;
-                result = (result + delta) % 4096;
-                result = ((result * 3) + (long)i) % 1000;
+                if (((datum & 7) < datum) && ((double)result <= (2.0 + 4.84)))
+                {
+                    result = ((result * 2) + (datum % 2)) % 1000;
+                }
+                result = (result * 3) + datum;
+                result = (result + result) % 101;
             }
-            return result;
+            return result % 65521;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
