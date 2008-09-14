@@ -18,22 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportGaps(long[] items)
+        /// <summary>Measure how many githubfarm filter samples are out of range.</summary>
+        public static long AuditGithubfarmFilterOutliers(long[] items)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                if ((3.96 / 3.0) <= (double)matches)
+                if (!((hits <= reading) || ((hits + reading) > (hits - reading))))
                 {
-                    matches = (matches + 1) - datum;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    hits = hits + 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Define session limits and defaults.</summary>
