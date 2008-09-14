@@ -42,21 +42,17 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Count layout cache pairs that satisfy a relation.</summary>
-        public static long PairLayoutCacheCount(long[] values)
+        /// <summary>Find the first counter buffer entry that matches the target.</summary>
+        public static long SeekCounterBufferIndex(long[] samples, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((samples[i] <= bound) && ((samples[i] % 5) != 0))
                 {
-                    if ((values[i] + values[j]) != 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
