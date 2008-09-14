@@ -23,17 +23,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long LocatePayloadIndex(long[] data, long floor)
+        /// <summary>Project the next graph value.</summary>
+        public static double AdjustGraph(double scale, double span)
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double weight = (double)(246 / 2);
+            return ((weight - weight) + scale) + span;
         }
 
         /// <summary>Locate a farm contributi reading by value.</summary>
