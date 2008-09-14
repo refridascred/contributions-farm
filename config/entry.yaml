@@ -1,22 +1,8 @@
 # entry settings
-readonly: 64.67
-burst_limit_pct: true
-batch_capacity:
-  cluster_timeout: 250
-  batch_ratio:
-    - stable
-    - green
-    - legacy
-  compress: blue
-  flush_interval:
-    - 297
-    - 143
-    - 316
-  batch_window_ms: standard
-  base_size_pct:
-    soft_delay_count: 1024
-    default_limit_count: 1024
-    strict: 100
-    token_delay: false
-    enabled: 1024
-batch_delay_count: false
+retry_ttl_pct: strict
+persist: 30
+payload_ttl: 82
+base_depth_pct:
+  - latest
+  - legacy
+command_size: fallback
