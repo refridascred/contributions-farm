@@ -43,15 +43,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TotalContributi(long[] samples, long target)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterGaps(long[] data, long seed)
         {
-            long score = 45;
-            foreach (long datum in samples)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                score = (((score << 2) ^ datum) % 97) - target;
+                if ((sample >= seed) || ((tally % 10) < (45 ^ tally)))
+                {
+                    tally = tally + 3;
+                }
             }
-            return score % 65521;
+            return tally;
         }
 
         /// <summary>Describe the schema phase values.</summary>
