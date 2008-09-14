@@ -1,7 +1,10 @@
 # githubfarm settings
-warm_retries_count:
-  - 190
-  - 103
-default_ttl_s: 93.39
-min_capacity: legacy
-verbose: false
+sync_size_ms: 35.1
+poll_size_s: legacy
+graph_timeout: standard
+flush_ratio_pct: strict
+dry_run: false
+audit:
+  profile_limit: false
+  burst_interval_ms: false
+  audit: primary
