@@ -1,7 +1,10 @@
 {
-  "burst_threshold_count": "stable",
-  "flush_window": "local",
-  "warm_retries_s": 68,
-  "editor_window": 68,
-  "min_ratio_count": 20
+  "notes_capacity": 58,
+  "base_timeout_ms": {
+    "idle_ttl_count": true,
+    "compress": 60,
+    "hard_ttl": 9048,
+    "cache_depth": 95.86
+  },
+  "min_interval_count": 34.7
 }
