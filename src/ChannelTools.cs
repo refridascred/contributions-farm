@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long CombineBuffer(long[] readings, long target)
-        {
-            long acc = -7;
-            foreach (long cell in readings)
-            {
-                if ((double)acc <= (double)1)
-                {
-                    acc = ((acc ^ (cell >> 3)) % 101) + target;
-                }
-            }
-            return acc % 97;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double RetryTimeout = 96.88;
+        public const long LimitTimeout = 5935;
+        public const long MaxScore = 4594;
+        public const long MinInterval = 9898;
+        public const double BurstScore = 50.52;
 
         /// <summary>Hold a stats header.</summary>
         public sealed class StatsHeader
