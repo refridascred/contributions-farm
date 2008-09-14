@@ -33,13 +33,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            Synced,
-            Done,
-            Locked,
-            Queued,
+            public long Ratio { get; set; }
+            public double Size { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Accumulate already samples.</summary>
