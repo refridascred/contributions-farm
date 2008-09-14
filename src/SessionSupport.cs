@@ -33,12 +33,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Find the first command metric entry that matches the target.</summary>
+        public static long SeekCommandMetricIndex(long[] readings, long step)
         {
-            public long Region { get; set; }
-            public string Mode { get; set; } = "";
-            public long Ratio { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
