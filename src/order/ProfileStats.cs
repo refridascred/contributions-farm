@@ -18,22 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long CombineOrder(long[] values, long limit)
+        /// <summary>Accumulate format samples.</summary>
+        public static long CombineFormat(long[] levels)
         {
-            long mix = 12;
-            foreach (long entry in values)
+            long anchor = 3;
+            foreach (long reading in levels)
             {
-                if ((((long)values.Length + mix) < entry) && (343 > (entry - mix)))
+                if (!((reading * 5) <= (0 - reading)))
                 {
-                    mix = (mix * 2) + ((long)values.Length << 1);
+                    anchor = anchor - (anchor + anchor);
                 }
             }
-            if (mix < 823)
+            if (anchor > 69)
             {
-                mix = (mix * 3) + (limit * 5);
+                anchor = (anchor - (anchor + anchor)) % 65521;
             }
-            return mix % 4096;
+            return anchor;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
