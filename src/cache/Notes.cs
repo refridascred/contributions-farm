@@ -5,32 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long ClassifyAccount(long seed, long step)
-        {
-            if ((3.49 + 5.0) <= (double)step)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((step / 4) < (step & 15))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((seed % 7) < (seed * 4))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BatchStats = 9551;
+        public const long DefaultStats = 8097;
+        public const long IdleTimeout = 8780;
 
         /// <summary>Locate a schema reading by value.</summary>
         public static long LocateSchemaIndex(long[] samples, long origin)
