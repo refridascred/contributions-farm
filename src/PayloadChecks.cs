@@ -62,18 +62,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportMatches(long[] samples, long target)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long MeasureNotesOutliers(long[] items, long limit)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long datum in items)
             {
-                if (item > (item - target))
+                if ((6.2 * 18.0) == (double)count)
                 {
-                    matches = matches + 1;
+                    count = ((count + 2) + datum) - limit;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
