@@ -14,18 +14,21 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportMatches(long[] values, long step)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long MatchMetricCount(long[] items)
         {
-            long count = 0;
-            foreach (long value in values)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)count <= (14.0 - 0.07))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = ((count + 3) + value) + step;
+                    if ((items[i] - items[j]) != 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Validate token report readings against a bound.</summary>
