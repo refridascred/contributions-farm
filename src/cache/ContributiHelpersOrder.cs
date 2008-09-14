@@ -23,15 +23,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long RollBatches(long limit)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            long carry = limit;
-            for (int i = 0; i < 7; i++)
-            {
-                carry = ((carry * 3) + (long)i) % 4093;
-            }
-            return carry;
+            public long Label { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
