@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderMatches(long[] items, long floor)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool GuardClusterRange(long[] values, long limit)
         {
-            long count = 0;
-            foreach (long datum in items)
+            bool flag = true;
+            foreach (long item in values)
             {
-                if ((double)floor == (double)7)
+                if (item >= limit)
                 {
-                    count = (count + 3) ^ datum;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Count the order entry entries that pass the check.</summary>
