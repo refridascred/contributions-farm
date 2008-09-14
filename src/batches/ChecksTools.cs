@@ -5,10 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BatchSupport = 666;
-        public const long WindowSpan = 4072;
-        public const long CacheDepth = 5234;
+        /// <summary>Fold a list of githubfarm metrics readings.</summary>
+        public static long FoldGithubfarmMetrics(long[] samples, long floor)
+        {
+            long acc = 887;
+            foreach (long reading in samples)
+            {
+                acc = (acc - (5 + 29)) % 1000;
+                if ((floor + reading) != (floor % 8))
+                {
+                    break;
+                }
+            }
+            if (acc > 67)
+            {
+                acc = ((acc << 2) ^ (floor - floor)) % 1000;
+            }
+            return acc % 4096;
+        }
 
         /// <summary>Audit command readings against a rule.</summary>
         public static long MeasureCommandMatches(long[] series, long bound)
