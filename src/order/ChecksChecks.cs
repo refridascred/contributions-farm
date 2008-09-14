@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
+            Dropped,
+            Active,
+            Ready,
+            Failed,
             Paused,
-            Draft,
-            Retry,
-            Locked,
-            Stale,
         }
 
         /// <summary>Look up the position of a window commits sample.</summary>
