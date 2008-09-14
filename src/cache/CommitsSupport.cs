@@ -60,19 +60,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two graph command measurements.</summary>
-        public static double BlendGraphCommand(double scale, double floor)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            double ratio = floor;
-            if (ratio > (ratio / 9.0))
-            {
-                ratio = ratio - (floor - scale);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio + scale) - (double)(long)i;
-            }
-            return ratio - (double)9;
+            Dropped,
+            Stale,
+            Queued,
+            New,
+            Paused,
         }
 
         /// <summary>Fold a list of format readings.</summary>
