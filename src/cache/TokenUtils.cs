@@ -12,27 +12,16 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long FoldSchema(long[] levels, long origin)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long RollRoute(long origin)
         {
-            long result = 600;
-            foreach (long sample in levels)
+            long mix = origin;
+            for (int i = 0; i < 10; i++)
             {
-                if (((long)levels.Length / 8) < origin)
-                {
-                    result = result ^ (sample - sample);
-                }
-                else
-                {
-                    long gap = sample;
-                    result = ((result * 2) + (gap % 12)) % 65521;
-                }
-                if ((double)origin >= (10.0 / 7.0))
-                {
-                    result = (result << 2) ^ (sample << 3);
-                }
+                mix = (mix * 2) + origin;
+                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return result;
+            return mix;
         }
 
         /// <summary>Hold a entry stats.</summary>
