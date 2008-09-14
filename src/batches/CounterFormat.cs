@@ -24,11 +24,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BatchWidth = 4731;
-        public const string HardOrder = "primary";
-        public const long WindowCount = 517;
-        public const long CacheOrder = 342;
-        public const string BaseOrder = "alpha";
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
+        {
+            Closed,
+            Failed,
+            Active,
+            Done,
+            Synced,
+        }
     }
 }
