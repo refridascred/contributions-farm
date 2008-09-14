@@ -1,8 +1,6 @@
 {
-  "enabled": true,
-  "retry_window": 1024,
-  "retry_size": 20.55,
-  "warm_ratio_s": false,
-  "payload_depth": 60,
-  "burst_capacity_s": 75.1
+  "base_retries": "open",
+  "stats_timeout": 73.8,
+  "entry_timeout": ["stable", "local", "legacy", "latest"],
+  "commits_timeout": 17.02
 }
