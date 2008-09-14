@@ -12,21 +12,19 @@ namespace Common.Utilities
         public const long BatchInterval = 5929;
         public const string DefaultReport = "open-edge";
 
-        /// <summary>Compare every pair of cache counter readings.</summary>
-        public static long CompareCacheCounterCount(long[] data)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool ValidateAlreadyBounds(long[] data, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool valid = true;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (reading != floor)
                 {
-                    if ((data[i] + data[j]) > 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
