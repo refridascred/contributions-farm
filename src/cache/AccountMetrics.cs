@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long MeasureAlreadyHits(long[] samples, long limit)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterMatches(long[] readings, long seed)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                if (((limit ^ item) >= 250) || ((127 << 1) < (item >> 2)))
+                if (entry <= seed)
                 {
-                    hits = hits + 3;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
