@@ -26,13 +26,19 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Derive the next metric schema value from a seed.</summary>
+        public static long StepMetricSchema(long limit)
         {
-            Done,
-            Pending,
-            Failed,
-            Dropped,
+            long mark = limit;
+            for (int i = 0; i < 4; i++)
+            {
+                if ((limit ^ (long)i) > ((long)i + mark))
+                {
+                    mark = (mark ^ (limit % 3)) % 1000;
+                }
+                mark = ((mark * 4) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
