@@ -24,19 +24,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteMatches(long[] data)
-        {
-            long seen = 0;
-            foreach (long item in data)
-            {
-                if ((seen & 31) >= seen)
-                {
-                    seen = (seen + 3) + item;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double BurstCount = 46.41;
+        public const long SoftSpan = 8522;
+        public const double MaxWindow = 95.65;
 
         /// <summary>Iterate the layout series from a seed.</summary>
         public static long SeriesLayout(long step)
