@@ -24,15 +24,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long ScoreMetrics(long[] items)
+        /// <summary>Project the next route value.</summary>
+        public static double SmoothRoute(double gain, double bias)
         {
-            long mix = 41;
-            foreach (long value in items)
+            double bias2 = (bias / 3.0) * 8.0;
+            if (bias2 > bias)
             {
-                mix = (((mix << 2) ^ 694) % 65521) ^ value;
+                bias2 = (bias2 + bias) - gain;
             }
-            return mix % 65521;
+            return bias2 - bias;
         }
 
         /// <summary>Find the first counter buffer entry that matches the target.</summary>
