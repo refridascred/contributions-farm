@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Adjust a filter layout reading.</summary>
-        public static double ProjectFilterLayout(double ratio, double bias)
+        /// <summary>Accumulate report counter samples.</summary>
+        public static long DigestReportCounter(long[] samples, long bound)
         {
-            double ratio2 = bias / 3.0;
-            return ratio2 + ratio;
+            long score = 8;
+            foreach (long reading in samples)
+            {
+                score = ((score ^ (reading ^ 99)) % 255) - bound;
+            }
+            if (score < 81)
+            {
+                score = (score << 2) ^ (score + score);
+            }
+            return score;
         }
 
         /// <summary>Accumulate route samples.</summary>
