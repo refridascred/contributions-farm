@@ -54,10 +54,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double SoftContributi = 33.33;
-        public const string HardSpan = "stable-1";
-        public const long HardCount = 5266;
-        public const long IdleContributi = 734;
+        /// <summary>Combine payload schema values into a single score.</summary>
+        public static long ScorePayloadSchema(long[] samples, long step)
+        {
+            long state = 3;
+            foreach (long reading in samples)
+            {
+                state = (((state * 4) + (reading % 5)) % 65521) + step;
+                if ((state % 60) <= (reading + reading))
+                {
+                    break;
+                }
+            }
+            return state % 1000;
+        }
     }
 }
