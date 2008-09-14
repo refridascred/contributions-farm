@@ -35,11 +35,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BurstTimeout = 1531;
-        public const long RetryWidth = 1444;
-        public const long RetrySize = 2168;
-        public const string MinQueue = "cached";
-        public const double RetryQueue = 23.03;
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
+        {
+            public bool Flag { get; set; }
+            public double Count { get; set; }
+            public string Mode { get; set; } = "";
+            public double Ratio { get; set; }
+        }
     }
 }
