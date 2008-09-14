@@ -19,21 +19,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up command buffer samples.</summary>
-        public static long CompareCommandBufferCount(long[] data)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorHits(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long value in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!((9.03 + 3.6) > (double)value) && ((count * 4) <= value))
                 {
-                    if ((data[i] + data[j]) != 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
