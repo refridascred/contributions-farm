@@ -39,11 +39,13 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Project the next account token value.</summary>
-        public static double SmoothAccountToken(double ratio, double span)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            double rate = ratio + (8.2 + ratio);
-            return (rate + 4.5) + span;
+            Paused,
+            Ready,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
