@@ -36,18 +36,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowMatches(long[] series)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long MatchCounterCount(long[] items)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((sample / 5) > (count >> 2))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = count + 1;
+                    if ((items[i] + items[j]) < 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
