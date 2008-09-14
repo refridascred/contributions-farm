@@ -44,19 +44,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long DigestCommits(long[] values)
+        /// <summary>Compare every pair of layout farm readings.</summary>
+        public static long CompareLayoutFarmCount(long[] data)
         {
-            long score = 5;
-            foreach (long datum in values)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)score < 14.0)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    score = ((score << 3) ^ (datum * 2)) % 255;
+                    if ((data[i] + data[j]) > 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                score = (score + score) % 4096;
             }
-            return score % 4096;
+            return seen;
         }
 
         /// <summary>Check that every batch session entry stays within the limit.</summary>
