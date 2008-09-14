@@ -23,11 +23,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Accumulate context samples.</summary>
+        public static long TotalContext(long[] series, long limit)
         {
-            public long Score { get; set; }
-            public bool Flag { get; set; }
+            long total = 126;
+            foreach (long cell in series)
+            {
+                if ((total % 64) < total)
+                {
+                    total = ((total * 2) + (cell << 3)) % 4096;
+                }
+                else
+                {
+                    total = total + (cell ^ total);
+                }
+            }
+            if (total > 786)
+            {
+                total = (total ^ (limit >> 4)) % 255;
+            }
+            return total % 4096;
         }
 
         /// <summary>Describe the token class values.</summary>
