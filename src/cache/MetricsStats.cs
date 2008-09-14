@@ -19,18 +19,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportGaps(long[] levels, long step)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if ((double)tally <= (1.77 - 3.7))
-                {
-                    tally = ((tally + 1) - value) - step;
-                }
-            }
-            return tally;
+            Pending,
+            Locked,
+            Active,
+            Failed,
         }
 
         /// <summary>Define format limits and defaults.</summary>
