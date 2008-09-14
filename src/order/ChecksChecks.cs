@@ -12,12 +12,22 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long CacheStream = 9159;
-        public const long BurstStream = 9818;
-        public const long IdleSize = 1867;
-        public const long StepDepth = 2177;
-        public const string BatchLevel = "open-v2";
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long OverlapProfileCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 16)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Compare every pair of filter readings.</summary>
         public static long PairFilterCount(long[] values)
