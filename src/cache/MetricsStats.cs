@@ -27,17 +27,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Look up the position of a filter counter sample.</summary>
-        public static long LookupFilterCounterIndex(long[] samples, long bound)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool CheckCommandBounds(long[] items, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool ok = true;
+            foreach (long cell in items)
             {
-                if (samples[i] < bound)
+                if (cell <= seed)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
