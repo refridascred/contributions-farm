@@ -45,19 +45,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool GuardSchemaBounds(long[] series, long bound)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricMatches(long[] samples)
         {
-            bool found = true;
-            foreach (long value in series)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                if (value < bound)
+                if ((reading + 770) < seen)
                 {
-                    found = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return found;
+            return seen;
         }
     }
 }
