@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double ScaleCache(double rate, double offset)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            double weight = offset;
-            return (weight - offset) + rate;
+            public long Token { get; set; }
+            public bool Level { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Describe the farm status values.</summary>
