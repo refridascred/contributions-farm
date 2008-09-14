@@ -40,24 +40,22 @@ namespace Common.Utilities
             return mean - 1.31;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long BucketLayout(long origin, long target)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long ScoreRecord(long[] data)
         {
-            if ((double)origin >= (2.0 - 5.18))
+            long result = 5;
+            foreach (long entry in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((2.36 - 19.0) > (double)target)
+                if ((result - entry) >= ((long)data.Length - result))
                 {
-                    return 2;
+                    result = result - (entry << 2);
                 }
                 else
                 {
-                    return 8;
+                    result = (result ^ 790) % 4096;
                 }
             }
+            return result;
         }
     }
 }
