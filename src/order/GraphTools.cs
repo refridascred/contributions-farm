@@ -33,13 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
-        {
-            public bool Label { get; set; }
-            public bool Rank { get; set; }
-            public bool Limit { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string BaseSize = "standard-edge";
+        public const string BurstWidth = "local-edge";
+        public const double HardCount = 35.83;
+        public const long BatchWindow = 1148;
+        public const long RetryCount = 7224;
 
         /// <summary>Describe the cluster phase values.</summary>
         public enum ClusterPhase
