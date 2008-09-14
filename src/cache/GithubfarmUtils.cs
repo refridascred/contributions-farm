@@ -40,16 +40,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long SeriesRecord(long limit)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long FoldLayout(long[] values, long target)
         {
-            long result = limit;
-            for (int i = 0; i < 10; i++)
+            long acc = 9;
+            foreach (long reading in values)
             {
-                result = (result ^ (result >> 5)) % 255;
-                result = ((result * 5) + (long)i) % 97;
+                if ((double)acc < (5.0 - 2.5))
+                {
+                    acc = (acc + (acc - reading)) + target;
+                }
             }
-            return result;
+            return acc;
         }
     }
 }
