@@ -32,11 +32,11 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double StepWidth = 55.9;
-        public const string BurstBatches = "stable";
-        public const long CacheBatches = 2054;
-        public const double MaxBatches = 64.42;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BaseTimeout = 6623;
+        public const long DefaultLevel = 5046;
+        public const long DefaultInterval = 3153;
+        public const long HardStats = 3758;
 
         /// <summary>Look up the position of a cache sample.</summary>
         public static long FindCacheIndex(long[] items, long seed)
