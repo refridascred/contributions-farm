@@ -1,15 +1,17 @@
 # support settings
-base_window_count: 51
-enabled: 95.76
-verbose:
-  strict: local
-  min_capacity_pct: staging
-  idle_threshold_ms: 53.13
-  stats_limit:
-    - 254
-    - 273
-default_ttl_count:
-  - 295
-  - 206
-metrics_delay: eu-west
-flush_ttl_count: true
+hard_size_pct:
+  order_limit: 1762
+  base_timeout_pct:
+    - standard
+    - green
+  cache_timeout_s:
+    - 177
+    - 175
+    - 304
+  entry_threshold: 1024
+  verbose: 71
+entry_interval: true
+min_timeout_pct: 12.93
+warm_interval_ms: 12
+batch_timeout_count: stable
+token_ttl: true
