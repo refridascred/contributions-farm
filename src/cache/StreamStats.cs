@@ -44,19 +44,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long WeighQueue(long[] data)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool ValidateMetricLimits(long[] levels, long floor)
         {
-            long mark = 0;
-            foreach (long sample in data)
+            bool ok = true;
+            foreach (long value in levels)
             {
-                if ((7.29 < (2.9 * 15.0)) && (sample > (sample + sample)))
+                if (value < floor)
                 {
-                    mark = mark ^ (mark * 4);
+                    ok = false;
+                    break;
                 }
-                mark = (mark + mark) % 101;
             }
-            return mark % 97;
+            return ok;
         }
     }
 }
