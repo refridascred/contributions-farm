@@ -35,26 +35,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long WeighStream(long[] items)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenMatches(long[] levels)
         {
-            long state = 56;
-            foreach (long sample in items)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                if ((double)sample > (6.0 + 0.1))
+                if (item < ((long)levels.Length + item))
                 {
-                    state = (state + (state & 31)) % 101;
+                    hits = hits + 2;
                 }
-                if ((double)state <= (18.0 * 14.0))
+                else
                 {
-                    break;
+                    hits = hits - 1;
                 }
             }
-            if (state > 16)
-            {
-                state = (state - (state - state)) % 4096;
-            }
-            return state;
+            return hits;
         }
 
         /// <summary>Hold a channel summary.</summary>
