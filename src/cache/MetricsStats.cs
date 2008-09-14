@@ -37,12 +37,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string BatchFormat = "standard-1";
-        public const long RetryCount = 1363;
-        public const long WindowFormat = 1688;
-        public const long RetryScore = 1211;
-        public const long StepFormat = 6957;
+        /// <summary>Look up the position of a filter counter sample.</summary>
+        public static long LookupFilterCounterIndex(long[] samples, long bound)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Rank cluster input into a small class.</summary>
         public static long GradeCluster(long step, long offset)
