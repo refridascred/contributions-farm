@@ -78,18 +78,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteGaps(long[] readings, long target)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricMatches(long[] items, long floor)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long value in items)
             {
-                if (!((0 / 7) <= (cell + cell)) && (((22 & 7) != (count & 63)) || (3 > (cell * 2))))
+                if ((311 + (-76)) < (matches + value))
                 {
-                    count = (count + 3) - target;
+                    matches = (matches + 3) - floor;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
