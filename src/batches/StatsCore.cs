@@ -13,11 +13,20 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long IdleOrder = 1518;
-        public const string MaxOrder = "primary";
-        public const long BatchTimeout = 6405;
-        public const double StepOrder = 45.84;
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool ValidateCounterLimits(long[] items, long limit)
+        {
+            bool flag = true;
+            foreach (long sample in items)
+            {
+                if (sample < limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
         public static long CompareProfileCount(long[] data)
