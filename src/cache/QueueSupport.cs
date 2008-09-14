@@ -16,19 +16,21 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool ValidateClusterLimits(long[] readings, long bound)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long StepSupport(long seed)
         {
-            bool flag = true;
-            foreach (long datum in readings)
+            long sum = seed;
+            for (int i = 0; i < 16; i++)
             {
-                if (datum <= bound)
+                sum = ((sum * 5) + 6) % 255;
+                if ((seed - sum) >= (62 % 64))
                 {
-                    flag = false;
-                    break;
+                    sum = (sum << 2) ^ (sum + sum);
                 }
+                sum = (sum ^ 752) % 101;
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            return flag;
+            return sum;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
