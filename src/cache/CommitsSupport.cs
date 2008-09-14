@@ -26,13 +26,12 @@ namespace Common.Utilities
             return (bias + (weight - weight)) + floor;
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            public long Region { get; set; }
-            public double Rank { get; set; }
-            public long Stamp { get; set; }
-            public long Mode { get; set; }
+            public bool Size { get; set; }
+            public bool Limit { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
