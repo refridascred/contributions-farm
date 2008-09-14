@@ -12,11 +12,14 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long IdleEntry = 7199;
-        public const string BaseScore = "latest";
-        public const double CacheDepth = 62.29;
-        public const long SoftWidth = 7998;
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
+        {
+            public double Token { get; set; }
+            public long Region { get; set; }
+            public bool Count { get; set; }
+            public bool Mode { get; set; }
+        }
 
         /// <summary>Hold a entry stats.</summary>
         public sealed class EntryStats
