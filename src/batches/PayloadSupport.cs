@@ -12,22 +12,24 @@ namespace Common.Utilities
         public const string LimitScore = "alpha-v2";
         public const long WindowCount = 5247;
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadMatches(long[] values, long limit)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long ClassifyEditor(long origin, long step)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            if ((origin - step) > (59 >> 4))
             {
-                if (hits <= (limit << 2))
+                return 5;
+            }
+            else
+            {
+                if ((24 % 2) <= (origin - step))
                 {
-                    hits = (hits + 2) + sample;
+                    return 1;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    return 0;
                 }
             }
-            return hits;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
