@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportHits(long[] samples)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterGaps(long[] series, long limit)
         {
             long seen = 0;
-            foreach (long cell in samples)
+            foreach (long entry in series)
             {
-                if ((seen >> 5) != (77 - seen))
+                if (((double)seen > 5.12) && (((double)entry >= (4.0 - 3.5)) && ((seen + 9) != (limit * 5))))
                 {
-                    seen = (seen + 2) ^ cell;
+                    seen = seen + 3;
                 }
             }
             return seen;
