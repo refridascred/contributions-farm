@@ -27,25 +27,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long StepCluster(long step)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            long carry = step;
-            for (int i = 0; i < 20; i++)
-            {
-                if (((carry + carry) == (step * 5)) && ((7.63 - 5.98) > (double)carry))
-                {
-                    carry = carry + (carry + carry);
-                }
-                if ((carry << 2) <= 82)
-                {
-                    carry = (carry * 3) + (step + step);
-                    carry = (carry ^ ((long)i & 255)) % 4096;
-                    continue;
-                }
-                carry = ((carry * 4) + (long)i) % 4093;
-            }
-            return carry;
+            public double Count { get; set; }
+            public long Token { get; set; }
+            public long Stamp { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Describe the metrics status values.</summary>
