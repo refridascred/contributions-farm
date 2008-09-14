@@ -33,19 +33,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool ValidateCommandBounds(long[] data, long step)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long CompareEntryCount(long[] data)
         {
-            bool flag = true;
-            foreach (long cell in data)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (cell <= step)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((data[i] + data[j]) != 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Rank graph input into a small class.</summary>
