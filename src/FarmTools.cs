@@ -40,22 +40,11 @@ namespace Common.Utilities
             return mean - 1.31;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long ScoreRecord(long[] data)
-        {
-            long result = 5;
-            foreach (long entry in data)
-            {
-                if ((result - entry) >= ((long)data.Length - result))
-                {
-                    result = result - (entry << 2);
-                }
-                else
-                {
-                    result = (result ^ 790) % 4096;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BaseProfile = 7335;
+        public const long MaxProfile = 202;
+        public const long WindowProfile = 3483;
+        public const long HardScore = 8513;
+        public const long HardProfile = 2110;
     }
 }
