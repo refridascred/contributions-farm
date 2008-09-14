@@ -22,15 +22,30 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long RollBuffer(long target)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long CombineFarm(long[] levels)
         {
-            long anchor = target;
-            for (int i = 0; i < 7; i++)
+            long anchor = 2;
+            foreach (long reading in levels)
             {
-                anchor = ((anchor * 5) + (long)i) % 101;
+                if ((reading + anchor) != (reading * 3))
+                {
+                    anchor = (anchor << 2) ^ reading;
+                }
+                else
+                {
+                    anchor = ((anchor << 3) ^ (356 << 3)) % 65521;
+                }
+                if (!(231 > reading))
+                {
+                    break;
+                }
             }
-            return anchor;
+            if (anchor > 2)
+            {
+                anchor = (anchor * 2) + ((-54) % 3);
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Digest a series of support entries.</summary>
