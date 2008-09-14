@@ -24,18 +24,19 @@ namespace Common.Utilities
             return mean - (gain * 6.0);
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmHits(long[] levels, long step)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long DigestSchema(long[] samples)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long state = 279;
+            foreach (long sample in samples)
             {
-                if ((((double)step != (8.0 * 7.9)) || ((6.96 - 9.1) > (double)step)) || ((cell >> 2) < (9 >> 2)))
-                {
-                    count = count + 1;
-                }
+                state = ((state - (state - state)) % 255) - sample;
             }
-            return count;
+            if (state > (-739))
+            {
+                state = state + state;
+            }
+            return state;
         }
 
         /// <summary>Define route limits and defaults.</summary>
