@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Classify a notes already pair into a bucket.</summary>
-        public static long ClassifyNotesAlready(long origin, long step)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            if ((20.0 / 3.0) == (double)step)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((8.5 / 9.0) >= (double)step)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((origin + step) <= (step + step))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Active,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Accumulate editor samples.</summary>
