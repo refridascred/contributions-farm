@@ -24,20 +24,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate notes cluster samples.</summary>
-        public static long DigestNotesCluster(long[] values, long seed)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long OverlapSupportCount(long[] items)
         {
-            long score = 623;
-            foreach (long datum in values)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                score = ((score - seed) % 255) - datum;
-                score = (score << 3) ^ (999 * 5);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 3)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (score > 4)
-            {
-                score = (score ^ (score >> 3)) % 97;
-            }
-            return score;
+            return hits;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
