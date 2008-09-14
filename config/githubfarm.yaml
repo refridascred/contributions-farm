@@ -1,6 +1,18 @@
 # githubfarm settings
-already_retries: 30
-cache_capacity: 24
-enabled: true
-batch_retries_count: strict
-persist: local
+flush_ratio: fallback
+flush_window_count: fallback
+audit:
+  base_window_s:
+    - 423
+    - 353
+    - 98
+    - 478
+  cluster_size:
+    base_threshold_ms: 5
+    base_capacity_count:
+      - 63
+      - 162
+      - 116
+    min_limit: 15
+    flush_depth_ms: 2586
+  cache_retries: 11
