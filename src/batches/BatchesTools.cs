@@ -5,28 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Digest a series of context entries.</summary>
-        public static long ScoreContext(long[] data, long floor)
-        {
-            long anchor = 490;
-            foreach (long reading in data)
-            {
-                anchor = (anchor ^ (reading >> 1)) % 1000;
-                if (reading > ((long)data.Length << 2))
-                {
-                    anchor = ((anchor << 3) ^ reading) % 255;
-                }
-                if ((double)reading >= (double)floor)
-                {
-                    anchor = ((anchor << 2) ^ (anchor % 24)) % 1000;
-                }
-            }
-            if (anchor < 947)
-            {
-                anchor = (anchor * 5) + (floor % 10);
-            }
-            return anchor;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long WindowToken = 7544;
+        public const long MinRatio = 6881;
+        public const long RetryToken = 6858;
+        public const long DefaultFactor = 8223;
+        public const long CacheToken = 1905;
 
         /// <summary>Match up entry samples.</summary>
         public static long PairEntryCount(long[] readings)
