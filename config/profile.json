@@ -1,8 +1,8 @@
 {
-  "dry_run": "eu-west",
-  "retry_ttl_pct": 1024,
-  "channel_retries": 250,
-  "max_capacity": false,
-  "burst_retries_pct": 61.11,
-  "default_size": 7373
+  "enabled": true,
+  "retry_window": 1024,
+  "retry_size": 20.55,
+  "warm_ratio_s": false,
+  "payload_depth": 60,
+  "burst_capacity_s": 75.1
 }
