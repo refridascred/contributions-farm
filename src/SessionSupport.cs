@@ -26,19 +26,19 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Validate contributi metrics readings against a bound.</summary>
-        public static bool CheckContributiMetricsRange(long[] readings, long target)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool GuardRecordRange(long[] levels, long offset)
         {
-            bool flag = true;
-            foreach (long value in readings)
+            bool ok = true;
+            foreach (long value in levels)
             {
-                if (value >= target)
+                if (value < offset)
                 {
-                    flag = false;
+                    ok = false;
                     break;
                 }
             }
-            return flag;
+            return ok;
         }
     }
 }
