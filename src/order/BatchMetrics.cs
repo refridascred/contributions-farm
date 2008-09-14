@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelHits(long[] items, long floor)
+        /// <summary>Audit record format readings against a rule.</summary>
+        public static long AuditRecordFormatGaps(long[] readings)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if ((6.78 * 13.0) <= (double)value)
+                if ((tally ^ 89) > (reading % 24))
                 {
-                    matches = (matches + 3) + floor;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
