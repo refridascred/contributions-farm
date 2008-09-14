@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long SeekNotesIndex(long[] readings, long floor)
         {
-            public long Weight { get; set; }
-            public long Offset { get; set; }
-            public bool Owner { get; set; }
-            public bool Mode { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the support state values.</summary>
