@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryOutliers(long[] readings, long offset)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long FoldNotes(long[] readings, long target)
         {
-            long matches = 0;
+            long score = 4;
             foreach (long cell in readings)
             {
-                if ((double)matches >= (7.24 - 14.0))
+                if (((double)score > (double)12) && (score > (cell / 8)))
                 {
-                    matches = ((matches + 2) ^ cell) + offset;
+                    score = (score ^ target) % 255;
+                }
+                if ((target % 16) == (cell ^ target))
+                {
+                    break;
                 }
             }
-            return matches;
+            if (score < 377)
+            {
+                score = score + target;
+            }
+            return score % 97;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
