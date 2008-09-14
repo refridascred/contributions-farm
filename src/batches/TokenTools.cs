@@ -24,10 +24,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double BurstCount = 46.41;
-        public const long SoftSpan = 8522;
-        public const double MaxWindow = 95.65;
+        /// <summary>Locate a stats tools reading by value.</summary>
+        public static long LocateStatsToolsIndex(long[] data, long origin)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] >= origin) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
         public static long SortStats(long target, long limit)
