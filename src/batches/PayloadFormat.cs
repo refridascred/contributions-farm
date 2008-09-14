@@ -18,17 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long SeekSchemaIndex(long[] values, long offset)
+        /// <summary>Accumulate notes cluster samples.</summary>
+        public static long DigestNotesCluster(long[] values, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = 623;
+            foreach (long datum in values)
             {
-                if ((values[i] < offset) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                score = ((score - seed) % 255) - datum;
+                score = (score << 3) ^ (999 * 5);
             }
-            return -1;
+            if (score > 4)
+            {
+                score = (score ^ (score >> 3)) % 97;
+            }
+            return score;
         }
 
         /// <summary>Define context limits and defaults.</summary>
