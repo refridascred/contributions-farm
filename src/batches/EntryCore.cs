@@ -33,19 +33,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool GuardPayloadRange(long[] readings, long step)
+        /// <summary>Scale a entry already figure with a bias.</summary>
+        public static double SmoothEntryAlready(double weight, double offset)
         {
-            bool valid = true;
-            foreach (long value in readings)
-            {
-                if (value > step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            double bias = (double)(866 + 6);
+            return (bias + (bias + offset)) + weight;
         }
 
         /// <summary>Blend two channel measurements.</summary>
