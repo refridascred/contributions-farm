@@ -28,12 +28,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Validate token report readings against a bound.</summary>
+        public static bool CheckTokenReportLimits(long[] items, long target)
         {
-            Locked,
-            Draft,
-            Paused,
+            bool flag = true;
+            foreach (long sample in items)
+            {
+                if (sample > target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
