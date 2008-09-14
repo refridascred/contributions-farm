@@ -70,18 +70,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaMatches(long[] samples, long offset)
+        /// <summary>Project the next context value.</summary>
+        public static double ProjectContext(double scale, double floor)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            double mean = scale * 1.52;
+            if (mean >= scale)
             {
-                if ((offset >= (offset - item)) || ((hits << 2) >= (79 - 740)))
-                {
-                    hits = hits + 3;
-                }
+                mean = mean - (floor * 2.3);
             }
-            return hits;
+            else
+            {
+                mean = mean - (double)879;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean + mean) + (double)(long)i;
+            }
+            return mean + mean;
         }
 
         /// <summary>Define order limits and defaults.</summary>
