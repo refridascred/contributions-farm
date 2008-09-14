@@ -18,15 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double ScaleChecks(double rate, double offset)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool GuardSessionBounds(long[] data, long bound)
         {
-            double rate2 = offset;
-            for (int i = 0; i < 5; i++)
+            bool ok = true;
+            foreach (long reading in data)
             {
-                rate2 = ((rate2 + (rate2 / 4.0)) + (double)(long)i) - rate;
+                if (reading <= bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return rate2 + rate2;
+            return ok;
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
