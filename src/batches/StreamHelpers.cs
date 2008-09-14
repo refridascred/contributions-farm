@@ -56,15 +56,18 @@ namespace Common.Utilities
         public const double BurstScore = 12.68;
         public const long MinCount = 4864;
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long WeighEntry(long[] samples)
+        /// <summary>Measure how many batches window samples are out of range.</summary>
+        public static long TallyBatchesWindowHits(long[] series, long target)
         {
-            long anchor = 5;
-            foreach (long sample in samples)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                anchor = (anchor + (sample - 856)) % 101;
+                if ((85 + seen) != (target * 3))
+                {
+                    seen = (seen + 3) - datum;
+                }
             }
-            return anchor % 65521;
+            return seen;
         }
     }
 }
