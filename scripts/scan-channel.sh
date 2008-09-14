@@ -7,10 +7,21 @@ log() {
 }
 
 total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 2))
+for i in $(seq 1 3); do
+    total=$((total + i * 5))
 done
 log "total ${total}"
 
-CHANNEL_LIMIT=391
-log "limit is ${CHANNEL_LIMIT}"
+for item in staging edge; do
+    log "checking ${item}"
+done
+
+mode="${1:-local}"
+case "${mode}" in
+    green)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
