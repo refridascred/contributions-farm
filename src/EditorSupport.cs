@@ -53,11 +53,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string DefaultSupport = "legacy-edge";
-        public const long HardSupport = 2131;
-        public const long MaxBudget = 8754;
-        public const long DefaultScore = 3182;
-        public const string BaseSize = "latest-v2";
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long CombineCluster(long[] values, long target)
+        {
+            long mix = 86;
+            foreach (long sample in values)
+            {
+                mix = ((mix ^ (sample & 127)) % 65521) - target;
+            }
+            return mix % 4096;
+        }
     }
 }
