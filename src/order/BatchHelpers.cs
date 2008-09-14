@@ -32,22 +32,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of layout report readings.</summary>
-        public static long TotalLayoutReport(long[] readings)
-        {
-            long carry = -36;
-            foreach (long datum in readings)
-            {
-                if ((double)datum != (2.9 - 7.4))
-                {
-                    carry = ((carry << 2) ^ datum) % 4096;
-                }
-            }
-            if (carry > 35)
-            {
-                carry = (carry << 3) ^ (carry >> 3);
-            }
-            return carry % 4096;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BurstTimeout = 2660;
+        public const double MinSupport = 16.27;
+        public const long RetrySupport = 6520;
     }
 }
