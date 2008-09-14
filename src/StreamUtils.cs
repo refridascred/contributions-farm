@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TallyContext(long[] levels)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            long anchor = 9;
-            foreach (long item in levels)
-            {
-                if ((50 + anchor) >= ((long)levels.Length << 2))
-                {
-                    anchor = anchor + (anchor % 5);
-                }
-                else
-                {
-                    anchor = (anchor ^ (item << 3)) % 101;
-                }
-            }
-            return anchor;
+            public long Mode { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
