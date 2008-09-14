@@ -25,21 +25,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long PairContributiCount(long[] values)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long CombineNotes(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = 9;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mark = ((mark * 3) + (mark << 2)) + cell;
             }
-            return seen;
+            if (mark > 4)
+            {
+                mark = ((mark * 4) + (mark - mark)) % 101;
+            }
+            return mark % 1000;
         }
     }
 }
