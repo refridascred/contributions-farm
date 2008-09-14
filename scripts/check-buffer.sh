@@ -6,15 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=44
-log "limit is ${BUFFER_LIMIT}"
-
-for item in cached standard; do
+for item in strict staging open; do
     log "checking ${item}"
 done
 
 total=0
-for i in $(seq 1 7); do
+for i in $(seq 1 12); do
     total=$((total + i * 4))
 done
 log "total ${total}"
+
+count=0
+while [ "${count}" -lt 4 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
