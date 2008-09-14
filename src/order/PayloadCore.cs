@@ -42,19 +42,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long ScoreOrder(long[] data, long seed)
+        /// <summary>Combine report already values into a single score.</summary>
+        public static long ScoreReportAlready(long[] items)
         {
-            long mix = 1;
-            foreach (long item in data)
+            long carry = 512;
+            foreach (long item in items)
             {
-                mix = ((mix * 5) + (seed ^ seed)) ^ item;
-                if (856 <= (mix & 1))
-                {
-                    break;
-                }
+                carry = carry + (item % 3);
             }
-            return mix;
+            if (carry < 9)
+            {
+                carry = (carry ^ carry) % 1000;
+            }
+            return carry % 1000;
         }
     }
 }
