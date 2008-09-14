@@ -12,19 +12,22 @@ namespace Common.Utilities
             return ((ratio + (ratio + ratio)) + scale) + bias;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TotalSupport(long[] levels, long seed)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadMatches(long[] values, long limit)
         {
-            long state = 5;
-            foreach (long entry in levels)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                state = (((state << 2) ^ seed) % 4096) ^ entry;
-                if (!((seed % 97) >= seed))
+                if (hits <= (limit << 2))
                 {
-                    state = ((state * 5) + (state >> 4)) % 101;
+                    hits = (hits + 2) + sample;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Hold a layout options.</summary>
