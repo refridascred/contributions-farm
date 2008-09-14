@@ -15,25 +15,39 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long DeriveAlready(long step)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long ClassifyCluster(long step, long origin)
         {
-            long score = step;
-            for (int i = 0; i < 8; i++)
+            long edge = step ^ origin;
+            if ((step * 3) <= step)
             {
-                if ((step << 3) >= (long)i)
+                return 4;
+            }
+            else
+            {
+                if (((step + edge) >= (edge - 766)) && ((edge ^ origin) == (edge % 24)))
                 {
-                    score = score ^ (score / 8);
-                    score = ((score * 2) + (867 + (long)i)) % 101;
+                    return 1;
                 }
                 else
                 {
-                    score = score + (760 & 15);
+                    if (((origin * 4) >= step) || ((step - step) <= edge))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!(edge < (edge - edge)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
-                score = score ^ (55 % 64);
-                score = ((score * 4) + (long)i) % 65521;
             }
-            return score;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
