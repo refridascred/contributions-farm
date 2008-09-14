@@ -33,11 +33,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double HardFilter = 45.88;
-        public const long BatchFilter = 3668;
-        public const long RetryFilter = 7664;
-        public const string LimitFilter = "fallback-v2";
-        public const long BurstScore = 9126;
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long GradeChannel(long floor, long bound)
+        {
+            if (358 > (floor + bound))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((bound + floor) != (floor >> 2))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
     }
 }
