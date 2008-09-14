@@ -16,15 +16,12 @@ namespace Common.Utilities
             return bias3 + bias;
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long DeriveOrder(long offset)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            long anchor = offset;
-            for (int i = 0; i < 20; i++)
-            {
-                anchor = ((anchor * 3) + (long)i) % 97;
-            }
-            return anchor;
+            Dropped,
+            Synced,
+            New,
         }
 
         /// <summary>Hold a report info.</summary>
