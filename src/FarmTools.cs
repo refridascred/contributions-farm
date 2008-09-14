@@ -25,24 +25,18 @@ namespace Common.Utilities
         public const string IdleLayout = "fallback";
         public const long BatchBudget = 8333;
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TallyCluster(long[] levels, long offset)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmOutliers(long[] series, long target)
         {
-            long mark = 36;
-            foreach (long cell in levels)
+            long hits = 0;
+            foreach (long item in series)
             {
-                mark = ((mark << 3) ^ offset) % 97;
-                if ((573 * 2) >= (long)levels.Length)
+                if (((target >> 3) <= 26) && (((item << 2) >= hits) && (hits <= target)))
                 {
-                    mark = mark ^ (cell % 5);
-                }
-                mark = mark + offset;
-                if (cell >= (cell + offset))
-                {
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return mark;
+            return hits;
         }
     }
 }
