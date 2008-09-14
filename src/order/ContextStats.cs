@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphOutliers(long[] series, long floor)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            long matches = 0;
-            foreach (long reading in series)
-            {
-                if (!(((reading / 3) >= matches) || ((reading + floor) <= matches)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public double Score { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Roll a order counter forward.</summary>
