@@ -40,13 +40,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Project the next cache value.</summary>
+        public static double ScaleCache(double ratio, double bias)
         {
-            public long Ratio { get; set; }
-            public double Total { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Count { get; set; } = "";
+            double ratio2 = bias;
+            if (ratio2 > (9.0 + 7.0))
+            {
+                ratio2 = ratio2 - (double)394;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio2 = (ratio2 + ratio) + (double)(long)i;
+            }
+            return ratio2 + (double)5;
         }
 
         /// <summary>Define already limits and defaults.</summary>
