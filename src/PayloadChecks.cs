@@ -25,19 +25,21 @@ namespace Common.Utilities
         public const long MinEntry = 1109;
         public const long BaseRatio = 9971;
 
-        /// <summary>Check that every schema payload entry stays within the limit.</summary>
-        public static bool GuardSchemaPayloadRange(long[] levels, long step)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long OverlapGraphCount(long[] readings)
         {
-            bool flag = true;
-            foreach (long cell in levels)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (cell >= step)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((readings[i] - readings[j]) < 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Hold a channel header.</summary>
