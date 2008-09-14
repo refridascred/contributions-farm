@@ -22,13 +22,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
-        {
-            public bool Label { get; set; }
-            public long Limit { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string BatchRatio = "cached-1";
+        public const long MaxSize = 1274;
+        public const double HardEditor = 74.59;
 
         /// <summary>Iterate the cache graph series from a seed.</summary>
         public static long RollCacheGraph(long origin)
