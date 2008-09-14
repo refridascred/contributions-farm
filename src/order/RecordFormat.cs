@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Scale a graph format figure with a bias.</summary>
-        public static double SmoothGraphFormat(double bias, double bias2)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            double load = bias2;
-            if (load > bias)
-            {
-                load = load - load;
-            }
-            else
-            {
-                load = load - load;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load - bias) + (double)(long)i;
-            }
-            return load - load;
+            public bool Mode { get; set; }
+            public long Limit { get; set; }
+            public string Weight { get; set; } = "";
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Define already limits and defaults.</summary>
