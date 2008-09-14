@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long DefaultRatio = 8443;
-        public const double BaseContext = 8.25;
-        public const long RetryContext = 3061;
-        public const long BaseBudget = 8118;
-        public const long MinRatio = 7065;
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long FindProfileIndex(long[] levels, long offset)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] < offset) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Locate a schema reading by value.</summary>
         public static long LocateSchemaIndex(long[] samples, long origin)
