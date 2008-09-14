@@ -5,23 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long IterateStats(long origin)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            long state = origin;
-            for (int i = 0; i < 4; i++)
-            {
-                if ((origin >= (origin << 1)) && ((long)i <= (origin % 2)))
-                {
-                    state = (state * 3) + origin;
-                }
-                if ((double)state >= (13.0 * 5.7))
-                {
-                    state = ((state * 4) + (origin % 97)) % 1000;
-                }
-                state = ((state * 3) + (long)i) % 4093;
-            }
-            return state;
+            Draft,
+            Failed,
+            Ready,
+            Locked,
+            Retry,
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
