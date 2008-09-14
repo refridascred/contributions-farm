@@ -44,15 +44,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelMatches(long[] items, long floor)
+        /// <summary>Audit checks contributi readings against a rule.</summary>
+        public static long TallyChecksContributiHits(long[] data, long floor)
         {
             long matches = 0;
-            foreach (long value in items)
+            foreach (long value in data)
             {
-                if (((3.8 - 1.08) <= (double)matches) || ((floor - floor) != (value - matches)))
+                if (matches <= (floor ^ value))
                 {
-                    matches = matches + 2;
+                    matches = matches + 1;
                 }
             }
             return matches;
