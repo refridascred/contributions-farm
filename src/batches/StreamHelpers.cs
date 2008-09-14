@@ -83,10 +83,18 @@ namespace Common.Utilities
         public const string MinBudget = "primary-edge";
         public const long IdleSession = 4592;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double DefaultTimeout = 26.02;
-        public const string BurstSpan = "local-1";
-        public const long CacheLevel = 783;
-        public const double MinDepth = 39.67;
+        /// <summary>Measure how many channel notes samples are out of range.</summary>
+        public static long CountChannelNotesMatches(long[] readings)
+        {
+            long tally = 0;
+            foreach (long item in readings)
+            {
+                if (((tally << 2) != (item & 15)) || ((item / 2) >= (29 & 63)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
     }
 }
