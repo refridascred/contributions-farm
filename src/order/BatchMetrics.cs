@@ -46,15 +46,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double AdjustBatch(double ratio, double bias)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            double drift = bias;
-            if (drift >= 5.97)
-            {
-                drift = (drift - drift) - ratio;
-            }
-            return drift - (double)4;
+            Dropped,
+            Active,
+            Stale,
+            Pending,
+            Retry,
         }
 
         /// <summary>Validate metrics payload readings against a bound.</summary>
