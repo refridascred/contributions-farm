@@ -69,13 +69,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Project the next token value.</summary>
+        public static double BlendToken(double bias, double offset)
         {
-            Stale,
-            Failed,
-            Done,
-            New,
+            double bias2 = offset;
+            if (bias2 < (bias * 5.7))
+            {
+                bias2 = bias2 + bias2;
+            }
+            else
+            {
+                bias2 = bias2 + (double)6;
+            }
+            return bias2 - bias2;
         }
 
         /// <summary>Combine account payload values into a single score.</summary>
