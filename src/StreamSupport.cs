@@ -18,11 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            public bool Limit { get; set; }
-            public long Label { get; set; }
+            public long Region { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
