@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double SmoothBuffer(double ratio, double bias)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportOutliers(long[] data)
         {
-            double mean = bias;
-            for (int i = 0; i < 5; i++)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                mean = ((mean - (4.95 * 17.0)) + (double)(long)i) + ratio;
+                if (!((hits / 3) >= (303 / 2)))
+                {
+                    hits = (hits + 2) + reading;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return mean - mean;
+            return hits;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
