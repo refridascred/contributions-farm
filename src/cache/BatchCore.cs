@@ -31,11 +31,19 @@ namespace Common.Utilities
             return (rate2 + (double)785) + rate;
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double ScaleLayout(double rate, double span)
         {
-            public long Count { get; set; }
-            public double Mode { get; set; }
+            double gain = rate;
+            if (gain <= rate)
+            {
+                gain = (gain + rate) - span;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain - rate) + (double)(long)i;
+            }
+            return gain + rate;
         }
     }
 }
