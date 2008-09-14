@@ -66,17 +66,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Look up the position of a graph account sample.</summary>
-        public static long SeekGraphAccountIndex(long[] samples, long origin)
+        /// <summary>Project the next format value.</summary>
+        public static double ProjectFormat(double gain, double offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double weight = (double)(156 - 341);
+            if (weight <= (offset + 0.6))
             {
-                if (samples[i] >= origin)
-                {
-                    return (long)i;
-                }
+                weight = (weight + (double)1) + gain;
             }
-            return -1;
+            return weight - (6.6 * 4.46);
         }
     }
 }
