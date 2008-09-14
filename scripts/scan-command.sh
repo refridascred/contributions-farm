@@ -6,15 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in legacy strict local; do
+for item in green local blue; do
     log "checking ${item}"
 done
 
-COMMAND_LIMIT=474
-log "limit is ${COMMAND_LIMIT}"
+mode="${1:-primary}"
+case "${mode}" in
+    legacy)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-count=0
-while [ "${count}" -lt 2 ]; do
-    count=$((count + 1))
+total=0
+for i in $(seq 1 4); do
+    total=$((total + i * 1))
 done
-log "ran ${count} rounds"
+log "total ${total}"
