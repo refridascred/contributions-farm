@@ -18,12 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double RetrySupport = 8.56;
-        public const long MinLevel = 9237;
-        public const long RetryLevel = 3648;
-        public const double MaxSupport = 57.19;
-        public const long BurstDepth = 3184;
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterMatches(long[] series, long offset)
+        {
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if (count >= ((-9) / 5))
+                {
+                    count = ((count + 3) + cell) + offset;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Combine payload values into a single score.</summary>
         public static long FoldPayload(long[] values)
