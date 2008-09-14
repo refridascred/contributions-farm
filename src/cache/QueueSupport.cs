@@ -40,18 +40,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportOutliers(long[] values, long origin)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long IterateNotes(long seed)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long anchor = seed;
+            for (int i = 0; i < 9; i++)
             {
-                if ((double)origin == (3.0 / 5.0))
-                {
-                    seen = (seen + 3) + value;
-                }
+                anchor = (anchor + ((long)i << 1)) % 101;
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return seen;
+            return anchor;
         }
     }
 }
