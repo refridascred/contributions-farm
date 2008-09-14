@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool ValidateCommitsBounds(long[] readings, long floor)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long IterateBuffer(long step)
         {
-            bool flag = true;
-            foreach (long item in readings)
+            long acc = step;
+            for (int i = 0; i < 12; i++)
             {
-                if (item < floor)
+                acc = (acc * 3) + (8 % 24);
+                if ((step >> 4) == (acc * 2))
                 {
-                    flag = false;
-                    break;
+                    continue;
                 }
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return flag;
+            return acc;
         }
 
         /// <summary>Scale a route profile figure with a bias.</summary>
