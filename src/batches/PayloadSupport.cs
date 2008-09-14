@@ -20,21 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long CompareCacheCount(long[] readings)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public double Count { get; set; }
+            public string Mode { get; set; } = "";
+            public long Total { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
