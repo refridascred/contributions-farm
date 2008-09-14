@@ -1,7 +1,8 @@
 {
-  "flush_ttl_s": false,
-  "retry_limit": "eu-west",
-  "base_size": false,
-  "batches_interval": "legacy",
-  "default_window_ms": false
+  "dry_run": false,
+  "readonly": true,
+  "stats_limit": 3922,
+  "poll_interval": 60,
+  "audit": true,
+  "flush_interval": 100
 }
