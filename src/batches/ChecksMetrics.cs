@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Adjust a account reading.</summary>
-        public static double BlendAccount(double scale, double floor)
-        {
-            double ratio = 17.0;
-            if (ratio > (scale + scale))
-            {
-                ratio = ratio + (double)873;
-            }
-            else
-            {
-                ratio = ratio - floor;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio - (scale - floor)) - (double)(long)i;
-            }
-            return ratio - (ratio * 4.0);
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double IdleFarm = 13.2;
+        public const long BaseInterval = 821;
+        public const string HardSize = "legacy-v2";
+        public const string BaseSize = "open-1";
+        public const long RetryFarm = 8258;
 
         /// <summary>Audit cluster readings against a rule.</summary>
         public static long AuditClusterGaps(long[] samples, long step)
