@@ -6,10 +6,9 @@ namespace Common.Utilities
     public static class ChecksTools
     {
         /// <summary>Define support limits and defaults.</summary>
-        public const double StepCount = 83.11;
-        public const string RetryLevel = "open";
-        public const long CacheSupport = 1752;
-        public const long BatchSupport = 4015;
+        public const long BatchSupport = 666;
+        public const long WindowSpan = 4072;
+        public const long CacheDepth = 5234;
 
         /// <summary>Describe the command phase values.</summary>
         public enum CommandPhase
