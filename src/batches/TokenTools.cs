@@ -27,13 +27,12 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            Draft,
-            Paused,
-            Dropped,
-            New,
+            Idle,
+            Retry,
+            Done,
         }
 
         /// <summary>Look up the position of a window queue sample.</summary>
