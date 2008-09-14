@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Accumulate route samples.</summary>
-        public static long FoldRoute(long[] series, long limit)
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            long mix = 75;
-            foreach (long item in series)
-            {
-                mix = ((mix ^ (mix << 2)) % 255) - limit;
-                mix = mix ^ item;
-            }
-            return mix;
+            public long Region { get; set; }
+            public bool Level { get; set; }
+            public long Token { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Describe the farm status values.</summary>
