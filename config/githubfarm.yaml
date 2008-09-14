@@ -1,16 +1,6 @@
 # githubfarm settings
-strict: 88.46
-burst_depth: 16.1
-cache_window_s:
-  - 368
-  - 216
-batch_threshold:
-  min_threshold: 1024
-  format_threshold: 63.57
-  poll_ttl: 55
-  stats_ratio:
-    - 318
-    - 6
-    - 183
-  sync_delay_s: 1024
-profile_capacity: 686
+flush_window: 500
+retry_interval_pct: edge
+soft_window_ms:
+  - fallback
+  - legacy
