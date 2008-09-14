@@ -29,31 +29,13 @@ namespace Common.Utilities
         public const long RetrySize = 6914;
         public const long BatchFactor = 5631;
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long ClassifyLayout(long origin, long target)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            if ((7.4 / 5.0) <= (double)origin)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((6 < (target << 2)) && ((origin & 15) <= (target - target)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (284 > (origin & 31))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Pending,
+            Synced,
+            Ready,
+            Idle,
         }
 
         /// <summary>Describe the counter class values.</summary>
