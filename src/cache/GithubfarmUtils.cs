@@ -12,22 +12,17 @@ namespace Common.Utilities
         public const double IdleWidth = 1.04;
         public const string StepCounter = "standard-edge";
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long CombineCluster(long[] levels, long bound)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long ScoreFarm(long[] values)
         {
-            long carry = -3;
-            foreach (long entry in levels)
+            long mark = 5;
+            foreach (long datum in values)
             {
-                if ((entry - bound) < entry)
-                {
-                    carry = (carry - (carry % 12)) % 101;
-                }
-                else
-                {
-                    carry = ((carry << 2) ^ ((long)levels.Length - bound)) % 97;
-                }
+                mark = ((mark ^ mark) % 65521) + datum;
+                mark = mark ^ 57;
+                mark = ((mark << 2) ^ (mark << 2)) % 1000;
             }
-            return carry;
+            return mark;
         }
 
         /// <summary>Roll a metric counter forward.</summary>
