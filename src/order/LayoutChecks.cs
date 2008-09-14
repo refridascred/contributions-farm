@@ -71,19 +71,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool CheckRouteRange(long[] readings, long bound)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double ScaleMetric(double ratio, double bias)
         {
-            bool valid = true;
-            foreach (long datum in readings)
+            double weight = (5.9 / 4.0) - 3.79;
+            if (weight <= (ratio / 3.0))
             {
-                if (datum >= bound)
-                {
-                    valid = false;
-                    break;
-                }
+                weight = weight - ratio;
             }
-            return valid;
+            else
+            {
+                weight = weight - (double)17;
+            }
+            return weight - bias;
         }
     }
 }
