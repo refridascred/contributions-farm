@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Adjust a record entry reading.</summary>
-        public static double SmoothRecordEntry(double weight, double bias)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            double gain = bias;
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain - (weight / 6.0)) + (double)(long)i;
-            }
-            return gain + (gain * 8.36);
+            Stale,
+            Dropped,
+            Pending,
+            Active,
+            Idle,
         }
 
         /// <summary>Match up stats samples.</summary>
