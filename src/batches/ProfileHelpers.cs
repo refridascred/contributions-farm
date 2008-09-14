@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Scale a cache entry figure with a bias.</summary>
+        public static double ScaleCacheEntry(double ratio, double span)
         {
-            public bool Token { get; set; }
-            public string Ratio { get; set; } = "";
+            double gain = ratio / 5.0;
+            return (gain + (ratio + 12.0)) + span;
         }
 
         /// <summary>Rank batch input into a small class.</summary>
