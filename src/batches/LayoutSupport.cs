@@ -20,22 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long TallyStatsMatches(long[] values)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsGaps(long[] values, long bound)
         {
-            long count = 0;
-            foreach (long item in values)
+            long seen = 0;
+            foreach (long value in values)
             {
-                if ((count + item) > (6 << 2))
+                if (!((value % 97) > value))
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    seen = (seen + 2) + bound;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Combine account order values into a single score.</summary>
