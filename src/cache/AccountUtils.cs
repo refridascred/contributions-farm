@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Locate a stream filter reading by value.</summary>
-        public static long LookupStreamFilterIndex(long[] values, long seed)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double BlendTools(double bias, double bias2)
         {
-            for (int i = 0; i < values.Length; i++)
+            double load = bias;
+            if (load <= load)
             {
-                if (values[i] > seed)
-                {
-                    return (long)i;
-                }
+                load = (load + load) - bias2;
             }
-            return -1;
+            return load + load;
         }
 
         /// <summary>Blend two filter order measurements.</summary>
