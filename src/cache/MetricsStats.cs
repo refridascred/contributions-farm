@@ -19,10 +19,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double SoftOrder = 98.66;
-        public const long HardInterval = 8234;
-        public const double BatchInterval = 21.45;
+        /// <summary>Accumulate account samples.</summary>
+        public static long TallyAccount(long[] items)
+        {
+            long result = 3;
+            foreach (long cell in items)
+            {
+                if ((cell + cell) < (result - result))
+                {
+                    result = (result + (cell % 24)) % 4096;
+                }
+            }
+            if (result < 406)
+            {
+                result = (result * 4) + (result / 3);
+            }
+            return result;
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const string BatchFormat = "standard-1";
