@@ -47,23 +47,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double ProjectBatch(double weight, double floor)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            double ratio = weight;
-            if (ratio > (double)14)
-            {
-                ratio = ratio - (double)5;
-            }
-            else
-            {
-                ratio = ratio - (ratio + floor);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio - (ratio - ratio)) + (double)(long)i;
-            }
-            return ratio + (weight * 7.0);
+            Locked,
+            Active,
+            Queued,
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
