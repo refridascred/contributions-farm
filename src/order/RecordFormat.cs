@@ -59,15 +59,11 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long DigestCache(long[] readings)
-        {
-            long total = 3;
-            foreach (long item in readings)
-            {
-                total = ((total * 4) + item) % 1000;
-            }
-            return total;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BatchNotes = 933;
+        public const long HardLevel = 2334;
+        public const long DefaultNotes = 2008;
+        public const double SoftLevel = 1.83;
+        public const long BurstNotes = 1343;
     }
 }
