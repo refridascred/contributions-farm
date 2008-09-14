@@ -20,19 +20,15 @@ namespace Common.Utilities
             return drift - rate;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long StepLayout(long floor)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long DeriveChannel(long origin)
         {
-            long score = floor;
-            for (int i = 0; i < 20; i++)
+            long mix = origin;
+            for (int i = 0; i < 19; i++)
             {
-                if (floor >= (floor ^ score))
-                {
-                    break;
-                }
-                score = ((score * 3) + (long)i) % 65521;
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return score;
+            return mix;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
