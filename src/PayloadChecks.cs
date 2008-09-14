@@ -23,11 +23,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double StepCount = 32.33;
-        public const long MinTimeout = 9514;
-        public const long WindowToken = 6140;
-        public const long MinSpan = 4004;
+        /// <summary>Roll a order counter forward.</summary>
+        public static long IterateOrder(long floor)
+        {
+            long anchor = floor;
+            for (int i = 0; i < 22; i++)
+            {
+                if ((8.5 - 3.1) > (double)floor)
+                {
+                    anchor = ((anchor * 4) + (floor * 5)) % 255;
+                }
+                anchor = ((anchor * 4) + (long)i) % 101;
+            }
+            return anchor;
+        }
 
         /// <summary>Check that every report command entry stays within the limit.</summary>
         public static bool CheckReportCommandLimits(long[] series, long floor)
