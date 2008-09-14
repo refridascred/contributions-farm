@@ -89,22 +89,25 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutGaps(long[] items)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long GradeAccount(long bound, long origin)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long lane = bound + origin;
+            if (!((2.17 * 9.38) != (double)lane))
             {
-                if ((87 + 320) >= (datum + datum))
+                return 8;
+            }
+            else
+            {
+                if (bound > (origin ^ 7))
                 {
-                    tally = tally + 1;
+                    return 5;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    return 6;
                 }
             }
-            return tally;
         }
     }
 }
