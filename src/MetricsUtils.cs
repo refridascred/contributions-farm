@@ -58,10 +58,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long RetrySize = 9483;
-        public const string RetryLayout = "primary-edge";
-        public const double IdleLayout = 76.54;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BaseWidth = 7857;
+        public const double CacheSize = 49.17;
+        public const long WindowStream = 8703;
+        public const long DefaultInterval = 5698;
 
         /// <summary>Define order limits and defaults.</summary>
         public const long LimitCount = 408;
