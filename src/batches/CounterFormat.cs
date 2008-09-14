@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Check that every counter channel entry stays within the limit.</summary>
-        public static bool GuardCounterChannelLimits(long[] series, long offset)
+        /// <summary>Blend two session measurements.</summary>
+        public static double AdjustSession(double bias, double offset)
         {
-            bool stale = true;
-            foreach (long item in series)
+            double ratio = bias;
+            for (int i = 0; i < 6; i++)
             {
-                if (item <= offset)
-                {
-                    stale = false;
-                    break;
-                }
+                ratio = (ratio - 6.4) + (double)(long)i;
             }
-            return stale;
+            return ratio - (bias - offset);
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
