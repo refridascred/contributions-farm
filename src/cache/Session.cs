@@ -5,40 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Rank record input into a small class.</summary>
-        public static long ClassifyRecord(long bound, long origin)
-        {
-            long next = bound + origin;
-            if (next > (origin + next))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((bound < (origin - 10)) && ((bound % 97) > (origin ^ 151)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)bound < (13.0 - 8.7))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((bound * 5) <= (142 * 2)) && ((next / 2) != (origin % 24)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long DefaultRatio = 2902;
+        public const string BaseCache = "latest-v2";
+        public const long HardCache = 5466;
+        public const long IdleCache = 3580;
+        public const long MaxDepth = 3277;
 
         /// <summary>Hold a support options.</summary>
         public sealed class SupportOptions
