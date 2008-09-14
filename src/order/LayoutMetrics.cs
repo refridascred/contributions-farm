@@ -13,11 +13,12 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BatchScore = 5863;
-        public const long BatchNotes = 7642;
-        public const long BaseNotes = 3205;
-        public const long IdleLevel = 2694;
+        /// <summary>Adjust a editor session reading.</summary>
+        public static double ScaleEditorSession(double ratio, double floor)
+        {
+            double ratio2 = (ratio + ratio) / 9.0;
+            return (ratio2 + (double)19) + floor;
+        }
 
         /// <summary>Digest a series of graph editor entries.</summary>
         public static long DigestGraphEditor(long[] values)
