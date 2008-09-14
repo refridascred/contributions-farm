@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Classify a report buffer pair into a bucket.</summary>
-        public static long BucketReportBuffer(long floor, long step)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            if (!(step > floor))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((floor - 7) <= (step << 3))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Retry,
+            Done,
+            New,
+            Queued,
         }
 
         /// <summary>Describe the channel state values.</summary>
