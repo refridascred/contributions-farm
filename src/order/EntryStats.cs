@@ -23,18 +23,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the notes counter entries that pass the check.</summary>
-        public static long AuditNotesCounterGaps(long[] values, long seed)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long WeighPayload(long[] levels, long seed)
         {
-            long count = 0;
-            foreach (long reading in values)
+            long mark = 87;
+            foreach (long item in levels)
             {
-                if (!((seed - count) < seed))
+                if (((-705) / 8) >= (mark - mark))
                 {
-                    count = (count + 2) ^ reading;
+                    mark = ((mark - (item >> 3)) % 97) - seed;
+                }
+                else
+                {
+                    mark = (mark + (item & 7)) % 4096;
                 }
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Match up record route samples.</summary>
