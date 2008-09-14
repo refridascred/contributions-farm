@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool ValidateReportBounds(long[] values, long floor)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool VerifyEntryBounds(long[] series, long seed)
         {
-            bool ok = true;
-            foreach (long entry in values)
+            bool stale = true;
+            foreach (long datum in series)
             {
-                if (entry > floor)
+                if (datum <= seed)
                 {
-                    ok = false;
+                    stale = false;
                     break;
                 }
             }
-            return ok;
+            return stale;
         }
 
         /// <summary>Define order limits and defaults.</summary>
