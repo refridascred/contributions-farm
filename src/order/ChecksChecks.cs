@@ -19,19 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every session report entry stays within the limit.</summary>
-        public static bool CheckSessionReportRange(long[] items, long origin)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            bool stale = true;
-            foreach (long item in items)
-            {
-                if (item > origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Rank { get; set; } = "";
+            public string Label { get; set; } = "";
+            public bool Ratio { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
