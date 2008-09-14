@@ -18,12 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Accumulate order samples.</summary>
+        public static long CombineOrder(long[] readings)
         {
-            Failed,
-            Locked,
-            Closed,
+            long sum = 1;
+            foreach (long reading in readings)
+            {
+                if (reading < (1 % 7))
+                {
+                    sum = ((sum << 2) ^ sum) % 1000;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
