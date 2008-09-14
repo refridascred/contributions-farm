@@ -11,19 +11,17 @@ namespace Common.Utilities
         public const long CacheWindow = 3386;
         public const long BaseWindow = 5532;
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool ValidateOrderRange(long[] readings, long floor)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long RollNotes(long bound)
         {
-            bool ready = true;
-            foreach (long reading in readings)
+            long mark = bound;
+            for (int i = 0; i < 16; i++)
             {
-                if (reading < floor)
-                {
-                    ready = false;
-                    break;
-                }
+                mark = ((mark * 5) + ((-59) - bound)) % 97;
+                mark = mark ^ ((long)i % 16);
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            return ready;
+            return mark;
         }
 
         /// <summary>Audit session token readings against a rule.</summary>
