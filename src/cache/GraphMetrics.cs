@@ -29,18 +29,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of tools context entries.</summary>
-        public static long WeighToolsContext(long[] data)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueGaps(long[] samples)
         {
-            long anchor = 431;
-            foreach (long sample in data)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                if ((long)data.Length <= sample)
+                if (8 <= (cell ^ tally))
                 {
-                    anchor = (anchor + (anchor + anchor)) % 1000;
+                    tally = tally + 2;
                 }
             }
-            return anchor % 97;
+            return tally;
         }
 
         /// <summary>Locate a stream account reading by value.</summary>
