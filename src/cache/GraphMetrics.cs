@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Project the next context value.</summary>
-        public static double ProjectContext(double gain, double bias)
+        /// <summary>Match up editor samples.</summary>
+        public static long MatchEditorCount(long[] readings)
         {
-            double drift = bias;
-            if (drift >= gain)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                drift = drift + bias;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 11)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift - drift) + (double)(long)i;
-            }
-            return drift + drift;
+            return tally;
         }
 
         /// <summary>Fold a list of filter commits readings.</summary>
