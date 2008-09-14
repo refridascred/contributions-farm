@@ -51,19 +51,17 @@ namespace Common.Utilities
         public const long CacheInterval = 3511;
         public const string WindowWidth = "strict";
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool CheckStreamRange(long[] values, long origin)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long LocateProfileIndex(long[] data, long bound)
         {
-            bool found = true;
-            foreach (long entry in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (entry != origin)
+                if (data[i] > bound)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
     }
 }
