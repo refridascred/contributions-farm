@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool CheckAccountLimits(long[] levels, long origin)
         {
-            Retry,
-            Ready,
-            Pending,
-            New,
+            bool ok = true;
+            foreach (long item in levels)
+            {
+                if (item != origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
