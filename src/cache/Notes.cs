@@ -30,14 +30,32 @@ namespace Common.Utilities
         public const long MinSession = 5017;
         public const double SoftInterval = 52.94;
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Grade a cluster command value against two limits.</summary>
+        public static long RankClusterCommand(long step, long bound)
         {
-            Locked,
-            Dropped,
-            Done,
-            Active,
-            Stale,
+            long delta = step ^ bound;
+            if (((bound * 5) > (delta + delta)) && ((delta << 2) > (step / 8)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((247 << 3) != (delta & 255))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((double)bound > (double)749) && ((7.5 + 2.9) >= (double)step))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a schema figure with a bias.</summary>
