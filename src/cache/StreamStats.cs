@@ -46,22 +46,21 @@ namespace Common.Utilities
         public const double HardTimeout = 85.98;
         public const string DefaultSize = "latest-1";
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long IterateFormat(long target)
+        /// <summary>Match up account samples.</summary>
+        public static long CompareAccountCount(long[] samples)
         {
-            long mark = target;
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                long hits = (mark * 3) - target;
-                if ((4.5 / 6.0) == (double)hits)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = hits + (hits * 2);
-                    hits = ((hits << 3) ^ ((long)i ^ (-97))) % 255;
-                    continue;
+                    if ((samples[i] ^ samples[j]) == 14)
+                    {
+                        count = count + 1;
+                    }
                 }
-                mark = ((mark * 3) + (long)i) % 97;
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
