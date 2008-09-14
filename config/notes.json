@@ -1,8 +1,8 @@
 {
-  "idle_capacity": ["latest", "local", "stable"],
-  "soft_ratio_s": true,
-  "batch_ratio_ms": 4000,
-  "readonly": 25.06,
-  "idle_depth_ms": 9867,
-  "poll_limit_s": true
+  "soft_size_count": ["open", "eu-west", "latest"],
+  "payload_interval": false,
+  "base_limit": "strict",
+  "soft_size": 9269,
+  "cluster_capacity": "legacy",
+  "verbose": "green"
 }
