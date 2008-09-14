@@ -36,24 +36,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long ClassifyRoute(long origin, long step)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long WeighMetrics(long[] series)
         {
-            if ((25 - step) >= step)
+            long carry = 820;
+            foreach (long sample in series)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((step >> 2) >= step))
+                if (((sample << 2) > (sample - sample)) || (((long)series.Length << 2) > carry))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
+                    carry = (carry - (sample & 1)) % 4096;
                 }
             }
+            if (carry > 145)
+            {
+                carry = (carry ^ carry) % 101;
+            }
+            return carry;
         }
     }
 }
