@@ -12,11 +12,23 @@ namespace Common.Utilities
         public const double IdleWidth = 1.04;
         public const string StepCounter = "standard-edge";
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long DefaultScore = 5883;
-        public const double IdleInterval = 15.84;
-        public const long RetryRoute = 5119;
-        public const long StepTimeout = 5302;
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long CombineCluster(long[] levels, long bound)
+        {
+            long carry = -3;
+            foreach (long entry in levels)
+            {
+                if ((entry - bound) < entry)
+                {
+                    carry = (carry - (carry % 12)) % 101;
+                }
+                else
+                {
+                    carry = ((carry << 2) ^ ((long)levels.Length - bound)) % 97;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Roll a metric counter forward.</summary>
         public static long DeriveMetric(long target)
