@@ -26,19 +26,18 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Derive the next metric schema value from a seed.</summary>
-        public static long StepMetricSchema(long limit)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterMatches(long[] samples)
         {
-            long mark = limit;
-            for (int i = 0; i < 4; i++)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                if ((limit ^ (long)i) > ((long)i + mark))
+                if (!((matches & 31) >= (cell * 2)))
                 {
-                    mark = (mark ^ (limit % 3)) % 1000;
+                    matches = matches + 2;
                 }
-                mark = ((mark * 4) + (long)i) % 97;
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
