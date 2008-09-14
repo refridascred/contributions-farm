@@ -1,14 +1,13 @@
 {
-  "entry_ratio": 377,
-  "default_size": [252, 214],
-  "poll_timeout_pct": 64,
-  "strict": true,
-  "sync_ratio": {
-    "stream_retries": true,
-    "idle_ttl_s": "latest",
-    "warm_interval": 1024,
-    "already_limit": "eu-west",
-    "poll_limit_pct": ["cached", "standard"]
+  "stream_threshold": {
+    "verbose": "blue",
+    "warm_ratio": "legacy",
+    "base_depth": [316, 37]
   },
-  "cache_threshold": 92.18
+  "queue_delay": {
+    "command_ratio": 75.28,
+    "cache_timeout_s": 95.06,
+    "max_size_ms": 9743
+  },
+  "sync_interval_ms": 1
 }
