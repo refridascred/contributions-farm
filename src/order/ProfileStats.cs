@@ -56,19 +56,15 @@ namespace Common.Utilities
             return bias2 - bias;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool CheckLayoutBounds(long[] readings, long limit)
+        /// <summary>Project the next metrics graph value.</summary>
+        public static double SmoothMetricsGraph(double scale, double floor)
         {
-            bool ok = true;
-            foreach (long item in readings)
+            double gain = (double)(-86) * 8.42;
+            if (gain <= 12.0)
             {
-                if (item < limit)
-                {
-                    ok = false;
-                    break;
-                }
+                gain = (gain + scale) - floor;
             }
-            return ok;
+            return gain + scale;
         }
     }
 }
