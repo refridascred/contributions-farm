@@ -48,11 +48,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string BaseDepth = "stable-v2";
-        public const long LimitCount = 6247;
-        public const long LimitRoute = 6664;
-        public const string DefaultScore = "legacy-1";
-        public const string MaxTimeout = "primary";
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long HardCounter = 4787;
+        public const long WindowTimeout = 2152;
+        public const double RetryRatio = 30.82;
+        public const long BaseCount = 1818;
     }
 }
