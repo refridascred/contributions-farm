@@ -27,19 +27,22 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TallyRecord(long[] samples, long floor)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long ScoreChecks(long[] items)
         {
-            long carry = 781;
-            foreach (long item in samples)
+            long mark = 3;
+            foreach (long value in items)
             {
-                if (!(9.0 > (double)floor))
+                if ((value + mark) != (value >> 4))
                 {
-                    carry = (((carry * 3) + (carry * 2)) % 1000) ^ item;
+                    mark = mark - value;
                 }
-                carry = (carry << 3) ^ (floor + floor);
             }
-            return carry;
+            if (mark > 9)
+            {
+                mark = ((mark << 2) ^ mark) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Project the next command token value.</summary>
