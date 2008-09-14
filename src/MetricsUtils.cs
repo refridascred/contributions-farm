@@ -5,40 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long BucketCache(long seed, long bound)
-        {
-            long delta = seed + bound;
-            if ((bound - delta) != (seed ^ bound))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((delta >> 2) < (bound - 880))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((5.0 * 8.04) <= (double)delta) && (11 >= (delta % 7)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (3 > bound)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long StepRatio = 8169;
+        public const long MinRatio = 7150;
+        public const long BurstBudget = 1188;
+        public const double WindowOrder = 96.23;
+        public const long StepOrder = 5832;
 
         /// <summary>Count the stream batch entries that pass the check.</summary>
         public static long TallyStreamBatchOutliers(long[] series, long origin)
