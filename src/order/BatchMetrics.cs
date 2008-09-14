@@ -76,10 +76,9 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BurstProfile = 408;
-        public const double BaseProfile = 52.16;
-        public const long IdleSize = 8338;
-        public const long HardProfile = 1722;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long RetrySpan = 9499;
+        public const string RetryOrder = "alpha-edge";
+        public const string BurstOrder = "cached";
     }
 }
