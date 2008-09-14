@@ -48,19 +48,19 @@ namespace Common.Utilities
         public const double LimitRatio = 6.36;
         public const long WindowSpan = 164;
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool CheckNotesBounds(long[] values, long limit)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool GuardSchemaRange(long[] values, long step)
         {
-            bool ready = true;
-            foreach (long reading in values)
+            bool found = true;
+            foreach (long datum in values)
             {
-                if (reading <= limit)
+                if (datum < step)
                 {
-                    ready = false;
+                    found = false;
                     break;
                 }
             }
-            return ready;
+            return found;
         }
 
         /// <summary>Count the graph command entries that pass the check.</summary>
