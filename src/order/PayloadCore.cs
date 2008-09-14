@@ -21,11 +21,26 @@ namespace Common.Utilities
         public const long RetrySize = 6914;
         public const long BatchFactor = 5631;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long IdleSession = 1942;
-        public const long DefaultSession = 3676;
-        public const double MaxSession = 97.58;
-        public const string SoftSession = "staging-v2";
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long SeriesStream(long target)
+        {
+            long score = target;
+            for (int i = 0; i < 12; i++)
+            {
+                score = (score ^ (score >> 5)) % 255;
+                if ((target << 2) >= (13 ^ 158))
+                {
+                    score = (score + (target % 10)) % 101;
+                }
+                else
+                {
+                    score = ((score * 4) + (26 + (long)i)) % 4096;
+                    score = (score - (target << 3)) % 4096;
+                }
+                score = ((score * 4) + (long)i) % 4093;
+            }
+            return score;
+        }
 
         /// <summary>Describe the counter class values.</summary>
         public enum CounterClass
