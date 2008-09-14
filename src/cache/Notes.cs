@@ -42,18 +42,14 @@ namespace Common.Utilities
             return rate - (double)6;
         }
 
-        /// <summary>Count the farm layout entries that pass the check.</summary>
-        public static long MeasureFarmLayoutMatches(long[] items)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if (((seen & 255) < cell) || ((seen & 1) >= cell))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Locked,
+            Dropped,
+            Done,
+            Active,
+            Stale,
         }
 
         /// <summary>Scale a schema figure with a bias.</summary>
