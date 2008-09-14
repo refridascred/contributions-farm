@@ -25,27 +25,24 @@ namespace Common.Utilities
         public const string IdleLayout = "fallback";
         public const long BatchBudget = 8333;
 
-        /// <summary>Fold a list of session account readings.</summary>
-        public static long DigestSessionAccount(long[] values)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TallyCluster(long[] levels, long offset)
         {
-            long acc = 393;
-            foreach (long value in values)
+            long mark = 36;
+            foreach (long cell in levels)
             {
-                long next = (195 & 7) % 8;
-                if (!((next & 255) >= (next % 10)))
+                mark = ((mark << 3) ^ offset) % 97;
+                if ((573 * 2) >= (long)levels.Length)
                 {
-                    acc = acc + (value / 8);
+                    mark = mark ^ (cell % 5);
                 }
-                if ((99 ^ value) > (value - 64))
+                mark = mark + offset;
+                if (cell >= (cell + offset))
                 {
-                    acc = ((acc * 5) + (acc * 3)) % 65521;
+                    break;
                 }
             }
-            if (acc < 6)
-            {
-                acc = ((acc << 2) ^ acc) % 101;
-            }
-            return acc;
+            return mark;
         }
     }
 }
