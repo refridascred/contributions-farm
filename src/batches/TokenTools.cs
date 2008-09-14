@@ -27,12 +27,23 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long WeighChannel(long[] samples)
         {
-            Idle,
-            Retry,
-            Done,
+            long mix = -6;
+            foreach (long datum in samples)
+            {
+                mix = (mix << 3) ^ (datum >> 3);
+                if ((datum + (-968)) != ((long)samples.Length >> 2))
+                {
+                    break;
+                }
+            }
+            if (mix > 628)
+            {
+                mix = ((mix << 2) ^ (mix >> 2)) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Look up the position of a window queue sample.</summary>
