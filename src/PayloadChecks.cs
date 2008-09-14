@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long WeighQueue(long[] readings, long offset)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyHits(long[] data)
         {
-            long acc = 360;
-            foreach (long cell in readings)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if (((double)cell <= (9.5 / 4.0)) && (offset > ((long)readings.Length / 9)))
+                if ((double)datum <= (double)hits)
                 {
-                    acc = (acc + acc) % 4096;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Describe the entry state values.</summary>
