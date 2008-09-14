@@ -18,18 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long WeighChannel(long[] values, long floor)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long StepMetric(long seed)
         {
-            long state = -69;
-            foreach (long cell in values)
+            long score = seed;
+            for (int i = 0; i < 19; i++)
             {
-                if ((state << 2) <= (state % 16))
+                if (((long)i + seed) >= (15 - (-7)))
                 {
-                    state = ((state * 4) + (floor % 64)) ^ cell;
+                    score = (score + score) % 4096;
+                    break;
                 }
+                score = ((score * 2) + (long)i) % 97;
             }
-            return state;
+            return score;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
