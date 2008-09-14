@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long StepCount = 9921;
-        public const long IdleQueue = 8143;
-        public const string BatchWidth = "latest-1";
-        public const long HardScore = 766;
-        public const double BatchSize = 63.27;
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool GuardSupportBounds(long[] levels, long offset)
+        {
+            bool ready = true;
+            foreach (long entry in levels)
+            {
+                if (entry < offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Describe the entry state values.</summary>
         public enum EntryState
