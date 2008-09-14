@@ -1,5 +1,8 @@
 {
-  "flush_threshold_ms": 71,
-  "context_depth": 33.48,
-  "poll_window_count": ["strict", "standard", "blue"]
+  "dry_run": "eu-west",
+  "retry_ttl_pct": 1024,
+  "channel_retries": 250,
+  "max_capacity": false,
+  "burst_retries_pct": 61.11,
+  "default_size": 7373
 }
