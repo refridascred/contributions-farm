@@ -28,18 +28,13 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksMatches(long[] readings)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            long matches = 0;
-            foreach (long cell in readings)
-            {
-                if (!(((matches >> 2) < (matches / 5)) || ((matches & 15) >= matches)))
-                {
-                    matches = (matches + 3) ^ cell;
-                }
-            }
-            return matches;
+            public double Size { get; set; }
+            public string Label { get; set; } = "";
+            public long Limit { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define support limits and defaults.</summary>
