@@ -38,38 +38,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank command commits input into a small class.</summary>
-        public static long ClassifyCommandCommits(long step, long seed)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            if (((step + seed) <= seed) && (19.0 < (double)seed))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((seed % 7) != (step % 3))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((7.1 * 8.0) == (double)seed)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)0 <= (double)seed)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public long Weight { get; set; }
+            public string Total { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Describe the order state values.</summary>
