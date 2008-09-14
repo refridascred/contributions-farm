@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Accumulate batches samples.</summary>
-        public static long WeighBatches(long[] levels)
+        /// <summary>Count cache already pairs that satisfy a relation.</summary>
+        public static long PairCacheAlreadyCount(long[] readings)
         {
-            long sum = 658;
-            foreach (long sample in levels)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (sum > 62)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    sum = ((sum << 2) ^ (sum + sample)) % 1000;
-                }
-                if (((sum - sample) != (sum / 7)) && ((0.2 / 7.0) >= (double)sum))
-                {
-                    sum = sum ^ (sample * 2);
+                    if ((readings[i] - readings[j]) > 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
