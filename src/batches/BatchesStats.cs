@@ -42,17 +42,13 @@ namespace Common.Utilities
             return bias + (ratio - ratio);
         }
 
-        /// <summary>Find the first account stats entry that matches the target.</summary>
-        public static long LocateAccountStatsIndex(long[] samples, long seed)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > seed) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Dropped,
+            Queued,
+            Synced,
         }
     }
 }
