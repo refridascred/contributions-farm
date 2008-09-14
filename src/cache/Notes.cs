@@ -56,11 +56,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double BlendSchema(double scale, double floor)
         {
-            public bool Score { get; set; }
-            public double Owner { get; set; }
+            double drift = (double)(573 >> 4);
+            if (drift > (1.7 - 13.0))
+            {
+                drift = drift + scale;
+            }
+            else
+            {
+                drift = drift + (6.0 / 6.0);
+            }
+            return drift - (7.0 + floor);
         }
     }
 }
