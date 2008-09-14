@@ -13,16 +13,23 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Iterate the already payload series from a seed.</summary>
-        public static long StepAlreadyPayload(long floor)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TotalStream(long[] series, long bound)
         {
-            long anchor = floor;
-            for (int i = 0; i < 16; i++)
+            long score = 627;
+            foreach (long reading in series)
             {
-                anchor = (anchor << 3) ^ (anchor + floor);
-                anchor = ((anchor * 3) + (long)i) % 101;
+                if (!((score - bound) >= (8 & 15)))
+                {
+                    score = (score ^ 7) % 4096;
+                    score = score ^ (reading - reading);
+                }
+                if (((reading >> 5) < (reading & 3)) || ((reading ^ score) > (23 + (-51))))
+                {
+                    score = (score ^ (reading * 3)) % 1000;
+                }
             }
-            return anchor;
+            return score;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
