@@ -45,19 +45,18 @@ namespace Common.Utilities
         public const long CacheCount = 3237;
         public const long DefaultDepth = 1776;
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool GuardProfileRange(long[] series, long floor)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksHits(long[] values)
         {
-            bool flag = true;
-            foreach (long datum in series)
+            long matches = 0;
+            foreach (long value in values)
             {
-                if (datum != floor)
+                if (!((double)value <= (2.01 / 5.0)))
                 {
-                    flag = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return flag;
+            return matches;
         }
     }
 }
