@@ -1,10 +1,6 @@
-id,level,ratio,rank
-1,fallback,73.36,fallback
-2,315,22.38,strict
-3,primary,6.38,blue
-4,2.31,staging,483
-5,primary,221,91
-6,638,15.01,338
-7,local,strict,433
-8,25.85,25.95,50.52
-9,265,47.84,942
+id,label,score,token
+1,13.43,842,430
+2,911,42,61.99
+3,28.25,39.94,eu-west
+4,671,legacy,379
+5,green,primary,178
