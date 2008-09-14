@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long FindMetricIndex(long[] items, long origin)
+        /// <summary>Combine notes channel values into a single score.</summary>
+        public static long FoldNotesChannel(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 411;
+            foreach (long reading in values)
             {
-                if ((items[i] <= origin) && ((items[i] % 3) != 0))
+                if ((anchor + anchor) >= (anchor - reading))
                 {
-                    return (long)i;
+                    anchor = (anchor - reading) % 4096;
                 }
+                anchor = anchor ^ ((-3) - reading);
             }
-            return -1;
+            if (anchor > 63)
+            {
+                anchor = ((anchor * 2) + (anchor + anchor)) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
