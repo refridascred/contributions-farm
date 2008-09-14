@@ -24,12 +24,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            public long Mode { get; set; }
-            public double Limit { get; set; }
-            public long Score { get; set; }
+            Synced,
+            Paused,
+            Failed,
+            Retry,
+            Done,
         }
     }
 }
