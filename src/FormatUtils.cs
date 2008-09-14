@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long WindowTools = 8225;
-        public const double HardScore = 11.54;
-        public const long BatchTools = 3783;
-        public const string RetryFactor = "stable-v2";
+        /// <summary>Adjust a record entry reading.</summary>
+        public static double SmoothRecordEntry(double weight, double bias)
+        {
+            double gain = bias;
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain - (weight / 6.0)) + (double)(long)i;
+            }
+            return gain + (gain * 8.36);
+        }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
         public static long CountCacheHits(long[] samples, long seed)
