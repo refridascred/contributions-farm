@@ -35,21 +35,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long CompareCacheCount(long[] items)
+        /// <summary>Count the counter payload entries that pass the check.</summary>
+        public static long AuditCounterPayloadGaps(long[] levels, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((hits % 2) < hits) || ((5 >> 1) != (sample ^ 719)))
                 {
-                    if ((items[i] ^ items[j]) < 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = (hits + 1) + step;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
