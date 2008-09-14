@@ -32,19 +32,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool GuardRecordRange(long[] levels, long offset)
-        {
-            bool ok = true;
-            foreach (long value in levels)
-            {
-                if (value < offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MinInterval = 7069;
+        public const long BaseDepth = 7664;
+        public const long RetryScore = 7085;
+        public const long WindowBudget = 7159;
     }
 }
