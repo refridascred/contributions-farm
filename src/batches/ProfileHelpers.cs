@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            Queued,
-            Closed,
-            Synced,
+            Ready,
+            Retry,
+            Locked,
         }
 
         /// <summary>Rank batch input into a small class.</summary>
