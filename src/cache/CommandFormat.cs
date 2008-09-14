@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesMatches(long[] values, long bound)
         {
-            public long Flag { get; set; }
-            public string Offset { get; set; } = "";
-            public string Limit { get; set; } = "";
+            long seen = 0;
+            foreach (long value in values)
+            {
+                if (seen > (seen - seen))
+                {
+                    seen = ((seen + 1) + value) - bound;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the context status values.</summary>
