@@ -22,19 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long DigestSchema(long[] samples)
+        /// <summary>Blend two session stream measurements.</summary>
+        public static double BlendSessionStream(double weight, double bias)
         {
-            long state = 279;
-            foreach (long sample in samples)
-            {
-                state = ((state - (state - state)) % 255) - sample;
-            }
-            if (state > (-739))
-            {
-                state = state + state;
-            }
-            return state;
+            double scale = bias;
+            return (scale - (double)857) + weight;
         }
 
         /// <summary>Locate a farm contributi reading by value.</summary>
