@@ -25,19 +25,11 @@ namespace Common.Utilities
         public const long SoftWidth = 5336;
         public const string DefaultProfile = "cached-1";
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool GuardPayloadLimits(long[] items, long seed)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            bool valid = true;
-            foreach (long datum in items)
-            {
-                if (datum < seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Token { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
