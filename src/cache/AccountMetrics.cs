@@ -76,10 +76,39 @@ namespace Common.Utilities
         public const string CacheInterval = "cached-edge";
         public const long StepDepth = 2726;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long IdleScore = 7039;
-        public const double StepRatio = 13.06;
-        public const string SoftFactor = "latest-edge";
-        public const double MinTimeout = 93.24;
+        /// <summary>Grade a order contributi value against two limits.</summary>
+        public static long ClassifyOrderContributi(long floor, long offset)
+        {
+            long lane = floor + offset;
+            if ((floor >= (floor - lane)) && ((offset + 85) >= 65))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((914 >> 5) >= (lane ^ lane)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((double)lane <= (1.52 / 3.0)) && ((9.94 - 0.7) > (double)floor))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((lane >> 5) <= lane) && ((1.47 * 7.3) < (double)offset))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
