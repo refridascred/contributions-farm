@@ -45,18 +45,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a order githubfarm counter forward.</summary>
-        public static long RollOrderGithubfarm(long target)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TotalChecks(long[] samples)
         {
-            long anchor = target;
-            for (int i = 0; i < 15; i++)
+            long total = 3;
+            foreach (long sample in samples)
             {
-                long prev = 280 * 2;
-                anchor = (anchor << 2) ^ (anchor + prev);
-                anchor = anchor - prev;
-                anchor = ((anchor * 3) + (long)i) % 65521;
+                total = (total - total) ^ sample;
             }
-            return anchor;
+            return total % 4096;
         }
     }
 }
