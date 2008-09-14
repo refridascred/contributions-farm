@@ -39,12 +39,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long SoftTimeout = 3403;
-        public const double SoftOrder = 30.06;
-        public const long BaseWidth = 3703;
-        public const long DefaultOrder = 4457;
-        public const long BaseOrder = 1901;
+        /// <summary>Count contributi metric pairs that satisfy a relation.</summary>
+        public static long CompareContributiMetricCount(long[] levels)
+        {
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a layout info.</summary>
         public sealed class LayoutInfo
