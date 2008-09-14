@@ -32,19 +32,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool ValidateSessionLimits(long[] items, long origin)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            bool valid = true;
-            foreach (long entry in items)
-            {
-                if (entry != origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Dropped,
+            Closed,
+            Pending,
+            Stale,
+            Done,
         }
     }
 }
