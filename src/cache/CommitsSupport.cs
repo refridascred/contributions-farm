@@ -37,22 +37,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long OverlapSessionCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long SoftWindow = 3838;
+        public const long MaxWidth = 4279;
+        public const double StepWindow = 71.62;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const double IdleDepth = 40.73;
