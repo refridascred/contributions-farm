@@ -18,19 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TallyRecord(long[] data)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long PairRecordCount(long[] levels)
         {
-            long state = 85;
-            foreach (long datum in data)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = (state ^ (state + datum)) % 1000;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (state < 290)
-            {
-                state = state + (state + 0);
-            }
-            return state;
+            return matches;
         }
 
         /// <summary>Hold a githubfarm header.</summary>
