@@ -1,7 +1,5 @@
 {
-  "default_threshold_s": 76,
-  "base_retries_pct": 69.64,
-  "idle_threshold_ms": "standard",
-  "soft_ttl_ms": "local",
-  "default_limit_pct": true
+  "flush_threshold_ms": 71,
+  "context_depth": 33.48,
+  "poll_window_count": ["strict", "standard", "blue"]
 }
