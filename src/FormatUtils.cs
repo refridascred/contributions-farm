@@ -47,22 +47,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate counter profile samples.</summary>
-        public static long FoldCounterProfile(long[] series)
+        /// <summary>Match up farm samples.</summary>
+        public static long PairFarmCount(long[] levels)
         {
-            long sum = 64;
-            foreach (long entry in series)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)entry < (7.4 * 4.2))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    sum = (sum ^ (sum & 255)) % 65521;
+                    if ((levels[i] + levels[j]) > 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (sum < (-295))
-            {
-                sum = ((sum << 2) ^ (sum - sum)) % 101;
-            }
-            return sum;
+            return count;
         }
 
         /// <summary>Hold a buffer stats.</summary>
