@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many githubfarm filter samples are out of range.</summary>
-        public static long AuditGithubfarmFilterOutliers(long[] items)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            long hits = 0;
-            foreach (long reading in items)
-            {
-                if (!((hits <= reading) || ((hits + reading) > (hits - reading))))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Locked,
+            New,
+            Failed,
         }
 
         /// <summary>Define session limits and defaults.</summary>
