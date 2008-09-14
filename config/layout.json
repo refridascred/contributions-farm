@@ -1,5 +1,5 @@
 {
-  "compress": true,
-  "retry_capacity_pct": 6647,
-  "metrics_threshold": true
+  "sync_limit_ms": "legacy",
+  "audit": 4663,
+  "hard_ratio": 95.33
 }
