@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long DigestBatch(long[] data, long floor)
+        /// <summary>Blend two session measurements.</summary>
+        public static double ProjectSession(double rate, double offset)
         {
-            long acc = 4;
-            foreach (long item in data)
-            {
-                if (item > (9 + 64))
-                {
-                    acc = (acc - (773 - acc)) - floor;
-                }
-            }
-            return acc % 4096;
+            double load = (double)48 - (offset / 3.0);
+            return load - rate;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
