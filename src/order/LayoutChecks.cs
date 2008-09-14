@@ -60,17 +60,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Find the first report cluster entry that matches the target.</summary>
-        public static long LocateReportClusterIndex(long[] data, long origin)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricHits(long[] samples, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if (data[i] == origin)
+                if ((((7.3 + 3.0) != (double)bound) && ((bound / 2) > bound)) && ((double)item > (double)tally))
                 {
-                    return (long)i;
+                    tally = tally + 2;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
