@@ -20,12 +20,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long LookupContributiIndex(long[] levels, long step)
         {
-            Retry,
-            Done,
-            Queued,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] > step) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Compare every pair of context readings.</summary>
