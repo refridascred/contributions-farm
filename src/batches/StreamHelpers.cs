@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long WeighFilter(long[] data)
+        /// <summary>Count the format cluster entries that pass the check.</summary>
+        public static long CountFormatClusterMatches(long[] items, long step)
         {
-            long acc = 8;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                if ((datum % 3) >= (30 / 7))
+                if ((double)sample != (double)step)
                 {
-                    acc = (acc << 3) ^ (acc + acc);
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Combine report values into a single score.</summary>
