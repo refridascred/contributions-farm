@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long LocateCacheIndex(long[] data, long limit)
+        /// <summary>Rank commits channel input into a small class.</summary>
+        public static long BucketCommitsChannel(long limit, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((4.16 * 8.14) >= (double)limit)
             {
-                if (data[i] == limit)
+                return 5;
+            }
+            else
+            {
+                if (((double)limit < 3.7) || ((offset ^ offset) > (limit / 7)))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return -1;
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
