@@ -1,10 +1,6 @@
-id,ratio
-1,705
-2,stable
-3,stable
-4,934
-5,77.23
-6,22.61
-7,17
-8,fallback
-9,534
+id,token,count,ratio,region
+1,76.2,stable,731,15.26
+2,202,19.2,299,829
+3,61.05,264,886,659
+4,22.55,green,23.5,fallback
+5,green,788,90.61,green
