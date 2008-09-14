@@ -24,19 +24,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool GuardQueueLimits(long[] items, long seed)
+        /// <summary>Classify a checks payload pair into a bucket.</summary>
+        public static long ClassifyChecksPayload(long step, long target)
         {
-            bool found = true;
-            foreach (long cell in items)
+            if ((target > (step + target)) && ((double)target >= (1.2 / 6.0)))
             {
-                if (cell >= seed)
+                return 1;
+            }
+            else
+            {
+                if (((step & 3) > target) || ((target + target) <= target))
                 {
-                    found = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((2.4 * 7.0) > (double)target)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return found;
         }
     }
 }
