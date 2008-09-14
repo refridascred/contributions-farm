@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            Ready,
-            Closed,
-            Queued,
-            Paused,
+            public long Count { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
