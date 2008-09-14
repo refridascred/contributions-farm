@@ -69,12 +69,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Adjust a record reading.</summary>
+        public static double ScaleRecord(double weight, double offset)
         {
-            public long Rank { get; set; }
-            public double Mode { get; set; }
-            public long Ratio { get; set; }
+            double scale = (double)614 + (weight + offset);
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale - (offset * 3.8)) + (double)(long)i;
+            }
+            return scale + (weight + offset);
         }
 
         /// <summary>Define account limits and defaults.</summary>
