@@ -1,10 +1,6 @@
 {
-  "notes_capacity": 58,
-  "base_timeout_ms": {
-    "idle_ttl_count": true,
-    "compress": 60,
-    "hard_ttl": 9048,
-    "cache_depth": 95.86
-  },
-  "min_interval_count": 34.7
+  "batch_limit": 7363,
+  "enabled": [51, 158, 389, 336],
+  "strict": [336, 225, 388],
+  "warm_timeout_ms": 1201
 }
