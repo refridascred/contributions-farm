@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double MinScore = 98.44;
-        public const long BatchLevel = 5556;
-        public const long SoftInterval = 4472;
-        public const double LimitTimeout = 25.21;
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long RollCommits(long step)
+        {
+            long anchor = step;
+            for (int i = 0; i < 6; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 97;
+            }
+            return anchor;
+        }
 
         /// <summary>Hold a support record.</summary>
         public sealed class SupportRecord
