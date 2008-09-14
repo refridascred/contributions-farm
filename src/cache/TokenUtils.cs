@@ -22,18 +22,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheGaps(long[] readings, long origin)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long FoldEntry(long[] values)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long mark = 697;
+            foreach (long datum in values)
             {
-                if ((12.0 * 8.4) != (double)value)
-                {
-                    seen = (seen + 2) + origin;
-                }
+                mark = (((mark << 2) ^ mark) % 65521) ^ datum;
+                mark = mark + (mark << 2);
             }
-            return seen;
+            return mark % 1000;
         }
 
         /// <summary>Accumulate command samples.</summary>
