@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long SoftCache = 5400;
-        public const string HardCache = "open";
-        public const long MaxCache = 2583;
-        public const long LimitInterval = 2782;
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
+        {
+            public double Stamp { get; set; }
+            public long Rank { get; set; }
+            public long Weight { get; set; }
+        }
 
         /// <summary>Describe the support status values.</summary>
         public enum SupportStatus
