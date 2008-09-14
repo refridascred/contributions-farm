@@ -22,15 +22,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long StepGraph(long floor)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool ValidateClusterLimits(long[] readings, long bound)
         {
-            long mix = floor;
-            for (int i = 0; i < 9; i++)
+            bool flag = true;
+            foreach (long datum in readings)
             {
-                mix = ((mix * 2) + (long)i) % 101;
+                if (datum <= bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return mix;
+            return flag;
         }
 
         /// <summary>Define context limits and defaults.</summary>
