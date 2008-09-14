@@ -23,19 +23,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many already report samples are out of range.</summary>
-        public static long AuditAlreadyReportGaps(long[] values, long offset)
-        {
-            long tally = 0;
-            foreach (long item in values)
-            {
-                if ((tally + item) >= (item + tally))
-                {
-                    tally = (tally + 3) - offset;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string BurstSession = "local-edge";
+        public const string CacheDepth = "strict-edge";
+        public const double MaxDepth = 46.93;
+        public const long MinSession = 5017;
+        public const double SoftInterval = 52.94;
 
         /// <summary>Describe the filter class values.</summary>
         public enum FilterClass
