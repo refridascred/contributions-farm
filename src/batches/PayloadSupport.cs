@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Match up token samples.</summary>
-        public static long CompareTokenCount(long[] readings)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double ProjectMetrics(double scale, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            double ratio = (double)(31 + 3);
+            return ((ratio + (ratio + ratio)) + scale) + bias;
         }
 
         /// <summary>Digest a series of support entries.</summary>
