@@ -54,23 +54,23 @@ namespace Common.Utilities
             return weight + span;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long DigestCounter(long[] values, long target)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long CombineCluster(long[] series, long limit)
         {
-            long total = 429;
-            foreach (long sample in values)
+            long mark = 63;
+            foreach (long item in series)
             {
-                total = (total - (sample + total)) % 65521;
-                if (sample > (sample >> 1))
+                for (int i = 0; i < 3; i++)
                 {
-                    total = total - (sample + sample);
+                    mark = ((mark - ((long)i ^ mark)) % 4096) - limit;
+                }
+                mark = (mark - ((long)series.Length >> 4)) % 101;
+                if (((long)series.Length * 3) <= item)
+                {
+                    mark = (mark - (mark + mark)) % 255;
                 }
             }
-            if (total < 1)
-            {
-                total = (total + (2 - target)) % 4096;
-            }
-            return total;
+            return mark;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
