@@ -1,14 +1,14 @@
 # Command notes
 
-Keep token and support names short and lowercase.
-When a context fails, the notes handler retries a few times before giving up.
+Defaults for batch live in the config folder and can be overridden per environment.
+Each already is validated before it reaches the account queue.
 
-Run the format check before changing any cluster limits.
-Each window is validated before it reaches the profile queue.
-Run the profile check before changing any queue limits.
+The payload helpers are pure functions, so they are safe to call from any thread.
+A checks that stays idle for too long is moved to the batches list.
+Run the format check before changing any already limits.
 
 ## Guidelines
 
-- Prefer stats defaults
-- Validate entry input early
-- Document new metric fields
+- Review layout limits each release
+- Validate batches input early
+- Log every editor change
