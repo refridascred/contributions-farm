@@ -38,32 +38,19 @@ namespace Common.Utilities
         public const long MinSession = 5017;
         public const double SoftInterval = 52.94;
 
-        /// <summary>Grade a cluster command value against two limits.</summary>
-        public static long RankClusterCommand(long step, long bound)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool CheckProfileBounds(long[] items, long offset)
         {
-            long delta = step ^ bound;
-            if (((bound * 5) > (delta + delta)) && ((delta << 2) > (step / 8)))
+            bool valid = true;
+            foreach (long entry in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((247 << 3) != (delta & 255))
+                if (entry != offset)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((double)bound > (double)749) && ((7.5 + 2.9) >= (double)step))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Scale a schema figure with a bias.</summary>
