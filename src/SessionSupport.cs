@@ -66,11 +66,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next schema value.</summary>
-        public static double ProjectSchema(double bias, double span)
-        {
-            double drift = (double)79 * 7.0;
-            return ((drift - 14.0) + bias) + span;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MinMetric = 6738;
+        public const long WindowTimeout = 19;
+        public const long WindowInterval = 8463;
+        public const long RetryMetric = 9378;
     }
 }
