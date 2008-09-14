@@ -69,18 +69,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many channel entry samples are out of range.</summary>
-        public static long AuditChannelEntryGaps(long[] levels, long origin)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long LookupGithubfarmIndex(long[] values, long offset)
         {
-            long count = 0;
-            foreach (long value in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (count < origin)
+                if ((values[i] < offset) && ((values[i] % 3) != 0))
                 {
-                    count = (count + 2) + value;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
