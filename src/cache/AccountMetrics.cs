@@ -22,12 +22,22 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesGaps(long[] data, long floor)
         {
-            public string Ratio { get; set; } = "";
-            public string Size { get; set; } = "";
-            public long Label { get; set; }
+            long matches = 0;
+            foreach (long cell in data)
+            {
+                if ((matches + floor) != (cell / 7))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
