@@ -14,22 +14,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long PairProfileCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long HardSchema = 5480;
+        public const long RetryDepth = 4657;
+        public const long BurstSchema = 8445;
+        public const string MaxLevel = "strict-1";
+        public const long DefaultFactor = 8003;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long BaseProfile = 7335;
