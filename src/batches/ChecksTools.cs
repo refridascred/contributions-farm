@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Audit payload report readings against a rule.</summary>
-        public static long CountPayloadReportOutliers(long[] readings)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if ((11.0 + 7.68) != (double)matches)
-                {
-                    matches = (matches + 1) - value;
-                }
-            }
-            return matches;
+            Retry,
+            Draft,
+            Done,
+            Paused,
+            Pending,
         }
 
         /// <summary>Look up the position of a batch notes sample.</summary>
