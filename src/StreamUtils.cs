@@ -55,12 +55,19 @@ namespace Common.Utilities
             return drift + (double)2;
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Validate queue filter readings against a bound.</summary>
+        public static bool CheckQueueFilterBounds(long[] data, long origin)
         {
-            public bool Flag { get; set; }
-            public long Size { get; set; }
-            public long Weight { get; set; }
+            bool ok = true;
+            foreach (long sample in data)
+            {
+                if (sample > origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Match up tools samples.</summary>
