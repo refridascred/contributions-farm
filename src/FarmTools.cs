@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long OverlapAccountCount(long[] readings)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long SeriesSession(long floor)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = floor;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!(((score - floor) > floor) || (((-39) / 4) < floor)))
                 {
-                    if ((readings[i] - readings[j]) != 19)
-                    {
-                        count = count + 1;
-                    }
+                    score = (score ^ score) % 4096;
                 }
+                score = (score + ((-7) + (long)i)) % 97;
+                if ((4.1 + 7.83) >= (double)score)
+                {
+                    score = (score * 5) + (score >> 3);
+                    score = ((score * 4) + (floor * 4)) % 65521;
+                }
+                score = ((score * 4) + (long)i) % 101;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Hold a channel snapshot.</summary>
