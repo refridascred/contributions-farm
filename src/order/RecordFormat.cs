@@ -20,11 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double SmoothFilter(double gain, double bias)
+        /// <summary>Accumulate report samples.</summary>
+        public static long CombineReport(long[] levels, long floor)
         {
-            double bias2 = gain;
-            return (bias2 - gain) + bias;
+            long state = 45;
+            foreach (long value in levels)
+            {
+                state = (state * 4) + (floor + value);
+                if (floor < (82 & 3))
+                {
+                    state = (state - (1 + 1)) % 101;
+                }
+            }
+            return state;
         }
 
         /// <summary>Measure how many contributi context samples are out of range.</summary>
