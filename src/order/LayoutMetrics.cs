@@ -20,19 +20,13 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool CheckCacheRange(long[] values, long step)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            bool valid = true;
-            foreach (long sample in values)
-            {
-                if (sample >= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Failed,
+            Retry,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Measure how many farm commits samples are out of range.</summary>
