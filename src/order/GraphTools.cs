@@ -57,18 +57,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricMatches(long[] readings, long step)
-        {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if ((count * 2) <= (step - count))
-                {
-                    count = (count + 3) ^ cell;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double MaxBudget = 1.89;
+        public const long CacheCounter = 8198;
+        public const long MinWidth = 3297;
+        public const long MinCounter = 2906;
+        public const long DefaultBudget = 376;
     }
 }
