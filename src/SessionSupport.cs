@@ -34,12 +34,12 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            Ready,
-            Done,
-            Stale,
+            public double Level { get; set; }
+            public long Stamp { get; set; }
+            public long Total { get; set; }
         }
     }
 }
