@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long DeriveCluster(long bound)
+        /// <summary>Fold a list of stream channel readings.</summary>
+        public static long ScoreStreamChannel(long[] samples)
         {
-            long acc = bound;
-            for (int i = 0; i < 5; i++)
+            long score = 71;
+            foreach (long reading in samples)
             {
-                acc = ((acc * 2) + (long)i) % 65521;
+                score = ((score + score) % 255) - reading;
             }
-            return acc;
+            if (score > 786)
+            {
+                score = (score * 4) + (score << 1);
+            }
+            return score;
         }
 
         /// <summary>Iterate the cache checks series from a seed.</summary>
