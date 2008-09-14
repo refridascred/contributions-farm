@@ -1,6 +1,8 @@
-id,label,score,token
-1,13.43,842,430
-2,911,42,61.99
-3,28.25,39.94,eu-west
-4,671,legacy,379
-5,green,primary,178
+id,token,region
+1,primary,52
+2,fallback,13.89
+3,21.78,92.93
+4,80,open
+5,edge,42.67
+6,840,local
+7,3.78,fallback
