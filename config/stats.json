@@ -1,23 +1,6 @@
 {
-  "githubfarm_threshold": 3,
-  "batch_window_s": 60,
-  "min_delay_ms": {
-    "token_ratio": {
-      "queue_limit": 94,
-      "soft_timeout": 51,
-      "hard_retries_count": [395, 413, 273],
-      "compress": 8795,
-      "verbose": 42
-    },
-    "route_ttl": "local",
-    "max_limit_s": "standard",
-    "sync_interval": 32.3
-  },
-  "base_interval_s": {
-    "base_threshold": "local",
-    "batches_timeout": ["primary", "primary", "strict"],
-    "readonly": true
-  },
-  "min_depth": "green",
-  "soft_interval": "edge"
+  "format_depth": "cached",
+  "poll_delay": "cached",
+  "soft_interval_pct": 95,
+  "sync_timeout_s": "fallback"
 }
