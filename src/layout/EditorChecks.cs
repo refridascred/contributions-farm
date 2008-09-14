@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor checks helpers.</summary>
     public static class EditorChecks
     {
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long ClassifyGraph(long bound, long step)
+        /// <summary>Audit order metrics readings against a rule.</summary>
+        public static long CountOrderMetricsOutliers(long[] levels)
         {
-            if ((16 > (4 - bound)) && ((step + (-2)) != (step + step)))
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)step <= (6.99 / 9.0))
+                if ((double)cell != (0.77 + 1.06))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!((double)bound >= (4.0 * 7.0)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((bound >> 1) <= (step ^ bound))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the already state values.</summary>
