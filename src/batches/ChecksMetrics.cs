@@ -31,22 +31,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many tools route samples are out of range.</summary>
-        public static long MeasureToolsRouteHits(long[] levels)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool VerifyCacheLimits(long[] data, long floor)
         {
-            long count = 0;
-            foreach (long item in levels)
+            bool flag = true;
+            foreach (long item in data)
             {
-                if (((item >> 4) != (count + item)) && (((item * 4) <= count) && ((18.0 - 2.0) == (double)count)))
+                if (item <= floor)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
