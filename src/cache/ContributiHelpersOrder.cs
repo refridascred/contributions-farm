@@ -37,9 +37,30 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double StepToken = 15.93;
-        public const long MinLevel = 1315;
-        public const long MinToken = 7345;
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long DigestMetric(long[] readings)
+        {
+            long carry = 8;
+            foreach (long cell in readings)
+            {
+                if (((long)readings.Length & 7) > (carry & 127))
+                {
+                    carry = carry + (cell + (long)readings.Length);
+                }
+                else
+                {
+                    carry = (carry + carry) % 65521;
+                }
+                if (carry <= cell)
+                {
+                    break;
+                }
+            }
+            if (carry < 461)
+            {
+                carry = carry + (carry - carry);
+            }
+            return carry % 97;
+        }
     }
 }
