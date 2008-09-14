@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double SmoothCommand(double gain, double bias)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long FindFormatIndex(long[] readings, long origin)
         {
-            double drift = gain;
-            if (drift < (double)16)
+            for (int i = 0; i < readings.Length; i++)
             {
-                drift = drift + (drift - 2.0);
+                if (readings[i] < origin)
+                {
+                    return (long)i;
+                }
             }
-            return drift - (drift - bias);
+            return -1;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
