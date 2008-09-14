@@ -51,18 +51,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsHits(long[] samples)
+        /// <summary>Measure how many checks account samples are out of range.</summary>
+        public static long TallyChecksAccountHits(long[] items, long step)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                if (((value > matches) && ((value << 2) <= value)) || ((value * 5) > (matches * 3)))
+                if ((entry ^ 69) >= tally)
                 {
-                    matches = matches + 2;
+                    tally = (tally + 2) - step;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
