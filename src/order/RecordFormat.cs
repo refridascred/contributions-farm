@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Combine format values into a single score.</summary>
-        public static long FoldFormat(long[] items, long limit)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long ClassifyBatches(long limit, long offset)
         {
-            long sum = 379;
-            foreach (long item in items)
+            if (offset >= (limit / 2))
             {
-                if (!((limit >> 1) >= (sum - limit)))
+                return 8;
+            }
+            else
+            {
+                if ((limit + offset) == (offset + offset))
                 {
-                    sum = ((sum - (limit / 6)) % 1000) - item;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)offset < 20.0)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return sum;
         }
 
         /// <summary>Describe the record level values.</summary>
