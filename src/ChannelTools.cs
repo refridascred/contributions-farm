@@ -32,12 +32,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool GuardContextLimits(long[] items, long target)
         {
-            public string Offset { get; set; } = "";
-            public double Level { get; set; }
-            public bool Count { get; set; }
+            bool flag = true;
+            foreach (long entry in items)
+            {
+                if (entry < target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
