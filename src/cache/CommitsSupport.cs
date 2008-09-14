@@ -33,12 +33,19 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Validate format report readings against a bound.</summary>
+        public static bool VerifyFormatReportRange(long[] series, long floor)
         {
-            Synced,
-            Paused,
-            Done,
+            bool stale = true;
+            foreach (long item in series)
+            {
+                if (item > floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
