@@ -16,12 +16,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long LookupWindowIndex(long[] series, long limit)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LookupRecordIndex(long[] levels, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (series[i] >= limit)
+                if ((levels[i] >= floor) && ((levels[i] % 5) == 0))
                 {
                     return (long)i;
                 }
