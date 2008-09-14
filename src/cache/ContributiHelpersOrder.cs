@@ -27,11 +27,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long IterateTools(long seed)
         {
-            public long Label { get; set; }
-            public double Region { get; set; }
+            long mix = seed;
+            for (int i = 0; i < 14; i++)
+            {
+                mix = (mix + (seed + mix)) % 4096;
+                mix = ((mix * 5) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Hold a command entry.</summary>
