@@ -22,13 +22,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Audit route stats readings against a rule.</summary>
+        public static long TallyRouteStatsHits(long[] levels)
         {
-            Pending,
-            Draft,
-            Idle,
-            Dropped,
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if (count <= ((long)levels.Length & 63))
+                {
+                    count = (count + 1) ^ sample;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a filter entry.</summary>
