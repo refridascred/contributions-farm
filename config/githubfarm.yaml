@@ -1,16 +1,15 @@
 # githubfarm settings
-context_depth:
-  base_window: false
-  base_interval_pct: blue
-  audit: open
-burst_size_s: 3
-sync_size:
-  - legacy
-  - cached
-  - eu-west
-  - strict
-counter_interval: 78.36
-compress:
-  burst_ttl_pct: primary
-  burst_timeout: 8.26
-  hard_ttl: 500
+flush_size_ms: 60
+strict:
+  idle_depth: standard
+  batch_window_s: standard
+  poll_ratio: 1013
+  hard_capacity_s: primary
+cache_ratio_pct: 36.28
+warm_limit_s: 46
+batch_threshold_pct:
+  - 339
+  - 340
+  - 345
+  - 191
+enabled: 91
