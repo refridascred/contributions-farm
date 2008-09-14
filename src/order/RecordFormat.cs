@@ -34,15 +34,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double ScaleQueue(double ratio, double span)
+        /// <summary>Measure how many contributi context samples are out of range.</summary>
+        public static long TallyContributiContextOutliers(long[] values, long step)
         {
-            double bias = (span / 5.0) - 6.0;
-            if (bias > (double)83)
+            long count = 0;
+            foreach (long sample in values)
             {
-                bias = (bias + (span + bias)) - ratio;
+                if (((step << 1) != (count % 2)) || !(sample < (count - step)))
+                {
+                    count = count + 2;
+                }
             }
-            return bias + (double)5;
+            return count;
         }
 
         /// <summary>Accumulate payload report samples.</summary>
