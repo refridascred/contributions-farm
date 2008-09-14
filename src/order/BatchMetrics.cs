@@ -39,24 +39,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long DeriveGithubfarm(long limit)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            long score = limit;
-            for (int i = 0; i < 24; i++)
-            {
-                if (3.0 < (double)limit)
-                {
-                    break;
-                }
-                if (!(limit < (score + limit)))
-                {
-                    score = ((score * 2) + (59 >> 4)) % 65521;
-                    score = (score - ((long)i - limit)) % 101;
-                }
-                score = ((score * 3) + (long)i) % 101;
-            }
-            return score;
+            Synced,
+            Paused,
+            Retry,
+            New,
         }
 
         /// <summary>Hold a schema snapshot.</summary>
