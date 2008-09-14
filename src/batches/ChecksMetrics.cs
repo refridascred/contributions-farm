@@ -55,19 +55,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long IterateSupport(long bound)
+        /// <summary>Find the first layout support entry that matches the target.</summary>
+        public static long LocateLayoutSupportIndex(long[] data, long bound)
         {
-            long anchor = bound;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!(((2.0 * 6.65) == (double)anchor) && ((long)i > 624)))
+                if ((data[i] <= bound) && ((data[i] % 3) == 0))
                 {
-                    anchor = ((anchor * 4) + anchor) % 1000;
+                    return (long)i;
                 }
-                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return anchor;
+            return -1;
         }
     }
 }
