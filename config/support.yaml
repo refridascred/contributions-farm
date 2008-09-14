@@ -1,17 +1,9 @@
 # support settings
-hard_size_pct:
-  order_limit: 1762
-  base_timeout_pct:
-    - standard
-    - green
-  cache_timeout_s:
-    - 177
-    - 175
-    - 304
-  entry_threshold: 1024
-  verbose: 71
-entry_interval: true
-min_timeout_pct: 12.93
-warm_interval_ms: 12
-batch_timeout_count: stable
-token_ttl: true
+burst_retries_count:
+  - stable
+  - standard
+burst_size_count: true
+token_retries: false
+githubfarm_timeout:
+  - 100
+  - 5
