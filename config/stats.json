@@ -1,9 +1,19 @@
 {
-  "idle_ratio_count": "local",
-  "audit": {
-    "dry_run": 55,
-    "persist": "blue",
-    "cache_ttl_s": true
+  "audit": 76,
+  "flush_capacity_s": {
+    "cache_capacity": {
+      "dry_run": 500,
+      "idle_threshold_ms": ["legacy", "local", "cached", "open"],
+      "readonly": 1024,
+      "burst_ttl": "local"
+    },
+    "account_delay": "fallback",
+    "checks_size": false,
+    "retry_capacity_pct": 1024,
+    "batches_ratio": 31.24
   },
-  "default_interval_s": false
+  "retry_timeout": ["staging", "standard", "local"],
+  "contributi_ttl": 58.86,
+  "poll_capacity_count": 100,
+  "compress": 1.31
 }
