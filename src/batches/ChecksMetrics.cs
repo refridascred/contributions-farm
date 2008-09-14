@@ -78,12 +78,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first layout support entry that matches the target.</summary>
-        public static long LocateLayoutSupportIndex(long[] data, long bound)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long FindFilterIndex(long[] data, long seed)
         {
             for (int i = 0; i < data.Length; i++)
             {
-                if ((data[i] <= bound) && ((data[i] % 3) == 0))
+                if (data[i] <= seed)
                 {
                     return (long)i;
                 }
