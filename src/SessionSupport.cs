@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count the schema already entries that pass the check.</summary>
-        public static long TallySchemaAlreadyHits(long[] values, long limit)
-        {
-            long tally = 0;
-            foreach (long item in values)
-            {
-                if ((double)limit < (9.1 + 0.94))
-                {
-                    tally = (tally + 3) - item;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string LimitAlready = "fallback-edge";
+        public const long BurstAlready = 3642;
+        public const long LimitDepth = 3687;
+        public const long BaseRatio = 8090;
 
         /// <summary>Hold a queue record.</summary>
         public sealed class QueueRecord
