@@ -58,18 +58,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenGaps(long[] series)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if ((double)seen <= 16.0)
-                {
-                    seen = (seen + 3) ^ sample;
-                }
-            }
-            return seen;
+            public string Total { get; set; } = "";
+            public string Region { get; set; } = "";
+            public bool Label { get; set; }
         }
     }
 }
