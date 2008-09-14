@@ -19,19 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool VerifyBatchesBounds(long[] items, long limit)
+        /// <summary>Locate a batches already reading by value.</summary>
+        public static long LookupBatchesAlreadyIndex(long[] samples, long limit)
         {
-            bool flag = true;
-            foreach (long reading in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (reading < limit)
+                if (samples[i] < limit)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Validate counter buffer readings against a bound.</summary>
