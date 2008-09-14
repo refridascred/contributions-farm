@@ -2,10 +2,10 @@
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
     token TEXT,
-    rank INTEGER,
-    owner TEXT NOT NULL,
-    region TEXT,
-    active INTEGER NOT NULL DEFAULT 1
+    weight REAL,
+    count INTEGER NOT NULL DEFAULT 0
 );
 
-CREATE INDEX IF NOT EXISTS idx_stats_logs_region ON stats_logs (region);
+CREATE INDEX IF NOT EXISTS idx_stats_logs_token ON stats_logs (token);
+
+INSERT INTO stats_logs (token, weight, count) VALUES ('primary', 11.45, 18);
