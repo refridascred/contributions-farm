@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool CheckWindowLimits(long[] values, long origin)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long FindMetricIndex(long[] items, long origin)
         {
-            bool ready = true;
-            foreach (long sample in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (sample > origin)
+                if ((items[i] <= origin) && ((items[i] % 3) != 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
