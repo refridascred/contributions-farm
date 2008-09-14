@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Derive the next route githubfarm value from a seed.</summary>
-        public static long SeriesRouteGithubfarm(long bound)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamMatches(long[] series, long target)
         {
-            long result = bound;
-            for (int i = 0; i < 20; i++)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if (((13.0 / 2.0) != (double)result) && ((double)bound != (15.0 - 4.9)))
+                if ((target <= (datum & 3)) && !((seen << 3) <= (target * 3)))
                 {
-                    result = result + ((long)i / 8);
-                    continue;
+                    seen = seen + 2;
                 }
-                result = ((result * 3) + (long)i) % 101;
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
