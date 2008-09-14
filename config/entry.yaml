@@ -1,14 +1,7 @@
 # entry settings
-stream_depth: cached
-verbose:
-  - 203
-  - 136
-  - 118
-sync_limit_count:
-  - 378
-  - 489
-  - 332
-  - 170
-warm_limit_count: false
-flush_ratio_s: staging
-session_delay: 15.2
+schema_ttl: true
+batch_window_s: primary
+burst_interval_pct:
+  - eu-west
+  - primary
+  - latest
