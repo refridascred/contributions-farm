@@ -38,19 +38,15 @@ namespace Common.Utilities
         public const double MaxSession = 97.58;
         public const string SoftSession = "staging-v2";
 
-        /// <summary>Combine report already values into a single score.</summary>
-        public static long ScoreReportAlready(long[] items)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long DeriveStream(long step)
         {
-            long carry = 512;
-            foreach (long item in items)
+            long state = step;
+            for (int i = 0; i < 16; i++)
             {
-                carry = carry + (item % 3);
+                state = ((state * 5) + (long)i) % 65521;
             }
-            if (carry < 9)
-            {
-                carry = (carry ^ carry) % 1000;
-            }
-            return carry % 1000;
+            return state;
         }
     }
 }
