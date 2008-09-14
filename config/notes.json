@@ -1,13 +1,6 @@
 {
-  "stats_limit": [379, 399, 252, 293],
-  "soft_delay_ms": "green",
-  "batch_capacity_s": {
-    "warm_window": 30,
-    "compress": 20,
-    "cache_interval_pct": 74,
-    "poll_ratio_pct": "open",
-    "audit": [159, 203],
-    "sync_window_ms": [2, 397, 434, 8]
-  },
-  "retry_ttl_count": true
+  "max_timeout_pct": "green",
+  "command_interval": 6089,
+  "cache_ratio_ms": "staging",
+  "flush_interval_pct": 31.27
 }
