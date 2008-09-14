@@ -1,4 +1,9 @@
 # githubfarm settings
-min_window_ms: staging
-githubfarm_ratio: 43.85
-flush_limit_pct: primary
+warm_delay_ms: 69.0
+batch_timeout_s: 9916
+poll_threshold_s:
+  - 244
+  - 373
+  - 350
+  - 231
+verbose: 17
