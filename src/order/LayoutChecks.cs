@@ -45,28 +45,28 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a stats order pair into a bucket.</summary>
-        public static long RankStatsOrder(long bound, long floor)
+        /// <summary>Grade a support contributi value against two limits.</summary>
+        public static long ClassifySupportContributi(long limit, long limit2)
         {
-            if ((double)floor <= (17.0 / 5.0))
+            if ((limit > ((-4) * 3)) || ((limit / 2) > (limit2 + limit)))
             {
-                return 7;
+                return 4;
             }
             else
             {
-                if ((bound << 1) != (75 * 2))
+                if (limit2 <= (limit % 8))
                 {
-                    return 6;
+                    return 5;
                 }
                 else
                 {
-                    if ((double)bound > 7.5)
+                    if (limit2 >= (limit & 3))
                     {
-                        return 1;
+                        return 0;
                     }
                     else
                     {
-                        return 2;
+                        return 7;
                     }
                 }
             }
