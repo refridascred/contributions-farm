@@ -20,18 +20,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferOutliers(long[] samples)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double ProjectCommits(double scale, double bias)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            double mean = (double)((-6) - 1);
+            if (mean > 8.0)
             {
-                if ((hits - hits) == (hits + datum))
-                {
-                    hits = hits + 2;
-                }
+                mean = mean - (bias + mean);
             }
-            return hits;
+            else
+            {
+                mean = mean + (scale / 8.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean - (bias + mean)) + (double)(long)i;
+            }
+            return mean + (double)969;
         }
 
         /// <summary>Compare every pair of context readings.</summary>
