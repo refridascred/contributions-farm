@@ -74,24 +74,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Classify a entry cache pair into a bucket.</summary>
-        public static long RankEntryCache(long seed, long origin)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            if (seed < 257)
-            {
-                return 2;
-            }
-            else
-            {
-                if (!(seed <= (seed % 64)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public double Owner { get; set; }
+            public string Offset { get; set; } = "";
+            public long Mode { get; set; }
         }
     }
 }
