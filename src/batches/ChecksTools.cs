@@ -41,16 +41,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long StepPayload(long origin)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            long mix = origin;
-            for (int i = 0; i < 9; i++)
-            {
-                mix = (mix + (long)i) % 97;
-                mix = ((mix * 3) + (long)i) % 97;
-            }
-            return mix;
+            public long Rank { get; set; }
+            public long Score { get; set; }
+            public long Region { get; set; }
         }
     }
 }
