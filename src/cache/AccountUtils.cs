@@ -31,13 +31,13 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            public long Ratio { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public double Offset { get; set; }
+            Active,
+            Synced,
+            Dropped,
+            Done,
         }
     }
 }
