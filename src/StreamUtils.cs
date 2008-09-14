@@ -19,21 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long OverlapToolsCount(long[] items)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool VerifyBatchesBounds(long[] items, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool flag = true;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (reading < limit)
                 {
-                    if ((items[i] ^ items[j]) > 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Validate counter buffer readings against a bound.</summary>
