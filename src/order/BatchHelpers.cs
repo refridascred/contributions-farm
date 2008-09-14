@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountHits(long[] items)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if ((sample - (-975)) <= (count / 6))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public string Size { get; set; } = "";
+            public bool Mode { get; set; }
         }
 
         /// <summary>Define already limits and defaults.</summary>
