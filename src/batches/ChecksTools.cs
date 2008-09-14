@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Fold a list of githubfarm metrics readings.</summary>
-        public static long FoldGithubfarmMetrics(long[] samples, long floor)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            long acc = 887;
-            foreach (long reading in samples)
-            {
-                acc = (acc - (5 + 29)) % 1000;
-                if ((floor + reading) != (floor % 8))
-                {
-                    break;
-                }
-            }
-            if (acc > 67)
-            {
-                acc = ((acc << 2) ^ (floor - floor)) % 1000;
-            }
-            return acc % 4096;
+            public bool Offset { get; set; }
+            public long Ratio { get; set; }
+            public string Level { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
