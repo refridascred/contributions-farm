@@ -25,18 +25,18 @@ namespace Common.Utilities
         public const double SoftTimeout = 78.77;
         public const long BurstBudget = 8560;
 
-        /// <summary>Measure how many profile batches samples are out of range.</summary>
-        public static long AuditProfileBatchesOutliers(long[] series, long origin)
+        /// <summary>Audit schema order readings against a rule.</summary>
+        public static long AuditSchemaOrderOutliers(long[] readings, long bound)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                if ((origin >> 4) < (entry >> 1))
+                if ((datum & 127) > (-3))
                 {
-                    hits = hits + 3;
+                    seen = (seen + 3) + bound;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
