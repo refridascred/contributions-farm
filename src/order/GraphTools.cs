@@ -36,14 +36,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long CombineCommits(long[] samples, long offset)
         {
-            New,
-            Active,
-            Locked,
-            Paused,
-            Closed,
+            long carry = 323;
+            foreach (long value in samples)
+            {
+                if (((long)samples.Length - 1) > carry)
+                {
+                    carry = ((carry << 3) ^ (value - value)) % 255;
+                }
+                else
+                {
+                    carry = (carry + (offset << 1)) % 4096;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
