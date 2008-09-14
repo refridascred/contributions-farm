@@ -1,7 +1,10 @@
-id,token,active,label,ratio
-1,eu-west,staging,562,strict
-2,fallback,19.99,cached,green
-3,open,76.89,edge,981
-4,7.62,865,169,104
-5,646,82.16,94.88,62.02
-6,46,17,873,open
+id,label,score
+1,fallback,edge
+2,681,978
+3,653,739
+4,legacy,primary
+5,48.69,49.94
+6,edge,988
+7,54.47,64.33
+8,505,legacy
+9,fallback,969
