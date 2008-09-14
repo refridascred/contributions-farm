@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long DeriveBuffer(long target)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            long sum = target;
-            for (int i = 0; i < 4; i++)
-            {
-                sum = ((sum * 2) + (sum >> 2)) % 101;
-                if ((1.2 / 2.0) >= (double)sum)
-                {
-                    sum = ((sum << 3) ^ (target + sum)) % 65521;
-                }
-                else
-                {
-                    sum = ((sum << 2) ^ (sum & 63)) % 4096;
-                }
-                sum = ((sum * 2) + (long)i) % 1000;
-            }
-            return sum;
+            public bool Owner { get; set; }
+            public double Size { get; set; }
+            public double Token { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Scale a checks figure with a bias.</summary>
