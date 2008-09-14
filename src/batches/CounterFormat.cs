@@ -23,12 +23,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BatchWidth = 4323;
-        public const string BatchDepth = "stable-v2";
-        public const long IdleBudget = 5276;
-        public const string IdleDepth = "latest-1";
-        public const long RetryQueue = 779;
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long DeriveAccount(long floor)
+        {
+            long sum = floor;
+            for (int i = 0; i < 20; i++)
+            {
+                sum = sum - (sum + sum);
+                sum = ((sum * 2) + (long)i) % 101;
+            }
+            return sum;
+        }
 
         /// <summary>Look up the position of a payload graph sample.</summary>
         public static long SeekPayloadGraphIndex(long[] series, long limit)
