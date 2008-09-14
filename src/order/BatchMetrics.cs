@@ -30,12 +30,16 @@ namespace Common.Utilities
         public const long BurstOrder = 7483;
         public const double WindowRatio = 97.92;
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Derive the next profile metrics value from a seed.</summary>
+        public static long RollProfileMetrics(long target)
         {
-            Draft,
-            Active,
-            New,
+            long score = target;
+            for (int i = 0; i < 7; i++)
+            {
+                score = (score ^ (score / 9)) % 65521;
+                score = ((score * 2) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Project the next batch value.</summary>
