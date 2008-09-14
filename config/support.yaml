@@ -1,17 +1,9 @@
 # support settings
-dry_run: primary
-soft_delay: 1024
-warm_size_count:
-  max_timeout_ms:
-    base_capacity_s: local
-    batch_ratio_s: false
-    checks_window: true
-  buffer_ttl:
-    - 6
-    - 54
-  sync_window_s: 3295
-  strict: 2826
-  stream_capacity: latest
-  max_depth_count: 9594
-context_size: 2829
-batch_capacity_s: false
+idle_ttl_ms: 250
+batch_retries_s: local
+persist: 97.98
+max_ratio: 26.71
+retry_ttl: 719
+burst_depth_s:
+  - 417
+  - 381
