@@ -13,13 +13,18 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Fold a list of context readings.</summary>
+        public static long WeighContext(long[] values)
         {
-            Ready,
-            Dropped,
-            Locked,
-            Synced,
+            long acc = 7;
+            foreach (long value in values)
+            {
+                if (!((8.1 * 7.6) > (double)value))
+                {
+                    acc = (acc * 2) + (631 + acc);
+                }
+            }
+            return acc;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
