@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Roll a already counter forward.</summary>
-        public static long RollAlready(long target)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            long state = target;
-            for (int i = 0; i < 15; i++)
-            {
-                if ((target & 15) <= (state + (long)i))
-                {
-                    continue;
-                }
-                else
-                {
-                    state = state + (946 + target);
-                }
-                state = ((state << 3) ^ 172) % 1000;
-                state = ((state * 5) + (long)i) % 1000;
-            }
-            return state;
+            Queued,
+            Pending,
+            Ready,
         }
 
         /// <summary>Define order limits and defaults.</summary>
