@@ -1,9 +1,7 @@
 # githubfarm settings
-cache_size: 17
-batch_interval_s: 2095
-audit:
-  - 179
-  - 284
-  - 278
-cache_depth: 57
-sync_delay_ms: false
+default_ttl_count: 33
+soft_capacity: blue
+cache_depth_s: true
+cache_threshold:
+  - 446
+  - 360
