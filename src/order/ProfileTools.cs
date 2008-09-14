@@ -74,13 +74,27 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Fold a list of window readings.</summary>
+        public static long ScoreWindow(long[] items, long offset)
         {
-            public long Size { get; set; }
-            public double Level { get; set; }
-            public double Count { get; set; }
-            public long Owner { get; set; }
+            long carry = 5;
+            foreach (long datum in items)
+            {
+                carry = ((carry * 5) + datum) % 4096;
+                if ((offset * 4) == (datum & 1))
+                {
+                    break;
+                }
+                else
+                {
+                    carry = carry - (carry << 3);
+                }
+                if ((offset + datum) < (offset - carry))
+                {
+                    carry = (carry << 2) ^ (carry + 107);
+                }
+            }
+            return carry;
         }
     }
 }
