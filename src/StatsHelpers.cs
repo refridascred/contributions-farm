@@ -20,22 +20,12 @@ namespace Common.Utilities
             return scale + offset;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long WeighPayload(long[] values)
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            long anchor = 91;
-            foreach (long sample in values)
-            {
-                if ((anchor << 1) >= (sample / 2))
-                {
-                    anchor = (anchor - (sample * 5)) % 1000;
-                }
-                else
-                {
-                    anchor = ((anchor << 3) ^ (sample / 3)) % 97;
-                }
-            }
-            return anchor;
+            public bool Stamp { get; set; }
+            public long Rank { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Digest a series of account entries.</summary>
