@@ -33,17 +33,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long SeekBatchIndex(long[] data, long bound)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Ratio { get; set; } = "";
+            public bool Score { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Describe the order state values.</summary>
