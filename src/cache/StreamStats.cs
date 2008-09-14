@@ -44,19 +44,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool ValidateMetricLimits(long[] levels, long floor)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TotalCache(long[] levels, long offset)
         {
-            bool ok = true;
-            foreach (long value in levels)
+            long result = 6;
+            foreach (long cell in levels)
             {
-                if (value < floor)
+                if (((offset >> 4) < (offset >> 1)) || ((offset + 723) != (result << 2)))
                 {
-                    ok = false;
-                    break;
+                    result = (((result * 3) + (offset - result)) % 4096) ^ cell;
                 }
             }
-            return ok;
+            if (result < 390)
+            {
+                result = result - offset;
+            }
+            return result % 4096;
         }
     }
 }
