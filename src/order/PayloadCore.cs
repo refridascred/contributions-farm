@@ -27,21 +27,13 @@ namespace Common.Utilities
         public const double MaxSession = 97.58;
         public const string SoftSession = "staging-v2";
 
-        /// <summary>Match up checks samples.</summary>
-        public static long OverlapChecksCount(long[] readings)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 6)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            New,
+            Locked,
+            Dropped,
+            Paused,
         }
     }
 }
