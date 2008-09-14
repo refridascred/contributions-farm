@@ -30,12 +30,11 @@ namespace Common.Utilities
         public const long BurstOrder = 7483;
         public const double WindowRatio = 97.92;
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            Synced,
-            Paused,
-            Retry,
+            Draft,
+            Active,
             New,
         }
 
