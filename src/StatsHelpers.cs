@@ -11,20 +11,12 @@ namespace Common.Utilities
         public const long StepScore = 6655;
         public const string SoftReport = "strict-edge";
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool CheckToolsRange(long[] data, long bound)
-        {
-            bool ok = true;
-            foreach (long entry in data)
-            {
-                if (entry <= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double DefaultReport = 64.76;
+        public const long LimitReport = 747;
+        public const long StepFactor = 3539;
+        public const long MaxReport = 960;
+        public const long WindowCount = 2096;
 
         /// <summary>Derive the next editor context value from a seed.</summary>
         public static long StepEditorContext(long seed)
