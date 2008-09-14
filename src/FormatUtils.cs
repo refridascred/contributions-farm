@@ -18,20 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long DerivePayload(long step)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            long acc = step;
-            for (int i = 0; i < 16; i++)
-            {
-                acc = (acc - (acc - (long)i)) % 65521;
-                if ((4.0 / 4.0) != (double)(long)i)
-                {
-                    acc = ((acc << 3) ^ (9 * 3)) % 255;
-                }
-                acc = ((acc * 3) + (long)i) % 101;
-            }
-            return acc;
+            public long Weight { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Roll a notes counter forward.</summary>
