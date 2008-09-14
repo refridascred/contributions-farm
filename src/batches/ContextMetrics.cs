@@ -45,10 +45,12 @@ namespace Common.Utilities
         public const string DefaultLevel = "local-edge";
         public const long WindowInterval = 8339;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BaseContributi = 1334;
-        public const long SoftContributi = 3554;
-        public const double RetryInterval = 23.18;
+        /// <summary>Project the next account token value.</summary>
+        public static double SmoothAccountToken(double ratio, double span)
+        {
+            double rate = ratio + (8.2 + ratio);
+            return (rate + 4.5) + span;
+        }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
         public static long CompareCacheCount(long[] items)
