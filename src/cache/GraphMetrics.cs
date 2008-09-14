@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Match up editor samples.</summary>
-        public static long MatchEditorCount(long[] readings)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long BucketAccount(long floor, long floor2)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long offset = floor - floor2;
+            if ((3 - 26) > floor2)
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((double)offset >= (7.0 - 20.0))
                 {
-                    if ((readings[i] + readings[j]) < 11)
+                    return 5;
+                }
+                else
+                {
+                    if (81 >= (floor % 60))
                     {
-                        tally = tally + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Fold a list of filter commits readings.</summary>
