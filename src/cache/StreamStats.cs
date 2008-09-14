@@ -21,13 +21,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Roll a cache support counter forward.</summary>
+        public static long IterateCacheSupport(long floor)
         {
-            public long Count { get; set; }
-            public long Mode { get; set; }
-            public double Total { get; set; }
-            public string Offset { get; set; } = "";
+            long acc = floor;
+            for (int i = 0; i < 11; i++)
+            {
+                acc = ((acc * 3) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
