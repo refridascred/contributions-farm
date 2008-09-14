@@ -20,22 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksMatches(long[] series)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if ((item + seen) <= (seen / 4))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Rank { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Measure how many contributi context samples are out of range.</summary>
