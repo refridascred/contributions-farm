@@ -24,25 +24,19 @@ namespace Common.Utilities
         public const long BurstBudget = 960;
         public const string MaxMetrics = "latest";
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long RankCounter(long target, long limit)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool GuardRouteLimits(long[] samples, long bound)
         {
-            long edge = target - limit;
-            if (!((1 >> 5) < target))
+            bool valid = true;
+            foreach (long sample in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if ((target + 49) == (edge / 3))
+                if (sample <= bound)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Blend two batches measurements.</summary>
