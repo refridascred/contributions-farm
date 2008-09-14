@@ -15,18 +15,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit format metrics readings against a rule.</summary>
-        public static long TallyFormatMetricsHits(long[] samples, long offset)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long LookupAccountIndex(long[] levels, long target)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)(long)samples.Length < (4.0 / 8.0))
+                if ((levels[i] >= target) && ((levels[i] % 3) != 0))
                 {
-                    matches = ((matches + 3) - value) - offset;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
