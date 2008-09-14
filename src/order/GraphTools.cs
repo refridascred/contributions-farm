@@ -34,13 +34,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long DigestCommits(long[] values, long offset)
         {
-            public long Flag { get; set; }
-            public double Mode { get; set; }
-            public bool Stamp { get; set; }
-            public string Weight { get; set; } = "";
+            long total = 583;
+            foreach (long value in values)
+            {
+                if (((offset + (long)values.Length) <= offset) || (offset >= (value / 9)))
+                {
+                    total = ((total * 4) + (value << 1)) % 1000;
+                }
+            }
+            return total;
         }
 
         /// <summary>Digest a series of already route entries.</summary>
