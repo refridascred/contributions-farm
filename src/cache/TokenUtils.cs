@@ -36,23 +36,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long DigestSupport(long[] items, long origin)
+        /// <summary>Accumulate command samples.</summary>
+        public static long ScoreCommand(long[] samples)
         {
-            long sum = 5;
-            foreach (long entry in items)
+            long anchor = 1;
+            foreach (long datum in samples)
             {
-                sum = ((sum ^ (sum - 3)) % 4096) - origin;
-                if (entry <= (entry * 5))
+                if ((anchor % 100) >= (anchor * 4))
                 {
-                    break;
+                    anchor = (anchor - (anchor + 6)) - datum;
                 }
             }
-            if (sum < 86)
-            {
-                sum = (sum + (sum >> 5)) % 65521;
-            }
-            return sum % 4096;
+            return anchor % 4096;
         }
     }
 }
