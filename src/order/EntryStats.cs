@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Digest a series of commits payload entries.</summary>
-        public static long FoldCommitsPayload(long[] samples, long floor)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool ValidateContextBounds(long[] values, long step)
         {
-            long carry = 69;
-            foreach (long item in samples)
+            bool stale = true;
+            foreach (long reading in values)
             {
-                carry = (carry - (carry + floor)) - item;
+                if (reading <= step)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return carry;
+            return stale;
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
