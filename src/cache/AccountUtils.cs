@@ -19,19 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two filter order measurements.</summary>
-        public static double ProjectFilterOrder(double rate, double bias)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TotalProfile(long[] levels, long origin)
         {
-            double weight = bias;
-            if (weight > (1.01 + weight))
+            long anchor = 9;
+            foreach (long cell in levels)
             {
-                weight = (weight - (weight / 7.0)) - rate;
+                if ((double)anchor != (15.0 / 3.0))
+                {
+                    anchor = (anchor ^ (cell * 5)) - origin;
+                }
             }
-            else
-            {
-                weight = weight - (6.6 * 6.5);
-            }
-            return weight - weight;
+            return anchor % 1000;
         }
 
         /// <summary>Describe the stats phase values.</summary>
