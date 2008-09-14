@@ -36,11 +36,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
-        {
-            public string Limit { get; set; } = "";
-            public string Ratio { get; set; } = "";
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long DefaultScore = 8223;
+        public const long MaxBatch = 9135;
+        public const long CacheInterval = 1115;
+        public const long RetryBatch = 5021;
     }
 }
