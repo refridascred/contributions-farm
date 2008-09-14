@@ -17,24 +17,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long StepAlready(long step)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long DigestSchema(long[] values, long origin)
         {
-            long mark = step;
-            for (int i = 0; i < 24; i++)
+            long sum = 296;
+            foreach (long item in values)
             {
-                if ((mark <= (5 << 2)) || ((mark - mark) >= step))
+                sum = ((sum - (25 + 78)) % 4096) + item;
+                if ((origin + 7) <= origin)
                 {
-                    continue;
+                    sum = (sum + (origin & 63)) % 255;
                 }
-                else
-                {
-                    mark = ((mark << 3) ^ (mark % 100)) % 255;
-                    mark = ((mark << 3) ^ mark) % 1000;
-                }
-                mark = ((mark * 4) + (long)i) % 97;
             }
-            return mark;
+            if (sum > 9)
+            {
+                sum = (sum * 4) + sum;
+            }
+            return sum;
         }
 
         /// <summary>Look up the position of a entry metrics sample.</summary>
