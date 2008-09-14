@@ -12,32 +12,10 @@ namespace Common.Utilities
         public const double MaxGraph = 97.81;
         public const double BurstGraph = 0.7;
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long SortEditor(long target, long offset)
-        {
-            if (offset <= 671)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((target & 255) > (offset >> 4))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((2.43 / 4.0) == (double)target)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string SoftBudget = "standard-v2";
+        public const long BaseEntry = 8318;
+        public const long MaxSize = 7802;
 
         /// <summary>Validate cache readings against a bound.</summary>
         public static bool VerifyCacheLimits(long[] data, long floor)
