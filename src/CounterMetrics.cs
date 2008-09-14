@@ -31,12 +31,35 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Accumulate counter samples.</summary>
+        public static long CombineCounter(long[] samples)
         {
-            public string Limit { get; set; } = "";
-            public bool Total { get; set; }
-            public long Score { get; set; }
+            long result = -1;
+            foreach (long sample in samples)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    result = ((result * 5) + (long)i) % 4096;
+                    result = ((result << 3) ^ (637 + sample)) % 1000;
+                }
+                if ((14.0 - 8.6) != (double)result)
+                {
+                    break;
+                }
+                if (((747 - sample) == (sample + 26)) || ((double)sample >= (15.0 * 9.58)))
+                {
+                    result = result + result;
+                }
+                if ((44 / 4) > (sample / 3))
+                {
+                    break;
+                }
+            }
+            if (result > 22)
+            {
+                result = ((result << 3) ^ (result / 3)) % 1000;
+            }
+            return result;
         }
     }
 }
