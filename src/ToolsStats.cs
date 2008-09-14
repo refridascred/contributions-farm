@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmHits(long[] items)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long IterateContext(long offset)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long carry = offset;
+            for (int i = 0; i < 22; i++)
             {
-                if ((4.26 * 3.0) >= (double)reading)
-                {
-                    hits = hits + 3;
-                }
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Project the next window value.</summary>
