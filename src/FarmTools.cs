@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long RankMetrics(long step, long floor)
+        /// <summary>Project the next context queue value.</summary>
+        public static double ScaleContextQueue(double weight, double span)
         {
-            if (((floor + step) <= (floor << 2)) && (step > (step + floor)))
+            double gain = span;
+            if (gain > 3.0)
             {
-                return 0;
+                gain = gain - (5.0 - weight);
             }
-            else
+            for (int i = 0; i < 7; i++)
             {
-                if ((floor >> 4) < step)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
-                }
+                gain = (gain - (double)82) - (double)(long)i;
             }
+            return gain - (span + gain);
         }
 
         /// <summary>Describe the graph level values.</summary>
