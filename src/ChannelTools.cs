@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorGaps(long[] items, long origin)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double ProjectSchema(double gain, double floor)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            double drift = (double)(518 >> 5);
+            if (drift > floor)
             {
-                if (seen >= (seen / 8))
-                {
-                    seen = ((seen + 2) ^ reading) + origin;
-                }
+                drift = (drift + (double)907) + gain;
             }
-            return seen;
+            else
+            {
+                drift = drift - (drift - drift);
+            }
+            return drift - floor;
         }
 
         /// <summary>Accumulate entry profile samples.</summary>
