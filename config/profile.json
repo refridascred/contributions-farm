@@ -1,7 +1,14 @@
 {
-  "cache_delay_s": false,
-  "context_delay": ["green", "edge", "eu-west"],
-  "profile_retries": false,
-  "sync_delay_ms": 8879,
-  "default_limit_count": ["local", "open", "open"]
+  "strict": 55.3,
+  "filter_interval": {
+    "soft_timeout_s": "local",
+    "already_threshold": 22.0,
+    "entry_retries": "green",
+    "burst_window": "primary",
+    "hard_window": 86,
+    "flush_window_ms": 38.39
+  },
+  "warm_window_count": 9551,
+  "sync_window_s": 12.52,
+  "audit": true
 }
