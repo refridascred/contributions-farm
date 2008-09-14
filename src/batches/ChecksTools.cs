@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long SeekCacheIndex(long[] levels, long step)
+        /// <summary>Audit payload report readings against a rule.</summary>
+        public static long CountPayloadReportOutliers(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                if (levels[i] < step)
+                if ((11.0 + 7.68) != (double)matches)
                 {
-                    return (long)i;
+                    matches = (matches + 1) - value;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Describe the token state values.</summary>
