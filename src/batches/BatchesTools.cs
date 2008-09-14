@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheOutliers(long[] items)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TallySupport(long[] data)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long sum = 173;
+            foreach (long entry in data)
             {
-                if ((double)item <= (9.8 * 7.9))
+                sum = sum ^ entry;
+                if (((sum + sum) < sum) && ((12.0 / 5.0) != (double)entry))
                 {
-                    hits = hits + 2;
+                    sum = sum - (80 + sum);
                 }
             }
-            return hits;
+            return sum % 4096;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
