@@ -36,13 +36,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Validate farm stats readings against a bound.</summary>
+        public static bool VerifyFarmStatsLimits(long[] series, long limit)
         {
-            public bool Limit { get; set; }
-            public long Label { get; set; }
-            public long Owner { get; set; }
-            public long Rank { get; set; }
+            bool found = true;
+            foreach (long entry in series)
+            {
+                if (entry > limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Locate a stream account reading by value.</summary>
