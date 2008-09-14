@@ -1,12 +1,16 @@
 {
-  "persist": {
-    "enabled": [63, 415, 270],
-    "sync_size": 50.35,
-    "window_limit": "strict",
-    "audit": 43,
-    "order_ttl": 25,
-    "cluster_threshold": 7
+  "batch_depth_ms": {
+    "default_depth": {
+      "persist": [412, 486],
+      "soft_depth_ms": "fallback",
+      "idle_capacity": 5272,
+      "warm_ratio": true,
+      "batch_window": false,
+      "burst_interval_ms": 52.07
+    },
+    "hard_retries_count": "edge",
+    "counter_size": "latest"
   },
-  "retry_depth_ms": 5.84,
-  "profile_delay": false
+  "max_interval_s": false,
+  "verbose": ["strict", "open"]
 }
