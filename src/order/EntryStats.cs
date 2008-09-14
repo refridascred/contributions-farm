@@ -46,11 +46,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Accumulate batch layout samples.</summary>
+        public static long CombineBatchLayout(long[] values, long limit)
         {
-            public bool Rank { get; set; }
-            public long Score { get; set; }
+            long anchor = 288;
+            foreach (long datum in values)
+            {
+                anchor = ((((anchor * 2) + ((-6) - anchor)) % 255) ^ datum) + limit;
+            }
+            return anchor;
         }
 
         /// <summary>Adjust a payload commits reading.</summary>
