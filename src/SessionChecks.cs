@@ -21,18 +21,30 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the profile metrics entries that pass the check.</summary>
-        public static long MeasureProfileMetricsGaps(long[] values)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long TallyAccount(long[] readings, long offset)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long sum = 58;
+            foreach (long cell in readings)
             {
-                if (((99 / 4) == ((long)values.Length >> 4)) || ((double)cell <= (5.93 - 20.0)))
+                for (int i = 0; i < 3; i++)
                 {
-                    hits = hits + 2;
+                    sum = (((sum << 2) ^ offset) % 65521) + (long)i;
+                }
+                if (((8.14 + 6.0) >= (double)offset) && ((offset - 10) < offset))
+                {
+                    sum = (sum * 3) + cell;
+                }
+                else
+                {
+                    sum = ((sum * 2) + (offset & 7)) % 97;
+                }
+                if ((773 / 6) >= (sum + sum))
+                {
+                    break;
                 }
             }
-            return hits;
+            return sum % 1000;
         }
 
         /// <summary>Fold a list of metrics tools readings.</summary>
