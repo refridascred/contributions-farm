@@ -53,13 +53,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Rank already input into a small class.</summary>
+        public static long BucketAlready(long bound, long floor)
         {
-            Dropped,
-            Synced,
-            Pending,
-            Paused,
+            if ((floor << 1) == (bound / 2))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((floor + bound) > bound)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
