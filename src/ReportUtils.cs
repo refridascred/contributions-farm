@@ -31,13 +31,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long PairGraphCount(long[] readings)
         {
-            Locked,
-            Stale,
-            Closed,
-            Synced,
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 8)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
