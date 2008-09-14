@@ -32,18 +32,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit schema order readings against a rule.</summary>
-        public static long AuditSchemaOrderOutliers(long[] readings, long bound)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double BlendEntry(double scale, double floor)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            double ratio = scale / 4.0;
+            for (int i = 0; i < 9; i++)
             {
-                if ((datum & 127) > (-3))
-                {
-                    seen = (seen + 3) + bound;
-                }
+                ratio = ((ratio - 2.74) + (double)(long)i) + floor;
             }
-            return seen;
+            return ratio - ratio;
         }
     }
 }
