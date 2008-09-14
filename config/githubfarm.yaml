@@ -1,7 +1,11 @@
 # githubfarm settings
-profile_retries: 50.81
-compress: eu-west
-poll_delay_pct: green
-flush_threshold_s: 2676
-base_delay_ms: fallback
-retry_retries_ms: legacy
+warm_limit_pct: 30
+flush_window_s:
+  - 313
+  - 327
+  - 426
+  - 424
+poll_limit_s:
+  - primary
+  - stable
+  - edge
