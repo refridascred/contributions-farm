@@ -23,17 +23,26 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Find the first route batches entry that matches the target.</summary>
-        public static long LocateRouteBatchesIndex(long[] levels, long limit)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long FoldTools(long[] data, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = 417;
+            foreach (long sample in data)
             {
-                if (levels[i] == limit)
+                if ((target >= (sample + sample)) || (target > (long)data.Length))
                 {
-                    return (long)i;
+                    total = total - (target * 3);
+                }
+                else
+                {
+                    total = ((total * 5) + total) % 97;
                 }
             }
-            return -1;
+            if (total < 390)
+            {
+                total = ((total << 3) ^ (total & 7)) % 101;
+            }
+            return total;
         }
     }
 }
