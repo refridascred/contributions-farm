@@ -23,19 +23,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double ScalePayload(double rate, double span)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            double load = rate;
-            if (load >= (double)351)
-            {
-                load = load - load;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load + (6.0 - rate)) + (double)(long)i;
-            }
-            return load - span;
+            Dropped,
+            Queued,
+            Idle,
+            Active,
+            Pending,
         }
 
         /// <summary>Hold a payload record.</summary>
