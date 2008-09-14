@@ -30,26 +30,9 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long FoldTools(long[] data, long target)
-        {
-            long total = 417;
-            foreach (long sample in data)
-            {
-                if ((target >= (sample + sample)) || (target > (long)data.Length))
-                {
-                    total = total - (target * 3);
-                }
-                else
-                {
-                    total = ((total * 5) + total) % 97;
-                }
-            }
-            if (total < 390)
-            {
-                total = ((total << 3) ^ (total & 7)) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BatchBatches = 4033;
+        public const long SoftSpan = 3000;
+        public const long MinBatches = 1669;
     }
 }
