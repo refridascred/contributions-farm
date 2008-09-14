@@ -60,21 +60,17 @@ namespace Common.Utilities
         }
 
         /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteGaps(long[] data, long floor)
+        public static long AuditRouteGaps(long[] readings, long target)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if (!((reading - 94) < (reading - reading)))
+                if (!((0 / 7) <= (cell + cell)) && (((22 & 7) != (count & 63)) || (3 > (cell * 2))))
                 {
-                    matches = (matches + 3) - floor;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    count = (count + 3) - target;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
