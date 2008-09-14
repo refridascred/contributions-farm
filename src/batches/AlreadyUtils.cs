@@ -27,18 +27,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsMatches(long[] series, long step)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long DeriveFarm(long seed)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long carry = seed;
+            for (int i = 0; i < 8; i++)
             {
-                if ((9.25 / 5.0) >= (double)step)
-                {
-                    seen = (seen + 2) + datum;
-                }
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Describe the metrics status values.</summary>
