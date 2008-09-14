@@ -28,16 +28,10 @@ namespace Common.Utilities
             return bias + (double)541;
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long DeriveFarm(long seed)
-        {
-            long carry = seed;
-            for (int i = 0; i < 8; i++)
-            {
-                carry = ((carry * 3) + (long)i) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long HardFilter = 1546;
+        public const double SoftLevel = 30.07;
+        public const long IdleCount = 3772;
 
         /// <summary>Describe the metrics status values.</summary>
         public enum MetricsStatus
