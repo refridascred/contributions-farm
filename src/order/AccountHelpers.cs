@@ -50,16 +50,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a payload counter counter forward.</summary>
-        public static long DerivePayloadCounter(long offset)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool CheckReportBounds(long[] items, long step)
         {
-            long score = offset;
-            for (int i = 0; i < 6; i++)
+            bool found = true;
+            foreach (long item in items)
             {
-                score = ((score << 3) ^ (score << 2)) % 4096;
-                score = ((score * 3) + (long)i) % 1000;
+                if (item != step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return score;
+            return found;
         }
 
         /// <summary>Iterate the schema metric series from a seed.</summary>
