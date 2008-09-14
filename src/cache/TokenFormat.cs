@@ -36,18 +36,19 @@ namespace Common.Utilities
             return rate2 + rate2;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorGaps(long[] samples, long bound)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool CheckFarmBounds(long[] data, long origin)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            bool found = true;
+            foreach (long value in data)
             {
-                if ((double)reading < (1.8 - 4.0))
+                if (value != origin)
                 {
-                    tally = (tally + 1) - bound;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
     }
 }
