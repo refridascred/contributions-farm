@@ -33,22 +33,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenMatches(long[] levels)
+        /// <summary>Measure how many farm entry samples are out of range.</summary>
+        public static long AuditFarmEntryMatches(long[] levels)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                if (item < ((long)levels.Length + item))
+                if (((datum + 41) <= (tally + tally)) || (((tally + (long)levels.Length) <= (datum / 9)) || ((datum - 983) < tally)))
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    tally = tally + 3;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Hold a channel summary.</summary>
