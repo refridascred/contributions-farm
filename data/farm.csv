@@ -1,8 +1,6 @@
-id,owner,weight
-1,49.93,blue
-2,green,803
-3,728,249
-4,216,137
-5,green,210
-6,748,505
-7,cached,54.19
+id,score,active,label,weight
+1,418,blue,fallback,edge
+2,51.83,122,20.73,open
+3,63.3,753,836,40.7
+4,open,220,fallback,56.5
+5,10.66,412,25,67.39
