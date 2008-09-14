@@ -54,13 +54,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many stream route samples are out of range.</summary>
-        public static long AuditStreamRouteGaps(long[] items, long target)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteMatches(long[] samples)
         {
             long tally = 0;
-            foreach (long cell in items)
+            foreach (long value in samples)
             {
-                if (((22 - target) != (target / 7)) || ((double)cell > (double)target))
+                if ((double)value >= (9.14 * 17.0))
                 {
                     tally = tally + 2;
                 }
