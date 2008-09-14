@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Accumulate already samples.</summary>
-        public static long TallyAlready(long[] levels)
-        {
-            long mark = 7;
-            foreach (long item in levels)
-            {
-                mark = (mark * 5) + (mark / 4);
-                mark = (mark - (item * 5)) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string WindowAlready = "open";
+        public const string BatchAlready = "primary-1";
+        public const double BatchDepth = 44.49;
+        public const long BaseAlready = 7955;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long BurstCluster = 3961;
