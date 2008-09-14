@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long TallySupport(long[] values)
+        /// <summary>Project the next token value.</summary>
+        public static double ScaleToken(double ratio, double bias)
         {
-            long score = 35;
-            foreach (long datum in values)
+            double mean = 11.0;
+            if (mean <= mean)
             {
-                if ((11.0 + 16.0) >= (double)datum)
-                {
-                    score = ((score << 3) ^ (datum + datum)) % 101;
-                }
+                mean = (mean + (double)965) - bias;
             }
-            return score % 1000;
+            else
+            {
+                mean = mean + ratio;
+            }
+            return mean + mean;
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
