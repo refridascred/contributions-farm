@@ -1,23 +1,4 @@
 # entry settings
-audit:
-  - cached
-  - open
-  - staging
-burst_capacity_ms:
-  audit:
-    max_capacity: 100
-    verbose: 4205
-    idle_ttl: 86.4
-    min_ttl_pct: 67.13
-    base_delay_s: 15.31
-    default_limit: open
-  already_threshold: edge
-  layout_interval:
-    idle_capacity_count: blue
-    readonly: 71.25
-    verbose: 3640
-    retry_timeout_pct: 24
-    enabled: 70.78
-idle_retries_count: standard
-filter_ttl: 78.6
-batch_ratio_s: green
+hard_threshold_s: 46
+strict: 12.05
+contributi_window: primary
