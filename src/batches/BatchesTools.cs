@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Blend two session measurements.</summary>
-        public static double ProjectSession(double rate, double offset)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            double load = (double)48 - (offset / 3.0);
-            return load - rate;
+            Queued,
+            Stale,
+            Paused,
+            Pending,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
