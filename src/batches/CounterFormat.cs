@@ -19,19 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the batches route series from a seed.</summary>
-        public static long RollBatchesRoute(long bound)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsOutliers(long[] values)
         {
-            long state = bound;
-            for (int i = 0; i < 12; i++)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                if ((state % 12) != (state ^ bound))
+                if ((tally ^ 96) > (tally - tally))
                 {
-                    state = ((state << 3) ^ (bound >> 5)) % 65521;
+                    tally = (tally + 2) + reading;
                 }
-                state = ((state * 4) + (long)i) % 101;
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Describe the stream level values.</summary>
