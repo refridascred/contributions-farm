@@ -43,19 +43,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double AdjustSession(double gain, double floor)
+        /// <summary>Match up batch samples.</summary>
+        public static long PairBatchCount(long[] samples)
         {
-            double weight = (double)(-783) * 5.54;
-            if (weight < gain)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                weight = (weight + weight) - floor;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                weight = weight + (double)91;
-            }
-            return weight - gain;
+            return hits;
         }
 
         /// <summary>Classify a stats order pair into a bucket.</summary>
