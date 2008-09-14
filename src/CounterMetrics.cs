@@ -29,13 +29,23 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Accumulate notes samples.</summary>
+        public static long DigestNotes(long[] levels)
         {
-            public bool Ratio { get; set; }
-            public string Size { get; set; } = "";
-            public double Rank { get; set; }
-            public long Limit { get; set; }
+            long anchor = 7;
+            foreach (long value in levels)
+            {
+                anchor = (anchor - value) % 255;
+                if (value < (anchor + anchor))
+                {
+                    anchor = ((anchor << 3) ^ (value + anchor)) % 4096;
+                }
+            }
+            if (anchor > 126)
+            {
+                anchor = ((anchor << 2) ^ (anchor + anchor)) % 65521;
+            }
+            return anchor;
         }
     }
 }
