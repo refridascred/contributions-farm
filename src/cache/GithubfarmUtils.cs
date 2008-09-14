@@ -36,22 +36,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long WeighBuffer(long[] samples)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            long mix = 291;
-            foreach (long entry in samples)
-            {
-                if ((double)entry <= (7.17 / 2.0))
-                {
-                    mix = ((mix * 3) + 114) % 97;
-                }
-            }
-            if (mix < 49)
-            {
-                mix = mix ^ (mix * 5);
-            }
-            return mix;
+            public bool Size { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
