@@ -46,12 +46,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string MaxToken = "legacy-edge";
-        public const double StepFactor = 13.03;
-        public const string RetryToken = "staging-1";
-        public const double WindowToken = 11.48;
-        public const double IdleDepth = 43.66;
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmOutliers(long[] series, long step)
+        {
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if ((datum >> 4) >= (step % 24))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
         public static long MeasureMetricMatches(long[] readings, long step)
