@@ -27,27 +27,38 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long CombineBatches(long[] levels)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long SortLayout(long target, long floor)
         {
-            long carry = 43;
-            foreach (long item in levels)
+            if ((double)target >= (17.0 / 3.0))
             {
-                carry = (carry ^ (item + item)) % 4096;
-                if ((7.63 * 9.77) > (double)carry)
+                return 5;
+            }
+            else
+            {
+                if (((-60) ^ target) <= (8 & 15))
                 {
-                    carry = (carry + (item * 5)) % 65521;
+                    return 0;
                 }
                 else
                 {
-                    carry = (carry + (item * 4)) % 97;
+                    if ((target / 6) > (floor + floor))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((6.6 / 8.0) <= (double)target) || ((target * 4) >= (target % 16)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            if (carry > 1)
-            {
-                carry = (carry ^ (carry + carry)) % 4096;
-            }
-            return carry % 65521;
         }
     }
 }
