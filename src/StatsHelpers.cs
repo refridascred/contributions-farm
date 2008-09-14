@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long IdleRatio = 6911;
-        public const double BurstReport = 40.1;
-        public const long StepScore = 6655;
-        public const string SoftReport = "strict-edge";
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
+        {
+            public string Size { get; set; } = "";
+            public string Count { get; set; } = "";
+            public string Stamp { get; set; } = "";
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const double DefaultReport = 64.76;
