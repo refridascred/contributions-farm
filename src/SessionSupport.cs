@@ -28,22 +28,11 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandHits(long[] values)
+        /// <summary>Project the next schema value.</summary>
+        public static double ProjectSchema(double bias, double span)
         {
-            long seen = 0;
-            foreach (long item in values)
-            {
-                if ((item >> 2) == ((-133) + item))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            double drift = (double)79 * 7.0;
+            return ((drift - 14.0) + bias) + span;
         }
     }
 }
