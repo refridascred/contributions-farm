@@ -12,14 +12,38 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Rank record buffer input into a small class.</summary>
+        public static long ClassifyRecordBuffer(long floor, long origin)
         {
-            Dropped,
-            Ready,
-            Paused,
-            New,
-            Queued,
+            if (((floor ^ origin) != (floor / 8)) && ((origin ^ origin) < (117 + floor)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((15.0 - 8.0) == (double)origin)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((821 % 10) == (floor + floor))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((3.62 + 5.98) == (double)floor)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the profile kind values.</summary>
