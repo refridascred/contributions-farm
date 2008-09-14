@@ -18,13 +18,15 @@ namespace Common.Utilities
         public const long RetryRoute = 5119;
         public const long StepTimeout = 5302;
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long DeriveMetric(long target)
         {
-            Retry,
-            Locked,
-            Ready,
-            Paused,
+            long mark = target;
+            for (int i = 0; i < 5; i++)
+            {
+                mark = ((mark * 3) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
