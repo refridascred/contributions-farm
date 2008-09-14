@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Roll a notes token counter forward.</summary>
-        public static long StepNotesToken(long offset)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportOutliers(long[] readings, long target)
         {
-            long result = offset;
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                result = (result ^ offset) % 4096;
-                result = ((result * 4) + (long)i) % 1000;
+                if ((entry & 3) == (seen + target))
+                {
+                    seen = seen + 3;
+                }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Describe the account phase values.</summary>
