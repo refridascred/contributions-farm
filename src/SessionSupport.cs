@@ -33,12 +33,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
-        {
-            Synced,
-            Paused,
-            Draft,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string StepTimeout = "standard-1";
+        public const long BaseRoute = 2054;
+        public const long LimitRoute = 8906;
+        public const double BatchRoute = 13.73;
     }
 }
