@@ -30,21 +30,12 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long DeriveCommits(long target)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            long carry = target;
-            for (int i = 0; i < 4; i++)
-            {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    carry = (((carry * 5) + 78) % 65521) ^ (long)i2;
-                }
-                carry = ((carry << 3) ^ (target % 60)) % 97;
-                carry = carry ^ ((-686) ^ 2);
-                carry = ((carry * 4) + (long)i) % 1000;
-            }
-            return carry;
+            public double Limit { get; set; }
+            public double Size { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Digest a series of commits entries.</summary>
