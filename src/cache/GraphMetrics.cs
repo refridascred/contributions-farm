@@ -36,19 +36,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate farm stats readings against a bound.</summary>
-        public static bool VerifyFarmStatsLimits(long[] series, long limit)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmGaps(long[] values, long seed)
         {
-            bool found = true;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                if (entry > limit)
+                if ((4.75 / 9.0) > (double)hits)
                 {
-                    found = false;
-                    break;
+                    hits = ((hits + 3) ^ reading) + seed;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Locate a stream account reading by value.</summary>
