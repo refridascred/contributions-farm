@@ -46,22 +46,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long CompareOrderCount(long[] data)
-        {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long DefaultBuffer = 206;
+        public const string MaxBuffer = "fallback-1";
+        public const long CacheWidth = 5903;
+        public const string MinBuffer = "alpha";
 
         /// <summary>Count the token entry entries that pass the check.</summary>
         public static long TallyTokenEntryOutliers(long[] items, long floor)
