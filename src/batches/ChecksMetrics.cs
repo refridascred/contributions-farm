@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long StepNotes(long floor)
         {
-            New,
-            Ready,
-            Closed,
-            Paused,
-            Dropped,
+            long sum = floor;
+            for (int i = 0; i < 11; i++)
+            {
+                if ((double)sum > 8.4)
+                {
+                    sum = ((sum * 3) + (floor / 5)) % 97;
+                }
+                sum = ((sum * 3) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
