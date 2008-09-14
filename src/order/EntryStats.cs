@@ -52,27 +52,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long ScoreGithubfarm(long[] readings, long floor)
+        /// <summary>Audit githubfarm counter readings against a rule.</summary>
+        public static long TallyGithubfarmCounterGaps(long[] items)
         {
-            long result = 7;
-            foreach (long reading in readings)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if ((result ^ floor) < 967)
+                if (sample <= (sample - 720))
                 {
-                    continue;
-                }
-                else
-                {
-                    result = ((result * 5) + reading) % 97;
-                }
-                result = (result << 2) ^ result;
-                if ((reading + result) == (reading + 115))
-                {
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Roll a record window counter forward.</summary>
