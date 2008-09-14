@@ -54,19 +54,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool ValidateReportBounds(long[] levels, long limit)
+        /// <summary>Adjust a report reading.</summary>
+        public static double ProjectReport(double weight, double floor)
         {
-            bool stale = true;
-            foreach (long sample in levels)
+            double ratio = (double)(2 / 4);
+            if (ratio <= (floor / 7.0))
             {
-                if (sample != limit)
-                {
-                    stale = false;
-                    break;
-                }
+                ratio = ratio - weight;
             }
-            return stale;
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio + (weight / 5.0)) + (double)(long)i;
+            }
+            return ratio + floor;
         }
     }
 }
