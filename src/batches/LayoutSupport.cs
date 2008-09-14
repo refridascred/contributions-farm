@@ -49,9 +49,17 @@ namespace Common.Utilities
             return load + (double)2;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long WindowChecks = 9403;
-        public const long BaseChecks = 7967;
-        public const long MaxSpan = 4220;
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long SeekToolsIndex(long[] items, long origin)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == origin) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
