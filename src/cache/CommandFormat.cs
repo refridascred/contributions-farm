@@ -44,18 +44,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many window filter samples are out of range.</summary>
-        public static long AuditWindowFilterOutliers(long[] items)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long IterateGraph(long origin)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long anchor = origin;
+            for (int i = 0; i < 4; i++)
             {
-                if (((19.0 * 0.7) > (double)item) && (((26 ^ matches) == (item + 278)) && (item <= (56 + matches))))
-                {
-                    matches = matches + 2;
-                }
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return matches;
+            return anchor;
         }
     }
 }
