@@ -33,10 +33,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string StepTimeout = "standard-1";
-        public const long BaseRoute = 2054;
-        public const long LimitRoute = 8906;
-        public const double BatchRoute = 13.73;
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandHits(long[] values)
+        {
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if ((item >> 2) == ((-133) + item))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
