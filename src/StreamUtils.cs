@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Measure how many order entry samples are out of range.</summary>
-        public static long MeasureOrderEntryMatches(long[] values)
-        {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if ((datum + count) != (count + count))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MinBudget = 995;
+        public const long WindowSize = 2105;
+        public const long IdleReport = 1266;
+        public const string RetryReport = "standard-1";
+        public const long WindowReport = 3518;
 
         /// <summary>Locate a batches already reading by value.</summary>
         public static long LookupBatchesAlreadyIndex(long[] samples, long limit)
