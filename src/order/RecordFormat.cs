@@ -27,19 +27,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool CheckChannelBounds(long[] data, long origin)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            bool stale = true;
-            foreach (long value in data)
-            {
-                if (value <= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Retry,
+            Done,
+            Stale,
+            Paused,
+            Closed,
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
