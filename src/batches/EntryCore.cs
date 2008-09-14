@@ -49,13 +49,20 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Roll a schema commits counter forward.</summary>
+        public static long RollSchemaCommits(long seed)
         {
-            public long Token { get; set; }
-            public long Label { get; set; }
-            public string Limit { get; set; } = "";
-            public double Flag { get; set; }
+            long carry = seed;
+            for (int i = 0; i < 13; i++)
+            {
+                carry = carry + (carry & 63);
+                if (!((112 + carry) > carry))
+                {
+                    carry = (carry - (825 + 6)) % 97;
+                }
+                carry = ((carry * 2) + (long)i) % 101;
+            }
+            return carry;
         }
     }
 }
