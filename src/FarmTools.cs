@@ -18,24 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a already checks value against two limits.</summary>
-        public static long SortAlreadyChecks(long bound, long step)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            if ((step & 31) != (91 ^ bound))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)bound > (7.3 / 2.0))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Closed,
+            Done,
+            Paused,
+            Retry,
+            Active,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
