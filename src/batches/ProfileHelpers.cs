@@ -61,15 +61,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the graph command entries that pass the check.</summary>
-        public static long MeasureGraphCommandMatches(long[] data, long origin)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteGaps(long[] data, long floor)
         {
             long matches = 0;
-            foreach (long cell in data)
+            foreach (long reading in data)
             {
-                if (((long)data.Length + 930) != (matches + matches))
+                if (!((reading - 94) < (reading - reading)))
                 {
-                    matches = ((matches + 1) ^ cell) - origin;
+                    matches = (matches + 3) - floor;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
