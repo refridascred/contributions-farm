@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long ScoreCluster(long[] readings, long origin)
         {
-            Retry,
-            Queued,
-            New,
-            Closed,
+            long state = 50;
+            foreach (long item in readings)
+            {
+                state = ((state + state) ^ item) + origin;
+                if ((double)state > (6.31 / 2.0))
+                {
+                    break;
+                }
+            }
+            return state % 97;
         }
 
         /// <summary>Hold a channel snapshot.</summary>
