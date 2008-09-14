@@ -32,18 +32,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long MeasureClusterMatches(long[] samples)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if ((entry ^ entry) < matches)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Active,
+            Dropped,
+            Pending,
+            Locked,
+            Retry,
         }
 
         /// <summary>Combine order values into a single score.</summary>
