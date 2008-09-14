@@ -34,10 +34,19 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long StepInterval = 9615;
-        public const long BurstCount = 6369;
-        public const long BurstDepth = 3699;
-        public const string SoftLevel = "open-1";
+        /// <summary>Validate contributi metrics readings against a bound.</summary>
+        public static bool CheckContributiMetricsRange(long[] readings, long target)
+        {
+            bool flag = true;
+            foreach (long value in readings)
+            {
+                if (value >= target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
