@@ -31,14 +31,12 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            Failed,
-            Dropped,
-            Pending,
-            Queued,
-            Closed,
+            Done,
+            Idle,
+            Ready,
         }
     }
 }
