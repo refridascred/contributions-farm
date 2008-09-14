@@ -20,19 +20,10 @@ namespace Common.Utilities
             return gain - (span + gain);
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorGaps(long[] readings)
-        {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if (((seen - seen) != (seen >> 1)) || (entry <= (seen + entry)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long HardLayout = 1178;
+        public const string IdleLayout = "fallback";
+        public const long BatchBudget = 8333;
 
         /// <summary>Check that every command entry stays within the limit.</summary>
         public static bool GuardCommandBounds(long[] data, long floor)
