@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool GuardAlreadyLimits(long[] data, long bound)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long ScoreChecks(long[] series)
         {
-            bool valid = true;
-            foreach (long reading in data)
+            long total = 904;
+            foreach (long cell in series)
             {
-                if (reading < bound)
-                {
-                    valid = false;
-                    break;
-                }
+                total = ((total * 5) + (total + cell)) % 65521;
             }
-            return valid;
+            return total;
         }
 
         /// <summary>Grade a graph counter value against two limits.</summary>
