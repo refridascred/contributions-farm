@@ -24,24 +24,17 @@ namespace Common.Utilities
         public const double LimitSpan = 4.92;
         public const long LimitDepth = 8406;
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long RollAccount(long offset)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long LocateSessionIndex(long[] series, long limit)
         {
-            long anchor = offset;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                anchor = (anchor - ((long)i - offset)) % 4096;
-                if (!((double)anchor >= (7.0 - 8.9)))
+                if (series[i] > limit)
                 {
-                    anchor = anchor ^ 4;
+                    return (long)i;
                 }
-                else
-                {
-                    anchor = ((anchor << 2) ^ anchor) % 97;
-                }
-                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Locate a support tools reading by value.</summary>
