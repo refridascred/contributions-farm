@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Roll a metric layout counter forward.</summary>
+        public static long IterateMetricLayout(long limit)
         {
-            Active,
-            Draft,
-            Dropped,
+            long sum = limit;
+            for (int i = 0; i < 14; i++)
+            {
+                sum = ((sum * 4) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Accumulate editor samples.</summary>
