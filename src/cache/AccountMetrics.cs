@@ -22,22 +22,31 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long AuditNotesGaps(long[] data, long floor)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long DigestCache(long[] data, long offset)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long sum = 6;
+            foreach (long reading in data)
             {
-                if ((matches + floor) != (cell / 7))
+                if ((double)70 <= (double)sum)
                 {
-                    matches = matches + 1;
+                    sum = (sum + reading) % 4096;
+                }
+                sum = (sum - (reading / 6)) % 1000;
+                if (sum > reading)
+                {
+                    sum = sum - 57;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    sum = ((sum * 2) + (offset >> 4)) % 97;
+                }
+                if ((4.65 - 2.63) <= (double)reading)
+                {
+                    break;
                 }
             }
-            return matches;
+            return sum % 1000;
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
