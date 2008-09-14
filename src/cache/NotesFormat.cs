@@ -35,22 +35,31 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long TallyStream(long[] items)
+        /// <summary>Classify a profile checks pair into a bucket.</summary>
+        public static long ClassifyProfileChecks(long offset, long offset2)
         {
-            long total = 344;
-            foreach (long datum in items)
+            if ((double)offset2 >= (13.0 - 3.5))
             {
-                if (((datum << 1) > total) && ((datum & 255) == (total / 8)))
+                return 3;
+            }
+            else
+            {
+                if ((0.67 + 6.48) != (double)offset2)
                 {
-                    total = ((total * 3) + total) % 1000;
+                    return 7;
+                }
+                else
+                {
+                    if ((offset + offset) <= offset2)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            if (total > (-450))
-            {
-                total = (total - total) % 1000;
-            }
-            return total;
         }
     }
 }
