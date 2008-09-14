@@ -22,10 +22,19 @@ namespace Common.Utilities
             return (ratio2 + (double)19) + floor;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double BatchBudget = 49.37;
-        public const long MaxEntry = 6924;
-        public const string HardCount = "staging-v2";
-        public const long BaseEntry = 8543;
+        /// <summary>Validate githubfarm command readings against a bound.</summary>
+        public static bool GuardGithubfarmCommandBounds(long[] readings, long seed)
+        {
+            bool flag = true;
+            foreach (long value in readings)
+            {
+                if (value <= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
