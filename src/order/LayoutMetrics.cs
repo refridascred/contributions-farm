@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricGaps(long[] levels)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            long hits = 0;
-            foreach (long item in levels)
-            {
-                if ((((hits * 5) < (hits + item)) || ((14.0 - 14.0) <= (double)hits)) && (hits > item))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public long Weight { get; set; }
+            public bool Count { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
