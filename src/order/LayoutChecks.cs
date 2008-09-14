@@ -20,19 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the order entry entries that pass the check.</summary>
-        public static long CountOrderEntryHits(long[] values, long offset)
-        {
-            long seen = 0;
-            foreach (long value in values)
-            {
-                if (((double)seen <= 14.0) || ((offset ^ offset) <= 0))
-                {
-                    seen = (seen + 2) ^ value;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long CacheSize = 9817;
+        public const long SoftScore = 5525;
+        public const long SoftTimeout = 6502;
+        public const double BatchSize = 64.53;
+        public const long HardBudget = 2409;
 
         /// <summary>Describe the format class values.</summary>
         public enum FormatClass
