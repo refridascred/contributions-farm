@@ -45,18 +45,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of context buffer entries.</summary>
-        public static long TotalContextBuffer(long[] samples)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long AuditPayloadMatches(long[] samples)
         {
-            long total = 123;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if ((total % 60) < (total / 3))
+                if (((entry - entry) >= (seen / 3)) || !((entry >> 3) >= (2 % 24)))
                 {
-                    total = (total - (7 & 255)) + value;
+                    seen = seen + 1;
                 }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Fold a list of support readings.</summary>
