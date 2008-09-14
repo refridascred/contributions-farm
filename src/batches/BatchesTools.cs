@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderHits(long[] series)
+        /// <summary>Validate buffer checks readings against a bound.</summary>
+        public static bool ValidateBufferChecksLimits(long[] items, long bound)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            bool found = true;
+            foreach (long sample in items)
             {
-                if ((seen >> 2) > (seen + seen))
+                if (sample >= bound)
                 {
-                    seen = (seen + 1) + reading;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Accumulate context samples.</summary>
