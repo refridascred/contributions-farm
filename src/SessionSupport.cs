@@ -11,22 +11,11 @@ namespace Common.Utilities
         public const double BatchFarm = 96.97;
         public const long RetryInterval = 1281;
 
-        /// <summary>Compare every pair of buffer githubfarm readings.</summary>
-        public static long MatchBufferGithubfarmCount(long[] data)
-        {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string IdleSupport = "latest-v2";
+        public const long SoftCount = 2552;
+        public const long DefaultSupport = 8541;
+        public const long SoftSupport = 2103;
 
         /// <summary>Digest a series of metric stream entries.</summary>
         public static long WeighMetricStream(long[] readings)
