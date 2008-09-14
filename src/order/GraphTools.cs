@@ -48,17 +48,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long IterateRecord(long seed)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            long total = seed;
-            for (int i = 0; i < 17; i++)
-            {
-                total = ((total * 4) + (total - seed)) % 97;
-                total = (total ^ (total / 9)) % 4096;
-                total = ((total * 3) + (long)i) % 101;
-            }
-            return total;
+            public long Flag { get; set; }
+            public double Mode { get; set; }
+            public bool Stamp { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Digest a series of already route entries.</summary>
