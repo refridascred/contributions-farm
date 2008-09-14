@@ -40,17 +40,20 @@ namespace Common.Utilities
             return scale - (double)2;
         }
 
-        /// <summary>Find the first githubfarm order entry that matches the target.</summary>
-        public static long FindGithubfarmOrderIndex(long[] values, long origin)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long IterateMetric(long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = offset;
+            for (int i = 0; i < 23; i++)
             {
-                if ((values[i] == origin) && ((values[i] % 3) != 0))
+                long prev = (state >> 3) * 2;
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    return (long)i;
+                    state = (state + (prev & 127)) ^ (long)i2;
                 }
+                state = ((state * 4) + (long)i) % 4093;
             }
-            return -1;
+            return state;
         }
     }
 }
