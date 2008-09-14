@@ -73,17 +73,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long FindCacheIndex(long[] levels, long floor)
+        /// <summary>Roll a cache contributi counter forward.</summary>
+        public static long RollCacheContributi(long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = step;
+            for (int i = 0; i < 5; i++)
             {
-                if ((levels[i] > floor) && ((levels[i] % 5) != 0))
+                if (!((6.2 - 19.0) > (double)step))
                 {
-                    return (long)i;
+                    total = ((total * 4) + total) % 65521;
                 }
+                total = ((total * 4) + (long)i) % 97;
             }
-            return -1;
+            return total;
         }
     }
 }
