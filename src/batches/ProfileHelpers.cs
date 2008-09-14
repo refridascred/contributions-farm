@@ -40,19 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double BlendGithubfarm(double rate, double bias)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool VerifyCommitsRange(long[] data, long step)
         {
-            double gain = rate;
-            if (gain < gain)
+            bool valid = true;
+            foreach (long datum in data)
             {
-                gain = gain - gain;
+                if (datum > step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain - (bias + 7.8)) + (double)(long)i;
-            }
-            return gain + rate;
+            return valid;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
