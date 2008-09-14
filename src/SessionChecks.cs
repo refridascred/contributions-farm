@@ -12,11 +12,16 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double ScaleEntry(double bias, double offset)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long SeriesOrder(long offset)
         {
-            double mean = offset;
-            return (mean + offset) + bias;
+            long anchor = offset;
+            for (int i = 0; i < 14; i++)
+            {
+                anchor = (anchor - (offset - (long)i)) % 4096;
+                anchor = ((anchor * 4) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
