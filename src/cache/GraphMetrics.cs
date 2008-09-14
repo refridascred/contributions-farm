@@ -48,21 +48,39 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long PairNotesCount(long[] values)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long GradeGraph(long seed, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long span = seed + floor;
+            if ((double)span >= (7.0 - 6.9))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (!(seed >= ((-9) + 557)))
                 {
-                    if ((values[i] ^ values[j]) < 16)
+                    return 5;
+                }
+                else
+                {
+                    if (((seed << 1) == ((-66) & 15)) && ((double)floor < (double)span))
                     {
-                        seen = seen + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((double)span <= (double)(-9)) || ((floor * 3) > seed))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
