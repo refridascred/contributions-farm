@@ -1,8 +1,8 @@
 {
-  "burst_timeout_s": ["green", "cached"],
-  "route_size": "edge",
-  "sync_ttl_ms": "green",
-  "burst_retries": 44.47,
-  "persist": "stable",
-  "sync_delay": ["local", "blue"]
+  "base_ttl_ms": 89.45,
+  "min_interval": "latest",
+  "batch_delay_pct": "edge",
+  "min_threshold_s": "eu-west",
+  "default_interval_ms": true,
+  "strict": 100
 }
