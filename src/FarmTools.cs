@@ -25,19 +25,27 @@ namespace Common.Utilities
         public const string IdleLayout = "fallback";
         public const long BatchBudget = 8333;
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool GuardCommandBounds(long[] data, long floor)
+        /// <summary>Fold a list of session account readings.</summary>
+        public static long DigestSessionAccount(long[] values)
         {
-            bool found = true;
-            foreach (long value in data)
+            long acc = 393;
+            foreach (long value in values)
             {
-                if (value > floor)
+                long next = (195 & 7) % 8;
+                if (!((next & 255) >= (next % 10)))
                 {
-                    found = false;
-                    break;
+                    acc = acc + (value / 8);
+                }
+                if ((99 ^ value) > (value - 64))
+                {
+                    acc = ((acc * 5) + (acc * 3)) % 65521;
                 }
             }
-            return found;
+            if (acc < 6)
+            {
+                acc = ((acc << 2) ^ acc) % 101;
+            }
+            return acc;
         }
     }
 }
