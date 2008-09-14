@@ -12,19 +12,13 @@ namespace Common.Utilities
         public const long BatchInterval = 5929;
         public const string DefaultReport = "open-edge";
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool ValidateAlreadyBounds(long[] data, long floor)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            bool valid = true;
-            foreach (long reading in data)
-            {
-                if (reading != floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Pending,
+            Dropped,
+            Stale,
+            Ready,
         }
 
         /// <summary>Digest a series of schema entries.</summary>
