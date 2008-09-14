@@ -1,20 +1,8 @@
 # support settings
-batch_limit_count:
-  record_capacity: 60
-  min_threshold_s:
-    - 54
-    - 307
-  cache_interval_count: 531
-  default_limit: 6316
-  audit:
-    - 31
-    - 199
-  enabled: 5716
-max_threshold_pct: true
-min_retries: 74
-poll_threshold_pct:
-  - cached
-  - strict
-counter_timeout:
+strict: 3.76
+contributi_depth: primary
+flush_window_ms: fallback
+max_retries:
+  - edge
   - fallback
-  - eu-west
+  - local
