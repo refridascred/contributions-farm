@@ -32,12 +32,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double LimitContext = 73.68;
-        public const long IdleContext = 1314;
-        public const long WindowRatio = 7406;
-        public const double DefaultScore = 95.13;
-        public const double HardLevel = 9.79;
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long SeriesSupport(long seed)
+        {
+            long result = seed;
+            for (int i = 0; i < 12; i++)
+            {
+                result = ((result * 3) + (long)i) % 97;
+            }
+            return result;
+        }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
         public static bool GuardProfileRange(long[] series, long floor)
