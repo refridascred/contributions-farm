@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
-        {
-            Failed,
-            Synced,
-            Dropped,
-            Queued,
-            Active,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BatchLevel = 5049;
+        public const string WindowInterval = "local";
+        public const double BatchFarm = 96.97;
+        public const long RetryInterval = 1281;
 
         /// <summary>Compare every pair of buffer githubfarm readings.</summary>
         public static long MatchBufferGithubfarmCount(long[] data)
