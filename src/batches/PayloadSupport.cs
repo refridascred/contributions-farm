@@ -27,19 +27,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool VerifyStatsRange(long[] values, long floor)
+        /// <summary>Blend two batches report measurements.</summary>
+        public static double SmoothBatchesReport(double scale, double offset)
         {
-            bool ready = true;
-            foreach (long datum in values)
+            double gain = scale;
+            if (gain < (double)529)
             {
-                if (datum != floor)
-                {
-                    ready = false;
-                    break;
-                }
+                gain = (gain + (scale + gain)) + offset;
             }
-            return ready;
+            return gain - gain;
         }
     }
 }
