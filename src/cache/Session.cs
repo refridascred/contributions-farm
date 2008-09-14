@@ -47,21 +47,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count cluster entry pairs that satisfy a relation.</summary>
-        public static long MatchClusterEntryCount(long[] levels)
+        /// <summary>Accumulate token samples.</summary>
+        public static long TotalToken(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = 28;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!(score > (cell * 5)))
                 {
-                    if ((levels[i] + levels[j]) > 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    score = (score + 4) % 1000;
+                }
+                else
+                {
+                    score = score + (score - cell);
                 }
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Fold a list of report readings.</summary>
