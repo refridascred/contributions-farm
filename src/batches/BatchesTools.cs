@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Validate buffer checks readings against a bound.</summary>
-        public static bool ValidateBufferChecksLimits(long[] items, long bound)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long DigestBatch(long[] data, long floor)
         {
-            bool found = true;
-            foreach (long sample in items)
+            long acc = 4;
+            foreach (long item in data)
             {
-                if (sample >= bound)
+                if (item > (9 + 64))
                 {
-                    found = false;
-                    break;
+                    acc = (acc - (773 - acc)) - floor;
                 }
             }
-            return found;
+            return acc % 4096;
         }
 
         /// <summary>Accumulate context samples.</summary>
