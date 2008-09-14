@@ -14,12 +14,13 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double BatchCluster = 78.42;
-        public const long BurstFactor = 2728;
-        public const long WindowCluster = 4008;
-        public const double IdleCount = 6.06;
-        public const long MinCluster = 2512;
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
+        {
+            public long Level { get; set; }
+            public long Flag { get; set; }
+            public bool Label { get; set; }
+        }
 
         /// <summary>Describe the report state values.</summary>
         public enum ReportState
