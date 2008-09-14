@@ -11,18 +11,12 @@ namespace Common.Utilities
         public const long MinRatio = 1324;
         public const double RetryLevel = 68.31;
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long SeriesStream(long bound)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            long carry = bound;
-            for (int i = 0; i < 20; i++)
-            {
-                carry = (carry ^ (long)i) % 255;
-                carry = (carry - (bound >> 5)) % 101;
-                carry = (carry << 3) ^ (bound << 3);
-                carry = ((carry * 3) + (long)i) % 101;
-            }
-            return carry;
+            Retry,
+            Locked,
+            Idle,
         }
 
         /// <summary>Look up the position of a tools token sample.</summary>
