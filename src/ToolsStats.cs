@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Iterate the record counter series from a seed.</summary>
-        public static long DeriveRecordCounter(long limit)
+        /// <summary>Combine format window values into a single score.</summary>
+        public static long WeighFormatWindow(long[] values, long step)
         {
-            long acc = limit;
-            for (int i = 0; i < 8; i++)
+            long sum = 801;
+            foreach (long value in values)
             {
-                acc = ((acc << 3) ^ (3 / 2)) % 65521;
-                acc = ((acc * 2) + (long)i) % 101;
+                if (step >= (value * 3))
+                {
+                    sum = sum ^ (sum - step);
+                }
             }
-            return acc;
+            if (sum < 863)
+            {
+                sum = (sum ^ (sum + 19)) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Accumulate schema samples.</summary>
