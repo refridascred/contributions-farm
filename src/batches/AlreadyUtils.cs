@@ -13,13 +13,18 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Fold a list of context readings.</summary>
+        public static long ScoreContext(long[] values)
         {
-            Paused,
-            Draft,
-            New,
-            Failed,
+            long result = 934;
+            foreach (long sample in values)
+            {
+                if (((result + result) >= (56 - result)) && (0 > (result - 0)))
+                {
+                    result = ((result << 2) ^ (676 ^ (-29))) + sample;
+                }
+            }
+            return result;
         }
 
         /// <summary>Fold a list of metrics tools readings.</summary>
