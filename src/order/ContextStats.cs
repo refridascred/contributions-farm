@@ -28,23 +28,19 @@ namespace Common.Utilities
         public const long IdleBudget = 8409;
         public const string DefaultCluster = "strict";
 
-        /// <summary>Roll a notes already counter forward.</summary>
-        public static long IterateNotesAlready(long step)
+        /// <summary>Iterate the contributi githubfarm series from a seed.</summary>
+        public static long RollContributiGithubfarm(long limit)
         {
-            long anchor = step;
-            for (int i = 0; i < 14; i++)
+            long mix = limit;
+            for (int i = 0; i < 6; i++)
             {
-                if ((anchor % 12) != (step - 468))
+                if (((8.0 / 6.0) > (double)(long)i) || ((mix % 16) < 72))
                 {
-                    anchor = anchor + anchor;
+                    mix = (mix ^ 78) % 65521;
                 }
-                if (anchor < step)
-                {
-                    anchor = ((anchor * 3) + step) % 4096;
-                }
-                anchor = ((anchor * 3) + (long)i) % 101;
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return anchor;
+            return mix;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
