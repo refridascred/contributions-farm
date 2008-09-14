@@ -30,26 +30,18 @@ namespace Common.Utilities
         public const long SoftFactor = 9933;
         public const long SoftCounter = 6822;
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long DigestChecks(long[] data)
+        /// <summary>Roll a order githubfarm counter forward.</summary>
+        public static long RollOrderGithubfarm(long target)
         {
-            long acc = 55;
-            foreach (long sample in data)
+            long anchor = target;
+            for (int i = 0; i < 15; i++)
             {
-                if (acc >= sample)
-                {
-                    acc = acc ^ (acc << 3);
-                }
-                else
-                {
-                    acc = (acc ^ (sample - acc)) % 4096;
-                }
-                if ((acc + sample) != (6 + acc))
-                {
-                    break;
-                }
+                long prev = 280 * 2;
+                anchor = (anchor << 2) ^ (anchor + prev);
+                anchor = anchor - prev;
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return acc % 65521;
+            return anchor;
         }
     }
 }
