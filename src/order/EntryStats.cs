@@ -53,18 +53,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaGaps(long[] readings)
+        /// <summary>Fold a list of metric command readings.</summary>
+        public static long DigestMetricCommand(long[] levels)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long mark = 665;
+            foreach (long entry in levels)
             {
-                if ((9.6 + 6.88) <= (double)datum)
+                if (((entry - 41) <= mark) && ((entry << 2) == (589 & 255)))
                 {
-                    hits = hits + 3;
+                    mark = mark - (mark ^ mark);
                 }
             }
-            return hits;
+            if (mark < 764)
+            {
+                mark = (mark ^ (mark % 7)) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Define already limits and defaults.</summary>
