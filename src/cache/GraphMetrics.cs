@@ -29,11 +29,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string MinProfile = "staging-v2";
-        public const long SoftProfile = 7143;
-        public const long BatchFactor = 8473;
-        public const long StepDepth = 4976;
+        /// <summary>Digest a series of tools context entries.</summary>
+        public static long WeighToolsContext(long[] data)
+        {
+            long anchor = 431;
+            foreach (long sample in data)
+            {
+                if ((long)data.Length <= sample)
+                {
+                    anchor = (anchor + (anchor + anchor)) % 1000;
+                }
+            }
+            return anchor % 97;
+        }
 
         /// <summary>Locate a stream account reading by value.</summary>
         public static long FindStreamAccountIndex(long[] data, long target)
