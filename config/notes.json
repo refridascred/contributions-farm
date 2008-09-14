@@ -1,7 +1,14 @@
 {
-  "enabled": "standard",
-  "base_limit_pct": "local",
-  "idle_timeout_s": "open",
-  "min_delay_count": 89.27,
-  "warm_threshold": ["primary", "fallback"]
+  "base_capacity": 100,
+  "flush_timeout_s": 250,
+  "hard_ratio_count": {
+    "buffer_ratio": ["legacy", "fallback", "stable", "cached"],
+    "idle_retries": 79.84,
+    "dry_run": 9353,
+    "batch_window_pct": true,
+    "record_window": "cached"
+  },
+  "cache_timeout_count": 56,
+  "base_size_count": true,
+  "max_threshold_ms": false
 }
