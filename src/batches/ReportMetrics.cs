@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long SeriesContext(long bound)
         {
-            public double Region { get; set; }
-            public long Token { get; set; }
-            public double Owner { get; set; }
+            long mark = bound;
+            for (int i = 0; i < 17; i++)
+            {
+                if (mark < (bound ^ (long)i))
+                {
+                    mark = ((mark * 3) + (bound + (long)i)) % 255;
+                }
+                else
+                {
+                    mark = (mark << 2) ^ (bound * 5);
+                    mark = (mark * 4) + (mark + bound);
+                }
+                mark = ((mark * 2) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
