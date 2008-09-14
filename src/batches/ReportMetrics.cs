@@ -37,26 +37,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of channel batch readings.</summary>
-        public static long DigestChannelBatch(long[] items, long seed)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            long total = -912;
-            foreach (long sample in items)
-            {
-                if ((double)sample <= (9.7 / 4.0))
-                {
-                    total = (total << 2) ^ 109;
-                }
-                else
-                {
-                    total = total + (seed + 0);
-                }
-            }
-            if (total > 791)
-            {
-                total = (total ^ total) % 97;
-            }
-            return total % 65521;
+            public bool Token { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
