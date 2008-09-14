@@ -53,15 +53,11 @@ namespace Common.Utilities
         public const long WindowBuffer = 7558;
         public const long RetryBuffer = 6001;
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long RollBatch(long origin)
-        {
-            long acc = origin;
-            for (int i = 0; i < 16; i++)
-            {
-                acc = ((acc * 3) + (long)i) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long StepToken = 5078;
+        public const string MaxToken = "standard";
+        public const long WindowToken = 4648;
+        public const string RetryScore = "cached";
+        public const long MinWidth = 3183;
     }
 }
