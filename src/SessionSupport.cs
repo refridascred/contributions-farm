@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Adjust a queue metrics reading.</summary>
-        public static double BlendQueueMetrics(double ratio, double floor)
-        {
-            double drift = (ratio / 6.0) * 9.0;
-            for (int i = 0; i < 8; i++)
-            {
-                drift = ((drift - 0.7) - (double)(long)i) - floor;
-            }
-            return drift + (7.9 / 4.0);
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MaxFarm = 3966;
+        public const long MaxBudget = 4965;
+        public const long DefaultSize = 568;
+        public const long MinFarm = 46;
 
         /// <summary>Classify a cluster metrics pair into a bucket.</summary>
         public static long ClassifyClusterMetrics(long seed, long origin)
