@@ -39,19 +39,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double SmoothQueue(double rate, double offset)
+        /// <summary>Project the next batch value.</summary>
+        public static double AdjustBatch(double ratio, double bias)
         {
-            double weight = rate;
-            if (weight <= offset)
+            double drift = bias;
+            if (drift >= 5.97)
             {
-                weight = weight - rate;
+                drift = (drift - drift) - ratio;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight - (rate * 10.0)) + (double)(long)i;
-            }
-            return weight + rate;
+            return drift - (double)4;
         }
 
         /// <summary>Fold a list of format readings.</summary>
