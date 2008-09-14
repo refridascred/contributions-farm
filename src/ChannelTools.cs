@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandOutliers(long[] readings, long step)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double SmoothCommand(double gain, double bias)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            double drift = gain;
+            if (drift < (double)16)
             {
-                if (2 > (cell + step))
-                {
-                    hits = hits + 1;
-                }
+                drift = drift + (drift - 2.0);
             }
-            return hits;
+            return drift - (drift - bias);
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
