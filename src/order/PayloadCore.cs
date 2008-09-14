@@ -18,15 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a format graph counter forward.</summary>
-        public static long IterateFormatGraph(long bound)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmGaps(long[] series)
         {
-            long carry = bound;
-            for (int i = 0; i < 22; i++)
+            long count = 0;
+            foreach (long cell in series)
             {
-                carry = ((carry * 5) + (long)i) % 1000;
+                if (!((double)cell <= (double)count))
+                {
+                    count = count + 1;
+                }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
