@@ -1,5 +1,8 @@
 {
-  "audit": "legacy",
-  "max_depth": false,
-  "max_delay_ms": false
+  "base_threshold": 7224,
+  "commits_capacity": "green",
+  "strict": "stable",
+  "default_depth": ["standard", "legacy", "strict", "fallback"],
+  "soft_timeout_ms": 500,
+  "metric_timeout": "cached"
 }
