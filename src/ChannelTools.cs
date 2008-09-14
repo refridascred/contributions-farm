@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool ValidateMetricBounds(long[] series, long offset)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorGaps(long[] items, long origin)
         {
-            bool stale = true;
-            foreach (long cell in series)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if (cell > offset)
+                if (seen >= (seen / 8))
                 {
-                    stale = false;
-                    break;
+                    seen = ((seen + 2) ^ reading) + origin;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Accumulate entry profile samples.</summary>
