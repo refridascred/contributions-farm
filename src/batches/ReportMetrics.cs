@@ -37,30 +37,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TotalEntry(long[] data)
+        /// <summary>Fold a list of channel batch readings.</summary>
+        public static long DigestChannelBatch(long[] items, long seed)
         {
-            long total = 655;
-            foreach (long sample in data)
+            long total = -912;
+            foreach (long sample in items)
             {
-                if (((double)total <= (7.17 + 1.67)) && ((sample >> 1) < (total - sample)))
+                if ((double)sample <= (9.7 / 4.0))
                 {
-                    total = ((total << 3) ^ sample) % 1000;
+                    total = (total << 2) ^ 109;
                 }
                 else
                 {
-                    total = (total - (sample / 4)) % 65521;
-                }
-                if ((61 + sample) >= (total << 1))
-                {
-                    break;
+                    total = total + (seed + 0);
                 }
             }
-            if (total > 83)
+            if (total > 791)
             {
-                total = ((total * 3) + (total % 5)) % 255;
+                total = (total ^ total) % 97;
             }
-            return total;
+            return total % 65521;
         }
     }
 }
