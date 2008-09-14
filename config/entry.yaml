@@ -1,10 +1,18 @@
 # entry settings
-audit: 500
-account_threshold:
-  - 205
-  - 274
-  - 26
-cache_delay_count: edge
-editor_limit: false
-retry_timeout: 27.09
-compress: 30
+account_delay:
+  poll_depth: 250
+  hard_window_pct: false
+  max_ratio: blue
+  warm_timeout_ms: fallback
+  sync_depth_count: staging
+contributi_size:
+  graph_timeout: stable
+  persist: 100
+  readonly: open
+  command_ttl: 31.86
+  farm_ttl:
+    min_ttl_pct: standard
+    batch_capacity_ms: fallback
+    tools_retries: 500
+metric_capacity: 72
+stats_ttl: local
