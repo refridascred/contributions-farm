@@ -13,17 +13,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long FindSchemaIndex(long[] samples, long offset)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long OverlapGithubfarmCount(long[] samples)
         {
+            long count = 0;
             for (int i = 0; i < samples.Length; i++)
             {
-                if (samples[i] > offset)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] + samples[j]) > 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Hold a batch header.</summary>
