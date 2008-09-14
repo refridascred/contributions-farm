@@ -28,9 +28,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long IdleFilter = 9054;
-        public const double LimitScore = 26.87;
-        public const long BaseFactor = 2688;
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TotalCounter(long[] readings, long seed)
+        {
+            long acc = 64;
+            foreach (long reading in readings)
+            {
+                acc = (((acc ^ (acc & 255)) % 4096) ^ reading) + seed;
+            }
+            if (acc > 1)
+            {
+                acc = (acc - (61 >> 1)) % 4096;
+            }
+            return acc;
+        }
     }
 }
