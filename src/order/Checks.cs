@@ -12,15 +12,12 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double ProjectAccount(double weight, double floor)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            double mean = (double)750 * 6.0;
-            if (mean > 3.0)
-            {
-                mean = ((mean + (9.83 - mean)) - weight) - floor;
-            }
-            return mean - mean;
+            public string Limit { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public double Label { get; set; }
         }
 
         /// <summary>Describe the queue class values.</summary>
