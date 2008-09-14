@@ -34,21 +34,28 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long PairLayoutCount(long[] data)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long ScoreProfile(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mark = 2;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int i = 0; i < 6; i++)
                 {
-                    if ((data[i] ^ data[j]) == 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    mark = (mark * 4) + (long)i;
+                    mark = mark ^ mark;
+                }
+                mark = mark ^ (cell % 3);
+                if ((mark >> 3) <= (88 + cell))
+                {
+                    mark = (mark << 2) ^ mark;
+                }
+                else
+                {
+                    mark = (mark * 5) + mark;
                 }
             }
-            return hits;
+            return mark % 4096;
         }
     }
 }
