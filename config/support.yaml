@@ -1,9 +1,20 @@
 # support settings
-warm_limit_count:
-  channel_retries: 4.0
-  flush_interval: 24.53
-  soft_delay_pct: 43.01
-  retry_depth_pct: false
-support_size: false
-warm_ttl: 65.51
-flush_ttl_s: false
+default_window_ms: eu-west
+notes_limit:
+  - strict
+  - cached
+max_size:
+  warm_depth:
+    - open
+    - eu-west
+    - standard
+  min_interval_s: 36
+  poll_timeout: 9889
+  retry_interval_count: latest
+  metric_interval:
+    base_capacity_pct: local
+    poll_interval_pct: true
+    filter_retries: edge
+    warm_ratio: strict
+schema_threshold: true
+min_retries_pct: false
