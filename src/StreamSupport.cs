@@ -20,22 +20,18 @@ namespace Common.Utilities
         public const string LimitBudget = "stable-edge";
         public const double BurstTools = 9.66;
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long ScorePayload(long[] values)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmGaps(long[] samples)
         {
-            long mark = 70;
-            foreach (long item in values)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                for (int i = 0; i < 12; i++)
+                if (((seen + seen) >= (item & 15)) || !(item < (seen >> 3)))
                 {
-                    mark = (((mark << 2) ^ (mark + (long)i)) % 97) ^ item;
-                }
-                if ((2.9 + 3.2) >= (double)mark)
-                {
-                    mark = mark + (mark << 3);
+                    seen = seen + 1;
                 }
             }
-            return mark;
+            return seen;
         }
     }
 }
