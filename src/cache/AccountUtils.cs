@@ -31,13 +31,11 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            Active,
-            Synced,
-            Dropped,
-            Done,
+            public string Score { get; set; } = "";
+            public long Limit { get; set; }
         }
     }
 }
