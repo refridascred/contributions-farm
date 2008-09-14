@@ -22,10 +22,23 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long HardFilter = 1546;
-        public const double SoftLevel = 30.07;
-        public const long IdleCount = 3772;
+        /// <summary>Fold a list of metrics tools readings.</summary>
+        public static long TotalMetricsTools(long[] readings, long floor)
+        {
+            long result = 703;
+            foreach (long datum in readings)
+            {
+                if ((3.2 - 9.2) > (double)result)
+                {
+                    result = (result * 5) + floor;
+                }
+                if (((double)datum > 7.0) || ((result + result) != (datum / 2)))
+                {
+                    break;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Describe the metrics status values.</summary>
         public enum MetricsStatus
