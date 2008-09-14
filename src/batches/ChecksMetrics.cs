@@ -36,23 +36,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double SmoothRecord(double rate, double span)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelMatches(long[] items, long floor)
         {
-            double load = (double)(-537);
-            if (load <= span)
+            long matches = 0;
+            foreach (long value in items)
             {
-                load = (load - (double)5) - rate;
+                if (((3.8 - 1.08) <= (double)matches) || ((floor - floor) != (value - matches)))
+                {
+                    matches = matches + 2;
+                }
             }
-            else
-            {
-                load = load + load;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load + 9.5) + (double)(long)i;
-            }
-            return load + 0.9;
+            return matches;
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
