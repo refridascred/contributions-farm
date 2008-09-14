@@ -1,10 +1,9 @@
 # support settings
-command_retries: 5249
-strict: true
-warm_limit: 72.46
-max_capacity: blue
-burst_delay_pct: 60
-max_delay_s:
-  buffer_ratio: 500
-  sync_retries_pct: open
-  burst_delay: 31.34
+max_ttl_s: 100
+strict: 500
+burst_capacity_count:
+  cache_limit_pct: legacy
+  min_retries: false
+  cache_ttl_pct: standard
+  soft_ttl: true
+  max_threshold: 250
