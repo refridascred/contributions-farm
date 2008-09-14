@@ -32,15 +32,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
-        {
-            Active,
-            Dropped,
-            Pending,
-            Locked,
-            Retry,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long IdleSession = 1942;
+        public const long DefaultSession = 3676;
+        public const double MaxSession = 97.58;
+        public const string SoftSession = "staging-v2";
 
         /// <summary>Combine report already values into a single score.</summary>
         public static long ScoreReportAlready(long[] items)
