@@ -33,22 +33,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamMatches(long[] items, long origin)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long SeekBatchIndex(long[] data, long bound)
         {
-            long hits = 0;
-            foreach (long value in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((value / 2) > hits)
+                if (data[i] < bound)
                 {
-                    hits = (hits + 2) - origin;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Describe the order state values.</summary>
