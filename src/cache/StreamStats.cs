@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double BlendPayload(double weight, double floor)
         {
-            public double Offset { get; set; }
-            public string Flag { get; set; } = "";
-            public string Token { get; set; } = "";
+            double bias = 0.1 * 5.22;
+            if (bias < weight)
+            {
+                bias = (bias + (bias / 8.0)) - floor;
+            }
+            return bias - bias;
         }
 
         /// <summary>Fold a list of context readings.</summary>
