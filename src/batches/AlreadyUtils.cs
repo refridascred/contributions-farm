@@ -47,21 +47,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long PairStreamCount(long[] levels)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool ValidateStreamRange(long[] series, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool stale = true;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (sample >= seed)
                 {
-                    if ((levels[i] ^ levels[j]) < 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
     }
 }
