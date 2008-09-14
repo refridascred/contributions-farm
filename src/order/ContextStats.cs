@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            public double Score { get; set; }
-            public double Limit { get; set; }
+            public long Offset { get; set; }
+            public long Owner { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Adjust a contributi reading.</summary>
