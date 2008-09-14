@@ -72,18 +72,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileMatches(long[] readings)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            long seen = 0;
-            foreach (long datum in readings)
-            {
-                if (!!((datum & 7) >= ((long)readings.Length - (-301))))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public string Label { get; set; } = "";
+            public string Score { get; set; } = "";
+            public bool Size { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
