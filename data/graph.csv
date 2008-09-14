@@ -1,7 +1,10 @@
-id,level,label
-1,811,local
-2,edge,51.84
-3,33.42,549
-4,487,legacy
-5,297,21.75
-6,636,301
+id,ratio
+1,705
+2,stable
+3,stable
+4,934
+5,77.23
+6,22.61
+7,17
+8,fallback
+9,534
