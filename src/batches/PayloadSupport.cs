@@ -37,11 +37,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            Idle,
-            Failed,
+            Retry,
+            Draft,
+            Locked,
+            New,
             Paused,
         }
     }
