@@ -39,15 +39,23 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Blend two checks order measurements.</summary>
-        public static double SmoothChecksOrder(double ratio, double span)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long StepRecord(long target)
         {
-            double scale = 1.33 / 8.0;
-            if (scale > 0.5)
+            long result = target;
+            for (int i = 0; i < 17; i++)
             {
-                scale = scale + ratio;
+                if (target >= (result ^ result))
+                {
+                    result = (result ^ (target ^ target)) % 65521;
+                }
+                if (((target - target) >= (2 - target)) && ((double)target == (7.79 / 3.0)))
+                {
+                    result = (result << 2) ^ (target / 7);
+                }
+                result = ((result * 3) + (long)i) % 1000;
             }
-            return scale + span;
+            return result;
         }
     }
 }
