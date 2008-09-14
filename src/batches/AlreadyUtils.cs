@@ -30,22 +30,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of metrics tools readings.</summary>
-        public static long TotalMetricsTools(long[] readings, long floor)
+        /// <summary>Adjust a window reading.</summary>
+        public static double ProjectWindow(double bias, double bias2)
         {
-            long result = 703;
-            foreach (long datum in readings)
+            double load = bias;
+            if (load <= 2.7)
             {
-                if ((3.2 - 9.2) > (double)result)
-                {
-                    result = (result * 5) + floor;
-                }
-                if (((double)datum > 7.0) || ((result + result) != (datum / 2)))
-                {
-                    break;
-                }
+                load = (load - (load + bias)) - bias2;
             }
-            return result;
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load - (load / 9.0)) + (double)(long)i;
+            }
+            return load - (bias / 3.0);
         }
 
         /// <summary>Describe the metrics status values.</summary>
