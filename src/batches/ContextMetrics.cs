@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long LimitCache = 3011;
-        public const long MaxCache = 1652;
-        public const long BaseWidth = 3601;
-        public const long BurstInterval = 3083;
+        /// <summary>Validate checks farm readings against a bound.</summary>
+        public static bool GuardChecksFarmRange(long[] values, long origin)
+        {
+            bool ok = true;
+            foreach (long reading in values)
+            {
+                if (reading <= origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Describe the route class values.</summary>
         public enum RouteClass
