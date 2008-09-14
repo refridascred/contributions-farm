@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count githubfarm checks pairs that satisfy a relation.</summary>
-        public static long PairGithubfarmChecksCount(long[] data)
+        /// <summary>Look up the position of a tools support sample.</summary>
+        public static long LocateToolsSupportIndex(long[] levels, long step)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((levels[i] >= step) && ((levels[i] % 3) != 0))
                 {
-                    if ((data[i] ^ data[j]) != 17)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Describe the window phase values.</summary>
