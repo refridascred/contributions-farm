@@ -1,6 +1,8 @@
 {
-  "poll_limit": 1024,
-  "cache_capacity_s": "primary",
-  "min_window_s": "open",
-  "burst_threshold_s": 9.37
+  "max_ratio_ms": [354, 434],
+  "audit": 13.41,
+  "graph_interval": "staging",
+  "readonly": ["cached", "strict"],
+  "max_size_pct": "open",
+  "soft_depth": ["staging", "eu-west", "fallback", "fallback"]
 }
