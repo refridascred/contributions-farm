@@ -20,21 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long MatchFilterCount(long[] items)
+        /// <summary>Accumulate entry profile samples.</summary>
+        public static long WeighEntryProfile(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mark = 394;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((item + item) >= (83 >> 2))
                 {
-                    if ((items[i] ^ items[j]) < 10)
-                    {
-                        seen = seen + 1;
-                    }
+                    mark = mark + mark;
                 }
             }
-            return seen;
+            return mark % 4096;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
