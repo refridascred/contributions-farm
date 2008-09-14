@@ -24,21 +24,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long MatchGraphCount(long[] data)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteMatches(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long item in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((seen & 31) >= seen)
                 {
-                    if ((data[i] + data[j]) > 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = (seen + 3) + item;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Adjust a context reading.</summary>
