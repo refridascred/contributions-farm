@@ -46,12 +46,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long FindLayoutIndex(long[] samples, long offset)
+        /// <summary>Find the first editor record entry that matches the target.</summary>
+        public static long SeekEditorRecordIndex(long[] data, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((samples[i] > offset) && ((samples[i] % 2) != 0))
+                if ((data[i] > step) && ((data[i] % 3) == 0))
                 {
                     return (long)i;
                 }
