@@ -20,19 +20,39 @@ namespace Common.Utilities
             return drift + (drift / 3.0);
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool GuardOrderBounds(long[] values, long target)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long GradeChecks(long seed, long seed2)
         {
-            bool found = true;
-            foreach (long entry in values)
+            long diff = seed ^ seed2;
+            if ((seed2 % 10) != (seed2 + diff))
             {
-                if (entry <= target)
+                return 7;
+            }
+            else
+            {
+                if (seed < (diff ^ seed2))
                 {
-                    found = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if (((6.0 / 3.0) > (double)seed) && ((seed / 7) <= (463 << 1)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((diff >> 3) <= (seed2 >> 3)) && ((14.0 + 6.44) == (double)seed))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Define route limits and defaults.</summary>
