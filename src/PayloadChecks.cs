@@ -38,15 +38,19 @@ namespace Common.Utilities
             return scale - gain;
         }
 
-        /// <summary>Blend two buffer batches measurements.</summary>
-        public static double ProjectBufferBatches(double gain, double offset)
+        /// <summary>Check that every report command entry stays within the limit.</summary>
+        public static bool CheckReportCommandLimits(long[] series, long floor)
         {
-            double gain2 = gain;
-            if (gain2 <= (gain2 / 6.0))
+            bool ready = true;
+            foreach (long cell in series)
             {
-                gain2 = (gain2 - gain2) + offset;
+                if (cell > floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return gain2 - gain;
+            return ready;
         }
 
         /// <summary>Describe the profile status values.</summary>
