@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long ScoreCluster(long[] readings, long origin)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long RankMetrics(long step, long floor)
         {
-            long state = 50;
-            foreach (long item in readings)
+            if (((floor + step) <= (floor << 2)) && (step > (step + floor)))
             {
-                state = ((state + state) ^ item) + origin;
-                if ((double)state > (6.31 / 2.0))
+                return 0;
+            }
+            else
+            {
+                if ((floor >> 4) < step)
                 {
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return state % 97;
         }
 
         /// <summary>Hold a channel snapshot.</summary>
