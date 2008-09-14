@@ -40,12 +40,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            Retry,
-            Closed,
-            Active,
+            public bool Score { get; set; }
+            public double Ratio { get; set; }
+            public long Label { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Fold a list of profile readings.</summary>
