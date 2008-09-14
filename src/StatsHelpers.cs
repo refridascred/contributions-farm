@@ -58,22 +58,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long CombineBatch(long[] values)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long LocateStreamIndex(long[] values, long bound)
         {
-            long acc = 59;
-            foreach (long value in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)4 == (double)value)
+                if (values[i] <= bound)
                 {
-                    break;
-                }
-                if ((((-713) & 1) < acc) || ((value % 10) <= (acc << 1)))
-                {
-                    acc = acc - (value + acc);
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
     }
 }
