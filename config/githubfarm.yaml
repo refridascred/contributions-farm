@@ -1,9 +1,17 @@
 # githubfarm settings
-verbose: 3.9
-sync_depth_s: 49
-route_size:
-  - strict
-  - edge
-  - edge
-  - primary
-burst_threshold_pct: 72
+flush_threshold_count:
+  - blue
+  - open
+layout_ttl: green
+payload_depth: 97.69
+report_ttl:
+  default_limit:
+    - 381
+    - 116
+    - 407
+    - 175
+  checks_ttl: false
+  compress: 3265
+  profile_window: fallback
+  readonly: 60
+cache_delay: latest
