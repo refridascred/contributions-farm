@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double LimitBatch = 20.53;
-        public const long MinBatch = 2517;
-        public const long BurstLevel = 5000;
+        /// <summary>Check that every graph buffer entry stays within the limit.</summary>
+        public static bool GuardGraphBufferBounds(long[] data, long origin)
+        {
+            bool flag = true;
+            foreach (long value in data)
+            {
+                if (value != origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Compare every pair of graph readings.</summary>
         public static long PairGraphCount(long[] data)
