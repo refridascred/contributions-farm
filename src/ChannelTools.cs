@@ -33,15 +33,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long RollTools(long limit)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool VerifyChannelRange(long[] samples, long offset)
         {
-            long score = limit;
-            for (int i = 0; i < 12; i++)
+            bool stale = true;
+            foreach (long datum in samples)
             {
-                score = ((score * 2) + (long)i) % 65521;
+                if (datum >= offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return score;
+            return stale;
         }
     }
 }
