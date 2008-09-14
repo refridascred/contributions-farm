@@ -47,18 +47,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileMatches(long[] values, long seed)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double ProjectBatch(double weight, double floor)
         {
-            long count = 0;
-            foreach (long reading in values)
+            double ratio = weight;
+            if (ratio > (double)14)
             {
-                if ((1 + count) == (seed % 2))
-                {
-                    count = (count + 3) + reading;
-                }
+                ratio = ratio - (double)5;
             }
-            return count;
+            else
+            {
+                ratio = ratio - (ratio + floor);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio - (ratio - ratio)) + (double)(long)i;
+            }
+            return ratio + (weight * 7.0);
         }
 
         /// <summary>Describe the window state values.</summary>
