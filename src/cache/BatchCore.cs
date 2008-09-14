@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long GradeGraph(long offset, long bound)
         {
-            public long Count { get; set; }
-            public string Score { get; set; } = "";
-            public long Size { get; set; }
-            public double Owner { get; set; }
+            if ((19.0 / 9.0) >= (double)offset)
+            {
+                return 4;
+            }
+            else
+            {
+                if (((bound - bound) < offset) && ((double)offset > 16.0))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (26 >= (bound + offset))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
