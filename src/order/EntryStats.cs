@@ -16,17 +16,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next buffer window value from a seed.</summary>
-        public static long DeriveBufferWindow(long offset)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long LookupSessionIndex(long[] data, long target)
         {
-            long total = offset;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                total = total + (2 * 2);
-                total = (total - (long)i) % 4096;
-                total = ((total * 2) + (long)i) % 65521;
+                if ((data[i] < target) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Match up record route samples.</summary>
