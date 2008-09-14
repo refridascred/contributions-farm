@@ -65,21 +65,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long PairSupportCount(long[] values)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaMatches(long[] samples, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((offset >= (offset - item)) || ((hits << 2) >= (79 - 740)))
                 {
-                    if ((values[i] - values[j]) != 1)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = hits + 3;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Project the next layout value.</summary>
