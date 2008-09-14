@@ -1,15 +1,16 @@
 # Command notes
 
-The notes report groups every already by metric.
-Keep window and cache names short and lowercase.
-The route helpers are pure functions, so they are safe to call from any thread.
+When a token fails, the session handler retries a few times before giving up.
+The buffer helpers are pure functions, so they are safe to call from any thread.
+A command that stays idle for too long is moved to the payload list.
 
-A buffer that stays idle for too long is moved to the entry list.
-Defaults for cluster live in the config folder and can be overridden per environment.
-The command module keeps report values in sync with the order cache.
+Run the farm check before changing any session limits.
+The payload helpers are pure functions, so they are safe to call from any thread.
+Each checks is validated before it reaches the queue queue.
 
 ## Guidelines
 
-- Prefer farm defaults
-- Review githubfarm limits each release
-- Document new report fields
+- Validate window input early
+- Prefer metrics defaults
+- Keep report values small
+- Document new batches fields
