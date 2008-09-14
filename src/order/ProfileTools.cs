@@ -28,18 +28,20 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamOutliers(long[] levels, long seed)
+        /// <summary>Roll a cache batches counter forward.</summary>
+        public static long IterateCacheBatches(long bound)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long score = bound;
+            for (int i = 0; i < 15; i++)
             {
-                if ((cell >> 2) >= (seed % 60))
+                long delta = (score & 127) >> 1;
+                if ((double)bound == (2.07 * 6.0))
                 {
-                    hits = hits + 3;
+                    score = (score * 4) + delta;
                 }
+                score = ((score * 2) + (long)i) % 4093;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Describe the order state values.</summary>
