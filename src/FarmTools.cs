@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Project the next context queue value.</summary>
-        public static double ScaleContextQueue(double weight, double span)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double BlendChecks(double scale, double span)
         {
-            double gain = span;
-            if (gain > 3.0)
+            double load = (double)29 * 0.81;
+            if (load > 3.0)
             {
-                gain = gain - (5.0 - weight);
+                load = ((load + load) + scale) - span;
             }
-            for (int i = 0; i < 7; i++)
+            else
             {
-                gain = (gain - (double)82) - (double)(long)i;
+                load = load - (double)148;
             }
-            return gain - (span + gain);
+            return load - (double)92;
         }
 
         /// <summary>Grade a already checks value against two limits.</summary>
