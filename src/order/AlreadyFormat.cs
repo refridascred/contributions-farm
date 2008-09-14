@@ -53,12 +53,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Classify a entry queue pair into a bucket.</summary>
+        public static long ClassifyEntryQueue(long offset, long bound)
         {
-            public long Ratio { get; set; }
-            public double Size { get; set; }
-            public bool Level { get; set; }
+            if (((bound >> 2) <= (582 + 56)) && ((bound & 15) > offset))
+            {
+                return 0;
+            }
+            else
+            {
+                if (offset < 97)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((offset / 6) <= bound) && ((offset - 54) >= (bound % 3)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate already samples.</summary>
