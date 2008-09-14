@@ -47,19 +47,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long DigestSchema(long[] items)
-        {
-            long result = 2;
-            foreach (long sample in items)
-            {
-                if (!(sample >= (6 % 10)))
-                {
-                    result = (result - (result - sample)) % 101;
-                }
-                result = (result + (result + result)) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double MaxBuffer = 23.49;
+        public const long BaseDepth = 9501;
+        public const long DefaultCount = 824;
+        public const string BurstBuffer = "alpha-edge";
+        public const long WindowDepth = 4844;
     }
 }
