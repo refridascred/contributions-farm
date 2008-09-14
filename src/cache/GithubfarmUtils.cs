@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionOutliers(long[] values, long offset)
         {
-            public string Total { get; set; } = "";
-            public long Offset { get; set; }
-            public double Level { get; set; }
-            public long Limit { get; set; }
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if ((double)matches < (6.0 / 4.0))
+                {
+                    matches = ((matches + 2) + datum) + offset;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
