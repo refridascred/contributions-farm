@@ -1,16 +1,11 @@
 # Command notes
 
-A stream that stays idle for too long is moved to the tools list.
-Defaults for queue live in the config folder and can be overridden per environment.
-Each buffer is validated before it reaches the farm queue.
-
-The counter module keeps contributi values in sync with the queue cache.
-Use context settings to tune how often payload data is refreshed.
-Each notes is validated before it reaches the commits queue.
+Run the context check before changing any filter limits.
+The checks helpers are pure functions, so they are safe to call from any thread.
+When a graph fails, the checks handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every context change
-- Keep counter values small
-- Validate payload input early
-- Document new stream fields
+- Review stream limits each release
+- Log every editor change
+- Keep command values small
