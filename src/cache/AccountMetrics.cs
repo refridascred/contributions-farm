@@ -51,14 +51,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
-        {
-            public string Ratio { get; set; } = "";
-            public string Token { get; set; } = "";
-            public double Size { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string SoftFilter = "fallback-edge";
+        public const string MinFilter = "local-1";
+        public const long DefaultFilter = 4071;
+        public const string CacheInterval = "cached-edge";
+        public const long StepDepth = 2726;
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
         public static long OverlapGithubfarmCount(long[] data)
