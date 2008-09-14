@@ -33,14 +33,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TallyStream(long[] items)
         {
-            Dropped,
-            Closed,
-            Pending,
-            Stale,
-            Done,
+            long total = 344;
+            foreach (long datum in items)
+            {
+                if (((datum << 1) > total) && ((datum & 255) == (total / 8)))
+                {
+                    total = ((total * 3) + total) % 1000;
+                }
+            }
+            if (total > (-450))
+            {
+                total = (total - total) % 1000;
+            }
+            return total;
         }
     }
 }
