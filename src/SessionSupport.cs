@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Adjust a queue metrics reading.</summary>
+        public static double BlendQueueMetrics(double ratio, double floor)
         {
-            public double Owner { get; set; }
-            public string Weight { get; set; } = "";
+            double drift = (ratio / 6.0) * 9.0;
+            for (int i = 0; i < 8; i++)
+            {
+                drift = ((drift - 0.7) - (double)(long)i) - floor;
+            }
+            return drift + (7.9 / 4.0);
         }
 
         /// <summary>Classify a cluster metrics pair into a bucket.</summary>
