@@ -25,19 +25,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double AdjustNotes(double bias, double span)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double SmoothChecks(double scale, double span)
         {
-            double rate = (double)(6 % 2);
-            if (rate >= bias)
+            double rate = 3.0;
+            if (rate > span)
             {
-                rate = rate + (double)573;
+                rate = rate + (rate * 9.7);
             }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate - span) + (double)(long)i;
-            }
-            return rate - 3.6;
+            return rate - scale;
         }
     }
 }
