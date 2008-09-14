@@ -11,13 +11,38 @@ namespace Common.Utilities
         public const long LimitDepth = 3687;
         public const long BaseRatio = 8090;
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Classify a cluster metrics pair into a bucket.</summary>
+        public static long ClassifyClusterMetrics(long seed, long origin)
         {
-            public long Label { get; set; }
-            public long Limit { get; set; }
-            public long Token { get; set; }
-            public string Ratio { get; set; } = "";
+            if (((origin + seed) == (seed + 2)) && ((5.8 - 0.42) != (double)origin))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((seed ^ seed) >= (origin & 255))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((-1) + seed) >= (seed - seed))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)origin < 5.61)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next schema value.</summary>
