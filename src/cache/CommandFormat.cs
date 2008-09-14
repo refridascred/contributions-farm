@@ -23,25 +23,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long RankRoute(long offset, long offset2)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long FindAccountIndex(long[] items, long bound)
         {
-            long edge = offset + offset2;
-            if (((edge * 2) >= offset2) && ((1.0 / 5.0) > (double)edge))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((6.22 / 9.0) >= (double)offset)
+                if (items[i] <= bound)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Roll a graph counter forward.</summary>
