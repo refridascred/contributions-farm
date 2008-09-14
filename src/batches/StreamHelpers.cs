@@ -65,17 +65,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long FindBatchIndex(long[] samples, long seed)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long WeighEntry(long[] samples)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 5;
+            foreach (long sample in samples)
             {
-                if (samples[i] <= seed)
-                {
-                    return (long)i;
-                }
+                anchor = (anchor + (sample - 856)) % 101;
             }
-            return -1;
+            return anchor % 65521;
         }
     }
 }
