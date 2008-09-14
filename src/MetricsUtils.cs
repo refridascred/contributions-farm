@@ -26,18 +26,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteMatches(long[] samples)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool GuardWindowBounds(long[] samples, long seed)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            bool ok = true;
+            foreach (long item in samples)
             {
-                if ((double)value >= (9.14 * 17.0))
+                if (item != seed)
                 {
-                    tally = tally + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
