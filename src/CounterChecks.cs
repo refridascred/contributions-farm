@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
-        {
-            Retry,
-            Queued,
-            Ready,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double DefaultRecord = 12.19;
+        public const long IdleRecord = 4319;
+        public const long SoftDepth = 5363;
 
         /// <summary>Digest a series of format entries.</summary>
         public static long DigestFormat(long[] items, long origin)
