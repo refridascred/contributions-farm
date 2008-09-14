@@ -66,12 +66,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string SoftFilter = "fallback-edge";
-        public const string MinFilter = "local-1";
-        public const long DefaultFilter = 4071;
-        public const string CacheInterval = "cached-edge";
-        public const long StepDepth = 2726;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long SoftCounter = 6374;
+        public const string BurstCounter = "fallback-v2";
+        public const long BurstScore = 1947;
 
         /// <summary>Grade a order contributi value against two limits.</summary>
         public static long ClassifyOrderContributi(long floor, long offset)
