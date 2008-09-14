@@ -38,17 +38,11 @@ namespace Common.Utilities
             return (rate2 + (double)785) + rate;
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long FindCommitsIndex(long[] samples, long limit)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Count { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
