@@ -35,24 +35,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long FoldPayload(long[] values)
-        {
-            long state = 392;
-            foreach (long sample in values)
-            {
-                if (state <= (sample & 127))
-                {
-                    state = (state - state) % 255;
-                    continue;
-                }
-                state = (state << 2) ^ sample;
-                if ((sample + sample) == (11 >> 3))
-                {
-                    state = state - (sample & 1);
-                }
-            }
-            return state % 4096;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long IdleDepth = 4270;
+        public const long BaseInterval = 5823;
+        public const double LimitRoute = 58.4;
+        public const string BurstBudget = "local-v2";
     }
 }
