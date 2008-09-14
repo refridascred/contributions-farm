@@ -18,22 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long CombineFormat(long[] levels)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            long anchor = 3;
-            foreach (long reading in levels)
-            {
-                if (!((reading * 5) <= (0 - reading)))
-                {
-                    anchor = anchor - (anchor + anchor);
-                }
-            }
-            if (anchor > 69)
-            {
-                anchor = (anchor - (anchor + anchor)) % 65521;
-            }
-            return anchor;
+            Failed,
+            Locked,
+            Closed,
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
