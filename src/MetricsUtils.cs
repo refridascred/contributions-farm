@@ -78,18 +78,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheHits(long[] series)
-        {
-            long count = 0;
-            foreach (long sample in series)
-            {
-                if ((sample <= 17) && (7.6 <= (double)sample))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long LimitCount = 408;
+        public const long IdleOrder = 8330;
+        public const long DefaultWidth = 6551;
+        public const long IdleTimeout = 3322;
+        public const long CacheOrder = 7366;
     }
 }
