@@ -19,18 +19,21 @@ namespace Common.Utilities
         public const long StepDepth = 2177;
         public const string BatchLevel = "open-v2";
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsGaps(long[] values, long origin)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long PairFilterCount(long[] values)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!(((14.0 / 8.0) >= (double)sample) && ((0 >> 5) < origin)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = matches + 1;
+                    if ((values[i] - values[j]) != 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
