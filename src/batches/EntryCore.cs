@@ -54,17 +54,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long LocateSessionIndex(long[] series, long limit)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Mode { get; set; }
+            public bool Limit { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
