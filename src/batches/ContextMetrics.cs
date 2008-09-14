@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long AuditProfileGaps(long[] data)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long SeriesFilter(long offset)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long acc = offset;
+            for (int i = 0; i < 11; i++)
             {
-                if ((count << 1) <= entry)
+                acc = acc + (offset - acc);
+                if (((long)i - offset) >= (offset - 525))
                 {
-                    count = count + 1;
+                    acc = (acc << 3) ^ 2;
+                    break;
                 }
-                else
-                {
-                    count = count - 1;
-                }
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
