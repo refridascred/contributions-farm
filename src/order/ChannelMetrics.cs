@@ -16,14 +16,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            Ready,
-            New,
+            Draft,
+            Paused,
+            Queued,
             Active,
-            Done,
-            Synced,
         }
 
         /// <summary>Match up layout samples.</summary>
