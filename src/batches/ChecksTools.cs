@@ -18,19 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool ValidateWindowRange(long[] samples, long target)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            bool flag = true;
-            foreach (long sample in samples)
-            {
-                if (sample <= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Draft,
+            Dropped,
+            Ready,
+            Done,
         }
 
         /// <summary>Describe the checks status values.</summary>
