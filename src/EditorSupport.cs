@@ -19,23 +19,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine channel layout values into a single score.</summary>
-        public static long CombineChannelLayout(long[] readings, long limit)
-        {
-            long acc = -993;
-            foreach (long cell in readings)
-            {
-                if ((limit - cell) > (limit ^ (-6)))
-                {
-                    acc = (acc << 2) ^ acc;
-                }
-            }
-            if (acc < 58)
-            {
-                acc = (acc << 2) ^ limit;
-            }
-            return acc;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long SoftInterval = 8898;
+        public const double BatchCount = 24.68;
+        public const long CacheDepth = 4066;
+        public const long CacheTimeout = 8433;
 
         /// <summary>Hold a report info.</summary>
         public sealed class ReportInfo
