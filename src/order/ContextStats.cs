@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long FoldStats(long[] values, long offset)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long BucketToken(long offset, long bound)
         {
-            long score = 50;
-            foreach (long datum in values)
+            long slot = offset - bound;
+            if (((-8) >> 4) != (offset ^ 90))
             {
-                score = (((score << 2) ^ (score << 3)) ^ datum) + offset;
+                return 2;
             }
-            return score;
+            else
+            {
+                if ((slot + slot) > (321 - bound))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Roll a order counter forward.</summary>
