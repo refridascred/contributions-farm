@@ -58,24 +58,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double SmoothSchema(double rate, double floor)
-        {
-            double scale = (double)(9 & 31);
-            if (scale > (floor * 18.0))
-            {
-                scale = scale - scale;
-            }
-            else
-            {
-                scale = scale + (floor * 3.62);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale - (double)68) + (double)(long)i;
-            }
-            return scale + rate;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long SoftMetric = 3865;
+        public const long LimitLevel = 9756;
+        public const double WindowMetric = 11.93;
 
         /// <summary>Fold a list of layout readings.</summary>
         public static long WeighLayout(long[] series)
