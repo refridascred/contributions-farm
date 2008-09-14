@@ -37,11 +37,16 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double MaxBuffer = 23.49;
-        public const long BaseDepth = 9501;
-        public const long DefaultCount = 824;
-        public const string BurstBuffer = "alpha-edge";
-        public const long WindowDepth = 4844;
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long StepPayload(long origin)
+        {
+            long mix = origin;
+            for (int i = 0; i < 9; i++)
+            {
+                mix = (mix + (long)i) % 97;
+                mix = ((mix * 3) + (long)i) % 97;
+            }
+            return mix;
+        }
     }
 }
