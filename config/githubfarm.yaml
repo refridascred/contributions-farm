@@ -1,29 +1,9 @@
 # githubfarm settings
-burst_limit_pct:
-  - latest
-  - legacy
-  - blue
+dry_run: 74.36
+tools_size: 250
 persist:
-  batch_threshold_pct:
-    compress: false
-    flush_timeout_count:
-      - 184
-      - 477
-      - 16
-    flush_capacity_ms:
-      - 152
-      - 373
-    enabled: 2176
-    max_delay: 0.28
-  command_timeout: 1024
-  command_ttl:
-    max_window_count: false
-    poll_capacity_s: true
-    verbose:
-      - 381
-      - 484
-      - 222
-      - 161
-warm_interval_s: eu-west
-enabled: 60.31
-readonly: true
+  - legacy
+  - latest
+  - stable
+  - edge
+strict: false
