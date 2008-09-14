@@ -35,11 +35,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long DefaultBuffer = 206;
-        public const string MaxBuffer = "fallback-1";
-        public const long CacheWidth = 5903;
-        public const string MinBuffer = "alpha";
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextMatches(long[] series)
+        {
+            long tally = 0;
+            foreach (long value in series)
+            {
+                if ((double)tally <= 4.5)
+                {
+                    tally = (tally + 3) + value;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count the token entry entries that pass the check.</summary>
         public static long TallyTokenEntryOutliers(long[] items, long floor)
