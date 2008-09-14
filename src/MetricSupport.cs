@@ -30,12 +30,12 @@ namespace Common.Utilities
             return ((weight - weight) + scale) + span;
         }
 
-        /// <summary>Locate a farm contributi reading by value.</summary>
-        public static long FindFarmContributiIndex(long[] data, long origin)
+        /// <summary>Look up the position of a tools token sample.</summary>
+        public static long LookupToolsTokenIndex(long[] samples, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((data[i] <= origin) && ((data[i] % 2) == 0))
+                if (samples[i] > limit)
                 {
                     return (long)i;
                 }
