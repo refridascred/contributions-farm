@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
+            Active,
+            New,
             Stale,
-            Locked,
-            Dropped,
         }
 
         /// <summary>Match up githubfarm samples.</summary>
