@@ -1,8 +1,11 @@
 {
-  "batch_depth": true,
-  "dry_run": 59,
-  "burst_delay_s": 30,
-  "burst_retries_pct": "cached",
-  "commits_depth": 6654,
-  "soft_size_pct": "primary"
+  "base_threshold": 64,
+  "hard_ratio_pct": {
+    "readonly": "cached",
+    "queue_ratio": [201, 147, 315, 251],
+    "burst_depth": 69.46
+  },
+  "max_ratio": ["edge", "blue", "eu-west"],
+  "dry_run": false,
+  "idle_limit": 4990
 }
