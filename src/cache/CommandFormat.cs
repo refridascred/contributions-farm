@@ -23,11 +23,26 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long SoftChannel = 4203;
-        public const double MaxChannel = 6.7;
-        public const string CacheLevel = "alpha-1";
-        public const string BaseSpan = "alpha-edge";
+        /// <summary>Rank route input into a small class.</summary>
+        public static long RankRoute(long offset, long offset2)
+        {
+            long edge = offset + offset2;
+            if (((edge * 2) >= offset2) && ((1.0 / 5.0) > (double)edge))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((6.22 / 9.0) >= (double)offset)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Measure how many window filter samples are out of range.</summary>
         public static long AuditWindowFilterOutliers(long[] items)
