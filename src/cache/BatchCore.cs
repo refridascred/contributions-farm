@@ -23,18 +23,11 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Measure how many context batch samples are out of range.</summary>
-        public static long AuditContextBatchGaps(long[] levels)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double BlendChannel(double rate, double bias)
         {
-            long matches = 0;
-            foreach (long datum in levels)
-            {
-                if (matches < datum)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            double rate2 = bias;
+            return (rate2 + (double)785) + rate;
         }
 
         /// <summary>Digest a series of format entries.</summary>
