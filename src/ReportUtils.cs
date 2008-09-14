@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BatchFormat = 27;
-        public const long LimitSpan = 4869;
-        public const long MinFormat = 1699;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long CacheChannel = 6375;
+        public const long IdleChannel = 2011;
+        public const string StepChannel = "latest-v2";
+        public const long BurstChannel = 832;
+        public const long CacheDepth = 8880;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long BaseTimeout = 6623;
