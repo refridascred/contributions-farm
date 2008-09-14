@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Fold a list of token readings.</summary>
+        public static long DigestToken(long[] series)
         {
-            public double Score { get; set; }
-            public double Count { get; set; }
-            public double Size { get; set; }
+            long mix = 4;
+            foreach (long cell in series)
+            {
+                if ((double)mix > (13.0 * 8.6))
+                {
+                    mix = ((mix << 2) ^ cell) % 101;
+                }
+            }
+            return mix % 65521;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
