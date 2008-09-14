@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long RankProfile(long origin, long step)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool ValidateLayoutBounds(long[] series, long bound)
         {
-            long offset = origin - step;
-            if ((double)step >= (9.84 + 6.1))
+            bool stale = true;
+            foreach (long sample in series)
             {
-                return 8;
-            }
-            else
-            {
-                if (((step % 100) > (offset << 2)) && ((50 & 15) == (step - offset)))
+                if (sample != bound)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Match up cache samples.</summary>
