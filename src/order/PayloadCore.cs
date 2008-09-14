@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MinTimeout = 3930;
-        public const long SoftScore = 6927;
-        public const long BurstContext = 8908;
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
+        {
+            public long Offset { get; set; }
+            public bool Owner { get; set; }
+            public long Rank { get; set; }
+            public bool Region { get; set; }
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const double HardRatio = 22.89;
