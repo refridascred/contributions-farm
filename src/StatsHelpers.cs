@@ -20,12 +20,13 @@ namespace Common.Utilities
             return scale + offset;
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            public long Score { get; set; }
-            public bool Ratio { get; set; }
-            public double Stamp { get; set; }
+            Dropped,
+            Active,
+            Closed,
+            Queued,
         }
 
         /// <summary>Digest a series of account entries.</summary>
