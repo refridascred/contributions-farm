@@ -19,11 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long IdleBudget = 5200;
-        public const string BatchFactor = "local-v2";
-        public const double BatchLevel = 30.9;
-        public const string BaseContributi = "fallback-v2";
+        /// <summary>Audit record payload readings against a rule.</summary>
+        public static long TallyRecordPayloadOutliers(long[] values)
+        {
+            long count = 0;
+            foreach (long cell in values)
+            {
+                if ((long)values.Length < (cell + cell))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the batches level values.</summary>
         public enum BatchesLevel
