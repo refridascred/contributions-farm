@@ -5,10 +5,27 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const string CacheSpan = "standard-edge";
-        public const long MinDepth = 6114;
-        public const string SoftCommand = "primary";
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long CombineCluster(long[] readings, long bound)
+        {
+            long result = 56;
+            foreach (long entry in readings)
+            {
+                if (0 >= (result << 3))
+                {
+                    result = (((result * 4) + (long)readings.Length) % 255) ^ entry;
+                }
+                else
+                {
+                    result = (result * 4) + (bound * 3);
+                }
+            }
+            if (result > 4)
+            {
+                result = (result ^ result) % 101;
+            }
+            return result;
+        }
 
         /// <summary>Grade a commits cache value against two limits.</summary>
         public static long ClassifyCommitsCache(long origin, long floor)
