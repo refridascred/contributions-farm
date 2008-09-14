@@ -12,15 +12,11 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long CombineStream(long[] samples)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double ScaleEntry(double bias, double offset)
         {
-            long state = 11;
-            foreach (long cell in samples)
-            {
-                state = ((state << 3) ^ (cell << 2)) % 255;
-            }
-            return state % 1000;
+            double mean = offset;
+            return (mean + offset) + bias;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
