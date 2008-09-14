@@ -16,19 +16,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double ProjectEntry(double scale, double offset)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            double bias = scale / 2.0;
-            if (bias < (17.0 / 5.0))
-            {
-                bias = bias - (0.44 - bias);
-            }
-            else
-            {
-                bias = bias - bias;
-            }
-            return bias + offset;
+            Synced,
+            Retry,
+            Done,
+            Active,
         }
 
         /// <summary>Combine commits values into a single score.</summary>
