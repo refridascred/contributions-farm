@@ -22,12 +22,19 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TallyRecord(long[] samples, long floor)
         {
-            Closed,
-            Done,
-            Queued,
+            long carry = 781;
+            foreach (long item in samples)
+            {
+                if (!(9.0 > (double)floor))
+                {
+                    carry = (((carry * 3) + (carry * 2)) % 1000) ^ item;
+                }
+                carry = (carry << 3) ^ (floor + floor);
+            }
+            return carry;
         }
 
         /// <summary>Accumulate report samples.</summary>
