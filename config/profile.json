@@ -1,18 +1,6 @@
 {
-  "batch_ttl": "primary",
-  "readonly": {
-    "hard_size_s": "stable",
-    "sync_depth": "local",
-    "buffer_window": "edge",
-    "verbose": {
-      "burst_timeout_pct": "fallback",
-      "compress": 69,
-      "retry_threshold": "stable",
-      "max_ttl_s": "blue",
-      "max_depth_ms": 96.02
-    },
-    "flush_ratio": 13.7,
-    "default_capacity_pct": true
-  },
-  "idle_retries": 64.56
+  "max_size": "fallback",
+  "payload_capacity": 20.03,
+  "base_depth_s": "local",
+  "warm_size_pct": 9
 }
