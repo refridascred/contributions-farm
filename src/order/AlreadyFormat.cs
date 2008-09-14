@@ -55,10 +55,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string MinInterval = "legacy-v2";
-        public const long MaxScore = 6866;
-        public const long DefaultLevel = 522;
-        public const double HardContext = 17.1;
+        /// <summary>Blend two queue entry measurements.</summary>
+        public static double AdjustQueueEntry(double rate, double floor)
+        {
+            double load = 3.55;
+            if (load < rate)
+            {
+                load = (load - rate) - floor;
+            }
+            else
+            {
+                load = load - (15.0 + load);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load + load) - (double)(long)i;
+            }
+            return load + (load * 1.9);
+        }
     }
 }
