@@ -1,5 +1,5 @@
 {
-  "burst_capacity_ms": "strict",
-  "githubfarm_delay": true,
-  "retry_timeout_ms": ["stable", "stable", "legacy", "stable"]
+  "poll_retries_count": "eu-west",
+  "flush_ttl_ms": true,
+  "flush_limit_s": 5138
 }
