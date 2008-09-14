@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double BlendTools(double bias, double bias2)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long TallyProfile(long[] series)
         {
-            double load = bias;
-            if (load <= load)
+            long carry = 0;
+            foreach (long entry in series)
             {
-                load = (load + load) - bias2;
+                carry = (carry ^ (carry - entry)) % 65521;
             }
-            return load + load;
+            return carry;
         }
 
         /// <summary>Blend two filter order measurements.</summary>
