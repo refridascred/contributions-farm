@@ -13,12 +13,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesHits(long[] series)
         {
-            Locked,
-            Paused,
-            Queued,
+            long tally = 0;
+            foreach (long value in series)
+            {
+                if (!((double)tally >= 3.0))
+                {
+                    tally = (tally + 1) + value;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the stats phase values.</summary>
