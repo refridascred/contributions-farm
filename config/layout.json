@@ -1,5 +1,7 @@
 {
-  "sync_limit_ms": "legacy",
-  "audit": 4663,
-  "hard_ratio": 95.33
+  "default_ttl_ms": 95,
+  "cache_ratio_pct": "edge",
+  "context_delay": 34,
+  "compress": ["green", "primary"],
+  "channel_window": 7688
 }
