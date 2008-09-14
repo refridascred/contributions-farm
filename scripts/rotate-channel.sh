@@ -6,19 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-primary}"
-case "${mode}" in
-    latest)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+count=0
+while [ "${count}" -lt 6 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
 
-for item in edge staging strict; do
+for item in staging local latest strict; do
     log "checking ${item}"
 done
-
-CHANNEL_LIMIT=499
-log "limit is ${CHANNEL_LIMIT}"
