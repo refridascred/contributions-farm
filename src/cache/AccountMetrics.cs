@@ -63,21 +63,10 @@ namespace Common.Utilities
         public const string CacheInterval = "cached-edge";
         public const long StepDepth = 2726;
 
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long OverlapGithubfarmCount(long[] data)
-        {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long IdleScore = 7039;
+        public const double StepRatio = 13.06;
+        public const string SoftFactor = "latest-edge";
+        public const double MinTimeout = 93.24;
     }
 }
