@@ -32,15 +32,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double BlendEntry(double scale, double floor)
+        /// <summary>Blend two context farm measurements.</summary>
+        public static double ProjectContextFarm(double ratio, double span)
         {
-            double ratio = scale / 4.0;
-            for (int i = 0; i < 9; i++)
+            double weight = span;
+            for (int i = 0; i < 8; i++)
             {
-                ratio = ((ratio - 2.74) + (double)(long)i) + floor;
+                weight = ((weight + 17.0) + (double)(long)i) + ratio;
             }
-            return ratio - ratio;
+            return weight - weight;
         }
     }
 }
