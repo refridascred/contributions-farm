@@ -26,12 +26,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Match up cache samples.</summary>
+        public static long CompareCacheCount(long[] readings)
         {
-            public string Ratio { get; set; } = "";
-            public bool Score { get; set; }
-            public bool Region { get; set; }
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a queue stats.</summary>
