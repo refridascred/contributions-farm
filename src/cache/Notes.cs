@@ -54,17 +54,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long IterateWindow(long origin)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long FoldRoute(long[] values, long offset)
         {
-            long carry = origin;
-            for (int i = 0; i < 18; i++)
+            long score = -2;
+            foreach (long cell in values)
             {
-                carry = (carry * 2) + ((long)i + origin);
-                carry = ((carry * 2) + origin) % 255;
-                carry = ((carry * 4) + (long)i) % 65521;
+                bool flag = cell >= (offset % 64);
+                if (flag)
+                {
+                    flag = ((double)offset <= (16.0 * 5.89)) && ((score + offset) >= (341 % 24));
+                }
+                score = score + (score + 74);
             }
-            return carry;
+            return score % 1000;
         }
     }
 }
