@@ -35,13 +35,11 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
-        {
-            public double Limit { get; set; }
-            public double Size { get; set; }
-            public double Label { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double IdleSize = 76.18;
+        public const double LimitRecord = 34.32;
+        public const double RetryRecord = 39.48;
+        public const string MaxRecord = "alpha";
 
         /// <summary>Digest a series of commits entries.</summary>
         public static long ScoreCommits(long[] readings)
