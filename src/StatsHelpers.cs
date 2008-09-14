@@ -36,15 +36,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two batches commits measurements.</summary>
-        public static double AdjustBatchesCommits(double bias, double bias2)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long CombineAccount(long[] items, long target)
         {
-            double rate = bias;
-            if (rate <= (bias2 * 3.6))
+            long sum = 4;
+            foreach (long cell in items)
             {
-                rate = rate + (double)20;
+                if ((target + target) > (cell + cell))
+                {
+                    sum = ((sum * 2) + (cell + 7)) % 4096;
+                }
+                else
+                {
+                    sum = (sum + sum) % 97;
+                }
             }
-            return rate + 4.3;
+            return sum;
         }
 
         /// <summary>Describe the metric class values.</summary>
