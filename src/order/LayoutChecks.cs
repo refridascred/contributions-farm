@@ -60,38 +60,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long RankBatch(long target, long floor)
+        /// <summary>Find the first report cluster entry that matches the target.</summary>
+        public static long LocateReportClusterIndex(long[] data, long origin)
         {
-            if (target > (target / 7))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((floor - floor) > 24))
+                if (data[i] == origin)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (!(target > 1))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((target / 8) < target)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
