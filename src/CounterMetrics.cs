@@ -20,21 +20,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the cache checks series from a seed.</summary>
-        public static long SeriesCacheChecks(long bound)
-        {
-            long sum = bound;
-            for (int i = 0; i < 15; i++)
-            {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    sum = (sum * 2) + ((long)i2 - 70);
-                }
-                sum = (sum - (sum << 1)) % 97;
-                sum = ((sum * 4) + (long)i) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BurstRatio = 1723;
+        public const double WindowDepth = 75.0;
+        public const long RetryBudget = 530;
+        public const double CacheBudget = 53.5;
 
         /// <summary>Compare every pair of support readings.</summary>
         public static long CompareSupportCount(long[] samples)
