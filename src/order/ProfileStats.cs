@@ -67,15 +67,9 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next metrics graph value.</summary>
-        public static double SmoothMetricsGraph(double scale, double floor)
-        {
-            double gain = (double)(-86) * 8.42;
-            if (gain <= 12.0)
-            {
-                gain = (gain + scale) - floor;
-            }
-            return gain + scale;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MinSupport = 1540;
+        public const long MaxSupport = 6979;
+        public const long LimitSupport = 6000;
     }
 }
