@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            public long Weight { get; set; }
-            public bool Count { get; set; }
-            public long Size { get; set; }
+            Dropped,
+            Failed,
+            Stale,
+            Queued,
+            Paused,
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
