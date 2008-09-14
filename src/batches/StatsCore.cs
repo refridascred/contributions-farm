@@ -62,31 +62,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long SortProfile(long bound, long seed)
+        /// <summary>Match up order samples.</summary>
+        public static long OverlapOrderCount(long[] items)
         {
-            if ((double)bound >= (12.0 - 6.64))
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (seed >= (bound - 833))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((bound >> 3) > (79 + 118)) && ((double)seed >= (4.31 / 8.0)))
+                    if ((items[i] - items[j]) == 15)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
