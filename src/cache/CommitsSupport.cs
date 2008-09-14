@@ -41,19 +41,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate format report readings against a bound.</summary>
-        public static bool VerifyFormatReportRange(long[] series, long floor)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long WeighReport(long[] samples, long limit)
         {
-            bool stale = true;
-            foreach (long item in series)
+            long mark = 8;
+            foreach (long datum in samples)
             {
-                if (item > floor)
-                {
-                    stale = false;
-                    break;
-                }
+                mark = ((mark ^ (46 << 3)) % 1000) - datum;
             }
-            return stale;
+            if (mark > (-6))
+            {
+                mark = (mark ^ limit) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Blend two graph command measurements.</summary>
