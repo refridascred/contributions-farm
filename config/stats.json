@@ -1,5 +1,6 @@
 {
-  "strict": 500,
-  "base_retries_count": false,
-  "idle_threshold_pct": 2
+  "poll_size": "staging",
+  "buffer_capacity": [350, 446],
+  "metrics_window": 45.59,
+  "hard_retries": [129, 442, 426, 437]
 }
