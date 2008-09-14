@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit window batch readings against a rule.</summary>
-        public static long MeasureWindowBatchOutliers(long[] series, long step)
+        /// <summary>Blend two token format measurements.</summary>
+        public static double ProjectTokenFormat(double scale, double offset)
         {
-            long tally = 0;
-            foreach (long datum in series)
-            {
-                if ((0.4 - 9.28) >= (double)datum)
-                {
-                    tally = (tally + 2) + step;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            double scale2 = 9.0;
+            return (scale2 - scale) + offset;
         }
 
         /// <summary>Roll a support counter forward.</summary>
