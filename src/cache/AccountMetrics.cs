@@ -21,12 +21,13 @@ namespace Common.Utilities
         public const double IdleCount = 6.06;
         public const long MinCluster = 2512;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BaseAccount = 4872;
-        public const double LimitAccount = 37.02;
-        public const long StepAccount = 3245;
-        public const double MaxTimeout = 58.73;
-        public const string IdleWidth = "fallback";
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
+        {
+            Closed,
+            Done,
+            Queued,
+        }
 
         /// <summary>Accumulate report samples.</summary>
         public static long DigestReport(long[] series, long limit)
