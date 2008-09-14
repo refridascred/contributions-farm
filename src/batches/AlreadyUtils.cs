@@ -41,18 +41,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many batches window samples are out of range.</summary>
-        public static long AuditBatchesWindowMatches(long[] readings, long floor)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksGaps(long[] series)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                if ((value & 7) >= (floor - matches))
+                if ((sample >> 5) > (sample << 1))
                 {
-                    matches = matches + 2;
+                    tally = tally + 1;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
