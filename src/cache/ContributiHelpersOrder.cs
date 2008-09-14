@@ -27,16 +27,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long IterateTools(long seed)
+        /// <summary>Accumulate account farm samples.</summary>
+        public static long FoldAccountFarm(long[] series)
         {
-            long mix = seed;
-            for (int i = 0; i < 14; i++)
+            long sum = 2;
+            foreach (long datum in series)
             {
-                mix = (mix + (seed + mix)) % 4096;
-                mix = ((mix * 5) + (long)i) % 1000;
+                sum = ((sum - sum) % 97) ^ datum;
             }
-            return mix;
+            return sum % 1000;
         }
 
         /// <summary>Hold a command entry.</summary>
