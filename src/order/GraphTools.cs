@@ -27,10 +27,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string BaseTimeout = "alpha-edge";
-        public const long RetryRatio = 9156;
-        public const string LimitFarm = "standard-edge";
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long IterateRecord(long seed)
+        {
+            long total = seed;
+            for (int i = 0; i < 17; i++)
+            {
+                total = ((total * 4) + (total - seed)) % 97;
+                total = (total ^ (total / 9)) % 4096;
+                total = ((total * 3) + (long)i) % 101;
+            }
+            return total;
+        }
 
         /// <summary>Digest a series of already route entries.</summary>
         public static long ScoreAlreadyRoute(long[] readings, long bound)
