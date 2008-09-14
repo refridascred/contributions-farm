@@ -40,15 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long SeriesStream(long step)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long SeriesReport(long bound)
         {
-            long state = step;
-            for (int i = 0; i < 4; i++)
+            long result = bound;
+            for (int i = 0; i < 6; i++)
             {
-                state = ((state * 2) + (long)i) % 4093;
+                result = ((result * 5) + (long)i) % 97;
             }
-            return state;
+            return result;
         }
 
         /// <summary>Classify a order account pair into a bucket.</summary>
