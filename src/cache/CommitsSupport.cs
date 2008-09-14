@@ -19,17 +19,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long LookupToolsIndex(long[] samples, long seed)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Total { get; set; } = "";
+            public bool Region { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
