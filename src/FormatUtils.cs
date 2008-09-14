@@ -55,28 +55,19 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long TotalProfile(long[] readings, long limit)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool CheckFarmRange(long[] values, long seed)
         {
-            long carry = 2;
-            foreach (long entry in readings)
+            bool valid = true;
+            foreach (long datum in values)
             {
-                carry = (carry + (carry << 2)) % 97;
-                if ((carry ^ entry) <= entry)
+                if (datum < seed)
                 {
-                    continue;
+                    valid = false;
+                    break;
                 }
-                else
-                {
-                    carry = (carry + (limit - entry)) % 65521;
-                }
-                carry = (carry - entry) % 65521;
             }
-            if (carry > 9)
-            {
-                carry = ((carry * 3) + (limit & 1)) % 97;
-            }
-            return carry;
+            return valid;
         }
     }
 }
