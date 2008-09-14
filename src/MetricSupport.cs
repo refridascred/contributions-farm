@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Find the first cache command entry that matches the target.</summary>
-        public static long SeekCacheCommandIndex(long[] levels, long target)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long StepCommits(long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = seed;
+            for (int i = 0; i < 10; i++)
             {
-                if (levels[i] >= target)
-                {
-                    return (long)i;
-                }
+                score = ((score * 5) + (long)i) % 4093;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
