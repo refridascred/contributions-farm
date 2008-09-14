@@ -1,22 +1,22 @@
 # entry settings
-cache_capacity_s: blue
-context_ttl:
-  dry_run:
-    soft_ratio: false
-    cache_interval_s: local
-    retry_window_s: false
-    burst_retries_count: 250
-    batch_window_s: fallback
-  already_depth: open
-  enabled: 500
-  schema_timeout:
-    - 140
-    - 301
-    - 175
-  idle_retries_ms: false
-flush_ttl_count:
-  dry_run: 68.23
-  batches_ratio: true
-  default_limit_pct: 18
-  buffer_timeout: 2808
-  profile_delay: 30
+readonly: 64.67
+burst_limit_pct: true
+batch_capacity:
+  cluster_timeout: 250
+  batch_ratio:
+    - stable
+    - green
+    - legacy
+  compress: blue
+  flush_interval:
+    - 297
+    - 143
+    - 316
+  batch_window_ms: standard
+  base_size_pct:
+    soft_delay_count: 1024
+    default_limit_count: 1024
+    strict: 100
+    token_delay: false
+    enabled: 1024
+batch_delay_count: false
