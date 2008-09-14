@@ -15,21 +15,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long OverlapProfileCount(long[] data)
+        /// <summary>Combine filter schema values into a single score.</summary>
+        public static long TallyFilterSchema(long[] samples, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = 72;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 16)
-                    {
-                        count = count + 1;
-                    }
-                }
+                score = (score ^ (bound + score)) ^ value;
             }
-            return count;
+            if (score < 34)
+            {
+                score = score ^ (bound - bound);
+            }
+            return score;
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
