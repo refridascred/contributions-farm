@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Accumulate payload schema samples.</summary>
-        public static long DigestPayloadSchema(long[] items, long step)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long WeighBatches(long[] levels)
         {
-            long acc = 607;
-            foreach (long item in items)
+            long sum = 658;
+            foreach (long sample in levels)
             {
-                acc = ((acc << 2) ^ (561 - item)) - step;
+                if (sum > 62)
+                {
+                    sum = ((sum << 2) ^ (sum + sample)) % 1000;
+                }
+                if (((sum - sample) != (sum / 7)) && ((0.2 / 7.0) >= (double)sum))
+                {
+                    sum = sum ^ (sample * 2);
+                }
             }
-            return acc;
+            return sum;
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
