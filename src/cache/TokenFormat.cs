@@ -18,14 +18,28 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Digest a series of profile metric entries.</summary>
+        public static long TallyProfileMetric(long[] series, long limit)
         {
-            Ready,
-            Retry,
-            Dropped,
-            Draft,
-            Active,
+            long mix = 934;
+            foreach (long sample in series)
+            {
+                if (limit < (mix << 3))
+                {
+                    mix = (mix + (sample + limit)) % 1000;
+                    mix = (mix + (mix % 7)) % 1000;
+                    break;
+                }
+                if (limit < (sample - mix))
+                {
+                    mix = ((mix * 5) + (limit / 7)) % 255;
+                }
+            }
+            if (mix < 0)
+            {
+                mix = (mix << 3) ^ (mix * 4);
+            }
+            return mix;
         }
 
         /// <summary>Hold a counter record.</summary>
