@@ -1,10 +1,6 @@
 {
-  "readonly": "staging",
-  "flush_limit_s": 1952,
-  "batch_limit_count": [271, 237, 445, 42],
-  "retry_size_count": {
-    "warm_threshold": ["strict", "green", "standard", "cached"],
-    "min_interval_s": ["primary", "legacy"],
-    "idle_timeout_pct": [319, 246, 253]
-  }
+  "poll_limit": 1024,
+  "cache_capacity_s": "primary",
+  "min_window_s": "open",
+  "burst_threshold_s": 9.37
 }
