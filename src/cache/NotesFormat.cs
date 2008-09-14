@@ -54,38 +54,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a order account pair into a bucket.</summary>
-        public static long SortOrderAccount(long offset, long bound)
-        {
-            if ((double)offset >= 5.2)
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((double)offset <= (17.0 / 5.0)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((2 + 233) == (bound << 1))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((bound > ((-753) << 1)) || ((offset << 1) != (bound << 3)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BatchRoute = 2699;
+        public const double BaseWidth = 9.22;
+        public const string BaseRoute = "legacy-edge";
+        public const long BaseDepth = 7192;
     }
 }
