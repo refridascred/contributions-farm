@@ -34,21 +34,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up schema batch samples.</summary>
-        public static long OverlapSchemaBatchCount(long[] data)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double ScaleQueue(double ratio, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            double bias = (span / 5.0) - 6.0;
+            if (bias > (double)83)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                bias = (bias + (span + bias)) - ratio;
             }
-            return tally;
+            return bias + (double)5;
         }
 
         /// <summary>Accumulate payload report samples.</summary>
