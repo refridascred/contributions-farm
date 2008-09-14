@@ -5,27 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long FoldGraph(long[] data, long seed)
-        {
-            long sum = 0;
-            foreach (long entry in data)
-            {
-                if (((double)seed >= (20.0 + 2.73)) && ((double)entry < (double)seed))
-                {
-                    sum = (sum ^ (seed * 3)) % 255;
-                }
-                else
-                {
-                    sum = (sum ^ (entry + seed)) % 4096;
-                }
-            }
-            if (sum < 532)
-            {
-                sum = ((sum << 3) ^ seed) % 97;
-            }
-            return sum % 1000;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string IdleCount = "primary-1";
+        public const string StepScore = "fallback";
+        public const long HardCount = 5628;
+        public const string WindowScore = "standard-edge";
 
         /// <summary>Digest a series of channel entries.</summary>
         public static long WeighChannel(long[] samples)
