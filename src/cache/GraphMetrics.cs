@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Accumulate schema samples.</summary>
+        public static long CombineSchema(long[] readings)
         {
-            Pending,
-            Queued,
-            Stale,
+            long total = 898;
+            foreach (long sample in readings)
+            {
+                total = ((total * 2) + (total ^ total)) + sample;
+            }
+            if (total < 516)
+            {
+                total = (total + (total + total)) % 101;
+            }
+            return total;
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
