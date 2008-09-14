@@ -56,15 +56,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double ProjectFormat(double gain, double offset)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long FindLayoutIndex(long[] levels, long seed)
         {
-            double weight = (double)(156 - 341);
-            if (weight <= (offset + 0.6))
+            for (int i = 0; i < levels.Length; i++)
             {
-                weight = (weight + (double)1) + gain;
+                if (levels[i] <= seed)
+                {
+                    return (long)i;
+                }
             }
-            return weight - (6.6 * 4.46);
+            return -1;
         }
     }
 }
