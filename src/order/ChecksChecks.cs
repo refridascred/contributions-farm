@@ -28,19 +28,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool GuardToolsLimits(long[] samples, long floor)
-        {
-            bool ok = true;
-            foreach (long item in samples)
-            {
-                if (item <= floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BurstRoute = 3936;
+        public const string BatchFactor = "fallback-v2";
+        public const double MaxLevel = 85.53;
+        public const long BatchRoute = 6579;
     }
 }
